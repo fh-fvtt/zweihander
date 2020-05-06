@@ -1,6 +1,6 @@
 # ZWEIHÄNDER: Grim & Perilous RPG system for FoundryVTT
 
-![](https://4.bp.blogspot.com/-C7munYzzrV4/V4aExB-UDWI/AAAAAAAABbQ/Pr6GdAA7irYHmeDiahX8TbafwBC74XRHgCLcB/s1600/zweihander-grimandperilous3.jpg)
+![](https://db4sgowjqfwig.cloudfront.net/campaigns/161832/assets/725959/Zweiha_nderLogoTransparency.png?1492594545)
 
 ## Current State
 
