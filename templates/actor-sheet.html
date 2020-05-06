@@ -1,0 +1,598 @@
+<form class="{{cssClass}}" autocomplete="off">
+
+    <div class="sheet-background">
+        <div class="sheet-content">
+
+            {{!-- Sheet Header --}}
+            <header class="sheet-header">
+                <div class="header-fields">
+                    <div class="labeled-input charname">
+                        <input class="input-text" name="name" type="text" value="{{actor.name}}" placeholder="Name"/>
+                        <label class="input-label">Name</label>
+                    </div>
+
+                    <div class="labeled-input age">
+                        <input class="input-text" name="data.physical.age.value" type="text" value="{{data.physical.age.value}}" placeholder="Age" data-dtype="String"/>
+                        <label class="input-label">Age</label>
+                    </div>
+
+                    <div class="labeled-input sex">
+                        <input class="input-text" name="data.physical.sex.value" type="text" value="{{data.physical.sex.value}}" placeholder="Sex" data-dtype="String"/>
+                        <label class="input-label">Sex</label>
+                    </div>
+
+                    <div class="labeled-input ancestry">
+                        <input class="input-text" name="data.physical.ancestry.value" type="text" value="{{data.physical.ancestry.value}}" placeholder="Ancestry" data-dtype="String"/>
+                        <label class="input-label">Ancestry</label>
+                    </div>
+
+                    <div class="labeled-input profession">
+                        <input class="input-text" name="data.profession.value" type="text" value="{{data.profession.value}}" placeholder="Profession" data-dtype="String"/>
+                        <label class="input-label">Profession</label>
+                    </div>
+
+                    <!--
+                    <div class="resource">
+                        <input type="text" name="data.health.value" value="{{data.health.value}}" data-dtype="Number"/>
+                        <span> / </span>
+                        <input type="text" name="data.health.max" value="{{data.health.max}}" data-dtype="Number"/>
+                    </div>
+
+
+                    <div class="resource">
+                        <input type="text" name="data.power.value" value="{{data.power.value}}" data-dtype="Number"/>
+                        <span> / </span>
+                        <input type="text" name="data.power.max" value="{{data.power.max}}" data-dtype="Number"/>
+                    </div>
+                    -->
+                </div>
+
+                <div class="image-and-adv-and-corr-container">
+                    <div class="profile-img-container">
+                        <img class="profile-img" src="{{actor.img}}" data-edit="img" title="{{actor.name}}" />
+                    </div>
+
+                    <div class="advancement-and-corruption-container">
+                        <div class="advancement">
+                            <div class="advancement-title-container">
+                                <span>Advancement</span>
+                            </div>
+
+                            <div class="divider">
+                                <hr/>
+                            </div>
+
+                            <div class="reward-points-fate-and-reputation-container">
+                                <div class="reward-points-and-title-container">
+                                    <div class="reward-points-title">
+                                        <span>Reward Points</span>
+                                    </div>
+
+                                    <div class="reward-points-inputs">
+                                        <div class="points-and-label left">
+                                            <input class="points-input" type="number" name="data.rewardPoints.current" value="{{data.rewardPoints.current}}" data-dtype="Number"/>
+                                            <span>Current</span>
+                                        </div>
+
+                                        <div class="points-and-label right">
+                                            <input class="points-input" type="number" name="data.rewardPoints.total" value="{{data.rewardPoints.total}}" data-dtype="Number"/>
+                                            <span>Total</span>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div class="fate-and-reputation-container">
+                                    <div class="fate-and-title-container">
+                                        <div class="title">
+                                            <span>Fate</span>
+                                        </div>
+
+                                        <div class="fate-points">
+                                            <input class="points-input" type="number" name="data.fate.value" value="{{data.fate.value}}" data-dtype="Number"/>
+                                        </div>
+                                    </div>
+
+                                    <div class="reputation-and-title-container">
+                                        <div class="title">
+                                            <span>Reputation</span>
+                                        </div>
+
+                                        <div class="reputation-points">
+                                            <input class="points-input" type="number" name="data.reputation.value" value="{{data.reputation.value}}" data-dtype="Number"/>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+
+                        <div class="titles-and-bars">
+                            <div class="corruption-title-container">
+                                <div class="order-alignment-title">
+                                    <span>Order Alignment</span>
+                                </div>
+
+                                <div class="corruption-title">
+                                    <span>Corruption</span>
+                                </div>
+
+                                <div class="chaos-alignment-title">
+                                    <span>Chaos Alignment</span>
+                                </div>
+                            </div>
+
+                            <div class="corruption-inputs-container">
+                                <div class="labeled-input order-container">
+                                    <div class="ranks-beneath-input left">
+                                        <div class="order-input-text">
+                                            <input class="input-text" name="data.orderAlignment.value" type="text" value="{{data.orderAlignment.value}}" data-dtype="String"/>
+                                        </div>
+
+                                        <div class="radio-order-ranks">
+                                            <div class="radio-and-number">
+                                                <input type="radio" class="rd" name="" value=""/>
+                                                <span>1</span>
+                                            </div>
+                                            <div class="radio-and-number">
+                                                <input type="radio" class="rd" name="" value=""/>
+                                                <span>2</span>
+                                            </div>
+                                            <div class="radio-and-number">
+                                                <input type="radio" class="rd" name="" value=""/>
+                                                <span>3</span>
+                                            </div>
+                                            <div class="radio-and-number">
+                                                <input type="radio" class="rd" name="" value=""/>
+                                                <span>4</span>
+                                            </div>
+                                            <div class="radio-and-number">
+                                                <input type="radio" class="rd" name="" value=""/>
+                                                <span>5</span>
+                                            </div>
+                                            <div class="radio-and-number">
+                                                <input type="radio" class="rd" name="" value=""/>
+                                                <span>6</span>
+                                            </div>
+                                            <div class="radio-and-number">
+                                                <input type="radio" class="rd" name="" value=""/>
+                                                <span>7</span>
+                                            </div>
+                                            <div class="radio-and-number">
+                                                <input type="radio" class="rd" name="" value=""/>
+                                                <span>8</span>
+                                            </div>
+                                            <div class="radio-and-number">
+                                                <input type="radio" class="rd" name="" value=""/>
+                                                <span>9</span>
+                                            </div>
+                                        </div>
+                                    </div>                        
+                                </div>
+
+                                <input class="input-number" name="data.corruption.value" type="number" value="{{data.corruption.value}}" data-dtype="Number"/>
+
+                                <div class="labeled-input chaos-container">
+                                    <div class="ranks-beneath-input right">
+                                        <div class="chaos-input-text">
+                                            <input class="input-text" name="data.chaosAlignment.value" type="text" value="{{data.chaosAlignment.value}}" data-dtype="String"/>
+                                        </div>
+                                        
+                                        <div class="radio-chaos-ranks">
+                                            <div class="radio-and-number">
+                                                <input type="radio" class="rd" name="" value=""/>
+                                                <span>1</span>
+                                            </div>
+                                            <div class="radio-and-number">
+                                                <input type="radio" class="rd" name="" value=""/>
+                                                <span>2</span>
+                                            </div>
+                                            <div class="radio-and-number">
+                                                <input type="radio" class="rd" name="" value=""/>
+                                                <span>3</span>
+                                            </div>
+                                            <div class="radio-and-number">
+                                                <input type="radio" class="rd" name="" value=""/>
+                                                <span>4</span>
+                                            </div>
+                                            <div class="radio-and-number">
+                                                <input type="radio" class="rd" name="" value=""/>
+                                                <span>5</span>
+                                            </div>
+                                            <div class="radio-and-number">
+                                                <input type="radio" class="rd" name="" value=""/>
+                                                <span>6</span>
+                                            </div>
+                                            <div class="radio-and-number">
+                                                <input type="radio" class="rd" name="" value=""/>
+                                                <span>7</span>
+                                            </div>
+                                            <div class="radio-and-number">
+                                                <input type="radio" class="rd" name="" value=""/>
+                                                <span>8</span>
+                                            </div>
+                                            <div class="radio-and-number">
+                                                <input type="radio" class="rd" name="" value=""/>
+                                                <span>9</span>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </header>
+
+            {{!-- Sheet Tab Navigation --}}
+            <nav class="sheet-tabs tabs" data-group="primary">
+                <div class="nav-content">
+                    <div class="item-and-hand">
+                        <a class="item" data-tab="main">MAIN</a>
+                        <img class="selector" src="systems/zweihander/assets/skeleton_selector.png" height="22"
+                            width="42" />
+                    </div>
+                    <div class="item-and-hand">
+                        <a class="item" data-tab="tiers">TIERS</a>
+                        <img class="selector" src="systems/zweihander/assets/skeleton_selector.png" height="22"
+                            width="42" />
+                    </div>
+                    <div class="item-and-hand">
+                        <a class="item" data-tab="afflictions">AFFLICTIONS</a>
+                        <img class="selector" src="systems/zweihander/assets/skeleton_selector.png" height="22"
+                            width="42" />
+                    </div>
+                    <div class="item-and-hand">
+                        <a class="item" data-tab="trappings">TRAPPINGS</a>
+                        <img class="selector" src="systems/zweihander/assets/skeleton_selector.png" height="22"
+                            width="42" />
+                    </div>
+                    <div class="item-and-hand">
+                        <a class="item" data-tab="notes">NOTES</a>
+                        <img class="selector" src="systems/zweihander/assets/skeleton_selector.png" height="22"
+                            width="42" />
+                    </div>
+                </div>
+            </nav>
+
+            {{!-- Sheet Body --}}
+            <section class="sheet-body">
+
+                {{!-- Main Tab --}}
+                <div class="tab main" data-group="primary" data-tab="main">
+                    <div class="main-container">
+                        <div class="characteristics">
+                            {{#each data.stats.primaryAttributes as | characteristics key |}}
+                                <div class="individual-characteristic {{key}}">
+                                    <div class="title">
+                                        <span>{{key}}</span>
+                                    </div>
+
+                                    <div class="value-and-bonus">
+                                        <div class="number-and-label left">
+                                            <input class="value" type="number" name="data.stats.primaryAttributes.{{key}}.value" value="{{characteristics.value}}" data-dtype="Number">
+                                            <span class="label">Value</span>
+                                        </div>
+
+                                        <div class="number-and-label right">
+                                            <input class="bonus" type="number" name="data.stats.primaryAttributes.{{key}}.bonus" value="{{characteristics.bonus}}" data-dtype="Number" readonly>
+                                            <span class="label">[{{getFirstLetter key}}B]</span>
+                                        </div>
+                                    </div>
+                                </div>
+                            {{/each}}
+
+                            <div class="dodge-and-parry">
+                                <div class="image-separator">
+                                    <img class="helmet" src="systems/zweihander/assets/helmet.png">
+                                </div>
+
+                                <div class="dodge">
+                                    <div class="title">
+                                        <span>Dodge</span>
+                                    </div>
+                                    
+                                    <div class="number-and-label">
+                                        <div class="dice-roll-icon">
+                                            <img class="d10" src="systems/zweihander/assets/rolling-dices.svg"/>
+
+                                            <input class="value" type="number" name="data.stats.secondaryAttributes.dodge.value" value="{{data.stats.secondaryAttributes.dodge.value}}" data-dtype="Number">
+                                        </div>
+
+                                        <span class="label">Coordination</span>
+                                    </div>
+                                </div>
+
+                                <div class="parry">
+                                    <div class="title">
+                                        <span>Parry</span>
+                                    </div>
+
+                                    <div class="number-and-label">
+                                        <div class="dice-roll-icon">
+                                            <img class="d10" src="systems/zweihander/assets/rolling-dices.svg"/>
+
+                                            <input class="value" type="number" name="data.stats.secondaryAttributes.parry.value" value="{{data.stats.secondaryAttributes.parry.value}}" data-dtype="Number">
+                                        </div>
+
+                                        <span class="label">Combat Skill</span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="skills-and-combat">
+                            <div class="skills-list">
+                                <header class="skills-header">
+                                    <div class="title">
+                                        <span>Skills</span>
+                                    </div>
+                                    <div class="skills-ranks">
+                                        <span class="rank">A.</span>
+                                        <span class="rank">J.</span>
+                                        <span class="rank">M.</span>
+                                    </div>
+                                </header>
+
+                                <div class="list save-scroll">
+                                    {{#each data.stats.skills as | skill key |}}
+                                        <div class="individual-skill-and-ranks">
+                                            <div class="individual-skill">
+                                                <span class="skill-name">{{skill.label}}</span>
+                                            </div>
+
+                                            <div class="ranks">
+                                                <input type="checkbox" name="" value="" />
+                                                <input type="checkbox" name="" value="" />
+                                                <input type="checkbox" name="" value="" />
+                                            </div>
+                                        </div>
+                                    {{/each}}
+                                </div>
+                            </div>
+
+                            <div class="combat-container">
+                                <div class="initiative-and-peril-container">
+                                    <div class="initiative-container">
+                                        <div class="title">
+                                            <span>Initiative</span>
+                                        </div>
+    
+                                        <div class="value-overage-and-current">
+                                            <div class="number-and-label left">
+                                                <input class="value" type="number" name="data.stats.secondaryAttributes.initiative.value" value="{{data.stats.secondaryAttributes.initiative.value}}" data-dtype="Number" readonly/>
+                                                <span class="label">[PB]+3</span>
+                                            </div>
+    
+                                            <div class="number-and-label center">
+                                                <input class="value" type="number" name="data.stats.secondaryAttributes.encumbrance.overage initiative" value="{{data.stats.secondaryAttributes.encumbrance.overage}}" data-dtype="Number" readonly/>
+                                                <span class="label">Overage</span>
+                                            </div>
+
+                                            <div class="number-and-label right">
+                                                <input class="value" type="number" name="data.stats.secondaryAttributes.initiative.current" value="{{data.stats.secondaryAttributes.initiative.current}}" data-dtype="Number" readonly/>
+                                                <span class="label">Current</span>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    <div class="peril-container">
+                                        <div class="title">
+                                            <span>Peril Threshold</span>
+                                        </div>
+    
+                                        <div class="values-container">
+                                            <div class="number-and-label left">
+                                                <input class="value" type="number" name="data.stats.secondaryAttributes.perilThreshold.value" value="{{data.stats.secondaryAttributes.perilThreshold.value}}" data-dtype="Number" readonly/>
+                                                <span class="label">[WB]+3</span>
+                                            </div>
+    
+                                            <div class="number-and-label center-left">
+                                                <input class="value" type="number" name="data.stats.secondaryAttributes.perilThreshold.valuePlusSix" value="{{data.stats.secondaryAttributes.perilThreshold.valuePlusSix}}" data-dtype="Number" readonly/>
+                                                <span class="label">+6</span>
+                                            </div>
+
+                                            <div class="number-and-label center-right">
+                                                <input class="value" type="number" name="data.stats.secondaryAttributes.perilThreshold.valuePlusTwelve" value="{{data.stats.secondaryAttributes.perilThreshold.valuePlusTwelve}}" data-dtype="Number" readonly/>
+                                                <span class="label">+12</span>
+                                            </div>
+
+                                            <div class="number-and-label right">
+                                                <input class="value" type="number" name="data.stats.secondaryAttributes.perilThreshold.valuePlusEighteen" value="{{data.stats.secondaryAttributes.perilThreshold.valuePlusEighteen}}" data-dtype="Number" readonly/>
+                                                <span class="label">+18</span>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    <div class="peril-threshold-container">
+                                        <div class="title-alt">
+                                            <span>Peril Condition Track</span>
+                                        </div>
+    
+                                        <div class="peril-status-list">
+                                            <div class="radio-and-status">
+                                                <input class="radio-rank" type="radio" name="" value="" checked="checked"/>
+                                                <span class="status">Unhindered</span>
+                                            </div>
+
+                                            <div class="radio-and-status">
+                                                <input class="radio-rank" type="radio" name="" value=""/>
+                                                <span class="status">Imperiled</span>
+                                            </div>
+
+                                            <div class="radio-and-status">
+                                                <input class="radio-rank" type="radio" name="" value=""/>
+                                                <span class="status">Ignore 1 Skill Rank</span>
+                                            </div>
+
+                                            <div class="radio-and-status">
+                                                <input class="radio-rank" type="radio" name="" value=""/>
+                                                <span class="status">Ignore 2 Skill Ranks</span>
+                                            </div>
+
+                                            <div class="radio-and-status">
+                                                <input class="radio-rank" type="radio" name="" value=""/>
+                                                <span class="status">Ignore 3 Skill Ranks</span>
+                                            </div>
+
+                                            <div class="radio-and-status">
+                                                <input class="radio-rank" type="radio" name="" value=""/>
+                                                <span class="status">INCAPACITATED!</span>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div class="movement-and-damage-container">
+                                    <div class="initiative-container">
+                                        <div class="title">
+                                            <span>Movement</span>
+                                        </div>
+    
+                                        <div class="value-overage-and-current">
+                                            <div class="number-and-label left">
+                                                <input class="value" type="number" name="data.stats.secondaryAttributes.movement.value" value="{{data.stats.secondaryAttributes.movement.value}}" data-dtype="Number" readonly/>
+                                                <span class="label">[AB]+3</span>
+                                            </div>
+    
+                                            <div class="number-and-label center">
+                                                <input class="value" type="number" name="data.stats.secondaryAttributes.encumbrance.overage movement" value="{{data.stats.secondaryAttributes.encumbrance.overage}}" data-dtype="Number" readonly/>
+                                                <span class="label">Overage</span>
+                                            </div>
+
+                                            <div class="number-and-label right">
+                                                <input class="value" type="number" name="data.stats.secondaryAttributes.movement.current" value="{{data.stats.secondaryAttributes.movement.current}}" data-dtype="Number" readonly/>
+                                                <span class="label">Current</span>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    <div class="peril-container">
+                                        <div class="title">
+                                            <span>Damage Threshold</span>
+                                        </div>
+    
+                                        <div class="values-container">
+                                            <div class="number-and-label left">
+                                                <input class="value" type="number" name="data.stats.secondaryAttributes.damageThreshold.value" value="{{data.stats.secondaryAttributes.damageThreshold.value}}" data-dtype="Number" readonly/>
+                                                <span class="label">[BB]+3</span>
+                                            </div>
+    
+                                            <div class="number-and-label center-left">
+                                                <input class="value" type="number" name="data.stats.secondaryAttributes.damageThreshold.valuePlusSix" value="{{data.stats.secondaryAttributes.damageThreshold.valuePlusSix}}" data-dtype="Number" readonly/>
+                                                <span class="label">+6</span>
+                                            </div>
+
+                                            <div class="number-and-label center-right">
+                                                <input class="value" type="number" name="data.stats.secondaryAttributes.damageThreshold.valuePlusTwelve" value="{{data.stats.secondaryAttributes.damageThreshold.valuePlusTwelve}}" data-dtype="Number" readonly/>
+                                                <span class="label">+12</span>
+                                            </div>
+
+                                            <div class="number-and-label right">
+                                                <input class="value" type="number" name="data.stats.secondaryAttributes.damageThreshold.valuePlusEighteen" value="{{data.stats.secondaryAttributes.damageThreshold.valuePlusEighteen}}" data-dtype="Number" readonly/>
+                                                <span class="label">+18</span>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    <div class="peril-threshold-container">
+                                        <div class="title-alt">
+                                            <span>Damage Condition Track</span>
+                                        </div>
+    
+                                        <div class="peril-status-list">
+                                            <div class="radio-and-status">
+                                                <input class="radio-rank" type="radio" name="" value="" checked="checked"/>
+                                                <span class="status">Unharmed</span>
+                                            </div>
+
+                                            <div class="radio-and-status">
+                                                <input class="radio-rank" type="radio" name="" value=""/>
+                                                <span class="status">Lightly Wounded</span>
+                                            </div>
+
+                                            <div class="radio-and-status">
+                                                <input class="radio-rank" type="radio" name="" value=""/>
+                                                <span class="status">Moderately Wounded</span>
+                                            </div>
+
+                                            <div class="radio-and-status">
+                                                <input class="radio-rank" type="radio" name="" value=""/>
+                                                <span class="status">Seriously Wounded</span>
+                                            </div>
+
+                                            <div class="radio-and-status">
+                                                <input class="radio-rank" type="radio" name="" value=""/>
+                                                <span class="status">Grievously Wounded</span>
+                                            </div>
+
+                                            <div class="radio-and-status">
+                                                <input class="radio-rank" type="radio" name="" value=""/>
+                                                <span class="status">SLAIN!</span>
+                                            </div>
+                                        </div>
+                                    </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+
+                <!--STOPPED HERE. Also, save this: {{editor content=data.biography target="data.biography" button=true owner=owner editable=editable}}-->
+
+
+                {{!-- Owned Items Tab --}}
+                <div class="tab items" data-group="primary" data-tab="tiers">
+                    <ol class="items-list">
+                        {{#each actor.items as |item id|}}
+                        <li class="item flexrow" data-item-id="{{item._id}}">
+                            <img src="{{item.img}}" title="{{item.name}}" width="24" height="24" />
+                            <h4 class="item-name">{{item.name}}</h4>
+                            <div class="item-controls">
+                                <a class="item-control item-edit" title="Edit Item"><i class="fas fa-edit"></i></a>
+                                <a class="item-control item-delete" title="Delete Item"><i class="fas fa-trash"></i></a>
+                            </div>
+                        </li>
+                        {{/each}}
+                    </ol>
+                </div>
+
+                {{!-- Attributes Tab --}}
+                <div class="tab attributes" data-group="primary" data-tab="afflictions">
+                    <header class="attributes-header flexrow">
+                        <span class="attribute-key">Attribute Key</span>
+                        <span class="attribute-value">Value</span>
+                        <span class="attribute-label">Label</span>
+                        <span class="attribute-dtype">Data Type</span>
+                        <a class="attribute-control" data-action="create"><i class="fas fa-plus"></i></a>
+                    </header>
+
+                    <ol class="attributes-list">
+                        {{#each data.attributes as |attr key|}}
+                        <li class="attribute flexrow" data-attribute="{{key}}">
+                            <input class="attribute-key" type="text" name="data.attributes.{{key}}.key"
+                                value="{{key}}" />
+                            {{#if attr.isCheckbox}}
+                            <label class="attribute-value checkbox"><input type="checkbox"
+                                    name="data.attributes.{{key}}.value" {{checked attr.value}} /></label>
+                            {{else}}
+                            <input class="attribute-value" type="text" name="data.attributes.{{key}}.value"
+                                value="{{attr.value}}" data-dtype="{{attr.dtype}}" />
+                            {{/if}}
+                            <input class="attribute-label" type="text" name="data.attributes.{{key}}.label"
+                                value="{{attr.label}}" />
+                            <select class="attribute-dtype" name="data.attributes.{{key}}.dtype">
+                                {{#select attr.dtype}}
+                                {{#each ../dtypes as |t|}}
+                                <option value="{{t}}">{{t}}</option>
+                                {{/each}}
+                                {{/select}}
+                            </select>
+                            <a class="attribute-control" data-action="delete"><i class="fas fa-trash"></i></a>
+                        </li>
+                        {{/each}}
+                    </ol>
+                </div>
+            </section>
+        </div>
+
+</form>
