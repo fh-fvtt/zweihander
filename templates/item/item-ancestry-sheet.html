@@ -1,0 +1,90 @@
+<form class="{{cssClass}}" autocomplete="off">
+
+    <div class="item-sheet-background">
+        <div class="item-sheet-content">
+
+            <div class="illustration-container">
+                <img class="illustration" src="systems/zweihander/assets/elf.png" />
+            </div>
+
+            <div class="item-sheet-information">
+                <div class="title-and-tabs">
+                    <div class="title">
+                        <span>{{item.name}}</span>
+                    </div>
+
+                    <!-- <div class="separator">
+                        <hr />
+                    </div> -->
+
+                    <!-- {{!-- Sheet Tab Navigation --}}
+                    <nav class="sheet-tabs tabs" data-group="primary">
+                        <div class="item-nav-content">
+                            <div class="item-and-hand">
+                                <a class="item" data-tab="main">MAIN</a>
+                                <img class="selector" src="systems/zweihander/assets/skeleton_selector.png" height="22"
+                                    width="42" />
+                            </div>
+                            <div class="item-and-hand">
+                                <a class="item" data-tab="description">DESCRIPTION</a>
+                                <img class="selector" src="systems/zweihander/assets/skeleton_selector.png" height="22"
+                                    width="42" />
+                            </div>
+                        </div>
+                    </nav> -->
+                </div>
+
+                {{!-- Sheet Body --}}
+                <section class="item-sheet-body">
+
+                    {{!-- Description Tab --}}
+                    <div class="content">
+                        <div class="ancestral-modifiers">
+                            <header class="ancestral-modifiers-header">
+                                <div class="title">
+                                    <span>Ancestral Modifiers</span>
+                                </div>
+                            </header>
+
+                            <div class="modifiers">
+                                <div class="individual-modifier">
+                                    <img src="systems/zweihander/assets/elf-ear.svg" width="25px" height="25px" style="border: none;"/> <span>Ancestral Modifier: +1 to [AB]</span>
+                                </div>
+                                <div class="individual-modifier">
+                                    <img src="systems/zweihander/assets/elf-ear.svg" width="25px" height="25px" style="border: none;"/> <span>Ancestral Modifier: +1 to [PB]</span>
+                                </div>
+                                <div class="individual-modifier">
+                                    <img src="systems/zweihander/assets/elf-ear.svg" width="25px" height="25px" style="border: none;"/> <span>Ancestral Modifier: +1 to [IB]</span>
+                                </div>
+                                <div class="individual-modifier">
+                                    <img src="systems/zweihander/assets/elf-ear.svg" width="25px" height="25px" style="border: none;"/> <span>Ancestral Modifier: -1 to [BB]</span>
+                                </div>
+                                <div class="individual-modifier">
+                                    <img src="systems/zweihander/assets/elf-ear.svg" width="25px" height="25px" style="border: none;"/> <span>Ancestral Modifier: -1 to [FB]</span>
+                                </div>
+                                <div class="individual-modifier">
+                                    <img src="systems/zweihander/assets/elf-ear.svg" width="25px" height="25px" style="border: none;"/> <span>Ancestral Modifier: -1 to [WB]</span>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div class="ancestral-modifiers">
+                            <header class="ancestral-modifiers-header">
+                                <div class="title">
+                                    <span>Ancestral Trait</span>
+                                </div>
+                            </header>
+
+                            <div class="modifiers">
+                                <div class="individual-modifier">
+                                    <img src="systems/zweihander/assets/elf-ear.svg" width="25px" height="25px" style="border: none;"/> <span>Ancestral Trait: Deadly Aim</span>
+                                </div>
+                            </div>
+                        </div>
+                        <!-- {{editor content=data.description target="data.description" button=true owner=owner editable=editable}} -->
+                    </div>
+                </section>
+            </div>
+        </div>
+    </div>
+</form>

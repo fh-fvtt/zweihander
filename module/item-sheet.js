@@ -7,13 +7,25 @@ export class ZweihanderItemSheet extends ItemSheet {
   /** @override */
 	static get defaultOptions() {
 	  return mergeObject(super.defaultOptions, {
-			classes: ["worldbuilding", "sheet", "item"],
-			template: "systems/worldbuilding/templates/item-sheet.html",
-			width: 520,
-			height: 480,
-      tabs: [{navSelector: ".sheet-tabs", contentSelector: ".sheet-body", initial: "description"}]
+			classes: ["zweihander", "sheet", "item"],
+			width: 600,
+      height: 430,
+      resizable: false,
+      // tabs: [{navSelector: ".sheet-tabs", contentSelector: ".sheet-body", initial: "description"}]
 		});
   }
+
+  /** @override */
+  get template() {
+    const path = "systems/zweihander/templates/item";
+    // Return a single sheet for all item types.
+    // return `${path}/item-sheet.html`;
+
+    // Alternatively, you could use the following return statement to do a
+    // unique item sheet by type, like `weapon-sheet.html`.
+    return `${path}/item-${this.item.data.type}-sheet.html`;
+  }
+
 
   /* -------------------------------------------- */
 
@@ -21,9 +33,9 @@ export class ZweihanderItemSheet extends ItemSheet {
   getData() {
     const data = super.getData();
     data.dtypes = ["String", "Number", "Boolean"];
-    for ( let attr of Object.values(data.data.attributes) ) {
+    /*for ( let attr of Object.values(data.data.attributes) ) {
       attr.isCheckbox = attr.dtype === "Boolean";
-    }
+    }*/
     return data;
   }
 
@@ -47,8 +59,17 @@ export class ZweihanderItemSheet extends ItemSheet {
     // Everything below here is only needed if the sheet is editable
     if (!this.options.editable) return;
 
+    if (this.item.type === 'ancestry') {
+      const ancestries = ["human", "elf", "dwarf", "gnome", "halfling", "ogre"]; // TODO: change this to an object -> "elf": /path/to/image.png
+
+      ancestries.forEach(ancestry => {
+        if (this.item.name.toLowerCase().includes(ancestry))
+          html.find(".illustration").attr("src", "systems/zweihander/assets/" + ancestry + ".png");
+      });
+    }
+
     // Add or Remove Attribute
-    html.find(".attributes").on("click", ".attribute-control", this._onClickAttributeControl.bind(this));
+    // html.find(".attributes").on("click", ".attribute-control", this._onClickAttributeControl.bind(this));
   }
 
   /* -------------------------------------------- */
@@ -89,8 +110,10 @@ export class ZweihanderItemSheet extends ItemSheet {
   _updateObject(event, formData) {
 
     // Handle the free-form attributes list
-    const formAttrs = expandObject(formData).data.attributes || {};
-    const attributes = Object.values(formAttrs).reduce((obj, v) => {
+    // const formAttrs = expandObject(formData).data.attributes || {};
+
+    // console.log("ITEM >>> ", formAttrs);
+    /*const attributes = Object.values(formAttrs).reduce((obj, v) => {
       let k = v["key"].trim();
       if ( /[\s\.]/.test(k) )  return ui.notifications.error("Attribute keys may not contain spaces or periods");
       delete v["key"];
@@ -108,7 +131,7 @@ export class ZweihanderItemSheet extends ItemSheet {
       obj[e[0]] = e[1];
       return obj;
     }, {_id: this.object._id, "data.attributes": attributes});
-
+    */
     // Update the Item
     return this.object.update(formData);
   }

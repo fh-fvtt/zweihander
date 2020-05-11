@@ -7,27 +7,31 @@
             <header class="sheet-header">
                 <div class="header-fields">
                     <div class="labeled-input charname">
-                        <input class="input-text" name="name" type="text" value="{{actor.name}}" placeholder="Name"/>
+                        <input class="input-text" name="name" type="text" value="{{actor.name}}" placeholder="Name" />
                         <label class="input-label">Name</label>
                     </div>
 
                     <div class="labeled-input age">
-                        <input class="input-text" name="data.physical.age.value" type="text" value="{{data.physical.age.value}}" placeholder="Age" data-dtype="String"/>
+                        <input class="input-text" name="data.physical.age.value" type="text"
+                            value="{{data.physical.age.value}}" placeholder="Age" data-dtype="String" />
                         <label class="input-label">Age</label>
                     </div>
 
                     <div class="labeled-input sex">
-                        <input class="input-text" name="data.physical.sex.value" type="text" value="{{data.physical.sex.value}}" placeholder="Sex" data-dtype="String"/>
+                        <input class="input-text" name="data.physical.sex.value" type="text"
+                            value="{{data.physical.sex.value}}" placeholder="Sex" data-dtype="String" />
                         <label class="input-label">Sex</label>
                     </div>
 
                     <div class="labeled-input ancestry">
-                        <input class="input-text" name="data.physical.ancestry.value" type="text" value="{{data.physical.ancestry.value}}" placeholder="Ancestry" data-dtype="String"/>
+                        <input class="input-text" name="data.physical.ancestry.value" type="text"
+                            value="{{data.physical.ancestry.value}}" placeholder="Ancestry" data-dtype="String" />
                         <label class="input-label">Ancestry</label>
                     </div>
 
                     <div class="labeled-input profession">
-                        <input class="input-text" name="data.profession.value" type="text" value="{{data.profession.value}}" placeholder="Profession" data-dtype="String"/>
+                        <input class="input-text" name="data.profession.value" type="text"
+                            value="{{data.profession.value}}" placeholder="Profession" data-dtype="String" />
                         <label class="input-label">Profession</label>
                     </div>
 
@@ -59,7 +63,7 @@
                             </div>
 
                             <div class="divider">
-                                <hr/>
+                                <hr />
                             </div>
 
                             <div class="reward-points-fate-and-reputation-container">
@@ -70,12 +74,14 @@
 
                                     <div class="reward-points-inputs">
                                         <div class="points-and-label left">
-                                            <input class="points-input" type="number" name="data.rewardPoints.current" value="{{data.rewardPoints.current}}" data-dtype="Number"/>
+                                            <input class="points-input" type="number" name="data.rewardPoints.current"
+                                                value="{{data.rewardPoints.current}}" data-dtype="Number" />
                                             <span>Current</span>
                                         </div>
 
                                         <div class="points-and-label right">
-                                            <input class="points-input" type="number" name="data.rewardPoints.total" value="{{data.rewardPoints.total}}" data-dtype="Number"/>
+                                            <input class="points-input" type="number" name="data.rewardPoints.total"
+                                                value="{{data.rewardPoints.total}}" data-dtype="Number" />
                                             <span>Total</span>
                                         </div>
                                     </div>
@@ -88,7 +94,8 @@
                                         </div>
 
                                         <div class="fate-points">
-                                            <input class="points-input" type="number" name="data.fate.value" value="{{data.fate.value}}" data-dtype="Number"/>
+                                            <input class="points-input" type="number" name="data.fate.value"
+                                                value="{{data.fate.value}}" data-dtype="Number" />
                                         </div>
                                     </div>
 
@@ -98,7 +105,8 @@
                                         </div>
 
                                         <div class="reputation-points">
-                                            <input class="points-input" type="number" name="data.reputation.value" value="{{data.reputation.value}}" data-dtype="Number"/>
+                                            <input class="points-input" type="number" name="data.reputation.value"
+                                                value="{{data.reputation.value}}" data-dtype="Number" />
                                         </div>
                                     </div>
                                 </div>
@@ -125,93 +133,96 @@
                                 <div class="labeled-input order-container">
                                     <div class="ranks-beneath-input left">
                                         <div class="order-input-text">
-                                            <input class="input-text" name="data.orderAlignment.value" type="text" value="{{data.orderAlignment.value}}" data-dtype="String"/>
+                                            <input class="input-text" name="data.orderAlignment.value" type="text"
+                                                value="{{data.orderAlignment.value}}" data-dtype="String" />
                                         </div>
 
                                         <div class="radio-order-ranks">
                                             <div class="radio-and-number">
-                                                <input type="radio" class="rd" name="" value=""/>
+                                                <input type="radio" class="rd" name="" value="" />
                                                 <span>1</span>
                                             </div>
                                             <div class="radio-and-number">
-                                                <input type="radio" class="rd" name="" value=""/>
+                                                <input type="radio" class="rd" name="" value="" />
                                                 <span>2</span>
                                             </div>
                                             <div class="radio-and-number">
-                                                <input type="radio" class="rd" name="" value=""/>
+                                                <input type="radio" class="rd" name="" value="" />
                                                 <span>3</span>
                                             </div>
                                             <div class="radio-and-number">
-                                                <input type="radio" class="rd" name="" value=""/>
+                                                <input type="radio" class="rd" name="" value="" />
                                                 <span>4</span>
                                             </div>
                                             <div class="radio-and-number">
-                                                <input type="radio" class="rd" name="" value=""/>
+                                                <input type="radio" class="rd" name="" value="" />
                                                 <span>5</span>
                                             </div>
                                             <div class="radio-and-number">
-                                                <input type="radio" class="rd" name="" value=""/>
+                                                <input type="radio" class="rd" name="" value="" />
                                                 <span>6</span>
                                             </div>
                                             <div class="radio-and-number">
-                                                <input type="radio" class="rd" name="" value=""/>
+                                                <input type="radio" class="rd" name="" value="" />
                                                 <span>7</span>
                                             </div>
                                             <div class="radio-and-number">
-                                                <input type="radio" class="rd" name="" value=""/>
+                                                <input type="radio" class="rd" name="" value="" />
                                                 <span>8</span>
                                             </div>
                                             <div class="radio-and-number">
-                                                <input type="radio" class="rd" name="" value=""/>
+                                                <input type="radio" class="rd" name="" value="" />
                                                 <span>9</span>
                                             </div>
                                         </div>
-                                    </div>                        
+                                    </div>
                                 </div>
 
-                                <input class="input-number" name="data.corruption.value" type="number" value="{{data.corruption.value}}" data-dtype="Number"/>
+                                <input class="input-number" name="data.corruption.value" type="number"
+                                    value="{{data.corruption.value}}" data-dtype="Number" />
 
                                 <div class="labeled-input chaos-container">
                                     <div class="ranks-beneath-input right">
                                         <div class="chaos-input-text">
-                                            <input class="input-text" name="data.chaosAlignment.value" type="text" value="{{data.chaosAlignment.value}}" data-dtype="String"/>
+                                            <input class="input-text" name="data.chaosAlignment.value" type="text"
+                                                value="{{data.chaosAlignment.value}}" data-dtype="String" />
                                         </div>
-                                        
+
                                         <div class="radio-chaos-ranks">
                                             <div class="radio-and-number">
-                                                <input type="radio" class="rd" name="" value=""/>
+                                                <input type="radio" class="rd" name="" value="" />
                                                 <span>1</span>
                                             </div>
                                             <div class="radio-and-number">
-                                                <input type="radio" class="rd" name="" value=""/>
+                                                <input type="radio" class="rd" name="" value="" />
                                                 <span>2</span>
                                             </div>
                                             <div class="radio-and-number">
-                                                <input type="radio" class="rd" name="" value=""/>
+                                                <input type="radio" class="rd" name="" value="" />
                                                 <span>3</span>
                                             </div>
                                             <div class="radio-and-number">
-                                                <input type="radio" class="rd" name="" value=""/>
+                                                <input type="radio" class="rd" name="" value="" />
                                                 <span>4</span>
                                             </div>
                                             <div class="radio-and-number">
-                                                <input type="radio" class="rd" name="" value=""/>
+                                                <input type="radio" class="rd" name="" value="" />
                                                 <span>5</span>
                                             </div>
                                             <div class="radio-and-number">
-                                                <input type="radio" class="rd" name="" value=""/>
+                                                <input type="radio" class="rd" name="" value="" />
                                                 <span>6</span>
                                             </div>
                                             <div class="radio-and-number">
-                                                <input type="radio" class="rd" name="" value=""/>
+                                                <input type="radio" class="rd" name="" value="" />
                                                 <span>7</span>
                                             </div>
                                             <div class="radio-and-number">
-                                                <input type="radio" class="rd" name="" value=""/>
+                                                <input type="radio" class="rd" name="" value="" />
                                                 <span>8</span>
                                             </div>
                                             <div class="radio-and-number">
-                                                <input type="radio" class="rd" name="" value=""/>
+                                                <input type="radio" class="rd" name="" value="" />
                                                 <span>9</span>
                                             </div>
                                         </div>
@@ -227,27 +238,32 @@
             <nav class="sheet-tabs tabs" data-group="primary">
                 <div class="nav-content">
                     <div class="item-and-hand">
-                        <a class="item" data-tab="main">MAIN</a>
+                        <a class="item" data-tab="main">Main</a>
                         <img class="selector" src="systems/zweihander/assets/skeleton_selector.png" height="22"
                             width="42" />
                     </div>
                     <div class="item-and-hand">
-                        <a class="item" data-tab="tiers">TIERS</a>
+                        <a class="item" data-tab="tiers">Tiers</a>
                         <img class="selector" src="systems/zweihander/assets/skeleton_selector.png" height="22"
                             width="42" />
                     </div>
                     <div class="item-and-hand">
-                        <a class="item" data-tab="afflictions">AFFLICTIONS</a>
+                        <a class="item" data-tab="afflictions">Afflictions</a>
                         <img class="selector" src="systems/zweihander/assets/skeleton_selector.png" height="22"
                             width="42" />
                     </div>
                     <div class="item-and-hand">
-                        <a class="item" data-tab="trappings">TRAPPINGS</a>
+                        <a class="item" data-tab="trappings">Trappings</a>
                         <img class="selector" src="systems/zweihander/assets/skeleton_selector.png" height="22"
                             width="42" />
                     </div>
                     <div class="item-and-hand">
-                        <a class="item" data-tab="notes">NOTES</a>
+                        <a class="item" data-tab="magicks">Magick</a>
+                        <img class="selector" src="systems/zweihander/assets/skeleton_selector.png" height="22"
+                            width="42" />
+                    </div>
+                    <div class="item-and-hand">
+                        <a class="item" data-tab="notes">Personal Notes</a>
                         <img class="selector" src="systems/zweihander/assets/skeleton_selector.png" height="22"
                             width="42" />
                     </div>
@@ -262,23 +278,27 @@
                     <div class="main-container">
                         <div class="characteristics">
                             {{#each data.stats.primaryAttributes as | characteristics key |}}
-                                <div class="individual-characteristic {{key}}">
-                                    <div class="title">
-                                        <span>{{key}}</span>
+                            <div class="individual-characteristic {{key}}">
+                                <div class="title">
+                                    <span>{{key}}</span>
+                                </div>
+
+                                <div class="value-and-bonus">
+                                    <div class="number-and-label left">
+                                        <input class="value" type="number"
+                                            name="data.stats.primaryAttributes.{{key}}.value"
+                                            value="{{characteristics.value}}" data-dtype="Number">
+                                        <span class="label">Value</span>
                                     </div>
 
-                                    <div class="value-and-bonus">
-                                        <div class="number-and-label left">
-                                            <input class="value" type="number" name="data.stats.primaryAttributes.{{key}}.value" value="{{characteristics.value}}" data-dtype="Number">
-                                            <span class="label">Value</span>
-                                        </div>
-
-                                        <div class="number-and-label right">
-                                            <input class="bonus" type="number" name="data.stats.primaryAttributes.{{key}}.bonus" value="{{characteristics.bonus}}" data-dtype="Number" readonly>
-                                            <span class="label">[{{getFirstLetter key}}B]</span>
-                                        </div>
+                                    <div class="number-and-label right">
+                                        <input class="bonus" type="number"
+                                            name="data.stats.primaryAttributes.{{key}}.bonus"
+                                            value="{{characteristics.bonus}}" data-dtype="Number" readonly>
+                                        <span class="label">[{{getFirstLetter key}}B]</span>
                                     </div>
                                 </div>
+                            </div>
                             {{/each}}
 
                             <div class="dodge-and-parry">
@@ -290,12 +310,15 @@
                                     <div class="title">
                                         <span>Dodge</span>
                                     </div>
-                                    
+
                                     <div class="number-and-label">
                                         <div class="dice-roll-icon">
-                                            <img class="d10" src="systems/zweihander/assets/rolling-dices.svg"/>
+                                            <img class="d10" src="systems/zweihander/assets/rolling-dices.svg" />
 
-                                            <input class="value" type="number" name="data.stats.secondaryAttributes.dodge.value" value="{{data.stats.secondaryAttributes.dodge.value}}" data-dtype="Number">
+                                            <input class="value" type="number"
+                                                name="data.stats.secondaryAttributes.dodge.value"
+                                                value="{{data.stats.secondaryAttributes.dodge.value}}"
+                                                data-dtype="Number">
                                         </div>
 
                                         <span class="label">Coordination</span>
@@ -309,9 +332,12 @@
 
                                     <div class="number-and-label">
                                         <div class="dice-roll-icon">
-                                            <img class="d10" src="systems/zweihander/assets/rolling-dices.svg"/>
+                                            <img class="d10" src="systems/zweihander/assets/rolling-dices.svg" />
 
-                                            <input class="value" type="number" name="data.stats.secondaryAttributes.parry.value" value="{{data.stats.secondaryAttributes.parry.value}}" data-dtype="Number">
+                                            <input class="value" type="number"
+                                                name="data.stats.secondaryAttributes.parry.value"
+                                                value="{{data.stats.secondaryAttributes.parry.value}}"
+                                                data-dtype="Number">
                                         </div>
 
                                         <span class="label">Combat Skill</span>
@@ -335,17 +361,20 @@
 
                                 <div class="list save-scroll">
                                     {{#each data.stats.skills as | skill key |}}
-                                        <div class="individual-skill-and-ranks">
-                                            <div class="individual-skill">
-                                                <span class="skill-name">{{skill.label}}</span>
-                                            </div>
-
-                                            <div class="ranks">
-                                                <input type="checkbox" name="" value="" />
-                                                <input type="checkbox" name="" value="" />
-                                                <input type="checkbox" name="" value="" />
-                                            </div>
+                                    <div class="individual-skill-and-ranks">
+                                        <div class="individual-skill">
+                                            <span class="skill-name">{{skill.label}}</span>
                                         </div>
+
+                                        <div class="ranks">
+                                            <input type="checkbox" name="data.stats.skills.{{key}}.ranks.apprentice"
+                                                {{checked skill.ranks.apprentice}} />
+                                            <input type="checkbox" name="data.stats.skills.{{key}}.ranks.journeyman"
+                                                {{checked skill.ranks.journeyman}} />
+                                            <input type="checkbox" name="data.stats.skills.{{key}}.ranks.master"
+                                                {{checked skill.ranks.master}} />
+                                        </div>
+                                    </div>
                                     {{/each}}
                                 </div>
                             </div>
@@ -356,20 +385,29 @@
                                         <div class="title">
                                             <span>Initiative</span>
                                         </div>
-    
+
                                         <div class="value-overage-and-current">
                                             <div class="number-and-label left">
-                                                <input class="value" type="number" name="data.stats.secondaryAttributes.initiative.value" value="{{data.stats.secondaryAttributes.initiative.value}}" data-dtype="Number" readonly/>
+                                                <input class="value" type="number"
+                                                    name="data.stats.secondaryAttributes.initiative.value"
+                                                    value="{{data.stats.secondaryAttributes.initiative.value}}"
+                                                    data-dtype="Number" readonly />
                                                 <span class="label">[PB]+3</span>
                                             </div>
-    
+
                                             <div class="number-and-label center">
-                                                <input class="value" type="number" name="data.stats.secondaryAttributes.encumbrance.overage initiative" value="{{data.stats.secondaryAttributes.encumbrance.overage}}" data-dtype="Number" readonly/>
+                                                <input class="value" type="number"
+                                                    name="data.stats.secondaryAttributes.initiative.overage"
+                                                    value="{{data.stats.secondaryAttributes.initiative.overage}}"
+                                                    data-dtype="Number" readonly />
                                                 <span class="label">Overage</span>
                                             </div>
 
                                             <div class="number-and-label right">
-                                                <input class="value" type="number" name="data.stats.secondaryAttributes.initiative.current" value="{{data.stats.secondaryAttributes.initiative.current}}" data-dtype="Number" readonly/>
+                                                <input class="value" type="number"
+                                                    name="data.stats.secondaryAttributes.initiative.current"
+                                                    value="{{data.stats.secondaryAttributes.initiative.current}}"
+                                                    data-dtype="Number" readonly />
                                                 <span class="label">Current</span>
                                             </div>
                                         </div>
@@ -379,25 +417,37 @@
                                         <div class="title">
                                             <span>Peril Threshold</span>
                                         </div>
-    
+
                                         <div class="values-container">
                                             <div class="number-and-label left">
-                                                <input class="value" type="number" name="data.stats.secondaryAttributes.perilThreshold.value" value="{{data.stats.secondaryAttributes.perilThreshold.value}}" data-dtype="Number" readonly/>
+                                                <input class="value" type="number"
+                                                    name="data.stats.secondaryAttributes.perilThreshold.value"
+                                                    value="{{data.stats.secondaryAttributes.perilThreshold.value}}"
+                                                    data-dtype="Number" readonly />
                                                 <span class="label">[WB]+3</span>
                                             </div>
-    
+
                                             <div class="number-and-label center-left">
-                                                <input class="value" type="number" name="data.stats.secondaryAttributes.perilThreshold.valuePlusSix" value="{{data.stats.secondaryAttributes.perilThreshold.valuePlusSix}}" data-dtype="Number" readonly/>
+                                                <input class="value" type="number"
+                                                    name="data.stats.secondaryAttributes.perilThreshold.valuePlusSix"
+                                                    value="{{data.stats.secondaryAttributes.perilThreshold.valuePlusSix}}"
+                                                    data-dtype="Number" readonly />
                                                 <span class="label">+6</span>
                                             </div>
 
                                             <div class="number-and-label center-right">
-                                                <input class="value" type="number" name="data.stats.secondaryAttributes.perilThreshold.valuePlusTwelve" value="{{data.stats.secondaryAttributes.perilThreshold.valuePlusTwelve}}" data-dtype="Number" readonly/>
+                                                <input class="value" type="number"
+                                                    name="data.stats.secondaryAttributes.perilThreshold.valuePlusTwelve"
+                                                    value="{{data.stats.secondaryAttributes.perilThreshold.valuePlusTwelve}}"
+                                                    data-dtype="Number" readonly />
                                                 <span class="label">+12</span>
                                             </div>
 
                                             <div class="number-and-label right">
-                                                <input class="value" type="number" name="data.stats.secondaryAttributes.perilThreshold.valuePlusEighteen" value="{{data.stats.secondaryAttributes.perilThreshold.valuePlusEighteen}}" data-dtype="Number" readonly/>
+                                                <input class="value" type="number"
+                                                    name="data.stats.secondaryAttributes.perilThreshold.valuePlusEighteen"
+                                                    value="{{data.stats.secondaryAttributes.perilThreshold.valuePlusEighteen}}"
+                                                    data-dtype="Number" readonly />
                                                 <span class="label">+18</span>
                                             </div>
                                         </div>
@@ -407,35 +457,36 @@
                                         <div class="title-alt">
                                             <span>Peril Condition Track</span>
                                         </div>
-    
+
                                         <div class="peril-status-list">
                                             <div class="radio-and-status">
-                                                <input class="radio-rank" type="radio" name="" value="" checked="checked"/>
+                                                <input class="radio-rank" type="radio" name="" value=""
+                                                    checked="checked" />
                                                 <span class="status">Unhindered</span>
                                             </div>
 
                                             <div class="radio-and-status">
-                                                <input class="radio-rank" type="radio" name="" value=""/>
+                                                <input class="radio-rank" type="radio" name="" value="" />
                                                 <span class="status">Imperiled</span>
                                             </div>
 
                                             <div class="radio-and-status">
-                                                <input class="radio-rank" type="radio" name="" value=""/>
+                                                <input class="radio-rank" type="radio" name="" value="" />
                                                 <span class="status">Ignore 1 Skill Rank</span>
                                             </div>
 
                                             <div class="radio-and-status">
-                                                <input class="radio-rank" type="radio" name="" value=""/>
+                                                <input class="radio-rank" type="radio" name="" value="" />
                                                 <span class="status">Ignore 2 Skill Ranks</span>
                                             </div>
 
                                             <div class="radio-and-status">
-                                                <input class="radio-rank" type="radio" name="" value=""/>
+                                                <input class="radio-rank" type="radio" name="" value="" />
                                                 <span class="status">Ignore 3 Skill Ranks</span>
                                             </div>
 
                                             <div class="radio-and-status">
-                                                <input class="radio-rank" type="radio" name="" value=""/>
+                                                <input class="radio-rank" type="radio" name="" value="" />
                                                 <span class="status">INCAPACITATED!</span>
                                             </div>
                                         </div>
@@ -447,20 +498,29 @@
                                         <div class="title">
                                             <span>Movement</span>
                                         </div>
-    
+
                                         <div class="value-overage-and-current">
                                             <div class="number-and-label left">
-                                                <input class="value" type="number" name="data.stats.secondaryAttributes.movement.value" value="{{data.stats.secondaryAttributes.movement.value}}" data-dtype="Number" readonly/>
+                                                <input class="value" type="number"
+                                                    name="data.stats.secondaryAttributes.movement.value"
+                                                    value="{{data.stats.secondaryAttributes.movement.value}}"
+                                                    data-dtype="Number" readonly />
                                                 <span class="label">[AB]+3</span>
                                             </div>
-    
+
                                             <div class="number-and-label center">
-                                                <input class="value" type="number" name="data.stats.secondaryAttributes.encumbrance.overage movement" value="{{data.stats.secondaryAttributes.encumbrance.overage}}" data-dtype="Number" readonly/>
+                                                <input class="value" type="number"
+                                                    name="data.stats.secondaryAttributes.movement.overage"
+                                                    value="{{data.stats.secondaryAttributes.movement.overage}}"
+                                                    data-dtype="Number" readonly />
                                                 <span class="label">Overage</span>
                                             </div>
 
                                             <div class="number-and-label right">
-                                                <input class="value" type="number" name="data.stats.secondaryAttributes.movement.current" value="{{data.stats.secondaryAttributes.movement.current}}" data-dtype="Number" readonly/>
+                                                <input class="value" type="number"
+                                                    name="data.stats.secondaryAttributes.movement.current"
+                                                    value="{{data.stats.secondaryAttributes.movement.current}}"
+                                                    data-dtype="Number" readonly />
                                                 <span class="label">Current</span>
                                             </div>
                                         </div>
@@ -470,25 +530,37 @@
                                         <div class="title">
                                             <span>Damage Threshold</span>
                                         </div>
-    
+
                                         <div class="values-container">
                                             <div class="number-and-label left">
-                                                <input class="value" type="number" name="data.stats.secondaryAttributes.damageThreshold.value" value="{{data.stats.secondaryAttributes.damageThreshold.value}}" data-dtype="Number" readonly/>
+                                                <input class="value" type="number"
+                                                    name="data.stats.secondaryAttributes.damageThreshold.value"
+                                                    value="{{data.stats.secondaryAttributes.damageThreshold.value}}"
+                                                    data-dtype="Number" readonly />
                                                 <span class="label">[BB]+3</span>
                                             </div>
-    
+
                                             <div class="number-and-label center-left">
-                                                <input class="value" type="number" name="data.stats.secondaryAttributes.damageThreshold.valuePlusSix" value="{{data.stats.secondaryAttributes.damageThreshold.valuePlusSix}}" data-dtype="Number" readonly/>
+                                                <input class="value" type="number"
+                                                    name="data.stats.secondaryAttributes.damageThreshold.valuePlusSix"
+                                                    value="{{data.stats.secondaryAttributes.damageThreshold.valuePlusSix}}"
+                                                    data-dtype="Number" readonly />
                                                 <span class="label">+6</span>
                                             </div>
 
                                             <div class="number-and-label center-right">
-                                                <input class="value" type="number" name="data.stats.secondaryAttributes.damageThreshold.valuePlusTwelve" value="{{data.stats.secondaryAttributes.damageThreshold.valuePlusTwelve}}" data-dtype="Number" readonly/>
+                                                <input class="value" type="number"
+                                                    name="data.stats.secondaryAttributes.damageThreshold.valuePlusTwelve"
+                                                    value="{{data.stats.secondaryAttributes.damageThreshold.valuePlusTwelve}}"
+                                                    data-dtype="Number" readonly />
                                                 <span class="label">+12</span>
                                             </div>
 
                                             <div class="number-and-label right">
-                                                <input class="value" type="number" name="data.stats.secondaryAttributes.damageThreshold.valuePlusEighteen" value="{{data.stats.secondaryAttributes.damageThreshold.valuePlusEighteen}}" data-dtype="Number" readonly/>
+                                                <input class="value" type="number"
+                                                    name="data.stats.secondaryAttributes.damageThreshold.valuePlusEighteen"
+                                                    value="{{data.stats.secondaryAttributes.damageThreshold.valuePlusEighteen}}"
+                                                    data-dtype="Number" readonly />
                                                 <span class="label">+18</span>
                                             </div>
                                         </div>
@@ -498,49 +570,48 @@
                                         <div class="title-alt">
                                             <span>Damage Condition Track</span>
                                         </div>
-    
+
                                         <div class="peril-status-list">
                                             <div class="radio-and-status">
-                                                <input class="radio-rank" type="radio" name="" value="" checked="checked"/>
+                                                <input class="radio-rank" type="radio" name="" value=""
+                                                    checked="checked" />
                                                 <span class="status">Unharmed</span>
                                             </div>
 
                                             <div class="radio-and-status">
-                                                <input class="radio-rank" type="radio" name="" value=""/>
+                                                <input class="radio-rank" type="radio" name="" value="" />
                                                 <span class="status">Lightly Wounded</span>
                                             </div>
 
                                             <div class="radio-and-status">
-                                                <input class="radio-rank" type="radio" name="" value=""/>
+                                                <input class="radio-rank" type="radio" name="" value="" />
                                                 <span class="status">Moderately Wounded</span>
                                             </div>
 
                                             <div class="radio-and-status">
-                                                <input class="radio-rank" type="radio" name="" value=""/>
+                                                <input class="radio-rank" type="radio" name="" value="" />
                                                 <span class="status">Seriously Wounded</span>
                                             </div>
 
                                             <div class="radio-and-status">
-                                                <input class="radio-rank" type="radio" name="" value=""/>
+                                                <input class="radio-rank" type="radio" name="" value="" />
                                                 <span class="status">Grievously Wounded</span>
                                             </div>
 
                                             <div class="radio-and-status">
-                                                <input class="radio-rank" type="radio" name="" value=""/>
+                                                <input class="radio-rank" type="radio" name="" value="" />
                                                 <span class="status">SLAIN!</span>
                                             </div>
                                         </div>
                                     </div>
+                                </div>
                             </div>
                         </div>
                     </div>
-                </div>
 
+                    <!--STOPPED HERE. Also, save this: {{editor content=data.biography target="data.biography" button=true owner=owner editable=editable}}-->
 
-                <!--STOPPED HERE. Also, save this: {{editor content=data.biography target="data.biography" button=true owner=owner editable=editable}}-->
-
-
-                {{!-- Owned Items Tab --}}
+                    <!-- {{!-- Owned Items Tab --}}
                 <div class="tab items" data-group="primary" data-tab="tiers">
                     <ol class="items-list">
                         {{#each actor.items as |item id|}}
@@ -591,8 +662,129 @@
                         </li>
                         {{/each}}
                     </ol>
+                </div> -->
+                </div>
+
+                <div class="tab notes" data-group="primary" data-tab="notes">
+                    <div class="notes-content">
+                        <div class="character-details">
+                            <div class="line one">
+                                <div class="labeled-input height">
+                                    <input class="input-text" name="data.physical.height.value" type="text" value="{{data.physical.height.value}}" placeholder="Height" data-dtype="String"/>
+                                    <label class="input-label">Height</label>
+                                </div>
+            
+                                <div class="labeled-input weight">
+                                    <input class="input-text" name="data.physical.weight.value" type="text"
+                                        value="{{data.physical.weight.value}}" placeholder="Weight" data-dtype="String" />
+                                    <label class="input-label">Weight</label>
+                                </div>
+            
+                                <div class="labeled-input build-type">
+                                    <input class="input-text" name="data.physical.buildType.value" type="text"
+                                        value="{{data.physical.buildType.value}}" placeholder="Build Type" data-dtype="String" />
+                                    <label class="input-label">Build Type</label>
+                                </div>
+            
+                                <div class="labeled-input distinguishing-marks">
+                                    <input class="input-text" name="data.distinguishingMarks.value" type="text"
+                                        value="{{data.distinguishingMarks.value}}" placeholder="Distinguishing Marks" data-dtype="String" />
+                                    <label class="input-label">Distinguishing Marks</label>
+                                </div>
+                            </div>
+
+                            <div class="line two">
+                                <div class="labeled-input hair-color">
+                                    <input class="input-text" name="data.physical.hairColor.value" type="text" value="{{data.physical.hairColor.value}}" placeholder="Hair Color" data-dtype="String"/>
+                                    <label class="input-label">Hair Color</label>
+                                </div>
+            
+                                <div class="labeled-input eye-color">
+                                    <input class="input-text" name="data.physical.eyeColor.value" type="text"
+                                        value="{{data.physical.eyeColor.value}}" placeholder="Eye Color" data-dtype="String" />
+                                    <label class="input-label">Eye Color</label>
+                                </div>
+            
+                                <div class="labeled-input complexion">
+                                    <input class="input-text" name="data.physical.complexion.value" type="text"
+                                        value="{{data.physical.complexion.value}}" placeholder="Complexion" data-dtype="String" />
+                                    <label class="input-label">Complexion</label>
+                                </div>
+            
+                                <div class="labeled-input season-of-birth">
+                                    <input class="input-text" name="data.seasonOfBirth.value" type="text"
+                                        value="{{data.seasonOfBirth.value}}" placeholder="Season of Birth" data-dtype="String" />
+                                    <label class="input-label">Season of Birth</label>
+                                </div>
+
+                                <div class="labeled-input social-class">
+                                    <input class="input-text" name="data.socialClass.value" type="text"
+                                        value="{{data.socialClass.value}}" placeholder="Social Class" data-dtype="String" />
+                                    <label class="input-label">Social Class</label>
+                                </div>
+                            </div>
+
+                            <div class="line two">
+                                <div class="labeled-input upbringing">
+                                    <input class="input-text" name="data.upbringing.value" type="text" value="{{data.upbringing.value}}" placeholder="Upbringing" data-dtype="String"/>
+                                    <label class="input-label">Upbringing</label>
+                                </div>
+            
+                                <div class="labeled-input dooming">
+                                    <input class="input-text" name="data.dooming.value" type="text"
+                                        value="{{data.dooming.value}}" placeholder="Dooming" data-dtype="String" />
+                                    <label class="input-label">Dooming</label>
+                                </div>
+            
+                                <div class="labeled-input languages">
+                                    <input class="input-text" name="data.languages.value" type="text"
+                                        value="{{data.languages.value}}" placeholder="Languages" data-dtype="String" />
+                                    <label class="input-label">Languages</label>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="ancestry-drawback-and-notepad-container">
+                            <div class="ancestry-and-drawback-container">
+                                <div class="title">
+                                    <span>Ancestry</span>
+                                </div>
+                                <div class="ancestry-container">
+                                    <header class="ancestry-header">
+                                        <div class="title-alt">
+                                            <span>Ancestry</span>
+                                        </div>
+                                    </header>
+
+                                    <div class="list">
+                                        'ello guv'nah ancestry
+                                    </div>
+                                </div>
+
+                                <div class="drawback-container">
+                                    <header class="ancestry-header">
+                                        <div class="title-alt">
+                                            <span>Drawbacks</span>
+                                        </div>
+                                    </header>
+
+                                    <div class="list">
+                                        'ello guv'nah drawback
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="notepad-container">
+                                <div class="title">
+                                    <span>Notes & Ramblings</span>
+                                </div>
+
+                                <textarea class="notepad" placeholder="Personal ravings..."></textarea>
+                            </div>
+                        </div>
+                    </div>
                 </div>
             </section>
         </div>
-
+    </div>
 </form>

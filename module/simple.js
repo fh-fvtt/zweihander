@@ -6,6 +6,7 @@
 
 // Import Modules
 import { ZweihanderActor } from "./actor.js";
+import { ZweihanderItem } from "./item.js";
 import { ZweihanderItemSheet } from "./item-sheet.js";
 import { ZweihanderActorSheet } from "./actor-sheet.js";
 
@@ -27,6 +28,7 @@ Hooks.once("init", async function() {
 
 	// Define custom Entity classes
   CONFIG.Actor.entityClass = ZweihanderActor;
+  CONFIG.Item.entityClass = ZweihanderItem;
 
   // Register sheet application classes
   Actors.unregisterSheet("core", ActorSheet);

@@ -44,6 +44,8 @@ export class ZweihanderActor extends Actor {
 
     if (actorData.type === 'character')
       this._prepareCharacterData(actorData);
+
+    // this.setFlag("zweihander", "firstTime", false);
   }
 
   _prepareCharacterData(actorData) {

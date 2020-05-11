@@ -37,6 +37,9 @@
             }
           },
           "secondaryAttributes": {
+            "actionPoints" : {
+              "value": 3
+            },
             "perilThreshold": {
               "value": 0,
               "valuePlusSix": 0,
@@ -55,11 +58,13 @@
             },
             "initiative": {
               "value": 0,
-              "current": 0
+              "current": 0,
+              "overage": 0
             },
             "movement": {
               "value": 0,
-              "current": 0
+              "current": 0,
+              "overage": 0
             },
             "parry": {
               "value": 0,
@@ -74,217 +79,361 @@
               "label": "Alchemy (I)*",
               "associatedPrimaryAttribute": "intelligence",
               "value": 0,
-              "numberOfRanks": 0
+              "ranks": {
+                "apprentice": false,
+                "journeyman": false,
+                "master": false
+              }
             },
             "athletics": {
               "label": "Athletics (B)",
               "associatedPrimaryAttribute": "brawn",
               "value": 0,
-              "numberOfRanks": 0
+              "ranks": {
+                "apprentice": false,
+                "journeyman": false,
+                "master": false
+              }
             },
             "awareness": {
               "label": "Awareness (P)",
               "associatedPrimaryAttribute": "perception",
               "value": 0,
-              "numberOfRanks": 0
+              "ranks": {
+                "apprentice": false,
+                "journeyman": false,
+                "master": false
+              }
             },
             "bargain": {
               "label": "Bargain (F)",
               "associatedPrimaryAttribute": "fellowship",
               "value": 0,
-              "numberOfRanks": 0
+              "ranks": {
+                "apprentice": false,
+                "journeyman": false,
+                "master": false
+              }
             },
             "charm": {
               "label": "Charm (F)",
               "associatedPrimaryAttribute": "fellowship",
               "value": 0,
-              "numberOfRanks": 0
+              "ranks": {
+                "apprentice": false,
+                "journeyman": false,
+                "master": false
+              }
             },
             "coordination": {
               "label": "Coordination (A)",
               "associatedPrimaryAttribute": "agility",
               "value": 0,
-              "numberOfRanks": 0
+              "ranks": {
+                "apprentice": false,
+                "journeyman": false,
+                "master": false
+              }
             },
             "counterfeit": {
               "label": "Counterfeit (I)*",
               "associatedPrimaryAttribute": "intelligence",
               "value": 0,
-              "numberOfRanks": 0
+              "ranks": {
+                "apprentice": false,
+                "journeyman": false,
+                "master": false
+              }
             },
             "disguise": {
               "label": "Disguise (F)*",
               "associatedPrimaryAttribute": "fellowship",
               "value": 0,
-              "numberOfRanks": 0
+              "ranks": {
+                "apprentice": false,
+                "journeyman": false,
+                "master": false
+              }
             },
             "drive": {
               "label": "Drive (B)*",
               "associatedPrimaryAttribute": "brawn",
               "value": 0,
-              "numberOfRanks": 0
+              "ranks": {
+                "apprentice": false,
+                "journeyman": false,
+                "master": false
+              }
             },
             "eavesdrop": {
               "label": "Eavesdrop (P)",
               "associatedPrimaryAttribute": "perception",
               "value": 0,
-              "numberOfRanks": 0
+              "ranks": {
+                "apprentice": false,
+                "journeyman": false,
+                "master": false
+              }
             },
             "education": {
               "label": "Education (I)*",
               "associatedPrimaryAttribute": "intelligence",
               "value": 0,
-              "numberOfRanks": 0
+              "ranks": {
+                "apprentice": false,
+                "journeyman": false,
+                "master": false
+              }
             },
             "folklore": {
               "label": "Folklore (I)",
               "associatedPrimaryAttribute": "intelligence",
               "value": 0,
-              "numberOfRanks": 0
+              "ranks": {
+                "apprentice": false,
+                "journeyman": false,
+                "master": false
+              }
             },
             "gamble": {
               "label": "Gamble (I)",
               "associatedPrimaryAttribute": "intelligence",
               "value": 0,
-              "numberOfRanks": 0
+              "ranks": {
+                "apprentice": false,
+                "journeyman": false,
+                "master": false
+              }
             },
             "guile": {
               "label": "Guile (F)",
               "associatedPrimaryAttribute": "fellowship",
               "value": 0,
-              "numberOfRanks": 0
+              "ranks": {
+                "apprentice": false,
+                "journeyman": false,
+                "master": false
+              }
             },
             "handleAnimal": {
               "label": "Handle Animal (F)*",
               "associatedPrimaryAttribute": "fellowship",
               "value": 0,
-              "numberOfRanks": 0
+              "ranks": {
+                "apprentice": false,
+                "journeyman": false,
+                "master": false
+              }
             },
             "heal": {
               "label": "Heal (I)*",
               "associatedPrimaryAttribute": "intelligence",
               "value": 0,
-              "numberOfRanks": 0
+              "ranks": {
+                "apprentice": false,
+                "journeyman": false,
+                "master": false
+              }
             },
             "incantation": {
               "label": "Incantation (W)*",
               "associatedPrimaryAttribute": "willpower",
               "value": 0,
-              "numberOfRanks": 0
+              "ranks": {
+                "apprentice": false,
+                "journeyman": false,
+                "master": false
+              }
             },
             "interrogation": {
               "label": "Interrogation (W)*",
               "associatedPrimaryAttribute": "willpower",
               "value": 0,
-              "numberOfRanks": 0
+              "ranks": {
+                "apprentice": false,
+                "journeyman": false,
+                "master": false
+              }
             },
             "intimidate": {
               "label": "Intimidate (B)",
               "associatedPrimaryAttribute": "brawn",
               "value": 0,
-              "numberOfRanks": 0
+              "ranks": {
+                "apprentice": false,
+                "journeyman": false,
+                "master": false
+              }
             },
             "leadership": {
               "label": "Leadership (F)*",
               "associatedPrimaryAttribute": "fellowship",
               "value": 0,
-              "numberOfRanks": 0
+              "ranks": {
+                "apprentice": false,
+                "journeyman": false,
+                "master": false
+              }
             },
             "martialMelee": {
               "label": "Martial Melee (C)*",
               "associatedPrimaryAttribute": "combat",
               "value": 0,
-              "numberOfRanks": 0
+              "ranks": {
+                "apprentice": false,
+                "journeyman": false,
+                "master": false
+              }
             },
             "martialRanged": {
               "label": "Martial Ranged (C)*",
               "associatedPrimaryAttribute": "combat",
               "value": 0,
-              "numberOfRanks": 0
+              "ranks": {
+                "apprentice": false,
+                "journeyman": false,
+                "master": false
+              }
             },
             "navigation": {
               "label": "Navigation (I)*",
               "associatedPrimaryAttribute": "intelligence",
               "value": 0,
-              "numberOfRanks": 0
+              "ranks": {
+                "apprentice": false,
+                "journeyman": false,
+                "master": false
+              }
             },
             "pilot": {
               "label": "Pilot (A)*",
               "associatedPrimaryAttribute": "agility",
               "value": 0,
-              "numberOfRanks": 0
+              "ranks": {
+                "apprentice": false,
+                "journeyman": false,
+                "master": false
+              }
             },
             "resolve": {
               "label": "Resolve (W)",
               "associatedPrimaryAttribute": "willpower",
               "value": 0,
-              "numberOfRanks": 0
+              "ranks": {
+                "apprentice": false,
+                "journeyman": false,
+                "master": false
+              }
             },
             "ride": {
               "label": "Ride (A)*",
               "associatedPrimaryAttribute": "agility",
               "value": 0,
-              "numberOfRanks": 0
+              "ranks": {
+                "apprentice": false,
+                "journeyman": false,
+                "master": false
+              }
             },
             "rumor": {
               "label": "Rumor (F)",
               "associatedPrimaryAttribute": "fellowship",
               "value": 0,
-              "numberOfRanks": 0
+              "ranks": {
+                "apprentice": false,
+                "journeyman": false,
+                "master": false
+              }
             },
             "scrutinize": {
               "label": "Scrutinize (P)",
               "associatedPrimaryAttribute": "perception",
               "value": 0,
-              "numberOfRanks": 0
+              "ranks": {
+                "apprentice": false,
+                "journeyman": false,
+                "master": false
+              }
             },
             "simpleMelee": {
               "label": "Simple Melee (C)",
               "associatedPrimaryAttribute": "combat",
               "value": 0,
-              "numberOfRanks": 0
+              "ranks": {
+                "apprentice": false,
+                "journeyman": false,
+                "master": false
+              }
             },
             "simpleRanged": {
               "label": "Simple Ranged (C)",
               "associatedPrimaryAttribute": "combat",
               "value": 0,
-              "numberOfRanks": 0
+              "ranks": {
+                "apprentice": false,
+                "journeyman": false,
+                "master": false
+              }
             },
             "skullduggery": {
               "label": "Skullduggery (A)*",
               "associatedPrimaryAttribute": "agility",
               "value": 0,
-              "numberOfRanks": 0
+              "ranks": {
+                "apprentice": false,
+                "journeyman": false,
+                "master": false
+              }
             },
             "stealth": {
               "label": "Stealth (A)",
               "associatedPrimaryAttribute": "agility",
               "value": 0,
-              "numberOfRanks": 0
+              "ranks": {
+                "apprentice": false,
+                "journeyman": false,
+                "master": false
+              }
             },
             "survival": {
               "label": "Survival (P)",
               "associatedPrimaryAttribute": "perception",
               "value": 0,
-              "numberOfRanks": 0
+              "ranks": {
+                "apprentice": false,
+                "journeyman": false,
+                "master": false
+              }
             },
             "toughness": {
               "label": "Toughness (B)",
               "associatedPrimaryAttribute": "brawn",
               "value": 0,
-              "numberOfRanks": 0
+              "ranks": {
+                "apprentice": false,
+                "journeyman": false,
+                "master": false
+              }
             },
             "tradecraft": {
               "label": "Tradecraft (W)*",
               "associatedPrimaryAttribute": "willpower",
               "value": 0,
-              "numberOfRanks": 0
+              "ranks": {
+                "apprentice": false,
+                "journeyman": false,
+                "master": false
+              }
             },
             "warfare": {
               "label": "Warfare (I)*",
               "associatedPrimaryAttribute": "intelligence",
               "value": 0,
-              "numberOfRanks": 0
+              "ranks": {
+                "apprentice": false,
+                "journeyman": false,
+                "master": false
+              }
             }
           }
         }
@@ -318,6 +467,9 @@
         "value": ""
       },
       "upbringing": {
+        "value": ""
+      },
+      "languages": {
         "value": ""
       },
       "orderAlignment": {
@@ -381,13 +533,21 @@
   },
   "Item": {
     "types": [
-      "item"
+      "trapping", "injury", "disease", "profession", "ancestry", "armor", "weapon", "spell", "talent", "trait", "coinage"
     ],
-    "item": {
-      "description": "",
-      "quantity": 1,
-      "weight": 0,
-      "attributes": {}
+    "templates": {
+      "flavor": {
+        "flavor": {
+          "description": ""
+        }
+      }
+    },
+    "ancestry": {
+      "ancestralModifiers": {},
+      "ancestralTrait": {
+        "name": "",
+        "effect": ""
+      }
     }
   }
 }
