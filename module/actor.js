@@ -80,19 +80,30 @@ export class ZweihanderActor extends Actor {
     // Assign encumbrance overage TODO: Items, Armor, etc...
     //...
 
-    const overage = data.stats.secondaryAttributes.encumbrance.overage;
+        // Assign initial encumbrance values
+
+    data.stats.secondaryAttributes.encumbrance.value = data.stats.primaryAttributes.brawn.bonus + 3;
+
+
+    // Calculate overage values
+
+    const overage = data.stats.secondaryAttributes.encumbrance.current - data.stats.secondaryAttributes.encumbrance.value;
+
+    const correctOverage = data.stats.secondaryAttributes.encumbrance.overage = (overage > 0) ? overage : 0;
+
+    data.stats.secondaryAttributes.initiative.overage = data.stats.secondaryAttributes.movement.overage = correctOverage;
 
 
     // Assign Initiative values
 
     const initiativeValue = data.stats.secondaryAttributes.initiative.value = data.stats.primaryAttributes.perception.bonus + 3;
-    data.stats.secondaryAttributes.initiative.current = initiativeValue - overage;
+    data.stats.secondaryAttributes.initiative.current = initiativeValue - correctOverage;
 
 
     // Assign Movement values
 
     const movementValue = data.stats.secondaryAttributes.movement.value = data.stats.primaryAttributes.agility.bonus + 3;
-    data.stats.secondaryAttributes.movement.current = movementValue - overage;
+    data.stats.secondaryAttributes.movement.current = movementValue - correctOverage;
 
 
     // Assign Peril Threshold values
@@ -122,10 +133,6 @@ export class ZweihanderActor extends Actor {
         damageModifier += 3;
     }
 
-
-    // Assign initial encumbrance values
-
-    data.stats.secondaryAttributes.encumbrance.value = data.stats.primaryAttributes.brawn.bonus + 3;
   }
 
 }

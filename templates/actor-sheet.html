@@ -789,47 +789,45 @@
                 <div class="tab trappings" data-group="primary" data-tab="trappings">
                     <div class="trappings-content">
                         <div class="encumbrance-and-coins-container">
-                            <div class="common-container">
-                                <div class="encumbrance-container">
-                                    <div class="title">
-                                        <span>Encumbrance</span>
+                            <div class="encumbrance-container">
+                                <div class="title">
+                                    <span>Encumbrance</span>
+                                </div>
+
+                                <div class="encumbrance-meter">
+                                    <div class="meter">
+                                        <div class="meter-label-container">
+                                            <span class="meter-label">
+                                                {{data.stats.secondaryAttributes.encumbrance.current}} / {{data.stats.secondaryAttributes.encumbrance.value}}
+                                            </span>
+                                        </div>
+                                        <span class="meter-value">.</span>
+                                    </div>
+                                </div>
+
+                                <div class="value-overage-and-current">
+                                    <div class="number-and-label left">
+                                        <input class="value encumbrance-total" type="number"
+                                            name="data.stats.secondaryAttributes.encumbrance.value"
+                                            value="{{data.stats.secondaryAttributes.encumbrance.value}}"
+                                            data-dtype="Number" placeholder="0" readonly />
+                                        <span class="label">[BB]+3</span>
                                     </div>
 
-                                    <div class="encumbrance-meter">
-                                        <div class="meter">
-                                            <div class="meter-label-container">
-                                                <span class="meter-label">
-                                                    {{data.stats.secondaryAttributes.encumbrance.current}} / {{data.stats.secondaryAttributes.encumbrance.value}}
-                                                </span>
-                                            </div>
-                                            <span class="meter-value">.</span>
-                                        </div>
+                                    <div class="number-and-label center">
+                                        <input class="value" type="number"
+                                            name="data.stats.secondaryAttributes.encumbrance.overage"
+                                            value="{{data.stats.secondaryAttributes.encumbrance.overage}}"
+                                            data-dtype="Number" placeholder="0" readonly />
+                                        <span class="label">Overage</span>
                                     </div>
 
-                                    <div class="value-overage-and-current">
-                                        <div class="number-and-label left">
-                                            <input class="value" type="number"
-                                                name="data.stats.secondaryAttributes.encumbrance.value"
-                                                value="{{data.stats.secondaryAttributes.encumbrance.value}}"
-                                                data-dtype="Number" placeholder="0" readonly />
-                                            <span class="label">[BB]+3</span>
-                                        </div>
-
-                                        <div class="number-and-label center">
-                                            <input class="value" type="number"
-                                                name="data.stats.secondaryAttributes.encumbrance.overage"
-                                                value="{{data.stats.secondaryAttributes.encumbrance.overage}}"
-                                                data-dtype="Number" placeholder="0" readonly />
-                                            <span class="label">Overage</span>
-                                        </div>
-
-                                        <div class="number-and-label right">
-                                            <input class="value encumbrance-current" type="number"
-                                                name="data.stats.secondaryAttributes.encumbrance.current"
-                                                value="{{data.stats.secondaryAttributes.encumbrance.current}}"
-                                                data-dtype="Number" placeholder="0" />
-                                            <span class="label">Current</span>
-                                        </div>
+                                    <div class="number-and-label right">
+                                        <input class="value encumbrance-current" type="number"
+                                            name="data.stats.secondaryAttributes.encumbrance.current"
+                                            value="{{data.stats.secondaryAttributes.encumbrance.current}}"
+                                            data-dtype="Number" placeholder="0" />
+                                        <span class="label">Current</span>
                                     </div>
                                 </div>
                             </div>
@@ -838,8 +836,92 @@
                                 <img src="systems/zweihander/assets/trappings.png" />
                             </div>
 
-                            <div class="common-container">
-                                a
+                            <div class="coins-container">
+                                <div class="title">
+                                    <span>Coinage</span>
+                                </div>
+
+                                <div class="coins-label">
+                                    <span>
+                                        240 bp. = 20 sp. = 1 gc.
+                                    </span>
+                                </div>
+
+                                <div class="value-overage-and-current">
+                                    <div class="number-and-label left">
+                                        <input class="value" type="number"
+                                            name=""
+                                            value=""
+                                            data-dtype="Number" placeholder="0" />
+                                        <span class="label">Pennies</span>
+                                    </div>
+
+                                    <div class="number-and-label center">
+                                        <input class="value" type="number"
+                                            name=""
+                                            value=""
+                                            data-dtype="Number" placeholder="0" />
+                                        <span class="label">Shillings</span>
+                                    </div>
+
+                                    <div class="number-and-label right">
+                                        <input class="value" type="number"
+                                            name=""
+                                            value=""
+                                            data-dtype="Number" placeholder="0" />
+                                        <span class="label">Crowns</span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="weapons-armor-and-other-container">
+                            <div class="common-container weapons">
+                                <header class="common-header">
+                                    <div class="title">
+                                        <span>Weapons</span>
+                                    </div>
+                                </header>
+
+                                <div class="common-list">
+                                    <div class="individual-trapping">
+                                        <img src="systems/zweihander/assets/elf-ear.svg" /> <span>Some Random Weapon #4</span>
+                                    </div>
+
+                                    <div class="individual-trapping">
+                                        <img src="systems/zweihander/assets/elf-ear.svg" /> <span>Some Random Ranged Weapon #72</span>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="armor-and-other-container">
+                                <div class="common-container armor">
+                                    <header class="common-header">
+                                        <div class="title">
+                                            <span>Armor</span>
+                                        </div>
+                                    </header>
+    
+                                    <div class="common-list">
+                                        <div class="individual-trapping">
+                                            <img src="systems/zweihander/assets/elf-ear.svg" /> <span>Some Random Item #2</span>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div class="common-container other">
+                                    <header class="common-header">
+                                        <div class="title">
+                                            <span>Other Trappings</span>
+                                        </div>
+                                    </header>
+    
+                                    <div class="common-list">
+                                        <div class="individual-trapping">
+                                            <img src="systems/zweihander/assets/elf-ear.svg" /> <span>Some Random Item #1</span>
+                                        </div>
+                                    </div>
+                                </div>
                             </div>
                         </div>
                     </div>

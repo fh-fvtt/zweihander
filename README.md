@@ -1,11 +1,11 @@
-![](https://db4sgowjqfwig.cloudfront.net/campaigns/161832/assets/725959/Zweiha_nderLogoTransparency.png?1492594545)
+# ZWEIHÄNDER Grim & Perilous RPG system for FoundryVTT
 
-# Grim & Perilous RPG system for FoundryVTT
+Welcome! This project is an implementation of the ZWEIHÄNDER system for Foundry Virtual Tabletop. It is currently in early development and, as such, unusable. 
 
-## Current State
+## Contributing
 
-The system is still in early development and unfit for playing.
+If you want to help, you can reach out to Re4XN#8341 on Discord.
 
 ## Permissions
 
-All art from the Core Rulebook used with permission.
+All artwork from the ZWEIHÄNDER Grim & Perilous RPG Core Rulebook used with permission.

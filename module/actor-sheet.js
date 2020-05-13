@@ -61,14 +61,24 @@ export class ZweihanderActorSheet extends ActorSheet {
       this.actor.update({"data.flavor.notes": event.target.value});
     });
 
-    html.find(".encumbrance-current").change(event => {
-      const data = this.actor.data.data;
-      const inputValue = event.target.value;
-      const ratio = (inputValue / data.stats.secondaryAttributes.encumbrance.value) * 100;
+    this._setEncumbranceMeter(html);
 
-      $(".meter-label").text(inputValue + " / " + data.stats.secondaryAttributes.encumbrance.value);
-      $(".meter-value").width(ratio + "%");
-    });
+    // html.find("#encumbrance-current").change(event => {
+    //   const data = this.actor.data.data;
+    //   const inputValue = event.target.value;
+    //   const ratio = (inputValue / data.stats.secondaryAttributes.encumbrance.value) * 100;
+
+    //   $("#meter-label").text(inputValue + " / " + data.stats.secondaryAttributes.encumbrance.value);
+    //   $("#meter-value").width(ratio + "%");
+    // });
+  }
+
+  _setEncumbranceMeter(html) {
+    const currentEncumbrance = html.find(".encumbrance-current").val();
+    const totalEncumbrance = html.find(".encumbrance-total").val();
+    const ratio = (currentEncumbrance / totalEncumbrance) * 100;
+
+    html.find(".meter-value").width(ratio + "%");
   }
 
   /* -------------------------------------------- */

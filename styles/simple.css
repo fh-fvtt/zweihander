@@ -1113,19 +1113,12 @@
   display: flex;
   flex-direction: column;
   height: 100%;
-  background-color: lightblue;
+  /* background-color: lightblue; */
 }
 
 .zweihander .trappings-content .encumbrance-and-coins-container {
   display: flex;
   flex-direction: row;
-}
-
-.zweihander .trappings-content .encumbrance-and-coins-container .common-container {
-  flex: 1;
-  display: flex;
-  flex-direction: column;
-  background-color: yellowgreen;
 }
 
 .zweihander .trappings-content .encumbrance-and-coins-container .backpack-container {
@@ -1136,8 +1129,8 @@
 }
 
 .zweihander .trappings-content .encumbrance-and-coins-container .backpack-container img {
-  height: auto;
-  width: 150px;
+  /* height: auto; */
+  /* width: 150px; */
   border: none;
 }
 
@@ -1148,25 +1141,25 @@
   /* background-color: wheat; */
 }
 
-.zweihander .trappings-content .encumbrance-and-coins-container .encumbrance-container .title {
+.zweihander .trappings-content .encumbrance-and-coins-container .title {
   text-align: center;
   font-family: 'Mon Amour Fraktur Broken';
   font-size: 22px;
 }
 
-.zweihander .trappings-content .encumbrance-and-coins-container .encumbrance-container .label {
+.zweihander .trappings-content .encumbrance-and-coins-container .label {
   font-family: 'Baskerville Old Face';
   font-size: 14px;
   font-weight: bold;
   margin-top: 3px;
 }
 
-.zweihander .trappings-content .encumbrance-and-coins-container .encumbrance-container .encumbrance-meter {
+.zweihander .trappings-content .encumbrance-and-coins-container .encumbrance-meter {
   padding: 5px 0px 5px 0px;
-  background-color: lightseagreen;
+  /* background-color: lightseagreen; */
 }
 
-.zweihander .trappings-content .encumbrance-and-coins-container .encumbrance-container .encumbrance-meter .meter {
+.zweihander .trappings-content .encumbrance-and-coins-container .encumbrance-meter .meter {
   position: relative;
   display: flex;
   flex-direction: row;
@@ -1179,7 +1172,7 @@
   background-color: lightgrey;
 }
 
-.zweihander .trappings-content .encumbrance-and-coins-container .encumbrance-container .encumbrance-meter .meter .meter-label-container {
+.zweihander .trappings-content .encumbrance-and-coins-container .encumbrance-meter .meter .meter-label-container {
   position: absolute;
   display: flex;
   flex-direction: row;
@@ -1188,7 +1181,7 @@
   width: 100%;
 }
 
-.zweihander .trappings-content .encumbrance-and-coins-container .encumbrance-container .encumbrance-meter .meter .meter-label {
+.zweihander .trappings-content .encumbrance-and-coins-container .encumbrance-meter .meter .meter-label {
   position: absolute;
   text-align: center;
   font-family: 'Baskerville Old Face';
@@ -1197,16 +1190,15 @@
   margin-top: 0.5px;
 }
 
-.zweihander .trappings-content .encumbrance-and-coins-container .encumbrance-container .encumbrance-meter .meter .meter-value {
+.zweihander .trappings-content .encumbrance-and-coins-container .encumbrance-meter .meter .meter-value {
   display: block;
   text-align: center;
   transition: 300ms width linear;
-  color: grey;
+  color: transparent;
   background: grey;
-  width: 87.5%;
 }
 
-.zweihander .trappings-content .encumbrance-and-coins-container .encumbrance-container .value-overage-and-current {
+.zweihander .trappings-content .encumbrance-and-coins-container .value-overage-and-current {
   display: flex;
   flex-direction: row;
   justify-content: space-between;
@@ -1214,19 +1206,111 @@
   /* background-color: tomato; */
 }
 
-.zweihander .trappings-content .encumbrance-and-coins-container .encumbrance-container .value-overage-and-current .number-and-label {
+.zweihander .trappings-content .encumbrance-and-coins-container .value-overage-and-current .number-and-label {
   display: flex;
   flex-direction: column;
   align-items: center;
 }
 
-.zweihander .trappings-content .encumbrance-and-coins-container .encumbrance-container .value-overage-and-current .number-and-label .value {
-  width: 52px;
+.zweihander .trappings-content .encumbrance-and-coins-container .value-overage-and-current .number-and-label .value {
+  width: 45px;
   height: 35px;
-  font-size: 24px;
+  font-size: 18px;
   color: grey;
 }
 
+.zweihander .trappings-content .encumbrance-and-coins-container .coins-container {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  /* background-color: yellowgreen; */
+}
+
+.zweihander .trappings-content .encumbrance-and-coins-container .coins-container .coins-label {
+  padding: 5px 0px;
+  height: 35px;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+  font-family: 'Baskerville Old Face';
+  font-size: 20px;
+}
+
+.zweihander .trappings-content .encumbrance-and-coins-container .coins-container .value-overage-and-current .number-and-label .value {
+  color: #191813;
+}
+
+.zweihander .trappings-content .weapons-armor-and-other-container {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+}
+
+.zweihander .trappings-content .weapons-armor-and-other-container .common-container {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  /* background-color: palevioletred; */
+}
+
+.zweihander .trappings-content .weapons-armor-and-other-container .common-container .individual-trapping {
+  display: flex;
+  flex-direction: row;
+  padding: 2px 0px;
+  align-items: center;
+  /* background-color: lightskyblue; */
+}
+
+.zweihander .trappings-content .weapons-armor-and-other-container .common-container .individual-trapping img {
+  border: 1px solid #191813;
+  border-radius: 5px;
+  height: auto;
+  width: 20px;
+  margin-right: 5px;
+  background-color: #191813;
+}
+
+.zweihander .trappings-content .weapons-armor-and-other-container .common-container.weapons {
+  margin-top: 10px;
+  margin-bottom: 23px;
+}
+
+.zweihander .trappings-content .weapons-armor-and-other-container .common-container.armor {
+  margin-right: 23px;
+}
+
+.zweihander .trappings-content .weapons-armor-and-other-container .armor-and-other-container {
+  flex: 1;
+  display: flex;
+  flex-direction: row;
+  /* background-color: lightgreen; */
+}
+
+.zweihander .trappings-content .weapons-armor-and-other-container {
+  font-family: 'Baskerville Old Face';
+}
+
+.zweihander .trappings-content .weapons-armor-and-other-container .common-header {
+  display: flex;
+  flex-direction: row;
+  padding: 5px;
+  justify-content: space-between;
+  background: rgba(0, 0, 0, 0.05);
+  border: 1px solid #AAA;
+  text-align: left;
+  font-weight: bold;
+}
+
+.zweihander .trappings-content .weapons-armor-and-other-container .common-list {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  border: 1px solid darkgrey;
+  border-top: none;
+  padding: 5px;
+  background-color: ghostwhite;
+}
 
 /* -----------------------------V---------------------------- ITEM SHEET -----------------------------V---------------------------- */
 
