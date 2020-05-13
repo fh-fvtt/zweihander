@@ -263,7 +263,7 @@
                             width="42" />
                     </div>
                     <div class="item-and-hand">
-                        <a class="item" data-tab="notes">Personal Notes</a>
+                        <a class="item" data-tab="details">Details & Notes</a>
                         <img class="selector" src="systems/zweihander/assets/skeleton_selector.png" height="22"
                             width="42" />
                     </div>
@@ -665,7 +665,7 @@
                 </div> -->
                 </div>
 
-                <div class="tab notes" data-group="primary" data-tab="notes">
+                <div class="tab details" data-group="primary" data-tab="details">
                     <div class="notes-content">
                         <div class="character-details">
                             <div class="line one">
@@ -779,7 +779,67 @@
                                     <span>Notes & Ramblings</span>
                                 </div>
 
-                                <textarea class="notepad" placeholder="Personal ravings..."></textarea>
+                                <textarea class="notepad" name="data.flavor.notes" placeholder="Personal ravings...">{{data.flavor.notes}}</textarea>
+                                <!-- {{editor content=data.flavor.notes target="data.flavor.notes" button=true owner=owner editable=editable}} -->
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="tab trappings" data-group="primary" data-tab="trappings">
+                    <div class="trappings-content">
+                        <div class="encumbrance-and-coins-container">
+                            <div class="common-container">
+                                <div class="encumbrance-container">
+                                    <div class="title">
+                                        <span>Encumbrance</span>
+                                    </div>
+
+                                    <div class="encumbrance-meter">
+                                        <div class="meter">
+                                            <div class="meter-label-container">
+                                                <span class="meter-label">
+                                                    {{data.stats.secondaryAttributes.encumbrance.current}} / {{data.stats.secondaryAttributes.encumbrance.value}}
+                                                </span>
+                                            </div>
+                                            <span class="meter-value">.</span>
+                                        </div>
+                                    </div>
+
+                                    <div class="value-overage-and-current">
+                                        <div class="number-and-label left">
+                                            <input class="value" type="number"
+                                                name="data.stats.secondaryAttributes.encumbrance.value"
+                                                value="{{data.stats.secondaryAttributes.encumbrance.value}}"
+                                                data-dtype="Number" placeholder="0" readonly />
+                                            <span class="label">[BB]+3</span>
+                                        </div>
+
+                                        <div class="number-and-label center">
+                                            <input class="value" type="number"
+                                                name="data.stats.secondaryAttributes.encumbrance.overage"
+                                                value="{{data.stats.secondaryAttributes.encumbrance.overage}}"
+                                                data-dtype="Number" placeholder="0" readonly />
+                                            <span class="label">Overage</span>
+                                        </div>
+
+                                        <div class="number-and-label right">
+                                            <input class="value encumbrance-current" type="number"
+                                                name="data.stats.secondaryAttributes.encumbrance.current"
+                                                value="{{data.stats.secondaryAttributes.encumbrance.current}}"
+                                                data-dtype="Number" placeholder="0" />
+                                            <span class="label">Current</span>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="backpack-container">
+                                <img src="systems/zweihander/assets/trappings.png" />
+                            </div>
+
+                            <div class="common-container">
+                                a
                             </div>
                         </div>
                     </div>

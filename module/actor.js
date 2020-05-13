@@ -121,6 +121,11 @@ export class ZweihanderActor extends Actor {
       if(i % 2)
         damageModifier += 3;
     }
+
+
+    // Assign initial encumbrance values
+
+    data.stats.secondaryAttributes.encumbrance.value = data.stats.primaryAttributes.brawn.bonus + 3;
   }
 
 }

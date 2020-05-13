@@ -1020,10 +1020,11 @@
 }
 
 .zweihander .sheet-body .notes-content .ancestry-drawback-and-notepad-container .ancestry-and-drawback-container {
-  flex: 1;
+  /* flex: 1; */
   display: flex;
   flex-direction: column;
   order: 1;
+  width: 209px;
   /* margin-right: 23px; */
   /* background-color: gold; */
 }
@@ -1032,7 +1033,7 @@
   flex: 1;
   display: flex;
   flex-direction: column;
-  margin: 0px 0px 10px 0px;
+  margin: 0px 0px 23px 0px;
   /* background-color: green; */
 }
 
@@ -1069,24 +1070,24 @@
   flex: 1;
   display: flex;
   flex-direction: column;
-  margin: 0px 0px 5px 0px;
+  margin: 0px 0px 3px 0px;
   /* background-color: lightpink; */
 }
 
 .zweihander .sheet-body .notes-content .ancestry-drawback-and-notepad-container .notepad-container {
-  flex: 0 0 60%;
+  flex: 1;
   display: flex;
   flex-direction: column;
-  margin-bottom: 5px;
-  margin-right: 23px;
-  order: 0;
+  margin-bottom: 3px;
+  margin-left: 23px;
+  order: 2;
   /* background-color: lightseagreen; */
 }
 
 .zweihander .sheet-body .notes-content .ancestry-drawback-and-notepad-container .title {
   text-align: center;
   font-family: 'Mon Amour Fraktur Broken';
-  font-size: 24px;
+  font-size: 22px;
   padding-bottom: 5px;
 }
 
@@ -1107,6 +1108,125 @@
   box-shadow: 0px 0px 3px darkgrey;
   outline: 0px solid darkgrey;
 }
+
+.zweihander .trappings-content {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+  background-color: lightblue;
+}
+
+.zweihander .trappings-content .encumbrance-and-coins-container {
+  display: flex;
+  flex-direction: row;
+}
+
+.zweihander .trappings-content .encumbrance-and-coins-container .common-container {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  background-color: yellowgreen;
+}
+
+.zweihander .trappings-content .encumbrance-and-coins-container .backpack-container {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.zweihander .trappings-content .encumbrance-and-coins-container .backpack-container img {
+  height: auto;
+  width: 150px;
+  border: none;
+}
+
+.zweihander .trappings-content .encumbrance-and-coins-container .encumbrance-container {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  /* background-color: wheat; */
+}
+
+.zweihander .trappings-content .encumbrance-and-coins-container .encumbrance-container .title {
+  text-align: center;
+  font-family: 'Mon Amour Fraktur Broken';
+  font-size: 22px;
+}
+
+.zweihander .trappings-content .encumbrance-and-coins-container .encumbrance-container .label {
+  font-family: 'Baskerville Old Face';
+  font-size: 14px;
+  font-weight: bold;
+  margin-top: 3px;
+}
+
+.zweihander .trappings-content .encumbrance-and-coins-container .encumbrance-container .encumbrance-meter {
+  padding: 5px 0px 5px 0px;
+  background-color: lightseagreen;
+}
+
+.zweihander .trappings-content .encumbrance-and-coins-container .encumbrance-container .encumbrance-meter .meter {
+  position: relative;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: flex-start;
+  height: 25px;
+  border: 1px solid grey;
+  box-shadow: 0 0 0 3px inset white;
+  padding: 3px;
+  background-color: lightgrey;
+}
+
+.zweihander .trappings-content .encumbrance-and-coins-container .encumbrance-container .encumbrance-meter .meter .meter-label-container {
+  position: absolute;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+}
+
+.zweihander .trappings-content .encumbrance-and-coins-container .encumbrance-container .encumbrance-meter .meter .meter-label {
+  position: absolute;
+  text-align: center;
+  font-family: 'Baskerville Old Face';
+  font-weight: bold;
+  color: white;
+  margin-top: 0.5px;
+}
+
+.zweihander .trappings-content .encumbrance-and-coins-container .encumbrance-container .encumbrance-meter .meter .meter-value {
+  display: block;
+  text-align: center;
+  transition: 300ms width linear;
+  color: grey;
+  background: grey;
+  width: 87.5%;
+}
+
+.zweihander .trappings-content .encumbrance-and-coins-container .encumbrance-container .value-overage-and-current {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  margin-top: 5px;
+  /* background-color: tomato; */
+}
+
+.zweihander .trappings-content .encumbrance-and-coins-container .encumbrance-container .value-overage-and-current .number-and-label {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.zweihander .trappings-content .encumbrance-and-coins-container .encumbrance-container .value-overage-and-current .number-and-label .value {
+  width: 52px;
+  height: 35px;
+  font-size: 24px;
+  color: grey;
+}
+
 
 /* -----------------------------V---------------------------- ITEM SHEET -----------------------------V---------------------------- */
 

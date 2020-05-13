@@ -53,6 +53,22 @@ export class ZweihanderActorSheet extends ActorSheet {
 
     // Add or Remove Attribute
     //html.find(".attributes").on("click", ".attribute-control", this._onClickAttributeControl.bind(this));
+
+
+    // On loss of focus, update the textbox value
+
+    html.find(".notepad").focusout(event => {
+      this.actor.update({"data.flavor.notes": event.target.value});
+    });
+
+    html.find(".encumbrance-current").change(event => {
+      const data = this.actor.data.data;
+      const inputValue = event.target.value;
+      const ratio = (inputValue / data.stats.secondaryAttributes.encumbrance.value) * 100;
+
+      $(".meter-label").text(inputValue + " / " + data.stats.secondaryAttributes.encumbrance.value);
+      $(".meter-value").width(ratio + "%");
+    });
   }
 
   /* -------------------------------------------- */
