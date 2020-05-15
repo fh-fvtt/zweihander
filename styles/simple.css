@@ -1166,8 +1166,10 @@
   align-items: center;
   justify-content: flex-start;
   height: 25px;
-  border: 1px solid grey;
-  box-shadow: 0 0 0 3px inset white;
+  border: 2px solid #A2A3A5;
+  border-right: 2px solid lightgrey;
+  border-bottom: 2px solid lightgrey;
+  box-shadow: 0 0 0 3px inset ghostwhite;
   padding: 3px;
   background-color: lightgrey;
 }
@@ -1196,6 +1198,7 @@
   transition: 300ms width linear;
   color: transparent;
   background: grey;
+  height: 100%;
 }
 
 .zweihander .trappings-content .encumbrance-and-coins-container .value-overage-and-current {
@@ -1254,6 +1257,27 @@
   /* background-color: palevioletred; */
 }
 
+.zweihander .trappings-content .weapons-armor-and-other-container .common-header {
+  display: flex;
+  flex-direction: row;
+  padding: 5px;
+  justify-content: space-between;
+  background: rgba(0, 0, 0, 0.05);
+  border: 1px solid #AAA;
+  text-align: left;
+  font-weight: bold;
+}
+
+.zweihander .trappings-content .weapons-armor-and-other-container .common-list {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  border: 1px solid darkgrey;
+  border-top: none;
+  padding: 5px;
+  background-color: ghostwhite;
+}
+
 .zweihander .trappings-content .weapons-armor-and-other-container .common-container .individual-trapping {
   display: flex;
   flex-direction: row;
@@ -1291,7 +1315,103 @@
   font-family: 'Baskerville Old Face';
 }
 
-.zweihander .trappings-content .weapons-armor-and-other-container .common-header {
+.zweihander .afflictions-content {
+  display: flex;
+  flex-direction: row;
+  height: 100%;
+}
+
+/* .zweihander .afflictions-content .conditional-effects {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  margin-right: 23px;
+} */
+
+.zweihander .afflictions-content .conditional-effects .individual-condition {
+  display: flex;
+  flex-direction: row;
+  font-family: 'Baskerville Old Face';
+  padding: 5px 0px;
+  /* background-color: lightblue; */
+}
+
+.zweihander .afflictions-content .conditional-effects .individual-condition .checkbox-container {
+  display: flex;
+  flex-direction: column;
+}
+
+.zweihander .afflictions-content .conditional-effects .individual-condition .checkbox-container .aligner-top {
+  flex: 1;
+  display: flex;
+  align-items: flex-start;
+  padding: 1.9px 5px 0px;
+}
+
+.zweihander .afflictions-content .conditional-effects .individual-condition .checkbox-container .aligner-bottom {
+  flex: 1;
+}
+
+.zweihander .afflictions-content .conditional-effects .individual-condition input[type="checkbox"] {
+  height: 12px;
+  margin: 0;
+  transform: none;
+}
+
+.zweihander .afflictions-content .conditional-effects .individual-condition .condition-and-description-container {
+  display: flex;
+  flex-direction: column;
+}
+
+.zweihander .afflictions-content .conditional-effects .individual-condition .condition-and-description-container .condition {
+  font-size: 14px;
+  font-weight: bold;
+}
+
+.zweihander .afflictions-content .conditional-effects .individual-condition .condition-and-description-container .description {
+  font-size: 12px;
+}
+
+.zweihander .afflictions-content .conditional-effects .medicine-picture {
+  flex: 0 0 30%;
+  display: flex;
+  flex-direction: column;
+  padding: 5px;
+  margin-top: 23px;
+}
+
+.zweihander .afflictions-content .conditional-effects .medicine-picture img {
+  border: none;
+  height: auto;
+  width: 268px;
+}
+
+.zweihander .afflictions-content .injuries-diseases-and-disorders-container {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+}
+
+.zweihander .afflictions-content .common-container {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  /* background-color: palevioletred; */
+}
+
+.zweihander .afflictions-content .common-container.injuries {
+  margin-bottom: 23px;
+}
+
+.zweihander .afflictions-content .common-container.diseases {
+  margin-bottom: 23px;
+}
+
+.zweihander .afflictions-content .common-container.conditional-effects {
+  margin-right: 23px;
+}
+
+.zweihander .afflictions-content .common-header {
   display: flex;
   flex-direction: row;
   padding: 5px;
@@ -1302,14 +1422,37 @@
   font-weight: bold;
 }
 
-.zweihander .trappings-content .weapons-armor-and-other-container .common-list {
+.zweihander .afflictions-content .common-header .title {
+  font-family: 'Baskerville Old Face';
+}
+
+.zweihander .afflictions-content .common-list {
   flex: 1;
   display: flex;
   flex-direction: column;
   border: 1px solid darkgrey;
   border-top: none;
   padding: 5px;
+  z-index: 1;
+  overflow-y: auto;
   background-color: ghostwhite;
+}
+
+.zweihander .afflictions-content .injuries-diseases-and-disorders-container .common-container .individual-injury {
+  display: flex;
+  flex-direction: row;
+  padding: 2px 0px;
+  align-items: center;
+  /* background-color: lightskyblue; */
+}
+
+.zweihander .afflictions-content .injuries-diseases-and-disorders-container .common-container .individual-injury img {
+  border: 1px solid #191813;
+  border-radius: 5px;
+  height: auto;
+  width: 20px;
+  margin-right: 5px;
+  background-color: #191813;
 }
 
 /* -----------------------------V---------------------------- ITEM SHEET -----------------------------V---------------------------- */

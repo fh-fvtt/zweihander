@@ -243,17 +243,12 @@
                             width="42" />
                     </div>
                     <div class="item-and-hand">
-                        <a class="item" data-tab="tiers">Tiers</a>
-                        <img class="selector" src="systems/zweihander/assets/skeleton_selector.png" height="22"
-                            width="42" />
-                    </div>
-                    <div class="item-and-hand">
                         <a class="item" data-tab="afflictions">Afflictions</a>
                         <img class="selector" src="systems/zweihander/assets/skeleton_selector.png" height="22"
                             width="42" />
                     </div>
                     <div class="item-and-hand">
-                        <a class="item" data-tab="trappings">Trappings</a>
+                        <a class="item" data-tab="tiers">Tiers</a>
                         <img class="selector" src="systems/zweihander/assets/skeleton_selector.png" height="22"
                             width="42" />
                     </div>
@@ -263,7 +258,12 @@
                             width="42" />
                     </div>
                     <div class="item-and-hand">
-                        <a class="item" data-tab="details">Details & Notes</a>
+                        <a class="item" data-tab="trappings">Trappings</a>
+                        <img class="selector" src="systems/zweihander/assets/skeleton_selector.png" height="22"
+                            width="42" />
+                    </div>
+                    <div class="item-and-hand">
+                        <a class="item" data-tab="details">Background</a>
                         <img class="selector" src="systems/zweihander/assets/skeleton_selector.png" height="22"
                             width="42" />
                     </div>
@@ -920,6 +920,296 @@
                                         <div class="individual-trapping">
                                             <img src="systems/zweihander/assets/elf-ear.svg" /> <span>Some Random Item #1</span>
                                         </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="tab afflictions" data-group="primary" data-tab="afflictions">
+                    <div class="afflictions-content">
+                        <div class="common-container conditional-effects">
+                            <!-- <div class="title">
+                                <span>Conditional Effects</span>
+                            </div> -->
+
+                            <header class="common-header">
+                                <div class="title">
+                                    <span>Conditional Effects in Combat</span>
+                                </div>
+                            </header>
+
+                            <div class="common-list save-scroll">
+                                <div class="individual-condition">
+                                    <div class="checkbox-container">
+                                        <div class="aligner-top">
+                                            <input type="checkbox" />
+                                        </div>
+
+                                        <div class="aligner-bottom"></div>
+                                    </div>
+
+                                    <div class="condition-and-description-container">
+                                        <div class="condition">
+                                            <span>Blinded</span>
+                                        </div>
+
+                                        <div class="description">
+                                            <span><i>Cannot use Counterspell, Dodge or Parry.</i></span>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div class="individual-condition">
+                                    <div class="checkbox-container">
+                                        <div class="aligner-top">
+                                            <input type="checkbox" />
+                                        </div>
+
+                                        <div class="aligner-bottom"></div>
+                                    </div>
+
+                                    <div class="condition-and-description-container">
+                                        <div class="condition">
+                                            <span>Choked</span>
+                                        </div>
+
+                                        <div class="description">
+                                            <span><i>Cannot use any Action In Combat, unless attempting to Resist to escape.</i></span>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div class="individual-condition">
+                                    <div class="checkbox-container">
+                                        <div class="aligner-top">
+                                            <input type="checkbox" />
+                                        </div>
+
+                                        <div class="aligner-bottom"></div>
+                                    </div>
+
+                                    <div class="condition-and-description-container">
+                                        <div class="condition">
+                                            <span>Defenseless</span>
+                                        </div>
+
+                                        <div class="description">
+                                            <span><i>Cannot use any Reactions whatsoever.</i></span>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div class="individual-condition">
+                                    <div class="checkbox-container">
+                                        <div class="aligner-top">
+                                            <input type="checkbox" />
+                                        </div>
+
+                                        <div class="aligner-bottom"></div>
+                                    </div>
+
+                                    <div class="condition-and-description-container">
+                                        <div class="condition">
+                                            <span>Disarmed</span>
+                                        </div>
+
+                                        <div class="description">
+                                            <span><i>Lose weapon from primary hand 3 yards away and cannot use hand until next turn.</i></span>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div class="individual-condition">
+                                    <div class="checkbox-container">
+                                        <div class="aligner-top">
+                                            <input type="checkbox" />
+                                        </div>
+
+                                        <div class="aligner-bottom"></div>
+                                    </div>
+
+                                    <div class="condition-and-description-container">
+                                        <div class="condition">
+                                            <span>Helpless</span>
+                                        </div>
+
+                                        <div class="description">
+                                            <span><i>Cannot use any Reactions whatsoever, and may be slain with a successful attack.</i></span>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div class="individual-condition">
+                                    <div class="checkbox-container">
+                                        <div class="aligner-top">
+                                            <input type="checkbox" />
+                                        </div>
+
+                                        <div class="aligner-bottom"></div>
+                                    </div>
+
+                                    <div class="condition-and-description-container">
+                                        <div class="condition">
+                                            <span>Inspired</span>
+                                        </div>
+
+                                        <div class="description">
+                                            <span><i>Temporarily add +1 to Damage and Peril Thresholds until end of combat.</i></span>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div class="individual-condition">
+                                    <div class="checkbox-container">
+                                        <div class="aligner-top">
+                                            <input type="checkbox" />
+                                        </div>
+
+                                        <div class="aligner-bottom"></div>
+                                    </div>
+
+                                    <div class="condition-and-description-container">
+                                        <div class="condition">
+                                            <span>Intimidated</span>
+                                        </div>
+
+                                        <div class="description">
+                                            <span><i>Temporarily suffer a -1 to Damage and Peril Thresholds until end of combat.</i></span>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div class="individual-condition">
+                                    <div class="checkbox-container">
+                                        <div class="aligner-top">
+                                            <input type="checkbox" />
+                                        </div>
+
+                                        <div class="aligner-bottom"></div>
+                                    </div>
+
+                                    <div class="condition-and-description-container">
+                                        <div class="condition">
+                                            <span>Knocked Out</span>
+                                        </div>
+
+                                        <div class="description">
+                                            <span><i>Left unconscious and Helpless until awakening.</i></span>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div class="individual-condition">
+                                    <div class="checkbox-container">
+                                        <div class="aligner-top">
+                                            <input type="checkbox" />
+                                        </div>
+
+                                        <div class="aligner-bottom"></div>
+                                    </div>
+
+                                    <div class="condition-and-description-container">
+                                        <div class="condition">
+                                            <span>Prone</span>
+                                        </div>
+
+                                        <div class="description">
+                                            <span><i>On the ground, and suffers an additional 1d6 Fury Die in damage.</i></span>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div class="individual-condition">
+                                    <div class="checkbox-container">
+                                        <div class="aligner-top">
+                                            <input type="checkbox" />
+                                        </div>
+
+                                        <div class="aligner-bottom"></div>
+                                    </div>
+
+                                    <div class="condition-and-description-container">
+                                        <div class="condition">
+                                            <span>Stunned</span>
+                                        </div>
+
+                                        <div class="description">
+                                            <span><i>Begin turn with one less AP.</i></span>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div class="individual-condition">
+                                    <div class="checkbox-container">
+                                        <div class="aligner-top">
+                                            <input type="checkbox" />
+                                        </div>
+
+                                        <div class="aligner-bottom"></div>
+                                    </div>
+
+                                    <div class="condition-and-description-container">
+                                        <div class="condition">
+                                            <span>Surprised</span>
+                                        </div>
+
+                                        <div class="description">
+                                            <span><i>Suffer additional 1d6 Fury Die in damage and cannot use Reactions.</i></span>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="medicine-picture">
+                                <img src="systems/zweihander/assets/injuries.png" />
+                            </div>
+                        </div>
+
+                        <div class="injuries-diseases-and-disorders-container">
+                            <div class="common-container injuries">
+                                <header class="common-header">
+                                    <div class="title">
+                                        <span>Injuries</span>
+                                    </div>
+                                </header>
+
+                                <div class="common-list">
+                                    <div class="individual-injury">
+                                        <img src="systems/zweihander/assets/elf-ear.svg" /><span>Some Random Injury #7</span>
+                                    </div>
+
+                                    <div class="individual-injury">
+                                        <img src="systems/zweihander/assets/elf-ear.svg" /><span>Some Random Grievous Injury #84</span>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="common-container diseases">
+                                <header class="common-header">
+                                    <div class="title">
+                                        <span>Diseases</span>
+                                    </div>
+                                </header>
+
+                                <div class="common-list">
+                                    <div class="individual-injury">
+                                        <img src="systems/zweihander/assets/elf-ear.svg" /><span>Some Random Disease #687</span>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="common-container disorders">
+                                <header class="common-header">
+                                    <div class="title">
+                                        <span>Disorders</span>
+                                    </div>
+                                </header>
+
+                                <div class="common-list">
+                                    <div class="individual-injury">
+                                        <img src="systems/zweihander/assets/elf-ear.svg" /><span>Some Random Disorder #9712</span>
                                     </div>
                                 </div>
                             </div>
