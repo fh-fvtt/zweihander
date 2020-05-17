@@ -1250,11 +1250,88 @@
   height: 100%;
 }
 
+.zweihander .trappings-content .weapons-armor-and-other-container .common-container .skill.combat-skill {
+  flex: 0 0 115px;
+}
+
+.zweihander .trappings-content .weapons-armor-and-other-container .common-container .title.combat-skill {
+  flex: 0 0 115px;
+}
+
 .zweihander .trappings-content .weapons-armor-and-other-container .common-container {
   flex: 1;
   display: flex;
   flex-direction: column;
   /* background-color: palevioletred; */
+}
+
+.zweihander .trappings-content .weapons-armor-and-other-container .common-header .title {
+  flex: 1;
+  text-align: center;
+}
+
+.zweihander .trappings-content .weapons-armor-and-other-container .common-header .title.main {
+  flex: 0 0 135px;
+  text-align: left;
+}
+
+.zweihander .trappings-content .weapons-armor-and-other-container .common-header .title.main.armor {
+  flex: 0 0 120px;
+}
+
+.zweihander .trappings-content .weapons-armor-and-other-container .common-header .title.controls {
+  flex: 0;
+}
+
+.zweihander .trappings-content .weapons-armor-and-other-container .common-header .title.controls span {
+  width: 46.5px;
+}
+
+.zweihander .trappings-content .weapons-armor-and-other-container .common-container .image-and-name {
+  flex: 0 0 135px;
+  text-align: center;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+}
+
+.zweihander .trappings-content .weapons-armor-and-other-container .common-container .image-and-name.armor {
+  flex: 0 0 120px;
+}
+
+.zweihander .trappings-content .weapons-armor-and-other-container .common-container .image-and-name.weapon-attack:hover {
+  text-shadow: 0px 0px 5px red;
+  cursor: pointer;
+}
+
+.zweihander .trappings-content .weapons-armor-and-other-container .common-container .image-and-name.weapon-attack:active {
+  font-size: 12px;
+}
+
+.zweihander .trappings-content .weapons-armor-and-other-container .common-container .skill {
+  flex: 1;
+  text-align: center;
+}
+
+.zweihander .trappings-content .weapons-armor-and-other-container .common-container .skill input[type="checkbox"] {
+  transform: none;
+  margin: 0;
+  width: 12px;
+  height: 12px;
+  margin-top: 4px;
+}
+
+.zweihander .trappings-content .weapons-armor-and-other-container .common-container .controls {
+  /* flex: 1; */
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-end;
+  font-size: 12px;
+  align-items: center;
+}
+
+.zweihander .trappings-content .weapons-armor-and-other-container .common-container .controls a {
+  margin: 0px 2px;
 }
 
 .zweihander .trappings-content .weapons-armor-and-other-container .common-header {
@@ -1269,13 +1346,15 @@
 }
 
 .zweihander .trappings-content .weapons-armor-and-other-container .common-list {
-  flex: 1;
   display: flex;
   flex-direction: column;
   border: 1px solid darkgrey;
   border-top: none;
   padding: 5px;
   background-color: ghostwhite;
+  height: 115.91px;
+  overflow-y: auto;
+  z-index: 1;
 }
 
 .zweihander .trappings-content .weapons-armor-and-other-container .common-container .individual-trapping {
@@ -1345,7 +1424,7 @@
   flex: 1;
   display: flex;
   align-items: flex-start;
-  padding: 1.9px 5px 0px;
+  padding: 2px 5px 0px;
 }
 
 .zweihander .afflictions-content .conditional-effects .individual-condition .checkbox-container .aligner-bottom {
@@ -1365,11 +1444,12 @@
 
 .zweihander .afflictions-content .conditional-effects .individual-condition .condition-and-description-container .condition {
   font-size: 14px;
-  font-weight: bold;
+  text-transform: capitalize;
+  /* font-weight: bold; */
 }
 
 .zweihander .afflictions-content .conditional-effects .individual-condition .condition-and-description-container .description {
-  font-size: 12px;
+  font-size: 11px;
 }
 
 .zweihander .afflictions-content .conditional-effects .medicine-picture {
@@ -1447,6 +1527,148 @@
 }
 
 .zweihander .afflictions-content .injuries-diseases-and-disorders-container .common-container .individual-injury img {
+  border: 1px solid #191813;
+  border-radius: 5px;
+  height: auto;
+  width: 20px;
+  margin-right: 5px;
+  background-color: #191813;
+}
+
+.zweihander .magick-content {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+}
+
+.zweihander .magick-content .common-header {
+  display: flex;
+  flex-direction: row;
+  padding: 5px;
+  justify-content: space-between;
+  background: rgba(0, 0, 0, 0.05);
+  border: 1px solid #AAA;
+  text-align: left;
+  font-weight: bold;
+}
+
+.zweihander .magick-content .common-header .title {
+  font-family: 'Baskerville Old Face';
+}
+
+.zweihander .magick-content .common-list {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  border: 1px solid darkgrey;
+  border-top: none;
+  padding: 5px;
+  z-index: 1;
+  overflow-y: auto;
+  background-color: ghostwhite;
+}
+
+.zweihander .magick-content .common-container.magick {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  order: 1;
+  margin-top: 23px;
+}
+
+.zweihander .magick-content .common-container .individual-spell {
+  display: flex;
+  flex-direction: row;
+  padding: 2px 0px;
+  align-items: center;
+  /* background-color: lightskyblue; */
+}
+
+.zweihander .magick-content .common-container .individual-spell img {
+  border: 1px solid #191813;
+  border-radius: 5px;
+  height: auto;
+  width: 20px;
+  margin-right: 5px;
+  background-color: #191813;
+}
+
+.zweihander .magick-content .illustration img {
+  border: none;
+}
+
+.zweihander .tiers-content {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+}
+
+.zweihander .tiers-content .illustration {
+  display: flex;
+  flex-direction: column;
+}
+
+.zweihander .tiers-content .illustration img {
+  border: none;
+}
+
+.zweihander .tiers-content .professions-and-unique-advances-container {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  /* margin-right: 23px; */
+  /* background-color: green; */
+}
+
+.zweihander .tiers-content .common-header {
+  display: flex;
+  flex-direction: row;
+  padding: 5px;
+  justify-content: space-between;
+  background: rgba(0, 0, 0, 0.05);
+  border: 1px solid #AAA;
+  text-align: left;
+  font-weight: bold;
+}
+
+.zweihander .tiers-content .common-list {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  border: 1px solid darkgrey;
+  border-top: none;
+  padding: 5px;
+  z-index: 1;
+  overflow-y: auto;
+  background-color: ghostwhite;
+}
+
+.zweihander .tiers-content .common-container {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  font-family: 'Baskerville Old Face';
+}
+
+.zweihander .tiers-content .common-container.professions {
+  margin-bottom: 23px;
+  /* flex: 0; */
+  /* height: 111px; */
+}
+
+.zweihander .tiers-content .common-container.unique-advances {
+  margin-bottom: 23px;
+}
+
+.zweihander .tiers-content .common-container .individual-profession {
+  display: flex;
+  flex-direction: row;
+  padding: 2px 0px;
+  align-items: center;
+  /* background-color: lightskyblue; */
+}
+
+.zweihander .tiers-content .common-container .individual-profession img {
   border: 1px solid #191813;
   border-radius: 5px;
   height: auto;

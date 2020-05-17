@@ -5,14 +5,14 @@
 export class ZweihanderActorSheet extends ActorSheet {
 
   /** @override */
-	static get defaultOptions() {
-	  return mergeObject(super.defaultOptions, {
-  	  classes: ["zweihander", "sheet", "actor"],
-  	  template: "systems/zweihander/templates/actor-sheet.html",
+  static get defaultOptions() {
+    return mergeObject(super.defaultOptions, {
+      classes: ["zweihander", "sheet", "actor"],
+      template: "systems/zweihander/templates/actor-sheet.html",
       width: 720,
       height: 945,
       resizable: false,
-      tabs: [{navSelector: ".sheet-tabs", contentSelector: ".sheet-body", initial: "main"}]
+      tabs: [{ navSelector: ".sheet-tabs", contentSelector: ".sheet-body", initial: "main" }]
     });
   }
 
@@ -22,16 +22,52 @@ export class ZweihanderActorSheet extends ActorSheet {
   getData() {
     const data = super.getData();
     data.dtypes = ["String", "Number", "Boolean"];
-    /*for ( let attr of Object.values(data.data.attributes) ) {
-      attr.isCheckbox = attr.dtype === "Boolean";
-    }*/
+
+    if (this.actor.data.type === "character") {
+      this._prepareCharacterItems(data);
+    }
+
     return data;
+  }
+
+  _prepareCharacterItems(sheetData) {
+    const actorData = sheetData.actor;
+
+    const weapons = [];
+    const armor = [];
+    const ancestry = [];
+
+    for (let item of actorData.items) {
+      if (item.type === "weapon")
+        weapons.push(item);
+      else if (item.type === "ancestry")
+        ancestry.push(item);
+      else if (item.type === "armor")
+        armor.push(item);
+    }
+
+    actorData.weapons = weapons;
+    actorData.ancestry = ancestry;
+    actorData.armor = armor;
+
+    for (let armor of actorData.armor) {
+      if (armor.data.equipped)
+        this._prepareDamageThreshold(armor, actorData);
+    }
+  }
+
+  _prepareDamageThreshold(armor, actorData) {
+    const data = actorData.data;
+    const damageArray = Object.keys(data.stats.secondaryAttributes.damageThreshold);
+
+    for (let i = 0; i < damageArray.length; i++)
+      data.stats.secondaryAttributes.damageThreshold[damageArray[i]] += armor.data.damageThresholdModifier.value;
   }
 
   /* -------------------------------------------- */
 
   /** @override */
-	activateListeners(html) {
+  activateListeners(html) {
     super.activateListeners(html);
 
     // Everything below here is only needed if the sheet is editable
@@ -45,11 +81,11 @@ export class ZweihanderActorSheet extends ActorSheet {
     // });
 
     // Delete Inventory Item
-    // html.find('.item-delete').click(ev => {
-    //   const li = $(ev.currentTarget).parents(".item");
-    //   this.actor.deleteOwnedItem(li.data("itemId"));
-    //   li.slideUp(200, () => this.render(false));
-    // });
+    html.find('.item-delete').click(ev => {
+      const li = $(ev.currentTarget).parents(".item");
+      this.actor.deleteOwnedItem(li.data("itemId"));
+      li.slideUp(200, () => this.render(false));
+    });
 
     // Add or Remove Attribute
     //html.find(".attributes").on("click", ".attribute-control", this._onClickAttributeControl.bind(this));
@@ -58,7 +94,7 @@ export class ZweihanderActorSheet extends ActorSheet {
     // On loss of focus, update the textbox value
 
     html.find(".notepad").focusout(event => {
-      this.actor.update({"data.flavor.notes": event.target.value});
+      this.actor.update({ "data.flavor.notes": event.target.value });
     });
 
     this._setEncumbranceMeter(html);
@@ -84,7 +120,7 @@ export class ZweihanderActorSheet extends ActorSheet {
   /* -------------------------------------------- */
 
   /** @override */
-  setPosition(options={}) {
+  setPosition(options = {}) {
     const position = super.setPosition(options);
     const sheetBody = this.element.find(".sheet-body");
     const bodyHeight = position.height - 192;
@@ -107,7 +143,7 @@ export class ZweihanderActorSheet extends ActorSheet {
     const form = this.form;
 
     // Add new attribute
-    if ( action === "create" ) {
+    if (action === "create") {
       const nk = Object.keys(attrs).length + 1;
       let newKey = document.createElement("div");
       newKey.innerHTML = `<input type="text" name="data.attributes.attr${nk}.key" value="attr${nk}"/>`;
@@ -117,19 +153,19 @@ export class ZweihanderActorSheet extends ActorSheet {
     }
 
     // Remove existing attribute
-    else if ( action === "delete" ) {
+    else if (action === "delete") {
       const li = a.closest(".attribute");
       li.parentElement.removeChild(li);
       await this._onSubmit(event);
     }
   }
 
-  
+
   async _render(force = false, options = {}) {
     this._saveScrollPos();
 
     await super._render(force, options);
-    
+
     this._setScrollPos();
   }
 

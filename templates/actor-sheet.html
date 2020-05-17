@@ -253,7 +253,7 @@
                             width="42" />
                     </div>
                     <div class="item-and-hand">
-                        <a class="item" data-tab="magicks">Magick</a>
+                        <a class="item" data-tab="magick">Magick</a>
                         <img class="selector" src="systems/zweihander/assets/skeleton_selector.png" height="22"
                             width="42" />
                     </div>
@@ -843,7 +843,7 @@
 
                                 <div class="coins-label">
                                     <span>
-                                        240 bp. = 20 sp. = 1 gc.
+                                        240 bp. = 20 ss. = 1 gc.
                                     </span>
                                 </div>
 
@@ -878,34 +878,115 @@
                         <div class="weapons-armor-and-other-container">
                             <div class="common-container weapons">
                                 <header class="common-header">
+                                    <div class="title main">
+                                        <span>Weapon / Shield</span>
+                                    </div>
+
+                                    <div class="title combat-skill">
+                                        <span>Skill</span>
+                                    </div>
+
+                                    <div class="title combat-skill">
+                                        <span>Distance</span>
+                                    </div>
+
                                     <div class="title">
-                                        <span>Weapons</span>
+                                        <span>Enc.</span>
+                                    </div>
+
+                                    <div class="title">
+                                        <span>Equipped</span>
+                                    </div>
+
+                                    <div class="title controls">
+                                        <span></span>
                                     </div>
                                 </header>
 
-                                <div class="common-list">
-                                    <div class="individual-trapping">
-                                        <img src="systems/zweihander/assets/elf-ear.svg" /> <span>Some Random Weapon #4</span>
-                                    </div>
+                                <div class="common-list save-scroll">
+                                    {{#each actor.weapons as | weapon id |}}
+                                        <div class="individual-trapping item" data-item-id="{{weapon._id}}">
+                                            <div class="image-and-name weapon-attack" title="Attack: {{weapon.name}}">
+                                                <img src="{{weapon.img}}" /><span>{{weapon.name}}</span>
+                                            </div>
+                                            
+                                            <div class="skill combat-skill">
+                                                <span>Martial Melee (C)*</span>
+                                            </div>
 
-                                    <div class="individual-trapping">
-                                        <img src="systems/zweihander/assets/elf-ear.svg" /> <span>Some Random Ranged Weapon #72</span>
-                                    </div>
+                                            <div class="skill combat-skill">
+                                                <span>Engaged or 1 yard</span>
+                                            </div>
+
+                                            <div class="skill">
+                                                <span>1</span>
+                                            </div>
+
+                                            <div class="skill">
+                                                <span><input type="checkbox" name="" /></span>
+                                            </div>
+
+                                            <div class="controls">
+                                                <a class="item-control item-edit" title="Post Item to Chat"><i class="fas fa-comment"></i></a>
+                                                <a class="item-control item-edit" title="Edit Item"><i class="fas fa-pencil-alt"></i></a>
+                                                <a class="item-control item-delete" title="Delete Item"><i class="fas fa-trash-alt"></i></a>
+                                            </div>
+                                        </div>
+                                    {{/each}}
                                 </div>
                             </div>
 
                             <div class="armor-and-other-container">
                                 <div class="common-container armor">
                                     <header class="common-header">
-                                        <div class="title">
+                                        <div class="title main armor">
                                             <span>Armor</span>
+                                        </div>
+
+                                        <div class="title">
+                                            <span>M.</span>
+                                        </div>
+
+                                        <div class="title">
+                                            <span>Enc.</span>
+                                        </div>
+
+                                        <div class="title">
+                                            <span>Eq.</span>
+                                        </div>
+
+                                        <div class="title controls">
+                                            <span></span>
                                         </div>
                                     </header>
     
-                                    <div class="common-list">
-                                        <div class="individual-trapping">
-                                            <img src="systems/zweihander/assets/elf-ear.svg" /> <span>Some Random Item #2</span>
+                                    <div class="common-list save-scroll">
+                                        {{#each actor.armor as | armor id |}}
+                                            <div class="individual-trapping item" data-item-id="{{armor._id}}">
+                                                <div class="image-and-name armor" title="Attack: {{armor.name}}">
+                                                    <img src="{{armor.img}}" /><span>{{armor.name}}</span>
+                                                </div>
+                                                {{debug armor}}
+                                                
+                                                <div class="skill">
+                                                    <span>{{armor.data.damageThresholdModifier.value}}</span>
+                                                </div>
+
+                                                <div class="skill">
+                                                    <span>{{armor.data.encumbrance.value}}</span>
+                                                </div>
+
+                                                <div class="skill">
+                                                    <span><input type="checkbox" name="armor.data.equipped" {{checked armor.data.equipped}} data-dtype="Boolean" /></span>
+                                                </div>
+
+                                                <div class="controls">
+                                                    <a class="item-control item-edit" title="Post Item to Chat"><i class="fas fa-comment"></i></a>
+                                                    <a class="item-control item-edit" title="Edit Item"><i class="fas fa-pencil-alt"></i></a>
+                                                    <a class="item-control item-delete" title="Delete Item"><i class="fas fa-trash-alt"></i></a>
+                                                </div>
                                         </div>
+                                        {{/each}}
                                     </div>
                                 </div>
 
@@ -941,229 +1022,27 @@
                             </header>
 
                             <div class="common-list save-scroll">
-                                <div class="individual-condition">
-                                    <div class="checkbox-container">
-                                        <div class="aligner-top">
-                                            <input type="checkbox" />
+                                {{#each data.conditionalEffects as | condition key |}}
+                                    <div class="individual-condition">
+                                        <div class="checkbox-container">
+                                            <div class="aligner-top">
+                                                <input type="checkbox" />
+                                            </div>
+
+                                            <div class="aligner-bottom"></div>
                                         </div>
 
-                                        <div class="aligner-bottom"></div>
-                                    </div>
+                                        <div class="condition-and-description-container">
+                                            <div class="condition">
+                                                <span>{{key}}</span>
+                                            </div>
 
-                                    <div class="condition-and-description-container">
-                                        <div class="condition">
-                                            <span>Blinded</span>
-                                        </div>
-
-                                        <div class="description">
-                                            <span><i>Cannot use Counterspell, Dodge or Parry.</i></span>
-                                        </div>
-                                    </div>
-                                </div>
-
-                                <div class="individual-condition">
-                                    <div class="checkbox-container">
-                                        <div class="aligner-top">
-                                            <input type="checkbox" />
-                                        </div>
-
-                                        <div class="aligner-bottom"></div>
-                                    </div>
-
-                                    <div class="condition-and-description-container">
-                                        <div class="condition">
-                                            <span>Choked</span>
-                                        </div>
-
-                                        <div class="description">
-                                            <span><i>Cannot use any Action In Combat, unless attempting to Resist to escape.</i></span>
+                                            <div class="description">
+                                                <span><i>{{condition.effect}}</i></span>
+                                            </div>
                                         </div>
                                     </div>
-                                </div>
-
-                                <div class="individual-condition">
-                                    <div class="checkbox-container">
-                                        <div class="aligner-top">
-                                            <input type="checkbox" />
-                                        </div>
-
-                                        <div class="aligner-bottom"></div>
-                                    </div>
-
-                                    <div class="condition-and-description-container">
-                                        <div class="condition">
-                                            <span>Defenseless</span>
-                                        </div>
-
-                                        <div class="description">
-                                            <span><i>Cannot use any Reactions whatsoever.</i></span>
-                                        </div>
-                                    </div>
-                                </div>
-
-                                <div class="individual-condition">
-                                    <div class="checkbox-container">
-                                        <div class="aligner-top">
-                                            <input type="checkbox" />
-                                        </div>
-
-                                        <div class="aligner-bottom"></div>
-                                    </div>
-
-                                    <div class="condition-and-description-container">
-                                        <div class="condition">
-                                            <span>Disarmed</span>
-                                        </div>
-
-                                        <div class="description">
-                                            <span><i>Lose weapon from primary hand 3 yards away and cannot use hand until next turn.</i></span>
-                                        </div>
-                                    </div>
-                                </div>
-
-                                <div class="individual-condition">
-                                    <div class="checkbox-container">
-                                        <div class="aligner-top">
-                                            <input type="checkbox" />
-                                        </div>
-
-                                        <div class="aligner-bottom"></div>
-                                    </div>
-
-                                    <div class="condition-and-description-container">
-                                        <div class="condition">
-                                            <span>Helpless</span>
-                                        </div>
-
-                                        <div class="description">
-                                            <span><i>Cannot use any Reactions whatsoever, and may be slain with a successful attack.</i></span>
-                                        </div>
-                                    </div>
-                                </div>
-
-                                <div class="individual-condition">
-                                    <div class="checkbox-container">
-                                        <div class="aligner-top">
-                                            <input type="checkbox" />
-                                        </div>
-
-                                        <div class="aligner-bottom"></div>
-                                    </div>
-
-                                    <div class="condition-and-description-container">
-                                        <div class="condition">
-                                            <span>Inspired</span>
-                                        </div>
-
-                                        <div class="description">
-                                            <span><i>Temporarily add +1 to Damage and Peril Thresholds until end of combat.</i></span>
-                                        </div>
-                                    </div>
-                                </div>
-
-                                <div class="individual-condition">
-                                    <div class="checkbox-container">
-                                        <div class="aligner-top">
-                                            <input type="checkbox" />
-                                        </div>
-
-                                        <div class="aligner-bottom"></div>
-                                    </div>
-
-                                    <div class="condition-and-description-container">
-                                        <div class="condition">
-                                            <span>Intimidated</span>
-                                        </div>
-
-                                        <div class="description">
-                                            <span><i>Temporarily suffer a -1 to Damage and Peril Thresholds until end of combat.</i></span>
-                                        </div>
-                                    </div>
-                                </div>
-
-                                <div class="individual-condition">
-                                    <div class="checkbox-container">
-                                        <div class="aligner-top">
-                                            <input type="checkbox" />
-                                        </div>
-
-                                        <div class="aligner-bottom"></div>
-                                    </div>
-
-                                    <div class="condition-and-description-container">
-                                        <div class="condition">
-                                            <span>Knocked Out</span>
-                                        </div>
-
-                                        <div class="description">
-                                            <span><i>Left unconscious and Helpless until awakening.</i></span>
-                                        </div>
-                                    </div>
-                                </div>
-
-                                <div class="individual-condition">
-                                    <div class="checkbox-container">
-                                        <div class="aligner-top">
-                                            <input type="checkbox" />
-                                        </div>
-
-                                        <div class="aligner-bottom"></div>
-                                    </div>
-
-                                    <div class="condition-and-description-container">
-                                        <div class="condition">
-                                            <span>Prone</span>
-                                        </div>
-
-                                        <div class="description">
-                                            <span><i>On the ground, and suffers an additional 1d6 Fury Die in damage.</i></span>
-                                        </div>
-                                    </div>
-                                </div>
-
-                                <div class="individual-condition">
-                                    <div class="checkbox-container">
-                                        <div class="aligner-top">
-                                            <input type="checkbox" />
-                                        </div>
-
-                                        <div class="aligner-bottom"></div>
-                                    </div>
-
-                                    <div class="condition-and-description-container">
-                                        <div class="condition">
-                                            <span>Stunned</span>
-                                        </div>
-
-                                        <div class="description">
-                                            <span><i>Begin turn with one less AP.</i></span>
-                                        </div>
-                                    </div>
-                                </div>
-
-                                <div class="individual-condition">
-                                    <div class="checkbox-container">
-                                        <div class="aligner-top">
-                                            <input type="checkbox" />
-                                        </div>
-
-                                        <div class="aligner-bottom"></div>
-                                    </div>
-
-                                    <div class="condition-and-description-container">
-                                        <div class="condition">
-                                            <span>Surprised</span>
-                                        </div>
-
-                                        <div class="description">
-                                            <span><i>Suffer additional 1d6 Fury Die in damage and cannot use Reactions.</i></span>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-
-                            <div class="medicine-picture">
-                                <img src="systems/zweihander/assets/injuries.png" />
+                                {{/each}}
                             </div>
                         </div>
 
@@ -1175,7 +1054,7 @@
                                     </div>
                                 </header>
 
-                                <div class="common-list">
+                                <div class="common-list drop">
                                     <div class="individual-injury">
                                         <img src="systems/zweihander/assets/elf-ear.svg" /><span>Some Random Injury #7</span>
                                     </div>
@@ -1212,6 +1091,82 @@
                                         <img src="systems/zweihander/assets/elf-ear.svg" /><span>Some Random Disorder #9712</span>
                                     </div>
                                 </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="tab magick" data-group="primary" data-tab="magick">
+                    <div class="magick-content">
+                        <div class="common-container magick">
+                            <header class="common-header">
+                                <div class="title">
+                                    <span>Grimoire</span>
+                                </div>
+                            </header>
+
+                            <div class="common-list">
+                                <div class="individual-spell">
+                                    <img src="systems/zweihander/assets/elf-ear.svg" /><span>Some Random Spell #52</span>
+                                </div>
+
+                                <div class="individual-spell">
+                                    <img src="systems/zweihander/assets/elf-ear.svg" /><span>Some Random Spell #907</span>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="illustration">
+                            <img src="systems/zweihander/assets/magic.png" />
+                        </div>
+                    </div>
+                </div>
+
+                <div class="tab tiers" data-group="primary" data-tab="tiers">
+                    <div class="tiers-content">
+                        <!-- <div class="illustration">
+                            <img src="systems/zweihander/assets/tiers.png" />
+                        </div> -->
+
+                        <div class="professions-and-unique-advances-container">
+                            <div class="common-container professions">
+                                <header class="common-header">
+                                    <div class="title">
+                                        <span>Professions</span>
+                                    </div>
+                                </header>
+    
+                                <div class="common-list">
+                                    <div class="individual-profession">
+                                        <img src="systems/zweihander/assets/elf-ear.svg" /><span>Peasant</span>
+                                    </div>
+    
+                                    <div class="individual-profession">
+                                        <img src="systems/zweihander/assets/elf-ear.svg" /><span>Reeve</span>
+                                    </div>
+
+                                    <div class="individual-profession">
+                                        <img src="systems/zweihander/assets/elf-ear.svg" /><span>Military Officer</span>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="common-container unique-advances">
+                                <header class="common-header">
+                                    <div class="title">
+                                        <span>Unique Advances</span>
+                                    </div>
+                                </header>
+    
+                                <div class="common-list">
+                                    <div class="individual-profession">
+                                        <img src="systems/zweihander/assets/elf-ear.svg" /><span>Some Random Skill Focus #301</span>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="illustration">
+                                <img src="systems/zweihander/assets/tiers.png" />
                             </div>
                         </div>
                     </div>

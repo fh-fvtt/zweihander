@@ -439,6 +439,54 @@
           }
         }
       },
+      "conditionalEffects": {
+        "conditionalEffects": {
+          "blinded": {
+            "value": false,
+            "effect": "Cannot use Counterspell, Dodge or Parry."
+          },
+          "choked": {
+            "value": false,
+            "effect": "Cannot use any Action In Combat, unless attempting to Resist to escape."
+          },
+          "defenseless": {
+            "value": false,
+            "effect": "Cannot use any Reactions whatsoever."
+          },
+          "disarmed": {
+            "value": false,
+            "effect": "Lose weapon from primary hand 3 yards away and cannot use hand until next turn."
+          }, 
+          "helpless": {
+            "value": false,
+            "effect": "Cannot use any Reactions whatsoever, and may be slain with a successful attack."
+          },
+          "inspired": {
+            "value": false,
+            "effect": "Temporarily add +1 to Damage and Peril Thresholds until end of combat."
+          },
+          "intimidated": {
+            "value": false,
+            "effect": "Temporarily suffer a -1 to Damage and Peril Thresholds until end of combat."
+          }, 
+          "knockedOut": {
+            "value": false,
+            "effect": "Left unconscious and Helpless until awakening."
+          }, 
+          "prone": {
+            "value": false,
+            "effect": "On the ground, and suffers an additional 1D6 Fury Die in damage."
+          },
+          "stunned": {
+            "value": false,
+            "effect": "Begin turn with one less AP."
+          },
+          "surprised": {
+            "value": false,
+            "effect": "Suffer additional 1D6 Fury Die in damage and cannot use Reactions."
+          }
+        }
+      },
       "flavor": {
         "flavor": {
           "description": "",
@@ -448,7 +496,9 @@
     },
     "character": {
       "templates": [
-        "stats", "flavor"
+        "stats",
+        "flavor",
+        "conditionalEffects"
       ],
       "socialClass": {
         "value": ""
@@ -535,20 +585,59 @@
   },
   "Item": {
     "types": [
-      "trapping", "injury", "disease", "profession", "ancestry", "armor", "weapon", "spell", "talent", "trait", "coinage"
+      "trapping", "injury", "disease", "profession", "ancestry", "armor", "weapon", "spell", "talent", "trait"
     ],
     "templates": {
       "flavor": {
         "flavor": {
           "description": ""
         }
+      },
+      "price": {
+        "price": {
+          "gc": 0,
+          "ss": 0,
+          "bp": 0
+        }
+      },
+      "encumbrance": {
+        "encumbrance": {
+          "value": 0
+        }
       }
     },
     "ancestry": {
-      "ancestralModifiers": {},
-      "ancestralTrait": {
-        "name": "",
-        "effect": ""
+      "ancestralModifiers": [],
+      "ancestralTrait": []
+    },
+    "weapon": {
+      "templates": [
+        "flavor", "price", "encumbrance"
+      ],
+      "equipped": false,
+      "associatedSkill": {
+        "value": "simpleMelee",
+        "label": "Simple Melee (C)"
+      },
+      "qualities": [],
+      "distance": ""
+    },
+    "armor": {
+      "templates": [
+        "flavor", "price", "encumbrance"
+      ],
+      "equipped": false,
+      "qualities": [],
+      "damageThresholdModifier": {
+        "value": 0
+      }
+    },
+    "trapping": {
+      "templates": [
+        "flavor", "price", "encumbrance"
+      ],
+      "quantity": {
+        "value": 0
       }
     }
   }

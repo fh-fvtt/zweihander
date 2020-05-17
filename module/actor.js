@@ -122,16 +122,14 @@ export class ZweihanderActor extends Actor {
 
     // Assign Damage Threshold values
 
-    var initialDamage = data.stats.primaryAttributes.brawn.bonus, damageModifier = 3;
+    var initialDamage = data.stats.primaryAttributes.brawn.bonus, damageModifier = 6;
 
     const damageArray = Object.keys(data.stats.secondaryAttributes.damageThreshold);
 
-    for(let i = 0; i < damageArray.length; i++) {
-      data.stats.secondaryAttributes.damageThreshold[damageArray[i]] = initialDamage += damageModifier;
+    data.stats.secondaryAttributes.damageThreshold[damageArray[0]] = initialDamage;
 
-      if(i % 2)
-        damageModifier += 3;
-    }
+    for(let i = 1; i < damageArray.length; i++) 
+      data.stats.secondaryAttributes.damageThreshold[damageArray[i]] = initialDamage += damageModifier;
 
   }
 
