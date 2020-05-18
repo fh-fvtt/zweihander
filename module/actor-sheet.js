@@ -36,6 +36,7 @@ export class ZweihanderActorSheet extends ActorSheet {
     const weapons = [];
     const armor = [];
     const ancestry = [];
+    const spells = [];
 
     for (let item of actorData.items) {
       if (item.type === "weapon")
@@ -44,16 +45,19 @@ export class ZweihanderActorSheet extends ActorSheet {
         ancestry.push(item);
       else if (item.type === "armor")
         armor.push(item);
+      else if (item.type === "spell")
+        spells.push(item);
     }
 
     actorData.weapons = weapons;
     actorData.ancestry = ancestry;
     actorData.armor = armor;
+    actorData.spells = spells;
 
-    for (let armor of actorData.armor) {
-      if (armor.data.equipped)
-        this._prepareDamageThreshold(armor, actorData);
-    }
+    // for (let armor of actorData.armor) {
+    //   if (armor.data.equipped)
+    //     this._prepareDamageThreshold(armor, actorData);
+    // }
   }
 
   _prepareDamageThreshold(armor, actorData) {

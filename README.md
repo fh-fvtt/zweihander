@@ -1,6 +1,6 @@
-# ZWEIHÄNDER Grim & Perilous RPG system for FoundryVTT
+# Zweihänder Grim & Perilous RPG system for FoundryVTT
 
-Welcome! This project is an implementation of the ZWEIHÄNDER system for Foundry Virtual Tabletop. It is currently in early development and, as such, unusable. 
+Welcome! This project is an implementation of the Zweihänder system for Foundry Virtual Tabletop. It is currently in early development and, as such, unusable. 
 
 ## Contributing
 

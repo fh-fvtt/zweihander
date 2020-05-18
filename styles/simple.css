@@ -1271,7 +1271,7 @@
 }
 
 .zweihander .trappings-content .weapons-armor-and-other-container .common-header .title.main {
-  flex: 0 0 135px;
+  flex: 0 0 140px;
   text-align: left;
 }
 
@@ -1351,6 +1351,7 @@
   border: 1px solid darkgrey;
   border-top: none;
   padding: 5px;
+  padding-top: 0;
   background-color: ghostwhite;
   height: 115.91px;
   overflow-y: auto;
@@ -1360,16 +1361,18 @@
 .zweihander .trappings-content .weapons-armor-and-other-container .common-container .individual-trapping {
   display: flex;
   flex-direction: row;
-  padding: 2px 0px;
+  padding: 2px 5px;
   align-items: center;
-  /* background-color: lightskyblue; */
+  border: 1px solid grey;
+  margin-top: 5px;
+  background: url('../assets/notepad.png');
 }
 
 .zweihander .trappings-content .weapons-armor-and-other-container .common-container .individual-trapping img {
   border: 1px solid #191813;
   border-radius: 5px;
   height: auto;
-  width: 20px;
+  width: 25.7px;
   margin-right: 5px;
   background-color: #191813;
 }
@@ -1513,6 +1516,7 @@
   border: 1px solid darkgrey;
   border-top: none;
   padding: 5px;
+  padding-top: 0;
   z-index: 1;
   overflow-y: auto;
   background-color: ghostwhite;
@@ -1553,7 +1557,74 @@
 }
 
 .zweihander .magick-content .common-header .title {
+  flex: 1;
+  text-align: center;
+}
+
+.zweihander .magick-content .common-header .title.main {
+  flex: 0 0 160px;
+  text-align: left;
+}
+
+.zweihander .magick-content .common-header .title.controls {
+  flex: 0;
+}
+
+.zweihander .magick-content .common-header .title.controls span {
+  width: 46.5px;
+}
+
+.zweihander .magick-content {
   font-family: 'Baskerville Old Face';
+}
+
+.zweihander .magick-content .individual-trapping {
+  display: flex;
+  flex-direction: row;
+  padding: 2px 5px;
+  align-items: center;
+  border: 1px solid grey;
+  margin-top: 5px;
+  background: url('../assets/notepad.png');
+}
+
+.zweihander .magick-content  .individual-trapping img {
+  border: 1px solid #191813;
+  border-radius: 5px;
+  height: auto;
+  width: 25.7px;
+  margin-right: 5px;
+  background-color: #191813;
+}
+
+.zweihander .magick-content .controls {
+  /* flex: 1; */
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-end;
+  font-size: 12px;
+  align-items: center;
+}
+
+.zweihander .magick-content .controls a {
+  margin: 0px 2px;
+}
+
+.zweihander .magick-content .image-and-name {
+  flex: 0 0 135px;
+  text-align: center;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+}
+
+.zweihander .magick-content .image-and-name.spell-attack {
+  flex: 0 0 155px;
+}
+
+.zweihander .magick-content .skill {
+  flex: 1;
+  text-align: center;
 }
 
 .zweihander .magick-content .common-list {
@@ -1563,6 +1634,7 @@
   border: 1px solid darkgrey;
   border-top: none;
   padding: 5px;
+  padding-top: 0;
   z-index: 1;
   overflow-y: auto;
   background-color: ghostwhite;
@@ -1638,6 +1710,7 @@
   border: 1px solid darkgrey;
   border-top: none;
   padding: 5px;
+  padding-top: 0;
   z-index: 1;
   overflow-y: auto;
   background-color: ghostwhite;

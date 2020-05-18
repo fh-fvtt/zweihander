@@ -966,7 +966,6 @@
                                                 <div class="image-and-name armor" title="Attack: {{armor.name}}">
                                                     <img src="{{armor.img}}" /><span>{{armor.name}}</span>
                                                 </div>
-                                                {{debug armor}}
                                                 
                                                 <div class="skill">
                                                     <span>{{armor.data.damageThresholdModifier.value}}</span>
@@ -976,8 +975,10 @@
                                                     <span>{{armor.data.encumbrance.value}}</span>
                                                 </div>
 
+                                                {{debug}}
+
                                                 <div class="skill">
-                                                    <span><input type="checkbox" name="armor.data.equipped" {{checked armor.data.equipped}} data-dtype="Boolean" /></span>
+                                                    <span><input type="checkbox" name="../data.armor.{{id}}.equipped" {{checked armor.data.equipped}} data-dtype="Boolean" /></span>
                                                 </div>
 
                                                 <div class="controls">
@@ -1100,19 +1101,53 @@
                     <div class="magick-content">
                         <div class="common-container magick">
                             <header class="common-header">
-                                <div class="title">
+                                <div class="title main">
                                     <span>Grimoire</span>
+                                </div>
+
+                                <div class="title">
+                                    <span>Principle</span>
+                                </div>
+
+                                <div class="title">
+                                    <span>Distance</span>
+                                </div>
+
+                                <div class="title">
+                                    <span>Duration</span>
+                                </div>
+
+                                <div class="title controls">
+                                    <span></span>
                                 </div>
                             </header>
 
                             <div class="common-list">
-                                <div class="individual-spell">
-                                    <img src="systems/zweihander/assets/elf-ear.svg" /><span>Some Random Spell #52</span>
-                                </div>
+                                {{#each actor.spells as | spell id |}}
+                                    <div class="individual-trapping item" data-item-id="{{spell._id}}">
+                                        <div class="image-and-name spell-attack" title="Attack: {{spell.name}}">
+                                            <img src="{{spell.img}}" /><span>{{spell.name}}</span>
+                                        </div>
 
-                                <div class="individual-spell">
-                                    <img src="systems/zweihander/assets/elf-ear.svg" /><span>Some Random Spell #907</span>
-                                </div>
+                                        <div class="skill">
+                                            <span>{{spell.data.principle.value}}</span>
+                                        </div>
+
+                                        <div class="skill">
+                                            <span>{{spell.data.distance.value}}</span>
+                                        </div>
+
+                                        <div class="skill">
+                                            <span>{{spell.data.duration.value}}</span>
+                                        </div>
+
+                                        <div class="controls">
+                                            <a class="item-control item-edit" title="Post Item to Chat"><i class="fas fa-comment"></i></a>
+                                            <a class="item-control item-edit" title="Edit Item"><i class="fas fa-pencil-alt"></i></a>
+                                            <a class="item-control item-delete" title="Delete Item"><i class="fas fa-trash-alt"></i></a>
+                                        </div>
+                                    </div>
+                                {{/each}}
                             </div>
                         </div>
 

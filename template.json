@@ -607,6 +607,9 @@
       }
     },
     "ancestry": {
+      "templates": [
+        "flavor"
+      ],
       "ancestralModifiers": [],
       "ancestralTrait": []
     },
@@ -620,7 +623,9 @@
         "label": "Simple Melee (C)"
       },
       "qualities": [],
-      "distance": ""
+      "distance": {
+        "value": ""
+      }
     },
     "armor": {
       "templates": [
@@ -638,6 +643,48 @@
       ],
       "quantity": {
         "value": 0
+      }
+    },
+    "profession": {
+      "templates": [
+        "flavor"
+      ],
+      "archetype": {
+        "value": ""
+      },
+      "bonusAdvances": [],
+      "skillRanks": [],
+      "talents": [],
+      "professionalTrait": [],
+      "specialTrait": [],
+      "drawback": [],
+      "tier": {
+        "value": ""
+      }
+    },
+    "spell": {
+      "templates": [
+        "flavor"
+      ],
+      "tradition": {
+        "value": ""
+      },
+      "principle": {
+        "value": ""
+      },
+      "distance": {
+        "value": ""
+      },
+      "reagents": {
+        "value": ""
+      },
+      "duration": {
+        "value": ""
+      },
+      "effect": {
+        "value": "",
+        "criticalSuccess": "",
+        "criticalFailure": ""
       }
     }
   }
