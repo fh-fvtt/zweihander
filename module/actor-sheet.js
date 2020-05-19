@@ -74,22 +74,45 @@ export class ZweihanderActorSheet extends ActorSheet {
   activateListeners(html) {
     super.activateListeners(html);
 
+    const actorData = this.actor.data;
+
     // Everything below here is only needed if the sheet is editable
+
     if (!this.options.editable) return;
 
-    // Update Inventory Item
-    // html.find('.item-edit').click(ev => {
-    //   const li = $(ev.currentTarget).parents(".item");
-    //   const item = this.actor.getOwnedItem(li.data("itemId"));
-    //   item.sheet.render(true);
-    // });
+
+    // Update/Edit Inventory Item
+
+    html.find('.item-edit').click(ev => {
+      const li = $(ev.currentTarget).parents(".item");
+      const item = this.actor.getOwnedItem(li.data("itemId"));
+      item.sheet.render(true);
+    });
+
 
     // Delete Inventory Item
+
     html.find('.item-delete').click(ev => {
       const li = $(ev.currentTarget).parents(".item");
       this.actor.deleteOwnedItem(li.data("itemId"));
       li.slideUp(200, () => this.render(false));
     });
+
+    // toFormat.replace(/(@([a-zA-Z0-9]\.)*[a-zA-Z0-9]+)/g, (key) => resolveProperty(actorData, key))
+
+    html.find('.spell-duration').each(function() {
+      const toFormat = $(this).text();
+
+      if (toFormat[0] === "@") {
+        const contents = toFormat.split("+");
+        const key = contents[0].replace("@", "data.");
+        const bonus = getProperty(actorData, key);
+        const setDuration = contents[1].split(' ');
+        
+        $(this).text((bonus + Number(setDuration[0])) + " " + setDuration[1]);
+      }
+    });
+
 
     // Add or Remove Attribute
     //html.find(".attributes").on("click", ".attribute-control", this._onClickAttributeControl.bind(this));
@@ -102,15 +125,14 @@ export class ZweihanderActorSheet extends ActorSheet {
     });
 
     this._setEncumbranceMeter(html);
+  }
 
-    // html.find("#encumbrance-current").change(event => {
-    //   const data = this.actor.data.data;
-    //   const inputValue = event.target.value;
-    //   const ratio = (inputValue / data.stats.secondaryAttributes.encumbrance.value) * 100;
+  _formatDuration(textToFormat) {
+    let formattedText = "";
 
-    //   $("#meter-label").text(inputValue + " / " + data.stats.secondaryAttributes.encumbrance.value);
-    //   $("#meter-value").width(ratio + "%");
-    // });
+    const contents = textToFormat;
+
+    console.log(contents);
   }
 
   _setEncumbranceMeter(html) {

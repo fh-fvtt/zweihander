@@ -8,4 +8,4 @@ If you want to help, you can reach out to Re4XN#8341 on Discord.
 
 ## Permissions
 
-All artwork from the ZWEIHÄNDER Grim & Perilous RPG Core Rulebook used with permission.
+All artwork from the Zweihänder Grim & Perilous RPG Core Rulebook used with permission.
