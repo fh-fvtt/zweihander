@@ -1,0 +1,39 @@
+<form class="{{cssClass}}" autocomplete="off">
+    <div class="item-background">
+        <div class="item-profession-content">
+            <header class="profession-header">
+                <div class="image-and-title-container">
+                    <div class="header-image">
+                        <img class="profession-illustration" src="{{item.img}}" data-edit="img" title="{{item.name}}"/>
+                    </div>
+
+                    <div class="header-contents">
+                        <div class="title">
+                            <span>Profession: {{item.name}}</span>
+                        </div>
+                    </div>
+                </div>
+                
+            </header>
+    
+    
+            {{!-- Sheet Body --}}
+            <section class="item-body">
+    
+                {{!-- Description Tab --}}
+                <div class="tab">
+                    Name: <input type="text" name="name" value="{{item.name}}" data-dtype="String"/>
+                    Archetype: <input type="text" name="data.archetype.value" value="{{data.archetype.value}}" data-dtype="String"/>
+                    Tier: <input type="text" name="data.tier.value" value="{{data.tier.value}}" data-dtype="String"/>
+                    Bonus Advances: <input type="text" name="data.bonusAdvances.value" value="{{data.bonusAdvances.value}}" data-dtype="String"/>
+                    Skill Ranks: <input type="text" name="data.skillRanks.value" value="{{data.skillRanks.value}}" data-dtype="String"/>
+                    Talents: <input type="text" name="data.talents.value" value="{{data.talents.value}}" data-dtype="String"/>
+                    Professional Trait: <input type="text" name="data.professionalTrait.value" value="{{data.professionalTrait.value}}" data-dtype="String"/>
+                    Special Trait: <input type="text" name="data.specialTrait.value" value="{{data.specialTrait.value}}" data-dtype="String"/>
+                    Drawback: <input type="text" name="data.drawback.value" value="{{data.drawback.value}}" data-dtype="String"/>
+                    Completed: <input type="checkbox" name="data.tier.completed" {{checked data.tier.completed}} data-dtype="Boolean" />
+                </div>
+            </section>
+        </div>
+    </div>
+</form>

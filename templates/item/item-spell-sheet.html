@@ -3,14 +3,6 @@
         <img class="profile-img" src="{{item.img}}" data-edit="img" title="{{item.name}}"/>
         <div class="header-fields">
             <h1 class="charname"><input name="name" type="text" value="{{item.name}}" placeholder="Name"/></h1>
-            <div class="resource">
-            	<label>Quantity</label>
-                <input type="text" name="data.quantity" value="{{data.quantity}}" data-dtype="Number"/>
-            </div>
-            <div class="resource">
-            	<label>Weight</label>
-                <input type="text" name="data.weight" value="{{data.weight}}" data-dtype="Number"/>
-            </div>
         </div>
     </header>
 
@@ -25,6 +17,9 @@
             Principle: <input type="text" name="data.principle.value" value="{{data.principle.value}}" data-dtype="String"/>
             Reagents: <input type="text" name="data.reagents.value" value="{{data.reagents.value}}" data-dtype="String"/>
             Duration: <input type="text" name="data.duration.value" value="{{data.duration.value}}" data-dtype="String"/>
+            Effect: <input type="text" name="data.effect.value" value="{{data.effect.value}}" data-dtype="String"/>
+            Crit. Hit: <input type="text" name="data.effect.criticalSuccess.value" value="{{data.effect.criticalSuccess.value}}" data-dtype="String"/>
+            Crit. Fail: <input type="text" name="data.effect.criticalFailure.value" value="{{data.effect.criticalFailure.value}}" data-dtype="String"/>
         </div>
     </section>
 </form>

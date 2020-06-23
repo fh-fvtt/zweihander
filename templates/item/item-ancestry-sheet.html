@@ -1,90 +1,33 @@
 <form class="{{cssClass}}" autocomplete="off">
-
-    <div class="item-sheet-background">
-        <div class="item-sheet-content">
-
-            <div class="illustration-container">
-                <img class="illustration" src="systems/zweihander/assets/elf.png" />
-            </div>
-
-            <div class="item-sheet-information">
-                <div class="title-and-tabs">
-                    <div class="title">
-                        <span>{{item.name}}</span>
+    <div class="item-background">
+        <div class="item-profession-content">
+            <header class="profession-header">
+                <div class="image-and-title-container">
+                    <div class="header-image">
+                        <img class="profession-illustration" src="{{item.img}}" data-edit="img" title="{{item.name}}"/>
                     </div>
 
-                    <!-- <div class="separator">
-                        <hr />
-                    </div> -->
-
-                    <!-- {{!-- Sheet Tab Navigation --}}
-                    <nav class="sheet-tabs tabs" data-group="primary">
-                        <div class="item-nav-content">
-                            <div class="item-and-hand">
-                                <a class="item" data-tab="main">MAIN</a>
-                                <img class="selector" src="systems/zweihander/assets/skeleton_selector.png" height="22"
-                                    width="42" />
-                            </div>
-                            <div class="item-and-hand">
-                                <a class="item" data-tab="description">DESCRIPTION</a>
-                                <img class="selector" src="systems/zweihander/assets/skeleton_selector.png" height="22"
-                                    width="42" />
-                            </div>
+                    <div class="header-contents">
+                        <div class="title">
+                            <span>Profession: {{item.name}}</span>
                         </div>
-                    </nav> -->
+                    </div>
                 </div>
-
-                {{!-- Sheet Body --}}
-                <section class="item-sheet-body">
-
-                    {{!-- Description Tab --}}
-                    <div class="content">
-                        <div class="ancestral-modifiers">
-                            <header class="ancestral-modifiers-header">
-                                <div class="title">
-                                    <span>Ancestral Modifiers</span>
-                                </div>
-                            </header>
-
-                            <div class="modifiers">
-                                <div class="individual-modifier">
-                                    <img src="systems/zweihander/assets/elf-ear.svg" width="25px" height="25px" style="border: none;"/> <span>Ancestral Modifier: +1 to [AB]</span>
-                                </div>
-                                <div class="individual-modifier">
-                                    <img src="systems/zweihander/assets/elf-ear.svg" width="25px" height="25px" style="border: none;"/> <span>Ancestral Modifier: +1 to [PB]</span>
-                                </div>
-                                <div class="individual-modifier">
-                                    <img src="systems/zweihander/assets/elf-ear.svg" width="25px" height="25px" style="border: none;"/> <span>Ancestral Modifier: +1 to [IB]</span>
-                                </div>
-                                <div class="individual-modifier">
-                                    <img src="systems/zweihander/assets/elf-ear.svg" width="25px" height="25px" style="border: none;"/> <span>Ancestral Modifier: -1 to [BB]</span>
-                                </div>
-                                <div class="individual-modifier">
-                                    <img src="systems/zweihander/assets/elf-ear.svg" width="25px" height="25px" style="border: none;"/> <span>Ancestral Modifier: -1 to [FB]</span>
-                                </div>
-                                <div class="individual-modifier">
-                                    <img src="systems/zweihander/assets/elf-ear.svg" width="25px" height="25px" style="border: none;"/> <span>Ancestral Modifier: -1 to [WB]</span>
-                                </div>
-                            </div>
-                        </div>
-                        
-                        <div class="ancestral-modifiers">
-                            <header class="ancestral-modifiers-header">
-                                <div class="title">
-                                    <span>Ancestral Trait</span>
-                                </div>
-                            </header>
-
-                            <div class="modifiers">
-                                <div class="individual-modifier">
-                                    <img src="systems/zweihander/assets/elf-ear.svg" width="25px" height="25px" style="border: none;"/> <span>Ancestral Trait: Deadly Aim</span>
-                                </div>
-                            </div>
-                        </div>
-                        <!-- {{editor content=data.description target="data.description" button=true owner=owner editable=editable}} -->
-                    </div>
-                </section>
-            </div>
+                
+            </header>
+    
+    
+            {{!-- Sheet Body --}}
+            <section class="item-body">
+    
+                {{!-- Description Tab --}}
+                <div class="tab">
+                    Name: <input type="text" name="name" value="{{item.name}}" data-dtype="String"/>
+                    Modifiers (Positive): <input type="text" name="data.ancestralModifiers.positive.value" value="{{data.ancestralModifiers.positive.value}}" data-dtype="String"/>
+                    Modifiers (Negative): <input type="text" name="data.ancestralModifiers.negative.value" value="{{data.ancestralModifiers.negative.value}}" data-dtype="String"/>
+                    Trait: <input type="text" name="data.ancestralTrait.value" value="{{data.ancestralTrait.value}}" data-dtype="String"/>
+                </div>
+            </section>
         </div>
     </div>
 </form>

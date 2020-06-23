@@ -1,0 +1,32 @@
+<form class="{{cssClass}}" autocomplete="off">
+    <div class="item-background">
+        <div class="item-profession-content">
+            <header class="profession-header">
+                <div class="image-and-title-container">
+                    <div class="header-image">
+                        <img class="profession-illustration" src="{{item.img}}" data-edit="img" title="{{item.name}}"/>
+                    </div>
+
+                    <div class="header-contents">
+                        <div class="title">
+                            <span>Profession: {{item.name}}</span>
+                        </div>
+                    </div>
+                </div>
+                
+            </header>
+    
+    
+            {{!-- Sheet Body --}}
+            <section class="item-body">
+    
+                {{!-- Description Tab --}}
+                <div class="tab">
+                    Name: <input type="text" name="name" value="{{item.name}}" data-dtype="String"/>
+                    Effect: <input type="text" name="data.effect.value" value="{{data.effect.value}}" data-dtype="String"/>
+                    Purchased: <input type="checkbox" name="data.purchased" {{checked data.purchased}} data-dtype="Boolean" />
+                </div>
+            </section>
+        </div>
+    </div>
+</form>

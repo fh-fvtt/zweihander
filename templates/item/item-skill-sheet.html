@@ -1,0 +1,19 @@
+<form class="{{cssClass}}" autocomplete="off">
+    <header class="sheet-header">
+        <img class="profile-img" src="{{item.img}}" data-edit="img" title="{{item.name}}"/>
+    </header>
+
+
+    {{!-- Sheet Body --}}
+    <section class="sheet-body">
+
+        {{!-- Description Tab --}}
+        <div class="tab">
+            Primary Attribute (Base Chance): <input type="text" name="data.associatedPrimaryAttribute.value" value="{{data.associatedPrimaryAttribute.value}}" data-dtype="String" />
+            Apprentice: <input type="checkbox" name="data.ranks.apprentice.purchased" {{checked data.ranks.apprentice.purchased}} data-dtype="Boolean" />
+            Journeyman: <input type="checkbox" name="data.ranks.journeyman.purchased" {{checked data.ranks.journeyman.purchased}} data-dtype="Boolean" />
+            Master: <input type="checkbox" name="data.ranks.master.purchased" {{checked data.ranks.master.purchased}} data-dtype="Boolean" />
+            Requires Training: <input type="checkbox" name="data.requiresTraining" {{checked data.requiresTraining}} data-dtype="Boolean" />
+        </div>
+    </section>
+</form>

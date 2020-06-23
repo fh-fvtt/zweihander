@@ -9,7 +9,7 @@ export class ZweihanderItemSheet extends ItemSheet {
 	  return mergeObject(super.defaultOptions, {
 			classes: ["zweihander", "sheet", "item"],
 			width: 600,
-      height: 430,
+      height: 450,
       resizable: false,
       // tabs: [{navSelector: ".sheet-tabs", contentSelector: ".sheet-body", initial: "description"}]
 		});
@@ -39,6 +39,20 @@ export class ZweihanderItemSheet extends ItemSheet {
 
   /* -------------------------------------------- */
 
+  // /** @override */
+  // _onDragOver(event) {
+  //   event.preventDefault();
+
+  //   return false;
+  // }
+
+  // /** @override */
+  // async _onDrop(event) {
+  //   event.preventDefault();
+  // }
+
+  /* -------------------------------------------- */
+
   /** @override */
   setPosition(options={}) {
     const position = super.setPosition(options);
@@ -57,14 +71,17 @@ export class ZweihanderItemSheet extends ItemSheet {
     // Everything below here is only needed if the sheet is editable
     if (!this.options.editable) return;
 
-    if (this.item.type === 'ancestry') {
-      const ancestries = ["human", "elf", "dwarf", "gnome", "halfling", "ogre"]; // TODO: change this to an object -> "elf": /path/to/image.png
+    this.form.ondrop = event => this._onDrop(event);
+    this.form.ondragover = event => this._onDragOver(event);
 
-      ancestries.forEach(ancestry => {
-        if (this.item.name.toLowerCase().includes(ancestry))
-          html.find(".illustration").attr("src", "systems/zweihander/assets/" + ancestry + ".png");
-      });
-    }
+    // if (this.item.type === 'ancestry') {
+    //   const ancestries = ["human", "elf", "dwarf", "gnome", "halfling", "ogre"]; // TODO: change this to an object -> "elf": /path/to/image.png
+
+    //   ancestries.forEach(ancestry => {
+    //     if (this.item.name.toLowerCase().includes(ancestry))
+    //       html.find(".illustration").attr("src", "systems/zweihander/assets/" + ancestry + ".png");
+    //   });
+    // }
 
     // Add or Remove Attribute
     // html.find(".attributes").on("click", ".attribute-control", this._onClickAttributeControl.bind(this));

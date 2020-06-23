@@ -14,17 +14,34 @@ export class ZweihanderItem extends Item {
     const actorData = this.actor ? this.actor.data : {};
     const data = itemData.data;
 
-    if (itemData.type === 'ancestry')
+    if (itemData.type === "ancestry") 
       this._prepareAncestryData(itemData);
+    else if (itemData.type === "skill")
+      this._prepareSkillData(itemData);
   }
 
   _prepareAncestryData(itemData) {
     const data = itemData.data;
 
-    if (itemData.name.toLowerCase().includes("elf")) {
-      itemData.img = "systems/zweihander/assets/elf-ear.svg";
-    }
+    itemData.img = "systems/zweihander/assets/icons/ancestry.svg";
 
+  }
+
+  _prepareSkillData(itemData) {
+    const data = itemData.data;
+
+    let rankBonus;
+
+    if (data.ranks.master.purchased)
+      rankBonus = 30;
+    else if (data.ranks.journeyman.purchased)
+      rankBonus = 20;
+    else if (data.ranks.apprentice.purchased)
+      rankBonus = 10;
+    else
+      rankBonus = 0;
+
+    data.ranks.bonus = rankBonus;
   }
 
 }
