@@ -52,6 +52,14 @@
               "valuePlusTwelve": 0,
               "valuePlusEighteen": 0
             },
+            "perilCurrent": {
+              "value": 5,
+              "description": "Unhindered"
+            },
+            "damageCurrent": {
+              "value": 5,
+              "description": "Unharmed"
+            },
             "encumbrance": {
               "value": 0,
               "overage": 0,
@@ -83,14 +91,22 @@
           "description": "",
           "notes": ""
         }
+      },
+      "coinage": {
+        "coinage": {
+          "gold": 0,
+          "silver": 0,
+          "brass": 0
+        }
       }
     },
     "character": {
       "templates": [
         "stats",
         "flavor",
-        "conditionalEffects"
+        "coinage"
       ],
+      "testAttribute": [],
       "socialClass": {
         "value": ""
       },
@@ -176,7 +192,7 @@
   },
   "Item": {
     "types": [
-      "trapping", "injury", "disease", "profession", "ancestry", "armor", "weapon", "spell", "talent", "trait", "drawback", "quality", "skill", "uniqueAdvance"
+      "trapping", "injury", "disease", "profession", "ancestry", "armor", "weapon", "spell", "ritual", "talent", "trait", "drawback", "quality", "skill", "uniqueAdvance"
     ],
     "templates": {
       "flavor": {
@@ -251,7 +267,10 @@
       "load": {
         "value": 0
       },
-      "qualities": [],
+      "qualities": {
+        "value": "",
+        "arrayOfValues": []
+      },
       "distance": {
         "value": ""
       }
@@ -261,7 +280,10 @@
         "flavor", "price", "encumbrance"
       ],
       "equipped": false,
-      "qualities": [],
+      "qualities": {
+        "value": "",
+        "arrayOfValues": []
+      },
       "damageThresholdModifier": {
         "value": 0
       }
@@ -270,9 +292,16 @@
       "templates": [
         "flavor", "price", "encumbrance"
       ],
+      "category": {
+        "value": ""
+      },
       "quantity": {
         "value": 0
-      }
+      },
+      "encumbrance": {
+        "value": 0
+      },
+      "carried": false
     },
     "profession": {
       "templates": [
@@ -280,7 +309,7 @@
       ],
       "expert": {
         "value": false,
-        "requirements": []
+        "requirements": ""
       },
       "archetype": {
         "value": ""
@@ -336,6 +365,32 @@
         "criticalFailure": ""
       }
     }, 
+    "ritual": {
+      "templates": [
+        "flavor"
+      ],
+      "difficulty": {
+        "value": ""
+      },
+      "consequences": {
+        "value": ""
+      },
+      "channelAs": {
+        "value": ""
+      },
+      "condition": {
+        "value": ""
+      },
+      "reagents": {
+        "value": ""
+      },
+      "castingTime": {
+        "value": ""
+      },
+      "effect": {
+        "value": ""
+      }
+    },
     "skill": {
       "templates": [
         "flavor"

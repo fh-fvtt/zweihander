@@ -5,11 +5,11 @@
             <h1 class="charname"><input name="name" type="text" value="{{item.name}}" placeholder="Name"/></h1>
             <div class="resource">
             	<label>Quantity</label>
-                <input type="text" name="data.quantity" value="{{data.quantity}}" data-dtype="Number"/>
+                <input type="text" name="data.quantity" value="{{data.quantity}}" />
             </div>
             <div class="resource">
             	<label>Weight</label>
-                <input type="text" name="data.weight" value="{{data.weight}}" data-dtype="Number"/>
+                <input type="text" name="data.weight" value="{{data.weight}}" />
             </div>
         </div>
     </header>
@@ -20,12 +20,13 @@
 
         {{!-- Description Tab --}}
         <div class="tab">
-            Encumbrance: <input type="number" name="data.encumbrance.value" value="{{data.encumbrance.value}}" data-dtype="Number"/>
-            Distance: <input type="text" name="data.distance.value" value="{{data.distance.value}}" data-dtype="String" />
-            Load: <input type="number" name="data.load.value" value="{{data.load.value}}" data-dtype="Number" />
-            Skill: <input type="text" name="data.associatedSkill.value" value="{{data.associatedSkill.value}}" data-dtype="String" />
-            Type: <input type="text" name="data.type.value" value="{{data.type.value}}" data-dtype="String" />
-            Equipped: <input type="checkbox" name="data.equipped" {{checked data.equipped}} data-dtype="Boolean" />
+            Encumbrance: <input type="number" name="data.encumbrance.value" value="{{data.data.encumbrance.value}}" />
+            Distance: <input type="text" name="data.distance.value" value="{{data.data.distance.value}}"  />
+            Load: <input type="number" name="data.load.value" value="{{data.data.load.value}}"  />
+            Skill: <input type="text" name="data.associatedSkill.value" value="{{data.data.associatedSkill.value}}"  />
+            Type: <input type="text" name="data.type.value" value="{{data.data.type.value}}"  />
+            Equipped: <input type="checkbox" name="data.equipped" {{checked data.data.equipped}} />
+            Qualities: <input type="text" name="data.qualities.value" value="{{data.data.qualities.value}}" />
         </div>
     </section>
 </form>

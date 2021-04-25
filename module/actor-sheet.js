@@ -9,15 +9,31 @@ export class ZweihanderActorSheet extends ActorSheet {
     return mergeObject(super.defaultOptions, {
       classes: ["zweihander", "sheet", "actor"],
       template: "systems/zweihander/templates/actor-sheet.html",
-      width: 700, //720,
-      height: 925, //945,
+      width: 689, //720,
+      height: 890, //945,
       resizable: false,
-      tabs: [{ navSelector: ".sheet-tabs", contentSelector: ".sheet-body", initial: "main" }]
-      // scrollY: [".save-scroll-skills", ".save-scroll-drawbacks", ".save-scroll-weapons", ".save-scroll-armor", ".save-scroll-magick", ".save-scroll-professions"]
+      tabs: [
+        { navSelector: ".main-tabs", contentSelector: ".sheet-body", initial: "main" },
+        { navSelector: ".trapping-tabs", contentSelector: ".trapping-tabs-content", initial: "weapons" },
+        { navSelector: ".tiers-tabs", contentSelector: ".professions-talents-unique-content", initial: "professions" },
+        { navSelector: ".magick-tabs", contentSelector: ".magick-tabs-content", initial: "spells" }
+      ],
+      scrollY: [".common-list.skills.save-scroll", 
+        ".common-list.unique-advances.save-scroll",
+        ".common-list.drawback.save-scroll",
+        "common-list.save-scroll",
+        "common-list.magick.save-scroll",
+        "common-list.professions.save-scroll",
+      ]
     });
   }
 
   /* -------------------------------------------- */
+
+  constructor(...args){
+    super(...args);
+    this.renderable = true;
+  }
 
   /** @override */
   getData() {
@@ -25,18 +41,12 @@ export class ZweihanderActorSheet extends ActorSheet {
     data.dtypes = ["String", "Number", "Boolean"];
 
     if (this.actor.data.type === "character") {
-      // ...something...
+      data.data.rankOptions = {1: "1", 2: "2", 3: "3", 4: "4", 5: "5", 6: "6", 7: "7", 8: "8", 9: "9"};
+      data.data.perilOptions = {5: "Unhindered", 4: "Imperiled", 3: "Ignore 1 Skill Rank", 2: "Ignore 2 Skill Ranks", 1: "Ignore 3 Skill Ranks", 0: "INCAPACITATED!"};
+      data.data.damageOptions = {5: "Unharmed", 4: "Lightly Wounded", 3: "Moderately Wounded", 2: "Seriously Wounded", 1: "Grievously Wounded", 0: "SLAIN!"};
     }
 
-    return data;
-  }
-
-  _prepareDamageThreshold(armor, actorData) {
-    const data = actorData.data;
-    const damageArray = Object.keys(data.stats.secondaryAttributes.damageThreshold);
-
-    for (let i = 0; i < damageArray.length; i++)
-      data.stats.secondaryAttributes.damageThreshold[damageArray[i]] += armor.data.damageThresholdModifier.value;
+    return data.data;
   }
 
   /* -------------------------------------------- */
@@ -45,51 +55,45 @@ export class ZweihanderActorSheet extends ActorSheet {
   activateListeners(html) {
     super.activateListeners(html);
 
-    const actorData = this.actor.data;
+    let actorData = this.actor.data;
 
     // Everything below here is only needed if the sheet is editable
     if (!this.options.editable) return;
 
-    // Update Inventory Item
+    // Edit Inventory Item
     html.find('.item-edit').click(ev => {
       const li = $(ev.currentTarget).parents(".item");
-      const item = this.actor.getOwnedItem(li.data("itemId"));
+      const item = this.actor.items.get(li.data("itemId"));
       item.sheet.render(true);
     });
 
     // Delete Inventory Item
-    html.find('.item-delete').click(ev => {
+    html.find('.item-delete').click(async ev => {
       const li = $(ev.currentTarget).parents(".item");
 
-      this.actor.deleteOwnedItem(li.data("itemId"));
+      await this.actor.deleteEmbeddedDocuments("Item", [ li.data("itemId") ]);
       li.slideUp(200, () => this.render(false));
     });
 
-    // Delete Profession Item
-    html.find('.item-delete-profession').click(ev => {
-      const li = $(ev.currentTarget).parents(".item");
+    // Edit Ancestry Item
+    html.find('.ancestry-edit-button').click(ev => {
+      const ancestryId = this.actor.data.ancestry[0]._id;
+      const ancestryItem = this.actor.items.get(ancestryId);
 
-      this.actor.deleteOwnedItem(li.data("itemId"));
-      li.slideUp(200, () => this.render(false));
+      ancestryItem.sheet.render(true);
+    });
 
-      // TODO: REFACTOR -- if another profession of a lower tier contains skill, skip.
-      for (let skill of this.actor.data.skills) {
-        const keys = Object.keys(skill.data.ranks);
+    // Delete Ancestry Item
+    html.find('.ancestry-delete-button').click(async ev => {
+      const ancestryId = this.actor.data.ancestry[0]._id;
 
-        for (let key of keys) {
-          skill.data.ranks[key] = false;
-        }
-
-        const updatedSkillData = duplicate(skill.data);
-
-        this.actor.getOwnedItem(skill._id).update(updatedSkillData); // Doesn't work across refresh
-      }
+      await this.actor.deleteEmbeddedDocuments("Item", [ ancestryId ]);
     });
 
     // toFormat.replace(/(@([a-zA-Z0-9]\.)*[a-zA-Z0-9]+)/g, (key) => resolveProperty(actorData, key))
 
-    // Handle formulas for Spell Duration
-    html.find('.spell-duration').each(function () {
+    // Handle formulas for display
+    html.find('.fetch-property').each(function () {
       const toFormat = $(this).text();
 
       if (toFormat[0] === "@") {
@@ -103,18 +107,20 @@ export class ZweihanderActorSheet extends ActorSheet {
     });
 
     // "Link" checkboxes on character sheet and item sheet so both have the same state
-    html.find(".link-checkbox").click(event => {
+    html.find(".link-checkbox").click(async event => {
       event.preventDefault();
 
-      console.log("CHECKED: ", event.target.checked);
-
       const li = $(event.currentTarget).closest(".item");
-      const item = this.actor.getOwnedItem(li.data("itemId"));
+      const item = this.actor.items.get(li.data("itemId"));
 
       if (item.type === "armor") {
-        item.update({ "data.equipped": event.target.checked });
+        await item.update({ "data.equipped": event.target.checked });
       } else if (item.type === "profession") {
-        item.update({ "data.tier.completed": event.target.checked });
+        await item.update({ "data.tier.completed": event.target.checked });
+      } else if (item.type === "trapping") {
+        await item.update({ "data.carried": event.target.checked });
+      } else if (item.type === "weapon") {
+        await item.update({ "data.equipped": event.target.checked });
       }
     });
 
@@ -122,8 +128,8 @@ export class ZweihanderActorSheet extends ActorSheet {
     this._updateDamageThresholdLabel(html);
 
     // On loss of focus, update the textbox value
-    html.find(".notepad").focusout(event => {
-      this.actor.update({ "data.flavor.notes": event.target.value });
+    html.find(".notepad").focusout(async event => {
+      await this.actor.update({ "data.flavor.notes": event.target.value });
     });
 
     // Update the encumbrance meter
@@ -134,48 +140,59 @@ export class ZweihanderActorSheet extends ActorSheet {
 
     // TODO: When a profession is deleted, iterate over skills and remove ranks
 
-    // Purchase skill rank
-    html.find(".skill-link").click(event => {
+    // Show item sheet on right click
+    html.find(".fetch-item").contextmenu(event => {
       const target = $(event.currentTarget);
       const skillName = target.text().trim();
       const itemId = actorData.items.find(item => item.name === skillName)._id;
 
       if (itemId) {
-        const skillItem = this.actor.getOwnedItem(itemId);
+        const skillItem = this.actor.items.get(itemId);
+        skillItem.sheet.render(true);
+      }
+    });
+
+    // Purchase skill rank
+    html.find(".skill-link").click(async event => {
+      const target = $(event.currentTarget);
+      const skillName = target.text().trim();
+      const itemId = actorData.items.find(item => item.name === skillName)._id;
+
+      if (itemId) {
+        const skillItem = this.actor.items.get(itemId);
         const skillData = skillItem.data.data;
         if (target.hasClass("not-purchased")) {
           if (!skillData.ranks.apprentice.purchased) {
-            skillItem.update({ "data.ranks.apprentice.purchased": true });
+            await skillItem.update({ "data.ranks.apprentice.purchased": true });
           } else if (!skillData.ranks.journeyman.purchased && skillData.ranks.apprentice.purchased) {
-            skillItem.update({ "data.ranks.journeyman.purchased": true });
+            await skillItem.update({ "data.ranks.journeyman.purchased": true });
           } else if (!skillData.ranks.master.purchased && skillData.ranks.journeyman.purchased && skillData.ranks.apprentice.purchased) {
-            skillItem.update({ "data.ranks.master.purchased": true });
+            await skillItem.update({ "data.ranks.master.purchased": true });
           } else {
             console.log("Unable to purchase additional ranks for this tier.");
           }
         } else {
           if (skillData.ranks.apprentice.purchased && !skillData.ranks.journeyman.purchased && !skillData.ranks.master.purchased) {
-            skillItem.update({ "data.ranks.apprentice.purchased": false });
+            await skillItem.update({ "data.ranks.apprentice.purchased": false });
           } else if (skillData.ranks.journeyman.purchased && !skillData.ranks.master.purchased) {
-            skillItem.update({ "data.ranks.journeyman.purchased": false });
+            await skillItem.update({ "data.ranks.journeyman.purchased": false });
           } else if (skillData.ranks.master.purchased) {
-            skillItem.update({ "data.ranks.master.purchased": false });
+            await skillItem.update({ "data.ranks.master.purchased": false });
           } else {
             console.log("Unable to delete additional ranks for this tier.");
           }
         }
-
       }
     });
 
     // Purchase bonus advance
-    html.find(".advance-link").click(event => {
+    html.find(".advance-link").click(async event => {
       const target = $(event.currentTarget);
       const targetIdx = Number(target.attr("id").split("-")[1]);
       const advanceName = target.text();
       const professionElement = target.closest(".individual-description").siblings(".item");
-      const professionItem = this.actor.getOwnedItem($(professionElement).data("itemId"));
-
+      const professionItem = this.actor.items.get($(professionElement).data("itemId"));
+      
       if (professionItem.data.data.tier.value !== "") {
         for (let advance of professionItem.data.data.bonusAdvances.arrayOfValues) {
           if ((advance.name === advanceName) && (advance.index === targetIdx)) {
@@ -184,68 +201,41 @@ export class ZweihanderActorSheet extends ActorSheet {
           }
         }
 
-        const updatedProfessionData = duplicate(professionItem.data);
         const sheet = this;
 
-        professionItem.update(updatedProfessionData).then(function () {
-          sheet.render();
+        await professionItem.update({
+          "data.bonusAdvances.arrayOfValues": professionItem.data.data.bonusAdvances.arrayOfValues, 
+          "data.skillRanks.arrayOfValues": professionItem.data.data.skillRanks.arrayOfValues, 
+          "data.talents.arrayOfValues": professionItem.data.data.talents.arrayOfValues}).then(function() {
+          sheet.submit();
         });
       } else {
         console.log("Profession has unspecified Tier:", professionItem.data.name);
       }
     });
 
-    // Show item sheet on right click
-    html.find(".fetch-item").contextmenu(event => {
-      const target = $(event.currentTarget);
-      const skillName = target.text().trim();
-      const itemId = actorData.items.find(item => item.name === skillName)._id;
-
-      if (itemId) {
-        const skillItem = this.actor.getOwnedItem(itemId);
-        skillItem.sheet.render(true);
-      }
-    });
-
     // Purchase talent 
-    html.find(".talent-link").click(event => {
+    html.find(".talent-link").click(async event => {
       const target = $(event.currentTarget);
       const talentName = target.text().trim();
-      const itemId = actorData.items.find(item => item.name === talentName)._id;
+      const itemId = actorData.talents.find(item => item.name === talentName)._id;
 
       if (itemId) {
-        const talentItem = this.actor.getOwnedItem(itemId);
+        const talentItem = this.actor.items.get(itemId);
         const talentData = talentItem.data.data;
 
-        talentItem.update({ "data.purchased": !talentData.purchased });
+        this.renderable = false;
+
+        await talentItem.update({ "data.purchased": !talentData.purchased }, { "renderSheet": false });
+
+        this.renderable = true;
+
+        await this._render(false);
       }
     });
-
-    // const parries = ["Simple Melee", "Martial Melee", "Charm", "Incantation", "Guile", ];
-
-    // let parryText = html.find(".parry-skill");
-
-    // html.find(".parry-back").click(event => {
-    //   if (parries.indexOf(parryText.text()) == 0) {
-    //     html.find(".parry-skill").text(parries[parries.length - 1]);
-    //   } else {
-    //     html.find(".parry-skill").text(parries[parries.indexOf(parryText.text()) - 1]);
-    //   }
-    // });
-
-    // html.find(".parry-forward").click(event => {
-    //   if (parries.indexOf(parryText.text()) < parries.length - 1) {
-    //     html.find(".parry-skill").text(parries[parries.indexOf(parryText.text()) + 1]);
-    //   } else {
-    //     html.find(".parry-skill").text(parries[0]);
-    //   }
-    // });
 
     // Alternate color for lists
     this._alternateRowColor(html);
-
-    // Change sheet layout to compact version
-    // html.find(".helmet").click(event => this._changeSheetLayout($(html).parent().parent()));
 
     // Roll
     html.find(".skill-roll").click(this._onRoll.bind(this));
@@ -256,7 +246,7 @@ export class ZweihanderActorSheet extends ActorSheet {
     const element = event.currentTarget;
     const dataset = element.dataset;
 
-    const skill = $(element).text().toLowerCase();
+    const skill = dataset.label.toLowerCase();
     const skillItem = this.actor.data.skills[this.actor.data.skills.findIndex(item => item.name.toLowerCase() === skill)];
 
     if (skillItem) {
@@ -273,38 +263,29 @@ export class ZweihanderActorSheet extends ActorSheet {
         rankBonus = 10;
       }
 
-      let a = dataset.label;
-
-      console.log(a);
+      let template = "systems/zweihander/templates/chat/chat-skill.html";
 
       if (dataset.roll) {
         let roll = new Roll(dataset.roll, this.actor.data.data);
         let label = dataset.label ? `Rolling against ${dataset.label} (${rollAgainst + rankBonus})` : '';
 
-        let b = await renderTemplate("systems/zweihander/templates/item/item-ancestry-sheet.html", {});
+        roll.roll().render().then(r => {
+          let templateData = {
+            skill: label
+          };
 
-        // console.log(b);
-
-        // roll.roll().toMessage({
-        //   speaker: ChatMessage.getSpeaker({ actor: this.actor }),
-        //   flavor: label
-        // });
+          renderTemplate(template, templateData).then(c => {
+            let chatData = {
+              user: game.user._id,
+              speaker: ChatMessage.getSpeaker({ actor: this.actor }),
+              content: c
+            };
+        
+            ChatMessage.create(chatData);
+          });
+        });
       }
     }
-  }
-
-  _changeSheetLayout(html) {
-    html.css({
-      "height": "845px",
-      "width": "585px"
-    });
-    html.find(".sheet-content").css("padding", "15px 10px");
-    html.find(".sheet-background").css({ 
-      "background-image": "initial",
-      "background-size": "initial",
-      "background-repeat": "initial",
-      "background-color": "white"
-    });
   }
 
   _alternateRowColor(html) {
@@ -328,87 +309,55 @@ export class ZweihanderActorSheet extends ActorSheet {
     const contents = dtmLabel.split("+");
     const armor = this.actor.items.find(item => item.type === "armor" && item.data.data.equipped == true);
 
-    if (armor !== null) {
+    if (armor !== null && armor !== undefined) {
       const dtm = armor.data.data.damageThresholdModifier.value;
       html.find('.label.dtm').text(contents[0] + "+" + dtm);
     }
   }
 
   _updateEncumbranceMeter(html) {
-    const currentEncumbrance = html.find(".encumbrance-current").val();
-    const totalEncumbrance = html.find(".encumbrance-total").val();
-    const ratio = (currentEncumbrance / totalEncumbrance) * 100;
+    const encumbranceData = this.actor.data.data.stats.secondaryAttributes.encumbrance;
+    const currentEncumbrance = encumbranceData.current;
+    const totalEncumbrance = encumbranceData.value;
+
+    let ratio = (currentEncumbrance / totalEncumbrance) * 100;
+
+    if (ratio > 100) {
+      ratio = 100;
+      html.find(".meter-label").css("color", "indianred");
+    }
 
     html.find(".meter-value").width(ratio + "%");
   }
 
   /* -------------------------------------------- */
 
-// /** @override */
-// setPosition(options = {}) {
-//   const position = super.setPosition(options);
-//   const sheetBody = this.element.find(".sheet-body");
-//   const bodyHeight = position.height - 192;
-//   sheetBody.css("height", bodyHeight);
-//   return position;
-// }
-
-  /* -------------------------------------------- */
-
-  /**
-   * Listen for click events on an attribute control to modify the composition of attributes in the sheet
-   * @param {MouseEvent} event    The originating left click event
-   * @private
-   */
-  async _onClickAttributeControl(event) {
-    event.preventDefault();
-    const a = event.currentTarget;
-    const action = a.dataset.action;
-    const attrs = this.object.data.data.attributes;
-    const form = this.form;
-
-    // Add new attribute
-    if (action === "create") {
-      const nk = Object.keys(attrs).length + 1;
-      let newKey = document.createElement("div");
-      newKey.innerHTML = `<input type="text" name="data.attributes.attr${nk}.key" value="attr${nk}"/>`;
-      newKey = newKey.children[0];
-      form.appendChild(newKey);
-      await this._onSubmit(event);
+  /** @override */
+  _onChangeTab(event, tabs, active) {
+    if (active === "trappings") {
+      this._tabs[1].activate(this._tabs[1].active);
     }
 
-    // Remove existing attribute
-    else if (action === "delete") {
-      const li = a.closest(".attribute");
-      li.parentElement.removeChild(li);
-      await this._onSubmit(event);
+    if (active === "tiers") {
+      this._tabs[2].activate(this._tabs[2].active);
     }
+
+    if (active === "magick") {
+      this._tabs[3].activate(this._tabs[3].active);
+    }
+
+    super._onChangeTab();
   }
 
-
   async _render(force = false, options = {}) {
-    this._saveScrollPos();
+    if (!this.renderable) return;
+    //this._saveScrollPos();
     this._saveToggleState();
 
     await super._render(force, options);
 
-    this._setScrollPos();
+    // this._setScrollPos();
     this._setToggleState();
-  }
-
-  // TODO
-  _saveSheetLayout() {
-    if (this.form === null)
-      return;
-
-    const html = $(this.form).parent();
-
-    this.toggleState = [];
-
-    let items = $(html.find(".save-toggle"));
-
-    for (let item of items)
-      this.toggleState.push($(item).hasClass("open"));
   }
 
   _saveToggleState() {
@@ -421,8 +370,9 @@ export class ZweihanderActorSheet extends ActorSheet {
 
     let items = $(html.find(".save-toggle"));
 
-    for (let item of items)
+    for (let item of items) {
       this.toggleState.push($(item).hasClass("open"));
+    }
   }
 
   _setToggleState() {
@@ -472,7 +422,7 @@ export class ZweihanderActorSheet extends ActorSheet {
   /* -------------------------------------------- */
 
   /** @override */
-  _updateObject(event, formData) {
+  async _updateObject(event, formData) {
 
     // Handle the free-form attributes list
     console.log("TEST formData :::: ", formData);
@@ -499,6 +449,6 @@ export class ZweihanderActorSheet extends ActorSheet {
     }, {_id: this.object._id, "data.attributes": attributes});
     */
     // Update the Actor
-    return this.object.update(formData);
+    return await this.object.update(formData);
   }
 }

@@ -9,9 +9,9 @@ export class ZweihanderItemSheet extends ItemSheet {
 	  return mergeObject(super.defaultOptions, {
 			classes: ["zweihander", "sheet", "item"],
 			width: 600,
-      height: 450,
+      height: 750,
       resizable: false,
-      // tabs: [{navSelector: ".sheet-tabs", contentSelector: ".sheet-body", initial: "description"}]
+      tabs: [{navSelector: ".sheet-tabs", contentSelector: ".item-body", initial: "description"}]
 		});
   }
 
@@ -32,7 +32,7 @@ export class ZweihanderItemSheet extends ItemSheet {
   /** @override */
   getData() {
     const data = super.getData();
-    data.dtypes = ["String", "Number", "Boolean"];
+    
 
     return data;
   }
@@ -71,8 +71,8 @@ export class ZweihanderItemSheet extends ItemSheet {
     // Everything below here is only needed if the sheet is editable
     if (!this.options.editable) return;
 
-    this.form.ondrop = event => this._onDrop(event);
-    this.form.ondragover = event => this._onDragOver(event);
+    // this.form.ondrop = event => this._onDrop(event);
+    // this.form.ondragover = event => this._onDragOver(event);
 
     // if (this.item.type === 'ancestry') {
     //   const ancestries = ["human", "elf", "dwarf", "gnome", "halfling", "ogre"]; // TODO: change this to an object -> "elf": /path/to/image.png
@@ -94,7 +94,7 @@ export class ZweihanderItemSheet extends ItemSheet {
    * @param {MouseEvent} event    The originating left click event
    * @private
    */
-  async _onClickAttributeControl(event) {
+/*   async _onClickAttributeControl(event) {
     event.preventDefault();
     const a = event.currentTarget;
     const action = a.dataset.action;
@@ -117,7 +117,7 @@ export class ZweihanderItemSheet extends ItemSheet {
       li.parentElement.removeChild(li);
       await this._onSubmit(event);
     }
-  }
+  } */
 
   /* -------------------------------------------- */
 

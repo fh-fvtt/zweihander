@@ -32,8 +32,8 @@ Hooks.once("init", async function () {
   };
 
   // Define custom Entity classes
-  CONFIG.Actor.entityClass = ZweihanderActor;
-  CONFIG.Item.entityClass = ZweihanderItem;
+  CONFIG.Actor.documentClass = ZweihanderActor;
+  CONFIG.Item.documentClass = ZweihanderItem;
 
   // Register sheet application classes
   Actors.unregisterSheet("core", ActorSheet);
@@ -158,11 +158,44 @@ Hooks.once("init", async function () {
     return idx == 0 ? options.fn(this) : options.inverse(this);
   });
 
+  Handlebars.registerHelper("isMissing", function (toCheck, options) {
+    if (!Array.isArray(toCheck))
+      return toCheck === "" ? options.inverse(this) : options.fn(this);
+    else
+      return toCheck[0] === "" ? options.inverse(this) : options.fn(this);  // An empty input field results in first element of array becoming the empty String
+  });
+
   Handlebars.registerHelper("oddOrEven", function (idx) {
     if ((idx + 1) % 2)
       return "odd";
     else
       return "even";
+  });
+
+  Handlebars.registerHelper("radioRanks", function (name, choices, options) {
+    const checked = options.hash['checked'] || null;
+
+    let html = "";
+
+    for ( let [key, label] of Object.entries(choices) ) {
+      const isChecked = checked === key;
+      html += `<div class="radio-and-number"><input type="radio" class="rd" name="${name}" value="${key}" ${isChecked ? "checked" : ""}><span>${label}</span></div>`;
+    }
+
+    return new Handlebars.SafeString(html);
+  });
+
+  Handlebars.registerHelper("radioThresholds", function (name, choices, options) {
+    const checked = options.hash['checked'] || null;
+
+    let html = "";
+
+    for ( let [key, label] of Object.entries(choices) ) {
+      const isChecked = checked === key;
+      html += `<div class="radio-and-status"><input type="radio" class="radio-rank" name="${name}" value="${key}" ${isChecked ? "checked" : ""}><span class="status">${label}</span></div>`;
+    }
+
+    return new Handlebars.SafeString(html);
   });
 });
 
@@ -177,7 +210,7 @@ var findDifference = function (datasetA, datasetB) {
   return diffArray;
 };
 
-Hooks.on("createActor", async (actor, options, id) => {
+Hooks.on("createActor", async (actor) => {
   if (actor.data.type === "character") {
     let skillPack = game.packs.get("zweihander.skills");
     let skillIndex = await skillPack.getIndex();
@@ -185,7 +218,7 @@ Hooks.on("createActor", async (actor, options, id) => {
     let toAdd = [];
 
     for (let idx of skillIndex) {
-      let _temp = await skillPack.getEntity(idx._id);
+      let _temp = await skillPack.getDocument(idx._id);
       toAdd.push(_temp.data);
     }
 
@@ -193,28 +226,52 @@ Hooks.on("createActor", async (actor, options, id) => {
     let toAddDifference = findDifference(toAdd, actor.data.skills).concat(findDifference(actor.data.skills, toAdd));
 
     if (toAddDifference.length > 0)
-      await actor.createEmbeddedEntity("OwnedItem", toAddDifference);
+      await actor.createEmbeddedDocuments("Item", toAddDifference);
   }
 });
 
-Hooks.on("createOwnedItem", async (actor, item) => {
-  if (item.type === "profession") {
+// It is important that the anonymous function here is not async to prevent Item creation (since Hooks do not await)
+Hooks.on("preCreateItem", (item, data) => {
+  if (item.type === "ancestry") {
+    const actor = item.parent;
+
+    // Only one Ancestry per character allowed
+    if (actor.data.ancestry.length > 0) {
+      console.log("Maximum of 1 Ancestry per character allowed!")
+      return false;
+    }
+  } else if (item.type === "profession") {
+    const actor = item.parent;
+
+    if (actor.data.professions.length == 3) {
+      console.log("Maximum of 3 Professions per character allowed!")
+      return false;
+    }
+  }
+});
+
+Hooks.on("createItem", async (item, data) => {
+  const isOwned = item.parent !== null;
+
+  if (item.type === "profession" && isOwned) {
+
+    const actor = item.parent;
 
     // ------------------------------------------------ //
     //  Assing Tier based on number of professions      //
     // ------------------------------------------------ //
 
-    let tier = actor.data.professions.length + 1;
+    let tier = actor.data.professions.length;
 
     switch (tier) {
       case 1:
-        await actor.updateEmbeddedEntity("OwnedItem", {"_id": item._id, "data.tier.value": "Basic"});
+        await actor.updateEmbeddedDocuments("Item", [ { "_id": item.id, "data.tier.value": "Basic" } ]);
         break;
       case 2:
-        await actor.updateEmbeddedEntity("OwnedItem", {"_id": item._id, "data.tier.value": "Intermediate"});
+        await actor.updateEmbeddedDocuments("Item", [ {"_id": item.id, "data.tier.value": "Intermediate"} ]);
         break;
       case 3:
-        await actor.updateEmbeddedEntity("OwnedItem", {"_id": item._id, "data.tier.value": "Advanced"});
+        await actor.updateEmbeddedDocuments("Item", [ {"_id": item.id, "data.tier.value": "Advanced"} ]);
         break;
       default:
         console.log("Tier limit should be capped at 3. Current value:", tier);
@@ -224,10 +281,10 @@ Hooks.on("createOwnedItem", async (actor, item) => {
     //  Get relevant compendium and item data           //
     // ------------------------------------------------ //
 
-    let talentsToFetch = item.data.talents.value.split(", ");
-    let professionalTraitToFetch = [item.data.professionalTrait.value];
-    let specialTraitToFetch = [item.data.specialTrait.value];
-    let drawbackToFetch = item.data.drawback.value;
+    let talentsToFetch = item.data.data.talents.value.split(", ");
+    let professionalTraitToFetch = [ item.data.data.professionalTrait.value ];
+    let specialTraitToFetch = [ item.data.data.specialTrait.value ];
+    let drawbackToFetch = item.data.data.drawback.value;
 
     let traitsToFetch = professionalTraitToFetch.concat(specialTraitToFetch);
 
@@ -242,9 +299,11 @@ Hooks.on("createOwnedItem", async (actor, item) => {
     let talentsIndex = await talentPack.getIndex();
     let talentsToAdd = [];
 
-    for (let talent of talentsToFetch) {
-      let _temp = await talentPack.getEntity(talentsIndex[talentsIndex.findIndex(idx => idx.name === talent)]._id);
-      talentsToAdd.push(_temp.data);
+    for (let value of talentsIndex.values()) {
+      if (talentsToFetch.includes(value.name)) {
+        let _temp = await talentPack.getDocument(value._id);  // TODO: look into `getDocuments`, which has potential to eliminate the loop
+        talentsToAdd.push(_temp.data);
+      }
     }
 
     let talentsToAddDifference = findDifference(talentsToAdd, actor.data.talents);
@@ -256,12 +315,14 @@ Hooks.on("createOwnedItem", async (actor, item) => {
     let traitIndex = await traitPack.getIndex();
     let traitsToAdd = [];
 
-    for (let trait of traitsToFetch) {
-      if (trait === "")
+    for (let value of traitIndex.values()) {
+      if (value.name === "")
         continue;
 
-      let _temp = await traitPack.getEntity(traitIndex[traitIndex.findIndex(idx => idx.name === trait)]._id);
-      traitsToAdd.push(_temp.data);
+      if (traitsToFetch.includes(value.name)) {
+        let _temp = await traitPack.getDocument(value._id);
+        traitsToAdd.push(_temp.data);
+      }
     }
 
     let traitsToAddDifference = findDifference(traitsToAdd, actor.data.traits);
@@ -270,27 +331,106 @@ Hooks.on("createOwnedItem", async (actor, item) => {
     //  Get drawback from compendium                    //
     // ------------------------------------------------ //
 
-    let drawbackToAdd = "";
+    let drawbackToAdd = [];
 
-    if (drawbackToFetch !== "") {
+    if (drawbackToFetch.length !== 0) {
       let drawbackIndex = await drawbackPack.getIndex();
 
-      let _temp = await drawbackPack.getEntity(drawbackIndex[drawbackIndex.findIndex(idx => idx.name === drawbackToFetch)]._id);
-      drawbackToAdd = _temp.data;
+      for (let value of drawbackIndex.values()) {
+        if (drawbackToFetch === value.name) {
+          let _temp = await drawbackPack.getDocument(value._id);
+          drawbackToAdd.push(_temp.data);
+          
+          break;  // maximum one Drawback per Profession
+        }
+      }
     }
+
+    const drawbackPresent = actor.data.drawbacks.filter(d => d.name === drawbackToAdd[0].name).length > 0;
 
     // ---------------------------------------------- //
     //  If there are things to create, create them    //
     // ---------------------------------------------- //
 
-    if (traitsToAddDifference.length > 0) {
-      await actor.createEmbeddedEntity("OwnedItem", traitsToAddDifference);
-    }
+    if (traitsToAddDifference.length > 0)
+      await actor.createEmbeddedDocuments("Item", traitsToAddDifference);
 
     if (talentsToAddDifference.length > 0)
-      await actor.createEmbeddedEntity("OwnedItem", talentsToAddDifference);
+      await actor.createEmbeddedDocuments("Item", talentsToAddDifference);
 
-    if (drawbackToAdd !== "" && !actor.data.drawbacks.includes(drawbackToAdd))
-      await actor.createEmbeddedEntity("OwnedItem", drawbackToAdd);
+    if (drawbackToAdd !== "" && !drawbackPresent)
+      await actor.createEmbeddedDocuments("Item", drawbackToAdd);
+  
+  } else if (item.type === "ancestry" && isOwned) {
+    const actor = item.parent;
+
+    const ancestralTraitToFetch = item.data.data.ancestralTrait.value;
+
+    let traitPack = game.packs.get("zweihander.traits");
+    let traitIndex = await traitPack.getIndex();
+
+    let traitToAdd = [];
+
+    for (let value of traitIndex.values()) {
+      if (value.name === "")
+        continue;
+
+      if (value.name === ancestralTraitToFetch.trim()) {
+        let _temp = await traitPack.getDocument(value._id);
+        traitToAdd.push(_temp.data);
+      }
+    }
+
+    let traitToAddDifference = findDifference(traitToAdd, actor.data.traits);
+
+    if (traitToAddDifference.length > 0)
+      await actor.createEmbeddedDocuments("Item", traitToAddDifference);
+  }
+});
+
+Hooks.on("deleteItem", async (item, data) => {
+  if (item.type === "profession") {
+    const actor = item.parent;
+
+    // ---------------------------------------------- //
+    //  Delete Items referenced by a Profession       //
+    // ---------------------------------------------- //    
+
+    const talents = item.data.data.talents.value.split(",");
+    const traits = [ item.data.data.specialTrait.value ].concat([ item.data.data.professionalTrait.value ]);
+    const drawback = item.data.data.drawback.value;
+
+    const itemsToDelete = talents.concat(traits).concat(drawback);
+
+    let arrayOfId = [];
+
+    for (let itemToDelete of itemsToDelete) {
+      for (let actorItem of actor.items.values()) {
+        if (actorItem.name === itemToDelete.trim()) {
+          arrayOfId.push(actorItem.id);
+          break;
+        }
+      }
+    }
+
+    await actor.deleteEmbeddedDocuments("Item", arrayOfId);
+
+  } else if (item.type === "ancestry") {
+    const actor = item.parent;
+
+    console.log(item);
+
+    const ancestralTrait = item.data.data.ancestralTrait.value;
+
+    let arrayOfId = [];
+
+    for (let actorItem of actor.data.traits) {
+      if (actorItem.name === ancestralTrait.trim()) {
+        arrayOfId.push(actorItem._id);
+        break;
+      }
+    }
+
+    await actor.deleteEmbeddedDocuments("Item", arrayOfId);
   }
 });

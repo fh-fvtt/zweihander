@@ -22,8 +22,10 @@
     
                 {{!-- Description Tab --}}
                 <div class="tab">
+                    <span><i>{{data.data.flavor.description}}</i></span>
+                    <br />
                     Name: <input type="text" name="name" value="{{item.name}}" data-dtype="String"/>
-                    Effect: <input type="text" name="data.effect.value" value="{{data.effect.value}}" data-dtype="String"/>
+                    Effect: <input type="text" name="data.effect.value" value="{{data.data.effect.value}}" />
                 </div>
             </section>
         </div>

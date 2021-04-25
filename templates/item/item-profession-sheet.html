@@ -9,29 +9,37 @@
 
                     <div class="header-contents">
                         <div class="title">
-                            <span>Profession: {{item.name}}</span>
+                            <span>{{item.name}}</span>
                         </div>
                     </div>
                 </div>
                 
             </header>
     
+            {{!-- Sheet Tab Navigation --}}
+            <nav class="sheet-tabs tabs" data-group="primary">
+                <a class="item" data-tab="description">Description</a>
+                <a class="item" data-tab="details">Details</a>
+            </nav>
     
             {{!-- Sheet Body --}}
             <section class="item-body">
-    
                 {{!-- Description Tab --}}
-                <div class="tab">
+                <div class="tab description" data-group="primary" data-tab="description">
                     Name: <input type="text" name="name" value="{{item.name}}" data-dtype="String"/>
-                    Archetype: <input type="text" name="data.archetype.value" value="{{data.archetype.value}}" data-dtype="String"/>
-                    Tier: <input type="text" name="data.tier.value" value="{{data.tier.value}}" data-dtype="String"/>
-                    Bonus Advances: <input type="text" name="data.bonusAdvances.value" value="{{data.bonusAdvances.value}}" data-dtype="String"/>
-                    Skill Ranks: <input type="text" name="data.skillRanks.value" value="{{data.skillRanks.value}}" data-dtype="String"/>
-                    Talents: <input type="text" name="data.talents.value" value="{{data.talents.value}}" data-dtype="String"/>
-                    Professional Trait: <input type="text" name="data.professionalTrait.value" value="{{data.professionalTrait.value}}" data-dtype="String"/>
-                    Special Trait: <input type="text" name="data.specialTrait.value" value="{{data.specialTrait.value}}" data-dtype="String"/>
-                    Drawback: <input type="text" name="data.drawback.value" value="{{data.drawback.value}}" data-dtype="String"/>
-                    Completed: <input type="checkbox" name="data.tier.completed" {{checked data.tier.completed}} data-dtype="Boolean" />
+                    Archetype: <input type="text" name="data.archetype.value" value="{{data.data.archetype.value}}" />
+                    Tier: <input type="text" name="data.tier.value" value="{{data.data.tier.value}}" />
+                    Bonus Advances: <input type="text" name="data.bonusAdvances.value" value="{{data.data.bonusAdvances.value}}" />
+                    Skill Ranks: <input type="text" name="data.skillRanks.value" value="{{data.data.skillRanks.value}}" />
+                    Talents: <input type="text" name="data.talents.value" value="{{data.data.talents.value}}" />
+                    Professional Trait: <input type="text" name="data.professionalTrait.value" value="{{data.data.professionalTrait.value}}" />
+                    Special Trait: <input type="text" name="data.specialTrait.value" value="{{data.data.specialTrait.value}}" />
+                    Drawback: <input type="text" name="data.drawback.value" value="{{data.data.drawback.value}}" />
+                    Completed: <input type="checkbox" name="data.tier.completed" {{checked data.data.tier.completed}} />
+                </div>
+
+                <div class="tab details" data-group="primary" data-tab="details">
+                    <textarea name="data.flavor.description">{{data.data.flavor.description}}</textarea>
                 </div>
             </section>
         </div>

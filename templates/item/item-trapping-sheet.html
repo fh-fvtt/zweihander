@@ -1,0 +1,20 @@
+<form class="{{cssClass}}" autocomplete="off">
+    <header class="sheet-header">
+        <img class="profile-img" src="{{item.img}}" data-edit="img" title="{{item.name}}"/>
+    </header>
+
+
+    {{!-- Sheet Body --}}
+    <section class="sheet-body">
+
+        {{!-- Description Tab --}}
+        <div class="tab">
+            Item Name: <input type="text" name="name" value="{{item.name}}" />
+            Trapping Type: <input type="text" name="data.category.value" value="{{data.data.category.value}}"  />
+            Quantity: <input type="number" name="data.quantity.value" value="{{data.data.quantity.value}}"  />
+            Encumbrance (Single): <input type="number" name="data.encumbrance.value" value="{{data.data.encumbrance.value}}"  />
+            Carried: <input type="checkbox" name="data.carried" {{checked data.data.carried}} />
+            Description: <input type="text" name="data.description.value" value="{{data.data.description.value}}"  />
+        </div>
+    </section>
+</form>

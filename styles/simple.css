@@ -39,6 +39,11 @@
   margin: 0;
 }
 
+.zweihander input[type="radio"] {
+  top: 0;
+  margin: 0;
+}
+
 /* Firefox */
 .zweihander input[type="number"] {
   -moz-appearance: textfield;
@@ -50,10 +55,15 @@
   border-left: 2px solid #A2A3A5;
   border-bottom: 2px solid lightgray;
   border-right: 2px solid lightgray;
+  border-radius: 0px;
 }
 
 .zweihander input[type="number"]::placeholder {
   font-style: normal;
+}
+
+.zweihander input[type="number"]:focus {
+  box-shadow: 0px 0px 3px 0px darkgrey;
 }
 
 .zweihander ::placeholder {
@@ -70,15 +80,30 @@
   border-radius: 0;
 }
 
-.window-header {
-  background-color: black;
-  border-bottom: none;
+.zweihander .window-header {
+  background-color: transparent;
+  border: none;
+  position: absolute;
+  width: 100%;
+  line-height: 40px;
+  box-shadow: 0px 25px 15px -5px inset black;
 }
 
 .zweihander .window-content {
   height: 100%;
   padding: 0px;
+  padding-top: 10px;
   overflow-y: hidden;
+
+  border-radius: 15px;
+}
+
+.window-app.minimized .window-header {
+  background-image: url(../../zweihander/assets/background.png);
+  background-repeat: no-repeat;
+  background-position-x: right;
+  box-shadow: 0px 0px 15px inset black;
+  border: none;
 }
 
 .zweihander .sheet-background {
@@ -89,10 +114,13 @@
 }
 
 .zweihander .sheet-content {
+  /* height: 100%;*/
   height: 100%;
   /* padding: 50px 75px 75px 75px; */
   /* padding: 8% 10.5% 8% 10.5%; */
-  padding: 7% 8.5% 8.5% 10.5%;
+  /* padding: 7% 8.5% 8.5% 10.5%; */
+  padding: 6.5% 8% 8% 10%;
+  box-shadow: 0px 0px 40px inset black;
 }
 
 .zweihander .editable {
@@ -122,9 +150,34 @@
   /**background-color: blue;*/
 }
 
-.zweihander .sheet-header .labeled-input {
-  /**height: 40px;/*
-  /**background-color: lightblue;*/
+.zweihander .sheet-header .labeled-input.ancestry {
+  width: 100px;
+  position: relative;
+}
+
+.zweihander .sheet-header .labeled-input.ancestry .input-text {
+  cursor: not-allowed;
+}
+
+.zweihander .sheet-header .labeled-input.ancestry .ancestry-absolute {
+  position: absolute;
+}
+
+.zweihander .sheet-header .labeled-input.ancestry .ancestry-edit {
+  position: absolute;
+  text-align: end;
+  padding: 2px;
+  right: 0px;
+
+  display: none;
+}
+
+.zweihander .sheet-header .labeled-input.ancestry .ancestry-edit:hover {
+  display: block;
+}
+
+.zweihander .sheet-header .labeled-input.ancestry .ancestry-absolute:hover + .ancestry-edit {
+  display: block;
 }
 
 .zweihander .labeled-input .input-label {
@@ -260,6 +313,7 @@
 
 .zweihander .sheet-header .advancement .reward-points-and-title-container .reward-points-inputs div.right {
   margin-left: 8px;
+  margin-right: 1px;
 }
 
 .zweihander .sheet-header .advancement .reward-points-and-title-container .reward-points-inputs .points-and-label {
@@ -401,10 +455,7 @@
   font-family: 'Baskerville Old Face';
   font-size: 12px;
   font-weight: bold;
-}
-
-.zweihander .sheet-header .titles-and-bars .corruption-inputs-container .radio-and-number span {
-  padding-left: 1px;
+  margin: 3px 4px 0px 4px;
 }
 
 .zweihander .sheet-header .titles-and-bars .corruption-inputs-container .chaos-input-text {
@@ -580,7 +631,8 @@
   width: 35px;
   height: 35px;
   font-size: 16px;
-  color: grey;
+  color: darkgray;
+  cursor: not-allowed;
 }
 
 .zweihander .sheet-body .characteristics .dodge-and-parry {
@@ -615,7 +667,8 @@
   height: 35px;
   font-size: 16px;
   border-radius: 25px;
-  color: grey;
+  color: darkgray;
+  cursor: not-allowed;
 }
 
 .zweihander .sheet-body .characteristics .dodge-and-parry .parry {
@@ -649,6 +702,7 @@
 
 .zweihander .sheet-body .skills-and-combat .common-container.skills {
   width: 209px;
+  height: 279px;
 }
 
 .zweihander .sheet-body .skills-and-combat .common-list.skills {
@@ -656,7 +710,7 @@
 }
 
 .zweihander .sheet-body .skills-and-combat .common-container .title.main {
-  flex: 0 0 100px;
+  flex: 0 0 115px;
   padding: 0;
 }
 
@@ -666,7 +720,7 @@
 
 
 .zweihander .sheet-body .skills-and-combat .common-container .image-and-name {
-  flex: 0 0 100px;
+  flex: 0 0 115px;
 }
 
 .zweihander .sheet-body .skills-and-combat .combat-container {
@@ -723,7 +777,8 @@
   width: 40px;
   height: 30px;
   font-size: 16px;
-  color: grey;
+  color: darkgray;
+  cursor: not-allowed;
 }
 
 .zweihander .sheet-body .skills-and-combat .combat-container .peril-container {
@@ -754,7 +809,8 @@
   width: 38px;
   height: 30px;
   font-size: 16px;
-  color: grey;
+  color: darkgray;
+  cursor: not-allowed;
 }
 
 .zweihander .sheet-body .skills-and-combat .combat-container .peril-threshold-container {
@@ -774,7 +830,7 @@
 
 .zweihander .sheet-body .skills-and-combat .combat-container .peril-threshold-container .peril-status-list {
   display: flex;
-  flex-direction: column;
+  flex-direction: column-reverse;
   font-family: 'Baskerville Old Face';
   /* background-color: orange; */
 }
@@ -783,13 +839,13 @@
   display: flex;
   flex-direction: row;
   align-items: center;
-  padding: 2px;
+  padding: 2px 2px 0px 2px;
   /* background-color: lightpink; */
 }
 
 .zweihander .sheet-body .skills-and-combat .combat-container .peril-threshold-container .peril-status-list .radio-and-status input[type="radio"] {
   width: 12px;
-  margin: 0px;
+  margin: 0px 0px 2px 0px;
 }
 
 .zweihander .sheet-body .skills-and-combat .combat-container .peril-threshold-container .peril-status-list .radio-and-status span {
@@ -805,6 +861,88 @@
 
 .zweihander .tabs {
   height: 74px;
+}
+
+.zweihander .nav-content-common {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  border: 1px solid darkgrey;
+  border-bottom: none;
+}
+
+.zweihander .nav-content-common .item.tab-common {
+  line-height: 26px;
+  font-size: 14px;
+  font-family: 'Baskerville Old Face';
+  font-weight: bold;
+  text-align: center;
+}
+
+.zweihander .nav-content-common .item-and-skulls {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+  flex: 1;
+  
+}
+
+.zweihander .nav-content-common .item-and-skulls.middle {
+  border-right: 1px solid darkgray;
+  border-left: 1px solid darkgray;
+}
+
+.zweihander .nav-content-common .item-and-skulls.special-right {
+  border-left: 1px solid darkgray;
+}
+
+.zweihander .nav-content-common .item-and-skulls.selected {
+  background-color: rgba(0, 0, 0, 0.05);
+  border-bottom: 1px dashed darkgray;
+}
+
+.zweihander .item.tab-common {
+  display: inline-block;
+  width: 100%;
+  height: 100%;
+  border-bottom: 1px solid darkgray;
+}
+
+.zweihander .item.tab-common.active {
+  text-shadow: 0 0 10px dimgrey;
+  background-color: rgba(0, 0, 0, 0.05);
+  border-bottom: 1px dashed darkgray;
+}
+
+.zweihander .item.tab-common:hover {
+  text-shadow: 0 0 10px dimgrey;
+}
+
+.zweihander .nav-content-common .item-and-skulls img {
+  border: none;
+  height: 22px;
+  width: auto;
+}
+
+.zweihander .nav-content-common .item-and-skulls .skull-selector {
+  visibility: hidden;
+}
+
+.zweihander .nav-content-common .item-and-skulls .skull-selector.left {
+  transform: scaleX(-1);
+}
+
+.zweihander .trapping-tabs-content {
+  height: 100%;
+}
+
+.zweihander .nav-and-content {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+  background: #f6f6f6;
+  /* margin-top: 10px; */
 }
 
 .zweihander .tabs .nav-content {
@@ -844,14 +982,19 @@
 
 .zweihander .sheet-body {
   overflow: hidden;
-  height: calc(100% - 334px);
+  /* height: calc(100% - 334px); */
+  height: 447px;
 }
 
-.zweihander .sheet-body .tab {
+.zweihander .tab {
   height: 100%;
   overflow-y: auto;
   padding-left: 5px;
   padding-right: 6px;
+}
+
+.zweihander .tab.no-pad {
+  padding: 0;
 }
 
 .zweihander .editor,
@@ -930,6 +1073,8 @@
 .zweihander.sheet.actor {
   min-width: 560px;
   min-height: 420px;
+
+  border-radius: 15px;
 }
 
 .zweihander.sheet.item {
@@ -1027,7 +1172,7 @@
   display: flex;
   flex-direction: column;
   order: 1;
-  margin-top: 6px;
+  /* margin-top: 6px; */
   /* width: 209px; */
   /* margin-right: 23px; */
   /* background-color: gold; */
@@ -1129,6 +1274,37 @@
   outline: 0px solid darkgrey;
 }
 
+.zweihander .professions-talents-unique-content {
+  height: 100%;
+}
+
+.zweihander .professions-talents-unique-content .common-list {
+  flex: 1;
+}
+
+.zweihander .professions-talents-unique-content .common-container.professions {
+  border-top: none;
+  height: 100%;
+}
+
+.zweihander .professions-talents-unique-content .common-container.talents-traits {
+  border-top: none;
+  height: 100%;
+}
+
+.zweihander .professions-talents-unique-content .common-container.talents-traits .image-and-name {
+  flex: 0 0 150px;
+}
+
+.zweihander .professions-talents-unique-content .common-container.talents-traits .title.main {
+  flex: 0 0 150px;
+}
+
+.zweihander .professions-talents-unique-content .common-container.unique-advances {
+  border-top: none;
+  height: 100%;
+}
+
 .zweihander .trappings-content {
   display: flex;
   flex-direction: column;
@@ -1179,40 +1355,42 @@
   /* background-color: lightseagreen; */
 }
 
-.zweihander .trappings-content .encumbrance-and-coins-container .encumbrance-meter .meter {
+.zweihander .trappings-content .encumbrance-bar-container .meter {
   position: relative;
-  display: flex;
-  flex-direction: row;
-  align-items: center;
-  justify-content: flex-start;
+  /* display: flex; */
+  /* flex-direction: row; */
+  /* align-items: center;
+  justify-content: flex-start; */
   height: 25px;
-  border: 2px solid #A2A3A5;
+  /* flex: 1; */
+  /* border: 2px solid #A2A3A5;
   border-right: 2px solid lightgrey;
   border-bottom: 2px solid lightgrey;
   box-shadow: 0 0 0 3px inset #f8f8f8;
-  padding: 3px;
+  padding: 3px; */
   background-color: grey;
 }
 
-.zweihander .trappings-content .encumbrance-and-coins-container .encumbrance-meter .meter .meter-label-container {
+.zweihander .trappings-content .encumbrance-bar-container .meter .meter-label-container {
   position: absolute;
   display: flex;
   flex-direction: row;
   align-items: center;
   justify-content: center;
   width: 100%;
+  height: 100%;
 }
 
-.zweihander .trappings-content .encumbrance-and-coins-container .encumbrance-meter .meter .meter-label {
-  position: absolute;
+.zweihander .trappings-content .encumbrance-bar-container .meter .meter-label {
+  /* position: absolute; */
   text-align: center;
   font-family: 'Baskerville Old Face';
   font-weight: bold;
   color: white;
-  margin-top: 0.5px;
+  /* margin-top: 0.5px; */
 }
 
-.zweihander .trappings-content .encumbrance-and-coins-container .encumbrance-meter .meter .meter-value {
+.zweihander .trappings-content .encumbrance-bar-container .meter .meter-value {
   display: block;
   text-align: center;
   transition: 300ms width linear;
@@ -1266,8 +1444,9 @@
 
 .zweihander .trappings-content .weapons-armor-and-other-container {
   display: flex;
-  flex-direction: column;
+  flex-direction: row;
   height: 100%;
+  margin-top: 10px;
 }
 
 .zweihander .trappings-content .weapons-armor-and-other-container .common-container .skill.combat-skill {
@@ -1299,7 +1478,7 @@
   cursor: pointer;
 }
 
-.zweihander .trappings-content .weapons-armor-and-other-container .common-container .skill input[type="checkbox"] {
+.zweihander .trappings-content .common-container .skill input[type="checkbox"] {
   transform: none;
   margin: 0;
   width: 12px;
@@ -1307,29 +1486,175 @@
   margin-top: 4px;
 }
 
-.zweihander .trappings-content .weapons-armor-and-other-container .common-list {
+.zweihander .trappings-content .encumbrance-bar-container {
+  /* height: 40px; */
+  border: 1px solid darkgray;
+  border-top: none;
+  /* display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center; */
+  background-color: grey;
+  box-shadow: 0 0 0 5px inset #f8f8f8;
+  padding: 3px;
+}
+
+.zweihander .trappings-content .encumbrance-text {
+  flex: 1;
+  font-family: 'Baskerville Old Face';
+  font-size: 16px;
+  text-align: center;
+  color: white;
+}
+
+.zweihander .trappings-content .encumbrance-text .fill-meter {
+  display: block;
+  text-align: center;
+  transition: 300ms width linear;
+  color: transparent;
+  background: #191813;
+  height: 100%;
+}
+
+.zweihander .trappings-content .common-list {
   flex: 1;
 }
 
-.zweihander .trappings-content .weapons-armor-and-other-container .common-container.weapons {
-  margin-top: 10px;
-  margin-bottom: 23px;
-  height: 120.5px;
+.zweihander .trappings-content .coinage-and-converter {
+  height: 67px;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-between;
 }
 
-.zweihander .trappings-content .weapons-armor-and-other-container .common-container.armor {
-  flex: 0 0 268px;
-  margin-right: 23px;
+.zweihander .trappings-content .coinage-and-converter input[type=number] {
+  width: 100px;
 }
 
-.zweihander .trappings-content .weapons-armor-and-other-container .common-container.other {
+.zweihander .trappings-content .coinage-and-converter .coin-label {
+  font-family: 'Baskerville Old Face';
+  font-size: 14px;
+  font-weight: bold;
+  margin-top: 3px;
+}
+
+.zweihander .trappings-content .coinage-and-converter .coin-and-label {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.zweihander .trappings-content .coinage-and-converter .coinage-container {
+  display: flex;
+  flex-direction: row;
   flex: 1;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.zweihander .trappings-content .coinage-and-converter .gold-converter {
+  font-family: 'Baskerville Old Face';
+  font-weight: bold;
+  font-size: 15px;
+  flex: 0 0 33.33%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.zweihander .trappings-content .coinage-and-converter .gold-converter .converter-label {
+  margin-top: 3px;
+}
+
+.zweihander .trappings-content .coinage-and-converter .gold-converter .converter-container {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-around;
+}
+
+.zweihander .trappings-content .coinage-and-converter .gold-converter .converter-image {
+  height: 32px;
+  border: none;
+  margin: 0px 5px 0px 5px;
+}
+
+.zweihander .trappings-content .common-header.coins {
+  border: 1px solid darkgray;
+  border-top: none;
+  font-family: 'Baskerville Old Face';
+}
+
+.zweihander .trappings-content .common-header.coins .coin-label-and-input {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+}
+
+.zweihander .trappings-content .common-header.coins .coin-label-and-input input[type="number"] {
+  height: 18px;
+  width: 40px;
+  margin-right: 5px;
+  border-top: 1px solid #A2A3A5;
+  border-left: 1px solid #A2A3A5;
+  border-bottom: 1px solid lightgray;
+  border-right: 1px solid lightgray;
+  background-color: #fbfbfb;
+}
+
+
+.zweihander .trappings-content .common-header.coins .currency-container {
+  flex: 1;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.zweihander .trappings-content .common-header.coins .currency-container.converter {
+  flex: 0 0 120px;
+}
+
+.zweihander .trappings-content .common-header.coins .converter-button {
+  height: 18px;
+  font-size: 14px;
+  font-family: 'Baskerville Old Face';
+  line-height: 0;
+  border: 2px outset lightgray;
+  border-radius: 0;
+}
+
+.zweihander .trappings-content .common-container {
+  height: 364px;
+}
+
+.zweihander .trappings-content .common-container.weapons {
+  /* margin-top: 10px; */
+  height: 358px;
+  /* height: 100%; */
+  border-top: none;
+  /* margin-bottom: 23px; */
+  /* height: 120.5px; */
+}
+
+.zweihander .trappings-content .common-container.armor {
+  /* flex: 0 0 268px; */
+  /* margin-right: 23px; */
+  height: 358px;
+  border-top: none;
+}
+
+.zweihander .trappings-content .common-container.other {
+  height: 358px;
+  /* margin-right: 23px; */
+  border-top: none;
 }
 
 .zweihander .trappings-content .weapons-armor-and-other-container .armor-and-other-container {
   flex: 1;
   display: flex;
-  flex-direction: row;
+  flex-direction: column;
   /* background-color: lightgreen; */
 }
 
@@ -1538,7 +1863,7 @@
 
 .zweihander .image-and-name {
   flex: 0 0 135px;
-  text-align: center;
+  text-align: left;
   display: flex;
   flex-direction: row;
   align-items: center;
@@ -1579,13 +1904,17 @@
 }
 
 .zweihander .common-header .title.main {
-  flex: 0 0 136px;
+  flex: 0 0 135px;
   text-align: left;
   /* padding-left: 5px; */
 }
 
 .zweihander .common-header .title.controls {
   flex: 0 0 40.25px;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
 }
 
 .zweihander .common-list {
@@ -1599,15 +1928,16 @@
   z-index: 1;
   overflow-y: scroll;
   background-color: #fbfbfb;
+  box-shadow: -3px 0px 2px inset darkgrey;
   /* background: url('../assets/notepad-opacity.png'); */
 }
 
-.zweihander .magick-content .common-header .title.main {
+.zweihander .magic-tabs-content .common-header .title.main {
   flex: 0 0 136px;
 }
 
 .zweihander .common-list.magick {
-  /* height: 303px; */
+  /* height: 327.5px; */
   flex: 1;
 }
 
@@ -1615,12 +1945,18 @@
   border: none;
 }
 
-.zweihander .magick-content .common-container.magick {
-  /* flex: 1; */
-  height: 333.5px;
+.zweihander .magick-content .nav-and-content {
   order: 1;
   margin-top: 19px;
-  /* border: 1px solid darkgrey; */
+}
+
+.zweihander .magick-tabs-content {
+  height: 300.5px;
+}
+
+.zweihander .magick-tabs-content .common-container.magick {
+  border-top: none;
+  height: 100%;
 }
 
 .zweihander .tiers-content {
@@ -1644,28 +1980,6 @@
   flex-direction: column;
   /* margin-bottom: 23px; */
   /* background-color: green; */
-}
-
-/* .zweihander .tiers-content .common-list {
-  flex: 1;
-} */
-
-.zweihander .tiers-content .common-container .title.main {
-  text-align: left;
-}
-
-.zweihander .tiers-content .common-container.professions {
-  flex: 1;
-  /* flex: 0 0 268px; */
-  /* margin-right: 23px; */
-  /* flex: 0; */
-  height: 243.5px;
-}
-
-.zweihander .tiers-content .common-container.unique-advances {
-  flex: 1;
-  margin-top: 23px;
-  height: 158.3px;
 }
 
 .zweihander .tiers-content .common-container .skill input[type="checkbox"] {

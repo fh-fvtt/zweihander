@@ -35,22 +35,53 @@ export class ZweihanderActor extends Actor {
     return data;
   }
 
-  prepareData() {
-    super.prepareData();
+  prepareBaseData() {
+    // Correct value presented here on toggling something.
+    super.prepareBaseData();
+
+    console.log("Preparing BASE data...")
 
     const actorData = this.data;
     const data = actorData.data;
     const flags = actorData.flags;
 
-    if (actorData.type === 'character') {
-      this._prepareCharacterItems(actorData);
-      this._prepareCharacterData(actorData);
+    if (actorData.type === "character") {
+      this._prepareCharacterBaseData(actorData);
     }
 
     // this.setFlag("zweihander", "professionDataInitialized", false);
   }
 
-  _prepareCharacterData(actorData) {
+  prepareEmbeddedEntities() {
+    super.prepareEmbeddedEntities();
+
+    console.log("Preparing EMBEDDED ENTITIES...")
+    
+    const actorData = this.data;
+  
+    if (actorData.type === "character") {
+      this._prepareCharacterItems(actorData);
+    }
+  }
+
+  prepareDerivedData() {
+    super.prepareDerivedData();
+
+    console.log("Preparing DERIVED data...")
+
+    const actorData = this.data;
+
+    if (actorData.type === "character") {
+      this._prepareCharacterDerivedData(actorData);
+    }
+  }
+
+  _prepareCharacterBaseData(actorData) {
+    const data = actorData.data;
+  
+  }
+
+  _prepareCharacterDerivedData(actorData) {
     const data = actorData.data;
 
     // Calculate primary attribute bonuses (first digit)
@@ -59,7 +90,6 @@ export class ZweihanderActor extends Actor {
       attribute.bonus = attributeString.length == 1 ? 0 : Number(attributeString[0]);
     }
 
-    
     // Add Ancestral Modifiers to the primary pttribute bonuses
     const ancestry = actorData.ancestry[0];
 
@@ -170,51 +200,6 @@ export class ZweihanderActor extends Actor {
       }
     }
 
-    // Assign a value to Parry equal to the value of its underlying skill 
-    const parrySkill = data.stats.secondaryAttributes.parry.associatedSkill;
-    const parrySkillItem = actorData.skills.find(skill => skill.name === parrySkill);1
-
-    if (parrySkillItem) {
-      const parryAttribute = parrySkillItem.data.associatedPrimaryAttribute.value.toLowerCase();
-      const parryValue = data.stats.primaryAttributes[parryAttribute].value + parrySkillItem.data.ranks.bonus;  // TODO IGNORE SKILL RANKS
-
-      data.stats.secondaryAttributes.parry.value = parryValue;
-    }
-
-    // Assign a value to Parry equal to the value of its underlying skill 
-    const dodgeSkill = data.stats.secondaryAttributes.dodge.associatedSkill;
-    const dodgeSkillItem = actorData.skills.find(skill => skill.name === dodgeSkill);
-
-    if (dodgeSkillItem) {
-      const dodgeAttribute = dodgeSkillItem.data.associatedPrimaryAttribute.value.toLowerCase();
-      const dodgeValue = data.stats.primaryAttributes[dodgeAttribute].value + dodgeSkillItem.data.ranks.bonus;  // TODO IGNORE SKILL RANKS
-  
-      data.stats.secondaryAttributes.dodge.value = dodgeValue;
-    }
-
-    // Assign encumbrance overage TODO: Items, Armor, etc...
-    //...
-
-    // Assign initial encumbrance values
-    data.stats.secondaryAttributes.encumbrance.value = data.stats.primaryAttributes.brawn.bonus + 3;
-
-
-    // Calculate overage values
-    const overage = data.stats.secondaryAttributes.encumbrance.current - data.stats.secondaryAttributes.encumbrance.value;
-    const correctOverage = data.stats.secondaryAttributes.encumbrance.overage = (overage > 0) ? overage : 0;
-    data.stats.secondaryAttributes.initiative.overage = data.stats.secondaryAttributes.movement.overage = correctOverage;
-
-
-    // Assign Initiative values
-    const initiativeValue = data.stats.secondaryAttributes.initiative.value = data.stats.primaryAttributes.perception.bonus + 3;
-    data.stats.secondaryAttributes.initiative.current = initiativeValue - correctOverage;
-
-
-    // Assign Movement values
-    const movementValue = data.stats.secondaryAttributes.movement.value = data.stats.primaryAttributes.agility.bonus + 3;
-    data.stats.secondaryAttributes.movement.current = movementValue - correctOverage;
-
-
     // Assign Peril Threshold values
     var initialPeril = data.stats.primaryAttributes.willpower.bonus, perilModifier = 3;
 
@@ -237,44 +222,120 @@ export class ZweihanderActor extends Actor {
 
     for (let i = 1; i < damageArray.length; i++)
       data.stats.secondaryAttributes.damageThreshold[damageArray[i]] = initialDamage += damageModifier;
+
+
+    // Assign initial encumbrance values
+    data.stats.secondaryAttributes.encumbrance.value = data.stats.primaryAttributes.brawn.bonus + 3;
+
+    // Assign a value to Parry equal to the value of its underlying skill 
+    const parrySkill = data.stats.secondaryAttributes.parry.associatedSkill;
+    const parrySkillItem = actorData.skills.find(skill => skill.name === parrySkill);
+
+    if (parrySkillItem !== undefined) {
+      const parryAttribute = parrySkillItem.data.associatedPrimaryAttribute.value.toLowerCase();
+      const parryValue = data.stats.primaryAttributes[parryAttribute].value + parrySkillItem.data.ranks.bonus;  // TODO IGNORE SKILL RANKS
+
+      data.stats.secondaryAttributes.parry.value = parryValue;
+    }
+
+    // Assign a value to Dodge equal to the value of its underlying skill 
+    const dodgeSkill = data.stats.secondaryAttributes.dodge.associatedSkill;
+    const dodgeSkillItem = actorData.skills.find(skill => skill.name === dodgeSkill);
+
+    if (dodgeSkillItem !== undefined) {
+      const dodgeAttribute = dodgeSkillItem.data.associatedPrimaryAttribute.value.toLowerCase();
+      const dodgeValue = data.stats.primaryAttributes[dodgeAttribute].value + dodgeSkillItem.data.ranks.bonus;  // TODO IGNORE SKILL RANKS
+  
+      data.stats.secondaryAttributes.dodge.value = dodgeValue;
+    }
+
+
+    // Assign Damage Threshold Modifier from equipped armor piece
+    for (let armor of actorData.armor) {
+      if (armor.data.equipped) {
+        const dtm = armor.data.damageThresholdModifier.value;
+        const enc = armor.data.encumbrance.value;
+
+        for (let i = 0; i < damageArray.length; i++)
+          data.stats.secondaryAttributes.damageThreshold[damageArray[i]] += dtm;
+
+        data.stats.secondaryAttributes.encumbrance.current += enc;
+        break; // can only have 1 piece of armor equipped
+      }
+    }
+
+
+    // Assign equipped Trappings (Misc.) encumbrance
+    for (let trapping of actorData.trappings)
+      if (trapping.data.carried)
+        data.stats.secondaryAttributes.encumbrance.current += (trapping.data.quantity.value * trapping.data.encumbrance.value);
+
+
+    for (let weapon of actorData.weapons)
+      if (weapon.data.equipped)
+        data.stats.secondaryAttributes.encumbrance.current += weapon.data.encumbrance.value;
+
+
+    // Calculate overage values
+    const overage = data.stats.secondaryAttributes.encumbrance.current - data.stats.secondaryAttributes.encumbrance.value;
+    const correctOverage = data.stats.secondaryAttributes.encumbrance.overage = (overage > 0) ? overage : 0;
+    data.stats.secondaryAttributes.initiative.overage = data.stats.secondaryAttributes.movement.overage = correctOverage;
+
+
+    // Assign Initiative values
+    const initiativeValue = data.stats.secondaryAttributes.initiative.value = data.stats.primaryAttributes.perception.bonus + 3;
+    data.stats.secondaryAttributes.initiative.current = initiativeValue - correctOverage;
+
+
+    // Assign Movement values
+    const movementValue = data.stats.secondaryAttributes.movement.value = data.stats.primaryAttributes.agility.bonus + 3;
+    data.stats.secondaryAttributes.movement.current = movementValue - correctOverage;
   }
 
   _prepareCharacterItems(actorData) {
+
     const weapons = [];
     const armor = [];
     const ancestry = [];
     const spells = [];
+    const rituals = [];
     const professions = [];
     const skills = [];
     const talents = [];
     const drawbacks = [];
     const traits = [];
+    const trappings = [];
 
-    for (let item of actorData.items) {
+    for (let item of actorData.items.values()) {
       if (item.type === "weapon")
-        weapons.push(item);
+        weapons.push(item.data);
       else if (item.type === "ancestry")
-        ancestry.push(item);
+        ancestry.push(item.data);
       else if (item.type === "armor")
-        armor.push(item);
+        armor.push(item.data);
       else if (item.type === "spell")
-        spells.push(item);
+        spells.push(item.data);
+      else if (item.type === "ritual")
+        rituals.push(item.data);
       else if (item.type === "profession")
-        professions.push(item);
+        professions.push(item.data);
       else if (item.type === "skill")  // TODO: Don't allow duplicate Skills -- !skills.some(skill => skill.name === item.name)
-        skills.push(item);
+        skills.push(item.data);
       else if (item.type === "talent")
-        talents.push(item);
+        talents.push(item.data);
       else if (item.type === "drawback")
-        drawbacks.push(item);
+        drawbacks.push(item.data);
       else if (item.type === "trait")
-        traits.push(item);
+        traits.push(item.data);
+      else if (item.type === "trapping")
+        trappings.push(item.data);
     }
 
     actorData.weapons = weapons;
     actorData.ancestry = ancestry;
     actorData.armor = armor;
     actorData.spells = spells;
+    actorData.rituals = rituals;
     actorData.professions = professions;
 
     actorData.skills = skills.sort((skillA, skillB) => {
@@ -295,6 +356,7 @@ export class ZweihanderActor extends Actor {
     actorData.talents = talents;
     actorData.drawbacks = drawbacks;
     actorData.traits = traits;
+    actorData.trappings = trappings;
 
     let skillCounter = new Map();
 
@@ -316,12 +378,12 @@ export class ZweihanderActor extends Actor {
 
       for (let skill of skillsArray) {
         const skillItem = actorData.items.find(item => item.name === skill);
-        const ranks = skillItem === undefined ? {} : skillItem.data.ranks;
+        const ranks = skillItem === undefined ? {} : skillItem.data.data.ranks;
 
         const obj = {
           "name": skill,
           "ranks": ranks,
-          "timesAvailable": skillCounter.get(skill) // TODO CHANGE
+          "timesAvailable": skillCounter.get(skill) // TODO CHANGE (don't know if this TODO is a mistake or not)
         };
 
         _temp.push(obj);
@@ -358,8 +420,10 @@ export class ZweihanderActor extends Actor {
       _temp = [];
 
       for (let talent of talentsArray) {
-        const talentItem = actorData.items.find(item => item.name === talent.trim());
+        const talentItem = actorData.talents.find(item => item.name === talent.trim());
         const purchased = talentItem === undefined ? false : talentItem.data.purchased;
+
+        // console.log("Talent Item @ actor.js", JSON.stringify(talentItem), "\n---\n", JSON.stringify(talentItem.data))
 
         const obj = {
           "name": talent.trim(),
@@ -372,12 +436,12 @@ export class ZweihanderActor extends Actor {
       profession.data.talents.arrayOfValues = _temp;
     }
 
+    // TODO fetch armor and weapon qualities so player can right-click search them
 
-
-
-    // for (let armor of actorData.armor) {
-    //   if (armor.data.equipped)
-    //     this._prepareDamageThreshold(armor, actorData);
-    // }
+    for (let armor of actorData.armor)
+      armor.data.qualities.arrayOfValues = armor.data.qualities.value.split(", ");
+    
+    for (let weapon of actorData.weapons)
+      weapon.data.qualities.arrayOfValues = weapon.data.qualities.value.split(", ");
   }
 }

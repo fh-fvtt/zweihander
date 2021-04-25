@@ -6,8 +6,8 @@ export class ZweihanderItem extends Item {
   /**
    * Augment the basic Item data model with additional dynamic data.
    */
-  prepareData() {
-    super.prepareData();
+  prepareBaseData() {
+    super.prepareBaseData();
 
     // Get the Item's data
     const itemData = this.data;
@@ -18,6 +18,8 @@ export class ZweihanderItem extends Item {
       this._prepareAncestryData(itemData);
     else if (itemData.type === "skill")
       this._prepareSkillData(itemData);
+    else if (itemData.type === "profession")
+      this._prepareProfessionData(this);
   }
 
   _prepareAncestryData(itemData) {
@@ -42,6 +44,10 @@ export class ZweihanderItem extends Item {
       rankBonus = 0;
 
     data.ranks.bonus = rankBonus;
+  }
+
+  _prepareProfessionData(professionItem) {
+
   }
 
 }

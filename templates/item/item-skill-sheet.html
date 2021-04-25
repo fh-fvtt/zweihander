@@ -9,11 +9,11 @@
 
         {{!-- Description Tab --}}
         <div class="tab">
-            Primary Attribute (Base Chance): <input type="text" name="data.associatedPrimaryAttribute.value" value="{{data.associatedPrimaryAttribute.value}}" data-dtype="String" />
-            Apprentice: <input type="checkbox" name="data.ranks.apprentice.purchased" {{checked data.ranks.apprentice.purchased}} data-dtype="Boolean" />
-            Journeyman: <input type="checkbox" name="data.ranks.journeyman.purchased" {{checked data.ranks.journeyman.purchased}} data-dtype="Boolean" />
-            Master: <input type="checkbox" name="data.ranks.master.purchased" {{checked data.ranks.master.purchased}} data-dtype="Boolean" />
-            Requires Training: <input type="checkbox" name="data.requiresTraining" {{checked data.requiresTraining}} data-dtype="Boolean" />
+            Primary Attribute (Base Chance): <input type="text" name="data.associatedPrimaryAttribute.value" value="{{data.data.associatedPrimaryAttribute.value}}" />
+            Apprentice: <input type="checkbox" name="data.ranks.apprentice.purchased" {{checked data.data.ranks.apprentice.purchased}} />
+            Journeyman: <input type="checkbox" name="data.ranks.journeyman.purchased" {{checked data.data.ranks.journeyman.purchased}} />
+            Master: <input type="checkbox" name="data.ranks.master.purchased" {{checked data.data.ranks.master.purchased}} />
+            Requires Training: <input type="checkbox" name="data.requiresTraining" {{checked data.data.requiresTraining}} />
         </div>
     </section>
 </form>

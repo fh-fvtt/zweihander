@@ -1,0 +1,27 @@
+<form class="{{cssClass}}" autocomplete="off">
+    <header class="sheet-header">
+        <img class="profile-img" src="{{item.img}}" data-edit="img" title="{{item.name}}"/>
+        <div class="header-fields">
+            <h1 class="charname"><input name="name" type="text" value="{{item.name}}" placeholder="Name"/></h1>
+        </div>
+    </header>
+
+
+    {{!-- Sheet Body --}}
+    <section class="sheet-body">
+
+        {{!-- Description Tab --}}
+        <div class="tab">
+            <span>{{data.data.flavor.description}}</span>
+            <br />
+            <br />
+            Casting Time: <input type="text" name="data.castingTime.value" value="{{data.data.castingTime.value}}" />
+            Reagents: <input type="text" name="data.reagents.value" value="{{data.data.reagents.value}}" />
+            Condition: <input type="text" name="data.condition.value" value="{{data.data.condition.value}}" />
+            Channel Power As: <input type="text" name="data.channelAs.value" value="{{data.data.channelAs.value}}" />
+            Difficulty: <input type="text" name="data.difficulty.value" value="{{data.data.difficulty.value}}" />
+            Consequences: <input type="text" name="data.consequences.value" value="{{data.data.consequences.value}}" />
+            Ritual Effects: <textarea name="data.effect.value">{{data.data.effect.value}}</textarea>
+        </div>
+    </section>
+</form>
