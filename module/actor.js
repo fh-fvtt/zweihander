@@ -166,35 +166,37 @@ export class ZweihanderActor extends Actor {
     for (let profession of actorData.professions) {
       const advanceData = profession.data.bonusAdvances.arrayOfValues;
 
-      for (let advance of advanceData) {
-        const cleanAdvance = advance.name.replace(/[\[\]]/g, "")[0].toLowerCase();
-
-        if (advance.purchased) {
-          switch (cleanAdvance) {
-            case "c":
-              data.stats.primaryAttributes.combat.bonus += 1;
-              break;
-            case "b":
-              data.stats.primaryAttributes.brawn.bonus += 1;
-              break;
-            case "a":
-              data.stats.primaryAttributes.agility.bonus += 1;
-              break;
-            case "i":
-              data.stats.primaryAttributes.intelligence.bonus += 1;
-              break;
-            case "p":
-              data.stats.primaryAttributes.perception.bonus += 1;
-              break;
-            case "w":
-              data.stats.primaryAttributes.willpower.bonus += 1;
-              break;
-            case "f":
-              data.stats.primaryAttributes.fellowship.bonus += 1;
-              break;
-            default:
-              console.log("No attribute found for value ", advance + ".");
-              break;
+      if (advanceData.length > 0) {
+        for (let advance of advanceData) {
+          const cleanAdvance = advance.name.replace(/[\[\]]/g, "")[0].toLowerCase();
+  
+          if (advance.purchased) {
+            switch (cleanAdvance) {
+              case "c":
+                data.stats.primaryAttributes.combat.bonus += 1;
+                break;
+              case "b":
+                data.stats.primaryAttributes.brawn.bonus += 1;
+                break;
+              case "a":
+                data.stats.primaryAttributes.agility.bonus += 1;
+                break;
+              case "i":
+                data.stats.primaryAttributes.intelligence.bonus += 1;
+                break;
+              case "p":
+                data.stats.primaryAttributes.perception.bonus += 1;
+                break;
+              case "w":
+                data.stats.primaryAttributes.willpower.bonus += 1;
+                break;
+              case "f":
+                data.stats.primaryAttributes.fellowship.bonus += 1;
+                break;
+              default:
+                console.log("No attribute found for value ", advance + ".");
+                break;
+            }
           }
         }
       }
@@ -266,11 +268,24 @@ export class ZweihanderActor extends Actor {
 
 
     // Assign equipped Trappings (Misc.) encumbrance
-    for (let trapping of actorData.trappings)
-      if (trapping.data.carried)
+    let totalSmallTrappings = 0;
+
+    for (let trapping of actorData.trappings) {
+      if (trapping.data.carried) {
         data.stats.secondaryAttributes.encumbrance.current += (trapping.data.quantity.value * trapping.data.encumbrance.value);
 
+        // Only execute if the option is ticked and the specific item does not already have an encumbrance value assigned
+        if (game.settings.get("zweihander", "encumbranceNineForOne") && !trapping.data.encumbrance.value) {
+          totalSmallTrappings += trapping.data.quantity.value;
+        }
+      }
+    }
 
+    if (game.settings.get("zweihander", "encumbranceNineForOne"))
+      data.stats.secondaryAttributes.encumbrance.current += Math.floor(totalSmallTrappings / 9);
+
+
+    // Assign equipped Weapons encumbrance
     for (let weapon of actorData.weapons)
       if (weapon.data.equipped)
         data.stats.secondaryAttributes.encumbrance.current += weapon.data.encumbrance.value;
@@ -305,6 +320,11 @@ export class ZweihanderActor extends Actor {
     const drawbacks = [];
     const traits = [];
     const trappings = [];
+    const uniqueAdvances = [];
+    const injuries = [];
+    const diseases = [];
+    const disorders = [];
+    const conditions = [];
 
     for (let item of actorData.items.values()) {
       if (item.type === "weapon")
@@ -329,6 +349,16 @@ export class ZweihanderActor extends Actor {
         traits.push(item.data);
       else if (item.type === "trapping")
         trappings.push(item.data);
+      else if (item.type === "uniqueAdvance")
+        uniqueAdvances.push(item.data);
+      else if (item.type === "injury")
+        injuries.push(item.data);
+      else if (item.type === "disease")
+        diseases.push(item.data);
+      else if (item.type === "disorder")
+        disorders.push(item.data);
+      else if (item.type === "condition")
+        conditions.push(item.data);
     }
 
     actorData.weapons = weapons;
@@ -357,6 +387,11 @@ export class ZweihanderActor extends Actor {
     actorData.drawbacks = drawbacks;
     actorData.traits = traits;
     actorData.trappings = trappings;
+    actorData.uniqueAdvances = uniqueAdvances;
+    actorData.injuries = injuries;
+    actorData.diseases = diseases;
+    actorData.disorders = disorders;
+    actorData.conditions = conditions;
 
     let skillCounter = new Map();
 
@@ -392,6 +427,10 @@ export class ZweihanderActor extends Actor {
       profession.data.skillRanks.arrayOfValues = _temp;
 
       const advancesArray = profession.data.bonusAdvances.value.split(',');
+
+      // An empty input field results in an empty String on split
+      if (advancesArray[0] === "")
+        continue;
 
       _temp = [];
       let idxCounter = 0;

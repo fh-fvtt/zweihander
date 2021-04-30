@@ -1,0 +1,59 @@
+<form class="{{cssClass}}" autocomplete="off">
+
+    <div class="npc sheet-background">
+        <div class="npc sheet-content">
+
+            {{!-- Sheet Header --}}
+            <header class="sheet-header">
+                <div class="header-fields">
+                    <div class="labeled-input charname">
+                        <input class="input-text" name="name" type="text" value="{{name}}" placeholder="Name" />
+                        <label class="input-label">Name</label>
+                    </div>
+
+                    <div class="labeled-input age">
+                        <input class="input-text" name="data.physical.age.value" type="text"
+                            value="{{data.physical.age.value}}" placeholder="Age"  />
+                        <label class="input-label">Age</label>
+                    </div>
+
+                    <div class="labeled-input sex">
+                        <input class="input-text" name="data.physical.sex.value" type="text"
+                            value="{{data.physical.sex.value}}" placeholder="Sex"  />
+                        <label class="input-label">Sex</label>
+                    </div>
+
+                    <div class="labeled-input ancestry">
+                        <div class="ancestry-absolute">
+                            <input class="input-text" name="data.physical.ancestry.value" type="text" value="{{ancestry.0.name}}" placeholder="Ancestry" readonly />
+                            <label class="input-label">Ancestry</label>
+                        </div>
+                        <div class="ancestry-edit">
+                            {{!--{{#if ancestry.length}}
+                                <a class="ancestry-edit-button" title="Edit Ancestry"><i class="fas fa-pencil-alt fa-sm"></i></a>
+                                <a class="ancestry-delete-button" title="Delete Ancestry"><i class="fas fa-trash-alt fa-sm"></i></a>
+                            {{else}}
+                                <a class="add-new" data-item-type="ancestry" title="Add Ancestry"><i class="fas fa-plus fa-xs"></i></a>
+                            {{/if}}--}}
+                        </div>
+                    </div>
+
+                    <div class="labeled-input profession">
+                        <input class="input-text" name="data.archetype.value" type="text" value="{{data.archetype.value}}" placeholder="Archetype"  />
+                        <label class="input-label">Archetype</label>
+                    </div>
+                </div>
+
+                <div class="image-and-adv-and-corr-container">
+                    <div class="npc profile-img-container">
+                        <img class="profile-img" src="{{img}}" data-edit="img" title="{{name}}" />
+                    </div>
+                    <div class="advancement-and-corruption-container">
+                        aa
+                    </div>
+                </div>
+                
+            </header>
+        </div>
+    </div>
+</form>

@@ -77,7 +77,7 @@
 }
 
 .window-app {
-  border-radius: 0;
+  border-radius: 7px;
 }
 
 .zweihander .window-header {
@@ -95,7 +95,7 @@
   padding-top: 10px;
   overflow-y: hidden;
 
-  border-radius: 15px;
+  border-radius: 7px;
 }
 
 .window-app.minimized .window-header {
@@ -106,20 +106,39 @@
   border: none;
 }
 
-.zweihander .sheet-background {
+.zweihander .character.sheet-background {
   background-image: url(../../zweihander/assets/background.png);
   background-size: 100%;
   background-repeat: no-repeat;
+  background-color: black;
   height: 100%;
 }
 
-.zweihander .sheet-content {
+.zweihander .npc.sheet-background {
+  background-image: url(../../zweihander/assets/background_alt.png);
+  background-size: 100%;
+  background-repeat: no-repeat;
+  background-color: black;
+  height: 100%;
+}
+
+.zweihander .character.sheet-content {
   /* height: 100%;*/
   height: 100%;
   /* padding: 50px 75px 75px 75px; */
   /* padding: 8% 10.5% 8% 10.5%; */
   /* padding: 7% 8.5% 8.5% 10.5%; */
   padding: 6.5% 8% 8% 10%;
+  box-shadow: 0px 0px 40px inset black;
+}
+
+.zweihander .npc.sheet-content {
+  /* height: 100%;*/
+  height: 100%;
+  /* padding: 50px 75px 75px 75px; */
+  /* padding: 8% 10.5% 8% 10.5%; */
+  /* padding: 7% 8.5% 8.5% 10.5%; */
+  padding: 10% 8.5% 10% 9%;
   box-shadow: 0px 0px 40px inset black;
 }
 
@@ -187,6 +206,10 @@
   font-size: 15px;
 }
 
+.zweihander .sheet-header .labeled-input.ancestry .ancestry-edit .add-new {
+  padding: 2px;
+}
+
 .zweihander .labeled-input input[type="text"]:focus {
   box-shadow: 0 3px 3px -3px darkgrey;
 }
@@ -235,6 +258,17 @@
   display: flex;
   flex-direction: column;
   align-items: center;
+  /* background-color: yellow; */
+}
+
+.zweihander .sheet-header .npc.profile-img-container {
+  width: 207px;
+  height: 207px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  order: 1;
+  padding-right: 5px;
   /* background-color: yellow; */
 }
 
@@ -1125,6 +1159,7 @@
 
 .zweihander .sheet-body .notes-content .character-details .line .distinguishing-marks .input-text {
   width: 290px;
+  text-overflow: ellipsis;
 }
 
 .zweihander .sheet-body .notes-content .character-details .line .hair-color .input-text {
@@ -1153,10 +1188,12 @@
 
 .zweihander .sheet-body .notes-content .character-details .line .dooming .input-text {
   width: 285px;
+  text-overflow: ellipsis;
 }
 
 .zweihander .sheet-body .notes-content .character-details .line .languages .input-text {
   width: 140px;
+  text-overflow: ellipsis;
 }
 
 .zweihander .sheet-body .notes-content .ancestry-drawback-and-notepad-container {
@@ -1192,36 +1229,6 @@
   height: 120.5px;
 }
 
-.zweihander .sheet-body .notes-content .ancestry-drawback-and-notepad-container .ancestry-and-drawback-container .common-list.ancestry {
-  flex: 1;
-}
-
-.zweihander .sheet-body .notes-content .ancestry-drawback-and-notepad-container .ancestry-and-drawback-container .common-list.ancestry .image-and-name {
-  flex: 0 0 170px;
-}
-
-/*
-.zweihander .sheet-body .notes-content .ancestry-drawback-and-notepad-container .ancestry-and-drawback-container .common-header.ancestry {
-  display: flex;
-  flex-direction: row;
-  padding: 5px;
-
-  width: 100%;
-  background: rgba(0, 0, 0, 0.05);
-  border: 1px solid #AAA;
-  text-align: left;
- }
-
-.zweihander .sheet-body .notes-content .ancestry-drawback-and-notepad-container .ancestry-and-drawback-container .common-header.ancestry.title.main {
-  flex: 1;
-  text-align: left;
-  font-size: 14px;
-  font-family: 'Baskerville Old Face';
-  font-weight: bold;
-} 
-
-*/
-
 .zweihander .sheet-body .notes-content .ancestry-drawback-and-notepad-container .ancestry-and-drawback-container .common-container.drawback {
   flex: 1;
   display: flex;
@@ -1236,7 +1243,7 @@
 }
 
 .zweihander .sheet-body .notes-content .ancestry-drawback-and-notepad-container .ancestry-and-drawback-container .common-list.drawback .image-and-name {
-  flex: 0 0 170px;
+  flex: 0 0 215px;
 }
 
 .zweihander .sheet-body .notes-content .ancestry-drawback-and-notepad-container .notepad-container {
@@ -1279,7 +1286,7 @@
 }
 
 .zweihander .professions-talents-unique-content .common-list {
-  flex: 1;
+  height: 391px;
 }
 
 .zweihander .professions-talents-unique-content .common-container.professions {
@@ -1293,16 +1300,24 @@
 }
 
 .zweihander .professions-talents-unique-content .common-container.talents-traits .image-and-name {
-  flex: 0 0 150px;
+  flex: 0 0 215px;
 }
 
 .zweihander .professions-talents-unique-content .common-container.talents-traits .title.main {
-  flex: 0 0 150px;
+  flex: 0 0 215px;
 }
 
 .zweihander .professions-talents-unique-content .common-container.unique-advances {
   border-top: none;
   height: 100%;
+}
+
+.zweihander .professions-talents-unique-content .common-container.unique-advances .common-header .title.main {
+  flex: 0 0 215px;
+}
+
+.zweihander .professions-talents-unique-content .common-container.unique-advances .image-and-name {
+  flex: 0 0 215px;
 }
 
 .zweihander .trappings-content {
@@ -1664,7 +1679,7 @@
 
 .zweihander .afflictions-content {
   display: flex;
-  flex-direction: row;
+  flex-direction: column;
   height: 100%;
 }
 
@@ -1747,8 +1762,8 @@
   /* background-color: palevioletred; */
 }
 
-.zweihander .afflictions-content .common-container.injuries {
-  margin-bottom: 23px;
+.zweihander .afflictions-content .common-container.afflictions {
+  border-top: none;
 }
 
 .zweihander .afflictions-content .common-container.diseases {
@@ -1915,6 +1930,8 @@
   flex-direction: row;
   align-items: center;
   justify-content: center;
+
+  padding-right: 6px;
 }
 
 .zweihander .common-list {
@@ -1930,6 +1947,18 @@
   background-color: #fbfbfb;
   box-shadow: -3px 0px 2px inset darkgrey;
   /* background: url('../assets/notepad-opacity.png'); */
+}
+
+.zweihander .afflictions-tabs-content {
+  height: 100%;
+}
+
+.zweihander .afflictions-tabs-content .common-container.afflictions {
+  height: 419px;
+}
+
+.zweihander .afflictions-tabs-content .common-list {
+  height: 391px;
 }
 
 .zweihander .magic-tabs-content .common-header .title.main {
@@ -1982,7 +2011,7 @@
   /* background-color: green; */
 }
 
-.zweihander .tiers-content .common-container .skill input[type="checkbox"] {
+.zweihander .common-container .skill input[type="checkbox"] {
   transform: none;
   margin: 0;
   width: 12px;
@@ -1995,6 +2024,10 @@
 }
 
 .zweihander .common-list.unique-advances {
+  flex: 1;
+}
+
+.zweihander .common-list.afflictions {
   flex: 1;
 }
 

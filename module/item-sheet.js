@@ -9,7 +9,7 @@ export class ZweihanderItemSheet extends ItemSheet {
 	  return mergeObject(super.defaultOptions, {
 			classes: ["zweihander", "sheet", "item"],
 			width: 600,
-      height: 750,
+      height: 650,
       resizable: false,
       tabs: [{navSelector: ".sheet-tabs", contentSelector: ".item-body", initial: "description"}]
 		});
@@ -50,17 +50,6 @@ export class ZweihanderItemSheet extends ItemSheet {
   // async _onDrop(event) {
   //   event.preventDefault();
   // }
-
-  /* -------------------------------------------- */
-
-  /** @override */
-  setPosition(options={}) {
-    const position = super.setPosition(options);
-    const sheetBody = this.element.find(".sheet-body");
-    const bodyHeight = position.height - 192;
-    sheetBody.css("height", bodyHeight);
-    return position;
-  }
 
   /* -------------------------------------------- */
 

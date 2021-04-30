@@ -9,6 +9,8 @@
 
         {{!-- Description Tab --}}
         <div class="tab">
+            {{log data}}
+            Skill Name: <input type="text" name="name" value="{{data.name}}" />
             Primary Attribute (Base Chance): <input type="text" name="data.associatedPrimaryAttribute.value" value="{{data.data.associatedPrimaryAttribute.value}}" />
             Apprentice: <input type="checkbox" name="data.ranks.apprentice.purchased" {{checked data.data.ranks.apprentice.purchased}} />
             Journeyman: <input type="checkbox" name="data.ranks.journeyman.purchased" {{checked data.data.ranks.journeyman.purchased}} />

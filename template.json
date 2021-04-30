@@ -188,11 +188,50 @@
           "value": ""
         }
       }
+    },
+    "npc": {
+      "templates": [
+        "stats"
+      ],
+      "archetype": {
+        "value": ""
+      },
+      "height": {
+        "value": ""
+      },
+      "build": {
+        "value": ""
+      },
+      "distinguishingMarks": {
+        "value": ""
+      },
+      "complexion": {
+        "value": ""
+      },
+      "socialClass": {
+        "value": ""
+      },
+      "persona": {
+        "value": ""
+      },
+      "motivation": {
+        "value": ""
+      },
+      "alignment": {
+        "value": ""
+      },
+      "mannerOfDress": {
+        "value": ""
+      },
+      "trappings": {
+        "value": "",
+        "arrayOfValues": []
+      }
     }
   },
   "Item": {
     "types": [
-      "trapping", "injury", "disease", "profession", "ancestry", "armor", "weapon", "spell", "ritual", "talent", "trait", "drawback", "quality", "skill", "uniqueAdvance"
+      "trapping", "condition", "injury", "disease", "disorder", "profession", "ancestry", "armor", "weapon", "spell", "ritual", "talent", "trait", "drawback", "quality", "skill", "uniqueAdvance"
     ],
     "templates": {
       "flavor": {
@@ -413,6 +452,10 @@
           "tierOfPurchase": ""
         },
         "bonus": 0
+      },
+      "focuses": {
+        "value": "",
+        "arrayOfValues": []
       }
     },
     "talent": {
@@ -423,6 +466,74 @@
         "value": ""
       },
       "purchased": false
+    },
+    "uniqueAdvance": {
+      "templates": [
+        "flavor"
+      ],
+      "type": {
+        "value": ""
+      },
+      "rewardPointCost": {
+        "value": 0
+      },
+      "associatedFocusSkill": {
+        "value": ""
+      }
+    },
+    "disease": {
+      "templates": [
+        "flavor"
+      ],
+      "resist": {
+        "value": ""
+      },
+      "duration": {
+        "value": ""
+      },
+      "effect": {
+        "value": ""
+      },
+      "treatment": {
+        "value": ""
+      },
+      "active": false
+    },
+    "disorder": {
+      "templates": [
+        "flavor"
+      ],
+      "category": {
+        "value": ""
+      },
+      "effect": {
+        "value": ""
+      },
+      "active": false
+    },
+    "injury": {
+      "templates": [
+        "flavor"
+      ],
+      "severity": {
+        "value": ""
+      },
+      "effect": {
+        "value": ""
+      },
+      "active": false
+    },
+    "condition": {
+      "templates": [
+        "flavor"
+      ],
+      "category": {
+        "value": ""
+      },
+      "effect": {
+        "value": ""
+      },
+      "active": false
     }
   }
 }

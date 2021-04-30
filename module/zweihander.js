@@ -1,7 +1,6 @@
 /**
- * A simple and flexible system for world-building using an arbitrary collection of character and item attributes
+ * An implementation of the Zweihänder Grim & Perilous RPG system for FoundryVTT
  * Author: Re4XN
- * Software License: GNU GPLv3
  */
 
 // Import Modules
@@ -9,6 +8,7 @@ import { ZweihanderActor } from "./actor.js";
 import { ZweihanderItem } from "./item.js";
 import { ZweihanderItemSheet } from "./item-sheet.js";
 import { ZweihanderActorSheet } from "./actor-sheet.js";
+import { ZweihanderNpcSheet } from "./npc-sheet.js";
 
 /* -------------------------------------------- */
 /*  Foundry VTT Initialization                  */
@@ -31,25 +31,33 @@ Hooks.once("init", async function () {
     decimals: 2
   };
 
-  // Define custom Entity classes
+  // Define custom Document classes
   CONFIG.Actor.documentClass = ZweihanderActor;
   CONFIG.Item.documentClass = ZweihanderItem;
 
   // Register sheet application classes
   Actors.unregisterSheet("core", ActorSheet);
-  Actors.registerSheet("zweihander", ZweihanderActorSheet, { makeDefault: true });
+  Actors.registerSheet("zweihander", ZweihanderActorSheet, { "types": ["character"], makeDefault: true });
+  Actors.registerSheet("zweihander", ZweihanderNpcSheet, { "types": ["npc"], makeDefault: true });
   Items.unregisterSheet("core", ItemSheet);
   Items.registerSheet("zweihander", ZweihanderItemSheet, { makeDefault: true });
 
-  // Register system settings
-  // game.settings.register("zweihander", "macroShorthand", {
-  //   name: "Shortened Macro Syntax",
-  //   hint: "Enable a shortened macro syntax which allows referencing attributes directly, for example @str instead of @attributes.str.value. Disable this setting if you need the ability to reference the full attribute model, for example @attributes.str.label.",
-  //   scope: "zweihander",
-  //   type: Boolean,
-  //   default: false,
-  //   config: true
-  // });
+  /* -------------------------------------------- */
+  /*  System settings registration                */
+  /* -------------------------------------------- */
+
+  game.settings.register("zweihander", "encumbranceNineForOne", {
+    name: "Small Item Encumbrance",
+    hint: "Enable rule for small item encumbrance, where 9 small items add up to 1 point of encumbrance.",
+    scope: "zweihander",
+    type: Boolean,
+    default: true,
+    config: true
+  });
+
+  /* -------------------------------------------- */
+  /*  Handlebars helpers registration             */
+  /* -------------------------------------------- */
 
   Handlebars.registerHelper("debug", function (optionalValue) {
     console.log("Current Context");
@@ -70,6 +78,10 @@ Hooks.once("init", async function () {
   Handlebars.registerHelper("checkSkillPurchaseForTier", function (skill, tier, options) {
     const tierName = tier.value.trim().toLowerCase();
     const timesAvailable = skill.timesAvailable;
+
+    // An empty input field results in an empty String
+    if (skill.name === "")
+      return options.inverse(this);
 
     switch(tierName) {
       case "basic":
@@ -197,6 +209,17 @@ Hooks.once("init", async function () {
 
     return new Handlebars.SafeString(html);
   });
+
+  Handlebars.registerHelper("checkUniqueAdvanceType", function(type, associatedSkill) {
+    if (type.trim().toLowerCase() === "focus") {
+      return `Focus (${associatedSkill})`;
+    } else {
+      return type;
+    }
+  });
+
+  loadTemplates([ "systems/zweihander/templates/actor/actor-sheet.html" ]);
+
 });
 
 // Helper function used to check Item duplicates

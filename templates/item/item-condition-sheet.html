@@ -1,0 +1,35 @@
+<form class="{{cssClass}}" autocomplete="off">
+    <div class="item-background">
+        <div class="item-profession-content">
+            <header class="profession-header">
+                <div class="image-and-title-container">
+                    <div class="header-image">
+                        <img class="profession-illustration" src="{{item.img}}" data-edit="img" title="{{item.name}}"/>
+                    </div>
+
+                    <div class="header-contents">
+                        <div class="title">
+                            <span>Profession: {{item.name}}</span>
+                        </div>
+                    </div>
+                </div>
+                
+            </header>
+    
+    
+            {{!-- Sheet Body --}}
+            <section class="item-body">
+    
+                {{!-- Description Tab --}}
+                <div class="tab">
+                    <span><i>{{data.data.flavor.description}}</i></span>
+                    <br />
+                    Condition Name: <input type="text" name="name" value="{{item.name}}" />
+                    Category: <input type="text" name="data.category.value" value="{{data.data.category.value}}" />
+                    Effect: <input type="text" name="data.effect.value" value="{{data.data.effect.value}}" />
+                    Currently In Effect: <input type="checkbox" name="data.active" {{checked data.data.active}} />
+                </div>
+            </section>
+        </div>
+    </div>
+</form>

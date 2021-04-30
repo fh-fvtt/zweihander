@@ -7,8 +7,8 @@ export class ZweihanderActorSheet extends ActorSheet {
   /** @override */
   static get defaultOptions() {
     return mergeObject(super.defaultOptions, {
-      classes: ["zweihander", "sheet", "actor"],
-      template: "systems/zweihander/templates/actor-sheet.html",
+      classes: ["zweihander", "sheet", "character"],
+      template: "systems/zweihander/templates/actor/actor-sheet.html",
       width: 689, //720,
       height: 890, //945,
       resizable: false,
@@ -16,14 +16,15 @@ export class ZweihanderActorSheet extends ActorSheet {
         { navSelector: ".main-tabs", contentSelector: ".sheet-body", initial: "main" },
         { navSelector: ".trapping-tabs", contentSelector: ".trapping-tabs-content", initial: "weapons" },
         { navSelector: ".tiers-tabs", contentSelector: ".professions-talents-unique-content", initial: "professions" },
-        { navSelector: ".magick-tabs", contentSelector: ".magick-tabs-content", initial: "spells" }
+        { navSelector: ".magick-tabs", contentSelector: ".magick-tabs-content", initial: "spells" },
+        { navSelector: ".afflictions-tabs", contentSelector: ".afflictions-tabs-content", initial: "condition" }
       ],
       scrollY: [".common-list.skills.save-scroll", 
         ".common-list.unique-advances.save-scroll",
         ".common-list.drawback.save-scroll",
-        "common-list.save-scroll",
-        "common-list.magick.save-scroll",
-        "common-list.professions.save-scroll",
+        ".common-list.save-scroll",
+        ".common-list.magick.save-scroll",
+        ".common-list.professions.save-scroll"
       ]
     });
   }
@@ -70,9 +71,35 @@ export class ZweihanderActorSheet extends ActorSheet {
     // Delete Inventory Item
     html.find('.item-delete').click(async ev => {
       const li = $(ev.currentTarget).parents(".item");
+      const itemName = li.children(".image-and-name").children("span").text();
 
-      await this.actor.deleteEmbeddedDocuments("Item", [ li.data("itemId") ]);
-      li.slideUp(200, () => this.render(false));
+      await Dialog.confirm({
+        title: `Delete Embedded Item: ${itemName}`,
+        content: "<p>Are you sure?</p><p>This item will be permanently deleted and cannot be recovered.</p>",
+        yes: async () => {
+          await this.actor.deleteEmbeddedDocuments("Item", [ li.data("itemId") ]);
+          li.slideUp(200, () => this.render(false));
+        },
+        no: () => {},
+        defaultYes: false
+      });
+    });
+
+    // Add new Item (from within the sheet)
+    html.find('.add-new').click(async ev => {
+      let type = ev.currentTarget.dataset.itemType;
+
+      if (type === "talentTrait") {
+        // TODO: add Dialog to choose
+        console.log("TODO: allow user to choose between Talent and Trait");
+        return;
+      }
+
+      const createdItemArray = await this.actor.createEmbeddedDocuments("Item", [ 
+        { "type": type, "name": type } 
+      ]);
+
+      createdItemArray[0].sheet.render(true);
     });
 
     // Edit Ancestry Item
@@ -121,6 +148,8 @@ export class ZweihanderActorSheet extends ActorSheet {
         await item.update({ "data.carried": event.target.checked });
       } else if (item.type === "weapon") {
         await item.update({ "data.equipped": event.target.checked });
+      } else if (item.type === "condition" || item.type === "injury" || item.type === "disease" || item.type === "disorder") {
+        await item.update({ "data.active": event.target.checked });
       }
     });
 
@@ -161,6 +190,7 @@ export class ZweihanderActorSheet extends ActorSheet {
       if (itemId) {
         const skillItem = this.actor.items.get(itemId);
         const skillData = skillItem.data.data;
+        
         if (target.hasClass("not-purchased")) {
           if (!skillData.ranks.apprentice.purchased) {
             await skillItem.update({ "data.ranks.apprentice.purchased": true });
@@ -338,12 +368,16 @@ export class ZweihanderActorSheet extends ActorSheet {
       this._tabs[1].activate(this._tabs[1].active);
     }
 
-    if (active === "tiers") {
+    else if (active === "tiers") {
       this._tabs[2].activate(this._tabs[2].active);
     }
 
-    if (active === "magick") {
+    else if (active === "magick") {
       this._tabs[3].activate(this._tabs[3].active);
+    }
+
+    else if (active === "afflictions") {
+      this._tabs[4].activate(this._tabs[4].active);
     }
 
     super._onChangeTab();
