@@ -67,14 +67,12 @@
 
                                     <div class="reward-points-inputs">
                                         <div class="points-and-label left">
-                                            <input class="points-input" type="number" name="data.rewardPoints.current"
-                                                value="{{data.rewardPoints.current}}" data-dtype="Number" />
+                                            <input class="points-input {{#rpSettingOn}} locked {{else}} {{/rpSettingOn}}" type="number" name="data.rewardPoints.current" value="{{data.rewardPoints.current}}" {{#rpSettingOn}} readonly {{else}} {{/rpSettingOn}} />
                                             <span>Current</span>
                                         </div>
 
                                         <div class="points-and-label right">
-                                            <input class="points-input" type="number" name="data.rewardPoints.total"
-                                                value="{{data.rewardPoints.total}}" data-dtype="Number" />
+                                            <input class="points-input" type="number" name="data.rewardPoints.total" value="{{data.rewardPoints.total}}"  />
                                             <span>Total</span>
                                         </div>
                                     </div>
@@ -87,8 +85,7 @@
                                         </div>
 
                                         <div class="fate-points">
-                                            <input class="points-input" type="number" name="data.fate.value"
-                                                value="{{data.fate.value}}" data-dtype="Number" />
+                                            <input class="points-input" type="number" name="data.fate.value" value="{{data.fate.value}}"  />
                                         </div>
                                     </div>
 
@@ -99,7 +96,7 @@
 
                                         <div class="reputation-points">
                                             <input class="points-input" type="number" name="data.reputation.value"
-                                                value="{{data.reputation.value}}" data-dtype="Number" />
+                                                value="{{data.reputation.value}}"  />
                                         </div>
                                     </div>
                                 </div>
@@ -126,8 +123,7 @@
                                 <div class="labeled-input order-container">
                                     <div class="ranks-beneath-input left">
                                         <div class="order-input-text">
-                                            <input class="input-text" name="data.orderAlignment.value" type="text"
-                                                value="{{data.orderAlignment.value}}" placeholder=""  />
+                                            <input class="input-text" name="data.orderAlignment.value" type="text" value="{{data.orderAlignment.value}}" placeholder=""  />
                                         </div>
 
                                         <div class="radio-order-ranks">
@@ -136,14 +132,15 @@
                                     </div>
                                 </div>
 
-                                <input class="input-number" name="data.corruption.value" type="number"
-                                    value="{{data.corruption.value}}" data-dtype="Number" />
+                                <div class="corruption-and-ranks-reset-container">
+                                    <input class="input-number" name="data.corruption.value" type="number" value="{{data.corruption.value}}" />
+                                    <a class="reset-ranks"><i class="fas fa-sync-alt fa-xs" title="Reset Chaos and Order Ranks"></i></a>
+                                </div>
 
                                 <div class="labeled-input chaos-container">
                                     <div class="ranks-beneath-input right">
                                         <div class="chaos-input-text">
-                                            <input class="input-text" name="data.chaosAlignment.value" type="text"
-                                                value="{{data.chaosAlignment.value}}" placeholder=""  />
+                                            <input class="input-text" name="data.chaosAlignment.value" type="text" value="{{data.chaosAlignment.value}}" placeholder=""  />
                                         </div>
 
                                         <div class="radio-chaos-ranks">
@@ -207,16 +204,12 @@
 
                                     <div class="value-and-bonus">
                                         <div class="number-and-label left">
-                                            <input class="value" type="number"
-                                                name="data.stats.primaryAttributes.{{key}}.value"
-                                                value="{{characteristics.value}}" data-dtype="Number">
+                                            <input class="value" type="number" name="data.stats.primaryAttributes.{{key}}.value" value="{{characteristics.value}}" >
                                             <span class="label">Value</span>
                                         </div>
 
                                         <div class="number-and-label right">
-                                            <input class="bonus" type="number"
-                                                name="data.stats.primaryAttributes.{{key}}.bonus"
-                                                value="{{characteristics.bonus}}" data-dtype="Number" readonly>
+                                            <input class="bonus" type="number" name="data.stats.primaryAttributes.{{key}}.bonus" value="{{characteristics.bonus}}"  readonly>
                                             <span class="label">[{{getFirstLetter key}}B]</span>
                                         </div>
                                     </div>
@@ -241,7 +234,7 @@
                                                 name="data.stats.secondaryAttributes.dodge.value"
                                                 value="{{data.stats.secondaryAttributes.dodge.value}}"
                                                 readonly
-                                                data-dtype="Number">
+                                                >
                                         </div>
 
                                         <span class="label dodge">
@@ -270,7 +263,7 @@
                                                 name="data.stats.secondaryAttributes.parry.value"
                                                 value="{{data.stats.secondaryAttributes.parry.value}}"
                                                 readonly
-                                                data-dtype="Number">
+                                                >
                                         </div>
 
                                         <span class="label">
@@ -308,10 +301,10 @@
                                     </div>
                                 </header>
 
-                                <div class="common-list skills save-scroll">
+                                <div id="skill_scroll" class="common-list skills save-scroll">
                                     {{#each skills as | skill idx |}}
                                         <div class="individual-trapping item {{oddOrEven idx}}" data-item-id="{{skill._id}}">
-                                            <div class="image-and-name"">
+                                            <div class="image-and-name">
                                                 <span><a class="skill-roll" data-roll="1d100" data-label="{{skill.name}}">{{skill.name}} ({{getFirstLetter skill.data.associatedPrimaryAttribute.value}}){{#if skill.data.requiresTraining}}*{{else}}{{/if}}</a></span>
                                             </div>
 
@@ -355,7 +348,7 @@
                                                 <input class="value" type="number"
                                                     name="data.stats.secondaryAttributes.initiative.value"
                                                     value="{{data.stats.secondaryAttributes.initiative.value}}"
-                                                    data-dtype="Number" readonly />
+                                                     readonly />
                                                 <span class="label">[PB]+3</span>
                                             </div>
 
@@ -363,7 +356,7 @@
                                                 <input class="value" type="number"
                                                     name="data.stats.secondaryAttributes.initiative.overage"
                                                     value="{{data.stats.secondaryAttributes.initiative.overage}}"
-                                                    data-dtype="Number" readonly />
+                                                     readonly />
                                                 <span class="label">Overage</span>
                                             </div>
 
@@ -371,7 +364,7 @@
                                                 <input class="value" type="number"
                                                     name="data.stats.secondaryAttributes.initiative.current"
                                                     value="{{data.stats.secondaryAttributes.initiative.current}}"
-                                                    data-dtype="Number" readonly />
+                                                     readonly />
                                                 <span class="label">Current</span>
                                             </div>
                                         </div>
@@ -387,7 +380,7 @@
                                                 <input class="value" type="number"
                                                     name="data.stats.secondaryAttributes.perilThreshold.value"
                                                     value="{{data.stats.secondaryAttributes.perilThreshold.value}}"
-                                                    data-dtype="Number" readonly />
+                                                     readonly />
                                                 <span class="label">[WB]+3</span>
                                             </div>
 
@@ -395,7 +388,7 @@
                                                 <input class="value" type="number"
                                                     name="data.stats.secondaryAttributes.perilThreshold.valuePlusSix"
                                                     value="{{data.stats.secondaryAttributes.perilThreshold.valuePlusSix}}"
-                                                    data-dtype="Number" readonly />
+                                                     readonly />
                                                 <span class="label">+6</span>
                                             </div>
 
@@ -403,7 +396,7 @@
                                                 <input class="value" type="number"
                                                     name="data.stats.secondaryAttributes.perilThreshold.valuePlusTwelve"
                                                     value="{{data.stats.secondaryAttributes.perilThreshold.valuePlusTwelve}}"
-                                                    data-dtype="Number" readonly />
+                                                     readonly />
                                                 <span class="label">+12</span>
                                             </div>
 
@@ -411,7 +404,7 @@
                                                 <input class="value" type="number"
                                                     name="data.stats.secondaryAttributes.perilThreshold.valuePlusEighteen"
                                                     value="{{data.stats.secondaryAttributes.perilThreshold.valuePlusEighteen}}"
-                                                    data-dtype="Number" readonly />
+                                                     readonly />
                                                 <span class="label">+18</span>
                                             </div>
                                         </div>
@@ -439,7 +432,7 @@
                                                 <input class="value" type="number"
                                                     name="data.stats.secondaryAttributes.movement.value"
                                                     value="{{data.stats.secondaryAttributes.movement.value}}"
-                                                    data-dtype="Number" readonly />
+                                                     readonly />
                                                 <span class="label">[AB]+3</span>
                                             </div>
 
@@ -447,7 +440,7 @@
                                                 <input class="value" type="number"
                                                     name="data.stats.secondaryAttributes.movement.overage"
                                                     value="{{data.stats.secondaryAttributes.movement.overage}}"
-                                                    data-dtype="Number" readonly />
+                                                     readonly />
                                                 <span class="label">Overage</span>
                                             </div>
 
@@ -455,7 +448,7 @@
                                                 <input class="value" type="number"
                                                     name="data.stats.secondaryAttributes.movement.current"
                                                     value="{{data.stats.secondaryAttributes.movement.current}}"
-                                                    data-dtype="Number" readonly />
+                                                     readonly />
                                                 <span class="label">Current</span>
                                             </div>
                                         </div>
@@ -471,7 +464,7 @@
                                                 <input class="value" type="number"
                                                     name="data.stats.secondaryAttributes.damageThreshold.value"
                                                     value="{{data.stats.secondaryAttributes.damageThreshold.value}}"
-                                                    data-dtype="Number" readonly />
+                                                     readonly />
                                                 <span class="label dtm">[BB]+0</span>
                                             </div>
 
@@ -479,7 +472,7 @@
                                                 <input class="value" type="number"
                                                     name="data.stats.secondaryAttributes.damageThreshold.valuePlusSix"
                                                     value="{{data.stats.secondaryAttributes.damageThreshold.valuePlusSix}}"
-                                                    data-dtype="Number" readonly />
+                                                     readonly />
                                                 <span class="label">+6</span>
                                             </div>
 
@@ -487,7 +480,7 @@
                                                 <input class="value" type="number"
                                                     name="data.stats.secondaryAttributes.damageThreshold.valuePlusTwelve"
                                                     value="{{data.stats.secondaryAttributes.damageThreshold.valuePlusTwelve}}"
-                                                    data-dtype="Number" readonly />
+                                                     readonly />
                                                 <span class="label">+12</span>
                                             </div>
 
@@ -495,7 +488,7 @@
                                                 <input class="value" type="number"
                                                     name="data.stats.secondaryAttributes.damageThreshold.valuePlusEighteen"
                                                     value="{{data.stats.secondaryAttributes.damageThreshold.valuePlusEighteen}}"
-                                                    data-dtype="Number" readonly />
+                                                     readonly />
                                                 <span class="label">+18</span>
                                             </div>
                                         </div>
@@ -588,56 +581,6 @@
 
                         <div class="ancestry-drawback-and-notepad-container">
                             <div class="ancestry-and-drawback-container">
-                                <!-- <div class="title">
-                                    <span>Ancestry</span>
-                                </div> -->
-                                <!--
-                                <div class="common-container ancestry">
-                                    <header class="common-header ancestry">
-                                        <div class="title main">
-                                            <span>Ancestry</span>
-                                        </div>
-
-                                        <div class="title controls">
-                                            <span></span>
-                                        </div>
-                                    </header>
-        
-                                    <div class="common-list ancestry save-scroll">
-                                        {{#each ancestry as | ancestry idx |}}
-                                            <div class="individual-trapping-and-description {{oddOrEven idx}}">
-                                                <div class="individual-trapping item hide-description" data-item-id="{{ancestry._id}}">
-                                                    <div class="image-and-name">
-                                                        <img src="{{ancestry.img}}" /><span>{{ancestry.name}}</span>
-                                                    </div>
-        
-                                                    <div class="controls-container">
-                                                        <div class="controls">
-                                                            <a class="item-control item-edit" title="Edit Item"><i class="fas fa-pencil-alt fa-fw fa-xs"></i></a>
-                                                            <a class="item-control item-delete" title="Delete Item"><i class="fas fa-trash-alt fa-fw fa-xs"></i></a>
-                                                        </div>
-        
-                                                        <div class="controls">
-                                                            <a class="item-control item-post" title="Post Item to Chat"><i class="fas fa-comment fa-fw fa-xs"></i></a>
-                                                            <a class="item-control item-description" title="Toggle Description"><i class="fas fa-align-left fa-fw fa-xs"></i></a>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                                <div class="individual-description save-toggle">
-                                                    <div class="description-list">
-                                                        {{#checkSecondAncestry idx}}
-                                                            <span><b>Ancestral Modifiers: </b>{{beautifyAncestralModifiers ancestry.data.ancestralModifiers.positive.value ancestry.data.ancestralModifiers.negative.value}}</span>
-                                                        {{else}}
-                                                            <span></span>
-                                                        {{/checkSecondAncestry}}
-                                                        <span><b>Ancestral Traits: </b> {{ancestry.data.ancestralTrait.value}}</span> {{!--TODO: Change to Array of Values--}}
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        {{/each}}
-                                    </div>
-                                </div>
-                                -->
                                 <div class="common-container drawback">
                                     <header class="common-header ancestry">
                                         <div class="title main">
@@ -649,7 +592,7 @@
                                         </div>
                                     </header>
         
-                                    <div class="common-list drawback save-scroll">
+                                    <div id="drawbacks_scroll" class="common-list drawback save-scroll">
                                         {{#each drawbacks as | drawback idx |}}
                                             <div class="individual-trapping-and-description {{oddOrEven idx}}">
                                                 <div class="individual-trapping item hide-description" data-item-id="{{drawback._id}}">
@@ -679,14 +622,6 @@
                                     </div>
                                 </div>
                             </div>
-<!--                             
-                            <div class="notepad-container">
-                                <div class="title">
-                                    <span>Notes & Ramblings</span>
-                                </div>
-
-                                <textarea class="notepad" name="data.flavor.notes" placeholder="Personal ravings...">{{data.flavor.notes}}</textarea>
-                            </div> -->
                         </div>
                     </div>
                 </div>
@@ -740,7 +675,7 @@
                                             </div>
                                         </header>
         
-                                        <div class="common-list save-scroll">
+                                        <div id="weapons_scroll" class="common-list save-scroll">
                                             {{#each weapons as | weapon idx |}}
                                                 <div class="individual-trapping-and-description {{oddOrEven idx}}">
                                                     <div class="individual-trapping item" data-item-id="{{weapon._id}}">
@@ -826,7 +761,7 @@
                                             </div>
                                         </header>
         
-                                        <div class="common-list save-scroll">
+                                        <div id="armor_scroll" class="common-list save-scroll">
                                             {{#each armor as | armor idx |}}
                                                 <div class="individual-trapping-and-description {{oddOrEven idx}}">
                                                     <div class="individual-trapping item" data-item-id="{{armor._id}}">
@@ -843,7 +778,7 @@
                                                         </div>
     
                                                         <div class="skill">
-                                                            <span><input class="link-checkbox" name="armor.data.equipped" type="checkbox" {{checked armor.data.equipped}} data-dtype="Boolean" /></span>
+                                                            <span><input class="link-checkbox" name="armor.data.equipped" type="checkbox" {{checked armor.data.equipped}}  /></span>
                                                         </div>
     
                                                         <div class="controls-container">
@@ -910,7 +845,7 @@
                                             </div>
                                         </header>
         
-                                        <div class="common-list save-scroll">
+                                        <div id="trappings_scroll" class="common-list save-scroll">
                                             {{#each trappings as | trapping idx |}}
                                                 <div class="individual-trapping-and-description {{oddOrEven idx}}">
                                                     <div class="individual-trapping item" data-item-id="{{trapping._id}}">
@@ -1051,7 +986,7 @@
                                             </div>
                                         </header>
             
-                                        <div class="common-list afflictions save-scroll">
+                                        <div id="conditions_scroll" class="common-list afflictions save-scroll">
                                             {{#each conditions as | condition idx |}}
                                                 <div class="individual-trapping-and-description {{oddOrEven idx}}">
                                                     <div class="individual-trapping item hide-description" data-item-id="{{condition._id}}">
@@ -1109,7 +1044,7 @@
                                             </div>
                                         </header>
             
-                                        <div class="common-list afflictions save-scroll">
+                                        <div id="injuries_scroll" class="common-list afflictions save-scroll">
                                             {{#each injuries as | injury idx |}}
                                                 <div class="individual-trapping-and-description {{oddOrEven idx}}">
                                                     <div class="individual-trapping item hide-description" data-item-id="{{injury._id}}">
@@ -1171,7 +1106,7 @@
                                             </div>
                                         </header>
             
-                                        <div class="common-list afflictions save-scroll">
+                                        <div id="diseases_scroll" class="common-list afflictions save-scroll">
                                             {{#each diseases as | disease idx |}}
                                                 <div class="individual-trapping-and-description {{oddOrEven idx}}">
                                                     <div class="individual-trapping item hide-description" data-item-id="{{disease._id}}">
@@ -1238,7 +1173,7 @@
                                             </div>
                                         </header>
             
-                                        <div class="common-list afflictions save-scroll">
+                                        <div id="disorders_scroll" class="common-list afflictions save-scroll">
                                             {{#each disorders as | disorder idx |}}
                                                 <div class="individual-trapping-and-description {{oddOrEven idx}}">
                                                     <div class="individual-trapping item hide-description" data-item-id="{{disorder._id}}">
@@ -1323,7 +1258,7 @@
                                             </div>
                                         </header>
             
-                                        <div class="common-list magick save-scroll">
+                                        <div id="spells_scroll" class="common-list magick save-scroll">
                                             {{#each spells as | spell idx |}}
                                                 <div class="individual-trapping-and-description {{oddOrEven idx}}">
                                                     <div class="individual-trapping item hide-description" data-item-id="{{spell._id}}">
@@ -1393,7 +1328,7 @@
                                             </div>
                                         </header>
             
-                                        <div class="common-list magick save-scroll">
+                                        <div id="rituals_scroll" class="common-list magick save-scroll">
                                             {{#each rituals as | ritual idx |}}
                                                 <div class="individual-trapping-and-description {{oddOrEven idx}}">
                                                     <div class="individual-trapping item hide-description" data-item-id="{{ritual._id}}">
@@ -1493,16 +1428,16 @@
                                             </div>
                                         </header>
         
-                                        <div class="common-list save-scroll">
+                                        <div id="professions_scroll" class="common-list save-scroll">
                                             {{#each professions as | profession idx |}}
                                                 <div class="individual-trapping-and-description {{oddOrEven idx}}">
                                                     <div class="individual-trapping item" data-item-id="{{profession._id}}">
-                                                        <div class="image-and-name"">
+                                                        <div class="image-and-name">
                                                             <img src="{{profession.img}}" /><span>{{profession.name}}</span>
                                                         </div>
 
                                                         <div class="skill">
-                                                            <span>{{profession.data.tier.value}}</span>
+                                                            <span class="tier">{{profession.data.tier.value}}</span>
                                                         </div>
 
                                                         <div class="skill">
@@ -1510,7 +1445,7 @@
                                                         </div>
 
                                                         <div class="skill">
-                                                            <span><input type="checkbox" class="link-checkbox" {{checked profession.data.tier.completed}} data-dtype="Boolean" /></span>
+                                                            <span><input type="checkbox" class="link-checkbox" {{checked profession.data.tier.completed}} /></span>
                                                         </div>
 
                                                         <div class="controls-container">
@@ -1532,9 +1467,9 @@
                                                                 <b>Skill Ranks: </b>
                                                                 {{#each profession.data.skillRanks.arrayOfValues as | skillData idx |}}
                                                                     {{#if @last}}
-                                                                        <a class="skill-link fetch-item {{#checkSkillPurchaseForTier skillData profession.data.tier}} purchased {{else}} not-purchased {{/checkSkillPurchaseForTier}}">{{skillData.name}}</a>
+                                                                        <a class="skill-link fetch-item {{#checkSkillPurchaseForTier skillData profession.data.tier ../../currentTier}} purchased {{else}} not-purchased {{/checkSkillPurchaseForTier}}">{{skillData.name}}</a>
                                                                     {{else}}
-                                                                        <a class="skill-link fetch-item {{#checkSkillPurchaseForTier skillData profession.data.tier}} purchased {{else}} not-purchased {{/checkSkillPurchaseForTier}}">{{skillData.name}}</a><span>, </span>
+                                                                        <a class="skill-link fetch-item {{#checkSkillPurchaseForTier skillData profession.data.tier ../../currentTier}} purchased {{else}} not-purchased {{/checkSkillPurchaseForTier}}">{{skillData.name}}</a><span>, </span>
                                                                     {{/if}}
                                                                 {{/each}}
                                                             </div>
@@ -1602,13 +1537,15 @@
                                             </div>
                                         </header>
         
-                                        <div class="common-list save-scroll">
-                                            {{#each talents as | talent idx | }}
-                                                {{#if talent.data.purchased}}
+                                        <div id="talents_scroll" class="common-list save-scroll">
+                                            {{#each talentsAndTraits as | talentOrTrait idx | }}
+                                                {{#checkTalentPurchased talentOrTrait}}
+                                                    <!-- If Talent not purchased, don't display it -->
+                                                {{else}}
                                                     <div class="individual-trapping-and-description {{oddOrEven idx}}">
-                                                        <div class="individual-trapping item" data-item-id="{{talent._id}}">
-                                                            <div class="image-and-name"">
-                                                                <img src="{{talent.img}}" /><span>{{talent.name}}</span>
+                                                        <div class="individual-trapping item" data-item-id="{{talentOrTrait._id}}">
+                                                            <div class="image-and-name">
+                                                                <img src="{{talentOrTrait.img}}" /><span>{{talentOrTrait.name}}</span>
                                                             </div>
 
                                                             <div class="skill">
@@ -1633,13 +1570,13 @@
                                                         </div>
                                                         <div class="individual-description save-toggle">
                                                             <div class="description-list">
-                                                                <span><b>Effect:</b> {{talent.data.effect.value}}</span>
+                                                                <span><b>Effect:</b> {{talentOrTrait.data.effect.value}}</span>
                                                             </div>
                                                         </div>
                                                     </div>
-                                                {{/if}}
+                                                {{/checkTalentPurchased}}
                                             {{/each}}
-
+                                            <!--
                                             {{#each traits as | trait idx | }}
                                                 <div class="individual-trapping-and-description {{oddOrEven idx}}">
                                                     <div class="individual-trapping item" data-item-id="{{trait._id}}">
@@ -1674,6 +1611,7 @@
                                                     </div>
                                                 </div>
                                             {{/each}}
+                                            -->
                                         </div>
                                     </div>
                                 </div>
@@ -1698,11 +1636,11 @@
                                             </div>
                                         </header>
         
-                                        <div class="common-list save-scroll">
+                                        <div id="unique_advances_scroll" class="common-list save-scroll">
                                             {{#each uniqueAdvances as | uniqueAdvance idx | }}
                                                 <div class="individual-trapping-and-description {{oddOrEven idx}}">
                                                     <div class="individual-trapping item" data-item-id="{{uniqueAdvance._id}}">
-                                                        <div class="image-and-name unique-advance"">
+                                                        <div class="image-and-name unique-advance">
                                                             <img src="{{uniqueAdvance.img}}" /><span>{{uniqueAdvance.name}}</span>
                                                         </div>
 

@@ -53,11 +53,11 @@
               "valuePlusEighteen": 0
             },
             "perilCurrent": {
-              "value": 5,
+              "value": "5",
               "description": "Unhindered"
             },
             "damageCurrent": {
-              "value": 5,
+              "value": "5",
               "description": "Unharmed"
             },
             "encumbrance": {
@@ -148,7 +148,8 @@
       },
       "rewardPoints": {
         "current": 0,
-        "total": 0
+        "total": 0,
+        "spent": 0
       },
       "corruption": {
         "value": 0
@@ -193,7 +194,16 @@
       "templates": [
         "stats"
       ],
+      "ancestry": {
+        "value": ""
+      },
       "archetype": {
+        "value": ""
+      },
+      "age": {
+        "value": ""
+      },
+      "sex": {
         "value": ""
       },
       "height": {
@@ -226,6 +236,9 @@
       "trappings": {
         "value": "",
         "arrayOfValues": []
+      },
+      "riskFactor": {
+        "value": ""
       }
     }
   },
@@ -376,7 +389,8 @@
       },
       "tier": {
         "value": "",
-        "completed": false
+        "completed": false,
+        "advancesPurchased": 0
       }
     },
     "spell": {

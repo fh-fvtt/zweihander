@@ -1,3 +1,5 @@
+import UtilityHelpers from "./utility-helpers.js";
+
 /**
  * Extend the base Actor entity by defining a custom roll data structure which is ideal for the Simple system.
  * @extends {Actor}
@@ -6,40 +8,14 @@ export class ZweihanderActor extends Actor {
 
   /** @override */
   getRollData() {
-    const data = super.getRollData();
-
-    /*
-    const shorthand = game.settings.get("zweihander", "macroShorthand");
-
-    // Re-map all attributes onto the base roll data
-    if ( !!shorthand ) {
-      for ( let [k, v] of Object.entries(data.attributes) ) {
-        if ( !(k in data) ) data[k] = v.value;
-      }
-      delete data.attributes;
-    }
-
-    // Map all items data using their slugified names
-    data.items = this.data.items.reduce((obj, i) => {
-      let key = i.name.slugify({strict: true});
-      let itemData = duplicate(i.data);
-      if ( !!shorthand ) {
-        for ( let [k, v] of Object.entries(itemData.attributes) ) {
-          if ( !(k in itemData) ) itemData[k] = v.value;
-        }
-        delete itemData["attributes"];
-      }
-      obj[key] = itemData;
-      return obj;
-    }, {});*/
+    const data = this.toObject(false).data;
     return data;
   }
 
   prepareBaseData() {
-    // Correct value presented here on toggling something.
     super.prepareBaseData();
 
-    console.log("Preparing BASE data...")
+    // console.log("Preparing BASE data...")
 
     const actorData = this.data;
     const data = actorData.data;
@@ -47,32 +23,36 @@ export class ZweihanderActor extends Actor {
 
     if (actorData.type === "character") {
       this._prepareCharacterBaseData(actorData);
+    } else if (actorData.type === "npc") {
+      this._prepareNpcBaseData(actorData);
     }
-
-    // this.setFlag("zweihander", "professionDataInitialized", false);
   }
 
   prepareEmbeddedEntities() {
     super.prepareEmbeddedEntities();
 
-    console.log("Preparing EMBEDDED ENTITIES...")
+    // console.log("Preparing EMBEDDED ENTITIES...")
     
     const actorData = this.data;
   
     if (actorData.type === "character") {
       this._prepareCharacterItems(actorData);
+    } else if (actorData.type === "npc") {
+      this._prepareNpcItems(actorData);
     }
   }
 
   prepareDerivedData() {
     super.prepareDerivedData();
 
-    console.log("Preparing DERIVED data...")
+    // console.log("Preparing DERIVED data...")
 
     const actorData = this.data;
 
     if (actorData.type === "character") {
       this._prepareCharacterDerivedData(actorData);
+    } else if (actorData.type === "npc") {
+      this._prepareNpcDerivedData(actorData);
     }
   }
 
@@ -84,6 +64,35 @@ export class ZweihanderActor extends Actor {
   _prepareCharacterDerivedData(actorData) {
     const data = actorData.data;
 
+    // Auto-calculate Reward Points
+    if (game.settings.get("zweihander", "trackRewardPoints")) {
+      data.rewardPoints.spent = actorData.professions
+        .map(profession => { 
+          let tierMultiplier;
+
+          switch (profession.data.tier.value) {
+            case "Basic":
+              tierMultiplier = 100;
+              break;
+            case "Intermediate":
+              tierMultiplier = 200;
+              break;
+            case "Advanced":
+              tierMultiplier = 300;
+              break;
+            default:
+              tierMultiplier = 0;
+              break;
+          } 
+
+          return tierMultiplier * profession.data.tier.advancesPurchased;
+        })
+        .concat(actorData.uniqueAdvances.map(advance => advance.data.rewardPointCost.value))
+        .reduce((acc, value) => acc + value, 0);
+
+      data.rewardPoints.current = data.rewardPoints.total - data.rewardPoints.spent;
+    }
+    
     // Calculate primary attribute bonuses (first digit)
     for (let attribute of Object.values(data.stats.primaryAttributes)) {
       const attributeString = ('' + attribute.value);
@@ -285,6 +294,15 @@ export class ZweihanderActor extends Actor {
       data.stats.secondaryAttributes.encumbrance.current += Math.floor(totalSmallTrappings / 9);
 
 
+    // Assign coin encumbrance (1000 of *any* type equal 1 point of encumbrance)
+    let coinEncumbrance = 0;
+
+    for (let coinType of Object.keys(data.coinage))
+      coinEncumbrance += data.coinage[coinType];
+
+    data.stats.secondaryAttributes.encumbrance.current += Math.floor(coinEncumbrance / 1000);
+
+
     // Assign equipped Weapons encumbrance
     for (let weapon of actorData.weapons)
       if (weapon.data.equipped)
@@ -412,13 +430,26 @@ export class ZweihanderActor extends Actor {
       let _temp = [];
 
       for (let skill of skillsArray) {
+        if (skill === "")  // An empty input field results in an empty String on split
+          break;
+
         const skillItem = actorData.items.find(item => item.name === skill);
         const ranks = skillItem === undefined ? {} : skillItem.data.data.ranks;
+
+        let toSubtract = 0;
+
+        if (Object.keys(ranks).length) {
+          const keysToCheck = ["apprentice", "journeyman", "master"];
+
+          for (let key of keysToCheck) {
+            toSubtract += (ranks[key].purchased ? 1 : 0);
+          }
+        }
 
         const obj = {
           "name": skill,
           "ranks": ranks,
-          "timesAvailable": skillCounter.get(skill) // TODO CHANGE (don't know if this TODO is a mistake or not)
+          "timesAvailable": skillCounter.get(skill) - toSubtract
         };
 
         _temp.push(obj);
@@ -426,16 +457,15 @@ export class ZweihanderActor extends Actor {
 
       profession.data.skillRanks.arrayOfValues = _temp;
 
-      const advancesArray = profession.data.bonusAdvances.value.split(',');
-
-      // An empty input field results in an empty String on split
-      if (advancesArray[0] === "")
-        continue;
+      const advancesArray = profession.data.bonusAdvances.value.split(','); 
 
       _temp = [];
       let idxCounter = 0;
 
       for (let advance of advancesArray) {
+        if (advance === "")  // An empty input field results in an empty String on split
+          break;
+        
         let purchased = false;
 
         const oldAdvancesArray = profession.data.bonusAdvances.arrayOfValues;
@@ -459,10 +489,11 @@ export class ZweihanderActor extends Actor {
       _temp = [];
 
       for (let talent of talentsArray) {
+        if (talent === "")  // An empty input field results in an empty String on split
+          break;
+
         const talentItem = actorData.talents.find(item => item.name === talent.trim());
         const purchased = talentItem === undefined ? false : talentItem.data.purchased;
-
-        // console.log("Talent Item @ actor.js", JSON.stringify(talentItem), "\n---\n", JSON.stringify(talentItem.data))
 
         const obj = {
           "name": talent.trim(),
@@ -482,5 +513,120 @@ export class ZweihanderActor extends Actor {
     
     for (let weapon of actorData.weapons)
       weapon.data.qualities.arrayOfValues = weapon.data.qualities.value.split(", ");
+  }
+
+  _prepareNpcBaseData(actorData) {
+
+  }
+
+  _prepareNpcDerivedData(actorData) {
+    const data = actorData.data;
+    
+    // Assign Peril Threshold values
+    var initialPeril = data.stats.primaryAttributes.willpower.bonus, perilModifier = 3;
+
+    const perilArray = Object.keys(data.stats.secondaryAttributes.perilThreshold);
+
+    for (let i = 0; i < perilArray.length; i++) {
+      data.stats.secondaryAttributes.perilThreshold[perilArray[i]] = initialPeril += perilModifier;
+
+      if (i % 2)
+        perilModifier += 3;
+    }
+
+
+    // Assign Damage Threshold values
+    var initialDamage = data.stats.primaryAttributes.brawn.bonus, damageModifier = 6;
+
+    const damageArray = Object.keys(data.stats.secondaryAttributes.damageThreshold);
+
+    data.stats.secondaryAttributes.damageThreshold[damageArray[0]] = initialDamage;
+
+    for (let i = 1; i < damageArray.length; i++)
+      data.stats.secondaryAttributes.damageThreshold[damageArray[i]] = initialDamage += damageModifier;
+  }
+
+  _prepareNpcItems(actorData) {
+    const weapons = [];
+    const ancestry = [];
+    const spells = [];
+    const rituals = [];
+    const skills = [];
+    const talents = [];
+    const traits = [];
+    const trappings = [];
+    const injuries = [];
+    const conditions = [];
+
+    for (let item of actorData.items.values()) {
+      if (item.type === "weapon")
+        weapons.push(item.data);
+      else if (item.type === "ancestry")
+        ancestry.push(item.data);
+      else if (item.type === "spell")
+        spells.push(item.data);
+      else if (item.type === "ritual")
+        rituals.push(item.data);
+      else if (item.type === "skill")  // TODO: Don't allow duplicate Skills -- !skills.some(skill => skill.name === item.name)
+        skills.push(item.data);
+      else if (item.type === "talent")
+        talents.push(item.data);
+      else if (item.type === "trait")
+        traits.push(item.data);
+      else if (item.type === "trapping")
+        trappings.push(item.data);
+      else if (item.type === "injury")
+        injuries.push(item.data);
+      else if (item.type === "condition")
+        conditions.push(item.data);
+    }
+
+    actorData.weapons = weapons;
+    actorData.ancestry = ancestry;
+    actorData.spells = spells;
+    actorData.rituals = rituals;
+
+    actorData.skills = skills.sort((skillA, skillB) => {
+      const nameA = skillA.name;
+      const nameB = skillB.name;
+
+      if (nameA < nameB) {
+        return -1;
+      }
+
+      if (nameA > nameB) {
+        return 1;
+      }
+
+      return 0;
+    });
+
+    actorData.talents = talents;
+    actorData.traits = traits;
+    actorData.trappings = trappings;
+    actorData.injuries = injuries;
+    actorData.conditions = conditions;
+
+  }
+
+  /** @override*/
+  async _preCreate(data, options, user) {
+    await super._preCreate(data, options, user);
+
+    const actorData = this.data;
+
+    if (data.type === "character") {
+      let skillPack = game.packs.get("zweihander.skills");
+
+      let toAdd = await skillPack.getDocuments().then(result => {
+        return result.map(item => item.toObject());
+      });
+  
+      // Prevent duplicating skills (e.g. when duplicating an Actor)
+      let toAddDifference = UtilityHelpers.getSymmetricDifference(toAdd, actorData.skills);
+  
+      if (toAddDifference.length)
+        actorData.update({ "items": toAddDifference });
+    }
   }
 }

@@ -48,10 +48,19 @@ Hooks.once("init", async function () {
 
   game.settings.register("zweihander", "encumbranceNineForOne", {
     name: "Small Item Encumbrance",
-    hint: "Enable rule for small item encumbrance, where 9 small items add up to 1 point of encumbrance.",
+    hint: "Enable or disable rule for small item Encumbrance, where 9 small items add up to 1 point of Encumbrance.",
     scope: "zweihander",
     type: Boolean,
     default: true,
+    config: true
+  });
+
+  game.settings.register("zweihander", "trackRewardPoints", {
+    name: "Automatically Track Reward Points",
+    hint: "Enable or disable the automatic tracking of Reward Point expenditure.",
+    scope: "zweihander",
+    type: Boolean,
+    defaukt: false,
     config: true
   });
 
@@ -59,51 +68,39 @@ Hooks.once("init", async function () {
   /*  Handlebars helpers registration             */
   /* -------------------------------------------- */
 
-  Handlebars.registerHelper("debug", function (optionalValue) {
-    console.log("Current Context");
-    console.log("====================");
-    console.log(this);
-    if (optionalValue) {
-      console.log("Value");
-      console.log("====================");
-      console.log(optionalValue);
-    }
-  });
-
   Handlebars.registerHelper("getFirstLetter", function (word) {
     if (typeof word !== 'string') return '';
     return word.charAt(0).toUpperCase();
   });
 
-  Handlebars.registerHelper("checkSkillPurchaseForTier", function (skill, tier, options) {
-    const tierName = tier.value.trim().toLowerCase();
+  Handlebars.registerHelper("capitalize", function (word) {
+    if (typeof word !== 'string') return '';
+    return word.charAt(0).toUpperCase() + word.slice(1);
+  });
+
+  Handlebars.registerHelper("checkSkillPurchaseForTier", function (skill, tier, currentTier, options) {
+    const professionTierName = tier.value.trim().toLowerCase();
+    const currentTierName = currentTier.toLowerCase();
     const timesAvailable = skill.timesAvailable;
 
     // An empty input field results in an empty String
-    if (skill.name === "")
+    if (skill.name === "" || professionTierName === "")
       return options.inverse(this);
 
-    switch(tierName) {
+    switch (professionTierName) {
       case "basic":
-        if (!skill.ranks["apprentice"].purchased && timesAvailable == 1)
+        if (timesAvailable == 1 && currentTierName === professionTierName)
           return options.inverse(this);
         break;
       case "intermediate":
-        if (!skill.ranks["apprentice"].purchased && timesAvailable == 1)
-          return options.inverse(this);
-        else if (!skill.ranks["journeyman"].purchased && timesAvailable == 2)
+        if (timesAvailable <= 2 && timesAvailable > 0 && currentTierName === professionTierName)
           return options.inverse(this);
         break;
       case "advanced":
-        if (!skill.ranks["apprentice"].purchased && timesAvailable == 1)
-          return options.inverse(this);
-        else if (!skill.ranks["journeyman"].purchased && timesAvailable == 2)
-          return options.inverse(this);
-        else if (!skill.ranks["master"].purchased && timesAvailable == 3)
+        if (timesAvailable <= 3 && timesAvailable > 0)
           return options.inverse(this);
         break;
       default:
-        console.log("No such tier:", tierName);
         break;
     }
 
@@ -122,52 +119,6 @@ Hooks.once("init", async function () {
     } else {
       return options.inverse(this);
     }
-  });
-
-  Handlebars.registerHelper("beautifyAncestralModifiers", function (positive, negative) {
-    let positiveMap = new Map();
-    let negativeMap = new Map();
-
-    const cleanPositiveArray = positive.split(", ");
-    const cleanNegativeArray = negative.split(", ");
-
-    for (let modifier of cleanPositiveArray) {
-      if (positiveMap.has(modifier)) {
-        positiveMap.set(modifier, positiveMap.get(modifier) + 1);
-      } else {
-        positiveMap.set(modifier, 1);
-      }
-    }
-
-    for (let modifier of cleanNegativeArray) {
-      if (negativeMap.has(modifier)) {
-        negativeMap.set(modifier, negativeMap.get(modifier) + 1);
-      } else {
-        negativeMap.set(modifier, 1);
-      }
-    }
-
-    let prettyModifiers = [];
-
-    for (let modifier of cleanPositiveArray) {
-      const toPush = modifier + "+" + positiveMap.get(modifier);
-
-      if (!prettyModifiers.some(element => element === toPush))
-        prettyModifiers.push(toPush);
-    }
-
-    for (let modifier of cleanNegativeArray) {
-      const toPush = modifier + "-" + negativeMap.get(modifier);
-
-      if (!prettyModifiers.some(element => element === toPush))
-        prettyModifiers.push(toPush);
-    }
-
-    return prettyModifiers.join(", ");
-  });
-
-  Handlebars.registerHelper("checkSecondAncestry", function (idx, options) {
-    return idx == 0 ? options.fn(this) : options.inverse(this);
   });
 
   Handlebars.registerHelper("isMissing", function (toCheck, options) {
@@ -218,242 +169,66 @@ Hooks.once("init", async function () {
     }
   });
 
+  Handlebars.registerHelper("displayNpcSkillBonus", function(ranks) {
+    let modifier = 0;
+
+    for (let key of Object.keys(ranks)) {
+      if (ranks[key].purchased) {
+        modifier += 10;
+      } else {
+        break;
+      }
+    }
+
+    return modifier !== 0 ? "+" + modifier : "";
+  });
+
+  Handlebars.registerHelper("checkTalentPurchased", function(talentOrTrait, options) {
+    if (talentOrTrait.type === "talent" && !talentOrTrait.data.purchased) {
+      return options.fn(this);
+    }
+    
+    return options.inverse(this);
+  });
+
+  Handlebars.registerHelper("rpSettingOn", function(options) {
+    return game.settings.get("zweihander", "trackRewardPoints") ? options.fn(this) : options.inverse(this);
+  });
+
   loadTemplates([ "systems/zweihander/templates/actor/actor-sheet.html" ]);
 
 });
 
-// Helper function used to check Item duplicates
-var findDifference = function (datasetA, datasetB) {
-  let diffArray = [];
-
-  for (let elementA of datasetA)
-    if (!datasetB.some(elementB => elementB.name === elementA.name))
-      diffArray.push(elementA);
-
-  return diffArray;
-};
-
-Hooks.on("createActor", async (actor) => {
-  if (actor.data.type === "character") {
-    let skillPack = game.packs.get("zweihander.skills");
-    let skillIndex = await skillPack.getIndex();
-
-    let toAdd = [];
-
-    for (let idx of skillIndex) {
-      let _temp = await skillPack.getDocument(idx._id);
-      toAdd.push(_temp.data);
-    }
-
-    // Prevent duplicating skills (e.g. when duplicating an Actor)
-    let toAddDifference = findDifference(toAdd, actor.data.skills).concat(findDifference(actor.data.skills, toAdd));
-
-    if (toAddDifference.length > 0)
-      await actor.createEmbeddedDocuments("Item", toAddDifference);
-  }
-});
-
 // It is important that the anonymous function here is not async to prevent Item creation (since Hooks do not await)
 Hooks.on("preCreateItem", (item, data) => {
-  if (item.type === "ancestry") {
+  const isOwned = item.parent !== null;
+
+  if (item.type === "ancestry" && isOwned) {
     const actor = item.parent;
 
-    // Only one Ancestry per character allowed
     if (actor.data.ancestry.length > 0) {
-      console.log("Maximum of 1 Ancestry per character allowed!")
+      ui.notifications.error("A character may not possess more than 1 Ancestry.");
       return false;
     }
-  } else if (item.type === "profession") {
+  } else if (item.type === "profession" && isOwned) {
     const actor = item.parent;
 
     if (actor.data.professions.length == 3) {
-      console.log("Maximum of 3 Professions per character allowed!")
+      ui.notifications.error("A character may not enter more than 3 Professions.");
       return false;
+    } else {
+      let previousTiersCompleted = actor.data.professions.map(profession => profession.data.tier.completed).every(value => value === true);;
+
+      if (!previousTiersCompleted) {
+        ui.notifications.error("A character must complete the previous Tier before entering a new Profession.");
+        return false;
+      }
     }
   }
 });
 
-Hooks.on("createItem", async (item, data) => {
-  const isOwned = item.parent !== null;
-
-  if (item.type === "profession" && isOwned) {
-
-    const actor = item.parent;
-
-    // ------------------------------------------------ //
-    //  Assing Tier based on number of professions      //
-    // ------------------------------------------------ //
-
-    let tier = actor.data.professions.length;
-
-    switch (tier) {
-      case 1:
-        await actor.updateEmbeddedDocuments("Item", [ { "_id": item.id, "data.tier.value": "Basic" } ]);
-        break;
-      case 2:
-        await actor.updateEmbeddedDocuments("Item", [ {"_id": item.id, "data.tier.value": "Intermediate"} ]);
-        break;
-      case 3:
-        await actor.updateEmbeddedDocuments("Item", [ {"_id": item.id, "data.tier.value": "Advanced"} ]);
-        break;
-      default:
-        console.log("Tier limit should be capped at 3. Current value:", tier);
-    }
-
-    // ------------------------------------------------ //
-    //  Get relevant compendium and item data           //
-    // ------------------------------------------------ //
-
-    let talentsToFetch = item.data.data.talents.value.split(", ");
-    let professionalTraitToFetch = [ item.data.data.professionalTrait.value ];
-    let specialTraitToFetch = [ item.data.data.specialTrait.value ];
-    let drawbackToFetch = item.data.data.drawback.value;
-
-    let traitsToFetch = professionalTraitToFetch.concat(specialTraitToFetch);
-
-    let talentPack = game.packs.get("zweihander.talents");
-    let traitPack = game.packs.get("zweihander.traits");
-    let drawbackPack = game.packs.get("zweihander.drawbacks");
-
-    // ------------------------------------------------ //
-    //  Get talents from compendium                     //
-    // ------------------------------------------------ //
-
-    let talentsIndex = await talentPack.getIndex();
-    let talentsToAdd = [];
-
-    for (let value of talentsIndex.values()) {
-      if (talentsToFetch.includes(value.name)) {
-        let _temp = await talentPack.getDocument(value._id);  // TODO: look into `getDocuments`, which has potential to eliminate the loop
-        talentsToAdd.push(_temp.data);
-      }
-    }
-
-    let talentsToAddDifference = findDifference(talentsToAdd, actor.data.talents);
-
-    // ------------------------------------------------ //
-    //  Get professional/special traits from compendium //
-    // ------------------------------------------------ //
-
-    let traitIndex = await traitPack.getIndex();
-    let traitsToAdd = [];
-
-    for (let value of traitIndex.values()) {
-      if (value.name === "")
-        continue;
-
-      if (traitsToFetch.includes(value.name)) {
-        let _temp = await traitPack.getDocument(value._id);
-        traitsToAdd.push(_temp.data);
-      }
-    }
-
-    let traitsToAddDifference = findDifference(traitsToAdd, actor.data.traits);
-
-    // ------------------------------------------------ //
-    //  Get drawback from compendium                    //
-    // ------------------------------------------------ //
-
-    let drawbackToAdd = [];
-
-    if (drawbackToFetch.length !== 0) {
-      let drawbackIndex = await drawbackPack.getIndex();
-
-      for (let value of drawbackIndex.values()) {
-        if (drawbackToFetch === value.name) {
-          let _temp = await drawbackPack.getDocument(value._id);
-          drawbackToAdd.push(_temp.data);
-          
-          break;  // maximum one Drawback per Profession
-        }
-      }
-    }
-
-    const drawbackPresent = actor.data.drawbacks.filter(d => d.name === drawbackToAdd[0].name).length > 0;
-
-    // ---------------------------------------------- //
-    //  If there are things to create, create them    //
-    // ---------------------------------------------- //
-
-    if (traitsToAddDifference.length > 0)
-      await actor.createEmbeddedDocuments("Item", traitsToAddDifference);
-
-    if (talentsToAddDifference.length > 0)
-      await actor.createEmbeddedDocuments("Item", talentsToAddDifference);
-
-    if (drawbackToAdd !== "" && !drawbackPresent)
-      await actor.createEmbeddedDocuments("Item", drawbackToAdd);
-  
-  } else if (item.type === "ancestry" && isOwned) {
-    const actor = item.parent;
-
-    const ancestralTraitToFetch = item.data.data.ancestralTrait.value;
-
-    let traitPack = game.packs.get("zweihander.traits");
-    let traitIndex = await traitPack.getIndex();
-
-    let traitToAdd = [];
-
-    for (let value of traitIndex.values()) {
-      if (value.name === "")
-        continue;
-
-      if (value.name === ancestralTraitToFetch.trim()) {
-        let _temp = await traitPack.getDocument(value._id);
-        traitToAdd.push(_temp.data);
-      }
-    }
-
-    let traitToAddDifference = findDifference(traitToAdd, actor.data.traits);
-
-    if (traitToAddDifference.length > 0)
-      await actor.createEmbeddedDocuments("Item", traitToAddDifference);
-  }
-});
-
-Hooks.on("deleteItem", async (item, data) => {
-  if (item.type === "profession") {
-    const actor = item.parent;
-
-    // ---------------------------------------------- //
-    //  Delete Items referenced by a Profession       //
-    // ---------------------------------------------- //    
-
-    const talents = item.data.data.talents.value.split(",");
-    const traits = [ item.data.data.specialTrait.value ].concat([ item.data.data.professionalTrait.value ]);
-    const drawback = item.data.data.drawback.value;
-
-    const itemsToDelete = talents.concat(traits).concat(drawback);
-
-    let arrayOfId = [];
-
-    for (let itemToDelete of itemsToDelete) {
-      for (let actorItem of actor.items.values()) {
-        if (actorItem.name === itemToDelete.trim()) {
-          arrayOfId.push(actorItem.id);
-          break;
-        }
-      }
-    }
-
-    await actor.deleteEmbeddedDocuments("Item", arrayOfId);
-
-  } else if (item.type === "ancestry") {
-    const actor = item.parent;
-
-    console.log(item);
-
-    const ancestralTrait = item.data.data.ancestralTrait.value;
-
-    let arrayOfId = [];
-
-    for (let actorItem of actor.data.traits) {
-      if (actorItem.name === ancestralTrait.trim()) {
-        arrayOfId.push(actorItem._id);
-        break;
-      }
-    }
-
-    await actor.deleteEmbeddedDocuments("Item", arrayOfId);
-  }
+Hooks.on("renderEntitySheetConfig", function (app, html, data) {
+  $(html.find(".form-group")[1]).append("<p>Hello!</p>")
+  data.options.height = 350;
+  console.log(data)
 });

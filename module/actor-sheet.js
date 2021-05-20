@@ -1,16 +1,16 @@
 /**
- * Extend the basic ActorSheet with some very simple modifications
+ * The Zweihänder actor sheet class for characters.
  * @extends {ActorSheet}
  */
 export class ZweihanderActorSheet extends ActorSheet {
 
   /** @override */
   static get defaultOptions() {
-    return mergeObject(super.defaultOptions, {
-      classes: ["zweihander", "sheet", "character"],
+    return foundry.utils.mergeObject(super.defaultOptions, {
+      classes: [ "zweihander", "sheet", "character" ],
       template: "systems/zweihander/templates/actor/actor-sheet.html",
-      width: 689, //720,
-      height: 890, //945,
+      width: 689,
+      height: 890,
       resizable: false,
       tabs: [
         { navSelector: ".main-tabs", contentSelector: ".sheet-body", initial: "main" },
@@ -19,33 +19,57 @@ export class ZweihanderActorSheet extends ActorSheet {
         { navSelector: ".magick-tabs", contentSelector: ".magick-tabs-content", initial: "spells" },
         { navSelector: ".afflictions-tabs", contentSelector: ".afflictions-tabs-content", initial: "condition" }
       ],
-      scrollY: [".common-list.skills.save-scroll", 
-        ".common-list.unique-advances.save-scroll",
-        ".common-list.drawback.save-scroll",
-        ".common-list.save-scroll",
-        ".common-list.magick.save-scroll",
-        ".common-list.professions.save-scroll"
-      ]
+      scrollY: /* [ 
+        "#skill_scroll",
+        "#drawbacks_scroll",
+        "#weapons_scroll",
+        "#armor_scroll",
+        "#trappings_scroll", 
+        "#conditions_scroll", 
+        "#injuries_scroll", 
+        "#diseases_scroll",
+        "#disorders_scroll",
+        "#spells_scroll",
+        "#rituals_scroll",
+        "#professions_scroll",
+        "#talents_scroll",
+        "#unique_advances_scroll"
+      ] */ []
     });
-  }
-
-  /* -------------------------------------------- */
-
-  constructor(...args){
-    super(...args);
-    this.renderable = true;
   }
 
   /** @override */
   getData() {
     const data = super.getData();
-    data.dtypes = ["String", "Number", "Boolean"];
 
     if (this.actor.data.type === "character") {
       data.data.rankOptions = {1: "1", 2: "2", 3: "3", 4: "4", 5: "5", 6: "6", 7: "7", 8: "8", 9: "9"};
       data.data.perilOptions = {5: "Unhindered", 4: "Imperiled", 3: "Ignore 1 Skill Rank", 2: "Ignore 2 Skill Ranks", 1: "Ignore 3 Skill Ranks", 0: "INCAPACITATED!"};
       data.data.damageOptions = {5: "Unharmed", 4: "Lightly Wounded", 3: "Moderately Wounded", 2: "Seriously Wounded", 1: "Grievously Wounded", 0: "SLAIN!"};
     }
+
+    data.data.skills = this.actor.data.skills;
+    data.data.professions = this.actor.data.professions;
+    data.data.spells = this.actor.data.spells;
+    data.data.weapons = this.actor.data.weapons;
+    data.data.armor = this.actor.data.armor;
+    data.data.trappings = this.actor.data.trappings;
+    data.data.talents = this.actor.data.talents;
+    data.data.traits = this.actor.data.traits;
+    data.data.rituals = this.actor.data.rituals;
+    data.data.ancestry = this.actor.data.ancestry;
+    data.data.drawbacks = this.actor.data.drawbacks;
+    data.data.injuries = this.actor.data.injuries;
+    data.data.diseases = this.actor.data.diseases;
+    data.data.disorders = this.actor.data.disorders;
+    data.data.conditions = this.actor.data.conditions;
+    data.data.uniqueAdvances = this.actor.data.uniqueAdvances;
+
+    data.data.talentsAndTraits = this.actor.data.talents.concat(this.actor.data.traits);
+
+    const actorProfessions = this.actor.data.professions.map(profession => profession.data.tier.value);
+
+    data.data.currentTier = actorProfessions[actorProfessions.length - 1];
 
     return data.data;
   }
@@ -56,7 +80,9 @@ export class ZweihanderActorSheet extends ActorSheet {
   activateListeners(html) {
     super.activateListeners(html);
 
-    let actorData = this.actor.data;
+    const trackRewardPointsOn = game.settings.get("zweihander", "trackRewardPoints");
+
+    let actorData = this.actor.data;    
 
     // Everything below here is only needed if the sheet is editable
     if (!this.options.editable) return;
@@ -81,7 +107,7 @@ export class ZweihanderActorSheet extends ActorSheet {
           li.slideUp(200, () => this.render(false));
         },
         no: () => {},
-        defaultYes: false
+        defaultYes: true
       });
     });
 
@@ -99,7 +125,8 @@ export class ZweihanderActorSheet extends ActorSheet {
         { "type": type, "name": type } 
       ]);
 
-      createdItemArray[0].sheet.render(true);
+      if (createdItemArray.length)
+        createdItemArray[0].sheet.render(true);
     });
 
     // Edit Ancestry Item
@@ -156,24 +183,13 @@ export class ZweihanderActorSheet extends ActorSheet {
     // Update the value of the Damage Threshold label depending on armor worn
     this._updateDamageThresholdLabel(html);
 
-    // On loss of focus, update the textbox value
-    html.find(".notepad").focusout(async event => {
-      await this.actor.update({ "data.flavor.notes": event.target.value });
-    });
-
-    // Update the encumbrance meter
-    this._updateEncumbranceMeter(html);
-
-    // Show extra item information on click
-    html.find(".item-description").click(event => this._showItemDescription(event));
-
     // TODO: When a profession is deleted, iterate over skills and remove ranks
 
     // Show item sheet on right click
     html.find(".fetch-item").contextmenu(event => {
       const target = $(event.currentTarget);
       const skillName = target.text().trim();
-      const itemId = actorData.items.find(item => item.name === skillName)._id;
+      const itemId = actorData.items.find(item => item.name === skillName).id;
 
       if (itemId) {
         const skillItem = this.actor.items.get(itemId);
@@ -185,13 +201,19 @@ export class ZweihanderActorSheet extends ActorSheet {
     html.find(".skill-link").click(async event => {
       const target = $(event.currentTarget);
       const skillName = target.text().trim();
-      const itemId = actorData.items.find(item => item.name === skillName)._id;
+      const itemId = actorData.skills.find(skill => skill.name === skillName)._id;
+
+      const tier = $(event.currentTarget).parents(".individual-trapping-and-description").find(".tier").text();
 
       if (itemId) {
         const skillItem = this.actor.items.get(itemId);
         const skillData = skillItem.data.data;
+
+        let _tempBoolean;
         
         if (target.hasClass("not-purchased")) {
+          _tempBoolean = true;
+
           if (!skillData.ranks.apprentice.purchased) {
             await skillItem.update({ "data.ranks.apprentice.purchased": true });
           } else if (!skillData.ranks.journeyman.purchased && skillData.ranks.apprentice.purchased) {
@@ -202,6 +224,8 @@ export class ZweihanderActorSheet extends ActorSheet {
             console.log("Unable to purchase additional ranks for this tier.");
           }
         } else {
+          _tempBoolean = false;
+
           if (skillData.ranks.apprentice.purchased && !skillData.ranks.journeyman.purchased && !skillData.ranks.master.purchased) {
             await skillItem.update({ "data.ranks.apprentice.purchased": false });
           } else if (skillData.ranks.journeyman.purchased && !skillData.ranks.master.purchased) {
@@ -212,6 +236,9 @@ export class ZweihanderActorSheet extends ActorSheet {
             console.log("Unable to delete additional ranks for this tier.");
           }
         }
+
+        if (trackRewardPointsOn)
+          await this._handleRewardPoints(tier, _tempBoolean);
       }
     });
 
@@ -224,21 +251,26 @@ export class ZweihanderActorSheet extends ActorSheet {
       const professionItem = this.actor.items.get($(professionElement).data("itemId"));
       
       if (professionItem.data.data.tier.value !== "") {
+        const tier = professionItem.data.data.tier.value;
+                
+        let _tempBoolean;
+
         for (let advance of professionItem.data.data.bonusAdvances.arrayOfValues) {
           if ((advance.name === advanceName) && (advance.index === targetIdx)) {
             advance.purchased = !advance.purchased;
+            _tempBoolean = advance.purchased;
             break;
           }
         }
 
-        const sheet = this;
-
         await professionItem.update({
           "data.bonusAdvances.arrayOfValues": professionItem.data.data.bonusAdvances.arrayOfValues, 
           "data.skillRanks.arrayOfValues": professionItem.data.data.skillRanks.arrayOfValues, 
-          "data.talents.arrayOfValues": professionItem.data.data.talents.arrayOfValues}).then(function() {
-          sheet.submit();
+          "data.talents.arrayOfValues": professionItem.data.data.talents.arrayOfValues
         });
+
+        if (trackRewardPointsOn)
+          await this._handleRewardPoints(tier, _tempBoolean);
       } else {
         console.log("Profession has unspecified Tier:", professionItem.data.name);
       }
@@ -253,22 +285,49 @@ export class ZweihanderActorSheet extends ActorSheet {
       if (itemId) {
         const talentItem = this.actor.items.get(itemId);
         const talentData = talentItem.data.data;
+        
+        await talentItem.update({ "data.purchased": !talentData.purchased });
 
-        this.renderable = false;
+        const tier = $(event.currentTarget).parents(".individual-trapping-and-description").find(".tier").text();
 
-        await talentItem.update({ "data.purchased": !talentData.purchased }, { "renderSheet": false });
-
-        this.renderable = true;
-
-        await this._render(false);
+        if (trackRewardPointsOn)
+          await this._handleRewardPoints(tier, talentItem.data.data.purchased);
       }
     });
 
-    // Alternate color for lists
-    this._alternateRowColor(html);
+    // Reset Order and Chaos Ranks
+    html.find(".reset-ranks").click(async () => {
+      await this.actor.update({ 
+        "data.chaosRanks.value": "0",
+        "data.orderRanks.value": "0"
+      });
+    });
+
+    this._damageSheet(html);
+
+    // Update the encumbrance meter
+    this._updateEncumbranceMeter(html);
+
+    // Show extra item information on click
+    html.find(".item-description").click(event => this._showItemDescription(event));
 
     // Roll
     html.find(".skill-roll").click(this._onRoll.bind(this));
+  }
+
+  async _handleRewardPoints(tier, purchased) {
+    const currentProfessionItemData = this.actor.data.professions.filter(profession => profession.data.tier.value === tier)[0];
+    const advancesPurchasedForTier = currentProfessionItemData.data.tier.advancesPurchased;
+
+    await this.actor.updateEmbeddedDocuments("Item", [
+      { "_id": currentProfessionItemData._id, "data.tier.advancesPurchased": (purchased ? (advancesPurchasedForTier + 1) : (advancesPurchasedForTier - 1)) }
+    ]);
+  }
+
+  _damageSheet(html) {
+    if (Number(this.actor.data.data.stats.secondaryAttributes.damageCurrent.value) === 0) {
+      html.find('.sheet-background').css("background-image", "url(/systems/zweihander/assets/background_bloody.png)")
+    }
   }
 
   async _onRoll(event) {
@@ -318,10 +377,6 @@ export class ZweihanderActorSheet extends ActorSheet {
     }
   }
 
-  _alternateRowColor(html) {
-    html.find(".even").css("background", "rgba(0, 0, 0, 0.05)");
-  }
-
   _showItemDescription(event) {
     event.preventDefault();
 
@@ -329,7 +384,7 @@ export class ZweihanderActorSheet extends ActorSheet {
     const item = toggler.parents(".individual-trapping-and-description");
     const description = item.find(".individual-description");
 
-    $(description).slideToggle(function () {
+    $(description).slideToggle(function() {
       $(this).toggleClass("open");
     });
   }
@@ -383,41 +438,40 @@ export class ZweihanderActorSheet extends ActorSheet {
     super._onChangeTab();
   }
 
+  /** @override */
   async _render(force = false, options = {}) {
-    if (!this.renderable) return;
-    //this._saveScrollPos();
-    this._saveToggleState();
+    this._saveToggleStates();
+    this._saveScrollStates();
 
     await super._render(force, options);
 
-    // this._setScrollPos();
-    this._setToggleState();
+    this._setToggleStates();
+    this._setScrollStates();
   }
 
-  _saveToggleState() {
+  _saveToggleStates() {
     if (this.form === null)
       return;
 
     const html = $(this.form).parent();
 
-    this.toggleState = [];
+    this.toggleStates = [];
 
     let items = $(html.find(".save-toggle"));
 
     for (let item of items) {
-      this.toggleState.push($(item).hasClass("open"));
+      this.toggleStates.push($(item).hasClass("open"));
     }
   }
 
-  _setToggleState() {
-    if (this.toggleState) {
+  _setToggleStates() {
+    if (this.toggleStates) {
       const html = $(this.form).parent();
 
       let items = $(html.find(".save-toggle"));
 
       for (let i = 0; i < items.length; i++) {
-        // Check the last description state
-        if (this.toggleState[i]) {
+        if (this.toggleStates[i]) {
           $(items[i]).show().addClass("open");
         } else {
           $(items[i]).hide().removeClass("open");
@@ -426,29 +480,29 @@ export class ZweihanderActorSheet extends ActorSheet {
     }
   }
 
-  _saveScrollPos() {
+  _saveScrollStates() {
     if (this.form === null)
       return;
 
     const html = $(this.form).parent();
 
-    this.scrollPos = [];
+    this.scrollStates = [];
 
     let lists = $(html.find(".save-scroll"));
 
     for (let list of lists) {
-      this.scrollPos.push($(list).scrollTop());
+      this.scrollStates.push($(list).scrollTop());
     }
   }
 
-  _setScrollPos() {
-    if (this.scrollPos) {
+  _setScrollStates() {
+    if (this.scrollStates) {
       const html = $(this.form).parent();
 
       let lists = $(html.find(".save-scroll"));
 
       for (let i = 0; i < lists.length; i++) {
-        $(lists[i]).scrollTop(this.scrollPos[i]);
+        $(lists[i]).scrollTop(this.scrollStates[i]);
       }
     }
   }
@@ -459,10 +513,11 @@ export class ZweihanderActorSheet extends ActorSheet {
   async _updateObject(event, formData) {
 
     // Handle the free-form attributes list
-    console.log("TEST formData :::: ", formData);
+    /*console.log("TEST formData :::: ", formData);
     console.log("TEST expandObject(formData) :::: ", expandObject(formData));
     console.log("TEST expandObject(formData).data :::: ", expandObject(formData).data);
-    /*const formAttrs = expandObject(formData).data.attributes || {};
+    
+    const formAttrs = expandObject(formData).data.attributes || {};
     const attributes = Object.values(formAttrs).reduce((obj, v) => {
       let k = v["key"].trim();
       if ( /[\s\.]/.test(k) )  return ui.notifications.error("Attribute keys may not contain spaces or periods");

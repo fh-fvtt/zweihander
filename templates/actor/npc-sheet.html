@@ -4,56 +4,263 @@
         <div class="npc sheet-content">
 
             {{!-- Sheet Header --}}
-            <header class="sheet-header">
+            <header class="npc sheet-header">
                 <div class="header-fields">
-                    <div class="labeled-input charname">
-                        <input class="input-text" name="name" type="text" value="{{name}}" placeholder="Name" />
-                        <label class="input-label">Name</label>
-                    </div>
-
-                    <div class="labeled-input age">
-                        <input class="input-text" name="data.physical.age.value" type="text"
-                            value="{{data.physical.age.value}}" placeholder="Age"  />
-                        <label class="input-label">Age</label>
-                    </div>
-
-                    <div class="labeled-input sex">
-                        <input class="input-text" name="data.physical.sex.value" type="text"
-                            value="{{data.physical.sex.value}}" placeholder="Sex"  />
-                        <label class="input-label">Sex</label>
-                    </div>
-
-                    <div class="labeled-input ancestry">
-                        <div class="ancestry-absolute">
-                            <input class="input-text" name="data.physical.ancestry.value" type="text" value="{{ancestry.0.name}}" placeholder="Ancestry" readonly />
-                            <label class="input-label">Ancestry</label>
+                    <div class="line-one">
+                        <div class="labeled-input charname">
+                            <input class="input-text" name="name" type="text" value="{{name}}" placeholder="Name" />
+                            <label class="input-label">Name</label>
                         </div>
-                        <div class="ancestry-edit">
-                            {{!--{{#if ancestry.length}}
-                                <a class="ancestry-edit-button" title="Edit Ancestry"><i class="fas fa-pencil-alt fa-sm"></i></a>
-                                <a class="ancestry-delete-button" title="Delete Ancestry"><i class="fas fa-trash-alt fa-sm"></i></a>
-                            {{else}}
-                                <a class="add-new" data-item-type="ancestry" title="Add Ancestry"><i class="fas fa-plus fa-xs"></i></a>
-                            {{/if}}--}}
+    
+                        <div class="labeled-input age">
+                            <input class="input-text" name="data.age.value" type="text" value="{{data.age.value}}" placeholder="Age"  />
+                            <label class="input-label">Age</label>
+                        </div>
+    
+                        <div class="labeled-input sex">
+                            <input class="input-text" name="data.sex.value" type="text" value="{{data.sex.value}}" placeholder="Sex"  />
+                            <label class="input-label">Sex</label>
+                        </div>
+    
+                        <div class="labeled-input ancestry">
+                            <div class="ancestry-absolute">
+                                <input class="input-text" name="data.ancestry.value" type="text" value="{{ancestry.0.name}}" placeholder="Ancestry" readonly />
+                                <label class="input-label">Ancestry</label>
+                            </div>
+                            <div class="ancestry-edit">
+                                {{#if ancestry.length}}
+                                    <a class="ancestry-edit-button" title="Edit Ancestry"><i class="fas fa-pencil-alt fa-sm"></i></a>
+                                    <a class="ancestry-delete-button" title="Delete Ancestry"><i class="fas fa-trash-alt fa-sm"></i></a>
+                                {{else}}
+                                    <a class="add-new" data-item-type="ancestry" title="Add Ancestry"><i class="fas fa-plus fa-xs"></i></a>
+                                {{/if}}
+                            </div>
+                        </div>
+
+                        <div class="labeled-input profession">
+                            <input class="input-text" name="data.archetype.value" type="text" value="{{data.archetype.value}}" placeholder="Archetype"  />
+                            <label class="input-label">Archetype</label>
                         </div>
                     </div>
+                    
+                    <div class="background-and-image-container">
+                        <div class="npc profile-img-container">
+                            <img class="profile-img" src="{{img}}" data-edit="img" title="{{name}}" />
+                        </div>
 
-                    <div class="labeled-input profession">
-                        <input class="input-text" name="data.archetype.value" type="text" value="{{data.archetype.value}}" placeholder="Archetype"  />
-                        <label class="input-label">Archetype</label>
+                        <div class="background-lines">
+                            <div class="line-one">
+                                <div class="labeled-input height">
+                                    <input class="input-text" name="data.height.value" type="text" value="{{data.height.value}}" placeholder="Height"  />
+                                    <label class="input-label">Height</label>
+                                </div>
+        
+                                <div class="labeled-input build">
+                                    <input class="input-text" name="data.build.value" type="text" value="{{data.build.value}}" placeholder="Build"  />
+                                    <label class="input-label">Build</label>
+                                </div>
+        
+                                <div class="labeled-input complexion">
+                                    <input class="input-text" name="data.complexion.value" type="text" value="{{data.complexion.value}}" placeholder="Complexion"  />
+                                    <label class="input-label">Complexion</label>
+                                </div>
+        
+                                <div class="labeled-input alignment">
+                                    <input class="input-text" name="data.alignment.value" type="text" value="{{data.alignment.value}}" placeholder="Alignment"  />
+                                    <label class="input-label">Alignment</label>
+                                </div>
+                            </div>
+
+                            <div class="line-two">
+                                <div class="labeled-input social-class">
+                                    <input class="input-text" name="data.socialClass.value" type="text" value="{{data.socialClass.value}}" placeholder="Social Class"  />
+                                    <label class="input-label">Social Class</label>
+                                </div>
+
+                                <div class="labeled-input distinguishing-marks">
+                                    <input class="input-text" name="data.distinguishingMarks.value" type="text" value="{{data.distinguishingMarks.value}}" placeholder="Distinguishing Marks"  />
+                                    <label class="input-label">Distinguishing Marks</label>
+                                </div>
+                            </div>
+
+                            <div class="line-two">
+                                <div class="labeled-input motivation">
+                                    <input class="input-text" name="data.motivation.value" type="text" value="{{data.motivation.value}}" placeholder="Motivation"  />
+                                    <label class="input-label">Motivation</label>
+                                </div>
+
+                                <div class="labeled-input manner-of-dress">
+                                    <input class="input-text" name="data.mannerOfDress.value" type="text" value="{{data.mannerOfDress.value}}" placeholder="Manner of Dress"  />
+                                    <label class="input-label">Manner of Dress</label>
+                                </div>
+                            </div>
+
+                            <div class="line-two personality">
+                                <textarea class="persona" name="data.persona.value" placeholder="Persona...">{{data.persona.value}}</textarea>
+                                <label class="input-label">Persona</label>
+                            </div>
+                        </div>
                     </div>
                 </div>
-
-                <div class="image-and-adv-and-corr-container">
-                    <div class="npc profile-img-container">
-                        <img class="profile-img" src="{{img}}" data-edit="img" title="{{name}}" />
-                    </div>
-                    <div class="advancement-and-corruption-container">
-                        aa
-                    </div>
-                </div>
-                
             </header>
+
+            <section class="sheet-body">
+                <div class="image-and-adv-and-corr-container">
+                    <div class="advancement-and-corruption-container">
+                        <div class="characteristics-header">
+                            {{#each data.stats.primaryAttributes as | characteristic key |}}
+                                <div class="individual-characteristic">
+                                    {{getFirstLetter key}}
+                                </div>
+                            {{/each}}
+                        </div>
+                        <div class="characteristics-content">
+                            {{#each data.stats.primaryAttributes as | characteristic key |}}
+                                <div class="individual-characteristic">
+                                    <input type="number" class="characteristic-percentage" title="{{capitalize key}} Percentage" name="data.stats.primaryAttributes.{{key}}.value" value="{{characteristic.value}}" />
+                                    <input type="number" class="characteristic-bonus" title="{{capitalize key}} Bonus" name="data.stats.primaryAttributes.{{key}}.bonus" value="{{characteristic.bonus}}" />
+                                </div>
+                            {{/each}}
+                        </div>
+                        <div class="characteristics-header bottom">
+                            <div class="individual-characteristic">
+                                Int
+                            </div>
+                            <div class="individual-characteristic">
+                                Mov
+                            </div>
+                            <div class="individual-characteristic">
+                                DTh
+                            </div>
+                            <div class="individual-characteristic">
+                                PTh
+                            </div>
+                            <div class="individual-characteristic">
+                                Par
+                            </div>
+                            <div class="individual-characteristic">
+                                Dod
+                            </div>
+                            <div class="individual-characteristic">
+                                RFa
+                            </div>
+                        </div>
+                        <div class="characteristics-content">
+                            <div class="individual-characteristic">
+                                <input type="number" class="secondary-attribute" title="Initative" name="data.stats.secondaryAttributes.initiative.current" value="{{data.stats.secondaryAttributes.initiative.current}}" />
+                            </div>
+                            <div class="individual-characteristic">
+                                <input type="number" class="secondary-attribute" title="Movement" name="data.stats.secondaryAttributes.movement.current" value="{{data.stats.secondaryAttributes.movement.current}}" />
+                            </div>
+                            <div class="individual-characteristic">
+                                <input type="number" class="damage-peril-value" title="Damage Threshold" name="data.stats.secondaryAttributes.damageThreshold.value" value="{{data.stats.secondaryAttributes.damageThreshold.value}}" />
+                                <span class="derived damage"></span>
+                            </div>
+                            <div class="individual-characteristic">
+                                <input type="number" class="damage-peril-value" title="Peril Threshold" name="data.stats.secondaryAttributes.perilThreshold.value" value="{{data.stats.secondaryAttributes.perilThreshold.value}}" />
+                                <span class="derived peril"></span>
+                            </div>
+                            <div class="individual-characteristic">
+                                <input type="number" class="secondary-attribute" title="Parry Chance" name="data.stats.secondaryAttributes.parry.value" value="{{data.stats.secondaryAttributes.parry.value}}" />
+                            </div>
+                            <div class="individual-characteristic">
+                                <input type="number" class="secondary-attribute" title="Dodge Chance" name="data.stats.secondaryAttributes.dodge.value" value="{{data.stats.secondaryAttributes.dodge.value}}" />
+                            </div>
+                            <div class="individual-characteristic">
+                                <input type="text" class="secondary-attribute" title="Risk Factor" name="data.riskFactor.value" value="{{data.riskFactor.value}}" />
+                            </div>
+                        </div>
+                        <div class="skill-ranks-container">
+                            {{#each skills as | skill idx |}}
+                                {{#if @last}}
+                                    <a class="fetch-skill" data->{{skill.name}}{{displayNpcSkillBonus skill.data.ranks}}</a>
+                                {{else}}
+                                    <a class="fetch-skill">{{skill.name}}{{displayNpcSkillBonus skill.data.ranks}}</a><span>, </span>
+                                {{/if}}
+                            {{/each}}
+                        </div>
+                    </div>
+
+                    <div class="talents-and-attacks-container">
+                        <div class="common-container attacks">
+                            <header class="common-header">
+                                <div class="title main">
+                                    Attack Profile
+                                </div>
+
+                                <div class="title">
+                                    Base Chance
+                                </div>
+
+                                <div class="title controls">
+                                    <span><a class="add-new" data-item-type="weapon" title="Add New Attack Profile"><i class="fas fa-plus fa-xs"></i></a></span>
+                                </div>
+                            </header>
+
+                            <div class="npc common-list save-scroll">
+                                {{#each weapons as | weapon idx |}}
+                                    <div class="npc individual-trapping-and-description {{oddOrEven idx}}">
+                                        <div class="npc individual-trapping item" data-item-id="{{weapon._id}}">
+                                            <div class="npc image-and-name"">
+                                                <span>{{weapon.name}}</span>
+                                            </div>
+
+                                            <div class="skill">
+                                                <span>{{weapon.data.load.value}}</span>
+                                            </div>
+
+                                            <div class="controls-container">
+                                                <div class="controls">
+                                                    <a class="item-control item-edit" title="Edit Item"><i class="fas fa-pencil-alt fa-fw fa-xs"></i></a>
+                                                    <a class="item-control item-delete" title="Delete Item"><i class="fas fa-trash-alt fa-fw fa-xs"></i></a>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                {{/each}}
+                            </div>
+                        </div>
+
+                        <div class="common-container talents">
+                            <header class="common-header">
+                                <div class="title main">
+                                    Talent / Trait
+                                </div>
+
+                                <div class="title controls">
+                                    <span><a class="add-new" data-item-type="talent-trait" title="Add New Talent / Trait"><i class="fas fa-plus fa-xs"></i></a></span>
+                                </div>
+                            </header>
+
+                            <div class="npc common-list save-scroll">
+                                {{#each talents as | talent idx |}}
+                                    <div class="npc individual-trapping-and-description {{oddOrEven idx}}">
+                                        <div class="npc individual-trapping item" data-item-id="{{talent._id}}">
+                                            <div class="npc image-and-name"">
+                                                <span>{{talent.name}}</span>
+                                            </div>
+
+                                            <div class="controls-container">
+                                                <div class="controls">
+                                                    <a class="item-control item-edit" title="Edit Item"><i class="fas fa-pencil-alt fa-fw fa-xs"></i></a>
+                                                    <a class="item-control item-delete" title="Delete Item"><i class="fas fa-trash-alt fa-fw fa-xs"></i></a>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                {{/each}}
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="trappings-container">
+                        <div class="labeled-input trappings">
+                            <input class="input-text" name="data.trappings.value" type="text" value="{{data.trappings.value}}" placeholder="Trappings"  />
+                            <label class="input-label">Trappings</label>
+                        </div>
+                    </div>
+                </div>
+            </section>
         </div>
     </div>
 </form>
