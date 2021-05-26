@@ -9,6 +9,7 @@ import { ZweihanderItem } from "./item.js";
 import { ZweihanderItemSheet } from "./item-sheet.js";
 import { ZweihanderActorSheet } from "./actor-sheet.js";
 import { ZweihanderNpcSheet } from "./npc-sheet.js";
+import { ZweihanderActorConfig } from "./actor-config.js";
 
 /* -------------------------------------------- */
 /*  Foundry VTT Initialization                  */
@@ -21,6 +22,8 @@ Hooks.once("init", async function () {
     ZweihanderActor,
     ZweihanderItem
   };
+
+  CONFIG.ChatMessage.template = "systems/zweihander/templates/chat/chat-message.html";
 
 	/**
 	 * Set an initiative formula for the system
@@ -49,7 +52,7 @@ Hooks.once("init", async function () {
   game.settings.register("zweihander", "encumbranceNineForOne", {
     name: "Small Item Encumbrance",
     hint: "Enable or disable rule for small item Encumbrance, where 9 small items add up to 1 point of Encumbrance.",
-    scope: "zweihander",
+    scope: "world",
     type: Boolean,
     default: true,
     config: true
@@ -58,9 +61,9 @@ Hooks.once("init", async function () {
   game.settings.register("zweihander", "trackRewardPoints", {
     name: "Automatically Track Reward Points",
     hint: "Enable or disable the automatic tracking of Reward Point expenditure.",
-    scope: "zweihander",
+    scope: "world",
     type: Boolean,
-    defaukt: false,
+    default: true,
     config: true
   });
 
@@ -195,6 +198,33 @@ Hooks.once("init", async function () {
     return game.settings.get("zweihander", "trackRewardPoints") ? options.fn(this) : options.inverse(this);
   });
 
+  Handlebars.registerHelper("getRollResult", function(roll, totalChance) {
+    const cleanRoll = (roll).toLocaleString(undefined, { "minimumIntegerDigits": 2 });
+    const cleanTotalChance = (totalChance).toLocaleString(undefined, { "minimumIntegerDigits": 2 });
+
+    if (roll === 100) {
+      return new Handlebars.SafeString(`<span class="failure">Critical Failure</span> (${cleanRoll} vs. ${cleanTotalChance})`);
+    } else if (roll === 1) {
+      return new Handlebars.SafeString(`<span class="success">Critical Success</span> (${cleanRoll} vs. ${cleanTotalChance})`);
+    }
+    
+    const stringifiedRoll = "" + cleanRoll;
+    const units = Number(stringifiedRoll.charAt(stringifiedRoll.length - 1));
+    const tens = Number(stringifiedRoll.charAt(0));
+
+    const match = units === tens;
+    
+    if (roll <= totalChance && match) {
+      return new Handlebars.SafeString(`<span class="success">Critical Success</span> (${cleanRoll} vs. ${cleanTotalChance})`);
+    } else if (roll <= totalChance && !match) {
+      return new Handlebars.SafeString(`<span class="success">Success</span> (${cleanRoll} vs. ${cleanTotalChance})`);
+    } else if (roll > totalChance && match) {
+      return new Handlebars.SafeString(`<span class="failure">Critical Failure</span> (${cleanRoll} vs. ${cleanTotalChance})`);
+    } else if (roll > totalChance && !match) {
+      return new Handlebars.SafeString(`<span class="failure">Failure</span> (${cleanRoll} vs. ${cleanTotalChance})`);
+    }
+  });
+
   loadTemplates([ "systems/zweihander/templates/actor/actor-sheet.html" ]);
 
 });
@@ -227,8 +257,28 @@ Hooks.on("preCreateItem", (item, data) => {
   }
 });
 
-Hooks.on("renderEntitySheetConfig", function (app, html, data) {
-  $(html.find(".form-group")[1]).append("<p>Hello!</p>")
-  data.options.height = 350;
-  console.log(data)
+Hooks.on("renderActorSheet", (app, html, data) => {
+  html.find(".header-button.configure-sheet").before(`
+    <a class="configure-actor">
+      <i class="fas fa-user-cog"></i>
+      Actor
+    </a>
+  `);
+
+  html.find(".configure-actor").click(event => {
+    new ZweihanderActorConfig(app.object).render(true);
+  })
+});
+
+Hooks.on("renderChatLog", function(log, html, data) {
+  // TODO: Refactor into Dice class
+
+  $(html).on("click", ".title.link-details", (event) => {
+    event.preventDefault();
+
+    const toggler = $(event.currentTarget);
+    const rollDetails = toggler.parents(".content").find(".roll-details");
+
+    $(rollDetails).slideToggle();
+  });
 });

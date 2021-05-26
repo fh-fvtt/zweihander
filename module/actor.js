@@ -19,7 +19,6 @@ export class ZweihanderActor extends Actor {
 
     const actorData = this.data;
     const data = actorData.data;
-    const flags = actorData.flags;
 
     if (actorData.type === "character") {
       this._prepareCharacterBaseData(actorData);
@@ -48,9 +47,10 @@ export class ZweihanderActor extends Actor {
     // console.log("Preparing DERIVED data...")
 
     const actorData = this.data;
+    const configOptions = actorData.flags.zweihander?.actorConfig || {};
 
     if (actorData.type === "character") {
-      this._prepareCharacterDerivedData(actorData);
+      this._prepareCharacterDerivedData(actorData, configOptions);
     } else if (actorData.type === "npc") {
       this._prepareNpcDerivedData(actorData);
     }
@@ -61,7 +61,7 @@ export class ZweihanderActor extends Actor {
   
   }
 
-  _prepareCharacterDerivedData(actorData) {
+  _prepareCharacterDerivedData(actorData, configOptions) {
     const data = actorData.data;
 
     // Auto-calculate Reward Points
@@ -93,11 +93,11 @@ export class ZweihanderActor extends Actor {
       data.rewardPoints.current = data.rewardPoints.total - data.rewardPoints.spent;
     }
     
+
     // Calculate primary attribute bonuses (first digit)
-    for (let attribute of Object.values(data.stats.primaryAttributes)) {
-      const attributeString = ('' + attribute.value);
-      attribute.bonus = attributeString.length == 1 ? 0 : Number(attributeString[0]);
-    }
+    for (let attribute of Object.values(data.stats.primaryAttributes))
+      attribute.bonus = Math.floor(attribute.value / 10);
+
 
     // Add Ancestral Modifiers to the primary pttribute bonuses
     const ancestry = actorData.ancestry[0];
@@ -211,8 +211,9 @@ export class ZweihanderActor extends Actor {
       }
     }
 
+
     // Assign Peril Threshold values
-    var initialPeril = data.stats.primaryAttributes.willpower.bonus, perilModifier = 3;
+    var initialPeril = data.stats.primaryAttributes[configOptions.pthAttribute].bonus, perilModifier = 3;
 
     const perilArray = Object.keys(data.stats.secondaryAttributes.perilThreshold);
 
@@ -225,7 +226,7 @@ export class ZweihanderActor extends Actor {
 
 
     // Assign Damage Threshold values
-    var initialDamage = data.stats.primaryAttributes.brawn.bonus, damageModifier = 6;
+    var initialDamage = data.stats.primaryAttributes[configOptions.dthAttribute].bonus, damageModifier = 6;
 
     const damageArray = Object.keys(data.stats.secondaryAttributes.damageThreshold);
 
@@ -309,6 +310,10 @@ export class ZweihanderActor extends Actor {
         data.stats.secondaryAttributes.encumbrance.current += weapon.data.encumbrance.value;
 
 
+    // Assign miscellaneous bonus to encumbrance limit
+    data.stats.secondaryAttributes.encumbrance.value += configOptions.encumbranceModifier;
+
+
     // Calculate overage values
     const overage = data.stats.secondaryAttributes.encumbrance.current - data.stats.secondaryAttributes.encumbrance.value;
     const correctOverage = data.stats.secondaryAttributes.encumbrance.overage = (overage > 0) ? overage : 0;
@@ -316,12 +321,12 @@ export class ZweihanderActor extends Actor {
 
 
     // Assign Initiative values
-    const initiativeValue = data.stats.secondaryAttributes.initiative.value = data.stats.primaryAttributes.perception.bonus + 3;
+    const initiativeValue = data.stats.secondaryAttributes.initiative.value = data.stats.primaryAttributes[configOptions.intAttribute].bonus + 3 + configOptions.initiativeModifier;
     data.stats.secondaryAttributes.initiative.current = initiativeValue - correctOverage;
 
 
     // Assign Movement values
-    const movementValue = data.stats.secondaryAttributes.movement.value = data.stats.primaryAttributes.agility.bonus + 3;
+    const movementValue = data.stats.secondaryAttributes.movement.value = data.stats.primaryAttributes[configOptions.movAttribute].bonus + 3 + configOptions.movementModifier;
     data.stats.secondaryAttributes.movement.current = movementValue - correctOverage;
   }
 
@@ -627,6 +632,29 @@ export class ZweihanderActor extends Actor {
   
       if (toAddDifference.length)
         actorData.update({ "items": toAddDifference });
+    }
+  }
+
+  async _onCreate(changed, options, user) {
+    await super._onCreate(changed, options, user);
+
+    // TODO: user is an incorrect parameter and will be fixed in future versions
+    if (user !== game.user.id)
+      return;
+
+    if (this.type === "character") {
+      await this.setFlag("zweihander", "actorConfig", {
+        "dthAttribute": "brawn",
+        "pthAttribute": "willpower",
+        "intAttribute": "perception",
+        "movAttribute": "agility",
+        "perilOffset": 0,
+        "encumbranceModifier": 0,
+        "initiativeModifier": 0,
+        "movementModifier": 0,
+        "parrySkills": [ "Simple Melee", "Martial Melee", "Guile", "Charm", "Incantation" ],
+        "dodgeSkills": [ "Coordination", "Guile", "Drive", "Ride" ]
+      });
     }
   }
 }

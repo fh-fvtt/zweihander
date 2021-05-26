@@ -65,11 +65,22 @@ export class ZweihanderActorSheet extends ActorSheet {
     data.data.conditions = this.actor.data.conditions;
     data.data.uniqueAdvances = this.actor.data.uniqueAdvances;
 
-    data.data.talentsAndTraits = this.actor.data.talents.concat(this.actor.data.traits);
+    data.data.talentsAndTraits = this.actor.data.talents.filter(talent => talent.data.purchased).concat(this.actor.data.traits);
 
     const actorProfessions = this.actor.data.professions.map(profession => profession.data.tier.value);
 
     data.data.currentTier = actorProfessions[actorProfessions.length - 1];
+
+    let flags = this.actor.getFlag("zweihander", "actorConfig");
+
+    data.data.damageThresholdAttribute = flags.dthAttribute;
+    data.data.perilThresholdAttribute = flags.pthAttribute;
+
+    data.data.initiativeAttribute = flags.intAttribute;
+    data.data.movementAttribute = flags.movAttribute;
+
+    data.data.parrySkills = flags.parrySkills;
+    data.data.dodgeSkills = flags.dodgeSkills;
 
     return data.data;
   }
@@ -332,15 +343,18 @@ export class ZweihanderActorSheet extends ActorSheet {
 
   async _onRoll(event) {
     event.preventDefault();
+
     const element = event.currentTarget;
     const dataset = element.dataset;
 
+    const actorData = this.actor.data;
+
     const skill = dataset.label.toLowerCase();
-    const skillItem = this.actor.data.skills[this.actor.data.skills.findIndex(item => item.name.toLowerCase() === skill)];
+    const skillItem = actorData.skills[actorData.skills.findIndex(item => item.name.toLowerCase() === skill)];
 
     if (skillItem) {
-      const primaryAttribute = skillItem.data.associatedPrimaryAttribute.value.toLowerCase();
-      const rollAgainst = this.actor.data.data.stats.primaryAttributes[primaryAttribute].value;
+      const primaryAttribute = skillItem.data.associatedPrimaryAttribute.value;
+      const rollAgainst = actorData.data.stats.primaryAttributes[primaryAttribute.toLowerCase()].value;
 
       let rankBonus = 0;
 
@@ -352,22 +366,134 @@ export class ZweihanderActorSheet extends ActorSheet {
         rankBonus = 10;
       }
 
+      const currentPeril = Number(actorData.data.stats.secondaryAttributes.perilCurrent.value);
+
+      let perilPenalty = 0;
+
+      if (currentPeril === 3 && rankBonus >= 10) {
+        perilPenalty = 10;
+      } else if (currentPeril === 2 && rankBonus >= 10 && rankBonus < 20) {
+        perilPenalty = 10;
+      } else if (currentPeril === 2 && rankBonus >= 20) {
+        perilPenalty = 20;
+      } else if (currentPeril === 1 && rankBonus >= 10 && rankBonus < 20) {
+        perilPenalty = 10;
+      } else if (currentPeril === 1 && rankBonus >= 20 && rankBonus < 30) {
+        perilPenalty = 20;
+      } else if (currentPeril === 1 && rankBonus >= 30) {
+        perilPenalty = 30;
+      }
+
+      let baseChanceModifier = rankBonus - perilPenalty;  // TODO: add Talents/Traits
+
+      if (baseChanceModifier > 30) {
+        baseChanceModifier = 30;
+      } else if (baseChanceModifier < -30) {
+        baseChanceModifier = -30;
+      }
+
+      let rollConfig = await new Promise((resolve) => {
+        new Dialog({
+          "title": `${dataset.label}: Test Configuration`,
+          "content": `
+          <form class="flexcol">
+            <div class="form-group">
+              <label for="exampleInput">Example Input</label>
+              <input type="text" name="exampleInput" placeholder="Enter Value">
+            </div>
+            <div class="form-group">
+              <label for="difficultyRatingSelect">Difficulty Rating</label>
+              <select name="difficultyRatingSelect">
+                <option value="-30">Arduous -30%</option>
+                <option value="-20">Hard -20%</option>
+                <option value="-10">Challenging -10%</option>
+                <option value="0" selected>Standard +/-0%</option>
+                <option value="10">Routine +10%</option>
+                <option value="20">Easy +20%</option>
+                <option value="30">Trivial +30%</option>
+              </select>
+            </div>
+          </form>`,
+          "buttons": {
+            "no": {
+              "icon": '<i class="fas fa-times"></i>',
+              "label": 'Cancel'
+            },
+            "yes": {
+              "icon": '<i class="fas fa-check"></i>',
+              "label": 'Roll',
+              "callback": (html) => {
+                let input = html.find('[name="exampleInput"]').val();
+                let difficultyRating = html.find('[name="difficultyRatingSelect"]').val();
+                resolve({ input, difficultyRating });
+              }
+            },
+          },
+          "default": 'yes',
+        }).render(true);
+      });
+
+      let difficultyRating = Number(rollConfig.difficultyRating);
+      let difficultyRatingLabel = "";
+
+      switch (difficultyRating) {
+        case -30:
+          difficultyRatingLabel = "Arduous -30%"
+          break;
+        case -20:
+          difficultyRatingLabel = "Hard -20%"
+          break;
+        case -10:
+          difficultyRatingLabel = "Challenging -10%"
+          break;
+        case 0:
+          difficultyRatingLabel = "Standard +/-0%"
+          break;
+        case 10:
+          difficultyRatingLabel = "Routine +10%"
+          break;
+        case 20:
+          difficultyRatingLabel = "Easy +20%"
+          break;
+        case 30:
+          difficultyRatingLabel = "Trivial +30%"
+          break;
+        default:
+          difficultyRatingLabel = "ERROR"
+          break;
+      }
+
       let template = "systems/zweihander/templates/chat/chat-skill.html";
 
-      if (dataset.roll) {
-        let roll = new Roll(dataset.roll, this.actor.data.data);
-        let label = dataset.label ? `Rolling against ${dataset.label} (${rollAgainst + rankBonus})` : '';
+      let totalChance = rollAgainst + baseChanceModifier + difficultyRating;
+      totalChance = totalChance >= 100 ? 99 : (totalChance < 1 ? 1 : totalChance);
 
-        roll.roll().render().then(r => {
+      if (dataset.roll) {
+        let roll = new Roll(dataset.roll, actorData.data);
+        let rollResult = await roll.evaluate({ "async": true });
+
+        rollResult.render().then(r => {
           let templateData = {
-            skill: label
+            "skill": dataset.label,
+            "primaryAttribute": primaryAttribute,
+            "attributeChance": rollAgainst,
+            "rankBonus": rankBonus,
+            "baseChance": rollAgainst + baseChanceModifier,
+            "totalChance": totalChance,
+            "difficultyRating": { 
+              "value": difficultyRating,
+              "label": difficultyRatingLabel
+            },
+            "perilPenalty": perilPenalty,
+            "image": this.actor.img,
+            "roll": rollResult._total
           };
 
-          renderTemplate(template, templateData).then(c => {
+          renderTemplate(template, templateData).then(html => {
             let chatData = {
-              user: game.user._id,
+              user: game.user.id,
               speaker: ChatMessage.getSpeaker({ actor: this.actor }),
-              content: c
+              content: html
             };
         
             ChatMessage.create(chatData);
@@ -440,41 +566,66 @@ export class ZweihanderActorSheet extends ActorSheet {
 
   /** @override */
   async _render(force = false, options = {}) {
-    this._saveToggleStates();
+    const toIterate = [
+      "professions",
+      "drawbacks",
+      "weapons",
+      "armor",
+      "trappings",
+      "talents-and-traits",
+      "unique-advances",
+      "spells",
+      "rituals",
+      "conditions",
+      "injuries",
+      "diseases",
+      "disorders"
+    ];
+
+    this._saveToggleStates(toIterate);
     this._saveScrollStates();
 
     await super._render(force, options);
 
-    this._setToggleStates();
+    this._setToggleStates(toIterate);
     this._setScrollStates();
   }
 
-  _saveToggleStates() {
+  _saveToggleStates(toIterate) {
     if (this.form === null)
       return;
 
     const html = $(this.form).parent();
 
-    this.toggleStates = [];
+    this.toggleStates = {};
 
-    let items = $(html.find(".save-toggle"));
+    for (let item of toIterate) {
+      let elements = $(html.find(`.save-toggle-${item}`));
 
-    for (let item of items) {
-      this.toggleStates.push($(item).hasClass("open"));
+      this.toggleStates[item] = [];
+
+      for (let element of elements) {
+        const isOpen = $(element).hasClass("open");
+
+        this.toggleStates[item].push(isOpen);
+      }
     }
   }
 
-  _setToggleStates() {
+  _setToggleStates(toIterate) {
     if (this.toggleStates) {
       const html = $(this.form).parent();
+      
+      for (let item of toIterate) {
+        if (!this.toggleStates[item].length)
+          continue;
 
-      let items = $(html.find(".save-toggle"));
+        let elements = $(html.find(`.save-toggle-${item}`));
 
-      for (let i = 0; i < items.length; i++) {
-        if (this.toggleStates[i]) {
-          $(items[i]).show().addClass("open");
-        } else {
-          $(items[i]).hide().removeClass("open");
+        for (let i = 0; i < elements.length; i++) {
+          if (this.toggleStates[item][i]) {
+            $(elements[i]).show().addClass("open");
+          }
         }
       }
     }

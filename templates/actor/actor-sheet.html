@@ -240,10 +240,9 @@
                                         <span class="label dodge">
                                             <select class="skill-dropdown" name="data.stats.secondaryAttributes.dodge.associatedSkill" >
                                                 {{#select data.stats.secondaryAttributes.dodge.associatedSkill}}
-                                                    <option value="Coordination">Coordination</option>
-                                                    <option value="Guile">Guile</option>
-                                                    <option value="Drive">Drive</option>
-                                                    <option value="Ride">Ride</option>
+                                                    {{#each dodgeSkills as | skill idx | }}
+                                                        <option value="{{skill}}">{{skill}}</option>
+                                                    {{/each}}
                                                 {{/select}}
                                             </select>
                                         </span>
@@ -269,11 +268,9 @@
                                         <span class="label">
                                             <select class="skill-dropdown" name="data.stats.secondaryAttributes.parry.associatedSkill" >
                                                 {{#select data.stats.secondaryAttributes.parry.associatedSkill}}
-                                                    <option value="Simple Melee">Simple Melee</option>
-                                                    <option value="Martial Melee">Martial Melee</option>
-                                                    <option value="Guile">Guile</option>
-                                                    <option value="Charm">Charm</option>
-                                                    <option value="Incantation">Incantation</option>
+                                                    {{#each parrySkills as | skill idx | }}
+                                                        <option value="{{skill}}">{{skill}}</option>
+                                                    {{/each}}
                                                 {{/select}}
                                             </select>
                                         </span>
@@ -349,7 +346,7 @@
                                                     name="data.stats.secondaryAttributes.initiative.value"
                                                     value="{{data.stats.secondaryAttributes.initiative.value}}"
                                                      readonly />
-                                                <span class="label">[PB]+3</span>
+                                                <span class="label">[{{getFirstLetter initiativeAttribute}}B]+3</span>
                                             </div>
 
                                             <div class="number-and-label center">
@@ -381,7 +378,7 @@
                                                     name="data.stats.secondaryAttributes.perilThreshold.value"
                                                     value="{{data.stats.secondaryAttributes.perilThreshold.value}}"
                                                      readonly />
-                                                <span class="label">[WB]+3</span>
+                                                <span class="label">[{{getFirstLetter perilThresholdAttribute}}B]+3</span>
                                             </div>
 
                                             <div class="number-and-label center-left">
@@ -433,7 +430,7 @@
                                                     name="data.stats.secondaryAttributes.movement.value"
                                                     value="{{data.stats.secondaryAttributes.movement.value}}"
                                                      readonly />
-                                                <span class="label">[AB]+3</span>
+                                                <span class="label">[{{getFirstLetter movementAttribute}}B]+3</span>
                                             </div>
 
                                             <div class="number-and-label center">
@@ -465,7 +462,7 @@
                                                     name="data.stats.secondaryAttributes.damageThreshold.value"
                                                     value="{{data.stats.secondaryAttributes.damageThreshold.value}}"
                                                      readonly />
-                                                <span class="label dtm">[BB]+0</span>
+                                                <span class="label dtm">[{{getFirstLetter damageThresholdAttribute}}B]+0</span>
                                             </div>
 
                                             <div class="number-and-label center-left">
@@ -612,7 +609,7 @@
                                                         </div>
                                                     </div>
                                                 </div>
-                                                <div class="individual-description save-toggle">
+                                                <div class="individual-description save-toggle-drawbacks">
                                                     <div class="description-list">
                                                         <span><b>Effect: </b> {{drawback.data.effect.value}}</span>
                                                     </div>
@@ -711,7 +708,7 @@
                                                             </div>
                                                         </div>
                                                     </div>
-                                                    <div class="individual-description save-toggle">
+                                                    <div class="individual-description save-toggle-weapons">
                                                         <div class="description-list">
                                                             <div>
                                                                 <b>Qualities: </b>
@@ -793,7 +790,7 @@
                                                             </div>
                                                         </div>
                                                     </div>
-                                                    <div class="individual-description save-toggle">
+                                                    <div class="individual-description save-toggle-armor">
                                                         <div class="description-list">
                                                             <div>
                                                                 <b>Qualities: </b>
@@ -881,7 +878,7 @@
                                                             </div>
                                                         </div>
                                                     </div>
-                                                    <div class="individual-description save-toggle">
+                                                    <div class="individual-description save-toggle-trappings">
                                                         <div class="description-list">
                                                             <span><b>Description:</b> {{trapping.data.flavor.description.value}}</span>
                                                         </div>
@@ -1014,7 +1011,7 @@
                                                             </div>
                                                         </div>
                                                     </div>
-                                                    <div class="individual-description save-toggle">
+                                                    <div class="individual-description save-toggle-conditions">
                                                         <div class="description-list">
                                                             <span><b>Effect:</b> {{condition.data.effect.value}}</span>
                                                         </div>
@@ -1068,7 +1065,7 @@
                                                             </div>
                                                         </div>
                                                     </div>
-                                                    <div class="individual-description save-toggle">
+                                                    <div class="individual-description save-toggle-injuries">
                                                         <div class="description-list">
                                                             <span><b>Effect:</b> {{injury.data.effect.value}}</span>
                                                         </div>
@@ -1138,7 +1135,7 @@
                                                             </div>
                                                         </div>
                                                     </div>
-                                                    <div class="individual-description save-toggle">
+                                                    <div class="individual-description save-toggle-diseases">
                                                         <div class="description-list">
                                                             <span><b>Effect:</b> {{disease.data.effect.value}}</span>
                                                             <span><b>Treatment:</b> {{disease.data.treatment.value}}</span>
@@ -1201,7 +1198,7 @@
                                                             </div>
                                                         </div>
                                                     </div>
-                                                    <div class="individual-description save-toggle">
+                                                    <div class="individual-description save-toggle-disorders">
                                                         <div class="description-list">
                                                             <span><b>Effect:</b> {{disorder.data.effect.value}}</span>
                                                         </div>
@@ -1290,7 +1287,7 @@
                                                             </div>
                                                         </div>
                                                     </div>
-                                                    <div class="individual-description save-toggle">
+                                                    <div class="individual-description save-toggle-spells">
                                                         <div class="description-list">
                                                             <span><b>Reagents:</b> {{spell.data.reagents.value}}</span>
                                                             <span><b>Effect:</b> {{spell.data.effect.value}}</span>
@@ -1360,7 +1357,7 @@
                                                             </div>
                                                         </div>
                                                     </div>
-                                                    <div class="individual-description save-toggle">
+                                                    <div class="individual-description save-toggle-rituals">
                                                         <div class="description-list">
                                                             <span><b>Reagents:</b> {{ritual.data.reagents.value}}</span>
                                                             <span><b>Condition:</b> {{ritual.data.condition.value}}</span>
@@ -1460,7 +1457,7 @@
                                                             </div>
                                                         </div>
                                                     </div>
-                                                    <div class="individual-description save-toggle">
+                                                    <div class="individual-description save-toggle-professions">
                                                         <div class="description-list">
                                                             <span><b>Professional Trait:</b> <a class="fetch-item">{{profession.data.professionalTrait.value}}</a></span>
                                                             <div>
@@ -1568,7 +1565,7 @@
                                                                 </div>
                                                             </div>
                                                         </div>
-                                                        <div class="individual-description save-toggle">
+                                                        <div class="individual-description save-toggle-talents-and-traits">
                                                             <div class="description-list">
                                                                 <span><b>Effect:</b> {{talentOrTrait.data.effect.value}}</span>
                                                             </div>
@@ -1576,42 +1573,6 @@
                                                     </div>
                                                 {{/checkTalentPurchased}}
                                             {{/each}}
-                                            <!--
-                                            {{#each traits as | trait idx | }}
-                                                <div class="individual-trapping-and-description {{oddOrEven idx}}">
-                                                    <div class="individual-trapping item" data-item-id="{{trait._id}}">
-                                                        <div class="image-and-name"">
-                                                            <img src="{{trait.img}}" /><span>{{trait.name}}</span>
-                                                        </div>
-
-                                                        <div class="skill">
-                                                            <span></span>
-                                                        </div>
-
-                                                        <div class="skill">
-                                                            <span><input type="checkbox" class="" /></span>
-                                                        </div>
-
-                                                        <div class="controls-container">
-                                                            <div class="controls">
-                                                                <a class="item-control item-edit" title="Edit Item"><i class="fas fa-pencil-alt fa-fw fa-xs"></i></a>
-                                                                <a class="item-control item-delete" title="Delete Item"><i class="fas fa-trash-alt fa-fw fa-xs"></i></a>
-                                                            </div>
-
-                                                            <div class="controls">
-                                                                <a class="item-control item-post" title="Post Item to Chat"><i class="fas fa-comment fa-fw fa-xs"></i></a>
-                                                                <a class="item-control item-description" title="Toggle Description"><i class="fas fa-align-left fa-fw fa-xs"></i></a>
-                                                            </div>
-                                                        </div>
-                                                    </div>
-                                                    <div class="individual-description save-toggle">
-                                                        <div class="description-list">
-                                                            <span><b>Effect:</b> {{trait.data.effect.value}}</span>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                            {{/each}}
-                                            -->
                                         </div>
                                     </div>
                                 </div>
@@ -1664,7 +1625,7 @@
                                                             </div>
                                                         </div>
                                                     </div>
-                                                    <div class="individual-description save-toggle">
+                                                    <div class="individual-description save-toggle-unique-advances">
                                                         <div class="description-list">
                                                             <span><b>Notes:</b> {{#isMissing uniqueAdvance.data.flavor.description}} {{uniqueAdvance.data.flavor.description}} {{else}}-{{/isMissing}}</span>
                                                         </div>
