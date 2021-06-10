@@ -1,3 +1,5 @@
+import ZweihanderDice from "./zweihander-dice.js";
+
 /**
  * The Zweihänder actor sheet class for characters.
  * @extends {ActorSheet}
@@ -73,15 +75,18 @@ export class ZweihanderActorSheet extends ActorSheet {
 
     let flags = this.actor.getFlag("zweihander", "actorConfig");
 
-    data.data.damageThresholdAttribute = flags.dthAttribute;
-    data.data.perilThresholdAttribute = flags.pthAttribute;
-
-    data.data.initiativeAttribute = flags.intAttribute;
-    data.data.movementAttribute = flags.movAttribute;
-
-    data.data.parrySkills = flags.parrySkills;
-    data.data.dodgeSkills = flags.dodgeSkills;
-
+    if (flags) {
+      data.data.damageThresholdAttribute = flags.dthAttribute;
+      data.data.perilThresholdAttribute = flags.pthAttribute;
+  
+      data.data.initiativeAttribute = flags.intAttribute;
+      data.data.movementAttribute = flags.movAttribute;
+  
+      data.data.parrySkills = flags.parrySkills;
+      data.data.dodgeSkills = flags.dodgeSkills;
+      data.data.magickSkills = flags.magickSkills;
+    }
+    
     return data.data;
   }
 
@@ -322,8 +327,30 @@ export class ZweihanderActorSheet extends ActorSheet {
     // Show extra item information on click
     html.find(".item-description").click(event => this._showItemDescription(event));
 
-    // Roll
-    html.find(".skill-roll").click(this._onRoll.bind(this));
+    // Roll Skill
+    html.find(".skill-roll").click((event) => {
+      this._onRollSkill(event, CONFIG.ZWEI.rollTypes.skill);
+    });
+
+    // Roll Weapon
+    html.find(".weapon-roll").click((event) => {
+      this._onRollSkill(event, CONFIG.ZWEI.rollTypes.weapon)
+    });
+
+    // Roll Spell
+    html.find(".spell-roll").click((event) => {
+      this._onRollSkill(event, CONFIG.ZWEI.rollTypes.spell)
+    });
+
+    // Roll Dodge
+    html.find(".dodge-roll").click((event) => {
+      this._onRollSkill(event, CONFIG.ZWEI.rollTypes.dodge);
+    });
+
+    // Roll Parry
+    html.find(".parry-roll").click((event) => {
+      this._onRollSkill(event, CONFIG.ZWEI.rollTypes.parry);
+    });
   }
 
   async _handleRewardPoints(tier, purchased) {
@@ -341,7 +368,7 @@ export class ZweihanderActorSheet extends ActorSheet {
     }
   }
 
-  async _onRoll(event) {
+  async _onRollSkill(event, rollType) {
     event.preventDefault();
 
     const element = event.currentTarget;
@@ -353,153 +380,69 @@ export class ZweihanderActorSheet extends ActorSheet {
     const skillItem = actorData.skills[actorData.skills.findIndex(item => item.name.toLowerCase() === skill)];
 
     if (skillItem) {
-      const primaryAttribute = skillItem.data.associatedPrimaryAttribute.value;
-      const rollAgainst = actorData.data.stats.primaryAttributes[primaryAttribute.toLowerCase()].value;
+      switch (rollType) {
+        case CONFIG.ZWEI.rollTypes.dodge:
+        case CONFIG.ZWEI.rollTypes.parry:
+        case CONFIG.ZWEI.rollTypes.skill:
+          await ZweihanderDice.rollSkillTest(skillItem, actorData, rollType);
+          break;
+        case CONFIG.ZWEI.rollTypes.weapon:
+          const weaponId = $(element).parents(".individual-trapping")[0].dataset.itemId;
+          const weaponItem = actorData.items.get(weaponId);
 
-      let rankBonus = 0;
-
-      if (skillItem.data.ranks.master.purchased) {
-        rankBonus = 30;
-      } else if (skillItem.data.ranks.journeyman.purchased) {
-        rankBonus = 20;
-      } else if (skillItem.data.ranks.apprentice.purchased) {
-        rankBonus = 10;
-      }
-
-      const currentPeril = Number(actorData.data.stats.secondaryAttributes.perilCurrent.value);
-
-      let perilPenalty = 0;
-
-      if (currentPeril === 3 && rankBonus >= 10) {
-        perilPenalty = 10;
-      } else if (currentPeril === 2 && rankBonus >= 10 && rankBonus < 20) {
-        perilPenalty = 10;
-      } else if (currentPeril === 2 && rankBonus >= 20) {
-        perilPenalty = 20;
-      } else if (currentPeril === 1 && rankBonus >= 10 && rankBonus < 20) {
-        perilPenalty = 10;
-      } else if (currentPeril === 1 && rankBonus >= 20 && rankBonus < 30) {
-        perilPenalty = 20;
-      } else if (currentPeril === 1 && rankBonus >= 30) {
-        perilPenalty = 30;
-      }
-
-      let baseChanceModifier = rankBonus - perilPenalty;  // TODO: add Talents/Traits
-
-      if (baseChanceModifier > 30) {
-        baseChanceModifier = 30;
-      } else if (baseChanceModifier < -30) {
-        baseChanceModifier = -30;
-      }
-
-      let rollConfig = await new Promise((resolve) => {
-        new Dialog({
-          "title": `${dataset.label}: Test Configuration`,
-          "content": `
-          <form class="flexcol">
-            <div class="form-group">
-              <label for="exampleInput">Example Input</label>
-              <input type="text" name="exampleInput" placeholder="Enter Value">
-            </div>
-            <div class="form-group">
-              <label for="difficultyRatingSelect">Difficulty Rating</label>
-              <select name="difficultyRatingSelect">
-                <option value="-30">Arduous -30%</option>
-                <option value="-20">Hard -20%</option>
-                <option value="-10">Challenging -10%</option>
-                <option value="0" selected>Standard +/-0%</option>
-                <option value="10">Routine +10%</option>
-                <option value="20">Easy +20%</option>
-                <option value="30">Trivial +30%</option>
-              </select>
-            </div>
-          </form>`,
-          "buttons": {
-            "no": {
-              "icon": '<i class="fas fa-times"></i>',
-              "label": 'Cancel'
-            },
-            "yes": {
-              "icon": '<i class="fas fa-check"></i>',
-              "label": 'Roll',
-              "callback": (html) => {
-                let input = html.find('[name="exampleInput"]').val();
-                let difficultyRating = html.find('[name="difficultyRatingSelect"]').val();
-                resolve({ input, difficultyRating });
+          if (weaponItem) {
+            const weaponItemData = weaponItem.data;
+      
+            const weaponData = {
+              "weaponQualities": weaponItemData.data.qualities.arrayOfValues,
+              "weaponName": weaponItemData.name,
+              "formula": weaponItemData.data.damage.formula,
+              "bonus": { 
+                "value": weaponItemData.data.damage.primaryAttributeBonus,
+                "label": weaponItemData.data.damage.associatedPrimaryAttribute
               }
-            },
-          },
-          "default": 'yes',
-        }).render(true);
-      });
+            };
 
-      let difficultyRating = Number(rollConfig.difficultyRating);
-      let difficultyRatingLabel = "";
+            await ZweihanderDice.rollSkillTest(skillItem, actorData, rollType, weaponData);
+          }
 
-      switch (difficultyRating) {
-        case -30:
-          difficultyRatingLabel = "Arduous -30%"
           break;
-        case -20:
-          difficultyRatingLabel = "Hard -20%"
-          break;
-        case -10:
-          difficultyRatingLabel = "Challenging -10%"
-          break;
-        case 0:
-          difficultyRatingLabel = "Standard +/-0%"
-          break;
-        case 10:
-          difficultyRatingLabel = "Routine +10%"
-          break;
-        case 20:
-          difficultyRatingLabel = "Easy +20%"
-          break;
-        case 30:
-          difficultyRatingLabel = "Trivial +30%"
+        case CONFIG.ZWEI.rollTypes.spell:
+          const spellId = $(element).parents(".individual-trapping")[0].dataset.itemId;
+          const spellItem = actorData.items.get(spellId);
+
+          if (spellItem) {
+            const spellItemData = spellItem.data;
+
+            const spellData = {
+              "spellName": spellItemData.name,
+              "principle": spellItemData.data.principle.value,
+              "duration": this._formatDuration(spellItemData.data.duration.value, actorData),
+              "distance": spellItemData.data.distance.value,
+              "flavor": spellItemData.data.flavor.description,
+              "effect": spellItemData.data.effect,
+              "reagents": spellItemData.data.reagents.value,
+              "tradition": spellItemData.data.tradition.value
+            };
+
+            await ZweihanderDice.rollSkillTest(skillItem, actorData, rollType, spellData);
+          }
+
           break;
         default:
-          difficultyRatingLabel = "ERROR"
           break;
       }
+    }
+  }
 
-      let template = "systems/zweihander/templates/chat/chat-skill.html";
+  _formatDuration(formula, actorData) {
+    if (formula[0] === "@") {
+      const contents = formula.split("+");
+      const key = contents[0].replace("@", "data.");
+      const bonus = getProperty(actorData, key);
+      const setDuration = contents[1].split(' ');
 
-      let totalChance = rollAgainst + baseChanceModifier + difficultyRating;
-      totalChance = totalChance >= 100 ? 99 : (totalChance < 1 ? 1 : totalChance);
-
-      if (dataset.roll) {
-        let roll = new Roll(dataset.roll, actorData.data);
-        let rollResult = await roll.evaluate({ "async": true });
-
-        rollResult.render().then(r => {
-          let templateData = {
-            "skill": dataset.label,
-            "primaryAttribute": primaryAttribute,
-            "attributeChance": rollAgainst,
-            "rankBonus": rankBonus,
-            "baseChance": rollAgainst + baseChanceModifier,
-            "totalChance": totalChance,
-            "difficultyRating": { 
-              "value": difficultyRating,
-              "label": difficultyRatingLabel
-            },
-            "perilPenalty": perilPenalty,
-            "image": this.actor.img,
-            "roll": rollResult._total
-          };
-
-          renderTemplate(template, templateData).then(html => {
-            let chatData = {
-              user: game.user.id,
-              speaker: ChatMessage.getSpeaker({ actor: this.actor }),
-              content: html
-            };
-        
-            ChatMessage.create(chatData);
-          });
-        });
-      }
+      return bonus + Number(setDuration[0]) + " " + setDuration[1];
     }
   }
 

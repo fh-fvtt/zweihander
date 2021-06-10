@@ -4,12 +4,12 @@
             <header class="profession-header">
                 <div class="image-and-title-container">
                     <div class="header-image">
-                        <img class="profession-illustration" src="{{item.img}}" data-edit="img" title="{{item.name}}"/>
+                        <img class="profession-illustration" src="{{img}}" data-edit="img" title="{{name}}"/>
                     </div>
 
                     <div class="header-contents">
                         <div class="title">
-                            <span>Profession: {{item.name}}</span>
+                            <span>Profession: {{name}}</span>
                         </div>
                     </div>
                 </div>
@@ -22,14 +22,14 @@
     
                 {{!-- Description Tab --}}
                 <div class="tab">
-                    <span><i>{{data.data.flavor.description}}</i></span>
+                    <span><i>{{data.flavor.description}}</i></span>
                     <br />
-                    Name: <input type="text" name="name" value="{{item.name}}" />
-                    Resist: <input type="text" name="data.resist.value" value="{{data.data.resist.value}}" />
-                    Duration: <input type="text" name="data.duration.value" value="{{data.data.duration.value}}" />
-                    Effect: <input type="text" name="data.effect.value" value="{{data.data.effect.value}}" />
-                    Treatment: <input type="text" name="data.treatment.value" value="{{data.data.treatment.value}}" />
-                    Currently In Effect: <input type="checkbox" name="data.active" {{checked data.data.active}} />
+                    Name: <input type="text" name="name" value="{{name}}" />
+                    Resist: <input type="text" name="data.resist.value" value="{{data.resist.value}}" />
+                    Duration: <input type="text" name="data.duration.value" value="{{data.duration.value}}" />
+                    Effect: <input type="text" name="data.effect.value" value="{{data.effect.value}}" />
+                    Treatment: <input type="text" name="data.treatment.value" value="{{data.treatment.value}}" />
+                    Currently In Effect: <input type="checkbox" name="data.active" {{checked data.active}} />
                 </div>
             </section>
         </div>

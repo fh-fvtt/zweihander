@@ -1,8 +1,8 @@
 <form class="{{cssClass}}" autocomplete="off">
     <header class="sheet-header">
-        <img class="profile-img" src="{{item.img}}" data-edit="img" title="{{item.name}}"/>
+        <img class="profile-img" src="{{img}}" data-edit="img" title="{{name}}"/>
         <div class="header-fields">
-            <h1 class="charname"><input name="name" type="text" value="{{item.name}}" placeholder="Name"/></h1>
+            <h1 class="charname"><input name="name" type="text" value="{{name}}" placeholder="Name"/></h1>
         </div>
     </header>
 
@@ -12,17 +12,17 @@
 
         {{!-- Description Tab --}}
         <div class="tab">
-            <span>{{data.data.flavor.description}}</span>
+            <span>{{data.flavor.description}}</span>
             <br />
             <br />
-            Distance: <input type="text" name="data.distance.value" value="{{data.data.distance.value}}" />
-            Tradition: <input type="text" name="data.tradition.value" value="{{data.data.tradition.value}}" />
-            Principle: <input type="text" name="data.principle.value" value="{{data.data.principle.value}}" />
-            Reagents: <input type="text" name="data.reagents.value" value="{{data.data.reagents.value}}" />
-            Duration: <input type="text" name="data.duration.value" value="{{data.data.duration.value}}" />
-            Effect: <input type="text" name="data.effect.value" value="{{data.data.effect.value}}" />
-            Crit. Hit: <input type="text" name="data.effect.criticalSuccess.value" value="{{data.data.effect.criticalSuccess.value}}" />
-            Crit. Fail: <input type="text" name="data.effect.criticalFailure.value" value="{{data.data.effect.criticalFailure.value}}" />
+            Distance: <input type="text" name="data.distance.value" value="{{data.distance.value}}" />
+            Tradition: <input type="text" name="data.tradition.value" value="{{data.tradition.value}}" />
+            Principle: <input type="text" name="data.principle.value" value="{{data.principle.value}}" />
+            Reagents: <input type="text" name="data.reagents.value" value="{{data.reagents.value}}" />
+            Duration: <input type="text" name="data.duration.value" value="{{data.duration.value}}" />
+            Effect: <input type="text" name="data.effect.value" value="{{data.effect.value}}" />
+            Crit. Hit: <input type="text" name="data.effect.criticalSuccess.value" value="{{data.effect.criticalSuccess.value}}" />
+            Crit. Fail: <input type="text" name="data.effect.criticalFailure.value" value="{{data.effect.criticalFailure.value}}" />
         </div>
     </section>
 </form>

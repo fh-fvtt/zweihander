@@ -1,9 +1,5 @@
 import UtilityHelpers from "./utility-helpers.js";
 
-/**
- * Extend the basic Item with some very simple modifications.
- * @extends {Item}
- */
 export class ZweihanderItem extends Item {
 
   /**
@@ -22,6 +18,8 @@ export class ZweihanderItem extends Item {
       this._prepareSkillData(itemData);
     else if (itemData.type === "profession")
       this._prepareProfessionData(itemData);
+    else if (itemData.type === "weapon")
+      this._prepareWeaponData(itemData, actorData);
   }
 
   _prepareAncestryData(itemData) {
@@ -50,6 +48,16 @@ export class ZweihanderItem extends Item {
 
   _prepareProfessionData(professionItem) {
 
+  }
+
+  _prepareWeaponData(weaponData, actorData) {
+    const data = weaponData.data;  
+    
+    if (!UtilityHelpers.isObjectEmpty(actorData)) {
+      const primaryAttributeSelected = weaponData.data.damage.associatedPrimaryAttribute;
+
+      data.damage.primaryAttributeBonus = actorData.data.stats.primaryAttributes[primaryAttributeSelected.toLowerCase()].bonus;
+    }
   }
 
   /** @override */

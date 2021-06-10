@@ -8,6 +8,48 @@
   src: url(../../zweihander/fonts/BASKVILL.ttf);
 }
 
+/*------------------- Dialog -------------------*/
+
+.dialog .window-header {
+  background: black;
+}
+
+.dialog .window-content {
+  background: white;
+  box-shadow: 0px 0px 5px 1px inset lightgrey;
+  border-radius: 0px 0px 7px 7px;
+
+  font-family: 'Baskerville Old Face';
+}
+
+.dialog .window-content input[type="number"] {
+  border-radius: 0;
+  background: #f7f7f7;
+  border: 2px inset gainsboro;
+  text-align: center;
+  font-family: 'Baskerville Old Face';
+  font-size: 16px;
+}
+
+.dialog .window-content select {
+  font-family: 'Baskerville Old Face';
+  background: #f7f7f7;
+  border: 2px inset gainsboro;
+  border-radius: 0px;
+  padding: 0px;
+}
+
+.dialog .dialog-buttons button {
+  border: 2px outset lightgray;
+  border-radius: 0;
+  font-family: 'Baskerville Old Face';
+  font-size: 16px;
+}
+
+.dialog .dialog-buttons button.default {
+  border: 2px groove lightgray;
+}
+
 /*----------------- Chat Cards -----------------*/
 
 .chat-message {
@@ -36,14 +78,18 @@
   margin-bottom: 3px;
 }
 
-.message-content .content a {
+/*.message-content .content a {
   color: darkgray;
-}
+}*/
 
 .message-content .content .image-and-title img {
   flex: 0;
   border: none;
   height: 100%;
+  background: rgba(0, 0, 0, 0.3);
+  border-radius: 5px;
+  padding: 2px;
+  margin-right: 5px;
   width: auto;
 }
 
@@ -51,7 +97,7 @@
   display: flex;
   flex-direction: row;
   align-items: center;
-  height: 40px;
+  height: 50px;
   padding: 3px 0px;
 }
 
@@ -63,12 +109,51 @@
   justify-content: center;
   height: 100%;
   /* margin-left: 6px; */
-  background-image: linear-gradient(to bottom, gainsboro, rgba(0, 0, 0, 0.5));
   color: white;
   border-radius: 5px;
   font-size: 18px;
 
   cursor: pointer;
+
+  /* text-shadow: -1px 0 black, 0 1px black, 1px 0 black, 0 -1px black; */
+}
+
+.message-content .content .image-and-title .title .subtitle {
+  font-size: 14px;
+}
+
+.message-content .content .image-and-title .title.skill {
+  background-image: linear-gradient(to bottom, rgba(0, 0, 0, 0.2), dimgray)
+}
+
+.message-content .content .image-and-title .title.weapon {
+  background-image: linear-gradient(to top, darkred, indianred);
+}
+
+.message-content .content .image-and-title .title.dodge {
+  background-image: linear-gradient(to top, darkblue, cornflowerblue);
+}
+
+.message-content .content .image-and-title .title.parry {
+  background-image: linear-gradient(to top, saddlebrown, peru);
+}
+
+.message-content .content .image-and-title .title.spell {
+  background-image: linear-gradient(to bottom, mediumpurple, indigo)
+}
+
+.message-content .content .spell-flavor {
+  text-align: justify;
+}
+
+.message-content .content .spell-effects {
+  border: 1px solid darkgray;
+  border-radius: 5px;
+  margin-top: 3px;
+  margin-bottom: 3px;
+  box-shadow: 0px 0px 5px 0px inset lightgrey;
+
+  text-align: justify;
 }
 
 .message-content .content .roll-details {
@@ -78,19 +163,27 @@
   border-radius: 5px;
   margin-top: 3px;
   margin-bottom: 3px;
-  box-shadow: 0px 0px 5px 0px inset lightgrey;
+  box-shadow: 0px 0px 5px 0px inset lightgray;
 }
 
-.message-content .content .roll-details .row {
+.message-content .content .row {
   padding: 5px;
 }
 
-.message-content .content .roll-details .row.odd {
+.message-content .content .row.odd {
   background: rgba(0, 0, 0, 0.1);
 }
 
-.message-content .content .roll-details .row.even {
+.message-content .content .row.even {
   background: rgba(0, 0, 0, 0.015);
+}
+
+.message-content .content .bottom-separator {
+  border-bottom: 1px dashed darkgray;
+}
+
+.message-content .content .top-separator {
+  border-top: 1px dashed darkgray;
 }
 
 .message-content .content .roll-results {
@@ -109,6 +202,10 @@
 .message-content .content .roll-results .success {
   color: green;
   font-weight: bold;
+}
+
+.message-content .content .roll-results .highlight {
+  color: red;
 }
 
 /*---------------- Actor Config ----------------*/
@@ -2010,6 +2107,52 @@
   font-family: 'Baskerville Old Face';
 }
 
+.zweihander .magick-content .common-header.spell-select {
+  border: 1px solid darkgray;
+  border-top: none;
+  font-family: 'Baskerville Old Face';
+}
+
+.zweihander .magick-content .select-container {
+  flex: 1;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+}
+
+.zweihander .magick-content .select-container select {
+  flex: 1;
+  height: 18px;
+  background: #fbfbfb;
+  border-top: 1px solid #A2A3A5;
+  border-left: 1px solid #A2A3A5;
+  border-bottom: 1px solid lightgray;
+  border-right: 1px solid lightgray;
+  border-radius: 0;
+  padding: 0;
+
+  font-family: 'Baskerville Old Face';
+  font-size: 13px;
+}
+
+.zweihander .magick-content .select-container span {
+  margin-right: 5px;
+}
+
+.zweihander .magick-content .select-container input[type="number"] {
+  height: 18px;
+  width: 40px;
+  border-top: 1px solid #A2A3A5;
+  border-left: 1px solid #A2A3A5;
+  border-bottom: 1px solid lightgray;
+  border-right: 1px solid lightgray;
+  background-color: #fbfbfb;
+  margin-left: 5px;
+
+  cursor: not-allowed;
+  color: darkgray;
+}
+
 .zweihander .individual-trapping-and-description {
   display: flex;
   flex-direction: column;
@@ -2189,7 +2332,8 @@
 }
 
 .zweihander .magick-tabs-content {
-  height: 300.5px;
+  /* height: 300.5px; */
+  height: 271.5px;
 }
 
 .zweihander .magick-tabs-content .common-container.magick {

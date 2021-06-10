@@ -1,6 +1,6 @@
 <form class="{{cssClass}}" autocomplete="off">
     <header class="sheet-header">
-        <img class="profile-img" src="{{item.img}}" data-edit="img" title="{{item.name}}"/>
+        <img class="profile-img" src="{{img}}" data-edit="img" title="{{name}}"/>
     </header>
 
 
@@ -9,12 +9,12 @@
 
         {{!-- Description Tab --}}
         <div class="tab">
-            Item Name: <input type="text" name="name" value="{{item.name}}" />
-            Trapping Type: <input type="text" name="data.category.value" value="{{data.data.category.value}}"  />
-            Quantity: <input type="number" name="data.quantity.value" value="{{data.data.quantity.value}}"  />
-            Encumbrance (Single): <input type="number" name="data.encumbrance.value" value="{{data.data.encumbrance.value}}"  />
-            Carried: <input type="checkbox" name="data.carried" {{checked data.data.carried}} />
-            Description: <input type="text" name="data.flavor.description.value" value="{{data.data.flavor.description.value}}"  />
+            Item Name: <input type="text" name="name" value="{{name}}" />
+            Trapping Type: <input type="text" name="data.category.value" value="{{data.category.value}}"  />
+            Quantity: <input type="number" name="data.quantity.value" value="{{data.quantity.value}}"  />
+            Encumbrance (Single): <input type="number" name="data.encumbrance.value" value="{{data.encumbrance.value}}"  />
+            Carried: <input type="checkbox" name="data.carried" {{checked data.carried}} />
+            Description: <input type="text" name="data.flavor.description.value" value="{{data.flavor.description.value}}"  />
         </div>
     </section>
 </form>

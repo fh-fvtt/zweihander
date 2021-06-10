@@ -228,7 +228,9 @@
 
                                     <div class="number-and-label">
                                         <div class="dice-roll-icon">
-                                            <img class="d10" src="systems/zweihander/assets/rolling-dices.svg" />
+                                            <a class="dodge-roll" data-roll="1d100" data-label="{{data.stats.secondaryAttributes.dodge.associatedSkill}}">
+                                                <img class="d10" src="systems/zweihander/assets/rolling-dices.svg" />
+                                            </a>
 
                                             <input class="value" type="number"
                                                 name="data.stats.secondaryAttributes.dodge.value"
@@ -256,7 +258,9 @@
 
                                     <div class="number-and-label">
                                         <div class="dice-roll-icon">
-                                            <img class="d10" src="systems/zweihander/assets/rolling-dices.svg" />
+                                            <a class="parry-roll" data-roll="1d100" data-label="{{data.stats.secondaryAttributes.parry.associatedSkill}}">
+                                                <img class="d10" src="systems/zweihander/assets/rolling-dices.svg" />
+                                            </a>
 
                                             <input class="value" type="number"
                                                 name="data.stats.secondaryAttributes.parry.value"
@@ -677,7 +681,7 @@
                                                 <div class="individual-trapping-and-description {{oddOrEven idx}}">
                                                     <div class="individual-trapping item" data-item-id="{{weapon._id}}">
                                                         <div class="image-and-name weapon-attack" title="Attack: {{weapon.name}}">
-                                                            <img src="{{weapon.img}}" /><span>{{weapon.name}}</span>
+                                                            <img src="{{weapon.img}}" /><a class="weapon-roll" data-roll="1d100" data-label="{{weapon.data.associatedSkill.value}}">{{weapon.name}}</a>
                                                         </div>
                                                         
                                                         <div class="skill combat-skill">
@@ -710,6 +714,7 @@
                                                     </div>
                                                     <div class="individual-description save-toggle-weapons">
                                                         <div class="description-list">
+                                                            <span><b>Damage:</b> {{weapon.data.damage.formula}} + {{weapon.data.damage.primaryAttributeBonus}}[{{weapon.data.damage.associatedPrimaryAttribute}} Bonus]</span>
                                                             <div>
                                                                 <b>Qualities: </b>
                                                                 {{#isMissing weapon.data.qualities.arrayOfValues}}
@@ -1260,7 +1265,7 @@
                                                 <div class="individual-trapping-and-description {{oddOrEven idx}}">
                                                     <div class="individual-trapping item hide-description" data-item-id="{{spell._id}}">
                                                         <div class="image-and-name spell-attack" title="Cast Spell: {{spell.name}}">
-                                                            <img src="{{spell.img}}" /><span>{{spell.name}}</span>
+                                                            <img src="{{spell.img}}" /><a class="spell-roll" data-roll="1d100" data-label="{{../data.stats.secondaryAttributes.magick.associatedSkill}}">{{spell.name}}</a>
                                                         </div>
             
                                                         <div class="skill">
@@ -1370,6 +1375,21 @@
                                         </div>
                                     </div>
                                 </div>
+
+                                <header class="common-header spell-select">
+                                    <div class="select-container">
+                                        <span>Underlying Magick Skill</span>
+                                        <select name="data.stats.secondaryAttributes.magick.associatedSkill">
+                                            {{#select data.stats.secondaryAttributes.magick.associatedSkill}}
+                                                {{#each magickSkills as | skill idx | }}
+                                                    <option value="{{skill}}">{{skill}}</option>
+                                                {{/each}}
+                                            {{/select}}
+                                        </select>
+
+                                        <input type="number" name="data.stats.secondaryAttributes.magick.value" value="{{data.stats.secondaryAttributes.magick.value}}" readonly/>
+                                    </div>
+                                </header>
                             </section>
                         </div>
 

@@ -1,6 +1,6 @@
 <form class="{{cssClass}}" autocomplete="off">
     <header class="sheet-header">
-        <img class="profile-img" src="{{item.img}}" data-edit="img" title="{{item.name}}"/>
+        <img class="profile-img" src="{{img}}" data-edit="img" title="{{name}}"/>
     </header>
 
 
@@ -11,11 +11,11 @@
         <div class="tab">
             {{log data}}
             Skill Name: <input type="text" name="name" value="{{data.name}}" />
-            Primary Attribute (Base Chance): <input type="text" name="data.associatedPrimaryAttribute.value" value="{{data.data.associatedPrimaryAttribute.value}}" />
-            Apprentice: <input type="checkbox" name="data.ranks.apprentice.purchased" {{checked data.data.ranks.apprentice.purchased}} />
-            Journeyman: <input type="checkbox" name="data.ranks.journeyman.purchased" {{checked data.data.ranks.journeyman.purchased}} />
-            Master: <input type="checkbox" name="data.ranks.master.purchased" {{checked data.data.ranks.master.purchased}} />
-            Requires Training: <input type="checkbox" name="data.requiresTraining" {{checked data.data.requiresTraining}} />
+            Primary Attribute (Base Chance): <input type="text" name="data.associatedPrimaryAttribute.value" value="{{data.associatedPrimaryAttribute.value}}" />
+            Apprentice: <input type="checkbox" name="data.ranks.apprentice.purchased" {{checked data.ranks.apprentice.purchased}} />
+            Journeyman: <input type="checkbox" name="data.ranks.journeyman.purchased" {{checked data.ranks.journeyman.purchased}} />
+            Master: <input type="checkbox" name="data.ranks.master.purchased" {{checked data.ranks.master.purchased}} />
+            Requires Training: <input type="checkbox" name="data.requiresTraining" {{checked data.requiresTraining}} />
         </div>
     </section>
 </form>

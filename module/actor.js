@@ -1,9 +1,5 @@
 import UtilityHelpers from "./utility-helpers.js";
 
-/**
- * Extend the base Actor entity by defining a custom roll data structure which is ideal for the Simple system.
- * @extends {Actor}
- */
 export class ZweihanderActor extends Actor {
 
   /** @override */
@@ -49,7 +45,7 @@ export class ZweihanderActor extends Actor {
     const actorData = this.data;
     const configOptions = actorData.flags.zweihander?.actorConfig || {};
 
-    if (actorData.type === "character") {
+    if (actorData.type === "character" && (configOptions && Object.keys(configOptions).length)) {
       this._prepareCharacterDerivedData(actorData, configOptions);
     } else if (actorData.type === "npc") {
       this._prepareNpcDerivedData(actorData);
@@ -213,7 +209,7 @@ export class ZweihanderActor extends Actor {
 
 
     // Assign Peril Threshold values
-    var initialPeril = data.stats.primaryAttributes[configOptions.pthAttribute].bonus, perilModifier = 3;
+    let initialPeril = data.stats.primaryAttributes[configOptions.pthAttribute].bonus, perilModifier = 3;
 
     const perilArray = Object.keys(data.stats.secondaryAttributes.perilThreshold);
 
@@ -226,7 +222,7 @@ export class ZweihanderActor extends Actor {
 
 
     // Assign Damage Threshold values
-    var initialDamage = data.stats.primaryAttributes[configOptions.dthAttribute].bonus, damageModifier = 6;
+    let initialDamage = data.stats.primaryAttributes[configOptions.dthAttribute].bonus, damageModifier = 6;
 
     const damageArray = Object.keys(data.stats.secondaryAttributes.damageThreshold);
 
@@ -239,6 +235,7 @@ export class ZweihanderActor extends Actor {
     // Assign initial encumbrance values
     data.stats.secondaryAttributes.encumbrance.value = data.stats.primaryAttributes.brawn.bonus + 3;
 
+
     // Assign a value to Parry equal to the value of its underlying skill 
     const parrySkill = data.stats.secondaryAttributes.parry.associatedSkill;
     const parrySkillItem = actorData.skills.find(skill => skill.name === parrySkill);
@@ -249,6 +246,7 @@ export class ZweihanderActor extends Actor {
 
       data.stats.secondaryAttributes.parry.value = parryValue;
     }
+
 
     // Assign a value to Dodge equal to the value of its underlying skill 
     const dodgeSkill = data.stats.secondaryAttributes.dodge.associatedSkill;
@@ -261,6 +259,17 @@ export class ZweihanderActor extends Actor {
       data.stats.secondaryAttributes.dodge.value = dodgeValue;
     }
 
+
+    // Assign a value to Magick Skill equal to the value of its underlying skill 
+    const magickSkill = data.stats.secondaryAttributes.magick.associatedSkill;
+    const magickSkillItem = actorData.skills.find(skill => skill.name === magickSkill);
+
+    if (magickSkillItem !== undefined) {
+      const magickAttribute = magickSkillItem.data.associatedPrimaryAttribute.value.toLowerCase();
+      const magickValue = data.stats.primaryAttributes[magickAttribute].value + magickSkillItem.data.ranks.bonus;  // TODO IGNORE SKILL RANKS
+  
+      data.stats.secondaryAttributes.magick.value = magickValue;
+    }
 
     // Assign Damage Threshold Modifier from equipped armor piece
     for (let armor of actorData.armor) {
@@ -528,7 +537,7 @@ export class ZweihanderActor extends Actor {
     const data = actorData.data;
     
     // Assign Peril Threshold values
-    var initialPeril = data.stats.primaryAttributes.willpower.bonus, perilModifier = 3;
+    let initialPeril = data.stats.primaryAttributes.willpower.bonus, perilModifier = 3;
 
     const perilArray = Object.keys(data.stats.secondaryAttributes.perilThreshold);
 
@@ -541,7 +550,7 @@ export class ZweihanderActor extends Actor {
 
 
     // Assign Damage Threshold values
-    var initialDamage = data.stats.primaryAttributes.brawn.bonus, damageModifier = 6;
+    let initialDamage = data.stats.primaryAttributes.brawn.bonus, damageModifier = 6;
 
     const damageArray = Object.keys(data.stats.secondaryAttributes.damageThreshold);
 
@@ -653,7 +662,8 @@ export class ZweihanderActor extends Actor {
         "initiativeModifier": 0,
         "movementModifier": 0,
         "parrySkills": [ "Simple Melee", "Martial Melee", "Guile", "Charm", "Incantation" ],
-        "dodgeSkills": [ "Coordination", "Guile", "Drive", "Ride" ]
+        "dodgeSkills": [ "Coordination", "Guile", "Drive", "Ride" ],
+        "magickSkills": [ "Incantation", "Folklore" ],
       });
     }
   }

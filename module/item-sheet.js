@@ -33,8 +33,11 @@ export class ZweihanderItemSheet extends ItemSheet {
   getData() {
     const data = super.getData();
     
+    if (this.item.type === "weapon") {
+      data.data.primaryAttributes = [ "Combat", "Brawn", "Agility", "Perception", "Intelligence", "Willpower", "Fellowship" ];
+    }
 
-    return data;
+    return data.data;
   }
 
   /* -------------------------------------------- */

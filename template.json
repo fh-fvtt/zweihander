@@ -82,6 +82,9 @@
             "dodge": {
               "value": 0,
               "associatedSkill": "Coordination"
+            },
+            "magick": {
+              "associatedSkill": "Incantation"
             }
           }
         }
@@ -325,6 +328,10 @@
       },
       "distance": {
         "value": ""
+      },
+      "damage": {
+        "formula": "",
+        "associatedPrimaryAttribute": "Combat" 
       }
     },
     "armor": {

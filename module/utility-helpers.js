@@ -33,8 +33,20 @@ const getArrayDifference = (arrayA, arrayB) => {
   return arrayA.filter(element => !arrayB.includes(element));
 }
 
+/**
+ * Helper function that checks whether an object is empty or not.
+ * 
+ * @param {object} object The object to be checked
+ * @returns 
+ */
+
+const isObjectEmpty = (object) => {
+  return !object || !Object.keys(object).length;
+}
+
 export default {
   findDifference,
   getArrayDifference,
-  getSymmetricDifference
+  getSymmetricDifference,
+  isObjectEmpty
 }

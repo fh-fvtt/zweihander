@@ -4,12 +4,12 @@
             <header class="profession-header">
                 <div class="image-and-title-container">
                     <div class="header-image">
-                        <img class="profession-illustration" src="{{item.img}}" data-edit="img" title="{{item.name}}"/>
+                        <img class="profession-illustration" src="{{img}}" data-edit="img" title="{{name}}"/>
                     </div>
 
                     <div class="header-contents">
                         <div class="title">
-                            <span>Profession: {{item.name}}</span>
+                            <span>Profession: {{name}}</span>
                         </div>
                     </div>
                 </div>
@@ -22,8 +22,8 @@
     
                 {{!-- Description Tab --}}
                 <div class="tab">
-                    Name: <input type="text" name="name" value="{{item.name}}" />
-                    Effect: <input type="text" name="data.effect.value" value="{{data.data.effect.value}}" />
+                    Name: <input type="text" name="name" value="{{name}}" />
+                    Effect: <input type="text" name="data.effect.value" value="{{data.effect.value}}" />
                 </div>
             </section>
         </div>

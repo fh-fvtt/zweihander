@@ -11,6 +11,8 @@ import { ZweihanderActorSheet } from "./actor-sheet.js";
 import { ZweihanderNpcSheet } from "./npc-sheet.js";
 import { ZweihanderActorConfig } from "./actor-config.js";
 
+import ZWEI from "./constants.js";
+
 /* -------------------------------------------- */
 /*  Foundry VTT Initialization                  */
 /* -------------------------------------------- */
@@ -33,6 +35,8 @@ Hooks.once("init", async function () {
     formula: "1d10 + @stats.secondaryAttributes.initiative.current",
     decimals: 2
   };
+
+  CONFIG.ZWEI = ZWEI;
 
   // Define custom Document classes
   CONFIG.Actor.documentClass = ZweihanderActor;
@@ -198,30 +202,93 @@ Hooks.once("init", async function () {
     return game.settings.get("zweihander", "trackRewardPoints") ? options.fn(this) : options.inverse(this);
   });
 
-  Handlebars.registerHelper("getRollResult", function(roll, totalChance) {
-    const cleanRoll = (roll).toLocaleString(undefined, { "minimumIntegerDigits": 2 });
-    const cleanTotalChance = (totalChance).toLocaleString(undefined, { "minimumIntegerDigits": 2 });
+  Handlebars.registerHelper("generateResultText", function(testResult, roll, totalChance, showFlip) {
+    const flipString = showFlip ? "*" : "";
 
-    if (roll === 100) {
-      return new Handlebars.SafeString(`<span class="failure">Critical Failure</span> (${cleanRoll} vs. ${cleanTotalChance})`);
-    } else if (roll === 1) {
-      return new Handlebars.SafeString(`<span class="success">Critical Success</span> (${cleanRoll} vs. ${cleanTotalChance})`);
+    switch (testResult) {
+      case 0:
+        return new Handlebars.SafeString(`<span class="failure">Critical Failure</span> (${roll} vs. ${totalChance})${flipString}`);
+      case 1:
+        return new Handlebars.SafeString(`<span class="failure">Failure</span> (${roll} vs. ${totalChance})${flipString}`);
+      case 2:
+        return new Handlebars.SafeString(`<span class="success">Success</span> (${roll} vs. ${totalChance})${flipString}`);
+      case 3:
+        return new Handlebars.SafeString(`<span class="success">Critical Success</span> (${roll} vs. ${totalChance})${flipString}`);
+      default:
+        break;
     }
-    
-    const stringifiedRoll = "" + cleanRoll;
-    const units = Number(stringifiedRoll.charAt(stringifiedRoll.length - 1));
-    const tens = Number(stringifiedRoll.charAt(0));
+  });
 
-    const match = units === tens;
-    
-    if (roll <= totalChance && match) {
-      return new Handlebars.SafeString(`<span class="success">Critical Success</span> (${cleanRoll} vs. ${cleanTotalChance})`);
-    } else if (roll <= totalChance && !match) {
-      return new Handlebars.SafeString(`<span class="success">Success</span> (${cleanRoll} vs. ${cleanTotalChance})`);
-    } else if (roll > totalChance && match) {
-      return new Handlebars.SafeString(`<span class="failure">Critical Failure</span> (${cleanRoll} vs. ${cleanTotalChance})`);
-    } else if (roll > totalChance && !match) {
-      return new Handlebars.SafeString(`<span class="failure">Failure</span> (${cleanRoll} vs. ${cleanTotalChance})`);
+  Handlebars.registerHelper("generateFlipText", function(flip) {
+    return flip === "no-flip" ? "No" : (flip === "fail" ? "To Fail" : "To Succeed");
+  });
+
+  Handlebars.registerHelper("checkSuccess", function(testResult, options) {
+    return testResult >= 2 ? options.fn(this) : options.inverse(this);
+  });
+
+  Handlebars.registerHelper("checkCriticalSuccess", function(testResult, options) {
+    return testResult === 3 ? options.fn(this) : options.inverse(this);
+  });
+
+  Handlebars.registerHelper("checkCriticalFailure", function(testResult, options) {
+    return testResult === 0 ? options.fn(this) : options.inverse(this);
+  });
+
+  Handlebars.registerHelper("displayIndividualDice", function(arrayOfDice, delimitator, highlight) {
+    let expandedFormula = "";
+
+    for (let d = 0; d < arrayOfDice.length; d++) {
+      let results = arrayOfDice[d].results;
+
+      for (let i = 0; i < results.length; i++) {
+        if (highlight && results[i].result === 6)
+          expandedFormula += `<a class="highlight" title="Generate Chaos Manifestation">` + results[i].result + "</a>";
+        else
+          expandedFormula += results[i].result;
+
+        if (i !== results.length - 1) {
+          expandedFormula += delimitator;
+        }
+      }
+
+      if (d !== arrayOfDice.length - 1) {
+        expandedFormula += delimitator;
+      }
+    }
+
+    return new Handlebars.SafeString(expandedFormula);
+  });
+
+  Handlebars.registerHelper("displayFuryDice", function(results, delimitator) {
+    let expandedFormula = "";
+
+    for (let i = 0; i < results.length; i++) {
+      expandedFormula += results[i].result;
+
+      if (results[i]?.exploded) {
+        expandedFormula += "*";
+      }
+
+      if (i !== results.length - 1) {
+        expandedFormula += delimitator;
+      }
+    }
+
+    return new Handlebars.SafeString(expandedFormula);
+  });
+
+  Handlebars.registerHelper("selectSpellDifficulty", function(optionIdx, principle) {
+    switch (principle) {
+      case "Petty":
+      case "Generalist":
+        return optionIdx === 0 ? "selected" : "";
+      case "Lesser":
+        return optionIdx === 1 ? "selected" : "";
+      case "Greater":
+        return optionIdx === 2 ? "selected" : "";
+      default:
+        break;
     }
   });
 
@@ -265,7 +332,7 @@ Hooks.on("renderActorSheet", (app, html, data) => {
     </a>
   `);
 
-  html.find(".configure-actor").click(event => {
+  html.find(".configure-actor").click(() => {
     new ZweihanderActorConfig(app.object).render(true);
   })
 });
@@ -273,7 +340,7 @@ Hooks.on("renderActorSheet", (app, html, data) => {
 Hooks.on("renderChatLog", function(log, html, data) {
   // TODO: Refactor into Dice class
 
-  $(html).on("click", ".title.link-details", (event) => {
+  $(html).on("click", ".link-details", (event) => {
     event.preventDefault();
 
     const toggler = $(event.currentTarget);

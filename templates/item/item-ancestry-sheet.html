@@ -4,7 +4,7 @@
             <header class="profession-header">
                 <div class="image-and-title-container">
                     <div class="header-image">
-                        <img class="profession-illustration" src="{{item.img}}" data-edit="img" title="{{item.name}}"/>
+                        <img class="profession-illustration" src="{{img}}" data-edit="img" title="{{name}}"/>
                     </div>
 
                     <div class="header-contents">
@@ -22,10 +22,10 @@
     
                 {{!-- Description Tab --}}
                 <div class="tab">
-                    Name: <input type="text" name="name" value="{{item.name}}" data-dtype="String"/>
-                    Modifiers (Positive): <input type="text" name="data.ancestralModifiers.positive.value" value="{{data.data.ancestralModifiers.positive.value}}" />
-                    Modifiers (Negative): <input type="text" name="data.ancestralModifiers.negative.value" value="{{data.data.ancestralModifiers.negative.value}}" />
-                    Trait: <input type="text" name="data.ancestralTrait.value" value="{{data.data.ancestralTrait.value}}" />
+                    Name: <input type="text" name="name" value="{{name}}" data-dtype="String"/>
+                    Modifiers (Positive): <input type="text" name="data.ancestralModifiers.positive.value" value="{{data.ancestralModifiers.positive.value}}" />
+                    Modifiers (Negative): <input type="text" name="data.ancestralModifiers.negative.value" value="{{data.ancestralModifiers.negative.value}}" />
+                    Trait: <input type="text" name="data.ancestralTrait.value" value="{{data.ancestralTrait.value}}" />
                 </div>
             </section>
         </div>
