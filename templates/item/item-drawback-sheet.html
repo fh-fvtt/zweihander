@@ -1,0 +1,33 @@
+<form class="{{cssClass}}" autocomplete="off">
+    <div class="item-background">
+        <div class="item-profession-content">
+            <header class="profession-header">
+                <div class="image-and-title-container">
+                    <div class="header-image">
+                        <img class="profession-illustration" src="{{img}}" data-edit="img" title="{{name}}"/>
+                    </div>
+
+                    <div class="header-contents">
+                        <div class="title">
+                            <span>Profession: {{name}}</span>
+                        </div>
+                    </div>
+                </div>
+                
+            </header>
+    
+    
+            {{!-- Sheet Body --}}
+            <section class="item-body">
+    
+                {{!-- Description Tab --}}
+                <div class="tab">
+                    <span><i>{{data.flavor.description}}</i></span>
+                    <br />
+                    Name: <input type="text" name="name" value="{{name}}" data-dtype="String"/>
+                    Effect: <input type="text" name="data.effect.value" value="{{data.effect.value}}" />
+                </div>
+            </section>
+        </div>
+    </div>
+</form>

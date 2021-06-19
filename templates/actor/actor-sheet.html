@@ -1,0 +1,1665 @@
+<form class="{{cssClass}}" autocomplete="off">
+
+    <div class="character sheet-background">
+        <div class="character sheet-content">
+
+            {{!-- Sheet Header --}}
+            <header class="sheet-header">
+                <div class="header-fields">
+                    <div class="labeled-input charname">
+                        <input class="input-text" name="name" type="text" value="{{name}}" placeholder="Name" />
+                        <label class="input-label">Name</label>
+                    </div>
+
+                    <div class="labeled-input age">
+                        <input class="input-text" name="data.physical.age.value" type="text"
+                            value="{{data.physical.age.value}}" placeholder="Age"  />
+                        <label class="input-label">Age</label>
+                    </div>
+
+                    <div class="labeled-input sex">
+                        <input class="input-text" name="data.physical.sex.value" type="text"
+                            value="{{data.physical.sex.value}}" placeholder="Sex"  />
+                        <label class="input-label">Sex</label>
+                    </div>
+
+                    <div class="labeled-input ancestry">
+                        <div class="ancestry-absolute">
+                            <input class="input-text" name="data.physical.ancestry.value" type="text" value="{{ancestry.0.name}}" placeholder="Ancestry" readonly />
+                            <label class="input-label">Ancestry</label>
+                        </div>
+                        <div class="ancestry-edit">
+                            {{#if ancestry.length}}
+                                <a class="ancestry-edit-button" title="Edit Ancestry"><i class="fas fa-pencil-alt fa-sm"></i></a>
+                                <a class="ancestry-delete-button" title="Delete Ancestry"><i class="fas fa-trash-alt fa-sm"></i></a>
+                            {{else}}
+                                <a class="add-new" data-item-type="ancestry" title="Add Ancestry"><i class="fas fa-plus fa-xs"></i></a>
+                            {{/if}}
+                        </div>
+                    </div>
+
+                    <div class="labeled-input profession">
+                        <input class="input-text" name="data.profession.value" type="text" value="{{data.profession.value}}" placeholder="Profession"  />
+                        <label class="input-label">Profession</label>
+                    </div>
+                </div>
+
+                <div class="image-and-adv-and-corr-container">
+                    <div class="profile-img-container">
+                        <img class="profile-img" src="{{img}}" data-edit="img" title="{{name}}" />
+                    </div>
+
+                    <div class="advancement-and-corruption-container">
+                        <div class="advancement">
+                            <div class="advancement-title-container">
+                                <span>Advancement</span>
+                            </div>
+
+                            <div class="divider">
+                                <hr />
+                            </div>
+
+                            <div class="reward-points-fate-and-reputation-container">
+                                <div class="reward-points-and-title-container">
+                                    <div class="reward-points-title">
+                                        <span>Reward Points</span>
+                                    </div>
+
+                                    <div class="reward-points-inputs">
+                                        <div class="points-and-label left">
+                                            <input class="points-input {{#rpSettingOn}} locked {{else}} {{/rpSettingOn}}" type="number" name="data.rewardPoints.current" value="{{data.rewardPoints.current}}" {{#rpSettingOn}} readonly {{else}} {{/rpSettingOn}} />
+                                            <span>Current</span>
+                                        </div>
+
+                                        <div class="points-and-label right">
+                                            <input class="points-input" type="number" name="data.rewardPoints.total" value="{{data.rewardPoints.total}}"  />
+                                            <span>Total</span>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div class="fate-and-reputation-container">
+                                    <div class="fate-and-title-container">
+                                        <div class="title">
+                                            <span>Fate</span>
+                                        </div>
+
+                                        <div class="fate-points">
+                                            <input class="points-input" type="number" name="data.fate.value" value="{{data.fate.value}}"  />
+                                        </div>
+                                    </div>
+
+                                    <div class="reputation-and-title-container">
+                                        <div class="title">
+                                            <span>Reputation</span>
+                                        </div>
+
+                                        <div class="reputation-points">
+                                            <input class="points-input" type="number" name="data.reputation.value"
+                                                value="{{data.reputation.value}}"  />
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+
+                        <div class="titles-and-bars">
+                            <div class="corruption-title-container">
+                                <div class="order-alignment-title">
+                                    <span>Order Alignment</span>
+                                </div>
+
+                                <div class="corruption-title">
+                                    <span>Corruption</span>
+                                </div>
+
+                                <div class="chaos-alignment-title">
+                                    <span>Chaos Alignment</span>
+                                </div>
+                            </div>
+
+                            <div class="corruption-inputs-container">
+                                <div class="labeled-input order-container">
+                                    <div class="ranks-beneath-input left">
+                                        <div class="order-input-text">
+                                            <input class="input-text" name="data.orderAlignment.value" type="text" value="{{data.orderAlignment.value}}" placeholder=""  />
+                                        </div>
+
+                                        <div class="radio-order-ranks">
+                                            {{radioRanks "data.orderRanks.value" rankOptions checked=data.orderRanks.value}}
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div class="corruption-and-ranks-reset-container">
+                                    <input class="input-number" name="data.corruption.value" type="number" value="{{data.corruption.value}}" />
+                                    <a class="reset-ranks"><i class="fas fa-sync-alt fa-xs" title="Reset Chaos and Order Ranks"></i></a>
+                                </div>
+
+                                <div class="labeled-input chaos-container">
+                                    <div class="ranks-beneath-input right">
+                                        <div class="chaos-input-text">
+                                            <input class="input-text" name="data.chaosAlignment.value" type="text" value="{{data.chaosAlignment.value}}" placeholder=""  />
+                                        </div>
+
+                                        <div class="radio-chaos-ranks">
+                                            {{radioRanks "data.chaosRanks.value" rankOptions checked=data.chaosRanks.value}}
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </header>
+
+            {{!-- Sheet Tab Navigation --}}
+            <nav class="main-tabs tabs" data-group="primary">
+                <div class="nav-content">
+                    <div class="item-and-hand">
+                        <a class="item" data-tab="main">Main</a>
+                        <img class="selector" src="systems/zweihander/assets/skeleton_selector_alt.svg" height="22"
+                            width="42" />
+                    </div>
+                    <div class="item-and-hand">
+                        <a class="item" data-tab="afflictions">Afflictions</a>
+                        <img class="selector" src="systems/zweihander/assets/skeleton_selector_alt.svg" height="22"
+                            width="42" />
+                    </div>
+                    <div class="item-and-hand">
+                        <a class="item" data-tab="tiers">Tiers</a>
+                        <img class="selector" src="systems/zweihander/assets/skeleton_selector_alt.svg" height="22"
+                            width="42" />
+                    </div>
+                    <div class="item-and-hand">
+                        <a class="item" data-tab="magick">Magick</a>
+                        <img class="selector" src="systems/zweihander/assets/skeleton_selector_alt.svg" height="22"
+                            width="42" />
+                    </div>
+                    <div class="item-and-hand">
+                        <a class="item" data-tab="trappings">Trappings</a>
+                        <img class="selector" src="systems/zweihander/assets/skeleton_selector_alt.svg" height="22"
+                            width="42" />
+                    </div>
+                    <div class="item-and-hand">
+                        <a class="item" data-tab="details">Background</a>
+                        <img class="selector" src="systems/zweihander/assets/skeleton_selector_alt.svg" height="22"
+                            width="42" />
+                    </div>
+                </div>
+            </nav>
+
+            {{!-- Sheet Body --}}
+            <section class="sheet-body">
+                {{!-- Main Tab --}}
+                <div class="tab main" data-group="primary" data-tab="main">
+                    <div class="main-container">
+                        <div class="characteristics">
+                            {{#each data.stats.primaryAttributes as | characteristics key |}}
+                                <div class="individual-characteristic {{key}}">
+                                    <div class="title">
+                                        <span>{{key}}</span>
+                                    </div>
+
+                                    <div class="value-and-bonus">
+                                        <div class="number-and-label left">
+                                            <input class="value" type="number" name="data.stats.primaryAttributes.{{key}}.value" value="{{characteristics.value}}" >
+                                            <span class="label">Value</span>
+                                        </div>
+
+                                        <div class="number-and-label right">
+                                            <input class="bonus" type="number" name="data.stats.primaryAttributes.{{key}}.bonus" value="{{characteristics.bonus}}"  readonly>
+                                            <span class="label">[{{getFirstLetter key}}B]</span>
+                                        </div>
+                                    </div>
+                                </div>
+                            {{/each}}
+
+                            <div class="dodge-and-parry">
+                                <div class="image-separator">
+                                    <img class="helmet" src="systems/zweihander/assets/helmet.png">
+                                </div>
+
+                                <div class="dodge">
+                                    <div class="title">
+                                        <span>Dodge</span>
+                                    </div>
+
+                                    <div class="number-and-label">
+                                        <div class="dice-roll-icon">
+                                            <a class="dodge-roll" data-roll="1d100" data-label="{{data.stats.secondaryAttributes.dodge.associatedSkill}}">
+                                                <img class="d10" src="systems/zweihander/assets/rolling-dices.svg" />
+                                            </a>
+
+                                            <input class="value" type="number"
+                                                name="data.stats.secondaryAttributes.dodge.value"
+                                                value="{{data.stats.secondaryAttributes.dodge.value}}"
+                                                readonly
+                                                >
+                                        </div>
+
+                                        <span class="label dodge">
+                                            <select class="skill-dropdown" name="data.stats.secondaryAttributes.dodge.associatedSkill" >
+                                                {{#select data.stats.secondaryAttributes.dodge.associatedSkill}}
+                                                    {{#each dodgeSkills as | skill idx | }}
+                                                        <option value="{{skill}}">{{skill}}</option>
+                                                    {{/each}}
+                                                {{/select}}
+                                            </select>
+                                        </span>
+                                    </div>
+                                </div>
+
+                                <div class="parry">
+                                    <div class="title">
+                                        <span>Parry</span>
+                                    </div>
+
+                                    <div class="number-and-label">
+                                        <div class="dice-roll-icon">
+                                            <a class="parry-roll" data-roll="1d100" data-label="{{data.stats.secondaryAttributes.parry.associatedSkill}}">
+                                                <img class="d10" src="systems/zweihander/assets/rolling-dices.svg" />
+                                            </a>
+
+                                            <input class="value" type="number"
+                                                name="data.stats.secondaryAttributes.parry.value"
+                                                value="{{data.stats.secondaryAttributes.parry.value}}"
+                                                readonly
+                                                >
+                                        </div>
+
+                                        <span class="label">
+                                            <select class="skill-dropdown" name="data.stats.secondaryAttributes.parry.associatedSkill" >
+                                                {{#select data.stats.secondaryAttributes.parry.associatedSkill}}
+                                                    {{#each parrySkills as | skill idx | }}
+                                                        <option value="{{skill}}">{{skill}}</option>
+                                                    {{/each}}
+                                                {{/select}}
+                                            </select>
+                                        </span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="skills-and-combat">
+                            <div class="common-container skills">
+                                <header class="common-header">
+                                    <div class="title main">
+                                        <span>Skill</span>
+                                    </div>
+
+                                    <!--<div class="title">
+                                        <span title="Special Skill">Spc.</span>
+                                    </div>-->
+
+                                    <div class="title">
+                                        <span title="Skill Rank">Rank</span>
+                                    </div>
+
+                                    <div class="title controls">
+                                    </div>
+                                </header>
+
+                                <div id="skill_scroll" class="common-list skills save-scroll">
+                                    {{#each skills as | skill idx |}}
+                                        <div class="individual-trapping item {{oddOrEven idx}}" data-item-id="{{skill._id}}">
+                                            <div class="image-and-name">
+                                                <span><a class="skill-roll" data-roll="1d100" data-label="{{skill.name}}">{{skill.name}} ({{getFirstLetter skill.data.associatedPrimaryAttribute.value}}){{#if skill.data.requiresTraining}}*{{else}}{{/if}}</a></span>
+                                            </div>
+
+                                            <!--<div class="skill">
+                                                <input type="checkbox" {{checked skill.data.requiresTraining}} disabled />
+                                            </div>-->
+
+                                            <div class="skill">
+                                                <span title="{{#if skill.data.ranks.master.purchased}} Master {{else if skill.data.ranks.journeyman.purchased}} Journeyman {{else if skill.data.ranks.apprentice.purchased}} Apprentice {{/if}}">
+                                                    {{#if skill.data.ranks.master.purchased}} 
+                                                        Mstr.
+                                                    {{else if skill.data.ranks.journeyman.purchased}}
+                                                        Jour.
+                                                    {{else if skill.data.ranks.apprentice.purchased}}
+                                                        Appr.
+                                                    {{else}}
+                                                        -
+                                                    {{/if}}
+                                                </span>
+                                            </div>
+
+                                            <div class="controls-container">
+                                                <div class="controls">
+                                                    <a class="item-control item-delete" title="Delete Item"><i class="fas fa-trash-alt fa-fw fa-xs"></i></a>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    {{/each}}
+                                </div>
+                            </div>
+
+                            <div class="combat-container">
+                                <div class="initiative-and-peril-container">
+                                    <div class="initiative-container">
+                                        <div class="title">
+                                            <span>Initiative</span>
+                                        </div>
+
+                                        <div class="value-overage-and-current">
+                                            <div class="number-and-label left">
+                                                <input class="value" type="number"
+                                                    name="data.stats.secondaryAttributes.initiative.value"
+                                                    value="{{data.stats.secondaryAttributes.initiative.value}}"
+                                                     readonly />
+                                                <span class="label">[{{getFirstLetter initiativeAttribute}}B]+3</span>
+                                            </div>
+
+                                            <div class="number-and-label center">
+                                                <input class="value" type="number"
+                                                    name="data.stats.secondaryAttributes.initiative.overage"
+                                                    value="{{data.stats.secondaryAttributes.initiative.overage}}"
+                                                     readonly />
+                                                <span class="label">Overage</span>
+                                            </div>
+
+                                            <div class="number-and-label right">
+                                                <input class="value" type="number"
+                                                    name="data.stats.secondaryAttributes.initiative.current"
+                                                    value="{{data.stats.secondaryAttributes.initiative.current}}"
+                                                     readonly />
+                                                <span class="label">Current</span>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    <div class="peril-container">
+                                        <div class="title">
+                                            <span>Peril Threshold</span>
+                                        </div>
+
+                                        <div class="values-container">
+                                            <div class="number-and-label left">
+                                                <input class="value" type="number"
+                                                    name="data.stats.secondaryAttributes.perilThreshold.value"
+                                                    value="{{data.stats.secondaryAttributes.perilThreshold.value}}"
+                                                     readonly />
+                                                <span class="label">[{{getFirstLetter perilThresholdAttribute}}B]+3</span>
+                                            </div>
+
+                                            <div class="number-and-label center-left">
+                                                <input class="value" type="number"
+                                                    name="data.stats.secondaryAttributes.perilThreshold.valuePlusSix"
+                                                    value="{{data.stats.secondaryAttributes.perilThreshold.valuePlusSix}}"
+                                                     readonly />
+                                                <span class="label">+6</span>
+                                            </div>
+
+                                            <div class="number-and-label center-right">
+                                                <input class="value" type="number"
+                                                    name="data.stats.secondaryAttributes.perilThreshold.valuePlusTwelve"
+                                                    value="{{data.stats.secondaryAttributes.perilThreshold.valuePlusTwelve}}"
+                                                     readonly />
+                                                <span class="label">+12</span>
+                                            </div>
+
+                                            <div class="number-and-label right">
+                                                <input class="value" type="number"
+                                                    name="data.stats.secondaryAttributes.perilThreshold.valuePlusEighteen"
+                                                    value="{{data.stats.secondaryAttributes.perilThreshold.valuePlusEighteen}}"
+                                                     readonly />
+                                                <span class="label">+18</span>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    <div class="peril-threshold-container">
+                                        <div class="title-alt">
+                                            <span>Peril Condition Track</span>
+                                        </div>
+
+                                        <div class="peril-status-list">
+                                            {{radioThresholds "data.stats.secondaryAttributes.perilCurrent.value" perilOptions checked=data.stats.secondaryAttributes.perilCurrent.value}}
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div class="movement-and-damage-container">
+                                    <div class="initiative-container">
+                                        <div class="title">
+                                            <span>Movement</span>
+                                        </div>
+
+                                        <div class="value-overage-and-current">
+                                            <div class="number-and-label left">
+                                                <input class="value" type="number"
+                                                    name="data.stats.secondaryAttributes.movement.value"
+                                                    value="{{data.stats.secondaryAttributes.movement.value}}"
+                                                     readonly />
+                                                <span class="label">[{{getFirstLetter movementAttribute}}B]+3</span>
+                                            </div>
+
+                                            <div class="number-and-label center">
+                                                <input class="value" type="number"
+                                                    name="data.stats.secondaryAttributes.movement.overage"
+                                                    value="{{data.stats.secondaryAttributes.movement.overage}}"
+                                                     readonly />
+                                                <span class="label">Overage</span>
+                                            </div>
+
+                                            <div class="number-and-label right">
+                                                <input class="value" type="number"
+                                                    name="data.stats.secondaryAttributes.movement.current"
+                                                    value="{{data.stats.secondaryAttributes.movement.current}}"
+                                                     readonly />
+                                                <span class="label">Current</span>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    <div class="peril-container">
+                                        <div class="title">
+                                            <span>Damage Threshold</span>
+                                        </div>
+
+                                        <div class="values-container">
+                                            <div class="number-and-label left">
+                                                <input class="value" type="number"
+                                                    name="data.stats.secondaryAttributes.damageThreshold.value"
+                                                    value="{{data.stats.secondaryAttributes.damageThreshold.value}}"
+                                                     readonly />
+                                                <span class="label dtm">[{{getFirstLetter damageThresholdAttribute}}B]+0</span>
+                                            </div>
+
+                                            <div class="number-and-label center-left">
+                                                <input class="value" type="number"
+                                                    name="data.stats.secondaryAttributes.damageThreshold.valuePlusSix"
+                                                    value="{{data.stats.secondaryAttributes.damageThreshold.valuePlusSix}}"
+                                                     readonly />
+                                                <span class="label">+6</span>
+                                            </div>
+
+                                            <div class="number-and-label center-right">
+                                                <input class="value" type="number"
+                                                    name="data.stats.secondaryAttributes.damageThreshold.valuePlusTwelve"
+                                                    value="{{data.stats.secondaryAttributes.damageThreshold.valuePlusTwelve}}"
+                                                     readonly />
+                                                <span class="label">+12</span>
+                                            </div>
+
+                                            <div class="number-and-label right">
+                                                <input class="value" type="number"
+                                                    name="data.stats.secondaryAttributes.damageThreshold.valuePlusEighteen"
+                                                    value="{{data.stats.secondaryAttributes.damageThreshold.valuePlusEighteen}}"
+                                                     readonly />
+                                                <span class="label">+18</span>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    <div class="peril-threshold-container">
+                                        <div class="title-alt">
+                                            <span>Damage Condition Track</span>
+                                        </div>
+
+                                        <div class="peril-status-list">
+                                            {{radioThresholds "data.stats.secondaryAttributes.damageCurrent.value" damageOptions checked=data.stats.secondaryAttributes.damageCurrent.value}}
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="tab details" data-group="primary" data-tab="details">
+                    <div class="notes-content">
+                        <div class="character-details">
+                            <div class="line one">
+                                <div class="labeled-input height">
+                                    <input class="input-text" name="data.physical.height.value" type="text" value="{{data.physical.height.value}}" placeholder="Height" />
+                                    <label class="input-label">Height</label>
+                                </div>
+            
+                                <div class="labeled-input weight">
+                                    <input class="input-text" name="data.physical.weight.value" type="text" value="{{data.physical.weight.value}}" placeholder="Weight"  />
+                                    <label class="input-label">Weight</label>
+                                </div>
+            
+                                <div class="labeled-input build-type">
+                                    <input class="input-text" name="data.physical.buildType.value" type="text" value="{{data.physical.buildType.value}}" placeholder="Build Type"  />
+                                    <label class="input-label">Build Type</label>
+                                </div>
+            
+                                <div class="labeled-input distinguishing-marks">
+                                    <input class="input-text" name="data.distinguishingMarks.value" type="text" value="{{data.distinguishingMarks.value}}" title="{{data.distinguishingMarks.value}}" placeholder="Distinguishing Marks"  />
+                                    <label class="input-label">Distinguishing Marks</label>
+                                </div>
+                            </div>
+
+                            <div class="line two">
+                                <div class="labeled-input hair-color">
+                                    <input class="input-text" name="data.physical.hairColor.value" type="text" value="{{data.physical.hairColor.value}}" placeholder="Hair Color" />
+                                    <label class="input-label">Hair Color</label>
+                                </div>
+            
+                                <div class="labeled-input eye-color">
+                                    <input class="input-text" name="data.physical.eyeColor.value" type="text" value="{{data.physical.eyeColor.value}}" placeholder="Eye Color"  />
+                                    <label class="input-label">Eye Color</label>
+                                </div>
+            
+                                <div class="labeled-input complexion">
+                                    <input class="input-text" name="data.physical.complexion.value" type="text" value="{{data.physical.complexion.value}}" placeholder="Complexion"  />
+                                    <label class="input-label">Complexion</label>
+                                </div>
+            
+                                <div class="labeled-input season-of-birth">
+                                    <input class="input-text" name="data.seasonOfBirth.value" type="text" value="{{data.seasonOfBirth.value}}" placeholder="Season of Birth"  />
+                                    <label class="input-label">Season of Birth</label>
+                                </div>
+
+                                <div class="labeled-input social-class">
+                                    <input class="input-text" name="data.socialClass.value" type="text" value="{{data.socialClass.value}}" placeholder="Social Class"  />
+                                    <label class="input-label">Social Class</label>
+                                </div>
+                            </div>
+
+                            <div class="line two">
+                                <div class="labeled-input upbringing">
+                                    <input class="input-text" name="data.upbringing.value" type="text" value="{{data.upbringing.value}}" placeholder="Upbringing" />
+                                    <label class="input-label">Upbringing</label>
+                                </div>
+            
+                                <div class="labeled-input dooming">
+                                    <input class="input-text" name="data.dooming.value" type="text" value="{{data.dooming.value}}" title="{{data.dooming.value}}" placeholder="Dooming"  />
+                                    <label class="input-label">Dooming</label>
+                                </div>
+            
+                                <div class="labeled-input languages">
+                                    <input class="input-text" name="data.languages.value" type="text" value="{{data.languages.value}}" title="{{data.languages.value}}" placeholder="Languages" />
+                                    <label class="input-label">Languages</label>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="ancestry-drawback-and-notepad-container">
+                            <div class="ancestry-and-drawback-container">
+                                <div class="common-container drawback">
+                                    <header class="common-header ancestry">
+                                        <div class="title main">
+                                            <span>Drawbacks</span>
+                                        </div>
+
+                                        <div class="title controls">
+                                            <span><a class="add-new" data-item-type="drawback" title="Add New Drawback"><i class="fas fa-plus fa-xs"></i></a></span>
+                                        </div>
+                                    </header>
+        
+                                    <div id="drawbacks_scroll" class="common-list drawback save-scroll">
+                                        {{#each drawbacks as | drawback idx |}}
+                                            <div class="individual-trapping-and-description {{oddOrEven idx}}">
+                                                <div class="individual-trapping item hide-description" data-item-id="{{drawback._id}}">
+                                                    <div class="image-and-name">
+                                                        <img src="{{drawback.img}}" /><span>{{drawback.name}}</span>
+                                                    </div>
+        
+                                                    <div class="controls-container">
+                                                        <div class="controls">
+                                                            <a class="item-control item-edit" title="Edit Item"><i class="fas fa-pencil-alt fa-fw fa-xs"></i></a>
+                                                            <a class="item-control item-delete" title="Delete Item"><i class="fas fa-trash-alt fa-fw fa-xs"></i></a>
+                                                        </div>
+        
+                                                        <div class="controls">
+                                                            <a class="item-control item-post" title="Post Item to Chat"><i class="fas fa-comment fa-fw fa-xs"></i></a>
+                                                            <a class="item-control item-description" title="Toggle Description"><i class="fas fa-align-left fa-fw fa-xs"></i></a>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                <div class="individual-description save-toggle-drawbacks">
+                                                    <div class="description-list">
+                                                        <span><b>Effect: </b> {{drawback.data.effect.value}}</span>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        {{/each}}
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="tab trappings" data-group="primary" data-tab="trappings">
+                    <div class="trappings-content">
+                        <div class="nav-and-content">
+                            {{!-- Equipment Tab Navigation --}}
+                            <nav class="trapping-tabs">
+                                <div class="nav-content-common">
+                                    <div class="item-and-skulls left">
+                                        <a class="item tab-common" data-tab="weapons">Weapons</a>
+                                    </div>
+
+                                    <div class="item-and-skulls middle">
+                                        <a class="item tab-common" data-tab="armor">Armor</a>
+                                    </div>
+
+                                    <div class="item-and-skulls right">
+                                        <a class="item tab-common" data-tab="other">Miscellaneous</a>
+                                    </div>
+                                </div>
+                            </nav>
+
+                            <section class="trapping-tabs-content">
+                                <div class="tab no-pad" data-tab="weapons">
+                                    <div class="common-container weapons">
+                                        <header class="common-header">
+                                            <div class="title main">
+                                                <span>Weapon / Shield</span>
+                                            </div>
+        
+                                            <div class="title combat-skill">
+                                                <span>Distance</span>
+                                            </div>
+        
+                                            <div class="title">
+                                                <span>Load</span>
+                                            </div>
+        
+                                            <div class="title">
+                                                <span>Enc.</span>
+                                            </div>
+        
+                                            <div class="title">
+                                                <span>Equipped</span>
+                                            </div>
+        
+                                            <div class="title controls">
+                                                <span><a class="add-new" data-item-type="weapon" title="Add New Weapon / Shield"><i class="fas fa-plus fa-xs"></i></a></span>
+                                            </div>
+                                        </header>
+        
+                                        <div id="weapons_scroll" class="common-list save-scroll">
+                                            {{#each weapons as | weapon idx |}}
+                                                <div class="individual-trapping-and-description {{oddOrEven idx}}">
+                                                    <div class="individual-trapping item" data-item-id="{{weapon._id}}">
+                                                        <div class="image-and-name weapon-attack" title="Attack: {{weapon.name}}">
+                                                            <img src="{{weapon.img}}" /><a class="weapon-roll" data-roll="1d100" data-label="{{weapon.data.associatedSkill.value}}">{{weapon.name}}</a>
+                                                        </div>
+                                                        
+                                                        <div class="skill combat-skill">
+                                                            <span class="fetch-property">{{weapon.data.distance.value}}</span>
+                                                        </div>
+        
+                                                        <div class="skill">
+                                                            <span>{{weapon.data.load.value}}</span>
+                                                        </div>
+        
+                                                        <div class="skill">
+                                                            <span>{{weapon.data.encumbrance.value}}</span>
+                                                        </div>
+        
+                                                        <div class="skill">
+                                                            <span><input type="checkbox" class="link-checkbox" name="weapon.data.equipped" {{checked weapon.data.equipped}} /></span>
+                                                        </div>
+        
+                                                        <div class="controls-container">
+                                                            <div class="controls">
+                                                                <a class="item-control item-edit" title="Edit Item"><i class="fas fa-pencil-alt fa-fw fa-xs"></i></a>
+                                                                <a class="item-control item-delete" title="Delete Item"><i class="fas fa-trash-alt fa-fw fa-xs"></i></a>
+                                                            </div>
+            
+                                                            <div class="controls">
+                                                                <a class="item-control item-post" title="Post Item to Chat"><i class="fas fa-comment fa-fw fa-xs"></i></a>
+                                                                <a class="item-control item-description" title="Toggle Description"><i class="fas fa-align-left fa-fw fa-xs"></i></a>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                    <div class="individual-description save-toggle-weapons">
+                                                        <div class="description-list">
+                                                            <span><b>Damage:</b> {{weapon.data.damage.formula}} + {{weapon.data.damage.primaryAttributeBonus}}[{{weapon.data.damage.associatedPrimaryAttribute}} Bonus]</span>
+                                                            <div>
+                                                                <b>Qualities: </b>
+                                                                {{#isMissing weapon.data.qualities.arrayOfValues}}
+                                                                    {{#each weapon.data.qualities.arrayOfValues as | qualityData idx |}}
+                                                                        {{#if @last}}
+                                                                            <a>{{qualityData}}</a>
+                                                                        {{else}}
+                                                                            <a>{{qualityData}}</a><span>, </span>
+                                                                        {{/if}}
+                                                                    {{/each}}
+                                                                {{else}}
+                                                                    <span>-</span>
+                                                                {{/isMissing}}
+                                                            </div>
+                                                            <span><b>Skill:</b> {{weapon.data.associatedSkill.value}}</span>
+                                                            <span><b>Type:</b> {{weapon.data.type.value}}</span>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            {{/each}}
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div class="tab no-pad" data-tab="armor">
+                                    <div class="common-container armor">
+                                        <header class="common-header">
+                                            <div class="title main armor">
+                                                <span>Armor</span>
+                                            </div>
+    
+                                            <div class="title">
+                                                <span>DTM.</span>
+                                            </div>
+    
+                                            <div class="title">
+                                                <span>Encumbrance</span>
+                                            </div>
+    
+                                            <div class="title">
+                                                <span>Equipped</span>
+                                            </div>
+    
+                                            <div class="title controls">
+                                                <span><a class="add-new" data-item-type="armor" title="Add New Armor"><i class="fas fa-plus fa-xs"></i></a></span>
+                                            </div>
+                                        </header>
+        
+                                        <div id="armor_scroll" class="common-list save-scroll">
+                                            {{#each armor as | armor idx |}}
+                                                <div class="individual-trapping-and-description {{oddOrEven idx}}">
+                                                    <div class="individual-trapping item" data-item-id="{{armor._id}}">
+                                                        <div class="image-and-name armor">
+                                                            <img src="{{armor.img}}" /><span>{{armor.name}}</span>
+                                                        </div>
+                                                        
+                                                        <div class="skill">
+                                                            <span>{{armor.data.damageThresholdModifier.value}}</span>
+                                                        </div>
+    
+                                                        <div class="skill">
+                                                            <span>{{armor.data.encumbrance.value}}</span>
+                                                        </div>
+    
+                                                        <div class="skill">
+                                                            <span><input class="link-checkbox" name="armor.data.equipped" type="checkbox" {{checked armor.data.equipped}}  /></span>
+                                                        </div>
+    
+                                                        <div class="controls-container">
+                                                            <div class="controls">
+                                                                <a class="item-control item-edit" title="Edit Item"><i class="fas fa-pencil-alt fa-fw fa-xs"></i></a>
+                                                                <a class="item-control item-delete" title="Delete Item"><i class="fas fa-trash-alt fa-fw fa-xs"></i></a>
+                                                            </div>
+            
+                                                            <div class="controls">
+                                                                <a class="item-control item-post" title="Post Item to Chat"><i class="fas fa-comment fa-fw fa-xs"></i></a>
+                                                                <a class="item-control item-description" title="Toggle Description"><i class="fas fa-align-left fa-fw fa-xs"></i></a>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                    <div class="individual-description save-toggle-armor">
+                                                        <div class="description-list">
+                                                            <div>
+                                                                <b>Qualities: </b>
+                                                                {{#isMissing armor.data.qualities.arrayOfValues}}
+                                                                    {{#each armor.data.qualities.arrayOfValues as | qualityData idx |}}
+                                                                        {{#if @last}}
+                                                                            <a>{{qualityData}}</a>
+                                                                        {{else}}
+                                                                            <a>{{qualityData}}</a><span>, </span>
+                                                                        {{/if}}
+                                                                    {{/each}}
+                                                                {{else}}
+                                                                    <span>-</span>
+                                                                {{/isMissing}}
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            {{/each}}
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div class="tab no-pad" data-tab="other">
+                                    <div class="common-container other">
+                                        <header class="common-header">
+                                            <div class="title main">
+                                                <span>Trappings</span>
+                                            </div>
+
+                                            <div class="title">
+                                                <span>Category</span>
+                                            </div>
+                                            
+                                            <div class="title">
+                                                <span>Qty.</span>
+                                            </div>
+    
+                                            <div class="title">
+                                                <span>Enc.</span>
+                                            </div>
+    
+                                            <div class="title">
+                                                <span>Carried</span>
+                                            </div>
+    
+                                            <div class="title controls">
+                                                <span><a class="add-new" data-item-type="trapping" title="Add New Trapping"><i class="fas fa-plus fa-xs"></i></a></span>
+                                            </div>
+                                        </header>
+        
+                                        <div id="trappings_scroll" class="common-list save-scroll">
+                                            {{#each trappings as | trapping idx |}}
+                                                <div class="individual-trapping-and-description {{oddOrEven idx}}">
+                                                    <div class="individual-trapping item" data-item-id="{{trapping._id}}">
+                                                        <div class="image-and-name armor">
+                                                            <img src="{{trapping.img}}" /><span>{{trapping.name}}</span>
+                                                        </div>
+                                                        
+                                                        <div class="skill">
+                                                            <span>{{trapping.data.category.value}}</span>
+                                                        </div>
+    
+                                                        <div class="skill">
+                                                            <span>{{trapping.data.quantity.value}}</span>
+                                                        </div>
+
+                                                        <div class="skill">
+                                                            <span>{{trapping.data.encumbrance.value}}</span>
+                                                        </div>
+    
+                                                        <div class="skill">
+                                                            <span><input class="link-checkbox" name="trapping.data.carried" {{checked trapping.data.carried}} type="checkbox" /></span>
+                                                        </div>
+    
+                                                        <div class="controls-container">
+                                                            <div class="controls">
+                                                                <a class="item-control item-edit" title="Edit Item"><i class="fas fa-pencil-alt fa-fw fa-xs"></i></a>
+                                                                <a class="item-control item-delete" title="Delete Item"><i class="fas fa-trash-alt fa-fw fa-xs"></i></a>
+                                                            </div>
+            
+                                                            <div class="controls">
+                                                                <a class="item-control item-post" title="Post Item to Chat"><i class="fas fa-comment fa-fw fa-xs"></i></a>
+                                                                <a class="item-control item-description" title="Toggle Description"><i class="fas fa-align-left fa-fw fa-xs"></i></a>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                    <div class="individual-description save-toggle-trappings">
+                                                        <div class="description-list">
+                                                            <span><b>Description:</b> {{trapping.data.flavor.description.value}}</span>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            {{/each}}
+                                        </div>
+                                    </div>
+                                </div>
+                            </section>
+                        </div>
+
+                        <header class="common-header coins">
+                            <div class="currency-container">
+                                <div class="coin-label-and-input">
+                                    <input class="coin-input brass" type="number" name="data.coinage.brass" value="{{data.coinage.brass}}" placeholder="0" />
+                                    <span>Brass Pennies</span>
+                                </div>
+                            </div>
+
+                            <div class="currency-container">
+                                <div class="coin-label-and-input">
+                                    <input class="coin-input silver" type="number" name="data.coinage.silver" value="{{data.coinage.silver}}" placeholder="0" />
+                                    <span>Silver Shillings</span>
+                                </div>
+                            </div>
+
+                            <div class="currency-container">
+                                <div class="coin-label-and-input">
+                                    <input class="coin-input gold" type="number" name="data.coinage.gold" value="{{data.coinage.gold}}" placeholder="0" />
+                                    <span>Gold Crowns</span>
+                                </div>
+                            </div>
+
+                            <div class="currency-container converter">
+                                <!-- <i class="fas fa-coins"></i>
+                                <i class="fas fa-long-arrow-alt-right"></i>
+                                <i class="fas fa-money-bill-wave"></i> -->
+                                <button class="converter-button" type="button">Exchange</button>
+                            </div>
+                        </header>
+
+                        <div class="encumbrance-bar-container">      
+                            <div class="meter">
+                                <div class="meter-label-container">
+                                    <span class="meter-label">
+                                        Encumbrance: {{data.stats.secondaryAttributes.encumbrance.current}} / {{data.stats.secondaryAttributes.encumbrance.value}} (Overage: {{data.stats.secondaryAttributes.encumbrance.overage}})
+                                    </span>
+                                </div>
+                                <span class="meter-value">.</span>
+                            </div>
+                        </div>     
+                    </div>
+                </div>
+
+                <div class="tab afflictions" data-group="primary" data-tab="afflictions">
+                    <div class="afflictions-content">
+                        <div class="nav-and-content">
+
+                            {{!-- Afflictions Tab Navigation --}}
+                            <nav class="afflictions-tabs">
+                                <div class="nav-content-common">
+                                    <div class="item-and-skulls left">
+                                        <a class="item tab-common" data-tab="conditions">Conditions</a>
+                                    </div>
+
+                                    <div class="item-and-skulls middle">
+                                        <a class="item tab-common" data-tab="injuries">Injuries</a>
+                                    </div>
+
+                                    <div class="item-and-skulls right ">
+                                        <a class="item tab-common" data-tab="diseases">Diseases</a>
+                                    </div>
+
+                                    <div class="item-and-skulls special-right">
+                                        <a class="item tab-common" data-tab="disorders">Disorders</a>
+                                    </div>
+                                </div>
+                            </nav>
+
+                            <section class="afflictions-tabs-content">
+                                <div class="tab no-pad" data-tab="conditions">
+                                    <div class="common-container afflictions">
+                                        <header class="common-header">
+                                            <div class="title main">
+                                                <span>Condition</span>
+                                            </div>
+            
+                                            <div class="title">
+                                                <span>Category</span>
+                                            </div>
+            
+                                            <div class="title">
+                                                <span>Currently In Effect</span>
+                                            </div>
+            
+                                            <div class="title controls">
+                                                <div class="controls">
+                                                    <!--<a class="random-add-injury" title="Add Random Injury"><i class="fas fa-dice-d6 fa-xs"></i></a>-->
+                                                    <a class="add-new" data-item-type="condition" title="Add New Condition"><i class="fas fa-plus fa-xs"></i></a>
+                                                </div>
+                                            </div>
+                                        </header>
+            
+                                        <div id="conditions_scroll" class="common-list afflictions save-scroll">
+                                            {{#each conditions as | condition idx |}}
+                                                <div class="individual-trapping-and-description {{oddOrEven idx}}">
+                                                    <div class="individual-trapping item hide-description" data-item-id="{{condition._id}}">
+                                                        <div class="image-and-name">
+                                                            <img src="{{condition.img}}" /><span>{{condition.name}}</span>
+                                                        </div>
+            
+                                                        <div class="skill">
+                                                            <span>{{condition.data.category.value}}</span>
+                                                        </div>
+            
+                                                        <div class="skill">
+                                                            <input type="checkbox" class="link-checkbox" {{checked condition.data.active}} />
+                                                        </div>
+            
+                                                        <div class="controls-container">
+                                                            <div class="controls">
+                                                                <a class="item-control item-edit" title="Edit Item"><i class="fas fa-pencil-alt fa-fw fa-xs"></i></a>
+                                                                <a class="item-control item-delete" title="Delete Item"><i class="fas fa-trash-alt fa-fw fa-xs"></i></a>
+                                                            </div>
+            
+                                                            <div class="controls">
+                                                                <a class="item-control item-post" title="Post Item to Chat"><i class="fas fa-comment fa-fw fa-xs"></i></a>
+                                                                <a class="item-control item-description" title="Toggle Description"><i class="fas fa-align-left fa-fw fa-xs"></i></a>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                    <div class="individual-description save-toggle-conditions">
+                                                        <div class="description-list">
+                                                            <span><b>Effect:</b> {{condition.data.effect.value}}</span>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            {{/each}}
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div class="tab no-pad" data-tab="injuries">
+                                    <div class="common-container afflictions">
+                                        <header class="common-header">
+                                            <div class="title main">
+                                                <span>Injury</span>
+                                            </div>
+            
+                                            <div class="title">
+                                                <span>Severity</span>
+                                            </div>
+            
+                                            <div class="title controls">
+                                                <div class="controls">
+                                                    <!--<a class="random-add-injury" title="Add Random Injury"><i class="fas fa-dice-d6 fa-xs"></i></a>-->
+                                                    <a class="add-new" data-item-type="injury" title="Add New Injury"><i class="fas fa-plus fa-xs"></i></a>
+                                                </div>
+                                            </div>
+                                        </header>
+            
+                                        <div id="injuries_scroll" class="common-list afflictions save-scroll">
+                                            {{#each injuries as | injury idx |}}
+                                                <div class="individual-trapping-and-description {{oddOrEven idx}}">
+                                                    <div class="individual-trapping item hide-description" data-item-id="{{injury._id}}">
+                                                        <div class="image-and-name">
+                                                            <img src="{{injury.img}}" /><span>{{injury.name}}</span>
+                                                        </div>
+            
+                                                        <div class="skill">
+                                                            <span>{{injury.data.severity.value}}</span>
+                                                        </div>
+            
+                                                        <div class="controls-container">
+                                                            <div class="controls">
+                                                                <a class="item-control item-edit" title="Edit Item"><i class="fas fa-pencil-alt fa-fw fa-xs"></i></a>
+                                                                <a class="item-control item-delete" title="Delete Item"><i class="fas fa-trash-alt fa-fw fa-xs"></i></a>
+                                                            </div>
+            
+                                                            <div class="controls">
+                                                                <a class="item-control item-post" title="Post Item to Chat"><i class="fas fa-comment fa-fw fa-xs"></i></a>
+                                                                <a class="item-control item-description" title="Toggle Description"><i class="fas fa-align-left fa-fw fa-xs"></i></a>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                    <div class="individual-description save-toggle-injuries">
+                                                        <div class="description-list">
+                                                            <span><b>Effect:</b> {{injury.data.effect.value}}</span>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            {{/each}}
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div class="tab no-pad" data-tab="diseases">
+                                    <div class="common-container afflictions">
+                                        <header class="common-header">
+                                            <div class="title main">
+                                                <span>Disease</span>
+                                            </div>
+            
+                                            <div class="title">
+                                                <span>Resist</span>
+                                            </div>
+
+                                            <div class="title">
+                                                <span>Duration</span>
+                                            </div>
+
+                                            <div class="title">
+                                                <span>Currently In Effect</span>
+                                            </div>
+            
+                                            <div class="title controls">
+                                                <div class="controls">
+                                                    <!--<a class="random-add-injury" title="Add Random Injury"><i class="fas fa-dice-d6 fa-xs"></i></a>-->
+                                                    <a class="add-new" data-item-type="disease" title="Add New Disease"><i class="fas fa-plus fa-xs"></i></a>
+                                                </div>
+                                            </div>
+                                        </header>
+            
+                                        <div id="diseases_scroll" class="common-list afflictions save-scroll">
+                                            {{#each diseases as | disease idx |}}
+                                                <div class="individual-trapping-and-description {{oddOrEven idx}}">
+                                                    <div class="individual-trapping item hide-description" data-item-id="{{disease._id}}">
+                                                        <div class="image-and-name">
+                                                            <img src="{{disease.img}}" /><span>{{disease.name}}</span>
+                                                        </div>
+            
+                                                        <div class="skill">
+                                                            <span>{{disease.data.resist.value}}</span>
+                                                        </div>
+            
+                                                        <div class="skill">
+                                                            <span>{{disease.data.duration.value}}</span>
+                                                        </div>
+
+                                                        <div class="skill">
+                                                            <input type="checkbox" class="link-checkbox" {{checked disease.data.active}} />
+                                                        </div>
+            
+                                                        <div class="controls-container">
+                                                            <div class="controls">
+                                                                <a class="item-control item-edit" title="Edit Item"><i class="fas fa-pencil-alt fa-fw fa-xs"></i></a>
+                                                                <a class="item-control item-delete" title="Delete Item"><i class="fas fa-trash-alt fa-fw fa-xs"></i></a>
+                                                            </div>
+            
+                                                            <div class="controls">
+                                                                <a class="item-control item-post" title="Post Item to Chat"><i class="fas fa-comment fa-fw fa-xs"></i></a>
+                                                                <a class="item-control item-description" title="Toggle Description"><i class="fas fa-align-left fa-fw fa-xs"></i></a>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                    <div class="individual-description save-toggle-diseases">
+                                                        <div class="description-list">
+                                                            <span><b>Effect:</b> {{disease.data.effect.value}}</span>
+                                                            <span><b>Treatment:</b> {{disease.data.treatment.value}}</span>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            {{/each}}
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div class="tab no-pad" data-tab="disorders">
+                                    <div class="common-container afflictions">
+                                        <header class="common-header">
+                                            <div class="title main">
+                                                <span>Disorder</span>
+                                            </div>
+            
+                                            <div class="title">
+                                                <span>Category</span>
+                                            </div>
+            
+                                            <div class="title">
+                                                <span>Currently In Effect</span>
+                                            </div>
+            
+                                            <div class="title controls">
+                                                <div class="controls">
+                                                    <!--<a class="random-add-injury" title="Add Random Injury"><i class="fas fa-dice-d6 fa-xs"></i></a>-->
+                                                    <a class="add-new" data-item-type="disorder" title="Add New Disorder"><i class="fas fa-plus fa-xs"></i></a>
+                                                </div>
+                                            </div>
+                                        </header>
+            
+                                        <div id="disorders_scroll" class="common-list afflictions save-scroll">
+                                            {{#each disorders as | disorder idx |}}
+                                                <div class="individual-trapping-and-description {{oddOrEven idx}}">
+                                                    <div class="individual-trapping item hide-description" data-item-id="{{disorder._id}}">
+                                                        <div class="image-and-name">
+                                                            <img src="{{disorder.img}}" /><span>{{disorder.name}}</span>
+                                                        </div>
+            
+                                                        <div class="skill">
+                                                            <span>{{disorder.data.category.value}}</span>
+                                                        </div>
+            
+                                                        <div class="skill">
+                                                            <input type="checkbox" class="link-checkbox" {{checked disorder.data.active}} />
+                                                        </div>
+            
+                                                        <div class="controls-container">
+                                                            <div class="controls">
+                                                                <a class="item-control item-edit" title="Edit Item"><i class="fas fa-pencil-alt fa-fw fa-xs"></i></a>
+                                                                <a class="item-control item-delete" title="Delete Item"><i class="fas fa-trash-alt fa-fw fa-xs"></i></a>
+                                                            </div>
+            
+                                                            <div class="controls">
+                                                                <a class="item-control item-post" title="Post Item to Chat"><i class="fas fa-comment fa-fw fa-xs"></i></a>
+                                                                <a class="item-control item-description" title="Toggle Description"><i class="fas fa-align-left fa-fw fa-xs"></i></a>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                    <div class="individual-description save-toggle-disorders">
+                                                        <div class="description-list">
+                                                            <span><b>Effect:</b> {{disorder.data.effect.value}}</span>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            {{/each}}
+                                        </div>
+                                    </div>
+                                </div>
+                            </section>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="tab magick" data-group="primary" data-tab="magick">
+                    <div class="magick-content">
+
+                        <div class="nav-and-content">
+                            {{!-- Magick Tab Navigation --}}
+                            <nav class="magick-tabs">
+                                <div class="nav-content-common">
+                                    <div class="item-and-skulls left">
+                                        <a class="item tab-common" data-tab="spells">Spells</a>
+                                    </div>
+
+                                    <div class="item-and-skulls special-right">
+                                        <a class="item tab-common" data-tab="rituals">Rituals</a>
+                                    </div>
+                                </div>
+                            </nav>
+
+                            <section class="magick-tabs-content">
+                                <div class="tab no-pad" data-tab="spells">
+                                    <div class="common-container magick">
+                                        <header class="common-header">
+                                            <div class="title main">
+                                                <span>Spell</span>
+                                            </div>
+            
+                                            <div class="title">
+                                                <span>Principle</span>
+                                            </div>
+            
+                                            <div class="title">
+                                                <span>Distance</span>
+                                            </div>
+            
+                                            <div class="title">
+                                                <span>Duration</span>
+                                            </div>
+            
+                                            <div class="title controls">
+                                                <span><a class="add-new" data-item-type="spell" title="Add New Spell"><i class="fas fa-plus fa-xs"></i></a></span>
+                                            </div>
+                                        </header>
+            
+                                        <div id="spells_scroll" class="common-list magick save-scroll">
+                                            {{#each spells as | spell idx |}}
+                                                <div class="individual-trapping-and-description {{oddOrEven idx}}">
+                                                    <div class="individual-trapping item hide-description" data-item-id="{{spell._id}}">
+                                                        <div class="image-and-name spell-attack" title="Cast Spell: {{spell.name}}">
+                                                            <img src="{{spell.img}}" /><a class="spell-roll" data-roll="1d100" data-label="{{../data.stats.secondaryAttributes.magick.associatedSkill}}">{{spell.name}}</a>
+                                                        </div>
+            
+                                                        <div class="skill">
+                                                            <span>{{spell.data.principle.value}}</span>
+                                                        </div>
+            
+                                                        <div class="skill">
+                                                            <span>{{spell.data.distance.value}}</span>
+                                                        </div>
+            
+                                                        <div class="skill">
+                                                            <span class="fetch-property">{{spell.data.duration.value}}</span>
+                                                        </div>
+            
+                                                        <div class="controls-container">
+                                                            <div class="controls">
+                                                                <a class="item-control item-edit" title="Edit Item"><i class="fas fa-pencil-alt fa-fw fa-xs"></i></a>
+                                                                <a class="item-control item-delete" title="Delete Item"><i class="fas fa-trash-alt fa-fw fa-xs"></i></a>
+                                                            </div>
+            
+                                                            <div class="controls">
+                                                                <a class="item-control item-post" title="Post Item to Chat"><i class="fas fa-comment fa-fw fa-xs"></i></a>
+                                                                <a class="item-control item-description" title="Toggle Description"><i class="fas fa-align-left fa-fw fa-xs"></i></a>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                    <div class="individual-description save-toggle-spells">
+                                                        <div class="description-list">
+                                                            <span><b>Reagents:</b> {{spell.data.reagents.value}}</span>
+                                                            <span><b>Effect:</b> {{spell.data.effect.value}}</span>
+                                                            <span><b>Critical Success:</b> {{spell.data.effect.criticalSuccess.value}}</span>
+                                                            <span><b>Critical Failure:</b> {{spell.data.effect.criticalFailure.value}}</span>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            {{/each}}
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div class="tab no-pad" data-tab="rituals">
+                                    <div class="common-container magick">
+                                        <header class="common-header">
+                                            <div class="title main">
+                                                <span>Ritual</span>
+                                            </div>
+            
+                                            <div class="title">
+                                                <span>Channel Power</span>
+                                            </div>
+            
+                                            <div class="title">
+                                                <span>Difficulty</span>
+                                            </div>
+            
+                                            <div class="title">
+                                                <span>Casting Time</span>
+                                            </div>
+            
+                                            <div class="title controls">
+                                                <span><a class="add-new" data-item-type="ritual" title="Add New Ritual"><i class="fas fa-plus fa-xs"></i></a></span>
+                                            </div>
+                                        </header>
+            
+                                        <div id="rituals_scroll" class="common-list magick save-scroll">
+                                            {{#each rituals as | ritual idx |}}
+                                                <div class="individual-trapping-and-description {{oddOrEven idx}}">
+                                                    <div class="individual-trapping item hide-description" data-item-id="{{ritual._id}}">
+                                                        <div class="image-and-name spell-attack" title="Cast Ritual: {{ritual.name}}">
+                                                            <img src="{{ritual.img}}" /><span>{{ritual.name}}</span>
+                                                        </div>
+            
+                                                        <div class="skill">
+                                                            <span>As {{ritual.data.channelAs.value}}</span>
+                                                        </div>
+            
+                                                        <div class="skill">
+                                                            <span>{{ritual.data.difficulty.value}}</span>
+                                                        </div>
+            
+                                                        <div class="skill">
+                                                            <span class="fetch-property">{{ritual.data.castingTime.value}}</span>
+                                                        </div>
+            
+                                                        <div class="controls-container">
+                                                            <div class="controls">
+                                                                <a class="item-control item-edit" title="Edit Item"><i class="fas fa-pencil-alt fa-fw fa-xs"></i></a>
+                                                                <a class="item-control item-delete" title="Delete Item"><i class="fas fa-trash-alt fa-fw fa-xs"></i></a>
+                                                            </div>
+            
+                                                            <div class="controls">
+                                                                <a class="item-control item-post" title="Post Item to Chat"><i class="fas fa-comment fa-fw fa-xs"></i></a>
+                                                                <a class="item-control item-description" title="Toggle Description"><i class="fas fa-align-left fa-fw fa-xs"></i></a>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                    <div class="individual-description save-toggle-rituals">
+                                                        <div class="description-list">
+                                                            <span><b>Reagents:</b> {{ritual.data.reagents.value}}</span>
+                                                            <span><b>Condition:</b> {{ritual.data.condition.value}}</span>
+                                                            <span><b>Consequences:</b> {{ritual.data.consequences.value}}</span>
+                                                            <span><b>Ritual Effects:</b> {{ritual.data.effect.value}}</span>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            {{/each}}
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <header class="common-header spell-select">
+                                    <div class="select-container">
+                                        <span>Underlying Magick Skill</span>
+                                        <select name="data.stats.secondaryAttributes.magick.associatedSkill">
+                                            {{#select data.stats.secondaryAttributes.magick.associatedSkill}}
+                                                {{#each magickSkills as | skill idx | }}
+                                                    <option value="{{skill}}">{{skill}}</option>
+                                                {{/each}}
+                                            {{/select}}
+                                        </select>
+
+                                        <input type="number" name="data.stats.secondaryAttributes.magick.value" value="{{data.stats.secondaryAttributes.magick.value}}" readonly/>
+                                    </div>
+                                </header>
+                            </section>
+                        </div>
+
+                        <div class="illustration">
+                            <img src="systems/zweihander/assets/magic.png" />
+                        </div>
+                    </div>
+                </div>
+
+                <div class="tab tiers" data-group="primary" data-tab="tiers">
+                    <div class="tiers-content">
+
+                        <div class="nav-and-content">
+                            {{!-- Tiers Tab Navigation --}}
+                            <nav class="tiers-tabs">
+                                <div class="nav-content-common">
+                                    <div class="item-and-skulls left">
+                                        <a class="item tab-common" data-tab="professions">Professions</a>
+                                    </div>
+
+                                    <div class="item-and-skulls middle">
+                                        <a class="item tab-common" data-tab="talents-traits">Talents & Traits</a>
+                                    </div>
+
+                                    <div class="item-and-skulls right">
+                                        <a class="item tab-common" data-tab="unique-advances">Unique Advances</a>
+                                    </div>
+                                </div>
+                            </nav>
+
+                            <section class="professions-talents-unique-content">
+                                <div class="tab no-pad" data-tab="professions">
+                                    <div class="common-container professions">
+                                        <header class="common-header">
+                                            <div class="title main">
+                                                <span>Profession</span>
+                                            </div>
+        
+                                            <div class="title combat-skill">
+                                                <span>Tier</span>
+                                            </div>
+        
+                                            <div class="title">
+                                                <span>Archetype</span>
+                                            </div>
+        
+                                            <div class="title">
+                                                <span>Completed</span>
+                                            </div>
+        
+                                            <div class="title controls">
+                                                <span><a class="add-new" data-item-type="profession" title="Add New Profession"><i class="fas fa-plus fa-xs"></i></a></span>
+                                            </div>
+                                        </header>
+        
+                                        <div id="professions_scroll" class="common-list save-scroll">
+                                            {{#each professions as | profession idx |}}
+                                                <div class="individual-trapping-and-description {{oddOrEven idx}}">
+                                                    <div class="individual-trapping item" data-item-id="{{profession._id}}">
+                                                        <div class="image-and-name">
+                                                            <img src="{{profession.img}}" /><span>{{profession.name}}</span>
+                                                        </div>
+
+                                                        <div class="skill">
+                                                            <span class="tier">{{profession.data.tier.value}}</span>
+                                                        </div>
+
+                                                        <div class="skill">
+                                                            <span>{{profession.data.archetype.value}}</span>
+                                                        </div>
+
+                                                        <div class="skill">
+                                                            <span><input type="checkbox" class="link-checkbox" {{checked profession.data.tier.completed}} /></span>
+                                                        </div>
+
+                                                        <div class="controls-container">
+                                                            <div class="controls">
+                                                                <a class="item-control item-edit" title="Edit Item"><i class="fas fa-pencil-alt fa-fw fa-xs"></i></a>
+                                                                <a class="item-control item-delete" title="Delete Item"><i class="fas fa-trash-alt fa-fw fa-xs"></i></a>
+                                                            </div>
+
+                                                            <div class="controls">
+                                                                <a class="item-control item-post" title="Post Item to Chat"><i class="fas fa-comment fa-fw fa-xs"></i></a>
+                                                                <a class="item-control item-description" title="Toggle Description"><i class="fas fa-align-left fa-fw fa-xs"></i></a>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                    <div class="individual-description save-toggle-professions">
+                                                        <div class="description-list">
+                                                            <span><b>Professional Trait:</b> <a class="fetch-item">{{profession.data.professionalTrait.value}}</a></span>
+                                                            <div>
+                                                                <b>Skill Ranks: </b>
+                                                                {{#each profession.data.skillRanks.arrayOfValues as | skillData idx |}}
+                                                                    {{#if @last}}
+                                                                        <a class="skill-link fetch-item {{#checkSkillPurchaseForTier skillData profession.data.tier ../../currentTier}} purchased {{else}} not-purchased {{/checkSkillPurchaseForTier}}">{{skillData.name}}</a>
+                                                                    {{else}}
+                                                                        <a class="skill-link fetch-item {{#checkSkillPurchaseForTier skillData profession.data.tier ../../currentTier}} purchased {{else}} not-purchased {{/checkSkillPurchaseForTier}}">{{skillData.name}}</a><span>, </span>
+                                                                    {{/if}}
+                                                                {{/each}}
+                                                            </div>
+                                                            <div>
+                                                                <b>Bonus Advances: </b>
+                                                                {{#each profession.data.bonusAdvances.arrayOfValues as | advancesData idx |}}
+                                                                    {{#if @last}}
+                                                                        <a id="idx-{{advancesData.index}}" class="advance-link {{#checkAdvancePurchaseForTier advancesData profession.data.tier}} purchased {{else}} not-purchased {{/checkAdvancePurchaseForTier}}">{{advancesData.name}}</a>
+                                                                    {{else}}
+                                                                        <a id="idx-{{advancesData.index}}" class="advance-link {{#checkAdvancePurchaseForTier advancesData profession.data.tier}} purchased {{else}} not-purchased {{/checkAdvancePurchaseForTier}}">{{advancesData.name}}</a><span>, </span>
+                                                                    {{/if}}
+                                                                {{/each}}
+                                                            </div>
+
+                                                            <div>
+                                                                <b>Talents: </b>
+                                                                {{#each profession.data.talents.arrayOfValues as | talentsData idx |}}
+                                                                    {{#if @last}}
+                                                                        <a class="talent-link fetch-item {{#if talentsData.purchased}} purchased {{else}} not-purchased {{/if}}">{{talentsData.name}}</a>
+                                                                    {{else}}
+                                                                        <a class="talent-link fetch-item {{#if talentsData.purchased}} purchased {{else}} not-purchased {{/if}}">{{talentsData.name}}</a><span>, </span>
+                                                                    {{/if}}
+                                                                {{/each}}
+                                                            </div>
+
+                                                            <span><b>Special Trait:</b> 
+                                                                {{#isMissing profession.data.specialTrait.value}}
+                                                                    <a class="fetch-item">{{profession.data.specialTrait.value}}</a> 
+                                                                {{else}}
+                                                                    -
+                                                                {{/isMissing}}
+                                                            </span>
+                                                            <span><b>Drawback:</b>
+                                                                {{#isMissing profession.data.drawback.value}}
+                                                                    <a class="fetch-item">{{profession.data.drawback.value}}</a>
+                                                                {{else}}
+                                                                    -
+                                                                {{/isMissing}}
+                                                            </span>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            {{/each}}
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div class="tab no-pad" data-tab="talents-traits">
+                                    <div class="common-container talents-traits">
+                                        <header class="common-header">
+                                            <div class="title main">
+                                                <span>Talent / Trait</span>
+                                            </div>
+        
+                                            <div class="title combat-skill">
+                                                <span>Source</span>
+                                            </div>
+        
+                                            <div class="title">
+                                                <span>Currently In Effect</span>
+                                            </div>
+        
+                                            <div class="title controls">
+                                                <span><a class="add-new" data-item-type="talentTrait" title="Add New Talent / Trait"><i class="fas fa-plus fa-xs"></i></a></span>
+                                            </div>
+                                        </header>
+        
+                                        <div id="talents_scroll" class="common-list save-scroll">
+                                            {{#each talentsAndTraits as | talentOrTrait idx | }}
+                                                {{#checkTalentPurchased talentOrTrait}}
+                                                    <!-- If Talent not purchased, don't display it -->
+                                                {{else}}
+                                                    <div class="individual-trapping-and-description {{oddOrEven idx}}">
+                                                        <div class="individual-trapping item" data-item-id="{{talentOrTrait._id}}">
+                                                            <div class="image-and-name">
+                                                                <img src="{{talentOrTrait.img}}" /><span>{{talentOrTrait.name}}</span>
+                                                            </div>
+
+                                                            <div class="skill">
+                                                                <span></span>
+                                                            </div>
+
+                                                            <div class="skill">
+                                                                <span><input type="checkbox" class="" /></span>
+                                                            </div>
+
+                                                            <div class="controls-container">
+                                                                <div class="controls">
+                                                                    <a class="item-control item-edit" title="Edit Item"><i class="fas fa-pencil-alt fa-fw fa-xs"></i></a>
+                                                                    <a class="item-control item-delete" title="Delete Item"><i class="fas fa-trash-alt fa-fw fa-xs"></i></a>
+                                                                </div>
+
+                                                                <div class="controls">
+                                                                    <a class="item-control item-post" title="Post Item to Chat"><i class="fas fa-comment fa-fw fa-xs"></i></a>
+                                                                    <a class="item-control item-description" title="Toggle Description"><i class="fas fa-align-left fa-fw fa-xs"></i></a>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                        <div class="individual-description save-toggle-talents-and-traits">
+                                                            <div class="description-list">
+                                                                <span><b>Effect:</b> {{talentOrTrait.data.effect.value}}</span>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                {{/checkTalentPurchased}}
+                                            {{/each}}
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div class="tab no-pad" data-tab="unique-advances">
+                                    <div class="common-container unique-advances">
+                                        <header class="common-header unique-advance">
+                                            <div class="title main">
+                                                <span>Unique Advance</span>
+                                            </div>
+        
+                                            <div class="title combat-skill">
+                                                <span>Category</span>
+                                            </div>
+        
+                                            <div class="title">
+                                                <span>Reward Point Cost</span>
+                                            </div>
+        
+                                            <div class="title controls">
+                                                <span><a class="add-new" data-item-type="uniqueAdvance" title="Add New Unique Advance"><i class="fas fa-plus fa-xs"></i></a></span>
+                                            </div>
+                                        </header>
+        
+                                        <div id="unique_advances_scroll" class="common-list save-scroll">
+                                            {{#each uniqueAdvances as | uniqueAdvance idx | }}
+                                                <div class="individual-trapping-and-description {{oddOrEven idx}}">
+                                                    <div class="individual-trapping item" data-item-id="{{uniqueAdvance._id}}">
+                                                        <div class="image-and-name unique-advance">
+                                                            <img src="{{uniqueAdvance.img}}" /><span>{{uniqueAdvance.name}}</span>
+                                                        </div>
+
+                                                        <div class="skill">
+                                                            <span>{{checkUniqueAdvanceType uniqueAdvance.data.type.value uniqueAdvance.data.associatedFocusSkill.value}}</span>
+                                                        </div>
+
+                                                        <div class="skill">
+                                                            <span>{{uniqueAdvance.data.rewardPointCost.value}}</span>
+                                                        </div>
+
+                                                        <div class="controls-container">
+                                                            <div class="controls">
+                                                                <a class="item-control item-edit" title="Edit Item"><i class="fas fa-pencil-alt fa-fw fa-xs"></i></a>
+                                                                <a class="item-control item-delete" title="Delete Item"><i class="fas fa-trash-alt fa-fw fa-xs"></i></a>
+                                                            </div>
+
+                                                            <div class="controls">
+                                                                <a class="item-control item-post" title="Post Item to Chat"><i class="fas fa-comment fa-fw fa-xs"></i></a>
+                                                                <a class="item-control item-description" title="Toggle Description"><i class="fas fa-align-left fa-fw fa-xs"></i></a>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                    <div class="individual-description save-toggle-unique-advances">
+                                                        <div class="description-list">
+                                                            <span><b>Notes:</b> {{#isMissing uniqueAdvance.data.flavor.description}} {{uniqueAdvance.data.flavor.description}} {{else}}-{{/isMissing}}</span>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            {{/each}}
+                                        </div>
+                                    </div>
+                                </div>
+                            </section>
+                        </div>
+                    </div>
+                </div>
+            </section>
+        </div>
+    </div>
+</form>

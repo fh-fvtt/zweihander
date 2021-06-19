@@ -1,0 +1,47 @@
+<form class="{{cssClass}}" autocomplete="off">
+    <div class="item-background">
+        <div class="item-profession-content">
+            <header class="profession-header">
+                <div class="image-and-title-container">
+                    <div class="header-image">
+                        <img class="profession-illustration" src="{{img}}" data-edit="img" title="{{name}}"/>
+                    </div>
+
+                    <div class="header-contents">
+                        <div class="title">
+                            <span>{{name}}</span>
+                        </div>
+                    </div>
+                </div>
+                
+            </header>
+    
+            {{!-- Sheet Tab Navigation --}}
+            <nav class="sheet-tabs tabs" data-group="primary">
+                <a class="item" data-tab="description">Description</a>
+                <a class="item" data-tab="details">Details</a>
+            </nav>
+    
+            {{!-- Sheet Body --}}
+            <section class="item-body">
+                {{!-- Description Tab --}}
+                <div class="tab description" data-group="primary" data-tab="description">
+                    Name: <input type="text" name="name" value="{{name}}" data-dtype="String"/>
+                    Archetype: <input type="text" name="data.archetype.value" value="{{data.archetype.value}}" />
+                    Tier: <input type="text" name="data.tier.value" value="{{data.tier.value}}" readonly />
+                    Bonus Advances: <input type="text" name="data.bonusAdvances.value" value="{{data.bonusAdvances.value}}" />
+                    Skill Ranks: <input type="text" name="data.skillRanks.value" value="{{data.skillRanks.value}}" />
+                    Talents: <input type="text" name="data.talents.value" value="{{data.talents.value}}" />
+                    Professional Trait: <input type="text" name="data.professionalTrait.value" value="{{data.professionalTrait.value}}" />
+                    Special Trait: <input type="text" name="data.specialTrait.value" value="{{data.specialTrait.value}}" />
+                    Drawback: <input type="text" name="data.drawback.value" value="{{data.drawback.value}}" />
+                    Completed: <input type="checkbox" name="data.tier.completed" {{checked data.tier.completed}} />
+                </div>
+
+                <div class="tab details" data-group="primary" data-tab="details">
+                    <textarea name="data.flavor.description">{{data.flavor.description}}</textarea>
+                </div>
+            </section>
+        </div>
+    </div>
+</form>

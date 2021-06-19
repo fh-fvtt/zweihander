@@ -1,0 +1,41 @@
+<section class="content">
+  <div class="image-and-title">
+    <img class="chat-profile-image" src="{{image}}" />
+    <div class="title weapon link-details">
+      <span>{{weaponName}}</span>
+      <span class="subtitle">{{skill}} ♦ {{difficultyRating.label}}</span>
+    </div>
+  </div>
+  <div class="roll-details">
+    <div class="row even bottom-separator">
+      <strong>Flip:</strong><span> {{generateFlipText flip}}</span>
+    </div>
+
+    <div class="row odd">
+      <strong>Base Chance:</strong><span> {{baseChance}}% ({{attributeChance}}[{{primaryAttribute}}]{{#if rankBonus}} +
+        {{rankBonus}}[Skill Ranks]{{/if}}{{#if perilPenalty}} - {{perilPenalty}}[Peril]{{/if}})</span>
+    </div>
+
+    <div class="row even">
+      <strong>Total Chance:</strong><span> {{totalChance}}%</span>
+    </div>
+  </div>
+
+  <div class="roll-results">
+    <span>{{generateResultText testResult roll totalChance showFlip}}{{#checkSuccess testResult}} <span>→</span> <strong title="{{damageFormula}} = {{displayFuryDice damageDice " + "}} + {{bonus.value}}">{{damage}}</strong> damage</span>{{else}}{{/checkSuccess}}
+  </div>
+
+    <hr>
+
+    <div class="options">
+      <span><strong>Qualities:</strong>
+        {{#each weaponQualities as | quality idx |}}
+          {{#if @last}}
+              <a>{{quality}}</a>
+          {{else}}
+              <a>{{quality}}</a><span>, </span>
+          {{/if}}
+        {{/each}}
+      </span>
+    </div>
+</section>

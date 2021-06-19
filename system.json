@@ -1,0 +1,68 @@
+{
+  "name": "zweihander",
+  "title": "Zweihänder Grim & Perilous RPG",
+  "description": "An implementation of the Zweihänder system for FoundryVTT.",
+  "version": "0.3.30",
+  "minimumCoreVersion": "0.8.4",
+  "compatibleCoreVersion": "0.8.6",
+  "templateVersion": 2,
+  "author": "Re4XN",
+  "esmodules": ["module/zweihander.js"],
+  "styles": ["styles/simple.css"],
+  "packs": [{
+    "name": "skills",
+    "label": "Skills",
+    "system": "zweihander",
+    "path": "./packs/skills.db",
+    "entity": "Item"
+  },
+  {
+    "name": "ancestries",
+    "label": "Ancestries",
+    "system": "zweihander",
+    "path": "./packs/ancestries.db",
+    "entity": "Item"
+  },
+  {
+    "name": "magick",
+    "label": "Magick",
+    "system": "zweihander",
+    "path": "./packs/magick.db",
+    "entity": "Item"
+  },
+  {
+    "name": "professions",
+    "label": "Professions",
+    "system": "zweihander",
+    "path": "./packs/professions.db",
+    "entity": "Item"
+  },
+  {
+    "name": "talents",
+    "label": "Talents",
+    "system": "zweihander",
+    "path": "./packs/talents.db",
+    "entity": "Item"
+  },
+  {
+    "name": "drawbacks",
+    "label": "Drawbacks",
+    "system": "zweihander",
+    "path": "./packs/drawbacks.db",
+    "entity": "Item"
+  },
+  {
+    "name": "traits",
+    "label": "Traits",
+    "system": "zweihander",
+    "path": "./packs/traits.db",
+    "entity": "Item"
+  }],
+  "languages": [],
+  "gridDistance": 1,
+  "gridUnits": "yd",
+  "url": "https://github.com/Re4XN/zweihander_foundryvtt",
+  "manifest": "https://raw.githubusercontent.com/Re4XN/zweihander_foundryvtt/master/system.json",
+  "download": "https://github.com/Re4XN/zweihander_foundryvtt/releases/download/v0.3.28-alpha/zweihander.zip",
+  "license": "LICENCE.txt"
+}

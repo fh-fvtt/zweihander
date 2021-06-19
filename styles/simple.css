@@ -1,0 +1,2834 @@
+@font-face {
+  font-family: 'Mon Amour Fraktur Broken';
+  src: url(../../zweihander/fonts/MonAmourFraktur-Broken.ttf);
+}
+
+@font-face {
+  font-family: 'Baskerville Old Face';
+  src: url(../../zweihander/fonts/BASKVILL.ttf);
+}
+
+/*------------------- Dialog -------------------*/
+
+.dialog .window-header {
+  background: black;
+}
+
+.dialog .window-content {
+  background: white;
+  box-shadow: 0px 0px 5px 1px inset lightgrey;
+  border-radius: 0px 0px 7px 7px;
+
+  font-family: 'Baskerville Old Face';
+}
+
+.dialog .window-content input[type="number"] {
+  border-radius: 0;
+  background: #f7f7f7;
+  border: 2px inset gainsboro;
+  text-align: center;
+  font-family: 'Baskerville Old Face';
+  font-size: 16px;
+}
+
+.dialog .window-content select {
+  font-family: 'Baskerville Old Face';
+  background: #f7f7f7;
+  border: 2px inset gainsboro;
+  border-radius: 0px;
+  padding: 0px;
+}
+
+.dialog .dialog-buttons button {
+  border: 2px outset lightgray;
+  border-radius: 0;
+  font-family: 'Baskerville Old Face';
+  font-size: 16px;
+}
+
+.dialog .dialog-buttons button.default {
+  border: 2px groove lightgray;
+}
+
+/*----------------- Chat Cards -----------------*/
+
+.chat-message {
+  background: white;
+  box-shadow: 0px 0px 5px 0px inset darkgrey;
+  border: 2px solid darkgray;
+}
+
+.message-header {
+  display: flex;
+  flex-direction: row;
+
+  font-family: 'Baskerville Old Face';
+  font-size: 16px;
+}
+
+.message-content {
+  font-family: 'Baskerville Old Face';
+  font-size: 14px;
+}
+
+.message-content .content hr {
+  border-top: 1px solid lightgray;
+  border-bottom: 1px solid rgba(0, 0, 0, 0.035);
+  margin-top: 3px;
+  margin-bottom: 3px;
+}
+
+/*.message-content .content a {
+  color: darkgray;
+}*/
+
+.message-content .content .image-and-title img {
+  flex: 0;
+  border: none;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.3);
+  border-radius: 5px;
+  padding: 2px;
+  margin-right: 5px;
+  width: auto;
+}
+
+.message-content .content .image-and-title {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  height: 50px;
+  padding: 3px 0px;
+}
+
+.message-content .content .image-and-title .title {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  height: 100%;
+  /* margin-left: 6px; */
+  color: white;
+  border-radius: 5px;
+  font-size: 18px;
+
+  cursor: pointer;
+
+  /* text-shadow: -1px 0 black, 0 1px black, 1px 0 black, 0 -1px black; */
+}
+
+.message-content .content .image-and-title .title .subtitle {
+  font-size: 14px;
+}
+
+.message-content .content .image-and-title .title.skill {
+  background-image: linear-gradient(to bottom, rgba(0, 0, 0, 0.2), dimgray)
+}
+
+.message-content .content .image-and-title .title.weapon {
+  background-image: linear-gradient(to top, darkred, indianred);
+}
+
+.message-content .content .image-and-title .title.dodge {
+  background-image: linear-gradient(to top, darkblue, cornflowerblue);
+}
+
+.message-content .content .image-and-title .title.parry {
+  background-image: linear-gradient(to top, saddlebrown, peru);
+}
+
+.message-content .content .image-and-title .title.spell {
+  background-image: linear-gradient(to bottom, mediumpurple, indigo)
+}
+
+.message-content .content .spell-flavor {
+  text-align: justify;
+}
+
+.message-content .content .spell-effects {
+  border: 1px solid darkgray;
+  border-radius: 5px;
+  margin-top: 3px;
+  margin-bottom: 3px;
+  box-shadow: 0px 0px 5px 0px inset lightgrey;
+
+  text-align: justify;
+}
+
+.message-content .content .roll-details {
+  display: none;
+
+  border: 1px solid darkgray;
+  border-radius: 5px;
+  margin-top: 3px;
+  margin-bottom: 3px;
+  box-shadow: 0px 0px 5px 0px inset lightgray;
+}
+
+.message-content .content .row {
+  padding: 5px;
+}
+
+.message-content .content .row.odd {
+  background: rgba(0, 0, 0, 0.1);
+}
+
+.message-content .content .row.even {
+  background: rgba(0, 0, 0, 0.015);
+}
+
+.message-content .content .bottom-separator {
+  border-bottom: 1px dashed darkgray;
+}
+
+.message-content .content .top-separator {
+  border-top: 1px dashed darkgray;
+}
+
+.message-content .content .roll-results {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+
+  font-size: 16px;
+}
+
+.message-content .content .roll-results .failure {
+  color: red;
+  font-weight: bold;
+}
+
+.message-content .content .roll-results .success {
+  color: green;
+  font-weight: bold;
+}
+
+.message-content .content .roll-results .highlight {
+  color: red;
+}
+
+/*---------------- Actor Config ----------------*/
+
+#zweihander_actor_config .window-app {
+  border-radius: 0;
+}
+
+#zweihander_actor_config .window-content {
+  background: white;
+  box-shadow: 0px 0px 5px 1px inset lightgray;
+  border-radius: 0px 0px 7px 7px;
+}
+
+#zweihander_actor_config .window-header {
+  background: black;
+}
+
+#zweihander_actor_config h3 {
+  font-family: 'Mon Amour Fraktur Broken';
+  font-size: 20px;
+}
+
+#zweihander_actor_config .notes {
+  font-family: 'Baskerville Old Face';
+  font-size: 14px;
+
+  text-align: justify;
+}
+
+#zweihander_actor_config label {
+  font-family: 'Baskerville Old Face';
+  font-size: 15px;
+}
+
+#zweihander_actor_config hr {
+  border-top: 1px solid #7B7C7F;
+  border-bottom: 1px solid lightgray;
+}
+
+#zweihander_actor_config input[type="number"] {
+  border-radius: 0;
+  background: #f7f7f7;
+  border: 2px inset gainsboro;
+  text-align: center;
+  font-family: 'Baskerville Old Face';
+  font-size: 16px;
+}
+
+#zweihander_actor_config select {
+  font-family: 'Baskerville Old Face';
+  background: #f7f7f7;
+  border: 2px inset gainsboro;
+  border-radius: 0px;
+  padding: 0px;
+}
+
+#zweihander_actor_config button {
+  border: 2px outset lightgray;
+  border-radius: 0;
+
+  font-family: 'Baskerville Old Face';
+  font-size: 16px;
+}
+
+#zweihander_actor_config input[type="text"] {
+  border: none;
+  background: #eff0f2;
+  border-bottom: 1px solid #7B7C7F;
+  border-radius: 0%;
+  font-family: 'Baskerville Old Face';
+}
+
+/*---------------- Actor Sheet ----------------*/
+
+.zweihander {
+  /* Sheet Tabs */
+  /* Items List */
+  /* Attributes */
+}
+
+.zweihander ::-webkit-scrollbar {
+  width: 6px;
+}
+
+.zweihander ::-webkit-scrollbar-track {
+  background: #f1f1f1; 
+  border-radius: 0px;
+}
+
+.zweihander ::-webkit-scrollbar-thumb {
+  background: #888; 
+  border: none;
+  border-radius: 0px;
+}
+
+.zweihander ::-webkit-scrollbar-thumb:hover {
+  background: #555; 
+}
+
+.zweihander input::-webkit-outer-spin-button,
+.zweihander input::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+
+.zweihander input[type="radio"] {
+  top: 0;
+  margin: 0;
+}
+
+/* Firefox */
+.zweihander input[type="number"] {
+  -moz-appearance: textfield;
+
+  text-align: center;
+  font-family: 'Baskerville Old Face';
+  background-color: #fbfbfb;
+  border-top: 2px solid #A2A3A5;
+  border-left: 2px solid #A2A3A5;
+  border-bottom: 2px solid lightgray;
+  border-right: 2px solid lightgray;
+  border-radius: 0px;
+}
+
+.zweihander input[type="number"]::placeholder {
+  font-style: normal;
+}
+
+.zweihander input[type="number"]:focus {
+  box-shadow: 0px 0px 3px 0px darkgrey;
+}
+
+.zweihander ::placeholder {
+  color: gray;
+  font-family: 'Baskerville Old Face';
+  font-style: italic;
+}
+
+.app {
+  color: white;
+}
+
+.window-app {
+  border-radius: 7px;
+}
+
+.zweihander .window-header {
+  background-color: transparent;
+  border: none;
+  position: absolute;
+  width: 100%;
+  line-height: 40px;
+  box-shadow: 0px 25px 15px -5px inset black;
+}
+
+.zweihander .window-content {
+  height: 100%;
+  padding: 0px;
+  padding-top: 10px;
+  overflow-y: hidden;
+
+  border-radius: 7px;
+}
+
+.window-app.minimized .window-header {
+  background-image: url(../../zweihander/assets/background.png);
+  background-repeat: no-repeat;
+  background-position-x: right;
+  box-shadow: 0px 0px 15px inset black;
+  border: none;
+}
+
+.zweihander .character.sheet-background {
+  background-image: url(../../zweihander/assets/background.png);
+  background-size: 100%;
+  background-repeat: no-repeat;
+  background-color: black;
+  height: 100%;
+}
+
+.zweihander .npc.sheet-background {
+  background-image: url(../../zweihander/assets/background_alt.png);
+  background-size: 100%;
+  background-repeat: no-repeat;
+  background-color: black;
+  height: 100%;
+}
+
+.zweihander .character.sheet-content {
+  /* height: 100%;*/
+  height: 100%;
+  /* padding: 50px 75px 75px 75px; */
+  /* padding: 8% 10.5% 8% 10.5%; */
+  /* padding: 7% 8.5% 8.5% 10.5%; */
+  padding: 6.5% 8% 8% 10%;
+  box-shadow: 0px 0px 40px inset black;
+}
+
+.zweihander .npc.sheet-content {
+  /* height: 100%;*/
+  height: 100%;
+  /* padding: 50px 75px 75px 75px; */
+  /* padding: 8% 10.5% 8% 10.5%; */
+  /* padding: 7% 8.5% 8.5% 10.5%; */
+  padding: 10% 8.9% 10% 10%;
+  box-shadow: 0px 0px 40px inset black;
+}
+
+.zweihander .editable {
+  height: 100%;
+}
+
+.zweihander .section-wrapper {
+  height: 100%;
+}
+
+.zweihander .sheet-header {
+  height: 250px;
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+  flex-wrap: nowrap;
+  margin-bottom: 10px;
+  /**background-color: tan;*/
+}
+
+.zweihander .sheet-header .header-fields {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  padding-left: 5px;
+  padding-right: 6px;
+  /**background-color: blue;*/
+}
+
+.zweihander .sheet-header .labeled-input.ancestry {
+  width: 100px;
+  position: relative;
+}
+
+.zweihander .sheet-header .labeled-input.ancestry .input-text {
+  cursor: not-allowed;
+}
+
+.zweihander .sheet-header .labeled-input.ancestry .ancestry-absolute {
+  position: absolute;
+}
+
+.zweihander .sheet-header .labeled-input.ancestry .ancestry-edit {
+  position: absolute;
+  text-align: end;
+  padding: 2px;
+  right: 0px;
+
+  display: none;
+}
+
+.zweihander .sheet-header .labeled-input.ancestry .ancestry-edit:hover {
+  display: block;
+}
+
+.zweihander .sheet-header .labeled-input.ancestry .ancestry-absolute:hover + .ancestry-edit {
+  display: block;
+}
+
+.zweihander .labeled-input .input-label {
+  display: block;
+  width: 100%;
+  font-family: 'Mon Amour Fraktur Broken';
+  font-size: 15px;
+}
+
+.zweihander .sheet-header .labeled-input.ancestry .ancestry-edit .add-new {
+  padding: 2px;
+}
+
+.zweihander .labeled-input input[type="text"]:focus {
+  box-shadow: 0 3px 3px -3px darkgrey;
+}
+
+.zweihander .labeled-input input[type="text"] {
+  width: 90%;
+  height: 20px;
+  border: none;
+  background: #eff0f2;
+  border-bottom: 1px solid #7B7C7F;
+  border-radius: 0%;
+  font-family: 'Baskerville Old Face';
+  /* padding: 0px; */
+}
+
+.zweihander .sheet-header .labeled-input.charname input {
+  width: 150px;
+}
+
+.zweihander .sheet-header .labeled-input.age input {
+  width: 80px;
+}
+
+.zweihander .sheet-header .labeled-input.sex input {
+  width: 50px;
+}
+
+.zweihander .sheet-header .labeled-input.ancestry input {
+  width: 100px;
+}
+
+.zweihander .sheet-header .labeled-input.profession input {
+  width: 100px;
+}
+
+.zweihander .sheet-header .image-and-adv-and-corr-container {
+  display: flex;
+  flex-direction: row;
+  /* align-items: center; */
+  /**background-color: lightpink;*/
+}
+
+.zweihander .sheet-header .profile-img-container {
+  width: 200px;
+  height: 200px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  /* background-color: yellow; */
+}
+
+.zweihander .sheet-header .npc.profile-img-container {
+  width: 207px;
+  height: 207px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  order: 1;
+  padding-left: 5px;
+  /* background-color: yellow; */
+}
+
+.zweihander .sheet-header .profile-img {
+  height: auto;
+  max-height: 100%;
+  max-width: 100%;
+  border: none;
+  margin: auto;
+}
+
+.zweihander .sheet-header .advancement-and-corruption-container {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  /* background-color: purple; */
+}
+
+.zweihander .sheet-header .advancement {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  /* background-color: greenyellow; */
+}
+
+.zweihander .sheet-header .advancement .divider {
+  flex: 0 0 15%;
+  padding-left: 5px;
+  padding-right: 6px;
+  /* background-color: lightcyan; */
+}
+
+.zweihander .sheet-header .advancement .divider hr {
+  border-top: 1px solid #7B7C7F;
+  border-bottom: 1px solid lightgray;
+  /* background-image: linear-gradient(to right, rgba(0, 0, 0, 0), rgba(0, 0, 0, 0.75), rgba(0, 0, 0, 0)); */
+}
+
+.zweihander .sheet-header .advancement input[type=number] {
+  width: 80px;
+  font-size: 16px;
+}
+
+.zweihander .sheet-header .advancement .advancement-title-container {
+  font-family: 'Mon Amour Fraktur Broken';
+  font-size: 30px;
+  text-align: center;
+  /* background-color: purple; */
+}
+
+.zweihander .sheet-header .advancement .reward-points-fate-and-reputation-container {
+  display: flex;
+  flex-direction: row;
+  /* background-color: lightseagreen; */
+}
+
+.zweihander .sheet-header .advancement .reward-points-and-title-container {
+  display: flex;
+  flex-direction: column;
+  /* background-color: yellow; */
+}
+
+.zweihander .sheet-header .advancement .reward-points-and-title-container .reward-points-title {
+  /* background-color: tomato; */
+  font-family: 'Baskerville Old Face';
+  font-weight: bold;
+  font-size: 18px;
+  text-align: center;
+  padding-bottom: 5px;
+}
+
+.zweihander .sheet-header .advancement .reward-points-and-title-container .reward-points-inputs .points-input.locked, 
+.zweihander .sheet-header .advancement .reward-points-and-title-container .reward-points-inputs .points-input.locked:focus {
+  color: darkgray;
+  cursor: not-allowed;
+  box-shadow: none;
+}
+
+.zweihander .sheet-header .advancement .reward-points-and-title-container .reward-points-inputs {
+  display: flex;
+  flex-direction: row;
+}
+
+.zweihander .sheet-header .advancement .reward-points-and-title-container .reward-points-inputs div.right {
+  margin-left: 8px;
+  margin-right: 1px;
+}
+
+.zweihander .sheet-header .advancement .reward-points-and-title-container .reward-points-inputs .points-and-label {
+  display: flex;
+  flex-direction: column;
+  margin-left: 5px;
+  margin-right: 5px;
+}
+
+.zweihander .sheet-header .advancement .reward-points-and-title-container .reward-points-inputs .points-and-label span {
+  text-align: center;
+  font-family: 'Baskerville Old Face';
+  font-size: 12px;
+  font-weight: bold;
+}
+
+.zweihander .sheet-header .advancement .fate-and-reputation-container {
+  flex: 1;
+  display: flex;
+  flex-direction: row;
+  /* background-color: lightpink; */
+}
+
+.zweihander .sheet-header .advancement .fate-and-reputation-container .title {
+  font-family: 'Baskerville Old Face';
+  font-weight: bold;
+  font-size: 18px;
+  text-align: center;
+  padding-bottom: 5px;
+}
+
+.zweihander .sheet-header .advancement .fate-and-reputation-container .fate-and-title-container {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-left: 1px;
+  /* background-color: blue; */
+}
+
+.zweihander .sheet-header .advancement .fate-and-reputation-container .reputation-and-title-container {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  /* background-color: green; */
+}
+
+.zweihander .sheet-header .titles-and-bars {
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+  margin-left: 5px;
+  margin-right: 6px;
+}
+
+.zweihander .sheet-header .titles-and-bars .corruption-title-container {
+  display: flex;
+  flex-direction: row;
+  align-items: flex-end;
+}
+
+.zweihander .sheet-header .titles-and-bars .corruption-title-container .order-alignment-title {
+  flex: 1;
+  font-family: 'Baskerville Old Face';
+  font-weight: bold;
+  text-align: left;
+  padding-bottom: 2px;
+}
+
+.zweihander .sheet-header .titles-and-bars .corruption-title-container .corruption-title {
+  flex: 1;
+  font-family: 'Mon Amour Fraktur Broken';
+  font-size: 22px;
+  text-align: center;
+}
+
+.zweihander .sheet-header .titles-and-bars .corruption-title-container .chaos-alignment-title {
+  flex: 1;
+  font-family: 'Baskerville Old Face';
+  font-weight: bold;
+  text-align: right;
+  padding-bottom: 2px;
+}
+
+.zweihander .sheet-header .titles-and-bars .corruption-inputs-container {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+  /* background-color: red; */
+}
+
+.zweihander .sheet-header .titles-and-bars .corruption-inputs-container .order-container {
+  flex: 1;
+  /* background-color: yellow; */
+}
+
+.zweihander .sheet-header .titles-and-bars .corruption-inputs-container .order-container .input-text {
+  width: 150px;
+}
+
+.zweihander .sheet-header .titles-and-bars .corruption-inputs-container {
+  display: flex;
+  flex-direction: row;
+  align-items: flex-start;
+  /* background-color: teal; */
+}
+
+.zweihander .sheet-header .titles-and-bars .corruption-inputs-container .corruption-and-ranks-reset-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.zweihander .sheet-header .titles-and-bars .corruption-inputs-container .corruption-and-ranks-reset-container .reset-ranks {
+  padding-right: 1px;
+  margin-top: 1px;
+}
+
+.zweihander .sheet-header .titles-and-bars .corruption-inputs-container .ranks-beneath-input {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.zweihander .sheet-header .titles-and-bars .corruption-inputs-container .ranks-beneath-input.left {
+  align-items: flex-start;
+}
+
+.zweihander .sheet-header .titles-and-bars .corruption-inputs-container .ranks-beneath-input.right {
+  align-items: flex-end;
+}
+
+.zweihander .sheet-header .titles-and-bars .corruption-inputs-container .order-input-text {
+  /* background-color: lightseagreen; */
+}
+
+.zweihander .sheet-header .titles-and-bars .corruption-inputs-container .radio-order-ranks {
+  display: flex;
+  flex-direction: row-reverse;
+  /* background-color: lightcoral; */
+}
+
+.zweihander .sheet-header .titles-and-bars .corruption-inputs-container .radio-and-number {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  font-family: 'Baskerville Old Face';
+  font-size: 12px;
+  font-weight: bold;
+  margin: 3px 4px 0px 4px;
+}
+
+.zweihander .sheet-header .titles-and-bars .corruption-inputs-container .chaos-input-text {
+  /* background-color: lightgoldenrodyellow; */
+}
+
+.zweihander .sheet-header .titles-and-bars .corruption-inputs-container .radio-chaos-ranks {
+  display: flex;
+  flex-direction: row;
+  /* background-color: wheat; */
+}
+
+.zweihander .sheet-header .titles-and-bars .corruption-inputs-container .radio-order-ranks input {
+  flex: 1;
+  width: 9px;
+}
+
+.zweihander .sheet-header .titles-and-bars .corruption-inputs-container .radio-chaos-ranks input {
+  flex: 1;
+  width: 9px;
+}
+
+.zweihander .sheet-header .titles-and-bars .corruption-inputs-container input[type="number"]::placeholder {
+  font-style: normal;
+}
+
+.zweihander .sheet-header .titles-and-bars .corruption-inputs-container .input-number {
+  width: 32px;
+  height: 32px;
+  text-align: center;
+  font-family: 'Baskerville Old Face';
+  font-size: 16.5px;
+  background-color: #fbfbfb;
+  border-top: 2px solid #A2A3A5;
+  border-left: 2px solid #A2A3A5;
+  border-bottom: 2px solid lightgray;
+  border-right: 2px solid lightgray;
+}
+
+.zweihander .sheet-header .titles-and-bars .corruption-inputs-container .chaos-container {
+  flex: 1;
+  /* background-color: brown; */
+}
+
+.zweihander .sheet-header .titles-and-bars .corruption-inputs-container .chaos-container .input-text {
+  width: 150px;
+  text-align: right;
+}
+
+.zweihander .sheet-body .main-container {
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  /* background-color: red; */
+}
+
+.zweihander .sheet-body .characteristics {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  /* background-color: tan; */
+}
+
+.zweihander .sheet-body .characteristics .title {
+  font-family: 'Mon Amour Fraktur Broken';
+  font-size: 22px;
+  text-align: center;
+  text-transform: capitalize;
+  margin-bottom: 2px;
+}
+
+.zweihander .sheet-body .characteristics .label {
+  font-family: 'Baskerville Old Face';
+  font-weight: bold;
+  margin-top: 2px;
+}
+
+.zweihander .sheet-body .characteristics .label.dodge {
+  /* margin-top: 4px; */
+}
+
+.zweihander .sheet-body .characteristics .label .parry-skill {
+  display: inline-block;
+  text-align: center;
+  width: 78.02px;
+}
+
+.zweihander .sheet-body .characteristics .label .skill-dropdown {
+  font-family: 'Baskerville Old Face';
+  font-weight: bold;
+  height: 19px;
+  border: none;
+  /* margin-left: 1px; */
+  /* width: 99px; */
+  /* background: #eff0f2; */
+  background: none;
+  /* border-bottom: 1px solid #7B7C7F; */
+  border-radius: 0px;
+  padding: 0px;
+}
+
+.zweihander select:focus {
+  box-shadow: 0 3px 3px -2px darkgrey;
+  border-radius: 0px;
+  border: 1px solid #191813;
+}
+
+.zweihander .sheet-body .characteristics .number-and-label {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.zweihander .sheet-body .characteristics .number-and-label .dice-roll-icon {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-evenly;
+  width: 100%;
+}
+
+.zweihander .sheet-body .characteristics .number-and-label .dice-roll-icon .d10 {
+  height: auto;
+  width: 30px;
+  border: none;
+}
+
+.zweihander .sheet-body .characteristics .number-and-label .dice-roll-icon .d10:hover {
+  content: url('../assets/rolling-dices-hover.svg');
+  cursor: pointer;
+}
+
+.zweihander .sheet-body .characteristics .number-and-label .dice-roll-icon .d10:active {
+  margin-left: 3px;
+  margin-right: 3px;
+  width: 24px;
+}
+
+.zweihander .sheet-body .characteristics .individual-characteristic {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  /* background-color: lightblue; */
+}
+
+.zweihander .sheet-body .characteristics .individual-characteristic.fellowship {
+  margin-right: auto;
+  margin-left: 23px;
+}
+
+.zweihander .sheet-body .characteristics .individual-characteristic .value-and-bonus {
+  display: flex;
+  flex-direction: row;
+  /* background-color: lightseagreen; */
+}
+
+.zweihander .sheet-body .characteristics .individual-characteristic .value-and-bonus .number-and-label.left {
+  margin-right: 2px;
+}
+
+.zweihander .sheet-body .characteristics .individual-characteristic .value-and-bonus .number-and-label.right {
+  margin-left: 4px;
+}
+
+.zweihander .sheet-body .characteristics .individual-characteristic .value-and-bonus .number-and-label .value {
+  width: 52px;
+  height: 35px;
+  font-size: 24px;
+}
+
+.zweihander .sheet-body .characteristics .individual-characteristic .value-and-bonus .number-and-label .bonus, 
+.zweihander .sheet-body .characteristics .individual-characteristic .value-and-bonus .number-and-label .bonus:focus {
+  width: 35px;
+  height: 35px;
+  font-size: 16px;
+  color: darkgray;
+  cursor: not-allowed;
+  box-shadow: none;
+}
+
+.zweihander .sheet-body .characteristics .dodge-and-parry {
+  flex: 1;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  /* background-color: orange; */
+}
+
+.zweihander .sheet-body .characteristics .dodge-and-parry .image-separator {
+  /* flex: 1; */
+  display: flex;
+  /* background-color: yellow; */
+  padding: 0px 10px 0px 23px;
+}
+
+.zweihander .sheet-body .characteristics .dodge-and-parry .image-separator .helmet {
+  height: auto;
+  width: 115px;
+  border: none;
+  margin: auto;
+}
+
+.zweihander .sheet-body .characteristics .dodge-and-parry .dodge {
+  /* flex: 1; */
+  /* background-color: pink; */
+}
+
+.zweihander .sheet-body .characteristics .dodge-and-parry .value {
+  width: 35px;
+  height: 35px;
+  font-size: 16px;
+  border-radius: 25px;
+  color: darkgray;
+  cursor: not-allowed;
+}
+
+.zweihander .sheet-body .characteristics .dodge-and-parry .parry {
+  /* flex: 1; */
+  /* background-color: lightblue; */
+}
+
+.zweihander .sheet-body .skills-and-combat {
+  flex: 1;
+  display: flex;
+  flex-direction: row;
+  height: 60%;
+  padding-top: 3px;
+  /* background-color: orange; */
+}
+
+.zweihander .sheet-body .skills-and-combat .common-container .individual-trapping {
+  /* margin-top: 1px; */
+  padding: 1.6px 5px 1.6px 5px;
+  border-bottom: 1px solid gainsboro;
+  background-color: rgb(0, 0, 0, 0.015);
+}
+
+.zweihander .sheet-body .skills-and-combat .common-container .even {
+  background-color: rgb(0, 0, 0, 0.05);
+}
+
+.zweihander .sheet-body .skills-and-combat .common-container .skill input[type="checkbox"] {
+  transform: none;
+  margin: 0;
+  width: 12px;
+  height: 12px;
+  margin-top: 4px;
+}
+
+.zweihander .sheet-body .skills-and-combat .common-container.skills {
+  width: 209px;
+  height: 279px;
+}
+
+.zweihander .sheet-body .skills-and-combat .common-list.skills {
+  padding: 0;
+}
+
+.zweihander .sheet-body .skills-and-combat .common-container .title.main {
+  flex: 0 0 115px;
+  padding: 0;
+}
+
+.zweihander .sheet-body .skills-and-combat .common-container .title.controls {
+  flex: 0 0 23.13px;
+}
+
+
+.zweihander .sheet-body .skills-and-combat .common-container .image-and-name {
+  flex: 0 0 115px;
+}
+
+.zweihander .sheet-body .skills-and-combat .combat-container {
+  flex: 1;
+  display: flex;
+  flex-direction: row;
+  margin-left: 23px;
+  /* background-color: purple; */
+}
+
+.zweihander .sheet-body .skills-and-combat .combat-container .label {
+  font-family: 'Baskerville Old Face';
+  font-size: 11.5px;
+  font-weight: bold;
+  margin-top: 2px;
+}
+
+.zweihander .sheet-body .skills-and-combat .combat-container .initiative-and-peril-container {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  margin-right: 10px;
+  /* background-color: greenyellow; */
+}
+
+.zweihander .sheet-body .skills-and-combat .combat-container .title {
+  font-size: 20px;
+  font-family: 'Mon Amour Fraktur Broken';
+  text-align: center;
+  /* background-color: aquamarine; */
+}
+
+.zweihander .sheet-body .skills-and-combat .combat-container .initiative-container {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  /* background-color: wheat; */
+}
+
+.zweihander .sheet-body .skills-and-combat .combat-container .initiative-container .value-overage-and-current {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  /* background-color: tomato; */
+}
+
+.zweihander .sheet-body .skills-and-combat .combat-container .initiative-container .value-overage-and-current .number-and-label {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.zweihander .sheet-body .skills-and-combat .combat-container .initiative-container .value-overage-and-current .number-and-label .value,
+.zweihander .sheet-body .skills-and-combat .combat-container .initiative-container .value-overage-and-current .number-and-label .value:focus {
+  width: 40px;
+  height: 30px;
+  font-size: 16px;
+  color: darkgray;
+  cursor: not-allowed;
+  box-shadow: none;
+}
+
+.zweihander .sheet-body .skills-and-combat .combat-container .peril-container {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  /* background-color: wheat; */
+}
+
+.zweihander .sheet-body .skills-and-combat .combat-container .peril-container .title {
+  margin-top: 5px;
+}
+
+.zweihander .sheet-body .skills-and-combat .combat-container .peril-container .values-container {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  /* background-color: tomato; */
+}
+
+.zweihander .sheet-body .skills-and-combat .combat-container .peril-container .values-container .number-and-label {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.zweihander .sheet-body .skills-and-combat .combat-container .peril-container .values-container .number-and-label .value,
+.zweihander .sheet-body .skills-and-combat .combat-container .peril-container .values-container .number-and-label .value:focus {
+  width: 38px;
+  height: 30px;
+  font-size: 16px;
+  color: darkgray;
+  cursor: not-allowed;
+  box-shadow: none;
+}
+
+.zweihander .sheet-body .skills-and-combat .combat-container .peril-threshold-container {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  /* background-color: wheat; */
+}
+
+.zweihander .sheet-body .skills-and-combat .combat-container .peril-threshold-container .title-alt {
+  font-family: 'Baskerville Old Face';
+  font-size: 15px;
+  font-weight: bold;
+  text-align: center;
+  margin-top: 5px;
+}
+
+.zweihander .sheet-body .skills-and-combat .combat-container .peril-threshold-container .peril-status-list {
+  display: flex;
+  flex-direction: column-reverse;
+  font-family: 'Baskerville Old Face';
+  /* background-color: orange; */
+}
+
+.zweihander .sheet-body .skills-and-combat .combat-container .peril-threshold-container .peril-status-list .radio-and-status {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  padding: 2px 2px 0px 2px;
+  /* background-color: lightpink; */
+}
+
+.zweihander .sheet-body .skills-and-combat .combat-container .peril-threshold-container .peril-status-list .radio-and-status input[type="radio"] {
+  width: 12px;
+  margin: 0px 0px 2px 0px;
+}
+
+.zweihander .sheet-body .skills-and-combat .combat-container .peril-threshold-container .peril-status-list .radio-and-status span {
+  margin-left: 5px;
+}
+
+.zweihander .sheet-body .skills-and-combat .combat-container .movement-and-damage-container {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  /* background-color: lightblue; */
+}
+
+.zweihander .tabs {
+  height: 74px;
+}
+
+.zweihander .nav-content-common {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  border: 1px solid darkgrey;
+  border-bottom: none;
+}
+
+.zweihander .nav-content-common .item.tab-common {
+  line-height: 26px;
+  font-size: 14px;
+  font-family: 'Baskerville Old Face';
+  font-weight: bold;
+  text-align: center;
+}
+
+.zweihander .nav-content-common .item-and-skulls {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+  flex: 1;
+  
+}
+
+.zweihander .nav-content-common .item-and-skulls.middle {
+  border-right: 1px solid darkgray;
+  border-left: 1px solid darkgray;
+}
+
+.zweihander .nav-content-common .item-and-skulls.special-right {
+  border-left: 1px solid darkgray;
+}
+
+.zweihander .nav-content-common .item-and-skulls.selected {
+  background-color: rgba(0, 0, 0, 0.05);
+  border-bottom: 1px dashed darkgray;
+}
+
+.zweihander .item.tab-common {
+  display: inline-block;
+  width: 100%;
+  height: 100%;
+  border-bottom: 1px solid darkgray;
+}
+
+.zweihander .item.tab-common.active {
+  text-shadow: 0 0 10px dimgrey;
+  background-color: rgba(0, 0, 0, 0.05);
+  border-bottom: 1px dashed darkgray;
+}
+
+.zweihander .item.tab-common:hover {
+  text-shadow: 0 0 10px dimgrey;
+}
+
+.zweihander .nav-content-common .item-and-skulls img {
+  border: none;
+  height: 22px;
+  width: auto;
+}
+
+.zweihander .nav-content-common .item-and-skulls .skull-selector {
+  visibility: hidden;
+}
+
+.zweihander .nav-content-common .item-and-skulls .skull-selector.left {
+  transform: scaleX(-1);
+}
+
+.zweihander .trapping-tabs-content {
+  height: 100%;
+}
+
+.zweihander .nav-and-content {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+  background: #f6f6f6;
+  /* margin-top: 10px; */
+}
+
+.zweihander .tabs .nav-content {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  padding-left: 5px;
+  padding-right: 6px;
+}
+
+.zweihander .tabs .item {
+  line-height: 40px;
+  font-size: 18px;
+  font-family: 'Baskerville Old Face';
+  font-weight: bold;
+}
+
+.zweihander .tabs .item.active {
+  
+}
+
+.zweihander .tabs .item-and-hand {
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+}
+
+.zweihander .tabs .item-and-hand .selector {
+  visibility: hidden;
+  border: 0px;
+}
+
+.zweihander .tabs .item-and-hand .item.active + .selector,
+.zweihander .tabs .item-and-hand .item:focus + .selector {
+  visibility: visible;
+}
+
+.zweihander .sheet-body {
+  overflow: hidden;
+  /* height: calc(100% - 334px); */
+  height: 447px;
+}
+
+.zweihander .tab {
+  height: 100%;
+  overflow-y: auto;
+  padding-left: 5px;
+  padding-right: 6px;
+}
+
+.zweihander .tab.no-pad {
+  padding: 0;
+}
+
+.zweihander .editor,
+.zweihander .editor-content {
+  height: 100%;
+}
+
+.zweihander .items-list {
+  list-style: none;
+  margin: 7px 0;
+  padding: 0;
+  overflow-y: auto;
+}
+
+.zweihander .items-list .item {
+  height: 30px;
+  line-height: 24px;
+  padding: 3px 0;
+  border-bottom: 1px solid #BBB;
+}
+
+.zweihander .items-list .item img {
+  flex: 0 0 24px;
+  margin-right: 5px;
+}
+
+.zweihander .items-list .item-name {
+  margin: 0;
+}
+
+.zweihander .items-list .item-controls {
+  flex: 0 0 36px;
+}
+
+.zweihander .attributes-header {
+  padding: 5px;
+  margin: 5px 0;
+  background: rgba(0, 0, 0, 0.05);
+  border: 1px solid #AAA;
+  border-radius: 2px;
+  text-align: center;
+  font-weight: bold;
+}
+
+.zweihander .attributes-header .attribute-label {
+  flex: 1.5;
+}
+
+.zweihander .attributes-header .attribute-control {
+  flex: 0 0 20px;
+}
+
+.zweihander .attributes-list {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+.zweihander .attributes-list li > * {
+  margin: 0 3px;
+  height: 28px;
+  line-height: 24px;
+  background: transparent;
+  border: none;
+  border-radius: 0;
+  border-bottom: 1px solid #AAA;
+}
+
+.zweihander .attributes-list a.attribute-control {
+  flex: 0 0 20px;
+  text-align: center;
+  line-height: 28px;
+  border: none;
+}
+
+.zweihander.sheet.actor {
+  min-width: 560px;
+  min-height: 420px;
+
+  border-radius: 15px;
+}
+
+.zweihander.sheet.item {
+  min-width: 460px;
+  min-height: 400px;
+}
+
+.zweihander .sheet-body .notes-content {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+  /* background-color: lightblue; */
+}
+
+.zweihander .sheet-body .notes-content .character-details {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  /* background-color: red; */
+}
+
+.zweihander .sheet-body .notes-content .character-details .line {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  /* background-color: orange; */
+}
+
+.zweihander .sheet-body .notes-content .character-details .line.two {
+  margin-top: 10px;
+}
+
+.zweihander .sheet-body .notes-content .character-details .line .input-text {
+  font-size: 14px;
+}
+
+.zweihander .sheet-body .notes-content .character-details .line .height .input-text {
+  width: 60px;
+}
+
+.zweihander .sheet-body .notes-content .character-details .line .weight .input-text {
+  width: 60px;
+}
+
+.zweihander .sheet-body .notes-content .character-details .line .build-type .input-text {
+  width: 81px;
+}
+
+.zweihander .sheet-body .notes-content .character-details .line .distinguishing-marks .input-text {
+  width: 290px;
+  text-overflow: ellipsis;
+}
+
+.zweihander .sheet-body .notes-content .character-details .line .hair-color .input-text {
+  width: 75px;
+}
+
+.zweihander .sheet-body .notes-content .character-details .line .eye-color .input-text {
+  width: 75px;
+}
+
+.zweihander .sheet-body .notes-content .character-details .line .complexion .input-text {
+  width: 105px;
+}
+
+.zweihander .sheet-body .notes-content .character-details .line .season-of-birth .input-text {
+  width: 120px;
+}
+
+.zweihander .sheet-body .notes-content .character-details .line .social-class .input-text {
+  width: 90px;
+}
+
+.zweihander .sheet-body .notes-content .character-details .line .upbringing .input-text {
+  width: 86px;
+}
+
+.zweihander .sheet-body .notes-content .character-details .line .dooming .input-text {
+  width: 285px;
+  text-overflow: ellipsis;
+}
+
+.zweihander .sheet-body .notes-content .character-details .line .languages .input-text {
+  width: 140px;
+  text-overflow: ellipsis;
+}
+
+.zweihander .sheet-body .notes-content .ancestry-drawback-and-notepad-container {
+  display: flex;
+  flex-direction: row;
+  flex: 0 0 65%;
+  /* margin-top: 20px; */
+  /* background-color: purple; */
+}
+
+.zweihander .sheet-body .notes-content .ancestry-drawback-and-notepad-container .ancestry-and-drawback-container {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  order: 1;
+  /* margin-top: 6px; */
+  /* width: 209px; */
+  /* margin-right: 23px; */
+  /* background-color: gold; */
+}
+
+.zweihander .sheet-body .notes-content .ancestry-drawback-and-notepad-container .title.main {
+  text-align: left;
+  font-size: 14px;
+  font-family: 'Baskerville Old Face';
+}
+
+.zweihander .sheet-body .notes-content .ancestry-drawback-and-notepad-container .ancestry-and-drawback-container .common-container.ancestry {
+  /* flex: 1; */
+  display: flex;
+  flex-direction: column;
+  margin: 0px 0px 23px 0px;
+  height: 120.5px;
+}
+
+.zweihander .sheet-body .notes-content .ancestry-drawback-and-notepad-container .ancestry-and-drawback-container .common-container.drawback {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  height: 136.5px;
+  /* margin: 0px 0px 3px 0px; */
+  /* background-color: lightpink; */
+}
+
+.zweihander .sheet-body .notes-content .ancestry-drawback-and-notepad-container .ancestry-and-drawback-container .common-list.drawback {
+  flex: 1;
+}
+
+.zweihander .sheet-body .notes-content .ancestry-drawback-and-notepad-container .ancestry-and-drawback-container .common-list.drawback .image-and-name {
+  flex: 0 0 215px;
+}
+
+.zweihander .sheet-body .notes-content .ancestry-drawback-and-notepad-container .notepad-container {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  margin-bottom: 3px;
+  margin-left: 23px;
+  order: 2;
+  /* background-color: lightseagreen; */
+}
+
+/* .zweihander .sheet-body .notes-content .ancestry-drawback-and-notepad-container .title {
+  text-align: center;
+  font-family: 'Mon Amour Fraktur Broken';
+  font-size: 22px;
+} */
+
+.zweihander .sheet-body .notes-content .ancestry-drawback-and-notepad-container .notepad-container .notepad {
+  border: 1px solid darkgrey;
+  border-radius: 0px;
+  height: 100%;
+  background-color: whitesmoke;
+  resize: none;
+  font-family: 'Baskerville Old Face';
+  font-size: 14px;
+  font-style: italic;
+  /* margin-top: 5px; */
+  background-image: url('../../zweihander/assets/notepad.png');
+  background-position: center;
+}
+
+.zweihander .sheet-body .notes-content .ancestry-drawback-and-notepad-container .notepad-container textarea:focus {
+  box-shadow: 0px 0px 3px darkgrey;
+  outline: 0px solid darkgrey;
+}
+
+.zweihander .professions-talents-unique-content {
+  height: 100%;
+}
+
+.zweihander .professions-talents-unique-content .common-list {
+  height: 391px;
+}
+
+.zweihander .professions-talents-unique-content .common-container.professions {
+  border-top: none;
+  height: 100%;
+}
+
+.zweihander .professions-talents-unique-content .common-container.talents-traits {
+  border-top: none;
+  height: 100%;
+}
+
+.zweihander .professions-talents-unique-content .common-container.talents-traits .image-and-name {
+  flex: 0 0 215px;
+}
+
+.zweihander .professions-talents-unique-content .common-container.talents-traits .title.main {
+  flex: 0 0 215px;
+}
+
+.zweihander .professions-talents-unique-content .common-container.unique-advances {
+  border-top: none;
+  height: 100%;
+}
+
+.zweihander .professions-talents-unique-content .common-container.unique-advances .common-header .title.main {
+  flex: 0 0 215px;
+}
+
+.zweihander .professions-talents-unique-content .common-container.unique-advances .image-and-name {
+  flex: 0 0 215px;
+}
+
+.zweihander .trappings-content {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+  /* background-color: lightblue; */
+}
+
+.zweihander .trappings-content .encumbrance-and-coins-container {
+  display: flex;
+  flex-direction: row;
+}
+
+.zweihander .trappings-content .encumbrance-and-coins-container .backpack-container {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.zweihander .trappings-content .encumbrance-and-coins-container .backpack-container img {
+  /* height: auto; */
+  /* width: 150px; */
+  border: none;
+}
+
+.zweihander .trappings-content .encumbrance-and-coins-container .encumbrance-container {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  /* background-color: wheat; */
+}
+
+.zweihander .trappings-content .encumbrance-and-coins-container .title {
+  text-align: center;
+  font-family: 'Mon Amour Fraktur Broken';
+  font-size: 22px;
+}
+
+.zweihander .trappings-content .encumbrance-and-coins-container .label {
+  font-family: 'Baskerville Old Face';
+  font-size: 14px;
+  font-weight: bold;
+  margin-top: 3px;
+}
+
+.zweihander .trappings-content .encumbrance-and-coins-container .encumbrance-meter {
+  padding: 5px 0px 5px 0px;
+  /* background-color: lightseagreen; */
+}
+
+.zweihander .trappings-content .encumbrance-bar-container .meter {
+  position: relative;
+  /* display: flex; */
+  /* flex-direction: row; */
+  /* align-items: center;
+  justify-content: flex-start; */
+  height: 25px;
+  /* flex: 1; */
+  /* border: 2px solid #A2A3A5;
+  border-right: 2px solid lightgrey;
+  border-bottom: 2px solid lightgrey;
+  box-shadow: 0 0 0 3px inset #f8f8f8;
+  padding: 3px; */
+  background-color: grey;
+}
+
+.zweihander .trappings-content .encumbrance-bar-container .meter .meter-label-container {
+  position: absolute;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  height: 100%;
+}
+
+.zweihander .trappings-content .encumbrance-bar-container .meter .meter-label {
+  /* position: absolute; */
+  text-align: center;
+  font-family: 'Baskerville Old Face';
+  font-weight: bold;
+  color: white;
+  /* margin-top: 0.5px; */
+}
+
+.zweihander .trappings-content .encumbrance-bar-container .meter .meter-value {
+  display: block;
+  text-align: center;
+  transition: 300ms width linear;
+  color: transparent;
+  background: #191813;
+  height: 100%;
+}
+
+.zweihander .trappings-content .encumbrance-and-coins-container .value-overage-and-current {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  margin-top: 5px;
+  /* background-color: tomato; */
+}
+
+.zweihander .trappings-content .encumbrance-and-coins-container .value-overage-and-current .number-and-label {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.zweihander .trappings-content .encumbrance-and-coins-container .value-overage-and-current .number-and-label .value {
+  width: 45px;
+  height: 35px;
+  font-size: 18px;
+  color: grey;
+}
+
+.zweihander .trappings-content .encumbrance-and-coins-container .coins-container {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  /* background-color: yellowgreen; */
+}
+
+.zweihander .trappings-content .encumbrance-and-coins-container .coins-container .coins-label {
+  padding: 5px 0px;
+  height: 35px;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+  font-family: 'Baskerville Old Face';
+  font-size: 20px;
+}
+
+.zweihander .trappings-content .encumbrance-and-coins-container .coins-container .value-overage-and-current .number-and-label .value {
+  color: #191813;
+}
+
+.zweihander .trappings-content .weapons-armor-and-other-container {
+  display: flex;
+  flex-direction: row;
+  height: 100%;
+  margin-top: 10px;
+}
+
+.zweihander .trappings-content .weapons-armor-and-other-container .common-container .skill.combat-skill {
+  flex: 0 0 115px;
+}
+
+.zweihander .trappings-content .weapons-armor-and-other-container .common-container .title.combat-skill {
+  flex: 0 0 115px;
+}
+
+/* .zweihander .trappings-content .weapons-armor-and-other-container .common-header .title.main {
+  flex: 0 0 141px;
+} */
+
+.zweihander .trappings-content .weapons-armor-and-other-container .common-header .title.main.armor {
+  flex: 0 0 120px;
+}
+
+.zweihander .trappings-content .weapons-armor-and-other-container .common-container .image-and-name {
+  flex: 0 0 135px;
+}
+
+.zweihander .trappings-content .weapons-armor-and-other-container .common-container .image-and-name.armor {
+  flex: 0 0 120px;
+}
+
+.zweihander .trappings-content .weapons-armor-and-other-container .common-container .image-and-name.weapon-attack:hover {
+  text-shadow: 0px 0px 5px red;
+  cursor: pointer;
+}
+
+.zweihander .trappings-content .common-container .skill input[type="checkbox"] {
+  transform: none;
+  margin: 0;
+  width: 12px;
+  height: 12px;
+  margin-top: 4px;
+}
+
+.zweihander .trappings-content .encumbrance-bar-container {
+  /* height: 40px; */
+  border: 1px solid darkgray;
+  border-top: none;
+  /* display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center; */
+  background-color: grey;
+  box-shadow: 0 0 0 5px inset #f8f8f8;
+  padding: 3px;
+}
+
+.zweihander .trappings-content .encumbrance-text {
+  flex: 1;
+  font-family: 'Baskerville Old Face';
+  font-size: 16px;
+  text-align: center;
+  color: white;
+}
+
+.zweihander .trappings-content .encumbrance-text .fill-meter {
+  display: block;
+  text-align: center;
+  transition: 300ms width linear;
+  color: transparent;
+  background: #191813;
+  height: 100%;
+}
+
+.zweihander .trappings-content .common-list {
+  flex: 1;
+}
+
+.zweihander .trappings-content .coinage-and-converter {
+  height: 67px;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.zweihander .trappings-content .coinage-and-converter input[type=number] {
+  width: 100px;
+}
+
+.zweihander .trappings-content .coinage-and-converter .coin-label {
+  font-family: 'Baskerville Old Face';
+  font-size: 14px;
+  font-weight: bold;
+  margin-top: 3px;
+}
+
+.zweihander .trappings-content .coinage-and-converter .coin-and-label {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.zweihander .trappings-content .coinage-and-converter .coinage-container {
+  display: flex;
+  flex-direction: row;
+  flex: 1;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.zweihander .trappings-content .coinage-and-converter .gold-converter {
+  font-family: 'Baskerville Old Face';
+  font-weight: bold;
+  font-size: 15px;
+  flex: 0 0 33.33%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.zweihander .trappings-content .coinage-and-converter .gold-converter .converter-label {
+  margin-top: 3px;
+}
+
+.zweihander .trappings-content .coinage-and-converter .gold-converter .converter-container {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-around;
+}
+
+.zweihander .trappings-content .coinage-and-converter .gold-converter .converter-image {
+  height: 32px;
+  border: none;
+  margin: 0px 5px 0px 5px;
+}
+
+.zweihander .trappings-content .common-header.coins {
+  border: 1px solid darkgray;
+  border-top: none;
+  font-family: 'Baskerville Old Face';
+}
+
+.zweihander .trappings-content .common-header.coins .coin-label-and-input {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+}
+
+.zweihander .trappings-content .common-header.coins .coin-label-and-input input[type="number"] {
+  height: 18px;
+  width: 40px;
+  margin-right: 5px;
+  border-top: 1px solid #A2A3A5;
+  border-left: 1px solid #A2A3A5;
+  border-bottom: 1px solid lightgray;
+  border-right: 1px solid lightgray;
+  background-color: #fbfbfb;
+}
+
+
+.zweihander .trappings-content .common-header.coins .currency-container {
+  flex: 1;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.zweihander .trappings-content .common-header.coins .currency-container.converter {
+  flex: 0 0 120px;
+}
+
+.zweihander .trappings-content .common-header.coins .converter-button {
+  height: 18px;
+  font-size: 14px;
+  font-family: 'Baskerville Old Face';
+  line-height: 0;
+  border: 2px outset lightgray;
+  border-radius: 0;
+}
+
+.zweihander .trappings-content .common-container {
+  height: 364px;
+}
+
+.zweihander .trappings-content .common-container.weapons {
+  /* margin-top: 10px; */
+  height: 358px;
+  /* height: 100%; */
+  border-top: none;
+  /* margin-bottom: 23px; */
+  /* height: 120.5px; */
+}
+
+.zweihander .trappings-content .common-container.armor {
+  /* flex: 0 0 268px; */
+  /* margin-right: 23px; */
+  height: 358px;
+  border-top: none;
+}
+
+.zweihander .trappings-content .common-container.other {
+  height: 358px;
+  /* margin-right: 23px; */
+  border-top: none;
+}
+
+.zweihander .trappings-content .weapons-armor-and-other-container .armor-and-other-container {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  /* background-color: lightgreen; */
+}
+
+.zweihander .trappings-content .weapons-armor-and-other-container {
+  font-family: 'Baskerville Old Face';
+}
+
+.zweihander .afflictions-content {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+}
+
+/* .zweihander .afflictions-content .conditional-effects {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  margin-right: 23px;
+} */
+
+.zweihander .afflictions-content .conditional-effects .individual-condition {
+  display: flex;
+  flex-direction: row;
+  font-family: 'Baskerville Old Face';
+  padding: 5px 0px;
+  /* background-color: lightblue; */
+}
+
+.zweihander .afflictions-content .conditional-effects .individual-condition .checkbox-container {
+  display: flex;
+  flex-direction: column;
+}
+
+.zweihander .afflictions-content .conditional-effects .individual-condition .checkbox-container .aligner-top {
+  flex: 1;
+  display: flex;
+  align-items: flex-start;
+  padding: 2px 5px 0px;
+}
+
+.zweihander .afflictions-content .conditional-effects .individual-condition .checkbox-container .aligner-bottom {
+  flex: 1;
+}
+
+.zweihander .afflictions-content .conditional-effects .individual-condition input[type="checkbox"] {
+  height: 12px;
+  margin: 0;
+  transform: none;
+}
+
+.zweihander .afflictions-content .conditional-effects .individual-condition .condition-and-description-container {
+  display: flex;
+  flex-direction: column;
+}
+
+.zweihander .afflictions-content .conditional-effects .individual-condition .condition-and-description-container .condition {
+  font-size: 14px;
+  text-transform: capitalize;
+  /* font-weight: bold; */
+}
+
+.zweihander .afflictions-content .conditional-effects .individual-condition .condition-and-description-container .description {
+  font-size: 11px;
+}
+
+.zweihander .afflictions-content .conditional-effects .medicine-picture {
+  flex: 0 0 30%;
+  display: flex;
+  flex-direction: column;
+  padding: 5px;
+  margin-top: 23px;
+}
+
+.zweihander .afflictions-content .conditional-effects .medicine-picture img {
+  border: none;
+  height: auto;
+  width: 268px;
+}
+
+.zweihander .afflictions-content .injuries-diseases-and-disorders-container {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+}
+
+.zweihander .afflictions-content .common-container {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  /* background-color: palevioletred; */
+}
+
+.zweihander .afflictions-content .common-container.afflictions {
+  border-top: none;
+}
+
+.zweihander .afflictions-content .common-container.diseases {
+  margin-bottom: 23px;
+}
+
+.zweihander .afflictions-content .common-container.conditional-effects {
+  margin-right: 23px;
+}
+
+.zweihander .afflictions-content .common-list {
+  flex: 1;
+}
+
+.zweihander .afflictions-content .injuries-diseases-and-disorders-container .common-container .individual-injury {
+  display: flex;
+  flex-direction: row;
+  padding: 2px 0px;
+  align-items: center;
+  /* background-color: lightskyblue; */
+}
+
+.zweihander .afflictions-content .injuries-diseases-and-disorders-container .common-container .individual-injury img {
+  border: 1px solid #191813;
+  border-radius: 5px;
+  height: auto;
+  width: 20px;
+  margin-right: 5px;
+  background-color: #191813;
+}
+
+.zweihander .magick-content {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+}
+
+.zweihander .magick-content {
+  font-family: 'Baskerville Old Face';
+}
+
+.zweihander .magick-content .common-header.spell-select {
+  border: 1px solid darkgray;
+  border-top: none;
+  font-family: 'Baskerville Old Face';
+}
+
+.zweihander .magick-content .select-container {
+  flex: 1;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+}
+
+.zweihander .magick-content .select-container select {
+  flex: 1;
+  height: 18px;
+  background: #fbfbfb;
+  border-top: 1px solid #A2A3A5;
+  border-left: 1px solid #A2A3A5;
+  border-bottom: 1px solid lightgray;
+  border-right: 1px solid lightgray;
+  border-radius: 0;
+  padding: 0;
+
+  font-family: 'Baskerville Old Face';
+  font-size: 13px;
+}
+
+.zweihander .magick-content .select-container span {
+  margin-right: 5px;
+}
+
+.zweihander .magick-content .select-container input[type="number"] {
+  height: 18px;
+  width: 40px;
+  border-top: 1px solid #A2A3A5;
+  border-left: 1px solid #A2A3A5;
+  border-bottom: 1px solid lightgray;
+  border-right: 1px solid lightgray;
+  background-color: #fbfbfb;
+  margin-left: 5px;
+
+  cursor: not-allowed;
+  color: darkgray;
+}
+
+.zweihander .individual-trapping-and-description {
+  display: flex;
+  flex-direction: column;
+  /* border: 1px solid grey; */
+  border-bottom: 1px solid gainsboro;
+  /* background: url('../assets/notepad.png'); */
+  background: rgba(0, 0, 0, 0.015);
+  /* margin-top: 5px; */
+  padding: 5px 5px;
+  /* padding: 11px 10px; */
+  /* background-color: #f2f2f2; */
+}
+
+.zweihander .even {
+  background-color: rgb(0, 0, 0, 0.05);
+}
+
+.zweihander .individual-description {
+  display: none;
+}
+
+.zweihander .individual-description .purchased {
+  color: inherit;
+}
+
+.zweihander .individual-description .not-purchased {
+  color: indianred;
+}
+
+.zweihander .individual-description .description-list {
+  display: flex;
+  flex-direction: column;
+  margin-top: 5px;
+  padding: 5px;
+  text-align: justify;
+  /* border: 1px solid #CCCCCC; */
+  /* background-color: gainsboro; */
+  border: 1px solid rgb(0, 0, 0, 0.08);
+  background-color: rgb(0, 0, 0, 0.08);
+}
+
+.zweihander .individual-trapping {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.zweihander .individual-trapping img {
+  border: 1px solid rgba(0, 0, 0, 0.85);
+  border-radius: 5px;
+  height: auto;
+  width: 32px;
+  margin-right: 10px;
+  background-color: rgba(0, 0, 0, 0.85);
+}
+
+.zweihander .controls-container {
+  display: flex;
+  flex-direction: column;
+}
+
+.zweihander .controls-container .controls {
+  /* flex: 1; */
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-end;
+  /* font-size: 12px; */
+  align-items: center;
+}
+
+.zweihander .controls-container .controls a {
+  margin: 0px 2px;
+}
+
+.zweihander .image-and-name {
+  flex: 0 0 135px;
+  text-align: left;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+}
+
+.zweihander .image-and-name.spell-attack {
+  flex: 0 0 135px;
+}
+
+.zweihander .skill {
+  flex: 1;
+  text-align: center;
+}
+
+.zweihander .common-container {
+  border: 1px solid #AAA;
+  display: flex;
+  flex-direction: column;
+  font-family: 'Baskerville Old Face';
+}
+
+.zweihander .common-header {
+  display: flex;
+  flex-direction: row;
+  padding: 5px;
+  justify-content: space-between;
+  background: rgba(0, 0, 0, 0.05);
+  border-bottom: 1px solid #AAA;
+  text-align: left;
+  font-weight: bold;
+  /* background: url('../assets/notepad.png'); */
+  /* box-shadow: inset 0 0 5px 1px rgba(0, 0, 0, 0.05); */
+}
+
+.zweihander .common-header .title {
+  flex: 1;
+  text-align: center;
+}
+
+.zweihander .common-header .title.main {
+  flex: 0 0 135px;
+  text-align: left;
+  /* padding-left: 5px; */
+}
+
+.zweihander .common-header .title.controls {
+  flex: 0 0 40.25px;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+
+  padding-right: 6px;
+}
+
+.zweihander .common-list {
+  /* flex: 1; */
+  display: flex;
+  flex-direction: column;
+  /* border: 1px solid darkgrey; */
+  border-top: none;
+  /* padding: 5px; */
+  padding-top: 0;
+  z-index: 1;
+  overflow-y: scroll;
+  background-color: #fbfbfb;
+  box-shadow: -3px 0px 2px inset darkgrey;
+  /* background: url('../assets/notepad-opacity.png'); */
+}
+
+.zweihander .afflictions-tabs-content {
+  height: 100%;
+}
+
+.zweihander .afflictions-tabs-content .common-container.afflictions {
+  height: 419px;
+}
+
+.zweihander .afflictions-tabs-content .common-list {
+  height: 391px;
+}
+
+.zweihander .magic-tabs-content .common-header .title.main {
+  flex: 0 0 136px;
+}
+
+.zweihander .common-list.magick {
+  /* height: 327.5px; */
+  flex: 1;
+}
+
+.zweihander .magick-content .illustration img {
+  border: none;
+}
+
+.zweihander .magick-content .nav-and-content {
+  order: 1;
+  margin-top: 19px;
+}
+
+.zweihander .magick-tabs-content {
+  /* height: 300.5px; */
+  height: 271.5px;
+}
+
+.zweihander .magick-tabs-content .common-container.magick {
+  border-top: none;
+  height: 100%;
+}
+
+.zweihander .tiers-content {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+}
+
+.zweihander .tiers-content .illustration {
+  display: flex;
+  flex-direction: column;
+}
+
+.zweihander .tiers-content .illustration img {
+  border: none;
+}
+
+.zweihander .tiers-content .professions-and-unique-advances-container {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  /* margin-bottom: 23px; */
+  /* background-color: green; */
+}
+
+.zweihander .common-container .skill input[type="checkbox"] {
+  transform: none;
+  margin: 0;
+  width: 12px;
+  height: 12px;
+  margin-top: 4px;
+}
+
+.zweihander .common-list.professions {
+  flex: 1;
+}
+
+.zweihander .common-list.unique-advances {
+  flex: 1;
+}
+
+.zweihander .common-list.afflictions {
+  flex: 1;
+}
+
+.zweihander .tiers-content .common-container .individual-profession {
+  display: flex;
+  flex-direction: row;
+  padding: 2px 0px;
+  align-items: center;
+  /* background-color: lightskyblue; */
+}
+
+.zweihander .tiers-content .common-container .individual-profession img {
+  border: 1px solid #191813;
+  border-radius: 5px;
+  height: auto;
+  width: 20px;
+  margin-right: 5px;
+  background-color: #191813;
+}
+
+/* -----------------------------V---------------------------- ITEM SHEET -----------------------------V---------------------------- */
+
+.zweihander .item-background {
+  background: url('../assets/notepad.png');
+  height: 100%;
+}
+
+.zweihander .item-sheet-background {
+  height: 100%;
+  background-color: white;
+}
+
+.zweihander .item-sheet-body {
+  height: 100%;
+}
+
+.zweihander .tabs .item-nav-content {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-around;
+}
+
+.zweihander .item-sheet-content {
+  display: flex;
+  flex-direction: row;
+  /* background-color: red; */
+}
+
+.zweihander .item-sheet-content .illustration-container {
+  display: flex;
+  flex-direction: column;
+  flex: 1;
+  height: 100%;
+}
+
+.zweihander .item-sheet-content .illustration-container .illustration {
+  height: auto;
+  /* width: 270px; */
+  border: none;
+}
+
+.zweihander .item-sheet-content .item-sheet-information {
+  display: flex;
+  flex-direction: column;
+  flex: 1;
+  padding-right: 10px;
+  padding-top: 10px;
+  /* padding-left: 10px; */
+  /* background-color: orange; */
+}
+
+.zweihander .item-sheet-content .item-sheet-information .title-and-tabs {
+  display: flex;
+  flex-direction: column;
+  /* background-color: lightblue; */
+}
+
+.zweihander .item-sheet-content .item-sheet-information .title-and-tabs .title {
+  font-family: 'Mon Amour Fraktur Broken';
+  font-size: 32px;
+  text-align: center;
+  margin-bottom: 5px;
+  /* background-color: purple; */
+}
+
+.zweihander .item-sheet-content .item-sheet-information .title-and-tabs .separator {
+  /* padding: 0px 10px; */
+}
+
+.zweihander .item-sheet-content .item-sheet-information .title-and-tabs .separator hr {
+  border: 1px solid black;
+  visibility: hidden;
+}
+
+.zweihander .item-profession-content {
+  padding: 20px;
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+}
+
+.zweihander .item-profession-content .image-and-title-container {
+  display: flex;
+  flex-direction: row;
+  height: 100px;
+}
+
+.zweihander .item-profession-content .image-and-title-container .header-contents {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  /* margin-left: 23px; */
+}
+
+.zweihander .item-profession-content .image-and-title-container .header-contents .title {
+  font-family: 'Mon Amour Fraktur Broken';
+  font-size: 32px;
+  text-align: center;
+}
+
+.zweihander .item-profession-content .profession-illustration {
+  background-color: #191813;
+  border: 1 px solid #191813;
+  border-radius: 5px;
+  width: 100px;
+  height: auto;
+}
+
+.zweihander .item-sheet-body .content {
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+}
+
+.zweihander .item-sheet-body .content .ancestral-modifiers {
+  display: flex;
+  flex-direction: column;
+  height: 50%;
+  /* background-color: yellowgreen; */
+}
+
+.zweihander .item-sheet-body .content .ancestral-modifiers .title {
+  font-size: 14px;
+  font-weight: bold;
+  font-family: 'Baskerville Old Face';
+  /* background-color: aquamarine; */
+}
+
+.zweihander .item-sheet-body .content .ancestral-modifiers .ancestral-modifiers-header {
+  display: flex;
+  flex-direction: row;
+  padding: 5px;
+  justify-content: space-between;
+  background: rgba(0, 0, 0, 0.05);
+  border: 1px solid #AAA;
+  text-align: left;
+  font-weight: bold;
+}
+
+.zweihander .item-sheet-body .content .ancestral-modifiers .modifiers {
+  display: flex;
+  flex-direction: column;
+  flex: 1;
+  padding: 5px;
+  margin-bottom: 10px;
+  overflow-y: scroll;
+  background-color: ghostwhite;
+  border: 1px solid grey;
+  border-top: none;
+  z-index: 1;
+}
+
+.zweihander .item-sheet-body .content .ancestral-modifiers .modifiers .individual-modifier {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  padding: 2px 4px 2px 4px;
+}
+
+.zweihander .item-sheet-body .content .ancestral-modifiers .modifiers .individual-modifier span {
+  margin-left: 5px;
+}
+
+.zweihander .item-sheet-body .content .ancestral-modifiers .modifiers img {
+  border-radius: 5px;
+  background-color: black;
+}
+
+/*------------------------   NPC SHEET SECTION   ------------------------*/
+
+.zweihander .npc.sheet-header {
+  height: 256px;
+}
+
+.zweihander .npc .sheet-body {
+  height: 470px;
+}
+
+.zweihander .npc.sheet-header .header-fields {
+  flex-wrap: wrap;
+  flex-direction: column;
+
+  padding-right: 5px;
+}
+
+.zweihander header.npc.sheet-header {
+  display: flex;
+  flex-direction: column;
+  align-items: unset;
+}
+
+.zweihander .npc .image-and-adv-and-corr-container {
+  display: flex;
+  flex-direction: column;
+  padding-left: 5px;
+  padding-right: 5px;
+  height: 100%;
+}
+
+.zweihander .npc .characteristics-header {
+  display: flex;
+  flex-direction: row;
+  height: 20px;
+  background-color: rgba(0, 0, 0, 0.05);
+  border: 1px solid darkgray;
+  align-items: center;
+  justify-content: center;
+  border-right: none;
+
+  font-family: 'Baskerville Old Face';
+  font-weight: bold;
+}
+
+.zweihander .npc .characteristics-header.bottom {
+  border-top: none;
+}
+.zweihander .npc .characteristics-content {
+  display: flex;
+  flex-direction: row;
+  border: 1px solid darkgray;
+  align-items: center;
+  justify-content: center;
+
+  border-right: none;
+  border-top: none;
+}
+
+.zweihander .npc .individual-characteristic {
+  flex: 1;
+  display: flex;
+  flex-direction: row;
+  height: 20px;
+  /* padding: 2px; */
+  border-right: 1px solid darkgray;
+
+  align-items: center;
+  justify-content: center;
+}
+
+.zweihander .npc .secondary-attribute {
+  background: transparent;
+  width: 100%;
+  height: 100%;
+  border: none;
+  font-family: 'Baskerville Old Face';
+  text-align: center;
+}
+
+.zweihander .npc .characteristic-percentage {
+  background: transparent;
+  width: 100%;
+  min-width: 15px;
+  height: 100%;
+  border: none;
+  border-right: 1px dashed lightgray;
+}
+
+.zweihander .npc .characteristic-bonus {
+  background: transparent;
+  width: 35%;
+  min-width: 15px;
+  height: 100%;
+  border: none;
+}
+
+.zweihander .npc .skill-ranks-container {
+  border: 1px solid darkgray;
+  border-top: none;
+  font-family: 'Baskerville Old Face';
+  padding: 3px;
+  height: 103px;
+  text-align: justify;
+  font-size: 13.5px;
+}
+
+.zweihander .npc .background-and-image-container {
+  flex: 1;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  margin-top: 10px;
+}
+
+.zweihander .npc .background-lines {
+  display: flex;
+  flex-direction: column;
+  flex: 1;
+}
+
+.zweihander .npc .line-one {
+  display: flex;
+  justify-content: space-between;
+  flex-direction: row;
+}
+
+.zweihander .npc .line-two {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  margin-top: 10px;
+}
+
+.zweihander .npc .labeled-input.height input {
+  width: 60px;
+}
+
+.zweihander .npc .labeled-input.build input {
+  width: 71px;
+}
+
+.zweihander .npc .labeled-input.complexion input {
+  width: 105px;
+}
+
+.zweihander .npc .labeled-input.alignment input {
+  width: 85px;
+}
+
+.zweihander .npc .labeled-input.social-class input {
+  width: 90px;
+}
+
+.zweihander .npc .labeled-input.distinguishing-marks input {
+  width: 245px;
+}
+
+.zweihander .npc .labeled-input.manner-of-dress input {
+  width: 110px;
+}
+
+.zweihander .npc .labeled-input.motivation input {
+  width: 225px;
+}
+
+.zweihander .npc .labeled-input.trappings input {
+  width: 100%;
+}
+
+.zweihander .npc .persona {
+  border: 1px solid #7B7C7F;
+  background-color: #eff0f2;
+  border-radius: 0;
+  resize: none;
+  padding: 1px 3px;
+  min-height: 25px;
+  flex: 1;
+  font-family: 'Baskerville Old Face';
+  text-align: justify;
+}
+
+.zweihander .npc .line-two.personality {
+  flex: 1;
+  flex-direction: column;
+}
+
+.zweihander .npc .line-two.personality .input-label {
+  display: block;
+  width: 100%;
+  font-size: 15px;
+  font-family: 'Mon Amour Fraktur Broken';
+}
+
+.zweihander .npc .damage-peril-value {
+  background: transparent;
+  width: 35%;
+  min-width: 15px;
+  height: 100%;
+  border: none;
+  border-right: 1px dashed lightgray;
+}
+
+.zweihander .npc .derived {
+  width: 100%;
+  font-family: 'Baskerville Old Face';
+  text-align: center;
+}
+
+.zweihander .npc .talents-and-attacks-container {
+  flex: 1;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+
+  margin-top: 10px;
+}
+
+.zweihander .npc .talents-and-attacks-container .common-container.attacks {
+  flex: 1;
+  margin-right: 5px;
+}
+
+.zweihander .npc .talents-and-attacks-container .common-container.talents {
+  flex: 1;
+  margin-left: 5px;
+}
+
+.zweihander .npc .talents-and-attacks-container .common-container .title.main {
+  flex: 0 0 100px;
+}
+
+.zweihander .npc.individual-trapping-and-description {
+  display: flex;
+  flex-direction: column;
+  border-bottom: 1px solid gainsboro;
+  background: rgba(0, 0, 0, 0.015);
+  padding: 2px 5px;
+}
+
+.zweihander .npc.image-and-name {
+  flex: 0 0 100px;
+  text-align: left;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+}
+
+.zweihander .npc.common-list {
+  display: flex;
+  flex-direction: column;
+  border-top: none;
+  padding-top: 0;
+  height: 100%;
+  z-index: 1;
+  overflow-y: scroll;
+  background-color: #fbfbfb;
+  box-shadow: -3px 0px 2px inset darkgrey;
+}
+
+.zweihander .npc .trappings-container {
+  margin-top: 10px;
+}

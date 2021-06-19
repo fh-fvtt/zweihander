@@ -1,0 +1,560 @@
+{
+  "Actor": {
+    "types": [
+      "character", "npc", "creature"
+    ],
+    "templates": {
+      "stats": {
+        "stats": {
+          "primaryAttributes": {
+            "combat": {
+              "value": 0,
+              "bonus": 0
+            },
+            "brawn": {
+              "value": 0,
+              "bonus": 0
+            },
+            "agility": {
+              "value": 0,
+              "bonus": 0
+            },
+            "perception": {
+              "value": 0,
+              "bonus": 0
+            },
+            "intelligence": {
+              "value": 0,
+              "bonus": 0
+            },
+            "willpower": {
+              "value": 0,
+              "bonus": 0
+            },
+            "fellowship": {
+              "value": 0,
+              "bonus": 0
+            }
+          },
+          "secondaryAttributes": {
+            "actionPoints" : {
+              "value": 3
+            },
+            "perilThreshold": {
+              "value": 0,
+              "valuePlusSix": 0,
+              "valuePlusTwelve": 0,
+              "valuePlusEighteen": 0
+            },
+            "damageThreshold": {
+              "value": 0,
+              "valuePlusSix": 0,
+              "valuePlusTwelve": 0,
+              "valuePlusEighteen": 0
+            },
+            "perilCurrent": {
+              "value": "5",
+              "description": "Unhindered"
+            },
+            "damageCurrent": {
+              "value": "5",
+              "description": "Unharmed"
+            },
+            "encumbrance": {
+              "value": 0,
+              "overage": 0,
+              "current": 0
+            },
+            "initiative": {
+              "value": 0,
+              "current": 0,
+              "overage": 0
+            },
+            "movement": {
+              "value": 0,
+              "current": 0,
+              "overage": 0
+            },
+            "parry": {
+              "value": 0,
+              "associatedSkill": "Simple Melee"
+            },
+            "dodge": {
+              "value": 0,
+              "associatedSkill": "Coordination"
+            },
+            "magick": {
+              "associatedSkill": "Incantation"
+            }
+          }
+        }
+      },
+      "flavor": {
+        "flavor": {
+          "description": "",
+          "notes": ""
+        }
+      },
+      "coinage": {
+        "coinage": {
+          "gold": 0,
+          "silver": 0,
+          "brass": 0
+        }
+      }
+    },
+    "character": {
+      "templates": [
+        "stats",
+        "flavor",
+        "coinage"
+      ],
+      "testAttribute": [],
+      "socialClass": {
+        "value": ""
+      },
+      "archetype": {
+        "value": ""
+      },
+      "profession": {
+        "value": ""
+      },
+      "seasonOfBirth": {
+        "value": ""
+      },
+      "dooming": {
+        "value": ""
+      },
+      "distinguishingMarks": {
+        "value": ""
+      },
+      "upbringing": {
+        "value": ""
+      },
+      "languages": {
+        "value": ""
+      },
+      "orderAlignment": {
+        "value": ""
+      },
+      "chaosAlignment": {
+        "value": ""
+      },
+      "fate": {
+        "value": 0
+      },
+      "fortune": {
+        "value": 0
+      },
+      "reputation": {
+        "value": 0
+      },
+      "rewardPoints": {
+        "current": 0,
+        "total": 0,
+        "spent": 0
+      },
+      "corruption": {
+        "value": 0
+      },
+      "orderRanks": {
+        "value": 0
+      },
+      "chaosRanks": {
+        "value": 0
+      },
+      "physical": {
+        "age": {
+          "value": ""
+        },
+        "ancestry": {
+          "value": ""
+        },
+        "sex": {
+          "value": ""
+        },
+        "height": {
+          "value": ""
+        },
+        "weight": {
+          "value": ""
+        },
+        "hairColor": {
+          "value": ""
+        },
+        "eyeColor": {
+          "value": ""
+        },
+        "complexion": {
+          "value": ""
+        },
+        "buildType": {
+          "value": ""
+        }
+      }
+    },
+    "npc": {
+      "templates": [
+        "stats"
+      ],
+      "ancestry": {
+        "value": ""
+      },
+      "archetype": {
+        "value": ""
+      },
+      "age": {
+        "value": ""
+      },
+      "sex": {
+        "value": ""
+      },
+      "height": {
+        "value": ""
+      },
+      "build": {
+        "value": ""
+      },
+      "distinguishingMarks": {
+        "value": ""
+      },
+      "complexion": {
+        "value": ""
+      },
+      "socialClass": {
+        "value": ""
+      },
+      "persona": {
+        "value": ""
+      },
+      "motivation": {
+        "value": ""
+      },
+      "alignment": {
+        "value": ""
+      },
+      "mannerOfDress": {
+        "value": ""
+      },
+      "trappings": {
+        "value": "",
+        "arrayOfValues": []
+      },
+      "riskFactor": {
+        "value": ""
+      }
+    }
+  },
+  "Item": {
+    "types": [
+      "trapping", "condition", "injury", "disease", "disorder", "profession", "ancestry", "armor", "weapon", "spell", "ritual", "talent", "trait", "drawback", "quality", "skill", "uniqueAdvance"
+    ],
+    "templates": {
+      "flavor": {
+        "flavor": {
+          "description": ""
+        }
+      },
+      "price": {
+        "price": {
+          "gc": 0,
+          "ss": 0,
+          "bp": 0
+        }
+      },
+      "encumbrance": {
+        "encumbrance": {
+          "value": 0
+        }
+      }
+    },
+    "quality": {
+      "templates": [
+        "flavor"
+      ]
+    },
+    "ancestry": {
+      "templates": [
+        "flavor"
+      ],
+      "ancestralModifiers": {
+        "positive": {
+          "value": "",
+          "arrayOfValues": []
+        },
+        "negative": {
+          "value": "",
+          "arrayOfValues": []
+        }
+      },
+      "ancestralTrait": {
+        "value": ""
+      }
+    },
+    "drawback": {
+      "templates": [
+        "flavor"
+      ],
+      "effect": {
+        "value": ""
+      }
+    },
+    "trait": {
+      "templates": [
+        "flavor"
+      ],
+      "effect": {
+        "value": ""
+      }
+    },
+    "weapon": {
+      "templates": [
+        "flavor", "price", "encumbrance"
+      ],
+      "type": {
+        "value": ""
+      },
+      "equipped": false,
+      "associatedSkill": {
+        "value": "simpleMelee",
+        "label": "Simple Melee"
+      },
+      "load": {
+        "value": 0
+      },
+      "qualities": {
+        "value": "",
+        "arrayOfValues": []
+      },
+      "distance": {
+        "value": ""
+      },
+      "damage": {
+        "formula": "",
+        "associatedPrimaryAttribute": "Combat" 
+      }
+    },
+    "armor": {
+      "templates": [
+        "flavor", "price", "encumbrance"
+      ],
+      "equipped": false,
+      "qualities": {
+        "value": "",
+        "arrayOfValues": []
+      },
+      "damageThresholdModifier": {
+        "value": 0
+      }
+    },
+    "trapping": {
+      "templates": [
+        "flavor", "price", "encumbrance"
+      ],
+      "category": {
+        "value": ""
+      },
+      "quantity": {
+        "value": 0
+      },
+      "encumbrance": {
+        "value": 0
+      },
+      "carried": false
+    },
+    "profession": {
+      "templates": [
+        "flavor"
+      ],
+      "expert": {
+        "value": false,
+        "requirements": ""
+      },
+      "archetype": {
+        "value": ""
+      },
+      "bonusAdvances": {
+        "value": "",
+        "arrayOfValues": []
+      },
+      "skillRanks": {
+        "value": "",
+        "arrayOfValues": []
+      },
+      "talents": {
+        "value": "",
+        "arrayOfValues": []
+      },
+      "professionalTrait": {
+        "value": ""
+      },
+      "specialTrait": {
+        "value": ""
+      },
+      "drawback": {
+        "value": ""
+      },
+      "tier": {
+        "value": "",
+        "completed": false,
+        "advancesPurchased": 0
+      }
+    },
+    "spell": {
+      "templates": [
+        "flavor"
+      ],
+      "tradition": {
+        "value": ""
+      },
+      "principle": {
+        "value": ""
+      },
+      "distance": {
+        "value": ""
+      },
+      "reagents": {
+        "value": ""
+      },
+      "duration": {
+        "value": ""
+      },
+      "effect": {
+        "value": "",
+        "criticalSuccess": "",
+        "criticalFailure": ""
+      }
+    }, 
+    "ritual": {
+      "templates": [
+        "flavor"
+      ],
+      "difficulty": {
+        "value": ""
+      },
+      "consequences": {
+        "value": ""
+      },
+      "channelAs": {
+        "value": ""
+      },
+      "condition": {
+        "value": ""
+      },
+      "reagents": {
+        "value": ""
+      },
+      "castingTime": {
+        "value": ""
+      },
+      "effect": {
+        "value": ""
+      }
+    },
+    "skill": {
+      "templates": [
+        "flavor"
+      ],
+      "requiresTraining": false,
+      "associatedPrimaryAttribute": {
+        "value": ""
+      },
+      "ranks": {
+        "apprentice": {
+          "purchased": false,
+          "tierOfPurchase": ""
+        },
+        "journeyman": {
+          "purchased": false,
+          "tierOfPurchase": ""
+        },
+        "master": {
+          "purchased": false,
+          "tierOfPurchase": ""
+        },
+        "bonus": 0
+      },
+      "focuses": {
+        "value": "",
+        "arrayOfValues": []
+      }
+    },
+    "talent": {
+      "templates": [
+        "flavor"
+      ],
+      "effect": {
+        "value": ""
+      },
+      "purchased": false
+    },
+    "uniqueAdvance": {
+      "templates": [
+        "flavor"
+      ],
+      "type": {
+        "value": ""
+      },
+      "rewardPointCost": {
+        "value": 0
+      },
+      "associatedFocusSkill": {
+        "value": ""
+      }
+    },
+    "disease": {
+      "templates": [
+        "flavor"
+      ],
+      "resist": {
+        "value": ""
+      },
+      "duration": {
+        "value": ""
+      },
+      "effect": {
+        "value": ""
+      },
+      "treatment": {
+        "value": ""
+      },
+      "active": false
+    },
+    "disorder": {
+      "templates": [
+        "flavor"
+      ],
+      "category": {
+        "value": ""
+      },
+      "effect": {
+        "value": ""
+      },
+      "active": false
+    },
+    "injury": {
+      "templates": [
+        "flavor"
+      ],
+      "severity": {
+        "value": ""
+      },
+      "effect": {
+        "value": ""
+      },
+      "active": false
+    },
+    "condition": {
+      "templates": [
+        "flavor"
+      ],
+      "category": {
+        "value": ""
+      },
+      "effect": {
+        "value": ""
+      },
+      "active": false
+    }
+  }
+}

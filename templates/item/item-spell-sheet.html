@@ -1,0 +1,28 @@
+<form class="{{cssClass}}" autocomplete="off">
+    <header class="sheet-header">
+        <img class="profile-img" src="{{img}}" data-edit="img" title="{{name}}"/>
+        <div class="header-fields">
+            <h1 class="charname"><input name="name" type="text" value="{{name}}" placeholder="Name"/></h1>
+        </div>
+    </header>
+
+
+    {{!-- Sheet Body --}}
+    <section class="sheet-body">
+
+        {{!-- Description Tab --}}
+        <div class="tab">
+            <span>{{data.flavor.description}}</span>
+            <br />
+            <br />
+            Distance: <input type="text" name="data.distance.value" value="{{data.distance.value}}" />
+            Tradition: <input type="text" name="data.tradition.value" value="{{data.tradition.value}}" />
+            Principle: <input type="text" name="data.principle.value" value="{{data.principle.value}}" />
+            Reagents: <input type="text" name="data.reagents.value" value="{{data.reagents.value}}" />
+            Duration: <input type="text" name="data.duration.value" value="{{data.duration.value}}" />
+            Effect: <input type="text" name="data.effect.value" value="{{data.effect.value}}" />
+            Crit. Hit: <input type="text" name="data.effect.criticalSuccess.value" value="{{data.effect.criticalSuccess.value}}" />
+            Crit. Fail: <input type="text" name="data.effect.criticalFailure.value" value="{{data.effect.criticalFailure.value}}" />
+        </div>
+    </section>
+</form>

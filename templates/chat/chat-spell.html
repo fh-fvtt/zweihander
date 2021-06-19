@@ -1,0 +1,71 @@
+<section class="content">
+  <div class="image-and-title">
+    <img class="chat-profile-image" src="{{image}}" />
+    <div class="title spell link-details">
+      <span>{{spellName}}</span>
+      <span class="subtitle">{{skill}} ♦ {{difficultyRating.label}}</span>
+    </div>
+  </div>
+
+  <div class="roll-details">
+    <div class="row even bottom-separator">
+      <strong>Flip:</strong><span> {{generateFlipText flip}}</span>
+    </div>
+
+    <div class="row odd">
+      <strong>Base Chance:</strong><span> {{baseChance}}% ({{attributeChance}}[{{primaryAttribute}}]{{#if rankBonus}} +
+        {{rankBonus}}[Skill Ranks]{{/if}}{{#if perilPenalty}} - {{perilPenalty}}[Peril]{{/if}})</span>
+    </div>
+
+    <div class="row even">
+      <strong>Channel Power Bonus:</strong><span> {{#if channelPowerBonus}}+{{channelPowerBonus}}%{{else}}+/-0%{{/if}}</span>
+    </div>
+
+    <div class="row odd">
+      <strong>Total Chance:</strong><span> {{totalChance}}%</span>
+    </div>
+  </div>
+
+  <div class="spell-flavor">
+    <span><em>{{flavor}}</em></span>
+  </div>
+
+  <div class="spell-effects">
+    <div class="row even">
+      <strong>Principle:</strong> {{principle}}
+    </div>
+
+    <div class="row odd">
+      <strong>Tradition:</strong> {{tradition}}
+    </div>
+
+    <div class="row even">
+      <strong>Reagents:</strong> {{reagents}}
+    </div>
+
+    <div class="row odd">
+      <strong>Duration:</strong> <span class="parse-formula">{{duration}}</span>
+    </div>
+    
+    <div class="row even">
+      <strong>Effect:</strong> {{effect.value}}
+    </div>
+
+    {{#checkCriticalSuccess testResult}}
+      <div class="row odd top-separator">
+        <strong>Critical Success Effect:</strong> {{effect.criticalSuccess.value}}
+      </div>
+    {{else}}
+      {{#checkCriticalFailure testResult}}
+        <div class="row odd top-separator">
+          <strong>Critical Failure Effect:</strong> {{effect.criticalFailure.value}}
+        </div>
+      {{else}}
+      {{/checkCriticalFailure}}
+    {{/checkCriticalSuccess}}
+  </div>
+
+  <div class="roll-results">
+    <span>{{generateResultText testResult roll totalChance showFlip}} {{#if channelPowerBonus}} <span>→</span> {{displayIndividualDice chaosDice " + "}}{{/if}}</span>
+  </div>
+</section>
