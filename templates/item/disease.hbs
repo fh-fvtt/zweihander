@@ -1,0 +1,29 @@
+<div class="form-group">
+  <label>Resist</label>
+  <input  name="data.resist.value" type="text" value="{{data.resist.value}}">
+</div>
+
+<div class="form-group">
+  <label>Duration</label>
+  <input  name="data.duration.value" type="text" value="{{data.duration.value}}">
+</div>
+
+<div class="form-group stacked">
+  <label><a class="open-editor">Effect <i class="fa fa-edit"></i></a></label>
+  <div class="zh-editor-preview open">{{{markdownIt data.effect.value}}}</div>
+  {{editor content=data.effect.value target="data.effect.value" button=true owner=owner editable=editable}}
+</div>
+
+<div class="form-group stacked">
+  <label><a class="open-editor">Treatment <i class="fa fa-edit"></i></a></label>
+  <div class="zh-editor-preview open">{{{markdownIt data.treatment.value}}}</div>
+  {{editor content=data.treatment.value target="data.treatment.value" button=true owner=owner editable=editable}}
+</div>
+
+<div class="form-group stacked">
+  <label>Status</label>
+  <label class="checkbox">
+    <input name="data.active" type="checkbox" class="link-checkbox" {{checked data.active}} />
+    Currently in Effect
+  </label>
+</div>

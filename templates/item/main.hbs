@@ -1,0 +1,31 @@
+<form class="{{cssClass}} flexcol" autocomplete="off">
+  <header class="sheet-header item-sheet-draggable flexrow">
+    <div class="profile">
+      <div class="profile-image {{itemImageClass img}}" style="{{itemImageStyle img}}"></div>
+    </div>
+    <div class="header-details flexrow">
+      <h1 class="itemname">
+        <input name="name" type="text" value="{{name}}" placeholder="{{capitalize type}} Name">
+      </h1>
+      <div class="item-subtitle">
+        {{capitalize type}}
+      </div>
+    </div>
+  </header>
+  <nav class="sheet-navigation tabs" data-group="primary">
+    <a class="item" data-tab="details">Details</a>
+    <a class="item" data-tab="description">Description</a>
+    <a class="item" data-tab="notes">Notes</a>
+  </nav>
+  <section class="sheet-body">
+    <div class="tab tab-details flexcol" data-group="primary" data-tab="details">
+      {{> (itemTemplatePath type)}}
+    </div>
+    <div class="tab tab-description flexcol" data-group="primary" data-tab="description">
+      {{editor content=data.flavor.description target="data.flavor.description" button=true owner=owner editable=editable}}
+    </div>
+    <div class="tab tab-notes flexcol" data-group="primary" data-tab="notes">
+      {{editor content=data.flavor.notes target="data.flavor.notes" button=true owner=owner editable=editable}}
+    </div>
+  </section>
+</form>

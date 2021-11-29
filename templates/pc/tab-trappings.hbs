@@ -1,0 +1,175 @@
+<div class="tab trappings flexcol" data-group="primary" data-tab="trappings">
+  <div class="currency-container flexrow">
+    <div class="currency-gc flexcol">
+      <input class="coin-input brass" type="number" name="data.coinage.gold" value="{{data.coinage.gold}}"
+        placeholder="0" />
+      <span><i class="fas fa-coins"></i> Gold Coins</span>
+    </div>
+    <div class="currency-ss flexcol">
+      <input class="coin-input brass" type="number" name="data.coinage.silver" value="{{data.coinage.silver}}"
+        placeholder="0" />
+      <span><i class="fas fa-coins"></i> Silver Shilling</span>
+    </div>
+    <div class="currency-bp flexcol">
+      <input class="coin-input brass" type="number" name="data.coinage.brass" value="{{data.coinage.brass}}"
+        placeholder="0" />
+      <span><i class="fas fa-coins"></i> Brass Pennies</span>
+    </div>
+    <div class="flexcol">
+      <button style="visibility:hidden" class="currency-converter zweihander-button" type="button"><i class="fa fa-exchange-alt"></i> Exchange</button>
+      <span class="exchange-rates">
+        1 <i class="fas fa-coins currency-gc"></i> = 20 <i class="fas fa-coins currency-ss"></i> = 240 <i class="fas fa-coins currency-bp"></i>
+      </span>
+    </div>
+    
+  </div>
+  <ol class="items-list weapon-list">
+    <li class="items-header flexrow">
+      <h3 class="item-name">Weapons</h3>
+
+      <div class="item-detail it-completed">Distance</div>
+      <div class="item-detail it-completed">Load</div>
+      <div class="item-detail it-completed">Enc.</div>
+      <div class="item-detail it-completed">Equipped</div>
+      <div class="item-controls"><a class="add-new" data-item-type="weapon" title="Add New Weapon"><i
+            class="fa fa-plus"></i> Add</a></div>
+    </li>
+    <ol class="item-list">
+      {{#each weapons as | weapon idx |}}
+      <li class="item flexrow" data-item-id="{{weapon._id}}">
+        <div class="item-name fetch-item flexrow rollable">
+          <div class="{{itemImageClass weapon.img}} weapon-roll" tabindex="0" role="button" aria-label="{{weapon.name}}"
+            style="{{itemImageStyle weapon.img}}" data-roll="1d100"
+            data-label="{{weapon.data.associatedSkill.value}}">
+          </div>
+          <h4 class="js-show-item-description">{{weapon.name}}</h4>
+        </div>
+        <div class="item-detail it-completed fetch-property">{{weapon.data.distance.value}}</div>
+        <div class="item-detail it-completed">{{weapon.data.load.value}}</div>
+        <div class="item-detail it-completed">{{weapon.data.encumbrance.value}}</div>
+        <div class="item-detail it-completed">
+          <input id="{{weapon._id}}" type="checkbox" class="zweihander-checkbox link-checkbox" {{checked weapon.data.equipped}} />
+          <label for="{{weapon._id}}"></label>
+        </div>
+        <div class="item-controls flexrow">
+          <a class="item-control item-post" title="Post Item to Chat"><i class="fas fa-comment fa-fw fa-xs"></i></a>
+          <a class="item-control item-edit" title="Edit Item"><i class="fas fa-pencil-alt fa-fw fa-xs"></i></a>
+          <a class="item-control item-delete" title="Delete Item"><i class="fas fa-trash-alt fa-fw fa-xs"></i></a>
+        </div>
+        <div class="item-summary individual-description save-toggle-weapons">
+          <span class="item-summary-longform">
+            <label>Damage:</label> {{weapon.data.damage.formula}} +
+            {{weapon.data.damage.primaryAttributeBonus}}[{{weapon.data.damage.associatedPrimaryAttribute}} Bonus]<br />
+            <label>Skill:</label> {{weapon.data.associatedSkill.value}}<br />
+            <label>Type:</label> {{weapon.data.type.value}}<br />
+            <label>Qualities: </label>
+            {{#isMissing weapon.data.qualities.arrayOfValues}}
+            {{#each weapon.data.qualities.arrayOfValues as | qualityData idx |}}
+            <a class="js-display-quality">{{qualityData}}</a>{{#unless @last}}<span>, </span>{{/unless}}
+            {{/each}}
+            {{else}}
+            <span> - </span>
+            {{/isMissing}} <br/ >
+            <i class="fas fa-coins currency-gc"></i> {{weapon.data.price.gc}}
+            <i class="fas fa-coins currency-ss"></i> {{weapon.data.price.ss}} 
+            <i class="fas fa-coins currency-bp"></i> {{weapon.data.price.bp}} 
+          </span>
+        </div>
+      </li>
+      {{/each}}
+    </ol>
+    <li class="items-header flexrow">
+      <h3 class="item-name">Armors</h3>
+      <div class="item-detail it-completed">DTM</div>
+      <div class="item-detail it-completed">Enc.</div>
+      <div class="item-detail it-completed">Equipped</div>
+      <div class="item-controls"><a class="add-new" data-item-type="armor" title="Add New Armor"><i
+            class="fa fa-plus"></i> Add</a></div>
+    </li>
+    <ol class="item-list">
+      {{#each armor as | armor idx |}}
+      <li class="item flexrow" data-item-id="{{armor._id}}">
+        <div class="item-name js-show-item-description fetch-item flexrow">
+          <div class="{{itemImageClass armor.img}}" tabindex="0" role="button" aria-label="{{armor.name}}"
+            style="{{itemImageStyle armor.img}}"></div>
+          <h4>{{armor.name}}</h4>
+        </div>
+        <div class="item-detail it-completed">{{armor.data.damageThresholdModifier.value}}</div>
+        <div class="item-detail it-completed">{{armor.data.encumbrance.value}}</div>
+        <div class="item-detail it-completed">
+          <input id="{{armor._id}}" type="checkbox" class="zweihander-checkbox link-checkbox" {{checked armor.data.equipped}} />
+          <label for="{{armor._id}}"></label>
+        </div>
+        <div class="item-controls flexrow">
+          <a class="item-control item-post" title="Post Item to Chat"><i class="fas fa-comment fa-fw fa-xs"></i></a>
+          <a class="item-control item-edit" title="Edit Item"><i class="fas fa-pencil-alt fa-fw fa-xs"></i></a>
+          <a class="item-control item-delete" title="Delete Item"><i class="fas fa-trash-alt fa-fw fa-xs"></i></a>
+        </div>
+        <div class="item-summary individual-description save-toggle-armors">
+          <span class="item-summary-longform">
+            <label>Qualities: </label>
+            {{#isMissing armor.data.qualities.arrayOfValues}}
+            {{#each armor.data.qualities.arrayOfValues as | qualityData idx |}}
+            <a class="js-display-quality">{{qualityData}}</a>{{#unless @last}}<span>, </span>{{/unless}}
+            {{/each}}
+            {{else}}
+            <span> - </span>
+            {{/isMissing}} <br/ >
+            <i class="fas fa-coins currency-gc"></i> {{armor.data.price.gc}}
+            <i class="fas fa-coins currency-ss"></i> {{armor.data.price.ss}} 
+            <i class="fas fa-coins currency-bp"></i> {{armor.data.price.bp}} 
+          </span>
+        </div>
+      </li>
+      {{/each}}
+    </ol>
+    <li class="items-header flexrow">
+      <h3 class="item-name">Trappings</h3>
+      <div class="item-detail it-category">Category</div>
+      <div class="item-detail it-completed">Qty.</div>
+      <div class="item-detail it-completed">Enc.</div>
+      <div class="item-detail it-completed">Carried</div>
+      <div class="item-controls"><a class="add-new" data-item-type="trapping" title="Add New Trapping"><i
+            class="fa fa-plus"></i> Add</a></div>
+    </li>
+    <ol class="item-list">
+      {{#each trappings as | trapping idx |}}
+      <li class="item flexrow" data-item-id="{{trapping._id}}">
+        <div class="item-name js-show-item-description fetch-item flexrow">
+          <div class="{{itemImageClass trapping.img}}" tabindex="0" role="button" aria-label="{{trapping.name}}"
+            style="{{itemImageStyle trapping.img}}"></div>
+          <h4>{{trapping.name}}</h4>
+        </div>
+        <div class="item-detail it-category">{{trapping.data.category.value}}</div>
+        <div class="item-detail it-completed">{{trapping.data.quantity.value}}</div>
+        <div class="item-detail it-completed">{{trapping.data.encumbrance.value}}</div>
+        <div class="item-detail it-completed">
+          <input id="{{trapping._id}}" type="checkbox" class="zweihander-checkbox link-checkbox" {{checked trapping.data.carried}} />
+          <label for="{{trapping._id}}"></label>
+        </div>
+        <div class="item-controls flexrow">
+          <a class="item-control item-post" title="Post Item to Chat"><i class="fas fa-comment fa-fw fa-xs"></i></a>
+          <a class="item-control item-edit" title="Edit Item"><i class="fas fa-pencil-alt fa-fw fa-xs"></i></a>
+          <a class="item-control item-delete" title="Delete Item"><i class="fas fa-trash-alt fa-fw fa-xs"></i></a>
+        </div>
+        <div class="item-summary individual-description save-toggle-trappings">
+          <span class="item-summary-longform">
+            <i class="fas fa-coins currency-gc"></i> {{trapping.data.price.gc}}
+            <i class="fas fa-coins currency-ss"></i> {{trapping.data.price.ss}} 
+            <i class="fas fa-coins currency-bp"></i> {{trapping.data.price.bp}} <br />
+            <label>Description:</label> {{{markdownIt trapping.data.flavor.description}}}
+          </span>
+        </div>
+      </li>
+      {{/each}}
+    </ol>
+  </ol>
+  <div class="encumbrance-bar-container">
+      <span class="encumbrance-bar"></span>
+      <span class="encumbrance-label">Encumbrance: {{data.stats.secondaryAttributes.encumbrance.current}} / {{data.stats.secondaryAttributes.encumbrance.value}} <span class="overage-display">(Overage: {{data.stats.secondaryAttributes.encumbrance.overage}})</span></span>
+      <i class="encumbrance-breakpoint encumbrance-33 arrow-up"></i>
+      <i class="encumbrance-breakpoint encumbrance-33 arrow-down"></i>
+      <i class="encumbrance-breakpoint encumbrance-66 arrow-up"></i>
+      <i class="encumbrance-breakpoint encumbrance-66 arrow-down"></i>
+  </div>
+</div>

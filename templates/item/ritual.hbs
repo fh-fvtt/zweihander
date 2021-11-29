@@ -1,0 +1,35 @@
+<div class="form-group">
+  <label>Casting Time</label>
+  <input  name="data.castingTime.value" type="text" value="{{data.castingTime.value}}">
+</div>
+
+<div class="form-group">
+  <label>Reagents</label>
+  <input  name="data.reagents.value" type="text" value="{{data.reagents.value}}">
+</div>
+
+<div class="form-group">
+  <label>Condition</label>
+  <input  name="data.condition.value" type="text" value="{{data.condition.value}}">
+</div>
+
+<div class="form-group">
+  <label>Channel Power As</label>
+  <input  name="data.channelAs.value" type="text" value="{{data.channelAs.value}}">
+</div>
+
+<div class="form-group">
+  <label>Difficulty</label>
+  <input  name="data.difficulty.value" type="text" value="{{data.difficulty.value}}">
+</div>
+
+<div class="form-group">
+  <label>Consequences</label>
+  <input  name="data.consequences.value" type="text" value="{{data.consequences.value}}">
+</div>
+
+<div class="form-group stacked">
+  <label><a class="open-editor">Effect <i class="fa fa-edit"></i></a></label>
+  <div class="zh-editor-preview open">{{{markdownIt data.effect.value}}}</div>
+  {{editor content=data.effect.value target="data.effect.value" button=true owner=owner editable=editable}}
+</div>

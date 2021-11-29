@@ -1,0 +1,199 @@
+:root {
+
+  --zx-clr-dark0: #282828;
+  --zx-clr-dark1: #3c3836;
+  --zx-clr-dark2: #504945;
+  --zx-clr-dark3: #665c54;
+  --zx-clr-dark4: #7c6f64;
+
+  --zx-clr-gray: #928374;
+
+  --zx-clr-bright0: #fbf1c7;
+  --zx-clr-bright1: #ebdbb2;
+  --zx-clr-bright2: #d5c4a1;
+  --zx-clr-bright3: #bdae93;
+  --zx-clr-bright4: #a89984;
+
+  --zx-clr-red-bright: #fb4934;
+  --zx-clr-green-bright: #b8bb26;
+  --zx-clr-yellow-bright: #fabd2f;
+  --zx-clr-blue-bright: #83a598;
+  --zx-clr-purple-bright: #d3869b;
+  --zx-clr-aqua-bright: #8ec07c;
+  --zx-clr-orange-bright: #fe8019;
+
+  --zx-clr-red-neutral: #cc241d;
+  --zx-clr-green-neutral: #98971a;
+  --zx-clr-yellow-neutral: #d79921;
+  --zx-clr-blue-neutral: #458588;
+  --zx-clr-purple-neutral: #b16286;
+  --zx-clr-aqua-neutral: #689d6a;
+  --zx-clr-orange-neutral: #d65d0e;
+
+  --zx-clr-red-faded: #9d0006;
+  --zx-clr-green-faded: #79740e;
+  --zx-clr-yellow-faded: #b57614;
+  --zx-clr-blue-faded: #076678;
+  --zx-clr-purple-faded: #8f3f71;
+  --zx-clr-aqua-faded: #427b58;
+  --zx-clr-orange-faded: #af3a03;
+
+  --zx-font-title: "Dominican Small Caps" !important;
+  --zx-font-default: "Adobe Caslon Pro" !important;
+}
+
+.zweihander-theme-gruvbox-light {
+  --zx-clr-fg0: var(--zx-clr-dark0);
+  --zx-clr-fg1: var(--zx-clr-dark1);
+  --zx-clr-fg2: var(--zx-clr-dark2);
+  --zx-clr-fg3: var(--zx-clr-dark3);
+  --zx-clr-fg4: var(--zx-clr-dark4);
+
+  --zx-clr-bg0: var(--zx-clr-bright0);
+  --zx-clr-bg1: var(--zx-clr-bright1);
+  --zx-clr-bg2: var(--zx-clr-bright2);
+  --zx-clr-bg3: var(--zx-clr-bright3);
+  --zx-clr-bg4: var(--zx-clr-bright4);
+
+  --zx-clr-red: var(--zx-clr-red-faded);
+  --zx-clr-green: var(--zx-clr-green-faded);
+  --zx-clr-yellow: var(--zx-clr-yellow-faded);
+  --zx-clr-blue: var(--zx-clr-blue-faded);
+  --zx-clr-purple: var(--zx-clr-purple-faded);
+  --zx-clr-aqua: var(--zx-clr-aqua-faded);
+  --zx-clr-orange: var(--zx-clr-orange-faded);
+
+  --zx-clr-red-alt: var(--zx-clr-red-neutral);
+  --zx-clr-green-alt: var(--zx-clr-green-neutral);
+  --zx-clr-yellow-alt: var(--zx-clr-yellow-neutral);
+  --zx-clr-blue-alt: var(--zx-clr-blue-neutral);
+  --zx-clr-purple-alt: var(--zx-clr-purple-neutral);
+  --zx-clr-aqua-alt: var(--zx-clr-aqua-neutral);
+  --zx-clr-orange-alt: var(--zx-clr-orange-neutral);
+
+  --zx-clr-bg0-rgb: 251, 241, 199;
+  --zx-clr-accent-rgb: 121, 116, 14;
+}
+
+.zweihander-theme-gruvbox-dark {
+  --zx-clr-fg0: var(--zx-clr-bright0);
+  --zx-clr-fg1: var(--zx-clr-bright1);
+  --zx-clr-fg2: var(--zx-clr-bright2);
+  --zx-clr-fg3: var(--zx-clr-bright3);
+  --zx-clr-fg4: var(--zx-clr-bright4);
+
+  --zx-clr-bg0: var(--zx-clr-dark0);
+  --zx-clr-bg1: var(--zx-clr-dark1);
+  --zx-clr-bg2: var(--zx-clr-dark2);
+  --zx-clr-bg3: var(--zx-clr-dark3);
+  --zx-clr-bg4: var(--zx-clr-dark4);
+
+  --zx-clr-red: var(--zx-clr-red-bright);
+  --zx-clr-green: var(--zx-clr-green-bright);
+  --zx-clr-yellow: var(--zx-clr-yellow-bright);
+  --zx-clr-blue: var(--zx-clr-blue-bright);
+  --zx-clr-purple: var(--zx-clr-purple-bright);
+  --zx-clr-aqua: var(--zx-clr-aqua-bright);
+  --zx-clr-orange: var(--zx-clr-orange-bright);
+
+  --zx-clr-red-alt: var(--zx-clr-red-neutral);
+  --zx-clr-green-alt: var(--zx-clr-green-neutral);
+  --zx-clr-yellow-alt: var(--zx-clr-yellow-neutral);
+  --zx-clr-blue-alt: var(--zx-clr-blue-neutral);
+  --zx-clr-purple-alt: var(--zx-clr-purple-neutral);
+  --zx-clr-aqua-alt: var(--zx-clr-aqua-neutral);
+  --zx-clr-orange-alt: var(--zx-clr-orange-neutral);
+
+  --zx-clr-bg0-rgb: 40, 40, 40;
+  --zx-clr-accent-rgb: 184, 187, 38;
+}
+
+@font-face {
+  font-family: "Adobe Caslon Pro";
+  font-style: normal;
+  font-weight: normal;
+  src: url("./fonts/caslon-pro-regular.woff2") format("woff2");
+}
+
+@font-face {
+  font-family: "Adobe Caslon Pro";
+  font-style: normal;
+  font-weight: bold;
+  src: url("./fonts/caslon-pro-bold.woff2") format("woff2");
+}
+
+@font-face {
+  font-family: "Adobe Caslon Pro";
+  font-style: italic;
+  font-weight: normal;
+  src: url("./fonts/caslon-pro-italic.woff2") format("woff2");
+}
+
+@font-face {
+  font-family: "Dominican Small Caps";
+  font-style: normal;
+  font-weight: normal;
+  src: url("./fonts/dominican-small-caps.woff2") format("woff2");
+}
+
+// zweihander logo
+#ui-left #logo {
+    content: resolve("logo.png");
+    filter: saturate(0) brightness(0.15) drop-shadow(0px 0px 3px var(--zx-clr-fg0));
+}
+
+.currency-gc {
+  --currency-color: var(--zx-clr-yellow);
+  color: var(--currency-color);
+}
+
+.currency-ss {
+  --currency-color: var(--zx-clr-gray);
+  color: var(--currency-color);
+}
+
+.currency-bp {
+  --currency-color: var(--zx-clr-orange-alt);
+  color: var(--currency-color);
+}
+
+.zweihander-theme-gruvbox-dark .app.zweihander {
+  div.editor {
+    color: var(--zx-clr-fg0);
+    button {
+      color: var(--zx-clr-fg3);
+      &:hover, &.active {
+        box-shadow: none;
+        text-shadow: none;
+        background: none;
+        color: var(--zx-clr-yellow);
+        border: 1px solid var(--zx-clr-yellow);
+      }
+    }
+    .cm-quote-1 {
+      color: var(--zx-clr-fg2);
+    }
+    .cm-link,
+    .cm-url {
+      color: var(--zx-clr-yellow);
+    }
+    .editor-toolbar.fullscreen,
+    .CodeMirror-fullscreen.cm-s-easymde,
+    .CodeMirror-fullscreen.editor-preview-active,
+    .editor-preview-side {
+      background: var(--zx-clr-bg0);
+    }
+  }
+}
+
+.sheet-body {
+  height: 100%;
+}
+
+.editor {
+  height: 100%;
+}
+
+div.editor .CodeMirror-vscrollbar {
+  overflow-y:auto;
+}

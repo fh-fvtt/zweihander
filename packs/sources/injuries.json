@@ -1,0 +1,950 @@
+[
+  {
+    "name": "Black Eye",
+    "type": "injury",
+    "img": "icons/svg/item-bag.svg",
+    "data": {
+      "flavor": {
+        "description": ""
+      },
+      "severity": {
+        "value": "Moderate"
+      },
+      "effect": {
+        "value": "Until fully Recuperated, you must flip the results to fail Skill Tests which rely on vision."
+      },
+      "active": false
+    },
+    "effects": [],
+    "sort": 0,
+    "flags": {
+      "exportSource": {
+        "world": "talron2",
+        "system": "zweihander",
+        "coreVersion": "0.8.9",
+        "systemVersion": "0.3.30"
+      }
+    }
+  },
+  {
+    "name": "Broken Rib",
+    "type": "injury",
+    "img": "icons/svg/item-bag.svg",
+    "data": {
+      "flavor": {
+        "description": ""
+      },
+      "severity": {
+        "value": "Serious"
+      },
+      "effect": {
+        "value": "Your armor gains the Ruined! Quality. Until fully Recuperated, you cannot add Skill Ranks to Combat, Brawn or Agility-based Skills."
+      },
+      "active": false
+    },
+    "effects": [],
+    "sort": 0,
+    "flags": {
+      "core": {
+        "sourceId": "Item.SLJ7uR91MyXFfvsN"
+      },
+      "exportSource": {
+        "world": "talron2",
+        "system": "zweihander",
+        "coreVersion": "0.8.9",
+        "systemVersion": "0.3.30"
+      }
+    }
+  },
+  {
+    "name": "Bruised Ribs",
+    "type": "injury",
+    "img": "icons/svg/item-bag.svg",
+    "data": {
+      "flavor": {
+        "description": ""
+      },
+      "severity": {
+        "value": "Moderate"
+      },
+      "effect": {
+        "value": "Until fully Recuperated, reduce your Encumbrance Limit by 3."
+      },
+      "active": false
+    },
+    "effects": [],
+    "sort": 0,
+    "flags": {
+      "core": {
+        "sourceId": "Item.SLJ7uR91MyXFfvsN"
+      },
+      "exportSource": {
+        "world": "talron2",
+        "system": "zweihander",
+        "coreVersion": "0.8.9",
+        "systemVersion": "0.3.30"
+      }
+    }
+  },
+  {
+    "name": "Busted Kneecap",
+    "type": "injury",
+    "img": "icons/svg/item-bag.svg",
+    "data": {
+      "flavor": {
+        "description": ""
+      },
+      "severity": {
+        "value": "Serious"
+      },
+      "effect": {
+        "value": "Until fully Recuperated, any time you fail a Skill Test that relies on Brawn or Agility, you suffer 2D10+2 physical Peril."
+      },
+      "active": false
+    },
+    "effects": [],
+    "sort": 0,
+    "flags": {
+      "exportSource": {
+        "world": "talron2",
+        "system": "zweihander",
+        "coreVersion": "0.8.9",
+        "systemVersion": "0.3.30"
+      }
+    }
+  },
+  {
+    "name": "Butchered Leg",
+    "type": "injury",
+    "img": "icons/svg/item-bag.svg",
+    "data": {
+      "flavor": {
+        "description": ""
+      },
+      "severity": {
+        "value": "Grevious"
+      },
+      "effect": {
+        "value": "Until fully Recuperated, you cannot move as you’re in pain. You must undergo a successful surgery or suffer the consequences. Once a Butchered Leg has undergone a failed surgery, you gain the Veteran’s Leg Drawback. If you already have this Drawback, you permanently lose 9% Agility."
+      },
+      "active": false
+    },
+    "effects": [],
+    "sort": 0,
+    "flags": {
+      "core": {
+        "sourceId": "Item.SLJ7uR91MyXFfvsN"
+      },
+      "exportSource": {
+        "world": "talron2",
+        "system": "zweihander",
+        "coreVersion": "0.8.9",
+        "systemVersion": "0.3.30"
+      }
+    }
+  },
+  {
+    "name": "Cerebral Contusion",
+    "type": "injury",
+    "img": "icons/svg/item-bag.svg",
+    "data": {
+      "flavor": {
+        "description": ""
+      },
+      "severity": {
+        "value": "Grevious"
+      },
+      "effect": {
+        "value": "Until fully Recuperated, you remain unconscious. You must undergo a successful surgery or suffer the consequences. Once a Cerebral Contusion has undergone a failed surgery, you gain the Dunderhead Drawback. If you already have this Drawback, you permanently lose 9% Intelligence."
+      },
+      "active": false
+    },
+    "effects": [],
+    "sort": 0,
+    "flags": {
+      "core": {
+        "sourceId": "Item.SLJ7uR91MyXFfvsN"
+      },
+      "exportSource": {
+        "world": "talron2",
+        "system": "zweihander",
+        "coreVersion": "0.8.9",
+        "systemVersion": "0.3.30"
+      }
+    }
+  },
+  {
+    "name": "Detached Ear",
+    "type": "injury",
+    "img": "icons/svg/item-bag.svg",
+    "data": {
+      "flavor": {
+        "description": ""
+      },
+      "severity": {
+        "value": "Grevious"
+      },
+      "effect": {
+        "value": "Until fully Recuperated, you cannot hear as you’re in pain. You must undergo a successful surgery or suffer the consequences. Once a Detached Ear has undergone a failed surgery, you suffer the Crop Ear Drawback. If you already have this Drawback, you permanently lose 9% Perception."
+      },
+      "active": false
+    },
+    "effects": [],
+    "sort": 0,
+    "flags": {
+      "core": {
+        "sourceId": "Item.SLJ7uR91MyXFfvsN"
+      },
+      "exportSource": {
+        "world": "talron2",
+        "system": "zweihander",
+        "coreVersion": "0.8.9",
+        "systemVersion": "0.3.30"
+      }
+    }
+  },
+  {
+    "name": "Dislocated Shoulder",
+    "type": "injury",
+    "img": "icons/svg/item-bag.svg",
+    "data": {
+      "flavor": {
+        "description": ""
+      },
+      "severity": {
+        "value": "Moderate"
+      },
+      "effect": {
+        "value": "Until fully Recuperated, you start your Turn with 1 less AP."
+      },
+      "active": false
+    },
+    "effects": [],
+    "sort": 0,
+    "flags": {
+      "core": {
+        "sourceId": "Item.SLJ7uR91MyXFfvsN"
+      },
+      "exportSource": {
+        "world": "talron2",
+        "system": "zweihander",
+        "coreVersion": "0.8.9",
+        "systemVersion": "0.3.30"
+      }
+    }
+  },
+  {
+    "name": "Fractured Larynx",
+    "type": "injury",
+    "img": "icons/svg/item-bag.svg",
+    "data": {
+      "flavor": {
+        "description": ""
+      },
+      "severity": {
+        "value": "Serious"
+      },
+      "effect": {
+        "value": "Until fully Recuperated, you must succeed at a Scrutinize Test to speak."
+      },
+      "active": false
+    },
+    "effects": [],
+    "sort": 0,
+    "flags": {
+      "core": {
+        "sourceId": "Item.SLJ7uR91MyXFfvsN"
+      },
+      "exportSource": {
+        "world": "talron2",
+        "system": "zweihander",
+        "coreVersion": "0.8.9",
+        "systemVersion": "0.3.30"
+      }
+    }
+  },
+  {
+    "name": "Head Trauma",
+    "type": "injury",
+    "img": "icons/svg/item-bag.svg",
+    "data": {
+      "flavor": {
+        "description": ""
+      },
+      "severity": {
+        "value": "Serious"
+      },
+      "effect": {
+        "value": "Until fully Recuperated, you cannot use Special Actions in combat."
+      },
+      "active": false
+    },
+    "effects": [],
+    "sort": 0,
+    "flags": {
+      "core": {
+        "sourceId": "Item.YhJd9ZTABx2kSyWZ"
+      },
+      "exportSource": {
+        "world": "talron2",
+        "system": "zweihander",
+        "coreVersion": "0.8.9",
+        "systemVersion": "0.3.30"
+      }
+    }
+  },
+  {
+    "name": "Hyperextended Elbow",
+    "type": "injury",
+    "img": "icons/svg/item-bag.svg",
+    "data": {
+      "flavor": {
+        "description": ""
+      },
+      "severity": {
+        "value": "Moderate"
+      },
+      "effect": {
+        "value": "Until fully Recuperated, you must flip the results to fail all Actions in Combat that rely on ranged weapons."
+      },
+      "active": false
+    },
+    "effects": [],
+    "sort": 0,
+    "flags": {
+      "exportSource": {
+        "world": "talron2",
+        "system": "zweihander",
+        "coreVersion": "0.8.9",
+        "systemVersion": "0.3.30"
+      }
+    }
+  },
+  {
+    "name": "Jammed Finger",
+    "type": "injury",
+    "img": "icons/svg/item-bag.svg",
+    "data": {
+      "flavor": {
+        "description": ""
+      },
+      "severity": {
+        "value": "Moderate"
+      },
+      "effect": {
+        "value": "You immediately drop whatever you are holding. Until fully Recuperated, you must flip the results to fail all melee weapon attacks with your primary hand."
+      },
+      "active": false
+    },
+    "effects": [],
+    "sort": 0,
+    "flags": {
+      "core": {
+        "sourceId": "Item.SLJ7uR91MyXFfvsN"
+      },
+      "exportSource": {
+        "world": "talron2",
+        "system": "zweihander",
+        "coreVersion": "0.8.9",
+        "systemVersion": "0.3.30"
+      }
+    }
+  },
+  {
+    "name": "Maimed Foot",
+    "type": "injury",
+    "img": "icons/svg/item-bag.svg",
+    "data": {
+      "flavor": {
+        "description": ""
+      },
+      "severity": {
+        "value": "Grevious"
+      },
+      "effect": {
+        "value": "Until fully Recuperated, you cannot use any weapon with an Encumbrance Value of 2 or more, as you’re in pain. You must undergo a successful surgery or suffer the consequences. Once a Maimed Foot has undergone a failed surgery, you lose 1D6-1 toes. For every toe lost, you permanently lose 1% Brawn. If you lose all toes, you gain the Veteran’s Boot Drawback. If you already have this Drawback, you permanently lose 9% Brawn."
+      },
+      "active": false
+    },
+    "effects": [],
+    "sort": 0,
+    "flags": {
+      "core": {
+        "sourceId": "Item.SLJ7uR91MyXFfvsN"
+      },
+      "exportSource": {
+        "world": "talron2",
+        "system": "zweihander",
+        "coreVersion": "0.8.9",
+        "systemVersion": "0.3.30"
+      }
+    }
+  },
+  {
+    "name": "Mangled Hand",
+    "type": "injury",
+    "img": "icons/svg/item-bag.svg",
+    "data": {
+      "flavor": {
+        "description": ""
+      },
+      "severity": {
+        "value": "Grevious"
+      },
+      "effect": {
+        "value": "Until fully Recuperated, you cannot use your primary hand as you’re in pain. You must undergo a successful surgery or suffer the consequences. Once a Mutilated Hand has undergone a failed surgery, you lose 1D6-1 fingers. For every finger lost, you permanently lose 1% Agility. If you lose all fingers, you gain the Veteran’s Hand Drawback. If you already have this Drawback, you permanently lose 9% Agility."
+      },
+      "active": false
+    },
+    "effects": [],
+    "sort": 0,
+    "flags": {
+      "core": {
+        "sourceId": "Item.SLJ7uR91MyXFfvsN"
+      },
+      "exportSource": {
+        "world": "talron2",
+        "system": "zweihander",
+        "coreVersion": "0.8.9",
+        "systemVersion": "0.3.30"
+      }
+    }
+  },
+  {
+    "name": "Mangled Nose",
+    "type": "injury",
+    "img": "icons/svg/item-bag.svg",
+    "data": {
+      "flavor": {
+        "description": ""
+      },
+      "severity": {
+        "value": "Grevious"
+      },
+      "effect": {
+        "value": "Until fully Recuperated, you cannot smell as you’re in pain. You must undergo a successful surgery or suffer the consequences. Once a Mutilated Nose has undergone a failed surgery, you permanently must flip the results to fail all Skill Tests which rely on smell and taste. If you already have this Drawback, you permanently lose 9% Perception."
+      },
+      "active": false
+    },
+    "effects": [],
+    "sort": 0,
+    "flags": {
+      "core": {
+        "sourceId": "Item.SLJ7uR91MyXFfvsN"
+      },
+      "exportSource": {
+        "world": "talron2",
+        "system": "zweihander",
+        "coreVersion": "0.8.9",
+        "systemVersion": "0.3.30"
+      }
+    }
+  },
+  {
+    "name": "Mangled Organ",
+    "type": "injury",
+    "img": "icons/svg/item-bag.svg",
+    "data": {
+      "flavor": {
+        "description": ""
+      },
+      "severity": {
+        "value": "Grevious"
+      },
+      "effect": {
+        "value": "Until fully Recuperated, you remain Incapacitated!. You must undergo a successful surgery or suffer the consequences. Once a Mangled Organ has undergone a failed surgery, you permanently gain the Eunuch Drawback. If you already have this Drawback, you permanently lose 9% Fellowship."
+      },
+      "active": false
+    },
+    "effects": [],
+    "sort": 0,
+    "flags": {
+      "core": {
+        "sourceId": "Item.SLJ7uR91MyXFfvsN"
+      },
+      "exportSource": {
+        "world": "talron2",
+        "system": "zweihander",
+        "coreVersion": "0.8.9",
+        "systemVersion": "0.3.30"
+      }
+    }
+  },
+  {
+    "name": "Minor Concussion",
+    "type": "injury",
+    "img": "icons/svg/item-bag.svg",
+    "data": {
+      "flavor": {
+        "description": ""
+      },
+      "severity": {
+        "value": "Serious"
+      },
+      "effect": {
+        "value": "Until fully Recuperated, you remain Incapacitated!"
+      },
+      "active": false
+    },
+    "effects": [],
+    "sort": 0,
+    "flags": {
+      "core": {
+        "sourceId": "Item.YhJd9ZTABx2kSyWZ"
+      },
+      "exportSource": {
+        "world": "talron2",
+        "system": "zweihander",
+        "coreVersion": "0.8.9",
+        "systemVersion": "0.3.30"
+      }
+    }
+  },
+  {
+    "name": "Mutilated Hand",
+    "type": "injury",
+    "img": "icons/svg/item-bag.svg",
+    "data": {
+      "flavor": {
+        "description": ""
+      },
+      "severity": {
+        "value": "Grevious"
+      },
+      "effect": {
+        "value": "Until fully Recuperated, you cannot use your primary hand as you’re in pain. You must undergo a successful surgery or suffer the consequences. Once a Mutilated Hand has undergone a failed surgery, you lose 1D6-1 fingers. For every finger lost, you permanently lose 1% Agility. If you lose all fingers, you gain the Veteran’s Hand Drawback. If you already have this Drawback, you permanently lose 9% Agility."
+      },
+      "active": false
+    },
+    "effects": [],
+    "sort": 0,
+    "flags": {
+      "core": {
+        "sourceId": "Item.SLJ7uR91MyXFfvsN"
+      },
+      "exportSource": {
+        "world": "talron2",
+        "system": "zweihander",
+        "coreVersion": "0.8.9",
+        "systemVersion": "0.3.30"
+      }
+    }
+  },
+  {
+    "name": "Mutilated Nose",
+    "type": "injury",
+    "img": "icons/svg/item-bag.svg",
+    "data": {
+      "flavor": {
+        "description": ""
+      },
+      "severity": {
+        "value": "Grevious"
+      },
+      "effect": {
+        "value": "Until fully Recuperated, you cannot smell as you’re in pain. You must undergo a successful surgery or suffer the consequences. Once a Mutilated Nose has undergone a failed surgery, you permanently must flip the results to fail all Skill Tests which rely on smell and taste. If you already have this Drawback, you permanently lose 9% Perception."
+      },
+      "active": false
+    },
+    "effects": [],
+    "sort": 0,
+    "flags": {
+      "core": {
+        "sourceId": "Item.SLJ7uR91MyXFfvsN"
+      },
+      "exportSource": {
+        "world": "talron2",
+        "system": "zweihander",
+        "coreVersion": "0.8.9",
+        "systemVersion": "0.3.30"
+      }
+    }
+  },
+  {
+    "name": "Pulled Muscle",
+    "type": "injury",
+    "img": "icons/svg/item-bag.svg",
+    "data": {
+      "flavor": {
+        "description": ""
+      },
+      "severity": {
+        "value": "Moderate"
+      },
+      "effect": {
+        "value": "Until fully Recuperated, you must flip the results to fail all Brawn-based Skill Tests."
+      },
+      "active": false
+    },
+    "effects": [],
+    "sort": 0,
+    "flags": {
+      "core": {
+        "sourceId": "Item.SLJ7uR91MyXFfvsN"
+      },
+      "exportSource": {
+        "world": "talron2",
+        "system": "zweihander",
+        "coreVersion": "0.8.9",
+        "systemVersion": "0.3.30"
+      }
+    }
+  },
+  {
+    "name": "Punctured Lung",
+    "type": "injury",
+    "img": "icons/svg/item-bag.svg",
+    "data": {
+      "flavor": {
+        "description": ""
+      },
+      "severity": {
+        "value": "Grevious"
+      },
+      "effect": {
+        "value": "Until fully Recuperated, you remain unconscious. You must undergo a successful surgery or suffer the consequences. Once a Punctured Lung has undergone a failed surgery, you permanently gain the Weak Lungs Drawback. If you already have this Drawback, you permanently lose 9% Willpower."
+      },
+      "active": false
+    },
+    "effects": [],
+    "sort": 0,
+    "flags": {
+      "core": {
+        "sourceId": "Item.SLJ7uR91MyXFfvsN"
+      },
+      "exportSource": {
+        "world": "talron2",
+        "system": "zweihander",
+        "coreVersion": "0.8.9",
+        "systemVersion": "0.3.30"
+      }
+    }
+  },
+  {
+    "name": "Rattled Brain",
+    "type": "injury",
+    "img": "icons/svg/item-bag.svg",
+    "data": {
+      "flavor": {
+        "description": ""
+      },
+      "severity": {
+        "value": "Moderate"
+      },
+      "effect": {
+        "value": "Until fully Recuperated, reduce your Initiative by 3."
+      },
+      "active": false
+    },
+    "effects": [],
+    "sort": 0,
+    "flags": {
+      "core": {
+        "sourceId": "Item.SLJ7uR91MyXFfvsN"
+      },
+      "exportSource": {
+        "world": "talron2",
+        "system": "zweihander",
+        "coreVersion": "0.8.9",
+        "systemVersion": "0.3.30"
+      }
+    }
+  },
+  {
+    "name": "Shell Shock",
+    "type": "injury",
+    "img": "icons/svg/item-bag.svg",
+    "data": {
+      "flavor": {
+        "description": ""
+      },
+      "severity": {
+        "value": "Serious"
+      },
+      "effect": {
+        "value": "Until fully Recuperated, you cannot add Fury Dice to Damage."
+      },
+      "active": false
+    },
+    "effects": [],
+    "sort": 0,
+    "flags": {
+      "core": {
+        "sourceId": "Item.YhJd9ZTABx2kSyWZ"
+      },
+      "exportSource": {
+        "world": "talron2",
+        "system": "zweihander",
+        "coreVersion": "0.8.9",
+        "systemVersion": "0.3.30"
+      }
+    }
+  },
+  {
+    "name": "Skull Fracture",
+    "type": "injury",
+    "img": "icons/svg/item-bag.svg",
+    "data": {
+      "flavor": {
+        "description": ""
+      },
+      "severity": {
+        "value": "Serious"
+      },
+      "effect": {
+        "value": "Until fully Recuperated, you must flip the results to fail all Skill Tests."
+      },
+      "active": false
+    },
+    "effects": [],
+    "sort": 0,
+    "flags": {
+      "core": {
+        "sourceId": "Item.SLJ7uR91MyXFfvsN"
+      },
+      "exportSource": {
+        "world": "talron2",
+        "system": "zweihander",
+        "coreVersion": "0.8.9",
+        "systemVersion": "0.3.30"
+      }
+    }
+  },
+  {
+    "name": "Splintered Elbow",
+    "type": "injury",
+    "img": "icons/svg/item-bag.svg",
+    "data": {
+      "flavor": {
+        "description": ""
+      },
+      "severity": {
+        "value": "Grevious"
+      },
+      "effect": {
+        "value": "Until fully Recuperated, you cannot use one of your arms as in pain. You must undergo a successful surgery or suffer the consequences. Once a Splintered Elbow has undergone a failed surgery, you can no longer use two-handed ranged weapons. If you already have this Drawback, you permanently lose 9% Combat."
+      },
+      "active": false
+    },
+    "effects": [],
+    "sort": 0,
+    "flags": {
+      "core": {
+        "sourceId": "Item.SLJ7uR91MyXFfvsN"
+      },
+      "exportSource": {
+        "world": "talron2",
+        "system": "zweihander",
+        "coreVersion": "0.8.9",
+        "systemVersion": "0.3.30"
+      }
+    }
+  },
+  {
+    "name": "Sprained Wrist",
+    "type": "injury",
+    "img": "icons/svg/item-bag.svg",
+    "data": {
+      "flavor": {
+        "description": ""
+      },
+      "severity": {
+        "value": "Moderate"
+      },
+      "effect": {
+        "value": "Until fully Recuperated, you cannot hold anything in your primary hand, and must rely on your off-hand."
+      },
+      "active": false
+    },
+    "effects": [],
+    "sort": 0,
+    "flags": {
+      "core": {
+        "sourceId": "Item.SLJ7uR91MyXFfvsN"
+      },
+      "exportSource": {
+        "world": "talron2",
+        "system": "zweihander",
+        "coreVersion": "0.8.9",
+        "systemVersion": "0.3.30"
+      }
+    }
+  },
+  {
+    "name": "Strained Groin",
+    "type": "injury",
+    "img": "icons/svg/item-bag.svg",
+    "data": {
+      "flavor": {
+        "description": ""
+      },
+      "severity": {
+        "value": "Moderate"
+      },
+      "effect": {
+        "value": "Until fully Recuperated, you cannot use any Movement Actions besides Take Cover or Walk in combat."
+      },
+      "active": false
+    },
+    "effects": [],
+    "sort": 0,
+    "flags": {
+      "core": {
+        "sourceId": "Item.SLJ7uR91MyXFfvsN"
+      },
+      "exportSource": {
+        "world": "talron2",
+        "system": "zweihander",
+        "coreVersion": "0.8.9",
+        "systemVersion": "0.3.30"
+      }
+    }
+  },
+  {
+    "name": "Stress Fracture",
+    "type": "injury",
+    "img": "icons/svg/item-bag.svg",
+    "data": {
+      "flavor": {
+        "description": ""
+      },
+      "severity": {
+        "value": "Serious"
+      },
+      "effect": {
+        "value": "Until fully Recuperated, you cannot Counterspell, Dodge or Parry."
+      },
+      "active": false
+    },
+    "effects": [],
+    "sort": 0,
+    "flags": {
+      "core": {
+        "sourceId": "Item.SLJ7uR91MyXFfvsN"
+      },
+      "exportSource": {
+        "world": "talron2",
+        "system": "zweihander",
+        "coreVersion": "0.8.9",
+        "systemVersion": "0.3.30"
+      }
+    }
+  },
+  {
+    "name": "Temporary Paralysis",
+    "type": "injury",
+    "img": "icons/svg/item-bag.svg",
+    "data": {
+      "flavor": {
+        "description": ""
+      },
+      "severity": {
+        "value": "Serious"
+      },
+      "effect": {
+        "value": "You are knocked Prone. Until fully Recuperated, you cannot move as you're paralyzed."
+      },
+      "active": false
+    },
+    "effects": [],
+    "sort": 0,
+    "flags": {
+      "core": {
+        "sourceId": "Item.SLJ7uR91MyXFfvsN"
+      },
+      "exportSource": {
+        "world": "talron2",
+        "system": "zweihander",
+        "coreVersion": "0.8.9",
+        "systemVersion": "0.3.30"
+      }
+    }
+  },
+  {
+    "name": "Torn Shoulder",
+    "type": "injury",
+    "img": "icons/svg/item-bag.svg",
+    "data": {
+      "flavor": {
+        "description": ""
+      },
+      "severity": {
+        "value": "Serious"
+      },
+      "effect": {
+        "value": "Whatever you are holding in your primary hand gains the Ruined! Quality. Until fully Recuperated, you start your Turn with 2 less AP."
+      },
+      "active": false
+    },
+    "effects": [],
+    "sort": 0,
+    "flags": {
+      "core": {
+        "sourceId": "Item.SLJ7uR91MyXFfvsN"
+      },
+      "exportSource": {
+        "world": "talron2",
+        "system": "zweihander",
+        "coreVersion": "0.8.9",
+        "systemVersion": "0.3.30"
+      }
+    }
+  },
+  {
+    "name": "Twisted Ankle",
+    "type": "injury",
+    "img": "icons/svg/item-bag.svg",
+    "data": {
+      "flavor": {
+        "description": ""
+      },
+      "severity": {
+        "value": "Moderate"
+      },
+      "effect": {
+        "value": "Until fully Recuperated, reduce your Movement by 3."
+      },
+      "active": false
+    },
+    "effects": [],
+    "sort": 0,
+    "flags": {
+      "exportSource": {
+        "world": "talron2",
+        "system": "zweihander",
+        "coreVersion": "0.8.9",
+        "systemVersion": "0.3.30"
+      }
+    }
+  },
+  {
+    "name": "Vitreous Hemorrhage",
+    "type": "injury",
+    "img": "icons/svg/item-bag.svg",
+    "data": {
+      "flavor": {
+        "description": ""
+      },
+      "severity": {
+        "value": "Grevious"
+      },
+      "effect": {
+        "value": "Until fully Recuperated, you cannot see as you’re blinded. You must undergo a successful surgery or suffer the consequences. Once a Vitreous Hemorrhage has undergone a failed surgery, you gain the Black Cataract Drawback. If you already have this Drawback, you permanently lose 9% Perception."
+      },
+      "active": false
+    },
+    "effects": [],
+    "sort": 0,
+    "flags": {
+      "core": {
+        "sourceId": "Item.SLJ7uR91MyXFfvsN"
+      },
+      "exportSource": {
+        "world": "talron2",
+        "system": "zweihander",
+        "coreVersion": "0.8.9",
+        "systemVersion": "0.3.30"
+      }
+    }
+  }
+]

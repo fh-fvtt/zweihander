@@ -1,0 +1,72 @@
+#fortuneTrackerApp {
+  border: none;
+  box-shadow: none;
+  background: transparent;
+  .window-header {
+    // background: rgba(40,40,40,0.9);
+    background-image: none;
+    background-color: rgba(var(--zx-clr-bg0-rgb), 0.9);
+    border: 1px solid var(--zx-clr-bg0);
+    border-radius: 1ch;
+    color: var(--zx-clr-fg0);
+  }
+  .window-content {
+    background-image: none;
+    background-color: rgba(var(--zx-clr-bg0-rgb), 0.15);
+    position: relative;
+  }
+  h4.window-title {
+    color: var(--zx-clr-aqua);
+  }
+  #fortuneTrackerAppTotal {
+    color: var(--zx-clr-fg1); 
+    &.waiting-true, &.waiting-true + .fortune-tracker-reset {
+      display: none;
+    }
+  }
+  @keyframes fortuneTrackerAppWaitingAnim {
+    0% { transform: rotate(0deg) }
+    100% { transform: rotate(360deg) }
+  }
+  #fortuneTrackerAppWaiting {
+    margin-top: 45px;
+    display: block;
+    text-align: center;
+    i {
+      display: inline-block;
+      margin-right: 1ch;
+      animation: fortuneTrackerAppWaitingAnim 3s linear infinite;
+      transform: rotate(0deg);
+    }
+  }
+  .fortunetracker-container {
+    .fortune-tracker-text-fortune, .fortune-tracker-text-misfortune {
+      display: block;
+      flex: 1 0 100%;
+      line-height: 28px;
+      background-color: rgba(var(--zx-clr-bg0-rgb), 0.9);
+      border: 1px solid transparent;
+      border-radius: 1ch;
+      text-align: center;
+      text-shadow: none;
+      &:hover {
+        background-color: rgba(var(--zx-clr-accent-rgb), 0.9);
+        color: var(--zx-clr-bg0) !important;
+      }
+    }
+    .fortunetracker-token-container {
+      position: relative;
+      padding: 10px;
+      .fortunetracker-life, .fortunetracker-death {
+        position: absolute;
+        background-size: cover;
+        width: 125px;
+        height: 125px;
+        &:hover {
+          filter: brightness(1.1) contrast(1.1);
+        }
+      }
+    }
+  }
+  
+}

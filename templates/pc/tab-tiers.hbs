@@ -1,0 +1,204 @@
+<div class="tab tiers flexcol" data-group="primary" data-tab="tiers">
+  <ol class="items-list professions-list">
+    <li class="items-header flexrow">
+      <h3 class="item-name">Professions</h3>
+      <div class="item-detail it-tier">Tier</div>
+      <div class="item-detail it-archetype">Archetype</div>
+      <div class="item-detail it-completed">Completed</div>
+      <div class="item-controls"><a class="add-new" data-item-type="profession" title="Add New Profession"><i
+            class="fa fa-plus"></i> Add</a></div>
+    </li>
+    <ol class="item-list">
+      {{#each professions as | profession idx |}}
+      <li class="item flexrow" data-item-id="{{profession._id}}">
+        <div class="item-name js-show-item-description fetch-item flexrow">
+          <div class="{{itemImageClass profession.img}}" tabindex="0" role="button" aria-label="{{profession.name}}"
+            style="{{itemImageStyle profession.img}}"></div>
+          <h4>{{profession.name}}</h4>
+        </div>
+        <div class="item-detail it-tier">{{profession.data.tier.value}}</div>
+        <div class="item-detail it-archetype">{{profession.data.archetype.value}}</div>
+        <div class="item-detail it-completed">
+          <input id="{{profession._id}}" type="checkbox" class="zweihander-checkbox link-checkbox" {{checked
+            profession.data.tier.completed}} readonly/>
+          <label for="{{profession._id}}"></label>
+        </div>
+        <div class="item-controls flexrow">
+          <a class="item-control item-post" title="Post Item to Chat"><i class="fas fa-comment fa-fw fa-xs"></i></a>
+          <a class="item-control item-edit" title="Edit Item"><i class="fas fa-pencil-alt fa-fw fa-xs"></i></a>
+          <a class="item-control item-delete" title="Delete Item"><i class="fas fa-trash-alt fa-fw fa-xs"></i></a>
+        </div>
+        <div class="item-summary individual-description save-toggle-professions">
+          <div>
+            <label>Professional Trait:</label> <a class="fetch-item">{{profession.data.professionalTrait.value}}</a>
+            <br />
+            <label>Special Trait:</label>
+            {{#isMissing profession.data.specialTrait.value}}
+            <a class="fetch-item">{{profession.data.specialTrait.value}}</a>
+            {{else}}
+            -
+            {{/isMissing}} <br />
+            <label>Drawback:</label>
+            {{#isMissing profession.data.drawback.value}}
+            <a class="fetch-item">{{profession.data.drawback.value}}</a>
+            {{else}}
+            -
+            {{/isMissing}}
+          </div>
+          <div>
+            <label>Skill Ranks:</label>
+            {{#each profession.data.skillRanks as | skillData i |}}
+            <a data-purchase-type="skillRanks" data-purchase-index="{{i}}"
+              class="purchase-link fetch-item {{#if skillData.purchased}} purchased {{else}} not-purchased {{/if}}">
+              {{skillData.value}}
+            </a>{{#unless @last}}<span>,</span>{{/unless}}
+            {{/each}}
+          </div>
+          <div>
+            <label>Bonus Advances:</label>
+            {{#each profession.data.bonusAdvances as | advancesData i |}}
+            <a data-purchase-type="bonusAdvances" data-purchase-index="{{i}}"
+              class="purchase-link {{#if advancesData.purchased}} purchased {{else}} not-purchased {{/if}}">{{advancesData.value}}</a>
+            {{#unless @last}}<span>,</span>{{/unless}}
+            {{/each}}
+          </div>
+
+          <div>
+            <label>Talents:</label>
+            {{#each profession.data.talents as | talentsData i |}}
+            <a data-purchase-type="talents" data-purchase-index="{{i}}"
+              class="purchase-link fetch-item {{#if talentsData.purchased}} purchased {{else}} not-purchased {{/if}}">{{talentsData.value}}</a>
+            {{#unless @last}}<span>,</span>{{/unless}}
+            {{/each}}
+          </div>
+        </div>
+      </li>
+      {{/each}}
+    </ol>
+    <li class="items-header flexrow">
+      <h3 class="item-name">Traits</h3>
+      <div class="item-detail it-source">Source</div>
+      <div class="item-controls">
+        {{!-- <a class="add-new" data-item-type="talentTrait" title="Add New Talent or Trait"><i class="fa fa-plus"></i> Add</a> --}}
+      </div>
+    </li>
+    <ol class="item-list">
+      {{#each traits as | trait idx | }}
+      <li class="item flexrow" data-item-id="{{trait._id}}">
+        <div class="item-name js-show-item-description fetch-item flexrow">
+          <div class="{{itemImageClass trait.img}}" tabindex="0" role="button" aria-label="{{trait.name}}"
+            style="{{itemImageStyle trait.img}}"></div>
+          <h4>{{trait.name}}</h4>
+        </div>
+        <div class="item-detail it-source">{{trait.source}}</div>
+        <div class="item-controls flexrow">
+          <a class="item-control item-post" title="Post Item to Chat"><i class="fas fa-comment fa-fw fa-xs"></i></a>
+          {{#if trait.isManualSource}}
+            <a class="item-control item-edit" title="Edit Item"><i class="fas fa-pencil-alt fa-fw fa-xs"></i></a>
+            <a class="item-control item-delete" title="Delete Item"><i class="fas fa-trash-alt fa-fw fa-xs"></i></a>
+          {{/if}}
+        </div>
+        <div class="item-summary individual-description save-toggle-talents-and-traits">
+          <span class="item-summary-longform">
+            <label>Effect:</label> {{{markdownIt trait.data.effect.value}}}
+          </span>
+        </div>
+      </li>
+      {{/each}}
+    </ol>
+    <li class="items-header flexrow">
+      <h3 class="item-name">Drawbacks</h3>
+      <div class="item-detail it-source">Source</div>
+      <div class="item-controls">
+        {{!-- <a class="add-new" data-item-type="talentTrait" title="Add New Talent or Trait"><i class="fa fa-plus"></i> Add</a> --}}
+      </div>
+    </li>
+    <ol class="item-list">
+      {{#each drawbacks as | drawback idx | }}
+      <li class="item flexrow" data-item-id="{{drawback._id}}">
+        <div class="item-name js-show-item-description fetch-item flexrow">
+          <div class="{{itemImageClass drawback.img}}" tabindex="0" role="button" aria-label="{{drawback.name}}"
+            style="{{itemImageStyle drawback.img}}"></div>
+          <h4>{{drawback.name}}</h4>
+        </div>
+        <div class="item-detail it-source">{{drawback.source}}</div>
+        <div class="item-controls flexrow">
+          <a class="item-control item-post" title="Post Item to Chat"><i class="fas fa-comment fa-fw fa-xs"></i></a>
+          {{#if drawback.isManualSource}}
+            <a class="item-control item-edit" title="Edit Item"><i class="fas fa-pencil-alt fa-fw fa-xs"></i></a>
+            <a class="item-control item-delete" title="Delete Item"><i class="fas fa-trash-alt fa-fw fa-xs"></i></a>
+          {{/if}}
+        </div>
+        <div class="item-summary individual-description save-toggle-talents-and-traits">
+          <span class="item-summary-longform">
+            <label>Effect:</label> {{{markdownIt drawback.data.effect.value}}}
+          </span>
+        </div>
+      </li>
+      {{/each}}
+    </ol>
+    <li class="items-header flexrow">
+      <h3 class="item-name">Talents</h3>
+      <div class="item-detail it-source">Source</div>
+      <div class="item-controls">
+        {{!-- <a class="add-new" data-item-type="talentTrait" title="Add New Talent or Trait"><i class="fa fa-plus"></i> Add</a> --}}
+      </div>
+    </li>
+    <ol class="item-list">
+      {{#each talents as | talent idx | }}
+      <li class="item flexrow" data-item-id="{{talent._id}}">
+        <div class="item-name js-show-item-description fetch-item flexrow">
+          <div class="{{itemImageClass talent.img}}" tabindex="0" role="button" aria-label="{{talent.name}}"
+            style="{{itemImageStyle talent.img}}"></div>
+          <h4>{{talent.name}}</h4>
+        </div>
+        <div class="item-detail it-source">{{talent.source}}</div>
+        <div class="item-controls flexrow">
+          <a class="item-control item-post" title="Post Item to Chat"><i class="fas fa-comment fa-fw fa-xs"></i></a>
+          {{#if talent.isManualSource}}
+            <a class="item-control item-edit" title="Edit Item"><i class="fas fa-pencil-alt fa-fw fa-xs"></i></a>
+            <a class="item-control item-delete" title="Delete Item"><i class="fas fa-trash-alt fa-fw fa-xs"></i></a>
+          {{/if}}
+        </div>
+        <div class="item-summary individual-description save-toggle-talents-and-traits">
+          <span class="item-summary-longform">
+            <label>Effect:</label> {{{markdownIt talent.data.effect.value}}}
+          </span>
+        </div>
+      </li>
+      {{/each}}
+    </ol>
+    <li class="items-header flexrow">
+      <h3 class="item-name">Unique Advances</h3>
+      <div class="item-detail it-ua-category">Categoy</div>
+      <div class="item-detail it-ua-rpcost">RP Cost</div>
+      <div class="item-controls">
+        <a class="add-new" data-item-type="uniqueAdvance" title="Add New Unique Advance"><i class="fa fa-plus"></i> Add</a>
+      </div>
+    </li>
+    <ol class="item-list">
+      {{#each uniqueAdvances as | uniqueAdvance idx | }}
+      <li class="item flexrow" data-item-id="{{uniqueAdvance._id}}">
+        <div class="item-name js-show-item-description fetch-item flexrow">
+          <div class="{{itemImageClass uniqueAdvance.img}}" tabindex="0" role="button" aria-label="{{uniqueAdvance.name}}"
+            style="{{itemImageStyle uniqueAdvance.img}}"></div>
+          <h4>{{uniqueAdvance.name}}</h4>
+        </div>
+        <div class="item-detail it-ua-category">{{checkUniqueAdvanceType uniqueAdvance.data.type.value uniqueAdvance.data.associatedFocusSkill.value}}</div>
+        <div class="item-detail it-ua-rpcost">{{uniqueAdvance.data.rewardPointCost.value}}</div>
+        <div class="item-controls flexrow">
+          <a class="item-control item-post" title="Post Item to Chat"><i class="fas fa-comment fa-fw fa-xs"></i></a>
+          <a class="item-control item-edit" title="Edit Item"><i class="fas fa-pencil-alt fa-fw fa-xs"></i></a>
+          <a class="item-control item-delete" title="Delete Item"><i class="fas fa-trash-alt fa-fw fa-xs"></i></a>
+        </div>
+        <div class="item-summary individual-description save-toggle-talents-and-traits">
+          <span class="item-summary-longform">
+            <label>Notes:</label> {{#isMissing uniqueAdvance.data.flavor.description}}
+              {{uniqueAdvance.data.flavor.description}} {{else}}-{{/isMissing}}
+          </span>
+        </div>
+      </li>
+      {{/each}}
+    </ol>
+  </ol>
+</div>

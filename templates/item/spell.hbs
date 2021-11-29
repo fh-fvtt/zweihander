@@ -1,0 +1,40 @@
+<div class="form-group">
+  <label>Distance</label>
+  <input  name="data.distance.value" type="text" value="{{data.distance.value}}">
+</div>
+
+<div class="form-group">
+  <label>Tradition</label>
+  <input  name="data.tradition.value" type="text" value="{{data.tradition.value}}">
+</div>
+
+<div class="form-group">
+  <label>Principle</label>
+  <input  name="data.principle.value" type="text" value="{{data.principle.value}}">
+</div>
+
+<div class="form-group">
+  <label>Reagents</label>
+  <input  name="data.reagents.value" type="text" value="{{data.reagents.value}}">
+</div>
+
+<div class="form-group">
+  <label>Duration</label>
+  <input  name="data.duration.value" type="text" value="{{data.duration.value}}">
+</div>
+
+<div class="form-group stacked">
+  <label><a class="open-editor">Effect <i class="fa fa-edit"></i></a></label>
+  <div class="zh-editor-preview open">{{{markdownIt data.effect.value}}}</div>
+  {{editor content=data.effect.value target="data.effect.value" button=true owner=owner editable=editable}}
+</div>
+
+<div class="form-group">
+  <label>Critical Hit</label>
+  <input  name="data.effect.criticalSuccess.value" type="text" value="{{data.effect.criticalSuccess.value}}">
+</div>
+
+<div class="form-group">
+  <label>Critical Fail</label>
+  <input  name="data.effect.criticalFailure.value" type="text" value="{{data.effect.criticalFailure.value}}">
+</div>

@@ -1,0 +1,32 @@
+<div class="form-group">
+  <label>Archetype</label>
+  <input name="data.archetype.value" type="text" value="{{data.archetype.value}}">
+</div>
+
+{{{arrayInputGroup 'Bonus Advances' 'data.bonusAdvances' data.bonusAdvances 7 'value'}}}
+{{{arrayInputGroup 'Skill Ranks' 'data.skillRanks' data.skillRanks 10 'value'}}}
+{{{arrayInputGroup 'Talents' 'data.talents' data.talents 3 'value'}}}
+
+<div class="form-group">
+  <label>Professional Trait</label>
+  <input name="data.professionalTrait.value" type="text" value="{{data.professionalTrait.value}}">
+</div>
+
+<div class="form-group">
+  <label>Special Trait</label>
+  <input name="data.specialTrait.value" type="text" value="{{data.specialTrait.value}}">
+</div>
+
+<div class="form-group">
+  <label>Drawback</label>
+  <input name="data.drawback.value" type="text" value="{{data.drawback.value}}">
+</div>
+
+<div class="form-group stacked">
+  <label class="checkbox">
+    <input name="data.expert.value" type="checkbox" class="link-checkbox" {{checked data.expert.value}} />
+    Expert Profession
+  </label>
+  <label>Requirements</label>
+  <input name="data.expert.requirements" type="text" value="{{data.expert.requirements}}">
+</div>

@@ -1,14 +1,14 @@
 const ZWEI = {};
 
 ZWEI.templates = {
-    "skill": "systems/zweihander/templates/chat/chat-skill.html",
-    "spell": "systems/zweihander/templates/chat/chat-spell.html",
-    "parry": "systems/zweihander/templates/chat/chat-parry.html",
-    "dodge": "systems/zweihander/templates/chat/chat-dodge.html",
-    "weapon": "systems/zweihander/templates/chat/chat-weapon.html",
-    "skillConfigurationDialog": "systems/zweihander/templates/dialog/dialog-skill-configuration.html",
-    "spellConfigurationDialog": "systems/zweihander/templates/dialog/dialog-spell-configuration.html",
-    "weaponConfigurationDialog": "systems/zweihander/templates/dialog/dialog-weapon-configuration.html"
+    "skill": "systems/zweihander/templates/chat/chat-skill.hbs",
+    "spell": "systems/zweihander/templates/chat/chat-spell.hbs",
+    "parry": "systems/zweihander/templates/chat/chat-parry.hbs",
+    "dodge": "systems/zweihander/templates/chat/chat-dodge.hbs",
+    "weapon": "systems/zweihander/templates/chat/chat-weapon.hbs",
+    "skillConfigurationDialog": "systems/zweihander/templates/dialog/dialog-skill-configuration.hbs",
+    "spellConfigurationDialog": "systems/zweihander/templates/dialog/dialog-spell-configuration.hbs",
+    "weaponConfigurationDialog": "systems/zweihander/templates/dialog/dialog-weapon-configuration.hbs"
 };
 
 ZWEI.rollTypes = {

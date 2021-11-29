@@ -1,0 +1,23 @@
+{
+  "scripts": {
+    "dev": "rollup --config rollup.config.js -w",
+    "build": "PRODUCTION_MODE=1 rollup --config rollup.config.js"
+  },
+  "devDependencies": {
+    "@rollup/plugin-commonjs": "^21.0.1",
+    "@rollup/plugin-node-resolve": "^13.0.6",
+    "autoprefixer": "^10.4.0",
+    "colorguard": "^1.2.1",
+    "doiuse": "^4.4.1",
+    "intro.js": "^4.3.0",
+    "postcss": "^8.4.4",
+    "postcss-assets": "^6.0.0",
+    "postcss-cli": "^9.0.2",
+    "postcss-reporter": "^7.0.4",
+    "rollup": "^2.60.1",
+    "rollup-plugin-postcss": "^4.0.2",
+    "rollup-plugin-uglify": "^6.0.4",
+    "rpg-awesome": "^0.2.0",
+    "sass": "^1.45.1"
+  }
+}

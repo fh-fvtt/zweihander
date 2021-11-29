@@ -1,0 +1,32 @@
+<div class="form-group">
+  <label>Encumbrance</label>
+  <input  name="data.encumbrance.value" type="number" value="{{data.encumbrance.value}}">
+</div>
+
+<div class="form-group">
+  <label>Damage Threshold Modifier</label>
+  <input  name="data.damageThresholdModifier.value" type="number" value="{{data.damageThresholdModifier.value}}">
+</div>
+
+<div class="form-group">
+  <label>Qualities</label>
+  <input  name="data.qualities.value" type="text" value="{{data.qualities.value}}">
+</div>
+
+<div class="form-group">
+  <label>Price</label>
+  <i class="fas fa-coins currency-gc"></i>
+  <input  name="data.price.gc" type="text" value="{{data.price.gc}}">
+  <i class="fas fa-coins currency-ss"></i>
+  <input  name="data.price.ss" type="text" value="{{data.price.ss}}">
+  <i class="fas fa-coins currency-bp"></i>
+  <input  name="data.price.bp" type="text" value="{{data.price.bp}}">
+</div>
+
+<div class="form-group stacked">
+  <label>Status</label>
+  <label class="checkbox">
+    <input name="data.equipped" type="checkbox" class="link-checkbox" {{checked data.equipped}} />
+    Equipped
+  </label>
+</div>

@@ -1,0 +1,28 @@
+<form class="editable flexcol" autocomplete="off">
+    {{!-- Sheet Header --}}
+    <div class="bloodstain bloodstain-1 bloodstain-inactive"></div>
+    <div class="bloodstain bloodstain-2 bloodstain-inactive"></div>
+    <div class="bloodstain bloodstain-3 bloodstain-inactive"></div>
+    <div class="bloodstain bloodstain-4 bloodstain-inactive"></div>
+    <div class="bloodstain bloodstain-5 bloodstain-inactive"></div>
+
+    {{> ($$ "pc/header") }}
+
+    <nav class="sheet-navigation tabs" data-group="primary" data-intro="This is a quick tutorial">
+        <a class="item" data-tab="main">Attributes</a>
+        <a class="item" data-tab="tiers">Tiers</a>
+        <a class="item" data-tab="trappings">Trappings</a>
+        <a class="item" data-tab="magick">Magick</a>
+        <a class="item" data-tab="afflictions">Afflictions</a>
+        <a class="item" data-tab="details">Background</a>
+    </nav>
+    
+    <section class="sheet-body">
+      {{> ($$ "pc/tab-main") }}
+      {{> ($$ "pc/tab-tiers") }}
+      {{> ($$ "pc/tab-trappings") }}
+      {{> ($$ "pc/tab-magick") }}
+      {{> ($$ "pc/tab-afflictions") }}
+      {{> ($$ "pc/tab-background") }}
+    </section>
+</form>

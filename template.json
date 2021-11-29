@@ -8,79 +8,40 @@
         "stats": {
           "primaryAttributes": {
             "combat": {
-              "value": 0,
-              "bonus": 0
+              "value": 0
             },
             "brawn": {
-              "value": 0,
-              "bonus": 0
+              "value": 0
             },
             "agility": {
-              "value": 0,
-              "bonus": 0
+              "value": 0
             },
             "perception": {
-              "value": 0,
-              "bonus": 0
+              "value": 0
             },
             "intelligence": {
-              "value": 0,
-              "bonus": 0
+              "value": 0
             },
             "willpower": {
-              "value": 0,
-              "bonus": 0
+              "value": 0
             },
             "fellowship": {
-              "value": 0,
-              "bonus": 0
+              "value": 0
             }
           },
           "secondaryAttributes": {
-            "actionPoints" : {
-              "value": 3
-            },
-            "perilThreshold": {
-              "value": 0,
-              "valuePlusSix": 0,
-              "valuePlusTwelve": 0,
-              "valuePlusEighteen": 0
-            },
-            "damageThreshold": {
-              "value": 0,
-              "valuePlusSix": 0,
-              "valuePlusTwelve": 0,
-              "valuePlusEighteen": 0
-            },
             "perilCurrent": {
-              "value": "5",
-              "description": "Unhindered"
+              "value": 5,
+              "max": 5
             },
             "damageCurrent": {
-              "value": "5",
-              "description": "Unharmed"
-            },
-            "encumbrance": {
-              "value": 0,
-              "overage": 0,
-              "current": 0
-            },
-            "initiative": {
-              "value": 0,
-              "current": 0,
-              "overage": 0
-            },
-            "movement": {
-              "value": 0,
-              "current": 0,
-              "overage": 0
+              "value": 5,
+              "max": 5
             },
             "parry": {
-              "value": 0,
               "associatedSkill": "Simple Melee"
             },
             "dodge": {
-              "value": 0,
               "associatedSkill": "Coordination"
             },
             "magick": {
@@ -150,8 +111,8 @@
         "value": 0
       },
       "rewardPoints": {
-        "current": 0,
-        "total": 0,
+        "current": 1000,
+        "total": 1000,
         "spent": 0
       },
       "corruption": {
@@ -193,10 +154,17 @@
         }
       }
     },
+    "creature": {
+      
+    },
     "npc": {
       "templates": [
         "stats"
       ],
+      "riskFactor": {
+        "value": 1,
+        "notch": 1
+      },
       "ancestry": {
         "value": ""
       },
@@ -239,9 +207,6 @@
       "trappings": {
         "value": "",
         "arrayOfValues": []
-      },
-      "riskFactor": {
-        "value": ""
       }
     }
   },
@@ -252,7 +217,8 @@
     "templates": {
       "flavor": {
         "flavor": {
-          "description": ""
+          "description": "",
+          "notes": ""
         }
       },
       "price": {
@@ -278,17 +244,12 @@
         "flavor"
       ],
       "ancestralModifiers": {
-        "positive": {
-          "value": "",
-          "arrayOfValues": []
-        },
-        "negative": {
-          "value": "",
-          "arrayOfValues": []
-        }
+        "positive": [],
+        "negative": []
       },
       "ancestralTrait": {
-        "value": ""
+        "value": "",
+        "linkedId": null
       }
     },
     "drawback": {
@@ -312,33 +273,32 @@
         "flavor", "price", "encumbrance"
       ],
       "type": {
-        "value": ""
+        "value": "Bladed"
       },
-      "equipped": false,
+      "equipped": true,
       "associatedSkill": {
-        "value": "simpleMelee",
-        "label": "Simple Melee"
+        "value": "Simple Melee"
       },
       "load": {
         "value": 0
       },
+      "handling": "One-handed",
       "qualities": {
         "value": "",
         "arrayOfValues": []
       },
       "distance": {
-        "value": ""
+        "value": "Engaged"
       },
       "damage": {
-        "formula": "",
-        "associatedPrimaryAttribute": "Combat" 
+        "formula": "[CB] + 0 + (1+[#])d6x6"
       }
     },
     "armor": {
       "templates": [
         "flavor", "price", "encumbrance"
       ],
-      "equipped": false,
+      "equipped": true,
       "qualities": {
         "value": "",
         "arrayOfValues": []
@@ -355,12 +315,12 @@
         "value": ""
       },
       "quantity": {
-        "value": 0
+        "value": 1
       },
       "encumbrance": {
         "value": 0
       },
-      "carried": false
+      "carried": true
     },
     "profession": {
       "templates": [
@@ -373,18 +333,9 @@
       "archetype": {
         "value": ""
       },
-      "bonusAdvances": {
-        "value": "",
-        "arrayOfValues": []
-      },
-      "skillRanks": {
-        "value": "",
-        "arrayOfValues": []
-      },
-      "talents": {
-        "value": "",
-        "arrayOfValues": []
-      },
+      "bonusAdvances": [],
+      "skillRanks": [],
+      "talents": [],
       "professionalTrait": {
         "value": ""
       },
@@ -395,9 +346,7 @@
         "value": ""
       },
       "tier": {
-        "value": "",
-        "completed": false,
-        "advancesPurchased": 0
+        "value": ""
       }
     },
     "spell": {
@@ -458,25 +407,6 @@
       "requiresTraining": false,
       "associatedPrimaryAttribute": {
         "value": ""
-      },
-      "ranks": {
-        "apprentice": {
-          "purchased": false,
-          "tierOfPurchase": ""
-        },
-        "journeyman": {
-          "purchased": false,
-          "tierOfPurchase": ""
-        },
-        "master": {
-          "purchased": false,
-          "tierOfPurchase": ""
-        },
-        "bonus": 0
-      },
-      "focuses": {
-        "value": "",
-        "arrayOfValues": []
       }
     },
     "talent": {

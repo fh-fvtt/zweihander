@@ -1,0 +1,124 @@
+<header class="sheet-header flexrow">
+  <div class="profile">
+    <img class="profile-image" src="{{img}}" title="{{name}}" data-edit="img"/>
+  </div>
+  <section class="header-details flexrow">
+    <h1 class="charname">
+      <input name="name" type="text" value="{{name}}" placeholder="Character Name">
+    </h1>
+    <aside class="header-rp flexcol">
+      <label class="rp-title"> Reward Points</label>
+      <div class="rp-content flexrow">
+        <input class="rp-spent" type="number" name="data.rewardPoints.current" value="{{data.rewardPoints.current}}"
+          {{#rpSettingOn}} readonly {{else}} {{/rpSettingOn}} />
+        <span class="sep">/</span>
+        <input class="rp-gained" type="number" name="data.rewardPoints.total" value="{{data.rewardPoints.total}}" />
+      </div>
+      <div class="rp-other-pts flexrow">
+        <span class="sep">Fate </span>
+        <input class="rp-fate" type="number" name="data.fate.value" value="{{data.fate.value}}" />
+        <span class="sep">Rep. </span>
+        <input class="rp-rep" type="number" name="data.reputation.value" value="{{data.reputation.value}}" />
+      </div>
+    </aside>
+    <ul class="summary flexrow">
+      <li class="ancestry">
+        <div class="ancestry-wrapper">
+          <input class="input-text" name="data.physical.ancestry.value" type="text" value="{{ancestry.0.name}}"
+            placeholder="Ancestry" readonly />
+          <div class="ancestry-edit">
+            {{#if ancestry.length}}
+            <a class="ancestry-edit-button" title="Edit Ancestry"><i class="fas fa-pencil-alt fa-sm"></i></a>
+            <a class="ancestry-delete-button" title="Delete Ancestry"><i class="fas fa-trash-alt fa-sm"></i></a>
+            {{else}}
+            <a class="add-new" data-item-type="ancestry" title="Add Ancestry"><i class="fas fa-plus fa-xs"></i></a>
+            {{/if}}
+          </div>
+      </li>
+      <li class="summary-profession">
+        <input name="data.profession.value" type="text" value="{{data.profession.value}}" placeholder="Profession" />
+      </li>
+      <li class="summary-sex">
+        <input name="data.physical.sex.value" type="text" value="{{data.physical.sex.value}}"  placeholder="Sex" />
+      </li>
+      <li class="summary-age flexrow summary-multi">
+        <input  name="data.physical.age.value" type="text" value="{{data.physical.age.value}}" placeholder="0" />
+        <label>y.o.</label>
+      </li>
+      <li class="summary-social">
+        <input name="data.socialClass.value" type="text" value="{{data.socialClass.value}}" placeholder="Social Class" />
+      </li>
+      <li class="summary-height flexrow summary-multi">
+        <input  name="data.physical.height.value" type="text" value="{{data.physical.height.value}}" placeholder="0" />
+        <label>ft</label>
+      </li>
+      <li class="summary-weight flexrow summary-multi">
+        <input  name="data.physical.weight.value" type="text" value="{{data.physical.weight.value}}" placeholder="0" />
+        <label>lbs</label>
+      </li>
+    </ul>
+    <ul class="summary flexrow">
+      <li class="summary-buildtype">
+        <input name="data.physical.buildType.value" type="text" value="{{data.physical.buildType.value}}" placeholder="Build Type" />
+      </li>
+      <li class="summary-hair flexrow summary-multi">
+        <input  name="data.physical.hairColor.value" type="text" value="{{data.physical.hairColor.value}}" placeholder="medium brown" />
+        <label>hair</label>
+      </li>
+      <li class="summary-eye flexrow summary-multi">
+        <input  name="data.physical.eyeColor.value" type="text" value="{{data.physical.eyeColor.value}}" placeholder="medium brown" />
+        <label>eyes</label>
+      </li>
+      <li class="summary-complexion flexrow summary-multi">
+        <input  name="data.physical.complexion.value" type="text" value="{{data.physical.complexion.value}}" placeholder="light brown" />
+        <label>skin</label>
+      </li>
+    </ul>
+    <ul class="summary flexrow">
+      <li class="summary-season flexrow summary-multi">
+        <label>born in</label>
+        <input  name="data.seasonOfBirth.value" type="text" value="{{data.seasonOfBirth.value}}" placeholder="Season" />
+      </li>
+      <li class="summary-upbringing flexrow summary-multi">
+        <input  name="data.upbringing.value" type="text" value="{{data.upbringing.value}}" placeholder="Upbringing" />
+        <label>upbringing</label>
+      </li>
+      <li class="summary-languages flexrow summary-multi">
+        <label>speaks</label>
+        <input  name="data.languages.value" type="text" value="{{data.languages.value}}" placeholder="Languages" />
+      </li>
+    </ul>
+        <ul class="summary flexrow">
+      <li class="summary-marks">
+        <input name="data.physical.distinguishingMarks.value" type="text" value="{{data.physical.distinguishingMarks.value}}" placeholder="Distinguishing Marks" />
+      </li>
+    </ul>
+    <ul class="summary summary-dooming flexrow">
+      <li>
+        <input  name="data.dooming.value" type="text" value="{{data.dooming.value}}" placeholder="Dooming" />
+      </li>
+    </ul>
+    <ul class="summary alignment flexrow">
+      <li class="order-title">
+        <input name="data.orderAlignment.value" type="text" value="{{data.orderAlignment.value}}" placeholder="Order Alignment" />
+      </li>
+      <li class="order-track flexrow">
+        {{radioRanks "data.orderRanks.value" rankOptions checked=data.orderRanks.value}}
+      </li>
+      <li class="corruption-title">
+        <label>Corruption</label>
+      </li>
+      <li class="corruption">
+        <input class="input-number"  name="data.corruption.value" type="number" value="{{data.corruption.value}}" />
+      </li>
+      <li class="corruption-reset"><a class="reset-ranks"><i class="fas fa-sync-alt fa-xs" title="Reset Chaos and Order Ranks"></i></a></li>
+      <li class="chaos-track flexrow">
+        {{radioRanks "data.chaosRanks.value" rankOptions checked=data.chaosRanks.value}}
+      </li>
+      <li class="chaos-title">
+        <input name="data.chaosAlignment.value" type="text" value="{{data.chaosAlignment.value}}" placeholder="Chaos Alignment" />
+      </li>
+    </ul>
+  </section>
+</header>
+

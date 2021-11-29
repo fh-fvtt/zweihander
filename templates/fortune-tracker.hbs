@@ -1,0 +1,25 @@
+<div class="fortunetracker-container flexrow" data-intro='Hello step one!'>
+  {{#unless waiting}}
+    {{#if params.compact}}
+    <a class="fortune-tracker-fortune-trigger fortune-tracker-text-fortune">Fortune: {{fortune.value}}</a> 
+    <a class="fortune-tracker-misfortune-trigger fortune-tracker-text-misfortune">Misfortune {{misfortune.value}}</a>
+    {{else}}
+    <div class="fortunetracker-token-container">
+      {{#each fortune.positions}}
+      <a class="fortune-tracker-fortune-trigger">
+        <div class="fortunetracker-life" title="Current fortune points: {{../fortune.value}}" style="background-image: url('{{../fortune.path}}'); height: {{../params.tokenSize}}px; width: {{../params.tokenSize}}px; top: {{this.t}}px; left: {{this.l}}px"></div>
+      </a>
+      {{/each}}
+    </div>
+    <div class="fortunetracker-token-container">
+      {{#each misfortune.positions}}
+      <a class="fortune-tracker-misfortune-trigger">
+        <div class="fortunetracker-death" title="Current misfortune points: {{../misfortune.value}}" style="background-image: url('{{../misfortune.path}}'); height: {{../params.tokenSize}}px; width: {{../params.tokenSize}}px; top: {{this.t}}px; left: {{this.l}}px"></div>
+      </a>
+      {{/each}}
+    </div>
+    {{/if}}
+  {{else}}
+    <span id="fortuneTrackerAppWaiting"><i class="fas fa-sync-alt"></i>Waiting for a GM to connect</span>
+  {{/unless}}
+</div>
