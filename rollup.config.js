@@ -1,6 +1,7 @@
 import { nodeResolve } from '@rollup/plugin-node-resolve';
 import commonjs from '@rollup/plugin-commonjs';
 import postcss from 'rollup-plugin-postcss'
+import sassPostcss from '@koffeine/rollup-plugin-sass-postcss';
 import autoprefixer from 'autoprefixer';
 import reporter from 'postcss-reporter';
 import doiuse from 'doiuse';
@@ -25,10 +26,11 @@ export default {
   plugins: [
     nodeResolve(),
     commonjs(),
-    postcss({
-      sourceMap: true,
-      extract: true,
-      minimize: !dev,
+    sassPostcss({
+      include: [/\.scss/u, /\.css/u],
+      exclude: undefined,
+      sourcemap: true,
+      output: 'zweihander.css',
       plugins: [
         require('colorguard'),
         autoprefixer(),
@@ -38,8 +40,23 @@ export default {
           relative: '.'
         }),
         reporter({ clearReportedMessages: true })
-        ]
+      ]
     }),
+    // postcss({
+    //   sourceMap: true,
+    //   extract: true,
+    //   minimize: !dev,
+    //   plugins: [
+    //     require('colorguard'),
+    //     autoprefixer(),
+    //     // doiuse({browsers: ['> 1.5% and last 3 versions']}),
+    //     require('postcss-assets')({
+    //       loadPaths: ['assets/'],
+    //       relative: '.'
+    //     }),
+    //     reporter({ clearReportedMessages: true })
+    //     ]
+    // }),
     !dev && uglify()
   ]
 };

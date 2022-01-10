@@ -137,10 +137,10 @@
 }
 
 // zweihander logo
-#ui-left #logo {
-    content: resolve("logo.png");
-    filter: saturate(0) brightness(0.15) drop-shadow(0px 0px 3px var(--zx-clr-fg0));
-}
+// #ui-left #logo {
+//     content: resolve("logo.png");
+//     filter: saturate(0) brightness(0.15) drop-shadow(0px 0px 3px var(--zx-clr-fg0));
+// }
 
 .currency-gc {
   --currency-color: var(--zx-clr-yellow);

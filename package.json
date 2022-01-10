@@ -4,6 +4,7 @@
     "build": "PRODUCTION_MODE=1 rollup --config rollup.config.js"
   },
   "devDependencies": {
+    "@koffeine/rollup-plugin-sass-postcss": "^2.1.1",
     "@rollup/plugin-commonjs": "^21.0.1",
     "@rollup/plugin-node-resolve": "^13.0.6",
     "autoprefixer": "^10.4.0",

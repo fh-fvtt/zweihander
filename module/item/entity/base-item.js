@@ -3,8 +3,7 @@ import * as ZweihanderUtils from "../../utils";
 export default class ZweihanderBaseItem {
 
   static async _getOrCreateLinkedItem(actor, itemName, itemType, sourceName, sourceType) {
-    let itemToAdd = await ZweihanderUtils
-      .findItemWorldWide(itemType, itemName);
+    let itemToAdd = await ZweihanderUtils.findItemWorldWide(itemType, itemName);
     const existingItemWithSameName = actor.data.items.find(t => t.type === itemType && t.name === itemToAdd?.name);
     if (!itemToAdd && !existingItemWithSameName) return;
     const flag = { value: sourceType, label: `${sourceName} (${sourceType.capitalize()})` };
