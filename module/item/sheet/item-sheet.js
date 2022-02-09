@@ -50,7 +50,7 @@ export default class ZweihanderItemSheet extends ItemSheet {
     data.data.editable = this.isEditable;
     data.data.rollData = this.item.getRollData.bind(this.item);
     if (this.item.type === "weapon") {
-      data.data.skills = (await ZweihanderUtils.findItemsByType("skill", true)).map(x => x.name).sort((a, b) => a.localeCompare(b));
+      data.data.skills = (await ZweihanderUtils.findItemsByType("skill", {takeOne: true})).map(x => x.name).sort((a, b) => a.localeCompare(b));
     }
     return data.data;
   }

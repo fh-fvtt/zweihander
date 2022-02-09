@@ -44,9 +44,10 @@ export const registerHandlebarHelpers = async function () {
 
     let html = "";
     let i = 0;
+    let uuid = uuidv4();
     for (let [key, label] of Object.entries(choices)) {
       const isChecked = checked === key;
-      html += `<input type="radio" class="rd" name="${name}" id="${name + i}" value="${key}" ${isChecked ? "checked" : ""}><label for="${name + i++}">${label}</label>`;
+      html += `<input type="radio" class="rd" name="${name}" id="${uuid}.${name + i}" value="${key}" ${isChecked ? "checked" : ""}><label for="${uuid}.${name + i++}">${label}</label>`;
     }
 
     return new Handlebars.SafeString(html);
