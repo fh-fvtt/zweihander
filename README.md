@@ -71,6 +71,27 @@ Below you will find a (probably incomplete) list of currently missing features:
 	* Disorders
 	* Taints of Chaos
 
+## Community Feedback
+
+We keep track of the next steps and wanted features publicly, in our GitHub issues.
+While the primary driver for development is our own use of the system, community feedback is also very valuable. There are various ways of giving community feedback, which we introduce in the following.
+
+### Bug Reports
+
+If anything isn't working for you like it should, you can file a new bug. Please take some time to read the template prompts and give as much contextual information as possible and necessary to reproduce the bug.
+
+
+### Feature Requests
+
+If you'd like us to develop a feature that is currently not reflected by any of the existing issues, or have a question about the system usage, please do not create an issue for it and rather [start a discussion](https://github.com/fh-fvtt/zweihander/discussions/new). Once the ideas have been fleshed out there, we will create an issue for it.
+
+### Feature Prioritization
+
+If you would like us to prioritize a certain feature, just leave a reaction on the respective issue.
+For example, if you are hyped about the prospect of having Active Effects in the system, leave a thumb up [here](https://github.com/fh-fvtt/zweihander/issues/49).
+We will regularly have a look at the [issues sorted by reactions](https://github.com/fh-fvtt/zweihander/issues?q=is%3Aissue+is%3Aopen+sort%3Areactions) and decide on the priority based on your feedback!
+
+
 ## Contact
 
 If you wish to help with development or have any suggestions regarding the system, contact Re4XN#8341 or kxfin#0458 on Discord.
