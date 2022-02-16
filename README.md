@@ -92,6 +92,6 @@ For example, if you are hyped about the prospect of having Active Effects in the
 We will regularly have a look at the [issues sorted by reactions](https://github.com/fh-fvtt/zweihander/issues?q=is%3Aissue+is%3Aopen+sort%3Areactions) and decide on the priority based on your feedback!
 
 
-## Contact
+## Development
 
-If you wish to help with development or have any suggestions regarding the system, contact Re4XN#8341 or kxfin#0458 on Discord.
+If you wish to help with development, contact Re4XN#8341 or kxfin#0458 on Discord.
