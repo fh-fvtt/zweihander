@@ -63,7 +63,7 @@ export default {
     !dev && del({targets: 'dist'}),
     !dev && copy({
       targets: [
-        {src: ['./*','!./.*','!node_modules','!module','!system.template.json','!rollup.config.js','!yarn-error.log'], dest: 'dist'}
+        {src: ['./*','!./.*','!node_modules','!module','!system.template.json','!rollup.config.js','!yarn-error.log','!readme-assets'], dest: 'dist'}
       ]
     })
   ]

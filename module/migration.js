@@ -105,6 +105,7 @@ const migrateActorData = async function (actor) {
     }
   }
   if (items.length > 0) updateData.items = items;
+  updateData.img = migrateIcons(actor.img);
   return updateData;
 };
 
@@ -119,6 +120,7 @@ export const migrateItemData = async function (item) {
   } else if (rmSource.includes(item.type)) {
     // item.setFlag('zweihander', 'source', null);
   }
+  updateData.img = migrateIcons(item.img);
   return updateData;
 };
 
@@ -144,9 +146,6 @@ const migrateAncestry = async function (item) {
 
 const migrateProfession = async function (item) {
   const actor = item.actor;
-  if (item.pack) {
-    debugger;
-  }
   item = item.toObject();
   let bonusAdvances = item.data.bonusAdvances?.arrayOfValues?.map(ba => ({ value: ba.name.trim(), purchased: ba.purchased }))
     ?? item.data.bonusAdvances?.value?.split(',')?.map(v => ({ value: v.trim(), purchased: false }))
@@ -207,10 +206,14 @@ const migrateProfession = async function (item) {
   }
 }
 
+const migrateIcons = function (img) {
+  return img.replaceAll('assets/icons/game-icons','assets/icons').replaceAll('assets/skills.png', 'icons/skills.svg');
+}
+
 export const migrateWorldSafe = async function () {
   if (!game.user.isGM) return;
   const currentVersion = game.settings.get("zweihander", "systemMigrationVersion");
-  const NEEDS_MIGRATION_VERSION = "0.3.30";
+  const NEEDS_MIGRATION_VERSION = "4.0.1";
   const COMPATIBLE_MIGRATION_VERSION = "0.3.30";
   const totalDocuments = game.actors.size + game.scenes.size + game.items.size;
   if (!currentVersion && totalDocuments === 0) return game.settings.set("zweihander", "systemMigrationVersion", game.system.data.version);

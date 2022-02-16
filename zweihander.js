@@ -1,25 +1,8985 @@
-function findDifference(e,a){let r=[];for(let t of e)a.some(e=>e.name===t.name)||r.push(t);return r}function getSymmetricDifference(e,t){return findDifference(e,t).concat(findDifference(t,e))}function isObjectEmpty$1(e){return!e||!Object.keys(e).length}const primaryAttributeMapping={C:"combat",B:"brawn",A:"agility",P:"perception",I:"intelligence",W:"willpower",F:"fellowship"};function abbreviations2DataPath(e,t=!0){var a,r;for(a in primaryAttributeMapping)e=e?.replace(`[${a}B]`,`@stats.primaryAttributes.${primaryAttributeMapping[a]}.bonus`+(t?`[${r=primaryAttributeMapping[a],r.slice(0,1).toUpperCase()+r.slice(1)} Bonus]`:""));return e}const diacriticsMap=function(){var a=[{base:"A",letters:"AⒶＡÀÁÂẦẤẪẨÃĀĂẰẮẴẲȦǠÄǞẢÅǺǍȀȂẠẬẶḀĄȺⱯ"},{base:"AA",letters:"Ꜳ"},{base:"AE",letters:"ÆǼǢ"},{base:"AO",letters:"Ꜵ"},{base:"AU",letters:"Ꜷ"},{base:"AV",letters:"ꜸꜺ"},{base:"AY",letters:"Ꜽ"},{base:"B",letters:"BⒷＢḂḄḆɃƂƁ"},{base:"C",letters:"CⒸＣĆĈĊČÇḈƇȻꜾ"},{base:"D",letters:"DⒹＤḊĎḌḐḒḎĐƋƊƉꝹÐ"},{base:"DZ",letters:"ǱǄ"},{base:"Dz",letters:"ǲǅ"},{base:"E",letters:"EⒺＥÈÉÊỀẾỄỂẼĒḔḖĔĖËẺĚȄȆẸỆȨḜĘḘḚƐƎ"},{base:"F",letters:"FⒻＦḞƑꝻ"},{base:"G",letters:"GⒼＧǴĜḠĞĠǦĢǤƓꞠꝽꝾ"},{base:"H",letters:"HⒽＨĤḢḦȞḤḨḪĦⱧⱵꞍ"},{base:"I",letters:"IⒾＩÌÍÎĨĪĬİÏḮỈǏȈȊỊĮḬƗ"},{base:"J",letters:"JⒿＪĴɈ"},{base:"K",letters:"KⓀＫḰǨḲĶḴƘⱩꝀꝂꝄꞢ"},{base:"L",letters:"LⓁＬĿĹĽḶḸĻḼḺŁȽⱢⱠꝈꝆꞀ"},{base:"LJ",letters:"Ǉ"},{base:"Lj",letters:"ǈ"},{base:"M",letters:"MⓂＭḾṀṂⱮƜ"},{base:"N",letters:"NⓃＮǸŃÑṄŇṆŅṊṈȠƝꞐꞤ"},{base:"NJ",letters:"Ǌ"},{base:"Nj",letters:"ǋ"},{base:"O",letters:"OⓄＯÒÓÔỒỐỖỔÕṌȬṎŌṐṒŎȮȰÖȪỎŐǑȌȎƠỜỚỠỞỢỌỘǪǬØǾƆƟꝊꝌ"},{base:"OI",letters:"Ƣ"},{base:"OO",letters:"Ꝏ"},{base:"OU",letters:"Ȣ"},{base:"OE",letters:"Œ"},{base:"oe",letters:"œ"},{base:"P",letters:"PⓅＰṔṖƤⱣꝐꝒꝔ"},{base:"Q",letters:"QⓆＱꝖꝘɊ"},{base:"R",letters:"RⓇＲŔṘŘȐȒṚṜŖṞɌⱤꝚꞦꞂ"},{base:"S",letters:"SⓈＳẞŚṤŜṠŠṦṢṨȘŞⱾꞨꞄ"},{base:"T",letters:"TⓉＴṪŤṬȚŢṰṮŦƬƮȾꞆ"},{base:"TZ",letters:"Ꜩ"},{base:"U",letters:"UⓊＵÙÚÛŨṸŪṺŬÜǛǗǕǙỦŮŰǓȔȖƯỪỨỮỬỰỤṲŲṶṴɄ"},{base:"V",letters:"VⓋＶṼṾƲꝞɅ"},{base:"VY",letters:"Ꝡ"},{base:"W",letters:"WⓌＷẀẂŴẆẄẈⱲ"},{base:"X",letters:"XⓍＸẊẌ"},{base:"Y",letters:"YⓎＹỲÝŶỸȲẎŸỶỴƳɎỾ"},{base:"Z",letters:"ZⓏＺŹẐŻŽẒẔƵȤⱿⱫꝢ"},{base:"a",letters:"aⓐａẚàáâầấẫẩãāăằắẵẳȧǡäǟảåǻǎȁȃạậặḁąⱥɐ"},{base:"aa",letters:"ꜳ"},{base:"ae",letters:"æǽǣ"},{base:"ao",letters:"ꜵ"},{base:"au",letters:"ꜷ"},{base:"av",letters:"ꜹꜻ"},{base:"ay",letters:"ꜽ"},{base:"b",letters:"bⓑｂḃḅḇƀƃɓ"},{base:"c",letters:"cⓒｃćĉċčçḉƈȼꜿↄ"},{base:"d",letters:"dⓓｄḋďḍḑḓḏđƌɖɗꝺ"},{base:"dz",letters:"ǳǆ"},{base:"e",letters:"eⓔｅèéêềếễểẽēḕḗĕėëẻěȅȇẹệȩḝęḙḛɇɛǝ"},{base:"f",letters:"fⓕｆḟƒꝼ"},{base:"g",letters:"gⓖｇǵĝḡğġǧģǥɠꞡᵹꝿ"},{base:"h",letters:"hⓗｈĥḣḧȟḥḩḫẖħⱨⱶɥ"},{base:"hv",letters:"ƕ"},{base:"i",letters:"iⓘｉìíîĩīĭïḯỉǐȉȋịįḭɨı"},{base:"j",letters:"jⓙｊĵǰɉ"},{base:"k",letters:"kⓚｋḱǩḳķḵƙⱪꝁꝃꝅꞣ"},{base:"l",letters:"lⓛｌŀĺľḷḹļḽḻſłƚɫⱡꝉꞁꝇ"},{base:"lj",letters:"ǉ"},{base:"m",letters:"mⓜｍḿṁṃɱɯ"},{base:"n",letters:"nⓝｎǹńñṅňṇņṋṉƞɲŉꞑꞥ"},{base:"nj",letters:"ǌ"},{base:"o",letters:"oⓞｏòóôồốỗổõṍȭṏōṑṓŏȯȱöȫỏőǒȍȏơờớỡởợọộǫǭøǿɔꝋꝍɵ"},{base:"oi",letters:"ƣ"},{base:"ou",letters:"ȣ"},{base:"oo",letters:"ꝏ"},{base:"p",letters:"pⓟｐṕṗƥᵽꝑꝓꝕ"},{base:"q",letters:"qⓠｑɋꝗꝙ"},{base:"r",letters:"rⓡｒŕṙřȑȓṛṝŗṟɍɽꝛꞧꞃ"},{base:"s",letters:"sⓢｓßśṥŝṡšṧṣṩșşȿꞩꞅẛ"},{base:"t",letters:"tⓣｔṫẗťṭțţṱṯŧƭʈⱦꞇ"},{base:"tz",letters:"ꜩ"},{base:"u",letters:"uⓤｕùúûũṹūṻŭüǜǘǖǚủůűǔȕȗưừứữửựụṳųṷṵʉ"},{base:"v",letters:"vⓥｖṽṿʋꝟʌ"},{base:"vy",letters:"ꝡ"},{base:"w",letters:"wⓦｗẁẃŵẇẅẘẉⱳ"},{base:"x",letters:"xⓧｘẋẍ"},{base:"y",letters:"yⓨｙỳýŷỹȳẏÿỷẙỵƴɏỿ"},{base:"z",letters:"zⓩｚźẑżžẓẕƶȥɀⱬꝣ"}];let r=[];for(let t=0;t<a.length;t++){var i=a[t].letters;for(let e=0;e<i.length;e++)r[i[e]]=a[t].base}return r}();function removeDiacritics(e){return e.replace(/[^\u0000-\u007E]/g,function(e){return diacriticsMap[e]||e})}function normalizeName(e){return removeDiacritics(e).toLowerCase().replaceAll(/[^a-zA-Z0-9]/g,"")}function normalizedEquals(e,t){return normalizeName(e)===normalizeName(t)}function sortByItemSpecificity({referenceNames:r=[],packPriority:i=!0}={}){const a=e=>{var t=0,a=i?4:0;return t+=e?.pack?a:4-a,t+=r.includes(e?.name)?2:0,t+=e?.isOwner?1:0};return(e,t)=>a(t)-a(e)}function partitionByNames(t){return function(e){let a;a=t?t.map(normalizeName):[...new Set(e.map(e=>normalizeName(e.name)))];const r=Array(a.length);for(let e=0;e<r.length;e++)r[e]=[];return e.forEach(e=>{var t=a.indexOf(normalizeName(e.name));r[t].push(e)}),r}}async function findItemsByType(t,{takeOne:e=!1,filterFn:a,sortFn:r=sortByItemSpecificity(),partitionFn:i=partitionByNames()}={}){const n={type:t},s=(await Promise.all(game.packs.filter(e=>"Item"===e.documentClass.documentName).map(e=>e.getDocuments(n)))).flatMap(e=>e);var o=game.collections.get("Item").filter(e=>e.type===t);let l=s.concat(o);if(a&&(l=l.filter(a)),i){const c=i(l);return r&&c.forEach(e=>e.sort(r)),e?c.map(e=>e[0]??null):c}return r&&l.sort(r),e?l[0]??null:l}async function findItemsWorldWide(e,t,a={}){const r=t.map(normalizeName);return findItemsByType(e,{...a,filterFn:e=>r.includes(normalizeName(e.name)),sortFn:sortByItemSpecificity({referenceNames:t}),partitionFn:partitionByNames(t)})}async function findItemWorldWide(e,t){return findItemsWorldWide(e,[t],{takeOne:!0}).then(e=>e[0])}class ZweihanderBaseActor{prepareEmbeddedEntities(e){}getRollData(e){return e}buildPerilDamageLadder(t,a,r){let i=0;t.stats.secondaryAttributes.perilThreshold={},t.stats.secondaryAttributes.damageThreshold={},["value","valuePlusSix","valuePlusTwelve","valuePlusEighteen"].forEach(e=>{t.stats.secondaryAttributes.perilThreshold[e]=a+i,t.stats.secondaryAttributes.damageThreshold[e]=r+i,i+=6})}getPerilMalus(e){return{0:30,1:30,2:20,3:10}[e.stats.secondaryAttributes.perilCurrent.value]??0}async createEmbeddedDocuments(e,r,t,i){if("Item"!==e)return r;{const l=[];let e=1===i.data.ancestry.length,a=i.data.professions.length;for(let t of r){var n,s,o;"profession"===t.type?(n=i.data.professions.map(e=>e.data.tier.completed).every(e=>!0===e),s=3==a,o=i.data.professions.some(e=>e._id===t._id),s&&!o?ui.notifications.error("A character may not enter more than 3 Professions."):n||o||ui.notifications.error("A character must complete the previous Tier before entering a new Profession."),!s&&n&&(l.push(t),a++)):"ancestry"===t.type?e?ui.notifications.error("A character may not possess more than 1 Ancestry."):(l.push(t),e=!0):l.push(t)}return l}}}class ZweihanderActorConfig extends FormApplication{static defaultConfiguration={dthAttribute:"brawn",pthAttribute:"willpower",intAttribute:"perception",movAttribute:"agility",perilOffset:0,encumbranceModifier:0,initiativeModifier:0,movementModifier:0,parrySkills:["Simple Melee","Martial Melee","Guile","Charm","Incantation"],dodgeSkills:["Coordination","Guile","Drive","Ride"],magickSkills:["Incantation","Folklore"]};static getValue(e,t){return getProperty(e.flags,"zweihander.actorConfig."+t)??this.defaultConfiguration[t]}static getConfig(e){const t={};for(var a in this.defaultConfiguration)t[a]=this.getValue(e,a);return t}static get defaultOptions(){return foundry.utils.mergeObject(super.defaultOptions,{classes:["zweihander sheet actor-config"],id:"zweihander_actor_config",template:"systems/zweihander/templates/actor/actor-config.hbs",width:500})}get title(){return this.object.name+": Actor Configuration"}getData(){const e=super.getData();return e.flags=ZweihanderActorConfig.getConfig(this.object.data),e.parrySkills=e.flags.parrySkills.join(", "),e.dodgeSkills=e.flags.dodgeSkills.join(", "),e}async _updateObject(e,t){const a=this.object;let r=foundry.utils.expandObject(t).flags;var i=r.parrySkills.split(",").map(e=>e.trim()),t=r.dodgeSkills.split(",").map(e=>e.trim());r.parrySkills=i,r.dodgeSkills=t,await a.setFlag("zweihander","actorConfig",r)}}class ZweihanderPC extends ZweihanderBaseActor{prepareBaseData(e,t){}prepareEmbeddedEntities(t){const a=["trapping","condition","injury","disease","disorder","profession","ancestry","armor","weapon","spell","ritual","talent","trait","drawback","quality","skill","uniqueAdvance"],r=e=>({injury:"injuries",ancestry:"ancestry",armor:"armor",quality:"qualities"})[e]??e+"s";a.forEach(e=>t[r(e)]=[]),t.items.filter(e=>a.includes(e.type)).forEach(e=>t[r(e.type)].push(e.toObject(!1))),t.skills=t.skills.sort((e,t)=>e.name.localeCompare(t.name))}prepareDerivedData(i){const n=null===i._id;var e=ZweihanderActorConfig.getConfig(i);const s=i.data;if(s.derived={},game.settings.get("zweihander","trackRewardPoints")){const b={Basic:100,Intermediate:200,Advanced:300};s.rewardPoints.spent=i.professions.map(e=>b[e.data.tier.value]*e.data.tier.advancesPurchased).concat(i.uniqueAdvances.map(e=>e.data.rewardPointCost.value)).reduce((e,t)=>e+t,0),s.rewardPoints.current=s.rewardPoints.total-s.rewardPoints.spent}s.tier=i.professions[i.professions.length-1]?.data.tier.value??"",Object.values(s.stats.primaryAttributes).forEach(e=>e.bonus=Math.floor(e.value/10));var t=i.ancestry[0];const a=(e,a,r)=>e.forEach(e=>{var t=primaryAttributeMapping[e.slice(1,2)];t?s.stats.primaryAttributes[t].bonus+=a:ui?.notifications?.warn(`"${e.trim()}" is not a valid primary attribute bonus abbreviation in ${r}!`)});t&&(a(t.data.ancestralModifiers.positive,1,`ancestry ${t.name} of actor `+i.name),a(t.data.ancestralModifiers.negative,-1,`ancestry ${t.name} of actor `+i.name)),i.professions.forEach(e=>{var t=e.data.bonusAdvances.filter(e=>e.purchased).map(e=>e.value);a(t,1,`profession ${e.name} of actor `+i.name)});const r=i.armor.filter(e=>e.data.equipped);s.derived.dtm=Math.max(0,...r.map(e=>e.data.damageThresholdModifier.value));var o=s.stats.primaryAttributes[e.pthAttribute].bonus+3,l=s.derived.dtm,c=s.stats.primaryAttributes[e.dthAttribute].bonus+l;this.buildPerilDamageLadder(s,o,c);const d=this.getPerilMalus(s);var u=(t,e)=>{const a=i.skills.find(e=>e.name===t.associatedSkill);var r;a?(r=a.data.associatedPrimaryAttribute.value.toLowerCase(),t.value=s.stats.primaryAttributes[r].value+Math.max(0,a.data.bonus-d)):n||ui?.notifications?.warn(`Can't find associated skill ${t.associatedSkill} for secondary attribute ${e}!`)};u(s.stats.secondaryAttributes.parry,"Parry"),u(s.stats.secondaryAttributes.dodge,"Dodge"),u(s.stats.secondaryAttributes.magick,"Magick");const f=i.trappings.filter(e=>e.data.carried);var p,h,t=game.settings.get("zweihander","encumbranceNineForOne")?Math.floor(f.filter(e=>0===e.data.encumbrance.value).map(e=>e.data.quantity.value).reduce((e,t)=>e+t,0)/9):0,l=f.filter(e=>0!==e.data.encumbrance.value).map(e=>e.data.encumbrance.value*e.data.quantity.value).reduce((e,t)=>e+t,0),o=Math.floor(Object.entries(s.coinage).map(e=>e[1]).reduce((e,t)=>e+t,0)/1e3),c=r.map(e=>e.data.encumbrance.value).reduce((e,t)=>e+t,0),u=i.weapons.filter(e=>e.data.equipped).map(e=>e.data.encumbrance.value).reduce((e,t)=>e+t,0);const m=s.stats.secondaryAttributes.encumbrance={};m.value=s.stats.primaryAttributes.brawn.bonus+3+e.encumbranceModifier,m.current=t+l+o+c+u,m.overage=Math.max(0,m.current-m.value);const g=s.stats.secondaryAttributes.initiative={};g.value=s.stats.primaryAttributes[e.intAttribute].bonus+3+e.initiativeModifier,g.overage=m.overage,g.current=Math.max(0,g.value-g.overage);const v=s.stats.secondaryAttributes.movement={};v.value=s.stats.primaryAttributes[e.movAttribute].bonus+3+e.movementModifier,v.overage=m.overage,v.current=Math.max(0,v.value-v.overage);for(p of i.armor)p.data.qualities.arrayOfValues=p.data.qualities.value.split(", ");for(h of i.weapons)h.data.qualities.arrayOfValues=h.data.qualities.value.split(", ")}getRollData(e){return e}async _preCreate(e,t,a,r){let i=game.packs.get("zweihander.skills"),n=await i.getDocuments();var s=getSymmetricDifference(n.map(e=>e.toObject()),e.skills);s.length&&e.update({items:s})}}class ZweihanderCreature extends ZweihanderBaseActor{prepareEmbeddedEntities(e){const t=[],a=[],r=[],i=[],n=[],s=[],o=[],l=[],c=[],d=[];for(var u of e.items.values())"weapon"===u.type?t.push(u.data):"ancestry"===u.type?a.push(u.data):"spell"===u.type?r.push(u.data):"ritual"===u.type?i.push(u.data):"skill"===u.type?n.push(u.data):"talent"===u.type?s.push(u.data):"trait"===u.type?o.push(u.data):"trapping"===u.type?l.push(u.data):"injury"===u.type?c.push(u.data):"condition"===u.type&&d.push(u.data);e.weapons=t,e.ancestry=a,e.spells=r,e.rituals=i,e.skills=n.sort((e,t)=>{e=e.name,t=t.name;return e<t?-1:t<e?1:0}),e.talents=s,e.traits=o,e.trappings=l,e.injuries=c,e.conditions=d}getRollData(e){return e}prepareDerivedData(e){const t=e.data;let a=t.stats.primaryAttributes.willpower.bonus,r=3;const i=Object.keys(t.stats.secondaryAttributes.perilThreshold);i.forEach(e=>{t.stats.secondaryAttributes.perilThreshold[e]=a+r,r+=6});let n=t.stats.primaryAttributes.brawn.bonus;var s=Object.keys(t.stats.secondaryAttributes.damageThreshold);t.stats.secondaryAttributes.damageThreshold[s[0]]=n;for(let e=1;e<s.length;e++)t.stats.secondaryAttributes.damageThreshold[s[e]]=n+=6}}class ZweihanderNPC extends ZweihanderCreature{}class ZweihanderActor extends Actor{static types={character:new ZweihanderPC,npc:new ZweihanderNPC,creature:new ZweihanderCreature};constructor(...e){super(...e)}dispatch(e,t={orElse:{value:{},async:!1},args:[]}){if(ZweihanderActor.types[this.type]){const a=ZweihanderActor.types[this.type];if(a[e]&&"function"==typeof a[e])return t?.args?.length?a[e](...t.args,this):a[e](this.data,this)}return t?.orElse?.async?Promise.resolve(t?.orElse?.value):t?.orElse?.value}prepareData(){super.prepareData()}prepareBaseData(){super.prepareBaseData(),this.dispatch("prepareBaseData")}prepareEmbeddedDocuments(){super.prepareEmbeddedDocuments&&super.prepareEmbeddedDocuments(),this.dispatch("prepareEmbeddedEntities")}prepareEmbeddedEntities(){super.prepareEmbeddedEntities&&super.prepareEmbeddedEntities(),this.dispatch("prepareEmbeddedEntities")}applyActiveEffects(){super.applyActiveEffects(),this.dispatch("applyActiveEffects")}prepareDerivedData(){super.prepareDerivedData(),this.dispatch("prepareDerivedData")}getRollData(){return this.dispatch("getRollData",{args:[this.data.data],orElse:{value:this.data.data}})}async _preCreate(e,t,a){await super._preCreate(e,t,a),await this.dispatch("_preCreate",{args:[this.data,t,a]})}async _onCreate(e,t,a){await super._onCreate(e,t,a),a===game.user.id&&await this.dispatch("_onCreate",{args:[e,t,a]})}async createEmbeddedDocuments(e,t,a={}){t=await this.dispatch("createEmbeddedDocuments",{args:[e,t,a]});if(t)return super.createEmbeddedDocuments(e,t,a)}async updateEmbeddedDocuments(e,t,a={}){t=await this.dispatch("updateEmbeddedDocuments",{args:[e,t,a],orElse:{value:t,async:!0}});if(t)return super.updateEmbeddedDocuments(e,t,a)}async deleteEmbeddedDocuments(e,t,a={}){return await this.dispatch("deleteEmbeddedDocuments",{args:[e,t,a]}),super.deleteEmbeddedDocuments(e,t,a)}_preCreateEmbeddedDocuments(e,t,a,r){super._preCreateEmbeddedDocuments(e,t,a,r),r===game.user.id&&this.dispatch("_preCreateEmbeddedDocuments",{args:[e,t,a,r]})}_onCreateEmbeddedDocuments(e,t,a,r,i){super._onCreateEmbeddedDocuments(e,t,a,r,i),i===game.user.id&&this.dispatch("_onCreateEmbeddedDocuments",{args:[e,t,a,r,i]})}_preUpdateEmbeddedDocuments(e,t,a,r){super._preUpdateEmbeddedDocuments(e,t,a,r),r===game.user.id&&this.dispatch("_preUpdateEmbeddedDocuments",{args:[e,t,a,r]})}_onUpdateEmbeddedDocuments(e,t,a,r,i){super._onUpdateEmbeddedDocuments(e,t,a,r,i),i===game.user.id&&this.dispatch("_onUpdateEmbeddedDocuments",{args:[e,t,a,r,i]})}_preDeleteEmbeddedDocuments(e,t,a,r){super._preDeleteEmbeddedDocuments(e,t,a,r),r===game.user.id&&this.dispatch("_preDeleteEmbeddedDocuments",{args:[e,t,a,r]})}_onDeleteEmbeddedDocuments(e,t,a,r,i){super._onDeleteEmbeddedDocuments(e,t,a,r,i),i===game.user.id&&this.dispatch("_onDeleteEmbeddedDocuments",{args:[e,t,a,r,i]})}}class ZweihanderDice{static async rollSkillTest(i,n,s,o={}){const l=i.data.associatedPrimaryAttribute.value,c=n.data.stats.primaryAttributes[l.toLowerCase()].value,d=i.data.bonus;var e=Number(n.data.stats.secondaryAttributes.perilCurrent.value);const u=this._calculatePerilPenalty(e,d),f=this._calculateBaseChanceModifier(d,u);var t=await this._renderConfigurationDialog(s,i.name,o),a=t.additionalChaosDice||0,r=t.additionalFuryDice||0;let p=Number(t.difficultyRating);t.channelPowerBonus&&(p+=Number(t.channelPowerBonus)),30<p&&(p=30);const h=this._getDifficultyRatingLabel(p),m=t.flip,g=this._calculateTotalChance(c,f,p);let v=new Roll(CONFIG.ZWEI.testRollFormula,n.data),b=await v.evaluate({async:!0});var y=b._total,w=this._getDeconstructedRollData(y),e=this._getTestResult(y,g,w.match);let[k,S,C]=this._handleFlippedResult(y,g,e,w,m),_,A;if("weapon"===s){o.formula=o.formula.replace("[#]",r),o.formula=abbreviations2DataPath(o.formula);let e=await this._rollFuryDice(o,n);var T=e.terms.filter(e=>0<=e?.number).map((e,t)=>({value:e,index:t})).filter(e=>e.value?.faces),I=e.result.split(" + ");let t=[];for(let e=0;e<I.length;e++)for(var E of T)E.index==e?E.value.results.map(e=>e.result+(e?.exploded?"*":"")).forEach(e=>t.push(e)):t.push(I[e]);let a;a=0===t.length?"0":t.reduce((e,t)=>e+" + "+t),_={damage:e.total,damageFormula:e.formula,furyDiceString:a,additionalRoll:e}}else"spell"===s&&Number(t.channelPowerBonus)&&(r=t.channelPowerBonus/10,a=await this._rollChaosDice(n,r+Number(a)),A={chaosFormula:a._formula,chaosDice:a.dice,channelPowerBonus:t.channelPowerBonus,additionalRoll:a});b.render().then(()=>{let e={skill:i.name,primaryAttribute:l,attributeChance:c,rankBonus:d,baseChance:c+f,totalChance:g,difficultyRating:{value:p,label:h},perilPenalty:u,roll:k.toLocaleString(void 0,{minimumIntegerDigits:2}),image:n.img,showFlip:S,flip:m,testResult:C};isObjectEmpty$1(_)?isObjectEmpty$1(A)||foundry.utils.mergeObject(e,A):foundry.utils.mergeObject(e,_),isObjectEmpty$1(o)||foundry.utils.mergeObject(e,o);var t=this._getTemplate(s);b.dice[0].options.rollOrder=1;const a=[b];e.additionalRoll&&2<=C&&(e.additionalRoll.dice[0].options.rollOrder=2,a.push(e.additionalRoll));var r=PoolTerm.fromRolls(a);v=Roll.fromTerms([r]),this._renderChatCard(t,e,v)})}static async _renderChatCard(e,t,a){renderTemplate(e,t).then(e=>{e={roll:a,type:CONST.CHAT_MESSAGE_TYPES.ROLL,user:game.user.id,speaker:ChatMessage.getSpeaker({actor:this.actor}),content:e};ChatMessage.create(e)})}static _calculatePerilPenalty(e,t){return 3===e&&10<=t||2===e&&10<=t&&t<20?10:2===e&&20<=t?20:1===e&&10<=t&&t<20?10:1===e&&20<=t&&t<30?20:1===e&&30<=t?30:0}static _calculateBaseChanceModifier(e,t){let a=e-t;return 30<a?a=30:a<-30&&(a=-30),a}static _calculateTotalChance(e,t,a){let r=e+t+a;return(100<=r?99:r<1?1:r).toLocaleString(void 0,{minimumIntegerDigits:2})}static async _rollFuryDice(e,t){let a=new Roll(e.formula,t.data);return await a.evaluate({async:!0})}static async _rollChaosDice(e,t){let a=new Roll(t+"d6",e.data);return await a.evaluate({async:!0})}static async _renderConfigurationDialog(e,t,r={}){switch(e){case"dodge":case"parry":case"skill":return new Promise(a=>{renderTemplate(CONFIG.ZWEI.templates.skillConfigurationDialog,r).then(e=>{this._createDialog(t,e,e=>{var t=e.find('[name="difficultyRatingSelect"]').val(),e=e.find('[name="flipSelect"]').val();a({difficultyRating:t,flip:e})}).render(!0)})});case"spell":return new Promise(i=>{renderTemplate(CONFIG.ZWEI.templates.spellConfigurationDialog,r).then(e=>{this._createDialog(t,e,e=>{var t=e.find('[name="extraChaos"]').val(),a=e.find('[name="difficultyRatingSelect"]').val(),r=e.find('[name="channelSelect"]').val(),e=e.find('[name="flipSelect"]').val();i({additionalChaosDice:t,difficultyRating:a,channelPowerBonus:r,flip:e})}).render(!0)})});case"weapon":return new Promise(i=>{renderTemplate(CONFIG.ZWEI.templates.weaponConfigurationDialog,r).then(e=>{this._createDialog(t,e,e=>{var t=e.find('[name="extraFury"]').val(),a=e.find('[name="difficultyRatingSelect"]').val(),r=e.find('[name="channelSelect"]').val(),e=e.find('[name="flipSelect"]').val();i({additionalFuryDice:t,difficultyRating:a,channelPowerBonus:r,flip:e})}).render(!0)})})}}static _createDialog(e,t,a){return new Dialog({title:e+": Test Configuration",content:t,buttons:{no:{icon:'<i class="fas fa-times"></i>',label:"Cancel"},yes:{icon:'<i class="fas fa-check"></i>',label:"Roll",callback:a}},default:"yes"})}static _getDifficultyRatingLabel(e){switch(e){case-30:return"Arduous -30%";case-20:return"Hard -20%";case-10:return"Challenging -10%";case 0:return"Standard +/-0%";case 10:return"Routine +10%";case 20:return"Easy +20%";case 30:return"Trivial +30%";default:return"ERROR"}}static _getTestResult(e,t,a){return 100===e?0:1===e||e<=t&&a?3:e<=t&&!a?2:t<e&&a?0:t<e&&!a?1:void 0}static _getDeconstructedRollData(e){const t=e.toLocaleString(void 0,{minimumIntegerDigits:2});var a=Number(t.charAt(t.length-1)),e=Number(t.charAt(0));return{stringifiedRollValue:t,units:a,tens:e,match:a===e}}static _getTemplate(e){switch(e){case"skill":return CONFIG.ZWEI.templates.skill;case"spell":return CONFIG.ZWEI.templates.spell;case"dodge":return CONFIG.ZWEI.templates.dodge;case"parry":return CONFIG.ZWEI.templates.parry;case"weapon":return CONFIG.ZWEI.templates.weapon}}static _handleFlippedResult(e,t,a,r,i){let n=r.stringifiedRollValue,s=!1,o=a;if(!r.match&&100!==e&&1!==e){var l=10*r.units+r.tens;switch(i){case"fail":n=2<=a?l<=t?Math.min(l,e):l:e,n!==e&&(s=!0),n>t&&e<=t&&(o=1);break;case"succeed":n=10===e?1:a<2?t<l?e:l:l<=t?Math.max(l,e):e,n!==e&&(s=!0),n<=t&&t<e&&(o=2)}}return[n,s,o]}}class ZweihanderActorSheet extends ActorSheet{static get defaultOptions(){return foundry.utils.mergeObject(super.defaultOptions,{classes:["zweihander","sheet","character"],template:"systems/zweihander/templates/pc/main.hbs",width:750,height:825,resizable:!0,tabs:[{navSelector:".sheet-navigation",contentSelector:".sheet-body",initial:"main"}],scrollY:[".save-scroll"]})}getData(){const e=super.getData();e.data.owner=this.actor.isOwner,e.data.editable=this.isEditable,e.data.rollData=this.actor.getRollData.bind(this.actor),"character"===this.actor.data.type&&(e.data.rankOptions={1:"1",2:"2",3:"3",4:"4",5:"5",6:"6",7:"7",8:"8",9:"9"},e.data.perilOptions={5:"Unhindered",4:"Imperiled",3:"Ignore 1 Skill Rank",2:"Ignore 2 Skill Ranks",1:"Ignore 3 Skill Ranks",0:"INCAPACITATED!"},e.data.damageOptions={5:"Unharmed",4:"Lightly Wounded",3:"Moderately Wounded",2:"Seriously Wounded",1:"Grievously Wounded",0:"SLAIN!"});var t=e=>e.map(e=>({...e,source:e.flags.zweihander?.source?.label??"Manual",isManualSource:!e.flags.zweihander?.source?.label})),a=(e,t)=>(e.sort||0)-(t.sort||0);e.data.skills=this.actor.data.skills,e.data.professions=this.actor.data.professions,e.data.spells=this.actor.data.spells.sort(a),e.data.weapons=this.actor.data.weapons.sort(a),e.data.armor=this.actor.data.armor.sort(a),e.data.trappings=this.actor.data.trappings.sort(a),e.data.rituals=this.actor.data.rituals.sort(a),e.data.ancestry=this.actor.data.ancestry,e.data.drawbacks=t(this.actor.data.drawbacks),e.data.injuries=this.actor.data.injuries.sort(a),e.data.diseases=this.actor.data.diseases.sort(a),e.data.disorders=this.actor.data.disorders.sort(a),e.data.conditions=this.actor.data.conditions.sort(a),e.data.uniqueAdvances=this.actor.data.uniqueAdvances.sort(a),e.data.bio=this.actor.data.data.flavor.description,e.data.traits=t(this.actor.data.traits.sort(a));const r=this.actor.data.professions.flatMap(e=>e.data.talents.filter(e=>e.purchased&&e.linkedId).map(e=>this.actor.items.get(e.linkedId)?.toObject(!1)));e.data.talents=t(r.sort(a));a=ZweihanderActorConfig.getConfig(this.actor.data);return e.data.damageThresholdAttribute=a.dthAttribute,e.data.perilThresholdAttribute=a.pthAttribute,e.data.initiativeAttribute=a.intAttribute,e.data.movementAttribute=a.movAttribute,e.data.parrySkills=a.parrySkills,e.data.dodgeSkills=a.dodgeSkills,e.data.magickSkills=a.magickSkills,e.data}activateListeners(e){super.activateListeners(e),game.settings.get("zweihander","trackRewardPoints");let i=this.actor.data;this.options.editable&&(e.find(".item-edit").click(e=>{const t=$(e.currentTarget).parents(".item"),a=this.actor.items.get(t.data("itemId"));a.sheet.render(!0)}),e.find(".item-delete").click(async e=>{const t=$(e.currentTarget).parents(".item"),a=this.actor.items.get(t.data("itemId"));await Dialog.confirm({title:"Delete Embedded Item: "+a.name,content:"<p>Are you sure?</p><p>This item will be permanently deleted and cannot be recovered.</p>",yes:async()=>{await this.actor.deleteEmbeddedDocuments("Item",[a.id]),t.slideUp(200,()=>this.render(!1))},no:()=>{},defaultYes:!0})}),e.find(".skill").hover(async e=>{e="li.pa.pa-"+e.currentTarget.attributes["data-associated-pa"].value.toLowerCase();$(e).addClass("pa-hover-helper")},async e=>{e="li.pa.pa-"+e.currentTarget.attributes["data-associated-pa"].value.toLowerCase();$(e).removeClass("pa-hover-helper")}),e.find(".add-new").click(async e=>{e=e.currentTarget.dataset.itemType;const t=await this.actor.createEmbeddedDocuments("Item",[{type:e,name:e}]);t.length&&t[0].sheet.render(!0)}),e.find(".ancestry-edit-button").click(()=>{var e=this.actor.data.ancestry[0]._id;const t=this.actor.items.get(e);t.sheet.render(!0);try{t.sheet.bringToTop()}catch(e){}}),e.find(".ancestry-delete-button").click(async e=>{var t=this.actor.data.ancestry[0]._id;await this.actor.deleteEmbeddedDocuments("Item",[t])}),e.find(".fetch-property").each(async function(){var e=$(this).text().trim();let t=abbreviations2DataPath(e,!1);t=t.replaceAll(/(@[a-zA-Z0-9\.]*[a-zA-Z0-9]+)/g,e=>{e="data."+e.slice(1);return getProperty(i,e)}),e!==t&&(t=t.replaceAll(/[0-9]+(\s*[\+\-\*/]\s*[0-9]+)*/g,e=>{return new Roll(e).evaluate({async:!1}).total}),$(this).text(t))}),e.find(".link-checkbox").click(async e=>{e.preventDefault();const t=$(e.currentTarget).closest(".item"),a=this.actor.items.get(t.data("itemId"));"armor"===a.type?await a.update({"data.equipped":e.target.checked}):"profession"===a.type?await a.update({"data.tier.completed":e.target.checked}):"trapping"===a.type?await a.update({"data.carried":e.target.checked}):"weapon"===a.type?await a.update({"data.equipped":e.target.checked}):"condition"!==a.type&&"injury"!==a.type&&"disease"!==a.type&&"disorder"!==a.type||await a.update({"data.active":e.target.checked})}),this._updateDamageThresholdLabel(e),e.find(".fetch-item").contextmenu(e=>{const t=$(e.currentTarget),a=t.text().trim();e=i.items.find(e=>e.name===a).id;if(e){const r=this.actor.items.get(e);r.sheet.render(!0)}}),e.find(".item-post").click(async t=>{const e=$(t.currentTarget).parents(".item");t=this.actor.items.get(e.data("itemId"));let a;try{a=await renderTemplate(`systems/zweihander/templates/chat/chat-item-${t.type}.hbs`,t)}catch(e){a=await renderTemplate("systems/zweihander/templates/chat/chat-item-fallback.hbs",t)}await ChatMessage.create({content:a})}),e.find(".purchase-link").click(e=>{const t=$(e.currentTarget);var a=t.data("purchaseType");const r=t.data("purchaseIndex");var e=t.closest(".individual-description").parents(".item");const i=this.actor.items.get($(e).data("itemId"));i.data.data.tier.completed&&this.actor.data.data.tier!==i.data.data.tier.value?ui.notifications.error(`Cannot perform operation: ${i.data.data.tier.value} Tier locked.`):(e=i.data.data[a].map((e,t)=>t===r?{...e,purchased:!e.purchased}:e),i.update({["data."+a]:e}))}),e.find(".reset-ranks").click(()=>{this.actor.update({"data.chaosRanks.value":"0","data.orderRanks.value":"0"})}),this._updateEncumbranceMeter(e),this._damageSheet(e),this._perilSheet(e),e.find(".js-show-item-description").click(e=>this._showItemDescription(e)),e.find(".skill-roll").click(e=>{this._onRollSkill(e,CONFIG.ZWEI.rollTypes.skill)}),e.find(".weapon-roll").click(e=>{this._onRollSkill(e,CONFIG.ZWEI.rollTypes.weapon)}),e.find(".spell-roll").click(e=>{this._onRollSkill(e,CONFIG.ZWEI.rollTypes.spell)}),e.find(".dodge-roll").click(e=>{this._onRollSkill(e,CONFIG.ZWEI.rollTypes.dodge)}),e.find(".parry-roll").click(e=>{this._onRollSkill(e,CONFIG.ZWEI.rollTypes.parry)}),e.find(".js-display-quality").contextmenu(async e=>{e.preventDefault();const t=$(e.currentTarget);const a=await findItemWorldWide("quality",t.text());a.sheet.render(!0)}))}_damageSheet(e){Number(this.actor.data.data.stats.secondaryAttributes.damageCurrent.value)<5&&e.find(".bloodstain-1").toggleClass("bloodstain-inactive"),Number(this.actor.data.data.stats.secondaryAttributes.damageCurrent.value)<4&&e.find(".bloodstain-2").toggleClass("bloodstain-inactive"),Number(this.actor.data.data.stats.secondaryAttributes.damageCurrent.value)<3&&e.find(".bloodstain-3").toggleClass("bloodstain-inactive"),Number(this.actor.data.data.stats.secondaryAttributes.damageCurrent.value)<2&&e.find(".bloodstain-4").toggleClass("bloodstain-inactive"),Number(this.actor.data.data.stats.secondaryAttributes.damageCurrent.value)<1&&e.find(".bloodstain-5").toggleClass("bloodstain-inactive")}_perilSheet(e){Number(this.actor.data.data.stats.secondaryAttributes.perilCurrent.value)<5&&e.find(".profile-image").addClass("peril1"),Number(this.actor.data.data.stats.secondaryAttributes.perilCurrent.value)<4&&e.find(".profile-image").addClass("peril2"),Number(this.actor.data.data.stats.secondaryAttributes.perilCurrent.value)<3&&e.find(".profile-image").addClass("peril3"),Number(this.actor.data.data.stats.secondaryAttributes.perilCurrent.value)<2&&e.find(".profile-image").addClass("peril4"),Number(this.actor.data.data.stats.secondaryAttributes.perilCurrent.value)<1&&e.find(".profile-image").addClass("peril5")}async _onRollSkill(e,t){e.preventDefault();var a=e.currentTarget;const r=a.dataset,i=this.actor.data,n=r.label.toLowerCase();var s=i.skills[i.skills.findIndex(e=>e.name.toLowerCase()===n)];if(s)switch(t){case CONFIG.ZWEI.rollTypes.dodge:case CONFIG.ZWEI.rollTypes.parry:case CONFIG.ZWEI.rollTypes.skill:await ZweihanderDice.rollSkillTest(s,i,t);break;case CONFIG.ZWEI.rollTypes.weapon:var o=$(a).parents(".item")[0].dataset.itemId,o=i.items.get(o);o&&(l={weaponQualities:(l=o.data).data.qualities.arrayOfValues,weaponName:l.name,formula:l.data.damage.formula,bonus:{value:l.data.damage.primaryAttributeBonus,label:l.data.damage.associatedPrimaryAttribute}},await ZweihanderDice.rollSkillTest(s,i,t,l));break;case CONFIG.ZWEI.rollTypes.spell:var l=$(a).parents(".item")[0].dataset.itemId,l=i.items.get(l);l&&(l={spellName:(l=l.data).name,principle:l.data.principle.value,duration:this._formatDuration(l.data.duration.value,i),distance:l.data.distance.value,flavor:l.data.flavor.description,effect:l.data.effect,reagents:l.data.reagents.value,tradition:l.data.tradition.value},await ZweihanderDice.rollSkillTest(s,i,t,l))}else ui.notifications.error(`Associated Skill "${r.label}" does not exist for this actor!`)}_formatDuration(e,t){if("@"===e[0]){const a=e.split("+");e=a[0].replace("@","data."),t=getProperty(t,e),e=a[1].split(" ");return t+Number(e[0])+" "+e[1]}}_showItemDescription(e){e.preventDefault();const t=$(e.currentTarget),a=t.parents(".item");e=a.find(".item-summary");$(e).slideToggle(function(){$(this).toggleClass("open")})}_updateDamageThresholdLabel(e){const t=e.find(".label.dtm").text();var a=t.split("+"),r=this.actor.items.find(e=>"armor"===e.type&&1==e.data.data.equipped);null!=r&&(r=r.data.data.damageThresholdModifier.value,e.find(".label.dtm").text(a[0]+"+"+r))}_updateEncumbranceMeter(e){var t=this.actor.data.data.stats.secondaryAttributes.encumbrance;let a=t.current/t.value*100;100<a&&(a=100,e.find(".encumbrance-bar-container").addClass("encumbrance-overage")),e.find(".encumbrance-bar").css("width",a+"%")}async _render(e=!1,t={}){var a=["professions","drawbacks","weapons","armor","trappings","talents-and-traits","unique-advances","spells","rituals","conditions","injuries","diseases","disorders"];this._saveToggleStates(a),await super._render(e,t),this._setToggleStates(a)}_saveToggleStates(e){if(null!==this.form){const n=$(this.form).parent();this.toggleStates={};for(var t of e){var a,r=$(n.find(".save-toggle-"+t));this.toggleStates[t]=[];for(a of r){var i=$(a).hasClass("open");this.toggleStates[t].push(i)}}}}_setToggleStates(e){if(this.toggleStates){const r=$(this.form).parent();for(var t of e)if(this.toggleStates[t].length){var a=$(r.find(".save-toggle-"+t));for(let e=0;e<a.length;e++)this.toggleStates[t][e]&&$(a[e]).show().addClass("open")}}}}class ZweihanderNpcSheet extends ActorSheet{static get defaultOptions(){return mergeObject(super.defaultOptions,{classes:["zweihander","sheet","npc"],template:"systems/zweihander/templates/actor/npc-sheet.hbs",width:689,height:890,resizable:!1,tabs:[],scrollY:[]})}getData(){const e=super.getData();return e.dtypes=["String","Number","Boolean"],e.data.skills=this.actor.data.skills,e.data.spells=this.actor.data.spells,e.data.weapons=this.actor.data.weapons,e.data.trappings=this.actor.data.trappings,e.data.talents=this.actor.data.talents,e.data.traits=this.actor.data.traits,e.data.rituals=this.actor.data.rituals,e.data.ancestry=this.actor.data.ancestry,e.data.injuries=this.actor.data.injuries,e.data.conditions=this.actor.data.conditions,e.data}activateListeners(e){super.activateListeners(e),this.actor.data,this.options.editable&&(e.find(".add-new").click(async e=>{e=e.currentTarget.dataset.itemType;if("talentTrait"!==e){const t=await this.actor.createEmbeddedDocuments("Item",[{type:e,name:e}]);t[0].sheet.render(!0)}}),e.find(".ancestry-edit-button").click(e=>{var t=this.actor.data.ancestry[0]._id;const a=this.actor.items.get(t);a.sheet.render(!0)}),e.find(".ancestry-delete-button").click(async e=>{var t=this.actor.data.ancestry[0]._id;await this.actor.deleteEmbeddedDocuments("Item",[t])}),e.find(".fetch-skill").contextmenu(e=>{const t=$(e.currentTarget),a=t.text().trim().split("+")[0];e=this.actor.data.skills.find(e=>e.name===a)._id;if(e){const r=this.actor.items.get(e);r.sheet.render(!0)}}),e.find(".item-edit").click(e=>{const t=$(e.currentTarget).parents(".item"),a=this.actor.items.get(t.data("itemId"));a.sheet.render(!0)}),e.find(".item-delete").click(async e=>{const t=$(e.currentTarget).parents(".item");e=t.children(".image-and-name").children("span").text();await Dialog.confirm({title:"Delete Embedded Item: "+e,content:"<p>Are you sure?</p><p>This item will be permanently deleted and cannot be recovered.</p>",yes:async()=>{await this.actor.deleteEmbeddedDocuments("Item",[t.data("itemId")]),t.slideUp(200,()=>this.render(!1))},no:()=>{},defaultYes:!1})}),this._setThresholds(e),this._alternateRowColor(e))}_setThresholds(e){var t=Object.keys(this.actor.data.data.stats.secondaryAttributes.perilThreshold),a=Object.keys(this.actor.data.data.stats.secondaryAttributes.damageThreshold);let r="";for(let e=1;e<t.length;e++)r+=""+this.actor.data.data.stats.secondaryAttributes.perilThreshold[t[e]],e!==t.length-1&&(r+="/");let i="";for(let e=1;e<a.length;e++)i+=""+this.actor.data.data.stats.secondaryAttributes.damageThreshold[a[e]],e!==a.length-1&&(i+="/");e.find(".derived.peril").text(r),e.find(".derived.damage").text(i)}_alternateRowColor(e){e.find(".even").css("background","var(--zh-clr-bright1)")}async _updateObject(e,t){return this.object.update(t)}}class ZweihanderCreatureSheet extends ActorSheet{static get defaultOptions(){return mergeObject(super.defaultOptions,{classes:["zweihander","sheet","npc"],template:"systems/zweihander/templates/actor/npc-sheet.hbs",width:689,height:890,resizable:!1,tabs:[],scrollY:[]})}getData(){const e=super.getData();return e.dtypes=["String","Number","Boolean"],e.data.skills=this.actor.data.skills,e.data.spells=this.actor.data.spells,e.data.weapons=this.actor.data.weapons,e.data.trappings=this.actor.data.trappings,e.data.talents=this.actor.data.talents,e.data.traits=this.actor.data.traits,e.data.rituals=this.actor.data.rituals,e.data.ancestry=this.actor.data.ancestry,e.data.injuries=this.actor.data.injuries,e.data.conditions=this.actor.data.conditions,e.data}activateListeners(e){super.activateListeners(e),this.actor.data,this.options.editable&&(e.find(".add-new").click(async e=>{e=e.currentTarget.dataset.itemType;if("talentTrait"!==e){const t=await this.actor.createEmbeddedDocuments("Item",[{type:e,name:e}]);t[0].sheet.render(!0)}}),e.find(".ancestry-edit-button").click(e=>{var t=this.actor.data.ancestry[0]._id;const a=this.actor.items.get(t);a.sheet.render(!0)}),e.find(".ancestry-delete-button").click(async e=>{var t=this.actor.data.ancestry[0]._id;await this.actor.deleteEmbeddedDocuments("Item",[t])}),e.find(".fetch-skill").contextmenu(e=>{const t=$(e.currentTarget),a=t.text().trim().split("+")[0];e=this.actor.data.skills.find(e=>e.name===a)._id;if(e){const r=this.actor.items.get(e);r.sheet.render(!0)}}),e.find(".item-edit").click(e=>{const t=$(e.currentTarget).parents(".item"),a=this.actor.items.get(t.data("itemId"));a.sheet.render(!0)}),e.find(".item-delete").click(async e=>{const t=$(e.currentTarget).parents(".item");e=t.children(".image-and-name").children("span").text();await Dialog.confirm({title:"Delete Embedded Item: "+e,content:"<p>Are you sure?</p><p>This item will be permanently deleted and cannot be recovered.</p>",yes:async()=>{await this.actor.deleteEmbeddedDocuments("Item",[t.data("itemId")]),t.slideUp(200,()=>this.render(!1))},no:()=>{},defaultYes:!1})}),this._setThresholds(e),this._alternateRowColor(e))}_setThresholds(e){var t=Object.keys(this.actor.data.data.stats.secondaryAttributes.perilThreshold),a=Object.keys(this.actor.data.data.stats.secondaryAttributes.damageThreshold);let r="";for(let e=1;e<t.length;e++)r+=""+this.actor.data.data.stats.secondaryAttributes.perilThreshold[t[e]],e!==t.length-1&&(r+="/");let i="";for(let e=1;e<a.length;e++)i+=""+this.actor.data.data.stats.secondaryAttributes.damageThreshold[a[e]],e!==a.length-1&&(i+="/");e.find(".derived.peril").text(r),e.find(".derived.damage").text(i)}_alternateRowColor(e){e.find(".even").css("background","var(--zh-clr-bright1)")}async _updateObject(e,t){return this.object.update(t)}}class ZweihanderBaseItem{static async _getOrCreateLinkedItem(e,t,a,r,i){let n=await findItemWorldWide(a,t);const s=e.data.items.find(e=>e.type===a&&e.name===n?.name);if(n||s){r={value:i,label:`${r} (${i.capitalize()})`};if(!s)return n=n.toObject(),setProperty(n,"flags.zweihander.source",r),{kind:"create",object:n,name:n.name};i=s.getFlag("zweihander","source");if(!i)return await s.setFlag("zweihander","source",r),{kind:"existing",id:s.id,name:s.name};ui?.notifications.warn(`The ${s.type.capitalize()} "${s.name}" has been previously added by ${i.label}! Please contact your GM to replace this ${s.type} on `+r.label)}}static async getOrCreateLinkedItem(e,t,a,r,i){var{kind:n,object:a,id:r,name:i}=await this._getOrCreateLinkedItem(e,t,a,r,i)??{};let s=null;return"existing"===n?s=r:"create"===n&&(s=await e.createEmbeddedDocuments("Item",[a]).then(e=>e[0].id)),{linkedId:s,value:i??t}}static async getOrCreateLinkedItems(e,t,a,r,i){const n=[],s={};for(var o of t){var l=normalizeName(o),{kind:c,object:d,id:u,name:f}=await this._getOrCreateLinkedItem(e,o,a,r,i)??{};"existing"===c?s[l]={linkedId:u,value:f}:"create"===c?n.push(d):s[l]={linkedId:null,value:o}}return n.length&&await e.createEmbeddedDocuments("Item",n).then(e=>e.forEach(e=>s[normalizeName(e.name)]={linkedId:e.id,value:e.name})),t.map(e=>s[normalizeName(e)])}static async removeLinkedItem(e,t){t&&await e.deleteEmbeddedDocuments("Item",[t])}static async removeLinkedItems(e,t){t=t?.filter(e=>e);t.length&&await e.deleteEmbeddedDocuments("Item",t)}static async updateLinkedItemIds(e,t){let a=0;const r=[];for(item of e)normalizedEquals(t[a].name,item.value)?(item.value=t[a].name,item.linkedId=t[a].id,a++):item.linkedId=null,r.push(item);return r}static getLinkedItemsDifference(e,t){var a=(e,a)=>e.filter(t=>!a.some(e=>t.value===e.value));return{namesToAdd:a(e,t).map(e=>e.value),idsToDelete:a(t,e).map(e=>e.linkedId)}}getRollData(e){return e}}class ZweihanderWeapon extends ZweihanderBaseItem{}class ZweihanderProfession extends ZweihanderBaseItem{prepareDerivedData(e,t){t.isOwned&&(t=1+e.data.bonusAdvances.reduce((e,t)=>e+Number(t.purchased),0)+e.data.skillRanks.reduce((e,t)=>e+Number(t.purchased),0)+e.data.talents.reduce((e,t)=>e+Number(t.purchased),0),e.data.tier.advancesPurchased=t,e.data.tier.completed=21===t)}async _preCreate(e,t,a,r){const i=r.data;var n=r.parent.data.professions.length;if(!(3<n)){i.update({"data.tier.value":["Basic","Intermediate","Advanced"][n]}),i.update({"data.skillRanks":i.data.skillRanks.map(e=>({...e,purchased:!1}))}),i.update({"data.bonusAdvances":i.data.bonusAdvances.map(e=>({...e,purchased:!1}))});var s=i.data.talents.map(e=>e.value);if(s.length){const o=await ZweihanderBaseItem.getOrCreateLinkedItems(r.parent,s,"talent",r.name,"profession");i.update({"data.talents":o.map(e=>({...e,purchased:!1}))})}n=i.data.professionalTrait.value.trim(),s=i.data.specialTrait.value.trim(),s=await ZweihanderBaseItem.getOrCreateLinkedItems(r.parent,[n,s],"trait",r.name,"profession");i.update({"data.professionalTrait":s[0],"data.specialTrait":s[1]});s=i.data.drawback.value,r=await ZweihanderBaseItem.getOrCreateLinkedItem(r.parent,s,"drawback",r.name,"profession");i.update({"data.drawback":r})}}async _preUpdate(e,t,a,r){var i=r.parent,n=r.data;const s=e.data;var o,l=flattenObject(e.data);const c=[];if(void 0!==l.skillRanks&&(s.skillRanks=s.skillRanks.map(e=>({...e,purchased:e.purchased??!1}))),void 0!==l.bonusAdvances&&(s.bonusAdvances=s.bonusAdvances.map(e=>({...e,purchased:e.purchased??!1}))),void 0!==l.talents){e=ZweihanderBaseItem.getLinkedItemsDifference(s.talents,n.data.talents);c.push(...e.idsToDelete);const d=await ZweihanderBaseItem.getOrCreateLinkedItems(r.parent,e.namesToAdd,"talent",r.name,"profession"),u=d.reduce((e,t)=>({...e,[t.value]:{...t,purchased:!1}}),{});s.talents=s.talents.map(e=>u[e.value]||e)}void 0===l["professionalTrait.value"]||(r=s.professionalTrait.value.trim())!==n.data.professionalTrait.value&&(c.push(n.data.professionalTrait.linkedId),(o=await ZweihanderBaseItem.getOrCreateLinkedItem(i,r,"trait",n.name,"ancestry"))&&(s.professionalTrait=o)),void 0===l["specialTrait.value"]||(o=s.specialTrait.value.trim())!==n.data.specialTrait.value&&(c.push(n.data.specialTrait.linkedId),(o=await ZweihanderBaseItem.getOrCreateLinkedItem(i,o,"trait",n.name,"ancestry"))&&(s.specialTrait=o)),void 0===l["drawback.value"]||(l=s.drawback.value.trim())!==n.data.drawback.value&&(c.push(n.data.drawback.linkedId),(n=await ZweihanderBaseItem.getOrCreateLinkedItem(i,l,"drawback",n.name,"ancestry"))&&(s.drawback=n)),t.idsToDelete=c}async _onUpdate(e,t,a,r){t.idsToDelete.length&&await ZweihanderBaseItem.removeLinkedItems(r.parent,t.idsToDelete)}async _preDelete(e,t,a){e.idsToDelete=[a.data.data.specialTrait,a.data.data.professionalTrait,a.data.data.drawback,...a.data.data.talents].map(e=>e.linkedId)}async _onDelete(e,t,a){await ZweihanderBaseItem.removeLinkedItems(a.parent,e.idsToDelete)}}class ZweihanderSkill extends ZweihanderBaseItem{prepareBaseData(e,t){if(t.isOwned&&t?.actor?.data){const a=e.data,r=t.actor;e=r.items.filter(e=>"profession"===e.type).flatMap(e=>e.data.data.skillRanks.filter(e=>e.value===t.name&&e.purchased)).length;a.rank=e,a.bonus=10*e}}}class ZweihanderAncestry extends ZweihanderBaseItem{async _preCreate(e,t,a,r){var i=await ZweihanderBaseItem.getOrCreateLinkedItem(r.parent,r.data.data.ancestralTrait.value,"trait",r.name,"ancestry");i&&r.data.update({"data.ancestralTrait":i})}async _preUpdate(e,t,a,r){var i=r.data;const n=e.data;var s,o,l=r.parent;for(s of Object.keys(n))"ancestralTrait"!==s||(o=n.ancestralTrait.value.trim())!==i.data.ancestralTrait.value&&(await ZweihanderBaseItem.removeLinkedItem(r.parent,i.data.ancestralTrait.linkedId),(o=await ZweihanderBaseItem.getOrCreateLinkedItem(l,o,"trait",i.name,"ancestry"))&&(n.ancestralTrait=o))}async _preDelete(e,t,a){e.idToDelete=a.data.data.ancestralTrait.linkedId}async _onDelete(e,t,a){await ZweihanderBaseItem.removeLinkedItem(a.parent,e.idToDelete)}}class ZweihanderItem extends Item{static types={weapon:new ZweihanderWeapon,profession:new ZweihanderProfession,skill:new ZweihanderSkill,ancestry:new ZweihanderAncestry};constructor(...e){super(...e)}dispatch(e,t={orElse:{value:{},async:!1},args:[]}){if(ZweihanderItem.types[this.type]){const a=ZweihanderItem.types[this.type];if(a[e]&&"function"==typeof a[e])return t.args?.length?a[e](...t.args,this):a[e](this.data,this)}return t?.orElse?.async?Promise.resolve(t?.orElse?.value):t?.orElse?.value}prepareData(){super.prepareData()}prepareBaseData(){super.prepareBaseData(),this.dispatch("prepareBaseData")}prepareEmbeddedDocuments(){super.prepareEmbeddedDocuments&&super.prepareEmbeddedDocuments(),this.dispatch("prepareEmbeddedEntities")}prepareEmbeddedEntities(){super.prepareEmbeddedEntities&&super.prepareEmbeddedEntities(),this.dispatch("prepareEmbeddedEntities")}applyActiveEffects(){super.applyActiveEffects(),this.dispatch("applyActiveEffects")}prepareDerivedData(){super.prepareDerivedData(),this.dispatch("prepareDerivedData")}async _preCreate(e,t,a){await super._preCreate(e,t,a),null!==this.parent&&await this.dispatch("_preCreate",{args:[e,t,a]})}async _preDelete(e,t){await super._preDelete(e,t),null!==this.parent&&await this.dispatch("_preDelete",{args:[e,t]})}async _onDelete(e,t){await super._preDelete(e,t),t===game.user.id&&null!==this.parent&&await this.dispatch("_onDelete",{args:[e,t]})}async _preUpdate(e,t,a){this.parent&&e.data&&await this.dispatch("_preUpdate",{args:[e,t,a]}),await super._preUpdate(e,t,a)}async _onUpdate(e,t,a){await super._onUpdate(e,t,a),a===game.user.id&&null!==this.parent&&e.data&&await this.dispatch("_onUpdate",{args:[e,t,a]})}}class ZweihanderItemSheet extends ItemSheet{static get defaultOptions(){return mergeObject(super.defaultOptions,{classes:["zweihander","sheet","item"],template:"systems/zweihander/templates/item/main.hbs",width:400,height:550,resizable:!0,tabs:[{navSelector:".sheet-navigation",contentSelector:".sheet-body",initial:"details"}],dragDrop:[{dragSelector:".item-sheet-draggable",dropSelector:null}]})}_canDragStart(e){return!0}_canDragDrop(e){return this.isEditable}_onDragDrop(e){}_onDragStart(e){var t=this.item.actor,t={type:"Item",data:this.item.data,actorId:t?.id??null,ceneId:t?.isToken?canvas.scene?.id:null,tokenId:t?.isToken?t.token.id:null};e.dataTransfer.setData("text/plain",JSON.stringify(t))}async getData(){const e=super.getData();return e.data.owner=this.item.isOwner,e.data.editable=this.isEditable,e.data.rollData=this.item.getRollData.bind(this.item),"weapon"===this.item.type&&(e.data.skills=(await findItemsByType("skill",{takeOne:!0})).map(e=>e.name).sort((e,t)=>e.localeCompare(t))),e.data}activateListeners(e){super.activateListeners(e);let t=this.object.data,a=new FilePicker({type:"image",current:t.img,displayMode:"thumbs",callback:e=>{t.document.update({img:e}),this.render(!0)}});e.find(".open-editor").click(async e=>{e.preventDefault();const t=$(e.currentTarget),a=t.parents(".form-group");var r=a.find(".editor"),e=a.find(".zh-editor-preview");$(e).toggleClass("open"),$(r).toggleClass("open")}),e.find(".profile").click(async e=>{a.render(!0)}),e.find(".array-input input").keypress(async e=>13===e.which?this.acceptArrayInput(e):0),e.find(".array-input input").focusout(async e=>this.acceptArrayInput(e)),e.find(".array-input-plus").click(async e=>this.acceptArrayInput(e)),e.find(".array-input-pill").click(async e=>this.removeArrayInput(e))}async _updateObject(e,t){if("ancestry"===this.item.type){const r=t["data.ancestralTrait.value"];var a=await findItemWorldWide("trait",r);a&&(t["data.ancestralTrait.value"]=a.name),a||""===r.trim()||(ui?.notifications.warn(`Couldn't find an ancestral trait with a name like ${r} anywhere in the world or in compendia!`,{permanent:!0}),this.item.isOwned&&ui?.notifications.error("Please choose a valid, existing ancestral trait!",{permanent:!0}))}else if("profession"===this.item.type){const i=t["data.professionalTrait.value"];let e;e=await findItemWorldWide("trait",i),e&&(t["data.professionalTrait.value"]=e.name),e||""===i.trim()||(ui?.notifications.warn(`Couldn't find a professional trait with a name like ${i} anywhere in the world or in compendia!`,{permanent:!0}),this.item.isOwned&&ui?.notifications.error("Please choose a valid, existing professional trait!",{permanent:!0}));const n=t["data.specialTrait.value"];e=await findItemWorldWide("trait",n),e&&(t["data.specialTrait.value"]=e.name),e||""===n.trim()||(ui?.notifications.warn(`Couldn't find a special trait with a name like ${n} anywhere in the world or in compendia!`,{permanent:!0}),this.item.isOwned&&ui?.notifications.error("Please choose a valid, existing special trait!",{permanent:!0}));const s=t["data.drawback.value"];e=await findItemWorldWide("drawback",s),e&&(t["data.drawback.value"]=e.name),e||""===s.trim()||(ui?.notifications.warn(`Couldn't find a drawback with a name like ${s} anywhere in the world or in compendia!`,{permanent:!0}),this.item.isOwned&&ui?.notifications.error("Please choose a valid, existing drawback!",{permanent:!0}))}super._updateObject(e,t)}async acceptArrayInput(e,t=!0){t&&e.preventDefault();var a=e.currentTarget;const r=$(a).parent(".array-input");t=r.data("arrayInputTarget");const i=r.find("input").val();let n=getProperty(this.item.toObject(!1),t);e=r.data("arrayInputMax")??Number.MAX_SAFE_INTEGER;if(i?.trim()){const s=i.split(",").map(e=>e.trim()).filter(e=>""!==e);if(n.length+s.length>e){a=r.parents(".form-group").find("label").text();ui?.notifications.warn(`You can't add more than ${e} entries in "${a}"!`);e=e-n.length;if(s.splice(e,s.length-e),0===s.length)return}switch(t){case"data.ancestralModifiers.negative":case"data.ancestralModifiers.positive":n=n.concat(await this.addInputToArray(s,async e=>this.validateBonusAbbr(e),!1));break;case"data.bonusAdvances":n=n.concat(await this.addInputToArray(s,async e=>{e=await this.validateBonusAbbr(e);return e&&{value:e}},!1));break;case"data.talents":n=n.concat(await this.addInputToArray(s,async e=>this.validateTalent(e)));break;case"data.skillRanks":n=n.concat(await this.addInputToArray(s,async e=>this.validateSkillRank(e)))}await this.item.update({[t]:n}).then(()=>this.render(!1))}}async addInputToArray(e,t,a=!0){const r=[];for(var i of e=a?[...new Set(e)]:e){i=await t(i);i&&r.push(i)}return r}async removeArrayInput(e){e.preventDefault();var t=e.currentTarget;const a=$(t).parents(".array-input");e=a.data("arrayInputTarget");const r=getProperty(this.item.toObject(!1),e);t=$(t).data("arrayInputIndex");r.splice(t,1),this.item.update({[e]:r}).then(()=>this.render(!1))}async validateBonusAbbr(e){const t=["[CB]","[BB]","[AB]","[PB]","[IB]","[WB]","[FB]"];e=`[${e.trim().replaceAll(/[^a-zA-Z]/g,"").toUpperCase()}]`;if(t.includes(e))return e;ui?.notifications.warn(`"${e}" is not a valid Bonus Abbreviation! Valid values: `+t)}async validateTalent(t){const e=this.item;if(!e.data.data?.talents?.some(e=>normalizedEquals(e.value,t))){var a=await findItemWorldWide("talent",t);return a?{value:a.name}:(ui?.notifications.warn(`Couldn't find Talent with a name like ${t} anywhere in the world or in compendia!`,{permanent:!0}),this.item.isOwned&&ui?.notifications.error("Please choose a valid, existing talent!",{permanent:!0}),{value:t})}ui?.notifications.warn(`A Talent named "${t}" already belongs to item "${e.name}" of type "${e.type}". Skill Ranks must be unique!`)}async validateSkillRank(t){const e=this.item;if(!e.data.data?.skillRanks?.some(e=>normalizedEquals(e.value,t))){var a=await findItemWorldWide("skill",t);return a?{value:a.name}:(ui?.notifications.warn(`Couldn't find Skill Rank with a name like ${t} anywhere in the world or in compendia!`,{permanent:!0}),this.item.isOwned&&ui?.notifications.error("Please choose a valid, existing skill!",{permanent:!0}),{value:t})}ui?.notifications.warn(`A Skill Rank in "${t}" already belongs to item "${e.name}" of type "${e.type}". Skill Ranks must be unique!`)}}class FortuneTracker extends Application{static get PARAMS(){switch(game.settings.get("zweihander","fortuneTrackerSize")){case"compact":return{compact:!0,tokenSize:25,padding:0,areaSize:60};case"normal":return{tokenSize:64,padding:5,areaSize:120};case"big":return{tokenSize:83,padding:10,areaSize:180};case"huge":return{tokenSize:125,padding:15,areaSize:300}}}static registerPersistingSettings(){game.settings.register("zweihander","fortuneTrackerPersistedStateTotal",{name:"fortuneTrackerPersistedStateTotal",hint:"",scope:"world",type:Number,default:0,config:!1}),game.settings.register("zweihander","fortuneTrackerPersistedStateUsed",{name:"fortuneTrackerPersistedStateUsed",hint:"",scope:"world",type:Number,default:0,config:!1}),game.settings.register("zweihander","fortuneTrackerPersistedStateRemoved",{name:"fortuneTrackerPersistedStateRemoved",hint:"",scope:"world",type:Number,default:0,config:!1}),game.settings.register("zweihander","fortuneTrackerRuleSystem",{name:"Fortune Tracker Rule System",hint:"Choose how you wish to implement fortune points and misfortune points in your game.",scope:"world",type:String,choices:{remove:"Using misfortune points removes them from the game",keep:"Using misfortune points returns them to the party as fortune points"},default:"remove",config:!0}),game.settings.register("zweihander","fortuneTrackerNotifications",{name:"Fortune Tracker Notification Behaviour",hint:"Choose how you wish to be notified about spent Fortune points.",scope:"world",type:String,choices:{none:"No Notifications (See current value on hovering tokens)",notify:"Post Foundry Notifications",chat:"Post Chat Messages"},default:"notify",config:!0}),game.settings.register("zweihander","fortuneTrackerSize",{name:"Fortune Tracker Size",hint:"Choose the size of your fortune tracker.",scope:"client",type:String,choices:{compact:"Compact (Text)",normal:"Normal (Tokens)",big:"Big (Tokens)",huge:"Huge (Tokens)"},default:"normal",config:!0}),game.settings.register("zweihander","fortuneTrackerFortunePath",{name:"Fortune Token Image",hint:"Customize the fortune token image. For best appearance use an image of at least 125x125 pixels.",scope:"world",type:String,default:"systems/zweihander/assets/fortune-life.png",config:!0}),game.settings.register("zweihander","fortuneTrackerMisfortunePath",{name:"Misfortune Token Image",hint:"Customize the misfortune token image. For best appearance use an image of at least 125x125 pixels.",scope:"world",type:String,default:"systems/zweihander/assets/fortune-death.png",config:!0})}#waiting=!1;#state={total:0,used:0,removed:0};#socket;#positions=[];#closable=!1;static get defaultOptions(){return foundry.utils.mergeObject(super.defaultOptions,{template:"systems/zweihander/templates/fortune-tracker.hbs",popOut:!0,resizable:!1,title:"Fortune Tracker",id:"fortuneTrackerApp",classes:["zweihander"],width:2*FortuneTracker.PARAMS.areaSize,height:FortuneTracker.PARAMS.areaSize+30,top:60,left:125})}constructor(r){super();const i=this;r.register("requestSync",function(e,t){if(!e)return i.state;var a=i.validate(e,t);a?(r.executeForEveryone("broadcastState",i.state),r.executeAsUser("showIllegalStateNotification",t,a)):r.executeForEveryone("broadcastState",e)}),r.register("broadcastState",function(e){i.state=e}),r.register("showIllegalStateNotification",function(e){ui.notifications.error(e)}),this.#socket=r,this.generateRandomPositionValues()}get resetRule(){return"Set total fortune points to the number of connected players plus one."}get rules(){return game.settings.get("zweihander","fortuneTrackerRuleSystem")}get state(){return{total:this.#state.total,used:this.#state.used,removed:this.#state.removed}}set state(e){e.used===this.used&&e.removed===this.removed&&e.total===this.total||this.playAudio(),this.#waiting=!1,this.#state=e,game.users.get(game.userId).isGM&&(game.settings.set("zweihander","fortuneTrackerPersistedStateTotal",this.total),game.settings.set("zweihander","fortuneTrackerPersistedStateUsed",this.used),game.settings.set("zweihander","fortuneTrackerPersistedStateRemoved",this.removed)),this.render(!this.closable)}get total(){return this.#state.total}increaseTotal(){const e=this.state;return e.total++,e}decreaseTotal(){const e=this.state;return e.total--,e.total<e.used&&e.used--,e.total<e.removed&&e.removed--,e}spendFortune(){const e=this.state;return e.used++,e}spendMisfortune(){const e=this.state;return"keep"===this.rules?e.used--:e.removed++,e}get used(){return this.#state.used}get removed(){return this.#state.removed}get fortune(){return this.total-this.used}get misfortune(){return this.used-this.removed}generateRandomPositionValues(t=0,e=0){var a,r,i=20+2*e%20;for(let e=2*t%20;e<40;e++)(e<20||e>=i&&e<40)&&(this.#positions[e]=(a=FortuneTracker.PARAMS.padding,r=FortuneTracker.PARAMS.areaSize-FortuneTracker.PARAMS.tokenSize-FortuneTracker.PARAMS.padding,a=Math.ceil(a),r=Math.floor(r),Math.floor(Math.random()*(r-a+1)+a)))}validate(e,t){var a=game.settings.get("zweihander","fortuneTrackerNotifications"),r=game.users.get(t);return e.total===this.total||r.isGM?e.removed===this.removed||r.isGM?e.used<this.used&&!r.isGM?"You are not privileged to spend misfortune! Know your place, peasant!":e.total<0?"Sorry, but you can't have a negative amount of fortune. Kindly turn a demon or a foul god for the equivalent outcome!":e.used<0?"There is no misfortune left for the GM at this time.":e.removed<0?"Can't have negative removed tokens! (You should never see this error. If you do, please contact the developer.)":e.used>e.total?"There is no fortune left for the party at this time.":e.removed>e.used?"There is no misfortune left for the GM at this time.":(e.used===this.used+1?(r=r.charname||r.name,"notify"===a?ui.notifications.info(`${r} used a fortune point. Current fortune points: ${e.total-e.used}/`+e.total):"chat"===a&&ChatMessage.create({user:t,content:`${r} used a fortune point. Let's hope they make it count! <p><b>Current fortune points: ${e.total-e.used}/${e.total} </b></p>`})):e.remove!==this.remove+1&&e.used!==this.used-1||this.total!==e.total||("notify"===a?ui.notifications.info(`Brace yourselves, the GM used a misfortune point! Current fortune points: ${e.total-e.used}/`+e.total):"chat"===a&&ChatMessage.create({user:t,content:`Brace yourselves, the GM used a misfortune point! <p><b>Current fortune points: ${e.total-e.used}/${e.total} </b></p>`})),!1):"You are not privileged to spend misfortune! Know your place peasant, or be smited!":"You are not privileged to change the total amount of fortune in the game!"}getData(){this.generateRandomPositionValues(this.fortune,this.misfortune);let t=[];for(let e=0;e<this.fortune;e++){var a=this.#positions[e%10*2],r=this.#positions[e%10*2+1];t.push({t:a,l:r})}let i=[];for(let e=0;e<this.misfortune;e++){var n=this.#positions[e%10*2+20],s=this.#positions[e%10*2+21];i.push({t:n,l:s})}return{total:this.total,fortune:{value:this.fortune,positions:t,path:game.settings.get("zweihander","fortuneTrackerFortunePath")},misfortune:{value:this.misfortune,positions:i,path:game.settings.get("zweihander","fortuneTrackerMisfortunePath")},waiting:this.#waiting,params:FortuneTracker.PARAMS}}async syncState(){game.users.get(game.userId).isGM?(this.#state={total:game.settings.get("zweihander","fortuneTrackerPersistedStateTotal"),used:game.settings.get("zweihander","fortuneTrackerPersistedStateUsed"),removed:game.settings.get("zweihander","fortuneTrackerPersistedStateRemoved")},this.#waiting=!1,this.#socket.executeForOthers("broadcastState",this.state)):this.#state=await this.requestSync(),this.render(!this.closable)}resetState(){var e;game.users.get(game.userId).isGM?(e=game.users.players.map(e=>e.active?1:0).reduce((e,t)=>e+t,0),this.state={total:e+1,used:0,removed:0},this.#socket.executeForOthers("broadcastState",this.state)):ui.notifications.error("Only the GM may reset the fortune tracker. Keep your dirty hands to yourself, foolish thing!")}async requestSync(e){try{return e?await this.#socket.executeAsGM("requestSync",e,game.userId):await this.#socket.executeAsGM("requestSync")}catch(e){return console.error(e),this.#waiting=!0,this.render(!this.closable),ui.notifications.warn("Fortune Tracker is waiting for a GM to (re)connect."),this.state}}async close(){}activateListeners(e){const t=e.parents("#fortuneTrackerApp");let a;if(t.find("#fortuneTrackerAppTotal").length)t.find("#fortuneTrackerAppTotal").replaceWith(`<a id="fortuneTrackerAppTotal" class="waiting-${this.#waiting}">Total: ${this.total}</a>`),a=t.find("#fortuneTrackerAppTotal");else{t.find("a.header-button.close").before(`
+/*
+THIS IS A GENERATED/BUNDLED FILE BY ROLLUP
+if you want to view the source visit the plugins github repository
+*/
+
+/**
+ * Helper function used to check ItemData duplicates between two given datasets.
+ */
+function findDifference(datasetA, datasetB) {
+  let diffArray = [];
+
+  for (let elementA of datasetA)
+    if (!datasetB.some(elementB => elementB.name === elementA.name))
+      diffArray.push(elementA);
+
+  return diffArray;
+}
+/**
+ * Helper function that returns the symmetric difference between two datasets (xor operation).
+ * 
+ * @param {*} datasetA 
+ * @param {*} datasetB 
+ * @returns The unique elements of datasetA and datasetB.
+ */
+ function getSymmetricDifference(datasetA, datasetB) {
+  return findDifference(datasetA, datasetB).concat(findDifference(datasetB, datasetA));
+}
+
+/**
+ * Helper function that checks whether an object is empty or not.
+ * 
+ * @param {object} object The object to be checked
+ * @returns 
+ */
+
+function isObjectEmpty$1(object) {
+  return !object || !Object.keys(object).length;
+}
+
+const primaryAttributeMapping = {
+  C: "combat",
+  B: "brawn",
+  A: "agility",
+  P: "perception",
+  I: "intelligence",
+  W: "willpower",
+  F: "fellowship"
+};
+
+function abbreviations2DataPath(str, includeFlavor = true) {
+  const b = x => `@stats.primaryAttributes.${x}.bonus`;
+  const c = x => x.slice(0, 1).toUpperCase() + x.slice(1);
+  
+  for (let key in primaryAttributeMapping) {
+    str = str?.replace(`[${key}B]`, `${b(primaryAttributeMapping[key])}` + (includeFlavor ? `[${c(primaryAttributeMapping[key])} Bonus]` : ''));
+  }
+  return str;
+}
+
+const diacriticsMap = (function(){
+// https://stackoverflow.com/questions/990904/remove-accents-diacritics-in-a-string-in-javascript
+let defaultDiacriticsRemovalMap = [
+  { 'base': 'A', 'letters': '\u0041\u24B6\uFF21\u00C0\u00C1\u00C2\u1EA6\u1EA4\u1EAA\u1EA8\u00C3\u0100\u0102\u1EB0\u1EAE\u1EB4\u1EB2\u0226\u01E0\u00C4\u01DE\u1EA2\u00C5\u01FA\u01CD\u0200\u0202\u1EA0\u1EAC\u1EB6\u1E00\u0104\u023A\u2C6F' },
+  { 'base': 'AA', 'letters': '\uA732' },
+  { 'base': 'AE', 'letters': '\u00C6\u01FC\u01E2' },
+  { 'base': 'AO', 'letters': '\uA734' },
+  { 'base': 'AU', 'letters': '\uA736' },
+  { 'base': 'AV', 'letters': '\uA738\uA73A' },
+  { 'base': 'AY', 'letters': '\uA73C' },
+  { 'base': 'B', 'letters': '\u0042\u24B7\uFF22\u1E02\u1E04\u1E06\u0243\u0182\u0181' },
+  { 'base': 'C', 'letters': '\u0043\u24B8\uFF23\u0106\u0108\u010A\u010C\u00C7\u1E08\u0187\u023B\uA73E' },
+  { 'base': 'D', 'letters': '\u0044\u24B9\uFF24\u1E0A\u010E\u1E0C\u1E10\u1E12\u1E0E\u0110\u018B\u018A\u0189\uA779\u00D0' },
+  { 'base': 'DZ', 'letters': '\u01F1\u01C4' },
+  { 'base': 'Dz', 'letters': '\u01F2\u01C5' },
+  { 'base': 'E', 'letters': '\u0045\u24BA\uFF25\u00C8\u00C9\u00CA\u1EC0\u1EBE\u1EC4\u1EC2\u1EBC\u0112\u1E14\u1E16\u0114\u0116\u00CB\u1EBA\u011A\u0204\u0206\u1EB8\u1EC6\u0228\u1E1C\u0118\u1E18\u1E1A\u0190\u018E' },
+  { 'base': 'F', 'letters': '\u0046\u24BB\uFF26\u1E1E\u0191\uA77B' },
+  { 'base': 'G', 'letters': '\u0047\u24BC\uFF27\u01F4\u011C\u1E20\u011E\u0120\u01E6\u0122\u01E4\u0193\uA7A0\uA77D\uA77E' },
+  { 'base': 'H', 'letters': '\u0048\u24BD\uFF28\u0124\u1E22\u1E26\u021E\u1E24\u1E28\u1E2A\u0126\u2C67\u2C75\uA78D' },
+  { 'base': 'I', 'letters': '\u0049\u24BE\uFF29\u00CC\u00CD\u00CE\u0128\u012A\u012C\u0130\u00CF\u1E2E\u1EC8\u01CF\u0208\u020A\u1ECA\u012E\u1E2C\u0197' },
+  { 'base': 'J', 'letters': '\u004A\u24BF\uFF2A\u0134\u0248' },
+  { 'base': 'K', 'letters': '\u004B\u24C0\uFF2B\u1E30\u01E8\u1E32\u0136\u1E34\u0198\u2C69\uA740\uA742\uA744\uA7A2' },
+  { 'base': 'L', 'letters': '\u004C\u24C1\uFF2C\u013F\u0139\u013D\u1E36\u1E38\u013B\u1E3C\u1E3A\u0141\u023D\u2C62\u2C60\uA748\uA746\uA780' },
+  { 'base': 'LJ', 'letters': '\u01C7' },
+  { 'base': 'Lj', 'letters': '\u01C8' },
+  { 'base': 'M', 'letters': '\u004D\u24C2\uFF2D\u1E3E\u1E40\u1E42\u2C6E\u019C' },
+  { 'base': 'N', 'letters': '\u004E\u24C3\uFF2E\u01F8\u0143\u00D1\u1E44\u0147\u1E46\u0145\u1E4A\u1E48\u0220\u019D\uA790\uA7A4' },
+  { 'base': 'NJ', 'letters': '\u01CA' },
+  { 'base': 'Nj', 'letters': '\u01CB' },
+  { 'base': 'O', 'letters': '\u004F\u24C4\uFF2F\u00D2\u00D3\u00D4\u1ED2\u1ED0\u1ED6\u1ED4\u00D5\u1E4C\u022C\u1E4E\u014C\u1E50\u1E52\u014E\u022E\u0230\u00D6\u022A\u1ECE\u0150\u01D1\u020C\u020E\u01A0\u1EDC\u1EDA\u1EE0\u1EDE\u1EE2\u1ECC\u1ED8\u01EA\u01EC\u00D8\u01FE\u0186\u019F\uA74A\uA74C' },
+  { 'base': 'OI', 'letters': '\u01A2' },
+  { 'base': 'OO', 'letters': '\uA74E' },
+  { 'base': 'OU', 'letters': '\u0222' },
+  { 'base': 'OE', 'letters': '\u008C\u0152' },
+  { 'base': 'oe', 'letters': '\u009C\u0153' },
+  { 'base': 'P', 'letters': '\u0050\u24C5\uFF30\u1E54\u1E56\u01A4\u2C63\uA750\uA752\uA754' },
+  { 'base': 'Q', 'letters': '\u0051\u24C6\uFF31\uA756\uA758\u024A' },
+  { 'base': 'R', 'letters': '\u0052\u24C7\uFF32\u0154\u1E58\u0158\u0210\u0212\u1E5A\u1E5C\u0156\u1E5E\u024C\u2C64\uA75A\uA7A6\uA782' },
+  { 'base': 'S', 'letters': '\u0053\u24C8\uFF33\u1E9E\u015A\u1E64\u015C\u1E60\u0160\u1E66\u1E62\u1E68\u0218\u015E\u2C7E\uA7A8\uA784' },
+  { 'base': 'T', 'letters': '\u0054\u24C9\uFF34\u1E6A\u0164\u1E6C\u021A\u0162\u1E70\u1E6E\u0166\u01AC\u01AE\u023E\uA786' },
+  { 'base': 'TZ', 'letters': '\uA728' },
+  { 'base': 'U', 'letters': '\u0055\u24CA\uFF35\u00D9\u00DA\u00DB\u0168\u1E78\u016A\u1E7A\u016C\u00DC\u01DB\u01D7\u01D5\u01D9\u1EE6\u016E\u0170\u01D3\u0214\u0216\u01AF\u1EEA\u1EE8\u1EEE\u1EEC\u1EF0\u1EE4\u1E72\u0172\u1E76\u1E74\u0244' },
+  { 'base': 'V', 'letters': '\u0056\u24CB\uFF36\u1E7C\u1E7E\u01B2\uA75E\u0245' },
+  { 'base': 'VY', 'letters': '\uA760' },
+  { 'base': 'W', 'letters': '\u0057\u24CC\uFF37\u1E80\u1E82\u0174\u1E86\u1E84\u1E88\u2C72' },
+  { 'base': 'X', 'letters': '\u0058\u24CD\uFF38\u1E8A\u1E8C' },
+  { 'base': 'Y', 'letters': '\u0059\u24CE\uFF39\u1EF2\u00DD\u0176\u1EF8\u0232\u1E8E\u0178\u1EF6\u1EF4\u01B3\u024E\u1EFE' },
+  { 'base': 'Z', 'letters': '\u005A\u24CF\uFF3A\u0179\u1E90\u017B\u017D\u1E92\u1E94\u01B5\u0224\u2C7F\u2C6B\uA762' },
+  { 'base': 'a', 'letters': '\u0061\u24D0\uFF41\u1E9A\u00E0\u00E1\u00E2\u1EA7\u1EA5\u1EAB\u1EA9\u00E3\u0101\u0103\u1EB1\u1EAF\u1EB5\u1EB3\u0227\u01E1\u00E4\u01DF\u1EA3\u00E5\u01FB\u01CE\u0201\u0203\u1EA1\u1EAD\u1EB7\u1E01\u0105\u2C65\u0250' },
+  { 'base': 'aa', 'letters': '\uA733' },
+  { 'base': 'ae', 'letters': '\u00E6\u01FD\u01E3' },
+  { 'base': 'ao', 'letters': '\uA735' },
+  { 'base': 'au', 'letters': '\uA737' },
+  { 'base': 'av', 'letters': '\uA739\uA73B' },
+  { 'base': 'ay', 'letters': '\uA73D' },
+  { 'base': 'b', 'letters': '\u0062\u24D1\uFF42\u1E03\u1E05\u1E07\u0180\u0183\u0253' },
+  { 'base': 'c', 'letters': '\u0063\u24D2\uFF43\u0107\u0109\u010B\u010D\u00E7\u1E09\u0188\u023C\uA73F\u2184' },
+  { 'base': 'd', 'letters': '\u0064\u24D3\uFF44\u1E0B\u010F\u1E0D\u1E11\u1E13\u1E0F\u0111\u018C\u0256\u0257\uA77A' },
+  { 'base': 'dz', 'letters': '\u01F3\u01C6' },
+  { 'base': 'e', 'letters': '\u0065\u24D4\uFF45\u00E8\u00E9\u00EA\u1EC1\u1EBF\u1EC5\u1EC3\u1EBD\u0113\u1E15\u1E17\u0115\u0117\u00EB\u1EBB\u011B\u0205\u0207\u1EB9\u1EC7\u0229\u1E1D\u0119\u1E19\u1E1B\u0247\u025B\u01DD' },
+  { 'base': 'f', 'letters': '\u0066\u24D5\uFF46\u1E1F\u0192\uA77C' },
+  { 'base': 'g', 'letters': '\u0067\u24D6\uFF47\u01F5\u011D\u1E21\u011F\u0121\u01E7\u0123\u01E5\u0260\uA7A1\u1D79\uA77F' },
+  { 'base': 'h', 'letters': '\u0068\u24D7\uFF48\u0125\u1E23\u1E27\u021F\u1E25\u1E29\u1E2B\u1E96\u0127\u2C68\u2C76\u0265' },
+  { 'base': 'hv', 'letters': '\u0195' },
+  { 'base': 'i', 'letters': '\u0069\u24D8\uFF49\u00EC\u00ED\u00EE\u0129\u012B\u012D\u00EF\u1E2F\u1EC9\u01D0\u0209\u020B\u1ECB\u012F\u1E2D\u0268\u0131' },
+  { 'base': 'j', 'letters': '\u006A\u24D9\uFF4A\u0135\u01F0\u0249' },
+  { 'base': 'k', 'letters': '\u006B\u24DA\uFF4B\u1E31\u01E9\u1E33\u0137\u1E35\u0199\u2C6A\uA741\uA743\uA745\uA7A3' },
+  { 'base': 'l', 'letters': '\u006C\u24DB\uFF4C\u0140\u013A\u013E\u1E37\u1E39\u013C\u1E3D\u1E3B\u017F\u0142\u019A\u026B\u2C61\uA749\uA781\uA747' },
+  { 'base': 'lj', 'letters': '\u01C9' },
+  { 'base': 'm', 'letters': '\u006D\u24DC\uFF4D\u1E3F\u1E41\u1E43\u0271\u026F' },
+  { 'base': 'n', 'letters': '\u006E\u24DD\uFF4E\u01F9\u0144\u00F1\u1E45\u0148\u1E47\u0146\u1E4B\u1E49\u019E\u0272\u0149\uA791\uA7A5' },
+  { 'base': 'nj', 'letters': '\u01CC' },
+  { 'base': 'o', 'letters': '\u006F\u24DE\uFF4F\u00F2\u00F3\u00F4\u1ED3\u1ED1\u1ED7\u1ED5\u00F5\u1E4D\u022D\u1E4F\u014D\u1E51\u1E53\u014F\u022F\u0231\u00F6\u022B\u1ECF\u0151\u01D2\u020D\u020F\u01A1\u1EDD\u1EDB\u1EE1\u1EDF\u1EE3\u1ECD\u1ED9\u01EB\u01ED\u00F8\u01FF\u0254\uA74B\uA74D\u0275' },
+  { 'base': 'oi', 'letters': '\u01A3' },
+  { 'base': 'ou', 'letters': '\u0223' },
+  { 'base': 'oo', 'letters': '\uA74F' },
+  { 'base': 'p', 'letters': '\u0070\u24DF\uFF50\u1E55\u1E57\u01A5\u1D7D\uA751\uA753\uA755' },
+  { 'base': 'q', 'letters': '\u0071\u24E0\uFF51\u024B\uA757\uA759' },
+  { 'base': 'r', 'letters': '\u0072\u24E1\uFF52\u0155\u1E59\u0159\u0211\u0213\u1E5B\u1E5D\u0157\u1E5F\u024D\u027D\uA75B\uA7A7\uA783' },
+  { 'base': 's', 'letters': '\u0073\u24E2\uFF53\u00DF\u015B\u1E65\u015D\u1E61\u0161\u1E67\u1E63\u1E69\u0219\u015F\u023F\uA7A9\uA785\u1E9B' },
+  { 'base': 't', 'letters': '\u0074\u24E3\uFF54\u1E6B\u1E97\u0165\u1E6D\u021B\u0163\u1E71\u1E6F\u0167\u01AD\u0288\u2C66\uA787' },
+  { 'base': 'tz', 'letters': '\uA729' },
+  { 'base': 'u', 'letters': '\u0075\u24E4\uFF55\u00F9\u00FA\u00FB\u0169\u1E79\u016B\u1E7B\u016D\u00FC\u01DC\u01D8\u01D6\u01DA\u1EE7\u016F\u0171\u01D4\u0215\u0217\u01B0\u1EEB\u1EE9\u1EEF\u1EED\u1EF1\u1EE5\u1E73\u0173\u1E77\u1E75\u0289' },
+  { 'base': 'v', 'letters': '\u0076\u24E5\uFF56\u1E7D\u1E7F\u028B\uA75F\u028C' },
+  { 'base': 'vy', 'letters': '\uA761' },
+  { 'base': 'w', 'letters': '\u0077\u24E6\uFF57\u1E81\u1E83\u0175\u1E87\u1E85\u1E98\u1E89\u2C73' },
+  { 'base': 'x', 'letters': '\u0078\u24E7\uFF58\u1E8B\u1E8D' },
+  { 'base': 'y', 'letters': '\u0079\u24E8\uFF59\u1EF3\u00FD\u0177\u1EF9\u0233\u1E8F\u00FF\u1EF7\u1E99\u1EF5\u01B4\u024F\u1EFF' },
+  { 'base': 'z', 'letters': '\u007A\u24E9\uFF5A\u017A\u1E91\u017C\u017E\u1E93\u1E95\u01B6\u0225\u0240\u2C6C\uA763' }
+];
+let diacriticsMap = [];
+  for (let i = 0; i < defaultDiacriticsRemovalMap.length; i++) {
+    let letters = defaultDiacriticsRemovalMap[i].letters;
+    for (let j = 0; j < letters.length; j++) {
+      diacriticsMap[letters[j]] = defaultDiacriticsRemovalMap[i].base;
+    }
+  }
+return diacriticsMap;
+})();
+
+
+// "what?" version ... http://jsperf.com/diacritics/12
+function removeDiacritics(str) {
+  return str.replace(/[^\u0000-\u007E]/g, function (a) {
+    return diacriticsMap[a] || a;
+  });
+}
+
+function normalizeName(name) {
+  return removeDiacritics(name).toLowerCase().replaceAll(/[^a-zA-Z0-9]/g, '');
+}
+
+function normalizedEquals(a,b) {
+  return normalizeName(a) === normalizeName(b);
+}
+
+function sortByItemSpecificity({referenceNames = [], packPriority = true} = {}) {
+  const specificityScore = (x) => {
+    let score = 0;
+    const packValue = packPriority ? 4 : 0;
+    const itemValue = 4 - packValue;
+    score += x?.pack ? packValue : itemValue;
+    score += referenceNames.includes(x?.name) ? 2 : 0; // exact match
+    score += x?.isOwner ? 1 : 0;
+    return score;
+  };
+  return (a, b) => specificityScore(b) - specificityScore(a);
+}
+
+function partitionByNames(names) {
+  return function (items) {
+    let normalizedNames;
+    if (!names) {
+      normalizedNames = [...new Set(items.map(i => normalizeName(i.name)))];
+    } else {
+      normalizedNames = names.map(normalizeName);
+    }
+    const partitions = Array(normalizedNames.length);
+    for (let j = 0; j < partitions.length; j++) partitions[j] = [];
+    items.forEach(i => {
+      const index = normalizedNames.indexOf(normalizeName(i.name));
+      partitions[index].push(i);
+    });
+    return partitions;
+  }
+}
+
+async function findItemsByType(type, {takeOne=false, filterFn, sortFn=sortByItemSpecificity(), partitionFn=partitionByNames()} = {}) {
+  const filterExpression = { type: type };
+  const packItems = (await Promise.all(
+    game.packs
+      .filter(pack => (pack.documentClass.documentName === "Item"))
+      .map(pack => pack.getDocuments(filterExpression))
+  )).flatMap(x => x);
+  const worldItems = game.collections.get("Item")
+    .filter(item => item.type === type);
+  let allItems = packItems.concat(worldItems);
+  if (filterFn) {
+    allItems = allItems.filter(filterFn);
+  }
+  if (partitionFn) {
+    const partitions = partitionFn(allItems);
+    if (sortFn) {
+      partitions.forEach(p => p.sort(sortFn));
+    }
+    if (takeOne) {
+      return partitions.map(bin => bin[0] ?? null);
+    }
+    return partitions;
+  } else if (sortFn) {
+    allItems.sort(sortFn);
+  }
+  return takeOne ? (allItems[0] ?? null) : allItems;
+}
+
+async function findItemsWorldWide(type, names, opt = {}) {
+  const normalizedNames = names.map(normalizeName);
+  return findItemsByType(type, {
+    ...opt,
+    filterFn: (i) => normalizedNames.includes(normalizeName(i.name)),
+    sortFn: sortByItemSpecificity({referenceNames: names}),
+    partitionFn: partitionByNames(names)
+  });
+}
+
+async function findItemWorldWide(type, name) {
+  return findItemsWorldWide(type, [name], {takeOne: true}).then(a => a[0]);
+}
+
+class ZweihanderBaseActor {
+
+  prepareEmbeddedEntities(actorData) {
+
+  }
+
+  getRollData(rollData) {
+    //TODO: make attributes more accessible here
+    return rollData;
+  }
+
+
+  buildPerilDamageLadder(data, initialPeril, initialDamage) {
+    const ladder = [
+      "value",
+      "valuePlusSix",
+      "valuePlusTwelve",
+      "valuePlusEighteen"
+    ];
+    let ladderIncrement = 0;
+    data.stats.secondaryAttributes.perilThreshold = {};
+    data.stats.secondaryAttributes.damageThreshold = {};
+    ladder.forEach((v) => {
+      data.stats.secondaryAttributes.perilThreshold[v] = initialPeril + ladderIncrement;
+      data.stats.secondaryAttributes.damageThreshold[v] = initialDamage + ladderIncrement;
+      ladderIncrement += 6;
+    });
+  }
+
+  getPerilMalus(data) {
+    return {
+      0: 30,
+      1: 30,
+      2: 20,
+      3: 10
+    }[data.stats.secondaryAttributes.perilCurrent.value] ?? 0;
+  }
+
+  async createEmbeddedDocuments(embeddedName, data, context, actor) {
+    if (embeddedName === "Item") {
+      const filteredData = [];
+      let ancestryAttached = actor.data.ancestry.length === 1;
+      let numberOfProfessionsAttached = actor.data.professions.length;
+      for (let item of data) {
+        if (item.type === "profession") {
+          const previousTiersCompleted = actor.data.professions
+            .map(profession => profession.data.tier.completed)
+            .every(value => value === true);
+          const allTiersAssigned = numberOfProfessionsAttached == 3;
+          const dragDroppedOwnProfession = actor.data.professions.some(p => p._id === item._id);
+          if (allTiersAssigned && !dragDroppedOwnProfession) {
+            ui.notifications.error("A character may not enter more than 3 Professions.");
+          } else if (!previousTiersCompleted && !dragDroppedOwnProfession) {
+            ui.notifications.error("A character must complete the previous Tier before entering a new Profession.");
+          }
+          if (!allTiersAssigned && previousTiersCompleted) {
+            filteredData.push(item);
+            numberOfProfessionsAttached++;
+          }
+        } else if (item.type === "ancestry") {
+          if (ancestryAttached) {
+            ui.notifications.error("A character may not possess more than 1 Ancestry.");
+          } else {
+            filteredData.push(item);
+            ancestryAttached = true;
+          }
+        } else {
+          filteredData.push(item);
+        }
+      }
+      return filteredData;
+    }
+    return data;
+  }
+  
+}
+
+class ZweihanderActorConfig extends FormApplication {
+
+  static defaultConfiguration = {
+      "dthAttribute": "brawn",
+      "pthAttribute": "willpower",
+      "intAttribute": "perception",
+      "movAttribute": "agility",
+      "perilOffset": 0,
+      "encumbranceModifier": 0,
+      "initiativeModifier": 0,
+      "movementModifier": 0,
+      "parrySkills": ["Simple Melee", "Martial Melee", "Guile", "Charm", "Incantation"],
+      "dodgeSkills": ["Coordination", "Guile", "Drive", "Ride"],
+      "magickSkills": ["Incantation", "Folklore"]
+  };
+
+  static getValue(actorData, key) {
+    const value = getProperty(actorData.flags, `zweihander.actorConfig.${key}`);
+    return value ?? this.defaultConfiguration[key];
+  }
+
+  static getConfig(actorData) {
+    const cfg = {};
+    for (let key in this.defaultConfiguration) {
+      cfg[key] = this.getValue(actorData, key);
+    }
+    return cfg;
+  }
+
+  static get defaultOptions() {
+    return foundry.utils.mergeObject(super.defaultOptions, {
+      classes: ["zweihander sheet actor-config"],
+      id: "zweihander_actor_config",
+      template: "systems/zweihander/templates/actor/actor-config.hbs",
+      width: 500
+    });
+  }
+
+  /** @override */
+  get title() {
+    return `${this.object.name}: Actor Configuration`;
+  }
+
+  /** @override */
+  getData() {
+    const data = super.getData();
+
+    data.flags = ZweihanderActorConfig.getConfig(this.object.data);
+
+    data.parrySkills = data.flags.parrySkills.join(", ");
+    data.dodgeSkills = data.flags.dodgeSkills.join(", ");
+
+    return data;
+  }
+
+  /** @override */
+  async _updateObject(event, formData) {
+    const actor = this.object;
+    
+    let updateData = foundry.utils.expandObject(formData).flags;
+
+    let parrySkills = updateData.parrySkills.split(",").map(skill => skill.trim());
+    let dodgeSkills = updateData.dodgeSkills.split(",").map(skill => skill.trim());
+
+    updateData.parrySkills = parrySkills;
+    updateData.dodgeSkills = dodgeSkills;
+
+    await actor.setFlag("zweihander", "actorConfig", updateData);
+  }
+}
+
+class ZweihanderPC extends ZweihanderBaseActor {
+
+  prepareBaseData(actorData, that) {
+
+  }
+
+  prepareEmbeddedEntities(actorData) {
+    // set up collections for all item types
+    const indexedTypes = [
+      "trapping", "condition", "injury", "disease", "disorder", "profession",
+      "ancestry", "armor", "weapon", "spell", "ritual", "talent", "trait",
+      "drawback", "quality", "skill", "uniqueAdvance"
+    ];
+    const pluralize = t => ({
+      'injury': 'injuries',
+      'ancestry': 'ancestry',
+      'armor': 'armor',
+      'quality': 'qualities'
+    }[t] ?? t + "s");
+    indexedTypes.forEach(t => actorData[pluralize(t)] = []);
+    actorData.items
+      .filter(i => indexedTypes.includes(i.type))
+      .forEach(i => actorData[pluralize(i.type)].push(i.toObject(false)));
+    // sort skills
+    actorData.skills = actorData.skills.sort((a, b) => a.name.localeCompare(b.name));
+    // enrich drawback data to distinguish between drawbacks gained through professions and drawbacks bought
+    // this is unfortunately not robust but I don't see a way to make it robust without bloating the data model
+    //TODO: move to derivedData (or better even to item classes)
+  }
+  prepareDerivedData(actorData) {
+    const noWarn = actorData._id === null;
+    const configOptions = ZweihanderActorConfig.getConfig(actorData);
+    // set up utility variables
+    const data = actorData.data;
+    const derived = {};
+    data.derived = derived;
+    // calculate reward points automatically
+    if (game.settings.get("zweihander", "trackRewardPoints")) {
+      const tierMultiplier = {
+        "Basic": 100,
+        "Intermediate": 200,
+        "Advanced": 300
+      };
+      data.rewardPoints.spent = actorData.professions
+        .map(profession => tierMultiplier[profession.data.tier.value] * profession.data.tier.advancesPurchased)
+        .concat(actorData.uniqueAdvances.map(advance => advance.data.rewardPointCost.value))
+        .reduce((a, b) => a + b, 0);
+      data.rewardPoints.current = data.rewardPoints.total - data.rewardPoints.spent;
+    }
+    data.tier = actorData.professions[actorData.professions.length-1]?.data.tier.value ?? '';
+    // calculate primary attribute bonuses (first digit)
+    Object.values(data.stats.primaryAttributes).forEach(a => a.bonus = Math.floor(a.value / 10));
+    // add ancestral modifiers to the primary attribute bonuses
+    const ancestry = actorData.ancestry[0];
+    const applyBonusModifiers = (list, mod, source) => list.forEach(a => {
+      const attr = primaryAttributeMapping[a.slice(1,2)];
+      //TODO should be safe to remove this after migration of existing data
+      if (!attr) {
+        ui?.notifications?.warn(`"${a.trim()}" is not a valid primary attribute bonus abbreviation in ${source}!`);
+        return;
+      }
+      data.stats.primaryAttributes[attr].bonus += mod;
+    });
+    // ancestral bonus advances
+    if (ancestry) {
+      applyBonusModifiers(ancestry.data.ancestralModifiers.positive, +1, `ancestry ${ancestry.name} of actor ${actorData.name}`);
+      applyBonusModifiers(ancestry.data.ancestralModifiers.negative, -1, `ancestry ${ancestry.name} of actor ${actorData.name}`);
+    }
+    // professional bonus advances
+    actorData.professions.forEach(p => {
+      const advancesList = p.data.bonusAdvances.filter(a => a.purchased).map(a => a.value);
+      applyBonusModifiers(advancesList, +1, `profession ${p.name} of actor ${actorData.name}`);
+    });
+    // get equipped armor
+    const equippedArmor = actorData.armor
+      .filter(a => a.data.equipped);
+    // calculate total damage threshold modifier from armor
+    // according to the rule book, this doesn't stack, so we choose the maximium!
+    // to account for shields with "maker's mark" quality, we need to implement active effects
+    data.derived.dtm = Math.max(0, ...(equippedArmor.map(a => a.data.damageThresholdModifier.value)));
+    // assign inital peril & damage
+    let perilModifier = 3;
+    let initialPeril = data.stats.primaryAttributes[configOptions.pthAttribute].bonus + perilModifier;
+    let damageModifier = data.derived.dtm;
+    let initialDamage = data.stats.primaryAttributes[configOptions.dthAttribute].bonus + damageModifier;
+    // build ladder
+    this.buildPerilDamageLadder(data, initialPeril, initialDamage);
+    // get peril malus
+    const perilMalus = this.getPerilMalus(data);
+    // calculate special actions underlying values
+    const calcSecondayAttributeSpecialActionValue = (secAttr, name) => {
+      const item = actorData.skills.find(skill => skill.name === secAttr.associatedSkill);
+      if (item) {
+        const primAttr = item.data.associatedPrimaryAttribute.value.toLowerCase();
+        secAttr.value = data.stats.primaryAttributes[primAttr].value + Math.max(0, item.data.bonus - perilMalus);
+      } else {
+        noWarn || ui?.notifications?.warn(`Can't find associated skill ${secAttr.associatedSkill} for secondary attribute ${name}!`);
+      }
+    };
+    //calculate parry
+    calcSecondayAttributeSpecialActionValue(data.stats.secondaryAttributes.parry, "Parry");
+    //calculate parry
+    calcSecondayAttributeSpecialActionValue(data.stats.secondaryAttributes.dodge, "Dodge");
+    //calculate parry
+    calcSecondayAttributeSpecialActionValue(data.stats.secondaryAttributes.magick, "Magick");
+    // encumbrance calculations...
+    // assign encumbrance from equipped trappings
+    const carriedTrappings = actorData.trappings.filter(t => t.data.carried);
+    const nine4one = game.settings.get("zweihander", "encumbranceNineForOne");
+    const smallTrappingsEnc = !nine4one ? 0 : Math.floor(
+      carriedTrappings
+        .filter(t => t.data.encumbrance.value === 0)
+        .map(t => t.data.quantity.value)
+        .reduce((a, b) => a + b, 0) / 9
+    );
+    const normalTrappingsEnc = carriedTrappings
+      .filter(t => t.data.encumbrance.value !== 0)
+      .map(t => t.data.encumbrance.value * t.data.quantity.value)
+      .reduce((a, b) => a + b, 0);
+    // assign encumbrance from coinage
+    const coinageEnc = Math.floor(
+      Object.entries(data.coinage).map(e => e[1]).reduce((a, b) => a + b, 0) / 1000
+    );
+    // assign encumbrance from equipped armor piece
+    const armorEnc = equippedArmor
+      .map(a => a.data.encumbrance.value)
+      .reduce((a, b) => a + b, 0);
+    // assign encumbrance from equipped weapons
+    const weaponEnc = actorData.weapons
+      .filter(w => w.data.equipped)
+      .map(w => w.data.encumbrance.value)
+      .reduce((a, b) => a + b, 0);
+    const enc = data.stats.secondaryAttributes.encumbrance = {};
+    // assign initial encumbrance threshold
+    enc.value = data.stats.primaryAttributes.brawn.bonus + 3 + configOptions.encumbranceModifier;
+    // assign current encumbrance
+    enc.current = smallTrappingsEnc + normalTrappingsEnc + coinageEnc
+      + armorEnc + weaponEnc;
+    // assign overage
+    enc.overage = Math.max(0, enc.current - enc.value);
+    // calculate initiative
+    const ini = data.stats.secondaryAttributes.initiative = {};
+    ini.value = data.stats.primaryAttributes[configOptions.intAttribute].bonus + 3 + configOptions.initiativeModifier;
+    ini.overage = enc.overage;
+    ini.current = Math.max(0, ini.value - ini.overage);
+    // calculate movement
+    const mov = data.stats.secondaryAttributes.movement = {};
+    mov.value = data.stats.primaryAttributes[configOptions.movAttribute].bonus + 3 + configOptions.movementModifier;
+    mov.overage = enc.overage;
+    mov.current = Math.max(0, mov.value - mov.overage);
+    //TODO: this should be done in items!
+    for (let armor of actorData.armor) armor.data.qualities.arrayOfValues = armor.data.qualities.value.split(", ");
+    for (let weapon of actorData.weapons) weapon.data.qualities.arrayOfValues = weapon.data.qualities.value.split(", ");
+  }
+
+  getRollData(rollData) {
+    //TODO: make attributes more accessible here
+    return rollData;
+  }
+
+  async _preCreate(actorData, options, user, that) {
+    // add default set of skills
+    let skillPack = game.packs.get("zweihander.skills");
+    let toAdd = await skillPack.getDocuments();
+
+    // Prevent duplicating skills (e.g. when duplicating an Actor)
+    let toAddDifference = getSymmetricDifference(toAdd.map(item => item.toObject()), actorData.skills);
+    if (toAddDifference.length) actorData.update({ "items": toAddDifference });
+  }
+
+}
+
+class ZweihanderCreature extends ZweihanderBaseActor {
+
+  prepareEmbeddedEntities(actorData) {
+    const weapons = [];
+    const ancestry = [];
+    const spells = [];
+    const rituals = [];
+    const skills = [];
+    const talents = [];
+    const traits = [];
+    const trappings = [];
+    const injuries = [];
+    const conditions = [];
+
+    for (let item of actorData.items.values()) {
+      if (item.type === "weapon")
+        weapons.push(item.data);
+      else if (item.type === "ancestry")
+        ancestry.push(item.data);
+      else if (item.type === "spell")
+        spells.push(item.data);
+      else if (item.type === "ritual")
+        rituals.push(item.data);
+      else if (item.type === "skill")  // TODO: Don't allow duplicate Skills -- !skills.some(skill => skill.name === item.name)
+        skills.push(item.data);
+      else if (item.type === "talent")
+        talents.push(item.data);
+      else if (item.type === "trait")
+        traits.push(item.data);
+      else if (item.type === "trapping")
+        trappings.push(item.data);
+      else if (item.type === "injury")
+        injuries.push(item.data);
+      else if (item.type === "condition")
+        conditions.push(item.data);
+    }
+
+    actorData.weapons = weapons;
+    actorData.ancestry = ancestry;
+    actorData.spells = spells;
+    actorData.rituals = rituals;
+
+    actorData.skills = skills.sort((skillA, skillB) => {
+      const nameA = skillA.name;
+      const nameB = skillB.name;
+
+      if (nameA < nameB) {
+        return -1;
+      }
+
+      if (nameA > nameB) {
+        return 1;
+      }
+
+      return 0;
+    });
+
+    actorData.talents = talents;
+    actorData.traits = traits;
+    actorData.trappings = trappings;
+    actorData.injuries = injuries;
+    actorData.conditions = conditions;
+
+  }
+
+  getRollData(rollData) {
+    //TODO: make attributes more accessible here
+    return rollData;
+  }
+
+  prepareDerivedData(actorData) {
+    const data = actorData.data;
+
+    // Assign Peril Threshold values
+    let initialPeril = data.stats.primaryAttributes.willpower.bonus, perilModifier = 3;
+
+    const perilArray = Object.keys(data.stats.secondaryAttributes.perilThreshold);
+
+    perilArray.forEach((v) => {
+      data.stats.secondaryAttributes.perilThreshold[v] = initialPeril + perilModifier;
+      perilModifier += 6;
+    });
+
+
+    // Assign Damage Threshold values
+    let initialDamage = data.stats.primaryAttributes.brawn.bonus, damageModifier = 6;
+
+    const damageArray = Object.keys(data.stats.secondaryAttributes.damageThreshold);
+
+    data.stats.secondaryAttributes.damageThreshold[damageArray[0]] = initialDamage;
+
+    for (let i = 1; i < damageArray.length; i++)
+      data.stats.secondaryAttributes.damageThreshold[damageArray[i]] = initialDamage += damageModifier;
+  }
+
+}
+
+class ZweihanderNPC extends ZweihanderCreature {
+
+
+}
+
+class ZweihanderActor extends Actor {
+
+  static types = {
+    character: new ZweihanderPC(),
+    npc: new ZweihanderNPC(),
+    creature: new ZweihanderCreature()
+  };
+
+  constructor(...args) {
+    super(...args);
+  }
+
+  // convention: dispatch is async when the function it calls is
+  dispatch(fnName, cfg = {orElse: {value: {}, async: false}, args: []}) {
+    // console.log(`${this.name}: dispatch: ${fnName}`);
+    if (ZweihanderActor.types[this.type]) {
+      const type = ZweihanderActor.types[this.type];
+      if (type[fnName] && typeof type[fnName] === "function") {
+        if (cfg?.args?.length) {
+          return (type[fnName])(...cfg.args, this);
+        } else {
+          return (type[fnName])(this.data, this);
+        }
+      }
+    }
+    if (cfg?.orElse?.async) {
+      return Promise.resolve(cfg?.orElse?.value);
+    } else {
+      return cfg?.orElse?.value;
+    }
+  }
+
+  prepareData() {
+    super.prepareData();
+  }
+
+  prepareBaseData() {
+    super.prepareBaseData();
+    this.dispatch("prepareBaseData");
+  }
+
+  prepareEmbeddedDocuments(...args) {
+    if (super.prepareEmbeddedDocuments) super.prepareEmbeddedDocuments();
+    this.dispatch("prepareEmbeddedEntities");
+  }
+
+  prepareEmbeddedEntities() {
+    if (super.prepareEmbeddedEntities) super.prepareEmbeddedEntities();
+    this.dispatch("prepareEmbeddedEntities");
+  }
+
+  applyActiveEffects() {
+    super.applyActiveEffects();
+    this.dispatch("applyActiveEffects");
+  }
+
+  prepareDerivedData() {
+    super.prepareDerivedData();
+    this.dispatch("prepareDerivedData");
+  }
+
+  getRollData() {
+    return this.dispatch("getRollData", {args: [this.data.data], orElse: {value: this.data.data}});
+  }
+
+  /** @override*/
+  async _preCreate(data, options, user) {
+    await super._preCreate(data, options, user);
+    await this.dispatch("_preCreate", {args: [this.data, options, user]});
+  }
+
+  /** @override*/
+  async _onCreate(data, options, user) {
+    await super._onCreate(data, options, user);
+    // TODO: user is an incorrect parameter and will be fixed in future versions
+    if (user !== game.user.id)
+      return;
+    await this.dispatch("_onCreate", {args: [data, options, user]});
+  }
+
+  async createEmbeddedDocuments(embeddedName, data, context = {}) {
+    const enrichedData = await this.dispatch("createEmbeddedDocuments", {args: [embeddedName, data, context]});
+    if (enrichedData) {
+      return super.createEmbeddedDocuments(embeddedName, enrichedData, context)
+    }
+  }
+
+  async updateEmbeddedDocuments(embeddedName, updates, context = {}) {
+    const enrichedUpdates = await this.dispatch("updateEmbeddedDocuments", {args: [embeddedName, updates, context], orElse: {value: updates, async: true}});
+    if (enrichedUpdates) {
+      return super.updateEmbeddedDocuments(embeddedName, enrichedUpdates, context);
+    }
+  }
+
+  async deleteEmbeddedDocuments(embeddedName, ids, context = {}) {
+    await this.dispatch("deleteEmbeddedDocuments", {args: [embeddedName, ids, context]});
+    return super.deleteEmbeddedDocuments(embeddedName, ids, context);
+  }
+
+   /* -------------------------------------------- */
+
+   _preCreateEmbeddedDocuments(embeddedName, result, options, userId) {
+    super._preCreateEmbeddedDocuments(embeddedName, result, options, userId);
+    if (userId === game.user.id)
+      this.dispatch("_preCreateEmbeddedDocuments", {args: [embeddedName, result, options, userId]});
+   }
+
+   _onCreateEmbeddedDocuments(embeddedName, documents, result, options, userId) {
+    super._onCreateEmbeddedDocuments(embeddedName, documents, result, options, userId);
+    if (userId === game.user.id)
+      this.dispatch("_onCreateEmbeddedDocuments", {args: [embeddedName, documents, result, options, userId]});
+   }
+
+   _preUpdateEmbeddedDocuments(embeddedName, result, options, userId) {
+    super._preUpdateEmbeddedDocuments(embeddedName, result, options, userId);
+    if (userId === game.user.id)
+      this.dispatch("_preUpdateEmbeddedDocuments", {args: [embeddedName, result, options, userId]});
+   }
+
+   _onUpdateEmbeddedDocuments(embeddedName, documents, result, options, userId) {
+    super._onUpdateEmbeddedDocuments(embeddedName, documents, result, options, userId);
+    if (userId === game.user.id)
+      this.dispatch("_onUpdateEmbeddedDocuments", {args: [embeddedName, documents, result, options, userId]});
+   }
+
+   _preDeleteEmbeddedDocuments(embeddedName, result, options, userId) {
+    super._preDeleteEmbeddedDocuments(embeddedName, result, options, userId);
+    if (userId === game.user.id)
+      this.dispatch("_preDeleteEmbeddedDocuments", {args: [embeddedName, result, options, userId]});
+   }
+ 
+   _onDeleteEmbeddedDocuments(embeddedName, documents, result, options, userId) {
+    super._onDeleteEmbeddedDocuments(embeddedName, documents, result, options, userId);
+    if (userId === game.user.id)
+      this.dispatch("_onDeleteEmbeddedDocuments", {args: [embeddedName, documents, result, options, userId]});
+   }
+ 
+
+}
+
+class ZweihanderDice {
+
+  /**
+   * The primary function responsible for generating a ChatMessage for a given Skill Test.
+   * 
+   * @param {*} skillItem The skill Item associated with the roll.
+   * @param {object} actorData The ActorData object of the Actor rolling.
+   * @param {object} optionalData An optional data object that could be relevant to the roll. Can contain e.g. weapon qualities or spell effects.
+   * @param {("skill" | "weapon" | "spell" | "dodge" | "parry")} rollType The type of roll to be generated.
+   */
+  static async rollSkillTest(skillItem, actorData, rollType, optionalData = {}) {
+    const primaryAttribute = skillItem.data.associatedPrimaryAttribute.value;
+    const rollTarget = actorData.data.stats.primaryAttributes[primaryAttribute.toLowerCase()].value;
+
+    const rankBonus = skillItem.data.bonus;
+
+    const currentPeril = Number(actorData.data.stats.secondaryAttributes.perilCurrent.value);
+    const perilPenalty = this._calculatePerilPenalty(currentPeril, rankBonus);
+
+    const baseChanceModifier = this._calculateBaseChanceModifier(rankBonus, perilPenalty);
+
+    const rollConfig = await this._renderConfigurationDialog(rollType, skillItem.name, optionalData);
+
+    const additionalChaosDice = rollConfig.additionalChaosDice ? rollConfig.additionalChaosDice : 0;
+    const additionalFuryDice = rollConfig.additionalFuryDice ? rollConfig.additionalFuryDice : 0;
+
+    let difficultyRating = Number(rollConfig.difficultyRating);
+
+    if (rollConfig.channelPowerBonus)
+      difficultyRating += Number(rollConfig.channelPowerBonus);
+
+    if (difficultyRating > 30)
+      difficultyRating = 30;
+
+    const difficultyRatingLabel = this._getDifficultyRatingLabel(difficultyRating);
+
+    const flip = rollConfig.flip;
+
+    const totalChance = this._calculateTotalChance(rollTarget, baseChanceModifier, difficultyRating);
+
+    let roll = new Roll(CONFIG.ZWEI.testRollFormula, actorData.data);
+    let rollResult = await roll.evaluate({ "async": true });
+    let rollResultTotal = rollResult._total;
+
+    const deconstructedRollData = this._getDeconstructedRollData(rollResultTotal);
+
+    let testResult = this._getTestResult(rollResultTotal, totalChance, deconstructedRollData.match);  // c_fail = 0, fail = 1, success = 2, c_success = 3
+
+    let [finalRoll, showFlip, finalTestResult] = this._handleFlippedResult(rollResultTotal, totalChance, testResult, deconstructedRollData, flip);
+
+    let damageData;
+    let chaosData;
+
+    if (rollType === "weapon") {
+      optionalData.formula = optionalData.formula.replace("[#]", additionalFuryDice);
+      optionalData.formula = abbreviations2DataPath(optionalData.formula);
+
+      let damageRoll = await this._rollFuryDice(optionalData, actorData);
+      // step 1: add all fury die to an exploding-aware string
+      // step 2: add static modifiers
+      //   solution:
+      //      1. count dice in formula
+      //      we could assume its always 1 but lets be cautious.
+      //      maybe some extension will require us to roll d10 +d6 for damage, who knows..
+      //      2. remove dice terms from total result string
+      //      3. prepend our custom exploding-aware string
+      let indexedDiceTerms = damageRoll.terms
+        .filter(x => x?.number >= 0)
+        .map((x, i) => ({ value: x, index: i }))
+        .filter(x => x.value?.faces);
+      let terms = damageRoll.result.split(" + ");
+      let explodedTerms = [];
+      for (let i = 0; i < terms.length; i++) {
+        for (let indexedDiceTerm of indexedDiceTerms) {
+          if (indexedDiceTerm.index == i) {
+            indexedDiceTerm.value.results
+            .map(v => v.result + (v?.exploded ? "*" : ""))
+            .forEach(t => explodedTerms.push(t));
+          } else {
+            explodedTerms.push(terms[i]);
+          }
+        }
+      }
+      let furyDiceString;
+      if (explodedTerms.length === 0) {
+        furyDiceString = "0";
+      } else {
+        furyDiceString = explodedTerms.reduce((a, b) => a + " + " + b);
+      }
+      damageData = {
+        "damage": damageRoll.total,
+        "damageFormula": damageRoll.formula,
+        "furyDiceString": furyDiceString,
+        "additionalRoll": damageRoll
+      };
+    } else if (rollType === "spell" && Number(rollConfig.channelPowerBonus)) {
+      const numberOfDice = rollConfig.channelPowerBonus / 10;
+
+      let chaosRoll = await this._rollChaosDice(actorData, numberOfDice + Number(additionalChaosDice));
+
+      chaosData = {
+        "chaosFormula": chaosRoll._formula,
+        "chaosDice": chaosRoll.dice,
+        "channelPowerBonus": rollConfig.channelPowerBonus,
+        "additionalRoll": chaosRoll
+      };
+    }
+
+    rollResult.render().then(() => {
+      let templateData = {
+        "skill": skillItem.name,
+        "primaryAttribute": primaryAttribute,
+        "attributeChance": rollTarget,
+        "rankBonus": rankBonus,
+        "baseChance": rollTarget + baseChanceModifier,
+        "totalChance": totalChance,
+        "difficultyRating": {
+          "value": difficultyRating,
+          "label": difficultyRatingLabel
+        },
+        "perilPenalty": perilPenalty,
+        "roll": (finalRoll).toLocaleString(undefined, { "minimumIntegerDigits": 2 }),
+        "image": actorData.img,
+        "showFlip": showFlip,
+        "flip": flip,
+        "testResult": finalTestResult
+      };
+
+      if (!isObjectEmpty$1(damageData))
+        foundry.utils.mergeObject(templateData, damageData);
+      else if (!isObjectEmpty$1(chaosData))
+        foundry.utils.mergeObject(templateData, chaosData);
+
+      if (!isObjectEmpty$1(optionalData))
+        foundry.utils.mergeObject(templateData, optionalData);
+      const template = this._getTemplate(rollType);
+
+      // prepare roll data for dice so nice
+      rollResult.dice[0].options.rollOrder = 1;
+      const rolls = [rollResult];
+      if (templateData.additionalRoll && finalTestResult >= 2) {
+        templateData.additionalRoll.dice[0].options.rollOrder = 2;
+        rolls.push(templateData.additionalRoll);
+      }
+      const pool = PoolTerm.fromRolls(rolls);
+      roll = Roll.fromTerms([pool]);
+
+      this._renderChatCard(template, templateData, roll);
+    });
+  }
+
+  /**
+   * Function responsible for rendering a ChatMessage.
+   * 
+   * @param {*} template The Handlebars template to be used for this ChatMessage.
+   * @param {*} templateData The data object to be used by the template.
+   */
+  static async _renderChatCard(template, templateData, roll) {
+    renderTemplate(template, templateData).then(html => {
+      let chatData = {
+        "roll": roll,
+        "type": CONST.CHAT_MESSAGE_TYPES.ROLL,
+        "user": game.user.id,
+        "speaker": ChatMessage.getSpeaker({ actor: this.actor }),
+        "content": html
+      };
+
+      ChatMessage.create(chatData);
+    });
+  }
+
+  /**
+   * Calculate the penalty to be applied to a roll's base chance due to peril. If a character has no ranks in a skill, the penalty returned is 0.
+   * 
+   * @param {number} currentPeril The current peril value of the Actor.
+   * @param {number} rankBonus The bonus provided by purchased skill ranks.
+   * @returns 
+   */
+  static _calculatePerilPenalty(currentPeril, rankBonus) {
+    if (currentPeril === 3 && rankBonus >= 10) {
+      return 10;
+    } else if (currentPeril === 2 && rankBonus >= 10 && rankBonus < 20) {
+      return 10;
+    } else if (currentPeril === 2 && rankBonus >= 20) {
+      return 20;
+    } else if (currentPeril === 1 && rankBonus >= 10 && rankBonus < 20) {
+      return 10;
+    } else if (currentPeril === 1 && rankBonus >= 20 && rankBonus < 30) {
+      return 20;
+    } else if (currentPeril === 1 && rankBonus >= 30) {
+      return 30;
+    } else {
+      return 0;
+    }
+  }
+
+  /**
+   * Calculate the final modifier to be applied to a roll's base chance. Returned value cannot be higher than 30, or lower than -30.
+   * 
+   * @param {number} rankBonus The bonus provided by purchased skill ranks.
+   * @param {number} perilPenalty The penalty to be applied due to peril.
+   * @returns 
+   */
+  static _calculateBaseChanceModifier(rankBonus, perilPenalty) {  // TODO: add Talents, Traits and Active Effects
+    let baseChanceModifier = rankBonus - perilPenalty;
+
+    if (baseChanceModifier > 30)
+      baseChanceModifier = 30;
+    else if (baseChanceModifier < -30)
+      baseChanceModifier = -30;
+
+    return baseChanceModifier;
+  }
+
+  /**
+   * Calculate the total chance for the roll to succeed based off of the initial roll target, base chance modifiers and the difficulty rating.
+   * 
+   * @param {number} rollTarget The initial target for the roll, without any modifiers.
+   * @param {number} baseChanceModifier The final modifier to be applied to the target.
+   * @param {number} difficultyRating The difficulty rating to be applied to the roll.
+   * @returns 
+   */
+  static _calculateTotalChance(rollTarget, baseChanceModifier, difficultyRating) {
+    let totalChance = rollTarget + baseChanceModifier + difficultyRating;
+
+    return (totalChance >= 100 ? 99 : (totalChance < 1 ? 1 : totalChance)).toLocaleString(undefined, { "minimumIntegerDigits": 2 });
+  }
+
+  /**
+   * Function responsible for rolling Fury Dice, according to a given damage formula.
+   * 
+   * @param {object} actorData The ActorData object of the Actor rolling.
+   * @param {object} damageData An object with relevant weapon data, such as the damage formula.
+   * @returns 
+   */
+  static async _rollFuryDice(damageData, actorData) {
+    let roll = new Roll(damageData.formula, actorData.data);
+    let rollResult = await roll.evaluate({ "async": true });
+    return rollResult;
+  }
+
+  /**
+   * Function responsible for rolling a variable number of Chaos Dice.
+   * 
+   * @param {number} actorData The ActorData object of the Actor rolling.
+   * @param {number} numberOfDice The initial number of Chaos Dice to be rolled.
+   * @returns 
+   */
+  static async _rollChaosDice(actorData, numberOfDice) {
+    let finalFormula = numberOfDice + "d6";
+
+    let roll = new Roll(finalFormula, actorData.data);
+    let rollResult = await roll.evaluate({ "async": true });
+
+    return rollResult;
+  }
+
+  /**
+   * Function responsible for rendering a Dialog object, through which a user can configure a skill test.
+   * 
+   * @param {string} rollType The type of roll. Different types result in different Dialogs being rendered.
+   * @param {string} label The name of the skill that is displayed on the rendered window header.
+   * @param {object} optionalData An optional data object to be used by the Dialog template.
+   * @returns An object containing a roll's configuration options, based on the type of roll.
+   */
+  static async _renderConfigurationDialog(rollType, label, optionalData = {}) {
+    switch (rollType) {
+      case "dodge":
+      case "parry":
+      case "skill":
+        return await new Promise((resolve) => {
+          renderTemplate(CONFIG.ZWEI.templates.skillConfigurationDialog, optionalData).then(c => {
+            this._createDialog(label, c, (html) => {
+              // let input = html.find('[name="exampleInput"]').val();
+              let difficultyRating = html.find('[name="difficultyRatingSelect"]').val();
+              let flip = html.find('[name="flipSelect"]').val();
+
+              // resolve({ input, difficultyRating, flip });
+              resolve({ difficultyRating, flip });
+            }).render(true);
+          });
+        });
+      case "spell":
+        return await new Promise((resolve) => {
+          renderTemplate(CONFIG.ZWEI.templates.spellConfigurationDialog, optionalData).then(c => {
+            this._createDialog(label, c, (html) => {
+              let additionalChaosDice = html.find('[name="extraChaos"]').val();
+              let difficultyRating = html.find('[name="difficultyRatingSelect"]').val();
+              let channelPowerBonus = html.find('[name="channelSelect"]').val();
+              let flip = html.find('[name="flipSelect"]').val();
+
+              resolve({ additionalChaosDice, difficultyRating, channelPowerBonus, flip });
+            }).render(true);
+          });
+        });
+      case "weapon":
+        return await new Promise((resolve) => {
+          renderTemplate(CONFIG.ZWEI.templates.weaponConfigurationDialog, optionalData).then(c => {
+            this._createDialog(label, c, (html) => {
+              let additionalFuryDice = html.find('[name="extraFury"]').val();
+              let difficultyRating = html.find('[name="difficultyRatingSelect"]').val();
+              let channelPowerBonus = html.find('[name="channelSelect"]').val();
+              let flip = html.find('[name="flipSelect"]').val();
+
+              resolve({ additionalFuryDice, difficultyRating, channelPowerBonus, flip });
+            }).render(true);
+          });
+        });
+    }
+  }
+
+  /**
+   * Build a Dialog object in accordance to the label and content provided. 
+   * 
+   * @param {string} label A string to be displayed on the window header.
+   * @param {string} content The HTML content to be rendered inside the Dialog window.
+   * @param {function} callbackOnYes The callback function to be executed if the 'Yes' option is selected.
+   * @returns A Dialog object.
+   */
+  static _createDialog(label, content, callbackOnYes) {
+    return new Dialog({
+      "title": `${label}: Test Configuration`,
+      "content": content,
+      "buttons": {
+        "no": {
+          "icon": '<i class="fas fa-times"></i>',
+          "label": 'Cancel'
+        },
+        "yes": {
+          "icon": '<i class="fas fa-check"></i>',
+          "label": 'Roll',
+          "callback": callbackOnYes
+        },
+      },
+      "default": 'yes'
+    });
+  }
+
+  /**
+   * Get a label that describes the difficulty rating.
+   * 
+   * @param {number} difficultyRating The numeric difficulty rating.
+   * @returns A verbose string representation of the difficulty rating.
+   */
+  static _getDifficultyRatingLabel(difficultyRating) {
+    switch (difficultyRating) {
+      case -30:
+        return "Arduous -30%"
+      case -20:
+        return "Hard -20%"
+      case -10:
+        return "Challenging -10%"
+      case 0:
+        return "Standard +/-0%"
+      case 10:
+        return "Routine +10%"
+      case 20:
+        return "Easy +20%"
+      case 30:
+        return "Trivial +30%"
+      default:
+        return "ERROR"
+    }
+  }
+
+  /**
+   * Get the result of a skill test based on the roll result and the chance of success.
+   * 
+   * @param {number} rollResultTotal The final roll result.
+   * @param {number} totalChance The total chance of success.
+   * @param {boolean} match A flag used to tell whether the roll result's units and tens digits match. Used to determine critical success or failure.
+   * @returns A number representing the result of the roll. 0 is a critical failure, 1 is a failure, 2 is a success and 3 is a critical success.
+   */
+  static _getTestResult(rollResultTotal, totalChance, match) {
+    if (rollResultTotal === 100)
+      return 0;
+    else if (rollResultTotal === 1)
+      return 3;
+    else if (rollResultTotal <= totalChance && match)
+      return 3;
+    else if (rollResultTotal <= totalChance && !match)
+      return 2;
+    else if (rollResultTotal > totalChance && match)
+      return 0;
+    else if (rollResultTotal > totalChance && !match)
+      return 1;
+  }
+
+  /**
+   * Get a data object that contains the final roll result's units and tens digits, as well as a flag that tells whether these match.
+   * 
+   * @param {number} rollResultTotal The final roll result. 
+   * @returns A data object.
+   */
+  static _getDeconstructedRollData(rollResultTotal) {
+    const stringifiedRollValue = rollResultTotal.toLocaleString(undefined, { "minimumIntegerDigits": 2 });
+    const units = Number(stringifiedRollValue.charAt(stringifiedRollValue.length - 1));
+    const tens = Number(stringifiedRollValue.charAt(0));
+
+    const match = units === tens;
+
+    return {
+      "stringifiedRollValue": stringifiedRollValue,
+      "units": units,
+      "tens": tens,
+      "match": match
+    };
+  }
+
+  /**
+   * Get the appropriate template for the provided type of roll.
+   * 
+   * @param {string} rollType The type of roll.
+   * @returns The path to the appropriate Handlebars template.
+   */
+  static _getTemplate(rollType) {
+    switch (rollType) {
+      case "skill":
+        return CONFIG.ZWEI.templates.skill;
+      case "spell":
+        return CONFIG.ZWEI.templates.spell;
+      case "dodge":
+        return CONFIG.ZWEI.templates.dodge;
+      case "parry":
+        return CONFIG.ZWEI.templates.parry;
+      case "weapon":
+        return CONFIG.ZWEI.templates.weapon;
+    }
+  }
+
+  /**
+   * The function responsible for processing a roll result flip. 
+   * 
+   * @param {number} rollResultTotal The final roll result.
+   * @param {number} totalChance The total chance of success.
+   * @param {number} testResult A number, from 0 to 3, which respresents the result of a given skill test.
+   * @param {object} deconstructedRollData A data object which contains the units and tens digits of the final roll result, as well as a flag telling whether these match.
+   * @param {("no-flip" | "succeed" | "fail")} flip A flag which tells the function how the final roll result needs to be flipped.
+   * @returns An array containing the final roll result after flip processing, a boolean indicating whether the result was flipped, and the final test result after flip processing, in that order.
+   */
+  static _handleFlippedResult(rollResultTotal, totalChance, testResult, deconstructedRollData, flip) {
+    let finalRoll = deconstructedRollData.stringifiedRollValue;
+    let showFlip = false;
+    let finalTestResult = testResult;
+
+    if (!deconstructedRollData.match && rollResultTotal !== 100 && rollResultTotal !== 1) {
+      const flippedRoll = (deconstructedRollData.units * 10) + deconstructedRollData.tens;
+
+      switch (flip) {
+        case "fail":
+
+          // If the roll is a success, check to see if the flipped roll is also a success:
+          //   • If yes, get the lowest of the two rolls (lower is worse for degrees of success)
+          //   • Otherwise, keep the flipped roll
+          //
+          // If the roll is a failure, keep the original roll (failures don't matter for degrees of success)
+
+          finalRoll = (testResult >= 2) ?
+            ((flippedRoll <= totalChance) ?
+              Math.min(flippedRoll, rollResultTotal) :
+              flippedRoll) :
+            rollResultTotal;
+
+          if (finalRoll !== rollResultTotal)
+            showFlip = true;
+
+          if (finalRoll > totalChance && rollResultTotal <= totalChance)  // If roll was Success, but flipped to a Failure
+            finalTestResult = 1;
+          break;
+        case "succeed":
+
+          // If the roll is a failure, check to see if the flipped roll is also a failure:
+          //   • If yes, keep the original roll (failures don't matter for degrees of success)
+          //   • If no, keep the flipped roll
+          //  
+          // Otherwise, if the roll is a success, check to see if the flipped roll is also a success:
+          //   • If yes, get the highest of the two rolls (higher is better for degrees of success)
+          //   • If no, keep the original roll
+
+          if (rollResultTotal === 10) { // A roll of 10 always flips to a 01, a critical success. This is an exception to flip to succeed rules, where higher is usually better.
+            finalRoll = 1;
+          } else {
+            finalRoll = (testResult < 2) ?
+              ((flippedRoll > totalChance) ?
+                rollResultTotal :
+                flippedRoll) :
+              ((flippedRoll <= totalChance) ?
+                Math.max(flippedRoll, rollResultTotal) :
+                rollResultTotal);
+          }
+
+          if (finalRoll !== rollResultTotal)
+            showFlip = true;
+
+          if (finalRoll <= totalChance && rollResultTotal > totalChance)  // If roll was a Failure, but flipped to a Success
+            finalTestResult = 2;
+          break;
+      }
+    }
+
+    return [finalRoll, showFlip, finalTestResult];
+  }
+}
+
+/**
+ * The Zweihänder actor sheet class for characters.
+ * @extends {ActorSheet}
+ */
+class ZweihanderActorSheet extends ActorSheet {
+
+  /** @override */
+  static get defaultOptions() {
+    return foundry.utils.mergeObject(super.defaultOptions, {
+      classes: ["zweihander", "sheet", "character"],
+      template: "systems/zweihander/templates/pc/main.hbs",
+      width: 750,
+      height: 825,
+      resizable: true,
+      tabs: [
+        { navSelector: ".sheet-navigation", contentSelector: ".sheet-body", initial: "main" }
+      ],
+      scrollY: ['.save-scroll']
+    });
+  }
+  
+  /** @override */
+  getData() {
+    const data = super.getData();
+
+    data.data.owner = this.actor.isOwner;
+    data.data.editable = this.isEditable;
+    data.data.rollData = this.actor.getRollData.bind(this.actor);
+
+    if (this.actor.data.type === "character") {
+      data.data.rankOptions = { 1: "1", 2: "2", 3: "3", 4: "4", 5: "5", 6: "6", 7: "7", 8: "8", 9: "9" };
+      data.data.perilOptions = { 5: "Unhindered", 4: "Imperiled", 3: "Ignore 1 Skill Rank", 2: "Ignore 2 Skill Ranks", 1: "Ignore 3 Skill Ranks", 0: "INCAPACITATED!" };
+      data.data.damageOptions = { 5: "Unharmed", 4: "Lightly Wounded", 3: "Moderately Wounded", 2: "Seriously Wounded", 1: "Grievously Wounded", 0: "SLAIN!" };
+    }
+    const addSource = (items) => items.map(i => ({
+      ...i,
+      source: i.flags.zweihander?.source?.label ?? 'Manual',
+      isManualSource: i.flags.zweihander?.source?.label ? false : true 
+    }));
+
+    const sortSort = (a, b) => (a.sort || 0) - (b.sort || 0);
+    data.data.skills = this.actor.data.skills;
+    data.data.professions = this.actor.data.professions;
+    data.data.spells = this.actor.data.spells.sort(sortSort);
+    data.data.weapons = this.actor.data.weapons.sort(sortSort);
+    data.data.armor = this.actor.data.armor.sort(sortSort);
+    data.data.trappings = this.actor.data.trappings.sort(sortSort);
+    data.data.rituals = this.actor.data.rituals.sort(sortSort);
+    data.data.ancestry = this.actor.data.ancestry;
+    data.data.drawbacks = addSource(this.actor.data.drawbacks);
+    data.data.injuries = this.actor.data.injuries.sort(sortSort);
+    data.data.diseases = this.actor.data.diseases.sort(sortSort);
+    data.data.disorders = this.actor.data.disorders.sort(sortSort);
+    data.data.conditions = this.actor.data.conditions.sort(sortSort);
+    data.data.uniqueAdvances = this.actor.data.uniqueAdvances.sort(sortSort);
+    data.data.bio = this.actor.data.data.flavor.description;
+    data.data.traits = addSource(this.actor.data.traits.sort(sortSort));
+    const purchasedTalents = this.actor.data.professions.flatMap(p =>
+      p.data.talents
+        .filter(t => t.purchased && t.linkedId)
+        .map(t => this.actor.items.get(t.linkedId)?.toObject(false))
+    );
+    data.data.talents = addSource(purchasedTalents.sort(sortSort));
+
+    let flags = ZweihanderActorConfig.getConfig(this.actor.data);
+    data.data.damageThresholdAttribute = flags.dthAttribute;
+    data.data.perilThresholdAttribute = flags.pthAttribute;
+
+    data.data.initiativeAttribute = flags.intAttribute;
+    data.data.movementAttribute = flags.movAttribute;
+
+    data.data.parrySkills = flags.parrySkills;
+    data.data.dodgeSkills = flags.dodgeSkills;
+    data.data.magickSkills = flags.magickSkills;
+
+    return data.data;
+  }
+
+  /* -------------------------------------------- */
+
+  /** @override */
+  activateListeners(html) {
+    super.activateListeners(html);
+
+    game.settings.get("zweihander", "trackRewardPoints");
+
+    let actorData = this.actor.data;
+
+    // Everything below here is only needed if the sheet is editable
+    if (!this.options.editable) return;
+
+    // Edit Inventory Item
+    html.find('.item-edit').click(ev => {
+      const li = $(ev.currentTarget).parents(".item");
+      const item = this.actor.items.get(li.data("itemId"));
+      item.sheet.render(true);
+    });
+
+    // Delete Inventory Item
+    html.find('.item-delete').click(async ev => {
+      const li = $(ev.currentTarget).parents(".item");
+      const item = this.actor.items.get(li.data("itemId"));
+      await Dialog.confirm({
+        title: `Delete Embedded Item: ${item.name}`,
+        content: "<p>Are you sure?</p><p>This item will be permanently deleted and cannot be recovered.</p>",
+        yes: async () => {
+          await this.actor.deleteEmbeddedDocuments("Item", [item.id]);
+          li.slideUp(200, () => this.render(false));
+        },
+        no: () => { },
+        defaultYes: true
+      });
+    });
+
+    html.find('.skill').hover(async ev => {
+      let target = "li.pa.pa-" + ev.currentTarget.attributes['data-associated-pa'].value.toLowerCase();
+      $(target).addClass('pa-hover-helper');
+    }, async ev => {
+      let target = "li.pa.pa-" + ev.currentTarget.attributes['data-associated-pa'].value.toLowerCase();
+      $(target).removeClass('pa-hover-helper');
+    });
+
+    // Add new Item (from within the sheet)
+    html.find('.add-new').click(async ev => {
+      let type = ev.currentTarget.dataset.itemType;
+
+      const createdItemArray = await this.actor.createEmbeddedDocuments("Item", [
+        { "type": type, "name": type }
+      ]);
+
+      if (createdItemArray.length)
+        createdItemArray[0].sheet.render(true);
+    });
+
+    // Edit Ancestry Item
+    html.find('.ancestry-edit-button').click(() => {
+      const ancestryId = this.actor.data.ancestry[0]._id;
+      const ancestryItem = this.actor.items.get(ancestryId);
+      ancestryItem.sheet.render(true);
+      try {
+        ancestryItem.sheet.bringToTop();
+      } catch (e) {
+        // TODO check if this is a problem. Doesn't seem to be the case. Maybe can be safeguarded.
+      }
+    });
+
+    // Delete Ancestry Item
+    html.find('.ancestry-delete-button').click(async ev => {
+      const ancestryId = this.actor.data.ancestry[0]._id;
+
+      await this.actor.deleteEmbeddedDocuments("Item", [ancestryId]);
+    });
+
+    // toFormat.replace(/(@([a-zA-Z0-9]\.)*[a-zA-Z0-9]+)/g, (key) => resolveProperty(actorData, key))
+
+    // Handle formulas for display
+    html.find('.fetch-property').each(async function () {
+      let initialValue = $(this).text().trim();
+      let evaluatedValue = abbreviations2DataPath(initialValue, false);
+      //console.log(evaluatedValue);
+      evaluatedValue = evaluatedValue.replaceAll(/(@[a-zA-Z0-9\.]*[a-zA-Z0-9]+)/g, x => {
+        let key = `data.${x.slice(1)}`;
+        return getProperty(actorData, key);
+      });
+      if (initialValue !== evaluatedValue) {
+        evaluatedValue = evaluatedValue.replaceAll(/[0-9]+(\s*[\+\-\*/]\s*[0-9]+)*/g, x => {
+          //TODO: how can we solve this with async: true?
+          let rollResult = new Roll(x).evaluate({ async: false });
+          return rollResult.total;
+        });
+        //console.log(evaluatedValue);
+        $(this).text(evaluatedValue);
+      }
+    });
+
+    // "Link" checkboxes on character sheet and item sheet so both have the same state
+    html.find(".link-checkbox").click(async event => {
+      event.preventDefault();
+
+      const li = $(event.currentTarget).closest(".item");
+      const item = this.actor.items.get(li.data("itemId"));
+
+      if (item.type === "armor") {
+        await item.update({ "data.equipped": event.target.checked });
+      } else if (item.type === "profession") {
+        await item.update({ "data.tier.completed": event.target.checked });
+      } else if (item.type === "trapping") {
+        await item.update({ "data.carried": event.target.checked });
+      } else if (item.type === "weapon") {
+        await item.update({ "data.equipped": event.target.checked });
+      } else if (item.type === "condition" || item.type === "injury" || item.type === "disease" || item.type === "disorder") {
+        await item.update({ "data.active": event.target.checked });
+      }
+    });
+
+    // Update the value of the Damage Threshold label depending on armor worn
+    this._updateDamageThresholdLabel(html);
+
+    // Show item sheet on right click
+    html.find(".fetch-item").contextmenu(event => {
+      const target = $(event.currentTarget);
+      const skillName = target.text().trim();
+      const itemId = actorData.items.find(item => item.name === skillName).id;
+
+      if (itemId) {
+        const skillItem = this.actor.items.get(itemId);
+        skillItem.sheet.render(true);
+      }
+    });
+
+    html.find(".item-post").click(async event => {
+      const li = $(event.currentTarget).parents(".item");
+      const item = this.actor.items.get(li.data("itemId"));
+      //console.log(item);
+      let html;
+      try {
+        html = await renderTemplate(`systems/zweihander/templates/chat/chat-item-${item.type}.hbs`, item);
+      } catch (e) {
+        html = await renderTemplate(`systems/zweihander/templates/chat/chat-item-fallback.hbs`, item);
+      }
+      await ChatMessage.create({ content: html });
+    });
+
+    const updatePurchased = (event) => {
+      const target = $(event.currentTarget);
+      const field = target.data('purchaseType');
+      const index = target.data('purchaseIndex');
+      const professionElement = target.closest(".individual-description").parents(".item");
+      const professionItem = this.actor.items.get($(professionElement).data("itemId"));
+      const locked = professionItem.data.data.tier.completed && this.actor.data.data.tier !== professionItem.data.data.tier.value;
+      if (locked) {
+        ui.notifications.error(`Cannot perform operation: ${professionItem.data.data.tier.value} Tier locked.`);
+        return;
+      }
+      const updated = professionItem.data.data[field].map((x, i) => i === index ? { ...x, purchased: !x.purchased } : x);
+      professionItem.update({ [`data.${field}`]: updated });
+    };
+    html.find(".purchase-link").click(updatePurchased);
+
+    // Reset Order and Chaos Ranks
+    html.find(".reset-ranks").click(() => {
+      this.actor.update({
+        "data.chaosRanks.value": "0",
+        "data.orderRanks.value": "0"
+      });
+    });
+
+    // this._damageSheet(html);
+
+    // Update the encumbrance meter
+    this._updateEncumbranceMeter(html);
+
+    this._damageSheet(html);
+
+    this._perilSheet(html);
+
+    // Show extra item information on click
+    html.find(".js-show-item-description").click(event => this._showItemDescription(event));
+
+    // Roll Skill
+    html.find(".skill-roll").click((event) => {
+      this._onRollSkill(event, CONFIG.ZWEI.rollTypes.skill);
+    });
+
+    // Roll Weapon
+    html.find(".weapon-roll").click((event) => {
+      this._onRollSkill(event, CONFIG.ZWEI.rollTypes.weapon);
+    });
+
+    // Roll Spell
+    html.find(".spell-roll").click((event) => {
+      this._onRollSkill(event, CONFIG.ZWEI.rollTypes.spell);
+    });
+
+    // Roll Dodge
+    html.find(".dodge-roll").click((event) => {
+      this._onRollSkill(event, CONFIG.ZWEI.rollTypes.dodge);
+    });
+
+    // Roll Parry
+    html.find(".parry-roll").click((event) => {
+      this._onRollSkill(event, CONFIG.ZWEI.rollTypes.parry);
+    });
+
+    html.find(".js-display-quality").contextmenu(async (event) => {
+      event.preventDefault();
+      const target = $(event.currentTarget);
+      const qualityName = target.text();
+      const quality = await findItemWorldWide("quality", qualityName);
+      quality.sheet.render(true);
+    });
+  }
+
+  _damageSheet(html) {
+    if (Number(this.actor.data.data.stats.secondaryAttributes.damageCurrent.value) < 5) {
+      html.find('.bloodstain-1').toggleClass('bloodstain-inactive');
+    }
+    if (Number(this.actor.data.data.stats.secondaryAttributes.damageCurrent.value) < 4) {
+      html.find('.bloodstain-2').toggleClass('bloodstain-inactive');
+    }
+    if (Number(this.actor.data.data.stats.secondaryAttributes.damageCurrent.value) < 3) {
+      html.find('.bloodstain-3').toggleClass('bloodstain-inactive');
+    }
+    if (Number(this.actor.data.data.stats.secondaryAttributes.damageCurrent.value) < 2) {
+      html.find('.bloodstain-4').toggleClass('bloodstain-inactive');
+    }
+    if (Number(this.actor.data.data.stats.secondaryAttributes.damageCurrent.value) < 1) {
+      html.find('.bloodstain-5').toggleClass('bloodstain-inactive');
+    }
+  }
+
+  _perilSheet(html) {
+    if (Number(this.actor.data.data.stats.secondaryAttributes.perilCurrent.value) < 5) {
+      html.find('.profile-image').addClass('peril1');
+    }
+    if (Number(this.actor.data.data.stats.secondaryAttributes.perilCurrent.value) < 4) {
+      html.find('.profile-image').addClass('peril2');
+    }
+    if (Number(this.actor.data.data.stats.secondaryAttributes.perilCurrent.value) < 3) {
+      html.find('.profile-image').addClass('peril3');
+    }
+    if (Number(this.actor.data.data.stats.secondaryAttributes.perilCurrent.value) < 2) {
+      html.find('.profile-image').addClass('peril4');
+    }
+    if (Number(this.actor.data.data.stats.secondaryAttributes.perilCurrent.value) < 1) {
+      html.find('.profile-image').addClass('peril5');
+    }
+  }
+
+  async _onRollSkill(event, rollType) {
+    event.preventDefault();
+
+    const element = event.currentTarget;
+    const dataset = element.dataset;
+
+    const actorData = this.actor.data;
+
+    const skill = dataset.label.toLowerCase();
+    const skillItem = actorData.skills[actorData.skills.findIndex(item => item.name.toLowerCase() === skill)];
+
+    if (skillItem) {
+      switch (rollType) {
+        case CONFIG.ZWEI.rollTypes.dodge:
+        case CONFIG.ZWEI.rollTypes.parry:
+        case CONFIG.ZWEI.rollTypes.skill:
+          await ZweihanderDice.rollSkillTest(skillItem, actorData, rollType);
+          break;
+        case CONFIG.ZWEI.rollTypes.weapon:
+          const weaponId = $(element).parents(".item")[0].dataset.itemId;
+          const weaponItem = actorData.items.get(weaponId);
+
+          if (weaponItem) {
+            const weaponItemData = weaponItem.data;
+
+            const weaponData = {
+              "weaponQualities": weaponItemData.data.qualities.arrayOfValues,
+              "weaponName": weaponItemData.name,
+              "formula": weaponItemData.data.damage.formula,
+              "bonus": {
+                "value": weaponItemData.data.damage.primaryAttributeBonus,
+                "label": weaponItemData.data.damage.associatedPrimaryAttribute
+              }
+            };
+
+            await ZweihanderDice.rollSkillTest(skillItem, actorData, rollType, weaponData);
+          }
+
+          break;
+        case CONFIG.ZWEI.rollTypes.spell:
+          const spellId = $(element).parents(".item")[0].dataset.itemId;
+          const spellItem = actorData.items.get(spellId);
+
+          if (spellItem) {
+            const spellItemData = spellItem.data;
+
+            const spellData = {
+              "spellName": spellItemData.name,
+              "principle": spellItemData.data.principle.value,
+              "duration": this._formatDuration(spellItemData.data.duration.value, actorData),
+              "distance": spellItemData.data.distance.value,
+              "flavor": spellItemData.data.flavor.description,
+              "effect": spellItemData.data.effect,
+              "reagents": spellItemData.data.reagents.value,
+              "tradition": spellItemData.data.tradition.value
+            };
+
+            await ZweihanderDice.rollSkillTest(skillItem, actorData, rollType, spellData);
+          }
+
+          break;
+      }
+    } else {
+      ui.notifications.error(`Associated Skill "${dataset.label}" does not exist for this actor!`);
+    }
+  }
+
+  _formatDuration(formula, actorData) {
+    if (formula[0] === "@") {
+      const contents = formula.split("+");
+      const key = contents[0].replace("@", "data.");
+      const bonus = getProperty(actorData, key);
+      const setDuration = contents[1].split(' ');
+
+      return bonus + Number(setDuration[0]) + " " + setDuration[1];
+    }
+  }
+
+  _showItemDescription(event) {
+    event.preventDefault();
+    const toggler = $(event.currentTarget);
+    const item = toggler.parents(".item");
+    const description = item.find(".item-summary");
+
+    $(description).slideToggle(function () {
+      $(this).toggleClass("open");
+    });
+  }
+
+  _updateDamageThresholdLabel(html) {
+    const dtmLabel = html.find('.label.dtm').text();
+    const contents = dtmLabel.split("+");
+    const armor = this.actor.items.find(item => item.type === "armor" && item.data.data.equipped == true);
+
+    if (armor !== null && armor !== undefined) {
+      const dtm = armor.data.data.damageThresholdModifier.value;
+      html.find('.label.dtm').text(contents[0] + "+" + dtm);
+    }
+  }
+
+  _updateEncumbranceMeter(html) {
+    const encumbranceData = this.actor.data.data.stats.secondaryAttributes.encumbrance;
+    const currentEncumbrance = encumbranceData.current;
+    const totalEncumbrance = encumbranceData.value;
+
+    let ratio = (currentEncumbrance / totalEncumbrance) * 100;
+
+    if (ratio > 100) {
+      ratio = 100;
+      html.find(".encumbrance-bar-container").addClass("encumbrance-overage");
+    }
+    html.find(".encumbrance-bar").css("width", ratio + "%");
+  }
+
+  /* -------------------------------------------- */
+
+  /** @override */
+  async _render(force = false, options = {}) {
+    const toIterate = [
+      "professions",
+      "drawbacks",
+      "weapons",
+      "armor",
+      "trappings",
+      "talents-and-traits",
+      "unique-advances",
+      "spells",
+      "rituals",
+      "conditions",
+      "injuries",
+      "diseases",
+      "disorders"
+    ];
+
+    this._saveToggleStates(toIterate);
+    await super._render(force, options);
+    this._setToggleStates(toIterate);
+  }
+
+  _saveToggleStates(toIterate) {
+    if (this.form === null)
+      return;
+
+    const html = $(this.form).parent();
+
+    this.toggleStates = {};
+
+    for (let item of toIterate) {
+      let elements = $(html.find(`.save-toggle-${item}`));
+
+      this.toggleStates[item] = [];
+
+      for (let element of elements) {
+        const isOpen = $(element).hasClass("open");
+
+        this.toggleStates[item].push(isOpen);
+      }
+    }
+  }
+
+  _setToggleStates(toIterate) {
+    if (this.toggleStates) {
+      const html = $(this.form).parent();
+
+      for (let item of toIterate) {
+        if (!this.toggleStates[item].length)
+          continue;
+
+        let elements = $(html.find(`.save-toggle-${item}`));
+
+        for (let i = 0; i < elements.length; i++) {
+          if (this.toggleStates[item][i]) {
+            $(elements[i]).show().addClass("open");
+          }
+        }
+      }
+    }
+  }
+}
+
+/**
+ * Extend the basic ActorSheet with some very simple modifications
+ * @extends {ActorSheet}
+ */
+ class ZweihanderNpcSheet extends ActorSheet {
+
+  /** @override */
+  static get defaultOptions() {
+    return mergeObject(super.defaultOptions, {
+      classes: ["zweihander", "sheet", "npc"],
+      template: "systems/zweihander/templates/actor/npc-sheet.hbs",
+      width: 689, //720,
+      height: 890, //945,
+      resizable: false,
+      tabs: [],
+      scrollY: []
+    });
+  }
+
+  /* -------------------------------------------- */
+
+  /** @override */
+  getData() {
+    const data = super.getData();
+    data.dtypes = ["String", "Number", "Boolean"];
+
+    data.data.skills = this.actor.data.skills;
+    data.data.spells = this.actor.data.spells;
+    data.data.weapons = this.actor.data.weapons;
+    data.data.trappings = this.actor.data.trappings;
+    data.data.talents = this.actor.data.talents;
+    data.data.traits = this.actor.data.traits;
+    data.data.rituals = this.actor.data.rituals;
+    data.data.ancestry = this.actor.data.ancestry;
+    data.data.injuries = this.actor.data.injuries;
+    data.data.conditions = this.actor.data.conditions;
+
+    //console.log(this.actor)
+
+    return data.data;
+  }
+
+  /* -------------------------------------------- */
+
+  /** @override */
+  activateListeners(html) {
+    super.activateListeners(html);
+
+    this.actor.data;
+
+    // Everything below here is only needed if the sheet is editable
+    if (!this.options.editable) return;
+
+    // Add new Item (from within the sheet)
+    html.find('.add-new').click(async ev => {
+      let type = ev.currentTarget.dataset.itemType;
+
+      if (type === "talentTrait") {
+        // TODO: add Dialog to choose
+        //console.log("TODO: allow user to choose between Talent and Trait");
+        return;
+      }
+
+      const createdItemArray = await this.actor.createEmbeddedDocuments("Item", [ 
+        { "type": type, "name": type } 
+      ]);
+
+      createdItemArray[0].sheet.render(true);
+    });
+
+    // Edit Ancestry Item
+    html.find('.ancestry-edit-button').click(ev => {
+      const ancestryId = this.actor.data.ancestry[0]._id;
+      const ancestryItem = this.actor.items.get(ancestryId);
+
+      ancestryItem.sheet.render(true);
+    });
+
+    // Delete Ancestry Item
+    html.find('.ancestry-delete-button').click(async ev => {
+      const ancestryId = this.actor.data.ancestry[0]._id;
+
+      await this.actor.deleteEmbeddedDocuments("Item", [ ancestryId ]);
+    });
+
+    // Show Item sheet on right-click
+    html.find('.fetch-skill').contextmenu(ev => {
+      const target = $(ev.currentTarget);
+      const skillName = target.text().trim().split("+")[0];
+      const itemId = this.actor.data.skills.find(skill => skill.name === skillName)._id;
+
+      if (itemId) {
+        const skillItem = this.actor.items.get(itemId);
+        skillItem.sheet.render(true);
+      }
+    });
+
+    // Edit Inventory Item
+    html.find('.item-edit').click(ev => {
+      const li = $(ev.currentTarget).parents(".item");
+      const item = this.actor.items.get(li.data("itemId"));
+      item.sheet.render(true);
+    });
+
+    // Delete Inventory Item
+    html.find('.item-delete').click(async ev => {
+      const li = $(ev.currentTarget).parents(".item");
+      const itemName = li.children(".image-and-name").children("span").text();
+
+      await Dialog.confirm({
+        title: `Delete Embedded Item: ${itemName}`,
+        content: "<p>Are you sure?</p><p>This item will be permanently deleted and cannot be recovered.</p>",
+        yes: async () => {
+          await this.actor.deleteEmbeddedDocuments("Item", [ li.data("itemId") ]);
+          li.slideUp(200, () => this.render(false));
+        },
+        no: () => {},
+        defaultYes: false
+      });
+    });
+
+    // Fill Damage and Peril Thresholds
+    this._setThresholds(html);
+
+    // Alternate color for lists
+    this._alternateRowColor(html);
+  }
+
+  _setThresholds(html) {
+    const perilArray = Object.keys(this.actor.data.data.stats.secondaryAttributes.perilThreshold);
+    const damageArray = Object.keys(this.actor.data.data.stats.secondaryAttributes.damageThreshold);
+
+    let derivedPeril = "";
+
+    for (let i = 1; i < perilArray.length; i++) {
+      derivedPeril += "" + this.actor.data.data.stats.secondaryAttributes.perilThreshold[perilArray[i]];
+
+      if (i !== perilArray.length - 1) {
+        derivedPeril += "/";
+      }
+    }
+
+    let derivedDamage = "";
+
+    for (let i = 1; i < damageArray.length; i++) {
+      derivedDamage += "" + this.actor.data.data.stats.secondaryAttributes.damageThreshold[damageArray[i]];
+
+      if (i !== damageArray.length - 1) {
+        derivedDamage += "/";
+      }
+    }
+
+    html.find('.derived.peril').text(derivedPeril);
+    html.find('.derived.damage').text(derivedDamage);
+  }
+
+  _alternateRowColor(html) {
+    html.find(".even").css("background", "var(--zh-clr-bright1)");
+  }
+
+  /* -------------------------------------------- */
+
+  /** @override */
+  async _updateObject(event, formData) {
+
+    // Handle the free-form attributes list
+    //console.log("NPC TEST formData :::: ", formData);
+    //console.log("NPC TEST expandObject(formData) :::: ", expandObject(formData));
+    //console.log("NPC TEST expandObject(formData).data :::: ", expandObject(formData).data);
+    /*const formAttrs = expandObject(formData).data.attributes || {};
+    const attributes = Object.values(formAttrs).reduce((obj, v) => {
+      let k = v["key"].trim();
+      if ( /[\s\.]/.test(k) )  return ui.notifications.error("Attribute keys may not contain spaces or periods");
+      delete v["key"];
+      obj[k] = v;
+      return obj;
+    }, {});
+    
+    // Remove attributes which are no longer used
+    for ( let k of Object.keys(this.object.data.data.attributes) ) {
+      if ( !attributes.hasOwnProperty(k) ) attributes[`-=${k}`] = null;
+    }
+
+    // Re-combine formData
+    formData = Object.entries(formData).filter(e => !e[0].startsWith("data.attributes")).reduce((obj, e) => {
+      obj[e[0]] = e[1];
+      return obj;
+    }, {_id: this.object._id, "data.attributes": attributes});
+    */
+    // Update the Actor
+    return await this.object.update(formData);
+  }
+}
+
+/**
+ * Extend the basic ActorSheet with some very simple modifications
+ * @extends {ActorSheet}
+ */
+ class ZweihanderCreatureSheet extends ActorSheet {
+
+  /** @override */
+  static get defaultOptions() {
+    return mergeObject(super.defaultOptions, {
+      classes: ["zweihander", "sheet", "npc"],
+      template: "systems/zweihander/templates/actor/npc-sheet.hbs",
+      width: 689, //720,
+      height: 890, //945,
+      resizable: false,
+      tabs: [],
+      scrollY: []
+    });
+  }
+
+  /* -------------------------------------------- */
+
+  /** @override */
+  getData() {
+    const data = super.getData();
+    data.dtypes = ["String", "Number", "Boolean"];
+
+    data.data.skills = this.actor.data.skills;
+    data.data.spells = this.actor.data.spells;
+    data.data.weapons = this.actor.data.weapons;
+    data.data.trappings = this.actor.data.trappings;
+    data.data.talents = this.actor.data.talents;
+    data.data.traits = this.actor.data.traits;
+    data.data.rituals = this.actor.data.rituals;
+    data.data.ancestry = this.actor.data.ancestry;
+    data.data.injuries = this.actor.data.injuries;
+    data.data.conditions = this.actor.data.conditions;
+
+    //console.log(this.actor)
+
+    return data.data;
+  }
+
+  /* -------------------------------------------- */
+
+  /** @override */
+  activateListeners(html) {
+    super.activateListeners(html);
+
+    this.actor.data;
+
+    // Everything below here is only needed if the sheet is editable
+    if (!this.options.editable) return;
+
+    // Add new Item (from within the sheet)
+    html.find('.add-new').click(async ev => {
+      let type = ev.currentTarget.dataset.itemType;
+
+      if (type === "talentTrait") {
+        // TODO: add Dialog to choose
+        //console.log("TODO: allow user to choose between Talent and Trait");
+        return;
+      }
+
+      const createdItemArray = await this.actor.createEmbeddedDocuments("Item", [ 
+        { "type": type, "name": type } 
+      ]);
+
+      createdItemArray[0].sheet.render(true);
+    });
+
+    // Edit Ancestry Item
+    html.find('.ancestry-edit-button').click(ev => {
+      const ancestryId = this.actor.data.ancestry[0]._id;
+      const ancestryItem = this.actor.items.get(ancestryId);
+
+      ancestryItem.sheet.render(true);
+    });
+
+    // Delete Ancestry Item
+    html.find('.ancestry-delete-button').click(async ev => {
+      const ancestryId = this.actor.data.ancestry[0]._id;
+
+      await this.actor.deleteEmbeddedDocuments("Item", [ ancestryId ]);
+    });
+
+    // Show Item sheet on right-click
+    html.find('.fetch-skill').contextmenu(ev => {
+      const target = $(ev.currentTarget);
+      const skillName = target.text().trim().split("+")[0];
+      const itemId = this.actor.data.skills.find(skill => skill.name === skillName)._id;
+
+      if (itemId) {
+        const skillItem = this.actor.items.get(itemId);
+        skillItem.sheet.render(true);
+      }
+    });
+
+    // Edit Inventory Item
+    html.find('.item-edit').click(ev => {
+      const li = $(ev.currentTarget).parents(".item");
+      const item = this.actor.items.get(li.data("itemId"));
+      item.sheet.render(true);
+    });
+
+    // Delete Inventory Item
+    html.find('.item-delete').click(async ev => {
+      const li = $(ev.currentTarget).parents(".item");
+      const itemName = li.children(".image-and-name").children("span").text();
+
+      await Dialog.confirm({
+        title: `Delete Embedded Item: ${itemName}`,
+        content: "<p>Are you sure?</p><p>This item will be permanently deleted and cannot be recovered.</p>",
+        yes: async () => {
+          await this.actor.deleteEmbeddedDocuments("Item", [ li.data("itemId") ]);
+          li.slideUp(200, () => this.render(false));
+        },
+        no: () => {},
+        defaultYes: false
+      });
+    });
+
+    // Fill Damage and Peril Thresholds
+    this._setThresholds(html);
+
+    // Alternate color for lists
+    this._alternateRowColor(html);
+  }
+
+  _setThresholds(html) {
+    const perilArray = Object.keys(this.actor.data.data.stats.secondaryAttributes.perilThreshold);
+    const damageArray = Object.keys(this.actor.data.data.stats.secondaryAttributes.damageThreshold);
+
+    let derivedPeril = "";
+
+    for (let i = 1; i < perilArray.length; i++) {
+      derivedPeril += "" + this.actor.data.data.stats.secondaryAttributes.perilThreshold[perilArray[i]];
+
+      if (i !== perilArray.length - 1) {
+        derivedPeril += "/";
+      }
+    }
+
+    let derivedDamage = "";
+
+    for (let i = 1; i < damageArray.length; i++) {
+      derivedDamage += "" + this.actor.data.data.stats.secondaryAttributes.damageThreshold[damageArray[i]];
+
+      if (i !== damageArray.length - 1) {
+        derivedDamage += "/";
+      }
+    }
+
+    html.find('.derived.peril').text(derivedPeril);
+    html.find('.derived.damage').text(derivedDamage);
+  }
+
+  _alternateRowColor(html) {
+    html.find(".even").css("background", "var(--zh-clr-bright1)");
+  }
+
+  /* -------------------------------------------- */
+
+  /** @override */
+  async _updateObject(event, formData) {
+
+    // Handle the free-form attributes list
+    //console.log("NPC TEST formData :::: ", formData);
+    //console.log("NPC TEST expandObject(formData) :::: ", expandObject(formData));
+    //console.log("NPC TEST expandObject(formData).data :::: ", expandObject(formData).data);
+    /*const formAttrs = expandObject(formData).data.attributes || {};
+    const attributes = Object.values(formAttrs).reduce((obj, v) => {
+      let k = v["key"].trim();
+      if ( /[\s\.]/.test(k) )  return ui.notifications.error("Attribute keys may not contain spaces or periods");
+      delete v["key"];
+      obj[k] = v;
+      return obj;
+    }, {});
+    
+    // Remove attributes which are no longer used
+    for ( let k of Object.keys(this.object.data.data.attributes) ) {
+      if ( !attributes.hasOwnProperty(k) ) attributes[`-=${k}`] = null;
+    }
+
+    // Re-combine formData
+    formData = Object.entries(formData).filter(e => !e[0].startsWith("data.attributes")).reduce((obj, e) => {
+      obj[e[0]] = e[1];
+      return obj;
+    }, {_id: this.object._id, "data.attributes": attributes});
+    */
+    // Update the Actor
+    return await this.object.update(formData);
+  }
+}
+
+class ZweihanderBaseItem {
+
+  static async _getOrCreateLinkedItem(actor, itemName, itemType, sourceName, sourceType) {
+    let itemToAdd = await findItemWorldWide(itemType, itemName);
+    const existingItemWithSameName = actor.data.items.find(t => t.type === itemType && t.name === itemToAdd?.name);
+    if (!itemToAdd && !existingItemWithSameName) return;
+    const flag = { value: sourceType, label: `${sourceName} (${sourceType.capitalize()})` };
+    if (existingItemWithSameName) {
+      const existingFlag = existingItemWithSameName.getFlag('zweihander', 'source');
+      if (existingFlag) {
+        ui?.notifications.warn(`The ${existingItemWithSameName.type.capitalize()} "${existingItemWithSameName.name}" has been previously added by ${existingFlag.label}! Please contact your GM to replace this ${existingItemWithSameName.type} on ${flag.label}`);
+        return;
+      }
+      await existingItemWithSameName.setFlag('zweihander', 'source', flag);
+      return {kind: 'existing', id: existingItemWithSameName.id, name: existingItemWithSameName.name};
+    } else {
+      itemToAdd = itemToAdd.toObject();
+      setProperty(itemToAdd, 'flags.zweihander.source', flag);
+      return {kind: 'create', object: itemToAdd, name: itemToAdd.name};
+    }
+  }
+
+  static async getOrCreateLinkedItem(actor, itemName, itemType, sourceName, sourceType) {
+    const {kind, object, id, name} = ((await this._getOrCreateLinkedItem(actor, itemName, itemType, sourceName, sourceType)) ?? {});
+    let linkedId = null;
+    if (kind === 'existing') {
+      linkedId = id;
+    } else if (kind === 'create') {
+      linkedId = await actor.createEmbeddedDocuments("Item", [object]).then(x => x[0].id);
+    }
+    return ({linkedId, value: name ?? itemName});
+  }
+
+  static async getOrCreateLinkedItems(actor, itemNames, itemType, sourceName, sourceType) {
+    const itemsToCreate = [];
+    const resultMap = {};
+    for (let itemName of itemNames) {
+      const normalizedItemName = normalizeName(itemName);
+      const {kind, object, id, name} = ((await this._getOrCreateLinkedItem(actor, itemName, itemType, sourceName, sourceType)) ?? {});
+      if (kind === 'existing') resultMap[normalizedItemName] = {linkedId: id, value: name};
+      else if (kind === 'create') itemsToCreate.push(object);
+      else resultMap[normalizedItemName] = {linkedId: null, value: itemName};
+    }
+    if (itemsToCreate.length) {
+      await actor.createEmbeddedDocuments("Item", itemsToCreate)
+        .then(x => x.forEach(y => resultMap[normalizeName(y.name)] = {linkedId: y.id, value: y.name}));
+    }
+    return itemNames.map(name => resultMap[normalizeName(name)]);
+  }
+
+  static async removeLinkedItem(actor, linkedId) {
+    if (linkedId) {
+      await actor.deleteEmbeddedDocuments("Item", [linkedId]);
+    }
+  }
+
+  static async removeLinkedItems(actor, array) {
+    const linkedIds = array?.filter(v => v);
+    if (linkedIds.length) {
+      await actor.deleteEmbeddedDocuments("Item", linkedIds);
+    }
+  }
+
+  //TODO remove
+  static async updateLinkedItemIds(array, linkedItems) {
+    let i = 0;
+    const result = [];
+    for (item of array) {
+      if (normalizedEquals(linkedItems[i].name, item.value)) {
+        item.value = linkedItems[i].name;
+        item.linkedId = linkedItems[i].id;
+        i++;
+      } else {
+        item.linkedId = null;
+      }
+      result.push(item);
+    }
+    return result;
+  }
+
+  static getLinkedItemsDifference(newArray, oldArray) {
+    const arrayMinusByName = (a, b) => a.filter(x => !b.some(y => x.value === y.value));
+    return {
+      namesToAdd: arrayMinusByName(newArray, oldArray).map(e => e.value),
+      idsToDelete: arrayMinusByName(oldArray, newArray).map(e => e.linkedId)
+    }
+  }
+
+  getRollData(rollData) {
+    //TODO: make attributes more accessible here
+    return rollData;
+  }
+
+}
+
+class ZweihanderWeapon extends ZweihanderBaseItem {
+
+
+}
+
+class ZweihanderProfession extends ZweihanderBaseItem {
+
+  prepareDerivedData(itemData, item) {
+    if (!item.isOwned) return;
+    const advancesPurchased = 1
+      + itemData.data.bonusAdvances.reduce((a, b) => a + Number(b.purchased), 0)
+      + itemData.data.skillRanks.reduce((a, b) => a + Number(b.purchased), 0)
+      + itemData.data.talents.reduce((a, b) => a + Number(b.purchased), 0);
+    itemData.data.tier.advancesPurchased = advancesPurchased;
+    itemData.data.tier.completed = advancesPurchased === 21;
+  }
+
+  async _preCreate(data, options, user, item) {
+    const itemData = item.data;
+    const tier = item.parent.data.professions.length;
+    if (tier > 3) return;
+    itemData.update({ 'data.tier.value': ['Basic', 'Intermediate', 'Advanced'][tier]});
+    itemData.update({ 'data.skillRanks': itemData.data.skillRanks.map(sr => ({...sr, purchased: false}))});
+    itemData.update({ 'data.bonusAdvances': itemData.data.bonusAdvances.map(ba => ({...ba, purchased: false}))});
+    const talentsToFetch = itemData.data.talents.map(v => v.value);
+    if (talentsToFetch.length) {
+      const talents = await ZweihanderBaseItem.getOrCreateLinkedItems(item.parent, talentsToFetch, 'talent', item.name, 'profession');
+      itemData.update({ 'data.talents': talents.map(t => ({...t, purchased: false}))});
+    }
+    const professionalTraitToFetch = itemData.data.professionalTrait.value.trim();
+    const specialTraitToFetch = itemData.data.specialTrait.value.trim();
+    const traits = await ZweihanderBaseItem.getOrCreateLinkedItems(item.parent, [professionalTraitToFetch, specialTraitToFetch], 'trait', item.name, 'profession');
+    itemData.update({ 'data.professionalTrait': traits[0], 'data.specialTrait': traits[1] });
+    const drawbackToFetch = itemData.data.drawback.value;
+    const drawback = await ZweihanderBaseItem.getOrCreateLinkedItem(item.parent, drawbackToFetch, 'drawback', item.name, 'profession');
+    itemData.update({ 'data.drawback': drawback });
+  }
+
+  async _preUpdate(changed, options, user, item) {
+    const actor = item.parent;
+    const itemData = item.data;
+    const diffData = changed.data;
+    const diffPaths = flattenObject(changed.data);
+    const idsToDelete = [];
+    if (diffPaths['skillRanks'] !== undefined) {
+      diffData.skillRanks = diffData.skillRanks.map(sr => ({...sr, purchased: sr.purchased ?? false}));
+    }
+    if (diffPaths['bonusAdvances'] !== undefined) {
+      diffData.bonusAdvances = diffData.bonusAdvances.map(ba => ({...ba, purchased: ba.purchased ?? false}));
+    }
+    if (diffPaths['talents'] !== undefined) {
+      const talentsDiff = ZweihanderBaseItem.getLinkedItemsDifference(diffData.talents, itemData.data.talents);
+      idsToDelete.push(...talentsDiff.idsToDelete);
+      const addedTalents = await ZweihanderBaseItem.getOrCreateLinkedItems(item.parent, talentsDiff.namesToAdd, 'talent', item.name, 'profession');
+      const lookUp = addedTalents.reduce((a,b) => ({...a, [b.value]: {...b, purchased: false}}),{});
+      // update names 
+      diffData.talents = diffData.talents.map(t => lookUp[t.value] ? lookUp[t.value] : t);
+    }
+    if (diffPaths['professionalTrait.value'] !== undefined) {
+      const newTrait = diffData.professionalTrait.value.trim();
+      const oldTrait = itemData.data.professionalTrait.value;
+      if (newTrait !== oldTrait) {
+        idsToDelete.push(itemData.data.professionalTrait.linkedId);
+        const trait = await ZweihanderBaseItem.getOrCreateLinkedItem(actor, newTrait, 'trait', itemData.name, 'ancestry');
+        if (trait) {
+          diffData.professionalTrait = trait;
+        }
+      }
+    }
+    if (diffPaths['specialTrait.value'] !== undefined) {
+      const newTrait = diffData.specialTrait.value.trim();
+      const oldTrait = itemData.data.specialTrait.value;
+      if (newTrait !== oldTrait) {
+        idsToDelete.push(itemData.data.specialTrait.linkedId);
+        const trait = await ZweihanderBaseItem.getOrCreateLinkedItem(actor, newTrait, 'trait', itemData.name, 'ancestry');
+        if (trait) {
+          diffData.specialTrait = trait;
+        }
+      }
+    }
+    if (diffPaths['drawback.value'] !== undefined) {
+      const newDrawback = diffData.drawback.value.trim();
+      const oldDrawback = itemData.data.drawback.value;
+      if (newDrawback !== oldDrawback) {
+        idsToDelete.push(itemData.data.drawback.linkedId);
+        const drawback = await ZweihanderBaseItem.getOrCreateLinkedItem(actor, newDrawback, 'drawback', itemData.name, 'ancestry');
+        if (drawback) {
+          diffData.drawback = drawback;
+        }
+      }
+    }
+    options.idsToDelete = idsToDelete;
+  }
+
+  async _onUpdate(changed, options, user, item) {
+    if (options.idsToDelete.length) {
+      await ZweihanderBaseItem.removeLinkedItems(item.parent, options.idsToDelete);
+    }
+  }
+
+  async _preDelete(options, user, item) {
+    options.idsToDelete = [
+      item.data.data.specialTrait,
+      item.data.data.professionalTrait,
+      item.data.data.drawback,
+      ...item.data.data.talents
+    ].map(v => v.linkedId);
+  }
+
+  async _onDelete(options, user, item) {
+    await ZweihanderBaseItem.removeLinkedItems(item.parent, options.idsToDelete);
+  }
+
+}
+
+class ZweihanderSkill extends ZweihanderBaseItem {
+
+  prepareBaseData(itemData, item) {
+    if (!item.isOwned || !item?.actor?.data) return;
+    const data = itemData.data;
+    const actor = item.actor;
+    const timesPurchased = actor.items
+      .filter(i => i.type === 'profession')
+      .flatMap(p => p.data.data.skillRanks.filter(sr => sr.value === item.name && sr.purchased))
+      .length;
+    data.rank = timesPurchased;
+    data.bonus = timesPurchased * 10;
+  }
+
+}
+
+class ZweihanderAncestry extends ZweihanderBaseItem {
+
+  async _preCreate(data, options, user, item) {
+    const trait = await ZweihanderBaseItem.getOrCreateLinkedItem(item.parent, item.data.data.ancestralTrait.value, 'trait', item.name, 'ancestry'); 
+    if (trait) {
+      item.data.update({ 'data.ancestralTrait': trait });
+    }
+  }
+
+  async _preUpdate(changed, options, user, item) {
+    const itemData = item.data;
+    const diffData = changed.data;
+    const actor = item.parent;
+    for (let updatedField of Object.keys(diffData)) {
+      if (updatedField === "ancestralTrait") {
+        const newTrait = diffData.ancestralTrait.value.trim();
+        const oldTrait = itemData.data.ancestralTrait.value;
+        if (newTrait !== oldTrait) {
+          await ZweihanderBaseItem.removeLinkedItem(item.parent, itemData.data.ancestralTrait.linkedId);
+          const trait = await ZweihanderBaseItem.getOrCreateLinkedItem(actor, newTrait, 'trait', itemData.name, 'ancestry');
+          if (trait) {
+            diffData.ancestralTrait = trait;
+          }
+        }
+      }
+    }
+  }
+
+  async _preDelete(options, user, item) {
+    options.idToDelete=item.data.data.ancestralTrait.linkedId;
+  }
+
+  async _onDelete(options, user, item) {
+    await ZweihanderBaseItem.removeLinkedItem(item.parent, options.idToDelete);
+  }
+
+}
+
+class ZweihanderItem extends Item {
+
+  static types = {
+    weapon: new ZweihanderWeapon(),
+    profession: new ZweihanderProfession(),
+    skill: new ZweihanderSkill(),
+    ancestry: new ZweihanderAncestry()
+  };
+
+  constructor(...args) {
+    super(...args);
+  }
+
+  // convention: dispatch is async when the function it calls is
+  dispatch(fnName, cfg = {orElse: {value: {}, async: false}, args: []}) {
+    // console.log(`${this.name}: dispatch: ${fnName}`);
+    if (ZweihanderItem.types[this.type]) {
+      const type = ZweihanderItem.types[this.type];
+      if (type[fnName] && typeof type[fnName] === "function") {
+        if (cfg.args?.length) {
+          return (type[fnName])(...cfg.args, this);
+        } else {
+          return (type[fnName])(this.data, this);
+        }
+      }
+    }
+    if (cfg?.orElse?.async) {
+      return Promise.resolve(cfg?.orElse?.value);
+    } else {
+      return cfg?.orElse?.value;
+    }
+  }
+
+  prepareData() {
+    super.prepareData();
+  }
+
+  prepareBaseData() {
+    super.prepareBaseData();
+    this.dispatch("prepareBaseData");
+  }
+
+  prepareEmbeddedDocuments() {
+    if (super.prepareEmbeddedDocuments) super.prepareEmbeddedDocuments();
+    this.dispatch("prepareEmbeddedEntities");
+  }
+
+  prepareEmbeddedEntities() {
+    if (super.prepareEmbeddedEntities) super.prepareEmbeddedEntities();
+    this.dispatch("prepareEmbeddedEntities");
+  }
+
+  applyActiveEffects() {
+    super.applyActiveEffects();
+    this.dispatch("applyActiveEffects");
+  }
+
+  prepareDerivedData() {
+    super.prepareDerivedData();
+    this.dispatch("prepareDerivedData");
+  }
+
+  async _preCreate(data, options, user) {
+    await super._preCreate(data, options, user);
+    if (this.parent === null) return;
+    await this.dispatch("_preCreate", {args: [data, options, user]});
+  }
+
+  async _preDelete(options, user) {
+    await super._preDelete(options, user);
+    if (this.parent === null) return;
+    await this.dispatch("_preDelete", {args: [options, user]});
+  }
+
+  async _onDelete(options, user) {
+    await super._preDelete(options, user);
+    if (user !== game.user.id) return
+    if (this.parent === null) return;
+    await this.dispatch("_onDelete", {args: [options, user]});
+  }
+
+  async _preUpdate(changed, options, user) {
+    if (this.parent && changed.data) {
+      await this.dispatch("_preUpdate", {args: [changed, options, user]});
+    }
+    await super._preUpdate(changed, options, user);
+  }
+
+  async _onUpdate(changed, options, user) {
+    await super._onUpdate(changed, options, user);
+    if (user !== game.user.id) return
+    if (this.parent === null || !changed.data) return;
+    await this.dispatch("_onUpdate", {args: [changed, options, user]});
+  }
+}
+
+/**
+ * Extend the basic ItemSheet with some very simple modifications
+ * @extends {ItemSheet}
+ */
+class ZweihanderItemSheet extends ItemSheet {
+
+  /** @override */
+  static get defaultOptions() {
+    return mergeObject(super.defaultOptions, {
+      classes: ["zweihander", "sheet", "item"],
+      template: 'systems/zweihander/templates/item/main.hbs',
+      width: 400,
+      height: 550,
+      resizable: true,
+      tabs: [{ navSelector: ".sheet-navigation", contentSelector: ".sheet-body", initial: "details" }],
+      dragDrop: [{ dragSelector: ".item-sheet-draggable", dropSelector: null }]
+    });
+  }
+
+  _canDragStart(selector) {
+    return true;
+  }
+
+  _canDragDrop(selector) {
+    return this.isEditable;
+  }
+
+  _onDragDrop(event) {
+    
+  }
+
+  _onDragStart(event) {
+    const actor = this.item.actor;
+    const dragData = {
+      type: "Item",
+      data: this.item.data,
+      actorId: actor?.id ?? null,
+      ceneId: actor?.isToken ? canvas.scene?.id : null,
+      tokenId: actor?.isToken ? actor.token.id : null
+    };
+    // Set data transfer
+    event.dataTransfer.setData("text/plain", JSON.stringify(dragData));
+  }
+
+  /** @override */
+  async getData() {
+    const data = super.getData();
+    data.data.owner = this.item.isOwner;
+    data.data.editable = this.isEditable;
+    data.data.rollData = this.item.getRollData.bind(this.item);
+    if (this.item.type === "weapon") {
+      data.data.skills = (await findItemsByType("skill", {takeOne: true})).map(x => x.name).sort((a, b) => a.localeCompare(b));
+    }
+    return data.data;
+  }
+
+  activateListeners(html) {
+    super.activateListeners(html);
+    let data = this.object.data;
+    let fp = new FilePicker({
+      type: "image",
+      current: data.img,
+      displayMode: "thumbs",
+      callback: path => {
+        data.document.update({ img: path });
+        this.render(true);
+      }
+    });
+
+    html.find('.open-editor').click(async event => {
+      event.preventDefault();
+      const toggler = $(event.currentTarget);
+      const group = toggler.parents(".form-group");
+      const editor = group.find(".editor");
+      const preview = group.find(".zh-editor-preview");
+      $(preview).toggleClass("open");
+      $(editor).toggleClass("open");
+    });
+
+    html.find('.profile').click(async event => {
+      fp.render(true);
+    });
+
+    html.find('.array-input input').keypress(async (event) => event.which === 13 ? this.acceptArrayInput(event) : 0);
+    html.find('.array-input input').focusout(async (event) => this.acceptArrayInput(event));
+    html.find('.array-input-plus').click(async (event) => this.acceptArrayInput(event));
+    html.find('.array-input-pill').click(async (event) => this.removeArrayInput(event));
+  }
+
+  async _updateObject(event, formData) {
+    //@todo move to ZweihanderAncestry#update
+    if (this.item.type === 'ancestry') {
+      const trait = formData['data.ancestralTrait.value'];
+      const item = await findItemWorldWide('trait', trait);
+      if (item) {
+        formData['data.ancestralTrait.value'] = item.name;
+      }
+      if (!item && trait.trim() !== '') {
+        ui?.notifications.warn(`Couldn't find an ancestral trait with a name like ${trait} anywhere in the world or in compendia!`, { permanent: true });
+        //TODO move to actor#prepareDerivedData
+        if (this.item.isOwned) {
+          ui?.notifications.error(`Please choose a valid, existing ancestral trait!`, { permanent: true });
+        }
+      }
+    } else if (this.item.type === 'profession') {
+      const profTrait = formData['data.professionalTrait.value'];
+      let item;
+      item = await findItemWorldWide('trait', profTrait);
+      if (item) {
+        formData['data.professionalTrait.value'] = item.name;
+      }
+      if (!item && profTrait.trim() !== '') {
+        ui?.notifications.warn(`Couldn't find a professional trait with a name like ${profTrait} anywhere in the world or in compendia!`, { permanent: true });
+        //TODO move to actor#prepareDerivedData
+        if (this.item.isOwned) {
+          ui?.notifications.error(`Please choose a valid, existing professional trait!`, { permanent: true });
+        }
+      }
+      const specTrait = formData['data.specialTrait.value'];
+      item = await findItemWorldWide('trait', specTrait);
+      if (item) {
+        formData['data.specialTrait.value'] = item.name;
+      }
+      if (!item && specTrait.trim() !== '') {
+        ui?.notifications.warn(`Couldn't find a special trait with a name like ${specTrait} anywhere in the world or in compendia!`, { permanent: true });
+        //TODO move to actor#prepareDerivedData
+        if (this.item.isOwned) {
+          ui?.notifications.error(`Please choose a valid, existing special trait!`, { permanent: true });
+        }
+      }
+      const drawback = formData['data.drawback.value'];
+      item = await findItemWorldWide('drawback', drawback);
+      if (item) {
+        formData['data.drawback.value'] = item.name;
+      }
+      if (!item && drawback.trim() !== '') {
+        ui?.notifications.warn(`Couldn't find a drawback with a name like ${drawback} anywhere in the world or in compendia!`, { permanent: true });
+        //TODO move to actor#prepareDerivedData
+        if (this.item.isOwned) {
+          ui?.notifications.error(`Please choose a valid, existing drawback!`, { permanent: true });
+        }
+      }
+    }
+    super._updateObject(event, formData);
+  }
+
+  async acceptArrayInput(event, prevent = true) {
+    if (prevent) event.preventDefault();
+    const html = event.currentTarget;
+    const arrayInput = $(html).parent('.array-input');
+    const target = arrayInput.data('arrayInputTarget');
+    const input = arrayInput.find('input').val();
+    let array = getProperty(this.item.toObject(false), target);
+    const max = arrayInput.data('arrayInputMax') ?? Number.MAX_SAFE_INTEGER;
+    if (!input?.trim()) return;
+    const inputs = input.split(',').map(v => v.trim()).filter(v => v !== '');
+    if (array.length + inputs.length > max) {
+      const caption = arrayInput.parents('.form-group').find('label').text();
+      ui?.notifications.warn(`You can't add more than ${max} entries in "${caption}"!`);
+      const toAdd = max - array.length;
+      inputs.splice(toAdd, inputs.length - toAdd);
+      if (inputs.length === 0) return;
+    }
+    switch (target) {
+      case 'data.ancestralModifiers.negative':
+      case 'data.ancestralModifiers.positive':
+        array = array.concat(await this.addInputToArray(inputs, async x => this.validateBonusAbbr(x), false));
+        break;
+      case 'data.bonusAdvances':
+        array = array.concat(
+          await this.addInputToArray(inputs, async x => {
+            const vx = await this.validateBonusAbbr(x); return vx ? {value: vx} : vx
+          }, false)
+        );
+        break;
+      case 'data.talents':
+        array = array.concat(await this.addInputToArray(inputs, async x => await this.validateTalent(x)));
+        break;
+      case 'data.skillRanks':
+        array = array.concat(await this.addInputToArray(inputs, async x => await this.validateSkillRank(x)));
+        break;
+    }
+    await this.item.update({ [target]: array }).then(() => this.render(false));
+  }
+
+  async addInputToArray(inputs, validationFn, unique = true) {
+    if (unique) {
+      inputs = [...new Set(inputs)];
+    }
+    const array = [];
+    for (let input of inputs) {
+      const validatedInput = await validationFn(input);
+      if (validatedInput) {
+        array.push(validatedInput);
+      }
+    }
+    return array;
+  }
+
+  async removeArrayInput(event) {
+    event.preventDefault();
+    const html = event.currentTarget;
+    const arrayInput = $(html).parents('.array-input');
+    const target = arrayInput.data('arrayInputTarget');
+    const array = getProperty(this.item.toObject(false), target);
+    const i = $(html).data('arrayInputIndex');
+    array.splice(i, 1);
+    this.item.update({ [target]: array }).then(() => this.render(false));
+  }
+
+  async validateBonusAbbr(bonusAbbr) {
+    //TODO: move to const?
+    const validValues = ['[CB]', '[BB]', '[AB]', '[PB]', '[IB]', '[WB]', '[FB]'];
+    const sanitized = `[${bonusAbbr.trim().replaceAll(/[^a-zA-Z]/g, '').toUpperCase()}]`;
+    if (validValues.includes(sanitized)) {
+      return sanitized;
+    } else {
+      ui?.notifications.warn(`"${sanitized}" is not a valid Bonus Abbreviation! Valid values: ${validValues}`);
+    }
+  }
+
+  async validateTalent(talent) {
+    const item = this.item;
+    if (item.data.data?.talents?.some(t => normalizedEquals(t.value,talent))) {
+      ui?.notifications.warn(`A Talent named "${talent}" already belongs to item "${item.name}" of type "${item.type}". Skill Ranks must be unique!`);
+      return;
+    }
+    const foundItem = await findItemWorldWide('talent', talent);
+    if (foundItem) {
+      return {value: foundItem.name};
+    } else {
+      ui?.notifications.warn(`Couldn't find Talent with a name like ${talent} anywhere in the world or in compendia!`, { permanent: true });
+      //TODO move to actor#prepareDerivedData
+      if (this.item.isOwned) {
+        ui?.notifications.error(`Please choose a valid, existing talent!`, { permanent: true });
+      }
+      return {value: talent};
+    }
+  }
+
+  async validateSkillRank(skillRank) {
+    const item = this.item;
+    if (item.data.data?.skillRanks?.some(sr => normalizedEquals(sr.value,skillRank))) {
+      ui?.notifications.warn(`A Skill Rank in "${skillRank}" already belongs to item "${item.name}" of type "${item.type}". Skill Ranks must be unique!`);
+      return;
+    }
+    const foundItem = await findItemWorldWide('skill', skillRank);
+    if (foundItem) {
+      return {value: foundItem.name};
+    } else {
+      ui?.notifications.warn(`Couldn't find Skill Rank with a name like ${skillRank} anywhere in the world or in compendia!`, { permanent: true });
+      //TODO move to actor#prepareDerivedData
+      if (this.item.isOwned) {
+        ui?.notifications.error(`Please choose a valid, existing skill!`, { permanent: true });
+      }
+      return {value: skillRank};
+    }
+  }
+
+}
+
+class FortuneTracker extends Application {
+
+  static get PARAMS() {
+    const size = game.settings.get("zweihander", "fortuneTrackerSize");
+    switch (size) {
+      case "compact":
+        return {
+          compact: true,
+          tokenSize: 25,
+          padding: 0,
+          areaSize: 60
+        }
+      case "normal":
+        return {
+          tokenSize: 64,
+          padding: 5,
+          areaSize: 120
+        }
+      case "big":
+        return {
+          tokenSize: 83,
+          padding: 10,
+          areaSize: 180
+        }
+      case "huge":
+        return {
+          tokenSize: 125,
+          padding: 15,
+          areaSize: 300
+        }
+    }
+  }
+
+  static registerPersistingSettings() {
+    game.settings.register("zweihander", "fortuneTrackerPersistedStateTotal", {
+      name: "fortuneTrackerPersistedStateTotal",
+      hint: "",
+      scope: "world",
+      type: Number,
+      default: 0,
+      config: false
+    });
+    game.settings.register("zweihander", "fortuneTrackerPersistedStateUsed", {
+      name: "fortuneTrackerPersistedStateUsed",
+      hint: "",
+      scope: "world",
+      type: Number,
+      default: 0,
+      config: false
+    });
+    game.settings.register("zweihander", "fortuneTrackerPersistedStateRemoved", {
+      name: "fortuneTrackerPersistedStateRemoved",
+      hint: "",
+      scope: "world",
+      type: Number,
+      default: 0,
+      config: false
+    });
+    game.settings.register("zweihander", "fortuneTrackerRuleSystem", {
+      name: "Fortune Tracker Rule System",
+      hint: "Choose how you wish to implement fortune points and misfortune points in your game.",
+      scope: "world",
+      type: String,
+      choices: {
+        "remove": "Using misfortune points removes them from the game",
+        "keep": "Using misfortune points returns them to the party as fortune points"
+      },
+      default: "remove",
+      config: true
+    });
+    game.settings.register("zweihander", "fortuneTrackerNotifications", {
+      name: "Fortune Tracker Notification Behaviour",
+      hint: "Choose how you wish to be notified about spent Fortune points.",
+      scope: "world",
+      type: String,
+      choices: {
+        "none": "No Notifications (See current value on hovering tokens)",
+        "notify": "Post Foundry Notifications",
+        "chat": "Post Chat Messages"
+      },
+      default: "notify",
+      config: true
+    });
+    game.settings.register("zweihander", "fortuneTrackerSize", {
+      name: "Fortune Tracker Size",
+      hint: "Choose the size of your fortune tracker.",
+      scope: "client",
+      type: String,
+      choices: {
+        "compact": "Compact (Text)",
+        "normal": "Normal (Tokens)",
+        "big": "Big (Tokens)",
+        "huge": "Huge (Tokens)"
+      },
+      default: "normal",
+      config: true
+    });
+    game.settings.register("zweihander", "fortuneTrackerFortunePath", {
+      name: "Fortune Token Image",
+      hint: "Customize the fortune token image. For best appearance use an image of at least 125x125 pixels.",
+      scope: "world",
+      type: String,
+      default: "systems/zweihander/assets/fortune-life.png",
+      config: true
+    });
+    game.settings.register("zweihander", "fortuneTrackerMisfortunePath", {
+      name: "Misfortune Token Image",
+      hint: "Customize the misfortune token image. For best appearance use an image of at least 125x125 pixels.",
+      scope: "world",
+      type: String,
+      default: "systems/zweihander/assets/fortune-death.png",
+      config: true
+    });
+  }
+
+  // business logic
+
+  #waiting = false;
+
+  #state = {
+    total: 0,
+    used: 0,
+    removed: 0
+  }
+
+  #socket;
+
+  #positions = [];
+
+  // this should be refactored to a getter if we ever offer the user to close the fortune tracker app
+  #closable = false;
+
+
+
+  static get defaultOptions() {
+    return foundry.utils.mergeObject(super.defaultOptions, {
+      template: 'systems/zweihander/templates/fortune-tracker.hbs',
+      popOut: true,
+      resizable: false,
+      title: 'Fortune Tracker',
+      id: 'fortuneTrackerApp',
+      classes: ['zweihander'],
+      width: FortuneTracker.PARAMS.areaSize * 2,
+      height: FortuneTracker.PARAMS.areaSize + 30,
+      top: 60,
+      left: 125
+    });
+  }
+
+  constructor(socket) {
+    super();
+    const that = this;
+    function requestSync(state, requestingUserId) {
+      if (state) {
+        let validationError = that.validate(state, requestingUserId);
+        if (!validationError) {
+          socket.executeForEveryone("broadcastState", state);
+        } else {
+          socket.executeForEveryone("broadcastState", that.state);
+          socket.executeAsUser("showIllegalStateNotification", requestingUserId, validationError);
+        }
+      } else {
+        return that.state;
+      }
+    }
+    
+    function broadcastState(state) {
+      that.state = state;
+    }
+    
+    function showIllegalStateNotification(validationError) {
+      ui.notifications.error(validationError);
+    }
+
+    socket.register("requestSync", requestSync);
+    socket.register("broadcastState", broadcastState);
+    socket.register("showIllegalStateNotification", showIllegalStateNotification);
+
+    this.#socket = socket;
+    
+    // generate random positions
+    this.generateRandomPositionValues();
+  }
+
+  get resetRule() {
+    return "Set total fortune points to the number of connected players plus one.";
+  }
+
+  get rules() {
+    return game.settings.get("zweihander", "fortuneTrackerRuleSystem");
+  }
+
+  get state() {
+    return {
+      total: this.#state.total,
+      used: this.#state.used,
+      removed: this.#state.removed
+    }
+  }
+
+  set state(updatedState) {
+    if (updatedState.used !== this.used || updatedState.removed !== this.removed || updatedState.total !== this.total) {
+      this.playAudio();
+    }
+    this.#waiting = false;
+    this.#state = updatedState;
+    if (game.users.get(game.userId).isGM) {
+      game.settings.set("zweihander", "fortuneTrackerPersistedStateTotal", this.total);
+      game.settings.set("zweihander", "fortuneTrackerPersistedStateUsed", this.used);
+      game.settings.set("zweihander", "fortuneTrackerPersistedStateRemoved", this.removed);
+    }
+    this.render(!this.closable);
+  }
+
+  get total() {
+    return this.#state.total;
+  }
+
+  increaseTotal() {
+    const s = this.state;
+    s.total++;
+    return s;
+  }
+
+  decreaseTotal() {
+    const s = this.state;
+    s.total--;
+    if (s.total < s.used) {
+      s.used--;
+    }
+    if (s.total < s.removed) {
+      s.removed--;
+    }
+    return s;
+  }
+
+  //TODO implement different rule systems
+  spendFortune() {
+    const s = this.state;
+    s.used++;
+    return s;
+  }
+
+  //TODO implement different rule systems
+  spendMisfortune() {
+    const s = this.state;
+    const r = this.rules;
+    if (r === "keep") {
+      s.used--;
+    } else {
+      s.removed++;
+    }
+    return s;
+  }
+
+  get used() {
+    return this.#state.used;
+  }
+
+  get removed() {
+    return this.#state.removed;
+  }
+
+  get fortune() {
+    return this.total - this.used;
+  }
+
+  get misfortune() {
+    return this.used - this.removed;
+  }
+
+  generateRandomPositionValues(keepFortune=0, keepMisfortune=0) {
+
+    function getRandomIntInclusive(min, max) {
+      min = Math.ceil(min);
+      max = Math.floor(max);
+      return Math.floor(Math.random() * (max - min + 1) + min); //The maximum is inclusive and the minimum is inclusive
+    }
+
+    const n = (keepFortune * 2) % 20;
+    const m = 20 + (keepMisfortune * 2) % 20;
+    
+    for (let i = n; i < 40; i++) {
+      if (i < 20 || (i >= m && i < 40)) {
+        this.#positions[i] = (getRandomIntInclusive(FortuneTracker.PARAMS.padding, FortuneTracker.PARAMS.areaSize - FortuneTracker.PARAMS.tokenSize - FortuneTracker.PARAMS.padding));
+      }
+    }
+    
+  }
+  //TODO implement different rule systems
+  validate(updatedState, requestingUserId) {
+    // console.log(this.state);
+    // console.log(updatedState);
+    const notifySetting = game.settings.get("zweihander", "fortuneTrackerNotifications");
+    const user = game.users.get(requestingUserId);
+    if (updatedState.total !== this.total && !user.isGM) {
+      return "You are not privileged to change the total amount of fortune in the game!";
+    } else if (updatedState.removed !== this.removed && !user.isGM) {
+      return "You are not privileged to spend misfortune! Know your place peasant, or be smited!";
+    } else if (updatedState.used < this.used && !user.isGM) {
+      return "You are not privileged to spend misfortune! Know your place, peasant!";
+    } else if (updatedState.total < 0) {
+      return "Sorry, but you can't have a negative amount of fortune. Kindly turn a demon or a foul god for the equivalent outcome!";
+    } else if (updatedState.used < 0) {
+      return "There is no misfortune left for the GM at this time.";
+    } else if (updatedState.removed < 0) {
+      return "Can't have negative removed tokens! (You should never see this error. If you do, please contact the developer.)";
+    } else if (updatedState.used > updatedState.total) {
+      return "There is no fortune left for the party at this time."
+    } else if (updatedState.removed > updatedState.used) {
+      return "There is no misfortune left for the GM at this time."
+    } else {
+      if (updatedState.used === this.used + 1) {
+        const name = user.charname ? user.charname : user.name;
+        if (notifySetting === "notify") {
+          ui.notifications.info(`${name} used a fortune point. Current fortune points: ${updatedState.total-updatedState.used}/${updatedState.total}`);
+        } else if (notifySetting === "chat") {
+          ChatMessage.create({user: requestingUserId, content: `${name} used a fortune point. Let's hope they make it count! <p><b>Current fortune points: ${updatedState.total-updatedState.used}/${updatedState.total} </b></p>`});
+        }
+      } else if ((updatedState.remove === this.remove + 1 || updatedState.used === this.used - 1) && this.total === updatedState.total) {
+        if (notifySetting === "notify") {
+          ui.notifications.info(`Brace yourselves, the GM used a misfortune point! Current fortune points: ${updatedState.total-updatedState.used}/${updatedState.total}`);
+        } else if (notifySetting === "chat") {
+          ChatMessage.create({user: requestingUserId, content: `Brace yourselves, the GM used a misfortune point! <p><b>Current fortune points: ${updatedState.total-updatedState.used}/${updatedState.total} </b></p>`});
+        }
+      }
+      return false;
+    }
+  }
+
+  // Foundry methods
+  getData() {
+    this.generateRandomPositionValues(this.fortune, this.misfortune);
+    let fortunePositions = [];
+    for (let i = 0; i < this.fortune; i++) {
+      let t = this.#positions[2 * (i % 10)];
+      let l = this.#positions[2 * (i % 10) + 1];
+      fortunePositions.push({ t, l });
+    }
+    let misfortunePositions = [];
+    for (let i = 0; i < this.misfortune; i++) {
+      let t = this.#positions[2 * (i % 10) + 20];
+      let l = this.#positions[2 * (i % 10) + 21];
+      misfortunePositions.push({ t, l });
+    }
+    return {
+      total: this.total,
+      fortune: {
+        value: this.fortune,
+        positions: fortunePositions,
+        path: game.settings.get("zweihander", "fortuneTrackerFortunePath")
+      },
+      misfortune: {
+        value: this.misfortune,
+        positions: misfortunePositions,
+        path: game.settings.get("zweihander", "fortuneTrackerMisfortunePath")
+      },
+      waiting: this.#waiting,
+      params: FortuneTracker.PARAMS
+    }
+  }
+
+  async syncState() {
+    if (game.users.get(game.userId).isGM) {
+      this.#state = {
+        total: game.settings.get("zweihander", "fortuneTrackerPersistedStateTotal"),
+        used: game.settings.get("zweihander", "fortuneTrackerPersistedStateUsed"),
+        removed: game.settings.get("zweihander", "fortuneTrackerPersistedStateRemoved")
+      };
+      this.#waiting = false;
+      this.#socket.executeForOthers("broadcastState", this.state);
+    } else {
+      this.#state = await this.requestSync();
+    }
+    this.render(!this.closable);
+  }
+
+  resetState() {
+    if (game.users.get(game.userId).isGM) {
+      const activePlayers = game.users.players.map(x => (x.active ? 1 : 0)).reduce((x, y) => x + y, 0);
+      this.state = {
+        total: activePlayers + 1, //TODO: customize this for rule systems
+        used: 0,
+        removed: 0
+      };
+      this.#socket.executeForOthers("broadcastState", this.state);
+    } else {
+      ui.notifications.error("Only the GM may reset the fortune tracker. Keep your dirty hands to yourself, foolish thing!");
+    }
+  }
+
+  async requestSync(updatedState) {
+    try {
+      if (updatedState) {
+        return await this.#socket.executeAsGM("requestSync", updatedState, game.userId);
+      } else {
+        return await this.#socket.executeAsGM("requestSync");
+      }
+    } catch (e) {
+      console.error(e);
+      this.#waiting = true;
+      this.render(!this.closable);
+      ui.notifications.warn("Fortune Tracker is waiting for a GM to (re)connect.");
+      return this.state;
+    }
+  }
+
+  // toggle() {
+  //   if (this.rendered) {
+  //     this.close();
+  //   } else {
+  //     this.render(true);
+  //     this.syncState();
+  //   }    
+  // }
+
+  // hookToChatTab(app, html, data) {
+  //   if (app.tabName === "chat") {
+  //     let controls = html.find('#chat-controls > .control-buttons');
+  //     controls.css({flex: "0 0 auto"});
+  //     controls.prepend(`
+  //       <a class="open-fortune-tracker" title="Toggle Fortune Tracker">
+  //         <i class="fas ra ra-circle-of-circles"></i>
+  //       </a>
+  //     `);
+  //     html.find(".open-fortune-tracker").click(this.toggle.bind(this))
+  //   }
+  // }
+
+  // This should go to main.js if we ever fancy to offer the user to close the fortune tracker. 
+  // Hooks.on("renderSidebarTab", (app, html, data) => {
+  //   fortuneTrackerApp.hookToChatTab(app, html, data);
+  // })
+
+  async close() {
+    // can't touch (close) this
+  }
+
+  activateListeners(html) {
+    const app = html.parents("#fortuneTrackerApp");
+    let totalTrigger;
+    if (!app.find('#fortuneTrackerAppTotal').length) {
+      app.find('a.header-button.close').before(`
         <a id="fortuneTrackerAppTotal" class="waiting-${this.#waiting}">
           Total: ${this.total}
         </a>
         <a class="fortune-tracker-reset" title="${this.resetRule}">
           <i class="fas fa-sync-alt"></i>
         </a>
-      `);let e=t.find(".fortune-tracker-reset");e.click(e=>{e.preventDefault(),this.resetState()}),a=t.find("#fortuneTrackerAppTotal"),t.find("a.header-button.close").remove()}a.click(e=>{e.preventDefault(),this.requestSync(this.increaseTotal())}),a.contextmenu(e=>{e.preventDefault(),this.requestSync(this.decreaseTotal())});let r=e.find(".fortune-tracker-fortune-trigger");r.click(e=>{e.preventDefault(),this.requestSync(this.spendFortune())});let i=e.find(".fortune-tracker-misfortune-trigger");i.click(e=>{e.preventDefault(),this.requestSync(this.spendMisfortune())})}playAudio(){AudioHelper.play({src:"systems/zweihander/assets/sounds/coins.mp3",volume:.5,loop:!1},!0)}}const registerSystemSettings=function(){game.settings.register("zweihander","systemMigrationVersion",{name:"System Migration Version",scope:"world",config:!1,type:String,default:""}),game.settings.register("zweihander","encumbranceNineForOne",{name:"Small Item Encumbrance",hint:"Enable or disable rule for small item Encumbrance, where 9 small items add up to 1 point of Encumbrance.",scope:"world",type:Boolean,default:!0,config:!0}),game.settings.register("zweihander","trackRewardPoints",{name:"Automatically Track Reward Points",hint:"Enable or disable the automatic tracking of Reward Point expenditure.",scope:"world",type:Boolean,default:!0,config:!0}),game.settings.register("zweihander","theme",{name:"Zweihander Sheet Theme",hint:"Choose a theme for your Zweihander sheets",scope:"client",type:String,default:"gruvbox-dark",choices:{"gruvbox-dark":"Gruvbox Dark","gruvbox-light":"Gruvbox Light"},config:!0,onChange:a=>{$(".system-zweihander").addClass("zweihander-theme-"+a),$(".system-zweihander").removeClass((e,t)=>t.split(" ").filter(e=>e.startsWith("zweihander-theme-")&&e!=="zweihander-theme-"+a))}})},preloadHandlebarsTemplates=async function(){var e=e=>"systems/zweihander/templates/"+e+".hbs";return loadTemplates([e("pc/tab-afflictions"),e("pc/tab-background"),e("pc/tab-magick"),e("pc/tab-main"),e("pc/tab-tiers"),e("pc/tab-trappings"),e("pc/header"),e("item/ancestry"),e("item/armor"),e("item/condition"),e("item/disease"),e("item/disorder"),e("item/drawback"),e("item/injury"),e("item/profession"),e("item/ritual"),e("item/skill"),e("item/spell"),e("item/talent"),e("item/trait"),e("item/trapping"),e("item/quality"),e("item/uniqueAdvance"),e("item/weapon")])},registerHandlebarHelpers=async function(){function d(){return([1e7]+-1e3+-4e3+-8e3+-1e11).replace(/[018]/g,e=>(e^crypto.getRandomValues(new Uint8Array(1))[0]&15>>e/4).toString(16))}var e=(e,t)=>Handlebars.registerHelper(e,t);e("$$",function(e){return"systems/zweihander/templates/"+e+".hbs"}),e("getFirstLetter",function(e){return"string"!=typeof e?"":e.charAt(0).toUpperCase()}),e("capitalize",function(e){return"string"!=typeof e?"":e.capitalize()}),e("isMissing",function(e,t){return Array.isArray(e)?""===e[0]?t.inverse(this):t.fn(this):""===e?t.inverse(this):t.fn(this)}),e("oddOrEven",function(e){return(e+1)%2?"odd":"even"}),e("radioRanks",function(e,t,a){var r=a.hash.checked||null;let i="",n=0;var s,o,l=d();for([s,o]of Object.entries(t)){var c=r===s;i+=`<input type="radio" class="rd" name="${e}" id="${l}.${e+n}" value="${s}" ${c?"checked":""}><label for="${l}.${e+n++}">${o}</label>`}return new Handlebars.SafeString(i)}),e("radioThresholds",function(e,t,a){var r=a.hash.checked||null,i=a.hash.elem||"span";let n="";var s,o,l=d();for([s,o]of Object.entries(t)){var c=r==s;n+=`<div class="radio-and-status"><input type="radio" class="radio-rank" id="${l}.${s}" name="${e}" value="${s}" ${c?"checked":""}><${i} for="${l}.${s}" class="status">${o}</${i}></div>`}return new Handlebars.SafeString(n)}),e("checkUniqueAdvanceType",function(e,t){return"focus"===e.trim().toLowerCase()?`Focus (${t})`:e}),e("displayNpcSkillBonus",function(e){let t=0;for(var a of Object.keys(e)){if(!e[a].purchased)break;t+=10}return 0!==t?"+"+t:""}),e("rpSettingOn",function(e){return game.settings.get("zweihander","trackRewardPoints")?e.fn(this):e.inverse(this)}),e("generateResultText",function(e,t,a,r){var i=r?"*":"";switch(e){case 0:return new Handlebars.SafeString(`<span class="failure">Critical Failure</span> (${t} vs. ${a})`+i);case 1:return new Handlebars.SafeString(`<span class="failure">Failure</span> (${t} vs. ${a})`+i);case 2:return new Handlebars.SafeString(`<span class="success">Success</span> (${t} vs. ${a})`+i);case 3:return new Handlebars.SafeString(`<span class="success">Critical Success</span> (${t} vs. ${a})`+i)}}),e("generateFlipText",function(e){return"no-flip"===e?"No":"fail"===e?"To Fail":"To Succeed"}),e("checkSuccess",function(e,t){return 2<=e?t.fn(this):t.inverse(this)}),e("checkCriticalSuccess",function(e,t){return 3===e?t.fn(this):t.inverse(this)}),e("checkCriticalFailure",function(e,t){return 0===e?t.fn(this):t.inverse(this)}),e("displayIndividualDice",function(t,a,r){let i="";for(let e=0;e<t.length;e++){var n=t[e].results;for(let e=0;e<n.length;e++)r&&6===n[e].result?i+='<a class="highlight" title="Generate Chaos Manifestation">'+n[e].result+"</a>":i+=n[e].result,e!==n.length-1&&(i+=a);e!==t.length-1&&(i+=a)}return new Handlebars.SafeString(i)}),e("selectSpellDifficulty",function(e,t){switch(t){case"Petty":case"Generalist":return 0===e?"selected":"";case"Lesser":return 1===e?"selected":"";case"Greater":return 2===e?"selected":""}}),e("pa2Icon",function(e){return{combat:"ra ra-croc-sword",brawn:"ra ra-muscle-up",agility:"fa fa-running",perception:"ra ra-aware",intelligence:"ra ra-book",willpower:"ra ra-crystal-ball",fellowship:"ra ra-double-team"}[e]}),e("markdownIt",function(e){return window.MEME?.markdownIt?.render?window.MEME?.markdownIt?.render(e):e}),e("itemTemplatePath",function(e){return"systems/zweihander/templates/item/"+e+".hbs"}),e("itemImageClass",function(e){return e.endsWith(".svg")?"item-image item-image-icon":"item-image item-image-picture"}),e("itemImageStyle",function(e){return e.endsWith(".svg")?`-webkit-mask-image: url('${e}')`:`background-image: url('${e}')`}),e("arrayInputGroup",function(e,t,a,r=Number.MAX_SAFE_INTEGER,i){return`<div class="form-group">
-    <label>${e}</label>
-    <div class="array-input flexrow" data-array-input-target="${t}" data-array-input-max="${r}">
-      <input name="proxy.${t}" type="text" placeholder="Enter values here">
+      `);
+      let resetTrigger = app.find('.fortune-tracker-reset');
+      resetTrigger.click(event => {
+        event.preventDefault();
+        this.resetState();
+      });
+      totalTrigger = app.find('#fortuneTrackerAppTotal');
+      app.find('a.header-button.close').remove();
+    } else {
+      app.find('#fortuneTrackerAppTotal')
+        .replaceWith(`<a id="fortuneTrackerAppTotal" class="waiting-${this.#waiting}">Total: ${this.total}</a>`);
+      totalTrigger = app.find('#fortuneTrackerAppTotal');
+    }
+    totalTrigger.click(event => {
+      event.preventDefault();
+      this.requestSync(this.increaseTotal());
+    });
+    totalTrigger.contextmenu(event => {
+      event.preventDefault();
+      this.requestSync(this.decreaseTotal());
+    });
+
+    let fortuneTrigger = html.find('.fortune-tracker-fortune-trigger');
+    fortuneTrigger.click(event => {
+      event.preventDefault();
+      this.requestSync(this.spendFortune());
+    });
+
+    let misfortuneTrigger = html.find('.fortune-tracker-misfortune-trigger');
+    misfortuneTrigger.click(event => {
+      event.preventDefault();
+      this.requestSync(this.spendMisfortune());
+    });
+  }
+
+  playAudio() {
+    AudioHelper.play({src: 'systems/zweihander/assets/sounds/coins.mp3', volume: 0.5, loop: false}, true);
+  }
+}
+
+const registerSystemSettings = function() {
+  /* -------------------------------------------- */
+  /*  System settings registration                */
+  /* -------------------------------------------- */
+
+  game.settings.register("zweihander", "systemMigrationVersion", {
+    name: "System Migration Version",
+    scope: "world",
+    config: false,
+    type: String,
+    default: ""
+  });
+
+  game.settings.register("zweihander", "encumbranceNineForOne", {
+    name: "Small Item Encumbrance",
+    hint: "Enable or disable rule for small item Encumbrance, where 9 small items add up to 1 point of Encumbrance.",
+    scope: "world",
+    type: Boolean,
+    default: true,
+    config: true
+  });
+
+  game.settings.register("zweihander", "trackRewardPoints", {
+    name: "Automatically Track Reward Points",
+    hint: "Enable or disable the automatic tracking of Reward Point expenditure.",
+    scope: "world",
+    type: Boolean,
+    default: true,
+    config: true
+  });
+
+  game.settings.register("zweihander", "theme", {
+    name: "Zweihander Sheet Theme",
+    hint: "Choose a theme for your Zweihander sheets",
+    scope: "client",
+    type: String,
+    default: "gruvbox-dark",
+    choices: {
+      "gruvbox-dark": "Gruvbox Dark",
+      "gruvbox-light": "Gruvbox Light"
+    },
+    config: true,
+    onChange: theme => {
+      $(".system-zweihander").addClass("zweihander-theme-" + theme);
+      $(".system-zweihander").removeClass((i, c) =>
+        c.split(" ").filter(c =>
+          c.startsWith("zweihander-theme-") && c !== "zweihander-theme-" + theme
+        )
+      );
+    }
+  });
+};
+
+/**
+ * Define a set of template paths to pre-load
+ * Pre-loaded templates are compiled and cached for fast access when rendering
+ * @returns {Promise}
+ */
+
+const preloadHandlebarsTemplates = async function () {
+  const $$ = (path) => 'systems/zweihander/templates/' + path + '.hbs';
+  return loadTemplates([
+    $$('pc/tab-afflictions'),
+    $$('pc/tab-background'),
+    $$('pc/tab-magick'),
+    $$('pc/tab-main'),
+    $$('pc/tab-tiers'),
+    $$('pc/tab-trappings'),
+    $$('pc/header'),
+    $$('item/ancestry'),
+    $$('item/armor'),
+    $$('item/condition'),
+    $$('item/disease'),
+    $$('item/disorder'),
+    $$('item/drawback'),
+    $$('item/injury'),
+    $$('item/profession'),
+    $$('item/ritual'),
+    $$('item/skill'),
+    $$('item/spell'),
+    $$('item/talent'),
+    $$('item/trait'),
+    $$('item/trapping'),
+    $$('item/quality'),
+    $$('item/uniqueAdvance'),
+    $$('item/weapon')
+  ]);
+};
+
+/**
+ * Define a set of handlebar helpers
+ * @returns {Promise}
+ */
+const registerHandlebarHelpers = async function () {
+  function uuidv4() {
+    return ([1e7]+-1e3+-4e3+-8e3+-1e11).replace(/[018]/g, c =>
+      (c ^ crypto.getRandomValues(new Uint8Array(1))[0] & 15 >> c / 4).toString(16)
+    );
+  }
+
+  const $$ = (name, fn) => Handlebars.registerHelper(name, fn);
+
+  $$('$$', function(path) {
+    return 'systems/zweihander/templates/' + path + '.hbs'
+  });
+
+  $$('getFirstLetter', function(word) {
+    if (typeof word !== 'string') return '';
+    return word.charAt(0).toUpperCase();
+  });
+
+  $$('capitalize', function(word) {
+    if (typeof word !== 'string') return '';
+    return word.capitalize();
+  });
+
+  $$('isMissing', function(toCheck, options) {
+    if (!Array.isArray(toCheck))
+      return toCheck === "" ? options.inverse(this) : options.fn(this);
+    else
+      return toCheck[0] === "" ? options.inverse(this) : options.fn(this);  // An empty input field results in first element of array becoming the empty String
+  });
+
+  $$('oddOrEven', function(idx) {
+    if ((idx + 1) % 2)
+      return "odd";
+    else
+      return "even";
+  });
+
+  $$('radioRanks', function(name, choices, options) {
+    const checked = options.hash['checked'] || null;
+
+    let html = "";
+    let i = 0;
+    let uuid = uuidv4();
+    for (let [key, label] of Object.entries(choices)) {
+      const isChecked = checked === key;
+      html += `<input type="radio" class="rd" name="${name}" id="${uuid}.${name + i}" value="${key}" ${isChecked ? "checked" : ""}><label for="${uuid}.${name + i++}">${label}</label>`;
+    }
+
+    return new Handlebars.SafeString(html);
+  });
+
+  $$('radioThresholds', function(name, choices, options) {
+    const checked = options.hash['checked'] || null;
+    const elem = options.hash['elem'] || "span";
+    let html = "";
+    let uuid = uuidv4();
+
+    for (let [key, label] of Object.entries(choices)) {
+      const isChecked = checked == key;
+      html += `<div class="radio-and-status"><input type="radio" class="radio-rank" id="${uuid}.${key}" name="${name}" value="${key}" ${isChecked ? "checked" : ""}><${elem} for="${uuid}.${key}" class="status">${label}</${elem}></div>`;
+    }
+
+    return new Handlebars.SafeString(html);
+  });
+
+  $$('checkUniqueAdvanceType', function(type, associatedSkill) {
+    if (type.trim().toLowerCase() === "focus") {
+      return `Focus (${associatedSkill})`;
+    } else {
+      return type;
+    }
+  });
+
+  $$('displayNpcSkillBonus', function(ranks) {
+    let modifier = 0;
+
+    for (let key of Object.keys(ranks)) {
+      if (ranks[key].purchased) {
+        modifier += 10;
+      } else {
+        break;
+      }
+    }
+
+    return modifier !== 0 ? "+" + modifier : "";
+  });
+
+  $$('rpSettingOn', function(options) {
+    return game.settings.get("zweihander", "trackRewardPoints") ? options.fn(this) : options.inverse(this);
+  });
+
+  $$('generateResultText', function(testResult, roll, totalChance, showFlip) {
+    const flipString = showFlip ? "*" : "";
+
+    switch (testResult) {
+      case 0:
+        return new Handlebars.SafeString(`<span class="failure">Critical Failure</span> (${roll} vs. ${totalChance})${flipString}`);
+      case 1:
+        return new Handlebars.SafeString(`<span class="failure">Failure</span> (${roll} vs. ${totalChance})${flipString}`);
+      case 2:
+        return new Handlebars.SafeString(`<span class="success">Success</span> (${roll} vs. ${totalChance})${flipString}`);
+      case 3:
+        return new Handlebars.SafeString(`<span class="success">Critical Success</span> (${roll} vs. ${totalChance})${flipString}`);
+    }
+  });
+
+  $$('generateFlipText', function(flip) {
+    return flip === "no-flip" ? "No" : (flip === "fail" ? "To Fail" : "To Succeed");
+  });
+
+  $$('checkSuccess', function(testResult, options) {
+    return testResult >= 2 ? options.fn(this) : options.inverse(this);
+  });
+
+  $$('checkCriticalSuccess', function(testResult, options) {
+    return testResult === 3 ? options.fn(this) : options.inverse(this);
+  });
+
+  $$('checkCriticalFailure', function(testResult, options) {
+    return testResult === 0 ? options.fn(this) : options.inverse(this);
+  });
+
+  $$('displayIndividualDice', function(arrayOfDice, delimitator, highlight) {
+    let expandedFormula = "";
+
+    for (let d = 0; d < arrayOfDice.length; d++) {
+      let results = arrayOfDice[d].results;
+
+      for (let i = 0; i < results.length; i++) {
+        if (highlight && results[i].result === 6)
+          expandedFormula += `<a class="highlight" title="Generate Chaos Manifestation">` + results[i].result + "</a>";
+        else
+          expandedFormula += results[i].result;
+
+        if (i !== results.length - 1) {
+          expandedFormula += delimitator;
+        }
+      }
+
+      if (d !== arrayOfDice.length - 1) {
+        expandedFormula += delimitator;
+      }
+    }
+
+    return new Handlebars.SafeString(expandedFormula);
+  });
+
+  $$('selectSpellDifficulty', function(optionIdx, principle) {
+    switch (principle) {
+      case "Petty":
+      case "Generalist":
+        return optionIdx === 0 ? "selected" : "";
+      case "Lesser":
+        return optionIdx === 1 ? "selected" : "";
+      case "Greater":
+        return optionIdx === 2 ? "selected" : "";
+    }
+  });
+  
+  $$('pa2Icon', function(key) {
+    return {
+      'combat': 'ra ra-croc-sword',
+      'brawn': 'ra ra-muscle-up',
+      'agility': 'fa fa-running',
+      'perception': 'ra ra-aware',
+      'intelligence': 'ra ra-book',
+      'willpower': 'ra ra-crystal-ball',
+      'fellowship': 'ra ra-double-team'
+    }[key];
+  });
+
+  $$('markdownIt', function(md) {
+    if (window.MEME?.markdownIt?.render) {
+      return window.MEME?.markdownIt?.render(md)
+    } else {
+      return md;
+    }
+  });
+
+  $$('itemTemplatePath', function(itemType) { 
+    return 'systems/zweihander/templates/item/' + itemType + '.hbs';
+  });
+
+  $$('itemImageClass', function(img) {
+    return img.endsWith(".svg") ? "item-image item-image-icon" : "item-image item-image-picture";
+  });
+
+  $$('itemImageStyle', function(img) {
+    return img.endsWith(".svg") ? `-webkit-mask-image: url('${img}')` : `background-image: url('${img}')`;
+  });
+
+  $$('arrayInputGroup', function(label, target, array, max=Number.MAX_SAFE_INTEGER, pillDisplayProperty) {
+    return `<div class="form-group">
+    <label>${label}</label>
+    <div class="array-input flexrow" data-array-input-target="${target}" data-array-input-max="${max}">
+      <input name="proxy.${target}" type="text" placeholder="Enter values here">
       <button class="array-input-plus" type="button" tabindex="-1"><i class="fas fa-plus"></i></button>
       <div class="array-input-pills">
-        ${a.map((e,t)=>`
-          <span class="array-input-pill" data-array-input-index="${t}">${e[i]??e}</span>
+        ${array.map((v, i) => `
+          <span class="array-input-pill" data-array-input-index="${i}">${v[pillDisplayProperty] ?? v}</span>
         `)}
       </div>
     </div>
-  </div>`}),e("skillBonus",function(e){return e?"+"+e:""}),e("skillRankAbbreviation",function(e){return["-","Appr.","Jour.","Mstr."][e]})},migrateWorld=async function(){ui.notifications.info(`Applying Zweihander System Migration for version ${game.system.data.version}. Please be patient and do not close your game or shut down your server.`,{permanent:!0});for(var t of game.actors)try{var e=await migrateActorData(t);foundry.utils.isObjectEmpty(e)||(console.log("Migrating Actor document "+t.name),await t.update(e,{enforceTypes:!1}))}catch(e){e.message=`Failed Zweihander system migration for Actor ${t.name}: `+e.message,console.error(e)}for(var a of game.items)try{var r=await migrateItemData(a);foundry.utils.isObjectEmpty(r)||(console.log("Migrating Item document "+a.name),await a.update(r,{enforceTypes:!1}))}catch(e){e.message=`Failed Zweihander system migration for Item ${a.name}: `+e.message,console.error(e)}for(var i of game.packs)["Actor","Item","Scene"].includes(i.documentName)&&await migrateCompendium(i);game.settings.set("zweihander","systemMigrationVersion",game.system.data.version),ui.notifications.info(`Zweihander System Migration to version ${game.system.data.version} completed!`,{permanent:!0})},migrateCompendium=async function(t){var a=t.documentName;if(["Actor","Item"].includes(a)){var r,e=t.locked;await t.configure({locked:!1});for(r of await t.getDocuments()){let e={};try{if("Item"===a&&(e=await migrateItemData(r)),foundry.utils.isObjectEmpty(e))continue;await r.update(e),console.log(`Migrated ${a} entity ${r.name} in Compendium `+t.collection)}catch(e){e.message=`Failed Zweihander system migration for entity ${r.name} in pack ${t.collection}: `+e.message,console.error(e)}}await t.migrate(),await t.configure({locked:e}),console.log(`Migrated all ${a} entities from Compendium `+t.collection)}},migrateActorData=async function(e){const t={};if(e.data,!e.items)return t;const a=[];for(var r of e.items){let e=await migrateItemData(r);isObjectEmpty(e)||(e._id=r.id,a.push(expandObject(e)))}return 0<a.length&&(t.items=a),t},migrateItemData=async function(e){let t={};return"ancestry"===e.type?t=await migrateAncestry(e):"profession"===e.type?t=await migrateProfession(e):["trait","talent","drawback"].includes(e.type),t},migrateAncestry=async function(e){var t=e.actor;let a=(e=e.toObject()).data.ancestralTrait.linkedId??null,r=e.data.ancestralTrait.value;return t&&r&&!a&&(t=await ZweihanderBaseItem.getOrCreateLinkedItem(t,r,"trait",e.name,"ancestry"),a=t.linkedId,r=t.value),{"data.ancestralTrait.value":r,"data.ancestralTrait.linkedId":a,"data.ancestralModifiers.positive":e.data.ancestralModifiers.positive?.value?.split(",")?.map(e=>e.trim())??e.data.ancestralModifiers.positive,"data.ancestralModifiers.negative":e.data.ancestralModifiers.negative?.value?.split(",")?.map(e=>e.trim())??e.data.ancestralModifiers.negative}},migrateProfession=async function(t){var a=t.actor;t.pack;var e=(t=t.toObject()).data.bonusAdvances?.arrayOfValues?.map(e=>({value:e.name.trim(),purchased:e.purchased}))??t.data.bonusAdvances?.value?.split(",")?.map(e=>({value:e.trim(),purchased:!1}))??t.data.bonusAdvances;let r=t.data.talents?.arrayOfValues?.map(e=>({value:e.name.trim(),linkedId:null,purchased:e.purchased}))??t.data.talents?.value?.split(",")?.map(e=>({value:e.trim(),linkedId:null,purchased:!1}))??t.data.talents.map(e=>({value:e.value.trim(),linkedId:e.linkedId??null,purchased:e.purchased}));var i=a?.data?.data?.tier,n=t.data.tier?.value;const s=i&&i!==n;i=t.data.skillRanks?.arrayOfValues?.map(e=>({value:e.name.trim(),purchased:s||0===e.timesAvailable}))??t.data.skillRanks?.value?.split(",")?.map(e=>({value:e.trim(),purchased:!1}))??t.data.skillRanks;let o=t.data.professionalTrait.value,l=t.data.professionalTrait.linkedId??null,c=t.data.specialTrait.value,d=t.data.specialTrait.linkedId??null,u=t.data.drawback.value,f=t.data.drawback.linkedId??null;if(a){let e;o&&!l&&(e=await ZweihanderBaseItem.getOrCreateLinkedItem(a,o,"trait",t.name,"profession"),o=e.value,l=e.linkedId),c&&!d&&(e=await ZweihanderBaseItem.getOrCreateLinkedItem(a,c,"trait",t.name,"profession"),c=e.value,d=e.linkedId),u&&!f&&(e=await ZweihanderBaseItem.getOrCreateLinkedItem(a,u,"drawback",t.name,"profession"),u=e.value,f=e.linkedId);n=r.filter(e=>!e.linkedId&&e.value).map(e=>e.value);n.length&&(e=await ZweihanderBaseItem.getOrCreateLinkedItems(a,n,"talent",t.name,"profession"),r=e.map((e,t)=>({...e,purchased:r[t].purchased||!1})))}return{"data.bonusAdvances":e,"data.professionalTrait.value":o,"data.professionalTrait.linkedId":l,"data.specialTrait.value":c,"data.specialTrait.linkedId":d,"data.drawback.value":u,"data.drawback.linkedId":f,"data.skillRanks":i,"data.talents":r,"data.tier.-=completed":null,"data.tier.-=advancesPurchased":null,"data.tier.value":t?.flags?.zweihander?.professionTier??t.data.tier.value,"flags.zweihander.-=professionTier":null}},migrateWorldSafe=async function(){if(game.user.isGM){var e=game.settings.get("zweihander","systemMigrationVersion"),t=game.actors.size+game.scenes.size+game.items.size;if(!e&&0===t)return game.settings.set("zweihander","systemMigrationVersion",game.system.data.version);(!e||isNewerVersion("0.3.30",e))&&(e&&isNewerVersion("0.3.30",e)&&ui.notifications.error("Your Zweihander system data is from too old a Foundry version and cannot be reliably migrated to the latest version. The process will be attempted, but errors may occur.",{permanent:!0}),await migrateWorld())}};var commonjsGlobal="undefined"!=typeof globalThis?globalThis:"undefined"!=typeof window?window:"undefined"!=typeof global?global:"undefined"!=typeof self?self:{},intro={exports:{}};intro.exports=function(){function i(e){"@babel/helpers - typeof";if(typeof Symbol==="function"&&typeof Symbol.iterator==="symbol")i=function(e){return typeof e};else i=function(e){return e&&typeof Symbol==="function"&&e.constructor===Symbol&&e!==Symbol.prototype?"symbol":typeof e};return i(e)}function a(e,t){var a={};var r;for(r in e)a[r]=e[r];for(r in t)a[r]=t[r];return a}var n=function(){var r={};return function e(t){var a=arguments.length>1&&arguments[1]!==undefined?arguments[1]:"introjs-stamp";r[a]=r[a]||0;if(t[a]===undefined)t[a]=r[a]++;return t[a]}}();function c(e,t,a){if(e)for(var r=0,i=e.length;r<i;r++)t(e[r],r);if(typeof a==="function")a()}var l=function(){function e(){var o="introjs_event";this._id=function(e,t,a,r){return t+n(a)+(r?"_".concat(n(r)):"")};this.on=function(a,e,r,i,t){var n=this._id.apply(this,arguments);var s=function e(t){return r.call(i||a,t||window.event)};if("addEventListener"in a)a.addEventListener(e,s,t);else if("attachEvent"in a)a.attachEvent("on".concat(e),s);a[o]=a[o]||{};a[o][n]=s};this.off=function(e,t,a,r,i){var n=this._id.apply(this,arguments);var s=e[o]&&e[o][n];if(!s)return;if("removeEventListener"in e)e.removeEventListener(t,s,i);else if("detachEvent"in e)e.detachEvent("on".concat(t),s);e[o][n]=null}}return new e}(),e=typeof globalThis!=="undefined"?globalThis:typeof window!=="undefined"?window:typeof commonjsGlobal!=="undefined"?commonjsGlobal:typeof self!=="undefined"?self:{};function t(e,t){return t={exports:{}},e(t,t.exports),t.exports}var r=function(e){return e&&e.Math==Math&&e},f=r(typeof globalThis=="object"&&globalThis)||r(typeof window=="object"&&window)||r(typeof self=="object"&&self)||r(typeof e=="object"&&e)||function(){return this}()||Function("return this")(),d=function(e){try{return!!e()}catch(e){return true}},p=!d(function(){return Object.defineProperty({},1,{get:function(){return 7}})[1]!=7}),s=Function.prototype.call,y=s.bind?s.bind(s):function(){return s.apply(s,arguments)},o={}.propertyIsEnumerable,u=Object.getOwnPropertyDescriptor,h,m,g={f:u&&!o.call({1:2},1)?function e(t){var a=u(this,t);return!!a&&a.enumerable}:o},v=function(e,t){return{enumerable:!(e&1),configurable:!(e&2),writable:!(e&4),value:t}},b=Function.prototype,w=b.bind,k=b.call,S=w&&w.bind(k),C=w?function(e){return e&&S(k,e)}:function(e){return e&&function(){return k.apply(e,arguments)}},_=C({}.toString),A=C("".slice),T=function(e){return A(_(e),8,-1)},I=f.Object,E=C("".split),x=d(function(){return!I("z").propertyIsEnumerable(0)})?function(e){return T(e)=="String"?E(e,""):I(e)}:I,j=f.TypeError,D=function(e){if(e==undefined)throw j("Can't call method on "+e);return e},O=function(e){return x(D(e))},N=function(e){return typeof e=="function"},P=function(e){return typeof e=="object"?e!==null:N(e)},R=function(e){return N(e)?e:undefined},$=function(e,t){return arguments.length<2?R(f[e]):f[e]&&f[e][t]},M=C({}.isPrototypeOf),z=$("navigator","userAgent")||"",L=f.process,B=f.Deno,F=L&&L.versions||B&&B.version,Z=F&&F.v8,q,W;if(Z){q=Z.split(".");W=q[0]>0&&q[0]<4?1:+(q[0]+q[1])}if(!W&&z){q=z.match(/Edge\/(\d+)/);if(!q||q[1]>=74){q=z.match(/Chrome\/(\d+)/);if(q)W=+q[1]}}var G=W,H=!!Object.getOwnPropertySymbols&&!d(function(){var e=Symbol();return!String(e)||!(Object(e)instanceof Symbol)||!Symbol.sham&&G&&G<41}),U=H&&!Symbol.sham&&typeof Symbol.iterator=="symbol",V=f.Object,Y=U?function(e){return typeof e=="symbol"}:function(e){var t=$("Symbol");return N(t)&&M(t.prototype,V(e))},K=f.String,J=function(e){try{return K(e)}catch(e){return"Object"}},X=f.TypeError,Q=function(e){if(N(e))return e;throw X(J(e)+" is not a function")},ee=function(e,t){var a=e[t];return a==null?undefined:Q(a)},te=f.TypeError,ae=function(e,t){var a,r;if(t==="string"&&N(a=e.toString)&&!P(r=y(a,e)))return r;if(N(a=e.valueOf)&&!P(r=y(a,e)))return r;if(t!=="string"&&N(a=e.toString)&&!P(r=y(a,e)))return r;throw te("Can't convert object to primitive value")},re=Object.defineProperty,ie=function(t,a){try{re(f,t,{value:a,configurable:true,writable:true})}catch(e){f[t]=a}return a},ne="__core-js_shared__",se,oe=f[ne]||ie(ne,{}),le=t(function(e){(e.exports=function(e,t){return oe[e]||(oe[e]=t!==undefined?t:{})})("versions",[]).push({version:"3.19.1",mode:"global",copyright:"© 2021 Denis Pushkarev (zloirock.ru)"})}),ce=f.Object,de=function(e){return ce(D(e))},ue=C({}.hasOwnProperty),fe=Object.hasOwn||function e(t,a){return ue(de(t),a)},pe=0,he=Math.random(),me=C(1..toString),ge=function(e){return"Symbol("+(e===undefined?"":e)+")_"+me(++pe+he,36)},ve=le("wks"),be=f.Symbol,ye=be&&be["for"],we=U?be:be&&be.withoutSetter||ge,ke=function(e){if(!fe(ve,e)||!(H||typeof ve[e]=="string")){var t="Symbol."+e;if(H&&fe(be,e))ve[e]=be[e];else if(U&&ye)ve[e]=ye(t);else ve[e]=we(t)}return ve[e]},Se=f.TypeError,Ce=ke("toPrimitive"),_e=function(e,t){if(!P(e)||Y(e))return e;var a=ee(e,Ce);var r;if(a){if(t===undefined)t="default";r=y(a,e,t);if(!P(r)||Y(r))return r;throw Se("Can't convert object to primitive value")}if(t===undefined)t="number";return ae(e,t)},Ae=function(e){var t=_e(e,"string");return Y(t)?t:t+""},Te=f.document,Ie=P(Te)&&P(Te.createElement),Ee=function(e){return Ie?Te.createElement(e):{}},xe=!p&&!d(function(){return Object.defineProperty(Ee("div"),"a",{get:function(){return 7}}).a!=7}),je=Object.getOwnPropertyDescriptor,De,Oe={f:p?je:function e(t,a){t=O(t);a=Ae(a);if(xe)try{return je(t,a)}catch(e){}if(fe(t,a))return v(!y(g.f,t,a),t[a])}},Ne=f.String,Pe=f.TypeError,Re=function(e){if(P(e))return e;throw Pe(Ne(e)+" is not an object")},$e=f.TypeError,Me=Object.defineProperty,ze,Le={f:p?Me:function e(t,a,r){Re(t);a=Ae(a);Re(r);if(xe)try{return Me(t,a,r)}catch(e){}if("get"in r||"set"in r)throw $e("Accessors not supported");if("value"in r)t[a]=r.value;return t}},Be=p?function(e,t,a){return Le.f(e,t,v(1,a))}:function(e,t,a){e[t]=a;return e},Fe=C(Function.toString);if(!N(oe.inspectSource))oe.inspectSource=function(e){return Fe(e)};var Ze=oe.inspectSource,qe=f.WeakMap,We=N(qe)&&/native code/.test(Ze(qe)),Ge=le("keys"),He=function(e){return Ge[e]||(Ge[e]=ge(e))},Ue={},Ve="Object already initialized",Ye=f.TypeError,Ke=f.WeakMap,Je,Xe,Qe,et=function(e){return Qe(e)?Xe(e):Je(e,{})},tt=function(a){return function(e){var t;if(!P(e)||(t=Xe(e)).type!==a)throw Ye("Incompatible receiver, "+a+" required");return t}};if(We||oe.state){var at=oe.state||(oe.state=new Ke);var rt=C(at.get);var it=C(at.has);var nt=C(at.set);Je=function(e,t){if(it(at,e))throw new Ye(Ve);t.facade=e;nt(at,e,t);return t};Xe=function(e){return rt(at,e)||{}};Qe=function(e){return it(at,e)}}else{var st=He("state");Ue[st]=true;Je=function(e,t){if(fe(e,st))throw new Ye(Ve);t.facade=e;Be(e,st,t);return t};Xe=function(e){return fe(e,st)?e[st]:{}};Qe=function(e){return fe(e,st)}}var ot={set:Je,get:Xe,has:Qe,enforce:et,getterFor:tt},lt=Function.prototype,ct=p&&Object.getOwnPropertyDescriptor,dt=fe(lt,"name"),ut,ft,pt={EXISTS:dt,PROPER:dt&&function e(){}.name==="something",CONFIGURABLE:dt&&(!p||p&&ct(lt,"name").configurable)},ht=t(function(e){var c=pt.CONFIGURABLE;var t=ot.get;var d=ot.enforce;var u=String(String).split("String");(e.exports=function(e,t,a,r){var i=r?!!r.unsafe:false;var n=r?!!r.enumerable:false;var s=r?!!r.noTargetGet:false;var o=r&&r.name!==undefined?r.name:t;var l;if(N(a)){if(String(o).slice(0,7)==="Symbol(")o="["+String(o).replace(/^Symbol\(([^)]*)\)/,"$1")+"]";if(!fe(a,"name")||c&&a.name!==o)Be(a,"name",o);l=d(a);if(!l.source)l.source=u.join(typeof o=="string"?o:"")}if(e===f){if(n)e[t]=a;else ie(t,a);return}else if(!i)delete e[t];else if(!s&&e[t])n=true;if(n)e[t]=a;else Be(e,t,a)})(Function.prototype,"toString",function e(){return N(this)&&t(this).source||Ze(this)})}),mt=Math.ceil,gt=Math.floor,vt=function(e){var t=+e;return t!==t||t===0?0:(t>0?gt:mt)(t)},bt=Math.max,yt=Math.min,wt=function(e,t){var a=vt(e);return a<0?bt(a+t,0):yt(a,t)},kt=Math.min,St=function(e){return e>0?kt(vt(e),9007199254740991):0},Ct=function(e){return St(e.length)},_t=function(o){return function(e,t,a){var r=O(e);var i=Ct(r);var n=wt(a,i);var s;if(o&&t!=t)while(i>n){s=r[n++];if(s!=s)return true}else for(;i>n;n++)if((o||n in r)&&r[n]===t)return o||n||0;return!o&&-1}},At={includes:_t(true),indexOf:_t(false)},Tt=At.indexOf,It=C([].push),Et=function(e,t){var a=O(e);var r=0;var i=[];var n;for(n in a)!fe(Ue,n)&&fe(a,n)&&It(i,n);while(t.length>r)if(fe(a,n=t[r++]))~Tt(i,n)||It(i,n);return i},xt=["constructor","hasOwnProperty","isPrototypeOf","propertyIsEnumerable","toLocaleString","toString","valueOf"],jt=xt.concat("length","prototype"),Dt,Ot={f:Object.getOwnPropertyNames||function e(t){return Et(t,jt)}},Nt,Pt={f:Object.getOwnPropertySymbols},Rt=C([].concat),$t=$("Reflect","ownKeys")||function e(t){var a=Ot.f(Re(t));var r=Pt.f;return r?Rt(a,r(t)):a},Mt=function(e,t){var a=$t(t);var r=Le.f;var i=Oe.f;for(var n=0;n<a.length;n++){var s=a[n];if(!fe(e,s))r(e,s,i(t,s))}},zt=/#|\.prototype\./,Lt=function(e,t){var a=Ft[Bt(e)];return a==qt?true:a==Zt?false:N(t)?d(t):!!t},Bt=Lt.normalize=function(e){return String(e).replace(zt,".").toLowerCase()},Ft=Lt.data={},Zt=Lt.NATIVE="N",qt=Lt.POLYFILL="P",Wt=Lt,Gt=Oe.f,Ht=function(e,t){var a=e.target;var r=e.global;var i=e.stat;var n,s,o,l,c,d;if(r)s=f;else if(i)s=f[a]||ie(a,{});else s=(f[a]||{}).prototype;if(s)for(o in t){c=t[o];if(e.noTargetGet){d=Gt(s,o);l=d&&d.value}else l=s[o];n=Wt(r?o:a+(i?".":"#")+o,e.forced);if(!n&&l!==undefined){if(typeof c==typeof l)continue;Mt(c,l)}if(e.sham||l&&l.sham)Be(c,"sham",true);ht(s,o,c,e)}},Ut,Vt={};Vt[ke("toStringTag")]="z";var Yt=String(Vt)==="[object z]",Kt=ke("toStringTag"),Jt=f.Object,Xt=T(function(){return arguments}())=="Arguments",Qt=function(e,t){try{return e[t]}catch(e){}},ea=Yt?T:function(e){var t,a,r;return e===undefined?"Undefined":e===null?"Null":typeof(a=Qt(t=Jt(e),Kt))=="string"?a:Xt?T(t):(r=T(t))=="Object"&&N(t.callee)?"Arguments":r},ta=f.String,aa=function(e){if(ea(e)==="Symbol")throw TypeError("Cannot convert a Symbol value to a string");return ta(e)},ra=function(){var e=Re(this);var t="";if(e.global)t+="g";if(e.ignoreCase)t+="i";if(e.multiline)t+="m";if(e.dotAll)t+="s";if(e.unicode)t+="u";if(e.sticky)t+="y";return t},ia=f.RegExp,na,sa,oa={UNSUPPORTED_Y:d(function(){var e=ia("a","y");e.lastIndex=2;return e.exec("abcd")!=null}),BROKEN_CARET:d(function(){var e=ia("^r","gy");e.lastIndex=2;return e.exec("str")!=null})},la=Object.keys||function e(t){return Et(t,xt)},ca=p?Object.defineProperties:function e(t,a){Re(t);var r=O(a);var i=la(a);var n=i.length;var s=0;var o;while(n>s)Le.f(t,o=i[s++],r[o]);return t},da=$("document","documentElement"),ua=">",fa="<",pa="prototype",ha="script",ma=He("IE_PROTO"),ga=function(){},va=function(e){return fa+ha+ua+e+fa+"/"+ha+ua},ba=function(e){e.write(va(""));e.close();var t=e.parentWindow.Object;e=null;return t},ya=function(){var e=Ee("iframe");var t="java"+ha+":";var a;e.style.display="none";da.appendChild(e);e.src=String(t);a=e.contentWindow.document;a.open();a.write(va("document.F=Object"));a.close();return a.F},wa,ka=function(){try{wa=new ActiveXObject("htmlfile")}catch(e){}ka=typeof document!="undefined"?document.domain&&wa?ba(wa):ya():ba(wa);var e=xt.length;while(e--)delete ka[pa][xt[e]];return ka()};Ue[ma]=true;var Sa=Object.create||function e(t,a){var r;if(t!==null){ga[pa]=Re(t);r=new ga;ga[pa]=null;r[ma]=t}else r=ka();return a===undefined?r:ca(r,a)},Ca=f.RegExp,_a=d(function(){var e=Ca(".","s");return!(e.dotAll&&e.exec("\n")&&e.flags==="s")}),Aa=f.RegExp,Ta=d(function(){var e=Aa("(?<a>b)","g");return e.exec("b").groups.a!=="b"||"b".replace(e,"$<a>c")!=="bc"}),Ia=ot.get,Ea=le("native-string-replace",String.prototype.replace),xa=RegExp.prototype.exec,ja=xa,Da=C("".charAt),Oa=C("".indexOf),Na=C("".replace),Pa=C("".slice),Ra=function(){var e=/a/;var t=/b*/g;y(xa,e,"a");y(xa,t,"a");return e.lastIndex!==0||t.lastIndex!==0}(),$a=oa.UNSUPPORTED_Y||oa.BROKEN_CARET,Ma=/()??/.exec("")[1]!==undefined,za;if(Ra||Ma||$a||_a||Ta)ja=function e(t){var a=this;var r=Ia(a);var i=aa(t);var n=r.raw;var s,o,l,c,d,u,f;if(n){n.lastIndex=a.lastIndex;s=y(ja,n,i);a.lastIndex=n.lastIndex;return s}var p=r.groups;var h=$a&&a.sticky;var m=y(ra,a);var g=a.source;var v=0;var b=i;if(h){m=Na(m,"y","");if(Oa(m,"g")===-1)m+="g";b=Pa(i,a.lastIndex);if(a.lastIndex>0&&(!a.multiline||a.multiline&&Da(i,a.lastIndex-1)!=="\n")){g="(?: "+g+")";b=" "+b;v++}o=new RegExp("^(?:"+g+")",m)}if(Ma)o=new RegExp("^"+g+"$(?!\\s)",m);if(Ra)l=a.lastIndex;c=y(xa,h?o:a,b);if(h)if(c){c.input=Pa(c.input,v);c[0]=Pa(c[0],v);c.index=a.lastIndex;a.lastIndex+=c[0].length}else a.lastIndex=0;else if(Ra&&c)a.lastIndex=a.global?c.index+c[0].length:l;if(Ma&&c&&c.length>1)y(Ea,c[0],o,function(){for(d=1;d<arguments.length-2;d++)if(arguments[d]===undefined)c[d]=undefined});if(c&&p){c.groups=u=Sa(null);for(d=0;d<p.length;d++){f=p[d];u[f[0]]=c[f[1]]}}return c};var La=ja;Ht({target:"RegExp",proto:true,forced:/./.exec!==La},{exec:La});var Ba=ke("species"),Fa=RegExp.prototype,Za=function(a,e,t,r){var i=ke(a);var o=!d(function(){var e={};e[i]=function(){return 7};return""[a](e)!=7});var n=o&&!d(function(){var e=false;var t=/a/;if(a==="split"){t={};t.constructor={};t.constructor[Ba]=function(){return t};t.flags="";t[i]=/./[i]}t.exec=function(){e=true;return null};t[i]("");return!e});if(!o||!n||t){var l=C(/./[i]);var s=e(i,""[a],function(e,t,a,r,i){var n=C(e);var s=t.exec;if(s===La||s===Fa.exec){if(o&&!i)return{done:true,value:l(t,a,r)};return{done:true,value:n(a,t,r)}}return{done:false}});ht(String.prototype,a,s[0]);ht(Fa,i,s[1])}if(r)Be(Fa[i],"sham",true)},qa=C("".charAt),Wa=C("".charCodeAt),Ga=C("".slice),Ha=function(o){return function(e,t){var a=aa(D(e));var r=vt(t);var i=a.length;var n,s;if(r<0||r>=i)return o?"":undefined;n=Wa(a,r);return n<55296||n>56319||r+1===i||(s=Wa(a,r+1))<56320||s>57343?o?qa(a,r):n:o?Ga(a,r,r+2):(n-55296<<10)+(s-56320)+65536}},Ua,Va={codeAt:Ha(false),charAt:Ha(true)}.charAt,Ya=function(e,t,a){return t+(a?Va(e,t).length:1)},Ka=f.TypeError,Ja=function(e,t){var a=e.exec;if(N(a)){var r=y(a,e,t);if(r!==null)Re(r);return r}if(T(e)==="RegExp")return y(La,e,t);throw Ka("RegExp#exec called on incompatible receiver")};Za("match",function(i,c,d){return[function e(t){var a=D(this);var r=t==undefined?undefined:ee(t,i);return r?y(r,t,a):new RegExp(t)[i](aa(a))},function(e){var t=Re(this);var a=aa(e);var r=d(c,t,a);if(r.done)return r.value;if(!t.global)return Ja(t,a);var i=t.unicode;t.lastIndex=0;var n=[];var s=0;var o;while((o=Ja(t,a))!==null){var l=aa(o[0]);n[s]=l;if(l==="")t.lastIndex=Ya(a,St(t.lastIndex),i);s++}return s===0?null:n}]});var Xa=Array.isArray||function e(t){return T(t)=="Array"},Qa=function(e,t,a){var r=Ae(t);if(r in e)Le.f(e,r,v(0,a));else e[r]=a},er=function(){},tr=[],ar=$("Reflect","construct"),rr=/^\s*(?:class|function)\b/,ir=C(rr.exec),nr=!rr.exec(er),sr=function(e){if(!N(e))return false;try{ar(er,tr,e);return true}catch(e){return false}},or=function(e){if(!N(e))return false;switch(ea(e)){case"AsyncFunction":case"GeneratorFunction":case"AsyncGeneratorFunction":return false}return nr||!!ir(rr,Ze(e))},lr=!ar||d(function(){var e;return sr(sr.call)||!sr(Object)||!sr(function(){e=true})||e})?or:sr,cr=ke("species"),dr=f.Array,ur=function(e){var t;if(Xa(e)){t=e.constructor;if(lr(t)&&(t===dr||Xa(t.prototype)))t=undefined;else if(P(t)){t=t[cr];if(t===null)t=undefined}}return t===undefined?dr:t},fr=function(e,t){return new(ur(e))(t===0?0:t)},pr=ke("species"),hr=function(a){return G>=51||!d(function(){var e=[];var t=e.constructor={};t[pr]=function(){return{foo:1}};return e[a](Boolean).foo!==1})},mr=ke("isConcatSpreadable"),gr=9007199254740991,vr="Maximum allowed index exceeded",br=f.TypeError,yr=G>=51||!d(function(){var e=[];e[mr]=false;return e.concat()[0]!==e}),wr=hr("concat"),kr=function(e){if(!P(e))return false;var t=e[mr];return t!==undefined?!!t:Xa(e)},Sr,Cr;if(Ht({target:"Array",proto:true,forced:!yr||!wr},{concat:function e(t){var a=de(this);var r=fr(a,0);var i=0;var n,s,o,l,c;for(n=-1,o=arguments.length;n<o;n++){c=n===-1?a:arguments[n];if(kr(c)){l=Ct(c);if(i+l>gr)throw br(vr);for(s=0;s<l;s++,i++)if(s in c)Qa(r,i,c[s])}else{if(i>=gr)throw br(vr);Qa(r,i++,c)}}r.length=i;return r}}),!Yt)ht(Object.prototype,"toString",Yt?{}.toString:function e(){return"[object "+ea(this)+"]"},{unsafe:true});var _r=pt.PROPER,Ar="toString",Tr=RegExp.prototype,Ir=Tr[Ar],Er=C(ra),xr=d(function(){return Ir.call({source:"a",flags:"b"})!="/a/b"}),jr=_r&&Ir.name!=Ar;if(xr||jr)ht(RegExp.prototype,Ar,function e(){var t=Re(this);var a=aa(t.source);var r=t.flags;var i=aa(r===undefined&&M(Tr,t)&&!("flags"in Tr)?Er(t):r);return"/"+a+"/"+i},{unsafe:true});var Dr=Function.prototype,Or=Dr.apply,Nr=Dr.bind,Pr=Dr.call,Rr=typeof Reflect=="object"&&Reflect.apply||(Nr?Pr.bind(Or):function(){return Pr.apply(Or,arguments)}),$r=ke("match"),Mr=function(e){var t;return P(e)&&((t=e[$r])!==undefined?!!t:T(e)=="RegExp")},zr=f.TypeError,Lr=function(e){if(lr(e))return e;throw zr(J(e)+" is not a constructor")},Br=ke("species"),Fr=function(e,t){var a=Re(e).constructor;var r;return a===undefined||(r=Re(a)[Br])==undefined?t:Lr(r)},Zr=C([].slice),qr=oa.UNSUPPORTED_Y,Wr=4294967295,Gr=Math.min,Hr=[].push,Ur=C(/./.exec),Vr=C(Hr),Yr=C("".slice),Kr;function Jr(t,e){if(t instanceof SVGElement){var a=t.getAttribute("class")||"";if(!a.match(e))t.setAttribute("class","".concat(a," ").concat(e))}else if(t.classList!==undefined){var r=e.split(" ");c(r,function(e){t.classList.add(e)})}else if(!t.className.match(e))t.className+=" ".concat(e)}function Xr(e,t){var a="";if(e.currentStyle)a=e.currentStyle[t];else if(document.defaultView&&document.defaultView.getComputedStyle)a=document.defaultView.getComputedStyle(e,null).getPropertyValue(t);if(a&&a.toLowerCase)return a.toLowerCase();else return a}function Qr(e){var t=e.element;Jr(t,"introjs-showElement");var a=Xr(t,"position");if(a!=="absolute"&&a!=="relative"&&a!=="sticky"&&a!=="fixed")Jr(t,"introjs-relativePosition")}function ei(e){var t=window.getComputedStyle(e);var a=t.position==="absolute";var r=/(auto|scroll)/;if(t.position==="fixed")return document.body;for(var i=e;i=i.parentElement;){t=window.getComputedStyle(i);if(a&&t.position==="static")continue;if(r.test(t.overflow+t.overflowY+t.overflowX))return i}return document.body}function ti(e){var t=e.element;if(!this._options.scrollToElement)return;var a=ei(t);if(a===document.body)return;a.scrollTop=t.offsetTop-a.offsetTop}function ai(){if(window.innerWidth!==undefined)return{width:window.innerWidth,height:window.innerHeight};else{var e=document.documentElement;return{width:e.clientWidth,height:e.clientHeight}}}function ri(e){var t=e.getBoundingClientRect();return t.top>=0&&t.left>=0&&t.bottom+80<=window.innerHeight&&t.right<=window.innerWidth}function ii(e,t,a){var r=t.element;if(e==="off")return;var i;if(!this._options.scrollToElement)return;if(e==="tooltip")i=a.getBoundingClientRect();else i=r.getBoundingClientRect();if(!ri(r)){var n=ai().height;var s=i.bottom-(i.bottom-i.top);if(s<0||r.clientHeight>n)window.scrollBy(0,i.top-(n/2-i.height/2)-this._options.scrollPadding);else window.scrollBy(0,i.top-(n/2-i.height/2)+this._options.scrollPadding)}}function ni(e){e.setAttribute("role","button");e.tabIndex=0}Za("split",function(n,g,v){var b;if("abbc".split(/(b)*/)[1]=="c"||"test".split(/(?:)/,-1).length!=4||"ab".split(/(?:ab)*/).length!=2||".".split(/(.?)(.?)/).length!=4||".".split(/()()/).length>1||"".split(/.?/).length)b=function(e,t){var a=aa(D(this));var r=t===undefined?Wr:t>>>0;if(r===0)return[];if(e===undefined)return[a];if(!Mr(e))return y(g,a,e,r);var i=[];var n=(e.ignoreCase?"i":"")+(e.multiline?"m":"")+(e.unicode?"u":"")+(e.sticky?"y":"");var s=0;var o=new RegExp(e.source,n+"g");var l,c,d;while(l=y(La,o,a)){c=o.lastIndex;if(c>s){Vr(i,Yr(a,s,l.index));if(l.length>1&&l.index<a.length)Rr(Hr,i,Zr(l,1));d=l[0].length;s=c;if(i.length>=r)break}if(o.lastIndex===l.index)o.lastIndex++}if(s===a.length){if(d||!Ur(o,""))Vr(i,"")}else Vr(i,Yr(a,s));return i.length>r?Zr(i,0,r):i};else if("0".split(undefined,0).length)b=function(e,t){return e===undefined&&t===0?[]:y(g,this,e,t)};else b=g;return[function e(t,a){var r=D(this);var i=t==undefined?undefined:ee(t,n);return i?y(i,t,r,a):y(b,aa(r),t,a)},function(e,t){var a=Re(this);var r=aa(e);var i=v(b,a,r,t,b!==g);if(i.done)return i.value;var n=Fr(a,RegExp);var s=a.unicode;var o=(a.ignoreCase?"i":"")+(a.multiline?"m":"")+(a.unicode?"u":"")+(qr?"g":"y");var l=new n(qr?"^(?:"+a.source+")":a,o);var c=t===undefined?Wr:t>>>0;if(c===0)return[];if(r.length===0)return Ja(l,r)===null?[r]:[];var d=0;var u=0;var f=[];while(u<r.length){l.lastIndex=qr?0:u;var p=Ja(l,qr?Yr(r,u):r);var h;if(p===null||(h=Gr(St(l.lastIndex+(qr?u:0)),r.length))===d)u=Ya(r,u,s);else{Vr(f,Yr(r,d,u));if(f.length===c)return f;for(var m=1;m<=p.length-1;m++){Vr(f,p[m]);if(f.length===c)return f}u=d=h}}Vr(f,Yr(r,d));return f}]},!!d(function(){var e=/(?:)/;var t=e.exec;e.exec=function(){return t.apply(this,arguments)};var a="ab".split(e);return a.length!==2||a[0]!=="a"||a[1]!=="b"}),qr);var si=Object.assign,oi=Object.defineProperty,li=C([].concat),ci=!si||d(function(){if(p&&si({b:1},si(oi({},"a",{enumerable:true,get:function(){oi(this,"b",{value:3,enumerable:false})}}),{b:2})).b!==1)return true;var e={};var t={};var a=Symbol();var r="abcdefghijklmnopqrst";e[a]=7;r.split("").forEach(function(e){t[e]=e});return si({},e)[a]!=7||la(si({},t)).join("")!=r})?function e(t,a){var r=de(t);var i=arguments.length;var n=1;var s=Pt.f;var o=g.f;while(i>n){var l=x(arguments[n++]);var c=s?li(la(l),s(l)):la(l);var d=c.length;var u=0;var f;while(d>u){f=c[u++];if(!p||y(o,l,f))r[f]=l[f]}}return r}:si;function di(e){var t=e.parentNode;if(!t||t.nodeName==="HTML")return false;if(Xr(e,"position")==="fixed")return true;return di(t)}function ui(e,t){var a=document.body;var r=document.documentElement;var i=window.pageYOffset||r.scrollTop||a.scrollTop;var n=window.pageXOffset||r.scrollLeft||a.scrollLeft;t=t||a;var s=e.getBoundingClientRect();var o=t.getBoundingClientRect();var l=Xr(t,"position");var c={width:s.width,height:s.height};if(t.tagName.toLowerCase()!=="body"&&l==="relative"||l==="sticky")return Object.assign(c,{top:s.top-o.top,left:s.left-o.left});else if(di(e))return Object.assign(c,{top:s.top,left:s.left});else return Object.assign(c,{top:s.top+i,left:s.left+n})}Ht({target:"Object",stat:true,forced:Object.assign!==ci},{assign:ci});var fi=Math.floor,pi=C("".charAt),hi=C("".replace),mi=C("".slice),gi=/\$([$&'`]|\d{1,2}|<[^>]*>)/g,vi=/\$([$&'`]|\d{1,2})/g,bi=function(n,s,o,l,c,e){var d=o+n.length;var u=l.length;var t=vi;if(c!==undefined){c=de(c);t=gi}return hi(e,t,function(e,t){var a;switch(pi(t,0)){case"$":return"$";case"&":return n;case"`":return mi(s,0,o);case"'":return mi(s,d);case"<":a=c[mi(t,1,-1)];break;default:var r=+t;if(r===0)return e;if(r>u){var i=fi(r/10);if(i===0)return e;if(i<=u)return l[i-1]===undefined?pi(t,1):l[i-1]+pi(t,1);return e}a=l[r-1]}return a===undefined?"":a})},yi=ke("replace"),wi=Math.max,ki=Math.min,Si=C([].concat),Ci=C([].push),_i=C("".indexOf),Ai=C("".slice),Ti=function(e){return e===undefined?e:String(e)},Ii=function(){return"a".replace(/./,"$0")==="$0"}(),Ei=function(){if(/./[yi])return/./[yi]("a","$0")==="";return false}(),xi;function ji(e,t){if(e instanceof SVGElement){var a=e.getAttribute("class")||"";e.setAttribute("class",a.replace(t,"").replace(/^\s+|\s+$/g,""))}else e.className=e.className.replace(t,"").replace(/^\s+|\s+$/g,"")}function Di(e,t){var a="";if(e.style.cssText)a+=e.style.cssText;if(typeof t==="string")a+=t;else for(var r in t)a+="".concat(r,":").concat(t[r],";");e.style.cssText=a}function Oi(e){if(e){if(!this._introItems[this._currentStep])return;var t=this._introItems[this._currentStep];var a=ui(t.element,this._targetElement);var r=this._options.helperElementPadding;if(di(t.element))Jr(e,"introjs-fixedTooltip");else ji(e,"introjs-fixedTooltip");if(t.position==="floating")r=0;Di(e,{width:"".concat(a.width+r,"px"),height:"".concat(a.height+r,"px"),top:"".concat(a.top-r/2,"px"),left:"".concat(a.left-r/2,"px")})}}Za("replace",function(e,k,S){var C=Ei?"$":"$0";return[function e(t,a){var r=D(this);var i=t==undefined?undefined:ee(t,yi);return i?y(i,t,r,a):y(k,aa(r),t,a)},function(e,t){var a=Re(this);var r=aa(e);if(typeof t=="string"&&_i(t,C)===-1&&_i(t,"$<")===-1){var i=S(k,a,r,t);if(i.done)return i.value}var n=N(t);if(!n)t=aa(t);var s=a.global;if(s){var o=a.unicode;a.lastIndex=0}var l=[];while(true){var c=Ja(a,r);if(c===null)break;Ci(l,c);if(!s)break;var d=aa(c[0]);if(d==="")a.lastIndex=Ya(r,St(a.lastIndex),o)}var u="";var f=0;for(var p=0;p<l.length;p++){c=l[p];var h=aa(c[0]);var m=wi(ki(vt(c.index),r.length),0);var g=[];for(var v=1;v<c.length;v++)Ci(g,Ti(c[v]));var b=c.groups;if(n){var y=Si([h],g,m,r);if(b!==undefined)Ci(y,b);var w=aa(Rr(t,undefined,y))}else w=bi(h,r,m,g,b,t);if(m>=f){u+=Ai(r,f,m)+w;f=m+h.length}}return u+Ai(r,f)}]},!!d(function(){var e=/./;e.exec=function(){var e=[];e.groups={a:"7"};return e};return"".replace(e,"$<a>")!=="7"})||!Ii||Ei);var Ni=ke("unscopables"),Pi=Array.prototype;if(Pi[Ni]==undefined)Le.f(Pi,Ni,{configurable:true,value:Sa(null)});var Ri=function(e){Pi[Ni][e]=true},$i=At.includes;Ht({target:"Array",proto:true},{includes:function e(t){return $i(this,t,arguments.length>1?arguments[1]:undefined)}}),Ri("includes");var Mi=hr("slice"),zi=ke("species"),Li=f.Array,Bi=Math.max;Ht({target:"Array",proto:true,forced:!Mi},{slice:function e(t,a){var r=O(this);var i=Ct(r);var n=wt(t,i);var s=wt(a===undefined?i:a,i);var o,l,c;if(Xa(r)){o=r.constructor;if(lr(o)&&(o===Li||Xa(o.prototype)))o=undefined;else if(P(o)){o=o[zi];if(o===null)o=undefined}if(o===Li||o===undefined)return Zr(r,n,s)}l=new(o===undefined?Li:o)(Bi(s-n,0));for(c=0;n<s;n++,c++)if(n in r)Qa(l,c,r[n]);l.length=c;return l}});var Fi=f.TypeError,Zi=function(e){if(Mr(e))throw Fi("The method doesn't accept regular expressions");return e},qi=ke("match"),Wi=function(t){var a=/./;try{"/./"[t](a)}catch(e){try{a[qi]=false;return"/./"[t](a)}catch(e){}}return false},Gi=C("".indexOf);Ht({target:"String",proto:true,forced:!Wi("includes")},{includes:function e(t){return!!~Gi(aa(D(this)),aa(Zi(t)),arguments.length>1?arguments[1]:undefined)}});var Hi=function(e,t){var a=[][e];return!!a&&d(function(){a.call(null,t||function(){throw 1},1)})},Ui=C([].join),Vi=x!=Object,Yi=Hi("join",",");Ht({target:"Array",proto:true,forced:Vi||!Yi},{join:function e(t){return Ui(O(this),t===undefined?",":t)}});var Ki=C(C.bind),Ji=function(e,t){Q(e);return t===undefined?e:Ki?Ki(e,t):function(){return e.apply(t,arguments)}},Xi=C([].push),Qi=function(p){var h=p==1;var m=p==2;var g=p==3;var v=p==4;var b=p==6;var y=p==7;var w=p==5||b;return function(e,t,a,r){var i=de(e);var n=x(i);var s=Ji(t,a);var o=Ct(n);var l=0;var c=r||fr;var d=h?c(e,o):m||y?c(e,0):undefined;var u,f;for(;o>l;l++)if(w||l in n){u=n[l];f=s(u,l,i);if(p)if(h)d[l]=f;else if(f)switch(p){case 3:return true;case 5:return u;case 6:return l;case 2:Xi(d,u)}else switch(p){case 4:return false;case 7:Xi(d,u)}}return b?-1:g||v?v:d}},en,tn={forEach:Qi(0),map:Qi(1),filter:Qi(2),some:Qi(3),every:Qi(4),find:Qi(5),findIndex:Qi(6),filterReject:Qi(7)}.filter,an;function rn(e,t,a,r,i){if(e.left+t+a.width>r.width){i.style.left="".concat(r.width-a.width-e.left,"px");return false}i.style.left="".concat(t,"px");return true}function nn(e,t,a,r){if(e.left+e.width-t-a.width<0){r.style.left="".concat(-e.left,"px");return false}r.style.right="".concat(t,"px");return true}Ht({target:"Array",proto:true,forced:!hr("filter")},{filter:function e(t){return tn(this,t,arguments.length>1?arguments[1]:undefined)}});var sn=hr("splice"),on=f.TypeError,ln=Math.max,cn=Math.min,dn=9007199254740991,un="Maximum allowed length exceeded";function fn(e,t){if(e.includes(t))e.splice(e.indexOf(t),1)}function pn(e,t,a,r){var i=a.width;var n=t/2;var s=Math.min(i,window.screen.width);var o=["-left-aligned","-middle-aligned","-right-aligned"];var l="";if(s-e<t)fn(o,"-left-aligned");if(e<n||s-e<n)fn(o,"-middle-aligned");if(e<t)fn(o,"-right-aligned");if(o.length)if(o.includes(r))l=r;else l=o[0];else l="-middle-aligned";return l}function hn(e,t,a){var r=this._options.positionPrecedence.slice();var i=ai();var n=ui(t).height+10;var s=ui(t).width+20;var o=e.getBoundingClientRect();var l="floating";if(o.bottom+n>i.height)fn(r,"bottom");if(o.top-n<0)fn(r,"top");if(o.right+s>i.width)fn(r,"right");if(o.left-s<0)fn(r,"left");var c=function(e){var t=e.indexOf("-");if(t!==-1)return e.substr(t);return""}(a||"");if(a)a=a.split("-")[0];if(r.length)if(r.includes(a))l=a;else l=r[0];if(["top","bottom"].includes(l))l+=pn(o.left,s,i,c);return l}function mn(e,t,a,r){var i="";var n;var s;var o;var l;var c;r=r||false;t.style.top=null;t.style.right=null;t.style.bottom=null;t.style.left=null;t.style.marginLeft=null;t.style.marginTop=null;a.style.display="inherit";if(!this._introItems[this._currentStep])return;n=this._introItems[this._currentStep];if(typeof n.tooltipClass==="string")i=n.tooltipClass;else i=this._options.tooltipClass;t.className=["introjs-tooltip",i].filter(Boolean).join(" ");t.setAttribute("role","dialog");c=this._introItems[this._currentStep].position;if(c!=="floating"&&this._options.autoPosition)c=hn.call(this,e,t,c);var d;o=ui(e);s=ui(t);l=ai();Jr(t,"introjs-".concat(c));switch(c){case"top-right-aligned":a.className="introjs-arrow bottom-right";var u=0;nn(o,u,s,t);t.style.bottom="".concat(o.height+20,"px");break;case"top-middle-aligned":a.className="introjs-arrow bottom-middle";var f=o.width/2-s.width/2;if(r)f+=5;if(nn(o,f,s,t)){t.style.right=null;rn(o,f,s,l,t)}t.style.bottom="".concat(o.height+20,"px");break;case"top-left-aligned":case"top":a.className="introjs-arrow bottom";d=r?0:15;rn(o,d,s,l,t);t.style.bottom="".concat(o.height+20,"px");break;case"right":t.style.left="".concat(o.width+20,"px");if(o.top+s.height>l.height){a.className="introjs-arrow left-bottom";t.style.top="-".concat(s.height-o.height-20,"px")}else a.className="introjs-arrow left";break;case"left":if(!r&&this._options.showStepNumbers===true)t.style.top="15px";if(o.top+s.height>l.height){t.style.top="-".concat(s.height-o.height-20,"px");a.className="introjs-arrow right-bottom"}else a.className="introjs-arrow right";t.style.right="".concat(o.width+20,"px");break;case"floating":a.style.display="none";t.style.left="50%";t.style.top="50%";t.style.marginLeft="-".concat(s.width/2,"px");t.style.marginTop="-".concat(s.height/2,"px");break;case"bottom-right-aligned":a.className="introjs-arrow top-right";u=0;nn(o,u,s,t);t.style.top="".concat(o.height+20,"px");break;case"bottom-middle-aligned":a.className="introjs-arrow top-middle";f=o.width/2-s.width/2;if(r)f+=5;if(nn(o,f,s,t)){t.style.right=null;rn(o,f,s,l,t)}t.style.top="".concat(o.height+20,"px");break;default:a.className="introjs-arrow top";d=0;rn(o,d,s,l,t);t.style.top="".concat(o.height+20,"px")}}function gn(){var e=document.querySelectorAll(".introjs-showElement");c(e,function(e){ji(e,/introjs-[a-zA-Z]+/g)})}function vn(e,t){var a=document.createElement(e);t=t||{};var r=/^(?:role|data-|aria-)/;for(var i in t){var n=t[i];if(i==="style")Di(a,n);else if(i.match(r))a.setAttribute(i,n);else a[i]=n}return a}function bn(e,t,a){if(a){var r=t.style.opacity||"1";Di(t,{opacity:"0"});window.setTimeout(function(){Di(t,{opacity:r})},10)}e.appendChild(t)}function yn(){var e=parseInt(this._currentStep+1,10);return e/this._introItems.length*100}function wn(){var e=document.querySelector(".introjs-disableInteraction");if(e===null){e=vn("div",{className:"introjs-disableInteraction"});this._targetElement.appendChild(e)}Oi.call(this,e)}function kn(n){var t=this;var e=vn("div",{className:"introjs-bullets"});if(this._options.showBullets===false)e.style.display="none";var s=vn("ul");s.setAttribute("role","tablist");var o=function e(){t.goToStep(this.getAttribute("data-stepnumber"))};c(this._introItems,function(e,t){var a=e.step;var r=vn("li");var i=vn("a");r.setAttribute("role","presentation");i.setAttribute("role","tab");i.onclick=o;if(t===n.step-1)i.className="active";ni(i);i.innerHTML="&nbsp;";i.setAttribute("data-stepnumber",a);r.appendChild(i);s.appendChild(r)});e.appendChild(s);return e}function Sn(e,t){if(this._options.showBullets){var a=document.querySelector(".introjs-bullets");a.parentNode.replaceChild(kn.call(this,t),a)}}function Cn(e,t){if(this._options.showBullets){e.querySelector(".introjs-bullets li > a.active").className="";e.querySelector('.introjs-bullets li > a[data-stepnumber="'.concat(t.step,'"]')).className="active"}}function _n(){var e=vn("div");e.className="introjs-progress";if(this._options.showProgress===false)e.style.display="none";var t=vn("div",{className:"introjs-progressbar"});if(this._options.progressBarAdditionalClass)t.className+=" "+this._options.progressBarAdditionalClass;t.setAttribute("role","progress");t.setAttribute("aria-valuemin",0);t.setAttribute("aria-valuemax",100);t.setAttribute("aria-valuenow",yn.call(this));t.style.cssText="width:".concat(yn.call(this),"%;");e.appendChild(t);return e}function An(e){e.querySelector(".introjs-progress .introjs-progressbar").style.cssText="width:".concat(yn.call(this),"%;");e.querySelector(".introjs-progress .introjs-progressbar").setAttribute("aria-valuenow",yn.call(this))}function Tn(e){var t=this;if(typeof this._introChangeCallback!=="undefined")this._introChangeCallback.call(this,e.element);var a=this;var r=document.querySelector(".introjs-helperLayer");var i=document.querySelector(".introjs-tooltipReferenceLayer");var n="introjs-helperLayer";var s;var o;var l;if(typeof e.highlightClass==="string")n+=" ".concat(e.highlightClass);if(typeof this._options.highlightClass==="string")n+=" ".concat(this._options.highlightClass);if(r!==null&&i!==null){var c=i.querySelector(".introjs-helperNumberLayer");var d=i.querySelector(".introjs-tooltiptext");var u=i.querySelector(".introjs-tooltip-title");var f=i.querySelector(".introjs-arrow");var p=i.querySelector(".introjs-tooltip");l=i.querySelector(".introjs-skipbutton");o=i.querySelector(".introjs-prevbutton");s=i.querySelector(".introjs-nextbutton");r.className=n;p.style.opacity=0;p.style.display="none";ti.call(a,e);Oi.call(a,r);Oi.call(a,i);gn();if(a._lastShowElementTimer)window.clearTimeout(a._lastShowElementTimer);a._lastShowElementTimer=window.setTimeout(function(){if(c!==null)c.innerHTML="".concat(e.step," of ").concat(t._introItems.length);d.innerHTML=e.intro;u.innerHTML=e.title;p.style.display="block";mn.call(a,e.element,p,f);Cn.call(a,i,e);An.call(a,i);p.style.opacity=1;if(typeof s!=="undefined"&&s!==null&&/introjs-donebutton/gi.test(s.className))s.focus();else if(typeof s!=="undefined"&&s!==null)s.focus();ii.call(a,e.scrollTo,e,d)},350)}else{var h=vn("div",{className:n});var m=vn("div",{className:"introjs-tooltipReferenceLayer"});var g=vn("div",{className:"introjs-arrow"});var v=vn("div",{className:"introjs-tooltip"});var b=vn("div",{className:"introjs-tooltiptext"});var y=vn("div",{className:"introjs-tooltip-header"});var w=vn("h1",{className:"introjs-tooltip-title"});var k=vn("div");Di(h,{"box-shadow":"0 0 1px 2px rgba(33, 33, 33, 0.8), rgba(33, 33, 33, ".concat(a._options.overlayOpacity.toString(),") 0 0 0 5000px")});ti.call(a,e);Oi.call(a,h);Oi.call(a,m);bn(this._targetElement,h,true);bn(this._targetElement,m);b.innerHTML=e.intro;w.innerHTML=e.title;k.className="introjs-tooltipbuttons";if(this._options.showButtons===false)k.style.display="none";y.appendChild(w);v.appendChild(y);v.appendChild(b);v.appendChild(kn.call(this,e));v.appendChild(_n.call(this));var S=vn("div");if(this._options.showStepNumbers===true){S.className="introjs-helperNumberLayer";S.innerHTML="".concat(e.step," of ").concat(this._introItems.length);v.appendChild(S)}v.appendChild(g);m.appendChild(v);s=vn("a");s.onclick=function(){if(a._introItems.length-1!==a._currentStep)xn.call(a);else if(/introjs-donebutton/gi.test(s.className)){if(typeof a._introCompleteCallback==="function")a._introCompleteCallback.call(a,a._currentStep,"done");bs.call(a,a._targetElement)}};ni(s);s.innerHTML=this._options.nextLabel;o=vn("a");o.onclick=function(){if(a._currentStep!==0)jn.call(a)};ni(o);o.innerHTML=this._options.prevLabel;l=vn("a",{className:"introjs-skipbutton"});ni(l);l.innerHTML=this._options.skipLabel;l.onclick=function(){if(a._introItems.length-1===a._currentStep&&typeof a._introCompleteCallback==="function")a._introCompleteCallback.call(a,a._currentStep,"skip");if(typeof a._introSkipCallback==="function")a._introSkipCallback.call(a);bs.call(a,a._targetElement)};y.appendChild(l);if(this._introItems.length>1)k.appendChild(o);k.appendChild(s);v.appendChild(k);mn.call(a,e.element,v,g);ii.call(this,e.scrollTo,e,v)}var C=a._targetElement.querySelector(".introjs-disableInteraction");if(C)C.parentNode.removeChild(C);if(e.disableInteraction)wn.call(a);if(this._currentStep===0&&this._introItems.length>1){if(typeof s!=="undefined"&&s!==null){s.className="".concat(this._options.buttonClass," introjs-nextbutton");s.innerHTML=this._options.nextLabel}if(this._options.hidePrev===true){if(typeof o!=="undefined"&&o!==null)o.className="".concat(this._options.buttonClass," introjs-prevbutton introjs-hidden");if(typeof s!=="undefined"&&s!==null)Jr(s,"introjs-fullbutton")}else if(typeof o!=="undefined"&&o!==null)o.className="".concat(this._options.buttonClass," introjs-prevbutton introjs-disabled")}else if(this._introItems.length-1===this._currentStep||this._introItems.length===1){if(typeof o!=="undefined"&&o!==null)o.className="".concat(this._options.buttonClass," introjs-prevbutton");if(this._options.hideNext===true){if(typeof s!=="undefined"&&s!==null)s.className="".concat(this._options.buttonClass," introjs-nextbutton introjs-hidden");if(typeof o!=="undefined"&&o!==null)Jr(o,"introjs-fullbutton")}else if(typeof s!=="undefined"&&s!==null)if(this._options.nextToDone===true){s.innerHTML=this._options.doneLabel;Jr(s,"".concat(this._options.buttonClass," introjs-nextbutton introjs-donebutton"))}else s.className="".concat(this._options.buttonClass," introjs-nextbutton introjs-disabled")}else{if(typeof o!=="undefined"&&o!==null)o.className="".concat(this._options.buttonClass," introjs-prevbutton");if(typeof s!=="undefined"&&s!==null){s.className="".concat(this._options.buttonClass," introjs-nextbutton");s.innerHTML=this._options.nextLabel}}if(typeof o!=="undefined"&&o!==null)o.setAttribute("role","button");if(typeof s!=="undefined"&&s!==null)s.setAttribute("role","button");if(typeof l!=="undefined"&&l!==null)l.setAttribute("role","button");if(typeof s!=="undefined"&&s!==null)s.focus();Qr(e);if(typeof this._introAfterChangeCallback!=="undefined")this._introAfterChangeCallback.call(this,e.element)}function In(e){this._currentStep=e-2;if(typeof this._introItems!=="undefined")xn.call(this)}function En(e){this._currentStepNumber=e;if(typeof this._introItems!=="undefined")xn.call(this)}function xn(){var r=this;this._direction="forward";if(typeof this._currentStepNumber!=="undefined")c(this._introItems,function(e,t){var a=e.step;if(a===r._currentStepNumber){r._currentStep=t-1;r._currentStepNumber=undefined}});if(typeof this._currentStep==="undefined")this._currentStep=0;else++this._currentStep;var e=this._introItems[this._currentStep];var t=true;if(typeof this._introBeforeChangeCallback!=="undefined")t=this._introBeforeChangeCallback.call(this,e&&e.element);if(t===false){--this._currentStep;return false}if(this._introItems.length<=this._currentStep){if(typeof this._introCompleteCallback==="function")this._introCompleteCallback.call(this,this._currentStep,"end");bs.call(this,this._targetElement);return}Tn.call(this,e)}function jn(){this._direction="backward";if(this._currentStep===0)return false;--this._currentStep;var e=this._introItems[this._currentStep];var t=true;if(typeof this._introBeforeChangeCallback!=="undefined")t=this._introBeforeChangeCallback.call(this,e&&e.element);if(t===false){++this._currentStep;return false}Tn.call(this,e)}function Dn(){return this._currentStep}function On(e){var t=e.code===undefined?e.which:e.code;if(t===null)t=e.charCode===null?e.keyCode:e.charCode;if((t==="Escape"||t===27)&&this._options.exitOnEsc===true)bs.call(this,this._targetElement);else if(t==="ArrowLeft"||t===37)jn.call(this);else if(t==="ArrowRight"||t===39)xn.call(this);else if(t==="Enter"||t==="NumpadEnter"||t===13){var a=e.target||e.srcElement;if(a&&a.className.match("introjs-prevbutton"))jn.call(this);else if(a&&a.className.match("introjs-skipbutton")){if(this._introItems.length-1===this._currentStep&&typeof this._introCompleteCallback==="function")this._introCompleteCallback.call(this,this._currentStep,"skip");bs.call(this,this._targetElement)}else if(a&&a.getAttribute("data-stepnumber"))a.click();else xn.call(this);if(e.preventDefault)e.preventDefault();else e.returnValue=false}}function Nn(e){if(e===null||i(e)!=="object"||typeof e.nodeType!=="undefined")return e;var t={};for(var a in e)if(typeof window.jQuery!=="undefined"&&e[a]instanceof window.jQuery)t[a]=e[a];else t[a]=Nn(e[a]);return t}function Pn(r,i){var n=this;var s;return function(){for(var e=arguments.length,t=new Array(e),a=0;a<e;a++)t[a]=arguments[a];clearTimeout(s);s=setTimeout(function(){r.apply(n,t)},i)}}function Rn(e){var t=document.querySelector(".introjs-hints");return t?t.querySelectorAll(e):[]}function $n(e){var t=Rn('.introjs-hint[data-step="'.concat(e,'"]'))[0];Gn.call(this);if(t)Jr(t,"introjs-hidehint");if(typeof this._hintCloseCallback!=="undefined")this._hintCloseCallback.call(this,e)}function Mn(){var t=this;var e=Rn(".introjs-hint");c(e,function(e){$n.call(t,e.getAttribute("data-step"))})}function zn(){var t=this;var e=Rn(".introjs-hint");if(e&&e.length)c(e,function(e){Ln.call(t,e.getAttribute("data-step"))});else Hn.call(this,this._targetElement)}function Ln(e){var t=Rn('.introjs-hint[data-step="'.concat(e,'"]'))[0];if(t)ji(t,/introjs-hidehint/g)}function Bn(){var t=this;var e=Rn(".introjs-hint");c(e,function(e){Fn.call(t,e.getAttribute("data-step"))});l.off(document,"click",Gn,this,false);l.off(window,"resize",Un,this,true);if(this._hintsAutoRefreshFunction)l.off(window,"scroll",this._hintsAutoRefreshFunction,this,true)}function Fn(e){var t=Rn('.introjs-hint[data-step="'.concat(e,'"]'))[0];if(t)t.parentNode.removeChild(t)}function Zn(){var n=this;var r=this;var s=document.querySelector(".introjs-hints");if(s===null)s=vn("div",{className:"introjs-hints"});var o=function e(a){return function(e){var t=e?e:window.event;if(t.stopPropagation)t.stopPropagation();if(t.cancelBubble!==null)t.cancelBubble=true;Wn.call(r,a)}};c(this._introItems,function(e,t){if(document.querySelector('.introjs-hint[data-step="'.concat(t,'"]')))return;var a=vn("a",{className:"introjs-hint"});ni(a);a.onclick=o(t);if(!e.hintAnimation)Jr(a,"introjs-hint-no-anim");if(di(e.element))Jr(a,"introjs-fixedhint");var r=vn("div",{className:"introjs-hint-dot"});var i=vn("div",{className:"introjs-hint-pulse"});a.appendChild(r);a.appendChild(i);a.setAttribute("data-step",t);e.targetElement=e.element;e.element=a;qn.call(n,e.hintPosition,a,e.targetElement);s.appendChild(a)});document.body.appendChild(s);if(typeof this._hintsAddedCallback!=="undefined")this._hintsAddedCallback.call(this);if(this._options.hintAutoRefreshInterval>=0){this._hintsAutoRefreshFunction=Pn(function(){return Un.call(n)},this._options.hintAutoRefreshInterval);l.on(window,"scroll",this._hintsAutoRefreshFunction,this,true)}}function qn(e,t,a){var r=t.style;var i=ui.call(this,a);var n=20;var s=20;switch(e){default:case"top-left":r.left="".concat(i.left,"px");r.top="".concat(i.top,"px");break;case"top-right":r.left="".concat(i.left+i.width-n,"px");r.top="".concat(i.top,"px");break;case"bottom-left":r.left="".concat(i.left,"px");r.top="".concat(i.top+i.height-s,"px");break;case"bottom-right":r.left="".concat(i.left+i.width-n,"px");r.top="".concat(i.top+i.height-s,"px");break;case"middle-left":r.left="".concat(i.left,"px");r.top="".concat(i.top+(i.height-s)/2,"px");break;case"middle-right":r.left="".concat(i.left+i.width-n,"px");r.top="".concat(i.top+(i.height-s)/2,"px");break;case"middle-middle":r.left="".concat(i.left+(i.width-n)/2,"px");r.top="".concat(i.top+(i.height-s)/2,"px");break;case"bottom-middle":r.left="".concat(i.left+(i.width-n)/2,"px");r.top="".concat(i.top+i.height-s,"px");break;case"top-middle":r.left="".concat(i.left+(i.width-n)/2,"px");r.top="".concat(i.top,"px");break}}function Wn(e){var t=document.querySelector('.introjs-hint[data-step="'.concat(e,'"]'));var a=this._introItems[e];if(typeof this._hintClickCallback!=="undefined")this._hintClickCallback.call(this,t,a,e);var r=Gn.call(this);if(parseInt(r,10)===e)return;var i=vn("div",{className:"introjs-tooltip"});var n=vn("div");var s=vn("div");var o=vn("div");i.onclick=function(e){if(e.stopPropagation)e.stopPropagation();else e.cancelBubble=true};n.className="introjs-tooltiptext";var l=vn("p");l.innerHTML=a.hint;n.appendChild(l);if(this._options.hintShowButton){var c=vn("a");c.className=this._options.buttonClass;c.setAttribute("role","button");c.innerHTML=this._options.hintButtonLabel;c.onclick=$n.bind(this,e);n.appendChild(c)}s.className="introjs-arrow";i.appendChild(s);i.appendChild(n);this._currentStep=t.getAttribute("data-step");o.className="introjs-tooltipReferenceLayer introjs-hintReference";o.setAttribute("data-step",t.getAttribute("data-step"));Oi.call(this,o);o.appendChild(i);document.body.appendChild(o);mn.call(this,t,i,s,true)}function Gn(){var e=document.querySelector(".introjs-hintReference");if(e){var t=e.getAttribute("data-step");e.parentNode.removeChild(e);return t}}function Hn(e){var a=this;this._introItems=[];if(this._options.hints)c(this._options.hints,function(e){var t=Nn(e);if(typeof t.element==="string")t.element=document.querySelector(t.element);t.hintPosition=t.hintPosition||a._options.hintPosition;t.hintAnimation=t.hintAnimation||a._options.hintAnimation;if(t.element!==null)a._introItems.push(t)});else{var t=e.querySelectorAll("*[data-hint]");if(!t||!t.length)return false;c(t,function(e){var t=e.getAttribute("data-hintanimation");if(t)t=t==="true";else t=a._options.hintAnimation;a._introItems.push({element:e,hint:e.getAttribute("data-hint"),hintPosition:e.getAttribute("data-hintposition")||a._options.hintPosition,hintAnimation:t,tooltipClass:e.getAttribute("data-tooltipclass"),position:e.getAttribute("data-position")||a._options.tooltipPosition})})}Zn.call(this);l.on(document,"click",Gn,this,false);l.on(window,"resize",Un,this,true)}function Un(){var i=this;c(this._introItems,function(e){var t=e.targetElement,a=e.hintPosition,r=e.element;if(typeof t==="undefined")return;qn.call(i,a,r,t)})}Ht({target:"Array",proto:true,forced:!sn},{splice:function e(t,a){var r=de(this);var i=Ct(r);var n=wt(t,i);var s=arguments.length;var o,l,c,d,u,f;if(s===0)o=l=0;else if(s===1){o=0;l=i-n}else{o=s-2;l=cn(ln(vt(a),0),i-n)}if(i+o-l>dn)throw on(un);c=fr(r,l);for(d=0;d<l;d++){u=n+d;if(u in r)Qa(c,d,r[u])}c.length=l;if(o<l){for(d=n;d<i-l;d++){u=d+l;f=d+o;if(u in r)r[f]=r[u];else delete r[f]}for(d=i;d>i-l+o;d--)delete r[d-1]}else if(o>l)for(d=i-l;d>n;d--){u=d+l-1;f=d+o-1;if(u in r)r[f]=r[u];else delete r[f]}for(d=0;d<o;d++)r[d+n]=arguments[d+2];r.length=i-l+o;return c}});var Vn=Math.floor,Yn=function(e,t){var a=e.length;var r=Vn(a/2);return a<8?Kn(e,t):Jn(e,Yn(Zr(e,0,r),t),Yn(Zr(e,r),t),t)},Kn=function(e,t){var a=e.length;var r=1;var i,n;while(r<a){n=r;i=e[r];while(n&&t(e[n-1],i)>0)e[n]=e[--n];if(n!==r++)e[n]=i}return e},Jn=function(e,t,a,r){var i=t.length;var n=a.length;var s=0;var o=0;while(s<i||o<n)e[s+o]=s<i&&o<n?r(t[s],a[o])<=0?t[s++]:a[o++]:s<i?t[s++]:a[o++];return e},Xn=Yn,Qn=z.match(/firefox\/(\d+)/i),es=!!Qn&&+Qn[1],ts=/MSIE|Trident/.test(z),as=z.match(/AppleWebKit\/(\d+)\./),rs=!!as&&+as[1],is=[],ns=C(is.sort),ss=C(is.push),os=d(function(){is.sort(undefined)}),ls=d(function(){is.sort(null)}),cs=Hi("sort"),ds=!d(function(){if(G)return G<70;if(es&&es>3)return;if(ts)return true;if(rs)return rs<603;var e="";var t,a,r,i;for(t=65;t<76;t++){a=String.fromCharCode(t);switch(t){case 66:case 69:case 70:case 72:r=3;break;case 68:case 71:r=4;break;default:r=2}for(i=0;i<47;i++)is.push({k:a+i,v:r})}is.sort(function(e,t){return t.v-e.v});for(i=0;i<is.length;i++){a=is[i].k.charAt(0);if(e.charAt(e.length-1)!==a)e+=a}return e!=="DGBEFHACIJK"}),us,fs=function(a){return function(e,t){if(t===undefined)return-1;if(e===undefined)return 1;if(a!==undefined)return+a(e,t)||0;return aa(e)>aa(t)?1:-1}},ps;function hs(e){var r=this;var t=e.querySelectorAll("*[data-intro]");var i=[];if(this._options.steps)c(this._options.steps,function(e){var t=Nn(e);t.step=i.length+1;t.title=t.title||"";if(typeof t.element==="string")t.element=document.querySelector(t.element);if(typeof t.element==="undefined"||t.element===null){var a=document.querySelector(".introjsFloatingElement");if(a===null){a=vn("div",{className:"introjsFloatingElement"});document.body.appendChild(a)}t.element=a;t.position="floating"}t.position=t.position||r._options.tooltipPosition;t.scrollTo=t.scrollTo||r._options.scrollTo;if(typeof t.disableInteraction==="undefined")t.disableInteraction=r._options.disableInteraction;if(t.element!==null)i.push(t)});else{var a=t.length;var n;if(a<1)return[];c(t,function(e){if(r._options.group&&e.getAttribute("data-intro-group")!==r._options.group)return;if(e.style.display==="none")return;var t=parseInt(e.getAttribute("data-step"),10);if(e.hasAttribute("data-disable-interaction"))n=!!e.getAttribute("data-disable-interaction");else n=r._options.disableInteraction;if(t>0)i[t-1]={element:e,title:e.getAttribute("data-title")||"",intro:e.getAttribute("data-intro"),step:parseInt(e.getAttribute("data-step"),10),tooltipClass:e.getAttribute("data-tooltipclass"),highlightClass:e.getAttribute("data-highlightclass"),position:e.getAttribute("data-position")||r._options.tooltipPosition,scrollTo:e.getAttribute("data-scrollto")||r._options.scrollTo,disableInteraction:n}});var s=0;c(t,function(e){if(r._options.group&&e.getAttribute("data-intro-group")!==r._options.group)return;if(e.getAttribute("data-step")===null){while(true)if(typeof i[s]==="undefined")break;else s++;if(e.hasAttribute("data-disable-interaction"))n=!!e.getAttribute("data-disable-interaction");else n=r._options.disableInteraction;i[s]={element:e,title:e.getAttribute("data-title")||"",intro:e.getAttribute("data-intro"),step:s+1,tooltipClass:e.getAttribute("data-tooltipclass"),highlightClass:e.getAttribute("data-highlightclass"),position:e.getAttribute("data-position")||r._options.tooltipPosition,scrollTo:e.getAttribute("data-scrollto")||r._options.scrollTo,disableInteraction:n}}})}var o=[];for(var l=0;l<i.length;l++)if(i[l])o.push(i[l]);i=o;i.sort(function(e,t){return e.step-t.step});return i}function ms(e){var t=document.querySelector(".introjs-tooltipReferenceLayer");var a=document.querySelector(".introjs-helperLayer");var r=document.querySelector(".introjs-disableInteraction");Oi.call(this,a);Oi.call(this,t);Oi.call(this,r);if(e){this._introItems=hs.call(this,this._targetElement);Sn.call(this,t,this._introItems[this._currentStep]);An.call(this,t)}if(this._currentStep!==undefined&&this._currentStep!==null){var i=document.querySelector(".introjs-arrow");var n=document.querySelector(".introjs-tooltip");if(n&&i)mn.call(this,this._introItems[this._currentStep].element,n,i)}Un.call(this);return this}function gs(){ms.call(this)}function vs(e,t){if(!e||!e.parentElement)return;var a=e.parentElement;if(t){Di(e,{opacity:"0"});window.setTimeout(function(){try{a.removeChild(e)}catch(e){}},500)}else a.removeChild(e)}function bs(e,t){var a=true;if(this._introBeforeExitCallback!==undefined)a=this._introBeforeExitCallback.call(this);if(!t&&a===false)return;var r=e.querySelectorAll(".introjs-overlay");if(r&&r.length)c(r,function(e){return vs(e)});var i=e.querySelector(".introjs-helperLayer");vs(i,true);var n=e.querySelector(".introjs-tooltipReferenceLayer");vs(n);var s=e.querySelector(".introjs-disableInteraction");vs(s);var o=document.querySelector(".introjsFloatingElement");vs(o);gn();l.off(window,"keydown",On,this,true);l.off(window,"resize",gs,this,true);if(this._introExitCallback!==undefined)this._introExitCallback.call(this);this._currentStep=undefined}function ys(e){var t=this;var a=vn("div",{className:"introjs-overlay"});Di(a,{top:0,bottom:0,left:0,right:0,position:"fixed"});e.appendChild(a);if(this._options.exitOnOverlayClick===true){Di(a,{cursor:"pointer"});a.onclick=function(){bs.call(t,e)}}return true}function ws(e){if(this._introStartCallback!==undefined)this._introStartCallback.call(this,e);var t=hs.call(this,e);if(t.length===0)return false;this._introItems=t;if(ys.call(this,e)){xn.call(this);if(this._options.keyboardNavigation)l.on(window,"keydown",On,this,true);l.on(window,"resize",gs,this,true)}return false}function ks(e){this._targetElement=e;this._introItems=[];this._options={nextLabel:"Next",prevLabel:"Back",skipLabel:"×",doneLabel:"Done",hidePrev:false,hideNext:false,nextToDone:true,tooltipPosition:"bottom",tooltipClass:"",group:"",highlightClass:"",exitOnEsc:true,exitOnOverlayClick:true,showStepNumbers:false,keyboardNavigation:true,showButtons:true,showBullets:true,showProgress:false,scrollToElement:true,scrollTo:"element",scrollPadding:30,overlayOpacity:.5,autoPosition:true,positionPrecedence:["bottom","top","right","left"],disableInteraction:false,helperElementPadding:10,hintPosition:"top-middle",hintButtonLabel:"Got it",hintShowButton:true,hintAutoRefreshInterval:10,hintAnimation:true,buttonClass:"introjs-button",progressBarAdditionalClass:false}}Ht({target:"Array",proto:true,forced:os||!ls||!cs||!ds},{sort:function e(t){if(t!==undefined)Q(t);var a=de(this);if(ds)return t===undefined?ns(a):ns(a,t);var r=[];var i=Ct(a);var n,s;for(s=0;s<i;s++)if(s in a)ss(r,a[s]);Xn(r,fs(t));n=r.length;s=0;while(s<n)a[s]=r[s++];while(s<i)delete a[s++];return a}});var Ss=function e(t){var a;if(i(t)==="object")a=new ks(t);else if(typeof t==="string"){var r=document.querySelector(t);if(r)a=new ks(r);else throw new Error("There is no element with given selector.")}else a=new ks(document.body);e.instances[n(a,"introjs-instance")]=a;return a};return Ss.version="4.3.0",Ss.instances={},Ss.fn=ks.prototype={clone:function e(){return new ks(this)},setOption:function e(t,a){this._options[t]=a;return this},setOptions:function e(t){this._options=a(this._options,t);return this},start:function e(){ws.call(this,this._targetElement);return this},goToStep:function e(t){In.call(this,t);return this},addStep:function e(t){if(!this._options.steps)this._options.steps=[];this._options.steps.push(t);return this},addSteps:function e(t){if(!t.length)return;for(var a=0;a<t.length;a++)this.addStep(t[a]);return this},goToStepNumber:function e(t){En.call(this,t);return this},nextStep:function e(){xn.call(this);return this},previousStep:function e(){jn.call(this);return this},currentStep:function e(){return Dn.call(this)},exit:function e(t){bs.call(this,this._targetElement,t);return this},refresh:function e(t){ms.call(this,t);return this},onbeforechange:function e(t){if(typeof t==="function")this._introBeforeChangeCallback=t;else throw new Error("Provided callback for onbeforechange was not a function");return this},onchange:function e(t){if(typeof t==="function")this._introChangeCallback=t;else throw new Error("Provided callback for onchange was not a function.");return this},onafterchange:function e(t){if(typeof t==="function")this._introAfterChangeCallback=t;else throw new Error("Provided callback for onafterchange was not a function");return this},oncomplete:function e(t){if(typeof t==="function")this._introCompleteCallback=t;else throw new Error("Provided callback for oncomplete was not a function.");return this},onhintsadded:function e(t){if(typeof t==="function")this._hintsAddedCallback=t;else throw new Error("Provided callback for onhintsadded was not a function.");return this},onhintclick:function e(t){if(typeof t==="function")this._hintClickCallback=t;else throw new Error("Provided callback for onhintclick was not a function.");return this},onhintclose:function e(t){if(typeof t==="function")this._hintCloseCallback=t;else throw new Error("Provided callback for onhintclose was not a function.");return this},onstart:function e(t){if(typeof t==="function")this._introStartCallback=t;else throw new Error("Provided callback for onstart was not a function.");return this},onexit:function e(t){if(typeof t==="function")this._introExitCallback=t;else throw new Error("Provided callback for onexit was not a function.");return this},onskip:function e(t){if(typeof t==="function")this._introSkipCallback=t;else throw new Error("Provided callback for onskip was not a function.");return this},onbeforeexit:function e(t){if(typeof t==="function")this._introBeforeExitCallback=t;else throw new Error("Provided callback for onbeforeexit was not a function.");return this},addHints:function e(){Hn.call(this,this._targetElement);return this},hideHint:function e(t){$n.call(this,t);return this},hideHints:function e(){Mn.call(this);return this},showHint:function e(t){Ln.call(this,t);return this},showHints:function e(){zn.call(this);return this},removeHints:function e(){Bn.call(this);return this},removeHint:function e(t){Fn().call(this,t);return this},showHintDialog:function e(t){Wn.call(this,t);return this}},Ss}();var introJs=intro.exports;const ZWEI={templates:{skill:"systems/zweihander/templates/chat/chat-skill.hbs",spell:"systems/zweihander/templates/chat/chat-spell.hbs",parry:"systems/zweihander/templates/chat/chat-parry.hbs",dodge:"systems/zweihander/templates/chat/chat-dodge.hbs",weapon:"systems/zweihander/templates/chat/chat-weapon.hbs",skillConfigurationDialog:"systems/zweihander/templates/dialog/dialog-skill-configuration.hbs",spellConfigurationDialog:"systems/zweihander/templates/dialog/dialog-spell-configuration.hbs",weaponConfigurationDialog:"systems/zweihander/templates/dialog/dialog-weapon-configuration.hbs"},rollTypes:{skill:"skill",spell:"spell",parry:"parry",dodge:"dodge",weapon:"weapon"},testRollFormula:"1d100"};let fortuneTrackerApp;Hooks.once("socketlib.ready",()=>{FortuneTracker.registerPersistingSettings();var e=socketlib.registerSystem("zweihander");fortuneTrackerApp=new FortuneTracker(e)}),Hooks.once("ready",function(){var e=game.settings.get("zweihander","theme");game.settings.set("zweihander","theme",e),fortuneTrackerApp?.syncState(),migrateWorldSafe()}),Hooks.once("init",async function(){return console.log("Initializing ZWEIHÄNDER: Grim & Perilous RPG System"),game.zweihander={ZweihanderActor:ZweihanderActor,ZweihanderItem:ZweihanderItem,find:findItemsWorldWide,fortuneTrackerApp:fortuneTrackerApp,migrate:migrateWorld,introJs:introJs},CONFIG.ChatMessage.template="systems/zweihander/templates/chat/chat-message.hbs",CONFIG.Combat.initiative={formula:"1d10 + @stats.secondaryAttributes.initiative.current",decimals:2},CONFIG.ZWEI=ZWEI,CONFIG.Actor.documentClass=ZweihanderActor,CONFIG.Item.documentClass=ZweihanderItem,Actors.unregisterSheet("core",ActorSheet),Actors.registerSheet("zweihander",ZweihanderActorSheet,{types:["character"],makeDefault:!0}),Actors.registerSheet("zweihander",ZweihanderNpcSheet,{types:["npc"],makeDefault:!0}),Actors.registerSheet("zweihander",ZweihanderCreatureSheet,{types:["creature"],makeDefault:!0}),Items.unregisterSheet("core",ItemSheet),Items.registerSheet("zweihander",ZweihanderItemSheet,{makeDefault:!0}),registerSystemSettings(),await registerHandlebarHelpers(),preloadHandlebarsTemplates()}),Hooks.on("renderActorSheet",(e,t,a)=>{t.find(".header-button.configure-sheet").before(`
+  </div>`
+  });
+
+  $$('skillBonus', function(bonus) {
+    return bonus ? `+${bonus}` : '';
+  });
+
+  $$('skillRankAbbreviation', function(rank) {
+    return ['-', 'Appr.', 'Jour.', 'Mstr.'][rank];
+  });
+
+};
+
+const migrateWorld = async function () {
+  ui.notifications.info(`Applying Zweihander System Migration for version ${game.system.data.version}. Please be patient and do not close your game or shut down your server.`, { permanent: true });
+
+  // Migrate World Actors
+  for (let a of game.actors) {
+    try {
+      const updateData = await migrateActorData(a);
+      if (!foundry.utils.isObjectEmpty(updateData)) {
+        console.log(`Migrating Actor document ${a.name}`);
+        await a.update(updateData, { enforceTypes: false });
+      }
+    } catch (err) {
+      err.message = `Failed Zweihander system migration for Actor ${a.name}: ${err.message}`;
+      console.error(err);
+    }
+  }
+
+  // Migrate World Items
+  for (let i of game.items) {
+    try {
+      const updateData = await migrateItemData(i);
+      if (!foundry.utils.isObjectEmpty(updateData)) {
+        console.log(`Migrating Item document ${i.name}`);
+        await i.update(updateData, { enforceTypes: false });
+      }
+    } catch (err) {
+      err.message = `Failed Zweihander system migration for Item ${i.name}: ${err.message}`;
+      console.error(err);
+    }
+  }
+
+  // Migrate World Compendium Packs
+  for (let p of game.packs) {
+    // if (p.metadata.package !== "world") continue;
+    if (!["Actor", "Item", "Scene"].includes(p.documentName)) continue;
+    await migrateCompendium(p);
+  }
+
+  // Set the migration as complete
+  game.settings.set("zweihander", "systemMigrationVersion", game.system.data.version);
+  ui.notifications.info(`Zweihander System Migration to version ${game.system.data.version} completed!`, { permanent: true });
+};
+
+const migrateCompendium = async function (pack) {
+  const entity = pack.documentName;
+  if (!["Actor", "Item"].includes(entity)) return;
+
+  // Unlock the pack for editing
+  const wasLocked = pack.locked;
+  await pack.configure({ locked: false });
+
+  // Begin by requesting server-side data model migration and get the migrated content
+  const documents = await pack.getDocuments();
+
+  // Iterate over compendium entries - applying fine-tuned migration functions
+  for (let doc of documents) {
+    let updateData = {};
+    try {
+      switch (entity) {
+        // case "Actor":
+        //   updateData = migrateActorData(doc.toObject());
+        //   break;
+        case "Item":
+          updateData = await migrateItemData(doc);
+          break;
+      }
+
+      // Save the entry, if data was changed
+      if (foundry.utils.isObjectEmpty(updateData)) continue;
+      await doc.update(updateData);
+      console.log(`Migrated ${entity} entity ${doc.name} in Compendium ${pack.collection}`);
+    }
+
+    // Handle migration failures
+    catch (err) {
+      err.message = `Failed Zweihander system migration for entity ${doc.name} in pack ${pack.collection}: ${err.message}`;
+      console.error(err);
+    }
+  }
+  await pack.migrate();
+
+  // Apply the original locked status for the pack
+  await pack.configure({ locked: wasLocked });
+  console.log(`Migrated all ${entity} entities from Compendium ${pack.collection}`);
+};
+
+const migrateActorData = async function (actor) {
+  const updateData = {};
+  // Actor Data Updates
+  if (actor.data) ;
+  // Migrate Owned Items
+  if (!actor.items) return updateData;
+  const items = [];
+  for (let i of actor.items) {
+    // Migrate the Owned Item
+    let itemUpdate = await migrateItemData(i);
+    // Update the Owned Item
+    if (!isObjectEmpty(itemUpdate)) {
+      itemUpdate._id = i.id;
+      items.push(expandObject(itemUpdate));
+    }
+  }
+  if (items.length > 0) updateData.items = items;
+  updateData.img = migrateIcons(actor.img);
+  return updateData;
+};
+
+
+const migrateItemData = async function (item) {
+  let updateData = {};
+  const rmSource = ['trait', 'talent', 'drawback'];
+  if (item.type === 'ancestry') {
+    updateData = await migrateAncestry(item);
+  } else if (item.type === 'profession') {
+    updateData = await migrateProfession(item);
+  } else if (rmSource.includes(item.type)) ;
+  updateData.img = migrateIcons(item.img);
+  return updateData;
+};
+
+const migrateAncestry = async function (item) {
+  const actor = item.actor;
+  item = item.toObject();
+  let traitId = item.data.ancestralTrait.linkedId ?? null;
+  let traitValue = item.data.ancestralTrait.value;
+  if (actor) {
+    if (traitValue && !traitId) {
+      const trait = await ZweihanderBaseItem.getOrCreateLinkedItem(actor, traitValue, 'trait', item.name, 'ancestry');
+      traitId = trait.linkedId;
+      traitValue = trait.value;
+    }
+  }
+  return {
+    'data.ancestralTrait.value': traitValue,
+    'data.ancestralTrait.linkedId': traitId,
+    'data.ancestralModifiers.positive': item.data.ancestralModifiers.positive?.value?.split(',')?.map(v => v.trim()) ?? item.data.ancestralModifiers.positive,
+    'data.ancestralModifiers.negative': item.data.ancestralModifiers.negative?.value?.split(',')?.map(v => v.trim()) ?? item.data.ancestralModifiers.negative
+  }
+};
+
+const migrateProfession = async function (item) {
+  const actor = item.actor;
+  item = item.toObject();
+  let bonusAdvances = item.data.bonusAdvances?.arrayOfValues?.map(ba => ({ value: ba.name.trim(), purchased: ba.purchased }))
+    ?? item.data.bonusAdvances?.value?.split(',')?.map(v => ({ value: v.trim(), purchased: false }))
+    ?? item.data.bonusAdvances;
+  let talents = item.data.talents?.arrayOfValues?.map(t => ({ value: t.name.trim(), linkedId: null, purchased: t.purchased }))
+    ?? item.data.talents?.value?.split(',')?.map(v => ({ value: v.trim(), linkedId: null, purchased: false }))
+    ?? item.data.talents.map(t => ({ value: t.value.trim(), linkedId: t.linkedId ?? null, purchased: t.purchased }));
+  const actorTier = actor?.data?.data?.tier;
+  const profTier = item.data.tier?.value;
+  const purchaseAll = actorTier && actorTier !== profTier;
+  let skillRanks = item.data.skillRanks?.arrayOfValues?.map(sr => ({ value: sr.name.trim(), purchased: purchaseAll || sr.timesAvailable === 0 }))
+    ?? item.data.skillRanks?.value?.split(',')?.map(v => ({ value: v.trim(), purchased: false }))
+    ?? item.data.skillRanks;
+  let professionalTraitValue = item.data.professionalTrait.value;
+  let professionalTraitId = item.data.professionalTrait.linkedId ?? null;
+  let specialTraitValue = item.data.specialTrait.value;
+  let specialTraitId = item.data.specialTrait.linkedId ?? null;
+  let drawbackValue = item.data.drawback.value;
+  let drawbackId = item.data.drawback.linkedId ?? null;
+  if (actor) {
+    let i;
+    if (professionalTraitValue && !professionalTraitId) {
+      i = await ZweihanderBaseItem.getOrCreateLinkedItem(actor, professionalTraitValue, 'trait', item.name, 'profession');
+      professionalTraitValue = i.value;
+      professionalTraitId = i.linkedId;
+    }
+    if (specialTraitValue && !specialTraitId) {
+      i = await ZweihanderBaseItem.getOrCreateLinkedItem(actor, specialTraitValue, 'trait', item.name, 'profession');
+      specialTraitValue = i.value;
+      specialTraitId = i.linkedId;
+    }
+    if (drawbackValue && !drawbackId) {
+      i = await ZweihanderBaseItem.getOrCreateLinkedItem(actor, drawbackValue, 'drawback', item.name, 'profession');
+      drawbackValue = i.value;
+      drawbackId = i.linkedId;
+    }
+    // const talentNames = talents.map(t => t.value);
+    const talentNames = talents.filter(t => !t.linkedId && t.value).map(t => t.value);
+    if (talentNames.length) {
+      i = await ZweihanderBaseItem.getOrCreateLinkedItems(actor, talentNames, 'talent', item.name, 'profession');
+      talents = i.map((t, j) => ({ ...t, purchased: talents[j].purchased || false }));
+    }
+  }
+  return {
+    'data.bonusAdvances': bonusAdvances,
+    'data.professionalTrait.value': professionalTraitValue,
+    'data.professionalTrait.linkedId': professionalTraitId,
+    'data.specialTrait.value': specialTraitValue,
+    'data.specialTrait.linkedId': specialTraitId,
+    'data.drawback.value': drawbackValue,
+    'data.drawback.linkedId': drawbackId,
+    'data.skillRanks': skillRanks,
+    'data.talents': talents,
+    'data.tier.-=completed': null,
+    'data.tier.-=advancesPurchased': null,
+    'data.tier.value': item?.flags?.zweihander?.professionTier ?? item.data.tier.value,
+    'flags.zweihander.-=professionTier': null
+  }
+};
+
+const migrateIcons = function (img) {
+  return img.replaceAll('assets/icons/game-icons','assets/icons').replaceAll('assets/skills.png', 'icons/skills.svg');
+};
+
+const migrateWorldSafe = async function () {
+  if (!game.user.isGM) return;
+  const currentVersion = game.settings.get("zweihander", "systemMigrationVersion");
+  const NEEDS_MIGRATION_VERSION = "4.0.1";
+  const COMPATIBLE_MIGRATION_VERSION = "0.3.30";
+  const totalDocuments = game.actors.size + game.scenes.size + game.items.size;
+  if (!currentVersion && totalDocuments === 0) return game.settings.set("zweihander", "systemMigrationVersion", game.system.data.version);
+  const needsMigration = !currentVersion || isNewerVersion(NEEDS_MIGRATION_VERSION, currentVersion);
+  if (!needsMigration) return;
+
+  // Perform the migration
+  if (currentVersion && isNewerVersion(COMPATIBLE_MIGRATION_VERSION, currentVersion)) {
+    const warning = "Your Zweihander system data is from too old a Foundry version and cannot be reliably migrated to the latest version. The process will be attempted, but errors may occur.";
+    ui.notifications.error(warning, { permanent: true });
+  }
+  await migrateWorld();
+};
+
+var commonjsGlobal = typeof globalThis !== 'undefined' ? globalThis : typeof window !== 'undefined' ? window : typeof global !== 'undefined' ? global : typeof self !== 'undefined' ? self : {};
+
+var intro = {exports: {}};
+
+/*!
+ * Intro.js v4.3.0
+ * https://introjs.com
+ *
+ * Copyright (C) 2012-2021 Afshin Mehrabani (@afshinmeh).
+ * https://raw.githubusercontent.com/usablica/intro.js/master/license.md
+ *
+ * Date: Sat, 06 Nov 2021 14:22:05 GMT
+ */
+
+(function (module, exports) {
+(function (global, factory) {
+  module.exports = factory() ;
+})(commonjsGlobal, (function () {
+  function _typeof(obj) {
+    "@babel/helpers - typeof";
+
+    if (typeof Symbol === "function" && typeof Symbol.iterator === "symbol") {
+      _typeof = function (obj) {
+        return typeof obj;
+      };
+    } else {
+      _typeof = function (obj) {
+        return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj;
+      };
+    }
+
+    return _typeof(obj);
+  }
+
+  /**
+   * Overwrites obj1's values with obj2's and adds obj2's if non existent in obj1
+   * via: http://stackoverflow.com/questions/171251/how-can-i-merge-properties-of-two-javascript-objects-dynamically
+   *
+   * @param obj1
+   * @param obj2
+   * @returns obj3 a new object based on obj1 and obj2
+   */
+  function mergeOptions(obj1, obj2) {
+    var obj3 = {};
+    var attrname;
+
+    for (attrname in obj1) {
+      obj3[attrname] = obj1[attrname];
+    }
+
+    for (attrname in obj2) {
+      obj3[attrname] = obj2[attrname];
+    }
+
+    return obj3;
+  }
+
+  /**
+   * Mark any object with an incrementing number
+   * used for keeping track of objects
+   *
+   * @param Object obj   Any object or DOM Element
+   * @param String key
+   * @return Object
+   */
+  var stamp = function () {
+    var keys = {};
+    return function stamp(obj) {
+      var key = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : "introjs-stamp";
+      // each group increments from 0
+      keys[key] = keys[key] || 0; // stamp only once per object
+
+      if (obj[key] === undefined) {
+        // increment key for each new object
+        obj[key] = keys[key]++;
+      }
+
+      return obj[key];
+    };
+  }();
+
+  /**
+   * Iterates arrays
+   *
+   * @param {Array} arr
+   * @param {Function} forEachFnc
+   * @param {Function} [completeFnc]
+   * @return {Null}
+   */
+  function forEach(arr, forEachFnc, completeFnc) {
+    // in case arr is an empty query selector node list
+    if (arr) {
+      for (var i = 0, len = arr.length; i < len; i++) {
+        forEachFnc(arr[i], i);
+      }
+    }
+
+    if (typeof completeFnc === "function") {
+      completeFnc();
+    }
+  }
+
+  /**
+   * DOMEvent Handles all DOM events
+   *
+   * methods:
+   *
+   * on - add event handler
+   * off - remove event
+   */
+
+  var DOMEvent = function () {
+    function DOMEvent() {
+      var events_key = "introjs_event";
+      /**
+       * Gets a unique ID for an event listener
+       *
+       * @param obj Object
+       * @param type event type
+       * @param listener Function
+       * @param context Object
+       * @return String
+       */
+
+      this._id = function (obj, type, listener, context) {
+        return type + stamp(listener) + (context ? "_".concat(stamp(context)) : "");
+      };
+      /**
+       * Adds event listener
+       *
+       * @param obj Object obj
+       * @param type String
+       * @param listener Function
+       * @param context Object
+       * @param useCapture Boolean
+       * @return null
+       */
+
+
+      this.on = function (obj, type, listener, context, useCapture) {
+        var id = this._id.apply(this, arguments);
+
+        var handler = function handler(e) {
+          return listener.call(context || obj, e || window.event);
+        };
+
+        if ("addEventListener" in obj) {
+          obj.addEventListener(type, handler, useCapture);
+        } else if ("attachEvent" in obj) {
+          obj.attachEvent("on".concat(type), handler);
+        }
+
+        obj[events_key] = obj[events_key] || {};
+        obj[events_key][id] = handler;
+      };
+      /**
+       * Removes event listener
+       *
+       * @param obj Object
+       * @param type String
+       * @param listener Function
+       * @param context Object
+       * @param useCapture Boolean
+       * @return null
+       */
+
+
+      this.off = function (obj, type, listener, context, useCapture) {
+        var id = this._id.apply(this, arguments);
+
+        var handler = obj[events_key] && obj[events_key][id];
+
+        if (!handler) {
+          return;
+        }
+
+        if ("removeEventListener" in obj) {
+          obj.removeEventListener(type, handler, useCapture);
+        } else if ("detachEvent" in obj) {
+          obj.detachEvent("on".concat(type), handler);
+        }
+
+        obj[events_key][id] = null;
+      };
+    }
+
+    return new DOMEvent();
+  }();
+
+  var commonjsGlobal$1 = typeof globalThis !== 'undefined' ? globalThis : typeof window !== 'undefined' ? window : typeof commonjsGlobal !== 'undefined' ? commonjsGlobal : typeof self !== 'undefined' ? self : {};
+
+  function createCommonjsModule(fn, module) {
+  	return module = { exports: {} }, fn(module, module.exports), module.exports;
+  }
+
+  var check = function (it) {
+    return it && it.Math == Math && it;
+  };
+
+  // https://github.com/zloirock/core-js/issues/86#issuecomment-115759028
+  var global_1 =
+    // eslint-disable-next-line es/no-global-this -- safe
+    check(typeof globalThis == 'object' && globalThis) ||
+    check(typeof window == 'object' && window) ||
+    // eslint-disable-next-line no-restricted-globals -- safe
+    check(typeof self == 'object' && self) ||
+    check(typeof commonjsGlobal$1 == 'object' && commonjsGlobal$1) ||
+    // eslint-disable-next-line no-new-func -- fallback
+    (function () { return this; })() || Function('return this')();
+
+  var fails = function (exec) {
+    try {
+      return !!exec();
+    } catch (error) {
+      return true;
+    }
+  };
+
+  // Detect IE8's incomplete defineProperty implementation
+  var descriptors = !fails(function () {
+    // eslint-disable-next-line es/no-object-defineproperty -- required for testing
+    return Object.defineProperty({}, 1, { get: function () { return 7; } })[1] != 7;
+  });
+
+  var call$2 = Function.prototype.call;
+
+  var functionCall = call$2.bind ? call$2.bind(call$2) : function () {
+    return call$2.apply(call$2, arguments);
+  };
+
+  var $propertyIsEnumerable = {}.propertyIsEnumerable;
+  // eslint-disable-next-line es/no-object-getownpropertydescriptor -- safe
+  var getOwnPropertyDescriptor$1 = Object.getOwnPropertyDescriptor;
+
+  // Nashorn ~ JDK8 bug
+  var NASHORN_BUG = getOwnPropertyDescriptor$1 && !$propertyIsEnumerable.call({ 1: 2 }, 1);
+
+  // `Object.prototype.propertyIsEnumerable` method implementation
+  // https://tc39.es/ecma262/#sec-object.prototype.propertyisenumerable
+  var f$4 = NASHORN_BUG ? function propertyIsEnumerable(V) {
+    var descriptor = getOwnPropertyDescriptor$1(this, V);
+    return !!descriptor && descriptor.enumerable;
+  } : $propertyIsEnumerable;
+
+  var objectPropertyIsEnumerable = {
+  	f: f$4
+  };
+
+  var createPropertyDescriptor = function (bitmap, value) {
+    return {
+      enumerable: !(bitmap & 1),
+      configurable: !(bitmap & 2),
+      writable: !(bitmap & 4),
+      value: value
+    };
+  };
+
+  var FunctionPrototype$2 = Function.prototype;
+  var bind$2 = FunctionPrototype$2.bind;
+  var call$1 = FunctionPrototype$2.call;
+  var callBind = bind$2 && bind$2.bind(call$1);
+
+  var functionUncurryThis = bind$2 ? function (fn) {
+    return fn && callBind(call$1, fn);
+  } : function (fn) {
+    return fn && function () {
+      return call$1.apply(fn, arguments);
+    };
+  };
+
+  var toString$1 = functionUncurryThis({}.toString);
+  var stringSlice$5 = functionUncurryThis(''.slice);
+
+  var classofRaw = function (it) {
+    return stringSlice$5(toString$1(it), 8, -1);
+  };
+
+  var Object$4 = global_1.Object;
+  var split = functionUncurryThis(''.split);
+
+  // fallback for non-array-like ES3 and non-enumerable old V8 strings
+  var indexedObject = fails(function () {
+    // throws an error in rhino, see https://github.com/mozilla/rhino/issues/346
+    // eslint-disable-next-line no-prototype-builtins -- safe
+    return !Object$4('z').propertyIsEnumerable(0);
+  }) ? function (it) {
+    return classofRaw(it) == 'String' ? split(it, '') : Object$4(it);
+  } : Object$4;
+
+  var TypeError$c = global_1.TypeError;
+
+  // `RequireObjectCoercible` abstract operation
+  // https://tc39.es/ecma262/#sec-requireobjectcoercible
+  var requireObjectCoercible = function (it) {
+    if (it == undefined) throw TypeError$c("Can't call method on " + it);
+    return it;
+  };
+
+  // toObject with fallback for non-array-like ES3 strings
+
+
+
+  var toIndexedObject = function (it) {
+    return indexedObject(requireObjectCoercible(it));
+  };
+
+  // `IsCallable` abstract operation
+  // https://tc39.es/ecma262/#sec-iscallable
+  var isCallable = function (argument) {
+    return typeof argument == 'function';
+  };
+
+  var isObject = function (it) {
+    return typeof it == 'object' ? it !== null : isCallable(it);
+  };
+
+  var aFunction = function (argument) {
+    return isCallable(argument) ? argument : undefined;
+  };
+
+  var getBuiltIn = function (namespace, method) {
+    return arguments.length < 2 ? aFunction(global_1[namespace]) : global_1[namespace] && global_1[namespace][method];
+  };
+
+  var objectIsPrototypeOf = functionUncurryThis({}.isPrototypeOf);
+
+  var engineUserAgent = getBuiltIn('navigator', 'userAgent') || '';
+
+  var process = global_1.process;
+  var Deno = global_1.Deno;
+  var versions = process && process.versions || Deno && Deno.version;
+  var v8 = versions && versions.v8;
+  var match, version$1;
+
+  if (v8) {
+    match = v8.split('.');
+    // in old Chrome, versions of V8 isn't V8 = Chrome / 10
+    // but their correct versions are not interesting for us
+    version$1 = match[0] > 0 && match[0] < 4 ? 1 : +(match[0] + match[1]);
+  }
+
+  // BrowserFS NodeJS `process` polyfill incorrectly set `.v8` to `0.0`
+  // so check `userAgent` even if `.v8` exists, but 0
+  if (!version$1 && engineUserAgent) {
+    match = engineUserAgent.match(/Edge\/(\d+)/);
+    if (!match || match[1] >= 74) {
+      match = engineUserAgent.match(/Chrome\/(\d+)/);
+      if (match) version$1 = +match[1];
+    }
+  }
+
+  var engineV8Version = version$1;
+
+  /* eslint-disable es/no-symbol -- required for testing */
+
+
+
+  // eslint-disable-next-line es/no-object-getownpropertysymbols -- required for testing
+  var nativeSymbol = !!Object.getOwnPropertySymbols && !fails(function () {
+    var symbol = Symbol();
+    // Chrome 38 Symbol has incorrect toString conversion
+    // `get-own-property-symbols` polyfill symbols converted to object are not Symbol instances
+    return !String(symbol) || !(Object(symbol) instanceof Symbol) ||
+      // Chrome 38-40 symbols are not inherited from DOM collections prototypes to instances
+      !Symbol.sham && engineV8Version && engineV8Version < 41;
+  });
+
+  /* eslint-disable es/no-symbol -- required for testing */
+
+
+  var useSymbolAsUid = nativeSymbol
+    && !Symbol.sham
+    && typeof Symbol.iterator == 'symbol';
+
+  var Object$3 = global_1.Object;
+
+  var isSymbol = useSymbolAsUid ? function (it) {
+    return typeof it == 'symbol';
+  } : function (it) {
+    var $Symbol = getBuiltIn('Symbol');
+    return isCallable($Symbol) && objectIsPrototypeOf($Symbol.prototype, Object$3(it));
+  };
+
+  var String$3 = global_1.String;
+
+  var tryToString = function (argument) {
+    try {
+      return String$3(argument);
+    } catch (error) {
+      return 'Object';
+    }
+  };
+
+  var TypeError$b = global_1.TypeError;
+
+  // `Assert: IsCallable(argument) is true`
+  var aCallable = function (argument) {
+    if (isCallable(argument)) return argument;
+    throw TypeError$b(tryToString(argument) + ' is not a function');
+  };
+
+  // `GetMethod` abstract operation
+  // https://tc39.es/ecma262/#sec-getmethod
+  var getMethod = function (V, P) {
+    var func = V[P];
+    return func == null ? undefined : aCallable(func);
+  };
+
+  var TypeError$a = global_1.TypeError;
+
+  // `OrdinaryToPrimitive` abstract operation
+  // https://tc39.es/ecma262/#sec-ordinarytoprimitive
+  var ordinaryToPrimitive = function (input, pref) {
+    var fn, val;
+    if (pref === 'string' && isCallable(fn = input.toString) && !isObject(val = functionCall(fn, input))) return val;
+    if (isCallable(fn = input.valueOf) && !isObject(val = functionCall(fn, input))) return val;
+    if (pref !== 'string' && isCallable(fn = input.toString) && !isObject(val = functionCall(fn, input))) return val;
+    throw TypeError$a("Can't convert object to primitive value");
+  };
+
+  // eslint-disable-next-line es/no-object-defineproperty -- safe
+  var defineProperty$1 = Object.defineProperty;
+
+  var setGlobal = function (key, value) {
+    try {
+      defineProperty$1(global_1, key, { value: value, configurable: true, writable: true });
+    } catch (error) {
+      global_1[key] = value;
+    } return value;
+  };
+
+  var SHARED = '__core-js_shared__';
+  var store$1 = global_1[SHARED] || setGlobal(SHARED, {});
+
+  var sharedStore = store$1;
+
+  var shared = createCommonjsModule(function (module) {
+  (module.exports = function (key, value) {
+    return sharedStore[key] || (sharedStore[key] = value !== undefined ? value : {});
+  })('versions', []).push({
+    version: '3.19.1',
+    mode: 'global',
+    copyright: '© 2021 Denis Pushkarev (zloirock.ru)'
+  });
+  });
+
+  var Object$2 = global_1.Object;
+
+  // `ToObject` abstract operation
+  // https://tc39.es/ecma262/#sec-toobject
+  var toObject = function (argument) {
+    return Object$2(requireObjectCoercible(argument));
+  };
+
+  var hasOwnProperty = functionUncurryThis({}.hasOwnProperty);
+
+  // `HasOwnProperty` abstract operation
+  // https://tc39.es/ecma262/#sec-hasownproperty
+  var hasOwnProperty_1 = Object.hasOwn || function hasOwn(it, key) {
+    return hasOwnProperty(toObject(it), key);
+  };
+
+  var id = 0;
+  var postfix = Math.random();
+  var toString = functionUncurryThis(1.0.toString);
+
+  var uid = function (key) {
+    return 'Symbol(' + (key === undefined ? '' : key) + ')_' + toString(++id + postfix, 36);
+  };
+
+  var WellKnownSymbolsStore = shared('wks');
+  var Symbol$1 = global_1.Symbol;
+  var symbolFor = Symbol$1 && Symbol$1['for'];
+  var createWellKnownSymbol = useSymbolAsUid ? Symbol$1 : Symbol$1 && Symbol$1.withoutSetter || uid;
+
+  var wellKnownSymbol = function (name) {
+    if (!hasOwnProperty_1(WellKnownSymbolsStore, name) || !(nativeSymbol || typeof WellKnownSymbolsStore[name] == 'string')) {
+      var description = 'Symbol.' + name;
+      if (nativeSymbol && hasOwnProperty_1(Symbol$1, name)) {
+        WellKnownSymbolsStore[name] = Symbol$1[name];
+      } else if (useSymbolAsUid && symbolFor) {
+        WellKnownSymbolsStore[name] = symbolFor(description);
+      } else {
+        WellKnownSymbolsStore[name] = createWellKnownSymbol(description);
+      }
+    } return WellKnownSymbolsStore[name];
+  };
+
+  var TypeError$9 = global_1.TypeError;
+  var TO_PRIMITIVE = wellKnownSymbol('toPrimitive');
+
+  // `ToPrimitive` abstract operation
+  // https://tc39.es/ecma262/#sec-toprimitive
+  var toPrimitive = function (input, pref) {
+    if (!isObject(input) || isSymbol(input)) return input;
+    var exoticToPrim = getMethod(input, TO_PRIMITIVE);
+    var result;
+    if (exoticToPrim) {
+      if (pref === undefined) pref = 'default';
+      result = functionCall(exoticToPrim, input, pref);
+      if (!isObject(result) || isSymbol(result)) return result;
+      throw TypeError$9("Can't convert object to primitive value");
+    }
+    if (pref === undefined) pref = 'number';
+    return ordinaryToPrimitive(input, pref);
+  };
+
+  // `ToPropertyKey` abstract operation
+  // https://tc39.es/ecma262/#sec-topropertykey
+  var toPropertyKey = function (argument) {
+    var key = toPrimitive(argument, 'string');
+    return isSymbol(key) ? key : key + '';
+  };
+
+  var document$1 = global_1.document;
+  // typeof document.createElement is 'object' in old IE
+  var EXISTS$1 = isObject(document$1) && isObject(document$1.createElement);
+
+  var documentCreateElement = function (it) {
+    return EXISTS$1 ? document$1.createElement(it) : {};
+  };
+
+  // Thank's IE8 for his funny defineProperty
+  var ie8DomDefine = !descriptors && !fails(function () {
+    // eslint-disable-next-line es/no-object-defineproperty -- requied for testing
+    return Object.defineProperty(documentCreateElement('div'), 'a', {
+      get: function () { return 7; }
+    }).a != 7;
+  });
+
+  // eslint-disable-next-line es/no-object-getownpropertydescriptor -- safe
+  var $getOwnPropertyDescriptor = Object.getOwnPropertyDescriptor;
+
+  // `Object.getOwnPropertyDescriptor` method
+  // https://tc39.es/ecma262/#sec-object.getownpropertydescriptor
+  var f$3 = descriptors ? $getOwnPropertyDescriptor : function getOwnPropertyDescriptor(O, P) {
+    O = toIndexedObject(O);
+    P = toPropertyKey(P);
+    if (ie8DomDefine) try {
+      return $getOwnPropertyDescriptor(O, P);
+    } catch (error) { /* empty */ }
+    if (hasOwnProperty_1(O, P)) return createPropertyDescriptor(!functionCall(objectPropertyIsEnumerable.f, O, P), O[P]);
+  };
+
+  var objectGetOwnPropertyDescriptor = {
+  	f: f$3
+  };
+
+  var String$2 = global_1.String;
+  var TypeError$8 = global_1.TypeError;
+
+  // `Assert: Type(argument) is Object`
+  var anObject = function (argument) {
+    if (isObject(argument)) return argument;
+    throw TypeError$8(String$2(argument) + ' is not an object');
+  };
+
+  var TypeError$7 = global_1.TypeError;
+  // eslint-disable-next-line es/no-object-defineproperty -- safe
+  var $defineProperty = Object.defineProperty;
+
+  // `Object.defineProperty` method
+  // https://tc39.es/ecma262/#sec-object.defineproperty
+  var f$2 = descriptors ? $defineProperty : function defineProperty(O, P, Attributes) {
+    anObject(O);
+    P = toPropertyKey(P);
+    anObject(Attributes);
+    if (ie8DomDefine) try {
+      return $defineProperty(O, P, Attributes);
+    } catch (error) { /* empty */ }
+    if ('get' in Attributes || 'set' in Attributes) throw TypeError$7('Accessors not supported');
+    if ('value' in Attributes) O[P] = Attributes.value;
+    return O;
+  };
+
+  var objectDefineProperty = {
+  	f: f$2
+  };
+
+  var createNonEnumerableProperty = descriptors ? function (object, key, value) {
+    return objectDefineProperty.f(object, key, createPropertyDescriptor(1, value));
+  } : function (object, key, value) {
+    object[key] = value;
+    return object;
+  };
+
+  var functionToString = functionUncurryThis(Function.toString);
+
+  // this helper broken in `core-js@3.4.1-3.4.4`, so we can't use `shared` helper
+  if (!isCallable(sharedStore.inspectSource)) {
+    sharedStore.inspectSource = function (it) {
+      return functionToString(it);
+    };
+  }
+
+  var inspectSource = sharedStore.inspectSource;
+
+  var WeakMap$1 = global_1.WeakMap;
+
+  var nativeWeakMap = isCallable(WeakMap$1) && /native code/.test(inspectSource(WeakMap$1));
+
+  var keys = shared('keys');
+
+  var sharedKey = function (key) {
+    return keys[key] || (keys[key] = uid(key));
+  };
+
+  var hiddenKeys$1 = {};
+
+  var OBJECT_ALREADY_INITIALIZED = 'Object already initialized';
+  var TypeError$6 = global_1.TypeError;
+  var WeakMap = global_1.WeakMap;
+  var set, get, has;
+
+  var enforce = function (it) {
+    return has(it) ? get(it) : set(it, {});
+  };
+
+  var getterFor = function (TYPE) {
+    return function (it) {
+      var state;
+      if (!isObject(it) || (state = get(it)).type !== TYPE) {
+        throw TypeError$6('Incompatible receiver, ' + TYPE + ' required');
+      } return state;
+    };
+  };
+
+  if (nativeWeakMap || sharedStore.state) {
+    var store = sharedStore.state || (sharedStore.state = new WeakMap());
+    var wmget = functionUncurryThis(store.get);
+    var wmhas = functionUncurryThis(store.has);
+    var wmset = functionUncurryThis(store.set);
+    set = function (it, metadata) {
+      if (wmhas(store, it)) throw new TypeError$6(OBJECT_ALREADY_INITIALIZED);
+      metadata.facade = it;
+      wmset(store, it, metadata);
+      return metadata;
+    };
+    get = function (it) {
+      return wmget(store, it) || {};
+    };
+    has = function (it) {
+      return wmhas(store, it);
+    };
+  } else {
+    var STATE = sharedKey('state');
+    hiddenKeys$1[STATE] = true;
+    set = function (it, metadata) {
+      if (hasOwnProperty_1(it, STATE)) throw new TypeError$6(OBJECT_ALREADY_INITIALIZED);
+      metadata.facade = it;
+      createNonEnumerableProperty(it, STATE, metadata);
+      return metadata;
+    };
+    get = function (it) {
+      return hasOwnProperty_1(it, STATE) ? it[STATE] : {};
+    };
+    has = function (it) {
+      return hasOwnProperty_1(it, STATE);
+    };
+  }
+
+  var internalState = {
+    set: set,
+    get: get,
+    has: has,
+    enforce: enforce,
+    getterFor: getterFor
+  };
+
+  var FunctionPrototype$1 = Function.prototype;
+  // eslint-disable-next-line es/no-object-getownpropertydescriptor -- safe
+  var getDescriptor = descriptors && Object.getOwnPropertyDescriptor;
+
+  var EXISTS = hasOwnProperty_1(FunctionPrototype$1, 'name');
+  // additional protection from minified / mangled / dropped function names
+  var PROPER = EXISTS && (function something() { /* empty */ }).name === 'something';
+  var CONFIGURABLE = EXISTS && (!descriptors || (descriptors && getDescriptor(FunctionPrototype$1, 'name').configurable));
+
+  var functionName = {
+    EXISTS: EXISTS,
+    PROPER: PROPER,
+    CONFIGURABLE: CONFIGURABLE
+  };
+
+  var redefine = createCommonjsModule(function (module) {
+  var CONFIGURABLE_FUNCTION_NAME = functionName.CONFIGURABLE;
+
+  var getInternalState = internalState.get;
+  var enforceInternalState = internalState.enforce;
+  var TEMPLATE = String(String).split('String');
+
+  (module.exports = function (O, key, value, options) {
+    var unsafe = options ? !!options.unsafe : false;
+    var simple = options ? !!options.enumerable : false;
+    var noTargetGet = options ? !!options.noTargetGet : false;
+    var name = options && options.name !== undefined ? options.name : key;
+    var state;
+    if (isCallable(value)) {
+      if (String(name).slice(0, 7) === 'Symbol(') {
+        name = '[' + String(name).replace(/^Symbol\(([^)]*)\)/, '$1') + ']';
+      }
+      if (!hasOwnProperty_1(value, 'name') || (CONFIGURABLE_FUNCTION_NAME && value.name !== name)) {
+        createNonEnumerableProperty(value, 'name', name);
+      }
+      state = enforceInternalState(value);
+      if (!state.source) {
+        state.source = TEMPLATE.join(typeof name == 'string' ? name : '');
+      }
+    }
+    if (O === global_1) {
+      if (simple) O[key] = value;
+      else setGlobal(key, value);
+      return;
+    } else if (!unsafe) {
+      delete O[key];
+    } else if (!noTargetGet && O[key]) {
+      simple = true;
+    }
+    if (simple) O[key] = value;
+    else createNonEnumerableProperty(O, key, value);
+  // add fake Function#toString for correct work wrapped methods / constructors with methods like LoDash isNative
+  })(Function.prototype, 'toString', function toString() {
+    return isCallable(this) && getInternalState(this).source || inspectSource(this);
+  });
+  });
+
+  var ceil = Math.ceil;
+  var floor$2 = Math.floor;
+
+  // `ToIntegerOrInfinity` abstract operation
+  // https://tc39.es/ecma262/#sec-tointegerorinfinity
+  var toIntegerOrInfinity = function (argument) {
+    var number = +argument;
+    // eslint-disable-next-line no-self-compare -- safe
+    return number !== number || number === 0 ? 0 : (number > 0 ? floor$2 : ceil)(number);
+  };
+
+  var max$3 = Math.max;
+  var min$4 = Math.min;
+
+  // Helper for a popular repeating case of the spec:
+  // Let integer be ? ToInteger(index).
+  // If integer < 0, let result be max((length + integer), 0); else let result be min(integer, length).
+  var toAbsoluteIndex = function (index, length) {
+    var integer = toIntegerOrInfinity(index);
+    return integer < 0 ? max$3(integer + length, 0) : min$4(integer, length);
+  };
+
+  var min$3 = Math.min;
+
+  // `ToLength` abstract operation
+  // https://tc39.es/ecma262/#sec-tolength
+  var toLength = function (argument) {
+    return argument > 0 ? min$3(toIntegerOrInfinity(argument), 0x1FFFFFFFFFFFFF) : 0; // 2 ** 53 - 1 == 9007199254740991
+  };
+
+  // `LengthOfArrayLike` abstract operation
+  // https://tc39.es/ecma262/#sec-lengthofarraylike
+  var lengthOfArrayLike = function (obj) {
+    return toLength(obj.length);
+  };
+
+  // `Array.prototype.{ indexOf, includes }` methods implementation
+  var createMethod$2 = function (IS_INCLUDES) {
+    return function ($this, el, fromIndex) {
+      var O = toIndexedObject($this);
+      var length = lengthOfArrayLike(O);
+      var index = toAbsoluteIndex(fromIndex, length);
+      var value;
+      // Array#includes uses SameValueZero equality algorithm
+      // eslint-disable-next-line no-self-compare -- NaN check
+      if (IS_INCLUDES && el != el) while (length > index) {
+        value = O[index++];
+        // eslint-disable-next-line no-self-compare -- NaN check
+        if (value != value) return true;
+      // Array#indexOf ignores holes, Array#includes - not
+      } else for (;length > index; index++) {
+        if ((IS_INCLUDES || index in O) && O[index] === el) return IS_INCLUDES || index || 0;
+      } return !IS_INCLUDES && -1;
+    };
+  };
+
+  var arrayIncludes = {
+    // `Array.prototype.includes` method
+    // https://tc39.es/ecma262/#sec-array.prototype.includes
+    includes: createMethod$2(true),
+    // `Array.prototype.indexOf` method
+    // https://tc39.es/ecma262/#sec-array.prototype.indexof
+    indexOf: createMethod$2(false)
+  };
+
+  var indexOf$1 = arrayIncludes.indexOf;
+
+
+  var push$4 = functionUncurryThis([].push);
+
+  var objectKeysInternal = function (object, names) {
+    var O = toIndexedObject(object);
+    var i = 0;
+    var result = [];
+    var key;
+    for (key in O) !hasOwnProperty_1(hiddenKeys$1, key) && hasOwnProperty_1(O, key) && push$4(result, key);
+    // Don't enum bug & hidden keys
+    while (names.length > i) if (hasOwnProperty_1(O, key = names[i++])) {
+      ~indexOf$1(result, key) || push$4(result, key);
+    }
+    return result;
+  };
+
+  // IE8- don't enum bug keys
+  var enumBugKeys = [
+    'constructor',
+    'hasOwnProperty',
+    'isPrototypeOf',
+    'propertyIsEnumerable',
+    'toLocaleString',
+    'toString',
+    'valueOf'
+  ];
+
+  var hiddenKeys = enumBugKeys.concat('length', 'prototype');
+
+  // `Object.getOwnPropertyNames` method
+  // https://tc39.es/ecma262/#sec-object.getownpropertynames
+  // eslint-disable-next-line es/no-object-getownpropertynames -- safe
+  var f$1 = Object.getOwnPropertyNames || function getOwnPropertyNames(O) {
+    return objectKeysInternal(O, hiddenKeys);
+  };
+
+  var objectGetOwnPropertyNames = {
+  	f: f$1
+  };
+
+  // eslint-disable-next-line es/no-object-getownpropertysymbols -- safe
+  var f = Object.getOwnPropertySymbols;
+
+  var objectGetOwnPropertySymbols = {
+  	f: f
+  };
+
+  var concat$2 = functionUncurryThis([].concat);
+
+  // all object keys, includes non-enumerable and symbols
+  var ownKeys = getBuiltIn('Reflect', 'ownKeys') || function ownKeys(it) {
+    var keys = objectGetOwnPropertyNames.f(anObject(it));
+    var getOwnPropertySymbols = objectGetOwnPropertySymbols.f;
+    return getOwnPropertySymbols ? concat$2(keys, getOwnPropertySymbols(it)) : keys;
+  };
+
+  var copyConstructorProperties = function (target, source) {
+    var keys = ownKeys(source);
+    var defineProperty = objectDefineProperty.f;
+    var getOwnPropertyDescriptor = objectGetOwnPropertyDescriptor.f;
+    for (var i = 0; i < keys.length; i++) {
+      var key = keys[i];
+      if (!hasOwnProperty_1(target, key)) defineProperty(target, key, getOwnPropertyDescriptor(source, key));
+    }
+  };
+
+  var replacement = /#|\.prototype\./;
+
+  var isForced = function (feature, detection) {
+    var value = data[normalize(feature)];
+    return value == POLYFILL ? true
+      : value == NATIVE ? false
+      : isCallable(detection) ? fails(detection)
+      : !!detection;
+  };
+
+  var normalize = isForced.normalize = function (string) {
+    return String(string).replace(replacement, '.').toLowerCase();
+  };
+
+  var data = isForced.data = {};
+  var NATIVE = isForced.NATIVE = 'N';
+  var POLYFILL = isForced.POLYFILL = 'P';
+
+  var isForced_1 = isForced;
+
+  var getOwnPropertyDescriptor = objectGetOwnPropertyDescriptor.f;
+
+
+
+
+
+
+  /*
+    options.target      - name of the target object
+    options.global      - target is the global object
+    options.stat        - export as static methods of target
+    options.proto       - export as prototype methods of target
+    options.real        - real prototype method for the `pure` version
+    options.forced      - export even if the native feature is available
+    options.bind        - bind methods to the target, required for the `pure` version
+    options.wrap        - wrap constructors to preventing global pollution, required for the `pure` version
+    options.unsafe      - use the simple assignment of property instead of delete + defineProperty
+    options.sham        - add a flag to not completely full polyfills
+    options.enumerable  - export as enumerable property
+    options.noTargetGet - prevent calling a getter on target
+    options.name        - the .name of the function if it does not match the key
+  */
+  var _export = function (options, source) {
+    var TARGET = options.target;
+    var GLOBAL = options.global;
+    var STATIC = options.stat;
+    var FORCED, target, key, targetProperty, sourceProperty, descriptor;
+    if (GLOBAL) {
+      target = global_1;
+    } else if (STATIC) {
+      target = global_1[TARGET] || setGlobal(TARGET, {});
+    } else {
+      target = (global_1[TARGET] || {}).prototype;
+    }
+    if (target) for (key in source) {
+      sourceProperty = source[key];
+      if (options.noTargetGet) {
+        descriptor = getOwnPropertyDescriptor(target, key);
+        targetProperty = descriptor && descriptor.value;
+      } else targetProperty = target[key];
+      FORCED = isForced_1(GLOBAL ? key : TARGET + (STATIC ? '.' : '#') + key, options.forced);
+      // contained in target
+      if (!FORCED && targetProperty !== undefined) {
+        if (typeof sourceProperty == typeof targetProperty) continue;
+        copyConstructorProperties(sourceProperty, targetProperty);
+      }
+      // add a flag to not completely full polyfills
+      if (options.sham || (targetProperty && targetProperty.sham)) {
+        createNonEnumerableProperty(sourceProperty, 'sham', true);
+      }
+      // extend global
+      redefine(target, key, sourceProperty, options);
+    }
+  };
+
+  var TO_STRING_TAG$1 = wellKnownSymbol('toStringTag');
+  var test$1 = {};
+
+  test$1[TO_STRING_TAG$1] = 'z';
+
+  var toStringTagSupport = String(test$1) === '[object z]';
+
+  var TO_STRING_TAG = wellKnownSymbol('toStringTag');
+  var Object$1 = global_1.Object;
+
+  // ES3 wrong here
+  var CORRECT_ARGUMENTS = classofRaw(function () { return arguments; }()) == 'Arguments';
+
+  // fallback for IE11 Script Access Denied error
+  var tryGet = function (it, key) {
+    try {
+      return it[key];
+    } catch (error) { /* empty */ }
+  };
+
+  // getting tag from ES6+ `Object.prototype.toString`
+  var classof = toStringTagSupport ? classofRaw : function (it) {
+    var O, tag, result;
+    return it === undefined ? 'Undefined' : it === null ? 'Null'
+      // @@toStringTag case
+      : typeof (tag = tryGet(O = Object$1(it), TO_STRING_TAG)) == 'string' ? tag
+      // builtinTag case
+      : CORRECT_ARGUMENTS ? classofRaw(O)
+      // ES3 arguments fallback
+      : (result = classofRaw(O)) == 'Object' && isCallable(O.callee) ? 'Arguments' : result;
+  };
+
+  var String$1 = global_1.String;
+
+  var toString_1 = function (argument) {
+    if (classof(argument) === 'Symbol') throw TypeError('Cannot convert a Symbol value to a string');
+    return String$1(argument);
+  };
+
+  // `RegExp.prototype.flags` getter implementation
+  // https://tc39.es/ecma262/#sec-get-regexp.prototype.flags
+  var regexpFlags = function () {
+    var that = anObject(this);
+    var result = '';
+    if (that.global) result += 'g';
+    if (that.ignoreCase) result += 'i';
+    if (that.multiline) result += 'm';
+    if (that.dotAll) result += 's';
+    if (that.unicode) result += 'u';
+    if (that.sticky) result += 'y';
+    return result;
+  };
+
+  // babel-minify and Closure Compiler transpiles RegExp('a', 'y') -> /a/y and it causes SyntaxError
+  var $RegExp$2 = global_1.RegExp;
+
+  var UNSUPPORTED_Y$2 = fails(function () {
+    var re = $RegExp$2('a', 'y');
+    re.lastIndex = 2;
+    return re.exec('abcd') != null;
+  });
+
+  var BROKEN_CARET = fails(function () {
+    // https://bugzilla.mozilla.org/show_bug.cgi?id=773687
+    var re = $RegExp$2('^r', 'gy');
+    re.lastIndex = 2;
+    return re.exec('str') != null;
+  });
+
+  var regexpStickyHelpers = {
+  	UNSUPPORTED_Y: UNSUPPORTED_Y$2,
+  	BROKEN_CARET: BROKEN_CARET
+  };
+
+  // `Object.keys` method
+  // https://tc39.es/ecma262/#sec-object.keys
+  // eslint-disable-next-line es/no-object-keys -- safe
+  var objectKeys = Object.keys || function keys(O) {
+    return objectKeysInternal(O, enumBugKeys);
+  };
+
+  // `Object.defineProperties` method
+  // https://tc39.es/ecma262/#sec-object.defineproperties
+  // eslint-disable-next-line es/no-object-defineproperties -- safe
+  var objectDefineProperties = descriptors ? Object.defineProperties : function defineProperties(O, Properties) {
+    anObject(O);
+    var props = toIndexedObject(Properties);
+    var keys = objectKeys(Properties);
+    var length = keys.length;
+    var index = 0;
+    var key;
+    while (length > index) objectDefineProperty.f(O, key = keys[index++], props[key]);
+    return O;
+  };
+
+  var html = getBuiltIn('document', 'documentElement');
+
+  /* global ActiveXObject -- old IE, WSH */
+
+
+
+
+
+
+
+
+  var GT = '>';
+  var LT = '<';
+  var PROTOTYPE = 'prototype';
+  var SCRIPT = 'script';
+  var IE_PROTO = sharedKey('IE_PROTO');
+
+  var EmptyConstructor = function () { /* empty */ };
+
+  var scriptTag = function (content) {
+    return LT + SCRIPT + GT + content + LT + '/' + SCRIPT + GT;
+  };
+
+  // Create object with fake `null` prototype: use ActiveX Object with cleared prototype
+  var NullProtoObjectViaActiveX = function (activeXDocument) {
+    activeXDocument.write(scriptTag(''));
+    activeXDocument.close();
+    var temp = activeXDocument.parentWindow.Object;
+    activeXDocument = null; // avoid memory leak
+    return temp;
+  };
+
+  // Create object with fake `null` prototype: use iframe Object with cleared prototype
+  var NullProtoObjectViaIFrame = function () {
+    // Thrash, waste and sodomy: IE GC bug
+    var iframe = documentCreateElement('iframe');
+    var JS = 'java' + SCRIPT + ':';
+    var iframeDocument;
+    iframe.style.display = 'none';
+    html.appendChild(iframe);
+    // https://github.com/zloirock/core-js/issues/475
+    iframe.src = String(JS);
+    iframeDocument = iframe.contentWindow.document;
+    iframeDocument.open();
+    iframeDocument.write(scriptTag('document.F=Object'));
+    iframeDocument.close();
+    return iframeDocument.F;
+  };
+
+  // Check for document.domain and active x support
+  // No need to use active x approach when document.domain is not set
+  // see https://github.com/es-shims/es5-shim/issues/150
+  // variation of https://github.com/kitcambridge/es5-shim/commit/4f738ac066346
+  // avoid IE GC bug
+  var activeXDocument;
+  var NullProtoObject = function () {
+    try {
+      activeXDocument = new ActiveXObject('htmlfile');
+    } catch (error) { /* ignore */ }
+    NullProtoObject = typeof document != 'undefined'
+      ? document.domain && activeXDocument
+        ? NullProtoObjectViaActiveX(activeXDocument) // old IE
+        : NullProtoObjectViaIFrame()
+      : NullProtoObjectViaActiveX(activeXDocument); // WSH
+    var length = enumBugKeys.length;
+    while (length--) delete NullProtoObject[PROTOTYPE][enumBugKeys[length]];
+    return NullProtoObject();
+  };
+
+  hiddenKeys$1[IE_PROTO] = true;
+
+  // `Object.create` method
+  // https://tc39.es/ecma262/#sec-object.create
+  var objectCreate = Object.create || function create(O, Properties) {
+    var result;
+    if (O !== null) {
+      EmptyConstructor[PROTOTYPE] = anObject(O);
+      result = new EmptyConstructor();
+      EmptyConstructor[PROTOTYPE] = null;
+      // add "__proto__" for Object.getPrototypeOf polyfill
+      result[IE_PROTO] = O;
+    } else result = NullProtoObject();
+    return Properties === undefined ? result : objectDefineProperties(result, Properties);
+  };
+
+  // babel-minify and Closure Compiler transpiles RegExp('.', 's') -> /./s and it causes SyntaxError
+  var $RegExp$1 = global_1.RegExp;
+
+  var regexpUnsupportedDotAll = fails(function () {
+    var re = $RegExp$1('.', 's');
+    return !(re.dotAll && re.exec('\n') && re.flags === 's');
+  });
+
+  // babel-minify and Closure Compiler transpiles RegExp('(?<a>b)', 'g') -> /(?<a>b)/g and it causes SyntaxError
+  var $RegExp = global_1.RegExp;
+
+  var regexpUnsupportedNcg = fails(function () {
+    var re = $RegExp('(?<a>b)', 'g');
+    return re.exec('b').groups.a !== 'b' ||
+      'b'.replace(re, '$<a>c') !== 'bc';
+  });
+
+  /* eslint-disable regexp/no-empty-capturing-group, regexp/no-empty-group, regexp/no-lazy-ends -- testing */
+  /* eslint-disable regexp/no-useless-quantifier -- testing */
+
+
+
+
+
+
+
+  var getInternalState = internalState.get;
+
+
+
+  var nativeReplace = shared('native-string-replace', String.prototype.replace);
+  var nativeExec = RegExp.prototype.exec;
+  var patchedExec = nativeExec;
+  var charAt$3 = functionUncurryThis(''.charAt);
+  var indexOf = functionUncurryThis(''.indexOf);
+  var replace$1 = functionUncurryThis(''.replace);
+  var stringSlice$4 = functionUncurryThis(''.slice);
+
+  var UPDATES_LAST_INDEX_WRONG = (function () {
+    var re1 = /a/;
+    var re2 = /b*/g;
+    functionCall(nativeExec, re1, 'a');
+    functionCall(nativeExec, re2, 'a');
+    return re1.lastIndex !== 0 || re2.lastIndex !== 0;
+  })();
+
+  var UNSUPPORTED_Y$1 = regexpStickyHelpers.UNSUPPORTED_Y || regexpStickyHelpers.BROKEN_CARET;
+
+  // nonparticipating capturing group, copied from es5-shim's String#split patch.
+  var NPCG_INCLUDED = /()??/.exec('')[1] !== undefined;
+
+  var PATCH = UPDATES_LAST_INDEX_WRONG || NPCG_INCLUDED || UNSUPPORTED_Y$1 || regexpUnsupportedDotAll || regexpUnsupportedNcg;
+
+  if (PATCH) {
+    // eslint-disable-next-line max-statements -- TODO
+    patchedExec = function exec(string) {
+      var re = this;
+      var state = getInternalState(re);
+      var str = toString_1(string);
+      var raw = state.raw;
+      var result, reCopy, lastIndex, match, i, object, group;
+
+      if (raw) {
+        raw.lastIndex = re.lastIndex;
+        result = functionCall(patchedExec, raw, str);
+        re.lastIndex = raw.lastIndex;
+        return result;
+      }
+
+      var groups = state.groups;
+      var sticky = UNSUPPORTED_Y$1 && re.sticky;
+      var flags = functionCall(regexpFlags, re);
+      var source = re.source;
+      var charsAdded = 0;
+      var strCopy = str;
+
+      if (sticky) {
+        flags = replace$1(flags, 'y', '');
+        if (indexOf(flags, 'g') === -1) {
+          flags += 'g';
+        }
+
+        strCopy = stringSlice$4(str, re.lastIndex);
+        // Support anchored sticky behavior.
+        if (re.lastIndex > 0 && (!re.multiline || re.multiline && charAt$3(str, re.lastIndex - 1) !== '\n')) {
+          source = '(?: ' + source + ')';
+          strCopy = ' ' + strCopy;
+          charsAdded++;
+        }
+        // ^(? + rx + ) is needed, in combination with some str slicing, to
+        // simulate the 'y' flag.
+        reCopy = new RegExp('^(?:' + source + ')', flags);
+      }
+
+      if (NPCG_INCLUDED) {
+        reCopy = new RegExp('^' + source + '$(?!\\s)', flags);
+      }
+      if (UPDATES_LAST_INDEX_WRONG) lastIndex = re.lastIndex;
+
+      match = functionCall(nativeExec, sticky ? reCopy : re, strCopy);
+
+      if (sticky) {
+        if (match) {
+          match.input = stringSlice$4(match.input, charsAdded);
+          match[0] = stringSlice$4(match[0], charsAdded);
+          match.index = re.lastIndex;
+          re.lastIndex += match[0].length;
+        } else re.lastIndex = 0;
+      } else if (UPDATES_LAST_INDEX_WRONG && match) {
+        re.lastIndex = re.global ? match.index + match[0].length : lastIndex;
+      }
+      if (NPCG_INCLUDED && match && match.length > 1) {
+        // Fix browsers whose `exec` methods don't consistently return `undefined`
+        // for NPCG, like IE8. NOTE: This doesn' work for /(.?)?/
+        functionCall(nativeReplace, match[0], reCopy, function () {
+          for (i = 1; i < arguments.length - 2; i++) {
+            if (arguments[i] === undefined) match[i] = undefined;
+          }
+        });
+      }
+
+      if (match && groups) {
+        match.groups = object = objectCreate(null);
+        for (i = 0; i < groups.length; i++) {
+          group = groups[i];
+          object[group[0]] = match[group[1]];
+        }
+      }
+
+      return match;
+    };
+  }
+
+  var regexpExec = patchedExec;
+
+  // `RegExp.prototype.exec` method
+  // https://tc39.es/ecma262/#sec-regexp.prototype.exec
+  _export({ target: 'RegExp', proto: true, forced: /./.exec !== regexpExec }, {
+    exec: regexpExec
+  });
+
+  // TODO: Remove from `core-js@4` since it's moved to entry points
+
+
+
+
+
+
+
+
+  var SPECIES$4 = wellKnownSymbol('species');
+  var RegExpPrototype$1 = RegExp.prototype;
+
+  var fixRegexpWellKnownSymbolLogic = function (KEY, exec, FORCED, SHAM) {
+    var SYMBOL = wellKnownSymbol(KEY);
+
+    var DELEGATES_TO_SYMBOL = !fails(function () {
+      // String methods call symbol-named RegEp methods
+      var O = {};
+      O[SYMBOL] = function () { return 7; };
+      return ''[KEY](O) != 7;
+    });
+
+    var DELEGATES_TO_EXEC = DELEGATES_TO_SYMBOL && !fails(function () {
+      // Symbol-named RegExp methods call .exec
+      var execCalled = false;
+      var re = /a/;
+
+      if (KEY === 'split') {
+        // We can't use real regex here since it causes deoptimization
+        // and serious performance degradation in V8
+        // https://github.com/zloirock/core-js/issues/306
+        re = {};
+        // RegExp[@@split] doesn't call the regex's exec method, but first creates
+        // a new one. We need to return the patched regex when creating the new one.
+        re.constructor = {};
+        re.constructor[SPECIES$4] = function () { return re; };
+        re.flags = '';
+        re[SYMBOL] = /./[SYMBOL];
+      }
+
+      re.exec = function () { execCalled = true; return null; };
+
+      re[SYMBOL]('');
+      return !execCalled;
+    });
+
+    if (
+      !DELEGATES_TO_SYMBOL ||
+      !DELEGATES_TO_EXEC ||
+      FORCED
+    ) {
+      var uncurriedNativeRegExpMethod = functionUncurryThis(/./[SYMBOL]);
+      var methods = exec(SYMBOL, ''[KEY], function (nativeMethod, regexp, str, arg2, forceStringMethod) {
+        var uncurriedNativeMethod = functionUncurryThis(nativeMethod);
+        var $exec = regexp.exec;
+        if ($exec === regexpExec || $exec === RegExpPrototype$1.exec) {
+          if (DELEGATES_TO_SYMBOL && !forceStringMethod) {
+            // The native String method already delegates to @@method (this
+            // polyfilled function), leasing to infinite recursion.
+            // We avoid it by directly calling the native @@method method.
+            return { done: true, value: uncurriedNativeRegExpMethod(regexp, str, arg2) };
+          }
+          return { done: true, value: uncurriedNativeMethod(str, regexp, arg2) };
+        }
+        return { done: false };
+      });
+
+      redefine(String.prototype, KEY, methods[0]);
+      redefine(RegExpPrototype$1, SYMBOL, methods[1]);
+    }
+
+    if (SHAM) createNonEnumerableProperty(RegExpPrototype$1[SYMBOL], 'sham', true);
+  };
+
+  var charAt$2 = functionUncurryThis(''.charAt);
+  var charCodeAt = functionUncurryThis(''.charCodeAt);
+  var stringSlice$3 = functionUncurryThis(''.slice);
+
+  var createMethod$1 = function (CONVERT_TO_STRING) {
+    return function ($this, pos) {
+      var S = toString_1(requireObjectCoercible($this));
+      var position = toIntegerOrInfinity(pos);
+      var size = S.length;
+      var first, second;
+      if (position < 0 || position >= size) return CONVERT_TO_STRING ? '' : undefined;
+      first = charCodeAt(S, position);
+      return first < 0xD800 || first > 0xDBFF || position + 1 === size
+        || (second = charCodeAt(S, position + 1)) < 0xDC00 || second > 0xDFFF
+          ? CONVERT_TO_STRING
+            ? charAt$2(S, position)
+            : first
+          : CONVERT_TO_STRING
+            ? stringSlice$3(S, position, position + 2)
+            : (first - 0xD800 << 10) + (second - 0xDC00) + 0x10000;
+    };
+  };
+
+  var stringMultibyte = {
+    // `String.prototype.codePointAt` method
+    // https://tc39.es/ecma262/#sec-string.prototype.codepointat
+    codeAt: createMethod$1(false),
+    // `String.prototype.at` method
+    // https://github.com/mathiasbynens/String.prototype.at
+    charAt: createMethod$1(true)
+  };
+
+  var charAt$1 = stringMultibyte.charAt;
+
+  // `AdvanceStringIndex` abstract operation
+  // https://tc39.es/ecma262/#sec-advancestringindex
+  var advanceStringIndex = function (S, index, unicode) {
+    return index + (unicode ? charAt$1(S, index).length : 1);
+  };
+
+  var TypeError$5 = global_1.TypeError;
+
+  // `RegExpExec` abstract operation
+  // https://tc39.es/ecma262/#sec-regexpexec
+  var regexpExecAbstract = function (R, S) {
+    var exec = R.exec;
+    if (isCallable(exec)) {
+      var result = functionCall(exec, R, S);
+      if (result !== null) anObject(result);
+      return result;
+    }
+    if (classofRaw(R) === 'RegExp') return functionCall(regexpExec, R, S);
+    throw TypeError$5('RegExp#exec called on incompatible receiver');
+  };
+
+  // @@match logic
+  fixRegexpWellKnownSymbolLogic('match', function (MATCH, nativeMatch, maybeCallNative) {
+    return [
+      // `String.prototype.match` method
+      // https://tc39.es/ecma262/#sec-string.prototype.match
+      function match(regexp) {
+        var O = requireObjectCoercible(this);
+        var matcher = regexp == undefined ? undefined : getMethod(regexp, MATCH);
+        return matcher ? functionCall(matcher, regexp, O) : new RegExp(regexp)[MATCH](toString_1(O));
+      },
+      // `RegExp.prototype[@@match]` method
+      // https://tc39.es/ecma262/#sec-regexp.prototype-@@match
+      function (string) {
+        var rx = anObject(this);
+        var S = toString_1(string);
+        var res = maybeCallNative(nativeMatch, rx, S);
+
+        if (res.done) return res.value;
+
+        if (!rx.global) return regexpExecAbstract(rx, S);
+
+        var fullUnicode = rx.unicode;
+        rx.lastIndex = 0;
+        var A = [];
+        var n = 0;
+        var result;
+        while ((result = regexpExecAbstract(rx, S)) !== null) {
+          var matchStr = toString_1(result[0]);
+          A[n] = matchStr;
+          if (matchStr === '') rx.lastIndex = advanceStringIndex(S, toLength(rx.lastIndex), fullUnicode);
+          n++;
+        }
+        return n === 0 ? null : A;
+      }
+    ];
+  });
+
+  // `IsArray` abstract operation
+  // https://tc39.es/ecma262/#sec-isarray
+  // eslint-disable-next-line es/no-array-isarray -- safe
+  var isArray = Array.isArray || function isArray(argument) {
+    return classofRaw(argument) == 'Array';
+  };
+
+  var createProperty = function (object, key, value) {
+    var propertyKey = toPropertyKey(key);
+    if (propertyKey in object) objectDefineProperty.f(object, propertyKey, createPropertyDescriptor(0, value));
+    else object[propertyKey] = value;
+  };
+
+  var noop = function () { /* empty */ };
+  var empty = [];
+  var construct = getBuiltIn('Reflect', 'construct');
+  var constructorRegExp = /^\s*(?:class|function)\b/;
+  var exec$1 = functionUncurryThis(constructorRegExp.exec);
+  var INCORRECT_TO_STRING = !constructorRegExp.exec(noop);
+
+  var isConstructorModern = function (argument) {
+    if (!isCallable(argument)) return false;
+    try {
+      construct(noop, empty, argument);
+      return true;
+    } catch (error) {
+      return false;
+    }
+  };
+
+  var isConstructorLegacy = function (argument) {
+    if (!isCallable(argument)) return false;
+    switch (classof(argument)) {
+      case 'AsyncFunction':
+      case 'GeneratorFunction':
+      case 'AsyncGeneratorFunction': return false;
+      // we can't check .prototype since constructors produced by .bind haven't it
+    } return INCORRECT_TO_STRING || !!exec$1(constructorRegExp, inspectSource(argument));
+  };
+
+  // `IsConstructor` abstract operation
+  // https://tc39.es/ecma262/#sec-isconstructor
+  var isConstructor = !construct || fails(function () {
+    var called;
+    return isConstructorModern(isConstructorModern.call)
+      || !isConstructorModern(Object)
+      || !isConstructorModern(function () { called = true; })
+      || called;
+  }) ? isConstructorLegacy : isConstructorModern;
+
+  var SPECIES$3 = wellKnownSymbol('species');
+  var Array$2 = global_1.Array;
+
+  // a part of `ArraySpeciesCreate` abstract operation
+  // https://tc39.es/ecma262/#sec-arrayspeciescreate
+  var arraySpeciesConstructor = function (originalArray) {
+    var C;
+    if (isArray(originalArray)) {
+      C = originalArray.constructor;
+      // cross-realm fallback
+      if (isConstructor(C) && (C === Array$2 || isArray(C.prototype))) C = undefined;
+      else if (isObject(C)) {
+        C = C[SPECIES$3];
+        if (C === null) C = undefined;
+      }
+    } return C === undefined ? Array$2 : C;
+  };
+
+  // `ArraySpeciesCreate` abstract operation
+  // https://tc39.es/ecma262/#sec-arrayspeciescreate
+  var arraySpeciesCreate = function (originalArray, length) {
+    return new (arraySpeciesConstructor(originalArray))(length === 0 ? 0 : length);
+  };
+
+  var SPECIES$2 = wellKnownSymbol('species');
+
+  var arrayMethodHasSpeciesSupport = function (METHOD_NAME) {
+    // We can't use this feature detection in V8 since it causes
+    // deoptimization and serious performance degradation
+    // https://github.com/zloirock/core-js/issues/677
+    return engineV8Version >= 51 || !fails(function () {
+      var array = [];
+      var constructor = array.constructor = {};
+      constructor[SPECIES$2] = function () {
+        return { foo: 1 };
+      };
+      return array[METHOD_NAME](Boolean).foo !== 1;
+    });
+  };
+
+  var IS_CONCAT_SPREADABLE = wellKnownSymbol('isConcatSpreadable');
+  var MAX_SAFE_INTEGER$1 = 0x1FFFFFFFFFFFFF;
+  var MAXIMUM_ALLOWED_INDEX_EXCEEDED = 'Maximum allowed index exceeded';
+  var TypeError$4 = global_1.TypeError;
+
+  // We can't use this feature detection in V8 since it causes
+  // deoptimization and serious performance degradation
+  // https://github.com/zloirock/core-js/issues/679
+  var IS_CONCAT_SPREADABLE_SUPPORT = engineV8Version >= 51 || !fails(function () {
+    var array = [];
+    array[IS_CONCAT_SPREADABLE] = false;
+    return array.concat()[0] !== array;
+  });
+
+  var SPECIES_SUPPORT = arrayMethodHasSpeciesSupport('concat');
+
+  var isConcatSpreadable = function (O) {
+    if (!isObject(O)) return false;
+    var spreadable = O[IS_CONCAT_SPREADABLE];
+    return spreadable !== undefined ? !!spreadable : isArray(O);
+  };
+
+  var FORCED$1 = !IS_CONCAT_SPREADABLE_SUPPORT || !SPECIES_SUPPORT;
+
+  // `Array.prototype.concat` method
+  // https://tc39.es/ecma262/#sec-array.prototype.concat
+  // with adding support of @@isConcatSpreadable and @@species
+  _export({ target: 'Array', proto: true, forced: FORCED$1 }, {
+    // eslint-disable-next-line no-unused-vars -- required for `.length`
+    concat: function concat(arg) {
+      var O = toObject(this);
+      var A = arraySpeciesCreate(O, 0);
+      var n = 0;
+      var i, k, length, len, E;
+      for (i = -1, length = arguments.length; i < length; i++) {
+        E = i === -1 ? O : arguments[i];
+        if (isConcatSpreadable(E)) {
+          len = lengthOfArrayLike(E);
+          if (n + len > MAX_SAFE_INTEGER$1) throw TypeError$4(MAXIMUM_ALLOWED_INDEX_EXCEEDED);
+          for (k = 0; k < len; k++, n++) if (k in E) createProperty(A, n, E[k]);
+        } else {
+          if (n >= MAX_SAFE_INTEGER$1) throw TypeError$4(MAXIMUM_ALLOWED_INDEX_EXCEEDED);
+          createProperty(A, n++, E);
+        }
+      }
+      A.length = n;
+      return A;
+    }
+  });
+
+  // `Object.prototype.toString` method implementation
+  // https://tc39.es/ecma262/#sec-object.prototype.tostring
+  var objectToString = toStringTagSupport ? {}.toString : function toString() {
+    return '[object ' + classof(this) + ']';
+  };
+
+  // `Object.prototype.toString` method
+  // https://tc39.es/ecma262/#sec-object.prototype.tostring
+  if (!toStringTagSupport) {
+    redefine(Object.prototype, 'toString', objectToString, { unsafe: true });
+  }
+
+  var PROPER_FUNCTION_NAME = functionName.PROPER;
+
+
+
+
+
+
+
+  var TO_STRING = 'toString';
+  var RegExpPrototype = RegExp.prototype;
+  var n$ToString = RegExpPrototype[TO_STRING];
+  var getFlags = functionUncurryThis(regexpFlags);
+
+  var NOT_GENERIC = fails(function () { return n$ToString.call({ source: 'a', flags: 'b' }) != '/a/b'; });
+  // FF44- RegExp#toString has a wrong name
+  var INCORRECT_NAME = PROPER_FUNCTION_NAME && n$ToString.name != TO_STRING;
+
+  // `RegExp.prototype.toString` method
+  // https://tc39.es/ecma262/#sec-regexp.prototype.tostring
+  if (NOT_GENERIC || INCORRECT_NAME) {
+    redefine(RegExp.prototype, TO_STRING, function toString() {
+      var R = anObject(this);
+      var p = toString_1(R.source);
+      var rf = R.flags;
+      var f = toString_1(rf === undefined && objectIsPrototypeOf(RegExpPrototype, R) && !('flags' in RegExpPrototype) ? getFlags(R) : rf);
+      return '/' + p + '/' + f;
+    }, { unsafe: true });
+  }
+
+  var FunctionPrototype = Function.prototype;
+  var apply = FunctionPrototype.apply;
+  var bind$1 = FunctionPrototype.bind;
+  var call = FunctionPrototype.call;
+
+  // eslint-disable-next-line es/no-reflect -- safe
+  var functionApply = typeof Reflect == 'object' && Reflect.apply || (bind$1 ? call.bind(apply) : function () {
+    return call.apply(apply, arguments);
+  });
+
+  var MATCH$1 = wellKnownSymbol('match');
+
+  // `IsRegExp` abstract operation
+  // https://tc39.es/ecma262/#sec-isregexp
+  var isRegexp = function (it) {
+    var isRegExp;
+    return isObject(it) && ((isRegExp = it[MATCH$1]) !== undefined ? !!isRegExp : classofRaw(it) == 'RegExp');
+  };
+
+  var TypeError$3 = global_1.TypeError;
+
+  // `Assert: IsConstructor(argument) is true`
+  var aConstructor = function (argument) {
+    if (isConstructor(argument)) return argument;
+    throw TypeError$3(tryToString(argument) + ' is not a constructor');
+  };
+
+  var SPECIES$1 = wellKnownSymbol('species');
+
+  // `SpeciesConstructor` abstract operation
+  // https://tc39.es/ecma262/#sec-speciesconstructor
+  var speciesConstructor = function (O, defaultConstructor) {
+    var C = anObject(O).constructor;
+    var S;
+    return C === undefined || (S = anObject(C)[SPECIES$1]) == undefined ? defaultConstructor : aConstructor(S);
+  };
+
+  var arraySlice = functionUncurryThis([].slice);
+
+  var UNSUPPORTED_Y = regexpStickyHelpers.UNSUPPORTED_Y;
+  var MAX_UINT32 = 0xFFFFFFFF;
+  var min$2 = Math.min;
+  var $push = [].push;
+  var exec = functionUncurryThis(/./.exec);
+  var push$3 = functionUncurryThis($push);
+  var stringSlice$2 = functionUncurryThis(''.slice);
+
+  // Chrome 51 has a buggy "split" implementation when RegExp#exec !== nativeExec
+  // Weex JS has frozen built-in prototypes, so use try / catch wrapper
+  var SPLIT_WORKS_WITH_OVERWRITTEN_EXEC = !fails(function () {
+    // eslint-disable-next-line regexp/no-empty-group -- required for testing
+    var re = /(?:)/;
+    var originalExec = re.exec;
+    re.exec = function () { return originalExec.apply(this, arguments); };
+    var result = 'ab'.split(re);
+    return result.length !== 2 || result[0] !== 'a' || result[1] !== 'b';
+  });
+
+  // @@split logic
+  fixRegexpWellKnownSymbolLogic('split', function (SPLIT, nativeSplit, maybeCallNative) {
+    var internalSplit;
+    if (
+      'abbc'.split(/(b)*/)[1] == 'c' ||
+      // eslint-disable-next-line regexp/no-empty-group -- required for testing
+      'test'.split(/(?:)/, -1).length != 4 ||
+      'ab'.split(/(?:ab)*/).length != 2 ||
+      '.'.split(/(.?)(.?)/).length != 4 ||
+      // eslint-disable-next-line regexp/no-empty-capturing-group, regexp/no-empty-group -- required for testing
+      '.'.split(/()()/).length > 1 ||
+      ''.split(/.?/).length
+    ) {
+      // based on es5-shim implementation, need to rework it
+      internalSplit = function (separator, limit) {
+        var string = toString_1(requireObjectCoercible(this));
+        var lim = limit === undefined ? MAX_UINT32 : limit >>> 0;
+        if (lim === 0) return [];
+        if (separator === undefined) return [string];
+        // If `separator` is not a regex, use native split
+        if (!isRegexp(separator)) {
+          return functionCall(nativeSplit, string, separator, lim);
+        }
+        var output = [];
+        var flags = (separator.ignoreCase ? 'i' : '') +
+                    (separator.multiline ? 'm' : '') +
+                    (separator.unicode ? 'u' : '') +
+                    (separator.sticky ? 'y' : '');
+        var lastLastIndex = 0;
+        // Make `global` and avoid `lastIndex` issues by working with a copy
+        var separatorCopy = new RegExp(separator.source, flags + 'g');
+        var match, lastIndex, lastLength;
+        while (match = functionCall(regexpExec, separatorCopy, string)) {
+          lastIndex = separatorCopy.lastIndex;
+          if (lastIndex > lastLastIndex) {
+            push$3(output, stringSlice$2(string, lastLastIndex, match.index));
+            if (match.length > 1 && match.index < string.length) functionApply($push, output, arraySlice(match, 1));
+            lastLength = match[0].length;
+            lastLastIndex = lastIndex;
+            if (output.length >= lim) break;
+          }
+          if (separatorCopy.lastIndex === match.index) separatorCopy.lastIndex++; // Avoid an infinite loop
+        }
+        if (lastLastIndex === string.length) {
+          if (lastLength || !exec(separatorCopy, '')) push$3(output, '');
+        } else push$3(output, stringSlice$2(string, lastLastIndex));
+        return output.length > lim ? arraySlice(output, 0, lim) : output;
+      };
+    // Chakra, V8
+    } else if ('0'.split(undefined, 0).length) {
+      internalSplit = function (separator, limit) {
+        return separator === undefined && limit === 0 ? [] : functionCall(nativeSplit, this, separator, limit);
+      };
+    } else internalSplit = nativeSplit;
+
+    return [
+      // `String.prototype.split` method
+      // https://tc39.es/ecma262/#sec-string.prototype.split
+      function split(separator, limit) {
+        var O = requireObjectCoercible(this);
+        var splitter = separator == undefined ? undefined : getMethod(separator, SPLIT);
+        return splitter
+          ? functionCall(splitter, separator, O, limit)
+          : functionCall(internalSplit, toString_1(O), separator, limit);
+      },
+      // `RegExp.prototype[@@split]` method
+      // https://tc39.es/ecma262/#sec-regexp.prototype-@@split
+      //
+      // NOTE: This cannot be properly polyfilled in engines that don't support
+      // the 'y' flag.
+      function (string, limit) {
+        var rx = anObject(this);
+        var S = toString_1(string);
+        var res = maybeCallNative(internalSplit, rx, S, limit, internalSplit !== nativeSplit);
+
+        if (res.done) return res.value;
+
+        var C = speciesConstructor(rx, RegExp);
+
+        var unicodeMatching = rx.unicode;
+        var flags = (rx.ignoreCase ? 'i' : '') +
+                    (rx.multiline ? 'm' : '') +
+                    (rx.unicode ? 'u' : '') +
+                    (UNSUPPORTED_Y ? 'g' : 'y');
+
+        // ^(? + rx + ) is needed, in combination with some S slicing, to
+        // simulate the 'y' flag.
+        var splitter = new C(UNSUPPORTED_Y ? '^(?:' + rx.source + ')' : rx, flags);
+        var lim = limit === undefined ? MAX_UINT32 : limit >>> 0;
+        if (lim === 0) return [];
+        if (S.length === 0) return regexpExecAbstract(splitter, S) === null ? [S] : [];
+        var p = 0;
+        var q = 0;
+        var A = [];
+        while (q < S.length) {
+          splitter.lastIndex = UNSUPPORTED_Y ? 0 : q;
+          var z = regexpExecAbstract(splitter, UNSUPPORTED_Y ? stringSlice$2(S, q) : S);
+          var e;
+          if (
+            z === null ||
+            (e = min$2(toLength(splitter.lastIndex + (UNSUPPORTED_Y ? q : 0)), S.length)) === p
+          ) {
+            q = advanceStringIndex(S, q, unicodeMatching);
+          } else {
+            push$3(A, stringSlice$2(S, p, q));
+            if (A.length === lim) return A;
+            for (var i = 1; i <= z.length - 1; i++) {
+              push$3(A, z[i]);
+              if (A.length === lim) return A;
+            }
+            q = p = e;
+          }
+        }
+        push$3(A, stringSlice$2(S, p));
+        return A;
+      }
+    ];
+  }, !SPLIT_WORKS_WITH_OVERWRITTEN_EXEC, UNSUPPORTED_Y);
+
+  /**
+   * Append a class to an element
+   *
+   * @api private
+   * @method _addClass
+   * @param {Object} element
+   * @param {String} className
+   * @returns null
+   */
+
+  function addClass(element, className) {
+    if (element instanceof SVGElement) {
+      // svg
+      var pre = element.getAttribute("class") || "";
+
+      if (!pre.match(className)) {
+        // check if element doesn't already have className
+        element.setAttribute("class", "".concat(pre, " ").concat(className));
+      }
+    } else {
+      if (element.classList !== undefined) {
+        // check for modern classList property
+        var classes = className.split(" ");
+        forEach(classes, function (cls) {
+          element.classList.add(cls);
+        });
+      } else if (!element.className.match(className)) {
+        // check if element doesn't already have className
+        element.className += " ".concat(className);
+      }
+    }
+  }
+
+  /**
+   * Get an element CSS property on the page
+   * Thanks to JavaScript Kit: http://www.javascriptkit.com/dhtmltutors/dhtmlcascade4.shtml
+   *
+   * @api private
+   * @method _getPropValue
+   * @param {Object} element
+   * @param {String} propName
+   * @returns string property value
+   */
+  function getPropValue(element, propName) {
+    var propValue = "";
+
+    if (element.currentStyle) {
+      //IE
+      propValue = element.currentStyle[propName];
+    } else if (document.defaultView && document.defaultView.getComputedStyle) {
+      //Others
+      propValue = document.defaultView.getComputedStyle(element, null).getPropertyValue(propName);
+    } //Prevent exception in IE
+
+
+    if (propValue && propValue.toLowerCase) {
+      return propValue.toLowerCase();
+    } else {
+      return propValue;
+    }
+  }
+
+  /**
+   * To set the show element
+   * This function set a relative (in most cases) position and changes the z-index
+   *
+   * @api private
+   * @method _setShowElement
+   * @param {Object} targetElement
+   */
+
+  function setShowElement(_ref) {
+    var element = _ref.element;
+    addClass(element, "introjs-showElement");
+    var currentElementPosition = getPropValue(element, "position");
+
+    if (currentElementPosition !== "absolute" && currentElementPosition !== "relative" && currentElementPosition !== "sticky" && currentElementPosition !== "fixed") {
+      //change to new intro item
+      addClass(element, "introjs-relativePosition");
+    }
+  }
+
+  /**
+   * Find the nearest scrollable parent
+   * copied from https://stackoverflow.com/questions/35939886/find-first-scrollable-parent
+   *
+   * @param Element element
+   * @return Element
+   */
+  function getScrollParent(element) {
+    var style = window.getComputedStyle(element);
+    var excludeStaticParent = style.position === "absolute";
+    var overflowRegex = /(auto|scroll)/;
+    if (style.position === "fixed") return document.body;
+
+    for (var parent = element; parent = parent.parentElement;) {
+      style = window.getComputedStyle(parent);
+
+      if (excludeStaticParent && style.position === "static") {
+        continue;
+      }
+
+      if (overflowRegex.test(style.overflow + style.overflowY + style.overflowX)) return parent;
+    }
+
+    return document.body;
+  }
+
+  /**
+   * scroll a scrollable element to a child element
+   *
+   * @param {Object} targetElement
+   */
+
+  function scrollParentToElement(targetElement) {
+    var element = targetElement.element;
+    if (!this._options.scrollToElement) return;
+    var parent = getScrollParent(element);
+    if (parent === document.body) return;
+    parent.scrollTop = element.offsetTop - parent.offsetTop;
+  }
+
+  /**
+   * Provides a cross-browser way to get the screen dimensions
+   * via: http://stackoverflow.com/questions/5864467/internet-explorer-innerheight
+   *
+   * @api private
+   * @method _getWinSize
+   * @returns {Object} width and height attributes
+   */
+  function getWinSize() {
+    if (window.innerWidth !== undefined) {
+      return {
+        width: window.innerWidth,
+        height: window.innerHeight
+      };
+    } else {
+      var D = document.documentElement;
+      return {
+        width: D.clientWidth,
+        height: D.clientHeight
+      };
+    }
+  }
+
+  /**
+   * Check to see if the element is in the viewport or not
+   * http://stackoverflow.com/questions/123999/how-to-tell-if-a-dom-element-is-visible-in-the-current-viewport
+   *
+   * @api private
+   * @method _elementInViewport
+   * @param {Object} el
+   */
+  function elementInViewport(el) {
+    var rect = el.getBoundingClientRect();
+    return rect.top >= 0 && rect.left >= 0 && rect.bottom + 80 <= window.innerHeight && // add 80 to get the text right
+    rect.right <= window.innerWidth;
+  }
+
+  /**
+   * To change the scroll of `window` after highlighting an element
+   *
+   * @api private
+   * @param {String} scrollTo
+   * @param {Object} targetElement
+   * @param {Object} tooltipLayer
+   */
+
+  function scrollTo(scrollTo, _ref, tooltipLayer) {
+    var element = _ref.element;
+    if (scrollTo === "off") return;
+    var rect;
+    if (!this._options.scrollToElement) return;
+
+    if (scrollTo === "tooltip") {
+      rect = tooltipLayer.getBoundingClientRect();
+    } else {
+      rect = element.getBoundingClientRect();
+    }
+
+    if (!elementInViewport(element)) {
+      var winHeight = getWinSize().height;
+      var top = rect.bottom - (rect.bottom - rect.top); // TODO (afshinm): do we need scroll padding now?
+      // I have changed the scroll option and now it scrolls the window to
+      // the center of the target element or tooltip.
+
+      if (top < 0 || element.clientHeight > winHeight) {
+        window.scrollBy(0, rect.top - (winHeight / 2 - rect.height / 2) - this._options.scrollPadding); // 30px padding from edge to look nice
+        //Scroll down
+      } else {
+        window.scrollBy(0, rect.top - (winHeight / 2 - rect.height / 2) + this._options.scrollPadding); // 30px padding from edge to look nice
+      }
+    }
+  }
+
+  /**
+   * Setting anchors to behave like buttons
+   *
+   * @api private
+   * @method _setAnchorAsButton
+   */
+  function setAnchorAsButton(anchor) {
+    anchor.setAttribute("role", "button");
+    anchor.tabIndex = 0;
+  }
+
+  // eslint-disable-next-line es/no-object-assign -- safe
+  var $assign = Object.assign;
+  // eslint-disable-next-line es/no-object-defineproperty -- required for testing
+  var defineProperty = Object.defineProperty;
+  var concat$1 = functionUncurryThis([].concat);
+
+  // `Object.assign` method
+  // https://tc39.es/ecma262/#sec-object.assign
+  var objectAssign = !$assign || fails(function () {
+    // should have correct order of operations (Edge bug)
+    if (descriptors && $assign({ b: 1 }, $assign(defineProperty({}, 'a', {
+      enumerable: true,
+      get: function () {
+        defineProperty(this, 'b', {
+          value: 3,
+          enumerable: false
+        });
+      }
+    }), { b: 2 })).b !== 1) return true;
+    // should work with symbols and should have deterministic property order (V8 bug)
+    var A = {};
+    var B = {};
+    // eslint-disable-next-line es/no-symbol -- safe
+    var symbol = Symbol();
+    var alphabet = 'abcdefghijklmnopqrst';
+    A[symbol] = 7;
+    alphabet.split('').forEach(function (chr) { B[chr] = chr; });
+    return $assign({}, A)[symbol] != 7 || objectKeys($assign({}, B)).join('') != alphabet;
+  }) ? function assign(target, source) { // eslint-disable-line no-unused-vars -- required for `.length`
+    var T = toObject(target);
+    var argumentsLength = arguments.length;
+    var index = 1;
+    var getOwnPropertySymbols = objectGetOwnPropertySymbols.f;
+    var propertyIsEnumerable = objectPropertyIsEnumerable.f;
+    while (argumentsLength > index) {
+      var S = indexedObject(arguments[index++]);
+      var keys = getOwnPropertySymbols ? concat$1(objectKeys(S), getOwnPropertySymbols(S)) : objectKeys(S);
+      var length = keys.length;
+      var j = 0;
+      var key;
+      while (length > j) {
+        key = keys[j++];
+        if (!descriptors || functionCall(propertyIsEnumerable, S, key)) T[key] = S[key];
+      }
+    } return T;
+  } : $assign;
+
+  // `Object.assign` method
+  // https://tc39.es/ecma262/#sec-object.assign
+  // eslint-disable-next-line es/no-object-assign -- required for testing
+  _export({ target: 'Object', stat: true, forced: Object.assign !== objectAssign }, {
+    assign: objectAssign
+  });
+
+  /**
+   * Checks to see if target element (or parents) position is fixed or not
+   *
+   * @api private
+   * @method _isFixed
+   * @param {Object} element
+   * @returns Boolean
+   */
+
+  function isFixed(element) {
+    var p = element.parentNode;
+
+    if (!p || p.nodeName === "HTML") {
+      return false;
+    }
+
+    if (getPropValue(element, "position") === "fixed") {
+      return true;
+    }
+
+    return isFixed(p);
+  }
+
+  /**
+   * Get an element position on the page relative to another element (or body)
+   * Thanks to `meouw`: http://stackoverflow.com/a/442474/375966
+   *
+   * @api private
+   * @method getOffset
+   * @param {Object} element
+   * @param {Object} relativeEl
+   * @returns Element's position info
+   */
+
+  function getOffset(element, relativeEl) {
+    var body = document.body;
+    var docEl = document.documentElement;
+    var scrollTop = window.pageYOffset || docEl.scrollTop || body.scrollTop;
+    var scrollLeft = window.pageXOffset || docEl.scrollLeft || body.scrollLeft;
+    relativeEl = relativeEl || body;
+    var x = element.getBoundingClientRect();
+    var xr = relativeEl.getBoundingClientRect();
+    var relativeElPosition = getPropValue(relativeEl, "position");
+    var obj = {
+      width: x.width,
+      height: x.height
+    };
+
+    if (relativeEl.tagName.toLowerCase() !== "body" && relativeElPosition === "relative" || relativeElPosition === "sticky") {
+      // when the container of our target element is _not_ body and has either "relative" or "sticky" position, we should not
+      // consider the scroll position but we need to include the relative x/y of the container element
+      return Object.assign(obj, {
+        top: x.top - xr.top,
+        left: x.left - xr.left
+      });
+    } else {
+      if (isFixed(element)) {
+        return Object.assign(obj, {
+          top: x.top,
+          left: x.left
+        });
+      } else {
+        return Object.assign(obj, {
+          top: x.top + scrollTop,
+          left: x.left + scrollLeft
+        });
+      }
+    }
+  }
+
+  var floor$1 = Math.floor;
+  var charAt = functionUncurryThis(''.charAt);
+  var replace = functionUncurryThis(''.replace);
+  var stringSlice$1 = functionUncurryThis(''.slice);
+  var SUBSTITUTION_SYMBOLS = /\$([$&'`]|\d{1,2}|<[^>]*>)/g;
+  var SUBSTITUTION_SYMBOLS_NO_NAMED = /\$([$&'`]|\d{1,2})/g;
+
+  // `GetSubstitution` abstract operation
+  // https://tc39.es/ecma262/#sec-getsubstitution
+  var getSubstitution = function (matched, str, position, captures, namedCaptures, replacement) {
+    var tailPos = position + matched.length;
+    var m = captures.length;
+    var symbols = SUBSTITUTION_SYMBOLS_NO_NAMED;
+    if (namedCaptures !== undefined) {
+      namedCaptures = toObject(namedCaptures);
+      symbols = SUBSTITUTION_SYMBOLS;
+    }
+    return replace(replacement, symbols, function (match, ch) {
+      var capture;
+      switch (charAt(ch, 0)) {
+        case '$': return '$';
+        case '&': return matched;
+        case '`': return stringSlice$1(str, 0, position);
+        case "'": return stringSlice$1(str, tailPos);
+        case '<':
+          capture = namedCaptures[stringSlice$1(ch, 1, -1)];
+          break;
+        default: // \d\d?
+          var n = +ch;
+          if (n === 0) return match;
+          if (n > m) {
+            var f = floor$1(n / 10);
+            if (f === 0) return match;
+            if (f <= m) return captures[f - 1] === undefined ? charAt(ch, 1) : captures[f - 1] + charAt(ch, 1);
+            return match;
+          }
+          capture = captures[n - 1];
+      }
+      return capture === undefined ? '' : capture;
+    });
+  };
+
+  var REPLACE = wellKnownSymbol('replace');
+  var max$2 = Math.max;
+  var min$1 = Math.min;
+  var concat = functionUncurryThis([].concat);
+  var push$2 = functionUncurryThis([].push);
+  var stringIndexOf$1 = functionUncurryThis(''.indexOf);
+  var stringSlice = functionUncurryThis(''.slice);
+
+  var maybeToString = function (it) {
+    return it === undefined ? it : String(it);
+  };
+
+  // IE <= 11 replaces $0 with the whole match, as if it was $&
+  // https://stackoverflow.com/questions/6024666/getting-ie-to-replace-a-regex-with-the-literal-string-0
+  var REPLACE_KEEPS_$0 = (function () {
+    // eslint-disable-next-line regexp/prefer-escape-replacement-dollar-char -- required for testing
+    return 'a'.replace(/./, '$0') === '$0';
+  })();
+
+  // Safari <= 13.0.3(?) substitutes nth capture where n>m with an empty string
+  var REGEXP_REPLACE_SUBSTITUTES_UNDEFINED_CAPTURE = (function () {
+    if (/./[REPLACE]) {
+      return /./[REPLACE]('a', '$0') === '';
+    }
+    return false;
+  })();
+
+  var REPLACE_SUPPORTS_NAMED_GROUPS = !fails(function () {
+    var re = /./;
+    re.exec = function () {
+      var result = [];
+      result.groups = { a: '7' };
+      return result;
+    };
+    // eslint-disable-next-line regexp/no-useless-dollar-replacements -- false positive
+    return ''.replace(re, '$<a>') !== '7';
+  });
+
+  // @@replace logic
+  fixRegexpWellKnownSymbolLogic('replace', function (_, nativeReplace, maybeCallNative) {
+    var UNSAFE_SUBSTITUTE = REGEXP_REPLACE_SUBSTITUTES_UNDEFINED_CAPTURE ? '$' : '$0';
+
+    return [
+      // `String.prototype.replace` method
+      // https://tc39.es/ecma262/#sec-string.prototype.replace
+      function replace(searchValue, replaceValue) {
+        var O = requireObjectCoercible(this);
+        var replacer = searchValue == undefined ? undefined : getMethod(searchValue, REPLACE);
+        return replacer
+          ? functionCall(replacer, searchValue, O, replaceValue)
+          : functionCall(nativeReplace, toString_1(O), searchValue, replaceValue);
+      },
+      // `RegExp.prototype[@@replace]` method
+      // https://tc39.es/ecma262/#sec-regexp.prototype-@@replace
+      function (string, replaceValue) {
+        var rx = anObject(this);
+        var S = toString_1(string);
+
+        if (
+          typeof replaceValue == 'string' &&
+          stringIndexOf$1(replaceValue, UNSAFE_SUBSTITUTE) === -1 &&
+          stringIndexOf$1(replaceValue, '$<') === -1
+        ) {
+          var res = maybeCallNative(nativeReplace, rx, S, replaceValue);
+          if (res.done) return res.value;
+        }
+
+        var functionalReplace = isCallable(replaceValue);
+        if (!functionalReplace) replaceValue = toString_1(replaceValue);
+
+        var global = rx.global;
+        if (global) {
+          var fullUnicode = rx.unicode;
+          rx.lastIndex = 0;
+        }
+        var results = [];
+        while (true) {
+          var result = regexpExecAbstract(rx, S);
+          if (result === null) break;
+
+          push$2(results, result);
+          if (!global) break;
+
+          var matchStr = toString_1(result[0]);
+          if (matchStr === '') rx.lastIndex = advanceStringIndex(S, toLength(rx.lastIndex), fullUnicode);
+        }
+
+        var accumulatedResult = '';
+        var nextSourcePosition = 0;
+        for (var i = 0; i < results.length; i++) {
+          result = results[i];
+
+          var matched = toString_1(result[0]);
+          var position = max$2(min$1(toIntegerOrInfinity(result.index), S.length), 0);
+          var captures = [];
+          // NOTE: This is equivalent to
+          //   captures = result.slice(1).map(maybeToString)
+          // but for some reason `nativeSlice.call(result, 1, result.length)` (called in
+          // the slice polyfill when slicing native arrays) "doesn't work" in safari 9 and
+          // causes a crash (https://pastebin.com/N21QzeQA) when trying to debug it.
+          for (var j = 1; j < result.length; j++) push$2(captures, maybeToString(result[j]));
+          var namedCaptures = result.groups;
+          if (functionalReplace) {
+            var replacerArgs = concat([matched], captures, position, S);
+            if (namedCaptures !== undefined) push$2(replacerArgs, namedCaptures);
+            var replacement = toString_1(functionApply(replaceValue, undefined, replacerArgs));
+          } else {
+            replacement = getSubstitution(matched, S, position, captures, namedCaptures, replaceValue);
+          }
+          if (position >= nextSourcePosition) {
+            accumulatedResult += stringSlice(S, nextSourcePosition, position) + replacement;
+            nextSourcePosition = position + matched.length;
+          }
+        }
+        return accumulatedResult + stringSlice(S, nextSourcePosition);
+      }
+    ];
+  }, !REPLACE_SUPPORTS_NAMED_GROUPS || !REPLACE_KEEPS_$0 || REGEXP_REPLACE_SUBSTITUTES_UNDEFINED_CAPTURE);
+
+  /**
+   * Remove a class from an element
+   *
+   * @api private
+   * @method _removeClass
+   * @param {Object} element
+   * @param {RegExp|String} classNameRegex can be regex or string
+   * @returns null
+   */
+  function removeClass(element, classNameRegex) {
+    if (element instanceof SVGElement) {
+      var pre = element.getAttribute("class") || "";
+      element.setAttribute("class", pre.replace(classNameRegex, "").replace(/^\s+|\s+$/g, ""));
+    } else {
+      element.className = element.className.replace(classNameRegex, "").replace(/^\s+|\s+$/g, "");
+    }
+  }
+
+  /**
+   * Sets the style of an DOM element
+   *
+   * @param {Object} element
+   * @param {Object|string} style
+   * @return null
+   */
+  function setStyle(element, style) {
+    var cssText = "";
+
+    if (element.style.cssText) {
+      cssText += element.style.cssText;
+    }
+
+    if (typeof style === "string") {
+      cssText += style;
+    } else {
+      for (var rule in style) {
+        cssText += "".concat(rule, ":").concat(style[rule], ";");
+      }
+    }
+
+    element.style.cssText = cssText;
+  }
+
+  /**
+   * Update the position of the helper layer on the screen
+   *
+   * @api private
+   * @method _setHelperLayerPosition
+   * @param {Object} helperLayer
+   */
+
+  function setHelperLayerPosition(helperLayer) {
+    if (helperLayer) {
+      //prevent error when `this._currentStep` in undefined
+      if (!this._introItems[this._currentStep]) return;
+      var currentElement = this._introItems[this._currentStep];
+      var elementPosition = getOffset(currentElement.element, this._targetElement);
+      var widthHeightPadding = this._options.helperElementPadding; // If the target element is fixed, the tooltip should be fixed as well.
+      // Otherwise, remove a fixed class that may be left over from the previous
+      // step.
+
+      if (isFixed(currentElement.element)) {
+        addClass(helperLayer, "introjs-fixedTooltip");
+      } else {
+        removeClass(helperLayer, "introjs-fixedTooltip");
+      }
+
+      if (currentElement.position === "floating") {
+        widthHeightPadding = 0;
+      } //set new position to helper layer
+
+
+      setStyle(helperLayer, {
+        width: "".concat(elementPosition.width + widthHeightPadding, "px"),
+        height: "".concat(elementPosition.height + widthHeightPadding, "px"),
+        top: "".concat(elementPosition.top - widthHeightPadding / 2, "px"),
+        left: "".concat(elementPosition.left - widthHeightPadding / 2, "px")
+      });
+    }
+  }
+
+  var UNSCOPABLES = wellKnownSymbol('unscopables');
+  var ArrayPrototype = Array.prototype;
+
+  // Array.prototype[@@unscopables]
+  // https://tc39.es/ecma262/#sec-array.prototype-@@unscopables
+  if (ArrayPrototype[UNSCOPABLES] == undefined) {
+    objectDefineProperty.f(ArrayPrototype, UNSCOPABLES, {
+      configurable: true,
+      value: objectCreate(null)
+    });
+  }
+
+  // add a key to Array.prototype[@@unscopables]
+  var addToUnscopables = function (key) {
+    ArrayPrototype[UNSCOPABLES][key] = true;
+  };
+
+  var $includes = arrayIncludes.includes;
+
+
+  // `Array.prototype.includes` method
+  // https://tc39.es/ecma262/#sec-array.prototype.includes
+  _export({ target: 'Array', proto: true }, {
+    includes: function includes(el /* , fromIndex = 0 */) {
+      return $includes(this, el, arguments.length > 1 ? arguments[1] : undefined);
+    }
+  });
+
+  // https://tc39.es/ecma262/#sec-array.prototype-@@unscopables
+  addToUnscopables('includes');
+
+  var HAS_SPECIES_SUPPORT$2 = arrayMethodHasSpeciesSupport('slice');
+
+  var SPECIES = wellKnownSymbol('species');
+  var Array$1 = global_1.Array;
+  var max$1 = Math.max;
+
+  // `Array.prototype.slice` method
+  // https://tc39.es/ecma262/#sec-array.prototype.slice
+  // fallback for not array-like ES3 strings and DOM objects
+  _export({ target: 'Array', proto: true, forced: !HAS_SPECIES_SUPPORT$2 }, {
+    slice: function slice(start, end) {
+      var O = toIndexedObject(this);
+      var length = lengthOfArrayLike(O);
+      var k = toAbsoluteIndex(start, length);
+      var fin = toAbsoluteIndex(end === undefined ? length : end, length);
+      // inline `ArraySpeciesCreate` for usage native `Array#slice` where it's possible
+      var Constructor, result, n;
+      if (isArray(O)) {
+        Constructor = O.constructor;
+        // cross-realm fallback
+        if (isConstructor(Constructor) && (Constructor === Array$1 || isArray(Constructor.prototype))) {
+          Constructor = undefined;
+        } else if (isObject(Constructor)) {
+          Constructor = Constructor[SPECIES];
+          if (Constructor === null) Constructor = undefined;
+        }
+        if (Constructor === Array$1 || Constructor === undefined) {
+          return arraySlice(O, k, fin);
+        }
+      }
+      result = new (Constructor === undefined ? Array$1 : Constructor)(max$1(fin - k, 0));
+      for (n = 0; k < fin; k++, n++) if (k in O) createProperty(result, n, O[k]);
+      result.length = n;
+      return result;
+    }
+  });
+
+  var TypeError$2 = global_1.TypeError;
+
+  var notARegexp = function (it) {
+    if (isRegexp(it)) {
+      throw TypeError$2("The method doesn't accept regular expressions");
+    } return it;
+  };
+
+  var MATCH = wellKnownSymbol('match');
+
+  var correctIsRegexpLogic = function (METHOD_NAME) {
+    var regexp = /./;
+    try {
+      '/./'[METHOD_NAME](regexp);
+    } catch (error1) {
+      try {
+        regexp[MATCH] = false;
+        return '/./'[METHOD_NAME](regexp);
+      } catch (error2) { /* empty */ }
+    } return false;
+  };
+
+  var stringIndexOf = functionUncurryThis(''.indexOf);
+
+  // `String.prototype.includes` method
+  // https://tc39.es/ecma262/#sec-string.prototype.includes
+  _export({ target: 'String', proto: true, forced: !correctIsRegexpLogic('includes') }, {
+    includes: function includes(searchString /* , position = 0 */) {
+      return !!~stringIndexOf(
+        toString_1(requireObjectCoercible(this)),
+        toString_1(notARegexp(searchString)),
+        arguments.length > 1 ? arguments[1] : undefined
+      );
+    }
+  });
+
+  var arrayMethodIsStrict = function (METHOD_NAME, argument) {
+    var method = [][METHOD_NAME];
+    return !!method && fails(function () {
+      // eslint-disable-next-line no-useless-call,no-throw-literal -- required for testing
+      method.call(null, argument || function () { throw 1; }, 1);
+    });
+  };
+
+  var un$Join = functionUncurryThis([].join);
+
+  var ES3_STRINGS = indexedObject != Object;
+  var STRICT_METHOD$1 = arrayMethodIsStrict('join', ',');
+
+  // `Array.prototype.join` method
+  // https://tc39.es/ecma262/#sec-array.prototype.join
+  _export({ target: 'Array', proto: true, forced: ES3_STRINGS || !STRICT_METHOD$1 }, {
+    join: function join(separator) {
+      return un$Join(toIndexedObject(this), separator === undefined ? ',' : separator);
+    }
+  });
+
+  var bind = functionUncurryThis(functionUncurryThis.bind);
+
+  // optional / simple context binding
+  var functionBindContext = function (fn, that) {
+    aCallable(fn);
+    return that === undefined ? fn : bind ? bind(fn, that) : function (/* ...args */) {
+      return fn.apply(that, arguments);
+    };
+  };
+
+  var push$1 = functionUncurryThis([].push);
+
+  // `Array.prototype.{ forEach, map, filter, some, every, find, findIndex, filterReject }` methods implementation
+  var createMethod = function (TYPE) {
+    var IS_MAP = TYPE == 1;
+    var IS_FILTER = TYPE == 2;
+    var IS_SOME = TYPE == 3;
+    var IS_EVERY = TYPE == 4;
+    var IS_FIND_INDEX = TYPE == 6;
+    var IS_FILTER_REJECT = TYPE == 7;
+    var NO_HOLES = TYPE == 5 || IS_FIND_INDEX;
+    return function ($this, callbackfn, that, specificCreate) {
+      var O = toObject($this);
+      var self = indexedObject(O);
+      var boundFunction = functionBindContext(callbackfn, that);
+      var length = lengthOfArrayLike(self);
+      var index = 0;
+      var create = specificCreate || arraySpeciesCreate;
+      var target = IS_MAP ? create($this, length) : IS_FILTER || IS_FILTER_REJECT ? create($this, 0) : undefined;
+      var value, result;
+      for (;length > index; index++) if (NO_HOLES || index in self) {
+        value = self[index];
+        result = boundFunction(value, index, O);
+        if (TYPE) {
+          if (IS_MAP) target[index] = result; // map
+          else if (result) switch (TYPE) {
+            case 3: return true;              // some
+            case 5: return value;             // find
+            case 6: return index;             // findIndex
+            case 2: push$1(target, value);      // filter
+          } else switch (TYPE) {
+            case 4: return false;             // every
+            case 7: push$1(target, value);      // filterReject
+          }
+        }
+      }
+      return IS_FIND_INDEX ? -1 : IS_SOME || IS_EVERY ? IS_EVERY : target;
+    };
+  };
+
+  var arrayIteration = {
+    // `Array.prototype.forEach` method
+    // https://tc39.es/ecma262/#sec-array.prototype.foreach
+    forEach: createMethod(0),
+    // `Array.prototype.map` method
+    // https://tc39.es/ecma262/#sec-array.prototype.map
+    map: createMethod(1),
+    // `Array.prototype.filter` method
+    // https://tc39.es/ecma262/#sec-array.prototype.filter
+    filter: createMethod(2),
+    // `Array.prototype.some` method
+    // https://tc39.es/ecma262/#sec-array.prototype.some
+    some: createMethod(3),
+    // `Array.prototype.every` method
+    // https://tc39.es/ecma262/#sec-array.prototype.every
+    every: createMethod(4),
+    // `Array.prototype.find` method
+    // https://tc39.es/ecma262/#sec-array.prototype.find
+    find: createMethod(5),
+    // `Array.prototype.findIndex` method
+    // https://tc39.es/ecma262/#sec-array.prototype.findIndex
+    findIndex: createMethod(6),
+    // `Array.prototype.filterReject` method
+    // https://github.com/tc39/proposal-array-filtering
+    filterReject: createMethod(7)
+  };
+
+  var $filter = arrayIteration.filter;
+
+
+  var HAS_SPECIES_SUPPORT$1 = arrayMethodHasSpeciesSupport('filter');
+
+  // `Array.prototype.filter` method
+  // https://tc39.es/ecma262/#sec-array.prototype.filter
+  // with adding support of @@species
+  _export({ target: 'Array', proto: true, forced: !HAS_SPECIES_SUPPORT$1 }, {
+    filter: function filter(callbackfn /* , thisArg */) {
+      return $filter(this, callbackfn, arguments.length > 1 ? arguments[1] : undefined);
+    }
+  });
+
+  /**
+   * Set tooltip left so it doesn't go off the right side of the window
+   *
+   * @return boolean true, if tooltipLayerStyleLeft is ok.  false, otherwise.
+   */
+  function checkRight(targetOffset, tooltipLayerStyleLeft, tooltipOffset, windowSize, tooltipLayer) {
+    if (targetOffset.left + tooltipLayerStyleLeft + tooltipOffset.width > windowSize.width) {
+      // off the right side of the window
+      tooltipLayer.style.left = "".concat(windowSize.width - tooltipOffset.width - targetOffset.left, "px");
+      return false;
+    }
+
+    tooltipLayer.style.left = "".concat(tooltipLayerStyleLeft, "px");
+    return true;
+  }
+
+  /**
+   * Set tooltip right so it doesn't go off the left side of the window
+   *
+   * @return boolean true, if tooltipLayerStyleRight is ok.  false, otherwise.
+   */
+  function checkLeft(targetOffset, tooltipLayerStyleRight, tooltipOffset, tooltipLayer) {
+    if (targetOffset.left + targetOffset.width - tooltipLayerStyleRight - tooltipOffset.width < 0) {
+      // off the left side of the window
+      tooltipLayer.style.left = "".concat(-targetOffset.left, "px");
+      return false;
+    }
+
+    tooltipLayer.style.right = "".concat(tooltipLayerStyleRight, "px");
+    return true;
+  }
+
+  var HAS_SPECIES_SUPPORT = arrayMethodHasSpeciesSupport('splice');
+
+  var TypeError$1 = global_1.TypeError;
+  var max = Math.max;
+  var min = Math.min;
+  var MAX_SAFE_INTEGER = 0x1FFFFFFFFFFFFF;
+  var MAXIMUM_ALLOWED_LENGTH_EXCEEDED = 'Maximum allowed length exceeded';
+
+  // `Array.prototype.splice` method
+  // https://tc39.es/ecma262/#sec-array.prototype.splice
+  // with adding support of @@species
+  _export({ target: 'Array', proto: true, forced: !HAS_SPECIES_SUPPORT }, {
+    splice: function splice(start, deleteCount /* , ...items */) {
+      var O = toObject(this);
+      var len = lengthOfArrayLike(O);
+      var actualStart = toAbsoluteIndex(start, len);
+      var argumentsLength = arguments.length;
+      var insertCount, actualDeleteCount, A, k, from, to;
+      if (argumentsLength === 0) {
+        insertCount = actualDeleteCount = 0;
+      } else if (argumentsLength === 1) {
+        insertCount = 0;
+        actualDeleteCount = len - actualStart;
+      } else {
+        insertCount = argumentsLength - 2;
+        actualDeleteCount = min(max(toIntegerOrInfinity(deleteCount), 0), len - actualStart);
+      }
+      if (len + insertCount - actualDeleteCount > MAX_SAFE_INTEGER) {
+        throw TypeError$1(MAXIMUM_ALLOWED_LENGTH_EXCEEDED);
+      }
+      A = arraySpeciesCreate(O, actualDeleteCount);
+      for (k = 0; k < actualDeleteCount; k++) {
+        from = actualStart + k;
+        if (from in O) createProperty(A, k, O[from]);
+      }
+      A.length = actualDeleteCount;
+      if (insertCount < actualDeleteCount) {
+        for (k = actualStart; k < len - actualDeleteCount; k++) {
+          from = k + actualDeleteCount;
+          to = k + insertCount;
+          if (from in O) O[to] = O[from];
+          else delete O[to];
+        }
+        for (k = len; k > len - actualDeleteCount + insertCount; k--) delete O[k - 1];
+      } else if (insertCount > actualDeleteCount) {
+        for (k = len - actualDeleteCount; k > actualStart; k--) {
+          from = k + actualDeleteCount - 1;
+          to = k + insertCount - 1;
+          if (from in O) O[to] = O[from];
+          else delete O[to];
+        }
+      }
+      for (k = 0; k < insertCount; k++) {
+        O[k + actualStart] = arguments[k + 2];
+      }
+      O.length = len - actualDeleteCount + insertCount;
+      return A;
+    }
+  });
+
+  /**
+   * Remove an entry from a string array if it's there, does nothing if it isn't there.
+   *
+   * @param {Array} stringArray
+   * @param {String} stringToRemove
+   */
+  function removeEntry(stringArray, stringToRemove) {
+    if (stringArray.includes(stringToRemove)) {
+      stringArray.splice(stringArray.indexOf(stringToRemove), 1);
+    }
+  }
+
+  /**
+   * auto-determine alignment
+   * @param {Integer}  offsetLeft
+   * @param {Integer}  tooltipWidth
+   * @param {Object}   windowSize
+   * @param {String}   desiredAlignment
+   * @return {String}  calculatedAlignment
+   */
+
+  function _determineAutoAlignment(offsetLeft, tooltipWidth, _ref, desiredAlignment) {
+    var width = _ref.width;
+    var halfTooltipWidth = tooltipWidth / 2;
+    var winWidth = Math.min(width, window.screen.width);
+    var possibleAlignments = ["-left-aligned", "-middle-aligned", "-right-aligned"];
+    var calculatedAlignment = ""; // valid left must be at least a tooltipWidth
+    // away from right side
+
+    if (winWidth - offsetLeft < tooltipWidth) {
+      removeEntry(possibleAlignments, "-left-aligned");
+    } // valid middle must be at least half
+    // width away from both sides
+
+
+    if (offsetLeft < halfTooltipWidth || winWidth - offsetLeft < halfTooltipWidth) {
+      removeEntry(possibleAlignments, "-middle-aligned");
+    } // valid right must be at least a tooltipWidth
+    // width away from left side
+
+
+    if (offsetLeft < tooltipWidth) {
+      removeEntry(possibleAlignments, "-right-aligned");
+    }
+
+    if (possibleAlignments.length) {
+      if (possibleAlignments.includes(desiredAlignment)) {
+        // the desired alignment is valid
+        calculatedAlignment = desiredAlignment;
+      } else {
+        // pick the first valid position, in order
+        calculatedAlignment = possibleAlignments[0];
+      }
+    } else {
+      // if screen width is too small
+      // for ANY alignment, middle is
+      // probably the best for visibility
+      calculatedAlignment = "-middle-aligned";
+    }
+
+    return calculatedAlignment;
+  }
+  /**
+   * Determines the position of the tooltip based on the position precedence and availability
+   * of screen space.
+   *
+   * @param {Object}    targetElement
+   * @param {Object}    tooltipLayer
+   * @param {String}    desiredTooltipPosition
+   * @return {String}   calculatedPosition
+   */
+
+
+  function _determineAutoPosition(targetElement, tooltipLayer, desiredTooltipPosition) {
+    // Take a clone of position precedence. These will be the available
+    var possiblePositions = this._options.positionPrecedence.slice();
+
+    var windowSize = getWinSize();
+    var tooltipHeight = getOffset(tooltipLayer).height + 10;
+    var tooltipWidth = getOffset(tooltipLayer).width + 20;
+    var targetElementRect = targetElement.getBoundingClientRect(); // If we check all the possible areas, and there are no valid places for the tooltip, the element
+    // must take up most of the screen real estate. Show the tooltip floating in the middle of the screen.
+
+    var calculatedPosition = "floating";
+    /*
+     * auto determine position
+     */
+    // Check for space below
+
+    if (targetElementRect.bottom + tooltipHeight > windowSize.height) {
+      removeEntry(possiblePositions, "bottom");
+    } // Check for space above
+
+
+    if (targetElementRect.top - tooltipHeight < 0) {
+      removeEntry(possiblePositions, "top");
+    } // Check for space to the right
+
+
+    if (targetElementRect.right + tooltipWidth > windowSize.width) {
+      removeEntry(possiblePositions, "right");
+    } // Check for space to the left
+
+
+    if (targetElementRect.left - tooltipWidth < 0) {
+      removeEntry(possiblePositions, "left");
+    } // @var {String}  ex: 'right-aligned'
+
+
+    var desiredAlignment = function (pos) {
+      var hyphenIndex = pos.indexOf("-");
+
+      if (hyphenIndex !== -1) {
+        // has alignment
+        return pos.substr(hyphenIndex);
+      }
+
+      return "";
+    }(desiredTooltipPosition || ""); // strip alignment from position
+
+
+    if (desiredTooltipPosition) {
+      // ex: "bottom-right-aligned"
+      // should return 'bottom'
+      desiredTooltipPosition = desiredTooltipPosition.split("-")[0];
+    }
+
+    if (possiblePositions.length) {
+      if (possiblePositions.includes(desiredTooltipPosition)) {
+        // If the requested position is in the list, choose that
+        calculatedPosition = desiredTooltipPosition;
+      } else {
+        // Pick the first valid position, in order
+        calculatedPosition = possiblePositions[0];
+      }
+    } // only top and bottom positions have optional alignments
+
+
+    if (["top", "bottom"].includes(calculatedPosition)) {
+      calculatedPosition += _determineAutoAlignment(targetElementRect.left, tooltipWidth, windowSize, desiredAlignment);
+    }
+
+    return calculatedPosition;
+  }
+  /**
+   * Render tooltip box in the page
+   *
+   * @api private
+   * @method placeTooltip
+   * @param {HTMLElement} targetElement
+   * @param {HTMLElement} tooltipLayer
+   * @param {HTMLElement} arrowLayer
+   * @param {Boolean} hintMode
+   */
+
+
+  function placeTooltip(targetElement, tooltipLayer, arrowLayer, hintMode) {
+    var tooltipCssClass = "";
+    var currentStepObj;
+    var tooltipOffset;
+    var targetOffset;
+    var windowSize;
+    var currentTooltipPosition;
+    hintMode = hintMode || false; //reset the old style
+
+    tooltipLayer.style.top = null;
+    tooltipLayer.style.right = null;
+    tooltipLayer.style.bottom = null;
+    tooltipLayer.style.left = null;
+    tooltipLayer.style.marginLeft = null;
+    tooltipLayer.style.marginTop = null;
+    arrowLayer.style.display = "inherit"; //prevent error when `this._currentStep` is undefined
+
+    if (!this._introItems[this._currentStep]) return; //if we have a custom css class for each step
+
+    currentStepObj = this._introItems[this._currentStep];
+
+    if (typeof currentStepObj.tooltipClass === "string") {
+      tooltipCssClass = currentStepObj.tooltipClass;
+    } else {
+      tooltipCssClass = this._options.tooltipClass;
+    }
+
+    tooltipLayer.className = ["introjs-tooltip", tooltipCssClass].filter(Boolean).join(" ");
+    tooltipLayer.setAttribute("role", "dialog");
+    currentTooltipPosition = this._introItems[this._currentStep].position; // Floating is always valid, no point in calculating
+
+    if (currentTooltipPosition !== "floating" && this._options.autoPosition) {
+      currentTooltipPosition = _determineAutoPosition.call(this, targetElement, tooltipLayer, currentTooltipPosition);
+    }
+
+    var tooltipLayerStyleLeft;
+    targetOffset = getOffset(targetElement);
+    tooltipOffset = getOffset(tooltipLayer);
+    windowSize = getWinSize();
+    addClass(tooltipLayer, "introjs-".concat(currentTooltipPosition));
+
+    switch (currentTooltipPosition) {
+      case "top-right-aligned":
+        arrowLayer.className = "introjs-arrow bottom-right";
+        var tooltipLayerStyleRight = 0;
+        checkLeft(targetOffset, tooltipLayerStyleRight, tooltipOffset, tooltipLayer);
+        tooltipLayer.style.bottom = "".concat(targetOffset.height + 20, "px");
+        break;
+
+      case "top-middle-aligned":
+        arrowLayer.className = "introjs-arrow bottom-middle";
+        var tooltipLayerStyleLeftRight = targetOffset.width / 2 - tooltipOffset.width / 2; // a fix for middle aligned hints
+
+        if (hintMode) {
+          tooltipLayerStyleLeftRight += 5;
+        }
+
+        if (checkLeft(targetOffset, tooltipLayerStyleLeftRight, tooltipOffset, tooltipLayer)) {
+          tooltipLayer.style.right = null;
+          checkRight(targetOffset, tooltipLayerStyleLeftRight, tooltipOffset, windowSize, tooltipLayer);
+        }
+
+        tooltipLayer.style.bottom = "".concat(targetOffset.height + 20, "px");
+        break;
+
+      case "top-left-aligned": // top-left-aligned is the same as the default top
+
+      case "top":
+        arrowLayer.className = "introjs-arrow bottom";
+        tooltipLayerStyleLeft = hintMode ? 0 : 15;
+        checkRight(targetOffset, tooltipLayerStyleLeft, tooltipOffset, windowSize, tooltipLayer);
+        tooltipLayer.style.bottom = "".concat(targetOffset.height + 20, "px");
+        break;
+
+      case "right":
+        tooltipLayer.style.left = "".concat(targetOffset.width + 20, "px");
+
+        if (targetOffset.top + tooltipOffset.height > windowSize.height) {
+          // In this case, right would have fallen below the bottom of the screen.
+          // Modify so that the bottom of the tooltip connects with the target
+          arrowLayer.className = "introjs-arrow left-bottom";
+          tooltipLayer.style.top = "-".concat(tooltipOffset.height - targetOffset.height - 20, "px");
+        } else {
+          arrowLayer.className = "introjs-arrow left";
+        }
+
+        break;
+
+      case "left":
+        if (!hintMode && this._options.showStepNumbers === true) {
+          tooltipLayer.style.top = "15px";
+        }
+
+        if (targetOffset.top + tooltipOffset.height > windowSize.height) {
+          // In this case, left would have fallen below the bottom of the screen.
+          // Modify so that the bottom of the tooltip connects with the target
+          tooltipLayer.style.top = "-".concat(tooltipOffset.height - targetOffset.height - 20, "px");
+          arrowLayer.className = "introjs-arrow right-bottom";
+        } else {
+          arrowLayer.className = "introjs-arrow right";
+        }
+
+        tooltipLayer.style.right = "".concat(targetOffset.width + 20, "px");
+        break;
+
+      case "floating":
+        arrowLayer.style.display = "none"; //we have to adjust the top and left of layer manually for intro items without element
+
+        tooltipLayer.style.left = "50%";
+        tooltipLayer.style.top = "50%";
+        tooltipLayer.style.marginLeft = "-".concat(tooltipOffset.width / 2, "px");
+        tooltipLayer.style.marginTop = "-".concat(tooltipOffset.height / 2, "px");
+        break;
+
+      case "bottom-right-aligned":
+        arrowLayer.className = "introjs-arrow top-right";
+        tooltipLayerStyleRight = 0;
+        checkLeft(targetOffset, tooltipLayerStyleRight, tooltipOffset, tooltipLayer);
+        tooltipLayer.style.top = "".concat(targetOffset.height + 20, "px");
+        break;
+
+      case "bottom-middle-aligned":
+        arrowLayer.className = "introjs-arrow top-middle";
+        tooltipLayerStyleLeftRight = targetOffset.width / 2 - tooltipOffset.width / 2; // a fix for middle aligned hints
+
+        if (hintMode) {
+          tooltipLayerStyleLeftRight += 5;
+        }
+
+        if (checkLeft(targetOffset, tooltipLayerStyleLeftRight, tooltipOffset, tooltipLayer)) {
+          tooltipLayer.style.right = null;
+          checkRight(targetOffset, tooltipLayerStyleLeftRight, tooltipOffset, windowSize, tooltipLayer);
+        }
+
+        tooltipLayer.style.top = "".concat(targetOffset.height + 20, "px");
+        break;
+      // case 'bottom-left-aligned':
+      // Bottom-left-aligned is the same as the default bottom
+      // case 'bottom':
+      // Bottom going to follow the default behavior
+
+      default:
+        arrowLayer.className = "introjs-arrow top";
+        tooltipLayerStyleLeft = 0;
+        checkRight(targetOffset, tooltipLayerStyleLeft, tooltipOffset, windowSize, tooltipLayer);
+        tooltipLayer.style.top = "".concat(targetOffset.height + 20, "px");
+    }
+  }
+
+  /**
+   * To remove all show element(s)
+   *
+   * @api private
+   * @method _removeShowElement
+   */
+
+  function removeShowElement() {
+    var elms = document.querySelectorAll(".introjs-showElement");
+    forEach(elms, function (elm) {
+      removeClass(elm, /introjs-[a-zA-Z]+/g);
+    });
+  }
+
+  function _createElement(tagname, attrs) {
+    var element = document.createElement(tagname);
+    attrs = attrs || {}; // regex for matching attributes that need to be set with setAttribute
+
+    var setAttRegex = /^(?:role|data-|aria-)/;
+
+    for (var k in attrs) {
+      var v = attrs[k];
+
+      if (k === "style") {
+        setStyle(element, v);
+      } else if (k.match(setAttRegex)) {
+        element.setAttribute(k, v);
+      } else {
+        element[k] = v;
+      }
+    }
+
+    return element;
+  }
+
+  /**
+   * Appends `element` to `parentElement`
+   *
+   * @param {Element} parentElement
+   * @param {Element} element
+   * @param {Boolean} [animate=false]
+   */
+
+  function appendChild(parentElement, element, animate) {
+    if (animate) {
+      var existingOpacity = element.style.opacity || "1";
+      setStyle(element, {
+        opacity: "0"
+      });
+      window.setTimeout(function () {
+        setStyle(element, {
+          opacity: existingOpacity
+        });
+      }, 10);
+    }
+
+    parentElement.appendChild(element);
+  }
+
+  /**
+   * Gets the current progress percentage
+   *
+   * @api private
+   * @method _getProgress
+   * @returns current progress percentage
+   */
+
+  function _getProgress() {
+    // Steps are 0 indexed
+    var currentStep = parseInt(this._currentStep + 1, 10);
+    return currentStep / this._introItems.length * 100;
+  }
+  /**
+   * Add disableinteraction layer and adjust the size and position of the layer
+   *
+   * @api private
+   * @method _disableInteraction
+   */
+
+
+  function _disableInteraction() {
+    var disableInteractionLayer = document.querySelector(".introjs-disableInteraction");
+
+    if (disableInteractionLayer === null) {
+      disableInteractionLayer = _createElement("div", {
+        className: "introjs-disableInteraction"
+      });
+
+      this._targetElement.appendChild(disableInteractionLayer);
+    }
+
+    setHelperLayerPosition.call(this, disableInteractionLayer);
+  }
+  /**
+   * Creates the bullets layer
+   * @returns HTMLElement
+   * @private
+   */
+
+
+  function _createBullets(targetElement) {
+    var self = this;
+    var bulletsLayer = _createElement("div", {
+      className: "introjs-bullets"
+    });
+
+    if (this._options.showBullets === false) {
+      bulletsLayer.style.display = "none";
+    }
+
+    var ulContainer = _createElement("ul");
+    ulContainer.setAttribute("role", "tablist");
+
+    var anchorClick = function anchorClick() {
+      self.goToStep(this.getAttribute("data-stepnumber"));
+    };
+
+    forEach(this._introItems, function (_ref, i) {
+      var step = _ref.step;
+      var innerLi = _createElement("li");
+      var anchorLink = _createElement("a");
+      innerLi.setAttribute("role", "presentation");
+      anchorLink.setAttribute("role", "tab");
+      anchorLink.onclick = anchorClick;
+
+      if (i === targetElement.step - 1) {
+        anchorLink.className = "active";
+      }
+
+      setAnchorAsButton(anchorLink);
+      anchorLink.innerHTML = "&nbsp;";
+      anchorLink.setAttribute("data-stepnumber", step);
+      innerLi.appendChild(anchorLink);
+      ulContainer.appendChild(innerLi);
+    });
+    bulletsLayer.appendChild(ulContainer);
+    return bulletsLayer;
+  }
+  /**
+   * Deletes and recreates the bullets layer
+   * @param oldReferenceLayer
+   * @param targetElement
+   * @private
+   */
+
+
+  function _recreateBullets(oldReferenceLayer, targetElement) {
+    if (this._options.showBullets) {
+      var existing = document.querySelector(".introjs-bullets");
+      existing.parentNode.replaceChild(_createBullets.call(this, targetElement), existing);
+    }
+  }
+  /**
+   * Updates the bullets
+   *
+   * @param oldReferenceLayer
+   * @param targetElement
+   */
+
+  function _updateBullets(oldReferenceLayer, targetElement) {
+    if (this._options.showBullets) {
+      oldReferenceLayer.querySelector(".introjs-bullets li > a.active").className = "";
+      oldReferenceLayer.querySelector(".introjs-bullets li > a[data-stepnumber=\"".concat(targetElement.step, "\"]")).className = "active";
+    }
+  }
+  /**
+   * Creates the progress-bar layer and elements
+   * @returns {*}
+   * @private
+   */
+
+
+  function _createProgressBar() {
+    var progressLayer = _createElement("div");
+    progressLayer.className = "introjs-progress";
+
+    if (this._options.showProgress === false) {
+      progressLayer.style.display = "none";
+    }
+
+    var progressBar = _createElement("div", {
+      className: "introjs-progressbar"
+    });
+
+    if (this._options.progressBarAdditionalClass) {
+      progressBar.className += " " + this._options.progressBarAdditionalClass;
+    }
+
+    progressBar.setAttribute("role", "progress");
+    progressBar.setAttribute("aria-valuemin", 0);
+    progressBar.setAttribute("aria-valuemax", 100);
+    progressBar.setAttribute("aria-valuenow", _getProgress.call(this));
+    progressBar.style.cssText = "width:".concat(_getProgress.call(this), "%;");
+    progressLayer.appendChild(progressBar);
+    return progressLayer;
+  }
+  /**
+   * Updates an existing progress bar variables
+   * @param oldReferenceLayer
+   * @private
+   */
+
+
+  function _updateProgressBar(oldReferenceLayer) {
+    oldReferenceLayer.querySelector(".introjs-progress .introjs-progressbar").style.cssText = "width:".concat(_getProgress.call(this), "%;");
+    oldReferenceLayer.querySelector(".introjs-progress .introjs-progressbar").setAttribute("aria-valuenow", _getProgress.call(this));
+  }
+  /**
+   * Show an element on the page
+   *
+   * @api private
+   * @method _showElement
+   * @param {Object} targetElement
+   */
+
+  function _showElement(targetElement) {
+    var _this = this;
+
+    if (typeof this._introChangeCallback !== "undefined") {
+      this._introChangeCallback.call(this, targetElement.element);
+    }
+
+    var self = this;
+    var oldHelperLayer = document.querySelector(".introjs-helperLayer");
+    var oldReferenceLayer = document.querySelector(".introjs-tooltipReferenceLayer");
+    var highlightClass = "introjs-helperLayer";
+    var nextTooltipButton;
+    var prevTooltipButton;
+    var skipTooltipButton; //check for a current step highlight class
+
+    if (typeof targetElement.highlightClass === "string") {
+      highlightClass += " ".concat(targetElement.highlightClass);
+    } //check for options highlight class
+
+
+    if (typeof this._options.highlightClass === "string") {
+      highlightClass += " ".concat(this._options.highlightClass);
+    }
+
+    if (oldHelperLayer !== null && oldReferenceLayer !== null) {
+      var oldHelperNumberLayer = oldReferenceLayer.querySelector(".introjs-helperNumberLayer");
+      var oldtooltipLayer = oldReferenceLayer.querySelector(".introjs-tooltiptext");
+      var oldTooltipTitleLayer = oldReferenceLayer.querySelector(".introjs-tooltip-title");
+      var oldArrowLayer = oldReferenceLayer.querySelector(".introjs-arrow");
+      var oldtooltipContainer = oldReferenceLayer.querySelector(".introjs-tooltip");
+      skipTooltipButton = oldReferenceLayer.querySelector(".introjs-skipbutton");
+      prevTooltipButton = oldReferenceLayer.querySelector(".introjs-prevbutton");
+      nextTooltipButton = oldReferenceLayer.querySelector(".introjs-nextbutton"); //update or reset the helper highlight class
+
+      oldHelperLayer.className = highlightClass; //hide the tooltip
+
+      oldtooltipContainer.style.opacity = 0;
+      oldtooltipContainer.style.display = "none"; // if the target element is within a scrollable element
+
+      scrollParentToElement.call(self, targetElement); // set new position to helper layer
+
+      setHelperLayerPosition.call(self, oldHelperLayer);
+      setHelperLayerPosition.call(self, oldReferenceLayer); //remove old classes if the element still exist
+
+      removeShowElement(); //we should wait until the CSS3 transition is competed (it's 0.3 sec) to prevent incorrect `height` and `width` calculation
+
+      if (self._lastShowElementTimer) {
+        window.clearTimeout(self._lastShowElementTimer);
+      }
+
+      self._lastShowElementTimer = window.setTimeout(function () {
+        // set current step to the label
+        if (oldHelperNumberLayer !== null) {
+          oldHelperNumberLayer.innerHTML = "".concat(targetElement.step, " of ").concat(_this._introItems.length);
+        } // set current tooltip text
+
+
+        oldtooltipLayer.innerHTML = targetElement.intro; // set current tooltip title
+
+        oldTooltipTitleLayer.innerHTML = targetElement.title; //set the tooltip position
+
+        oldtooltipContainer.style.display = "block";
+        placeTooltip.call(self, targetElement.element, oldtooltipContainer, oldArrowLayer); //change active bullet
+
+        _updateBullets.call(self, oldReferenceLayer, targetElement);
+
+        _updateProgressBar.call(self, oldReferenceLayer); //show the tooltip
+
+
+        oldtooltipContainer.style.opacity = 1; //reset button focus
+
+        if (typeof nextTooltipButton !== "undefined" && nextTooltipButton !== null && /introjs-donebutton/gi.test(nextTooltipButton.className)) {
+          // skip button is now "done" button
+          nextTooltipButton.focus();
+        } else if (typeof nextTooltipButton !== "undefined" && nextTooltipButton !== null) {
+          //still in the tour, focus on next
+          nextTooltipButton.focus();
+        } // change the scroll of the window, if needed
+
+
+        scrollTo.call(self, targetElement.scrollTo, targetElement, oldtooltipLayer);
+      }, 350); // end of old element if-else condition
+    } else {
+      var helperLayer = _createElement("div", {
+        className: highlightClass
+      });
+      var referenceLayer = _createElement("div", {
+        className: "introjs-tooltipReferenceLayer"
+      });
+      var arrowLayer = _createElement("div", {
+        className: "introjs-arrow"
+      });
+      var tooltipLayer = _createElement("div", {
+        className: "introjs-tooltip"
+      });
+      var tooltipTextLayer = _createElement("div", {
+        className: "introjs-tooltiptext"
+      });
+      var tooltipHeaderLayer = _createElement("div", {
+        className: "introjs-tooltip-header"
+      });
+      var tooltipTitleLayer = _createElement("h1", {
+        className: "introjs-tooltip-title"
+      });
+      var buttonsLayer = _createElement("div");
+      setStyle(helperLayer, {
+        "box-shadow": "0 0 1px 2px rgba(33, 33, 33, 0.8), rgba(33, 33, 33, ".concat(self._options.overlayOpacity.toString(), ") 0 0 0 5000px")
+      }); // target is within a scrollable element
+
+      scrollParentToElement.call(self, targetElement); //set new position to helper layer
+
+      setHelperLayerPosition.call(self, helperLayer);
+      setHelperLayerPosition.call(self, referenceLayer); //add helper layer to target element
+
+      appendChild(this._targetElement, helperLayer, true);
+      appendChild(this._targetElement, referenceLayer);
+      tooltipTextLayer.innerHTML = targetElement.intro;
+      tooltipTitleLayer.innerHTML = targetElement.title;
+      buttonsLayer.className = "introjs-tooltipbuttons";
+
+      if (this._options.showButtons === false) {
+        buttonsLayer.style.display = "none";
+      }
+
+      tooltipHeaderLayer.appendChild(tooltipTitleLayer);
+      tooltipLayer.appendChild(tooltipHeaderLayer);
+      tooltipLayer.appendChild(tooltipTextLayer);
+      tooltipLayer.appendChild(_createBullets.call(this, targetElement));
+      tooltipLayer.appendChild(_createProgressBar.call(this)); // add helper layer number
+
+      var helperNumberLayer = _createElement("div");
+
+      if (this._options.showStepNumbers === true) {
+        helperNumberLayer.className = "introjs-helperNumberLayer";
+        helperNumberLayer.innerHTML = "".concat(targetElement.step, " of ").concat(this._introItems.length);
+        tooltipLayer.appendChild(helperNumberLayer);
+      }
+
+      tooltipLayer.appendChild(arrowLayer);
+      referenceLayer.appendChild(tooltipLayer); //next button
+
+      nextTooltipButton = _createElement("a");
+
+      nextTooltipButton.onclick = function () {
+        if (self._introItems.length - 1 !== self._currentStep) {
+          nextStep.call(self);
+        } else if (/introjs-donebutton/gi.test(nextTooltipButton.className)) {
+          if (typeof self._introCompleteCallback === "function") {
+            self._introCompleteCallback.call(self, self._currentStep, "done");
+          }
+
+          exitIntro.call(self, self._targetElement);
+        }
+      };
+
+      setAnchorAsButton(nextTooltipButton);
+      nextTooltipButton.innerHTML = this._options.nextLabel; //previous button
+
+      prevTooltipButton = _createElement("a");
+
+      prevTooltipButton.onclick = function () {
+        if (self._currentStep !== 0) {
+          previousStep.call(self);
+        }
+      };
+
+      setAnchorAsButton(prevTooltipButton);
+      prevTooltipButton.innerHTML = this._options.prevLabel; //skip button
+
+      skipTooltipButton = _createElement("a", {
+        className: "introjs-skipbutton"
+      });
+      setAnchorAsButton(skipTooltipButton);
+      skipTooltipButton.innerHTML = this._options.skipLabel;
+
+      skipTooltipButton.onclick = function () {
+        if (self._introItems.length - 1 === self._currentStep && typeof self._introCompleteCallback === "function") {
+          self._introCompleteCallback.call(self, self._currentStep, "skip");
+        }
+
+        if (typeof self._introSkipCallback === "function") {
+          self._introSkipCallback.call(self);
+        }
+
+        exitIntro.call(self, self._targetElement);
+      };
+
+      tooltipHeaderLayer.appendChild(skipTooltipButton); //in order to prevent displaying previous button always
+
+      if (this._introItems.length > 1) {
+        buttonsLayer.appendChild(prevTooltipButton);
+      } // we always need the next button because this
+      // button changes to "Done" in the last step of the tour
+
+
+      buttonsLayer.appendChild(nextTooltipButton);
+      tooltipLayer.appendChild(buttonsLayer); //set proper position
+
+      placeTooltip.call(self, targetElement.element, tooltipLayer, arrowLayer); // change the scroll of the window, if needed
+
+      scrollTo.call(this, targetElement.scrollTo, targetElement, tooltipLayer); //end of new element if-else condition
+    } // removing previous disable interaction layer
+
+
+    var disableInteractionLayer = self._targetElement.querySelector(".introjs-disableInteraction");
+
+    if (disableInteractionLayer) {
+      disableInteractionLayer.parentNode.removeChild(disableInteractionLayer);
+    } //disable interaction
+
+
+    if (targetElement.disableInteraction) {
+      _disableInteraction.call(self);
+    } // when it's the first step of tour
+
+
+    if (this._currentStep === 0 && this._introItems.length > 1) {
+      if (typeof nextTooltipButton !== "undefined" && nextTooltipButton !== null) {
+        nextTooltipButton.className = "".concat(this._options.buttonClass, " introjs-nextbutton");
+        nextTooltipButton.innerHTML = this._options.nextLabel;
+      }
+
+      if (this._options.hidePrev === true) {
+        if (typeof prevTooltipButton !== "undefined" && prevTooltipButton !== null) {
+          prevTooltipButton.className = "".concat(this._options.buttonClass, " introjs-prevbutton introjs-hidden");
+        }
+
+        if (typeof nextTooltipButton !== "undefined" && nextTooltipButton !== null) {
+          addClass(nextTooltipButton, "introjs-fullbutton");
+        }
+      } else {
+        if (typeof prevTooltipButton !== "undefined" && prevTooltipButton !== null) {
+          prevTooltipButton.className = "".concat(this._options.buttonClass, " introjs-prevbutton introjs-disabled");
+        }
+      }
+    } else if (this._introItems.length - 1 === this._currentStep || this._introItems.length === 1) {
+      // last step of tour
+      if (typeof prevTooltipButton !== "undefined" && prevTooltipButton !== null) {
+        prevTooltipButton.className = "".concat(this._options.buttonClass, " introjs-prevbutton");
+      }
+
+      if (this._options.hideNext === true) {
+        if (typeof nextTooltipButton !== "undefined" && nextTooltipButton !== null) {
+          nextTooltipButton.className = "".concat(this._options.buttonClass, " introjs-nextbutton introjs-hidden");
+        }
+
+        if (typeof prevTooltipButton !== "undefined" && prevTooltipButton !== null) {
+          addClass(prevTooltipButton, "introjs-fullbutton");
+        }
+      } else {
+        if (typeof nextTooltipButton !== "undefined" && nextTooltipButton !== null) {
+          if (this._options.nextToDone === true) {
+            nextTooltipButton.innerHTML = this._options.doneLabel;
+            addClass(nextTooltipButton, "".concat(this._options.buttonClass, " introjs-nextbutton introjs-donebutton"));
+          } else {
+            nextTooltipButton.className = "".concat(this._options.buttonClass, " introjs-nextbutton introjs-disabled");
+          }
+        }
+      }
+    } else {
+      // steps between start and end
+      if (typeof prevTooltipButton !== "undefined" && prevTooltipButton !== null) {
+        prevTooltipButton.className = "".concat(this._options.buttonClass, " introjs-prevbutton");
+      }
+
+      if (typeof nextTooltipButton !== "undefined" && nextTooltipButton !== null) {
+        nextTooltipButton.className = "".concat(this._options.buttonClass, " introjs-nextbutton");
+        nextTooltipButton.innerHTML = this._options.nextLabel;
+      }
+    }
+
+    if (typeof prevTooltipButton !== "undefined" && prevTooltipButton !== null) {
+      prevTooltipButton.setAttribute("role", "button");
+    }
+
+    if (typeof nextTooltipButton !== "undefined" && nextTooltipButton !== null) {
+      nextTooltipButton.setAttribute("role", "button");
+    }
+
+    if (typeof skipTooltipButton !== "undefined" && skipTooltipButton !== null) {
+      skipTooltipButton.setAttribute("role", "button");
+    } //Set focus on "next" button, so that hitting Enter always moves you onto the next step
+
+
+    if (typeof nextTooltipButton !== "undefined" && nextTooltipButton !== null) {
+      nextTooltipButton.focus();
+    }
+
+    setShowElement(targetElement);
+
+    if (typeof this._introAfterChangeCallback !== "undefined") {
+      this._introAfterChangeCallback.call(this, targetElement.element);
+    }
+  }
+
+  /**
+   * Go to specific step of introduction
+   *
+   * @api private
+   * @method _goToStep
+   */
+
+  function goToStep(step) {
+    //because steps starts with zero
+    this._currentStep = step - 2;
+
+    if (typeof this._introItems !== "undefined") {
+      nextStep.call(this);
+    }
+  }
+  /**
+   * Go to the specific step of introduction with the explicit [data-step] number
+   *
+   * @api private
+   * @method _goToStepNumber
+   */
+
+  function goToStepNumber(step) {
+    this._currentStepNumber = step;
+
+    if (typeof this._introItems !== "undefined") {
+      nextStep.call(this);
+    }
+  }
+  /**
+   * Go to next step on intro
+   *
+   * @api private
+   * @method _nextStep
+   */
+
+  function nextStep() {
+    var _this = this;
+
+    this._direction = "forward";
+
+    if (typeof this._currentStepNumber !== "undefined") {
+      forEach(this._introItems, function (_ref, i) {
+        var step = _ref.step;
+
+        if (step === _this._currentStepNumber) {
+          _this._currentStep = i - 1;
+          _this._currentStepNumber = undefined;
+        }
+      });
+    }
+
+    if (typeof this._currentStep === "undefined") {
+      this._currentStep = 0;
+    } else {
+      ++this._currentStep;
+    }
+
+    var nextStep = this._introItems[this._currentStep];
+    var continueStep = true;
+
+    if (typeof this._introBeforeChangeCallback !== "undefined") {
+      continueStep = this._introBeforeChangeCallback.call(this, nextStep && nextStep.element);
+    } // if `onbeforechange` returned `false`, stop displaying the element
+
+
+    if (continueStep === false) {
+      --this._currentStep;
+      return false;
+    }
+
+    if (this._introItems.length <= this._currentStep) {
+      //end of the intro
+      //check if any callback is defined
+      if (typeof this._introCompleteCallback === "function") {
+        this._introCompleteCallback.call(this, this._currentStep, "end");
+      }
+
+      exitIntro.call(this, this._targetElement);
+      return;
+    }
+
+    _showElement.call(this, nextStep);
+  }
+  /**
+   * Go to previous step on intro
+   *
+   * @api private
+   * @method _previousStep
+   */
+
+  function previousStep() {
+    this._direction = "backward";
+
+    if (this._currentStep === 0) {
+      return false;
+    }
+
+    --this._currentStep;
+    var nextStep = this._introItems[this._currentStep];
+    var continueStep = true;
+
+    if (typeof this._introBeforeChangeCallback !== "undefined") {
+      continueStep = this._introBeforeChangeCallback.call(this, nextStep && nextStep.element);
+    } // if `onbeforechange` returned `false`, stop displaying the element
+
+
+    if (continueStep === false) {
+      ++this._currentStep;
+      return false;
+    }
+
+    _showElement.call(this, nextStep);
+  }
+  /**
+   * Returns the current step of the intro
+   *
+   * @returns {number | boolean}
+   */
+
+  function currentStep() {
+    return this._currentStep;
+  }
+
+  /**
+   * on keyCode:
+   * https://developer.mozilla.org/en-US/docs/Web/API/KeyboardEvent/keyCode
+   * This feature has been removed from the Web standards.
+   * Though some browsers may still support it, it is in
+   * the process of being dropped.
+   * Instead, you should use KeyboardEvent.code,
+   * if it's implemented.
+   *
+   * jQuery's approach is to test for
+   *   (1) e.which, then
+   *   (2) e.charCode, then
+   *   (3) e.keyCode
+   * https://github.com/jquery/jquery/blob/a6b0705294d336ae2f63f7276de0da1195495363/src/event.js#L638
+   *
+   * @param type var
+   * @return type
+   */
+
+  function onKeyDown(e) {
+    var code = e.code === undefined ? e.which : e.code; // if e.which is null
+
+    if (code === null) {
+      code = e.charCode === null ? e.keyCode : e.charCode;
+    }
+
+    if ((code === "Escape" || code === 27) && this._options.exitOnEsc === true) {
+      //escape key pressed, exit the intro
+      //check if exit callback is defined
+      exitIntro.call(this, this._targetElement);
+    } else if (code === "ArrowLeft" || code === 37) {
+      //left arrow
+      previousStep.call(this);
+    } else if (code === "ArrowRight" || code === 39) {
+      //right arrow
+      nextStep.call(this);
+    } else if (code === "Enter" || code === "NumpadEnter" || code === 13) {
+      //srcElement === ie
+      var target = e.target || e.srcElement;
+
+      if (target && target.className.match("introjs-prevbutton")) {
+        //user hit enter while focusing on previous button
+        previousStep.call(this);
+      } else if (target && target.className.match("introjs-skipbutton")) {
+        //user hit enter while focusing on skip button
+        if (this._introItems.length - 1 === this._currentStep && typeof this._introCompleteCallback === "function") {
+          this._introCompleteCallback.call(this, this._currentStep, "skip");
+        }
+
+        exitIntro.call(this, this._targetElement);
+      } else if (target && target.getAttribute("data-stepnumber")) {
+        // user hit enter while focusing on step bullet
+        target.click();
+      } else {
+        //default behavior for responding to enter
+        nextStep.call(this);
+      } //prevent default behaviour on hitting Enter, to prevent steps being skipped in some browsers
+
+
+      if (e.preventDefault) {
+        e.preventDefault();
+      } else {
+        e.returnValue = false;
+      }
+    }
+  }
+
+  /*
+   * makes a copy of the object
+   * @api private
+   * @method _cloneObject
+   */
+  function cloneObject(object) {
+    if (object === null || _typeof(object) !== "object" || typeof object.nodeType !== "undefined") {
+      return object;
+    }
+
+    var temp = {};
+
+    for (var key in object) {
+      if (typeof window.jQuery !== "undefined" && object[key] instanceof window.jQuery) {
+        temp[key] = object[key];
+      } else {
+        temp[key] = cloneObject(object[key]);
+      }
+    }
+
+    return temp;
+  }
+
+  function debounce(func, timeout) {
+    var _this = this;
+
+    var timer;
+    return function () {
+      for (var _len = arguments.length, args = new Array(_len), _key = 0; _key < _len; _key++) {
+        args[_key] = arguments[_key];
+      }
+
+      clearTimeout(timer);
+      timer = setTimeout(function () {
+        func.apply(_this, args);
+      }, timeout);
+    };
+  }
+
+  /**
+   * Get a queryselector within the hint wrapper
+   *
+   * @param {String} selector
+   * @return {NodeList|Array}
+   */
+
+  function hintQuerySelectorAll(selector) {
+    var hintsWrapper = document.querySelector(".introjs-hints");
+    return hintsWrapper ? hintsWrapper.querySelectorAll(selector) : [];
+  }
+  /**
+   * Hide a hint
+   *
+   * @api private
+   * @method hideHint
+   */
+
+  function hideHint(stepId) {
+    var hint = hintQuerySelectorAll(".introjs-hint[data-step=\"".concat(stepId, "\"]"))[0];
+    removeHintTooltip.call(this);
+
+    if (hint) {
+      addClass(hint, "introjs-hidehint");
+    } // call the callback function (if any)
+
+
+    if (typeof this._hintCloseCallback !== "undefined") {
+      this._hintCloseCallback.call(this, stepId);
+    }
+  }
+  /**
+   * Hide all hints
+   *
+   * @api private
+   * @method hideHints
+   */
+
+  function hideHints() {
+    var _this = this;
+
+    var hints = hintQuerySelectorAll(".introjs-hint");
+    forEach(hints, function (hint) {
+      hideHint.call(_this, hint.getAttribute("data-step"));
+    });
+  }
+  /**
+   * Show all hints
+   *
+   * @api private
+   * @method _showHints
+   */
+
+  function showHints() {
+    var _this2 = this;
+
+    var hints = hintQuerySelectorAll(".introjs-hint");
+
+    if (hints && hints.length) {
+      forEach(hints, function (hint) {
+        showHint.call(_this2, hint.getAttribute("data-step"));
+      });
+    } else {
+      populateHints.call(this, this._targetElement);
+    }
+  }
+  /**
+   * Show a hint
+   *
+   * @api private
+   * @method showHint
+   */
+
+  function showHint(stepId) {
+    var hint = hintQuerySelectorAll(".introjs-hint[data-step=\"".concat(stepId, "\"]"))[0];
+
+    if (hint) {
+      removeClass(hint, /introjs-hidehint/g);
+    }
+  }
+  /**
+   * Removes all hint elements on the page
+   * Useful when you want to destroy the elements and add them again (e.g. a modal or popup)
+   *
+   * @api private
+   * @method removeHints
+   */
+
+  function removeHints() {
+    var _this3 = this;
+
+    var hints = hintQuerySelectorAll(".introjs-hint");
+    forEach(hints, function (hint) {
+      removeHint.call(_this3, hint.getAttribute("data-step"));
+    });
+    DOMEvent.off(document, "click", removeHintTooltip, this, false);
+    DOMEvent.off(window, "resize", reAlignHints, this, true);
+    if (this._hintsAutoRefreshFunction) DOMEvent.off(window, "scroll", this._hintsAutoRefreshFunction, this, true);
+  }
+  /**
+   * Remove one single hint element from the page
+   * Useful when you want to destroy the element and add them again (e.g. a modal or popup)
+   * Use removeHints if you want to remove all elements.
+   *
+   * @api private
+   * @method removeHint
+   */
+
+  function removeHint(stepId) {
+    var hint = hintQuerySelectorAll(".introjs-hint[data-step=\"".concat(stepId, "\"]"))[0];
+
+    if (hint) {
+      hint.parentNode.removeChild(hint);
+    }
+  }
+  /**
+   * Add all available hints to the page
+   *
+   * @api private
+   * @method addHints
+   */
+
+  function addHints() {
+    var _this4 = this;
+
+    var self = this;
+    var hintsWrapper = document.querySelector(".introjs-hints");
+
+    if (hintsWrapper === null) {
+      hintsWrapper = _createElement("div", {
+        className: "introjs-hints"
+      });
+    }
+    /**
+     * Returns an event handler unique to the hint iteration
+     *
+     * @param {Integer} i
+     * @return {Function}
+     */
+
+
+    var getHintClick = function getHintClick(i) {
+      return function (e) {
+        var evt = e ? e : window.event;
+
+        if (evt.stopPropagation) {
+          evt.stopPropagation();
+        }
+
+        if (evt.cancelBubble !== null) {
+          evt.cancelBubble = true;
+        }
+
+        showHintDialog.call(self, i);
+      };
+    };
+
+    forEach(this._introItems, function (item, i) {
+      // avoid append a hint twice
+      if (document.querySelector(".introjs-hint[data-step=\"".concat(i, "\"]"))) {
+        return;
+      }
+
+      var hint = _createElement("a", {
+        className: "introjs-hint"
+      });
+      setAnchorAsButton(hint);
+      hint.onclick = getHintClick(i);
+
+      if (!item.hintAnimation) {
+        addClass(hint, "introjs-hint-no-anim");
+      } // hint's position should be fixed if the target element's position is fixed
+
+
+      if (isFixed(item.element)) {
+        addClass(hint, "introjs-fixedhint");
+      }
+
+      var hintDot = _createElement("div", {
+        className: "introjs-hint-dot"
+      });
+      var hintPulse = _createElement("div", {
+        className: "introjs-hint-pulse"
+      });
+      hint.appendChild(hintDot);
+      hint.appendChild(hintPulse);
+      hint.setAttribute("data-step", i); // we swap the hint element with target element
+      // because _setHelperLayerPosition uses `element` property
+
+      item.targetElement = item.element;
+      item.element = hint; // align the hint position
+
+      alignHintPosition.call(_this4, item.hintPosition, hint, item.targetElement);
+      hintsWrapper.appendChild(hint);
+    }); // adding the hints wrapper
+
+    document.body.appendChild(hintsWrapper); // call the callback function (if any)
+
+    if (typeof this._hintsAddedCallback !== "undefined") {
+      this._hintsAddedCallback.call(this);
+    }
+
+    if (this._options.hintAutoRefreshInterval >= 0) {
+      this._hintsAutoRefreshFunction = debounce(function () {
+        return reAlignHints.call(_this4);
+      }, this._options.hintAutoRefreshInterval);
+      DOMEvent.on(window, "scroll", this._hintsAutoRefreshFunction, this, true);
+    }
+  }
+  /**
+   * Aligns hint position
+   *
+   * @api private
+   * @method alignHintPosition
+   * @param {String} position
+   * @param {Object} hint
+   * @param {Object} element
+   */
+
+  function alignHintPosition(position, _ref, element) {
+    var style = _ref.style;
+    // get/calculate offset of target element
+    var offset = getOffset.call(this, element);
+    var iconWidth = 20;
+    var iconHeight = 20; // align the hint element
+
+    switch (position) {
+      default:
+      case "top-left":
+        style.left = "".concat(offset.left, "px");
+        style.top = "".concat(offset.top, "px");
+        break;
+
+      case "top-right":
+        style.left = "".concat(offset.left + offset.width - iconWidth, "px");
+        style.top = "".concat(offset.top, "px");
+        break;
+
+      case "bottom-left":
+        style.left = "".concat(offset.left, "px");
+        style.top = "".concat(offset.top + offset.height - iconHeight, "px");
+        break;
+
+      case "bottom-right":
+        style.left = "".concat(offset.left + offset.width - iconWidth, "px");
+        style.top = "".concat(offset.top + offset.height - iconHeight, "px");
+        break;
+
+      case "middle-left":
+        style.left = "".concat(offset.left, "px");
+        style.top = "".concat(offset.top + (offset.height - iconHeight) / 2, "px");
+        break;
+
+      case "middle-right":
+        style.left = "".concat(offset.left + offset.width - iconWidth, "px");
+        style.top = "".concat(offset.top + (offset.height - iconHeight) / 2, "px");
+        break;
+
+      case "middle-middle":
+        style.left = "".concat(offset.left + (offset.width - iconWidth) / 2, "px");
+        style.top = "".concat(offset.top + (offset.height - iconHeight) / 2, "px");
+        break;
+
+      case "bottom-middle":
+        style.left = "".concat(offset.left + (offset.width - iconWidth) / 2, "px");
+        style.top = "".concat(offset.top + offset.height - iconHeight, "px");
+        break;
+
+      case "top-middle":
+        style.left = "".concat(offset.left + (offset.width - iconWidth) / 2, "px");
+        style.top = "".concat(offset.top, "px");
+        break;
+    }
+  }
+  /**
+   * Triggers when user clicks on the hint element
+   *
+   * @api private
+   * @method _showHintDialog
+   * @param {Number} stepId
+   */
+
+  function showHintDialog(stepId) {
+    var hintElement = document.querySelector(".introjs-hint[data-step=\"".concat(stepId, "\"]"));
+    var item = this._introItems[stepId]; // call the callback function (if any)
+
+    if (typeof this._hintClickCallback !== "undefined") {
+      this._hintClickCallback.call(this, hintElement, item, stepId);
+    } // remove all open tooltips
+
+
+    var removedStep = removeHintTooltip.call(this); // to toggle the tooltip
+
+    if (parseInt(removedStep, 10) === stepId) {
+      return;
+    }
+
+    var tooltipLayer = _createElement("div", {
+      className: "introjs-tooltip"
+    });
+    var tooltipTextLayer = _createElement("div");
+    var arrowLayer = _createElement("div");
+    var referenceLayer = _createElement("div");
+
+    tooltipLayer.onclick = function (e) {
+      //IE9 & Other Browsers
+      if (e.stopPropagation) {
+        e.stopPropagation();
+      } //IE8 and Lower
+      else {
+        e.cancelBubble = true;
+      }
+    };
+
+    tooltipTextLayer.className = "introjs-tooltiptext";
+    var tooltipWrapper = _createElement("p");
+    tooltipWrapper.innerHTML = item.hint;
+    tooltipTextLayer.appendChild(tooltipWrapper);
+
+    if (this._options.hintShowButton) {
+      var closeButton = _createElement("a");
+      closeButton.className = this._options.buttonClass;
+      closeButton.setAttribute("role", "button");
+      closeButton.innerHTML = this._options.hintButtonLabel;
+      closeButton.onclick = hideHint.bind(this, stepId);
+      tooltipTextLayer.appendChild(closeButton);
+    }
+
+    arrowLayer.className = "introjs-arrow";
+    tooltipLayer.appendChild(arrowLayer);
+    tooltipLayer.appendChild(tooltipTextLayer); // set current step for _placeTooltip function
+
+    this._currentStep = hintElement.getAttribute("data-step"); // align reference layer position
+
+    referenceLayer.className = "introjs-tooltipReferenceLayer introjs-hintReference";
+    referenceLayer.setAttribute("data-step", hintElement.getAttribute("data-step"));
+    setHelperLayerPosition.call(this, referenceLayer);
+    referenceLayer.appendChild(tooltipLayer);
+    document.body.appendChild(referenceLayer); //set proper position
+
+    placeTooltip.call(this, hintElement, tooltipLayer, arrowLayer, true);
+  }
+  /**
+   * Removes open hint (tooltip hint)
+   *
+   * @api private
+   * @method _removeHintTooltip
+   */
+
+  function removeHintTooltip() {
+    var tooltip = document.querySelector(".introjs-hintReference");
+
+    if (tooltip) {
+      var step = tooltip.getAttribute("data-step");
+      tooltip.parentNode.removeChild(tooltip);
+      return step;
+    }
+  }
+  /**
+   * Start parsing hint items
+   *
+   * @api private
+   * @param {Object} targetElm
+   * @method _startHint
+   */
+
+  function populateHints(targetElm) {
+    var _this5 = this;
+
+    this._introItems = [];
+
+    if (this._options.hints) {
+      forEach(this._options.hints, function (hint) {
+        var currentItem = cloneObject(hint);
+
+        if (typeof currentItem.element === "string") {
+          //grab the element with given selector from the page
+          currentItem.element = document.querySelector(currentItem.element);
+        }
+
+        currentItem.hintPosition = currentItem.hintPosition || _this5._options.hintPosition;
+        currentItem.hintAnimation = currentItem.hintAnimation || _this5._options.hintAnimation;
+
+        if (currentItem.element !== null) {
+          _this5._introItems.push(currentItem);
+        }
+      });
+    } else {
+      var hints = targetElm.querySelectorAll("*[data-hint]");
+
+      if (!hints || !hints.length) {
+        return false;
+      } //first add intro items with data-step
+
+
+      forEach(hints, function (currentElement) {
+        // hint animation
+        var hintAnimation = currentElement.getAttribute("data-hintanimation");
+
+        if (hintAnimation) {
+          hintAnimation = hintAnimation === "true";
+        } else {
+          hintAnimation = _this5._options.hintAnimation;
+        }
+
+        _this5._introItems.push({
+          element: currentElement,
+          hint: currentElement.getAttribute("data-hint"),
+          hintPosition: currentElement.getAttribute("data-hintposition") || _this5._options.hintPosition,
+          hintAnimation: hintAnimation,
+          tooltipClass: currentElement.getAttribute("data-tooltipclass"),
+          position: currentElement.getAttribute("data-position") || _this5._options.tooltipPosition
+        });
+      });
+    }
+
+    addHints.call(this);
+    DOMEvent.on(document, "click", removeHintTooltip, this, false);
+    DOMEvent.on(window, "resize", reAlignHints, this, true);
+  }
+  /**
+   * Re-aligns all hint elements
+   *
+   * @api private
+   * @method _reAlignHints
+   */
+
+  function reAlignHints() {
+    var _this6 = this;
+
+    forEach(this._introItems, function (_ref2) {
+      var targetElement = _ref2.targetElement,
+          hintPosition = _ref2.hintPosition,
+          element = _ref2.element;
+
+      if (typeof targetElement === "undefined") {
+        return;
+      }
+
+      alignHintPosition.call(_this6, hintPosition, element, targetElement);
+    });
+  }
+
+  var floor = Math.floor;
+
+  var mergeSort = function (array, comparefn) {
+    var length = array.length;
+    var middle = floor(length / 2);
+    return length < 8 ? insertionSort(array, comparefn) : merge(
+      array,
+      mergeSort(arraySlice(array, 0, middle), comparefn),
+      mergeSort(arraySlice(array, middle), comparefn),
+      comparefn
+    );
+  };
+
+  var insertionSort = function (array, comparefn) {
+    var length = array.length;
+    var i = 1;
+    var element, j;
+
+    while (i < length) {
+      j = i;
+      element = array[i];
+      while (j && comparefn(array[j - 1], element) > 0) {
+        array[j] = array[--j];
+      }
+      if (j !== i++) array[j] = element;
+    } return array;
+  };
+
+  var merge = function (array, left, right, comparefn) {
+    var llength = left.length;
+    var rlength = right.length;
+    var lindex = 0;
+    var rindex = 0;
+
+    while (lindex < llength || rindex < rlength) {
+      array[lindex + rindex] = (lindex < llength && rindex < rlength)
+        ? comparefn(left[lindex], right[rindex]) <= 0 ? left[lindex++] : right[rindex++]
+        : lindex < llength ? left[lindex++] : right[rindex++];
+    } return array;
+  };
+
+  var arraySort = mergeSort;
+
+  var firefox = engineUserAgent.match(/firefox\/(\d+)/i);
+
+  var engineFfVersion = !!firefox && +firefox[1];
+
+  var engineIsIeOrEdge = /MSIE|Trident/.test(engineUserAgent);
+
+  var webkit = engineUserAgent.match(/AppleWebKit\/(\d+)\./);
+
+  var engineWebkitVersion = !!webkit && +webkit[1];
+
+  var test = [];
+  var un$Sort = functionUncurryThis(test.sort);
+  var push = functionUncurryThis(test.push);
+
+  // IE8-
+  var FAILS_ON_UNDEFINED = fails(function () {
+    test.sort(undefined);
+  });
+  // V8 bug
+  var FAILS_ON_NULL = fails(function () {
+    test.sort(null);
+  });
+  // Old WebKit
+  var STRICT_METHOD = arrayMethodIsStrict('sort');
+
+  var STABLE_SORT = !fails(function () {
+    // feature detection can be too slow, so check engines versions
+    if (engineV8Version) return engineV8Version < 70;
+    if (engineFfVersion && engineFfVersion > 3) return;
+    if (engineIsIeOrEdge) return true;
+    if (engineWebkitVersion) return engineWebkitVersion < 603;
+
+    var result = '';
+    var code, chr, value, index;
+
+    // generate an array with more 512 elements (Chakra and old V8 fails only in this case)
+    for (code = 65; code < 76; code++) {
+      chr = String.fromCharCode(code);
+
+      switch (code) {
+        case 66: case 69: case 70: case 72: value = 3; break;
+        case 68: case 71: value = 4; break;
+        default: value = 2;
+      }
+
+      for (index = 0; index < 47; index++) {
+        test.push({ k: chr + index, v: value });
+      }
+    }
+
+    test.sort(function (a, b) { return b.v - a.v; });
+
+    for (index = 0; index < test.length; index++) {
+      chr = test[index].k.charAt(0);
+      if (result.charAt(result.length - 1) !== chr) result += chr;
+    }
+
+    return result !== 'DGBEFHACIJK';
+  });
+
+  var FORCED = FAILS_ON_UNDEFINED || !FAILS_ON_NULL || !STRICT_METHOD || !STABLE_SORT;
+
+  var getSortCompare = function (comparefn) {
+    return function (x, y) {
+      if (y === undefined) return -1;
+      if (x === undefined) return 1;
+      if (comparefn !== undefined) return +comparefn(x, y) || 0;
+      return toString_1(x) > toString_1(y) ? 1 : -1;
+    };
+  };
+
+  // `Array.prototype.sort` method
+  // https://tc39.es/ecma262/#sec-array.prototype.sort
+  _export({ target: 'Array', proto: true, forced: FORCED }, {
+    sort: function sort(comparefn) {
+      if (comparefn !== undefined) aCallable(comparefn);
+
+      var array = toObject(this);
+
+      if (STABLE_SORT) return comparefn === undefined ? un$Sort(array) : un$Sort(array, comparefn);
+
+      var items = [];
+      var arrayLength = lengthOfArrayLike(array);
+      var itemsLength, index;
+
+      for (index = 0; index < arrayLength; index++) {
+        if (index in array) push(items, array[index]);
+      }
+
+      arraySort(items, getSortCompare(comparefn));
+
+      itemsLength = items.length;
+      index = 0;
+
+      while (index < itemsLength) array[index] = items[index++];
+      while (index < arrayLength) delete array[index++];
+
+      return array;
+    }
+  });
+
+  /**
+   * Finds all Intro steps from the data-* attributes and the options.steps array
+   *
+   * @api private
+   * @param targetElm
+   * @returns {[]}
+   */
+
+  function fetchIntroSteps(targetElm) {
+    var _this = this;
+
+    var allIntroSteps = targetElm.querySelectorAll("*[data-intro]");
+    var introItems = [];
+
+    if (this._options.steps) {
+      //use steps passed programmatically
+      forEach(this._options.steps, function (step) {
+        var currentItem = cloneObject(step); //set the step
+
+        currentItem.step = introItems.length + 1;
+        currentItem.title = currentItem.title || ""; //use querySelector function only when developer used CSS selector
+
+        if (typeof currentItem.element === "string") {
+          //grab the element with given selector from the page
+          currentItem.element = document.querySelector(currentItem.element);
+        } //intro without element
+
+
+        if (typeof currentItem.element === "undefined" || currentItem.element === null) {
+          var floatingElementQuery = document.querySelector(".introjsFloatingElement");
+
+          if (floatingElementQuery === null) {
+            floatingElementQuery = _createElement("div", {
+              className: "introjsFloatingElement"
+            });
+            document.body.appendChild(floatingElementQuery);
+          }
+
+          currentItem.element = floatingElementQuery;
+          currentItem.position = "floating";
+        }
+
+        currentItem.position = currentItem.position || _this._options.tooltipPosition;
+        currentItem.scrollTo = currentItem.scrollTo || _this._options.scrollTo;
+
+        if (typeof currentItem.disableInteraction === "undefined") {
+          currentItem.disableInteraction = _this._options.disableInteraction;
+        }
+
+        if (currentItem.element !== null) {
+          introItems.push(currentItem);
+        }
+      });
+    } else {
+      //use steps from data-* annotations
+      var elmsLength = allIntroSteps.length;
+      var disableInteraction; //if there's no element to intro
+
+      if (elmsLength < 1) {
+        return [];
+      }
+
+      forEach(allIntroSteps, function (currentElement) {
+        // start intro for groups of elements
+        if (_this._options.group && currentElement.getAttribute("data-intro-group") !== _this._options.group) {
+          return;
+        } // skip hidden elements
+
+
+        if (currentElement.style.display === "none") {
+          return;
+        }
+
+        var step = parseInt(currentElement.getAttribute("data-step"), 10);
+
+        if (currentElement.hasAttribute("data-disable-interaction")) {
+          disableInteraction = !!currentElement.getAttribute("data-disable-interaction");
+        } else {
+          disableInteraction = _this._options.disableInteraction;
+        }
+
+        if (step > 0) {
+          introItems[step - 1] = {
+            element: currentElement,
+            title: currentElement.getAttribute("data-title") || "",
+            intro: currentElement.getAttribute("data-intro"),
+            step: parseInt(currentElement.getAttribute("data-step"), 10),
+            tooltipClass: currentElement.getAttribute("data-tooltipclass"),
+            highlightClass: currentElement.getAttribute("data-highlightclass"),
+            position: currentElement.getAttribute("data-position") || _this._options.tooltipPosition,
+            scrollTo: currentElement.getAttribute("data-scrollto") || _this._options.scrollTo,
+            disableInteraction: disableInteraction
+          };
+        }
+      }); //next add intro items without data-step
+      //todo: we need a cleanup here, two loops are redundant
+
+      var nextStep = 0;
+      forEach(allIntroSteps, function (currentElement) {
+        // start intro for groups of elements
+        if (_this._options.group && currentElement.getAttribute("data-intro-group") !== _this._options.group) {
+          return;
+        }
+
+        if (currentElement.getAttribute("data-step") === null) {
+          while (true) {
+            if (typeof introItems[nextStep] === "undefined") {
+              break;
+            } else {
+              nextStep++;
+            }
+          }
+
+          if (currentElement.hasAttribute("data-disable-interaction")) {
+            disableInteraction = !!currentElement.getAttribute("data-disable-interaction");
+          } else {
+            disableInteraction = _this._options.disableInteraction;
+          }
+
+          introItems[nextStep] = {
+            element: currentElement,
+            title: currentElement.getAttribute("data-title") || "",
+            intro: currentElement.getAttribute("data-intro"),
+            step: nextStep + 1,
+            tooltipClass: currentElement.getAttribute("data-tooltipclass"),
+            highlightClass: currentElement.getAttribute("data-highlightclass"),
+            position: currentElement.getAttribute("data-position") || _this._options.tooltipPosition,
+            scrollTo: currentElement.getAttribute("data-scrollto") || _this._options.scrollTo,
+            disableInteraction: disableInteraction
+          };
+        }
+      });
+    } //removing undefined/null elements
+
+
+    var tempIntroItems = [];
+
+    for (var z = 0; z < introItems.length; z++) {
+      if (introItems[z]) {
+        // copy non-falsy values to the end of the array
+        tempIntroItems.push(introItems[z]);
+      }
+    }
+
+    introItems = tempIntroItems; //Ok, sort all items with given steps
+
+    introItems.sort(function (a, b) {
+      return a.step - b.step;
+    });
+    return introItems;
+  }
+
+  /**
+   * Update placement of the intro objects on the screen
+   * @api private
+   * @param {boolean} refreshSteps to refresh the intro steps as well
+   */
+
+  function refresh(refreshSteps) {
+    var referenceLayer = document.querySelector(".introjs-tooltipReferenceLayer");
+    var helperLayer = document.querySelector(".introjs-helperLayer");
+    var disableInteractionLayer = document.querySelector(".introjs-disableInteraction"); // re-align intros
+
+    setHelperLayerPosition.call(this, helperLayer);
+    setHelperLayerPosition.call(this, referenceLayer);
+    setHelperLayerPosition.call(this, disableInteractionLayer);
+
+    if (refreshSteps) {
+      this._introItems = fetchIntroSteps.call(this, this._targetElement);
+
+      _recreateBullets.call(this, referenceLayer, this._introItems[this._currentStep]);
+
+      _updateProgressBar.call(this, referenceLayer);
+    } // re-align tooltip
+
+
+    if (this._currentStep !== undefined && this._currentStep !== null) {
+      var oldArrowLayer = document.querySelector(".introjs-arrow");
+      var oldtooltipContainer = document.querySelector(".introjs-tooltip");
+
+      if (oldtooltipContainer && oldArrowLayer) {
+        placeTooltip.call(this, this._introItems[this._currentStep].element, oldtooltipContainer, oldArrowLayer);
+      }
+    } //re-align hints
+
+
+    reAlignHints.call(this);
+    return this;
+  }
+
+  function onResize() {
+    refresh.call(this);
+  }
+
+  /**
+   * Removes `element` from `parentElement`
+   *
+   * @param {Element} element
+   * @param {Boolean} [animate=false]
+   */
+
+  function removeChild(element, animate) {
+    if (!element || !element.parentElement) return;
+    var parentElement = element.parentElement;
+
+    if (animate) {
+      setStyle(element, {
+        opacity: "0"
+      });
+      window.setTimeout(function () {
+        try {
+          // removeChild(..) throws an exception if the child has already been removed (https://developer.mozilla.org/en-US/docs/Web/API/Node/removeChild)
+          // this try-catch is added to make sure this function doesn't throw an exception if the child has been removed
+          // this scenario can happen when start()/exit() is called multiple times and the helperLayer is removed by the
+          // previous exit() call (note: this is a timeout)
+          parentElement.removeChild(element);
+        } catch (e) {}
+      }, 500);
+    } else {
+      parentElement.removeChild(element);
+    }
+  }
+
+  /**
+   * Exit from intro
+   *
+   * @api private
+   * @method _exitIntro
+   * @param {Object} targetElement
+   * @param {Boolean} force - Setting to `true` will skip the result of beforeExit callback
+   */
+
+  function exitIntro(targetElement, force) {
+    var continueExit = true; // calling onbeforeexit callback
+    //
+    // If this callback return `false`, it would halt the process
+
+    if (this._introBeforeExitCallback !== undefined) {
+      continueExit = this._introBeforeExitCallback.call(this);
+    } // skip this check if `force` parameter is `true`
+    // otherwise, if `onbeforeexit` returned `false`, don't exit the intro
+
+
+    if (!force && continueExit === false) return; // remove overlay layers from the page
+
+    var overlayLayers = targetElement.querySelectorAll(".introjs-overlay");
+
+    if (overlayLayers && overlayLayers.length) {
+      forEach(overlayLayers, function (overlayLayer) {
+        return removeChild(overlayLayer);
+      });
+    } //remove all helper layers
+
+
+    var helperLayer = targetElement.querySelector(".introjs-helperLayer");
+    removeChild(helperLayer, true);
+    var referenceLayer = targetElement.querySelector(".introjs-tooltipReferenceLayer");
+    removeChild(referenceLayer); //remove disableInteractionLayer
+
+    var disableInteractionLayer = targetElement.querySelector(".introjs-disableInteraction");
+    removeChild(disableInteractionLayer); //remove intro floating element
+
+    var floatingElement = document.querySelector(".introjsFloatingElement");
+    removeChild(floatingElement);
+    removeShowElement(); //clean listeners
+
+    DOMEvent.off(window, "keydown", onKeyDown, this, true);
+    DOMEvent.off(window, "resize", onResize, this, true); //check if any callback is defined
+
+    if (this._introExitCallback !== undefined) {
+      this._introExitCallback.call(this);
+    } //set the step to zero
+
+
+    this._currentStep = undefined;
+  }
+
+  /**
+   * Add overlay layer to the page
+   *
+   * @api private
+   * @method _addOverlayLayer
+   * @param {Object} targetElm
+   */
+
+  function addOverlayLayer(targetElm) {
+    var _this = this;
+
+    var overlayLayer = _createElement("div", {
+      className: "introjs-overlay"
+    });
+    setStyle(overlayLayer, {
+      top: 0,
+      bottom: 0,
+      left: 0,
+      right: 0,
+      position: "fixed"
+    });
+    targetElm.appendChild(overlayLayer);
+
+    if (this._options.exitOnOverlayClick === true) {
+      setStyle(overlayLayer, {
+        cursor: "pointer"
+      });
+
+      overlayLayer.onclick = function () {
+        exitIntro.call(_this, targetElm);
+      };
+    }
+
+    return true;
+  }
+
+  /**
+   * Initiate a new introduction/guide from an element in the page
+   *
+   * @api private
+   * @method introForElement
+   * @param {Object} targetElm
+   * @returns {Boolean} Success or not?
+   */
+
+  function introForElement(targetElm) {
+    if (this._introStartCallback !== undefined) {
+      this._introStartCallback.call(this, targetElm);
+    } //set it to the introJs object
+
+
+    var steps = fetchIntroSteps.call(this, targetElm);
+
+    if (steps.length === 0) {
+      return false;
+    }
+
+    this._introItems = steps; //add overlay layer to the page
+
+    if (addOverlayLayer.call(this, targetElm)) {
+      //then, start the show
+      nextStep.call(this);
+
+      if (this._options.keyboardNavigation) {
+        DOMEvent.on(window, "keydown", onKeyDown, this, true);
+      } //for window resize
+
+
+      DOMEvent.on(window, "resize", onResize, this, true);
+    }
+
+    return false;
+  }
+
+  var version = "4.3.0";
+
+  /**
+   * IntroJs main class
+   *
+   * @class IntroJs
+   */
+
+  function IntroJs(obj) {
+    this._targetElement = obj;
+    this._introItems = [];
+    this._options = {
+      /* Next button label in tooltip box */
+      nextLabel: "Next",
+
+      /* Previous button label in tooltip box */
+      prevLabel: "Back",
+
+      /* Skip button label in tooltip box */
+      skipLabel: "×",
+
+      /* Done button label in tooltip box */
+      doneLabel: "Done",
+
+      /* Hide previous button in the first step? Otherwise, it will be disabled button. */
+      hidePrev: false,
+
+      /* Hide next button in the last step? Otherwise, it will be disabled button (note: this will also hide the "Done" button) */
+      hideNext: false,
+
+      /* Change the Next button to Done in the last step of the intro? otherwise, it will render a disabled button */
+      nextToDone: true,
+
+      /* Default tooltip box position */
+      tooltipPosition: "bottom",
+
+      /* Next CSS class for tooltip boxes */
+      tooltipClass: "",
+
+      /* Start intro for a group of elements */
+      group: "",
+
+      /* CSS class that is added to the helperLayer */
+      highlightClass: "",
+
+      /* Close introduction when pressing Escape button? */
+      exitOnEsc: true,
+
+      /* Close introduction when clicking on overlay layer? */
+      exitOnOverlayClick: true,
+
+      /* Show step numbers in introduction? */
+      showStepNumbers: false,
+
+      /* Let user use keyboard to navigate the tour? */
+      keyboardNavigation: true,
+
+      /* Show tour control buttons? */
+      showButtons: true,
+
+      /* Show tour bullets? */
+      showBullets: true,
+
+      /* Show tour progress? */
+      showProgress: false,
+
+      /* Scroll to highlighted element? */
+      scrollToElement: true,
+
+      /*
+       * Should we scroll the tooltip or target element?
+       *
+       * Options are: 'element' or 'tooltip'
+       */
+      scrollTo: "element",
+
+      /* Padding to add after scrolling when element is not in the viewport (in pixels) */
+      scrollPadding: 30,
+
+      /* Set the overlay opacity */
+      overlayOpacity: 0.5,
+
+      /* To determine the tooltip position automatically based on the window.width/height */
+      autoPosition: true,
+
+      /* Precedence of positions, when auto is enabled */
+      positionPrecedence: ["bottom", "top", "right", "left"],
+
+      /* Disable an interaction with element? */
+      disableInteraction: false,
+
+      /* Set how much padding to be used around helper element */
+      helperElementPadding: 10,
+
+      /* Default hint position */
+      hintPosition: "top-middle",
+
+      /* Hint button label */
+      hintButtonLabel: "Got it",
+
+      /* Display the "Got it" button? */
+      hintShowButton: true,
+
+      /* Hints auto-refresh interval in ms (set to -1 to disable) */
+      hintAutoRefreshInterval: 10,
+
+      /* Adding animation to hints? */
+      hintAnimation: true,
+
+      /* additional classes to put on the buttons */
+      buttonClass: "introjs-button",
+
+      /* additional classes to put on progress bar */
+      progressBarAdditionalClass: false
+    };
+  }
+
+  var introJs = function introJs(targetElm) {
+    var instance;
+
+    if (_typeof(targetElm) === "object") {
+      //Ok, create a new instance
+      instance = new IntroJs(targetElm);
+    } else if (typeof targetElm === "string") {
+      //select the target element with query selector
+      var targetElement = document.querySelector(targetElm);
+
+      if (targetElement) {
+        instance = new IntroJs(targetElement);
+      } else {
+        throw new Error("There is no element with given selector.");
+      }
+    } else {
+      instance = new IntroJs(document.body);
+    } // add instance to list of _instances
+    // passing group to stamp to increment
+    // from 0 onward somewhat reliably
+
+
+    introJs.instances[stamp(instance, "introjs-instance")] = instance;
+    return instance;
+  };
+  /**
+   * Current IntroJs version
+   *
+   * @property version
+   * @type String
+   */
+
+
+  introJs.version = version;
+  /**
+   * key-val object helper for introJs instances
+   *
+   * @property instances
+   * @type Object
+   */
+
+  introJs.instances = {}; //Prototype
+
+  introJs.fn = IntroJs.prototype = {
+    clone: function clone() {
+      return new IntroJs(this);
+    },
+    setOption: function setOption(option, value) {
+      this._options[option] = value;
+      return this;
+    },
+    setOptions: function setOptions(options) {
+      this._options = mergeOptions(this._options, options);
+      return this;
+    },
+    start: function start() {
+      introForElement.call(this, this._targetElement);
+      return this;
+    },
+    goToStep: function goToStep$1(step) {
+      goToStep.call(this, step);
+
+      return this;
+    },
+    addStep: function addStep(options) {
+      if (!this._options.steps) {
+        this._options.steps = [];
+      }
+
+      this._options.steps.push(options);
+
+      return this;
+    },
+    addSteps: function addSteps(steps) {
+      if (!steps.length) return;
+
+      for (var index = 0; index < steps.length; index++) {
+        this.addStep(steps[index]);
+      }
+
+      return this;
+    },
+    goToStepNumber: function goToStepNumber$1(step) {
+      goToStepNumber.call(this, step);
+
+      return this;
+    },
+    nextStep: function nextStep$1() {
+      nextStep.call(this);
+
+      return this;
+    },
+    previousStep: function previousStep$1() {
+      previousStep.call(this);
+
+      return this;
+    },
+    currentStep: function currentStep$1() {
+      return currentStep.call(this);
+    },
+    exit: function exit(force) {
+      exitIntro.call(this, this._targetElement, force);
+      return this;
+    },
+    refresh: function refresh$1(refreshSteps) {
+      refresh.call(this, refreshSteps);
+
+      return this;
+    },
+    onbeforechange: function onbeforechange(providedCallback) {
+      if (typeof providedCallback === "function") {
+        this._introBeforeChangeCallback = providedCallback;
+      } else {
+        throw new Error("Provided callback for onbeforechange was not a function");
+      }
+
+      return this;
+    },
+    onchange: function onchange(providedCallback) {
+      if (typeof providedCallback === "function") {
+        this._introChangeCallback = providedCallback;
+      } else {
+        throw new Error("Provided callback for onchange was not a function.");
+      }
+
+      return this;
+    },
+    onafterchange: function onafterchange(providedCallback) {
+      if (typeof providedCallback === "function") {
+        this._introAfterChangeCallback = providedCallback;
+      } else {
+        throw new Error("Provided callback for onafterchange was not a function");
+      }
+
+      return this;
+    },
+    oncomplete: function oncomplete(providedCallback) {
+      if (typeof providedCallback === "function") {
+        this._introCompleteCallback = providedCallback;
+      } else {
+        throw new Error("Provided callback for oncomplete was not a function.");
+      }
+
+      return this;
+    },
+    onhintsadded: function onhintsadded(providedCallback) {
+      if (typeof providedCallback === "function") {
+        this._hintsAddedCallback = providedCallback;
+      } else {
+        throw new Error("Provided callback for onhintsadded was not a function.");
+      }
+
+      return this;
+    },
+    onhintclick: function onhintclick(providedCallback) {
+      if (typeof providedCallback === "function") {
+        this._hintClickCallback = providedCallback;
+      } else {
+        throw new Error("Provided callback for onhintclick was not a function.");
+      }
+
+      return this;
+    },
+    onhintclose: function onhintclose(providedCallback) {
+      if (typeof providedCallback === "function") {
+        this._hintCloseCallback = providedCallback;
+      } else {
+        throw new Error("Provided callback for onhintclose was not a function.");
+      }
+
+      return this;
+    },
+    onstart: function onstart(providedCallback) {
+      if (typeof providedCallback === "function") {
+        this._introStartCallback = providedCallback;
+      } else {
+        throw new Error("Provided callback for onstart was not a function.");
+      }
+
+      return this;
+    },
+    onexit: function onexit(providedCallback) {
+      if (typeof providedCallback === "function") {
+        this._introExitCallback = providedCallback;
+      } else {
+        throw new Error("Provided callback for onexit was not a function.");
+      }
+
+      return this;
+    },
+    onskip: function onskip(providedCallback) {
+      if (typeof providedCallback === "function") {
+        this._introSkipCallback = providedCallback;
+      } else {
+        throw new Error("Provided callback for onskip was not a function.");
+      }
+
+      return this;
+    },
+    onbeforeexit: function onbeforeexit(providedCallback) {
+      if (typeof providedCallback === "function") {
+        this._introBeforeExitCallback = providedCallback;
+      } else {
+        throw new Error("Provided callback for onbeforeexit was not a function.");
+      }
+
+      return this;
+    },
+    addHints: function addHints() {
+      populateHints.call(this, this._targetElement);
+      return this;
+    },
+    hideHint: function hideHint$1(stepId) {
+      hideHint.call(this, stepId);
+
+      return this;
+    },
+    hideHints: function hideHints$1() {
+      hideHints.call(this);
+
+      return this;
+    },
+    showHint: function showHint$1(stepId) {
+      showHint.call(this, stepId);
+
+      return this;
+    },
+    showHints: function showHints$1() {
+      showHints.call(this);
+
+      return this;
+    },
+    removeHints: function removeHints$1() {
+      removeHints.call(this);
+
+      return this;
+    },
+    removeHint: function removeHint$1(stepId) {
+      removeHint().call(this, stepId);
+
+      return this;
+    },
+    showHintDialog: function showHintDialog$1(stepId) {
+      showHintDialog.call(this, stepId);
+
+      return this;
+    }
+  };
+
+  return introJs;
+
+}));
+}(intro));
+
+var introJs = intro.exports;
+
+const ZWEI = {};
+
+ZWEI.templates = {
+    "skill": "systems/zweihander/templates/chat/chat-skill.hbs",
+    "spell": "systems/zweihander/templates/chat/chat-spell.hbs",
+    "parry": "systems/zweihander/templates/chat/chat-parry.hbs",
+    "dodge": "systems/zweihander/templates/chat/chat-dodge.hbs",
+    "weapon": "systems/zweihander/templates/chat/chat-weapon.hbs",
+    "skillConfigurationDialog": "systems/zweihander/templates/dialog/dialog-skill-configuration.hbs",
+    "spellConfigurationDialog": "systems/zweihander/templates/dialog/dialog-spell-configuration.hbs",
+    "weaponConfigurationDialog": "systems/zweihander/templates/dialog/dialog-weapon-configuration.hbs"
+};
+
+ZWEI.rollTypes = {
+    "skill": "skill",
+    "spell": "spell",
+    "parry": "parry",
+    "dodge": "dodge",
+    "weapon": "weapon"
+};
+
+ZWEI.testRollFormula = "1d100";
+
+/**
+* An implementation of the Zweihänder Grim & Perilous RPG system for FoundryVTT
+* Author: Re4XN
+*/
+
+let fortuneTrackerApp;
+
+/* -------------------------------------------- */
+/*  Foundry VTT Initialization                  */
+/* -------------------------------------------- */
+Hooks.once("socketlib.ready", () => {
+  FortuneTracker.registerPersistingSettings();
+  const socket = socketlib.registerSystem("zweihander");
+  fortuneTrackerApp = new FortuneTracker(socket);
+});
+
+Hooks.once("ready", function () {
+  // this is necessary to apply the theme settings
+  // TODO: refactor into own utility-function/class
+  let sheetStyles = game.settings.get("zweihander", "theme");
+  game.settings.set("zweihander", "theme", sheetStyles);
+  fortuneTrackerApp?.syncState();//.then(() => introJs().start());
+  migrateWorldSafe();
+});
+
+Hooks.once("init", async function () {
+  // CONFIG.debug.hooks = true;
+  console.log(`Initializing ZWEIHÄNDER: Grim & Perilous RPG System`);
+  game.zweihander = {
+    ZweihanderActor,
+    ZweihanderItem,
+    find: findItemsWorldWide,
+    fortuneTrackerApp,
+    migrate: migrateWorld,
+    introJs: introJs
+  };
+  CONFIG.ChatMessage.template = "systems/zweihander/templates/chat/chat-message.hbs";
+  /**
+  * Set an initiative formula for the system
+  * @type {String}
+  */
+  CONFIG.Combat.initiative = {
+    formula: "1d10 + @stats.secondaryAttributes.initiative.current",
+    decimals: 2
+  };
+  //TODO probably better to export / import those constants rather than setting on global object.
+  CONFIG.ZWEI = ZWEI;
+  // Define custom Document classes
+  CONFIG.Actor.documentClass = ZweihanderActor;
+  CONFIG.Item.documentClass = ZweihanderItem;
+  // Register sheet application classes
+  Actors.unregisterSheet("core", ActorSheet);
+  Actors.registerSheet("zweihander", ZweihanderActorSheet, { "types": ["character"], makeDefault: true });
+  Actors.registerSheet("zweihander", ZweihanderNpcSheet, { "types": ["npc"], makeDefault: true });
+  Actors.registerSheet("zweihander", ZweihanderCreatureSheet, { "types": ["creature"], makeDefault: true });
+  Items.unregisterSheet("core", ItemSheet);
+  Items.registerSheet("zweihander", ZweihanderItemSheet, { makeDefault: true });
+  // Register settings
+  registerSystemSettings();
+  // Register Helpers
+  await registerHandlebarHelpers();
+  // Register Templates
+  return preloadHandlebarsTemplates();
+});
+
+
+Hooks.on("renderActorSheet", (app, html, data) => {
+  //TODO: refactor into actor config class
+  html.find(".header-button.configure-sheet").before(`
   <a class="configure-actor">
   <i class="fas fa-user-cog"></i>
   Actor
   </a>
-  `),t.find(".configure-actor").click(()=>{new ZweihanderActorConfig(e.object).render(!0)})}),Hooks.on("renderChatLog",function(e,t,a){$(t).on("click",".link-details",e=>{e.preventDefault();const t=$(e.currentTarget);e=t.parents(".content").find(".roll-details");$(e).slideToggle()})});
+  `);
+
+  html.find(".configure-actor").click(() => {
+    new ZweihanderActorConfig(app.object).render(true);
+  });
+});
+
+Hooks.on("renderChatLog", function (log, html, data) {
+  // TODO: Refactor into Dice class
+
+  $(html).on("click", ".link-details", (event) => {
+    event.preventDefault();
+
+    const toggler = $(event.currentTarget);
+    const rollDetails = toggler.parents(".content").find(".roll-details");
+
+    $(rollDetails).slideToggle();
+  });
+});
 //# sourceMappingURL=zweihander.js.map

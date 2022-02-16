@@ -34,11 +34,11 @@ Easily track fortune points for your party and choose from two fortune rule syst
 1. One-way (using misfortune points removes them from the game)
 2. Ebb-and-flow (using misfortune points convertes them back to fortune points)
 
-![](assets/features/fortunetracker.webp)
+![](readme-assets/fortunetracker.webp)
 
 ### Themes
 While we currently just support a dark theme and a light theme, support for easy re-colorization of the systems sheets is on our roadmap!
-![](assets/features/themes.png)
+![](readme-assets/themes.png)
 
 ### Your Game - Your Rules
 This system aims to be very customizable. While it is a comprehensive implementation of the standard Zweihander d100 system (with its list of skills, professions, talents, traits, etc.), we want to support creative GMs and enable easy modifications to the system. Therefore, you can populate the system with as much individual, home-brew content as you like. In a future release it will also be possible to modify the list of skills.
