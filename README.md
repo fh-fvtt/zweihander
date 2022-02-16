@@ -1,6 +1,19 @@
 ![](https://db4sgowjqfwig.cloudfront.net/campaigns/161832/assets/725959/Zweiha_nderLogoTransparency.png?1492594545)
 An implementation of the Zweihänder Grim & Perilous d100 RPG system for FoundryVTT.
 
+## Installation
+
+You can install this system from FoundryVTTs module browser by searching for its name or by using the following links.
+### Stable version
+
+https://raw.githubusercontent.com/fh-fvtt/zweihander/main/system.json
+
+
+### Development version
+**Cutting edge, might be unstable, use at own risk!**
+
+https://raw.githubusercontent.com/fh-fvtt/zweihander/dev/system.json
+
 ## Features
 
 ### Automated Profession Advances
@@ -33,7 +46,9 @@ If you have suggestions on ways to allow for more customization, [feel free to r
 
 ## Integrations
 
-The following modules work with this system
+The following modules work with this system:
+
+- Dice so Nice
 
 ## Dependencies
 
