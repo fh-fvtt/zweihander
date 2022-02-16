@@ -12,5 +12,6 @@ fi
 version=$1
 manifest_branch=$(git branch --show-current)
 cat system.template.json | sed -e 's/{{version}}/'"${version}"'/g' -e 's/{{manifest}}/https:\/\/raw.githubusercontent.com\/fh-fvtt\/zweihander\/'"${manifest_branch}"'\/system.json/g' > system.json
-# git tag "v${version}"
-# git push
+git tag "v${version}"
+git push
+git push origin "v${version}"

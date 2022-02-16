@@ -50,7 +50,7 @@ jobs:
           prerelease: false
           token: ${{ secrets.GITHUB_TOKEN }}
           artifacts: './system.json,./system.zip'
-          tag_name: ${{ steps.get-version.outputs.version }}
+          tag: ${{ steps.get-version.outputs.version }}
 
       # Update the 'latest' release
       - name: Create Release
