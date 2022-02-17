@@ -56,7 +56,7 @@ export default class ZweihanderPC extends ZweihanderBaseActor {
     Object.values(data.stats.primaryAttributes).forEach(a => a.bonus = Math.floor(a.value / 10));
     // add ancestral modifiers to the primary attribute bonuses
     const ancestry = actorData.ancestry[0];
-    const applyBonusModifiers = (list, mod, source) => list.forEach(a => {
+    const applyBonusModifiers = (list, mod, source) => list?.forEach?.(a => {
       const attr = ZweihanderUtils.primaryAttributeMapping[a.slice(1,2)];
       //TODO should be safe to remove this after migration of existing data
       if (!attr) {
