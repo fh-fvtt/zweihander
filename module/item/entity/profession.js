@@ -5,9 +5,9 @@ export default class ZweihanderProfession extends ZweihanderBaseItem {
   prepareDerivedData(itemData, item) {
     if (!item.isOwned) return;
     const advancesPurchased = 1
-      + itemData.data.bonusAdvances?.reduce?.((a, b) => a + Number(b.purchased), 0) ?? 0
-      + itemData.data.skillRanks?.reduce?.((a, b) => a + Number(b.purchased), 0) ?? 0
-      + itemData.data.talents?.reduce?.((a, b) => a + Number(b.purchased), 0) ?? 0;
+      + (itemData.data.bonusAdvances?.reduce?.((a, b) => a + Number(b.purchased), 0) ?? 0)
+      + (itemData.data.skillRanks?.reduce?.((a, b) => a + Number(b.purchased), 0) ?? 0)
+      + (itemData.data.talents?.reduce?.((a, b) => a + Number(b.purchased), 0) ?? 0);
     itemData.data.tier.advancesPurchased = advancesPurchased;
     itemData.data.tier.completed = advancesPurchased === 21;
   }

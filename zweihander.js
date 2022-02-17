@@ -2319,9 +2319,9 @@ class ZweihanderProfession extends ZweihanderBaseItem {
   prepareDerivedData(itemData, item) {
     if (!item.isOwned) return;
     const advancesPurchased = 1
-      + itemData.data.bonusAdvances?.reduce?.((a, b) => a + Number(b.purchased), 0) ?? 0
-      + itemData.data.skillRanks?.reduce?.((a, b) => a + Number(b.purchased), 0) ?? 0
-      + itemData.data.talents?.reduce?.((a, b) => a + Number(b.purchased), 0) ?? 0;
+      + (itemData.data.bonusAdvances?.reduce?.((a, b) => a + Number(b.purchased), 0) ?? 0)
+      + (itemData.data.skillRanks?.reduce?.((a, b) => a + Number(b.purchased), 0) ?? 0)
+      + (itemData.data.talents?.reduce?.((a, b) => a + Number(b.purchased), 0) ?? 0);
     itemData.data.tier.advancesPurchased = advancesPurchased;
     itemData.data.tier.completed = advancesPurchased === 21;
   }
@@ -3635,7 +3635,7 @@ const registerHandlebarHelpers = async function () {
 
 const migrateWorld = async function () {
   ui.notifications.info(`Applying Zweihander System Migration for version ${game.system.data.version}. Please be patient and do not close your game or shut down your server.`, { permanent: true });
-
+  debugger;
   // Migrate World Actors
   for (let a of game.actors) {
     try {
