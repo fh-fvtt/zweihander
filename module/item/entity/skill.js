@@ -9,7 +9,7 @@ export default class ZweihanderSkill extends ZweihanderBaseItem {
     const actor = item.actor;
     const timesPurchased = actor.items
       .filter(i => i.type === 'profession')
-      .flatMap(p => p.data.data.skillRanks?.filter(sr => sr.value === item.name && sr.purchased))
+      .flatMap(p => p.data.data.skillRanks?.filter?.(sr => sr.value === item.name && sr.purchased))
       ?.length ?? 0;
     data.rank = timesPurchased;
     data.bonus = timesPurchased * 10;

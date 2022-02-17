@@ -2319,9 +2319,9 @@ class ZweihanderProfession extends ZweihanderBaseItem {
   prepareDerivedData(itemData, item) {
     if (!item.isOwned) return;
     const advancesPurchased = 1
-      + itemData.data.bonusAdvances.reduce((a, b) => a + Number(b.purchased), 0)
-      + itemData.data.skillRanks.reduce((a, b) => a + Number(b.purchased), 0)
-      + itemData.data.talents.reduce((a, b) => a + Number(b.purchased), 0);
+      + itemData.data.bonusAdvances?.reduce?.((a, b) => a + Number(b.purchased), 0) ?? 0
+      + itemData.data.skillRanks?.reduce?.((a, b) => a + Number(b.purchased), 0) ?? 0
+      + itemData.data.talents?.reduce?.((a, b) => a + Number(b.purchased), 0) ?? 0;
     itemData.data.tier.advancesPurchased = advancesPurchased;
     itemData.data.tier.completed = advancesPurchased === 21;
   }
@@ -2432,7 +2432,7 @@ class ZweihanderSkill extends ZweihanderBaseItem {
     const actor = item.actor;
     const timesPurchased = actor.items
       .filter(i => i.type === 'profession')
-      .flatMap(p => p.data.data.skillRanks?.filter(sr => sr.value === item.name && sr.purchased))
+      .flatMap(p => p.data.data.skillRanks?.filter?.(sr => sr.value === item.name && sr.purchased))
       ?.length ?? 0;
     data.rank = timesPurchased;
     data.bonus = timesPurchased * 10;
