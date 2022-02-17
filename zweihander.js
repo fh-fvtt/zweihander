@@ -3835,7 +3835,7 @@ const migrateProfession = async function (item) {
 };
 
 const migrateIcons = function (img) {
-  return img.replaceAll('assets/icons/game-icons','assets/icons').replaceAll('assets/skills.png', 'icons/skills.svg');
+  return img?.replaceAll?.('assets/icons/game-icons','assets/icons')?.replaceAll?.('assets/skills.png', 'icons/skills.svg') ?? "icons/svg/mystery-man.svg";
 };
 
 const migrateWorldSafe = async function () {
