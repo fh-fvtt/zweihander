@@ -3635,7 +3635,6 @@ const registerHandlebarHelpers = async function () {
 
 const migrateWorld = async function () {
   ui.notifications.info(`Applying Zweihander System Migration for version ${game.system.data.version}. Please be patient and do not close your game or shut down your server.`, { permanent: true });
-  debugger;
   // Migrate World Actors
   for (let a of game.actors) {
     try {
