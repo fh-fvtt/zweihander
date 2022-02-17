@@ -72,7 +72,7 @@ export default class ZweihanderPC extends ZweihanderBaseActor {
     }
     // professional bonus advances
     actorData.professions.forEach(p => {
-      const advancesList = p.data.bonusAdvances.filter(a => a.purchased).map(a => a.value);
+      const advancesList = p.data.bonusAdvances?.filter?.(a => a.purchased)?.map?.(a => a.value) ?? [];
       applyBonusModifiers(advancesList, +1, `profession ${p.name} of actor ${actorData.name}`);
     })
     // get equipped armor
