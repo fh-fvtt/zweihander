@@ -1,8 +1,10 @@
+import ZweihanderBaseActorSheet from "./base-actor-sheet";
+
 /**
  * Extend the basic ActorSheet with some very simple modifications
  * @extends {ActorSheet}
  */
- export default class ZweihanderNpcSheet extends ActorSheet {
+ export default class ZweihanderNpcSheet extends ZweihanderBaseActorSheet {
 
   /** @override */
   static get defaultOptions() {

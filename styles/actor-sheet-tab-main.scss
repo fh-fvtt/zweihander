@@ -15,6 +15,10 @@
       text-align: center;
       border-bottom: 2px groove var(--zx-clr-bg2);
       position: relative;
+      display: flex;
+      justify-content: center;
+      flex-direction: column;
+      width: 100%;
       input {
         height: 30px;
         width: 36px;

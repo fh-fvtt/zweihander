@@ -1,11 +1,12 @@
-import ZweihanderActorConfig from "../../apps/actor-config.js";
-import ZweihanderDice from "../../dice/zweihander-dice.js";
+import ZweihanderActorConfig from "../../apps/actor-config";
+import ZweihanderDice from "../../dice/zweihander-dice";
 import * as ZweihanderUtils from "../../utils";
+import ZweihanderBaseActorSheet from "./base-actor-sheet";
 /**
  * The Zweihänder actor sheet class for characters.
  * @extends {ActorSheet}
  */
-export default class ZweihanderActorSheet extends ActorSheet {
+export default class ZweihanderActorSheet extends ZweihanderBaseActorSheet {
 
   /** @override */
   static get defaultOptions() {

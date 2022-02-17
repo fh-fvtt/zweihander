@@ -1312,11 +1312,16 @@ class ZweihanderDice {
   }
 }
 
+class ZweihanderBaseActorSheet extends ActorSheet {
+
+
+}
+
 /**
  * The Zweihänder actor sheet class for characters.
  * @extends {ActorSheet}
  */
-class ZweihanderActorSheet extends ActorSheet {
+class ZweihanderActorSheet extends ZweihanderBaseActorSheet {
 
   /** @override */
   static get defaultOptions() {
@@ -1825,7 +1830,7 @@ class ZweihanderActorSheet extends ActorSheet {
  * Extend the basic ActorSheet with some very simple modifications
  * @extends {ActorSheet}
  */
- class ZweihanderNpcSheet extends ActorSheet {
+ class ZweihanderNpcSheet extends ZweihanderBaseActorSheet {
 
   /** @override */
   static get defaultOptions() {
@@ -2019,7 +2024,7 @@ class ZweihanderActorSheet extends ActorSheet {
  * Extend the basic ActorSheet with some very simple modifications
  * @extends {ActorSheet}
  */
- class ZweihanderCreatureSheet extends ActorSheet {
+ class ZweihanderCreatureSheet extends ZweihanderBaseActorSheet {
 
   /** @override */
   static get defaultOptions() {
@@ -2427,8 +2432,8 @@ class ZweihanderSkill extends ZweihanderBaseItem {
     const actor = item.actor;
     const timesPurchased = actor.items
       .filter(i => i.type === 'profession')
-      .flatMap(p => p.data.data.skillRanks.filter(sr => sr.value === item.name && sr.purchased))
-      .length;
+      .flatMap(p => p.data.data.skillRanks?.filter(sr => sr.value === item.name && sr.purchased))
+      ?.length ?? 0;
     data.rank = timesPurchased;
     data.bonus = timesPurchased * 10;
   }
