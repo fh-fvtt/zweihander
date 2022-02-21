@@ -17,9 +17,9 @@ if you want to view the source visit the plugins github repository
 const dev = process.env.PRODUCTION_MODE === undefined;
 
 export default {
-  input: "./module/main.js",
+  input: "./module/zweihander.js",
   output: {
-    file: "zweihander.js",
+    dir: dev ? "." : "./dist/",
     sourcemap: true,
     sourcemapExcludeSources: dev,
     format: "es",
