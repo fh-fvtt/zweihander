@@ -1,5 +1,7 @@
 export default class FortuneTracker extends Application {
 
+  static INSTANCE = undefined;
+
   static get PARAMS() {
     const size = game.settings.get("zweihander", "fortuneTrackerSize");
     switch (size) {
@@ -134,7 +136,7 @@ export default class FortuneTracker extends Application {
 
   static get defaultOptions() {
     return foundry.utils.mergeObject(super.defaultOptions, {
-      template: 'systems/zweihander/templates/fortune-tracker.hbs',
+      template: 'systems/zweihander/templates/app/fortune-tracker.hbs',
       popOut: true,
       resizable: false,
       title: 'Fortune Tracker',
@@ -159,9 +161,8 @@ export default class FortuneTracker extends Application {
           socket.executeForEveryone("broadcastState", that.state);
           socket.executeAsUser("showIllegalStateNotification", requestingUserId, validationError);
         }
-      } else {
-        return that.state;
-      }
+      } 
+      return that.state;
     }
     
     function broadcastState(state) {
@@ -389,7 +390,7 @@ export default class FortuneTracker extends Application {
     }
   }
 
-  async requestSync(updatedState) {
+  async requestSync(updatedState, rethrow=false) {
     try {
       if (updatedState) {
         return await this.#socket.executeAsGM("requestSync", updatedState, game.userId);
@@ -401,6 +402,9 @@ export default class FortuneTracker extends Application {
       this.#waiting = true;
       this.render(!this.closable);
       ui.notifications.warn("Fortune Tracker is waiting for a GM to (re)connect.");
+      if (rethrow) {
+        throw e;
+      }
       return this.state;
     }
   }
@@ -480,6 +484,24 @@ export default class FortuneTracker extends Application {
       event.preventDefault();
       this.requestSync(this.spendMisfortune());
     });
+  }
+
+  async useFortune() {
+    const fortuneBefore = this.fortune;
+    this.state = await this.requestSync(this.spendFortune(), true);
+    if (fortuneBefore === this.fortune) {
+      throw "Can't use fortune!";
+    }
+    return true;
+  }
+
+  async useMisfortune() {
+    const misfortuneBefore = this.misfortune;
+    this.state = await this.requestSync(this.spendMisfortune(), true);
+    if (misfortuneBefore === this.misfortune) {
+      throw "Can't use misfortune!";
+    }
+    return true;
   }
 
   playAudio() {

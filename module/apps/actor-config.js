@@ -5,12 +5,12 @@ export default class ZweihanderActorConfig extends FormApplication {
       "pthAttribute": "willpower",
       "intAttribute": "perception",
       "movAttribute": "agility",
-      "perilLadder": {
-        "avoidStepOne": false,
-        "avoidStepTwo": false,
-        "avoidStepThree": false,
-        "avoidAll": false
-      },
+      "isIgnoredPerilLadderValue": [false, false, false],
+      //   "avoidStepOne": false,
+      //   "avoidStepTwo": false,
+      //   "avoidStepThree": false,
+      //   "avoidAll": false
+      // },
       "encumbranceModifier": 0,
       "initiativeModifier": 0,
       "movementModifier": 0,
@@ -39,8 +39,12 @@ export default class ZweihanderActorConfig extends FormApplication {
       classes: ["zweihander sheet actor-config"],
       id: "zweihander_actor_config",
       template: "systems/zweihander/templates/actor/actor-config.hbs",
+      submitOnChange: true,
+      submitOnClose: true,
+      closeOnSubmit: false,
       width: 500,
-      height: 950
+      height: 950,
+      scrollY: ['form']
     });
   }
 
@@ -58,6 +62,7 @@ export default class ZweihanderActorConfig extends FormApplication {
     data.parrySkills = data.flags.parrySkills.join(", ");
     data.dodgeSkills = data.flags.dodgeSkills.join(", ");
     data.magickSkills = data.flags.magickSkills.join(", ");
+    data.avoidAllPeril = data.flags.isIgnoredPerilLadderValue.reduce((a,b) => a && b, true);
 
     return data;
   }
@@ -67,7 +72,7 @@ export default class ZweihanderActorConfig extends FormApplication {
     const actor = this.object;
     
     let updateData = foundry.utils.expandObject(formData).flags;
-
+    
     let parrySkills = updateData.parrySkills.split(",").map(skill => skill.trim());
     let dodgeSkills = updateData.dodgeSkills.split(",").map(skill => skill.trim());
     let magickSkills = updateData.magickSkills.split(",").map(skill => skill.trim());
@@ -75,7 +80,22 @@ export default class ZweihanderActorConfig extends FormApplication {
     updateData.parrySkills = parrySkills;
     updateData.dodgeSkills = dodgeSkills;
     updateData.magickSkills = magickSkills;
+    // wtf is this template system haha
+    updateData.isIgnoredPerilLadderValue = [
+      updateData.isIgnoredPerilLadderValue['[0]'],
+      updateData.isIgnoredPerilLadderValue['[1]'],
+      updateData.isIgnoredPerilLadderValue['[2]']
+    ];
+    const avoidAllUpdate = foundry.utils.expandObject(formData).avoidAllPeril;
+    const avoidAllBefore = ZweihanderActorConfig.getConfig(this.object.data).isIgnoredPerilLadderValue.reduce((a,b) => a && b, true);
+    if (avoidAllUpdate && !avoidAllBefore) {
+      updateData.isIgnoredPerilLadderValue = [true, true, true];
+    } else if (!avoidAllUpdate && avoidAllBefore) {
+      updateData.isIgnoredPerilLadderValue = [false, false, false];
+    }
 
     await actor.setFlag("zweihander", "actorConfig", updateData);
+    console.log(event);
+    this.render();
   }
 }

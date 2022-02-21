@@ -1,0 +1,62 @@
+<form class="flexcol">
+  {{#if weaponRoll}}
+  <div class="form-group">
+    <label for="extraFury">Additional Fury Dice</label>
+    <input type="number" name="extraFury" placeholder="0">
+  </div>
+  {{/if}}
+  {{#if spellRoll}}
+  <div class="form-group">
+    <label for="extraChaos">Additional Chaos Dice</label>
+    <input type="number" name="extraChaos" placeholder="0">
+  </div>
+  <div class="form-group">
+    <label for="channelSelect">Channel Power</label>
+    <select name="channelSelect">
+      {{#each channelPowerBonuses}}
+        <option value="{{value}}" {{selected}}>{{label}}</option>
+      {{/each}}
+    </select>
+  </div>
+  {{/if}}
+  <div class="form-group">
+    <label for="baseChanceModifier">Base Chance Modifier</label>
+    <select name="baseChanceModifier">
+      {{#each baseChanceModifiers}}
+        <option value="{{value}}" {{selected}}>{{label}}</option>
+      {{/each}}
+    </select>
+  </div>
+  <div class="form-group">
+    <label for="difficultyRatingSelect">Difficulty Rating</label>
+    <select name="difficultyRatingSelect">
+      {{#each difficultyRatings}}
+        <option value="{{value}}" {{selected}}>{{label}}</option>
+      {{/each}}
+    </select>
+  </div>
+  <div class="form-group">
+    <label for="flipSelect">Flip</label>
+    <select name="flipSelect">
+      {{#each flipOptions}}
+        <option value="{{value}}" {{selected}}>{{label}}</option>
+      {{/each}}
+    </select>
+  </div>
+  <div class="form-group">
+    <label for="skillMode">Skill Test Mode</label>
+    <select name="skillMode">
+      {{#each skillModes}}
+        <option value="{{value}}" {{selected}}>{{label}}</option>
+      {{/each}}
+    </select>
+  </div>
+  <div class="form-group">
+    <label for="useFortune">Fortune</label>
+    <select name="useFortune">
+      {{#each fortuneOptions}}
+        <option value="{{value}}" {{selected}}>{{label}}</option>
+      {{/each}}
+    </select>
+  </div>
+</form>

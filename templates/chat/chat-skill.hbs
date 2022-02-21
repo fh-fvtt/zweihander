@@ -1,26 +1,50 @@
-<section class="content" data-item-id="{{itemId}}">
-  <div class="image-and-title">
-    <img class="chat-profile-image" src="{{image}}" />
-    <div class="title skill link-details">
-      <span>{{skill}}</span>
-      <span class="subtitle">{{difficultyRating.label}}</span>
+<div class="skill-test" data-item-id="{{itemId}}">
+{{#if spellTest}}
+  {{> ($$ "item-card/item-card-spell") spell }}
+{{else}}
+  <h2 class="skill-test-title">{{skill}}</h2>
+{{/if}}
+<dl class="compact-details compact-details-centered zh-collapsed zh-expandable" data-expand-title="Show Roll Details">
+  <dt>{{primaryAttribute}}</dt><dd> {{explicitSign primaryAttributeValue}}%</dd>
+  <dt>Skill rank bonus</dt><dd> {{explicitSign rankBonus}}%</dd>
+  <dt>Penalty from Peril</dt><dd> {{explicitSign perilPenalty}}%</dd>
+  <dt>Special Modifier</dt><dd> {{explicitSign specialBaseChanceModifier}}%</dd>
+  <dt>Capped Base Chance</dt><dd> {{baseChance}}%</dd>
+  <dt>Difficulty Modifier</dt><dd> {{explicitSign difficultyRating.value}}%</dd>
+  <dt>Result has been flipped</dt><dd> {{#if effectivelyFlipped}} yes {{else}} no {{/if}}</dd>
+</dl>
+<div class="pill-container">
+    <span class="pill pill-roll-mode">{{zweihanderRollModeLabel}} ({{diceFormula}})</span>
+    <span class="pill pill-difficulty-{{difficultyRating.value}}">{{difficultyRating.label}}</span>
+    {{#if flipToFail}}<span class="pill pill-flip-fail">Flip To Fail</span>{{/if}}
+    {{#if flipToSucceed}}<span class="pill pill-flip-succeed">Flip To Succeed</span>{{/if}}
+    {{#if usedFortune}}<span class="pill pill-fortune">Used Fortune</span>{{/if}}
+    {{#if usedMisfortune}}<span class="pill pill-misfortune">Used Misfortune</span>{{/if}}
+    {{#if isReroll}}<span class="pill pill-reroll">Reroll</span>{{/if}}
+    {{#if spellTest}}<span class="pill">{{skill}} Test</span>{{/if}}
+</div>
+<div class="dice-roll">
+    <div class="dice-result">
+        <div class="dice-formula">Total Chance:  {{totalChance}}%</div>
+        {{{tooltip}}}
+        <h4 class="dice-total outcome-{{effectiveOutcome}}">{{outcomeLabel}}: {{roll}}</h4>
     </div>
-  </div>
-  <div class="roll-details">
-    <div class="row even bottom-separator">
-      <strong>Flip:</strong><span> {{generateFlipText flip}}</span>
-    </div>
+</div>
 
-    <div class="row odd">
-      <strong>Base Chance:</strong><span> {{baseChance}}% ({{attributeChance}}[{{primaryAttribute}}]{{#if rankBonus}} + {{rankBonus}}[Skill Ranks]{{/if}}{{#if perilPenalty}} - {{perilPenalty}}[Peril]{{/if}})</span>
-    </div>
-
-    <div class="row even">
-      <strong>Total Chance:</strong><span> {{totalChance}}%</span>
-    </div>
+{{#if chaosManifestation}}
+  <div class="chaos-manifestation">
+    A {{capitalize spell.data.principle.value}} Chaos Manifestation spawns!
   </div>
+{{/if}}
 
-  <div class="roll-results">
-    <span>{{generateResultText testResult roll totalChance showFlip}}</span>
+<div class="skill-test-controls">
+  <div class="flexrow">
+    <button class="skill-test-reroll" disabled><i class="fas fa-sync-alt"></i><br/>Reroll</button>
+    {{#if opposedTest}}<button class="skill-test-opposed" disabled><i class="fas fa-user-friends"></i><br/>Join Opposed</button>{{/if}}
+    {{#if weaponTest}}
+    <button class="skill-test-damage" disabled><i class="ra ra-sword"></i><br/>Damage</button>
+    <button class="skill-test-parry" disabled><i class="ra ra-round-shield"></i><br/>Parry</button>
+    <button class="skill-test-dodge" disabled><i class="ra ra-player-dodge"></i><br/>Dodge</button>
+    {{/if}}
   </div>
-</section>
+</div>

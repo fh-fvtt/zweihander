@@ -44,7 +44,7 @@
           </div>
           <h4 class="js-show-item-description">{{weapon.name}}</h4>
         </div>
-        <div class="item-detail it-completed fetch-property">{{weapon.data.distance.value}}</div>
+        <div class="item-detail it-completed inject-data">{{weapon.data.distance.value}}</div>
         <div class="item-detail it-completed">{{weapon.data.load.value}}</div>
         <div class="item-detail it-completed">{{weapon.data.encumbrance.value}}</div>
         <div class="item-detail it-completed">
@@ -58,7 +58,7 @@
         </div>
         <div class="item-summary individual-description save-toggle-weapons">
           <span class="item-summary-longform">
-            <label>Damage:</label> <span class="fetch-property">{{weapon.data.damage.formula}}</span><br />
+            <label>Damage:</label> <span class="inject-data">{{weapon.data.damage.formula}}</span><br />
             <label>Skill:</label> {{weapon.data.associatedSkill.value}}<br />
             <label>Type:</label> {{weapon.data.type.value}}<br />
             <label>Qualities: </label>

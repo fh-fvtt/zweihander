@@ -2,7 +2,7 @@
   overflow: hidden;
   .primary-attributes {
     flex: 0 0 50px;
-    height: calc(100% - 4px);
+    height: 100%;
     list-style: none;
     margin: 0;
     padding: 0;
@@ -241,6 +241,54 @@
       100% {
         color:var(--zx-clr-aqua-alt);
         transform: scale(1.25);
+      }
+    }
+    .peril-rolls {
+      flex: 1 0 50px;
+      font-family: var(--zx-font-title);
+      font-size: 14px;
+      border-bottom: 2px groove var(--zx-clr-bg2);
+      justify-content: space-evenly;
+      & > div {
+        flex: 0;
+        padding-top: 5px;
+        align-items: center;
+        justify-content: center;
+        /* &.fear {
+          border-right: 2px groove var(--zx-clr-bg2);
+          border-left: 2px groove var(--zx-clr-bg2);
+        } */
+        & a.image-container {
+          mask-size: contain;
+          mask-repeat: no-repeat;
+          mask-position: center;
+          background-color: var(--zx-clr-aqua);
+          width: 28px; 
+          height: 28px;
+          min-height: 28px;
+          &.stress {
+            mask-image: url('../zweihander/assets/icons/paranoia.svg');
+            &:hover {
+              background-color: var(--zx-clr-yellow);
+            }
+          }
+          &.fear {
+            mask-image: url('../zweihander/assets/icons/surprised.svg');
+            &:hover {
+              background-color: var(--zx-clr-orange);
+            }
+          }
+          &.terror {
+            mask-image: url('../zweihander/assets/icons/screaming.svg');
+            &:hover {
+              background-color: var(--zx-clr-red);
+            }
+          }
+        }
+        & span {
+          margin-top: 2px;
+          font-family: var(--font-primary);
+        }
       }
     }
     .combat-spacer {

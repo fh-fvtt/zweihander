@@ -14,7 +14,8 @@ export default class ZweihanderItemSheet extends ItemSheet {
       height: 550,
       resizable: true,
       tabs: [{ navSelector: ".sheet-navigation", contentSelector: ".sheet-body", initial: "details" }],
-      dragDrop: [{ dragSelector: ".item-sheet-draggable", dropSelector: null }]
+      dragDrop: [{ dragSelector: ".item-sheet-draggable", dropSelector: null }],
+      scrollY: ['.sheet-body']
     });
   }
 

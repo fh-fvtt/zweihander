@@ -1,0 +1,32 @@
+<section class="item-card">
+    <h2 class="item-card-title">{{name}}</h2>
+    <div class="item-card-description">
+      {{{markdownIt data.flavor.description}}}
+    </div>
+    <dl class="compact-details zh-collapsed zh-expandable" data-expand-title="Show Item Details">
+      <dt>Associated Skill</dt>
+      <dd>{{data.associatedSkill.value}}</dd>
+      <dt>Load</dt>
+      <dd>{{data.load.value}}</dd>
+      <dt>Handling</dt>
+      <dd>{{data.handling}}</dd>
+      <dt>Distance</dt>
+      <dd>{{data.distance.value}}</dd>
+      <dt>Type</dt>
+      <dd>{{data.type.value}}</dd>
+      <dt>Encumbrance</dt>
+      <dd>{{data.encumbrance.value}}</dd>
+      <dt>Price</dt>
+      <dd>
+        <i class="fas fa-coins currency-gc"></i> {{data.price.gc}} 
+        <i class="fas fa-coins currency-ss"></i> {{data.price.ss}} 
+        <i class="fas fa-coins currency-bp"></i> {{data.price.bp}} 
+      </dd>
+    </dl>
+    <dl class="item-card-qualities zh-expandable zh-collapsed" data-expand-title="Show Qualities">
+      {{#each data.qualities}}
+      <dt>{{name}}</dt>
+      <dd>{{effect}}</dd>
+      {{/each}}
+    </dl>
+  </section>

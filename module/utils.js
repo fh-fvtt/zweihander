@@ -1,47 +1,5 @@
-/**
- * Helper function used to check ItemData duplicates between two given datasets.
- */
-export function findDifference(datasetA, datasetB) {
-  let diffArray = [];
-
-  for (let elementA of datasetA)
-    if (!datasetB.some(elementB => elementB.name === elementA.name))
-      diffArray.push(elementA);
-
-  return diffArray;
-};
-
-/**
- * Helper function that returns the symmetric difference between two datasets (xor operation).
- * 
- * @param {*} datasetA 
- * @param {*} datasetB 
- * @returns The unique elements of datasetA and datasetB.
- */
- export function getSymmetricDifference(datasetA, datasetB) {
-  return findDifference(datasetA, datasetB).concat(findDifference(datasetB, datasetA));
-}
-
-/**
- * Helper function that returns the difference between two arrays (minus operation).
- * 
- * @param {Array} arrayA 
- * @param {Array} arrayB 
- * @returns The elements of arrayA that are not present in arrayB.
- */
-export function getArrayDifference(arrayA, arrayB) {
-  return arrayA.filter(element => !arrayB.includes(element));
-}
-
-/**
- * Helper function that checks whether an object is empty or not.
- * 
- * @param {object} object The object to be checked
- * @returns 
- */
-
-export function isObjectEmpty(object) {
-  return !object || !Object.keys(object).length;
+export function getSymmetricDifference(a, b) {
+ return [...a.filter(item => !b.includes(item)), ...b.filter(item => !a.includes(item))];
 }
 
 export const primaryAttributeMapping = {
@@ -251,4 +209,56 @@ export async function findItemsWorldWide(type, names, opt = {}) {
 
 export async function findItemWorldWide(type, name) {
   return findItemsWorldWide(type, [name], {takeOne: true}).then(a => a[0]);
+}
+
+export async function parseDataPaths(input, actor) {
+  let parsed = abbreviations2DataPath(input, false);
+  const dataPathExpr = /(@[a-zA-Z0-9\.]*[a-zA-Z0-9]+)/g;
+  parsed = parsed.replaceAll(dataPathExpr, x => {
+    let key = `data.${x.slice(1)}`;
+    return getProperty(actor.data, key);
+  });
+  if (input !== parsed) {
+    const mathExpr = /[0-9]+(\s*[\+\-\*/]\s*[0-9]+)*/g;
+    const matches = parsed.match(mathExpr);
+    const promises = matches.map(x => new Roll(x).evaluate().then(roll => ({key: x, value: roll.total})));
+    const evalLookup = (await Promise.all(promises)).reduce((a, b) => ({[b.key]: b.value, ...a}), {});
+    parsed = parsed.replaceAll(mathExpr, x => {
+      return evalLookup[x];
+    })
+  }
+  return parsed;
+}
+
+export function explicitSign(number) {
+  const n = Number(number);
+  return (n === 0 ? '+-' : (n > 0 ? '+' : ''))+n;
+}
+
+export function getDifficultyRatingLabel(difficultyRating) {
+  const number = explicitSign(difficultyRating);
+  const label = game.i18n.localize(`ZWEI.Difficulty.${number}`);
+  return `${label} ${number}%`;
+}
+
+export function determineCurrentActorId(interactive=false) {
+  const character = game.user.character;
+  const speakerData = ChatMessage.getSpeaker();
+  if (game.user.isGM) {
+    if (character) {
+      return character.id;
+    } else if (speakerData.actor) {
+      return speakerData.actor;
+    } else if (interactive) {
+      ui.notifications.warn(`Please select a token in order to perform this action!`);
+    }
+  } else {
+    if (character) {
+      return character.id;
+    } else if (speakerData.actor) {
+      return speakerData.actor;
+    } else if (interactive) {
+      ui.notifications.error(`There's currently no character assigned to you. Please select a character in your user configuration!`);
+    }
+  }
 }

@@ -1,3 +1,5 @@
+import * as ZweihanderUtils from './utils';
+
 /**
  * Define a set of handlebar helpers
  * @returns {Promise}
@@ -220,5 +222,15 @@ export const registerHandlebarHelpers = async function () {
   $$('skillRankAbbreviation', function(rank) {
     return ['-', 'Appr.', 'Jour.', 'Mstr.'][rank];
   })
+
+  $$('speakerPic', function(message) {
+    const actor = ChatMessage.getSpeakerActor(message.speaker);
+    if (actor && actor.img) return actor.img;
+    const author = game.users.get(message.user);
+    if (author && author.avatar) return author.avatar;
+    return "";
+  })
+
+  $$('explicitSign', ZweihanderUtils.explicitSign);
 
 }

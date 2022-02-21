@@ -1,0 +1,26 @@
+<section class="item-card">
+    <h2 class="item-card-title">{{name}}</h2>
+    <div class="item-card-description">
+      {{{markdownIt data.flavor.description}}}
+    </div>
+    <br/>
+    <div class="item-card-effect" data-effect-label="Effect">
+      {{{markdownIt data.effect.value}}}
+    </div>
+    <dl class="zh-collapsed zh-expandable" data-expand-title="Show Item Details">
+      <dt>Tradition</dt>
+      <dd>{{data.tradition.value}}</dd>
+      <dt>Principle</dt>
+      <dd>{{data.principle.value}}</dd>
+      <dt>Reagents</dt>
+      <dd>{{data.reagents.value}}</dd>
+      <dt>Duration</dt>
+      <dd>{{data.duration.value}}</dd>
+      <dt>Distance</dt>
+      <dd>{{data.distance.value}}</dd>
+      <dt>Critical Success</dt>
+      <dd>{{data.effect.criticalSuccess.value}}</dd>
+      <dt>Critical Failure</dt>
+      <dd>{{data.effect.criticalFailure.value}}</dd>
+    </dl>
+  </section>

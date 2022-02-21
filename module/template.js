@@ -30,6 +30,7 @@ export const preloadHandlebarsTemplates = async function () {
     $$('item/trapping'),
     $$('item/quality'),
     $$('item/uniqueAdvance'),
-    $$('item/weapon')
+    $$('item/weapon'),
+    $$('item-card/item-card-spell')
   ]);
 };

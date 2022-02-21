@@ -1,5 +1,6 @@
 import ZweihanderActorConfig from "../../apps/actor-config";
-import ZweihanderDice from "../../dice/zweihander-dice";
+import * as ZweihanderDice from "../../dice";
+import ZweihanderQuality from "../../item/entity/quality";
 import * as ZweihanderUtils from "../../utils";
 import ZweihanderBaseActorSheet from "./base-actor-sheet";
 /**
@@ -14,7 +15,7 @@ export default class ZweihanderActorSheet extends ZweihanderBaseActorSheet {
       classes: ["zweihander", "sheet", "character"],
       template: "systems/zweihander/templates/pc/main.hbs",
       width: 750,
-      height: 825,
+      height: 900,
       resizable: true,
       tabs: [
         { navSelector: ".sheet-navigation", contentSelector: ".sheet-body", initial: "main" }
@@ -93,8 +94,8 @@ export default class ZweihanderActorSheet extends ZweihanderBaseActorSheet {
     super.activateListeners(html);
 
     const trackRewardPointsOn = game.settings.get("zweihander", "trackRewardPoints");
-
-    let actorData = this.actor.data;
+    const actor = this.actor;
+    const actorData = this.actor.data;
 
     // Everything below here is only needed if the sheet is editable
     if (!this.options.editable) return;
@@ -164,23 +165,8 @@ export default class ZweihanderActorSheet extends ZweihanderBaseActorSheet {
     // toFormat.replace(/(@([a-zA-Z0-9]\.)*[a-zA-Z0-9]+)/g, (key) => resolveProperty(actorData, key))
 
     // Handle formulas for display
-    html.find('.fetch-property').each(async function () {
-      let initialValue = $(this).text().trim();
-      let evaluatedValue = ZweihanderUtils.abbreviations2DataPath(initialValue, false);
-      //console.log(evaluatedValue);
-      evaluatedValue = evaluatedValue.replaceAll(/(@[a-zA-Z0-9\.]*[a-zA-Z0-9]+)/g, x => {
-        let key = `data.${x.slice(1)}`;
-        return getProperty(actorData, key);
-      });
-      if (initialValue !== evaluatedValue) {
-        evaluatedValue = evaluatedValue.replaceAll(/[0-9]+(\s*[\+\-\*/]\s*[0-9]+)*/g, x => {
-          //TODO: how can we solve this with async: true?
-          let rollResult = new Roll(x).evaluate({ async: false });
-          return rollResult.total;
-        })
-        //console.log(evaluatedValue);
-        $(this).text(evaluatedValue);
-      }
+    html.find('.inject-data').each(async function () {
+      $(this).text(await ZweihanderUtils.parseDataPaths($(this).text().trim(), actor));
     });
 
     // "Link" checkboxes on character sheet and item sheet so both have the same state
@@ -220,13 +206,16 @@ export default class ZweihanderActorSheet extends ZweihanderBaseActorSheet {
 
     html.find(".item-post").click(async event => {
       const li = $(event.currentTarget).parents(".item");
-      const item = this.actor.items.get(li.data("itemId"));
+      const item = this.actor.items.get(li.data("itemId")).toObject(false);
+      if (item.type === 'weapon' || item.type === 'armor') {
+        item.data.qualities = await ZweihanderQuality.getQualities(item.data.qualities.value);
+      }
       //console.log(item);
       let html
       try {
-        html = await renderTemplate(`systems/zweihander/templates/chat/chat-item-${item.type}.hbs`, item);
+        html = await renderTemplate(`systems/zweihander/templates/item-card/item-card-${item.type}.hbs`, item);
       } catch (e) {
-        html = await renderTemplate(`systems/zweihander/templates/chat/chat-item-fallback.hbs`, item);
+        html = await renderTemplate(`systems/zweihander/templates/item-card/item-card-fallback.hbs`, item);
       }
       await ChatMessage.create({ content: html })
     })
@@ -269,27 +258,27 @@ export default class ZweihanderActorSheet extends ZweihanderBaseActorSheet {
 
     // Roll Skill
     html.find(".skill-roll").click((event) => {
-      this._onRollSkill(event, CONFIG.ZWEI.rollTypes.skill);
+      this._onRollSkill(event, CONFIG.ZWEI.testTypes.skill);
     });
 
     // Roll Weapon
     html.find(".weapon-roll").click((event) => {
-      this._onRollSkill(event, CONFIG.ZWEI.rollTypes.weapon)
+      this._onRollSkill(event, CONFIG.ZWEI.testTypes.weapon)
     });
 
     // Roll Spell
     html.find(".spell-roll").click((event) => {
-      this._onRollSkill(event, CONFIG.ZWEI.rollTypes.spell)
+      this._onRollSkill(event, CONFIG.ZWEI.testTypes.spell)
     });
 
     // Roll Dodge
     html.find(".dodge-roll").click((event) => {
-      this._onRollSkill(event, CONFIG.ZWEI.rollTypes.dodge);
+      this._onRollSkill(event, CONFIG.ZWEI.testTypes.dodge);
     });
 
     // Roll Parry
     html.find(".parry-roll").click((event) => {
-      this._onRollSkill(event, CONFIG.ZWEI.rollTypes.parry);
+      this._onRollSkill(event, CONFIG.ZWEI.testTypes.parry);
     });
 
     html.find(".js-display-quality").contextmenu(async (event) => {
@@ -299,6 +288,11 @@ export default class ZweihanderActorSheet extends ZweihanderBaseActorSheet {
       const quality = await ZweihanderUtils.findItemWorldWide("quality", qualityName);
       quality.sheet.render(true);
     });
+
+    html.find(".peril-rolls .image-container").click(async (event) => {
+      const perilType = ZweihanderDice.PERIL_ROLL_TYPES[event.currentTarget.dataset.perilType.toUpperCase()];
+      ZweihanderDice.rollPeril(perilType, this.actor);
+    })
   }
 
   _damageSheet(html) {
@@ -337,85 +331,19 @@ export default class ZweihanderActorSheet extends ZweihanderBaseActorSheet {
     }
   }
 
-  async _onRollSkill(event, rollType) {
+  async _onRollSkill(event, testType) {
     event.preventDefault();
-
     const element = event.currentTarget;
-    const dataset = element.dataset;
-
-    const actorData = this.actor.data;
-
-    const skill = dataset.label.toLowerCase();
-    const skillItem = actorData.items.find(item => ZweihanderUtils.normalizedEquals(item.name, skill)).toObject(false);
-
+    const skill = element.dataset.label;
+    const skillItem = this.actor.items.find(item => item.type === 'skill' && ZweihanderUtils.normalizedEquals(item.name, skill));
     if (skillItem) {
-      switch (rollType) {
-        case CONFIG.ZWEI.rollTypes.dodge:
-        case CONFIG.ZWEI.rollTypes.parry:
-        case CONFIG.ZWEI.rollTypes.skill:
-          await ZweihanderDice.rollSkillTest(skillItem, this.actor, rollType);
-          break;
-        case CONFIG.ZWEI.rollTypes.weapon:
-          const weaponId = $(element).parents(".item")[0].dataset.itemId;
-          const weaponItem = actorData.items.get(weaponId);
-
-          if (weaponItem) {
-            const weaponItemData = weaponItem.data;
-
-            const weaponData = {
-              "weaponQualities": weaponItemData.data.qualities.arrayOfValues,
-              "weaponName": weaponItemData.name,
-              "weaponId": weaponId,
-              "formula": weaponItemData.data.damage.formula,
-              "bonus": {
-                "value": weaponItemData.data.damage.primaryAttributeBonus,
-                "label": weaponItemData.data.damage.associatedPrimaryAttribute
-              }
-            };
-
-            await ZweihanderDice.rollSkillTest(skillItem, this.actor, rollType, weaponData);
-          }
-
-          break;
-        case CONFIG.ZWEI.rollTypes.spell:
-          const spellId = $(element).parents(".item")[0].dataset.itemId;
-          const spellItem = actorData.items.get(spellId);
-
-          if (spellItem) {
-            const spellItemData = spellItem.data;
-
-            const spellData = {
-              "spellName": spellItemData.name,
-              "principle": spellItemData.data.principle.value,
-              "duration": this._formatDuration(spellItemData.data.duration.value, actorData),
-              "distance": spellItemData.data.distance.value,
-              "flavor": spellItemData.data.flavor.description,
-              "effect": spellItemData.data.effect,
-              "reagents": spellItemData.data.reagents.value,
-              "tradition": spellItemData.data.tradition.value,
-              spellId
-            };
-
-            await ZweihanderDice.rollSkillTest(skillItem, this.actor, rollType, spellData);
-          }
-
-          break;
-        default:
-          break;
+      const additionalConfiguration = {};
+      if (testType === 'weapon' || testType === 'spell') {
+        additionalConfiguration[`${testType}Id`] = $(element).parents(".item").data('itemId');
       }
+      await ZweihanderDice.rollTest(skillItem, testType, additionalConfiguration, {showDialog: true});
     } else {
-      ui.notifications.error(`Associated Skill "${dataset.label}" does not exist for this actor!`);
-    }
-  }
-
-  _formatDuration(formula, actorData) {
-    if (formula[0] === "@") {
-      const contents = formula.split("+");
-      const key = contents[0].replace("@", "data.");
-      const bonus = getProperty(actorData, key);
-      const setDuration = contents[1].split(' ');
-
-      return bonus + Number(setDuration[0]) + " " + setDuration[1];
+      ui.notifications.error(`Associated Skill "${skill}" does not exist for this actor!`);
     }
   }
 

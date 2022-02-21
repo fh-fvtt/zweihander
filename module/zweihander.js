@@ -12,6 +12,7 @@ import ZweihanderItem from "./item/item";
 import ZweihanderItemSheet from "./item/sheet/item-sheet";
 import FortuneTracker from "./apps/fortune-tracker";
 import * as ZweihanderUtils from "./utils";
+import * as ZweihanderChat from "./chat";
 
 import { registerSystemSettings } from "./settings";
 import { preloadHandlebarsTemplates } from "./template";
@@ -23,24 +24,36 @@ import ZWEI from "./constants.js";
 
 import "../styles/main.scss"
 
-let fortuneTrackerApp;
-
 /* -------------------------------------------- */
 /*  Foundry VTT Initialization                  */
 /* -------------------------------------------- */
-Hooks.once("socketlib.ready", () => {
-  FortuneTracker.registerPersistingSettings();
-  const socket = socketlib.registerSystem("zweihander");
-  fortuneTrackerApp = new FortuneTracker(socket);
-});
+
+const socket = new Promise((resolve) => {
+  Hooks.once("socketlib.ready", () => {
+    resolve(socketlib.registerSystem("zweihander"));
+  });
+})
 
 Hooks.once("ready", function () {
   // this is necessary to apply the theme settings
   // TODO: refactor into own utility-function/class
   let sheetStyles = game.settings.get("zweihander", "theme");
   game.settings.set("zweihander", "theme", sheetStyles);
-  fortuneTrackerApp?.syncState();//.then(() => introJs().start());
   migrateWorldSafe();
+  socket.then(socket => {
+    game.zweihander.socket = socket;
+    FortuneTracker.registerPersistingSettings();
+    FortuneTracker.INSTANCE = new FortuneTracker(socket);
+    FortuneTracker.INSTANCE?.syncState();
+    socket.register("updateChatMessage", (messageId, diffData) => {
+      game.messages.get(messageId).update(diffData);
+    })
+  });
+})
+
+Hooks.once("diceSoNiceReady", function () {
+    // Dice so Nice integration
+    game?.dice3d?.addSFXTrigger?.("zh-outcome", "Zweihander d100", ["Critical Failure", "Failure", "Success", "Critical Success"]);
 })
 
 Hooks.once("init", async function () {
@@ -49,8 +62,7 @@ Hooks.once("init", async function () {
   game.zweihander = {
     ZweihanderActor,
     ZweihanderItem,
-    find: ZweihanderUtils.findItemsWorldWide,
-    fortuneTrackerApp,
+    utils: ZweihanderUtils,
     migrate: migrateWorld,
     introJs: introJs
   };
@@ -63,6 +75,9 @@ Hooks.once("init", async function () {
     formula: "1d10 + @stats.secondaryAttributes.initiative.current",
     decimals: 2
   };
+  CONFIG.TinyMCE.skin_url = '/systems/zweihander/tinymce/skins/ui/zweihander';
+  CONFIG.TinyMCE.skin = 'zweihander';
+  CONFIG.TinyMCE.content_css = ['/css/mce.css','/systems/zweihander/tinymce/skins/content/zweihander/content.css'];
   CONFIG.statusEffects = [
     {
       id: "dead",
@@ -170,15 +185,5 @@ Hooks.on("renderActorSheet", (app, html, data) => {
   })
 });
 
-Hooks.on("renderChatLog", function (log, html, data) {
-  // TODO: Refactor into Dice class
-
-  $(html).on("click", ".link-details", (event) => {
-    event.preventDefault();
-
-    const toggler = $(event.currentTarget);
-    const rollDetails = toggler.parents(".content").find(".roll-details");
-
-    $(rollDetails).slideToggle();
-  });
-});
+Hooks.on("renderChatMessage", ZweihanderChat.addLocalChatListeners);
+Hooks.on("renderChatLog", (app, html, data) => ZweihanderChat.addGlobalChatListeners(html));

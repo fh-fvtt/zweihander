@@ -1,41 +1,13 @@
-<section class="content" data-item-id="{{itemId}}">
-  <div class="image-and-title">
-    <img class="chat-profile-image" src="{{image}}" />
-    <div class="title weapon link-details">
-      <span>{{weaponName}}</span>
-      <span class="subtitle">{{skill}} ♦ {{difficultyRating.label}}</span>
+<div data-item-id="{{weapon._id}}">
+  {{{cardContent}}}
+  <div class="pill-container">
+    {{#if exploded}}<span class="pill pill-{{exploded}}">Exploded with {{capitalize exploded}}</span>{{/if}}
+  </div>
+  {{{rollContent}}}
+  <div class="skill-test-controls">
+    <div class="flexrow">
+      <button class="damage-roll-explode" disabled><i class="fas fa-sync-alt"></i><br />Explode with Fortune</button>
+      <button class="damage-roll-explode-misfortune" disabled><i class="fas fa-sync-alt"></i><br />Explode with Misfortune</button>
     </div>
   </div>
-  <div class="roll-details">
-    <div class="row even bottom-separator">
-      <strong>Flip:</strong><span> {{generateFlipText flip}}</span>
-    </div>
-
-    <div class="row odd">
-      <strong>Base Chance:</strong><span> {{baseChance}}% ({{attributeChance}}[{{primaryAttribute}}]{{#if rankBonus}} +
-        {{rankBonus}}[Skill Ranks]{{/if}}{{#if perilPenalty}} - {{perilPenalty}}[Peril]{{/if}})</span>
-    </div>
-
-    <div class="row even">
-      <strong>Total Chance:</strong><span> {{totalChance}}%</span>
-    </div>
-  </div>
-
-  <div class="roll-results">
-    <span>{{generateResultText testResult roll totalChance showFlip}}{{#checkSuccess testResult}} <span>→</span> <strong title="{{damageFormula}} = {{{furyDiceString}}}">{{damage}}</strong> damage</span>{{else}}{{/checkSuccess}}
-  </div>
-
-    <hr>
-
-    <div class="options">
-      <span><strong>Qualities:</strong>
-        {{#each weaponQualities as | quality idx |}}
-          {{#if @last}}
-              <a>{{quality}}</a>
-          {{else}}
-              <a>{{quality}}</a><span>, </span>
-          {{/if}}
-        {{/each}}
-      </span>
-    </div>
-</section>
+</div>

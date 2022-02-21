@@ -2,14 +2,18 @@ import ZweihanderWeapon from "./entity/weapon";
 import ZweihanderProfession from "./entity/profession";
 import ZweihanderSkill from "./entity/skill";
 import ZweihanderAncestry from "./entity/ancestry";
+import ZweihanderArmor from "./entity/armor";
+import ZweihanderQuality from "./entity/quality";
 
 export default class ZweihanderItem extends Item {
 
   static types = {
     weapon: new ZweihanderWeapon(),
+    armor: new ZweihanderArmor(),
     profession: new ZweihanderProfession(),
     skill: new ZweihanderSkill(),
-    ancestry: new ZweihanderAncestry()
+    ancestry: new ZweihanderAncestry(),
+    quality: new ZweihanderQuality()
   };
 
   constructor(...args) {

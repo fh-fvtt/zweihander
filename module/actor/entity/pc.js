@@ -90,8 +90,10 @@ export default class ZweihanderPC extends ZweihanderBaseActor {
     // build ladder
     this.buildPerilDamageLadder(data, initialPeril, initialDamage);
     // get peril malus
-    const ignoredValues = configOptions.perilLadder;
-    const perilMalus = this.getPerilMalus(data, ignoredValues);
+    const basePerilCurrent = data.stats.secondaryAttributes.perilCurrent.value
+    const effectivePerilCurrent = this.getEffectivePerilLadderValue(basePerilCurrent, configOptions.isIgnoredPerilLadderValue);
+    data.stats.secondaryAttributes.perilCurrent.effectiveValue = effectivePerilCurrent;
+    const perilMalus = this.getPerilMalus(effectivePerilCurrent);
     // calculate special actions underlying values
     const calcSecondayAttributeSpecialActionValue = (secAttr, name) => {
       const item = actorData.skills.find(skill => skill.name === secAttr.associatedSkill);
@@ -164,13 +166,15 @@ export default class ZweihanderPC extends ZweihanderBaseActor {
   }
 
   async _preCreate(actorData, options, user, that) {
-    // add default set of skills
-    let skillPack = game.packs.get("zweihander.skills");
-    let toAdd = await skillPack.getDocuments();
-
-    // Prevent duplicating skills (e.g. when duplicating an Actor)
-    let toAddDifference = ZweihanderUtils.getSymmetricDifference(toAdd.map(item => item.toObject()), actorData.skills);
-    if (toAddDifference.length) actorData.update({ "items": toAddDifference });
+    const skillPack = game.packs.get("zweihander.skills");
+    const skillsFromPack = (await skillPack.getDocuments()).map(item => item.toObject());
+    const skillsFromActor = actorData.skills;
+    // add default set of skills while preventing duplicate skills
+    const symmetricDifferenceIds = ZweihanderUtils.getSymmetricDifference(skillsFromPack.map(i => i._id), skillsFromActor.map(i => i._id));
+    if (symmetricDifference.length) {
+      const itemsToAdd = [...skillsFromActor, ...skillsFromPack].filter(item => symmetricDifferenceIds.includes(item._id));
+      actorData.update({ "items": symmetricDifference });
+    }
   }
 
 }

@@ -1,5 +1,3 @@
-import * as ZweihanderUtils from "../../utils";
-
 export default class ZweihanderBaseActor {
 
   prepareEmbeddedEntities(actorData) {
@@ -29,31 +27,12 @@ export default class ZweihanderBaseActor {
     })
   }
 
-  getPerilMalus(data, ignoredValues) {
-    const currentPeril = data.stats.secondaryAttributes.perilCurrent.value;
+  getEffectivePerilLadderValue(baseLadderValue, isIgnoredPerilLadderValue) {
+    return isIgnoredPerilLadderValue[Math.max(0,3-baseLadderValue)] ? 5 : baseLadderValue;
+  }
 
-    // if immune to peril, no need to calculate malus
-    if (ignoredValues["avoidAll"])
-      return 0;
-
-    const currentStep = {
-      0: "avoidAll",
-      1: "avoidStepThree",
-      2: "avoidStepTwo",
-      3: "avoidStepOne"
-    }[currentPeril] ?? "";
-
-    const ignoreCurrentStep = ignoredValues[currentStep] ?? false;
-
-    if (ignoreCurrentStep)
-      return 0;
-    
-    return {
-      0: 30,
-      1: 30,
-      2: 20,
-      3: 10
-    }[currentPeril] ?? 0;
+  getPerilMalus(ladderValue) {
+    return Math.max(0,4-ladderValue)*10;
   }
 
   async createEmbeddedDocuments(embeddedName, data, context, actor) {

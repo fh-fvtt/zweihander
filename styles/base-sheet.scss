@@ -24,25 +24,6 @@
     color: var(--zx-clr-fg4);
   }
 
-  ::-webkit-scrollbar {
-    width: 6px;
-  }
-
-  ::-webkit-scrollbar-track {
-    background: var(--zx-clr-bg0);
-  }
-
-  ::-webkit-scrollbar-thumb {
-    background: var(--zx-clr-bg3);
-    border: none;
-  }
-  ::-webkit-scrollbar-thumb:hover {
-    background: var(--zx-clr-aqua-alt);
-  }
-
-  scrollbar-width: thin;
-  scrollbar-color: var(--zx-clr-bg2) var(--zx-clr-bg0);
-
   a:hover {
     text-shadow: 0 0 2px var(--zx-clr-yellow);
     color: var(--zx-clr-yellow);
