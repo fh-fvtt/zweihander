@@ -10,7 +10,8 @@ export default class ZweihanderDice {
    * @param {object} optionalData An optional data object that could be relevant to the roll. Can contain e.g. weapon qualities or spell effects.
    * @param {("skill" | "weapon" | "spell" | "dodge" | "parry")} rollType The type of roll to be generated.
    */
-  static async rollSkillTest(skillItem, actorData, rollType, optionalData = {}) {
+  static async rollSkillTest(skillItem, actor, rollType, optionalData = {}) {
+    const actorData = actor.toObject();
     const primaryAttribute = skillItem.data.associatedPrimaryAttribute.value;
     const rollTarget = actorData.data.stats.primaryAttributes[primaryAttribute.toLowerCase()].value;
 
@@ -52,11 +53,12 @@ export default class ZweihanderDice {
 
     let damageData;
     let chaosData;
+    let itemId = skillItem._id;
 
     if (rollType === "weapon") {
       optionalData.formula = optionalData.formula.replace("[#]", additionalFuryDice);
       optionalData.formula = ZweihanderUtils.abbreviations2DataPath(optionalData.formula);
-
+      itemId = optionalData.weaponId;
       let damageRoll = await this._rollFuryDice(optionalData, actorData);
       // step 1: add all fury die to an exploding-aware string
       // step 2: add static modifiers
@@ -95,16 +97,18 @@ export default class ZweihanderDice {
         "furyDiceString": furyDiceString,
         "additionalRoll": damageRoll
       }
-    } else if (rollType === "spell" && Number(rollConfig.channelPowerBonus)) {
-      const numberOfDice = rollConfig.channelPowerBonus / 10;
+    } else if (rollType === "spell") {
+      itemId = optionalData.spellId;
+      if (Number(rollConfig.channelPowerBonus)) {
+        const numberOfDice = rollConfig.channelPowerBonus / 10;
+        let chaosRoll = await this._rollChaosDice(actorData, numberOfDice + Number(additionalChaosDice));
 
-      let chaosRoll = await this._rollChaosDice(actorData, numberOfDice + Number(additionalChaosDice));
-
-      chaosData = {
-        "chaosFormula": chaosRoll._formula,
-        "chaosDice": chaosRoll.dice,
-        "channelPowerBonus": rollConfig.channelPowerBonus,
-        "additionalRoll": chaosRoll
+        chaosData = {
+          "chaosFormula": chaosRoll._formula,
+          "chaosDice": chaosRoll.dice,
+          "channelPowerBonus": rollConfig.channelPowerBonus,
+          "additionalRoll": chaosRoll
+        }
       }
     }
 
@@ -125,7 +129,8 @@ export default class ZweihanderDice {
         "image": actorData.img,
         "showFlip": showFlip,
         "flip": flip,
-        "testResult": finalTestResult
+        "testResult": finalTestResult,
+        "itemId": itemId
       };
 
       if (!ZweihanderUtils.isObjectEmpty(damageData))
@@ -147,7 +152,7 @@ export default class ZweihanderDice {
       const pool = PoolTerm.fromRolls(rolls);
       roll = Roll.fromTerms([pool]);
 
-      this._renderChatCard(template, templateData, roll);
+      this._renderChatCard(template, templateData, roll, actor);
     });
   }
 
@@ -157,16 +162,16 @@ export default class ZweihanderDice {
    * @param {*} template The Handlebars template to be used for this ChatMessage.
    * @param {*} templateData The data object to be used by the template.
    */
-  static async _renderChatCard(template, templateData, roll) {
+  static async _renderChatCard(template, templateData, roll, actor) {
+    const speaker = ChatMessage.getSpeaker({ actor: actor });
     renderTemplate(template, templateData).then(html => {
       let chatData = {
         "roll": roll,
         "type": CONST.CHAT_MESSAGE_TYPES.ROLL,
         "user": game.user.id,
-        "speaker": ChatMessage.getSpeaker({ actor: this.actor }),
+        "speaker": speaker,
         "content": html
       };
-
       ChatMessage.create(chatData);
     });
   }

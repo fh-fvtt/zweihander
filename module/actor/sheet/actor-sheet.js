@@ -347,7 +347,7 @@ export default class ZweihanderActorSheet extends ZweihanderBaseActorSheet {
         case CONFIG.ZWEI.rollTypes.dodge:
         case CONFIG.ZWEI.rollTypes.parry:
         case CONFIG.ZWEI.rollTypes.skill:
-          await ZweihanderDice.rollSkillTest(skillItem, actorData, rollType);
+          await ZweihanderDice.rollSkillTest(skillItem, this.actor, rollType);
           break;
         case CONFIG.ZWEI.rollTypes.weapon:
           const weaponId = $(element).parents(".item")[0].dataset.itemId;
@@ -359,6 +359,7 @@ export default class ZweihanderActorSheet extends ZweihanderBaseActorSheet {
             const weaponData = {
               "weaponQualities": weaponItemData.data.qualities.arrayOfValues,
               "weaponName": weaponItemData.name,
+              "weaponId": weaponId,
               "formula": weaponItemData.data.damage.formula,
               "bonus": {
                 "value": weaponItemData.data.damage.primaryAttributeBonus,
@@ -366,7 +367,7 @@ export default class ZweihanderActorSheet extends ZweihanderBaseActorSheet {
               }
             };
 
-            await ZweihanderDice.rollSkillTest(skillItem, actorData, rollType, weaponData);
+            await ZweihanderDice.rollSkillTest(skillItem, this.actor, rollType, weaponData);
           }
 
           break;
@@ -385,10 +386,11 @@ export default class ZweihanderActorSheet extends ZweihanderBaseActorSheet {
               "flavor": spellItemData.data.flavor.description,
               "effect": spellItemData.data.effect,
               "reagents": spellItemData.data.reagents.value,
-              "tradition": spellItemData.data.tradition.value
+              "tradition": spellItemData.data.tradition.value,
+              spellId
             };
 
-            await ZweihanderDice.rollSkillTest(skillItem, actorData, rollType, spellData);
+            await ZweihanderDice.rollSkillTest(skillItem, this.actor, rollType, spellData);
           }
 
           break;
