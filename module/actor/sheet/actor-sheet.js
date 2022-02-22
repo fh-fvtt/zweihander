@@ -77,6 +77,8 @@ export default class ZweihanderActorSheet extends ZweihanderBaseActorSheet {
     data.data.dodgeSkills = flags.dodgeSkills;
     data.data.magickSkills = flags.magickSkills;
 
+    data.data.isMagickUser = flags.isMagickUser;
+
     return data.data;
   }
 

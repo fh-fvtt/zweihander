@@ -33,7 +33,8 @@ export default class ZweihanderActorConfig extends FormApplication {
       classes: ["zweihander sheet actor-config"],
       id: "zweihander_actor_config",
       template: "systems/zweihander/templates/actor/actor-config.hbs",
-      width: 500
+      width: 500,
+      height: 950
     });
   }
 
@@ -50,6 +51,7 @@ export default class ZweihanderActorConfig extends FormApplication {
 
     data.parrySkills = data.flags.parrySkills.join(", ");
     data.dodgeSkills = data.flags.dodgeSkills.join(", ");
+    data.magickSkills = data.flags.magickSkills.join(", ");
 
     return data;
   }
@@ -62,9 +64,11 @@ export default class ZweihanderActorConfig extends FormApplication {
 
     let parrySkills = updateData.parrySkills.split(",").map(skill => skill.trim());
     let dodgeSkills = updateData.dodgeSkills.split(",").map(skill => skill.trim());
+    let magickSkills = updateData.magickSkills.split(",").map(skill => skill.trim());
 
     updateData.parrySkills = parrySkills;
     updateData.dodgeSkills = dodgeSkills;
+    updateData.magickSkills = magickSkills;
 
     await actor.setFlag("zweihander", "actorConfig", updateData);
   }

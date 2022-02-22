@@ -112,13 +112,29 @@
 
       <hr>
 
-      <h3>Peril Threshold Options</h3>
+      <h3>Peril Threshold</h3>
 
       <div class="form-group">
         <label>Ignore Skill Ranks Offset</label>
         <input type="number" name="flags.perilOffset" value="{{flags.perilOffset}}" />
         <p class="notes">Set an offset to the Peril Threshold. For example, if this value is set to '1', when this Actor drops to 'Ignore 1 Skill Rank' on the Peril Condition Track, the Skill Rank will not be ignored.</p>
-      </div>      
+      </div>
+
+      <hr>
+
+      <h3>Magick</h3> 
+
+      <div class="form-group">
+        <label>Magick User</label>
+        <input type="checkbox" name="flags.isMagickUser" {{checked flags.isMagickUser}} />
+        <p class="notes">Check to set this Actor as a Magick user. Will open a new tab on the character sheet.</p>
+      </div>
+
+      <div class="form-group">
+        <label>Underlying Magick Skills</label>
+        <input type="text" name="flags.magickSkills" value="{{magickSkills}}" />
+        <p class="notes">Set the skills that can be used when rolling Dodge.</p>
+      </div>
     </section>
 
     <footer class="form-footer">
