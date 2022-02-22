@@ -11,7 +11,7 @@ export default class ZweihanderDice {
    * @param {("skill" | "weapon" | "spell" | "dodge" | "parry")} rollType The type of roll to be generated.
    */
   static async rollSkillTest(skillItem, actor, rollType, optionalData = {}) {
-    const actorData = actor.toObject();
+    const actorData = actor.toObject(false);
     const primaryAttribute = skillItem.data.associatedPrimaryAttribute.value;
     const rollTarget = actorData.data.stats.primaryAttributes[primaryAttribute.toLowerCase()].value;
 

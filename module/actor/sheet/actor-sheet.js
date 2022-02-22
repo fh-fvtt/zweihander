@@ -340,7 +340,7 @@ export default class ZweihanderActorSheet extends ZweihanderBaseActorSheet {
     const actorData = this.actor.data;
 
     const skill = dataset.label.toLowerCase();
-    const skillItem = actorData.skills[actorData.skills.findIndex(item => item.name.toLowerCase() === skill)];
+    const skillItem = actorData.items.find(item => ZweihanderUtils.normalizedEquals(item.name, skill)).toObject(false);
 
     if (skillItem) {
       switch (rollType) {
