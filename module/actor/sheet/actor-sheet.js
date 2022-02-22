@@ -79,6 +79,8 @@ export default class ZweihanderActorSheet extends ZweihanderBaseActorSheet {
 
     data.data.isMagickUser = flags.isMagickUser;
 
+    data.data.permanentChaosRanks = flags.permanentChaosRanks;
+
     return data.data;
   }
 

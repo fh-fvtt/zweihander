@@ -103,7 +103,7 @@
         <input name="data.orderAlignment.value" type="text" value="{{data.orderAlignment.value}}" placeholder="Order Alignment" />
       </li>
       <li class="order-track flexrow">
-        {{radioRanks "data.orderRanks.value" rankOptions checked=data.orderRanks.value}}
+        {{radioRanks "data.orderRanks.value" rankOptions 0 checked=data.orderRanks.value}}
       </li>
       <li class="corruption-title">
         <label>Corruption</label>
@@ -113,7 +113,7 @@
       </li>
       <li class="corruption-reset"><a class="reset-ranks"><i class="fas fa-sync-alt fa-xs" title="Reset Chaos and Order Ranks"></i></a></li>
       <li class="chaos-track flexrow">
-        {{radioRanks "data.chaosRanks.value" rankOptions checked=data.chaosRanks.value}}
+        {{radioRanks "data.chaosRanks.value" rankOptions permanentChaosRanks checked=data.chaosRanks.value}}
       </li>
       <li class="chaos-title">
         <input name="data.chaosAlignment.value" type="text" value="{{data.chaosAlignment.value}}" placeholder="Chaos Alignment" />

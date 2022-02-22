@@ -39,7 +39,7 @@ export const registerHandlebarHelpers = async function () {
       return "even";
   });
 
-  $$('radioRanks', function(name, choices, options) {
+  $$('radioRanks', function(name, choices, permanentRanks, options) {
     const checked = options.hash['checked'] || null;
 
     let html = "";
@@ -47,7 +47,8 @@ export const registerHandlebarHelpers = async function () {
     let uuid = uuidv4();
     for (let [key, label] of Object.entries(choices)) {
       const isChecked = checked === key;
-      html += `<input type="radio" class="rd" name="${name}" id="${uuid}.${name + i}" value="${key}" ${isChecked ? "checked" : ""}><label for="${uuid}.${name + i++}">${label}</label>`;
+      const isPermanentRank = i < permanentRanks;
+      html += `<input type="radio" class="rd" name="${name}" id="${uuid}.${name + i}" value="${key}" ${isChecked ? "checked" : ""} ${isPermanentRank ? "disabled": ""}><label for="${uuid}.${name + i++}" class="${isPermanentRank ? "permanent-rank" : "regular-rank"}">${isPermanentRank ? "<span class='ra ra-cancel'></span>" : label}</label>`;
     }
 
     return new Handlebars.SafeString(html);

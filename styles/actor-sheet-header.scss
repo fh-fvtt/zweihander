@@ -306,7 +306,7 @@
           color: var(--zx-clr-aqua);
           font-size: 12px;
           left: calc(50% + 7ex);
-          top: -5px;
+          top: -4px;
         }
         &.chaos-title {
           right: 2px;
@@ -319,7 +319,7 @@
           input {
             color: var(--zx-clr-aqua);
             font-size: 18px;
-            margin-top: 10px;
+            margin-top: 12px;
             text-align: center;
           }
         }
@@ -334,17 +334,31 @@
             display: none;
             flex: 0;
             & + label {
-              cursor: pointer;
               display: inline-block;
-              font-size: 12px;
-              margin-top: 14px;
               position: relative;
               text-align: center;
               z-index: 2;
-              &:hover {
-                color: var(--zx-clr-yellow);
-                &::before {
-                  border-color: var(--zx-clr-yellow);
+              &.regular-rank {
+                cursor: pointer;
+                font-size: 12px;
+                margin-top: 16px;
+                &:hover {
+                  color: var(--zx-clr-yellow);
+                  &::before {
+                    border-color: var(--zx-clr-yellow);
+                  }
+                }
+              }
+              &.permanent-rank {
+                margin-top: 17px;
+                cursor: default;
+                color: var(--zx-clr-red-alt);
+                font-size: 14px;
+                &:hover {
+                  color: none;
+                  &::before {
+                    border-color: none;
+                  }
                 }
               }
               &::before {
