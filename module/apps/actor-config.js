@@ -11,7 +11,8 @@ export default class ZweihanderActorConfig extends FormApplication {
       "movementModifier": 0,
       "parrySkills": ["Simple Melee", "Martial Melee", "Guile", "Charm", "Incantation"],
       "dodgeSkills": ["Coordination", "Guile", "Drive", "Ride"],
-      "magickSkills": ["Incantation", "Folklore"]
+      "magickSkills": ["Incantation", "Folklore"],
+      "isMagickUser": false
   };
 
   static getValue(actorData, key) {
