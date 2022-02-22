@@ -5,7 +5,12 @@ export default class ZweihanderActorConfig extends FormApplication {
       "pthAttribute": "willpower",
       "intAttribute": "perception",
       "movAttribute": "agility",
-      "perilOffset": 0,
+      "perilLadder": {
+        "avoidStepOne": false,
+        "avoidStepTwo": false,
+        "avoidStepThree": false,
+        "avoidAll": false
+      },
       "encumbranceModifier": 0,
       "initiativeModifier": 0,
       "movementModifier": 0,

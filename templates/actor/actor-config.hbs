@@ -115,9 +115,27 @@
       <h3>Peril Threshold</h3>
 
       <div class="form-group">
-        <label>Ignore Skill Ranks Offset</label>
-        <input type="number" name="flags.perilOffset" value="{{flags.perilOffset}}" />
-        <p class="notes">Set an offset to the Peril Threshold. For example, if this value is set to '1', when this Actor drops to 'Ignore 1 Skill Rank' on the Peril Condition Track, the Skill Rank will not be ignored.</p>
+        <label>Ignore 'Ignore 1 Skill Rank'</label>
+        <input type="checkbox" name="flags.perilLadder.avoidStepOne" {{checked flags.perilLadder.avoidStepOne}} />
+        <p class="notes">Check this box if Actor doesn't suffer from the ill-effects of Peril at this step.</p>
+      </div>
+
+      <div class="form-group">
+        <label>Ignore 'Ignore 2 Skill Rank'</label>
+        <input type="checkbox" name="flags.perilLadder.avoidStepTwo" {{checked flags.perilLadder.avoidStepTwo}} />
+        <p class="notes">Check this box if Actor doesn't suffer from the ill-effects of Peril at this step.</p>
+      </div>
+
+      <div class="form-group">
+        <label>Ignore 'Ignore 3 Skill Rank'</label>
+        <input type="checkbox" name="flags.perilLadder.avoidStepThree" {{checked flags.perilLadder.avoidStepThree}} />
+        <p class="notes">Check this box if Actor doesn't suffer from the ill-effects of Peril at this step.</p>
+      </div>
+
+      <div class="form-group">
+        <label>Immune to Peril</label>
+        <input type="checkbox" name="flags.perilLadder.avoidAll" {{checked flags.perilLadder.avoidAll}} />
+        <p class="notes">Check this box if Actor doesn't suffer from the ill-effects of Peril, at all.</p>
       </div>
 
       <hr>
@@ -127,7 +145,7 @@
       <div class="form-group">
         <label>Magick User</label>
         <input type="checkbox" name="flags.isMagickUser" {{checked flags.isMagickUser}} />
-        <p class="notes">Check to set this Actor as a Magick user. Opens a new tab on the Actor sheet.</p>
+        <p class="notes">Check this box to set this Actor as a Magick user. Opens a new tab on the Actor sheet.</p>
       </div>
 
       <div class="form-group">

@@ -29,13 +29,31 @@ export default class ZweihanderBaseActor {
     })
   }
 
-  getPerilMalus(data) {
+  getPerilMalus(data, ignoredValues) {
+    const currentPeril = data.stats.secondaryAttributes.perilCurrent.value;
+
+    // if immune to peril, no need to calculate malus
+    if (ignoredValues["avoidAll"])
+      return 0;
+
+    const currentStep = {
+      0: "avoidAll",
+      1: "avoidStepThree",
+      2: "avoidStepTwo",
+      3: "avoidStepOne"
+    }[currentPeril] ?? "";
+
+    const ignoreCurrentStep = ignoredValues[currentStep] ?? false;
+
+    if (ignoreCurrentStep)
+      return 0;
+    
     return {
       0: 30,
       1: 30,
       2: 20,
       3: 10
-    }[data.stats.secondaryAttributes.perilCurrent.value] ?? 0;
+    }[currentPeril] ?? 0;
   }
 
   async createEmbeddedDocuments(embeddedName, data, context, actor) {

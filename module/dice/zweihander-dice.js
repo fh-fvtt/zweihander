@@ -1,3 +1,4 @@
+import ZweihanderActorConfig from "../apps/actor-config";
 import * as ZweihanderUtils from "../utils";
 
 export default class ZweihanderDice {
@@ -17,8 +18,11 @@ export default class ZweihanderDice {
 
     const rankBonus = skillItem.data.bonus;
 
+    const configOptions = ZweihanderActorConfig.getConfig(actorData);
+
     const currentPeril = Number(actorData.data.stats.secondaryAttributes.perilCurrent.value);
-    const perilPenalty = this._calculatePerilPenalty(currentPeril, rankBonus);
+    const perilOffset = configOptions.perilOffset * 10 ?? 0;
+    const perilPenalty = this._calculatePerilPenalty(currentPeril, rankBonus, perilOffset);
 
     const baseChanceModifier = this._calculateBaseChanceModifier(rankBonus, perilPenalty);
 
@@ -183,22 +187,26 @@ export default class ZweihanderDice {
    * @param {number} rankBonus The bonus provided by purchased skill ranks.
    * @returns 
    */
-  static _calculatePerilPenalty(currentPeril, rankBonus) {
+  static _calculatePerilPenalty(currentPeril, rankBonus, offset) {
+    let penalty = 0;
+
     if (currentPeril === 3 && rankBonus >= 10) {
-      return 10;
+      penalty = 10;
     } else if (currentPeril === 2 && rankBonus >= 10 && rankBonus < 20) {
-      return 10;
+      penalty = 10;
     } else if (currentPeril === 2 && rankBonus >= 20) {
-      return 20;
+      penalty = 20;
     } else if (currentPeril === 1 && rankBonus >= 10 && rankBonus < 20) {
-      return 10;
+      penalty = 10;
     } else if (currentPeril === 1 && rankBonus >= 20 && rankBonus < 30) {
-      return 20;
+      penalty = 20;
     } else if (currentPeril === 1 && rankBonus >= 30) {
-      return 30;
-    } else {
-      return 0;
+      penalty = 30;
     }
+
+    console.log("pen ", penalty)
+
+    return penalty > 0 ? penalty - offset : penalty;
   }
 
   /**

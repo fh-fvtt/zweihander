@@ -90,7 +90,8 @@ export default class ZweihanderPC extends ZweihanderBaseActor {
     // build ladder
     this.buildPerilDamageLadder(data, initialPeril, initialDamage);
     // get peril malus
-    const perilMalus = this.getPerilMalus(data);
+    const ignoredValues = configOptions.perilLadder;
+    const perilMalus = this.getPerilMalus(data, ignoredValues);
     // calculate special actions underlying values
     const calcSecondayAttributeSpecialActionValue = (secAttr, name) => {
       const item = actorData.skills.find(skill => skill.name === secAttr.associatedSkill);

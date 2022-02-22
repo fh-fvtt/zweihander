@@ -81,6 +81,8 @@ export default class ZweihanderActorSheet extends ZweihanderBaseActorSheet {
 
     data.data.permanentChaosRanks = flags.permanentChaosRanks;
 
+    data.data.perilLadder = flags.perilLadder;
+
     return data.data;
   }
 
