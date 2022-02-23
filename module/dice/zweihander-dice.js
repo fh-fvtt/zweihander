@@ -21,8 +21,8 @@ export default class ZweihanderDice {
     const configOptions = ZweihanderActorConfig.getConfig(actorData);
 
     const currentPeril = Number(actorData.data.stats.secondaryAttributes.perilCurrent.value);
-    const perilOffset = configOptions.perilOffset * 10 ?? 0;
-    const perilPenalty = this._calculatePerilPenalty(currentPeril, rankBonus, perilOffset);
+    const ignorePenalty = this._ignoreCurrentPerilStep(currentPeril, configOptions.perilLadder);
+    const perilPenalty = ignorePenalty ? 0 : this._calculatePerilPenalty(currentPeril, rankBonus);
 
     const baseChanceModifier = this._calculateBaseChanceModifier(rankBonus, perilPenalty);
 
@@ -187,7 +187,7 @@ export default class ZweihanderDice {
    * @param {number} rankBonus The bonus provided by purchased skill ranks.
    * @returns 
    */
-  static _calculatePerilPenalty(currentPeril, rankBonus, offset) {
+  static _calculatePerilPenalty(currentPeril, rankBonus) {
     let penalty = 0;
 
     if (currentPeril === 3 && rankBonus >= 10) {
@@ -204,9 +204,27 @@ export default class ZweihanderDice {
       penalty = 30;
     }
 
-    console.log("pen ", penalty)
+    return penalty;
+  }
 
-    return penalty > 0 ? penalty - offset : penalty;
+  static _ignoreCurrentPerilStep(currentPeril, ignoredValues) {
+    // if immune to peril, no need to continue
+    if (ignoredValues["avoidAll"])
+      return true;
+
+    const currentStep = {
+      0: "avoidAll",
+      1: "avoidStepThree",
+      2: "avoidStepTwo",
+      3: "avoidStepOne"
+    }[currentPeril] ?? "";
+
+    const ignoreCurrentStep = ignoredValues[currentStep] ?? false;
+
+    if (ignoreCurrentStep)
+      return true;
+    
+    return false;
   }
 
   /**
