@@ -39,8 +39,8 @@
           background-color: var(--zx-clr-aqua);
           mask-mode: luminance;
           // -webkit-mask-position-y: 5px;
-          -webkit-mask-repeat: no-repeat;
-          -webkit-mask-size: cover;
+          mask-repeat: no-repeat;
+          mask-size: cover;
         }
         &.item-image-picture {
           // background-position-y: 5px;

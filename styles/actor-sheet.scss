@@ -98,7 +98,7 @@
             .item-image {
               &.item-image-icon {
                 background-color: var(--zx-clr-yellow) !important;
-                -webkit-mask-image: url("../../icons/svg/d10-grey.svg") !important;
+                mask-image: url("../../icons/svg/d10-grey.svg") !important;
               }
               &.item-image-picture {
                 border-color: var(--zx-clr-yellow);
@@ -108,7 +108,7 @@
           .item-image:hover {
             &.item-image-icon {
               background-color: var(--zx-clr-aqua) !important;
-              -webkit-mask-image: url("../../icons/svg/d10-grey.svg") !important;
+              mask-image: url("../../icons/svg/d10-grey.svg") !important;
             }
             &.item-image-picture {
               border-color: var(--zx-clr-aqua) !important;
@@ -150,8 +150,8 @@
           background-color: var(--zx-clr-fg2);
           mask-mode: luminance;
           // -webkit-mask-position-y: 5px;
-          -webkit-mask-repeat: no-repeat;
-          -webkit-mask-size: 30px;
+          mask-repeat: no-repeat;
+          mask-size: 30px;
         }
         &.item-image-picture {
           // background-position-y: 5px;
