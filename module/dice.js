@@ -37,10 +37,6 @@ function zweihanderRollModeToFoundryRollMode(mode) {
   }
 }
 
-export function isFlipToFail(skillItem) {
-  return skillItem.data.data.requiresTraining && skillItem.data.data.rank === 0;
-}
-
 export async function rollTest(skillItem, testType = 'skill', testConfiguration = {}, { showDialog = false, isReroll = false, create = true } = {}) {
   if (isReroll) {
     testConfiguration.useFortune = 'fortune';
@@ -82,10 +78,15 @@ export async function rollTest(skillItem, testType = 'skill', testConfiguration 
   const skillTestFn = testConfiguration.zweihanderRollMode === 'assisted' ? rollAssistedTest : rollStandardTest;
   const { effectiveResult, effectiveOutcome, effectivelyFlipped, roll } = await skillTestFn.bind(this)(totalChance, flip);
   const zweihanderRollModeLabel = testConfiguration.zweihanderRollMode.capitalize() + ' Test';
+  let tensDie = Math.floor(effectiveResult / 10);
+  tensDie = tensDie === 0 ? 10 : tensDie;
+  const primaryAttributeBonus = actor.data.data.stats.primaryAttributes[primaryAttribute.toLowerCase()].bonus;
+  const crbDegreesOfSuccess = effectiveOutcome < 2 ? 0 : `${tensDie} + ${primaryAttributeBonus} [${primaryAttribute[0]}B] = ${tensDie+primaryAttributeBonus}`;
+  const starterKitDegreesOfSuccess = effectiveOutcome < 2 ? 0 : 100 - (totalChance - effectiveResult);
   const templateData = {
     itemId: skillItem.id,
     zweihanderRollModeLabel,
-    opposedTest: testConfiguration.zweihanderRollMode === 'opposed',
+    degreesOfSuccess: testConfiguration.zweihanderRollMode === 'opposed' ? crbDegreesOfSuccess : false,
     skill: skillItem.name,
     primaryAttribute,
     primaryAttributeValue,

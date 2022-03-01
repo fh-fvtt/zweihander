@@ -32,15 +32,20 @@
 </div>
 
 {{#if chaosManifestation}}
-  <div class="chaos-manifestation">
+  <div class="additional-outcome-info chaos-manifestation">
     A {{capitalize spell.data.principle.value}} Chaos Manifestation spawns!
+  </div>
+{{/if}}
+
+{{#if degreesOfSuccess}}
+  <div class="additional-outcome-info">
+    Degrees of Success: {{degreesOfSuccess}}
   </div>
 {{/if}}
 
 <div class="skill-test-controls">
   <div class="flexrow">
     <button class="skill-test-reroll" disabled><i class="fas fa-sync-alt"></i><br/>Reroll</button>
-    {{#if opposedTest}}<button class="skill-test-opposed" disabled><i class="fas fa-user-friends"></i><br/>Join Opposed</button>{{/if}}
     {{#if weaponTest}}
     <button class="skill-test-damage" disabled><i class="ra ra-sword"></i><br/>Damage</button>
     <button class="skill-test-parry" disabled><i class="ra ra-round-shield"></i><br/>Parry</button>

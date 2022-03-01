@@ -338,14 +338,18 @@
     border: 2px solid var(--zx-clr-bg0);
     border-radius: 2px;
   }
-  .chaos-manifestation {
+  .additional-outcome-info {
     display: block;
     padding: 2px;
-    background-color: var(--zx-clr-red-alt);
+    background-color: var(--zx-clr-bg2);
     border-radius: 5px;
-    border: 2px solid var(--zx-clr-red);
+    border: 2px solid var(--zx-clr-bg3);
     margin-top: 5px;
     text-align: center;
+    &.chaos-manifestation {
+      background-color: var(--zx-clr-red-alt);
+      border-color: var(--zx-clr-red);
+    }
   }
 }
 

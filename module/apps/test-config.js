@@ -1,7 +1,7 @@
 import * as ZweihanderUtils from '../utils';
 
 export async function getTestConfiguration(skillItem, testType = 'skill', testConfiguration = {}) {
-  testConfiguration.flip = testConfiguration.flip ?? skillItem.isFlipToFail ? 'fail' : 'no-flip';
+  testConfiguration.flip = testConfiguration.flip ?? (skillItem.data.data.isFlipToFail ? 'fail' : 'no-flip');
   const configurationFromDialog = await renderConfigurationDialog(testType, skillItem.name, testConfiguration);
   testConfiguration = mergeObject(testConfiguration, configurationFromDialog);
   return testConfiguration;
