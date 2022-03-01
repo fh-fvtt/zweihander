@@ -226,6 +226,10 @@
     overflow-y:auto;
   }
 
+  textarea {
+    color: var(--zx-clr-fg0);
+  }
+
   //dice so nice integration
   .dice-so-nice .select2-container--default .select2-selection--multiple .select2-selection__choice {
     background-color: var(--zx-clr-bg1);

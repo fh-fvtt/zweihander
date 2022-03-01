@@ -171,11 +171,17 @@ export async function reRollTest(actorId, skillItemId, testType, testConfigurati
 }
 
 export async function rollPeril(perilType, actor) {
-  const roll = new Roll(`${perilType.x}d10+${perilType.x}`);
   const resolveSkill = actor.items.find(i => i.type === 'skill' && i.name === 'Resolve');
-  testConfiguration.flavor = `Is trying to surpress their ${perilType.title}`;
-  const { outcome } = await rollTest(resolveSkill, 'skill', { difficultyRating: perilType.difficultyRating }, {showDialog: true});
+  const { outcome } = await rollTest(
+    resolveSkill, 'skill', {
+      difficultyRating: perilType.difficultyRating,
+      flavor: `Is trying to surpress their ${perilType.title}`,
+      perilType
+    },
+    { showDialog: true }
+  );
   if (!isSuccess(outcome)) {
+    const roll = new Roll(`${perilType.x}d10+${perilType.x}`);
     const speaker = ChatMessage.getSpeaker({actor: actor});
     roll.toMessage({ flavor: `Is rolling for peril due to ${perilType.title}`, speaker });
   }
