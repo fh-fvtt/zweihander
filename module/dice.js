@@ -114,6 +114,9 @@ export async function rollTest(skillItem, testType = 'skill', testConfiguration 
     tooltip: await roll.getTooltip()
   };
   let weapon, spell;
+  if (testType === 'weapon') {
+    weapon = actor.items.get(testConfiguration.weaponId);
+  }
   if (testType === 'spell') {
     spell = actor.items.get(testConfiguration.spellId);
     templateData.itemId = spell.id;
