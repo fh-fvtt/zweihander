@@ -171,9 +171,9 @@ export default class ZweihanderPC extends ZweihanderBaseActor {
     const skillsFromActor = actorData.skills;
     // add default set of skills while preventing duplicate skills
     const symmetricDifferenceIds = ZweihanderUtils.getSymmetricDifference(skillsFromPack.map(i => i._id), skillsFromActor.map(i => i._id));
-    if (symmetricDifference.length) {
+    if (symmetricDifferenceIds.length) {
       const itemsToAdd = [...skillsFromActor, ...skillsFromPack].filter(item => symmetricDifferenceIds.includes(item._id));
-      actorData.update({ "items": symmetricDifference });
+      actorData.update({ "items": itemsToAdd });
     }
   }
 
