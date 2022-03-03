@@ -10,12 +10,15 @@
   <dt>Penalty from Peril</dt><dd> {{explicitSign perilPenalty}}%</dd>
   <dt>Special Modifier</dt><dd> {{explicitSign specialBaseChanceModifier}}%</dd>
   <dt>Capped Base Chance</dt><dd> {{baseChance}}%</dd>
-  <dt>Difficulty Modifier</dt><dd> {{explicitSign difficultyRating.value}}%</dd>
+  {{#if spellTest}}
+  <dt>Raw Difficulty</dt><dd> {{explicitSign difficultyRating.raw}}% ({{capitalize spell.data.principle.value}} Magick)</dd>
+  <dt>Channel Power Bonus</dt><dd> {{explicitSign difficultyRating.channelPowerBonus}}%</dd>
+  <dt>Total Difficulty</dt>{{else}}<dt>Difficulty</dt>{{/if}}<dd> {{explicitSign difficultyRating.total}}%</dd>
   <dt>Result has been flipped</dt><dd> {{#if effectivelyFlipped}} yes {{else}} no {{/if}}</dd>
 </dl>
 <div class="pill-container">
     <span class="pill pill-roll-mode">{{zweihanderRollModeLabel}} ({{diceFormula}})</span>
-    <span class="pill pill-difficulty-{{difficultyRating.value}}">{{difficultyRating.label}}</span>
+    <span class="pill pill-difficulty-{{difficultyRating.total}}">{{difficultyRating.label}}</span>
     {{#if flipToFail}}<span class="pill pill-flip-fail">Flip To Fail</span>{{/if}}
     {{#if flipToSucceed}}<span class="pill pill-flip-succeed">Flip To Succeed</span>{{/if}}
     {{#if usedFortune}}<span class="pill pill-fortune">Used Fortune</span>{{/if}}

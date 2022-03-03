@@ -16,32 +16,60 @@ export const OUTCOME_TYPES = {
   CRITICAL_FAILURE: 0
 }
 
-export function isSuccess(outcome) {
-  return outcome === OUTCOME_TYPES.CRITICAL_SUCCESS || outcome === OUTCOME_TYPES.SUCCESS;
+export async function reRollTest(actorId, skillItemId, testType, testConfiguration = {}, { showDialog = false } = {}) {
+  const actor = game.actors.get(actorId);
+  const skillItem = actor.items.get(skillItemId);
+  return rollTest(skillItem, testType, testConfiguration, { isReroll: true, showDialog });
 }
 
-function outcomeLabel(outcome) {
-  return ["Critical Failure", "Failure", "Success", "Critical Success"][outcome];
-}
-
-function zweihanderRollModeToFoundryRollMode(mode) {
-  switch (mode) {
-    case 'private':
-      return CONST.DICE_ROLL_MODES.PRIVATE;
-    case 'secret':
-      return CONST.DICE_ROLL_MODES.BLIND;
-    case 'self':
-      return CONST.DICE_ROLL_MODES.SELF;
-    default:
-      return CONST.DICE_ROLL_MODES.PUBLIC;
+export async function rollPeril(perilType, actor) {
+  const resolveSkill = actor.items.find(i => i.type === 'skill' && i.name === 'Resolve');
+  const { outcome } = await rollTest(
+    resolveSkill, 'skill', {
+      difficultyRating: perilType.difficultyRating,
+      flavor: `Is trying to surpress their ${perilType.title}`,
+      perilType
+    },
+    { showDialog: true }
+  );
+  if (!isSuccess(outcome)) {
+    const roll = new Roll(`${perilType.x}d10+${perilType.x}`);
+    const speaker = ChatMessage.getSpeaker({actor: actor});
+    roll.toMessage({ flavor: `Is rolling for peril due to ${perilType.title}`, speaker });
   }
+}
+
+export async function rollCombatReaction(type, enemyActorId, enemyTestConfiguration) {
+  const actor = game.actors.get(ZweihanderUtils.determineCurrentActorId(true));
+  if (!actor) return;
+  const associatedSkill = actor.data.data.stats.secondaryAttributes[type].associatedSkill;
+  const skillItem = actor.items.find(i => ZweihanderUtils.normalizedEquals(i.name, associatedSkill) && i.type === 'skill');
+  const originalActorName = game.actors.get(enemyActorId).name;
+  const updatedTestConfiguration = {
+    difficultyRating: -enemyTestConfiguration.difficultyRating,
+    flavor: `Trying to ${type} ${originalActorName}'s Attack`
+  };
+  return rollTest(skillItem, type, updatedTestConfiguration, { showDialog: true });
 }
 
 export async function rollTest(skillItem, testType = 'skill', testConfiguration = {}, { showDialog = false, isReroll = false, create = true } = {}) {
-  if (isReroll) {
+  const actor = skillItem.actor;
+  const weapon = testType === 'weapon' ? actor.items.get(testConfiguration.weaponId) : undefined;
+  const spell = testType === 'spell' ? actor.items.get(testConfiguration.spellId) : undefined;
+  if (isReroll && actor.type === 'character') {
     testConfiguration.useFortune = 'fortune';
+  } else if (isReroll && actor.type !== 'character') {
+    testConfiguration.useFortune = 'misfortune';
   }
+  const principle = spell?.data?.data?.principle?.value?.trim?.()?.toLowerCase?.();
+  const defaultSpellDifficulty = {
+    'petty': 10,
+    'generalist': 10,
+    'lesser': 0,
+    'greater': -10
+  }[principle];
   if (showDialog) {
+    testConfiguration.difficultyRating = (testConfiguration.difficultyRating ?? (defaultSpellDifficulty ?? 0));
     testConfiguration = await getTestConfiguration(skillItem, testType, testConfiguration);
   }
   try {
@@ -54,7 +82,6 @@ export async function rollTest(skillItem, testType = 'skill', testConfiguration 
     ui.notifications.warn(`Couldn't reroll skill test: There are no ${testConfiguration.useFortune} points left.`);
     return;
   }
-  const actor = skillItem.actor;
   const primaryAttribute = skillItem.data.data.associatedPrimaryAttribute.value;
   const primaryAttributeValue = actor.data.data.stats.primaryAttributes[primaryAttribute.toLowerCase()].value;
   const rank = skillItem.data.data.rank;
@@ -66,23 +93,22 @@ export async function rollTest(skillItem, testType = 'skill', testConfiguration 
   const rankBonusAfterPeril = ranksPurchasedAfterPeril * bonusPerRank;
   const specialBaseChanceModifier = Number(testConfiguration.baseChanceModifier);
   const baseChance = primaryAttributeValue + Math.max(-30, Math.min(30, rankBonusAfterPeril + specialBaseChanceModifier));
-  let difficultyRating = Number(testConfiguration.difficultyRating);
-  if (testConfiguration.channelPowerBonus) {
-    difficultyRating = Math.min(30, difficultyRating + Number(testConfiguration.channelPowerBonus));
-  }
+  const rawDifficultyRating = Number(testConfiguration.difficultyRating);
+  const channelPowerBonus = testConfiguration.channelPowerBonus;
+  const difficultyRating = Math.min(30, rawDifficultyRating + (testConfiguration.channelPowerBonus || 0));
   const difficultyRatingLabel = ZweihanderUtils.getDifficultyRatingLabel(difficultyRating);
   let totalChance = baseChance + difficultyRating;
   totalChance = (totalChance >= 100 ? 99 : (totalChance < 1 ? 1 : totalChance))
     .toLocaleString(undefined, { "minimumIntegerDigits": 2 });
   const flip = testConfiguration.flip;
-  const skillTestFn = testConfiguration.zweihanderRollMode === 'assisted' ? rollAssistedTest : rollStandardTest;
+  const skillTestFn = testConfiguration.zweihanderRollMode === 'assisted' ? simulateAssistedTest : simulateStandardTest;
   const { effectiveResult, effectiveOutcome, effectivelyFlipped, roll } = await skillTestFn.bind(this)(totalChance, flip);
   const zweihanderRollModeLabel = testConfiguration.zweihanderRollMode.capitalize() + ' Test';
   let tensDie = Math.floor(effectiveResult / 10);
   tensDie = tensDie === 0 ? 10 : tensDie;
   const primaryAttributeBonus = actor.data.data.stats.primaryAttributes[primaryAttribute.toLowerCase()].bonus;
   const crbDegreesOfSuccess = effectiveOutcome < 2 ? 0 : `${tensDie} + ${primaryAttributeBonus} [${primaryAttribute[0]}B] = ${tensDie+primaryAttributeBonus}`;
-  const starterKitDegreesOfSuccess = effectiveOutcome < 2 ? 0 : 100 - (totalChance - effectiveResult);
+  // const starterKitDegreesOfSuccess = effectiveOutcome < 2 ? 0 : 100 - (totalChance - effectiveResult);
   const templateData = {
     itemId: skillItem.id,
     zweihanderRollModeLabel,
@@ -94,7 +120,9 @@ export async function rollTest(skillItem, testType = 'skill', testConfiguration 
     specialBaseChanceModifier,
     baseChance,
     difficultyRating: {
-      value: difficultyRating,
+      raw: rawDifficultyRating,
+      channelPowerBonus,
+      total: difficultyRating,
       label: difficultyRatingLabel
     },
     totalChance,
@@ -113,12 +141,7 @@ export async function rollTest(skillItem, testType = 'skill', testConfiguration 
     spellTest: testType === 'spell',
     tooltip: await roll.getTooltip()
   };
-  let weapon, spell;
-  if (testType === 'weapon') {
-    weapon = actor.items.get(testConfiguration.weaponId);
-  }
-  if (testType === 'spell') {
-    spell = actor.items.get(testConfiguration.spellId);
+  if (spell) {
     templateData.itemId = spell.id;
     templateData.spell = spell.toObject(false);
     templateData.spell.data.distance.value = await ZweihanderUtils.parseDataPaths(templateData.spell.data.distance.value, actor);
@@ -162,42 +185,6 @@ export async function rollTest(skillItem, testType = 'skill', testConfiguration 
     outcome: effectiveOutcome,
     messageData
   };
-}
-
-export async function reRollTest(actorId, skillItemId, testType, testConfiguration = {}, { showDialog = false } = {}) {
-  const actor = game.actors.get(actorId);
-  const skillItem = actor.items.get(skillItemId);
-  return rollTest(skillItem, testType, testConfiguration, { isReroll: true, showDialog });
-}
-
-export async function rollPeril(perilType, actor) {
-  const resolveSkill = actor.items.find(i => i.type === 'skill' && i.name === 'Resolve');
-  const { outcome } = await rollTest(
-    resolveSkill, 'skill', {
-      difficultyRating: perilType.difficultyRating,
-      flavor: `Is trying to surpress their ${perilType.title}`,
-      perilType
-    },
-    { showDialog: true }
-  );
-  if (!isSuccess(outcome)) {
-    const roll = new Roll(`${perilType.x}d10+${perilType.x}`);
-    const speaker = ChatMessage.getSpeaker({actor: actor});
-    roll.toMessage({ flavor: `Is rolling for peril due to ${perilType.title}`, speaker });
-  }
-}
-
-export async function rollCombatReaction(type, enemyActorId, enemyTestConfiguration) {
-  const actor = game.actors.get(ZweihanderUtils.determineCurrentActorId(true));
-  if (!actor) return;
-  const associatedSkill = actor.data.data.stats.secondaryAttributes[type].associatedSkill;
-  const skillItem = actor.items.find(i => ZweihanderUtils.normalizedEquals(i.name, associatedSkill) && i.type === 'skill');
-  const originalActorName = game.actors.get(enemyActorId).name;
-  const updatedTestConfiguration = {
-    difficultyRating: -enemyTestConfiguration.difficultyRating,
-    flavor: `Trying to ${type} ${originalActorName}'s Attack`
-  };
-  return rollTest(skillItem, type, updatedTestConfiguration, { showDialog: true });
 }
 
 export async function rollWeaponDamage(actorId, testConfiguration) {
@@ -267,7 +254,11 @@ export async function explodeWeaponDamage(message, useFortune) {
   await game.zweihander.socket.executeAsGM("updateChatMessage", message.id, diffData);
 }
 
-async function rollStandardTest(totalChance, flip) {
+export function isSuccess(outcome) {
+  return outcome === OUTCOME_TYPES.CRITICAL_SUCCESS || outcome === OUTCOME_TYPES.SUCCESS;
+}
+
+async function simulateStandardTest(totalChance, flip) {
   const firstD10 = (await (new Roll("1d10")).evaluate()).total;
   const secondD10 = (await (new Roll("1d10")).evaluate()).total;
   const { score, flipped, outcome } = determineTestResult(firstD10, secondD10, flip, totalChance);
@@ -282,7 +273,7 @@ async function rollStandardTest(totalChance, flip) {
   }
 }
 
-async function rollAssistedTest(totalChance, flip) {
+async function simulateAssistedTest(totalChance, flip) {
   const firstD10 = (await (new Roll("1d10")).evaluate()).total % 10;
   const secondD10 = (await (new Roll("1d10")).evaluate()).total % 10;
   const thirdD10 = (await (new Roll("1d10")).evaluate()).total % 10;
@@ -382,4 +373,21 @@ function getResultOutcome(score, totalChance, match) {
     return 1; // failure
   else if (score <= totalChance && !match)
     return 2; // success
+}
+
+function outcomeLabel(outcome) {
+  return ["Critical Failure", "Failure", "Success", "Critical Success"][outcome];
+}
+
+function zweihanderRollModeToFoundryRollMode(mode) {
+  switch (mode) {
+    case 'private':
+      return CONST.DICE_ROLL_MODES.PRIVATE;
+    case 'secret':
+      return CONST.DICE_ROLL_MODES.BLIND;
+    case 'self':
+      return CONST.DICE_ROLL_MODES.SELF;
+    default:
+      return CONST.DICE_ROLL_MODES.PUBLIC;
+  }
 }
