@@ -1,5 +1,4 @@
 :root {
-
   --zx-clr-dark0: #282828;
   --zx-clr-dark1: #3c3836;
   --zx-clr-dark2: #504945;
@@ -108,7 +107,6 @@
   --zx-clr-accent-rgb: 184, 187, 38;
 }
 
-
 .system-zweihander {
   --color-text-light-highlight: var(--zx-clr-fg0);
   --color-text-light-heading: var(--zx-clr-fg0);
@@ -188,10 +186,22 @@
   .window-app .window-content {
     background: var(--zx-clr-bg0);
   }
-  select, button {
+  select,
+  button {
     background-color: var(--zx-clr-bg1);
     color: var(--zx-clr-fg0);
   }
+
+  button {
+    border: 1px solid var(--zx-clr-bg4);
+    cursor: pointer;
+    &:hover, &:focus {
+      box-shadow: none;
+      color: var(--zx-clr-yellow);
+      border-color: var(--zx-clr-yellow);
+    }
+  }
+
   .directory .directory-header .header-search input {
     background: var(--zx-clr-bg2);
   }
@@ -199,39 +209,55 @@
     --currency-color: var(--zx-clr-yellow);
     color: var(--currency-color);
   }
-  
+
   .currency-ss {
     --currency-color: var(--zx-clr-gray);
     color: var(--currency-color);
   }
-  
+
   .currency-bp {
     --currency-color: var(--zx-clr-orange-alt);
     color: var(--currency-color);
   }
-  
+
   .sheet-body {
     height: 100%;
   }
-  
-  input[type="text"], input[type="number"], input[type="password"], input[type="date"], input[type="time"] {
+
+  input[type="text"],
+  input[type="number"],
+  input[type="password"],
+  input[type="date"],
+  input[type="time"] {
     background-color: var(--zx-clr-bg1);
   }
-  
+
   .editor {
     height: 100%;
   }
-  
+
   div.editor .CodeMirror-vscrollbar {
-    overflow-y:auto;
+    overflow-y: auto;
   }
 
   textarea {
     color: var(--zx-clr-fg0);
   }
 
+  .editor-edit {
+    background: var(--zx-clr-aqua-alt);
+    color: var(--zx-clr-bg0);
+    &:hover {
+      text-shadow: none;
+      background-color: var(--zx-clr-yellow-alt);
+    }
+  }
+
   //dice so nice integration
-  .dice-so-nice .select2-container--default .select2-selection--multiple .select2-selection__choice {
+  .dice-so-nice
+    .select2-container--default
+    .select2-selection--multiple
+    .select2-selection__choice {
     background-color: var(--zx-clr-bg1);
     border-color: var(--zx-clr-bg4);
   }
@@ -242,16 +268,47 @@
     background-color: var(--zx-clr-aqua);
     color: var(--zx-clr-bg0) !important;
   }
-  .dice-so-nice .select2-container--default .select2-results__option--highlighted {
+  .dice-so-nice
+    .select2-container--default
+    .select2-results__option--highlighted {
     background-color: var(--zx-clr-yellow) !important;
     color: var(--zx-clr-bg0) !important;
   }
+
+  // GM Screen
+  .gm-screen-app {
+    .gm-screen-actions {
+      button,
+      .meta-actions button {
+        background: var(--zx-clr-bg1);
+        &:hover {
+          text-shadow: none;
+          cursor: pointer;
+          color: var(--zx-clr-yellow);
+        }
+      }
+    }
+    .gm-screen-container {
+      border-radius: 10px 10px 0 0;
+      background: var(--zx-clr-bg1);
+    }
+    .gm-screen-grid-cell,
+    .gm-screen-grid-cell-content-wrapper {
+      box-shadow: none;
+      background-color: var(--zx-clr-bg0);
+    }
+  }
+}
+
+a:hover,
+#combat #combat-round .encounters a:hover {
+  text-shadow: none;
+  color: var(--zx-clr-yellow);
 }
 
 /* ----------------------------------------- */
 /* Scrollbar
 /* ----------------------------------------- */
-
 
 ::-webkit-scrollbar {
   width: 6px;
@@ -277,7 +334,6 @@
   scrollbar-width: thin;
   scrollbar-color: var(--zx-clr-aqua-alt) var(--zx-clr-bg1);
 }
-
 
 @font-face {
   font-family: "Adobe Caslon Pro";

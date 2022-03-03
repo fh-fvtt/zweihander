@@ -319,7 +319,7 @@
           input {
             color: var(--zx-clr-aqua);
             font-size: 18px;
-            margin-top: 12px;
+            margin-top: 14px;
             text-align: center;
           }
         }
@@ -341,7 +341,7 @@
               &.regular-rank {
                 cursor: pointer;
                 font-size: 12px;
-                margin-top: 16px;
+                margin-top: 20px;
                 &:hover {
                   color: var(--zx-clr-yellow);
                   &::before {
@@ -350,7 +350,7 @@
                 }
               }
               &.permanent-rank {
-                margin-top: 17px;
+                margin-top: 21px;
                 cursor: default;
                 color: var(--zx-clr-red-alt);
                 font-size: 14px;

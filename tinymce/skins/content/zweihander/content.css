@@ -48,3 +48,28 @@ code {
   margin-right: 1.5rem;
   padding-right: 1rem;
 }
+
+
+/* ----------------------------------------- */
+/* Scrollbar
+/* ----------------------------------------- */
+
+::-webkit-scrollbar {
+  width: 6px;
+  height: 6px;
+}
+
+::-webkit-scrollbar-track {
+  background: #282828;
+  box-shadow: 0 0 1px #3c3836 inset;
+  border: none;
+}
+
+::-webkit-scrollbar-thumb {
+  background: #665c54;
+  border: none;
+  outline: none;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: #689d6a;
+}

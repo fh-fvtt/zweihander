@@ -2,11 +2,11 @@
   --zx-text-shadow: 2px 2px 2px var(--zx-clr-fg4);
 }
 
-.zweihander-theme-gruvbox-dark .zweihander.app .window-content {
+.zweihander-theme-gruvbox-dark .zweihander.sheet .window-content {
   background-image: none;
 }
 
-.zweihander-theme-gruvbox-light .zweihander.app .window-content {
+.zweihander-theme-gruvbox-light .zweihander.sheet .window-content {
   background-image: none;
 }
 
@@ -18,7 +18,7 @@
   color: var(--zx-clr-fg0);
 }
 
-.zweihander.app {
+.zweihander.sheet {
 
   ::placeholder {
     color: var(--zx-clr-fg4);

@@ -10,7 +10,7 @@ export default class FortuneTracker extends Application {
           compact: true,
           tokenSize: 25,
           padding: 0,
-          areaSize: 60
+          areaSize: 80
         }
       case "normal":
         return {
@@ -144,7 +144,7 @@ export default class FortuneTracker extends Application {
       classes: ['zweihander'],
       width: FortuneTracker.PARAMS.areaSize * 2,
       height: FortuneTracker.PARAMS.areaSize + 30,
-      top: 60,
+      top: 150,
       left: 125
     });
   }
