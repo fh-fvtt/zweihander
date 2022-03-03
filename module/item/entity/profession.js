@@ -58,7 +58,7 @@ export default class ZweihanderProfession extends ZweihanderBaseItem {
       const oldTrait = itemData.data.professionalTrait.value;
       if (newTrait !== oldTrait) {
         idsToDelete.push(itemData.data.professionalTrait.linkedId);
-        const trait = await ZweihanderBaseItem.getOrCreateLinkedItem(actor, newTrait, 'trait', itemData.name, 'ancestry');
+        const trait = await ZweihanderBaseItem.getOrCreateLinkedItem(actor, newTrait, 'trait', itemData.name, 'profession');
         if (trait) {
           diffData.professionalTrait = trait;
         }
@@ -69,7 +69,7 @@ export default class ZweihanderProfession extends ZweihanderBaseItem {
       const oldTrait = itemData.data.specialTrait.value;
       if (newTrait !== oldTrait) {
         idsToDelete.push(itemData.data.specialTrait.linkedId);
-        const trait = await ZweihanderBaseItem.getOrCreateLinkedItem(actor, newTrait, 'trait', itemData.name, 'ancestry');
+        const trait = await ZweihanderBaseItem.getOrCreateLinkedItem(actor, newTrait, 'trait', itemData.name, 'profession');
         if (trait) {
           diffData.specialTrait = trait;
         }
@@ -80,7 +80,7 @@ export default class ZweihanderProfession extends ZweihanderBaseItem {
       const oldDrawback = itemData.data.drawback.value;
       if (newDrawback !== oldDrawback) {
         idsToDelete.push(itemData.data.drawback.linkedId);
-        const drawback = await ZweihanderBaseItem.getOrCreateLinkedItem(actor, newDrawback, 'drawback', itemData.name, 'ancestry');
+        const drawback = await ZweihanderBaseItem.getOrCreateLinkedItem(actor, newDrawback, 'drawback', itemData.name, 'profession');
         if (drawback) {
           diffData.drawback = drawback;
         }

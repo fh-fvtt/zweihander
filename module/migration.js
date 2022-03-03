@@ -37,6 +37,9 @@ export const migrateWorld = async function () {
     await migrateCompendium(p);
   }
 
+  // Fix false flags from earlier versions
+  fixSourceFlags();
+
   // Set the migration as complete
   game.settings.set("zweihander", "systemMigrationVersion", game.system.data.version);
   ui.notifications.info(`Zweihander System Migration to version ${game.system.data.version} completed!`, { permanent: true });
@@ -206,13 +209,27 @@ const migrateProfession = async function (item) {
 }
 
 const migrateIcons = function (img) {
-  return img?.replaceAll?.('assets/icons/game-icons','assets/icons')?.replaceAll?.('assets/skills.png', 'icons/skills.svg') ?? "icons/svg/mystery-man.svg";
+  return img?.replaceAll?.('assets/icons/game-icons', 'assets/icons')?.replaceAll?.('assets/skills.png', 'icons/skills.svg') ?? "icons/svg/mystery-man.svg";
+}
+
+const fixSourceFlags = async function () {
+  for (let actor of game.actors.filter(a => a.type === 'character')) {
+    const ancestry = actor.items.find((i) => i.type === 'ancestry')?.name;
+    if (ancestry) {
+      const falseFlagItems = actor.items.filter((i) => i.data.flags?.zweihander?.source?.value === 'ancestry' && !i.data.flags?.zweihander?.source?.label?.startsWith?.(ancestry));
+      for (let item of falseFlagItems) {
+        const label = item.data.flags.zweihander.source.label.replaceAll("Ancestry", "Profession");
+        const value = "profession";
+        await item.setFlag('zweihander', 'source', { label, value });
+      }
+    }
+  }
 }
 
 export const migrateWorldSafe = async function () {
   if (!game.user.isGM) return;
   const currentVersion = game.settings.get("zweihander", "systemMigrationVersion");
-  const NEEDS_MIGRATION_VERSION = "4.0.1";
+  const NEEDS_MIGRATION_VERSION = "4.0.6-beta4";
   const COMPATIBLE_MIGRATION_VERSION = "0.3.30";
   const totalDocuments = game.actors.size + game.scenes.size + game.items.size;
   if (!currentVersion && totalDocuments === 0) return game.settings.set("zweihander", "systemMigrationVersion", game.system.data.version);
