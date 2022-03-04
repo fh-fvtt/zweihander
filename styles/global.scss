@@ -286,7 +286,7 @@
           cursor: pointer;
           color: var(--zx-clr-yellow);
         }
-        .item:not(.active) {
+        &.item:not(.active) {
           background: var(--zx-clr-bg0);
         }
       }
