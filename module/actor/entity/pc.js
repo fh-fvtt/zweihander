@@ -49,7 +49,7 @@ export default class ZweihanderPC extends ZweihanderBaseActor {
     // calculate total damage threshold modifier from armor
     // according to the rule book, this doesn't stack, so we choose the maximium!
     // to account for shields with "maker's mark" quality, we need to implement active effects
-    const damageModifier = Math.max(0, ...(equippedArmor.map(a => a.data.damageThresholdModifier.value)))
+    const damageModifier = Math.max(0, ...(equippedArmor.map(a => a.data.data.damageThresholdModifier.value)))
     const initialDamage = data.stats.primaryAttributes[configOptions.dthAttribute].bonus + damageModifier;
     // build ladder
     this.buildPerilDamageLadder(data, initialPeril, initialDamage);

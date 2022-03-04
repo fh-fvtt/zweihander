@@ -142,7 +142,7 @@ export default class ZweihanderCharacterSheet extends ZweihanderBaseActorSheet {
 
     // Edit Ancestry Item
     html.find('.ancestry-edit-button').click(() => {
-      const ancestryId = this.actor.data.items.find(i => i.type === 'ancestry')._id;
+      const ancestryId = this.actor.data.items.find(i => i.type === 'ancestry').id;
       const ancestryItem = this.actor.items.get(ancestryId);
       ancestryItem.sheet.render(true);
       try {
@@ -154,7 +154,7 @@ export default class ZweihanderCharacterSheet extends ZweihanderBaseActorSheet {
 
     // Delete Ancestry Item
     html.find('.ancestry-delete-button').click(async ev => {
-      const ancestryId = this.actor.data.items.find(i => i.type === 'ancestry')._id;
+      const ancestryId = this.actor.data.items.find(i => i.type === 'ancestry').id;
 
       await this.actor.deleteEmbeddedDocuments("Item", [ancestryId]);
     });
