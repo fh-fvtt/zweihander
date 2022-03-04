@@ -41,7 +41,6 @@ export default class ZweihanderCharacterSheet extends ZweihanderBaseActorSheet {
         .reduce((a, b) => a + b, 0);
       sheetData.data.rewardPoints.current = sheetData.data.rewardPoints.total - sheetData.data.rewardPoints.spent;
     }
-
     return sheetData;
   }
 
@@ -83,8 +82,6 @@ export default class ZweihanderCharacterSheet extends ZweihanderBaseActorSheet {
       data.professions.some(p => p.data.talents.some(t => t.purchased && t.linkedId === talent._id))
     );
   }
-
-  /* -------------------------------------------- */
 
   /** @override */
   activateListeners(html) {
@@ -185,10 +182,6 @@ export default class ZweihanderCharacterSheet extends ZweihanderBaseActorSheet {
         await item.update({ "data.active": event.target.checked });
       }
     });
-
-    // Update the value of the Damage Threshold label depending on armor worn
-    this._updateDamageThresholdLabel(html);
-
     // Show item sheet on right click
     html.find(".fetch-item").contextmenu(event => {
       const target = $(event.currentTarget);
@@ -355,17 +348,6 @@ export default class ZweihanderCharacterSheet extends ZweihanderBaseActorSheet {
     });
   }
 
-  _updateDamageThresholdLabel(html) {
-    const dtmLabel = html.find('.label.dtm').text();
-    const contents = dtmLabel.split("+");
-    const armor = this.actor.items.find(item => item.type === "armor" && item.data.data.equipped == true);
-
-    if (armor !== null && armor !== undefined) {
-      const dtm = armor.data.data.damageThresholdModifier.value;
-      html.find('.label.dtm').text(contents[0] + "+" + dtm);
-    }
-  }
-
   _updateEncumbranceMeter(html) {
     const encumbranceData = this.actor.data.data.stats.secondaryAttributes.encumbrance;
     const currentEncumbrance = encumbranceData.current;
@@ -380,68 +362,15 @@ export default class ZweihanderCharacterSheet extends ZweihanderBaseActorSheet {
     html.find(".encumbrance-bar").css("width", ratio + "%");
   }
 
-  /* -------------------------------------------- */
-
-  /** @override */
   async _render(force = false, options = {}) {
-    const toIterate = [
-      "professions",
-      "drawbacks",
-      "weapons",
-      "armor",
-      "trappings",
-      "talents-and-traits",
-      "unique-advances",
-      "spells",
-      "rituals",
-      "conditions",
-      "injuries",
-      "diseases",
-      "disorders"
-    ];
-
-    this._saveToggleStates(toIterate);
+    // save toggle states for item details
+    const toggleStates = $(this.form).find('.save-toggle').toArray()
+      .filter((element) => $(element).hasClass("open"))
+      .map((element) => $(element).parent().data('itemId'));
     await super._render(force, options);
-    this._setToggleStates(toIterate);
-  }
-
-  _saveToggleStates(toIterate) {
-    if (this.form === null)
-      return;
-
-    const html = $(this.form).parent();
-
-    this.toggleStates = {};
-
-    for (let item of toIterate) {
-      let elements = $(html.find(`.save-toggle-${item}`));
-
-      this.toggleStates[item] = [];
-
-      for (let element of elements) {
-        const isOpen = $(element).hasClass("open");
-
-        this.toggleStates[item].push(isOpen);
-      }
-    }
-  }
-
-  _setToggleStates(toIterate) {
-    if (this.toggleStates) {
-      const html = $(this.form).parent();
-
-      for (let item of toIterate) {
-        if (!this.toggleStates[item].length)
-          continue;
-
-        let elements = $(html.find(`.save-toggle-${item}`));
-
-        for (let i = 0; i < elements.length; i++) {
-          if (this.toggleStates[item][i]) {
-            $(elements[i]).show().addClass("open");
-          }
-        }
-      }
-    }
+    // restore toggle states for item details
+    toggleStates.forEach(id => 
+      $(this.form).find(`[data-item-id="${id}"] .save-toggle`).show().addClass("open")
+    );
   }
 }
