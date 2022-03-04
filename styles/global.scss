@@ -276,6 +276,7 @@
   }
 
   // GM Screen
+  .gm-screen-app.gm-screen-drawer.expanded .gm-screen-actions button
   .gm-screen-app {
     .gm-screen-actions {
       button,
@@ -285,6 +286,9 @@
           text-shadow: none;
           cursor: pointer;
           color: var(--zx-clr-yellow);
+        }
+        .item:not(.active) {
+          background: var(--zx-clr-bg0);
         }
       }
     }
