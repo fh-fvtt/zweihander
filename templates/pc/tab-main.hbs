@@ -42,7 +42,7 @@
         <div class="values flexrow">
           <div>
             <span class="value">{{data.stats.secondaryAttributes.movement.value}}</span>
-            <span class="formula">[{{getFirstLetter movementAttribute}}B]+3</span>
+            <span class="formula">[{{getFirstLetter actorConfig.movAttribute}}B]+3</span>
           </div>
           <div>
             <span class="value color-overage" data-overage="{{data.stats.secondaryAttributes.movement.overage}}">{{data.stats.secondaryAttributes.movement.overage}}</span>
@@ -59,7 +59,7 @@
         <div class="values flexrow">
           <div>
             <span class="value">{{data.stats.secondaryAttributes.initiative.value}}</span>
-            <span class="formula">[{{getFirstLetter initiativeAttribute}}B]+3</span>
+            <span class="formula">[{{getFirstLetter actorConfig.intAttribute}}B]+3</span>
           </div>
           <div>
             <span class="value color-overage" data-overage="{{data.stats.secondaryAttributes.initiative.overage}}">{{data.stats.secondaryAttributes.initiative.overage}}</span>
@@ -84,7 +84,7 @@
         </div>
         <select class="skill-dropdown" name="data.stats.secondaryAttributes.dodge.associatedSkill">
           {{#select data.stats.secondaryAttributes.dodge.associatedSkill}}
-          {{#each dodgeSkills as | skill idx | }}
+          {{#each actorConfig.dodgeSkills as | skill idx | }}
           <option value="{{skill}}">{{skill}}</option>
           {{/each}}
           {{/select}}
@@ -100,7 +100,7 @@
         </div>
         <select class="skill-dropdown" name="data.stats.secondaryAttributes.parry.associatedSkill">
           {{#select data.stats.secondaryAttributes.parry.associatedSkill}}
-          {{#each parrySkills as | skill idx | }}
+          {{#each actorConfig.parrySkills as | skill idx | }}
           <option value="{{skill}}">{{skill}}</option>
           {{/each}}
           {{/select}}
@@ -132,7 +132,7 @@
         <div class="values flexrow">
           <div class="threshold-value flexcol">
             <span class="value">{{data.stats.secondaryAttributes.perilThreshold.value}}</span>
-            <span class="formula">[{{getFirstLetter perilThresholdAttribute}}B]+3</span>
+            <span class="formula">[{{getFirstLetter actorConfig.pthAttribute}}B]+3</span>
           </div>
           <span class="values-derived-bracket">{</span>
           <div class="flexcol values-derived">
@@ -154,7 +154,7 @@
         <div class="values flexrow">
           <div class="threshold-value flexcol">
             <span class="value">{{data.stats.secondaryAttributes.damageThreshold.value}}</span>
-            <span class="formula">[{{getFirstLetter damageThresholdAttribute}}B]+<span title="{{data.derived.dtm}}">DTM</span></span>
+            <span class="formula">[{{getFirstLetter actorConfig.dthAttribute}}B]+<span title="{{data.derived.dtm}}">DTM</span></span>
           </div>
           <span class="values-derived-bracket">{</span>
           <div class="flexcol values-derived">
@@ -176,14 +176,14 @@
       <div class="flexcol">
         <h4 class="block-title">Peril Tracker</h4 class="block-title">
         <div class="condition-tracker-list flexcol">
-          {{radioThresholds "data.stats.secondaryAttributes.perilCurrent.value" perilOptions
+          {{radioThresholds "data.stats.secondaryAttributes.perilCurrent.value" config.perilOptions
           checked=data.stats.secondaryAttributes.perilCurrent.value elem="label"}}
         </div>
       </div>
       <div class="flexcol">
         <h4 class="block-title">Damage Tracker</h4 class="block-title">
         <div class="condition-tracker-list damage-list flexcol">
-          {{radioThresholds "data.stats.secondaryAttributes.damageCurrent.value" damageOptions
+          {{radioThresholds "data.stats.secondaryAttributes.damageCurrent.value" config.damageOptions
           checked=data.stats.secondaryAttributes.damageCurrent.value elem="label"}}
         </div>
       </div>

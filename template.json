@@ -159,7 +159,9 @@
     },
     "npc": {
       "templates": [
-        "stats"
+        "stats",
+        "flavor",
+        "coinage"
       ],
       "riskFactor": {
         "value": 1,
@@ -203,10 +205,6 @@
       },
       "mannerOfDress": {
         "value": ""
-      },
-      "trappings": {
-        "value": "",
-        "arrayOfValues": []
       }
     }
   },

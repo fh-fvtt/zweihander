@@ -78,7 +78,7 @@
   <label>Underlying Magick Spell</label>
   <select name="data.stats.secondaryAttributes.magick.associatedSkill">
       {{#select data.stats.secondaryAttributes.magick.associatedSkill}}
-      {{#each magickSkills as | skill idx | }}
+      {{#each actorConfig.magickSkills as | skill idx | }}
       <option value="{{skill}}">{{skill}}</option>
       {{/each}}
       {{/select}}

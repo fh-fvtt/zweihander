@@ -143,7 +143,7 @@ export default class FortuneTracker extends Application {
       id: 'fortuneTrackerApp',
       classes: ['zweihander'],
       width: FortuneTracker.PARAMS.areaSize * 2,
-      height: FortuneTracker.PARAMS.areaSize + 30,
+      height: FortuneTracker.PARAMS.areaSize + 40,
       top: 150,
       left: 125
     });

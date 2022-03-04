@@ -38,15 +38,16 @@ export default class ZweihanderBaseActor {
   async createEmbeddedDocuments(embeddedName, data, context, actor) {
     if (embeddedName === "Item") {
       const filteredData = [];
-      let ancestryAttached = actor.data.ancestry.length === 1;
-      let numberOfProfessionsAttached = actor.data.professions.length;
+      let ancestryAttached = actor.data.items.some(i => i.type === 'ancestry');
+      const actorProfessions = actor.data.items.filter(i => i.type === 'profession');
+      let numberOfProfessionsAttached = actorProfessions.length;
       for (let item of data) {
         if (item.type === "profession") {
-          const previousTiersCompleted = actor.data.professions
-            .map(profession => profession.data.tier.completed)
+          const previousTiersCompleted = actorProfessions
+            .map(profession => profession.data.data.tier.completed)
             .every(value => value === true);
           const allTiersAssigned = numberOfProfessionsAttached == 3;
-          const dragDroppedOwnProfession = actor.data.professions.some(p => p._id === item._id);
+          const dragDroppedOwnProfession = actorProfessions.some(p => p._id === item._id);
           if (allTiersAssigned && !dragDroppedOwnProfession) {
             ui.notifications.error("A character may not enter more than 3 Professions.");
           } else if (!previousTiersCompleted && !dragDroppedOwnProfession) {

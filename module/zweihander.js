@@ -4,7 +4,7 @@
 */
 
 import ZweihanderActor from "./actor/actor";
-import ZweihanderActorSheet from "./actor/sheet/actor-sheet";
+import ZweihanderCharacterSheet from "./actor/sheet/character-sheet";
 import ZweihanderActorConfig from "./apps/actor-config";
 import ZweihanderNpcSheet from "./actor/sheet/npc-sheet";
 import ZweihanderCreatureSheet from "./actor/sheet/creature-sheet";
@@ -20,7 +20,7 @@ import { registerHandlebarHelpers } from "./helpers";
 import { migrateWorldSafe, migrateWorld } from "./migration"
 import { introJs } from "./utils/intros";
 
-import ZWEI from "./constants.js";
+import { ZWEI } from "./config.js";
 
 import "../styles/main.scss"
 
@@ -157,7 +157,7 @@ Hooks.once("init", async function () {
   CONFIG.Item.documentClass = ZweihanderItem;
   // Register sheet application classes
   Actors.unregisterSheet("core", ActorSheet);
-  Actors.registerSheet("zweihander", ZweihanderActorSheet, { "types": ["character"], makeDefault: true });
+  Actors.registerSheet("zweihander", ZweihanderCharacterSheet, { "types": ["character"], makeDefault: true });
   Actors.registerSheet("zweihander", ZweihanderNpcSheet, { "types": ["npc"], makeDefault: true });
   Actors.registerSheet("zweihander", ZweihanderCreatureSheet, { "types": ["creature"], makeDefault: true });
   Items.unregisterSheet("core", ItemSheet);

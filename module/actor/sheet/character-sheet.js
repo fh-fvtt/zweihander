@@ -1,15 +1,15 @@
 import ZweihanderActorConfig from "../../apps/actor-config";
-import * as ZweihanderDice from "../../dice";
 import ZweihanderQuality from "../../item/entity/quality";
-import * as ZweihanderUtils from "../../utils";
 import ZweihanderBaseActorSheet from "./base-actor-sheet";
+import * as ZweihanderUtils from "../../utils";
+import * as ZweihanderDice from "../../dice";
+
 /**
  * The Zweihänder actor sheet class for characters.
  * @extends {ActorSheet}
  */
-export default class ZweihanderActorSheet extends ZweihanderBaseActorSheet {
+export default class ZweihanderCharacterSheet extends ZweihanderBaseActorSheet {
 
-  /** @override */
   static get defaultOptions() {
     return foundry.utils.mergeObject(super.defaultOptions, {
       classes: ["zweihander", "sheet", "character"],
@@ -23,68 +23,65 @@ export default class ZweihanderActorSheet extends ZweihanderBaseActorSheet {
       scrollY: ['.save-scroll']
     });
   }
-  
-  /** @override */
+
   getData() {
-    const data = super.getData();
-
-    data.data.owner = this.actor.isOwner;
-    data.data.editable = this.isEditable;
-    data.data.rollData = this.actor.getRollData.bind(this.actor);
-
-    if (this.actor.data.type === "character") {
-      data.data.rankOptions = { 1: "1", 2: "2", 3: "3", 4: "4", 5: "5", 6: "6", 7: "7", 8: "8", 9: "9" };
-      data.data.perilOptions = { 5: "Unhindered", 4: "Imperiled", 3: "Ignore 1 Skill Rank", 2: "Ignore 2 Skill Ranks", 1: "Ignore 3 Skill Ranks", 0: "INCAPACITATED!" };
-      data.data.damageOptions = { 5: "Unharmed", 4: "Lightly Wounded", 3: "Moderately Wounded", 2: "Seriously Wounded", 1: "Grievously Wounded", 0: "SLAIN!" };
+    const sheetData = super.getData();
+    // get actor config
+    sheetData.actorConfig = ZweihanderActorConfig.getConfig(this.actor.data);
+    // calculate reward points automatically
+    if (game.settings.get("zweihander", "trackRewardPoints")) {
+      const tierMultiplier = {
+        "Basic": 100,
+        "Intermediate": 200,
+        "Advanced": 300
+      }
+      sheetData.data.rewardPoints.spent = sheetData.professions
+        .map(profession => tierMultiplier[profession.data.tier.value] * profession.data.tier.advancesPurchased)
+        .concat(sheetData.uniqueAdvances.map(advance => advance.data.rewardPointCost.value))
+        .reduce((a, b) => a + b, 0);
+      sheetData.data.rewardPoints.current = sheetData.data.rewardPoints.total - sheetData.data.rewardPoints.spent;
     }
+
+    return sheetData;
+  }
+
+  _prepareItems(data) {
+    // set up collections for all item types
+    const indexedTypes = [
+      "trapping", "condition", "injury", "disease", "disorder", "profession",
+      "ancestry", "armor", "weapon", "spell", "ritual", "talent", "trait",
+      "drawback", "quality", "skill", "uniqueAdvance"
+    ];
+    const pluralize = t => ({
+      'injury': 'injuries',
+      'ancestry': 'ancestry',
+      'armor': 'armor',
+      'quality': 'qualities'
+    }[t] ?? t + "s");
+    indexedTypes.forEach(t => data[pluralize(t)] = []);
+    data.items
+      .filter(i => indexedTypes.includes(i.type))
+      .sort((a, b) => (a.sort || 0) - (b.sort || 0))
+      .forEach(i => data[pluralize(i.type)].push(i));
+    // sort skills alphabetically
+    data.skills = data.skills.sort((a, b) => a.name.localeCompare(b.name));
+    // sort professions by tier
+    data.professions = data.professions.sort((a, b) =>
+      CONFIG.ZWEI.tiersInversed[a.data.tier.value] - CONFIG.ZWEI.tiersInversed[b.data.tier.value]
+    );
+    // add source information from flags
     const addSource = (items) => items.map(i => ({
       ...i,
       source: i.flags.zweihander?.source?.label ?? 'Manual',
-      isManualSource: i.flags.zweihander?.source?.label ? false : true 
+      isManualSource: i.flags.zweihander?.source?.label ? false : true
     }));
-
-    const sortSort = (a, b) => (a.sort || 0) - (b.sort || 0);
-    data.data.skills = this.actor.data.skills;
-    data.data.professions = this.actor.data.professions;
-    data.data.spells = this.actor.data.spells.sort(sortSort);
-    data.data.weapons = this.actor.data.weapons.sort(sortSort);
-    data.data.armor = this.actor.data.armor.sort(sortSort);
-    data.data.trappings = this.actor.data.trappings.sort(sortSort);
-    data.data.rituals = this.actor.data.rituals.sort(sortSort);
-    data.data.ancestry = this.actor.data.ancestry;
-    data.data.drawbacks = addSource(this.actor.data.drawbacks);
-    data.data.injuries = this.actor.data.injuries.sort(sortSort);
-    data.data.diseases = this.actor.data.diseases.sort(sortSort);
-    data.data.disorders = this.actor.data.disorders.sort(sortSort);
-    data.data.conditions = this.actor.data.conditions.sort(sortSort);
-    data.data.uniqueAdvances = this.actor.data.uniqueAdvances.sort(sortSort);
-    data.data.bio = this.actor.data.data.flavor.description;
-    data.data.traits = addSource(this.actor.data.traits.sort(sortSort));
-    const purchasedTalents = this.actor.data.professions.flatMap(p =>
-      p.data.talents
-        .filter(t => t.purchased && t.linkedId)
-        .map(t => this.actor.items.get(t.linkedId)?.toObject(false))
+    data.drawbacks = addSource(data.drawbacks);
+    data.traits = addSource(data.traits);
+    data.talents = addSource(data.talents);
+    // filter purchased talents
+    data.talents = data.talents.filter(talent =>
+      data.professions.some(p => p.data.talents.some(t => t.purchased && t.linkedId === talent._id))
     );
-    data.data.talents = addSource(purchasedTalents.sort(sortSort));
-
-    let flags = ZweihanderActorConfig.getConfig(this.actor.data);
-    data.data.damageThresholdAttribute = flags.dthAttribute;
-    data.data.perilThresholdAttribute = flags.pthAttribute;
-
-    data.data.initiativeAttribute = flags.intAttribute;
-    data.data.movementAttribute = flags.movAttribute;
-
-    data.data.parrySkills = flags.parrySkills;
-    data.data.dodgeSkills = flags.dodgeSkills;
-    data.data.magickSkills = flags.magickSkills;
-
-    data.data.isMagickUser = flags.isMagickUser;
-
-    data.data.permanentChaosRanks = flags.permanentChaosRanks;
-
-    data.data.perilLadder = flags.perilLadder;
-
-    return data.data;
   }
 
   /* -------------------------------------------- */
@@ -145,7 +142,7 @@ export default class ZweihanderActorSheet extends ZweihanderBaseActorSheet {
 
     // Edit Ancestry Item
     html.find('.ancestry-edit-button').click(() => {
-      const ancestryId = this.actor.data.ancestry[0]._id;
+      const ancestryId = this.actor.data.items.find(i => i.type === 'ancestry')._id;
       const ancestryItem = this.actor.items.get(ancestryId);
       ancestryItem.sheet.render(true);
       try {
@@ -157,7 +154,7 @@ export default class ZweihanderActorSheet extends ZweihanderBaseActorSheet {
 
     // Delete Ancestry Item
     html.find('.ancestry-delete-button').click(async ev => {
-      const ancestryId = this.actor.data.ancestry[0]._id;
+      const ancestryId = this.actor.data.items.find(i => i.type === 'ancestry')._id;
 
       await this.actor.deleteEmbeddedDocuments("Item", [ancestryId]);
     });
@@ -341,7 +338,7 @@ export default class ZweihanderActorSheet extends ZweihanderBaseActorSheet {
       if (testType === 'weapon' || testType === 'spell') {
         additionalConfiguration[`${testType}Id`] = $(element).parents(".item").data('itemId');
       }
-      await ZweihanderDice.rollTest(skillItem, testType, additionalConfiguration, {showDialog: true});
+      await ZweihanderDice.rollTest(skillItem, testType, additionalConfiguration, { showDialog: true });
     } else {
       ui.notifications.error(`Associated Skill "${skill}" does not exist for this actor!`);
     }

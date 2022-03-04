@@ -14,9 +14,9 @@ export default class ZweihanderProfession extends ZweihanderBaseItem {
 
   async _preCreate(data, options, user, item) {
     const itemData = item.data;
-    const tier = item.parent.data.professions.length;
+    const tier = item.parent.items.filter(i => i.type === 'profession').length + 1;
     if (tier > 3) return;
-    itemData.update({ 'data.tier.value': ['Basic', 'Intermediate', 'Advanced'][tier]});
+    itemData.update({ 'data.tier.value': CONFIG.ZWEI.tiers[tier]});
     itemData.update({ 'data.skillRanks': itemData.data.skillRanks.map(sr => ({...sr, purchased: false}))});
     itemData.update({ 'data.bonusAdvances': itemData.data.bonusAdvances.map(ba => ({...ba, purchased: false}))});
     const talentsToFetch = itemData.data.talents.map(v => v.value);
