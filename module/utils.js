@@ -17,7 +17,8 @@ export function abbreviations2DataPath(str, includeFlavor = true) {
   const c = x => x.slice(0, 1).toUpperCase() + x.slice(1);
   
   for (let key in primaryAttributeMapping) {
-    str = str?.replace(`[${key}B]`, `${b(primaryAttributeMapping[key])}` + (includeFlavor ? `[${c(primaryAttributeMapping[key])} Bonus]` : ''));
+    const re = new RegExp(`\\[${key}B\\]\\s?(\\s*)`, 'g');
+    str = str?.replaceAll(re, `${b(primaryAttributeMapping[key])} $1` + (includeFlavor ? `[${c(primaryAttributeMapping[key])} Bonus]` : ''));
   }
   return str;
 }
@@ -219,7 +220,7 @@ export async function parseDataPaths(input, actor) {
     return getProperty(actor.data, key);
   });
   if (input !== parsed) {
-    const mathExpr = /[0-9]+(\s*[\+\-\*/]\s*[0-9]+)*/g;
+    const mathExpr = /\-?[0-9]+(\s*[\+\-\*/]\s*\-?[0-9]+)*/g;
     const matches = parsed.match(mathExpr);
     const promises = matches.map(x => new Roll(x).evaluate().then(roll => ({key: x, value: roll.total})));
     const evalLookup = (await Promise.all(promises)).reduce((a, b) => ({[b.key]: b.value, ...a}), {});

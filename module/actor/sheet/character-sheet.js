@@ -44,13 +44,6 @@ export default class ZweihanderCharacterSheet extends ZweihanderBaseActorSheet {
     return sheetData;
   }
 
-  /**
-   * Set up helper objects for owned items categories
-   *
-   * @author kxfin
-   * @param {*} data  Copy of the actor data being prepared for display. *Will be mutated.*
-   * @private
-   */
   _prepareItems(data) {
     // set up collections for all item types
     const indexedTypes = [
@@ -327,11 +320,7 @@ export default class ZweihanderCharacterSheet extends ZweihanderBaseActorSheet {
       html.find('.profile-image').addClass('peril5')
     }
   }
-  /**
-   * Roll skill
-   * @param {jQuery.Event} event 
-   * @param {string} testType 
-   */
+
   async _onRollSkill(event, testType) {
     event.preventDefault();
     const element = event.currentTarget;
@@ -373,13 +362,7 @@ export default class ZweihanderCharacterSheet extends ZweihanderBaseActorSheet {
     html.find(".encumbrance-bar").css("width", ratio + "%");
   }
 
-  /**
-   *
-   *
-   * @author kxfin
-   * @param {boolean} [force=false]
-   * @param {*} [options={}]
-   */
+
   async _render(force = false, options = {}) {
     // save toggle states for item details
     const toggleStates = $(this.form).find('.save-toggle').toArray()
