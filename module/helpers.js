@@ -167,18 +167,6 @@ export const registerHandlebarHelpers = async function () {
         break;
     }
   });
-  
-  $$('pa2Icon', function(key) {
-    return {
-      'combat': 'ra ra-croc-sword',
-      'brawn': 'ra ra-muscle-up',
-      'agility': 'fa fa-running',
-      'perception': 'ra ra-aware',
-      'intelligence': 'ra ra-book',
-      'willpower': 'ra ra-crystal-ball',
-      'fellowship': 'ra ra-double-team'
-    }[key];
-  })
 
   $$('markdownIt', function(md) {
     if (window.MEME?.markdownIt?.render) {

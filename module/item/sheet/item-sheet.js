@@ -46,14 +46,23 @@ export default class ZweihanderItemSheet extends ItemSheet {
 
   /** @override */
   async getData() {
-    const data = super.getData();
-    data.data.owner = this.item.isOwner;
-    data.data.editable = this.isEditable;
-    data.data.rollData = this.item.getRollData.bind(this.item);
-    if (this.item.type === "weapon") {
-      data.data.skills = (await ZweihanderUtils.findItemsByType("skill", {takeOne: true})).map(x => x.name).sort((a, b) => a.localeCompare(b));
+    const data = super.getData().data;
+    data.owner = this.item.isOwner;
+    data.editable = this.isEditable;
+    data.rollData = this.item.getRollData.bind(this.item);
+    data.choices = {};
+    if (data.type === 'skill') {
+    data.choices.associatedPrimaryAttribute = CONFIG.ZWEI.primaryAttributes
+      .map(option => ({ 
+        selected: (data.data.associatedPrimaryAttribute.value ?? 'Combat') === option ? 'selected' : '',
+        value: option,
+        label: option.capitalize()
+      }));
     }
-    return data.data;
+    if (this.item.type === "weapon") {
+      data.skills = (await ZweihanderUtils.findItemsByType("skill", {takeOne: true})).map(x => x.name).sort((a, b) => a.localeCompare(b));
+    }
+    return data;
   }
 
   activateListeners(html) {

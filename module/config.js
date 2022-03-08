@@ -27,3 +27,23 @@ ZWEI.tiersInversed = {
     Intermediate: 2,
     Advanced: 3
 }
+
+ZWEI.primaryAttributes = [
+    "combat",
+    "brawn",
+    "agility",
+    "perception",
+    "intelligence",
+    "willpower",
+    "fellowship"
+]
+
+ZWEI.primaryAttributeIcons = {
+    "combat": "ra ra-croc-sword",
+    "brawn": "ra ra-muscle-up",
+    "agility": "fa fa-running",
+    "perception": "ra ra-aware",
+    "intelligence": "ra ra-book",
+    "willpower": "ra ra-crystal-ball",
+    "fellowship": "ra ra-double-team"
+}

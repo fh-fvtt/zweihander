@@ -1,14 +1,14 @@
 <div class="tab main flexrow" data-group="primary" data-tab="main">
   <ul class="primary-attributes flexcol">
-    {{#each data.stats.primaryAttributes as | characteristics key |}}
+    {{#each data.stats.primaryAttributes as | attr key | }}
     <li class="pa pa-{{key}}">
       <h4 class="block-title">{{key}}</h4 class="block-title">
       <div class="pa-display flexrow">
         <input class="pa-value" type="number" name="data.stats.primaryAttributes.{{key}}.value"
-          value="{{characteristics.value}}">
-        <div class="pa-icon"><span class="{{pa2Icon key}}"></span></div>
+          value="{{attr.value}}">
+        <div class="pa-icon"><span class="{{config.primaryAttributeIcons.[key]}}"></span></div>
         <div class="flexcol">
-          <span class="pa-bonus">{{characteristics.bonus}}</span>
+          <span class="pa-bonus">{{attr.bonus}}</span>
           <span class="pa-bonus-title">{{getFirstLetter key}}B</span>
         </div>
       </div>
@@ -17,7 +17,7 @@
   </ul>
   <div class="skills-container flexcol">
     <div class="skills-list save-scroll">
-      {{#each skills as | skill idx |}}
+      {{#each skills as | skill idx | }}
       <div class="skill flexrow" data-item-id="{{skill._id}}" data-associated-pa="{{skill.data.associatedPrimaryAttribute.value}}">
         <a class="skill-roll" data-roll="1d100" data-label="{{skill.name}}">{{skill.name}} ({{getFirstLetter
           skill.data.associatedPrimaryAttribute.value}}){{#if

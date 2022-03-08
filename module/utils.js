@@ -263,3 +263,20 @@ export function determineCurrentActorId(interactive=false) {
     }
   }
 }
+
+export async function updateActorSkillsFromPack(skillPackId) {
+  const skillPack = game.packs.get(skillPackId);
+  if (!skillPack) {
+    ui.notifications.error(`Can't find compendium pack identified by "${skillPackId}"! Resetting Skill List to "zweihander.skills"...`);
+    game.settings.set("zweihander", "skillPack", "zweihander.skills");
+    return;
+  }
+  const skillsFromPack = (await skillPack.getDocuments()).map(item => item.toObject());
+  for (let actor of game.actors) {
+    const actorSkillItems = actor.items.filter(i => i.type === 'skill').map(i => i.id);
+    CONFIG.ZWEI.NO_WARN = true;
+    await actor.deleteEmbeddedDocuments("Item", actorSkillItems);
+    await actor.createEmbeddedDocuments("Item", skillsFromPack, { keepId: true, keepEmbeddedIds: true });
+    CONFIG.ZWEI.NO_WARN = false;
+  }
+}

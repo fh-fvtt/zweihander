@@ -12,7 +12,7 @@ export default class ZweihanderPC extends ZweihanderBaseActor {
 
   }
   prepareDerivedData(actorData) {
-    const noWarn = actorData._id === null;
+    const noWarn = CONFIG.ZWEI.NO_WARN || actorData._id === null;
     const configOptions = ZweihanderActorConfig.getConfig(actorData);
     // set up utility variables
     const data = actorData.data;
@@ -129,15 +129,10 @@ export default class ZweihanderPC extends ZweihanderBaseActor {
   }
 
   async _preCreate(actorData, options, user, that) {
+    // add default set of skills
     const skillPack = game.packs.get(game.settings.get("zweihander", "skillPack"));
-    const skillsFromPack = (await skillPack.getDocuments()).map(item => item.toObject());
-    const skillsFromActor = actorData.items.filter(i => i.type === 'skills');
-    // add default set of skills while preventing duplicate skills
-    const symmetricDifferenceIds = ZweihanderUtils.getSymmetricDifference(skillsFromPack.map(i => i._id), skillsFromActor.map(i => i._id));
-    if (symmetricDifferenceIds.length) {
-      const itemsToAdd = [...skillsFromActor, ...skillsFromPack].filter(item => symmetricDifferenceIds.includes(item._id));
-      actorData.update({ "items": itemsToAdd });
-    }
+    const skillsFromPack = (await skillPack.getDocuments()).map(i => i.toObject());
+    actorData.update({ "items": skillsFromPack }, { "keepId": true, "keepEmbeddedIds": true});
   }
 
 }

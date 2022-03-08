@@ -151,7 +151,6 @@ Hooks.once("init", async function () {
       icon: "systems/zweihander/assets/icons/bleeding-wound.svg"
     }
   ],
-  //TODO probably better to export / import those constants rather than setting on global object.
   CONFIG.ZWEI = ZWEI;
   // Define custom Document classes
   CONFIG.Actor.documentClass = ZweihanderActor;
@@ -188,3 +187,9 @@ Hooks.on("renderActorSheet", (app, html, data) => {
 
 Hooks.on("renderChatMessage", ZweihanderChat.addLocalChatListeners);
 Hooks.on("renderChatLog", (app, html, data) => ZweihanderChat.addGlobalChatListeners(html));
+Hooks.on("updateCompendium", async (pack, documents, options, userId) => {
+  const skillPackId = game.settings.get("zweihander", "skillPack");
+  if (`${pack.metadata.package}.${pack.metadata.name}` === skillPackId) {
+    ZweihanderUtils.updateActorSkillsFromPack(skillPackId);
+  }
+});

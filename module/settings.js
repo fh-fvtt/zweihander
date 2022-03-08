@@ -1,3 +1,5 @@
+import { updateActorSkillsFromPack } from "./utils";
+
 export const registerSystemSettings = function() {
   /* -------------------------------------------- */
   /*  System settings registration                */
@@ -35,7 +37,8 @@ export const registerSystemSettings = function() {
     scope: "world",
     type: String,
     default: "zweihander.skills",
-    config: true
+    config: true,
+    onChange: updateActorSkillsFromPack
   });
 
   game.settings.register("zweihander", "theme", {
