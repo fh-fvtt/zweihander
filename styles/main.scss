@@ -8,3 +8,9 @@
 @import "actor-config.scss";
 @import "fortune-tracker.scss";
 @import "chat.scss";
+
+body.game.vtt.system-zweihander {
+  @import "./3rd-party-styles/dice-so-nice.scss";
+  @import "./3rd-party-styles/gm-screen.scss";
+  @import "./3rd-party-styles/dice-tray.scss";
+}

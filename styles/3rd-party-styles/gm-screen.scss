@@ -1,0 +1,27 @@
+// GM Screen
+.gm-screen-app {
+  .gm-screen-actions {
+    button,
+    .meta-actions button {
+      border: none;
+      background: var(--zx-clr-bg1);
+      &:hover {
+        text-shadow: none;
+        cursor: pointer;
+        color: var(--zx-clr-yellow);
+      }
+      &.item:not(.active) {
+        background: var(--zx-clr-bg0);
+      }
+    }
+  }
+  .gm-screen-container {
+    border-radius: 10px 10px 0 0;
+    background: var(--zx-clr-bg1);
+  }
+  .gm-screen-grid-cell,
+  .gm-screen-grid-cell-content-wrapper {
+    box-shadow: none;
+    background-color: var(--zx-clr-bg0);
+  }
+}

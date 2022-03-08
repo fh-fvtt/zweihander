@@ -56,6 +56,7 @@ Hooks.once("diceSoNiceReady", function () {
     game?.dice3d?.addSFXTrigger?.("zh-outcome", "Zweihander d100", ["Critical Failure", "Failure", "Success", "Critical Success"]);
 })
 
+
 Hooks.once("init", async function () {
   // CONFIG.debug.hooks = true;
   console.log(`Initializing ZWEIHÄNDER: Grim & Perilous RPG System`);

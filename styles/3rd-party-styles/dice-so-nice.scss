@@ -1,0 +1,20 @@
+.dice-so-nice
+  .select2-container--default
+  .select2-selection--multiple
+  .select2-selection__choice {
+  background-color: var(--zx-clr-bg1);
+  border-color: var(--zx-clr-bg4);
+}
+.dice-so-nice .select2-container--default .select2-results__option {
+  background-color: var(--zx-clr-bg1);
+}
+.dice-so-nice .select2-container--default .select2-results__option--selected {
+  background-color: var(--zx-clr-aqua);
+  color: var(--zx-clr-bg0) !important;
+}
+.dice-so-nice
+  .select2-container--default
+  .select2-results__option--highlighted {
+  background-color: var(--zx-clr-yellow) !important;
+  color: var(--zx-clr-bg0) !important;
+}

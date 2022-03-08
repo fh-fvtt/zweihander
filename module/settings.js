@@ -29,6 +29,15 @@ export const registerSystemSettings = function() {
     config: true
   });
 
+  game.settings.register("zweihander", "skillPack", {
+    name: "Skill List",
+    hint: "ID of the compendium pack to use for the list of available skills for new actors.",
+    scope: "world",
+    type: String,
+    default: "zweihander.skills",
+    config: true
+  });
+
   game.settings.register("zweihander", "theme", {
     name: "Zweihander Sheet Theme",
     hint: "Choose a theme for your Zweihander sheets",
@@ -41,8 +50,8 @@ export const registerSystemSettings = function() {
     },
     config: true,
     onChange: theme => {
-      $(".system-zweihander").addClass("zweihander-theme-" + theme);
-      $(".system-zweihander").removeClass((i, c) =>
+      $("body.system-zweihander").addClass("zweihander-theme-" + theme);
+      $("body.system-zweihander").removeClass((i, c) =>
         c.split(" ").filter(c =>
           c.startsWith("zweihander-theme-") && c !== "zweihander-theme-" + theme
         )

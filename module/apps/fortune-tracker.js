@@ -1,9 +1,52 @@
+const fortuneTrackerSettings = class extends FormApplication {
+
+  static get defaultOptions() {
+    return foundry.utils.mergeObject(super.defaultOptions, {
+      template: 'systems/zweihander/templates/app/fortune-tracker-settings.hbs',
+      popOut: true,
+      minimizable: true,
+      resizable: false,
+      title: 'Fortune Tracker Settings',
+      id: 'fortuneTrackerSettings',
+      classes: ['zweihander'],
+      width: 600,
+      height: 275,
+      submitOnChange: true,
+      submitOnClose: true,
+      closeOnSubmit: false
+    });
+  }
+
+  getData() {
+    const data = game.settings.get('zweihander', 'fortuneTrackerSettings');
+    data.choices = {};
+    data.choices.size = [
+      { value: "compact", label: "Compact (Text)" },
+      { value: "normal", label: "Normal (Tokens)" },
+      { value: "big", label: "Big (Tokens)" },
+      { value: "huge", label: "Huge (Tokens)" }
+    ].map(option => ({ selected: (data.size ?? 'normal') === option.value ? 'selected' : '', ...option }));
+    data.choices.notifications = [
+      { value: "none", label: "Don't Alert" },
+      { value: "notify", label: "Post Foundry Notifications" },
+      { value: "chat", label: "Post Chat Messages" },
+    ].map(option => ({ selected: (data.notifications ?? 'notify') === option.value ? 'selected' : '', ...option }));
+    return data;
+  }
+
+  _updateObject(event, formData) {
+    const data = expandObject(formData);
+    game.settings.set('zweihander', 'fortuneTrackerSettings', data);
+  }
+}
+
+
 export default class FortuneTracker extends Application {
 
   static INSTANCE = undefined;
 
   static get PARAMS() {
-    const size = game.settings.get("zweihander", "fortuneTrackerSize");
+    const size = game.settings.get("zweihander", "fortuneTrackerSettings").size;
     switch (size) {
       case "compact":
         return {
@@ -34,84 +77,35 @@ export default class FortuneTracker extends Application {
   }
 
   static registerPersistingSettings() {
-    game.settings.register("zweihander", "fortuneTrackerPersistedStateTotal", {
-      name: "fortuneTrackerPersistedStateTotal",
-      hint: "",
+    game.settings.register("zweihander", "fortuneTrackerPersistedState", {
       scope: "world",
-      type: Number,
-      default: 0,
-      config: false
+      config: false,
+      type: Object,
+      default: {
+        total: 0,
+        used: 0,
+        removed: 0
+      }
     });
-    game.settings.register("zweihander", "fortuneTrackerPersistedStateUsed", {
-      name: "fortuneTrackerPersistedStateUsed",
-      hint: "",
+    game.settings.register("zweihander", "fortuneTrackerSettings", {
       scope: "world",
-      type: Number,
-      default: 0,
-      config: false
+      config: false,
+      type: Object,
+      default: {
+        removeUsedMisfortune: false,
+        notifications: "notify",
+        size: "normal",
+        fortunePath: "systems/zweihander/assets/fortune-life.png",
+        misfortunePath: "systems/zweihander/assets/fortune-death.png"
+      }
     });
-    game.settings.register("zweihander", "fortuneTrackerPersistedStateRemoved", {
-      name: "fortuneTrackerPersistedStateRemoved",
-      hint: "",
-      scope: "world",
-      type: Number,
-      default: 0,
-      config: false
-    });
-    game.settings.register("zweihander", "fortuneTrackerRuleSystem", {
-      name: "Fortune Tracker Rule System",
-      hint: "Choose how you wish to implement fortune points and misfortune points in your game.",
-      scope: "world",
-      type: String,
-      choices: {
-        "remove": "Using misfortune points removes them from the game",
-        "keep": "Using misfortune points returns them to the party as fortune points"
-      },
-      default: "remove",
-      config: true
-    });
-    game.settings.register("zweihander", "fortuneTrackerNotifications", {
-      name: "Fortune Tracker Notification Behaviour",
-      hint: "Choose how you wish to be notified about spent Fortune points.",
-      scope: "world",
-      type: String,
-      choices: {
-        "none": "No Notifications (See current value on hovering tokens)",
-        "notify": "Post Foundry Notifications",
-        "chat": "Post Chat Messages"
-      },
-      default: "notify",
-      config: true
-    });
-    game.settings.register("zweihander", "fortuneTrackerSize", {
-      name: "Fortune Tracker Size",
-      hint: "Choose the size of your fortune tracker.",
-      scope: "client",
-      type: String,
-      choices: {
-        "compact": "Compact (Text)",
-        "normal": "Normal (Tokens)",
-        "big": "Big (Tokens)",
-        "huge": "Huge (Tokens)"
-      },
-      default: "normal",
-      config: true
-    });
-    game.settings.register("zweihander", "fortuneTrackerFortunePath", {
-      name: "Fortune Token Image",
-      hint: "Customize the fortune token image. For best appearance use an image of at least 125x125 pixels.",
-      scope: "world",
-      type: String,
-      default: "systems/zweihander/assets/fortune-life.png",
-      config: true
-    });
-    game.settings.register("zweihander", "fortuneTrackerMisfortunePath", {
-      name: "Misfortune Token Image",
-      hint: "Customize the misfortune token image. For best appearance use an image of at least 125x125 pixels.",
-      scope: "world",
-      type: String,
-      default: "systems/zweihander/assets/fortune-death.png",
-      config: true
+    game.settings.registerMenu("zweihander", "fortuneTrackerSettingsMenu", {
+      name: "Fortune Tracker Settings",
+      label: "Fortune Tracker Settings",      // The text label used in the button
+      hint: "Configure the look & behavior of the Fortune Tracker.",
+      icon: "ra ra-scroll-unfurled",               // A Font Awesome icon used in the submenu button
+      type: fortuneTrackerSettings,   // A FormApplication subclass
+      restricted: true                   // Restrict this submenu to gamemaster only?
     });
   }
 
@@ -129,15 +123,11 @@ export default class FortuneTracker extends Application {
 
   #positions = [];
 
-  // this should be refactored to a getter if we ever offer the user to close the fortune tracker app
-  #closable = false;
-
-
-
   static get defaultOptions() {
     return foundry.utils.mergeObject(super.defaultOptions, {
       template: 'systems/zweihander/templates/app/fortune-tracker.hbs',
       popOut: true,
+      minimizable: false,
       resizable: false,
       title: 'Fortune Tracker',
       id: 'fortuneTrackerApp',
@@ -161,14 +151,14 @@ export default class FortuneTracker extends Application {
           socket.executeForEveryone("broadcastState", that.state);
           socket.executeAsUser("showIllegalStateNotification", requestingUserId, validationError);
         }
-      } 
+      }
       return that.state;
     }
-    
+
     function broadcastState(state) {
       that.state = state;
     }
-    
+
     function showIllegalStateNotification(validationError) {
       ui.notifications.error(validationError);
     }
@@ -178,7 +168,7 @@ export default class FortuneTracker extends Application {
     socket.register("showIllegalStateNotification", showIllegalStateNotification);
 
     this.#socket = socket;
-    
+
     // generate random positions
     this.generateRandomPositionValues();
   }
@@ -187,8 +177,8 @@ export default class FortuneTracker extends Application {
     return "Set total fortune points to the number of connected players plus one.";
   }
 
-  get rules() {
-    return game.settings.get("zweihander", "fortuneTrackerRuleSystem");
+  get removeUsedMisfortune() {
+    return game.settings.get("zweihander", "fortuneTrackerSettings").removeUsedMisfortune;
   }
 
   get state() {
@@ -206,9 +196,7 @@ export default class FortuneTracker extends Application {
     this.#waiting = false;
     this.#state = updatedState;
     if (game.users.get(game.userId).isGM) {
-      game.settings.set("zweihander", "fortuneTrackerPersistedStateTotal", this.total);
-      game.settings.set("zweihander", "fortuneTrackerPersistedStateUsed", this.used);
-      game.settings.set("zweihander", "fortuneTrackerPersistedStateRemoved", this.removed);
+      game.settings.set("zweihander", "fortuneTrackerPersistedState", updatedState);
     }
     this.render(!this.closable);
   }
@@ -245,11 +233,10 @@ export default class FortuneTracker extends Application {
   //TODO implement different rule systems
   spendMisfortune() {
     const s = this.state;
-    const r = this.rules;
-    if (r === "keep") {
-      s.used--;
-    } else {
+    if (this.removeUsedMisfortune) {
       s.removed++;
+    } else {
+      s.used--;
     }
     return s;
   }
@@ -270,7 +257,7 @@ export default class FortuneTracker extends Application {
     return this.used - this.removed;
   }
 
-  generateRandomPositionValues(keepFortune=0, keepMisfortune=0) {
+  generateRandomPositionValues(keepFortune = 0, keepMisfortune = 0) {
 
     function getRandomIntInclusive(min, max) {
       min = Math.ceil(min);
@@ -278,21 +265,21 @@ export default class FortuneTracker extends Application {
       return Math.floor(Math.random() * (max - min + 1) + min); //The maximum is inclusive and the minimum is inclusive
     }
 
-    const n = (keepFortune * 2) % 20;
-    const m = 20 + (keepMisfortune * 2) % 20;
-    
-    for (let i = n; i < 40; i++) {
-      if (i < 20 || (i >= m && i < 40)) {
+    const n = (keepFortune > 100) ? 200 : (keepFortune * 2) % 201;
+    const m = (keepMisfortune > 100) ? 400 : 200 + (keepMisfortune * 2) % 201;
+
+    for (let i = n; i < 400; i++) {
+      if (i < 200 || (i >= m && i < 400)) {
         this.#positions[i] = (getRandomIntInclusive(FortuneTracker.PARAMS.padding, FortuneTracker.PARAMS.areaSize - FortuneTracker.PARAMS.tokenSize - FortuneTracker.PARAMS.padding));
       }
     }
-    
+
   }
   //TODO implement different rule systems
   validate(updatedState, requestingUserId) {
     // console.log(this.state);
     // console.log(updatedState);
-    const notifySetting = game.settings.get("zweihander", "fortuneTrackerNotifications");
+    const notifySetting = game.settings.get("zweihander", "fortuneTrackerSettings").notifications;
     const user = game.users.get(requestingUserId);
     if (updatedState.total !== this.total && !user.isGM) {
       return "You are not privileged to change the total amount of fortune in the game!";
@@ -314,15 +301,15 @@ export default class FortuneTracker extends Application {
       if (updatedState.used === this.used + 1) {
         const name = user.charname ? user.charname : user.name;
         if (notifySetting === "notify") {
-          ui.notifications.info(`${name} used a fortune point. Current fortune points: ${updatedState.total-updatedState.used}/${updatedState.total}`);
+          ui.notifications.info(`${name} used a fortune point. Current fortune points: ${updatedState.total - updatedState.used}/${updatedState.total}`);
         } else if (notifySetting === "chat") {
-          ChatMessage.create({user: requestingUserId, content: `${name} used a fortune point. Let's hope they make it count! <p><b>Current fortune points: ${updatedState.total-updatedState.used}/${updatedState.total} </b></p>`})
+          ChatMessage.create({ user: requestingUserId, content: `${name} used a fortune point. Let's hope they make it count! <p><b>Current fortune points: ${updatedState.total - updatedState.used}/${updatedState.total} </b></p>` })
         }
       } else if ((updatedState.remove === this.remove + 1 || updatedState.used === this.used - 1) && this.total === updatedState.total) {
         if (notifySetting === "notify") {
-          ui.notifications.info(`Brace yourselves, the GM used a misfortune point! Current fortune points: ${updatedState.total-updatedState.used}/${updatedState.total}`);
+          ui.notifications.info(`Brace yourselves, the GM used a misfortune point! Current fortune points: ${updatedState.total - updatedState.used}/${updatedState.total}`);
         } else if (notifySetting === "chat") {
-          ChatMessage.create({user: requestingUserId, content: `Brace yourselves, the GM used a misfortune point! <p><b>Current fortune points: ${updatedState.total-updatedState.used}/${updatedState.total} </b></p>`})
+          ChatMessage.create({ user: requestingUserId, content: `Brace yourselves, the GM used a misfortune point! <p><b>Current fortune points: ${updatedState.total - updatedState.used}/${updatedState.total} </b></p>` })
         }
       }
       return false;
@@ -334,14 +321,14 @@ export default class FortuneTracker extends Application {
     this.generateRandomPositionValues(this.fortune, this.misfortune);
     let fortunePositions = [];
     for (let i = 0; i < this.fortune; i++) {
-      let t = this.#positions[2 * (i % 10)];
-      let l = this.#positions[2 * (i % 10) + 1];
+      let t = this.#positions[2 * (i % 100)];
+      let l = this.#positions[2 * (i % 100) + 1];
       fortunePositions.push({ t, l })
     }
     let misfortunePositions = [];
     for (let i = 0; i < this.misfortune; i++) {
-      let t = this.#positions[2 * (i % 10) + 20];
-      let l = this.#positions[2 * (i % 10) + 21];
+      let t = this.#positions[2 * (i % 100) + 200];
+      let l = this.#positions[2 * (i % 100) + 201];
       misfortunePositions.push({ t, l })
     }
     return {
@@ -349,12 +336,12 @@ export default class FortuneTracker extends Application {
       fortune: {
         value: this.fortune,
         positions: fortunePositions,
-        path: game.settings.get("zweihander", "fortuneTrackerFortunePath")
+        path: game.settings.get("zweihander", "fortuneTrackerSettings").fortunePath
       },
       misfortune: {
         value: this.misfortune,
         positions: misfortunePositions,
-        path: game.settings.get("zweihander", "fortuneTrackerMisfortunePath")
+        path: game.settings.get("zweihander", "fortuneTrackerSettings").misfortunePath
       },
       waiting: this.#waiting,
       params: FortuneTracker.PARAMS
@@ -363,11 +350,7 @@ export default class FortuneTracker extends Application {
 
   async syncState() {
     if (game.users.get(game.userId).isGM) {
-      this.#state = {
-        total: game.settings.get("zweihander", "fortuneTrackerPersistedStateTotal"),
-        used: game.settings.get("zweihander", "fortuneTrackerPersistedStateUsed"),
-        removed: game.settings.get("zweihander", "fortuneTrackerPersistedStateRemoved")
-      };
+      this.#state = game.settings.get("zweihander", "fortuneTrackerPersistedState");
       this.#waiting = false;
       this.#socket.executeForOthers("broadcastState", this.state);
     } else {
@@ -390,7 +373,7 @@ export default class FortuneTracker extends Application {
     }
   }
 
-  async requestSync(updatedState, rethrow=false) {
+  async requestSync(updatedState, rethrow = false) {
     try {
       if (updatedState) {
         return await this.#socket.executeAsGM("requestSync", updatedState, game.userId);
@@ -408,33 +391,6 @@ export default class FortuneTracker extends Application {
       return this.state;
     }
   }
-
-  // toggle() {
-  //   if (this.rendered) {
-  //     this.close();
-  //   } else {
-  //     this.render(true);
-  //     this.syncState();
-  //   }    
-  // }
-
-  // hookToChatTab(app, html, data) {
-  //   if (app.tabName === "chat") {
-  //     let controls = html.find('#chat-controls > .control-buttons');
-  //     controls.css({flex: "0 0 auto"});
-  //     controls.prepend(`
-  //       <a class="open-fortune-tracker" title="Toggle Fortune Tracker">
-  //         <i class="fas ra ra-circle-of-circles"></i>
-  //       </a>
-  //     `);
-  //     html.find(".open-fortune-tracker").click(this.toggle.bind(this))
-  //   }
-  // }
-
-  // This should go to main.js if we ever fancy to offer the user to close the fortune tracker. 
-  // Hooks.on("renderSidebarTab", (app, html, data) => {
-  //   fortuneTrackerApp.hookToChatTab(app, html, data);
-  // })
 
   async close() {
     // can't touch (close) this
@@ -505,6 +461,6 @@ export default class FortuneTracker extends Application {
   }
 
   playAudio() {
-    AudioHelper.play({src: 'systems/zweihander/assets/sounds/coins.mp3', volume: 0.5, loop: false}, true);
+    AudioHelper.play({ src: 'systems/zweihander/assets/sounds/coins.mp3', volume: 0.5, loop: false }, true);
   }
 }

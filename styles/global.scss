@@ -195,7 +195,8 @@ body.game.vtt.system-zweihander {
   button {
     border: 1px solid var(--zx-clr-bg4);
     cursor: pointer;
-    &:hover, &:focus {
+    &:hover,
+    &:focus {
       box-shadow: none;
       color: var(--zx-clr-yellow);
       border-color: var(--zx-clr-yellow);
@@ -253,60 +254,11 @@ body.game.vtt.system-zweihander {
     }
   }
 
-  //dice so nice integration
-  .dice-so-nice
-    .select2-container--default
-    .select2-selection--multiple
-    .select2-selection__choice {
-    background-color: var(--zx-clr-bg1);
-    border-color: var(--zx-clr-bg4);
+  a:hover,
+  #combat #combat-round .encounters a:hover {
+    text-shadow: none;
+    color: var(--zx-clr-yellow);
   }
-  .dice-so-nice .select2-container--default .select2-results__option {
-    background-color: var(--zx-clr-bg1);
-  }
-  .dice-so-nice .select2-container--default .select2-results__option--selected {
-    background-color: var(--zx-clr-aqua);
-    color: var(--zx-clr-bg0) !important;
-  }
-  .dice-so-nice
-    .select2-container--default
-    .select2-results__option--highlighted {
-    background-color: var(--zx-clr-yellow) !important;
-    color: var(--zx-clr-bg0) !important;
-  }
-
-  // GM Screen
-  .gm-screen-app {
-    .gm-screen-actions {
-      button,
-      .meta-actions button {
-        background: var(--zx-clr-bg1);
-        &:hover {
-          text-shadow: none;
-          cursor: pointer;
-          color: var(--zx-clr-yellow);
-        }
-        &.item:not(.active) {
-          background: var(--zx-clr-bg0);
-        }
-      }
-    }
-    .gm-screen-container {
-      border-radius: 10px 10px 0 0;
-      background: var(--zx-clr-bg1);
-    }
-    .gm-screen-grid-cell,
-    .gm-screen-grid-cell-content-wrapper {
-      box-shadow: none;
-      background-color: var(--zx-clr-bg0);
-    }
-  }
-}
-
-a:hover,
-#combat #combat-round .encounters a:hover {
-  text-shadow: none;
-  color: var(--zx-clr-yellow);
 }
 
 /* ----------------------------------------- */
@@ -365,9 +317,3 @@ a:hover,
   font-weight: normal;
   src: url("./fonts/dominican-small-caps.woff2") format("woff2");
 }
-
-// zweihander logo
-// #ui-left #logo {
-//     content: resolve("logo.png");
-//     filter: saturate(0) brightness(0.15) drop-shadow(0px 0px 3px var(--zx-clr-fg0));
-// }

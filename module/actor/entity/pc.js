@@ -129,7 +129,7 @@ export default class ZweihanderPC extends ZweihanderBaseActor {
   }
 
   async _preCreate(actorData, options, user, that) {
-    const skillPack = game.packs.get("zweihander.skills");
+    const skillPack = game.packs.get(game.settings.get("zweihander", "skillPack"));
     const skillsFromPack = (await skillPack.getDocuments()).map(item => item.toObject());
     const skillsFromActor = actorData.items.filter(i => i.type === 'skills');
     // add default set of skills while preventing duplicate skills
