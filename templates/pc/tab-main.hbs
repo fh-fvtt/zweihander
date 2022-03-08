@@ -6,7 +6,7 @@
       <div class="pa-display flexrow">
         <input class="pa-value" type="number" name="data.stats.primaryAttributes.{{key}}.value"
           value="{{attr.value}}">
-        <div class="pa-icon"><span class="{{config.primaryAttributeIcons.[key]}}"></span></div>
+        <div class="pa-icon"><span class="{{lookup ../config.primaryAttributeIcons key}}"></span></div>
         <div class="flexcol">
           <span class="pa-bonus">{{attr.bonus}}</span>
           <span class="pa-bonus-title">{{getFirstLetter key}}B</span>
