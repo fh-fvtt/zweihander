@@ -37,7 +37,7 @@ export default class ZweihanderPC extends ZweihanderBaseActor {
     }
     // professional bonus advances
     actorData.items.filter(i => i.type === 'profession').forEach(p => {
-      const advancesList = p.data.bonusAdvances?.filter?.(a => a.purchased)?.map?.(a => a.value) ?? [];
+      const advancesList = p.data.data.bonusAdvances?.filter?.(a => a.purchased)?.map?.(a => a.value) ?? [];
       applyBonusModifiers(advancesList, +1, `profession ${p.name} of actor ${actorData.name}`);
     })
     // assign inital peril & damage
