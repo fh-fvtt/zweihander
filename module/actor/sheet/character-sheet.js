@@ -12,7 +12,7 @@ export default class ZweihanderCharacterSheet extends ZweihanderBaseActorSheet {
 
   static get defaultOptions() {
     return foundry.utils.mergeObject(super.defaultOptions, {
-      classes: ["zweihander", "sheet", "character"],
+      classes: ["zweihander", "sheet", "character", "damage-tracker"],
       template: "systems/zweihander/templates/pc/main.hbs",
       width: 750,
       height: 900,
@@ -286,38 +286,22 @@ export default class ZweihanderCharacterSheet extends ZweihanderBaseActorSheet {
   }
 
   _damageSheet(html) {
-    if (Number(this.actor.data.data.stats.secondaryAttributes.damageCurrent.value) < 5) {
-      html.find('.bloodstain-1').toggleClass('bloodstain-inactive')
-    }
-    if (Number(this.actor.data.data.stats.secondaryAttributes.damageCurrent.value) < 4) {
-      html.find('.bloodstain-2').toggleClass('bloodstain-inactive')
-    }
-    if (Number(this.actor.data.data.stats.secondaryAttributes.damageCurrent.value) < 3) {
-      html.find('.bloodstain-3').toggleClass('bloodstain-inactive')
-    }
-    if (Number(this.actor.data.data.stats.secondaryAttributes.damageCurrent.value) < 2) {
-      html.find('.bloodstain-4').toggleClass('bloodstain-inactive')
-    }
-    if (Number(this.actor.data.data.stats.secondaryAttributes.damageCurrent.value) < 1) {
-      html.find('.bloodstain-5').toggleClass('bloodstain-inactive')
+    const damage = Number(this.actor.data.data.stats.secondaryAttributes.damageCurrent.value);
+    const el = html.parents('.damage-tracker');
+    for (let i = 0; i <= 4; i++) {
+      if (damage <= i) {
+        el.addClass(`damage-tracker-${i}`);
+      } else {
+        el.removeClass(`damage-tracker-${i}`);
+      }
     }
   }
 
   _perilSheet(html) {
-    if (Number(this.actor.data.data.stats.secondaryAttributes.perilCurrent.value) < 5) {
-      html.find('.profile-image').addClass('peril1')
-    }
-    if (Number(this.actor.data.data.stats.secondaryAttributes.perilCurrent.value) < 4) {
-      html.find('.profile-image').addClass('peril2')
-    }
-    if (Number(this.actor.data.data.stats.secondaryAttributes.perilCurrent.value) < 3) {
-      html.find('.profile-image').addClass('peril3')
-    }
-    if (Number(this.actor.data.data.stats.secondaryAttributes.perilCurrent.value) < 2) {
-      html.find('.profile-image').addClass('peril4')
-    }
-    if (Number(this.actor.data.data.stats.secondaryAttributes.perilCurrent.value) < 1) {
-      html.find('.profile-image').addClass('peril5')
+    const peril = Number(this.actor.data.data.stats.secondaryAttributes.perilCurrent.value);
+    const el = html.find('.profile-image');
+    for (let i = peril; i <= 4; i++) {
+      el.addClass(`peril-tracker-${i}`);
     }
   }
 

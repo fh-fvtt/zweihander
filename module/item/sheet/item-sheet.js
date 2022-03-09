@@ -59,8 +59,9 @@ export default class ZweihanderItemSheet extends ItemSheet {
         label: option.capitalize()
       }));
     }
-    if (this.item.type === "weapon") {
-      data.skills = (await ZweihanderUtils.findItemsByType("skill", {takeOne: true})).map(x => x.name).sort((a, b) => a.localeCompare(b));
+    if (data.type === "weapon") {
+      const skillPack = game.packs.get(game.settings.get("zweihander", "skillPack"));
+      data.skills = (await skillPack.getDocuments()).map(x => x.name).sort((a, b) => a.localeCompare(b));
     }
     return data;
   }

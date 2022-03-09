@@ -5,7 +5,6 @@ body.game.vtt.system-zweihander .zweihander.sheet.character {
   // sheet dimensions
   min-height: 900px;
   min-width: 750px;
-    
 
   @import "actor-sheet-header.scss";
 
@@ -126,6 +125,7 @@ body.game.vtt.system-zweihander .zweihander.sheet.character {
         white-space: nowrap;
         word-break: break-word;
         padding: 0 2ch;
+        text-overflow: ellipsis;
         &:nth-child(2) {
           border-left: 1px solid var(--zx-clr-bg1);
         }
@@ -160,7 +160,6 @@ body.game.vtt.system-zweihander .zweihander.sheet.character {
           border: 1px solid transparent;
           height: 30px;
         }
-        
       }
       .item-list {
         list-style: none;
@@ -254,91 +253,6 @@ body.game.vtt.system-zweihander .zweihander.sheet.character {
     }
   }
 
-  .bloodstain-5 {
-    background-image: resolve("bloodstains.png");
-    height: 500px;
-    opacity: 0.45;
-    position: absolute;
-    right: -90px;
-    top: -150px;
-    width: 500px;
-    z-index: -1;
-  }
-
-  .bloodstain-3 {
-    background-image: resolve("bloodstains2.png");
-    bottom: -320px;
-    height: 700px;
-    left: -320px;
-    opacity: 0.4;
-    position: absolute;
-    width: 700px;
-    z-index: -1;
-  }
-
-  .bloodstain-1 {
-    background-image: resolve("bloodstains2.png");
-    bottom: -420px;
-    height: 700px;
-    opacity: 0.3;
-    position: absolute;
-    right: -320px;
-    width: 700px;
-    z-index: -1;
-  }
-
-  .bloodstain-4 {
-    background-image: resolve("bloodstains.png");
-    bottom: calc(50% - 350px);
-    height: 500px;
-    opacity: 0.4;
-    position: absolute;
-    right: -320px;
-    transform: rotate(-123deg);
-    width: 500px;
-    z-index: -1;
-  }
-
-  .bloodstain-2 {
-    background-image: resolve("bloodstains.png");
-    height: 500px;
-    left: -20px;
-    opacity: 0.5;
-    position: absolute;
-    top: -10px;
-    transform: rotate(93deg) scale(0.5);
-    width: 500px;
-    z-index: -1;
-  }
-
-  .peril1 {
-    filter: hue-rotate(15deg) blur(0.4px) saturate(1.2) sepia(0.5);
-  }
-
-  .peril2 {
-    filter: hue-rotate(20deg) blur(0.6px) contrast(1.3) sepia(0.5) saturate(1.2)
-      brightness(1.1);
-  }
-
-  .peril3 {
-    filter: hue-rotate(25deg) blur(0.8px) contrast(1.4) saturate(1.4)
-      brightness(1.3) sepia(0.6);
-  }
-
-  .peril4 {
-    filter: hue-rotate(125deg) blur(1px) contrast(1.4) saturate(2.5)
-      brightness(1.3) sepia(0.6);
-  }
-
-  .peril5 {
-    filter: hue-rotate(225deg) blur(2px) contrast(1.8) saturate(4)
-      brightness(1.8) sepia(0.9);
-  }
-
-  .bloodstain-inactive {
-    display: none;
-  }
-
   .tab.background {
     overflow: hidden;
     // overflow-y: auto;
@@ -381,19 +295,25 @@ body.game.vtt.system-zweihander .zweihander.sheet.character {
       padding: 0 calc(50% - 220px);
       .currency-bp {
         flex: 0 0 100px;
-        i, &.fa-coins, input {
+        i,
+        &.fa-coins,
+        input {
           color: var(--currency-color);
         }
       }
       .currency-ss {
         flex: 0 0 110px;
-        i, &.fa-coins, input {
+        i,
+        &.fa-coins,
+        input {
           color: var(--currency-color);
         }
       }
       .currency-gc {
         flex: 0 0 90px;
-        i, &.fa-coins, input {
+        i,
+        &.fa-coins,
+        input {
           color: var(--currency-color);
         }
       }
@@ -412,57 +332,168 @@ body.game.vtt.system-zweihander .zweihander.sheet.character {
       }
     }
     .encumbrance-bar-container {
-        background: var(--zx-clr-fg2);
-        border: 1px solid var(--zx-clr-bg1);
+      background: var(--zx-clr-fg2);
+      border: 1px solid var(--zx-clr-bg1);
+      border-radius: 1ch;
+      color: var(--zx-clr-bg0);
+      flex: 0 0 18px;
+      margin: 1px 15px 0 1px;
+      overflow: hidden;
+      position: relative;
+      .encumbrance-label {
+        font-size: 12px;
+        height: 10px;
+        line-height: 18px;
+        padding: 0 5px;
+        position: absolute;
+        right: 0;
+        text-align: center;
+        top: 0;
+        width: 100%;
+      }
+      .encumbrance-bar {
+        background: var(--zx-clr-aqua);
+        border: 1px solid var(--zx-clr-aqua);
         border-radius: 1ch;
-        color: var(--zx-clr-bg0);
-        flex: 0 0 18px;
-        margin: 1px 15px 0 1px;
-        overflow:hidden;
-        position: relative;
-        .encumbrance-label {
-          font-size: 12px;
-          height: 10px;
-          line-height: 18px;
-          padding: 0 5px;
-          position: absolute;
-          right: 0;
-          text-align: center;
-          top: 0;
-          width: 100%;
-          }
+        height: 16px;
+        left: 0px;
+        position: absolute;
+        top: 0px;
+        // transition: width 200ms ease-in-out;
+        width: 50%;
+      }
+      .overage-display {
+        display: none;
+      }
+      &.encumbrance-overage {
         .encumbrance-bar {
-          background: var(--zx-clr-aqua);
-          border: 1px solid var(--zx-clr-aqua);
-          border-radius: 1ch;
-          height: 16px;
-          left: 0px;
-          position: absolute;
-          top: 0px;
-          // transition: width 200ms ease-in-out;
-          width: 50%;
-          
+          background: var(--zx-clr-red-alt);
+          border-color: var(--zx-clr-orange);
+        }
+        .encumbrance-label {
+          color: var(--zx-clr-fg2);
         }
         .overage-display {
-          display: none;
+          color: var(--zx-clr-fg0);
+          display: inline;
         }
-        &.encumbrance-overage {
-          .encumbrance-bar {
-            background: var(--zx-clr-red-alt);
-            border-color: var(--zx-clr-orange);
-          }
-          .encumbrance-label {
-            color: var(--zx-clr-fg2);
-          }
-          .overage-display {
-            color: var(--zx-clr-fg0);
-            display: inline;
-          }
-        }
+      }
     }
   }
 }
 
-.zweihander-theme-gruvbox-light .bloodstain {
-  opacity: 0.12 !important;
+.damage-tracker > section.window-content > form {
+  position: relative;
+}
+
+.damage-tracker::before,
+.damage-tracker::after,
+.damage-tracker > section.window-content > form::before,
+.damage-tracker > section.window-content > form::after {
+  content: " ";
+  position: absolute;
+  display: block;
+  width: 100%;
+  height: 100%;
+  opacity: 0;
+  transition: opacity 1s ease-in-out;
+  background-repeat: no-repeat;
+  z-index: -1;
+}
+
+.damage-tracker::before,
+.damage-tracker::after {
+  height: calc(100% - 30px);
+  top: 30px;
+  z-index: 0;
+}
+
+.damage-tracker::before {
+  background-image: resolve("bloodstains2.png");
+  background-size: 700px 700px;
+  background-position: bottom -420px right -320px;
+}
+
+.damage-tracker-4::before {
+  opacity: 0.35;
+}
+
+.damage-tracker {
+  & > section.window-content > form::before {
+    height: 500px;
+    width: 500px;
+    left: -20px;
+    top: -10px;
+    background-image: resolve("bloodstains.png");
+    background-size: 500px 500px;
+    transform: rotate(93deg) scale(0.5);
+  }
+  &.damage-tracker-3 > section.window-content > form::before {
+    opacity: 0.5;
+  }
+}
+
+.damage-tracker-2::before {
+  background-image: resolve("bloodstains2.png"), resolve("bloodstains2.png");
+  background-size: 700px 700px, 700px 700px;
+  background-position: bottom -420px right -320px, bottom -320px left -320px;
+  opacity: 0.4;
+}
+
+.damage-tracker {
+  & > section.window-content > form::after {
+    height: 500px;
+    width: 500px;
+    background-image: resolve("bloodstains.png");
+    background-size: 500px 500px;
+    transform: rotate(-123deg);
+    bottom: calc(50% - 350px);
+    right: -230px;
+  }
+  &.damage-tracker-1 > section.window-content > form::after {
+    opacity: 0.4;
+  }
+}
+
+.damage-tracker::after {
+  background-image: resolve("bloodstains.png");
+  background-size: 500px 500px;
+  background-position: top -150px right -90px;
+}
+
+.damage-tracker-0::after {
+  opacity: 0.48;
+}
+
+.peril-tracker-4 {
+  filter: hue-rotate(15deg) blur(0.4px) saturate(1.2) sepia(0.5);
+}
+
+.peril-tracker-3 {
+  filter: hue-rotate(20deg) blur(0.6px) contrast(1.3) sepia(0.5) saturate(1.2)
+    brightness(1.1);
+}
+
+.peril-tracker-2 {
+  filter: hue-rotate(25deg) blur(0.8px) contrast(1.4) saturate(1.4)
+    brightness(1.3) sepia(0.6);
+}
+
+.peril-tracker-1 {
+  filter: hue-rotate(125deg) blur(1px) contrast(1.4) saturate(2.5)
+    brightness(1.3) sepia(0.6);
+}
+
+.peril-tracker-0 {
+  filter: hue-rotate(225deg) blur(2px) contrast(1.8) saturate(4) brightness(1.8)
+    sepia(0.9);
+}
+
+.zweihander-theme-gruvbox-light {
+  .damage-tracker::before,
+  .damage-tracker::after,
+  .damage-tracker > section.window-content > form::before,
+  .damage-tracker > section.window-content > form::after {
+    opacity: 0.12 !important;
+  }
 }
