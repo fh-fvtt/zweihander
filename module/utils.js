@@ -18,7 +18,9 @@ export function abbreviations2DataPath(str, includeFlavor = true) {
   
   for (let key in primaryAttributeMapping) {
     const re = new RegExp(`\\[${key}B\\]\\s?(\\s*)`, 'g');
-    str = str?.replaceAll(re, `${b(primaryAttributeMapping[key])} $1` + (includeFlavor ? `[${c(primaryAttributeMapping[key])} Bonus]` : ''));
+    const dataPath = `${b(primaryAttributeMapping[key])}`;
+    const flavor = includeFlavor ? `[${c(primaryAttributeMapping[key])} Bonus]` : '';
+    str = str?.replaceAll(re, `${dataPath}${flavor} $1`);
   }
   return str;
 }
