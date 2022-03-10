@@ -19,6 +19,8 @@ import { preloadHandlebarsTemplates } from "./template";
 import { registerHandlebarHelpers } from "./helpers";
 import { migrateWorldSafe, migrateWorld } from "./migration"
 import { introJs } from "./utils/intros";
+import { rollTest } from "./dice";
+import { getTestConfiguration } from "./apps/test-config";
 
 import { ZWEI } from "./config.js";
 
@@ -52,8 +54,8 @@ Hooks.once("ready", function () {
 })
 
 Hooks.once("diceSoNiceReady", function () {
-    // Dice so Nice integration
-    game?.dice3d?.addSFXTrigger?.("zh-outcome", "Zweihander d100", ["Critical Failure", "Failure", "Success", "Critical Success"]);
+  // Dice so Nice integration
+  game?.dice3d?.addSFXTrigger?.("zh-outcome", "Zweihander d100", ["Critical Failure", "Failure", "Success", "Critical Success"]);
 })
 
 
@@ -78,7 +80,7 @@ Hooks.once("init", async function () {
   };
   CONFIG.TinyMCE.skin_url = '/systems/zweihander/tinymce/skins/ui/zweihander';
   CONFIG.TinyMCE.skin = 'zweihander';
-  CONFIG.TinyMCE.content_css = ['/css/mce.css','/systems/zweihander/tinymce/skins/content/zweihander/content.css'];
+  CONFIG.TinyMCE.content_css = ['/css/mce.css', '/systems/zweihander/tinymce/skins/content/zweihander/content.css'];
   CONFIG.statusEffects = [
     {
       id: "dead",
@@ -151,7 +153,7 @@ Hooks.once("init", async function () {
       icon: "systems/zweihander/assets/icons/bleeding-wound.svg"
     }
   ],
-  CONFIG.ZWEI = ZWEI;
+    CONFIG.ZWEI = ZWEI;
   // Define custom Document classes
   CONFIG.Actor.documentClass = ZweihanderActor;
   CONFIG.Item.documentClass = ZweihanderItem;
@@ -192,4 +194,32 @@ Hooks.on("updateCompendium", async (pack, documents, options, userId) => {
   if (`${pack.metadata.package}.${pack.metadata.name}` === skillPackId) {
     ZweihanderUtils.updateActorSkillsFromPack(skillPackId);
   }
+});
+
+//TODO refactor to other file
+Hooks.on("chatCommandsReady", function (chatCommands) {
+  chatCommands.registerCommand(chatCommands.createCommandFromData({
+    commandKey: "/test",
+    invokeOnCommand: async (chatlog, messageText, chatdata) => {
+      const actors = game.user.isGM ?
+        game.canvas.tokens.controlled.map(t => t.actor) :
+        [game.actors.get(ZweihanderUtils.determineCurrentActorId(true))];
+      let testConfiguration;
+      for (let actor of actors) {
+        const skillItem = actor?.items?.find?.(i => i.type === 'skill' && ZweihanderUtils.normalizedEquals(i.name, messageText));
+        if (skillItem) {
+          if (!testConfiguration) {
+            testConfiguration = await getTestConfiguration(skillItem);
+          }
+          await rollTest(skillItem, 'skill', testConfiguration);
+        } else if (actor) {
+          ui.notifications.warn(`Couldn't find a skill named ${messageText}`);
+          break;
+        }
+      }
+    },
+    shouldDisplayToChat: false,
+    iconClass: "fa-comment-dots",
+    description: "Do a Skill Test"
+  }));
 });
