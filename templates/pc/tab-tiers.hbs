@@ -6,9 +6,9 @@
       <div class="item-detail it-archetype">Archetype</div>
       <div class="item-detail it-completed">Completed</div>
       <div class="item-controls">
-        {{!-- <a class="add-new" data-item-type="profession" title="Add New Profession">
+        <a class="add-new" data-item-type="profession" data-open-packs="zweihander.professions" title="Add New Profession">
           <i class="fa fa-plus"></i> Add
-        </a> --}}
+        </a>
       </div>
     </li>
     <ol class="item-list">
@@ -82,7 +82,7 @@
       <h3 class="item-name">Traits</h3>
       <div class="item-detail it-source">Source</div>
       <div class="item-controls">
-        {{!-- <a class="add-new" data-item-type="talentTrait" title="Add New Talent or Trait"><i class="fa fa-plus"></i> Add</a> --}}
+        <a class="add-new" data-item-type="trait" data-open-packs="zweihander.traits,zweihander.ancestral-traits" title="Add New Trait"><i class="fa fa-plus"></i> Add</a>
       </div>
     </li>
     <ol class="item-list">
@@ -96,10 +96,8 @@
         <div class="item-detail it-source">{{trait.source}}</div>
         <div class="item-controls flexrow">
           <a class="item-control item-post" title="Post Item to Chat"><i class="fas fa-comment fa-fw fa-xs"></i></a>
-          {{#if trait.isManualSource}}
-            <a class="item-control item-edit" title="Edit Item"><i class="fas fa-pencil-alt fa-fw fa-xs"></i></a>
-            <a class="item-control item-delete" title="Delete Item"><i class="fas fa-trash-alt fa-fw fa-xs"></i></a>
-          {{/if}}
+          <a class="item-control item-edit" title="Edit Item"><i class="fas fa-pencil-alt fa-fw fa-xs"></i></a>
+          <a class="item-control {{#if talent.isManualSource}}item-delete{{else}}item-no-delete{{/if}}" title="Delete Item"><i class="fas fa-trash-alt fa-fw fa-xs"></i></a>
         </div>
         <div class="item-summary individual-description save-toggle">
           <span class="item-summary-longform">
@@ -113,7 +111,7 @@
       <h3 class="item-name">Drawbacks</h3>
       <div class="item-detail it-source">Source</div>
       <div class="item-controls">
-        {{!-- <a class="add-new" data-item-type="talentTrait" title="Add New Talent or Trait"><i class="fa fa-plus"></i> Add</a> --}}
+        <a class="add-new" data-item-type="drawback" data-open-packs="zweihander.drawbacks" title="Add New Drawback"><i class="fa fa-plus"></i> Add</a>
       </div>
     </li>
     <ol class="item-list">
@@ -127,10 +125,8 @@
         <div class="item-detail it-source">{{drawback.source}}</div>
         <div class="item-controls flexrow">
           <a class="item-control item-post" title="Post Item to Chat"><i class="fas fa-comment fa-fw fa-xs"></i></a>
-          {{#if drawback.isManualSource}}
-            <a class="item-control item-edit" title="Edit Item"><i class="fas fa-pencil-alt fa-fw fa-xs"></i></a>
-            <a class="item-control item-delete" title="Delete Item"><i class="fas fa-trash-alt fa-fw fa-xs"></i></a>
-          {{/if}}
+          <a class="item-control item-edit" title="Edit Item"><i class="fas fa-pencil-alt fa-fw fa-xs"></i></a>
+          <a class="item-control {{#if talent.isManualSource}}item-delete{{else}}item-no-delete{{/if}}" title="Delete Item"><i class="fas fa-trash-alt fa-fw fa-xs"></i></a>
         </div>
         <div class="item-summary individual-description save-toggle">
           <span class="item-summary-longform">
@@ -144,7 +140,7 @@
       <h3 class="item-name">Talents</h3>
       <div class="item-detail it-source">Source</div>
       <div class="item-controls">
-        {{!-- <a class="add-new" data-item-type="talentTrait" title="Add New Talent or Trait"><i class="fa fa-plus"></i> Add</a> --}}
+        <a class="add-new" data-item-type="talent" data-open-packs="zweihander.talents" title="Add New Talent"><i class="fa fa-plus"></i> Add</a>
       </div>
     </li>
     <ol class="item-list">
@@ -158,10 +154,8 @@
         <div class="item-detail it-source">{{talent.source}}</div>
         <div class="item-controls flexrow">
           <a class="item-control item-post" title="Post Item to Chat"><i class="fas fa-comment fa-fw fa-xs"></i></a>
-          {{#if talent.isManualSource}}
-            <a class="item-control item-edit" title="Edit Item"><i class="fas fa-pencil-alt fa-fw fa-xs"></i></a>
-            <a class="item-control item-delete" title="Delete Item"><i class="fas fa-trash-alt fa-fw fa-xs"></i></a>
-          {{/if}}
+          <a class="item-control item-edit" title="Edit Item"><i class="fas fa-pencil-alt fa-fw fa-xs"></i></a>
+          <a class="item-control {{#if talent.isManualSource}}item-delete{{else}}item-no-delete{{/if}}" title="Delete Item"><i class="fas fa-trash-alt fa-fw fa-xs"></i></a>
         </div>
         <div class="item-summary individual-description save-toggle">
           <span class="item-summary-longform">

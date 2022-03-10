@@ -136,7 +136,14 @@ body.game.vtt.system-zweihander .zweihander.sheet.character {
       .item-controls {
         flex: 0 0 80px;
         justify-content: space-between;
-        a {
+        a.item-control {
+          &.item-no-delete {
+            &, &:hover {
+              color: var(--zx-clr-bg2);
+              text-shadow: none;
+              cursor:not-allowed;
+            }
+          }
           text-align: center;
         }
       }

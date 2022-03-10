@@ -84,8 +84,8 @@ export default class ZweihanderCharacterSheet extends ZweihanderBaseActorSheet {
     data.traits = addSource(data.traits);
     data.talents = addSource(data.talents);
     // filter purchased talents
-    data.talents = data.talents.filter(talent =>
-      data.professions.some(p => p.data.talents.some(t => t.purchased && t.linkedId === talent._id))
+    data.talents = data.talents.filter(talent => talent.isManualSource ||
+      data.professions.some(p => p.data.talents.some(t => t.linkedId === talent._id && t.purchased))
     );
   }
 
@@ -141,6 +141,23 @@ export default class ZweihanderCharacterSheet extends ZweihanderBaseActorSheet {
       if (createdItemArray.length)
         createdItemArray[0].sheet.render(true);
     });
+
+    html.find('.add-new').contextmenu(async ev => {
+      const packIds = ev.currentTarget.dataset.openPacks?.split(",");
+      if (!packIds) {
+        ui.notifications.notify(`This item type currently has no system compendium attached!`);
+        return
+      }
+      const packs = packIds.map(x => game.packs.get(x.trim()));
+      if (packs.every(x => x.apps[0].rendered)) {
+        packs.forEach(x => x.apps[0].close());
+      }
+      packs.forEach((x, i) => x.render(true, {
+        top: actor.sheet.position.top,
+        left: actor.sheet.position.left + (i%2==0 ? -350 : actor.sheet.position.width)
+      }));
+
+    })
 
     // Edit Ancestry Item
     html.find('.ancestry-edit-button').click(() => {

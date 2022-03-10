@@ -108,6 +108,12 @@
       "system": "zweihander",
       "path": "./packs/qualities.db",
       "entity": "Item"
+    },{
+      "name": "conditions",
+      "label": "Conditions",
+      "system": "zweihander",
+      "path": "./packs/conditions.db",
+      "entity": "Item"
     },
     {
       "name": "diseases",
@@ -135,6 +141,13 @@
       "label": "Injuries",
       "system": "zweihander",
       "path": "./packs/injuries.db",
+      "entity": "Item"
+    },
+    {
+      "name": "trappings",
+      "label": "Trappings",
+      "system": "zweihander",
+      "path": "./packs/trappings.db",
       "entity": "Item"
     },
     {
