@@ -3,12 +3,18 @@ import ZweihanderQuality from "../../item/entity/quality";
 import ZweihanderBaseActorSheet from "./base-actor-sheet";
 import * as ZweihanderUtils from "../../utils";
 import * as ZweihanderDice from "../../dice";
+import ZweihanderProfession from "../../item/entity/profession";
 
 /**
  * The Zweihänder actor sheet class for characters.
  * @extends {ActorSheet}
  */
 export default class ZweihanderCharacterSheet extends ZweihanderBaseActorSheet {
+
+  static unsupportedItemTypes = new Set([
+    'quality',
+    'skill'
+  ]);
 
   static get defaultOptions() {
     return foundry.utils.mergeObject(super.defaultOptions, {
@@ -83,7 +89,6 @@ export default class ZweihanderCharacterSheet extends ZweihanderBaseActorSheet {
     );
   }
 
-  /** @override */
   activateListeners(html) {
     super.activateListeners(html);
 
@@ -152,7 +157,6 @@ export default class ZweihanderCharacterSheet extends ZweihanderBaseActorSheet {
     // Delete Ancestry Item
     html.find('.ancestry-delete-button').click(async ev => {
       const ancestryId = this.actor.data.items.find(i => i.type === 'ancestry').id;
-
       await this.actor.deleteEmbeddedDocuments("Item", [ancestryId]);
     });
 
@@ -173,7 +177,20 @@ export default class ZweihanderCharacterSheet extends ZweihanderBaseActorSheet {
       if (item.type === "armor") {
         await item.update({ "data.equipped": event.target.checked });
       } else if (item.type === "profession") {
-        await item.update({ "data.tier.completed": event.target.checked });
+        if (!event.target.checked && item.data.data.tier.value !== item.actor.data.data.tier) {
+          ui.notifications.error(`In order to reset this professions progress you have to delete the profession above it first!`);
+          return;
+        }
+        Dialog.confirm({
+          title: !event.target.checked ?
+            "Reset Profession Progress" :
+            "Complete Profession",
+          content: !event.target.checked ?
+            "<p>Do you really want to reset your progress in this profession?</p>" :
+            "<p>Do you really want to purchase all advances in this profession? The current purchase state will be lost!</p>",
+          yes: () => ZweihanderProfession.toggleProfessionPurchases(item, !event.target.checked),
+          defaultYes: false
+        });
       } else if (item.type === "trapping") {
         await item.update({ "data.carried": event.target.checked });
       } else if (item.type === "weapon") {
@@ -344,18 +361,5 @@ export default class ZweihanderCharacterSheet extends ZweihanderBaseActorSheet {
       html.find(".encumbrance-bar-container").addClass("encumbrance-overage");
     }
     html.find(".encumbrance-bar").css("width", ratio + "%");
-  }
-
-
-  async _render(force = false, options = {}) {
-    // save toggle states for item details
-    const toggleStates = $(this.form).find('.save-toggle').toArray()
-      .filter((element) => $(element).hasClass("open"))
-      .map((element) => $(element).parent().data('itemId'));
-    await super._render(force, options);
-    // restore toggle states for item details
-    toggleStates.forEach(id => 
-      $(this.form).find(`[data-item-id="${id}"] .save-toggle`).show().addClass("open")
-    );
   }
 }

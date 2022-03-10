@@ -1,10 +1,5 @@
 export default class ZweihanderBaseActorSheet extends ActorSheet {
 
-  static unsupportedItemTypes = new Set([
-    'quality',
-    'skill'
-  ]);
-
   /** @override */
   getData(options) {
 
@@ -60,6 +55,18 @@ export default class ZweihanderBaseActorSheet extends ActorSheet {
     }
    // Create the owned item as normal
    return super._onDropItemCreate(itemData); 
+  }
+
+  async _render(force = false, options = {}) {
+    // save toggle states for item details
+    const toggleStates = $(this.form).find('.save-toggle').toArray()
+      .filter((element) => $(element).hasClass("open"))
+      .map((element) => $(element).parent().data('itemId'));
+    await super._render(force, options);
+    // restore toggle states for item details
+    toggleStates.forEach(id => 
+      $(this.form).find(`[data-item-id="${id}"] .save-toggle`).show().addClass("open")
+    );
   }
 
 }

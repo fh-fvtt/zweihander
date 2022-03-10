@@ -2,6 +2,15 @@ import ZweihanderBaseItem from "./base-item";
 
 export default class ZweihanderProfession extends ZweihanderBaseItem {
 
+  static async toggleProfessionPurchases(profession, purchase) {
+    const updateData = {};
+    const updatePurchase = (itemType) =>
+      updateData[`data.${itemType}`] = profession.data.data[itemType]
+        .map(t => ({ ...t, purchased: purchase }));
+    ["talents", "skillRanks", "bonusAdvances"].forEach(updatePurchase);
+    await profession.update(updateData);
+  }
+
   prepareDerivedData(itemData, item) {
     if (!item.isOwned) return;
     const advancesPurchased = 1
@@ -16,13 +25,13 @@ export default class ZweihanderProfession extends ZweihanderBaseItem {
     const itemData = item.data;
     const tier = item.parent.items.filter(i => i.type === 'profession').length + 1;
     if (tier > 3) return;
-    itemData.update({ 'data.tier.value': CONFIG.ZWEI.tiers[tier]});
-    itemData.update({ 'data.skillRanks': itemData.data.skillRanks.map(sr => ({...sr, purchased: false}))});
-    itemData.update({ 'data.bonusAdvances': itemData.data.bonusAdvances.map(ba => ({...ba, purchased: false}))});
+    itemData.update({ 'data.tier.value': CONFIG.ZWEI.tiers[tier] });
+    itemData.update({ 'data.skillRanks': itemData.data.skillRanks.map(sr => ({ ...sr, purchased: false })) });
+    itemData.update({ 'data.bonusAdvances': itemData.data.bonusAdvances.map(ba => ({ ...ba, purchased: false })) });
     const talentsToFetch = itemData.data.talents.map(v => v.value);
     if (talentsToFetch.length) {
       const talents = await ZweihanderBaseItem.getOrCreateLinkedItems(item.parent, talentsToFetch, 'talent', item.name, 'profession');
-      itemData.update({ 'data.talents': talents.map(t => ({...t, purchased: false}))});
+      itemData.update({ 'data.talents': talents.map(t => ({ ...t, purchased: false })) });
     }
     const professionalTraitToFetch = itemData.data.professionalTrait.value.trim();
     const specialTraitToFetch = itemData.data.specialTrait.value.trim();
@@ -40,16 +49,16 @@ export default class ZweihanderProfession extends ZweihanderBaseItem {
     const diffPaths = flattenObject(changed.data);
     const idsToDelete = [];
     if (diffPaths['skillRanks'] !== undefined) {
-      diffData.skillRanks = diffData.skillRanks.map(sr => ({...sr, purchased: sr.purchased ?? false}));
+      diffData.skillRanks = diffData.skillRanks.map(sr => ({ ...sr, purchased: sr.purchased ?? false }));
     }
     if (diffPaths['bonusAdvances'] !== undefined) {
-      diffData.bonusAdvances = diffData.bonusAdvances.map(ba => ({...ba, purchased: ba.purchased ?? false}));
+      diffData.bonusAdvances = diffData.bonusAdvances.map(ba => ({ ...ba, purchased: ba.purchased ?? false }));
     }
     if (diffPaths['talents'] !== undefined) {
       const talentsDiff = ZweihanderBaseItem.getLinkedItemsDifference(diffData.talents, itemData.data.talents);
       idsToDelete.push(...talentsDiff.idsToDelete);
       const addedTalents = await ZweihanderBaseItem.getOrCreateLinkedItems(item.parent, talentsDiff.namesToAdd, 'talent', item.name, 'profession');
-      const lookUp = addedTalents.reduce((a,b) => ({...a, [b.value]: {...b, purchased: false}}),{});
+      const lookUp = addedTalents.reduce((a, b) => ({ ...a, [b.value]: { ...b, purchased: false } }), {});
       // update names 
       diffData.talents = diffData.talents.map(t => lookUp[t.value] ? lookUp[t.value] : t);
     }

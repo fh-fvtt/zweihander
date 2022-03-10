@@ -3,5 +3,8 @@ import * as ZweihanderUtils from "../../utils";
 
 export default class ZweihanderNPC extends ZweihanderCreature {
 
+  prepareDerivedData(actorData) {
+
+  }
 
 }

@@ -4,13 +4,6 @@ import ZweihanderActorConfig from "../../apps/actor-config";
 
 export default class ZweihanderPC extends ZweihanderBaseActor {
 
-  prepareBaseData(actorData, that) {
-
-  }
-
-  prepareEmbeddedEntities(actorData) {
-
-  }
   prepareDerivedData(actorData) {
     const noWarn = CONFIG.ZWEI.NO_WARN || actorData._id === null;
     const configOptions = ZweihanderActorConfig.getConfig(actorData);
@@ -123,16 +116,42 @@ export default class ZweihanderPC extends ZweihanderBaseActor {
     mov.current = Math.max(0, mov.value - mov.overage);
   }
 
-  getRollData(rollData) {
-    //TODO: make attributes more accessible here
-    return rollData;
-  }
-
-  async _preCreate(actorData, options, user, that) {
-    // add default set of skills
-    const skillPack = game.packs.get(game.settings.get("zweihander", "skillPack"));
-    const skillsFromPack = (await skillPack.getDocuments()).map(i => i.toObject());
-    actorData.update({ "items": skillsFromPack }, { "keepId": true, "keepEmbeddedIds": true});
+  async createEmbeddedDocuments(embeddedName, data, context, actor) {
+    if (embeddedName === "Item") {
+      const filteredData = [];
+      let ancestryAttached = actor.data.items.some(i => i.type === 'ancestry');
+      const actorProfessions = actor.data.items.filter(i => i.type === 'profession');
+      let numberOfProfessionsAttached = actorProfessions.length;
+      for (let item of data) {
+        if (item.type === "profession") {
+          const previousTiersCompleted = actorProfessions
+            .map(profession => profession.data.data.tier.completed)
+            .every(value => value === true);
+          const allTiersAssigned = numberOfProfessionsAttached == 3;
+          const dragDroppedOwnProfession = actorProfessions.some(p => p._id === item._id);
+          if (allTiersAssigned && !dragDroppedOwnProfession) {
+            ui.notifications.error("A character may not enter more than 3 Professions.");
+          } else if (!previousTiersCompleted && !dragDroppedOwnProfession) {
+            ui.notifications.error("A character must complete the previous Tier before entering a new Profession.");
+          }
+          if (!allTiersAssigned && previousTiersCompleted) {
+            filteredData.push(item);
+            numberOfProfessionsAttached++;
+          }
+        } else if (item.type === "ancestry") {
+          if (ancestryAttached) {
+            ui.notifications.error("A character may not possess more than 1 Ancestry.");
+          } else {
+            filteredData.push(item);
+            ancestryAttached = true;
+          }
+        } else {
+          filteredData.push(item);
+        }
+      }
+      return filteredData;
+    }
+    return data;
   }
 
 }
