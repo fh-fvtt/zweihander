@@ -26,11 +26,14 @@ export const preloadHandlebarsTemplates = async function () {
     $$('item/skill'),
     $$('item/spell'),
     $$('item/talent'),
+    $$('item/taint'),
     $$('item/trait'),
     $$('item/trapping'),
     $$('item/quality'),
     $$('item/uniqueAdvance'),
     $$('item/weapon'),
-    $$('item-card/item-card-spell')
+    $$('item-card/item-card-spell'),
+    $$('item-card/item-card-weapon'),
+    $$('item-card/item-card-profession')
   ]);
 };

@@ -210,7 +210,7 @@
   },
   "Item": {
     "types": [
-      "trapping", "condition", "injury", "disease", "disorder", "profession", "ancestry", "armor", "weapon", "spell", "ritual", "talent", "trait", "drawback", "quality", "skill", "uniqueAdvance"
+      "trapping", "condition", "injury", "disease", "disorder", "profession", "ancestry", "armor", "weapon", "spell", "ritual", "talent", "trait", "drawback", "quality", "skill", "uniqueAdvance", "taint"
     ],
     "templates": {
       "flavor": {
@@ -448,6 +448,18 @@
       "active": false
     },
     "disorder": {
+      "templates": [
+        "flavor"
+      ],
+      "category": {
+        "value": ""
+      },
+      "effect": {
+        "value": ""
+      },
+      "active": false
+    },
+    "taint": {
       "templates": [
         "flavor"
       ],
