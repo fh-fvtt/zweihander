@@ -38,7 +38,7 @@ export default class ZweihanderActorConfig extends FormApplication {
     return foundry.utils.mergeObject(super.defaultOptions, {
       classes: ["zweihander sheet actor-config"],
       id: "zweihander_actor_config",
-      template: "systems/zweihander/templates/actor/actor-config.hbs",
+      template: "systems/zweihander/templates/app/actor-config.hbs",
       submitOnChange: true,
       submitOnClose: true,
       closeOnSubmit: false,

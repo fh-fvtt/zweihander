@@ -14,6 +14,8 @@ export const preloadHandlebarsTemplates = async function () {
     $$('pc/tab-tiers'),
     $$('pc/tab-trappings'),
     $$('pc/header'),
+    $$('npc/tab-main'),
+    $$('npc/header'),
     $$('item/ancestry'),
     $$('item/armor'),
     $$('item/condition'),

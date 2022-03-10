@@ -6,9 +6,9 @@ body.game.vtt.system-zweihander .zweihander.sheet.character {
   min-height: 900px;
   min-width: 750px;
 
-  @import "actor-sheet-header.scss";
+  @import "character-sheet-header.scss";
 
-  @import "actor-sheet-tab-main.scss";
+  @import "character-sheet-tab-main.scss";
 
   .sheet-body {
     flex: 1;
