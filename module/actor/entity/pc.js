@@ -81,7 +81,7 @@ export default class ZweihanderPC extends ZweihanderBaseActor {
     );
     const normalTrappingsEnc = carriedTrappings
       .filter(t => t.data.data.encumbrance.value !== 0)
-      .map(t => t.data.data.encumbrance.value * t.data.data.CONFIGquantity.value)
+      .map(t => t.data.data.encumbrance.value * t.data.data.quantity.value)
       .reduce((a, b) => a + b, 0);
     // assign encumbrance from coinage
     const coinageEnc = Math.floor(
