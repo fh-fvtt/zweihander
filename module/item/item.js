@@ -21,7 +21,7 @@ export default class ZweihanderItem extends Item {
   }
 
   // convention: dispatch is async when the function it calls is
-  dispatch(fnName, cfg = {orElse: {value: {}, async: false}, args: []}) {
+  dispatch(fnName, cfg = { orElse: { value: {}, async: false }, args: [] }) {
     // console.log(`${this.name}: dispatch: ${fnName}`);
     if (ZweihanderItem.types[this.type]) {
       const type = ZweihanderItem.types[this.type];
@@ -72,25 +72,33 @@ export default class ZweihanderItem extends Item {
   async _preCreate(data, options, user) {
     await super._preCreate(data, options, user);
     if (this.parent === null) return;
-    await this.dispatch("_preCreate", {args: [data, options, user]});
+    await this.dispatch("_preCreate", { args: [data, options, user] });
+  }
+
+  async _onCreate(data, options, user) {
+    await super._onCreate(data, options, user);
+    // TODO: user is an incorrect parameter and will be fixed in future versions
+    if (user !== game.user.id)
+      return;
+    await this.dispatch("_onCreate", { args: [data, options, user] });
   }
 
   async _preDelete(options, user) {
     await super._preDelete(options, user);
     if (this.parent === null) return;
-    await this.dispatch("_preDelete", {args: [options, user]});
+    await this.dispatch("_preDelete", { args: [options, user] });
   }
 
   async _onDelete(options, user) {
     await super._preDelete(options, user);
     if (user !== game.user.id) return
     if (this.parent === null) return;
-    await this.dispatch("_onDelete", {args: [options, user]});
+    await this.dispatch("_onDelete", { args: [options, user] });
   }
 
   async _preUpdate(changed, options, user) {
     if (this.parent && changed.data) {
-      await this.dispatch("_preUpdate", {args: [changed, options, user]});
+      await this.dispatch("_preUpdate", { args: [changed, options, user] });
     }
     await super._preUpdate(changed, options, user);
   }
@@ -99,6 +107,6 @@ export default class ZweihanderItem extends Item {
     await super._onUpdate(changed, options, user);
     if (user !== game.user.id) return
     if (this.parent === null || !changed.data) return;
-    await this.dispatch("_onUpdate", {args: [changed, options, user]});
+    await this.dispatch("_onUpdate", { args: [changed, options, user] });
   }
 }

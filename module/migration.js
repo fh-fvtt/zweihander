@@ -133,9 +133,12 @@ const migrateAncestry = async function (item) {
   let traitValue = item.data.ancestralTrait.value;
   if (actor) {
     if (traitValue && !traitId) {
-      const trait = await ZweihanderBaseItem.getOrCreateLinkedItem(actor, traitValue, 'trait', item.name, 'ancestry');
+      const trait = await ZweihanderBaseItem.getLinkedItemEntry(actor, traitValue, 'trait', item.name, 'ancestry');
       traitId = trait.linkedId;
       traitValue = trait.value;
+      if (trait.itemToCreate) {
+        await Item.create(trait.itemToCreate, { parent: actor, keepId: true });
+      }
     }
   }
   return {
@@ -169,26 +172,40 @@ const migrateProfession = async function (item) {
   let drawbackId = item.data.drawback.linkedId ?? null;
   if (actor) {
     let i;
+    const itemsToCreate = [];
     if (professionalTraitValue && !professionalTraitId) {
-      i = await ZweihanderBaseItem.getOrCreateLinkedItem(actor, professionalTraitValue, 'trait', item.name, 'profession');
+      i = await ZweihanderBaseItem.getLinkedItemEntry(actor, professionalTraitValue, 'trait', item.name, 'profession');
       professionalTraitValue = i.value;
       professionalTraitId = i.linkedId;
+      if (i.itemToCreate) {
+        itemsToCreate.push(i.itemToCreate);
+      }
     }
     if (specialTraitValue && !specialTraitId) {
-      i = await ZweihanderBaseItem.getOrCreateLinkedItem(actor, specialTraitValue, 'trait', item.name, 'profession');
+      i = await ZweihanderBaseItem.getLinkedItemEntry(actor, specialTraitValue, 'trait', item.name, 'profession');
       specialTraitValue = i.value;
       specialTraitId = i.linkedId;
+      if (i.itemToCreate) {
+        itemsToCreate.push(i.itemToCreate);
+      }
     }
     if (drawbackValue && !drawbackId) {
-      i = await ZweihanderBaseItem.getOrCreateLinkedItem(actor, drawbackValue, 'drawback', item.name, 'profession');
+      i = await ZweihanderBaseItem.getLinkedItemEntry(actor, drawbackValue, 'drawback', item.name, 'profession');
       drawbackValue = i.value;
       drawbackId = i.linkedId;
+      if (i.itemToCreate) {
+        itemsToCreate.push(i.itemToCreate);
+      }
     }
     // const talentNames = talents.map(t => t.value);
     const talentNames = talents.filter(t => !t.linkedId && t.value).map(t => t.value);
     if (talentNames.length) {
-      i = await ZweihanderBaseItem.getOrCreateLinkedItems(actor, talentNames, 'talent', item.name, 'profession');
-      talents = i.map((t, j) => ({ ...t, purchased: talents[j].purchased || false }));
+      i = await ZweihanderBaseItem.getLinkedItemEntries(actor, talentNames, 'talent', item.name, 'profession');
+      i.map(t => t.itemToCreate).filter(x => x).forEach(x => itemsToCreate.push(x));
+      talents = i.map((t, j) => ZweihanderBaseItem.cleanLinkedItemEntry({ ...t, purchased: talents[j].purchased || false }));
+    }
+    if (itemsToCreate.length) {
+      await Item.create(itemsToCreate, { parent: actor, keepId: true });
     }
   }
   return {

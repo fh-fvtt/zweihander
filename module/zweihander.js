@@ -24,6 +24,8 @@ import { getTestConfiguration } from "./apps/test-config";
 
 import { ZWEI } from "./config.js";
 
+import ZweihanderBaseItem from "./item/entity/base-item";
+
 import "../styles/main.scss"
 
 /* -------------------------------------------- */
@@ -65,6 +67,7 @@ Hooks.once("init", async function () {
   game.zweihander = {
     ZweihanderActor,
     ZweihanderItem,
+    getOrCreateLinkedItem: ZweihanderBaseItem.getLinkedItemEntry.bind(ZweihanderBaseItem),
     utils: ZweihanderUtils,
     migrate: migrateWorld,
     introJs: introJs
@@ -205,6 +208,9 @@ Hooks.on("chatCommandsReady", function (chatCommands) {
         game.canvas.tokens.controlled.map(t => t.actor) :
         [game.actors.get(ZweihanderUtils.determineCurrentActorId(true))];
       let testConfiguration;
+      if (actors.length === 0) {
+        ui.notifications.warn(`Please select a token in order to perform this action!`);
+      }
       for (let actor of actors) {
         const skillItem = actor?.items?.find?.(i => i.type === 'skill' && ZweihanderUtils.normalizedEquals(i.name, messageText));
         if (skillItem) {
