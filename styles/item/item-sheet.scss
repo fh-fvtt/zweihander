@@ -8,11 +8,11 @@ body.game.vtt.system-zweihander .zweihander.sheet.item {
   min-width: 400px;
 
   .sheet-header {
-    border-bottom: 2px groove var(--zx-clr-bg2);
+    border-bottom: 2px groove var(--zh-clr-bg2);
     flex: 0 0 var(--item-sheet-icon-size);
 
     .profile {
-      border-right: 2px groove var(--zx-clr-bg2);
+      border-right: 2px groove var(--zh-clr-bg2);
       display: flex;
       flex: 0 0 var(--item-sheet-icon-size);
       height: var(--item-sheet-icon-size);
@@ -36,7 +36,7 @@ body.game.vtt.system-zweihander .zweihander.sheet.item {
         top: 0px;
         width: 100%;
         &.item-image-icon {
-          background-color: var(--zx-clr-aqua);
+          background-color: var(--zh-clr-aqua);
           mask-mode: luminance;
           // -webkit-mask-position-y: 5px;
           mask-repeat: no-repeat;
@@ -64,23 +64,23 @@ body.game.vtt.system-zweihander .zweihander.sheet.item {
       padding: 0;
       input {
         display: block;
-        font-family: var(--zx-font-title);
+        font-family: var(--zh-font-title);
         font-size: 28px;
         // text-transform: uppercase;
         height: 40px;
         line-height: 48px;
         margin: 5px;
         padding: 0;
-        text-shadow: 2px 2px 2px var(--zx-clr-fg4);
+        text-shadow: 2px 2px 2px var(--zh-clr-fg4);
         width: calc(100% - 14px);
       }
     }
 
     .item-subtitle {
       align-self: flex-start !important;
-      color: var(--zx-clr-aqua);
+      color: var(--zh-clr-aqua);
       flex: 0 0 auto;
-      font-family: var(--zx-font-title);
+      font-family: var(--zh-font-title);
       font-size: 14px;
       padding: 5px;
       text-transform: uppercase;
@@ -88,7 +88,7 @@ body.game.vtt.system-zweihander .zweihander.sheet.item {
   }
 
   nav {
-    border-bottom: 2px groove var(--zx-clr-bg2);
+    border-bottom: 2px groove var(--zh-clr-bg2);
     flex: 0 0 45px;
   }
 
@@ -102,7 +102,7 @@ body.game.vtt.system-zweihander .zweihander.sheet.item {
     .tab-description {
       // height: 100%;
       .editor-content {
-        color: var(--zx-clr-fg2);
+        color: var(--zh-clr-fg2);
         font-size: 14px;
         font-style: italic;
         text-align: justify;
@@ -114,7 +114,7 @@ body.game.vtt.system-zweihander .zweihander.sheet.item {
     }
 
     .form-group {
-      border-bottom: 1px solid var(--zx-clr-bg2);
+      border-bottom: 1px solid var(--zh-clr-bg2);
       margin-left: -10px;
       margin-right: -10px;
       padding: 5px 15px 1em 15px;
@@ -129,7 +129,7 @@ body.game.vtt.system-zweihander .zweihander.sheet.item {
       }
 
       & > label {
-        color: var(--zx-clr-fg2);
+        color: var(--zh-clr-fg2);
       }
       .zh-editor-preview {
         display: none;
@@ -153,23 +153,23 @@ body.game.vtt.system-zweihander .zweihander.sheet.item {
           //height: 16px;
           padding: 0 3px;
           span {
-            background-color: var(--zx-clr-aqua);
+            background-color: var(--zh-clr-aqua);
             border: 1px solid transparent;
             border-radius: 1ch;
-            color: var(--zx-clr-bg0);
+            color: var(--zh-clr-bg0);
             font-size: 10px;
             padding: 1px 2px;
             cursor: pointer;
             &:hover {
-              background-color: var(--zx-clr-red);
+              background-color: var(--zh-clr-red);
             }
           }
         }
         button.array-input-plus {
-          background-color: var(--zx-clr-aqua-alt);
-          border: 1px solid var(--zx-clr-aqua);
+          background-color: var(--zh-clr-aqua-alt);
+          border: 1px solid var(--zh-clr-aqua);
           border-radius: 0 1ch 1ch 0;
-          color: var(--zx-clr-bg0);
+          color: var(--zh-clr-bg0);
           cursor: pointer;
           display: block;
           flex: 0 0 auto;
@@ -181,8 +181,8 @@ body.game.vtt.system-zweihander .zweihander.sheet.item {
           width: 20px;
           &:hover,
           &:focus {
-            background-color: var(--zx-clr-yellow-alt);
-            border-color: var(--zx-clr-yellow);
+            background-color: var(--zh-clr-yellow-alt);
+            border-color: var(--zh-clr-yellow);
             box-shadow: none;
           }
           i.fas {
@@ -192,7 +192,7 @@ body.game.vtt.system-zweihander .zweihander.sheet.item {
       }
     }
     .form-group:nth-child(even) {
-      background-color: var(--zx-clr-bg1);
+      background-color: var(--zh-clr-bg1);
     }
   }
 }

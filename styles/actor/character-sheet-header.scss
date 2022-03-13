@@ -1,9 +1,9 @@
-.sheet-header {
-  border-bottom: 2px groove var(--zx-clr-bg2);
-  flex: 0 0 100px;
+.actor-sheet-header {
+  border-bottom: 2px groove var(--zh-clr-bg2);
+  flex: 0 0 auto;
 
   .profile {
-    border-right: 2px groove var(--zx-clr-bg2);
+    border-right: 2px groove var(--zh-clr-bg2);
     display: flex;
     flex: 0 0 247px;
     height: 247px;
@@ -35,13 +35,13 @@
     padding: 0;
     input {
       display: block;
-      font-family: var(--zx-font-title);
+      font-family: var(--zh-font-title);
       font-size: 28px;
       // text-transform: uppercase;
       height: 40px;
       line-height: 48px;
       margin: 10px 5px;
-      text-shadow: 2px 2px 2px var(--zx-clr-fg4);
+      text-shadow: 2px 2px 2px var(--zh-clr-fg4);
       width: 96%;
     }
   }
@@ -55,9 +55,9 @@
     text-align: right;
 
     .rp-title {
-      color: var(--zx-clr-aqua);
+      color: var(--zh-clr-aqua);
       display: block;
-      font-family: var(--zx-font-title);
+      font-family: var(--zh-font-title);
       font-size: 13px;
       text-transform: uppercase;
     }
@@ -86,7 +86,7 @@
         color: #7a7971;
         display: inline;
         flex: none;
-        font-family: var(--zx-font-title);
+        font-family: var(--zh-font-title);
         font-size: 13px !important;
         font-weight: normal;
         margin: 0 1px;
@@ -95,11 +95,11 @@
       }
     }
     .rp-other-pts .sep {
-      color: var(--zx-clr-aqua);
+      color: var(--zh-clr-aqua);
     }
   }
   .summary {
-    border-bottom: 2px groove var(--zx-clr-bg2);
+    border-bottom: 2px groove var(--zh-clr-bg2);
     border-top: none;
     flex: 0 0 100%;
     font-size: 14px;
@@ -110,9 +110,8 @@
     padding: 0;
 
     li {
-      border-right: 2px groove var(--zx-clr-bg2);
-      color: var(--zx-clr-fg0);
-      float: left;
+      border-right: 2px groove var(--zh-clr-bg2);
+      color: var(--zh-clr-fg0);
       height: calc(100% - 6px);
       line-height: 24px;
       margin: 4px 0 0 0;
@@ -131,7 +130,7 @@
 
         .ancestry-edit {
           bottom: 12px;
-          color: var(--zx-clr-aqua);
+          color: var(--zh-clr-aqua);
           display: none;
           font-size: 10px;
           height: 16px;
@@ -157,7 +156,7 @@
       line-height: 20px;
     }
     label {
-      color: var(--zx-clr-fg3);
+      color: var(--zh-clr-fg3);
     }
     li input {
       text-align: center;
@@ -242,23 +241,23 @@
       }
     }
     &.summary-dooming {
-      background-color: var(--zx-clr-aqua);
+      background-color: var(--zh-clr-aqua);
       height: 100%;
       width: 100%;
 
       input {
-        color: var(--zx-clr-bg0);
-        font-family: var(--zx-font-title);
+        color: var(--zh-clr-bg0);
+        font-family: var(--zh-font-title);
         font-size: 13px;
-        text-shadow: var(--zx-text-shadow);
+        text-shadow: var(--zh-text-shadow);
         text-transform: uppercase;
       }
       input::placeholder {
-        color: var(--zx-clr-bg2);
+        color: var(--zh-clr-bg2);
       }
     }
     &:first-of-type {
-      border-top: 2px groove var(--zx-clr-bg2);
+      border-top: 2px groove var(--zh-clr-bg2);
       height: 30px;
     }
     &:last-of-type {
@@ -285,7 +284,7 @@
           input,
           span,
           label {
-            font-family: var(--zx-font-title);
+            font-family: var(--zh-font-title);
             font-size: 10px;
             text-transform: uppercase;
           }
@@ -297,13 +296,13 @@
           }
         }
         &.corruption-title {
-          color: var(--zx-clr-fg3);
+          color: var(--zh-clr-fg3);
           left: calc(50% - 7ex);
           text-align: center;
           width: 14ex;
         }
         &.corruption-reset {
-          color: var(--zx-clr-aqua);
+          color: var(--zh-clr-aqua);
           font-size: 12px;
           left: calc(50% + 7ex);
           top: -4px;
@@ -317,7 +316,7 @@
         &.corruption {
           flex: 0 0 6ex;
           input {
-            color: var(--zx-clr-aqua);
+            color: var(--zh-clr-aqua);
             font-size: 18px;
             margin-top: 14px;
             text-align: center;
@@ -343,16 +342,16 @@
                 font-size: 12px;
                 margin-top: 20px;
                 &:hover {
-                  color: var(--zx-clr-yellow);
+                  color: var(--zh-clr-yellow);
                   &::before {
-                    border-color: var(--zx-clr-yellow);
+                    border-color: var(--zh-clr-yellow);
                   }
                 }
               }
               &.permanent-rank {
                 margin-top: 21px;
                 cursor: default;
-                color: var(--zx-clr-red-alt);
+                color: var(--zh-clr-red-alt);
                 font-size: 14px;
                 &:hover {
                   color: none;
@@ -375,10 +374,10 @@
               }
             }
             &:checked + label {
-              color: var(--zx-clr-bg0);
+              color: var(--zh-clr-bg0);
               &::before {
-                border: 1px solid var(--zx-clr-fg2);
-                background: var(--zx-clr-fg0);
+                border: 1px solid var(--zh-clr-fg2);
+                background: var(--zh-clr-fg0);
               }
             }
           }

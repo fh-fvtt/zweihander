@@ -1,21 +1,13 @@
-import ZweihanderBaseActorSheet from "./base-actor-sheet";
+import ZweihanderCreatureSheet from "./creature-sheet";
 
- export default class ZweihanderNpcSheet extends ZweihanderBaseActorSheet {
-
-  static unsupportedItemTypes = new Set([
-    'ancestry',
-    'profession',
-    'quality',
-    'skill',
-    'uniqueAdvance'
-  ]);
+ export default class ZweihanderNpcSheet extends ZweihanderCreatureSheet {
 
   static get defaultOptions() {
     return foundry.utils.mergeObject(super.defaultOptions, {
       classes: ["zweihander", "sheet", "npc", "damage-tracker"],
       template: "systems/zweihander/templates/npc/main.hbs",
-      width: 750,
-      height: 900,
+      width: 500,
+      height: 650,
       resizable: true,
       tabs: [
         { navSelector: ".sheet-navigation", contentSelector: ".sheet-body", initial: "main" }
@@ -27,6 +19,10 @@ import ZweihanderBaseActorSheet from "./base-actor-sheet";
   getData(options) {
     const sheetData = super.getData();
     return sheetData;
+  }
+
+  activateListeners(html) {
+    super.activateListeners(html);
   }
 
 }

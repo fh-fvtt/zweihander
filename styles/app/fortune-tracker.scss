@@ -5,21 +5,21 @@ body.game.vtt.system-zweihander #fortuneTrackerApp {
   .window-header {
     // background: rgba(40,40,40,0.9);
     background-image: none;
-    background-color: rgba(var(--zx-clr-bg0-rgb), 0.9);
-    border: 1px solid var(--zx-clr-bg0);
+    background-color: rgba(var(--zh-clr-bg0-rgb), 0.9);
+    border: 1px solid var(--zh-clr-bg0);
     border-radius: 1ch;
-    color: var(--zx-clr-fg0);
+    color: var(--zh-clr-fg0);
   }
   .window-content {
     background-image: none;
-    background-color: rgba(var(--zx-clr-bg0-rgb), 0.15);
+    background-color: rgba(var(--zh-clr-bg0-rgb), 0.15);
     position: relative;
   }
   h4.window-title {
-    color: var(--zx-clr-aqua);
+    color: var(--zh-clr-aqua);
   }
   #fortuneTrackerAppTotal {
-    color: var(--zx-clr-fg1); 
+    color: var(--zh-clr-fg1); 
     &.waiting-true, &.waiting-true + .fortune-tracker-reset {
       display: none;
     }
@@ -44,14 +44,14 @@ body.game.vtt.system-zweihander #fortuneTrackerApp {
       display: block;
       flex: 1 0 100%;
       line-height: 28px;
-      background-color: rgba(var(--zx-clr-bg0-rgb), 0.9);
+      background-color: rgba(var(--zh-clr-bg0-rgb), 0.9);
       border: 1px solid transparent;
       border-radius: 1ch;
       text-align: center;
       text-shadow: none;
       &:hover {
-        background-color: rgba(var(--zx-clr-accent-rgb), 0.9);
-        color: var(--zx-clr-bg0) !important;
+        background-color: rgba(var(--zh-clr-accent-rgb), 0.9);
+        color: var(--zh-clr-bg0) !important;
       }
     }
     .fortunetracker-token-container {

@@ -1,6 +1,6 @@
-<header class="sheet-header flexrow">
+<header class="actor-sheet-header sheet-header flexrow">
   <div class="profile">
-    <img class="profile-image" src="{{actor.img}}" title="{{actor.name}}" data-edit="img"/>
+    <img class="profile-image peril-tracker" src="{{actor.img}}" title="{{actor.name}}" data-edit="img"/>
   </div>
   <section class="header-details flexrow">
     <h1 class="charname">
@@ -103,7 +103,7 @@
         <input name="data.orderAlignment.value" type="text" value="{{data.orderAlignment.value}}" placeholder="Order Alignment" />
       </li>
       <li class="order-track flexrow">
-        {{radioRanks "data.orderRanks.value" config.rankOptions 0 checked=data.orderRanks.value}}
+        {{radioRanks "data.orderRanks.value" config.alignmentRanks 0 checked=data.orderRanks.value}}
       </li>
       <li class="corruption-title">
         <label>Corruption</label>
@@ -113,7 +113,7 @@
       </li>
       <li class="corruption-reset"><a class="reset-ranks"><i class="fas fa-sync-alt fa-xs" title="Reset Chaos and Order Ranks"></i></a></li>
       <li class="chaos-track flexrow">
-        {{radioRanks "data.chaosRanks.value" config.rankOptions actorConfig.permanentChaosRanks checked=data.chaosRanks.value}}
+        {{radioRanks "data.chaosRanks.value" config.alignmentRanks actorConfig.permanentChaosRanks checked=data.chaosRanks.value}}
       </li>
       <li class="chaos-title">
         <input name="data.chaosAlignment.value" type="text" value="{{data.chaosAlignment.value}}" placeholder="Chaos Alignment" />

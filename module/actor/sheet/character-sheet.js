@@ -273,10 +273,6 @@ export default class ZweihanderCharacterSheet extends ZweihanderBaseActorSheet {
     // Update the encumbrance meter
     this._updateEncumbranceMeter(html);
 
-    this._damageSheet(html);
-
-    this._perilSheet(html);
-
     // Show extra item information on click
     html.find(".js-show-item-description").click(event => this._showItemDescription(event));
 
@@ -317,26 +313,6 @@ export default class ZweihanderCharacterSheet extends ZweihanderBaseActorSheet {
       const perilType = ZweihanderDice.PERIL_ROLL_TYPES[event.currentTarget.dataset.perilType.toUpperCase()];
       ZweihanderDice.rollPeril(perilType, this.actor);
     })
-  }
-
-  _damageSheet(html) {
-    const damage = Number(this.actor.data.data.stats.secondaryAttributes.damageCurrent.value);
-    const el = html.parents('.damage-tracker');
-    for (let i = 0; i <= 4; i++) {
-      if (damage <= i) {
-        el.addClass(`damage-tracker-${i}`);
-      } else {
-        el.removeClass(`damage-tracker-${i}`);
-      }
-    }
-  }
-
-  _perilSheet(html) {
-    const peril = Number(this.actor.data.data.stats.secondaryAttributes.perilCurrent.value);
-    const el = html.find('.profile-image');
-    for (let i = peril; i <= 4; i++) {
-      el.addClass(`peril-tracker-${i}`);
-    }
   }
 
   async _onRollSkill(event, testType) {

@@ -69,4 +69,30 @@ export default class ZweihanderBaseActorSheet extends ActorSheet {
     );
   }
 
+  activateListeners(html) {
+    super.activateListeners(html);
+    this._damageSheet(html);
+    this._perilSheet(html);
+  }
+
+  _damageSheet(html) {
+    const damage = Number(this.actor.data.data.stats.secondaryAttributes.damageCurrent.value);
+    const el = html.parents('.damage-tracker');
+    for (let i = 0; i <= 4; i++) {
+      if (damage <= i) {
+        el.addClass(`damage-tracker-${i}`);
+      } else {
+        el.removeClass(`damage-tracker-${i}`);
+      }
+    }
+  }
+
+  _perilSheet(html) {
+    const peril = Number(this.actor.data.data.stats.secondaryAttributes.perilCurrent.value);
+    const el = html.find('.peril-tracker');
+    for (let i = peril; i <= 4; i++) {
+      el.addClass(`peril-tracker-${i}`);
+    }
+  }
+
 }

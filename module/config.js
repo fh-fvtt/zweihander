@@ -14,9 +14,23 @@ ZWEI.testTypes = {
     "dodge": "dodge",
     "weapon": "weapon"
 };
-ZWEI.rankOptions = { 1: "1", 2: "2", 3: "3", 4: "4", 5: "5", 6: "6", 7: "7", 8: "8", 9: "9" };
-ZWEI.perilOptions = { 5: "Unhindered", 4: "Imperiled", 3: "Ignore 1 Skill Rank", 2: "Ignore 2 Skill Ranks", 1: "Ignore 3 Skill Ranks", 0: "INCAPACITATED!" };
-ZWEI.damageOptions = { 5: "Unharmed", 4: "Lightly Wounded", 3: "Moderately Wounded", 2: "Seriously Wounded", 1: "Grievously Wounded", 0: "SLAIN!" };
+ZWEI.alignmentRanks = 9;
+ZWEI.perilOptions = [
+    "INCAPACITATED!",
+    "Ignore 3 Skill Ranks",
+    "Ignore 2 Skill Ranks",
+    "Ignore 1 Skill Rank",
+    "Imperiled",
+    "Unhindered"
+];
+ZWEI.damageOptions = [
+    "SLAIN!",
+    "Grievously Wounded",
+    "Seriously Wounded",
+    "Moderately Wounded",
+    "Lightly Wounded",
+    "Unharmed"
+];
 ZWEI.tiers = {
     1: "Basic",
     2: "Intermediate",

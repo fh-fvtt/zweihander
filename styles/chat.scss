@@ -1,19 +1,19 @@
 body.game.vtt.system-zweihander {
   .app#sidebar {
-    background: var(--zx-clr-bg0);
+    background: var(--zh-clr-bg0);
     #sidebar-tabs {
       box-shadow: none;
       border: none;
       a {
         border-color: transparent;
-        color: var(--zx-clr-fg0);
+        color: var(--zh-clr-fg0);
         &.active,
         &.active:hover {
           border-color: transparent;
-          color: var(--zx-clr-aqua);
+          color: var(--zh-clr-aqua);
         }
         &:hover {
-          color: var(--zx-clr-yellow);
+          color: var(--zh-clr-yellow);
         }
         &.item:active,
         &.item:hover,
@@ -26,11 +26,11 @@ body.game.vtt.system-zweihander {
     }
   }
   .chat-message.zweihander-chat-message {
-    background: var(--zx-clr-bg1);
-    border-color: var(--zx-clr-bg2);
-    color: var(--zx-clr-fg0);
+    background: var(--zh-clr-bg1);
+    border-color: var(--zh-clr-bg2);
+    color: var(--zh-clr-fg0);
     header.message-header {
-      color: var(--zx-clr-fg2);
+      color: var(--zh-clr-fg2);
       position: relative;
       .message-metadata {
         position: relative;
@@ -46,7 +46,7 @@ body.game.vtt.system-zweihander {
       }
       a.button.message-delete {
         &:hover {
-          color: var(--zx-clr-red);
+          color: var(--zh-clr-red);
         }
         position: absolute;
         right: 0;
@@ -59,55 +59,55 @@ body.game.vtt.system-zweihander {
         width: 50px;
         object-fit: cover;
         margin: 0 5px 5px 0;
-        border: 2px solid var(--zx-clr-bg2);
+        border: 2px solid var(--zh-clr-bg2);
         border-radius: 50%;
       }
       h4.message-sender {
         padding-top: 15px;
         font-size: 18px;
-        color: var(--zx-clr-fg0);
+        color: var(--zh-clr-fg0);
         line-height: 18px;
       }
     }
 
     &.whisper {
-      background: var(--zx-clr-blue-alt);
-      background: var(--zx-clr-bg1);
-      border-color: var(--zx-clr-blue);
+      background: var(--zh-clr-blue-alt);
+      background: var(--zh-clr-bg1);
+      border-color: var(--zh-clr-blue);
       header.message-header img.chat-profile-image {
-        border-color: var(--zx-clr-blue);
+        border-color: var(--zh-clr-blue);
       }
     }
     &.blind {
-      background: var(--zx-clr-red-alt);
-      background: var(--zx-clr-bg2);
-      border-color: var(--zx-clr-red);
+      background: var(--zh-clr-red-alt);
+      background: var(--zh-clr-bg2);
+      border-color: var(--zh-clr-red);
       header.message-header img.chat-profile-image {
-        border-color: var(--zx-clr-red);
+        border-color: var(--zh-clr-red);
       }
     }
 
     a:hover {
       text-shadow: none;
-      color: var(--zx-clr-aqua);
+      color: var(--zh-clr-aqua);
     }
 
     a.entity-link,
     a.content-link,
     a.inline-roll {
       i {
-        color: var(--zx-clr-aqua);
+        color: var(--zh-clr-aqua);
       }
-      background: var(--zx-clr-bg3);
-      border-color: var(--zx-clr-aqua);
+      background: var(--zh-clr-bg3);
+      border-color: var(--zh-clr-aqua);
       border-radius: 3px;
       &:hover,
       &:focus,
       &:active {
-        border-color: var(--zx-clr-yellow);
-        color: var(--zx-clr-fg0);
+        border-color: var(--zh-clr-yellow);
+        color: var(--zh-clr-fg0);
         i {
-          color: var(--zx-clr-yellow);
+          color: var(--zh-clr-yellow);
         }
       }
     }
@@ -115,40 +115,40 @@ body.game.vtt.system-zweihander {
     .dice-roll {
       .dice-formula,
       .dice-total {
-        background: var(--zx-clr-bg0);
-        border: 2px solid var(--zx-clr-bg2);
+        background: var(--zh-clr-bg0);
+        border: 2px solid var(--zh-clr-bg2);
         box-shadow: none;
-        color: var(--zx-clr-fg0);
+        color: var(--zh-clr-fg0);
       }
       .dice-total {
         &.outcome-0 {
-          background-color: var(--zx-clr-red-alt);
+          background-color: var(--zh-clr-red-alt);
         }
         &.outcome-1 {
-          background-color: var(--zx-clr-orange-alt);
+          background-color: var(--zh-clr-orange-alt);
         }
         &.outcome-2 {
-          background-color: var(--zx-clr-aqua-alt);
+          background-color: var(--zh-clr-aqua-alt);
         }
         &.outcome-3 {
-          background-color: var(--zx-clr-green-alt);
+          background-color: var(--zh-clr-green-alt);
         }
       }
       .dice-tooltip {
         .part-header,
         .part-total {
-          border-color: var(--zx-clr-fg2);
+          border-color: var(--zh-clr-fg2);
         }
         .dice-rolls {
           .roll {
-            background: var(--zx-clr-fg1);
-            color: var(--zx-clr-bg0);
+            background: var(--zh-clr-fg1);
+            color: var(--zh-clr-bg0);
             mask-mode: luminance;
             // -webkit-mask-position-y: 5px;
             mask-repeat: no-repeat;
             mask-size: cover;
             mask-image: url(/icons/svg/d6-grey.svg);
-            // background: var(--zx-clr-fg0);
+            // background: var(--zh-clr-fg0);
             &.d10 {
               mask-image: url(/icons/svg/d10-grey.svg);
             }
@@ -160,9 +160,9 @@ body.game.vtt.system-zweihander {
             }
             &.exploded {
               &:before {
-                color: var(--zx-clr-yellow);
+                color: var(--zh-clr-yellow);
               }
-              background: var(--zx-clr-red);
+              background: var(--zh-clr-red);
             }
           }
         }
@@ -170,7 +170,7 @@ body.game.vtt.system-zweihander {
     }
     .skill-test-controls {
       margin-top: 5px;
-      background-color: var(--zx-clr-bg2);
+      background-color: var(--zh-clr-bg2);
       border: none;
       border-radius: 5px;
       button {
@@ -185,11 +185,11 @@ body.game.vtt.system-zweihander {
         &:hover,
         &:active,
         &:focus {
-          background-color: var(--zx-clr-bg3);
-          border-color: var(--zx-clr-bg4);
+          background-color: var(--zh-clr-bg3);
+          border-color: var(--zh-clr-bg4);
           box-shadow: none;
           i {
-            color: var(--zx-clr-yellow);
+            color: var(--zh-clr-yellow);
           }
         }
       }
@@ -197,10 +197,10 @@ body.game.vtt.system-zweihander {
     .skill-test-title {
       border: none;
       text-align: left;
-      color: var(--zx-clr-yellow);
+      color: var(--zh-clr-yellow);
     }
     .skill-test-detail {
-      color: var(--zx-clr-fg2);
+      color: var(--zh-clr-fg2);
     }
     .pill-container {
       text-align: left;
@@ -210,13 +210,13 @@ body.game.vtt.system-zweihander {
         padding: 2px 5px;
         margin: 2px 1px;
         font-size: 10px;
-        color: var(--zx-clr-bg0);
+        color: var(--zh-clr-bg0);
         border: 1px solid transparent;
         border-radius: 50rem;
-        background-color: var(--zx-clr-fg3);
+        background-color: var(--zh-clr-fg3);
         &.pill-title {
           background-color: transparent;
-          color: var(--zx-clr-aqua);
+          color: var(--zh-clr-aqua);
           padding: 2px 0;
           font-size: 12px;
         }
@@ -224,45 +224,45 @@ body.game.vtt.system-zweihander {
           cursor: pointer;
         }
         &.quality-link:hover {
-          background-color: var(--zx-clr-yellow);
+          background-color: var(--zh-clr-yellow);
         }
         &.pill-flip-fail,
         &.pill-difficulty--30 {
-          background-color: var(--zx-clr-red);
+          background-color: var(--zh-clr-red);
         }
         &.pill-misfortune,
         &.pill-difficulty--20 {
-          background-color: var(--zx-clr-orange);
+          background-color: var(--zh-clr-orange);
         }
         &.pill-difficulty--10 {
-          background-color: var(--zx-clr-yellow);
+          background-color: var(--zh-clr-yellow);
         }
         &.pill-roll-mode {
-          background-color: var(--zx-clr-purple);
+          background-color: var(--zh-clr-purple);
         }
         &.pill-difficulty-10 {
-          background-color: var(--zx-clr-blue);
+          background-color: var(--zh-clr-blue);
         }
         &.pill-fortune,
         &.pill-difficulty-20 {
-          background-color: var(--zx-clr-aqua);
+          background-color: var(--zh-clr-aqua);
         }
         &.pill-flip-succeed,
         &.pill-difficulty-30 {
-          background-color: var(--zx-clr-green);
+          background-color: var(--zh-clr-green);
         }
       }
     }
     .item-card {
       .item-card-title {
-        color: var(--zx-clr-yellow);
-        border-bottom: 2px solid var(--zx-clr-bg2);
+        color: var(--zh-clr-yellow);
+        border-bottom: 2px solid var(--zh-clr-bg2);
       }
       .item-card-description {
         font-style: italic;
         font-size: 12px;
         text-align: justify;
-        color: var(--zx-clr-fg1);
+        color: var(--zh-clr-fg1);
       }
       .item-card-effect {
         font-size: 13px;
@@ -270,7 +270,7 @@ body.game.vtt.system-zweihander {
       }
       .item-card-effect::before {
         content: attr(data-effect-label) ": ";
-        color: var(--zx-clr-aqua);
+        color: var(--zh-clr-aqua);
         font-weight: bold;
       }
     }
@@ -311,55 +311,55 @@ body.game.vtt.system-zweihander {
       }
       &.zh-collapsed::before {
         content: attr(data-expand-title);
-        color: var(--zx-clr-aqua);
+        color: var(--zh-clr-aqua);
         text-align: center;
         display: block;
         width: 100%;
       }
       &.zh-collapsed:hover::before {
-        color: var(--zx-clr-yellow);
+        color: var(--zh-clr-yellow);
       }
       &.zh-collapsed * {
         display: none !important;
       }
     }
     dl {
-      background-color: var(--zx-clr-bg2);
+      background-color: var(--zh-clr-bg2);
       padding: 5px;
       border-radius: 5px;
       font-size: 13px;
       dt {
-        color: var(--zx-clr-aqua);
+        color: var(--zh-clr-aqua);
       }
       dt::after {
         content: ":";
       }
     }
     hr {
-      border: 2px solid var(--zx-clr-bg0);
+      border: 2px solid var(--zh-clr-bg0);
       border-radius: 2px;
     }
     .additional-outcome-info {
       display: block;
       padding: 2px;
-      background-color: var(--zx-clr-bg2);
+      background-color: var(--zh-clr-bg2);
       border-radius: 5px;
-      border: 2px solid var(--zx-clr-bg3);
+      border: 2px solid var(--zh-clr-bg3);
       margin-top: 5px;
       text-align: center;
       &.chaos-manifestation {
-        background-color: var(--zx-clr-red-alt);
-        border-color: var(--zx-clr-red);
+        background-color: var(--zh-clr-red-alt);
+        border-color: var(--zh-clr-red);
       }
     }
   }
 
   #chat-controls {
-    border-top: 5px solid var(--zx-clr-bg0);
-    color: var(--zx-clr-fg0);
+    border-top: 5px solid var(--zh-clr-bg0);
+    color: var(--zh-clr-fg0);
     a:hover {
       text-shadow: none;
-      color: var(--zx-clr-aqua);
+      color: var(--zh-clr-aqua);
     }
     .roll-type-select {
       &:hover,
@@ -367,8 +367,8 @@ body.game.vtt.system-zweihander {
       &:active {
         box-shadow: none;
       }
-      background-color: var(--zx-clr-bg1);
-      color: var(--zx-clr-fg0);
+      background-color: var(--zh-clr-bg1);
+      color: var(--zh-clr-fg0);
       border: none;
     }
   }
@@ -378,13 +378,13 @@ body.game.vtt.system-zweihander {
     &:focus,
     &:hover {
       box-shadow: none;
-      border-color: var(--zx-clr-bg2);
+      border-color: var(--zh-clr-bg2);
     }
     font-family: "JetBrains Mono", var(--font-mono);
     font-size: 12px;
-    background: var(--zx-clr-bg0);
-    border-color: var(--zx-clr-bg1);
+    background: var(--zh-clr-bg0);
+    border-color: var(--zh-clr-bg1);
     border-width: 2px;
-    color: var(--zx-clr-fg0);
+    color: var(--zh-clr-fg0);
   }
 }

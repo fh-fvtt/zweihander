@@ -1,4 +1,5 @@
-body.game.vtt.system-zweihander .zweihander.sheet.character {
+body.game.vtt.system-zweihander .zweihander.sheet.character,
+body.game.vtt.system-zweihander .zweihander.sheet.npc  {
   max-height: 1190px;
   max-width: 1190px;
 
@@ -21,8 +22,8 @@ body.game.vtt.system-zweihander .zweihander.sheet.character {
   }
 
   .sheet-body h4.block-title {
-    color: var(--zx-clr-fg0);
-    font-family: var(--zx-font-title);
+    color: var(--zh-clr-fg0);
+    font-family: var(--zh-font-title);
     font-size: 14px !important;
     font-size: 18px;
     font-weight: 400;
@@ -37,7 +38,7 @@ body.game.vtt.system-zweihander .zweihander.sheet.character {
   .tab {
     padding: 10px 5px 5px 5px;
     .items-list {
-      color: var(--zx-clr-fg1);
+      color: var(--zh-clr-fg1);
       list-style: none;
       margin: 0;
       overflow-y: auto;
@@ -50,8 +51,8 @@ body.game.vtt.system-zweihander .zweihander.sheet.character {
 
       .items-header {
         align-items: center;
-        background: var(--zx-clr-bg1);
-        border: 2px groove var(--zx-clr-bg2);
+        background: var(--zh-clr-bg1);
+        border: 2px groove var(--zh-clr-bg2);
         font-weight: bold;
         height: 28px;
         margin: 2px 0;
@@ -62,7 +63,7 @@ body.game.vtt.system-zweihander .zweihander.sheet.character {
         }
 
         h3.item-name {
-          font-family: var(--zx-font-title);
+          font-family: var(--zh-font-title);
           font-size: 12px;
           padding-left: 10px;
           text-align: left;
@@ -70,9 +71,9 @@ body.game.vtt.system-zweihander .zweihander.sheet.character {
         }
 
         .item-detail {
-          border-right: 1px solid var(--zx-clr-bg2);
+          border-right: 1px solid var(--zh-clr-bg2);
           &:nth-child(2) {
-            border-left: 1px solid var(--zx-clr-bg2);
+            border-left: 1px solid var(--zh-clr-bg2);
           }
           &:nth-last-child(1) {
             border: none;
@@ -96,28 +97,28 @@ body.game.vtt.system-zweihander .zweihander.sheet.character {
           &:hover {
             .item-image {
               &.item-image-icon {
-                background-color: var(--zx-clr-yellow) !important;
+                background-color: var(--zh-clr-yellow) !important;
                 mask-image: url("../../icons/svg/d10-grey.svg") !important;
               }
               &.item-image-picture {
-                border-color: var(--zx-clr-yellow);
+                border-color: var(--zh-clr-yellow);
               }
             }
           }
           .item-image:hover {
             &.item-image-icon {
-              background-color: var(--zx-clr-aqua) !important;
+              background-color: var(--zh-clr-aqua) !important;
               mask-image: url("../../icons/svg/d10-grey.svg") !important;
             }
             &.item-image-picture {
-              border-color: var(--zx-clr-aqua) !important;
+              border-color: var(--zh-clr-aqua) !important;
             }
           }
         }
       }
 
       .item-detail {
-        border-right: 1px solid var(--zx-clr-bg1);
+        border-right: 1px solid var(--zh-clr-bg1);
         flex: 0 0 70px;
         font-size: 12px;
         overflow: hidden;
@@ -127,7 +128,7 @@ body.game.vtt.system-zweihander .zweihander.sheet.character {
         padding: 0 2ch;
         text-overflow: ellipsis;
         &:nth-child(2) {
-          border-left: 1px solid var(--zx-clr-bg1);
+          border-left: 1px solid var(--zh-clr-bg1);
         }
         &:nth-last-child(1) {
           border: none;
@@ -139,7 +140,7 @@ body.game.vtt.system-zweihander .zweihander.sheet.character {
         a.item-control {
           &.item-no-delete {
             &, &:hover {
-              color: var(--zx-clr-bg2);
+              color: var(--zh-clr-bg2);
               text-shadow: none;
               cursor:not-allowed;
             }
@@ -154,7 +155,7 @@ body.game.vtt.system-zweihander .zweihander.sheet.character {
         height: 30px;
         margin-right: 5px;
         &.item-image-icon {
-          background-color: var(--zx-clr-fg2);
+          background-color: var(--zh-clr-fg2);
           mask-mode: luminance;
           // -webkit-mask-position-y: 5px;
           mask-repeat: no-repeat;
@@ -175,26 +176,26 @@ body.game.vtt.system-zweihander .zweihander.sheet.character {
       }
       .item {
         align-items: center;
-        border-bottom: 1px solid var(--zx-clr-bg1);
+        border-bottom: 1px solid var(--zh-clr-bg1);
         padding: 0 2px;
         .item-name {
           cursor: pointer;
           &:hover {
-            color: var(--zx-clr-yellow);
+            color: var(--zh-clr-yellow);
             .item-image {
               &.item-image-icon {
-                background-color: var(--zx-clr-yellow-alt);
+                background-color: var(--zh-clr-yellow-alt);
               }
               &.item-image-picture {
-                border-color: var(--zx-clr-yellow-alt);
+                border-color: var(--zh-clr-yellow-alt);
               }
             }
           }
         }
       }
       .item-summary {
-        border-top: 1px solid var(--zx-clr-bg1);
-        color: var(--zx-clr-fg0);
+        border-top: 1px solid var(--zh-clr-bg1);
+        color: var(--zh-clr-fg0);
         display: none;
         flex: 0 0 100%;
         font-size: 12px;
@@ -204,19 +205,19 @@ body.game.vtt.system-zweihander .zweihander.sheet.character {
           display: block;
         }
         label {
-          color: var(--zx-clr-fg3);
+          color: var(--zh-clr-fg3);
         }
         a.not-purchased {
-          color: var(--zx-clr-red);
+          color: var(--zh-clr-red);
           &:hover {
-            color: var(--zx-clr-purple);
+            color: var(--zh-clr-purple);
             text-shadow: none;
           }
         }
         a.purchased {
-          color: var(--zx-clr-aqua);
+          color: var(--zh-clr-aqua);
           &:hover {
-            color: var(--zx-clr-yellow);
+            color: var(--zh-clr-yellow);
             text-shadow: none;
           }
         }
@@ -269,7 +270,7 @@ body.game.vtt.system-zweihander .zweihander.sheet.character {
     // overflow-y: auto;
 
     & > div {
-      border: 2px groove var(--zx-clr-bg2);
+      border: 2px groove var(--zh-clr-bg2);
       flex: 1 0 auto;
       height: calc(50% - 2ch - 8px);
       margin-bottom: 4px;
@@ -286,11 +287,11 @@ body.game.vtt.system-zweihander .zweihander.sheet.character {
 
   .tab.magick {
     .magick-skill-selector {
-      border-top: 2px groove var(--zx-clr-bg2);
+      border-top: 2px groove var(--zh-clr-bg2);
       flex: 0 0 32px;
       padding: 0 calc(50% - 150px);
       label {
-        color: var(--zx-clr-fg3);
+        color: var(--zh-clr-fg3);
         line-height: 28px;
         padding-right: 1ex;
         text-align: right;
@@ -300,7 +301,7 @@ body.game.vtt.system-zweihander .zweihander.sheet.character {
 
   .tab.trappings {
     .currency-container {
-      color: var(--zx-clr-fg3);
+      color: var(--zh-clr-fg3);
       flex: 0 0 32px;
       margin-bottom: 10px;
       padding: 0 calc(50% - 220px);
@@ -343,10 +344,10 @@ body.game.vtt.system-zweihander .zweihander.sheet.character {
       }
     }
     .encumbrance-bar-container {
-      background: var(--zx-clr-fg2);
-      border: 1px solid var(--zx-clr-bg1);
+      background: var(--zh-clr-fg2);
+      border: 1px solid var(--zh-clr-bg1);
       border-radius: 1ch;
-      color: var(--zx-clr-bg0);
+      color: var(--zh-clr-bg0);
       flex: 0 0 18px;
       margin: 1px 15px 0 1px;
       overflow: hidden;
@@ -363,8 +364,8 @@ body.game.vtt.system-zweihander .zweihander.sheet.character {
         width: 100%;
       }
       .encumbrance-bar {
-        background: var(--zx-clr-aqua);
-        border: 1px solid var(--zx-clr-aqua);
+        background: var(--zh-clr-aqua);
+        border: 1px solid var(--zh-clr-aqua);
         border-radius: 1ch;
         height: 16px;
         left: 0px;
@@ -378,14 +379,14 @@ body.game.vtt.system-zweihander .zweihander.sheet.character {
       }
       &.encumbrance-overage {
         .encumbrance-bar {
-          background: var(--zx-clr-red-alt);
-          border-color: var(--zx-clr-orange);
+          background: var(--zh-clr-red-alt);
+          border-color: var(--zh-clr-orange);
         }
         .encumbrance-label {
-          color: var(--zx-clr-fg2);
+          color: var(--zh-clr-fg2);
         }
         .overage-display {
-          color: var(--zx-clr-fg0);
+          color: var(--zh-clr-fg0);
           display: inline;
         }
       }
@@ -433,11 +434,15 @@ body.game.vtt.system-zweihander .zweihander.sheet.character {
   & > section.window-content > form::before {
     height: 500px;
     width: 500px;
-    left: -20px;
-    top: -10px;
+    left: -130px;
+    top: -140px;
     background-image: resolve("bloodstains.png");
     background-size: 500px 500px;
     transform: rotate(93deg) scale(0.5);
+  }
+  &.character-sheet {
+    left: -20px;
+    top: -10px;
   }
   &.damage-tracker-3 > section.window-content > form::before {
     opacity: 0.5;

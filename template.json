@@ -155,7 +155,29 @@
       }
     },
     "creature": {
-      
+      "templates": [
+        "stats",
+        "flavor",
+        "coinage"
+      ],
+      "details": {
+        "classification": {
+          "value": ""
+        },
+        "size": {
+          "value": 0
+        },
+        "riskFactor": {
+          "value": 0,
+          "notch": 0
+        },
+        "role": {
+          "value": ""
+        },
+        "influences": {
+          "value": ""
+        }
+      }
     },
     "npc": {
       "templates": [

@@ -53,6 +53,7 @@ Hooks.once("ready", function () {
       game.messages.get(messageId).update(diffData);
     })
   });
+  game.actors.getName('Creature').sheet.render(true);
 })
 
 Hooks.once("diceSoNiceReady", function () {
@@ -178,16 +179,31 @@ Hooks.once("init", async function () {
 
 Hooks.on("renderActorSheet", (app, html, data) => {
   //TODO: refactor into actor config class
-  html.find(".header-button.configure-sheet").before(`
-  <a class="configure-actor">
-  <i class="fas fa-user-cog"></i>
-  Actor
-  </a>
-  `);
-
-  html.find(".configure-actor").click(() => {
-    new ZweihanderActorConfig(app.object).render(true);
-  })
+  if (data.actor.type === 'character') {
+    html.find(".header-button.configure-sheet").before(`
+    <a class="configure-actor">
+    <i class="fas fa-user-cog"></i>
+    Actor
+    </a>
+    `);
+    html.find(".configure-actor").click(() => {
+      new ZweihanderActorConfig(app.object).render(true);
+    })
+  } else {
+    html.find(".header-button.configure-sheet").before(`
+    <a class="hide-background">
+    <i class="hide-background-toggle fas fa-toggle-off"></i>
+    Compact
+    </a>
+    `);
+    html.find(".hide-background").click((event) => {
+      const sheet = $(event.currentTarget).parents('.sheet');
+      sheet.toggleClass('zweihander-compact-sheet');
+      $(event.currentTarget).find('.hide-background-toggle')
+        .toggleClass('fa-toggle-on')
+        .toggleClass('fa-toggle-off');
+    })
+  }
 });
 
 Hooks.on("renderChatMessage", ZweihanderChat.addLocalChatListeners);

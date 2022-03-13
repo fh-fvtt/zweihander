@@ -107,8 +107,8 @@ export default class ZweihanderBaseItem {
   }
 
   static async removeLinkedItems(actor, array) {
-    const linkedIds = array?.filter(v => v);
-    if (linkedIds.length) {
+    const linkedIds = array?.filter?.(v => v);
+    if (linkedIds?.length) {
       await actor.deleteEmbeddedDocuments("Item", linkedIds);
     }
   }

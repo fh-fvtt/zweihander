@@ -1,0 +1,71 @@
+<form class="editable sheet-grid flexcol" autocomplete="off">
+  {{!-- {{> ($$ "creature/header") }} --}}
+  <header>
+    <figure class="actor-image">
+      <img class="peril-tracker" src="{{actor.img}}" title="{{actor.name}}" data-edit="img" />
+    </figure>
+    <h1 class="actor-name">
+      <input name="name" type="text" value="{{actor.name}}" placeholder="NPC Name">
+    </h1>
+    <section class="actor-resources">
+      <section class="peril-ladder">
+        {{radioThresholds "data.stats.secondaryAttributes.perilCurrent.value" config.perilOptions
+        checked=data.stats.secondaryAttributes.perilCurrent.value}}
+      </section>
+      <section class="damage-ladder">
+        {{radioThresholds "data.stats.secondaryAttributes.damageCurrent.value" config.damageOptions
+        checked=data.stats.secondaryAttributes.damageCurrent.value}}
+      </section>
+    </section>
+  </header>
+  <aside class="details">
+    <ul>
+      <li>
+        <input type="text" class="auto-size" name="data.details.classification.value" placeholder="Classification"
+          value="{{data.details.classification.value}}" />
+      </li>
+      <li>
+        <input type="text" class="auto-size" name="data.details.size.value" placeholder="Size"
+          value="{{data.details.size.value}}" />
+      </li>
+      <li>
+        <input type="text" class="auto-size" name="data.details.riskFactor.value" placeholder="Risk Factor"
+          value="{{data.details.riskFactor.value}}" />
+      </li>
+      <li>
+        <input type="text" class="auto-size" name="data.details.role.value" placeholder="Role"
+          value="{{data.details.role.value}}" />
+      </li>
+      <li class="influences">
+        <input type="text" class="auto-size" name="data.details.influences.value" placeholder="Influences"
+          value="{{data.details.influences.value}}" />
+      </li>
+    </ul>
+  </aside>
+  <section class="sheet-body">
+    <section class="stats">
+      <h1>Attributes</h1>
+
+    </section>
+
+    <section class="skills">
+
+    </section>
+    <section class="attack-profiles">
+
+    </section>
+    <section class="rules">
+
+    </section>
+
+    <section class="loot">
+
+    </section>
+    <aside class="description">
+
+      <textarea spellcheck="false" name="data.flavor.description"
+        placeholder="Description">{{data.flavor.description}}</textarea>
+
+    </aside>
+  </section>
+</form>

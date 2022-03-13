@@ -1,0 +1,73 @@
+body.game.vtt.system-zweihander .zweihander.sheet.npc {
+  max-height: 1200px;
+  max-width: 1200px;
+
+  // sheet dimensions
+  min-height: 650px;
+  min-width: 500px;
+
+
+  &.no-background .actor-sheet-header {
+    .npc-image-container {
+      display: none;
+    }
+    .header-details {
+      height: auto;
+      > ul {
+        display: none;
+      }
+    }
+  }
+
+  .actor-sheet-header {
+    flex: 0 0 auto;
+
+    .npc-image-container {
+      float: left;
+      height: 100%;
+      display: flex;
+      justify-content: center;
+      flex-direction: column;
+      align-items: center;
+      border-right: 2px groove var(--zh-clr-bg2);
+      .profile-image {
+        flex: 0 0 0;
+        height: 150px;
+      }
+    }
+    .header-details {
+      min-height: 150px;
+      justify-content: flex-end;
+      width: auto;
+      .summary {
+        margin: 0;
+        padding: 0;
+        li {
+          margin: 0;
+          flex: 1 1 auto !important;
+          border: 2px groove var(--zh-clr-bg2);
+          height: auto;
+          width: initial;
+          input {
+            width: 100%;
+          }
+        }
+        flex: 0 0 auto;
+        height: auto;
+      }
+    }
+    h1.charname {
+      flex: 0 0 auto;
+      height: 31px;
+      border: none;
+      input {
+        height: 26px;
+        font-size: 18px;
+        line-height: 28px;
+        margin: 2px 5px;
+        width: calc(100% - 10px);
+        text-shadow: 2px 2px 2px var(--zh-clr-bg3);
+      }
+    }
+  }
+}

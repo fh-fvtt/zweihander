@@ -7,13 +7,13 @@
     margin: 0;
     padding: 0;
     font-size: 14px;
-    border: 2px groove var(--zx-clr-bg2);
+    border: 2px groove var(--zh-clr-bg2);
     border-radius: 3px;
     .pa {
       padding-top: 5px;
       flex: 1 0 72px;
       text-align: center;
-      border-bottom: 2px groove var(--zx-clr-bg2);
+      border-bottom: 2px groove var(--zh-clr-bg2);
       position: relative;
       display: flex;
       justify-content: center;
@@ -35,7 +35,7 @@
       }
       &.pa-hover-helper {
         h4.block-title, .pa-icon {
-          color: var(--zx-clr-yellow);
+          color: var(--zh-clr-yellow);
           transition: color 350ms ease-out;
         }
       }
@@ -47,7 +47,7 @@
         flex: 0 0 10px;
         padding-top: 4px;
         font-size: 16px;
-        color: var(--zx-clr-fg4);
+        color: var(--zh-clr-fg4);
       }
       .pa-bonus {
         font-size: 18px;
@@ -61,14 +61,14 @@
       list-style: none;
       margin: 0 5px 0;
       padding: 0px 0 0px;
-      border: 2px groove var(--zx-clr-bg2);
+      border: 2px groove var(--zh-clr-bg2);
       border-radius: 3px;
       flex: 1 0 480px;
       .skill {
         padding: 3px;
         height: 24px;
         &:nth-child(even) {
-          background: var(--zx-clr-bg1);
+          background: var(--zh-clr-bg1);
         }
         .skill-roll {
           flex: 1 0 17ex;
@@ -80,21 +80,21 @@
         &:hover .skill-gain,
         &:hover .skill-roll,
         &:hover .skill-rank {
-          color: var(--zx-clr-yellow);
+          color: var(--zh-clr-yellow);
         }
         .skill-gain {
           flex: 0 0 4ex;
           margin-right: 1ex;
           text-align: right;
-          color: var(--zx-clr-fg3);
+          color: var(--zh-clr-fg3);
         }
         .controls {
           flex: 0 0 2ex;
           margin-top: -1px;
           visibility: hidden;
-          color: var(--zx-clr-fg4);
+          color: var(--zh-clr-fg4);
           &:hover {
-            color: var(--zx-clr-fg1);
+            color: var(--zh-clr-fg1);
           }
         }
         &:hover .controls {
@@ -105,29 +105,29 @@
   }
   .combat-container {
     flex: 0 0 380px;
-    border: 2px groove var(--zx-clr-bg2);
+    border: 2px groove var(--zh-clr-bg2);
     border-radius: 3px;
     .combat-stats {
       padding-top: 5px;
       flex: 0 0 70px;
-      border-bottom: 2px groove var(--zx-clr-bg2);
+      border-bottom: 2px groove var(--zh-clr-bg2);
     }
     .combat-reactions {
       padding-top: 5px;
       flex: 0 0 94px;
-      border-bottom: 2px groove var(--zx-clr-bg2);
+      border-bottom: 2px groove var(--zh-clr-bg2);
     }
     @keyframes spin2 {
       0% {
         transform: translate(-7px, -115px) scale(1.4) rotate(-14deg);
         filter: blur(0.2px);
-        color: var(--zx-clr-aqua-alt);
+        color: var(--zh-clr-aqua-alt);
       }
       15% {
-        color: var(--zx-clr-aqua);
+        color: var(--zh-clr-aqua);
       }
       35% {
-        color: var(--zx-clr-bg0);
+        color: var(--zh-clr-bg0);
       }
       40% {
         transform: translate(-7px, -115px) scale(2) rotate(0deg);
@@ -137,7 +137,7 @@
       50% {
         transform: translate(-7px, -115px) scale(4) rotate(0deg);
         filter: blur(0px);
-        color: var(--zx-clr-bg0);
+        color: var(--zh-clr-bg0);
       }
 
       60% {
@@ -152,7 +152,7 @@
         transform: translate(-7px, -115px) scale(1.8) rotate(-7deg);
       }
       80% {
-        color: var(--zx-clr-aqua);
+        color: var(--zh-clr-aqua);
         transform: translate(-7px, -115px) scale(1.4) rotate(-11deg);
       }
       83% {
@@ -161,55 +161,55 @@
       100% {
         transform: translate(-7px, -115px) scale(1.4) rotate(-14deg);
         filter: blur(0.2px);
-        color: var(--zx-clr-aqua-alt);
+        color: var(--zh-clr-aqua-alt);
       }
     }
     @keyframes color1 {
       10% {
-        color: var(--zx-clr-aqua-alt);
+        color: var(--zh-clr-aqua-alt);
       }
       15% {
-        color: var(--zx-clr-bg2);
+        color: var(--zh-clr-bg2);
       }
       35% {
-        color: var(--zx-clr-fg0);
+        color: var(--zh-clr-fg0);
 
       }
       50% {
-        color: var(--zx-clr-red);
+        color: var(--zh-clr-red);
 
       }
       60% {
-        color: var(--zx-clr-red);
+        color: var(--zh-clr-red);
 
       }
       76% {
-        color: var(--zx-clr-aqua);
+        color: var(--zh-clr-aqua);
 
       }
       100% {
-        color: var(--zx-clr-aqua-alt);
+        color: var(--zh-clr-aqua-alt);
 
       }
     }
     @keyframes color2 {
       0% {
-        background: var(--zx-clr-aqua);
+        background: var(--zh-clr-aqua);
       }
       15% {
-        background: var(--zx-clr-aqua);
+        background: var(--zh-clr-aqua);
       }
       35% {
-        background: var(--zx-clr-bg0);
+        background: var(--zh-clr-bg0);
       }
       50% {
-        background: var(--zx-clr-bg0);
+        background: var(--zh-clr-bg0);
       }
       75% {
-        background: var(--zx-clr-aqua);
+        background: var(--zh-clr-aqua);
       }
       100% {
-        background: var(--zx-clr-aqua);
+        background: var(--zh-clr-aqua);
       }
     }
     @keyframes opacity1 {
@@ -231,23 +231,23 @@
     }
     @keyframes pulsetext {
       0% {
-        color:var(--zx-clr-aqua-alt);
+        color:var(--zh-clr-aqua-alt);
         transform: scale(1.25);
       }
       50% {
-        color:var(--zx-clr-bg0);
+        color:var(--zh-clr-bg0);
         transform: scale(1.3);
       }
       100% {
-        color:var(--zx-clr-aqua-alt);
+        color:var(--zh-clr-aqua-alt);
         transform: scale(1.25);
       }
     }
     .peril-rolls {
       flex: 1 0 50px;
-      font-family: var(--zx-font-title);
+      font-family: var(--zh-font-title);
       font-size: 14px;
-      border-bottom: 2px groove var(--zx-clr-bg2);
+      border-bottom: 2px groove var(--zh-clr-bg2);
       justify-content: space-evenly;
       & > div {
         flex: 0;
@@ -255,33 +255,33 @@
         align-items: center;
         justify-content: center;
         /* &.fear {
-          border-right: 2px groove var(--zx-clr-bg2);
-          border-left: 2px groove var(--zx-clr-bg2);
+          border-right: 2px groove var(--zh-clr-bg2);
+          border-left: 2px groove var(--zh-clr-bg2);
         } */
         & a.image-container {
           mask-size: contain;
           mask-repeat: no-repeat;
           mask-position: center;
-          background-color: var(--zx-clr-aqua);
+          background-color: var(--zh-clr-aqua);
           width: 28px; 
           height: 28px;
           min-height: 28px;
           &.stress {
             mask-image: url('../zweihander/assets/icons/paranoia.svg');
             &:hover {
-              background-color: var(--zx-clr-yellow);
+              background-color: var(--zh-clr-yellow);
             }
           }
           &.fear {
             mask-image: url('../zweihander/assets/icons/surprised.svg');
             &:hover {
-              background-color: var(--zx-clr-orange);
+              background-color: var(--zh-clr-orange);
             }
           }
           &.terror {
             mask-image: url('../zweihander/assets/icons/screaming.svg');
             &:hover {
-              background-color: var(--zx-clr-red);
+              background-color: var(--zh-clr-red);
             }
           }
         }
@@ -292,14 +292,14 @@
       }
     }
     .combat-spacer {
-      background: var(--zx-clr-aqua);
+      background: var(--zh-clr-aqua);
       overflow: hidden;
-      color: var(--zx-clr-aqua-alt);
-      font-family: var(--zx-font-title);
+      color: var(--zh-clr-aqua-alt);
+      font-family: var(--zh-font-title);
       font-size: 8px;
       text-transform: uppercase;
       flex: 1 0 50px;
-      border-bottom: 2px groove var(--zx-clr-bg2);
+      border-bottom: 2px groove var(--zh-clr-bg2);
       position: relative;
       &:hover {
         animation: color2 5s ease-in-out infinite;
@@ -317,7 +317,7 @@
         width: 376px;
         height:100%;
         position: absolute;
-        background: radial-gradient(ellipse 120% 65% at center, transparent, transparent 40%, var(--zx-clr-aqua) 66%);
+        background: radial-gradient(ellipse 120% 65% at center, transparent, transparent 40%, var(--zh-clr-aqua) 66%);
       }
       .combat-spacer-text {
         filter: blur(0.2px);
@@ -331,7 +331,7 @@
         .fancy-zweihander {
           animation: pulsetext 8s linear infinite both;
           display: inline-block;
-          color: var(--zx-clr-aqua-alt);
+          color: var(--zh-clr-aqua-alt);
           transform: scale(1.25);
           margin: 1ex 3ex;
         }
@@ -340,7 +340,7 @@
     .condition-thresholds {
       padding-top: 5px;
       flex: 0 0 120px;
-      border-bottom: 2px groove var(--zx-clr-bg2);
+      border-bottom: 2px groove var(--zh-clr-bg2);
 
       .peril,
       .damage {
@@ -353,8 +353,8 @@
         height: 72px;
         position: relative;
         top: -8px;
-        font-family: var(--zx-font-title);
-        color: var(--zx-clr-bg1);
+        font-family: var(--zh-font-title);
+        color: var(--zh-clr-bg1);
       }
       .values-derived {
         height: 72px;
@@ -367,7 +367,7 @@
       }
       .inline-formula {
         display: inline-block;
-        color: var(--zx-clr-fg3);
+        color: var(--zh-clr-fg3);
         text-align: right;
         width: 3.25ex;
         margin-right: 0.5ex;
@@ -380,7 +380,6 @@
         margin-bottom: 1.5ex;
       }
       .condition-tracker-list {
-        flex-flow: column-reverse;
         &.damage-list {
           .radio-and-status {
             text-align: left;
@@ -408,16 +407,16 @@
           text-align: center;
           z-index: 1000;
           &:hover {
-            color: var(--zx-clr-yellow);
+            color: var(--zh-clr-yellow);
             &::before {
               content: "x";
-              color: var(--zx-clr-yellow);
-              border-color: var(--zx-clr-yellow);
+              color: var(--zh-clr-yellow);
+              border-color: var(--zh-clr-yellow);
             }
           }
           &::before {
             line-height: 12px;
-            border: 1px solid var(--zx-clr-bg3);
+            border: 1px solid var(--zh-clr-bg3);
             border-radius: 50%;
             content: " ";
             display: block;
@@ -430,12 +429,12 @@
           }
         }
         &:checked + label {
-          color: var(--zx-clr-aqua);
+          color: var(--zh-clr-aqua);
           &::before {
             content: "x";
-            color: var(--zx-clr-bg0);
-            border: 1px solid var(--zx-clr-aqua-alt);
-            background: var(--zx-clr-aqua);
+            color: var(--zh-clr-bg0);
+            border: 1px solid var(--zh-clr-aqua-alt);
+            background: var(--zh-clr-aqua);
           }
         }
       }
@@ -449,24 +448,24 @@
         font-size: 28px;
         line-height: 24px;
         &.color-overage:not([data-overage="0"]) {
-          color: var(--zx-clr-red);
+          color: var(--zh-clr-red);
         }
       }
       .formula {
         line-height: 18px;
         margin-top: 0px;
         font-size: 12px;
-        color: var(--zx-clr-fg3);
+        color: var(--zh-clr-fg3);
       }
     }
     .dodge,
     .parry {
       margin: 0 5ex;
       .combat-icon {
-        color: var(--zx-clr-aqua);
+        color: var(--zh-clr-aqua);
         &:hover {
           text-shadow: none;
-          color: var(--zx-clr-yellow);
+          color: var(--zh-clr-yellow);
         }
       }
     }
