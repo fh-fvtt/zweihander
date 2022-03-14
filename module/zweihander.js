@@ -53,7 +53,7 @@ Hooks.once("ready", function () {
       game.messages.get(messageId).update(diffData);
     })
   });
-  game.actors.getName('Creature').sheet.render(true);
+  game.actors.getName('Dragon Orc')?.sheet?.render?.(true);
 })
 
 Hooks.once("diceSoNiceReady", function () {
