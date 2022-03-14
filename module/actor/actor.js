@@ -81,7 +81,7 @@ export default class ZweihanderActor extends Actor {
   }
 
   async createEmbeddedDocuments(embeddedName, data, context = {}) {
-    const enrichedData = await this.dispatch("createEmbeddedDocuments", { args: [embeddedName, data, context] });
+    const enrichedData = await this.dispatch("createEmbeddedDocuments", { args: [embeddedName, data, context], orElse: { value: data, async: true } });
     if (enrichedData) {
       return super.createEmbeddedDocuments(embeddedName, enrichedData, context)
     }

@@ -4,8 +4,17 @@ body.game.vtt.system-zweihander .zweihander.sheet.creature {
 
   max-height: 1200px;
   max-width: 1280px;
-  min-height: 740px;
+  min-height: 669px;
   min-width: 620px;
+
+  .window-content {
+    background-color: var(--zh-clr-bg0);
+    background-image: url('assets/creature-sheet-backdrop.webp?x=23dfs');
+    background-size: contain;
+    background-repeat: no-repeat;
+    background-position: right bottom;
+    background-blend-mode: multiply;
+  }
 
   form > header {
     border-bottom: var(--zh-structural-border);
@@ -139,10 +148,6 @@ body.game.vtt.system-zweihander .zweihander.sheet.creature {
       }
     }
   }
-  & > form > footer {
-    background-color: var(--zh-clr-bg2);
-    flex: 0 0 18px;
-  }
 
   aside.details {
     flex: 0 0 content;
@@ -203,16 +208,17 @@ body.game.vtt.system-zweihander .zweihander.sheet.creature {
   section.sheet-body {
     display: grid;
     grid-auto-flow: dense;
-    grid-auto-rows: minmax(100px, 1fr);
+    grid-auto-rows: minmax(50px, 1fr);
     grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
     overflow-y: hidden;
     scrollbar-gutter: stable both-edges;
     &:hover {
       overflow-y: auto;
     }
+    // tweaks to item list from @actor-base-sheet.scss
     .item-list li {
       height: 20px;
-      padding-bottom: 1px;
+      padding: 0 0 1px 0; // no idea why this is necessary, if something breaks, maybe look here...
       margin-bottom: 1px;
       &:last-child {
         border: none;
@@ -230,10 +236,9 @@ body.game.vtt.system-zweihander .zweihander.sheet.creature {
     }
 
     & > * {
-
       border: 2px groove var(--zh-clr-bg2);
       border-radius: 3px;
-      grid-row: span 3;
+      grid-row: span 6;
       margin: 5px;
       overflow: auto;
       h1 {
@@ -262,22 +267,121 @@ body.game.vtt.system-zweihander .zweihander.sheet.creature {
 
     section.stats {
       grid-column: span 2;
-      grid-row: span 2;
-
+      grid-row: span 3;
+      h1 {
+        flex: 0 0 24px;
+      }
+      ul.primary-attributes {
+        li.pa {
+          input {
+            flex: 1 0 0;
+            height: 20px;
+            margin: 0 auto;
+            line-height: 1;
+            font-size: 18px;
+            text-align: center;
+            padding: 0 0px;
+          }
+          .pa-bonus-container {
+            padding: 0 1px;
+          }
+          .pa-title, pa-icon {
+            transition: color 175ms ease-in;
+          }
+          &.pa-hover-helper {
+            .pa-title, .pa-icon {
+              color: var(--zh-clr-yellow);
+              transition: color 350ms ease-out;
+            }
+          }
+        }
+        .pa-display {
+          margin: 0 0px;
+          align-items: center;
+          .pa-icon {
+            flex: 0 0 10px;
+            padding-top: 4px;
+            font-size: 16px;
+            color: var(--zh-clr-fg4);
+          }
+          .pa-bonus, .pa-bonus-title {
+            font-size: 11px;
+          }
+        }
+        .pa-bonus-advances {
+          padding: 2px 15% 0 15%;
+          .pa-bonus-advance-substract,
+          .pa-bonus-advance-add {
+            height: 16px;
+            flex: 3 0 12px;
+            padding: 0;
+            text-align: center;
+            line-height: 1;
+            font-size: 14px;
+          }
+          .pa-bonus-advance-counter {
+            flex: 0 0 16px;
+          }
+        }
+      }
+      ul.secondary-attributes, ul.primary-attributes {
+        flex: 11;
+        list-style: none;
+        margin: 0;
+        padding: 0;
+        font-size: 12px;
+        li {
+          padding: 2px 0 5px 0;
+          flex: 1 0 0;
+          text-align: center;
+          border: 2px groove var(--zh-clr-bg2);
+          border-style: none groove groove none;
+          position: relative;
+          display: flex;
+          justify-content: center;
+          flex-direction: column;
+          width: 100%;
+          &:last-of-type {
+            border-right: none;
+          }
+          .pa-title, .sa-title {
+            color: var(--zh-clr-fg1);
+            font-size: 9px;
+            font-family: var(--zh-font-title);
+            text-transform: uppercase;
+          }
+        }
+      }
+      ul.secondary-attributes {
+        flex: 6;
+        li {
+          border-bottom: none;
+          justify-content: space-evenly;
+          padding: 0;
+          .sa-value {
+            font-size: 18px;
+            .sa-ladder {
+              padding-left: 5px;
+              font-size: 12px;
+              color: var(--zh-clr-fg3);
+            }
+          }
+        }
+      }
     }
 
     section.attack-profiles {
       grid-column: span 2;
-      grid-row: span 1;
+      grid-row: span 2;
     }
 
     section.loot {
-      grid-row: span 2;
+      grid-row: span 5;
     }
 
     aside.description {
       background: transparent;
-      grid-row: span 2;
+      grid-row: span 5;
       height: auto;
       overflow: hidden;
       textarea {
@@ -300,11 +404,11 @@ body.game.vtt.system-zweihander .zweihander.sheet.creature {
       }
     }
   }
-
+  // compact mode
   &.zweihander-compact-sheet,
   &.gm-screen-grid-cell-content {
-    min-height: 400px !important;
-    min-width: 440px !important;
+    min-height: 400px;
+    min-width: 440px;
     // max-height: 580px !important;
     // max-width: 530px !important;
     form > header {
@@ -362,15 +466,26 @@ body.game.vtt.system-zweihander .zweihander.sheet.creature {
     }
     section.stats {
       grid-row: span 1 !important;
+      .pa-icon, .pa-title {
+        display: none;
+      }
+      .pa-bonus-title {
+        color: var(--zh-clr-aqua);
+      }
+      .pa-bonus-advances {
+        padding: 0 5px !important;
+      }
+      .sa-title {
+        font-size: 11px !important;
+        font-family: var(--font-primary) !important;
+        text-transform: none !important;
+      }
+      .sa-value {
+        font-size: 14px !important;
+        .sa-ladder {
+          font-size: 10px !important;
+        }
+      }
     }
   }
-  .window-content {
-    background-color: var(--zh-clr-bg0);
-    background-image: url('assets/creature-sheet-backdrop.webp?x=23dfs');
-    background-size: contain;
-    background-repeat: no-repeat;
-    background-position: right bottom;
-    background-blend-mode: multiply;
-  }
-
 }

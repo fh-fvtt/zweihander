@@ -1,0 +1,14 @@
+<label>Damage:</label> <span class="inject-data">{{damage.formula}}</span><br />
+<label>Skill:</label> {{associatedSkill.value}}<br />
+<label>Type:</label> {{type.value}}<br />
+<label>Qualities: </label>
+{{#isMissing qualities.arrayOfValues}}
+{{#each qualities.arrayOfValues as | qualityData idx |}}
+<a class="js-display-quality">{{qualityData}}</a>{{#unless @last}}<span>, </span>{{/unless}}
+{{/each}}
+{{else}}
+<span> - </span>
+{{/isMissing}} <br />
+<i class="fas fa-coins currency-gc"></i> {{price.gc}}
+<i class="fas fa-coins currency-ss"></i> {{price.ss}}
+<i class="fas fa-coins currency-bp"></i> {{price.bp}}

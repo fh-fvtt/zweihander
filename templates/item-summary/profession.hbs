@@ -1,0 +1,47 @@
+<div>
+  <label>Professional Trait:</label>
+  <a class="fetch-item">{{professionalTrait.value}}</a>
+  <br />
+  <label>Special Trait:</label>
+  {{#isMissing specialTrait.value}}
+  <a class="fetch-item">{{specialTrait.value}}</a>
+  {{else}} - {{/isMissing}} <br />
+  <label>Drawback:</label>
+  {{#isMissing drawback.value}}
+  <a class="fetch-item">{{drawback.value}}</a>
+  {{else}} - {{/isMissing}}
+</div>
+<div>
+  <label>Skill Ranks:</label>
+  {{#each skillRanks as | skillData i |}}
+  <a
+    data-purchase-type="skillRanks"
+    data-purchase-index="{{i}}"
+    class="purchase-link fetch-item {{#if skillData.purchased}} purchased {{else}} not-purchased {{/if}}"
+  >
+    {{skillData.value}} </a
+  >{{#unless @last}}<span>,</span>{{/unless}} {{/each}}
+</div>
+<div>
+  <label>Bonus Advances:</label>
+  {{#each bonusAdvances as | advancesData i |}}
+  <a
+    data-purchase-type="bonusAdvances"
+    data-purchase-index="{{i}}"
+    class="purchase-link {{#if advancesData.purchased}} purchased {{else}} not-purchased {{/if}}"
+    >{{advancesData.value}}</a
+  >
+  {{#unless @last}}<span>,</span>{{/unless}} {{/each}}
+</div>
+
+<div>
+  <label>Talents:</label>
+  {{#each talents as | talentsData i |}}
+  <a
+    data-purchase-type="talents"
+    data-purchase-index="{{i}}"
+    class="purchase-link fetch-item {{#if talentsData.purchased}} purchased {{else}} not-purchased {{/if}}"
+    >{{talentsData.value}}</a
+  >
+  {{#unless @last}}<span>,</span>{{/unless}} {{/each}}
+</div>

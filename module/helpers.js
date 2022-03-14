@@ -237,4 +237,13 @@ export const registerHandlebarHelpers = async function () {
 
   $$('explicitSign', ZweihanderUtils.explicitSign);
 
+  $$('zhLookup', function(obj, key) {
+  	const keys = key.split('.');
+    let val = obj;
+  	for (let key of keys) {
+      val = val?.[key];
+    }
+    return val;
+ });
+
 }

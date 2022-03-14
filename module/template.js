@@ -7,12 +7,8 @@
 export const preloadHandlebarsTemplates = async function () {
   const $$ = (path) => 'systems/zweihander/templates/' + path + '.hbs'
   return loadTemplates([
-    $$('pc/tab-afflictions'),
     $$('pc/tab-background'),
-    $$('pc/tab-magick'),
     $$('pc/tab-main'),
-    $$('pc/tab-tiers'),
-    $$('pc/tab-trappings'),
     $$('pc/header'),
     $$('npc/tab-main'),
     $$('npc/header'),
@@ -36,6 +32,25 @@ export const preloadHandlebarsTemplates = async function () {
     $$('item/weapon'),
     $$('item-card/item-card-spell'),
     $$('item-card/item-card-weapon'),
-    $$('item-card/item-card-profession')
+    $$('item-card/item-card-profession'),
+    $$('item-summary/trapping'),
+    $$('item-summary/weapon'),
+    $$('item-summary/armor'),
+    $$('item-summary/spell'),
+    $$('item-summary/ritual'),
+    $$('item-summary/condition'),
+    $$('item-summary/disorder'),
+    $$('item-summary/disease'),
+    $$('item-summary/injury'),
+    $$('item-summary/taint'),
+    $$('item-summary/profession'),
+    $$('item-summary/trait'),
+    $$('item-summary/talent'),
+    $$('item-summary/drawback'),
+    $$('item-summary/uniqueAdvance'),
+    $$('partials/items-list'),
+    $$('pc/coinage'),
+    $$('pc/encumbrance-meter'),
+    $$('pc/magick-skill-selector'),
   ]);
 };
