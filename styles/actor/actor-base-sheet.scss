@@ -4,11 +4,7 @@ body.game.vtt.system-zweihander .zweihander.sheet.actor {
     list-style: none;
     margin: 0;
     padding: 0 0px;
-
-
-    &.professions-list {
-      padding: 0 5px;
-    }
+    overflow: auto;
 
     .items-header {
       align-items: center;

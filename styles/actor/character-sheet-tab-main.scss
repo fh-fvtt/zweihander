@@ -1,8 +1,8 @@
 .tab.main {
-  overflow: hidden;
+  overflow-y: auto;
   .primary-attributes {
     flex: 0 0 50px;
-    height: 100%;
+    // height: 100%;
     list-style: none;
     margin: 0;
     padding: 0;
@@ -114,7 +114,7 @@
     }
   }
   .combat-container {
-    flex: 0 0 380px;
+    flex: 0 0 375px;
     border: 2px groove var(--zh-clr-bg2);
     border-radius: 3px;
     .combat-stats {

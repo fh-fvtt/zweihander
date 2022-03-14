@@ -26,7 +26,7 @@ export default class ZweihanderCharacterSheet extends ZweihanderBaseActorSheet {
       tabs: [
         { navSelector: ".sheet-navigation", contentSelector: ".sheet-body", initial: "main" }
       ],
-      scrollY: ['.save-scroll']
+      scrollY: ['.save-scroll', '.sheet-body']
     });
   }
 

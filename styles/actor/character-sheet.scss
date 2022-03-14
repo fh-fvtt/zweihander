@@ -1,199 +1,191 @@
 body.game.vtt.system-zweihander .zweihander.sheet.character,
-body.game.vtt.system-zweihander .zweihander.sheet.npc  {
-  max-height: 1190px;
-  max-width: 1190px;
-
+body.game.vtt.system-zweihander .zweihander.sheet.npc {
+  max-height: 1200px;
+  max-width: 1200px;
   // sheet dimensions
-  min-height: 900px;
+  min-height: 500px;
   min-width: 750px;
 
   @import "character-sheet-header.scss";
 
-  @import "character-sheet-tab-main.scss";
-
   .sheet-body {
-    flex: 1;
     overflow: hidden;
-    & > .tab {
-      align-content: flex-start;
-      height: 100%;
-      overflow-y: auto;
-    }
-  }
-
-  .sheet-body h4.block-title {
-    color: var(--zh-clr-fg0);
-    font-family: var(--zh-font-title);
-    font-size: 14px !important;
-    font-size: 18px;
-    font-weight: 400;
-    height: 14px;
-    line-height: 16px;
-    margin: 4px 8px 2px;
-    text-align: center;
-    text-transform: uppercase;
-    white-space: nowrap;
-  }
-
-  .tab {
-    padding: 10px 5px 5px 5px;
-  }
-
-  .tab.tiers,
-  .tab.afflictions {
-    overflow: hidden;
-  }
-
-  .tab .item-detail {
-    &.it-archetype {
-      flex: 0 0 140px;
-    }
-    &.it-completed,
-    &.it-ua-rpcost,
-    &.it-duration {
-      flex: 0 0 100px;
-    }
-    &.it-tier {
-      flex: 0 0 120px;
-    }
-    &.it-ineffect {
-      flex: 0 0 150px;
-    }
-    &.it-category,
-    &.it-ua-category {
-      flex: 0 0 140px;
-    }
-    &.it-distance {
-      flex: 0 0 200px;
-    }
-    &.it-source {
-      flex: 0 0 241px;
-    }
-  }
-
-  .tab.background {
-    overflow: hidden;
-    // overflow-y: auto;
-
-    & > div {
-      border: 2px groove var(--zh-clr-bg2);
-      flex: 1 0 auto;
-      height: calc(50% - 2ch - 8px);
-      margin-bottom: 4px;
-      padding: 2ch 5px;
-    }
-    .editor {
-      height: 100%;
-      padding-top: 1em !important;
-    }
-    h4.block-title {
-      font-size: 18px !important;
-    }
-  }
-
-  .tab.magick {
-    .magick-skill-selector {
-      border-top: 2px groove var(--zh-clr-bg2);
-      flex: 0 0 32px;
-      padding: 0 calc(50% - 150px);
-      label {
-        color: var(--zh-clr-fg3);
-        line-height: 28px;
-        padding-right: 1ex;
-        text-align: right;
-      }
-    }
-  }
-
-  .tab.trappings {
-    .currency-container {
-      color: var(--zh-clr-fg3);
-      flex: 0 0 32px;
-      margin-bottom: 10px;
-      padding: 0 calc(50% - 220px);
-      .currency-bp {
-        flex: 0 0 100px;
-        i,
-        &.fa-coins,
-        input {
-          color: var(--currency-color);
-        }
-      }
-      .currency-ss {
-        flex: 0 0 110px;
-        i,
-        &.fa-coins,
-        input {
-          color: var(--currency-color);
-        }
-      }
-      .currency-gc {
-        flex: 0 0 90px;
-        i,
-        &.fa-coins,
-        input {
-          color: var(--currency-color);
-        }
-      }
-      input {
-        text-align: center;
-      }
-      button {
-        font-size: 12px;
-        height: 16px;
-        line-height: 12px;
-        margin: 0 auto 5px auto;
-        width: 130px;
-      }
-      .exchange-rates {
-        text-align: center;
-      }
-    }
-    .encumbrance-bar-container {
-      background: var(--zh-clr-fg2);
-      border: 1px solid var(--zh-clr-bg1);
-      border-radius: 1ch;
-      color: var(--zh-clr-bg0);
-      flex: 0 0 18px;
-      margin: 1px 15px 0 1px;
+    display: flex;
+    flex-direction: column;
+    .tab {
+      flex: 1 0 0;
       overflow: hidden;
-      position: relative;
-      .encumbrance-label {
-        font-size: 12px;
-        height: 10px;
-        line-height: 18px;
-        padding: 0 5px;
-        position: absolute;
-        right: 0;
-        text-align: center;
-        top: 0;
-        width: 100%;
+      padding: 10px 5px 5px 5px;
+    }
+
+    h4.block-title {
+      color: var(--zh-clr-fg0);
+      font-family: var(--zh-font-title);
+      font-size: 14px !important;
+      font-size: 18px;
+      font-weight: 400;
+      height: 14px;
+      line-height: 16px;
+      margin: 4px 8px 2px;
+      text-align: center;
+      text-transform: uppercase;
+      white-space: nowrap;
+    }
+
+    @import "character-sheet-tab-main.scss";
+
+    .items-list {
+      padding: 0 5px;
+    }
+
+    .tab .item-detail {
+      &.it-archetype {
+        flex: 0 0 140px;
       }
-      .encumbrance-bar {
-        background: var(--zh-clr-aqua);
-        border: 1px solid var(--zh-clr-aqua);
-        border-radius: 1ch;
-        height: 16px;
-        left: 0px;
-        position: absolute;
-        top: 0px;
-        // transition: width 200ms ease-in-out;
-        width: 50%;
+      &.it-completed,
+      &.it-ua-rpcost,
+      &.it-duration {
+        flex: 0 0 100px;
       }
-      .overage-display {
-        display: none;
+      &.it-tier {
+        flex: 0 0 120px;
       }
-      &.encumbrance-overage {
-        .encumbrance-bar {
-          background: var(--zh-clr-red-alt);
-          border-color: var(--zh-clr-orange);
+      &.it-ineffect {
+        flex: 0 0 150px;
+      }
+      &.it-category,
+      &.it-ua-category {
+        flex: 0 0 140px;
+      }
+      &.it-distance {
+        flex: 0 0 200px;
+      }
+      &.it-source {
+        flex: 0 0 241px;
+      }
+    }
+
+    .tab.background {
+      & > div {
+        border: 2px groove var(--zh-clr-bg2);
+        flex: 1 0 auto;
+        height: calc(50% - 2ch - 8px);
+        margin-bottom: 4px;
+        padding: 2ch 5px;
+      }
+      .editor {
+        height: 100%;
+        padding-top: 1em !important;
+      }
+      h4.block-title {
+        font-size: 18px !important;
+      }
+    }
+
+    .tab.magick {
+      .magick-skill-selector {
+        border-top: 2px groove var(--zh-clr-bg2);
+        flex: 0 0 32px;
+        padding: 0 calc(50% - 150px);
+        label {
+          color: var(--zh-clr-fg3);
+          line-height: 28px;
+          padding-right: 1ex;
+          text-align: right;
         }
+      }
+    }
+
+    .tab.trappings {
+      .currency-container {
+        color: var(--zh-clr-fg3);
+        flex: 0 0 32px;
+        margin-bottom: 10px;
+        padding: 0 calc(50% - 220px);
+        .currency-bp {
+          flex: 0 0 100px;
+          i,
+          &.fa-coins,
+          input {
+            color: var(--currency-color);
+          }
+        }
+        .currency-ss {
+          flex: 0 0 110px;
+          i,
+          &.fa-coins,
+          input {
+            color: var(--currency-color);
+          }
+        }
+        .currency-gc {
+          flex: 0 0 90px;
+          i,
+          &.fa-coins,
+          input {
+            color: var(--currency-color);
+          }
+        }
+        input {
+          text-align: center;
+        }
+        button {
+          font-size: 12px;
+          height: 16px;
+          line-height: 12px;
+          margin: 0 auto 5px auto;
+          width: 130px;
+        }
+        .exchange-rates {
+          text-align: center;
+        }
+      }
+      .encumbrance-bar-container {
+        background: var(--zh-clr-fg2);
+        border: 1px solid var(--zh-clr-bg1);
+        border-radius: 1ch;
+        color: var(--zh-clr-bg0);
+        flex: 0 0 18px;
+        margin: 1px 15px 0 1px;
+        overflow: hidden;
+        position: relative;
         .encumbrance-label {
-          color: var(--zh-clr-fg2);
+          font-size: 12px;
+          height: 10px;
+          line-height: 18px;
+          padding: 0 5px;
+          position: absolute;
+          right: 0;
+          text-align: center;
+          top: 0;
+          width: 100%;
+        }
+        .encumbrance-bar {
+          background: var(--zh-clr-aqua);
+          border: 1px solid var(--zh-clr-aqua);
+          border-radius: 1ch;
+          height: 16px;
+          left: 0px;
+          position: absolute;
+          top: 0px;
+          // transition: width 200ms ease-in-out;
+          width: 50%;
         }
         .overage-display {
-          color: var(--zh-clr-fg0);
-          display: inline;
+          display: none;
+        }
+        &.encumbrance-overage {
+          .encumbrance-bar {
+            background: var(--zh-clr-red-alt);
+            border-color: var(--zh-clr-orange);
+          }
+          .encumbrance-label {
+            color: var(--zh-clr-fg2);
+          }
+          .overage-display {
+            color: var(--zh-clr-fg0);
+            display: inline;
+          }
         }
       }
     }
