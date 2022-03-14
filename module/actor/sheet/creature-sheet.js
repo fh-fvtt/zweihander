@@ -13,7 +13,7 @@ import ZweihanderBaseActorSheet from "./base-actor-sheet";
 
   static get defaultOptions() {
     return foundry.utils.mergeObject(super.defaultOptions, {
-      classes: ["zweihander", "sheet", "creature" ,"damage-tracker"],
+      classes: ["zweihander", "sheet", "actor", "creature" ,"damage-tracker"],
       template: "systems/zweihander/templates/creature/main.hbs",
       width: 620,
       height: 630,
@@ -24,6 +24,23 @@ import ZweihanderBaseActorSheet from "./base-actor-sheet";
 
   getData(options) {
     const sheetData = super.getData();
+    sheetData.weapons = [
+      {
+        '_id': '29390',
+        'img': 'systems/zweihander/assets/icons/plain-dagger.svg',
+        'name': 'Dagger'
+      },
+      {
+        '_id': '29390',
+        'img': 'systems/zweihander/assets/icons/plain-dagger.svg',
+        'name': 'Dagger'
+      },
+      {
+        '_id': '29390',
+        'img': 'systems/zweihander/assets/icons/plain-dagger.svg',
+        'name': 'Dagger'
+      }
+    ]
     return sheetData;
   }
 

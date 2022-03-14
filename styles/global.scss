@@ -260,6 +260,10 @@ body.game.vtt.system-zweihander {
     text-shadow: none;
     color: var(--zh-clr-yellow);
   }
+  ::selection {
+    background-color: var(--zh-clr-aqua);
+    color: var(--zh-clr-bg0);
+  }
 }
 
 /* ----------------------------------------- */
@@ -284,9 +288,9 @@ body.game.vtt.system-zweihander {
   border-radius: 5px;
 }
 
-:root {
+:root > * {
   scrollbar-width: thin;
-  scrollbar-color: var(--zh-clr-aqua-alt) var(--zh-clr-bg1);
+  scrollbar-color: var(--zh-clr-aqua-alt) var(--zh-clr-bg0);
 }
 
 @font-face {

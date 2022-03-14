@@ -95,8 +95,8 @@ export default class FortuneTracker extends Application {
         removeUsedMisfortune: false,
         notifications: "notify",
         size: "normal",
-        fortunePath: "systems/zweihander/assets/fortune-life.png",
-        misfortunePath: "systems/zweihander/assets/fortune-death.png"
+        fortunePath: "systems/zweihander/assets/fortune-life.webp",
+        misfortunePath: "systems/zweihander/assets/fortune-death.webp"
       }
     });
     game.settings.registerMenu("zweihander", "fortuneTrackerSettingsMenu", {
@@ -107,6 +107,13 @@ export default class FortuneTracker extends Application {
       type: fortuneTrackerSettings,   // A FormApplication subclass
       restricted: true                   // Restrict this submenu to gamemaster only?
     });
+    //todo remove this after a while
+    const settings = game.settings.get('zweihander', 'fortuneTrackerSettings');
+    if (settings.fortunePath === 'systems/zweihander/assets/fortune-life.png') {
+      settings.fortunePath = 'systems/zweihander/assets/fortune-life.webp';
+      settings.misfortunePath = 'systems/zweihander/assets/fortune-death.webp';
+    }
+    game.settings.set('zweihander', 'fortuneTrackerSettings', settings);
   }
 
   // business logic

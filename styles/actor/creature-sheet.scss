@@ -32,11 +32,12 @@ body.game.vtt.system-zweihander .zweihander.sheet.creature {
       padding: 0;
       input {
         font-family: var(--zh-font-title);
-        font-size: 18px;
+        font-size: 24px;
+        color: var(--zh-clr-yellow);
         height: auto;
         line-height: 1;
         margin: 0;
-        text-shadow: 2px 2px 2px var(--zh-clr-bg3);
+        text-shadow: 2px 2px 1px var(--zh-clr-bg3);
         width: 100%;
       }
     }
@@ -79,7 +80,10 @@ body.game.vtt.system-zweihander .zweihander.sheet.creature {
             cursor: pointer;
             text-align: center;
             &::before {
+              position: relative;
               border: 1px solid var(--zh-clr-bg3);
+              background-color: rgba(var(--zh-clr-bg1-rgb), 0.5);
+              backdrop-filter: blur(2px);
               border-radius: 50%;
               content: " ";
               display: block;
@@ -93,16 +97,17 @@ body.game.vtt.system-zweihander .zweihander.sheet.creature {
               color: var(--zh-clr-fg1);
               // text-shadow: 2px 2px 2px var(--zh-clr-bg-4);
               display: none;
-              padding: 0 20px;
+              padding: 0px;
               position: absolute;
               right: 10px;
-              transform: rotate(-45deg);
+              transform: rotate(-30deg) translateX(-15px);
               transform-origin: center right;
               width: max-content;
               // opacity: 0.8;
-              z-index: 102;
+              z-index: 101;
               > span {
-                background-color: var(--zh-clr-bg0);
+                background-color: rgba(var(--zh-clr-bg1-rgb), 0.5);
+                backdrop-filter: blur(2px);
                 border: 1px solid var(--zh-clr-bg2);
                 border-radius: 5px;
                 box-shadow: 2px 2px 5px var(--zh-clr-bg0);
@@ -141,7 +146,7 @@ body.game.vtt.system-zweihander .zweihander.sheet.creature {
 
   aside.details {
     flex: 0 0 content;
-    padding: 5px 8px;
+    padding: 5px 8px 0px 8px;
     ul {
       display: flex;
       flex-flow: row wrap;
@@ -157,7 +162,7 @@ body.game.vtt.system-zweihander .zweihander.sheet.creature {
         &.influences {
           flex: 2 0 content;
         }
-        input {
+        input, select {
           backdrop-filter: blur(2px);
           background-color: rgba(var(--zh-clr-bg0-rgb), 0.5);
           border: 2px groove var(--zh-clr-bg2);
@@ -167,11 +172,28 @@ body.game.vtt.system-zweihander .zweihander.sheet.creature {
           padding: 3px;
           text-align: center;
           width: 100%;
-          &:hover, &:focus {
+          &:hover, &:focus, &:active {
             background-color: var(--zh-clr-bg1);
             background-color: rgba(var(--zh-clr-bg1-rgb), 0.5);
             border-color: var(--zh-clr-aqua);
             box-shadow: 0 0 6px var(--zh-clr-bg2);
+          }
+        }
+        select {
+          appearance: none;
+        }
+        &.risk-factor {
+          display: flex;
+          width: auto;
+          .risk-factor-value {
+            border-right-style: none;
+            border-top-right-radius: 0;
+            border-bottom-right-radius: 0;
+          }
+          .risk-factor-notch {
+            border-left-style: none;
+            border-top-left-radius: 0;
+            border-bottom-left-radius: 0;
           }
         }
       }
@@ -188,42 +210,63 @@ body.game.vtt.system-zweihander .zweihander.sheet.creature {
     &:hover {
       overflow-y: auto;
     }
+    .item-list li {
+      height: 20px;
+      padding-bottom: 1px;
+      margin-bottom: 1px;
+      &:last-child {
+        border: none;
+        margin-bottom: 0;
+        padding-bottom: 0;
+      }
+      .item-image { 
+        background-size: 20px;
+        &.item-image-icon {
+          mask-size: 20px;
+        }
+        height: 20px;
+        flex: 0 0 20px;
+      }
+    }
 
     & > * {
+
       border: 2px groove var(--zh-clr-bg2);
       border-radius: 3px;
-      border-style: none groove groove;
       grid-row: span 3;
       margin: 5px;
       overflow: auto;
       h1 {
         background: var(--zh-clr-bg1);
-        border: 2px groove var(--zh-clr-bg2);
-        border-style: groove none;
         display: block;
         font-family: var(--zh-font-title);
-        font-size: 1rem;
         font-size: 12px;
-        font-weight: bold;
-        height: 28px;
+        font-weight: normal;
         line-height: 2;
-        margin: 2px 0;
-        margin-top: -1px;
         padding: 0;
         padding-left: 10px;
         text-align: left;
         text-transform: uppercase;
+        color: var(--zh-clr-fg1);
+      }
+      h1, ol.items-list > li {
+        height: 24px;
+        margin:  0;
+        border: 2px groove var(--zh-clr-bg2);
+        border-style: groove none;
+        &:first-of-type {
+          border-top: none;
+        }
       }
     }
 
     section.stats {
       grid-column: span 2;
       grid-row: span 2;
-      margin-top: 0;
-      padding-top: 0;
+
     }
 
-    section.skills {
+    section.attack-profiles {
       grid-column: span 2;
       grid-row: span 1;
     }
@@ -272,6 +315,9 @@ body.game.vtt.system-zweihander .zweihander.sheet.creature {
         margin: 0;
         padding: 0;
         height: 32px;
+        input {
+          font-size: 18px;
+        }
       }
       section.peril-ladder::before,
       section.damage-ladder::before {
@@ -299,6 +345,9 @@ body.game.vtt.system-zweihander .zweihander.sheet.creature {
         margin: 0 !important;
       }
       scrollbar-gutter: unset;
+      .item-detail {
+        display: none;
+      }
     }
     aside.details,
     aside.description {
@@ -315,4 +364,13 @@ body.game.vtt.system-zweihander .zweihander.sheet.creature {
       grid-row: span 1 !important;
     }
   }
+  .window-content {
+    background-color: var(--zh-clr-bg0);
+    background-image: url('assets/creature-sheet-backdrop.webp?x=23dfs');
+    background-size: contain;
+    background-repeat: no-repeat;
+    background-position: right bottom;
+    background-blend-mode: multiply;
+  }
+
 }

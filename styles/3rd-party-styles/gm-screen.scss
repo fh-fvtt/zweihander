@@ -24,4 +24,13 @@
     box-shadow: none;
     background-color: var(--zh-clr-bg0);
   }
+  .gm-screen-grid-cell-content-wrapper {
+    overflow-x: auto;
+    &::-webkit-scrollbar-track {
+      background-color: var(--zh-clr-bg0) !important;
+    }
+    &::-webkit-scrollbar-thumb {
+      background: var(--zh-clr-bg2);
+    }
+  }
 }

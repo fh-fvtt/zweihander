@@ -22,11 +22,13 @@
         <a class="skill-roll" data-roll="1d100" data-label="{{skill.name}}">{{skill.name}} ({{getFirstLetter
           skill.data.associatedPrimaryAttribute.value}}){{#if
           skill.data.requiresTraining}}*{{else}}{{/if}}</a>
-        <span class="skill-rank" title="{{skill.data.rank}}">
+        <span class="skill-info flexrow">
+          <span class="skill-rank" title="{{skill.data.rank}}">
           {{skillRankAbbreviation skill.data.rank}}
-        </span>
-        <span class="skill-gain">
-          {{skillBonus skill.data.bonus}}
+          </span>
+          <span class="skill-gain">
+            {{skillBonus skill.data.bonus}}
+          </span>
         </span>
         {{!-- <div class="controls">
           <a class="item-control item-delete" title="Delete Item"><i class="fas fa-trash-alt fa-fw fa-xs"></i></a>

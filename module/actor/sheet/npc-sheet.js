@@ -4,7 +4,7 @@ import ZweihanderCreatureSheet from "./creature-sheet";
 
   static get defaultOptions() {
     return foundry.utils.mergeObject(super.defaultOptions, {
-      classes: ["zweihander", "sheet", "npc", "damage-tracker"],
+      classes: ["zweihander", "sheet", "actor", "npc", "damage-tracker"],
       template: "systems/zweihander/templates/npc/main.hbs",
       width: 500,
       height: 650,
