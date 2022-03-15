@@ -110,56 +110,9 @@
       </ul>
     </section>
     <section class="attack-profiles">
-      <ol class="items-list">
-        <li class="items-header flexrow">
-          <h3 class="item-name">Attack Profiles</h3>
-
-          <div class="item-detail item-detail-50">Chance</div>
-          <div class="item-detail item-detail-40">Load</div>
-          <div class="item-controls"><a class="add-new" data-item-type="weapon"
-              data-open-packs="zweihander.weapons,zweihander.weapons-alt-damage" title="Add New Weapon"><i
-                class="fas fa-plus"></i></a></div>
-        </li>
-        <ol class="item-list">
-          {{#each weapons as | weapon idx |}}
-          <li class="item flexrow" data-item-id="{{weapon._id}}">
-            <div class="item-name fetch-item flexrow rollable">
-              <div class="{{itemImageClass weapon.img}} weapon-roll" tabindex="0" role="button"
-                aria-label="{{weapon.name}}" style="{{itemImageStyle weapon.img}}" data-roll="1d100"
-                data-label="{{weapon.data.associatedSkill.value}}">
-              </div>
-              <h4 class="js-show-item-description">{{weapon.name}}</h4>
-            </div>
-            <div class="item-detail item-detail-50 inject-data">{{weapon.data.distance.value}}</div>
-            <div class="item-detail item-detail-40">{{weapon.data.load.value}}</div>
-            <div class="item-controls flexrow">
-              <a class="item-control item-post" title="Post Item to Chat"><i class="fas fa-comment fa-fw fa-xs"></i></a>
-              <a class="item-control item-edit" title="Edit Item"><i class="fas fa-pencil-alt fa-fw fa-xs"></i></a>
-              <a class="item-control item-delete" title="Delete Item"><i class="fas fa-trash-alt fa-fw fa-xs"></i></a>
-            </div>
-            <div class="item-summary individual-description save-toggle">
-              <span class="item-summary-longform">
-                <label>Damage:</label> <span class="inject-data">{{weapon.data.damage.formula}}</span><br />
-                <label>Skill:</label> {{weapon.data.associatedSkill.value}}<br />
-                <label>Type:</label> {{weapon.data.type.value}}<br />
-                <label>Qualities: </label>
-                {{#isMissing weapon.data.qualities.arrayOfValues}}
-                {{#each weapon.data.qualities.arrayOfValues as | qualityData idx |}}
-                <a class="js-display-quality">{{qualityData}}</a>{{#unless @last}}<span>, </span>{{/unless}}
-                {{/each}}
-                {{else}}
-                <span> - </span>
-                {{/isMissing}} <br />
-                <i class="fas fa-coins currency-gc"></i> {{weapon.data.price.gc}}
-                <i class="fas fa-coins currency-ss"></i> {{weapon.data.price.ss}}
-                <i class="fas fa-coins currency-bp"></i> {{weapon.data.price.bp}}
-              </span>
-            </div>
-          </li>
-          {{/each}}
-        </ol>
+      {{> ($$ "partials/items-list") itemGroups.attackProfiles}}
     </section>
-    <section class="skills save-scroll">
+    <section class="skills skills-container flexcol save-scroll">
       <h1>Skills</h1>
       <div class="skills-list">
         {{#each skills as | skill idx | }}

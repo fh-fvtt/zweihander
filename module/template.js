@@ -7,7 +7,6 @@
 export const preloadHandlebarsTemplates = async function () {
   const $$ = (path) => 'systems/zweihander/templates/' + path + '.hbs'
   return loadTemplates([
-    $$('pc/tab-background'),
     $$('pc/tab-main'),
     $$('pc/header'),
     $$('npc/tab-main'),

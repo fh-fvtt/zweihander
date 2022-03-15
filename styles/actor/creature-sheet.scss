@@ -256,6 +256,7 @@ body.game.vtt.system-zweihander .zweihander.sheet.creature {
       }
       h1, ol.items-list > li {
         height: 24px;
+        flex: 0 0 24px;
         margin:  0;
         border: 2px groove var(--zh-clr-bg2);
         border-style: groove none;
@@ -405,6 +406,9 @@ body.game.vtt.system-zweihander .zweihander.sheet.creature {
     }
   }
   // compact mode
+  &.gm-screen-grid-cell-content {
+    min-width: 440px !important;
+  }
   &.zweihander-compact-sheet,
   &.gm-screen-grid-cell-content {
     min-height: 400px;

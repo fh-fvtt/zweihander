@@ -14,7 +14,7 @@
     <li class="item flexrow" data-item-id="{{item._id}}">
       <div class="item-name fetch-item flexrow {{#if itemGroup.rollType}}rollable{{else}}js-show-item-description{{/if}}">
         <div class="{{itemImageClass item.img}} {{itemGroup.rollType}}" tabindex="0" role="button" aria-label="{{item.name}}"
-          style="{{itemImageStyle item.img}}" data-label="{{#if itemGroup.rollLabelKey}}{{zhLookup item.data itemGroup.rollLabelKey}}{{else}}{{itemGroup.rollLabel}}{{/if}}"></div>
+          style="{{itemImageStyle item.img}}" data-label="{{#if itemGroup.rollLabelKey}}{{zhLookup item itemGroup.rollLabelKey}}{{else}}{{itemGroup.rollLabel}}{{/if}}"></div>
         <h4 class="{{#if itemGroup.rollType}}js-show-item-description{{/if}}">{{item.name}}</h4>
       </div>
       {{#each itemGroup.details as |detail| }}

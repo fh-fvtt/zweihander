@@ -54,7 +54,7 @@ export default class ZweihanderItemSheet extends ItemSheet {
     if (data.type === 'skill') {
     data.choices.associatedPrimaryAttribute = CONFIG.ZWEI.primaryAttributes
       .map(option => ({ 
-        selected: (data.data.associatedPrimaryAttribute.value ?? 'Combat') === option ? 'selected' : '',
+        selected: (data.data.associatedPrimaryAttribute.value.toLowerCase() ?? 'combat') === option ? 'selected' : '',
         value: option,
         label: option.capitalize()
       }));

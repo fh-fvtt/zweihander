@@ -4,6 +4,7 @@ import ZweihanderBaseActorSheet from "./base-actor-sheet";
 import * as ZweihanderUtils from "../../utils";
 import * as ZweihanderDice from "../../dice";
 import ZweihanderProfession from "../../item/entity/profession";
+import { attachTabDefinitions } from "./character-sheet-tabs-def";
 
 /**
  * The Zweihänder actor sheet class for characters.
@@ -26,7 +27,7 @@ export default class ZweihanderCharacterSheet extends ZweihanderBaseActorSheet {
       tabs: [
         { navSelector: ".sheet-navigation", contentSelector: ".sheet-body", initial: "main" }
       ],
-      scrollY: ['.save-scroll', '.items-list']
+      scrollY: ['.save-scroll', '.items-list', '.tab']
     });
   }
 
@@ -47,359 +48,7 @@ export default class ZweihanderCharacterSheet extends ZweihanderBaseActorSheet {
         .reduce((a, b) => a + b, 0);
       sheetData.data.rewardPoints.current = sheetData.data.rewardPoints.total - sheetData.data.rewardPoints.spent;
     }
-    sheetData.tabs = {
-      trappings: {
-        headerTemplate: "pc/coinage",
-        footerTemplate: "pc/encumbrance-meter",
-        itemGroups: [
-          {
-            title: "Weapons",
-            type: "weapon",
-            packs: "zweihander.weapons,zweihander.weapons-alt-damage",
-            summaryTemplate: "item-summary/weapon",
-            rollType: "weapon-roll",
-            rollLabelKey: "data.associatedSkill.value",
-            details: [
-              {
-                title: "Distance",
-                size: 100,
-                key: "data.distance.value",
-                class: "inject-data"
-              },
-              {
-                title: "Load",
-                size: 100,
-                key: "data.load.value"
-              },
-              {
-                title: "Enc.",
-                size: 100,
-                key: "data.encumbrance.value"
-              },
-              {
-                title: "Equipped",
-                size: 100,
-                key: "data.equipped",
-                isCheckbox: true
-              }
-            ],
-            items: sheetData.weapons
-          },
-          {
-            title: "Armor",
-            type: "armor",
-            packs: "zweihander.armor",
-            summaryTemplate: "item-summary/armor",
-            details: [
-              {
-                title: "DTM",
-                size: 100,
-                key: "data.damageThresholdModifier.value"
-              },
-              {
-                title: "Enc.",
-                size: 100,
-                key: "data.encumbrance.value"
-              },
-              {
-                title: "Equipped",
-                size: 100,
-                key: "data.equipped",
-                isCheckbox: true
-              }
-            ],
-            items: sheetData.armor
-          },
-          {
-            title: "Trappings",
-            type: "trapping",
-            packs: "zweihander.trappings",
-            summaryTemplate: "item-summary/trapping",
-            details: [
-              {
-                title: "Category",
-                size: 140,
-                key: "data.category.value"
-              },
-              {
-                title: "Qty.",
-                size: 100,
-                key: "data.quantity.value"
-              },
-              {
-                title: "Enc.",
-                size: 100,
-                key: "data.encumbrance.value"
-              },
-              {
-                title: "Carried",
-                size: 100,
-                key: "data.carried",
-                isCheckbox: true
-              }
-            ],
-            items: sheetData.trappings
-          }
-        ]
-      },
-      magick: {
-        footerTemplate: "pc/magick-skill-selector",
-        itemGroups: [
-          {
-            title: "Spells",
-            type: "spell",
-            packs: "zweihander.magick",
-            summaryTemplate: "item-summary/spell",
-            rollType: "spell-roll",
-            rollLabel: sheetData.data.stats.secondaryAttributes.magick.associatedSkill,
-            details: [
-              {
-                title: "Principle",
-                size: 140,
-                key: "data.principle.value"
-              },
-              {
-                title: "Distance",
-                size: 200,
-                key: "data.distance.value",
-                class: "inject-data"
-              },
-              {
-                title: "Duration",
-                size: 100,
-                key: "data.duration.value",
-                class: "inject-data"
-              }
-            ],
-            items: sheetData.spells
-          },
-          {
-            title: "Rituals",
-            type: "ritual",
-            packs: "zweihander.rituals",
-            summaryTemplate: "item-summary/ritual",
-            details: [
-              {
-                title: "Difficulty",
-                size: 140,
-                key: "data.difficulty.value"
-              },
-              {
-                title: "Channel Power As",
-                size: 200,
-                key: "data.channelAs.value",
-              },
-              {
-                title: "Casting Time",
-                size: 100,
-                key: "data.castingTime.value",
-                class: "inject-data"
-              }
-            ],
-            items: sheetData.rituals
-          }
-        ]
-      },
-      afflictions: {
-        itemGroups: [
-          {
-            title: "Conditions",
-            type: "condition",
-            packs: "zweihander.conditions",
-            summaryTemplate: "item-summary/condition",
-            details: [
-              {
-                title: "Category",
-                size: 140,
-                key: "data.category.value"
-              },
-              {
-                title: "Currently in Effect",
-                size: 150,
-                key: "data.active",
-                isCheckbox: true
-              }
-            ],
-            items: sheetData.conditions
-          },
-          {
-            title: "Disorders",
-            type: "disorder",
-            packs: "zweihander.disorders",
-            summaryTemplate: "item-summary/disorder",
-            details: [
-              {
-                title: "Category",
-                size: 140,
-                key: "data.category.value"
-              },
-              {
-                title: "Currently in Effect",
-                size: 150,
-                key: "data.active",
-                isCheckbox: true
-              }
-            ],
-            items: sheetData.disorders
-          },
-          {
-            title: "Diseases",
-            type: "disease",
-            packs: "zweihander.diseases",
-            summaryTemplate: "item-summary/disease",
-            details: [
-              {
-                title: "Duration",
-                size: 140,
-                key: "data.duration.value"
-              },
-              {
-                title: "Resist",
-                size: 140,
-                key: "data.resist.value"
-              },
-              {
-                title: "Currently in Effect",
-                size: 150,
-                key: "data.active",
-                isCheckbox: true
-              }
-            ],
-            items: sheetData.diseases
-          },
-          {
-            title: "Injuries",
-            type: "injury",
-            packs: "zweihander.injuries",
-            summaryTemplate: "item-summary/injury",
-            details: [
-              {
-                title: "Severity",
-                size: 140,
-                key: "data.severity.value"
-              },
-              {
-                title: "Currently in Effect",
-                size: 150,
-                key: "data.active",
-                isCheckbox: true
-              }
-            ],
-            items: sheetData.injuries
-          },
-          {
-            title: "Taints of Chaos",
-            type: "taint",
-            packs: "zweihander.taints",
-            summaryTemplate: "item-summary/taint",
-            details: [
-              {
-                title: "Category",
-                size: 140,
-                key: "data.category.value"
-              },
-              {
-                title: "Currently in Effect",
-                size: 150,
-                key: "data.active",
-                isCheckbox: true
-              }
-            ],
-            items: sheetData.conditions
-          }
-        ]
-      },
-      tiers: {
-        itemGroups: [
-          {
-            title: "Professions",
-            type: "profession",
-            packs: "zweihander.professions",
-            summaryTemplate: "item-summary/profession",
-            details: [
-              {
-                title: "Tier",
-                size: 120,
-                key: "data.tier.value"
-              },
-              {
-                title: "Archetype",
-                size: 140,
-                key: "data.archetype.value"
-              },
-              {
-                title: "Completed",
-                size: 100,
-                key: "data.tier.completed",
-                isCheckbox: true
-              }
-            ],
-            items: sheetData.professions
-          },
-          {
-            title: "Traits",
-            type: "trait",
-            packs: "zweihander.traits,zweihander.ancestral-traits",
-            summaryTemplate: "item-summary/trait",
-            details: [
-              {
-                title: "Source",
-                size: 240,
-                key: "data.source"
-              }
-            ],
-            items: sheetData.traits
-          },
-          {
-            title: "Drawbacks",
-            type: "drawback",
-            packs: "zweihander.drawbacks",
-            summaryTemplate: "item-summary/drawback",
-            details: [
-              {
-                title: "Source",
-                size: 240,
-                key: "data.source"
-              }
-            ],
-            items: sheetData.drawbacks
-          },
-          {
-            title: "Talents",
-            type: "talent",
-            packs: "zweihander.talents",
-            summaryTemplate: "item-summary/talent",
-            details: [
-              {
-                title: "Source",
-                size: 240,
-                key: "source"
-              }
-            ],
-            items: sheetData.talents
-          },
-          {
-            title: "Unique Advances",
-            type: "uniqueadvance",
-            packs: "zweihander.uniqueadvances",
-            summaryTemplate: "item-summary/uniqueAdvance",
-            details: [
-              {
-                title: "Category",
-                size: 140,
-                key: "data.category.value"
-              },
-              {
-                title: "RP Cost",
-                size: 100,
-                key: "data.rewardPointCost.value"
-              }
-            ],
-            items: sheetData.uniqueAdvances
-          }
-        ]
-      }
-    };
+    attachTabDefinitions(sheetData);
     return sheetData;
   }
 
@@ -451,9 +100,10 @@ export default class ZweihanderCharacterSheet extends ZweihanderBaseActorSheet {
     // Everything below here is only needed if the sheet is editable
     if (!this.options.editable) return;
 
-    html.bind("resize", ev => {
-      console.log('resise');
-    });
+    this._registerWidthListener(html, '.skills-container', [{
+      width: 265,
+      callback: (toggle) => html.find('.skills-list').toggleClass('two-rows', toggle)
+    }]);
 
     // Edit Inventory Item
     html.find('.item-edit').click(ev => {
@@ -711,4 +361,5 @@ export default class ZweihanderCharacterSheet extends ZweihanderBaseActorSheet {
     }
     html.find(".encumbrance-bar").css("width", ratio + "%");
   }
+
 }

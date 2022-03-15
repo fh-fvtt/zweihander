@@ -95,4 +95,33 @@ export default class ZweihanderBaseActorSheet extends ActorSheet {
     }
   }
 
+  _registerWidthListener(html, selector, breakpoints) {
+    // this magic changes the pattern of the skills list when it resizes beyond the column breakpoint.
+    // sadly, this is currently not possible with pure css.
+    let y = -1;
+    const el = html.find(selector);
+    el.prepend('<iframe class="width-change-listener" tabindex="-1"></iframe>');
+    const onWidthChange = function () {
+      const x = this.innerWidth;
+      for (let [i, bp] of breakpoints.entries()) {
+        const lastW = i === 0 ? 0 : breakpoints[i-1].width;
+        const nextW = i === breakpoints.length - 1 ? Number.POSITIVE_INFINITY : breakpoints[i+1].width;
+        if (x > lastW && x < nextW && (y === -1 || (y > lastW && y < nextW))) {
+          const w = bp.width;
+          if (x >= w && y < w) {
+            bp.callback(true);
+          } else if (x < w && y >= w) {
+            bp.callback(false);
+          }
+        }
+      }
+      y = x;
+    }
+    const listener = html.find(`${selector} .width-change-listener`);
+    listener.each(function() {
+      $(this.contentWindow).resize(onWidthChange);
+      onWidthChange.bind(this.contentWindow)();
+    });
+  }
+
 }

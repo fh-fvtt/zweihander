@@ -233,43 +233,117 @@ body.game.vtt.system-zweihander .zweihander.sheet.actor {
       }
     }
   }
-  &.damage-tracker > section.window-content > form {
+
+  .skills-container {
     position: relative;
+    .width-change-listener {
+      border: none;
+      height: 0;
+      left: 0;
+      position: absolute;
+      right: 0;
+      top: 0;
+      width: 100%;
+    }
+    .skills-list {
+      display: grid;
+      flex: 1 0 0;
+      // flex: 1 0 480px;
+      // max-height: 100%;
+      grid-auto-rows: minmax(24px, 1fr);
+      grid-template-columns: repeat(
+        auto-fill,
+        minmax(max(130px, calc(100% / 2)), 1fr)
+      );
+      list-style: none;
+      overflow-y: scroll;
+      padding: 0px 0 0px;
+      // background: repeating-linear-gradient(var(--zh-clr-bg1) 0 24px,transparent 24px 48px);
+      .skill {
+        line-height: 1.7;
+        overflow: hidden;
+        padding: 3px;
+        .skill-roll {
+          flex: 1 0 120px;
+          height: 100%;
+          padding-left: 5px;
+        }
+        .skill-info {
+          flex: 0 0 12ex;
+        }
+        .skill-rank {
+          flex: 0 0 6ex;
+          text-align: center;
+        }
+        &:hover .skill-gain,
+        &:hover .skill-roll,
+        &:hover .skill-rank {
+          color: var(--zh-clr-yellow);
+        }
+        .skill-gain {
+          color: var(--zh-clr-fg3);
+          flex: 0 0 4ex;
+          margin-right: 1ex;
+          text-align: right;
+        }
+        .controls {
+          color: var(--zh-clr-fg4);
+          flex: 0 0 2ex;
+          margin-top: -1px;
+          visibility: hidden;
+          &:hover {
+            color: var(--zh-clr-fg1);
+          }
+        }
+        &:hover .controls {
+          visibility: visible;
+        }
+      }
+      &.two-rows .skill:nth-child(4n),
+      &.two-rows .skill:nth-child(4n + 1),
+      &:not(.two-rows) .skill:nth-child(2n) {
+        background-color: var(--zh-clr-bg1);
+      }
+    }
   }
-  
-  &.damage-tracker > section.window-content::before,
-  &.damage-tracker > section.window-content::after,
-  &.damage-tracker > section.window-content > form::before,
-  &.damage-tracker > section.window-content > form::after {
-    content: " ";
-    position: absolute;
-    display: block;
-    width: 100%;
-    height: 100%;
-    opacity: 0;
-    transition: opacity 1s ease-in-out;
-    background-repeat: no-repeat;
-    z-index: -1;
-  }
-  
-  &.damage-tracker > section.window-content::before,
-  &.damage-tracker > section.window-content::after {
-    height: calc(100% - 30px);
-    top: 30px;
-    z-index: 0;
-  }
-  
-  &.damage-tracker > section.window-content::before {
-    background-image: resolve("bloodstains2.webp");
-    background-size: 700px 700px;
-    background-position: bottom -420px right -320px;
-  }
-  
-  &.damage-tracker-4 > section.window-content::before {
-    opacity: 0.35;
-  }
-  
+
   &.damage-tracker {
+    > section.window-content > form {
+      position: relative;
+    }
+
+    > section.window-content::before,
+    > section.window-content::after,
+    > section.window-content > form::before,
+    > section.window-content > form::after {
+      content: " ";
+      position: absolute;
+      display: block;
+      width: 100%;
+      height: 100%;
+      opacity: 0;
+      transition: opacity 1s ease-in-out;
+      background-repeat: no-repeat;
+      z-index: -1;
+    }
+
+    > section.window-content::before,
+    > section.window-content::after {
+      height: calc(100% - 30px);
+      top: 30px;
+      z-index: 0;
+    }
+
+    > section.window-content::before {
+      background-image: resolve("bloodstains2.webp");
+      background-size: 700px 700px;
+      background-position: bottom -420px right -320px;
+    }
+
+    &.damage-tracker-4 > section.window-content::before {
+      opacity: 0.35;
+    }
+
     & > section.window-content > form::before {
       height: 500px;
       width: 500px;
@@ -286,16 +360,15 @@ body.game.vtt.system-zweihander .zweihander.sheet.actor {
     &.damage-tracker-3 > section.window-content > form::before {
       opacity: 0.5;
     }
-  }
-  
-  &.damage-tracker-2 > section.window-content::before {
-    background-image: resolve("bloodstains2.webp"), resolve("bloodstains2.webp");
-    background-size: 700px 700px, 700px 700px;
-    background-position: bottom -420px right -320px, bottom -320px left -320px;
-    opacity: 0.4;
-  }
-  
-  &.damage-tracker {
+
+    &.damage-tracker-2 > section.window-content::before {
+      background-image: resolve("bloodstains2.webp"),
+        resolve("bloodstains2.webp");
+      background-size: 700px 700px, 700px 700px;
+      background-position: bottom -420px right -320px, bottom -320px left -320px;
+      opacity: 0.4;
+    }
+
     & > section.window-content > form::after {
       height: 500px;
       width: 500px;
@@ -308,49 +381,50 @@ body.game.vtt.system-zweihander .zweihander.sheet.actor {
     &.damage-tracker-1 > section.window-content > form::after {
       opacity: 0.4;
     }
+
+    > section.window-content::after {
+      background-image: resolve("bloodstains.webp");
+      background-size: 500px 500px;
+      background-position: top -150px right -90px;
+    }
+
+    &.damage-tracker-0 > section.window-content::after {
+      opacity: 0.48;
+    }
   }
-  
-  &.damage-tracker > section.window-content::after {
-    background-image: resolve("bloodstains.webp");
-    background-size: 500px 500px;
-    background-position: top -150px right -90px;
+  .zweihander-theme-gruvbox-light {
+    .damage-tracker::before,
+    .damage-tracker::after,
+    .damage-tracker > section.window-content > form::before,
+    .damage-tracker > section.window-content > form::after {
+      opacity: 0.12 !important;
+    }
   }
+  .peril-tracker {
+    &.peril-tracker-4 {
+      filter: hue-rotate(15deg) blur(0.4px) saturate(1.2) sepia(0.5);
+    }
   
-  &.damage-tracker-0 > section.window-content::after {
-    opacity: 0.48;
+    &.peril-tracker-3 {
+      filter: hue-rotate(20deg) blur(0.6px) contrast(1.3) sepia(0.5) saturate(1.2)
+        brightness(1.1);
+    }
+  
+    &.peril-tracker-2 {
+      filter: hue-rotate(25deg) blur(0.8px) contrast(1.4) saturate(1.4)
+        brightness(1.3) sepia(0.6);
+    }
+  
+    &.peril-tracker-1 {
+      filter: hue-rotate(125deg) blur(1px) contrast(1.4) saturate(2.5)
+        brightness(1.3) sepia(0.6);
+    }
+  
+    &.peril-tracker-0 {
+      filter: hue-rotate(225deg) blur(2px) contrast(1.8) saturate(4)
+        brightness(1.8) sepia(0.9);
+    }
   }
-  
-  .peril-tracker-4 {
-    filter: hue-rotate(15deg) blur(0.4px) saturate(1.2) sepia(0.5);
-  }
-  
-  .peril-tracker-3 {
-    filter: hue-rotate(20deg) blur(0.6px) contrast(1.3) sepia(0.5) saturate(1.2)
-      brightness(1.1);
-  }
-  
-  .peril-tracker-2 {
-    filter: hue-rotate(25deg) blur(0.8px) contrast(1.4) saturate(1.4)
-      brightness(1.3) sepia(0.6);
-  }
-  
-  .peril-tracker-1 {
-    filter: hue-rotate(125deg) blur(1px) contrast(1.4) saturate(2.5)
-      brightness(1.3) sepia(0.6);
-  }
-  
-  .peril-tracker-0 {
-    filter: hue-rotate(225deg) blur(2px) contrast(1.8) saturate(4) brightness(1.8)
-      sepia(0.9);
-  }
-  
 }
 
-.zweihander-theme-gruvbox-light {
-  .damage-tracker::before,
-  .damage-tracker::after,
-  .damage-tracker > section.window-content > form::before,
-  .damage-tracker > section.window-content > form::after {
-    opacity: 0.12 !important;
-  }
-}
+

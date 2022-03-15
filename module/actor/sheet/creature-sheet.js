@@ -1,6 +1,6 @@
 import ZweihanderBaseActorSheet from "./base-actor-sheet";
 
- export default class ZweihanderCreatureSheet extends ZweihanderBaseActorSheet {
+export default class ZweihanderCreatureSheet extends ZweihanderBaseActorSheet {
 
 
   static unsupportedItemTypes = new Set([
@@ -13,7 +13,7 @@ import ZweihanderBaseActorSheet from "./base-actor-sheet";
 
   static get defaultOptions() {
     return foundry.utils.mergeObject(super.defaultOptions, {
-      classes: ["zweihander", "sheet", "actor", "creature" ,"damage-tracker"],
+      classes: ["zweihander", "sheet", "actor", "creature", "damage-tracker"],
       template: "systems/zweihander/templates/creature/main.hbs",
       width: 620,
       height: 669,
@@ -24,6 +24,31 @@ import ZweihanderBaseActorSheet from "./base-actor-sheet";
 
   getData(options) {
     const sheetData = super.getData();
+    sheetData.itemGroups = {
+      attackProfiles: [
+        {
+          title: "Attack Profiles",
+          type: "weapon",
+          packs: "zweihander.weapons,zweihander.weapons-alt-damage",
+          summaryTemplate: "item-summary/weapon",
+          rollType: "weapon-roll",
+          rollLabelKey: "data.associatedSkill.value",
+          details: [
+            {
+              title: "Chance",
+              size: 50,
+              key: "chance"
+            },
+            {
+              title: "Load",
+              size: 40,
+              key: "data.load.value"
+            }
+          ],
+          items: sheetData.weapons
+        }
+      ]
+    }
     return sheetData;
   }
 
@@ -56,19 +81,27 @@ import ZweihanderBaseActorSheet from "./base-actor-sheet";
     data.drawbacks = addSource(data.drawbacks);
     data.traits = addSource(data.traits);
     data.talents = addSource(data.talents);
-  }
-
-  _onDragDrop(event) {
-  console.log(event);  
+    // add base chance to weapon data
+    data.weapons = data.weapons.map(w => {
+      const skill = data.skills.find(s => s.name === w.data.associatedSkill.value);
+      const baseChance = data.data.stats.primaryAttributes[skill.data.associatedPrimaryAttribute.value.toLowerCase()].value;
+      w.chance = baseChance + skill.data.bonus;
+      return w;
+    });
   }
 
   activateListeners(html) {
     super.activateListeners(html);
+    // auto size the details inputs
     const autoSizeInput = (el) => el.attr('size', Math.max(el.attr('placeholder').length, el.val().length));
     const inputsToAutoSize = html.find('aside.details input.auto-size');
-    inputsToAutoSize.toArray().forEach(x => autoSizeInput($(x)));
+    inputsToAutoSize.each((i, x) => autoSizeInput($(x)));
     inputsToAutoSize.bind('input', (event) => autoSizeInput($(event.currentTarget)));
+    // register width listener for skills container
+    this._registerWidthListener(html, '.skills-container', [{
+      width: 265,
+      callback: (toggle) => html.find('.skills-list').toggleClass('two-rows', toggle)
+    }]);
   }
 
 }
-  
