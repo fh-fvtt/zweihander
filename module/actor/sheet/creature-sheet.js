@@ -25,8 +25,8 @@ export default class ZweihanderCreatureSheet extends ZweihanderBaseActorSheet {
     return foundry.utils.mergeObject(super.defaultOptions, {
       classes,
       template: "systems/zweihander/templates/creature/main.hbs",
-      width: compactMode ? 550 : 620,
-      height: compactMode ? 580 : 669,
+      width: compactMode ? 540 : 620,
+      height: compactMode ? 540 : 669,
       resizable: true,
       scrollY: ['.save-scroll', '.sheet-body']
     });
