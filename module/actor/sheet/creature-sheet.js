@@ -124,6 +124,8 @@ export default class ZweihanderCreatureSheet extends ZweihanderBaseActorSheet {
           type: "spell",
           packs: "zweihander.magick",
           summaryTemplate: "item-summary/spell",
+          rollType: "spell-roll",
+          rollLabel: sheetData.data.stats.secondaryAttributes.magick.associatedSkill,
           details: [],
           items: sheetData.spells
         },
@@ -137,7 +139,7 @@ export default class ZweihanderCreatureSheet extends ZweihanderBaseActorSheet {
         },
         {
           title: "Conditions",
-          type: "conditions",
+          type: "condition",
           packs: "zweihander.conditions",
           summaryTemplate: "item-summary/condition",
           details: [],
