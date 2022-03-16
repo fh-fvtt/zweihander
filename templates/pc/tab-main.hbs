@@ -16,23 +16,7 @@
     {{/each}}
   </ul>
   <div class="skills-container flexcol">
-    <div class="skills-list save-scroll">
-      {{#each skills as | skill idx | }}
-      <div class="skill flexrow" data-item-id="{{skill._id}}" data-associated-pa="{{skill.data.associatedPrimaryAttribute.value}}">
-        <a class="skill-roll" data-roll="1d100" data-label="{{skill.name}}">{{skill.name}} ({{getFirstLetter
-          skill.data.associatedPrimaryAttribute.value}}){{#if
-          skill.data.requiresTraining}}*{{else}}{{/if}}</a>
-        <span class="skill-info flexrow">
-          <span class="skill-rank" title="{{skill.data.rank}}">
-          {{skillRankAbbreviation skill.data.rank}}
-          </span>
-          <span class="skill-gain">
-            {{skillBonus skill.data.bonus}}
-          </span>
-        </span>
-      </div>
-      {{/each}}
-    </div>
+    {{> ($$ "partials/skills-list" )}}
   </div>
   <div class="combat-container flexcol">
     <div class="combat-stats flexrow">

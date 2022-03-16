@@ -1,5 +1,4 @@
 body.game.vtt.system-zweihander .zweihander.sheet.creature {
-
   --zh-structural-border: 2px groove var(--zh-clr-bg2);
 
   max-height: 1200px;
@@ -9,7 +8,7 @@ body.game.vtt.system-zweihander .zweihander.sheet.creature {
 
   .window-content {
     background-color: var(--zh-clr-bg0);
-    background-image: url('assets/creature-sheet-backdrop.webp?x=23dfs');
+    background-image: url("assets/creature-sheet-backdrop.webp?x=23dfs");
     background-size: contain;
     background-repeat: no-repeat;
     background-position: right bottom;
@@ -167,7 +166,8 @@ body.game.vtt.system-zweihander .zweihander.sheet.creature {
         &.influences {
           flex: 2 0 content;
         }
-        input, select {
+        input,
+        select {
           backdrop-filter: blur(2px);
           background-color: rgba(var(--zh-clr-bg0-rgb), 0.5);
           border: 2px groove var(--zh-clr-bg2);
@@ -177,7 +177,9 @@ body.game.vtt.system-zweihander .zweihander.sheet.creature {
           padding: 3px;
           text-align: center;
           width: 100%;
-          &:hover, &:focus, &:active {
+          &:hover,
+          &:focus,
+          &:active {
             background-color: var(--zh-clr-bg1);
             background-color: rgba(var(--zh-clr-bg1-rgb), 0.5);
             border-color: var(--zh-clr-aqua);
@@ -217,7 +219,7 @@ body.game.vtt.system-zweihander .zweihander.sheet.creature {
     }
     // tweaks to item list from @actor-base-sheet.scss
     .item-list li {
-      height: 20px;
+      min-height: 20px;
       padding: 0 0 1px 0; // no idea why this is necessary, if something breaks, maybe look here...
       margin-bottom: 1px;
       &:last-child {
@@ -225,13 +227,14 @@ body.game.vtt.system-zweihander .zweihander.sheet.creature {
         margin-bottom: 0;
         padding-bottom: 0;
       }
-      .item-image { 
-        background-size: 20px;
+      .item-image {
+        margin-left: 2px;
+        background-size: 18px;
         &.item-image-icon {
-          mask-size: 20px;
+          mask-size: 18px;
         }
-        height: 20px;
-        flex: 0 0 20px;
+        height: 18px;
+        flex: 0 0 18px;
       }
     }
 
@@ -241,7 +244,14 @@ body.game.vtt.system-zweihander .zweihander.sheet.creature {
       grid-row: span 6;
       margin: 5px;
       overflow: auto;
-      h1 {
+      display: flex;
+      flex-direction: column;
+      > * {
+        flex: 1 0 0;
+        min-height: 0;
+      }
+      > h1 {
+        flex: 0 0 24px;
         background: var(--zh-clr-bg1);
         display: block;
         font-family: var(--zh-font-title);
@@ -254,10 +264,10 @@ body.game.vtt.system-zweihander .zweihander.sheet.creature {
         text-transform: uppercase;
         color: var(--zh-clr-fg1);
       }
-      h1, ol.items-list > li {
+      h1,
+      ol.items-list > li {
         height: 24px;
-        flex: 0 0 24px;
-        margin:  0;
+        margin: 0;
         border: 2px groove var(--zh-clr-bg2);
         border-style: groove none;
         &:first-of-type {
@@ -271,6 +281,22 @@ body.game.vtt.system-zweihander .zweihander.sheet.creature {
       grid-row: span 3;
       h1 {
         flex: 0 0 24px;
+        position: relative;
+        .manual-mode-button {
+          font-family: var(--font-primary);
+          font-size: 12px;
+          text-transform: none;
+          font-weight: bold;
+          display: block;
+          position: absolute;
+          right: 0;
+          top: 0;
+          bottom: 0;
+          height: 100%;
+          width: 100px;
+          text-align: right;
+          padding-right: 5px;
+        }
       }
       ul.primary-attributes {
         li.pa {
@@ -286,11 +312,13 @@ body.game.vtt.system-zweihander .zweihander.sheet.creature {
           .pa-bonus-container {
             padding: 0 1px;
           }
-          .pa-title, pa-icon {
+          .pa-title,
+          pa-icon {
             transition: color 175ms ease-in;
           }
           &.pa-hover-helper {
-            .pa-title, .pa-icon {
+            .pa-title,
+            .pa-icon {
               color: var(--zh-clr-yellow);
               transition: color 350ms ease-out;
             }
@@ -305,7 +333,8 @@ body.game.vtt.system-zweihander .zweihander.sheet.creature {
             font-size: 16px;
             color: var(--zh-clr-fg4);
           }
-          .pa-bonus, .pa-bonus-title {
+          .pa-bonus,
+          .pa-bonus-title {
             font-size: 11px;
           }
         }
@@ -325,7 +354,8 @@ body.game.vtt.system-zweihander .zweihander.sheet.creature {
           }
         }
       }
-      ul.secondary-attributes, ul.primary-attributes {
+      ul.secondary-attributes,
+      ul.primary-attributes {
         flex: 11;
         list-style: none;
         margin: 0;
@@ -345,7 +375,8 @@ body.game.vtt.system-zweihander .zweihander.sheet.creature {
           &:last-of-type {
             border-right: none;
           }
-          .pa-title, .sa-title {
+          .pa-title,
+          .sa-title {
             color: var(--zh-clr-fg1);
             font-size: 9px;
             font-family: var(--zh-font-title);
@@ -354,19 +385,74 @@ body.game.vtt.system-zweihander .zweihander.sheet.creature {
         }
       }
       ul.secondary-attributes {
-        flex: 6;
+        flex: 7;
         li {
           border-bottom: none;
           justify-content: space-evenly;
           padding: 0;
           .sa-value {
             font-size: 18px;
+            input {
+              width: 24px;
+              margin: 0;
+              padding: 0;
+              height: 18px;
+              height: min-content;
+              text-align: right;
+            }
+            .sa-value-fly {
+              color: var(--zh-clr-fg4);
+              font-size: 13px;
+              input {
+                color: var(--zh-clr-fg3);
+                text-align: left;
+              }
+            }
             .sa-ladder {
-              padding-left: 5px;
               font-size: 12px;
               color: var(--zh-clr-fg3);
             }
           }
+        }
+      }
+    }
+
+    section.skills {
+      .skills-list {
+        overflow: initial;
+        flex: 1 0 0;
+        font-size: 13px;
+        grid-auto-rows: minmax(18px, 1fr);
+        grid-template-columns: repeat(
+          auto-fill,
+          minmax(max(130px, calc(100% / 2)), 1fr)
+        );
+        .skill {
+          margin: 0;
+          height: 18px;
+          line-height: 1;
+          &::before {
+            content: attr(data-rank);
+            display: inline-block;
+            width: 14px;
+            text-align: center;
+          }
+          &[data-rank="0"]::before {
+            content: "-";
+            color: var(--zh-clr-bg3);
+          }
+          &[data-rank="1"]::before {
+            color: var(--zh-clr-green);
+          }
+          &[data-rank="2"]::before {
+            color: var(--zh-clr-yellow);
+          }
+          &[data-rank="3"]::before {
+            color: var(--zh-clr-red);
+          }
+        }
+        .skill-info {
+          display: none;
         }
       }
     }
@@ -381,24 +467,21 @@ body.game.vtt.system-zweihander .zweihander.sheet.creature {
     }
 
     aside.description {
-      background: transparent;
       grid-row: span 5;
-      height: auto;
-      overflow: hidden;
       textarea {
+        overflow: auto;
         background: transparent;
         border: none;
         color: var(--zh-clr-fg2);
         font-family: var(--font-primary);
         font-size: 14px;
-        height: 100%;
         margin: 0;
-        min-height: 0;
         padding: 10px;
         resize: none;
         text-align: justify;
         text-align-last: center;
         text-justify: newspaper;
+        white-space: normal;
         &:focus {
           box-shadow: none;
         }
@@ -470,7 +553,11 @@ body.game.vtt.system-zweihander .zweihander.sheet.creature {
     }
     section.stats {
       grid-row: span 1 !important;
-      .pa-icon, .pa-title {
+      .manual-mode-button {
+        display: none !important;
+      }
+      .pa-icon,
+      .pa-title {
         display: none;
       }
       .pa-bonus-title {
@@ -486,6 +573,11 @@ body.game.vtt.system-zweihander .zweihander.sheet.creature {
       }
       .sa-value {
         font-size: 14px !important;
+        input {
+          height: 14px !important;
+          width: 20px !important;
+          border-radius: 5px;
+        }
         .sa-ladder {
           font-size: 10px !important;
         }

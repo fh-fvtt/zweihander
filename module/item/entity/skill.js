@@ -7,10 +7,14 @@ export default class ZweihanderSkill extends ZweihanderBaseItem {
     if (!item.isOwned || !item?.actor?.data) return;
     const data = itemData.data;
     const actor = item.actor;
-    data.rank = actor.items
+    if (actor.type === 'character') {
+      data.rank = actor.items
       .filter(i => i.type === 'profession')
       .flatMap(p => p.data.data.skillRanks?.filter?.(sr => sr.value === item.name && sr.purchased))
       ?.length ?? 0;
+    } else {
+      data.rank = actor.data.data.skillRanks?.[item.name] ?? 0;
+    }
     data.bonusPerRank = 10
     data.bonus = data.rank * data.bonusPerRank;
     data.isFlipToFail = data.requiresTraining && data.rank === 0

@@ -1,8 +1,6 @@
 {
   "Actor": {
-    "types": [
-      "character", "npc", "creature"
-    ],
+    "types": ["character", "npc", "creature"],
     "templates": {
       "stats": {
         "stats": {
@@ -62,14 +60,73 @@
           "silver": 0,
           "brass": 0
         }
+      },
+      "non-player": {
+        "skillRanks": {},
+        "stats": {
+          "manualMode": true,
+          "primaryAttributes": {
+            "combat": {
+              "value": 40,
+              "bonusAdvances": 0
+            },
+            "brawn": {
+              "value": 40,
+              "bonusAdvances": 0
+            },
+            "agility": {
+              "value": 40,
+              "bonusAdvances": 0
+            },
+            "perception": {
+              "value": 40,
+              "bonusAdvances": 0
+            },
+            "intelligence": {
+              "value": 40,
+              "bonusAdvances": 0
+            },
+            "willpower": {
+              "value": 40,
+              "bonusAdvances": 0
+            },
+            "fellowship": {
+              "value": 40,
+              "bonusAdvances": 0
+            }
+          },
+          "secondaryAttributes": {
+            "movement": {
+              "value": 0,
+              "fly": 0
+            },
+            "initiative": {
+              "value": 0
+            },
+            "parry": {
+              "value": 0
+            },
+            "dodge": {
+              "value": 0
+            },
+            "damageThreshold": {
+              "value": 0
+            },
+            "perilThreshold": {
+              "value": 0
+            }
+          }
+        },
+        "details": {
+          "riskFactor": {
+            "value": 0,
+            "notch": 0
+          }
+        }
       }
     },
     "character": {
-      "templates": [
-        "stats",
-        "flavor",
-        "coinage"
-      ],
+      "templates": ["stats", "flavor", "coinage"],
       "testAttribute": [],
       "socialClass": {
         "value": ""
@@ -155,21 +212,13 @@
       }
     },
     "creature": {
-      "templates": [
-        "stats",
-        "flavor",
-        "coinage"
-      ],
+      "templates": ["stats", "flavor", "coinage", "non-player"],
       "details": {
         "classification": {
           "value": ""
         },
         "size": {
           "value": 0
-        },
-        "riskFactor": {
-          "value": 0,
-          "notch": 0
         },
         "role": {
           "value": ""
@@ -180,59 +229,70 @@
       }
     },
     "npc": {
-      "templates": [
-        "stats",
-        "flavor",
-        "coinage"
-      ],
-      "riskFactor": {
-        "value": 1,
-        "notch": 1
-      },
-      "ancestry": {
-        "value": ""
-      },
-      "archetype": {
-        "value": ""
-      },
-      "age": {
-        "value": ""
-      },
-      "sex": {
-        "value": ""
-      },
-      "height": {
-        "value": ""
-      },
-      "build": {
-        "value": ""
-      },
-      "distinguishingMarks": {
-        "value": ""
-      },
-      "complexion": {
-        "value": ""
-      },
-      "socialClass": {
-        "value": ""
-      },
-      "persona": {
-        "value": ""
-      },
-      "motivation": {
-        "value": ""
-      },
-      "alignment": {
-        "value": ""
-      },
-      "mannerOfDress": {
-        "value": ""
+      "templates": ["stats", "flavor", "coinage", "non-player"],
+      "details": {
+        "ancestry": {
+          "value": ""
+        },
+        "archetype": {
+          "value": ""
+        },
+        "age": {
+          "value": ""
+        },
+        "sex": {
+          "value": ""
+        },
+        "height": {
+          "value": ""
+        },
+        "build": {
+          "value": ""
+        },
+        "distinguishingMarks": {
+          "value": ""
+        },
+        "complexion": {
+          "value": ""
+        },
+        "socialClass": {
+          "value": ""
+        },
+        "persona": {
+          "value": ""
+        },
+        "motivation": {
+          "value": ""
+        },
+        "alignment": {
+          "value": ""
+        },
+        "mannerOfDress": {
+          "value": ""
+        }
       }
     }
   },
   "Item": {
     "types": [
-      "trapping", "condition", "injury", "disease", "disorder", "profession", "ancestry", "armor", "weapon", "spell", "ritual", "talent", "trait", "drawback", "quality", "skill", "uniqueAdvance", "taint"
+      "trapping",
+      "condition",
+      "injury",
+      "disease",
+      "disorder",
+      "profession",
+      "ancestry",
+      "armor",
+      "weapon",
+      "spell",
+      "ritual",
+      "talent",
+      "trait",
+      "drawback",
+      "quality",
+      "skill",
+      "uniqueAdvance",
+      "taint"
     ],
     "templates": {
       "flavor": {
@@ -255,14 +315,10 @@
       }
     },
     "quality": {
-      "templates": [
-        "flavor"
-      ]
+      "templates": ["flavor"]
     },
     "ancestry": {
-      "templates": [
-        "flavor"
-      ],
+      "templates": ["flavor"],
       "ancestralModifiers": {
         "positive": [],
         "negative": []
@@ -273,25 +329,19 @@
       }
     },
     "drawback": {
-      "templates": [
-        "flavor"
-      ],
+      "templates": ["flavor"],
       "effect": {
         "value": ""
       }
     },
     "trait": {
-      "templates": [
-        "flavor"
-      ],
+      "templates": ["flavor"],
       "effect": {
         "value": ""
       }
     },
     "weapon": {
-      "templates": [
-        "flavor", "price", "encumbrance"
-      ],
+      "templates": ["flavor", "price", "encumbrance"],
       "type": {
         "value": "Bladed"
       },
@@ -314,9 +364,7 @@
       }
     },
     "armor": {
-      "templates": [
-        "flavor", "price", "encumbrance"
-      ],
+      "templates": ["flavor", "price", "encumbrance"],
       "equipped": true,
       "qualities": {
         "value": "",
@@ -327,9 +375,7 @@
       }
     },
     "trapping": {
-      "templates": [
-        "flavor", "price", "encumbrance"
-      ],
+      "templates": ["flavor", "price", "encumbrance"],
       "category": {
         "value": ""
       },
@@ -342,9 +388,7 @@
       "carried": true
     },
     "profession": {
-      "templates": [
-        "flavor"
-      ],
+      "templates": ["flavor"],
       "expert": {
         "value": false,
         "requirements": ""
@@ -369,9 +413,7 @@
       }
     },
     "spell": {
-      "templates": [
-        "flavor"
-      ],
+      "templates": ["flavor"],
       "tradition": {
         "value": ""
       },
@@ -392,11 +434,9 @@
         "criticalSuccess": "",
         "criticalFailure": ""
       }
-    }, 
+    },
     "ritual": {
-      "templates": [
-        "flavor"
-      ],
+      "templates": ["flavor"],
       "difficulty": {
         "value": ""
       },
@@ -420,27 +460,21 @@
       }
     },
     "skill": {
-      "templates": [
-        "flavor"
-      ],
+      "templates": ["flavor"],
       "requiresTraining": false,
       "associatedPrimaryAttribute": {
         "value": "Combat"
       }
     },
     "talent": {
-      "templates": [
-        "flavor"
-      ],
+      "templates": ["flavor"],
       "effect": {
         "value": ""
       },
       "purchased": false
     },
     "uniqueAdvance": {
-      "templates": [
-        "flavor"
-      ],
+      "templates": ["flavor"],
       "type": {
         "value": ""
       },
@@ -452,9 +486,7 @@
       }
     },
     "disease": {
-      "templates": [
-        "flavor"
-      ],
+      "templates": ["flavor"],
       "resist": {
         "value": ""
       },
@@ -470,9 +502,7 @@
       "active": false
     },
     "disorder": {
-      "templates": [
-        "flavor"
-      ],
+      "templates": ["flavor"],
       "category": {
         "value": ""
       },
@@ -482,9 +512,7 @@
       "active": false
     },
     "taint": {
-      "templates": [
-        "flavor"
-      ],
+      "templates": ["flavor"],
       "category": {
         "value": ""
       },
@@ -494,9 +522,7 @@
       "active": false
     },
     "injury": {
-      "templates": [
-        "flavor"
-      ],
+      "templates": ["flavor"],
       "severity": {
         "value": ""
       },
@@ -506,9 +532,7 @@
       "active": false
     },
     "condition": {
-      "templates": [
-        "flavor"
-      ],
+      "templates": ["flavor"],
       "category": {
         "value": ""
       },

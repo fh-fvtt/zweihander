@@ -1,3 +1,8 @@
+import * as ZweihanderDice from "../../dice";
+import * as ZweihanderUtils from "../../utils";
+import ZweihanderProfession from "../../item/entity/profession";
+import ZweihanderQuality from "../../item/entity/quality";
+
 export default class ZweihanderBaseActorSheet extends ActorSheet {
 
   /** @override */
@@ -42,7 +47,7 @@ export default class ZweihanderBaseActorSheet extends ActorSheet {
   }
 
   _prepareItems() {
-    
+
   }
 
   async _onDropItemCreate(itemData) {
@@ -53,8 +58,8 @@ export default class ZweihanderBaseActorSheet extends ActorSheet {
         actorType: game.i18n.localize(CONFIG.Actor.typeLabels[this.actor.type])
       }));
     }
-   // Create the owned item as normal
-   return super._onDropItemCreate(itemData); 
+    // Create the owned item as normal
+    return super._onDropItemCreate(itemData);
   }
 
   async _render(force = false, options = {}) {
@@ -64,7 +69,7 @@ export default class ZweihanderBaseActorSheet extends ActorSheet {
       .map((element) => $(element).parent().data('itemId'));
     await super._render(force, options);
     // restore toggle states for item details
-    toggleStates.forEach(id => 
+    toggleStates.forEach(id =>
       $(this.form).find(`[data-item-id="${id}"] .save-toggle`).show().addClass("open")
     );
   }
@@ -73,6 +78,173 @@ export default class ZweihanderBaseActorSheet extends ActorSheet {
     super.activateListeners(html);
     this._damageSheet(html);
     this._perilSheet(html);
+
+    // Everything below here is only needed if the sheet is editable
+    if (!this.options.editable) return;
+    
+    const actor = this.actor;
+    const actorData = this.actor.data;
+    // Edit Inventory Item
+    html.find('.item-edit').click(ev => {
+      const li = $(ev.currentTarget).parents(".item");
+      const item = this.actor.items.get(li.data("itemId"));
+      item.sheet.render(true);
+    });
+
+    // Delete Inventory Item
+    html.find('.item-delete').click(async ev => {
+      const li = $(ev.currentTarget).parents(".item");
+      const item = this.actor.items.get(li.data("itemId"));
+      await Dialog.confirm({
+        title: `Delete Embedded Item: ${item.name}`,
+        content: "<p>Are you sure?</p><p>This item will be permanently deleted and cannot be recovered.</p>",
+        yes: async () => {
+          await this.actor.deleteEmbeddedDocuments("Item", [item.id]);
+          li.slideUp(200, () => this.render(false));
+        },
+        no: () => { },
+        defaultYes: true
+      });
+    });
+
+    html.find('.skill').hover(async ev => {
+      let target = "li.pa.pa-" + ev.currentTarget.attributes['data-associated-pa'].value.toLowerCase();
+      $(target).addClass('pa-hover-helper');
+    }, async ev => {
+      let target = "li.pa.pa-" + ev.currentTarget.attributes['data-associated-pa'].value.toLowerCase();
+      $(target).removeClass('pa-hover-helper');
+    })
+
+    // Add new Item (from within the sheet)
+    html.find('.add-new').click(async ev => {
+      let type = ev.currentTarget.dataset.itemType;
+
+      const createdItemArray = await this.actor.createEmbeddedDocuments("Item", [
+        { "type": type, "name": type }
+      ]);
+
+      if (createdItemArray.length)
+        createdItemArray[0].sheet.render(true);
+    });
+
+    html.find('.add-new').contextmenu(async ev => {
+      const packIds = ev.currentTarget.dataset.openPacks?.split(",");
+      if (!packIds) {
+        ui.notifications.notify(`This item type currently has no system compendium attached!`);
+        return
+      }
+      const packs = packIds.map(x => game.packs.get(x.trim()));
+      if (packs.every(x => x.apps[0].rendered)) {
+        packs.forEach(x => x.apps[0].close());
+      }
+      packs.forEach((x, i) => x.render(true, {
+        top: actor.sheet.position.top,
+        left: actor.sheet.position.left + (i % 2 == 0 ? -350 : actor.sheet.position.width)
+      }));
+
+    })
+
+    // Handle formulas for display
+    html.find('.inject-data').each(async function () {
+      $(this).text(await ZweihanderUtils.parseDataPaths($(this).text().trim(), actor));
+    });
+
+    // "Link" checkboxes on character sheet and item sheet so both have the same state
+    html.find(".link-checkbox").click(async event => {
+      event.preventDefault();
+
+      const li = $(event.currentTarget).closest(".item");
+      const item = this.actor.items.get(li.data("itemId"));
+
+      if (item.type === "armor") {
+        await item.update({ "data.equipped": event.target.checked });
+      } else if (item.type === "profession") {
+        if (!event.target.checked && item.data.data.tier.value !== item.actor.data.data.tier) {
+          ui.notifications.error(`In order to reset this professions progress you have to delete the profession above it first!`);
+          return;
+        }
+        Dialog.confirm({
+          title: !event.target.checked ?
+            "Reset Profession Progress" :
+            "Complete Profession",
+          content: !event.target.checked ?
+            "<p>Do you really want to reset your progress in this profession?</p>" :
+            "<p>Do you really want to purchase all advances in this profession? The current purchase state will be lost!</p>",
+          yes: () => ZweihanderProfession.toggleProfessionPurchases(item, !event.target.checked),
+          defaultYes: false
+        });
+      } else if (item.type === "trapping") {
+        await item.update({ "data.carried": event.target.checked });
+      } else if (item.type === "weapon") {
+        await item.update({ "data.equipped": event.target.checked });
+      } else if (item.type === "condition" || item.type === "injury" || item.type === "disease" || item.type === "disorder") {
+        await item.update({ "data.active": event.target.checked });
+      }
+    });
+    // Show item sheet on right click
+    html.find(".fetch-item").contextmenu(event => {
+      const target = $(event.currentTarget);
+      const skillName = target.text().trim();
+      const itemId = actorData.items.find(item => item.name === skillName).id;
+
+      if (itemId) {
+        const skillItem = this.actor.items.get(itemId);
+        skillItem.sheet.render(true);
+      }
+    });
+
+    html.find(".item-post").click(async event => {
+      const li = $(event.currentTarget).parents(".item");
+      const item = this.actor.items.get(li.data("itemId")).toObject(false);
+      if (item.type === 'weapon' || item.type === 'armor') {
+        item.data.qualities = await ZweihanderQuality.getQualities(item.data.qualities.value);
+      }
+      //console.log(item);
+      let html
+      try {
+        html = await renderTemplate(`systems/zweihander/templates/item-card/item-card-${item.type}.hbs`, item);
+      } catch (e) {
+        html = await renderTemplate(`systems/zweihander/templates/item-card/item-card-fallback.hbs`, item);
+      }
+      await ChatMessage.create({ content: html })
+    })
+
+    // Show extra item information on click
+    html.find(".js-show-item-description").click(event => this._showItemDescription(event));
+
+    // Roll Skill
+    html.find(".skill-roll").click((event) => {
+      this._onRollSkill(event, CONFIG.ZWEI.testTypes.skill);
+    });
+
+    // Roll Weapon
+    html.find(".weapon-roll").click((event) => {
+      this._onRollSkill(event, CONFIG.ZWEI.testTypes.weapon)
+    });
+
+    // Roll Spell
+    html.find(".spell-roll").click((event) => {
+      this._onRollSkill(event, CONFIG.ZWEI.testTypes.spell)
+    });
+
+    // Roll Dodge
+    html.find(".dodge-roll").click((event) => {
+      this._onRollSkill(event, CONFIG.ZWEI.testTypes.dodge);
+    });
+
+    // Roll Parry
+    html.find(".parry-roll").click((event) => {
+      this._onRollSkill(event, CONFIG.ZWEI.testTypes.parry);
+    });
+
+    html.find(".js-display-quality").contextmenu(async (event) => {
+      event.preventDefault();
+      const target = $(event.currentTarget);
+      const qualityName = target.text();
+      const quality = await ZweihanderUtils.findItemWorldWide("quality", qualityName);
+      quality.sheet.render(true);
+    });
+
   }
 
   _damageSheet(html) {
@@ -104,8 +276,8 @@ export default class ZweihanderBaseActorSheet extends ActorSheet {
     const onWidthChange = function () {
       const x = this.innerWidth;
       for (let [i, bp] of breakpoints.entries()) {
-        const lastW = i === 0 ? 0 : breakpoints[i-1].width;
-        const nextW = i === breakpoints.length - 1 ? Number.POSITIVE_INFINITY : breakpoints[i+1].width;
+        const lastW = i === 0 ? 0 : breakpoints[i - 1].width;
+        const nextW = i === breakpoints.length - 1 ? Number.POSITIVE_INFINITY : breakpoints[i + 1].width;
         if (x > lastW && x < nextW && (y === -1 || (y > lastW && y < nextW))) {
           const w = bp.width;
           if (x >= w && y < w) {
@@ -118,10 +290,38 @@ export default class ZweihanderBaseActorSheet extends ActorSheet {
       y = x;
     }
     const listener = html.find(`${selector} .width-change-listener`);
-    listener.each(function() {
+    listener.each(function () {
       $(this.contentWindow).resize(onWidthChange);
       onWidthChange.bind(this.contentWindow)();
     });
   }
+
+  async _onRollSkill(event, testType) {
+    event.preventDefault();
+    const element = event.currentTarget;
+    const skill = element.dataset.label;
+    const skillItem = this.actor.items.find(item => item.type === 'skill' && ZweihanderUtils.normalizedEquals(item.name, skill));
+    if (skillItem) {
+      const additionalConfiguration = {};
+      if (testType === 'weapon' || testType === 'spell') {
+        additionalConfiguration[`${testType}Id`] = $(element).parents(".item").data('itemId');
+      }
+      await ZweihanderDice.rollTest(skillItem, testType, additionalConfiguration, { showDialog: true });
+    } else {
+      ui.notifications.error(`Associated Skill "${skill}" does not exist for this actor!`);
+    }
+  }
+
+  _showItemDescription(event) {
+    event.preventDefault();
+    const toggler = $(event.currentTarget);
+    const item = toggler.parents(".item");
+    const description = item.find(".item-summary");
+
+    $(description).slideToggle(function () {
+      $(this).toggleClass("open");
+    });
+  }
+
 
 }

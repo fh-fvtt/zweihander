@@ -282,3 +282,9 @@ export async function updateActorSkillsFromPack(skillPackId) {
     CONFIG.ZWEI.NO_WARN = false;
   }
 }
+
+export function selectedChoice(value, choices) {
+  return choices.map(option => 
+    ({ selected: value == option.value ? 'selected' : '', ...option })
+  );
+}

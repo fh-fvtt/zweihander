@@ -1,5 +1,4 @@
 <form class="editable sheet-grid flexcol" autocomplete="off">
-  {{!-- {{> ($$ "creature/header") }} --}}
   <header>
     <figure class="actor-image">
       <img class="peril-tracker" src="{{actor.img}}" title="{{actor.name}}" data-edit="img" />
@@ -20,64 +19,55 @@
   </header>
   <aside class="details">
     <ul>
-      <li>
-        <input type="text" class="auto-size" name="data.details.classification.value" placeholder="Classification"
-          value="{{data.details.classification.value}}" />
-      </li>
-      <li>
-        {{!-- <input type="text" class="auto-size" name="data.details.size.value" placeholder="Size"
-          value="{{data.details.size.value}}" /> --}}
-        <select name="data.details.size.value">
-          <option value="0">Small (S)</option>
-          <option value="1">Normal (N)</option>
-          <option value="2" selected="selected">Big (B)</option>
-          <option value="3">Huge (H)</option>
-        </select>
-      </li>
       <li class="risk-factor">
         <select class="risk-factor-value" name="data.details.riskFactor.value">
-          <option value="0">Basic</option>
-          <option value="1">Intermediate</option>
-          <option value="2" selected="selected">Advanced</option>
-          <option value="3">Elite</option>
+          {{#each choices.riskFactors}}
+          <option value="{{value}}" {{selected}}>{{label}}</option>
+          {{/each}}
         </select>
         <select class="risk-factor-notch" name="data.details.riskFactor.notch">
-          <option value="0">(Low)</option>
-          <option value="1">(Medium)</option>
-          <option value="2" selected="selected">(High)</option>
-          <option value="3">(Unique)</option>
+          {{#each choices.notches}}
+          <option value="{{value}}" {{selected}}>{{label}}</option>
+          {{/each}}
         </select>
       </li>
+      {{#each details as | detail | }}
       <li>
-        <input type="text" class="auto-size" name="data.details.role.value" placeholder="Role"
-          value="{{data.details.role.value}}" />
+        {{#if detail.choices}}
+        <select name="data.details.{{detail.key}}">
+          {{#each detail.choices}}
+          <option value="{{value}}" {{selected}}>{{label}}</option>
+          {{/each}}
+        </select>
+        {{else}}
+        <input type="text" class="auto-size" name="data.details.{{detail.key}}" placeholder="{{detail.placeholder}}"
+          value="{{zhLookup ../data.details detail.key}}" />
+        {{/if}}
       </li>
-      <li class="influences">
-        <input type="text" class="auto-size" name="data.details.influences.value" placeholder="Influences"
-          value="{{data.details.influences.value}}" />
-      </li>
+      {{/each}}
     </ul>
   </aside>
   <section class="sheet-body">
     <section class="stats flexcol">
-      <h1>Attributes</h1>
+      <h1>Attributes <a class="manual-mode-button"><i
+            class="fas fa-toggle-{{#if data.stats.manualMode}}on{{else}}off{{/if}}"></i> Manual Mode</a></h1>
       <ul class="primary-attributes flexrow">
         {{#each data.stats.primaryAttributes as | attr key | }}
-        <li class="pa pa-{{key}}">
+        <li class="pa pa-{{key}}" data-primary-attribute="{{key}}">
           <span class="pa-title">{{key}}</span>
           <div class="pa-display flexrow">
             <input class="pa-value" size="2" type="number" name="data.stats.primaryAttributes.{{key}}.value"
               value="{{attr.value}}">
             <div class="pa-icon"><span class="{{lookup ../config.primaryAttributeIcons key}}"></span></div>
             <div class="pa-bonus-container flexcol">
-              <span class="pa-bonus">{{attr.bonus}}0</span>
+              <span class="pa-bonus">{{attr.bonus}}</span>
               <span class="pa-bonus-title">{{getFirstLetter key}}B</span>
             </div>
           </div>
           <div class="pa-bonus-advances flexrow">
-            <button class="pa-bonus-advance-substract">-</button>
-            <span class="pa-bonus-advance-counter">0</span>
-            <button class="pa-bonus-advance-add">+</button>
+            <button class="pa-bonus-advance-substract" data-primary-attribute="{{key}}">-</button>
+            <span class="pa-bonus-advance-counter">{{attr.bonusAdvances}}</span>
+            <button class="pa-bonus-advance-add" data-primary-attribute="{{key}}">+</button>
           </div>
         </li>
         {{/each}}
@@ -85,27 +75,58 @@
       <ul class="secondary-attributes flexrow">
         <li class="sa-int">
           <span class="sa-title">Initiative</span>
-          <span class="sa-value">11</span>
+          <span class="sa-value">
+            <input size="2" type="number" name="data.stats.secondaryAttributes.initiative.value"
+              value="{{data.stats.secondaryAttributes.initiative.value}}" {{#unless
+              data.stats.manualMode}}readonly{{/unless}}>
+          </span>
         </li>
         <li class="sa-mov">
-          <span class="sa-title">Move</span>
-          <span class="sa-value">23</span>
+          <span class="sa-title">Move / Fly</span>
+          <span class="sa-value">
+            <input size="2" type="number" name="data.stats.secondaryAttributes.movement.value"
+              value="{{data.stats.secondaryAttributes.movement.value}}" {{#unless
+              data.stats.manualMode}}readonly{{/unless}}>
+            <span class="sa-value-fly">
+              /<input size="2" type="number" name="data.stats.secondaryAttributes.movement.fly"
+                value="{{data.stats.secondaryAttributes.movement.fly}}" {{#unless
+                data.stats.manualMode}}readonly{{/unless}}>
+            </span>
+          </span>
         </li>
         <li class="sa-dth">
           <span class="sa-title">DTh</span>
-          <span class="sa-value">7<span class="sa-ladder">(13/19/25)</span></span>
+          <span class="sa-value">
+            <input size="2" type="number" name="data.stats.secondaryAttributes.damageThreshold.value"
+              value="{{data.stats.secondaryAttributes.damageThreshold.value}}" {{#unless
+              data.stats.manualMode}}readonly{{/unless}}>
+            <span
+              class="sa-ladder">({{data.stats.secondaryAttributes.damageThreshold.valuePlusSix}}/{{data.stats.secondaryAttributes.damageThreshold.valuePlusTwelve}}/{{data.stats.secondaryAttributes.damageThreshold.valuePlusEighteen}})</span></span>
         </li>
         <li class="sa-dth">
           <span class="sa-title">PTh</span>
-          <span class="sa-value">9<span class="sa-ladder">(15/21/27)</span></span>
+          <span class="sa-value">
+            <input size="2" type="number" name="data.stats.secondaryAttributes.perilThreshold.value"
+              value="{{data.stats.secondaryAttributes.perilThreshold.value}}" {{#unless
+              data.stats.manualMode}}readonly{{/unless}}>
+            <span
+              class="sa-ladder">({{data.stats.secondaryAttributes.perilThreshold.valuePlusSix}}/{{data.stats.secondaryAttributes.perilThreshold.valuePlusTwelve}}/{{data.stats.secondaryAttributes.perilThreshold.valuePlusEighteen}})</span></span>
         </li>
         <li class="sa-parry">
           <span class="sa-title">Parry</span>
-          <span class="sa-value">23</span>
+          <span class="sa-value">
+            <input size="2" type="number" name="data.stats.secondaryAttributes.parry.value"
+              value="{{data.stats.secondaryAttributes.parry.value}}" {{#unless
+              data.stats.manualMode}}readonly{{/unless}}>
+          </span>
         </li>
         <li class="sa-dodge">
           <span class="sa-title">Dodge</span>
-          <span class="sa-value">60</span>
+          <span class="sa-value">
+            <input size="2" type="number" name="data.stats.secondaryAttributes.dodge.value"
+              value="{{data.stats.secondaryAttributes.dodge.value}}" {{#unless
+              data.stats.manualMode}}readonly{{/unless}}>
+          </span>
         </li>
       </ul>
     </section>
@@ -114,74 +135,19 @@
     </section>
     <section class="skills skills-container flexcol save-scroll">
       <h1>Skills</h1>
-      <div class="skills-list">
-        {{#each skills as | skill idx | }}
-        <div class="skill flexrow" data-item-id="{{skill._id}}"
-          data-associated-pa="{{skill.data.associatedPrimaryAttribute.value}}">
-          <a class="skill-roll" data-roll="1d100" data-label="{{skill.name}}">{{skill.name}} ({{getFirstLetter
-            skill.data.associatedPrimaryAttribute.value}}){{#if
-            skill.data.requiresTraining}}*{{else}}{{/if}}</a>
-          <span class="skill-info flexrow">
-            <span class="skill-rank" title="{{skill.data.rank}}">
-              {{skillRankAbbreviation skill.data.rank}}
-            </span>
-            <span class="skill-gain">
-              {{skillBonus skill.data.bonus}}
-            </span>
-          </span>
-          {{!-- <div class="controls">
-            <a class="item-control item-delete" title="Delete Item"><i class="fas fa-trash-alt fa-fw fa-xs"></i></a>
-          </div> --}}
-        </div>
-        {{/each}}
-      </div>
+      {{> ($$ "partials/skills-list" )}}
     </section>
     <section class="rules">
-      <h1>Rules</h1>
-
+      {{!-- <h1>Rules</h1> --}}
+      {{> ($$ "partials/items-list") itemGroups.rules}}
     </section>
-
     <section class="loot">
-      <ol class="items-list">
-        <li class="items-header flexrow">
-          <h3 class="item-name">Loot</h3>
-          <div class="item-detail item-detail-40">Qty.</div>
-          <div class="item-controls"><a class="add-new" data-item-type="trapping" data-open-packs="zweihander.trappings"
-              title="Add New Trapping"><i class="fa fa-plus"></i> Add</a></div>
-        </li>
-        <ol class="item-list">
-          {{#each trappings as | trapping idx |}}
-          <li class="item flexrow" data-item-id="{{trapping._id}}">
-            <div class="item-name js-show-item-description fetch-item flexrow">
-              <div class="{{itemImageClass trapping.img}}" tabindex="0" role="button" aria-label="{{trapping.name}}"
-                style="{{itemImageStyle trapping.img}}"></div>
-              <h4>{{trapping.name}}</h4>
-            </div>
-            <div class="item-detail item-detail-40">{{trapping.data.quantity.value}}</div>
-            <div class="item-controls flexrow">
-              <a class="item-control item-post" title="Post Item to Chat"><i class="fas fa-comment fa-fw fa-xs"></i></a>
-              <a class="item-control item-edit" title="Edit Item"><i class="fas fa-pencil-alt fa-fw fa-xs"></i></a>
-              <a class="item-control item-delete" title="Delete Item"><i class="fas fa-trash-alt fa-fw fa-xs"></i></a>
-            </div>
-            <div class="item-summary individual-description save-toggle">
-              <span class="item-summary-longform">
-                <i class="fas fa-coins currency-gc"></i> {{trapping.data.price.gc}}
-                <i class="fas fa-coins currency-ss"></i> {{trapping.data.price.ss}}
-                <i class="fas fa-coins currency-bp"></i> {{trapping.data.price.bp}} <br />
-                <label>Description:</label> {{{markdownIt trapping.data.flavor.description}}}
-              </span>
-            </div>
-          </li>
-          {{/each}}
-        </ol>
-      </ol>
+      {{> ($$ "partials/items-list") itemGroups.loot}}
     </section>
     <aside class="description">
       <h1>Description</h1>
-
       <textarea spellcheck="false" name="data.flavor.description"
         placeholder="Put a nice description of your creature here...">{{data.flavor.description}}</textarea>
-
     </aside>
   </section>
 </form>
