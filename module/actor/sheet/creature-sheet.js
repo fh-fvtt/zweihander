@@ -34,7 +34,7 @@ export default class ZweihanderCreatureSheet extends ZweihanderBaseActorSheet {
     sheetData.choices.sizes = selectedChoice(size, [
       { value: 0, label: 'Small (S)' },
       { value: 1, label: 'Normal (N)' },
-      { value: 2, label: 'Big (B)' },
+      { value: 2, label: 'Large (L)' },
       { value: 3, label: 'Huge (H)' },
     ]);
     const rf = sheetData.data.details.riskFactor?.value ?? 0;
@@ -212,7 +212,7 @@ export default class ZweihanderCreatureSheet extends ZweihanderBaseActorSheet {
     const updateBonusAdvances = (i) => (event) => {
       const pa = event.currentTarget.dataset.primaryAttribute;
       const bonusAdvances = this.actor.data.data.stats.primaryAttributes[pa]?.bonusAdvances + i;
-      this.actor.update({ [`data.stats.primaryAttributes.${pa}.bonusAdvances`]: Math.max(0, bonusAdvances) });
+      this.actor.update({ [`data.stats.primaryAttributes.${pa}.bonusAdvances`]: bonusAdvances });
     };
     html.find('.pa-bonus-advance-substract').click(updateBonusAdvances(-1));
     html.find('.pa-bonus-advance-add').click(updateBonusAdvances(1));

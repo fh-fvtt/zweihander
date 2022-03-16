@@ -11,7 +11,7 @@ body.game.vtt.system-zweihander .zweihander.sheet.creature {
     background-image: url("assets/creature-sheet-backdrop.webp?x=23dfs");
     background-size: contain;
     background-repeat: no-repeat;
-    background-position: right bottom;
+    background-position: bottom center;
     background-blend-mode: multiply;
   }
 
@@ -399,6 +399,9 @@ body.game.vtt.system-zweihander .zweihander.sheet.creature {
               height: 18px;
               height: min-content;
               text-align: right;
+              &.sa-solo-value {
+                text-align: center;
+              }
             }
             .sa-value-fly {
               color: var(--zh-clr-fg4);
@@ -431,6 +434,10 @@ body.game.vtt.system-zweihander .zweihander.sheet.creature {
           margin: 0;
           height: 18px;
           line-height: 1;
+          flex-wrap: nowrap;
+          .skill-roll {
+            flex: 0 1 content;
+          }
           &::before {
             content: attr(data-rank);
             display: inline-block;

@@ -3,9 +3,13 @@
   <div class="skill flexrow" data-item-id="{{skill._id}}"
     data-associated-pa="{{skill.data.associatedPrimaryAttribute.value}}"
     data-rank="{{skill.data.rank}}">
-    <a class="skill-roll" data-roll="1d100" data-label="{{skill.name}}">{{skill.name}} ({{getFirstLetter
-      skill.data.associatedPrimaryAttribute.value}}){{#if
-      skill.data.requiresTraining}}*{{else}}{{/if}}</a>
+    <a class="skill-roll" data-roll="1d100" data-label="{{skill.name}}">
+      <span>
+        {{skill.name}}
+      ({{getFirstLetter skill.data.associatedPrimaryAttribute.value}})
+      {{#if skill.data.requiresTraining}}*{{/if}}
+      </span>
+    </a>
     <span class="skill-info flexrow">
       <span class="skill-rank" title="{{skill.data.rank}}">
         {{skillRankAbbreviation skill.data.rank}}

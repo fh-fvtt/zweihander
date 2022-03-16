@@ -10,7 +10,9 @@ export async function getTestConfiguration(skillItem, testType = 'skill', testCo
 async function renderConfigurationDialog(testType, label, testConfiguration = {}) {
   const templateData = {
     weaponRoll: testType === 'weapon',
-    spellRoll: testType === 'spell'
+    spellRoll: testType === 'spell',
+    additionalFuryDice: testConfiguration.additionalFuryDice,
+    additionalChaosDice: testConfiguration.additionalChaosDice
   };
   const toPercentileLabel = (i) => i === 0 ? '+-0%' : (i > 0 ? `+${i}%` : `${i}%`);
   templateData.fortuneOptions = [
