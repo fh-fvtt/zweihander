@@ -17,11 +17,16 @@ export default class ZweihanderCreatureSheet extends ZweihanderBaseActorSheet {
   ]);
 
   static get defaultOptions() {
+    const compactMode = game.settings.get("zweihander", "openInCompactMode");
+    const classes = ["zweihander", "sheet", "actor", "creature", "damage-tracker"];
+    if (compactMode) {
+      classes.push("zweihander-compact-sheet");
+    }
     return foundry.utils.mergeObject(super.defaultOptions, {
-      classes: ["zweihander", "sheet", "actor", "creature", "damage-tracker"],
+      classes,
       template: "systems/zweihander/templates/creature/main.hbs",
-      width: 620,
-      height: 669,
+      width: compactMode ? 550 : 620,
+      height: compactMode ? 580 : 669,
       resizable: true,
       scrollY: ['.save-scroll', '.sheet-body']
     });

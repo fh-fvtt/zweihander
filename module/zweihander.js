@@ -190,9 +190,10 @@ Hooks.on("renderActorSheet", (app, html, data) => {
       new ZweihanderActorConfig(app.object).render(true);
     })
   } else {
+    const compactMode = game.settings.get("zweihander", "openInCompactMode");
     html.find(".header-button.configure-sheet").before(`
     <a class="hide-background">
-    <i class="hide-background-toggle fas fa-toggle-off"></i>
+    <i class="hide-background-toggle fas fa-toggle-${compactMode ? "on" : "off"}"></i>
     Compact
     </a>
     `);
