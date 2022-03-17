@@ -6,7 +6,16 @@
   "minimumCoreVersion": "0.8.4",
   "compatibleCoreVersion": "9",
   "templateVersion": 2,
-  "author": ["Re4XN", "kxfin"],
+  "authors": [
+    {
+      "name": "Re4XN",
+      "discord": "Re4XN#8341"
+    },
+    {
+      "name": "kxfin",
+      "discord": "kxfin#0458"
+    }
+  ],
   "esmodules": ["zweihander.js"],
   "styles": ["zweihander.css"],
   "languages": [
@@ -34,150 +43,157 @@
   "packs": [
     {
       "name": "skills",
-      "label": "Skills",
+      "label": "Zweihander Skills",
       "system": "zweihander",
-      "path": "./packs/skills.db",
+      "path": "./packs/zh-skills.db",
       "type": "Item"
     },
     {
-      "name": "ancestries",
-      "label": "Ancestries",
+      "name": "zh-ancestries",
+      "label": "Zweihander Ancestries",
       "system": "zweihander",
-      "path": "./packs/ancestries.db",
+      "path": "./packs/zh-ancestries.db",
       "type": "Item"
     },
     {
-      "name": "ancestral-traits",
-      "label": "Ancestral Traits",
+      "name": "zh-ancestral-traits",
+      "label": "Zweihander Ancestral Traits",
       "system": "zweihander",
-      "path": "./packs/ancestral-traits.db",
+      "path": "./packs/zh-ancestral-traits.db",
       "type": "Item"
     },
     {
-      "name": "magick",
-      "label": "Magick",
+      "name": "zh-magick",
+      "label": "Zweihander Magick",
       "system": "zweihander",
-      "path": "./packs/magick.db",
+      "path": "./packs/zh-magick.db",
       "type": "Item"
     },
     {
-      "name": "professions",
-      "label": "Professions",
+      "name": "zh-professions",
+      "label": "Zweihander Professions",
       "system": "zweihander",
-      "path": "./packs/professions.db",
+      "path": "./packs/zh-professions.db",
       "type": "Item"
     },
     {
-      "name": "talents",
-      "label": "Talents",
+      "name": "zh-talents",
+      "label": "Zweihander Talents",
       "system": "zweihander",
-      "path": "./packs/talents.db",
+      "path": "./packs/zh-talents.db",
       "type": "Item"
     },
     {
-      "name": "drawbacks",
-      "label": "Drawbacks",
+      "name": "zh-drawbacks",
+      "label": "Zweihander Drawbacks",
       "system": "zweihander",
-      "path": "./packs/drawbacks.db",
+      "path": "./packs/zh-drawbacks.db",
       "type": "Item"
     },
     {
-      "name": "traits",
-      "label": "Traits",
+      "name": "zh-traits",
+      "label": "Zweihander Traits",
       "system": "zweihander",
-      "path": "./packs/traits.db",
+      "path": "./packs/zh-traits.db",
       "type": "Item"
     },
     {
-      "name": "weapons",
-      "label": "Weapons",
+      "name": "zh-weapons",
+      "label": "Zweihander Weapons",
       "system": "zweihander",
-      "path": "./packs/weapons.db",
+      "path": "./packs/zh-weapons.db",
       "type": "Item"
     },
     {
-      "name": "weapons-alt-damage",
-      "label": "Weapons (Alt. Damage)",
+      "name": "zh-weapons-alt-damage",
+      "label": "Zweihander Weapons (Alt. Damage)",
       "system": "zweihander",
-      "path": "./packs/weapons-alt-damage.db",
+      "path": "./packs/zh-weapons-alt-damage.db",
       "type": "Item"
     },
     {
-      "name": "taints",
-      "label": "Taints of Chaos",
+      "name": "zh-taints",
+      "label": "Zweihander Taints of Chaos",
       "system": "zweihander",
-      "path": "./packs/taints.db",
+      "path": "./packs/zh-taints.db",
       "type": "Item"
     },
     {
-      "name": "trappings",
-      "label": "Trappings",
+      "name": "zh-trappings",
+      "label": "Zweihander Trappings",
       "system": "zweihander",
-      "path": "./packs/trappings.db",
+      "path": "./packs/zh-trappings.db",
       "type": "Item"
     },
     {
-      "name": "conditions",
-      "label": "Conditions",
+      "name": "zh-conditions",
+      "label": "Zweihander Conditions",
       "system": "zweihander",
-      "path": "./packs/conditions.db",
+      "path": "./packs/zh-conditions.db",
       "type": "Item"
     },
     {
-      "name": "armor",
-      "label": "Armor",
+      "name": "zh-armor",
+      "label": "Zweihander Armor",
       "system": "zweihander",
-      "path": "./packs/armor.db",
+      "path": "./packs/zh-armor.db",
       "type": "Item"
     },
     {
-      "name": "qualities",
-      "label": "Qualities",
+      "name": "zh-qualities",
+      "label": "Zweihander Qualities",
       "system": "zweihander",
-      "path": "./packs/qualities.db",
+      "path": "./packs/zh-qualities.db",
       "type": "Item"
     },
     {
-      "name": "diseases",
-      "label": "Diseases",
+      "name": "zh-diseases",
+      "label": "Zweihander Diseases",
       "system": "zweihander",
-      "path": "./packs/diseases.db",
+      "path": "./packs/zh-diseases.db",
       "type": "Item"
     },
     {
-      "name": "disorders",
-      "label": "Disorders",
+      "name": "zh-disorders",
+      "label": "Zweihander Disorders",
       "system": "zweihander",
-      "path": "./packs/disorders.db",
+      "path": "./packs/zh-disorders.db",
       "type": "Item"
     },
     {
-      "name": "rituals",
-      "label": "Rituals",
+      "name": "zh-rituals",
+      "label": "Zweihander Rituals",
       "system": "zweihander",
-      "path": "./packs/rituals.db",
+      "path": "./packs/zh-rituals.db",
       "type": "Item"
     },
     {
-      "name": "injuries",
-      "label": "Injuries",
+      "name": "zh-injuries",
+      "label": "Zweihander Injuries",
       "system": "zweihander",
-      "path": "./packs/injuries.db",
+      "path": "./packs/zh-injuries.db",
       "type": "Item"
     },
     {
-      "name": "charactercreation-tables",
-      "label": "Character Creation Tables",
+      "name": "zh-charactercreation-tables",
+      "label": "Zweihander Character Creation",
       "system": "zweihander",
-      "path": "./packs/charactercreation-tables.db",
+      "path": "./packs/zh-charactercreation-tables.db",
       "type": "RollTable"
     },
     {
-      "name": "gm-tables",
-      "label": "GM Tables",
+      "name": "zh-gm-tables",
+      "label": "Zweihander GM Tables",
       "system": "zweihander",
-      "path": "./packs/gm-tables.db",
+      "path": "./packs/zh-gm-tables.db",
       "type": "RollTable"
+    },
+    {
+      "name": "zh-bestiary",
+      "label": "Zweihander Bestiary",
+      "system": "zweihander",
+      "path": "./packs/zh-bestiary.db",
+      "type": "Actor"
     }
   ]
 }

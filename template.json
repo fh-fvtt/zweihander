@@ -1,6 +1,6 @@
 {
   "Actor": {
-    "types": ["character", "npc", "creature"],
+    "types": ["creature", "npc", "character"],
     "templates": {
       "stats": {
         "stats": {
@@ -51,7 +51,14 @@
       "flavor": {
         "flavor": {
           "description": "",
-          "notes": ""
+          "notes": "",
+          "references": [
+            {
+              "book": "",
+              "page": 0,
+              "url": ""
+            }
+          ]
         }
       },
       "coinage": {
@@ -130,7 +137,6 @@
     },
     "character": {
       "templates": ["stats", "flavor", "coinage"],
-      "testAttribute": [],
       "socialClass": {
         "value": ""
       },
@@ -278,24 +284,24 @@
   },
   "Item": {
     "types": [
-      "trapping",
-      "condition",
-      "injury",
-      "disease",
-      "disorder",
-      "profession",
       "ancestry",
       "armor",
-      "weapon",
-      "spell",
+      "condition",
+      "disease",
+      "disorder",
+      "drawback",
+      "injury",
+      "profession",
+      "quality",
       "ritual",
+      "skill",
+      "spell",
+      "taint",
       "talent",
       "trait",
-      "drawback",
-      "quality",
-      "skill",
+      "trapping",
       "uniqueAdvance",
-      "taint"
+      "weapon"
     ],
     "templates": {
       "flavor": {
