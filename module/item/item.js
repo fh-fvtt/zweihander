@@ -4,6 +4,7 @@ import ZweihanderSkill from "./entity/skill";
 import ZweihanderAncestry from "./entity/ancestry";
 import ZweihanderArmor from "./entity/armor";
 import ZweihanderQuality from "./entity/quality";
+import { ZWEI } from "../config";
 
 export default class ZweihanderItem extends Item {
 
@@ -71,6 +72,7 @@ export default class ZweihanderItem extends Item {
 
   async _preCreate(data, options, user) {
     await super._preCreate(data, options, user);
+    this.data.update({ img: ZWEI.defaultItemIcons[data.type] });
     if (this.parent === null) return;
     await this.dispatch("_preCreate", { args: [data, options, user] });
   }

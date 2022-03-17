@@ -297,7 +297,7 @@ export function attachTabDefinitions(data) {
             {
               title: "Source",
               size: 240,
-              key: "data.source"
+              key: "source"
             }
           ],
           items: data.traits
@@ -311,7 +311,7 @@ export function attachTabDefinitions(data) {
             {
               title: "Source",
               size: 240,
-              key: "data.source"
+              key: "source"
             }
           ],
           items: data.drawbacks
