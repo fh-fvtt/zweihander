@@ -61,3 +61,8 @@ ZWEI.primaryAttributeIcons = {
     "willpower": "ra ra-crystal-ball",
     "fellowship": "ra ra-double-team"
 }
+
+ZWEI.supportedGameSystems = {
+    zweihander: "Zweihander",
+    fof: "Flames of Freedom"
+}

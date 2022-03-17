@@ -157,7 +157,7 @@ Hooks.once("init", async function () {
       icon: "systems/zweihander/assets/icons/bleeding-wound.svg"
     }
   ],
-    CONFIG.ZWEI = ZWEI;
+  CONFIG.ZWEI = ZWEI;
   // Define custom Document classes
   CONFIG.Actor.documentClass = ZweihanderActor;
   CONFIG.Item.documentClass = ZweihanderItem;

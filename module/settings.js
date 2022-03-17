@@ -1,9 +1,24 @@
+import { ZWEI } from "./config";
 import { updateActorSkillsFromPack } from "./utils";
+
+export const debouncedReload = foundry.utils.debounce(() => window.location.reload(), 500);
 
 export const registerSystemSettings = function() {
   /* -------------------------------------------- */
   /*  System settings registration                */
   /* -------------------------------------------- */
+
+
+  game.settings.register("zweihander", "gameSystem", {
+    name: "Game System",
+    hint: "Choose the specific implementation of the Zweihander d100 system you want to play",
+    scope: "world",
+    type: String,
+    default: 'zweihander',
+    choices: ZWEI.supportedGameSystems,
+    config: true,
+    onChange: debouncedReload
+  });
 
   game.settings.register("zweihander", "systemMigrationVersion", {
     name: "System Migration Version",

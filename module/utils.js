@@ -288,3 +288,10 @@ export function selectedChoice(value, choices) {
     ({ selected: value == option.value ? 'selected' : '', ...option })
   );
 }
+
+export function getSheetSettings() {
+  const gameSystem = game.settings.get("zweihander", "gameSystem");
+  return {
+    gameSystem
+  }
+}
