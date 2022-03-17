@@ -53,7 +53,7 @@ Hooks.once("ready", function () {
       game.messages.get(messageId).update(diffData);
     })
   });
-  game.actors.getName('Demon Archer')?.sheet?.render?.(true);
+  // game.actors.getName('Demon Archer')?.sheet?.render?.(true);
 })
 
 Hooks.once("diceSoNiceReady", function () {
