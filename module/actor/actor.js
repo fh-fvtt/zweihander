@@ -1,6 +1,7 @@
 import ZweihanderPC from "./entity/pc";
 import ZweihanderNPC from "./entity/npc";
 import ZweihanderCreature from "./entity/creature";
+import { ZWEI } from "../config";
 
 export default class ZweihanderActor extends Actor {
 
@@ -69,6 +70,7 @@ export default class ZweihanderActor extends Actor {
 
   async _preCreate(data, options, user) {
     await super._preCreate(data, options, user);
+    this.data.update({ img: ZWEI.defaulActorIcons[data.type] });
     await this.dispatch("_preCreate", { args: [this.data, options, user] });
   }
 

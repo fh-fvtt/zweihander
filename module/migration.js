@@ -1,3 +1,4 @@
+import { ZWEI } from "./config";
 import ZweihanderBaseItem from "./item/entity/base-item";
 
 export const migrateWorld = async function () {
@@ -107,7 +108,7 @@ const migrateActorData = async function (actor) {
     }
   }
   if (items.length > 0) updateData.items = items;
-  updateData.img = migrateIcons(actor.img);
+  updateData.img = migrateIcons(actor);
   return updateData;
 };
 
@@ -122,7 +123,7 @@ export const migrateItemData = async function (item) {
   } else if (rmSource.includes(item.type)) {
     // item.setFlag('zweihander', 'source', null);
   }
-  updateData.img = migrateIcons(item.img);
+  updateData.img = migrateIcons(item);
   return updateData;
 };
 
@@ -225,7 +226,16 @@ const migrateProfession = async function (item) {
   }
 }
 
-const migrateIcons = function (img) {
+const migrateIcons = function (document) {
+  const type = document.type;
+  const img = document.img;
+  const r = ['icons/svg/mystery-man.svg', 'icons/svg/item-bag.svg', 'systems/zweihander/assets/icons/cowled.svg'];
+  if ((type in ZWEI.defaultItemIcons) && r.includes(img)) {
+    return ZWEI.defaultItemIcons[type];
+  }
+  if ((type in ZWEI.defaultActorIcons) && r.includes(img)) {
+    return ZWEI.defaultActorIcons[type];
+  }
   return img?.replaceAll?.('assets/icons/game-icons', 'assets/icons')?.replaceAll?.('assets/skills.png', 'icons/skills.svg') ?? "icons/svg/mystery-man.svg";
 }
 
@@ -246,7 +256,7 @@ const fixSourceFlags = async function () {
 export const migrateWorldSafe = async function () {
   if (!game.user.isGM) return;
   const currentVersion = game.settings.get("zweihander", "systemMigrationVersion");
-  const NEEDS_MIGRATION_VERSION = "4.0.6-beta4";
+  const NEEDS_MIGRATION_VERSION = "4.1.0-beta6c";
   const COMPATIBLE_MIGRATION_VERSION = "0.3.30";
   const totalDocuments = game.actors.size + game.scenes.size + game.items.size;
   if (!currentVersion && totalDocuments === 0) return game.settings.set("zweihander", "systemMigrationVersion", game.system.data.version);

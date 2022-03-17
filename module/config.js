@@ -66,3 +66,30 @@ ZWEI.supportedGameSystems = {
     zweihander: "Zweihander",
     fof: "Flames of Freedom"
 }
+
+const d = "/systems/zweihander/assets/icons";
+ZWEI.defaultItemIcons = {
+    "trapping": `${d}/swap-bag.svg`,
+    "condition": `${d}/abstract-024.svg`,
+    "injury": `${d}/bandaged.svg`,
+    "disease": `${d}/half-dead.svg`,
+    "disorder": `${d}/abstract-057.svg`,
+    "profession": `${d}/abstract-082.svg`,
+    "ancestry": `${d}/dna2.svg`,
+    "armor": `${d}/leather-armor.svg`,
+    "weapon": `${d}/sword-hilt.svg`,
+    "spell": `${d}/wizard-staff.svg`,
+    "ritual": `${d}/pentacle.svg`,
+    "talent": `${d}/fist.svg`,
+    "trait": `${d}/vitruvian-man.svg`,
+    "drawback": `${d}/spiked-halo.svg`,
+    "quality": `${d}/flint-spark.svg`,
+    "skill": `${d}/skills.svg`,
+    "uniqueAdvance": `${d}/card-joker.svg`,
+    "taint": `${d}/evil-moon.svg`
+};
+ZWEI.defaultActorIcons = {
+    "character": `${d}/character.svg`,
+    "creature": `${d}/daemon-skull.svg`,
+    "npc": `${d}/cowled.svg`,
+};
