@@ -37,140 +37,147 @@
       "label": "Skills",
       "system": "zweihander",
       "path": "./packs/skills.db",
-      "entity": "Item"
+      "type": "Item"
     },
     {
       "name": "ancestries",
       "label": "Ancestries",
       "system": "zweihander",
       "path": "./packs/ancestries.db",
-      "entity": "Item"
+      "type": "Item"
     },
     {
       "name": "ancestral-traits",
       "label": "Ancestral Traits",
       "system": "zweihander",
       "path": "./packs/ancestral-traits.db",
-      "entity": "Item"
+      "type": "Item"
     },
     {
       "name": "magick",
       "label": "Magick",
       "system": "zweihander",
       "path": "./packs/magick.db",
-      "entity": "Item"
+      "type": "Item"
     },
     {
       "name": "professions",
       "label": "Professions",
       "system": "zweihander",
       "path": "./packs/professions.db",
-      "entity": "Item"
+      "type": "Item"
     },
     {
       "name": "talents",
       "label": "Talents",
       "system": "zweihander",
       "path": "./packs/talents.db",
-      "entity": "Item"
+      "type": "Item"
     },
     {
       "name": "drawbacks",
       "label": "Drawbacks",
       "system": "zweihander",
       "path": "./packs/drawbacks.db",
-      "entity": "Item"
+      "type": "Item"
     },
     {
       "name": "traits",
       "label": "Traits",
       "system": "zweihander",
       "path": "./packs/traits.db",
-      "entity": "Item"
+      "type": "Item"
     },
     {
       "name": "weapons",
       "label": "Weapons",
       "system": "zweihander",
       "path": "./packs/weapons.db",
-      "entity": "Item"
+      "type": "Item"
     },
     {
       "name": "weapons-alt-damage",
       "label": "Weapons (Alt. Damage)",
       "system": "zweihander",
       "path": "./packs/weapons-alt-damage.db",
-      "entity": "Item"
+      "type": "Item"
     },
     {
       "name": "taints",
       "label": "Taints of Chaos",
       "system": "zweihander",
       "path": "./packs/taints.db",
-      "entity": "Item"
+      "type": "Item"
     },
     {
       "name": "trappings",
       "label": "Trappings",
       "system": "zweihander",
       "path": "./packs/trappings.db",
-      "entity": "Item"
+      "type": "Item"
     },
     {
       "name": "conditions",
       "label": "Conditions",
       "system": "zweihander",
       "path": "./packs/conditions.db",
-      "entity": "Item"
+      "type": "Item"
     },
     {
       "name": "armor",
       "label": "Armor",
       "system": "zweihander",
       "path": "./packs/armor.db",
-      "entity": "Item"
+      "type": "Item"
     },
     {
       "name": "qualities",
       "label": "Qualities",
       "system": "zweihander",
       "path": "./packs/qualities.db",
-      "entity": "Item"
+      "type": "Item"
     },
     {
       "name": "diseases",
       "label": "Diseases",
       "system": "zweihander",
       "path": "./packs/diseases.db",
-      "entity": "Item"
+      "type": "Item"
     },
     {
       "name": "disorders",
       "label": "Disorders",
       "system": "zweihander",
       "path": "./packs/disorders.db",
-      "entity": "Item"
+      "type": "Item"
     },
     {
       "name": "rituals",
       "label": "Rituals",
       "system": "zweihander",
       "path": "./packs/rituals.db",
-      "entity": "Item"
+      "type": "Item"
     },
     {
       "name": "injuries",
       "label": "Injuries",
       "system": "zweihander",
       "path": "./packs/injuries.db",
-      "entity": "Item"
+      "type": "Item"
     },
     {
-      "name": "charactercreation",
+      "name": "charactercreation-tables",
       "label": "Character Creation Tables",
       "system": "zweihander",
-      "path": "./packs/charactercreation.db",
-      "entity": "RollTable"
+      "path": "./packs/charactercreation-tables.db",
+      "type": "RollTable"
+    },
+    {
+      "name": "gm-tables",
+      "label": "GM Tables",
+      "system": "zweihander",
+      "path": "./packs/gm-tables.db",
+      "type": "RollTable"
     }
   ]
 }

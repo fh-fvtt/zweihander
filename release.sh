@@ -12,8 +12,10 @@ fi
 version=$1
 manifest_branch=$(git branch --show-current)
 cat system.template.json | sed -e 's/{{version}}/'"${version}"'/g' -e 's/{{manifest}}/https:\/\/raw.githubusercontent.com\/fh-fvtt\/zweihander\/'"${manifest_branch}"'\/system.json/g' > system.json
-git add system.json
-git commit -m "preparing release v${version}"
-git push
-git tag "v${version}"
-git push origin "v${version}"
+if [ "$2" != "--manifest-only" ] && [ "$3" != "--manifest-only" ]; then
+  git add system.json
+  git commit -m "preparing release v${version}"
+  git push
+  git tag "v${version}"
+  git push origin "v${version}"
+fi
