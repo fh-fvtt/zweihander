@@ -157,7 +157,7 @@ Hooks.once("init", async function () {
       icon: "systems/zweihander/assets/icons/bleeding-wound.svg"
     }
   ],
-  CONFIG.ZWEI = ZWEI;
+    CONFIG.ZWEI = ZWEI;
   // Define custom Document classes
   CONFIG.Actor.documentClass = ZweihanderActor;
   CONFIG.Item.documentClass = ZweihanderItem;
@@ -245,4 +245,28 @@ Hooks.on("chatCommandsReady", function (chatCommands) {
     iconClass: "fa-comment-dots",
     description: "Do a Skill Test"
   }));
+});
+
+Hooks.once("polyglot.init", (LanguageProvider) => {
+  class ZweihanderLanguageProvider extends LanguageProvider {
+    getUserLanguages(actor) {
+      let known_languages = new Set();
+      let literate_languages = new Set(); 
+      actor.data.data.languages.value
+        .split(',').forEach(x => {
+          const langAndMod = x.trim().split('(');
+          const lang = langAndMod[0].trim().toLowerCase();
+          const modifier = (langAndMod[1] ?? '').split(')')[0].trim().toLowerCase();
+          known_languages.add(lang);
+          if (modifier === 'literate') {
+            literate_languages.add(lang);
+          }
+        });
+      return [known_languages, literate_languages];
+    }
+    conditions(polyglot, lang) {
+      return polyglot.literate_languages.has(lang);
+    }
+  }
+  game.polyglot.registerSystem("zweihander", ZweihanderLanguageProvider)
 });

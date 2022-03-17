@@ -110,6 +110,10 @@ import ZweihanderCreatureSheet from "./creature-sheet";
       {
         key: 'alignment.value',
         placeholder: 'Alignment'
+      },
+      {
+        key: 'languages.value',
+        placeholder: 'Languages'
       }
     ];
     return sheetData;

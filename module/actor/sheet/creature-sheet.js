@@ -72,6 +72,10 @@ export default class ZweihanderCreatureSheet extends ZweihanderBaseActorSheet {
       {
         key: 'influences.value',
         placeholder: 'Influences'
+      },
+      {
+        key: 'languages.value',
+        placeholder: 'Languages'
       }
     ];
 

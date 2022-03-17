@@ -109,11 +109,11 @@ export default class FortuneTracker extends Application {
     });
     //todo remove this after a while
     const settings = game.settings.get('zweihander', 'fortuneTrackerSettings');
-    if (settings.fortunePath === 'systems/zweihander/assets/fortune-life.png') {
+    if (game.user.isGM && settings.fortunePath === 'systems/zweihander/assets/fortune-life.png') {
       settings.fortunePath = 'systems/zweihander/assets/fortune-life.webp';
       settings.misfortunePath = 'systems/zweihander/assets/fortune-death.webp';
+      game.settings.set('zweihander', 'fortuneTrackerSettings', settings);
     }
-    game.settings.set('zweihander', 'fortuneTrackerSettings', settings);
   }
 
   // business logic
