@@ -134,10 +134,10 @@ export default class ZweihanderCharacterSheet extends ZweihanderBaseActorSheet {
     html.find(".purchase-link").click(updatePurchased);
 
     // Reset Order and Chaos Ranks
-    html.find(".reset-ranks").click(() => {
-      this.actor.update({
-        "data.chaosRanks.value": "0",
-        "data.orderRanks.value": "0"
+    html.find(".reset-ranks").click(async () => {
+      await this.actor.update({
+        "data.chaosRanks.value": 0,
+        "data.orderRanks.value": 0
       });
     });
     // Update the encumbrance meter

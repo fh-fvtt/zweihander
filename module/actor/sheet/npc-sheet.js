@@ -21,7 +21,7 @@ import ZweihanderCreatureSheet from "./creature-sheet";
     sheetData.itemGroups.rules.splice(1, 0, {
         title: "Talents",
         type: "talent",
-        packs: "zweihander.talents",
+        packs: "zweihander.zh-talents",
         summaryTemplate: "item-summary/talent",
         details: [],
         items: sheetData.talents
@@ -29,7 +29,7 @@ import ZweihanderCreatureSheet from "./creature-sheet";
     sheetData.itemGroups.rules.splice(3, 0, {
         title: "Rituals",
         type: "ritual",
-        packs: "zweihander.rituals",
+        packs: "zweihander.zh-rituals",
         summaryTemplate: "item-summary/ritual",
         details: [],
         items: sheetData.rituals
@@ -38,7 +38,7 @@ import ZweihanderCreatureSheet from "./creature-sheet";
       {
         title: "Disorders",
         type: "disorder",
-        packs: "zweihander.disorders",
+        packs: "zweihander.zh-disorders",
         summaryTemplate: "item-summary/disorder",
         details: [],
         items: sheetData.disorders
@@ -46,7 +46,7 @@ import ZweihanderCreatureSheet from "./creature-sheet";
       {
         title: "Diseases",
         type: "disease",
-        packs: "zweihander.diseases",
+        packs: "zweihander.zh-diseases",
         summaryTemplate: "item-summary/disease",
         details: [],
         items: sheetData.diseases
@@ -56,7 +56,7 @@ import ZweihanderCreatureSheet from "./creature-sheet";
       {
         title: "Armor",
         type: "armor",
-        packs: "zweihander.armor",
+        packs: "zweihander.zh-armor",
         summaryTemplate: "item-summary/armor",
         details: [],
         items: sheetData.armor

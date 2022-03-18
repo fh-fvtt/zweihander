@@ -70,7 +70,7 @@ export default class ZweihanderActor extends Actor {
 
   async _preCreate(data, options, user) {
     await super._preCreate(data, options, user);
-    this.data.update({ img: ZWEI.defaultActorIcons[data.type] });
+    this.data.update({ img: ZWEI.defaultActorIcons[data.type] ?? ZWEI.defaultActorIcons._default });
     await this.dispatch("_preCreate", { args: [this.data, options, user] });
   }
 

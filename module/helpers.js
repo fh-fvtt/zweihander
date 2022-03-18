@@ -46,7 +46,7 @@ export const registerHandlebarHelpers = async function () {
     let html = "";
     let uuid = uuidv4();
     for (let i = 1; i <= alignmentRanks; i++) {
-      const isChecked = checked === i;
+      const isChecked = Number(checked) === i;
       const isPermanentRank = i <= permanentRanks;
       html += `
         <input 

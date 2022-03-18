@@ -69,6 +69,7 @@ ZWEI.supportedGameSystems = {
 
 const d = "/systems/zweihander/assets/icons";
 ZWEI.defaultItemIcons = {
+    "_default": `${d}/swap-bag.svg`,
     "trapping": `${d}/swap-bag.svg`,
     "condition": `${d}/abstract-024.svg`,
     "injury": `${d}/bandaged.svg`,
@@ -89,6 +90,7 @@ ZWEI.defaultItemIcons = {
     "taint": `${d}/evil-moon.svg`
 };
 ZWEI.defaultActorIcons = {
+    "_default": `${d}/cowled.svg`,
     "character": `${d}/character.svg`,
     "creature": `${d}/daemon-skull.svg`,
     "npc": `${d}/cowled.svg`,

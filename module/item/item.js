@@ -72,7 +72,7 @@ export default class ZweihanderItem extends Item {
 
   async _preCreate(data, options, user) {
     await super._preCreate(data, options, user);
-    this.data.update({ img: ZWEI.defaultItemIcons[data.type] });
+    this.data.update({ img: ZWEI.defaultItemIcons[data.type] ?? ZWEI.defaultItemIcons._default });
     if (this.parent === null) return;
     await this.dispatch("_preCreate", { args: [data, options, user] });
   }

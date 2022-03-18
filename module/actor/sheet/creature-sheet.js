@@ -84,7 +84,7 @@ export default class ZweihanderCreatureSheet extends ZweihanderBaseActorSheet {
         {
           title: "Attack Profiles",
           type: "weapon",
-          packs: "zweihander.weapons,zweihander.weapons-alt-damage",
+          packs: "zweihander.zh-weapons,zweihander.zh-weapons-alt-damage",
           summaryTemplate: "item-summary/weapon",
           rollType: "weapon-roll",
           rollLabelKey: "data.associatedSkill.value",
@@ -107,7 +107,7 @@ export default class ZweihanderCreatureSheet extends ZweihanderBaseActorSheet {
         {
           title: "Loot",
           type: "trapping",
-          packs: "zweihander.trappings",
+          packs: "zweihander.zh-trappings",
           summaryTemplate: "item-summary/trapping",
           details: [
             {
@@ -123,7 +123,7 @@ export default class ZweihanderCreatureSheet extends ZweihanderBaseActorSheet {
         {
           title: "Traits",
           type: "trait",
-          packs: "zweihander.traits",
+          packs: "zweihander.zh-traits",
           summaryTemplate: "item-summary/trait",
           details: [],
           items: sheetData.traits
@@ -131,7 +131,7 @@ export default class ZweihanderCreatureSheet extends ZweihanderBaseActorSheet {
         {
           title: "Spells",
           type: "spell",
-          packs: "zweihander.magick",
+          packs: "zweihander.zh-magick",
           summaryTemplate: "item-summary/spell",
           rollType: "spell-roll",
           rollLabel: sheetData.data.stats.secondaryAttributes.magick.associatedSkill,
@@ -141,7 +141,7 @@ export default class ZweihanderCreatureSheet extends ZweihanderBaseActorSheet {
         {
           title: "Taints of Chaos",
           type: "taint",
-          packs: "zweihander.taints",
+          packs: "zweihander.zh-taints",
           summaryTemplate: "item-summary/taint",
           details: [],
           items: sheetData.taints
@@ -149,7 +149,7 @@ export default class ZweihanderCreatureSheet extends ZweihanderBaseActorSheet {
         {
           title: "Conditions",
           type: "condition",
-          packs: "zweihander.conditions",
+          packs: "zweihander.zh-conditions",
           summaryTemplate: "item-summary/condition",
           details: [],
           items: sheetData.conditions
@@ -157,7 +157,7 @@ export default class ZweihanderCreatureSheet extends ZweihanderBaseActorSheet {
         {
           title: "Injuries",
           type: "injury",
-          packs: "zweihander.injuries",
+          packs: "zweihander.zh-injuries",
           summaryTemplate: "item-summary/injury",
           details: [],
           items: sheetData.injuries
