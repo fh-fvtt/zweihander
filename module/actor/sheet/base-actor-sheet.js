@@ -67,11 +67,40 @@ export default class ZweihanderBaseActorSheet extends ActorSheet {
     const toggleStates = $(this.form).find('.save-toggle').toArray()
       .filter((element) => $(element).hasClass("open"))
       .map((element) => $(element).parent().data('itemId'));
+    this._saveScrollStates();
     await super._render(force, options);
     // restore toggle states for item details
     toggleStates.forEach(id =>
       $(this.form).find(`[data-item-id="${id}"] .save-toggle`).show().addClass("open")
     );
+    this._setScrollStates();
+  }
+
+  _saveScrollStates() {
+    if (this.form === null)
+      return;
+
+    const html = $(this.form).parent();
+
+    this.scrollStates = [];
+
+    let lists = $(html.find(".items-list"));
+
+    for (let list of lists) {
+      this.scrollStates.push($(list).scrollTop());
+    }
+  }
+
+  _setScrollStates() {
+    if (this.scrollStates) {
+      const html = $(this.form).parent();
+
+      let lists = $(html.find(".items-list"));
+
+      for (let i = 0; i < lists.length; i++) {
+        $(lists[i]).scrollTop(this.scrollStates[i]);
+      }
+    }
   }
 
   activateListeners(html) {
@@ -81,7 +110,7 @@ export default class ZweihanderBaseActorSheet extends ActorSheet {
 
     // Everything below here is only needed if the sheet is editable
     if (!this.options.editable) return;
-    
+
     const actor = this.actor;
     const actorData = this.actor.data;
     // Edit Inventory Item
