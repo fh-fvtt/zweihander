@@ -18,6 +18,7 @@ import ZweihanderCreatureSheet from "./creature-sheet";
 
   getData(options) {
     const sheetData = super.getData();
+    sheetData.itemGroups.rules[0].packs = sheetData.itemGroups.rules[0].packs + ",zweihander.zh-ancestral-traits";
     sheetData.itemGroups.rules.splice(1, 0, {
         title: "Talents",
         type: "talent",

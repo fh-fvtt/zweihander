@@ -123,7 +123,7 @@ export default class ZweihanderCreatureSheet extends ZweihanderBaseActorSheet {
         {
           title: "Traits",
           type: "trait",
-          packs: "zweihander.zh-traits",
+          packs: "zweihander.zh-traits, zweihander.zh-creature-traits",
           summaryTemplate: "item-summary/trait",
           details: [],
           items: sheetData.traits
