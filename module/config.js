@@ -67,6 +67,11 @@ ZWEI.supportedGameSystems = {
     fof: "Flames of Freedom"
 }
 
+ZWEI.replacedDefaultCoreIcons = [
+ 'icons/svg/mystery-man.svg',
+ 'icons/svg/item-bag.svg'
+];
+
 const d = "/systems/zweihander/assets/icons";
 ZWEI.defaultItemIcons = {
     "_default": `${d}/swap-bag.svg`,

@@ -39,6 +39,6 @@ export default class ZweihanderBaseActor {
     // add default set of skills
     const skillPack = game.packs.get(game.settings.get("zweihander", "skillPack"));
     const skillsFromPack = (await skillPack.getDocuments()).map(i => i.toObject());
-    actorData.update({ "items": skillsFromPack }, { "keepId": true, "keepEmbeddedIds": true});
+    await actorData.update({ "items": skillsFromPack }, { "keepId": true, "keepEmbeddedIds": true});
   }
 }
