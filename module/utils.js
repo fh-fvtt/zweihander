@@ -224,7 +224,7 @@ export async function parseDataPaths(input, actor) {
   if (input !== parsed) {
     const mathExpr = /\-?[0-9]+(\s*[\+\-\*/]\s*\-?[0-9]+)*/g;
     const matches = parsed.match(mathExpr);
-    const promises = matches.map(x => new Roll(x).evaluate().then(roll => ({key: x, value: roll.total})));
+    const promises = matches.map(x => new Roll(x).evaluate({async: true}).then(roll => ({key: x, value: roll.total})));
     const evalLookup = (await Promise.all(promises)).reduce((a, b) => ({[b.key]: b.value, ...a}), {});
     parsed = parsed.replaceAll(mathExpr, x => {
       return evalLookup[x];

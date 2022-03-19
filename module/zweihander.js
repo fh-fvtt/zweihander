@@ -18,6 +18,7 @@ import { registerSystemSettings } from "./settings";
 import { preloadHandlebarsTemplates } from "./template";
 import { registerHandlebarHelpers } from "./helpers";
 import { migrateWorldSafe, migrateWorld } from "./migration"
+import { migrateFlames } from "./flames-migration";
 import { introJs } from "./utils/intros";
 import { rollTest } from "./dice";
 import { getTestConfiguration } from "./apps/test-config";
@@ -71,7 +72,8 @@ Hooks.once("init", async function () {
     getOrCreateLinkedItem: ZweihanderBaseItem.getLinkedItemEntry.bind(ZweihanderBaseItem),
     utils: ZweihanderUtils,
     migrate: migrateWorld,
-    introJs: introJs
+    introJs: introJs,
+    migrateFlames
   };
   CONFIG.ChatMessage.template = "systems/zweihander/templates/chat/chat-message.hbs";
   /**

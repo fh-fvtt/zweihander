@@ -257,7 +257,7 @@ export function attachTabDefinitions(data) {
               isCheckbox: true
             }
           ],
-          items: data.conditions
+          items: data.taints
         }
       ]
     },
