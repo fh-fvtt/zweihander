@@ -337,9 +337,9 @@ export function attachTabDefinitions(data) {
           summaryTemplate: "item-summary/uniqueAdvance",
           details: [
             {
-              title: "Category",
+              title: "Type",
               size: 140,
-              key: "data.category.value"
+              key: "data.advanceType.value"
             },
             {
               title: "RP Cost",

@@ -324,7 +324,10 @@
       }
     },
     "quality": {
-      "templates": ["flavor"]
+      "templates": ["flavor"],
+      "effect": {
+        "value": ""
+      }
     },
     "ancestry": {
       "templates": ["flavor"],
@@ -488,7 +491,7 @@
     },
     "uniqueAdvance": {
       "templates": ["flavor"],
-      "type": {
+      "advanceType": {
         "value": ""
       },
       "rewardPointCost": {
