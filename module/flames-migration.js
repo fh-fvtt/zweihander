@@ -59,7 +59,8 @@ const migrateActor = async (actor) => {
     flags: actor.flags,
     permissions: actor.permissions,
     name: actor.name,
-    folder: actor.folder
+    folder: actor.folder,
+    img: actor.img
   }
   if (z.flags?.core?.sourceId) {
     delete z.flags.core.sourceId;
@@ -156,7 +157,8 @@ const migrateItem = (item) => {
     flags: item.flags,
     permissions: item.permissions,
     name: item.name,
-    folder: item.folder
+    folder: item.folder,
+    img: item.img
   };
   const zz = [z];
   if (z.flags?.core?.sourceId) {

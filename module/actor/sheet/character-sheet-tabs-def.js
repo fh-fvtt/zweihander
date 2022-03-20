@@ -332,8 +332,8 @@ export function attachTabDefinitions(data) {
         },
         {
           title: "Unique Advances",
-          type: "uniqueadvance",
-          packs: "zweihander.zh-uniqueadvances",
+          type: "uniqueAdvance",
+          packs: "",
           summaryTemplate: "item-summary/uniqueAdvance",
           details: [
             {
