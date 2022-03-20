@@ -122,7 +122,11 @@ const migrateActor = async (actor) => {
     z['data.dooming.value'] = f.dooming;
     z['data.upbringing.value'] = f.upbringing;
     z['data.seasonOfBirth.value'] = f.birthseason;
+    z['data.coinage.gold'] = f.currency.gold;
+    z['data.coinage.silver'] = f.currency.silver;
+    z['data.coinage.brass'] = f.currency.brass;
     z['data.distinguishingMarks.value'] = f.distinguishingmark;
+    
   } else if (actor.type === 'NPC') {
     z.type = 'npc';
     z.items = actor.items.flatMap(migrateItem).flatMap(x=>x).flatMap(x => x).map(x => expandObject(x));
