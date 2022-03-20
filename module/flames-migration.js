@@ -57,10 +57,13 @@ const migrateActor = async (actor) => {
   const z = {
     _id: actor._id,
     flags: actor.flags,
-    permissions: actor.permissions,
+    permission: actor.permission,
     name: actor.name,
     folder: actor.folder,
-    img: actor.img
+    img: actor.img,
+    token: actor.token,
+    sort: actor.sort,
+    effects: actor.effectsf
   }
   if (z.flags?.core?.sourceId) {
     delete z.flags.core.sourceId;
@@ -159,10 +162,12 @@ const migrateItem = (item) => {
   const z = {
     _id: item._id,
     flags: item.flags,
-    permissions: item.permissions,
+    permission: item.permission,
     name: item.name,
     folder: item.folder,
-    img: item.img
+    img: item.img,
+    sort: item.sort,
+    effects: item.effects
   };
   const zz = [z];
   if (z.flags?.core?.sourceId) {
