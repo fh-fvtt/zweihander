@@ -1,2 +1,33 @@
-<h1>This is a chat item</h1>
-Lets say Hello {{name}}
+<section class="item-card">
+  <h2 class="item-card-title">{{capitalize type}}: {{name}}</h2>
+  {{#if data.flavor.description}}
+  <div class="item-card-description">
+    {{{markdownIt data.flavor.description}}}
+  </div>
+  <br/>
+  {{/if}}
+  <dl class="zh-expandable" data-expand-title="Show Item Details">
+      <dt>Archetype</dt>
+      <dd>{{data.archetype.value}}</dd>
+      <dt>Professional Trait</dt>
+      <dd>{{data.professionalTrait.value}}</dd>
+      {{#if data.specialTrait.value}}
+      <dt>Special Trait</dt>
+      <dd>{{data.specialTrait.value}}</dd>
+      {{/if}}
+      {{#if data.drawback.value}}
+      <dt>Drawback</dt>
+      <dd>{{data.draw.value}}</dd>
+      {{/if}}
+      {{#if data.expert.value}}
+      <dt>Expert Profession Requirements</dt>
+      <dd>{{data.expert.requirements}}</dd>
+      {{/if}}
+      <dt>Skill Ranks</dt>
+      <dd>{{#each data.skillRanks}}{{value}}{{#unless @last}}, {{/unless}}{{/each}}</dd>
+      <dt>Bonus Advances</dt>
+      <dd>{{#each data.bonusAdvances}}{{value}}{{#unless @last}}, {{/unless}}{{/each}}</dd>
+      <dt>Talents</dt>
+      <dd>{{#each data.talents}}{{value}}{{#unless @last}}, {{/unless}}{{/each}}</dd>
+    </dl>
+</section>

@@ -1,2 +1,12 @@
-<h2>{{capitalize type}}: {{name}}</h2> 
-Unfortunately a detailed chat message for items of type {{capitalize type}} has not been implemented yet!
+<section class="item-card">
+  <h2 class="item-card-title">{{capitalize type}}: {{name}}</h2>
+  {{#if data.flavor.description}}
+  <div class="item-card-description">
+    {{{markdownIt data.flavor.description}}}
+  </div>
+  <br/>
+  {{/if}}
+  <div class="item-card-effect" data-effect-label="Effect">
+    {{{markdownIt data.effect.value}}}
+  </div>
+</section>
