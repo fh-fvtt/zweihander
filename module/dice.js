@@ -217,7 +217,7 @@ async function getWeaponDamageContent(weapon, roll, exploded = false) {
   weapon.data.qualities = await ZweihanderQuality.getQualities(weapon.data.qualities.value);
   const rollContent = await roll.render({flavor: 'Fury Die'});
   const cardContent = await renderTemplate('systems/zweihander/templates/item-card/item-card-weapon.hbs', weapon);
-  return await renderTemplate(CONFIG.ZWEI.templates.weapon,  { cardContent, rollContent, exploded });
+  return await renderTemplate(CONFIG.ZWEI.templates.weapon,  { cardContent, rollContent, exploded, weapon });
 }
 
 export async function explodeWeaponDamage(message, useFortune) {
