@@ -2,7 +2,7 @@
   "name": "zweihander",
   "title": "Zweihänder Grim & Perilous RPG",
   "description": "An implementation of the Zweihänder system for FoundryVTT.",
-  "version": "4.2.1-beta3",
+  "version": "4.2.1-beta4",
   "minimumCoreVersion": "0.8.4",
   "compatibleCoreVersion": "9",
   "templateVersion": 2,
@@ -30,7 +30,7 @@
   "socket": true,
   "url": "https://github.com/fh-fvtt/zweihander",
   "manifest": "https://raw.githubusercontent.com/fh-fvtt/zweihander/dev/system.json",
-  "download": "https://github.com/fh-fvtt/zweihander/releases/download/v4.2.1-beta3/system.zip",
+  "download": "https://github.com/fh-fvtt/zweihander/releases/download/v4.2.1-beta4/system.zip",
   "license": "LICENCE.txt",
   "primaryTokenAttribute": "stats.secondaryAttributes.damageCurrent",
   "secondaryTokenAttribute": "stats.secondaryAttributes.perilCurrent",
@@ -46,6 +46,7 @@
       "label": "Zweihander Skills",
       "system": "zweihander",
       "path": "./packs/skills.db",
+      "entity": "Item",
       "type": "Item"
     },
     {
@@ -53,6 +54,7 @@
       "label": "Zweihander Ancestries",
       "system": "zweihander",
       "path": "./packs/zh-ancestries.db",
+      "entity": "Item",
       "type": "Item"
     },
     {
@@ -60,6 +62,7 @@
       "label": "Zweihander Ancestral Traits",
       "system": "zweihander",
       "path": "./packs/zh-ancestral-traits.db",
+      "entity": "Item",
       "type": "Item"
     },
     {
@@ -67,6 +70,7 @@
       "label": "Zweihander Magick",
       "system": "zweihander",
       "path": "./packs/zh-magick.db",
+      "entity": "Item",
       "type": "Item"
     },
     {
@@ -74,6 +78,7 @@
       "label": "Zweihander Professions",
       "system": "zweihander",
       "path": "./packs/zh-professions.db",
+      "entity": "Item",
       "type": "Item"
     },
     {
@@ -81,6 +86,7 @@
       "label": "Zweihander Talents",
       "system": "zweihander",
       "path": "./packs/zh-talents.db",
+      "entity": "Item",
       "type": "Item"
     },
     {
@@ -88,6 +94,7 @@
       "label": "Zweihander Drawbacks",
       "system": "zweihander",
       "path": "./packs/zh-drawbacks.db",
+      "entity": "Item",
       "type": "Item"
     },
     {
@@ -95,6 +102,7 @@
       "label": "Zweihander Traits",
       "system": "zweihander",
       "path": "./packs/zh-traits.db",
+      "entity": "Item",
       "type": "Item"
     },
     {
@@ -102,6 +110,7 @@
       "label": "Zweihander Creature Traits",
       "system": "zweihander",
       "path": "./packs/zh-creature-traits.db",
+      "entity": "Item",
       "type": "Item"
     },
     {
@@ -109,6 +118,7 @@
       "label": "Zweihander Weapons",
       "system": "zweihander",
       "path": "./packs/zh-weapons.db",
+      "entity": "Item",
       "type": "Item"
     },
     {
@@ -116,6 +126,7 @@
       "label": "Zweihander Weapons (Alt. Damage)",
       "system": "zweihander",
       "path": "./packs/zh-weapons-alt-damage.db",
+      "entity": "Item",
       "type": "Item"
     },
     {
@@ -123,6 +134,7 @@
       "label": "Zweihander Taints of Chaos",
       "system": "zweihander",
       "path": "./packs/zh-taints.db",
+      "entity": "Item",
       "type": "Item"
     },
     {
@@ -130,6 +142,7 @@
       "label": "Zweihander Trappings",
       "system": "zweihander",
       "path": "./packs/zh-trappings.db",
+      "entity": "Item",
       "type": "Item"
     },
     {
@@ -137,6 +150,7 @@
       "label": "Zweihander Conditions",
       "system": "zweihander",
       "path": "./packs/zh-conditions.db",
+      "entity": "Item",
       "type": "Item"
     },
     {
@@ -144,6 +158,7 @@
       "label": "Zweihander Armor",
       "system": "zweihander",
       "path": "./packs/zh-armor.db",
+      "entity": "Item",
       "type": "Item"
     },
     {
@@ -151,6 +166,7 @@
       "label": "Zweihander Qualities",
       "system": "zweihander",
       "path": "./packs/zh-qualities.db",
+      "entity": "Item",
       "type": "Item"
     },
     {
@@ -158,6 +174,7 @@
       "label": "Zweihander Diseases",
       "system": "zweihander",
       "path": "./packs/zh-diseases.db",
+      "entity": "Item",
       "type": "Item"
     },
     {
@@ -165,6 +182,7 @@
       "label": "Zweihander Disorders",
       "system": "zweihander",
       "path": "./packs/zh-disorders.db",
+      "entity": "Item",
       "type": "Item"
     },
     {
@@ -172,6 +190,7 @@
       "label": "Zweihander Rituals",
       "system": "zweihander",
       "path": "./packs/zh-rituals.db",
+      "entity": "Item",
       "type": "Item"
     },
     {
@@ -179,6 +198,7 @@
       "label": "Zweihander Injuries",
       "system": "zweihander",
       "path": "./packs/zh-injuries.db",
+      "entity": "Item",
       "type": "Item"
     },
     {
@@ -186,6 +206,7 @@
       "label": "Zweihander Character Creation",
       "system": "zweihander",
       "path": "./packs/zh-charactercreation-tables.db",
+      "entity": "RollTable",
       "type": "RollTable"
     },
     {
@@ -193,6 +214,7 @@
       "label": "Zweihander GM Tables",
       "system": "zweihander",
       "path": "./packs/zh-gm-tables.db",
+      "entity": "RollTable",
       "type": "RollTable"
     },
     {
@@ -200,6 +222,7 @@
       "label": "Zweihander Bestiary",
       "system": "zweihander",
       "path": "./packs/zh-bestiary.db",
+      "entity": "Actor",
       "type": "Actor"
     },
     {
@@ -207,6 +230,7 @@
       "label": "Zweihander Macros",
       "system": "zweihander",
       "path": "./packs/zh-macros.db",
+      "entity": "Macro",
       "type": "Macro"
     }
   ]
