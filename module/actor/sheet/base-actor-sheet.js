@@ -108,6 +108,19 @@ export default class ZweihanderBaseActorSheet extends ActorSheet {
     this._damageSheet(html);
     this._perilSheet(html);
 
+    html.find('.modded-value-indicator').hover(
+      (event) => {
+        const tooltip = $(event.currentTarget).find('.modded-value-tooltip').clone();
+        const offset = $(event.currentTarget).offset();
+        offset.top -= 22;
+        offset.left += 22;
+        tooltip.addClass('zh-modded-value-tooltip-instance');
+        tooltip.offset(offset);
+        $('body').append(tooltip);
+      },
+      (event) => {
+        $('.zh-modded-value-tooltip-instance').remove();
+      })
     // Everything below here is only needed if the sheet is editable
     if (!this.options.editable) return;
 

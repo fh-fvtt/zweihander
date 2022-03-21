@@ -52,5 +52,6 @@ export const preloadHandlebarsTemplates = async function () {
     $$('pc/coinage'),
     $$('pc/encumbrance-meter'),
     $$('pc/magick-skill-selector'),
+    $$('partials/modded-value')
   ]);
 };

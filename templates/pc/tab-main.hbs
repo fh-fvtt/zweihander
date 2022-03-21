@@ -136,8 +136,8 @@
         <h4 class="block-title">Damage Threshold</h4 class="block-title">
         <div class="values flexrow">
           <div class="threshold-value flexcol">
-            <span class="value">{{data.stats.secondaryAttributes.damageThreshold.value}}</span>
-            <span class="formula">[{{getFirstLetter actorConfig.dthAttribute}}B]+<span title="{{data.derived.dtm}}">DTM</span></span>
+            <span class="value">{{> ($$ 'partials/modded-value') data.stats.secondaryAttributes.damageThreshold}}</span>
+            <span class="formula">[{{getFirstLetter actorConfig.dthAttribute}}B]+DTM</span>
           </div>
           <span class="values-derived-bracket">{</span>
           <div class="flexcol values-derived">
