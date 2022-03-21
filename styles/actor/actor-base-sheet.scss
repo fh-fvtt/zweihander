@@ -206,6 +206,9 @@ body.game.vtt.system-zweihander .zweihander.sheet.actor {
       &.open {
         display: block;
       }
+      & p:first-of-type {
+        display: inline;
+      }
       label {
         color: var(--zh-clr-fg3);
       }
