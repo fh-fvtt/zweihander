@@ -51,14 +51,7 @@
       "flavor": {
         "flavor": {
           "description": "",
-          "notes": "",
-          "references": [
-            {
-              "book": "",
-              "page": 0,
-              "url": ""
-            }
-          ]
+          "notes": ""
         }
       },
       "coinage": {
@@ -304,6 +297,15 @@
           "notes": ""
         }
       },
+      "references": {
+        "references": [
+          {
+            "book": "",
+            "page": 0,
+            "url": ""
+          }
+        ]
+      },
       "price": {
         "price": {
           "gc": 0,
@@ -313,6 +315,7 @@
       },
       "encumbrance": {
         "encumbrance": {
+          "base": 0,
           "value": 0
         }
       }
