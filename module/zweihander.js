@@ -81,7 +81,7 @@ Hooks.once("init", async function () {
   * @type {String}
   */
   CONFIG.Combat.initiative = {
-    formula: "1d10 + @stats.secondaryAttributes.initiative.current",
+    formula: "1d10 + @stats.secondaryAttributes.initiative.value",
     decimals: 2
   };
   CONFIG.TinyMCE.skin_url = '/systems/zweihander/tinymce/skins/ui/zweihander';
