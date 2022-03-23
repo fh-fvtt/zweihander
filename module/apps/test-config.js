@@ -1,4 +1,5 @@
-import * as ZweihanderUtils from '../utils';
+import { ZWEI } from '../config';
+import { getDifficultyRatingLabel, selectedChoice } from '../utils';
 
 export async function getTestConfiguration(skillItem, testType = 'skill', testConfiguration = {}) {
   testConfiguration.flip = testConfiguration.flip ?? (skillItem.data.data.isFlipToFail ? 'fail' : 'no-flip');
@@ -28,21 +29,17 @@ async function renderConfigurationDialog(testType, label, testConfiguration = {}
   templateData.difficultyRatings = [...Array(7).keys()].map(i => {
     const value = i * 10 - 30;
     const selected = (testConfiguration.difficultyRating ?? 0) === value ? 'selected' : ''
-    return { value, label: ZweihanderUtils.getDifficultyRatingLabel(value), selected }
+    return { value, label: getDifficultyRatingLabel(value), selected }
   });
   templateData.flipOptions = [
     { value: 'fail', label: "Flip to Fail" },
     { value: 'no-flip', label: "Don't Flip" },
     { value: 'succeed', label: "Flip to Succeed" }
   ].map(option => ({ selected: (testConfiguration.flip ?? 'no-flip') === option.value ? 'selected' : '', ...option }));
-  templateData.skillModes = [
-    { value: 'standard', label: "Standard" },
-    { value: 'assisted', label: "Assisted" },
-    { value: 'opposed', label: "Opposed" },
-    { value: 'private', label: "Private (Visible for you & GM)" },
-    { value: 'secret', label: "Secret (Visible for GM)" },
-    { value: 'self', label: "Self (Visible for you)" }
-  ].map(option => ({ selected: (testConfiguration.zweihanderRollMode ?? 'standard') === option.value ? 'selected' : '', ...option }));
+  templateData.skillModes = selectedChoice(
+    testConfiguration.testMode ?? 'standard',
+    Object.entries(ZWEI.testModes).map(([value, { label, help }]) => ({ value, label: `${label} ${help ? `(${help})` : ''}` }))
+  );
   templateData.channelPowerBonuses = [
     { value: 0, label: "Don't Channel" },
     { value: 10, label: "One Step (1d6 Chaos Dice)" },
@@ -56,7 +53,7 @@ async function renderConfigurationDialog(testType, label, testConfiguration = {}
     let channelPowerBonus = Number(html.find('[name="channelSelect"]').val());
     let flip = html.find('[name="flipSelect"]').val();
     let baseChanceModifier = Number(html.find('[name="baseChanceModifier"]').val());
-    let zweihanderRollMode = html.find('[name="skillMode"]').val();
+    let testMode = html.find('[name="skillMode"]').val();
     let useFortune = html.find('[name="useFortune"]').val();
     resolve({
       useFortune,
@@ -66,7 +63,7 @@ async function renderConfigurationDialog(testType, label, testConfiguration = {}
       channelPowerBonus,
       flip,
       baseChanceModifier,
-      zweihanderRollMode
+      testMode
     });
   });
 }

@@ -2,6 +2,7 @@ import FortuneTracker from "./apps/fortune-tracker";
 import ZweihanderQuality from "./item/entity/quality";
 import * as ZweihanderUtils from "./utils";
 import { getTestConfiguration } from "./apps/test-config";
+import { ZWEI } from "./config";
 
 export const PERIL_ROLL_TYPES = {
   STRESS: { x: 1, title: 'Stress', difficultyRating: 20 },
@@ -104,9 +105,9 @@ export async function rollTest(skillItem, testType = 'skill', testConfiguration 
   totalChance = (totalChance >= 100 ? 99 : (totalChance < 1 ? 1 : totalChance))
     .toLocaleString(undefined, { "minimumIntegerDigits": 2 });
   const flip = testConfiguration.flip;
-  const skillTestFn = testConfiguration.zweihanderRollMode === 'assisted' ? simulateAssistedTest : simulateStandardTest;
+  const skillTestFn = testConfiguration.testMode === 'assisted' ? simulateAssistedTest : simulateStandardTest;
   const { effectiveResult, effectiveOutcome, effectivelyFlipped, roll } = await skillTestFn.bind(this)(totalChance, flip);
-  const zweihanderRollModeLabel = testConfiguration.zweihanderRollMode.capitalize() + ' Test';
+  const testModeLabel = ZWEI.testModes[testConfiguration.testMode].label + ' Test';
   let tensDie = Math.floor(effectiveResult / 10);
   tensDie = tensDie === 0 ? 10 : tensDie;
   const primaryAttributeBonus = actor.data.data.stats.primaryAttributes[primaryAttribute.toLowerCase()].bonus;
@@ -114,8 +115,8 @@ export async function rollTest(skillItem, testType = 'skill', testConfiguration 
   // const starterKitDegreesOfSuccess = effectiveOutcome < 2 ? 0 : 100 - (totalChance - effectiveResult);
   const templateData = {
     itemId: skillItem.id,
-    zweihanderRollModeLabel,
-    degreesOfSuccess: testConfiguration.zweihanderRollMode === 'opposed' ? crbDegreesOfSuccess : false,
+    testModeLabel,
+    degreesOfSuccess: ['opposed', 'secret-opposed'].includes(testConfiguration.testMode) ? crbDegreesOfSuccess : false,
     skill: skillItem.name,
     primaryAttribute,
     primaryAttributeValue,
@@ -167,7 +168,7 @@ export async function rollTest(skillItem, testType = 'skill', testConfiguration 
     spell: `Casts ${spell?.name}`
   }[testType] ?? "";
   const speaker = ChatMessage.getSpeaker({ actor });
-  const rollMode = zweihanderRollModeToFoundryRollMode(testConfiguration.zweihanderRollMode);
+  const rollMode = ZWEI.testModes[testConfiguration.testMode].rollMode;
   const flags = {
     zweihander: {
       skillTestData: {
@@ -380,17 +381,4 @@ function getResultOutcome(score, totalChance, match) {
 
 function outcomeLabel(outcome) {
   return ["Critical Failure", "Failure", "Success", "Critical Success"][outcome];
-}
-
-function zweihanderRollModeToFoundryRollMode(mode) {
-  switch (mode) {
-    case 'private':
-      return CONST.DICE_ROLL_MODES.PRIVATE;
-    case 'secret':
-      return CONST.DICE_ROLL_MODES.BLIND;
-    case 'self':
-      return CONST.DICE_ROLL_MODES.SELF;
-    default:
-      return CONST.DICE_ROLL_MODES.PUBLIC;
-  }
 }

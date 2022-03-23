@@ -14,6 +14,42 @@ ZWEI.testTypes = {
     "dodge": "dodge",
     "weapon": "weapon"
 };
+
+ZWEI.testModes = {
+    "standard": {
+        label: "Standard",
+        rollMode: CONST.DICE_ROLL_MODES.PUBLIC
+    },
+    "assisted": {
+        label: "Assisted",
+        rollMode: CONST.DICE_ROLL_MODES.PUBLIC
+    },
+    "opposed": {
+        label: "Opposed",
+        rollMode: CONST.DICE_ROLL_MODES.PUBLIC
+    },
+    "private": {
+        label: "Private",
+        help: "Visible for GM & you",
+        rollMode: CONST.DICE_ROLL_MODES.PRIVATE
+    },
+    "secret": {
+        label: "Secret",
+        help: "Visible for GM",
+        rollMode: CONST.DICE_ROLL_MODES.BLIND
+    },
+    "secret-opposed": {
+        label: "Secret Opposed",
+        help: "Visible for GM",
+        rollMode: CONST.DICE_ROLL_MODES.BLIND
+    },
+    "self": {
+        label: "Self",
+        help: "Visible for you",
+        rollMode: CONST.DICE_ROLL_MODES.SELF
+    }
+};
+
 ZWEI.alignmentRanks = 9;
 ZWEI.perilOptions = [
     "INCAPACITATED!",
