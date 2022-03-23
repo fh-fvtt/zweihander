@@ -184,6 +184,7 @@ body.game.vtt.system-zweihander {
   --line-height-16: 1rem;
   --line-height-20: 1.25rem;
   --line-height-30: 1.875rem;
+
   .window-app .window-content {
     background: var(--zh-clr-bg0);
   }
@@ -263,6 +264,30 @@ body.game.vtt.system-zweihander {
   ::selection {
     background-color: var(--zh-clr-aqua);
     color: var(--zh-clr-bg0);
+  }
+
+  a.entity-link,
+  a.content-link,
+  a.inline-roll {
+    i {
+      color: var(--zh-clr-aqua);
+    }
+    background: var(--zh-clr-bg3);
+    border-color: var(--zh-clr-aqua);
+    border-radius: 3px;
+    &:not(.broken) {
+      &:hover,
+      &:focus,
+      &:active {
+        border-color: var(--zh-clr-yellow-alt);
+        i {
+          color: var(--zh-clr-yellow);
+        }
+      }
+    }
+    &.broken:hover {
+      color: inherit !important;
+    }
   }
 }
 

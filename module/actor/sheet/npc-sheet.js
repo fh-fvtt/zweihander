@@ -1,3 +1,4 @@
+import { assignPacks } from "../../utils";
 import ZweihanderCreatureSheet from "./creature-sheet";
 
  export default class ZweihanderNpcSheet extends ZweihanderCreatureSheet {
@@ -18,11 +19,9 @@ import ZweihanderCreatureSheet from "./creature-sheet";
 
   getData(options) {
     const sheetData = super.getData();
-    sheetData.itemGroups.rules[0].packs = sheetData.itemGroups.rules[0].packs + ",zweihander.zh-ancestral-traits";
     sheetData.itemGroups.rules.splice(1, 0, {
         title: "Talents",
         type: "talent",
-        packs: "zweihander.zh-talents",
         summaryTemplate: "item-summary/talent",
         details: [],
         items: sheetData.talents
@@ -30,7 +29,6 @@ import ZweihanderCreatureSheet from "./creature-sheet";
     sheetData.itemGroups.rules.splice(3, 0, {
         title: "Rituals",
         type: "ritual",
-        packs: "zweihander.zh-rituals",
         summaryTemplate: "item-summary/ritual",
         details: [],
         items: sheetData.rituals
@@ -39,7 +37,6 @@ import ZweihanderCreatureSheet from "./creature-sheet";
       {
         title: "Disorders",
         type: "disorder",
-        packs: "zweihander.zh-disorders",
         summaryTemplate: "item-summary/disorder",
         details: [],
         items: sheetData.disorders
@@ -47,7 +44,6 @@ import ZweihanderCreatureSheet from "./creature-sheet";
       {
         title: "Diseases",
         type: "disease",
-        packs: "zweihander.zh-diseases",
         summaryTemplate: "item-summary/disease",
         details: [],
         items: sheetData.diseases
@@ -57,12 +53,12 @@ import ZweihanderCreatureSheet from "./creature-sheet";
       {
         title: "Armor",
         type: "armor",
-        packs: "zweihander.zh-armor",
         summaryTemplate: "item-summary/armor",
         details: [],
         items: sheetData.armor
       },
     )
+    assignPacks('npc', sheetData.itemGroups);
     sheetData.details = [
       {
         key: 'age.value',

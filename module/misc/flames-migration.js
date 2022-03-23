@@ -1,5 +1,5 @@
-import { ZWEI } from "./config";
-import { findItemWorldWide, normalizedEquals } from "./utils";
+import { ZWEI } from "../config";
+import { findItemWorldWide, normalizedEquals } from "../utils";
 
 export const migrateFlames = async function () {
   const scenesToRestore = await migrateScenes();

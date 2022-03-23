@@ -18,8 +18,7 @@ import { registerSystemSettings } from "./settings";
 import { preloadHandlebarsTemplates } from "./template";
 import { registerHandlebarHelpers } from "./helpers";
 import { migrateWorldSafe, migrateWorld } from "./migration"
-import { migrateFlames } from "./flames-migration";
-import { introJs } from "./utils/intros";
+import { migrateFlames } from "./misc/flames-migration";
 import { rollTest } from "./dice";
 import { getTestConfiguration } from "./apps/test-config";
 
@@ -28,6 +27,7 @@ import { ZWEI } from "./config.js";
 import ZweihanderBaseItem from "./item/entity/base-item";
 
 import "../styles/main.scss"
+import { displayHelpMessage } from "./misc/help";
 
 /* -------------------------------------------- */
 /*  Foundry VTT Initialization                  */
@@ -69,10 +69,8 @@ Hooks.once("init", async function () {
   game.zweihander = {
     ZweihanderActor,
     ZweihanderItem,
-    getOrCreateLinkedItem: ZweihanderBaseItem.getLinkedItemEntry.bind(ZweihanderBaseItem),
     utils: ZweihanderUtils,
-    migrate: migrateWorld,
-    introJs: introJs,
+    migrateWorld,
     migrateFlames
   };
   CONFIG.ChatMessage.template = "systems/zweihander/templates/chat/chat-message.hbs";
@@ -247,13 +245,20 @@ Hooks.on("chatCommandsReady", function (chatCommands) {
     iconClass: "fa-comment-dots",
     description: "Do a Skill Test"
   }));
+  chatCommands.registerCommand(chatCommands.createCommandFromData({
+    commandKey: "/help",
+    invokeOnCommand: displayHelpMessage,
+    shouldDisplayToChat: false,
+    iconClass: "fa-question",
+    description: "Show System Documentation"
+  }));
 });
 
 Hooks.once("polyglot.init", (LanguageProvider) => {
   class ZweihanderLanguageProvider extends LanguageProvider {
     getUserLanguages(actor) {
       let known_languages = new Set();
-      let literate_languages = new Set(); 
+      let literate_languages = new Set();
       actor.data.data.languages.value
         .split(',').forEach(x => {
           const langAndMod = x.trim().split('(');
@@ -279,9 +284,9 @@ Hooks.on("updateActor", (actor, updateData, options, userId) => {
     const enabled = game.settings.get("combat-carousel", "enabled");
 
     if (!enabled || !game.combat || ui.combatCarousel?._collapsed) return;
-    
+
     if (!game.combat?.combatants.some(c => c.actor.id === actor.id)) return;
-  
+
     ui.combatCarousel.render();
   }
 });

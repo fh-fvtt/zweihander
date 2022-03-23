@@ -68,8 +68,8 @@ ZWEI.supportedGameSystems = {
 }
 
 ZWEI.replacedDefaultCoreIcons = [
- 'icons/svg/mystery-man.svg',
- 'icons/svg/item-bag.svg'
+    'icons/svg/mystery-man.svg',
+    'icons/svg/item-bag.svg'
 ];
 
 const d = "/systems/zweihander/assets/icons";
@@ -94,9 +94,59 @@ ZWEI.defaultItemIcons = {
     "uniqueAdvance": `${d}/card-joker.svg`,
     "taint": `${d}/evil-moon.svg`
 };
+
 ZWEI.defaultActorIcons = {
     "_default": `${d}/cowled.svg`,
     "character": `${d}/character.svg`,
     "creature": `${d}/daemon-skull.svg`,
     "npc": `${d}/cowled.svg`,
 };
+
+ZWEI.packSets = {
+    zweihander: {
+        base: {
+            armor: "zweihander.zh-armor",
+            condition: "zweihander.zh-conditions",
+            disease: "zweihander.zh-diseases",
+            disorder: "zweihander.zh-disorders",
+            drawback: "zweihander.zh-drawbacks",
+            injury: "zweihander.zh-injuries",
+            profession: "zweihander.zh-professions",
+            ritual: "zweihander.zh-rituals",
+            spell: "zweihander.zh-magick",
+            taint: "zweihander.zh-taints",
+            talent: "zweihander.zh-talents",
+            trait: "zweihander.zh-traits",
+            trappings: "zweihander.zh-trappings",
+            weapon: "zweihander.zh-weapons, zweihander.zh-weapons-alt-damage",
+        },
+        creature: {
+            trait: "zweihander.zh-creature-traits"
+        },
+        npc: {
+            trait: "zweihander.zh-creature-traits, zweihander.zh-ancestral-traits"
+        },
+        character: {
+            trait: "zweihander.zh-ancestral-traits"
+        }
+    },
+    fof: {
+        base: {
+            disease: "zweihander.fof-ailments-and-drugs",
+            disorder: "zweihander.fof-afflictions",
+            drawback: "zweihander.fof-quirks",
+            injury: "zweihander.fof-injuries",
+            profession: "zweihander.fof-professions",
+            spell: "zweihander.fof-spells",
+            talent: "zweihander.fof-talents",
+            trait: "zweihander.fof-traits, zweihander.fof-professional-traits",
+            weapon: "zweihander.fof-weapons",
+        },
+        creature: {
+            trait: "zweihander.zh-creature-traits"
+        },
+        npc: {
+            trait: "zweihander.zh-creature-traits"
+        },
+    }
+}

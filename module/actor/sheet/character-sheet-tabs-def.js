@@ -1,5 +1,7 @@
+import { assignPacks } from "../../utils"
+
 export function attachTabDefinitions(data) {
-  data.tabs = {
+  data.tabs = assignPacks('character', {
     trappings: {
       headerTemplate: "pc/coinage",
       footerTemplate: "pc/encumbrance-meter",
@@ -7,7 +9,6 @@ export function attachTabDefinitions(data) {
         {
           title: "Weapons",
           type: "weapon",
-          packs: "zweihander.zh-weapons,zweihander.zh-weapons-alt-damage",
           summaryTemplate: "item-summary/weapon",
           rollType: "weapon-roll",
           rollLabelKey: "data.associatedSkill.value",
@@ -40,7 +41,6 @@ export function attachTabDefinitions(data) {
         {
           title: "Armor",
           type: "armor",
-          packs: "zweihander.zh-armor",
           summaryTemplate: "item-summary/armor",
           details: [
             {
@@ -65,7 +65,6 @@ export function attachTabDefinitions(data) {
         {
           title: "Trappings",
           type: "trapping",
-          packs: "zweihander.zh-trappings",
           summaryTemplate: "item-summary/trapping",
           details: [
             {
@@ -100,7 +99,6 @@ export function attachTabDefinitions(data) {
         {
           title: "Spells",
           type: "spell",
-          packs: "zweihander.zh-magick",
           summaryTemplate: "item-summary/spell",
           rollType: "spell-roll",
           rollLabel: data.data.stats.secondaryAttributes.magick.associatedSkill,
@@ -128,7 +126,6 @@ export function attachTabDefinitions(data) {
         {
           title: "Rituals",
           type: "ritual",
-          packs: "zweihander.zh-rituals",
           summaryTemplate: "item-summary/ritual",
           details: [
             {
@@ -157,7 +154,6 @@ export function attachTabDefinitions(data) {
         {
           title: "Conditions",
           type: "condition",
-          packs: "zweihander.zh-conditions",
           summaryTemplate: "item-summary/condition",
           details: [
             {
@@ -177,7 +173,6 @@ export function attachTabDefinitions(data) {
         {
           title: "Disorders",
           type: "disorder",
-          packs: "zweihander.zh-disorders",
           summaryTemplate: "item-summary/disorder",
           details: [
             {
@@ -197,7 +192,6 @@ export function attachTabDefinitions(data) {
         {
           title: "Diseases",
           type: "disease",
-          packs: "zweihander.zh-diseases",
           summaryTemplate: "item-summary/disease",
           details: [
             {
@@ -222,7 +216,6 @@ export function attachTabDefinitions(data) {
         {
           title: "Injuries",
           type: "injury",
-          packs: "zweihander.zh-injuries",
           summaryTemplate: "item-summary/injury",
           details: [
             {
@@ -242,7 +235,6 @@ export function attachTabDefinitions(data) {
         {
           title: "Taints of Chaos",
           type: "taint",
-          packs: "zweihander.zh-taints",
           summaryTemplate: "item-summary/taint",
           details: [
             {
@@ -266,7 +258,6 @@ export function attachTabDefinitions(data) {
         {
           title: "Professions",
           type: "profession",
-          packs: "zweihander.zh-professions",
           summaryTemplate: "item-summary/profession",
           details: [
             {
@@ -291,7 +282,6 @@ export function attachTabDefinitions(data) {
         {
           title: "Traits",
           type: "trait",
-          packs: "zweihander.zh-traits,zweihander.zh-ancestral-traits",
           summaryTemplate: "item-summary/trait",
           details: [
             {
@@ -305,7 +295,6 @@ export function attachTabDefinitions(data) {
         {
           title: "Drawbacks",
           type: "drawback",
-          packs: "zweihander.zh-drawbacks",
           summaryTemplate: "item-summary/drawback",
           details: [
             {
@@ -319,7 +308,6 @@ export function attachTabDefinitions(data) {
         {
           title: "Talents",
           type: "talent",
-          packs: "zweihander.zh-talents",
           summaryTemplate: "item-summary/talent",
           details: [
             {
@@ -333,7 +321,6 @@ export function attachTabDefinitions(data) {
         {
           title: "Unique Advances",
           type: "uniqueAdvance",
-          packs: "",
           summaryTemplate: "item-summary/uniqueAdvance",
           details: [
             {
@@ -351,5 +338,5 @@ export function attachTabDefinitions(data) {
         }
       ]
     }
-  };
+  });
 }

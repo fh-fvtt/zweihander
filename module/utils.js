@@ -1,3 +1,5 @@
+import { ZWEI } from "./config";
+
 export function getSymmetricDifference(a, b) {
  return [...a.filter(item => !b.includes(item)), ...b.filter(item => !a.includes(item))];
 }
@@ -298,4 +300,13 @@ export function getSheetSettings() {
 
 export function argMax(array) {
   return [].reduce.call(array, (m, c, i, arr) => c > arr[m] ? i : m, 0)
+}
+
+
+export function assignPacks(actorType, itemGroupDefinition) {
+  const gameSystem = game.settings.get("zweihander", "gameSystem");
+  const packSets = ZWEI.packSets[gameSystem];
+  const getPacks = (itemType) => (packSets?.base?.[itemType] ? packSets?.base?.[itemType] + ',' : '') + (packSets?.[actorType]?.[itemType] ?? '');
+  Object.values(itemGroupDefinition).flatMap(x => Array.isArray(x) ? x : x.itemGroups).forEach(x => x.packs = getPacks(x.type));
+  return itemGroupDefinition;
 }

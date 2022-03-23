@@ -77,7 +77,7 @@ export const registerHandlebarHelpers = async function () {
         <div class="radio-and-status">
           <input type="radio" class="radio-rank"
             id="${uuid}.${i}" name="${name}"
-            value="${i}" ${isChecked ? "checked" : ""}>
+            value="${i}" data-dtype="number" ${isChecked ? "checked" : ""}>
           <label for="${uuid}.${i}" class="status">
             <span><span>${choices[i]}</span></span>
           </label>
@@ -185,6 +185,7 @@ export const registerHandlebarHelpers = async function () {
   });
 
   $$('markdownIt', function (md) {
+    md = TextEditor.enrichHTML(md);
     if (window.MEME?.markdownIt?.render) {
       return window.MEME?.markdownIt?.render(md)
     } else {
@@ -229,6 +230,7 @@ export const registerHandlebarHelpers = async function () {
 
   $$('speakerPic', function (message) {
     const actor = ChatMessage.getSpeakerActor(message.speaker);
+    if (message.flags?.zweihander?.img) return message.flags.zweihander.img;
     if (actor && actor.img) return actor.img;
     const author = game.users.get(message.user);
     if (author && author.avatar) return author.avatar;

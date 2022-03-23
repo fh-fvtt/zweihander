@@ -87,31 +87,6 @@ body.game.vtt.system-zweihander {
       }
     }
 
-    a:hover {
-      text-shadow: none;
-      color: var(--zh-clr-aqua);
-    }
-
-    a.entity-link,
-    a.content-link,
-    a.inline-roll {
-      i {
-        color: var(--zh-clr-aqua);
-      }
-      background: var(--zh-clr-bg3);
-      border-color: var(--zh-clr-aqua);
-      border-radius: 3px;
-      &:hover,
-      &:focus,
-      &:active {
-        border-color: var(--zh-clr-yellow);
-        color: var(--zh-clr-fg0);
-        i {
-          color: var(--zh-clr-yellow);
-        }
-      }
-    }
-
     .dice-roll {
       .dice-formula,
       .dice-total {
