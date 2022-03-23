@@ -6,7 +6,7 @@
     <div class="item-detail item-detail-{{detail.size}}">{{detail.title}}</div>
     {{/each}}
     <div class="item-controls"><a class="add-new" data-item-type="{{itemGroup.type}}"
-        data-open-packs="{{itemGroup.packs}}" title="Add New {{itemGroup.title}}"><i class="fa fa-plus"></i> Add</a>
+        {{#if itemGroup.packs}}data-open-packs="{{itemGroup.packs}}"{{/if}} title="Add New {{itemGroup.title}}"><i class="fa fa-plus"></i> Add</a>
     </div>
   </li>
   <ol class="item-list">

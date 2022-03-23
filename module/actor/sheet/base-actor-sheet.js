@@ -170,22 +170,21 @@ export default class ZweihanderBaseActorSheet extends ActorSheet {
     });
 
     html.find('.add-new').contextmenu(async ev => {
-      const packIds = ev.currentTarget.dataset.openPacks?.split(",");
+      const packIds = ev.currentTarget.dataset.openPacks?.split?.(",")?.filter?.(x => x);
       if (!packIds) {
         ui.notifications.notify(`This item type currently has no system compendium attached!`);
         return
       }
       const packs = packIds.map(x => game.packs.get(x.trim()));
-      if (packs.every(x => x.apps[0].rendered)) {
+      if (packs.every(x => x?.apps?.[0]?.rendered)) {
         packs.forEach(x => x.apps[0].close());
       }
       packs.forEach((x, i) => x.render(true, {
         top: actor.sheet.position.top,
         left: actor.sheet.position.left + (i % 2 == 0 ? -350 : actor.sheet.position.width)
       }));
-
     })
-
+    
     // Handle formulas for display
     html.find('.inject-data').each(async function () {
       $(this).text(await ZweihanderUtils.parseDataPaths($(this).text().trim(), actor));

@@ -306,7 +306,14 @@ export function argMax(array) {
 export function assignPacks(actorType, itemGroupDefinition) {
   const gameSystem = game.settings.get("zweihander", "gameSystem");
   const packSets = ZWEI.packSets[gameSystem];
-  const getPacks = (itemType) => (packSets?.base?.[itemType] ? packSets?.base?.[itemType] + ',' : '') + (packSets?.[actorType]?.[itemType] ?? '');
-  Object.values(itemGroupDefinition).flatMap(x => Array.isArray(x) ? x : x.itemGroups).forEach(x => x.packs = getPacks(x.type));
+  const getPacks = (itemType) => {
+    const basePacks = packSets?.base?.[itemType];
+    const actorPacks = packSets?.[actorType]?.[itemType];
+    const delim = basePacks && actorPacks ? ',' : '';
+    return `${basePacks ?? ''}${delim}${actorPacks ?? ''}`;
+  }
+  Object.values(itemGroupDefinition)
+    .flatMap(x => Array.isArray(x) ? x : x.itemGroups)
+    .forEach(x => x.packs = getPacks(x.type));
   return itemGroupDefinition;
 }
