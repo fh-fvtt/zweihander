@@ -68,7 +68,7 @@ export const registerHandlebarHelpers = async function () {
   });
 
   $$('radioThresholds', function (name, choices, options) {
-    const checked = options.hash['checked'] || null;
+    const checked = options.hash['checked'] ?? 5;
     let html = "";
     let uuid = uuidv4();
     for (let i = choices.length - 1; i >= 0; i--) {
@@ -77,7 +77,7 @@ export const registerHandlebarHelpers = async function () {
         <div class="radio-and-status">
           <input type="radio" class="radio-rank"
             id="${uuid}.${i}" name="${name}"
-            value="${i}" data-dtype="number" ${isChecked ? "checked" : ""}>
+            value="${i}" data-dtype="Number" ${isChecked ? "checked" : ""}>
           <label for="${uuid}.${i}" class="status">
             <span><span>${choices[i]}</span></span>
           </label>

@@ -46,16 +46,6 @@ export default class ZweihanderBaseActorSheet extends ActorSheet {
     return data;
   }
 
-  // async _updateObject(event, formData) {
-  //   if (formData['data.stats.secondaryAttributes.damageCurrent.value'] !== undefined) {
-  //     formData['data.stats.secondaryAttributes.damageCurrent.value'] = Number(formData['data.stats.secondaryAttributes.damageCurrent.value']);
-  //   }
-  //   if (formData['data.stats.secondaryAttributes.perilCurrent.value'] !== undefined) {
-  //     formData['data.stats.secondaryAttributes.perilCurrent.value'] = Number(formData['data.stats.secondaryAttributes.perilCurrent.value']);
-  //   }
-  //   super._updateObject(event, formData);
-  // }
-
   _prepareItems() {
 
   }
