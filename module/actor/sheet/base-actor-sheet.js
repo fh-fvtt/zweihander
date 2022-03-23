@@ -184,7 +184,7 @@ export default class ZweihanderBaseActorSheet extends ActorSheet {
         left: actor.sheet.position.left + (i % 2 == 0 ? -350 : actor.sheet.position.width)
       }));
     })
-    
+
     // Handle formulas for display
     html.find('.inject-data').each(async function () {
       $(this).text(await ZweihanderUtils.parseDataPaths($(this).text().trim(), actor));
