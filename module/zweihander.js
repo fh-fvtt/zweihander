@@ -24,10 +24,9 @@ import { getTestConfiguration } from "./apps/test-config";
 
 import { ZWEI } from "./config.js";
 
-import ZweihanderBaseItem from "./item/entity/base-item";
+import { displayHelpMessage } from "./misc/help";
 
 import "../styles/main.scss"
-import { displayHelpMessage } from "./misc/help";
 
 /* -------------------------------------------- */
 /*  Foundry VTT Initialization                  */

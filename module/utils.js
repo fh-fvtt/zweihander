@@ -317,3 +317,48 @@ export function assignPacks(actorType, itemGroupDefinition) {
     .forEach(x => x.packs = getPacks(x.type));
   return itemGroupDefinition;
 }
+
+export const updateItems = async (packId, itemType, dataPathsToUpdate) => {
+  const updateItem = async (item, source) => {
+    if (item.type === 'weapon') {
+      const name = item.name;
+      const _id = item._id;
+      const pack = game.packs.get(packId);
+      const packItems = await pack.getDocuments({ type: itemType });
+      const packItem = packItems.find(i => normalizedEquals(i.name, name));
+      if (!packItem) return;
+      console.log(`Updating item "${name}" in ${source} (id: ${_id}) from pack "${packItem.pack}" (Item "${packItem.name}")...`);
+      const diff = { _id };
+      for (let dataPath of dataPathsToUpdate) {
+        diff[dataPath] = getProperty(packItem.data, dataPath);
+      }
+      return { _id, ...diff };
+    }
+  }
+  for (let a of game.actors) {
+    const updates = [];
+    for (let i of a.items) {
+      const update = await updateItem(i?.toObject?.() ?? i, `Actor "${a.name}"`);
+      if (update) updates.push(update);
+    }
+    await a.updateEmbeddedDocuments('Item', updates);
+  }
+  for (let s of game.scenes) {
+    for (let t of s.tokens) {
+      const updates = [];
+      for (let i of t?.actor?.items) {
+        if (!t.isLinked) {
+          const update = await updateItem(i?.toObject?.() ?? i, `Synthetic Actor "${t.actor.name}" in Scene "${s.name}"`);
+          if (update) updates.push(update);
+        }
+      }
+      await t.actor.updateEmbeddedDocuments('Item', updates);
+    }
+  }
+  const updates = [];
+  for (let i of game.items) {
+    const update = await updateItem(i?.toObject?.() ?? i, 'World Collection');
+    if (update) updates.push(update);
+  }
+  await Item.updateDocuments(updates);
+}

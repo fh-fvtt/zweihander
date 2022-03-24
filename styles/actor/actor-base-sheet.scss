@@ -229,10 +229,6 @@ body.game.vtt.system-zweihander .zweihander.sheet.actor {
       .item-summary-longform {
         text-align: justify;
         text-indent: 1ch;
-        & > p:first-of-type {
-          // this is necessary to fix an annoying editor behavior: it wraps each line in <p>'s
-          display: inline;
-        }
       }
     }
   }
