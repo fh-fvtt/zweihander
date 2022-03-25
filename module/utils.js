@@ -362,3 +362,7 @@ export const updateItems = async (packId, itemType, dataPathsToUpdate) => {
   }
   await Item.updateDocuments(updates);
 }
+
+export const updateEffects = async () => {
+
+}
