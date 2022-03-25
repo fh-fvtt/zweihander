@@ -399,8 +399,16 @@ export default class FortuneTracker extends Application {
     }
   }
 
-  async close() {
-    // can't touch (close) this
+  async close(event) {
+    // Delegate closing event (which I assume to be triggered by pressing ESC)
+    //TODO remove this after fortune tracker redesign
+    if (game.user.isGM && canvas.activeLayer && Object.keys(canvas.activeLayer._controlled).length) {
+      if ( !canvas.activeLayer.preview?.children.length ) canvas.activeLayer.releaseAll();
+      return true;
+    }
+    ui.menu.toggle();
+    // Save the fog immediately rather than waiting for the 3s debounced save as part of commitFog.
+    if ( canvas.ready ) canvas.sight.saveFog();
   }
 
   activateListeners(html) {
