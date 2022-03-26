@@ -332,6 +332,8 @@ export default class ZweihanderBaseActorSheet extends ActorSheet {
   }
 
   async _onRollSkill(event, testType) {
+    event.stopImmediatePropagation();
+    event.stopPropagation();
     event.preventDefault();
     const element = event.currentTarget;
     const skill = element.dataset.label;
@@ -348,7 +350,6 @@ export default class ZweihanderBaseActorSheet extends ActorSheet {
   }
 
   _showItemDescription(event) {
-    event.preventDefault();
     const toggler = $(event.currentTarget);
     const item = toggler.parents(".item");
     const description = item.find(".item-summary");
