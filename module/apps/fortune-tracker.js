@@ -388,7 +388,9 @@ export default class FortuneTracker extends Application {
         return await this.#socket.executeAsGM("requestSync");
       }
     } catch (e) {
-      console.error(e);
+      if (!e?.name || e.name !== 'SocketlibNoGMConnectedError') {
+        console.error(e);
+      }
       this.#waiting = true;
       this.render(!this.closable);
       ui.notifications.warn("Fortune Tracker is waiting for a GM to (re)connect.");

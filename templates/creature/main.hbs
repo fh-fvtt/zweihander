@@ -6,6 +6,7 @@
     <h1 class="actor-name">
       <input name="name" type="text" value="{{actor.name}}" placeholder="NPC Name">
     </h1>
+    {{#unless limited}}
     <section class="actor-resources">
       <section class="peril-ladder">
         {{radioThresholds "data.stats.secondaryAttributes.perilCurrent.value" config.perilOptions
@@ -16,9 +17,11 @@
         checked=data.stats.secondaryAttributes.damageCurrent.value}}
       </section>
     </section>
+    {{/unless}}
   </header>
   <aside class="details">
     <ul>
+       {{#unless limited}}
       <li class="risk-factor">
         <select class="risk-factor-value" name="data.details.riskFactor.value">
           {{#each choices.riskFactors}}
@@ -31,7 +34,9 @@
           {{/each}}
         </select>
       </li>
+      {{/unless}}
       {{#each details as | detail | }}
+      {{#unless detail.hidden}}
       <li>
         {{#if detail.choices}}
         <select name="data.details.{{detail.key}}">
@@ -44,9 +49,11 @@
           value="{{zhLookup ../data.details detail.key}}" />
         {{/if}}
       </li>
+      {{/unless}}
       {{/each}}
     </ul>
   </aside>
+  {{#unless limited}}
   <section class="sheet-body">
     <section class="stats flexcol">
       <h1>Attributes <a class="manual-mode-button"><i
@@ -149,4 +156,5 @@
         placeholder="Put a nice description of your creature here...">{{data.flavor.description}}</textarea>
     </aside>
   </section>
+  {{/unless}}
 </form>

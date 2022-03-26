@@ -6,6 +6,11 @@ body.game.vtt.system-zweihander .zweihander.sheet.creature {
   min-height: 669px;
   min-width: 620px;
 
+  &.limited {
+    min-height: 150px;
+    min-width: 300px;
+  }
+
   .window-content {
     background-color: var(--zh-clr-bg0);
     background-image: url("assets/creature-sheet-backdrop.webp?x=23dfs");

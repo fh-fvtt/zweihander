@@ -90,7 +90,8 @@ import ZweihanderCreatureSheet from "./creature-sheet";
       },
       {
         key: 'socialClass.value',
-        placeholder: 'Social Class'
+        placeholder: 'Social Class',
+        hidden: this.actor.limited
       },
       {
         key: 'distinguishingMarks.value',
@@ -98,19 +99,23 @@ import ZweihanderCreatureSheet from "./creature-sheet";
       },
       {
         key: 'archetype.value',
-        placeholder: 'Archetype'
+        placeholder: 'Archetype',
+        hidden: this.actor.limited
       },
       {
         key: 'motivation.value',
-        placeholder: 'Motivation'
+        placeholder: 'Motivation',
+        hidden: this.actor.limited
       },
       {
         key: 'alignment.value',
-        placeholder: 'Alignment'
+        placeholder: 'Alignment',
+        hidden: this.actor.limited
       },
       {
         key: 'languages.value',
-        placeholder: 'Languages'
+        placeholder: 'Languages',
+        hidden: this.actor.limited
       }
     ];
     return sheetData;

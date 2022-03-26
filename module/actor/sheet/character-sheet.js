@@ -24,6 +24,7 @@ export default class ZweihanderCharacterSheet extends ZweihanderBaseActorSheet {
   static get defaultOptions() {
     return foundry.utils.mergeObject(super.defaultOptions, {
       classes: ["zweihander", "sheet", "actor", "character", "damage-tracker"],
+      template: "systems/zweihander/templates/character/main.hbs",
       width: 750,
       height: 900,
       resizable: true,
@@ -32,11 +33,6 @@ export default class ZweihanderCharacterSheet extends ZweihanderBaseActorSheet {
       ],
       scrollY: ['.save-scroll', '.items-list', '.tab']
     });
-  }
-
-  get template() {
-    if ( !game.user.isGM && this.actor.limited ) return "systems/zweihander/templates/character/limited.hbs";
-    return "systems/zweihander/templates/character/main.hbs";
   }
 
   getData(options) {
@@ -188,7 +184,6 @@ export default class ZweihanderCharacterSheet extends ZweihanderBaseActorSheet {
   }
 
   async _render(force, options) {
-    
     if (this.actor.limited) {
       options.classes = ['limited', ...this.constructor.defaultOptions.classes, ...(options.classes?.length ? options.classes : [])];
       options.height = 235;

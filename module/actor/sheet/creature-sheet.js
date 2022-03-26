@@ -24,16 +24,12 @@ export default class ZweihanderCreatureSheet extends ZweihanderBaseActorSheet {
     }
     return foundry.utils.mergeObject(super.defaultOptions, {
       classes,
+      template: "systems/zweihander/templates/creature/main.hbs",
       width: compactMode ? 540 : 620,
       height: compactMode ? 540 : 669,
       resizable: true,
       scrollY: ['.save-scroll', '.sheet-body']
     });
-  }
-
-  get template() {
-    if ( !game.user.isGM && this.actor.limited ) return "systems/zweihander/templates/creature/limited.hbs";
-    return "systems/zweihander/templates/creature/main.hbs";
   }
 
   getData(options) {
@@ -67,19 +63,23 @@ export default class ZweihanderCreatureSheet extends ZweihanderBaseActorSheet {
       },
       {
         key: 'classification.value',
-        placeholder: 'Classification'
+        placeholder: 'Classification',
+        hidden: this.actor.limited
       },
       {
         key: 'role.value',
-        placeholder: 'Role'
+        placeholder: 'Role',
+        hidden: this.actor.limited
       },
       {
         key: 'influences.value',
-        placeholder: 'Influences'
+        placeholder: 'Influences',
+        hidden: this.actor.limited
       },
       {
         key: 'languages.value',
-        placeholder: 'Languages'
+        placeholder: 'Languages',
+        hidden: this.actor.limited
       }
     ];
 
@@ -274,6 +274,16 @@ export default class ZweihanderCreatureSheet extends ZweihanderBaseActorSheet {
       });
     }
     return buttons;
+  }
+
+  async _render(force, options) {
+    if (this.actor.limited) {
+      options.classes = ['limited', ...this.constructor.defaultOptions.classes, ...(options.classes?.length ? options.classes : [])];
+      options.height = 'auto';
+      options.width = 350;
+      options.resizable = false;
+    }
+    await super._render(force, options);
   }
 
 }
