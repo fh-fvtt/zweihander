@@ -21,16 +21,16 @@ body.game.vtt.system-zweihander .zweihander.sheet.creature {
     flex: 0 0 content;
     figure.actor-image {
       border-right: var(--zh-structural-border);
-      flex: 0 0 auto;
+      flex: 0 0 50px;
       margin: 0;
-      max-height: 48px;
-      max-width: 50px;
+      height: 48px;
       padding: 0;
+      display: flex;
       img {
         border: none;
         border-radius: 0;
         object-fit: contain;
-        width: 100%;
+        flex: 1;
       }
     }
     h1.actor-name {

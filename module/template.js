@@ -7,10 +7,8 @@
 export const preloadHandlebarsTemplates = async function () {
   const $$ = (path) => 'systems/zweihander/templates/' + path + '.hbs'
   return loadTemplates([
-    $$('pc/tab-main'),
-    $$('pc/header'),
-    $$('npc/tab-main'),
-    $$('npc/header'),
+    $$('character/tab-main'),
+    $$('character/header'),
     $$('item/ancestry'),
     $$('item/armor'),
     $$('item/condition'),
@@ -49,9 +47,9 @@ export const preloadHandlebarsTemplates = async function () {
     $$('item-summary/uniqueAdvance'),
     $$('partials/items-list'),
     $$('partials/skills-list'),
-    $$('pc/coinage'),
-    $$('pc/encumbrance-meter'),
-    $$('pc/magick-skill-selector'),
+    $$('character/coinage'),
+    $$('character/encumbrance-meter'),
+    $$('character/magick-skill-selector'),
     $$('partials/modded-value')
   ]);
 };

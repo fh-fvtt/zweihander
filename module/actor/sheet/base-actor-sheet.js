@@ -7,7 +7,6 @@ export default class ZweihanderBaseActorSheet extends ActorSheet {
 
   /** @override */
   getData(options) {
-
     // Basic data
     let isOwner = this.actor.isOwner;
     const data = {

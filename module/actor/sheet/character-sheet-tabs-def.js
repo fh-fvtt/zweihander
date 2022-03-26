@@ -3,8 +3,8 @@ import { assignPacks } from "../../utils"
 export function attachTabDefinitions(data) {
   data.tabs = assignPacks('character', {
     trappings: {
-      headerTemplate: "pc/coinage",
-      footerTemplate: "pc/encumbrance-meter",
+      headerTemplate: "character/coinage",
+      footerTemplate: "character/encumbrance-meter",
       itemGroups: [
         {
           title: "Weapons",
@@ -94,7 +94,7 @@ export function attachTabDefinitions(data) {
       ]
     },
     magick: {
-      footerTemplate: "pc/magick-skill-selector",
+      footerTemplate: "character/magick-skill-selector",
       itemGroups: [
         {
           title: "Spells",

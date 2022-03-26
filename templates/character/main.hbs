@@ -1,5 +1,5 @@
 <form class="editable flexcol" autocomplete="off">
-  {{> ($$ "pc/header") }}
+  {{> ($$ "character/header") }}
   <nav class="sheet-navigation tabs" data-group="primary" data-intro="This is a quick tutorial">
     <a class="item" data-tab="main">Attributes</a>
     <a class="item" data-tab="tiers">Tiers</a>
@@ -11,7 +11,7 @@
     <a class="item" data-tab="details">Background</a>
   </nav>
   <section class="sheet-body">
-    {{> ($$ "pc/tab-main") }}
+    {{> ($$ "character/tab-main") }}
     {{#each tabs}}
     <div class="tab {{@key}} flexcol" data-group="primary" data-tab="{{@key}}">
       {{#if headerTemplate}}{{> ($$ headerTemplate) ../.}}{{/if}}

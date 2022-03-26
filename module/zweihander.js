@@ -54,6 +54,9 @@ Hooks.once("ready", function () {
     })
   });
   // game.actors.getName('Demon Archer')?.sheet?.render?.(true);
+  // Monkey-Patch Search Filter
+  const cleanQuery = SearchFilter.cleanQuery;
+  SearchFilter.cleanQuery = (x) => ZweihanderUtils.removeDiacritics(cleanQuery(x));
 })
 
 Hooks.once("diceSoNiceReady", function () {
@@ -173,37 +176,6 @@ Hooks.once("init", async function () {
   await registerHandlebarHelpers();
   // Register Templates
   return preloadHandlebarsTemplates();
-});
-
-
-Hooks.on("renderActorSheet", (app, html, data) => {
-  //TODO: refactor into actor config class
-  if (data.actor.type === 'character') {
-    html.find(".header-button.configure-sheet").before(`
-    <a class="configure-actor">
-    <i class="fas fa-user-cog"></i>
-    Actor
-    </a>
-    `);
-    html.find(".configure-actor").click(() => {
-      new ZweihanderActorConfig(app.object).render(true);
-    })
-  } else {
-    const compactMode = game.settings.get("zweihander", "openInCompactMode");
-    html.find(".header-button.configure-sheet").before(`
-    <a class="hide-background">
-    <i class="hide-background-toggle fas fa-toggle-${compactMode ? "on" : "off"}"></i>
-    Compact
-    </a>
-    `);
-    html.find(".hide-background").click((event) => {
-      const sheet = $(event.currentTarget).parents('.sheet');
-      sheet.toggleClass('zweihander-compact-sheet');
-      $(event.currentTarget).find('.hide-background-toggle')
-        .toggleClass('fa-toggle-on')
-        .toggleClass('fa-toggle-off');
-    })
-  }
 });
 
 Hooks.on("renderChatMessage", ZweihanderChat.addLocalChatListeners);

@@ -9,6 +9,13 @@ import { attachTabDefinitions } from "./character-sheet-tabs-def";
  */
 export default class ZweihanderCharacterSheet extends ZweihanderBaseActorSheet {
 
+  #actorConfig;
+
+  constructor(...args) {
+    super(...args);
+    this.#actorConfig = new ZweihanderActorConfig(this.actor);
+  }
+
   static unsupportedItemTypes = new Set([
     'quality',
     'skill'
@@ -17,7 +24,6 @@ export default class ZweihanderCharacterSheet extends ZweihanderBaseActorSheet {
   static get defaultOptions() {
     return foundry.utils.mergeObject(super.defaultOptions, {
       classes: ["zweihander", "sheet", "actor", "character", "damage-tracker"],
-      template: "systems/zweihander/templates/pc/main.hbs",
       width: 750,
       height: 900,
       resizable: true,
@@ -26,6 +32,11 @@ export default class ZweihanderCharacterSheet extends ZweihanderBaseActorSheet {
       ],
       scrollY: ['.save-scroll', '.items-list', '.tab']
     });
+  }
+
+  get template() {
+    if ( !game.user.isGM && this.actor.limited ) return "systems/zweihander/templates/character/limited.hbs";
+    return "systems/zweihander/templates/character/main.hbs";
   }
 
   getData(options) {
@@ -96,6 +107,9 @@ export default class ZweihanderCharacterSheet extends ZweihanderBaseActorSheet {
       callback: (toggle) => html.find('.skills-list').toggleClass('two-rows', toggle)
     }]);
 
+    // Update the encumbrance meter
+    this._updateEncumbranceMeter(html);
+
     // Everything below here is only needed if the sheet is editable
     if (!this.options.editable) return;
 
@@ -140,8 +154,6 @@ export default class ZweihanderCharacterSheet extends ZweihanderBaseActorSheet {
         "data.orderRanks.value": 0
       });
     });
-    // Update the encumbrance meter
-    this._updateEncumbranceMeter(html);
 
     html.find(".peril-rolls .image-container").click(async (event) => {
       const perilType = ZweihanderDice.PERIL_ROLL_TYPES[event.currentTarget.dataset.perilType.toUpperCase()];
@@ -159,6 +171,31 @@ export default class ZweihanderCharacterSheet extends ZweihanderBaseActorSheet {
       html.find(".encumbrance-bar-container").addClass("encumbrance-overage");
     }
     html.find(".encumbrance-bar").css("width", ratio + "%");
+  }
+
+  _getHeaderButtons() {
+    let buttons = super._getHeaderButtons();
+    const canConfigure = game.user.isGM || this.actor.isOwner;
+    if (this.options.editable && canConfigure) {
+      buttons.splice(1, 0, {
+        label: 'Actor',
+        class: 'configure-actor',
+        icon: 'fas fa-user-cog',
+        onclick: () => this.#actorConfig.render(true)
+      });
+    }
+    return buttons;
+  }
+
+  async _render(force, options) {
+    
+    if (this.actor.limited) {
+      options.classes = ['limited', ...this.constructor.defaultOptions.classes, ...(options.classes?.length ? options.classes : [])];
+      options.height = 235;
+      options.width = 750;
+      options.resizable = false;
+    }
+    await super._render(force, options);
   }
 
 }

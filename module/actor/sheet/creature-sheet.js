@@ -24,12 +24,16 @@ export default class ZweihanderCreatureSheet extends ZweihanderBaseActorSheet {
     }
     return foundry.utils.mergeObject(super.defaultOptions, {
       classes,
-      template: "systems/zweihander/templates/creature/main.hbs",
       width: compactMode ? 540 : 620,
       height: compactMode ? 540 : 669,
       resizable: true,
       scrollY: ['.save-scroll', '.sheet-body']
     });
+  }
+
+  get template() {
+    if ( !game.user.isGM && this.actor.limited ) return "systems/zweihander/templates/creature/limited.hbs";
+    return "systems/zweihander/templates/creature/main.hbs";
   }
 
   getData(options) {
@@ -196,14 +200,15 @@ export default class ZweihanderCreatureSheet extends ZweihanderBaseActorSheet {
       width: 260,
       callback: (toggle) => html.find('.skills-list').toggleClass('two-rows', toggle)
     }]);
-
-    // Everything below here is only needed if the sheet is editable
-    if (!this.options.editable) return;
-    // auto size the details inputs
+    // auto size the details inputs once
     const autoSizeInput = (el) => el.attr('size', Math.max(el.attr('placeholder').length, el.val().length));
     const inputsToAutoSize = html.find('aside.details input.auto-size');
     inputsToAutoSize.each((i, x) => autoSizeInput($(x)));
+    // Everything below here is only needed if the sheet is editable
+    if (!this.options.editable) return;
+    // auto size the details inputs on change
     inputsToAutoSize.bind('input', (event) => autoSizeInput($(event.currentTarget)));
+    // level skills
     html.find('.skills .skill').contextmenu((event) => {
       const skillId = event.currentTarget.dataset.itemId;
       const skillName = this.actor.items.get(skillId).data.name;
@@ -211,6 +216,7 @@ export default class ZweihanderCreatureSheet extends ZweihanderBaseActorSheet {
       ranks[skillName] = ((ranks[skillName] ?? 0) + 1) % 4;
       this.actor.update({ 'data.skillRanks': ranks });
     });
+    // level bonus advances
     const updateBonusAdvances = (i) => (event) => {
       const pa = event.currentTarget.dataset.primaryAttribute;
       const bonusAdvances = this.actor.data.data.stats.primaryAttributes[pa]?.bonusAdvances + i;
@@ -218,6 +224,7 @@ export default class ZweihanderCreatureSheet extends ZweihanderBaseActorSheet {
     };
     html.find('.pa-bonus-advance-substract').click(updateBonusAdvances(-1));
     html.find('.pa-bonus-advance-add').click(updateBonusAdvances(1));
+    // manual mode
     html.find('.manual-mode-button').click(() => {
       this.actor.update({ 'data.stats.manualMode': !this.actor.data.data.stats.manualMode });
     }).contextmenu(() => {
@@ -246,6 +253,27 @@ export default class ZweihanderCreatureSheet extends ZweihanderBaseActorSheet {
       const i = mod(paArray.indexOf(paValue) + (event.shiftKey ? -1 : 1), paArray.length);
       this.actor.update({ [`data.stats.primaryAttributes.${key}.value`]: paArray[i] });
     });
+  }
+
+  _getHeaderButtons() {
+    const buttons = super._getHeaderButtons();
+    const compactMode = game.settings.get("zweihander", "openInCompactMode");
+    const canConfigure = game.user.isGM || !this.actor.limited;
+    if (canConfigure) {
+      buttons.splice(0, 0, {
+        label: ' Compact Mode',
+        class: 'hide-background',
+        icon: `hide-background-toggle fas fa-toggle-${compactMode ? "on" : "off"}`,
+        onclick: (event) => {
+          const sheet = $(event.currentTarget).parents('.sheet');
+          sheet.toggleClass('zweihander-compact-sheet');
+          $(event.currentTarget).find('.hide-background-toggle')
+            .toggleClass('fa-toggle-on')
+            .toggleClass('fa-toggle-off');
+        }
+      });
+    }
+    return buttons;
   }
 
 }
