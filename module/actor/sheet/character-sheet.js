@@ -127,7 +127,7 @@ export default class ZweihanderCharacterSheet extends ZweihanderBaseActorSheet {
       await this.actor.deleteEmbeddedDocuments("Item", [ancestryId]);
     });
 
-    const updatePurchased = (event) => {
+    const updatePurchased = async (event) => {
       const target = $(event.currentTarget);
       const field = target.data('purchaseType');
       const index = target.data('purchaseIndex');
@@ -139,7 +139,7 @@ export default class ZweihanderCharacterSheet extends ZweihanderBaseActorSheet {
         return;
       }
       const updated = professionItem.data.data[field].map((x, i) => i === index ? { ...x, purchased: !x.purchased } : x);
-      professionItem.update({ [`data.${field}`]: updated });
+      await professionItem.update({ [`data.${field}`]: updated });
     }
     html.find(".purchase-link").click(updatePurchased);
 
@@ -154,7 +154,31 @@ export default class ZweihanderCharacterSheet extends ZweihanderBaseActorSheet {
     html.find(".peril-rolls .image-container").click(async (event) => {
       const perilType = ZweihanderDice.PERIL_ROLL_TYPES[event.currentTarget.dataset.perilType.toUpperCase()];
       ZweihanderDice.rollPeril(perilType, this.actor);
-    })
+    });
+
+    // Modify numerable value by clicking '+' and '-' buttons on sheet, e.g. quantity, encumbrance 
+    const updateNumerable = (i) => async (event) => {
+      const lookup = function(obj, key) {
+        const keys = key.split('.');
+        let val = obj;
+        for (let key of keys) {
+          val = val?.[key];
+        }
+        return val;
+      };
+
+      const numerablePath = event.currentTarget.dataset.numerablePath;
+
+      const itemElement = $(event.currentTarget).parents(".item");
+      const item = this.actor.items.get($(itemElement).data("itemId"));
+
+      const newNumerableValue = lookup(item.data, numerablePath) + i;
+
+      await item.update({[`${numerablePath}`]: newNumerableValue >= 0 ? newNumerableValue : 0});      
+    };
+
+    html.find('.numerable-field-subtract').click(updateNumerable(-1));
+    html.find('.numerable-field-add').click(updateNumerable(1));
   }
 
   _updateEncumbranceMeter(html) {

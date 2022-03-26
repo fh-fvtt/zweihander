@@ -133,6 +133,28 @@ body.game.vtt.system-zweihander .zweihander.sheet.actor {
       &.item-detail-240 {
         flex: 0 0 240px;
       }
+      & .numerable-field {
+        padding: 0px 20% 0 20%;
+        & .numerable-field-subtract, .numerable-field-add {
+          visibility: hidden;
+
+          height: 16px;
+          flex: 3 0 12px;
+          padding: 0;
+          text-align: center;
+          line-height: 1;
+          font-size: 14px;
+        }
+        &:hover .numerable-field-subtract, &:hover .numerable-field-add {
+          visibility: visible;
+          &.hide {
+            visibility: hidden;
+          }
+        }
+        & .numerable-field-counter {
+          flex: 0 0 16px;
+        }
+      }
     }
     .item-controls {
       flex: 0 0 60px;

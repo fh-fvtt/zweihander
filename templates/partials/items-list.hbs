@@ -23,6 +23,12 @@
           <input class="zweihander-checkbox link-checkbox" id="{{item._id}}" 
             type="checkbox" {{checked (zhLookup item detail.key)}} />
           <label for="{{item._id}}"></label>
+        {{else if detail.isNumerable}}
+          <div class="numerable-field flexrow">
+            <button type="button" class="numerable-field-subtract {{#if (zhLookup item detail.key)}}{{else}}hide{{/if}}" data-numerable-path="{{detail.key}}">-</button>
+            <span class="numerable-field-counter">{{zhLookup item detail.key}}</span>
+            <button type="button" class="numerable-field-add" data-numerable-path="{{detail.key}}">+</button>
+          </div>
         {{else}}
         {{zhLookup item detail.key}}
         {{/if}}

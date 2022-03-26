@@ -27,7 +27,8 @@ export function attachTabDefinitions(data) {
             {
               title: "Enc.",
               size: 100,
-              key: "data.encumbrance.value"
+              key: "data.encumbrance.value",
+              isNumerable: true
             },
             {
               title: "Equipped",
@@ -51,7 +52,8 @@ export function attachTabDefinitions(data) {
             {
               title: "Enc.",
               size: 100,
-              key: "data.encumbrance.value"
+              key: "data.encumbrance.value",
+              isNumerable: true
             },
             {
               title: "Equipped",
@@ -75,12 +77,14 @@ export function attachTabDefinitions(data) {
             {
               title: "Qty.",
               size: 100,
-              key: "data.quantity.value"
+              key: "data.quantity.value",
+              isNumerable: true
             },
             {
               title: "Enc.",
               size: 100,
-              key: "data.encumbrance.value"
+              key: "data.encumbrance.value",
+              isNumerable: true
             },
             {
               title: "Carried",
