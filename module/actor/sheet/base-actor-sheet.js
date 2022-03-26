@@ -223,14 +223,9 @@ export default class ZweihanderBaseActorSheet extends ActorSheet {
     });
     // Show item sheet on right click
     html.find(".fetch-item").contextmenu(event => {
-      const target = $(event.currentTarget);
-      const skillName = target.text().trim();
-      const itemId = actorData.items.find(item => item.name === skillName).id;
-
-      if (itemId) {
-        const skillItem = this.actor.items.get(itemId);
-        skillItem.sheet.render(true);
-      }
+      const itemId = $(event.currentTarget).parent('.item').data('itemId');
+      const skillItem = this.actor.items.get(itemId);
+      skillItem.sheet.render(true);
     });
 
     html.find(".item-post").click(async event => {
