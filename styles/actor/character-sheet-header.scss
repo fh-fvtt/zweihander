@@ -181,14 +181,15 @@
       margin: 0;
       padding: 0;
       input[type="radio"] {
+        flex: 0 0 0;
         appearance: none;
         display: none;
-        flex: 0;
         & + label {
           display: inline-block;
           position: relative;
           text-align: center;
           z-index: 2;
+          flex: 1 0 0;
           &.regular-rank {
             cursor: pointer;
             font-size: 12px;
@@ -205,7 +206,7 @@
             color: var(--zh-clr-red-alt);
             cursor: default;
             font-size: 14px;
-            margin-top: 21px;
+            margin-top: 1px;
             &:hover {
               color: none;
               &::before {
