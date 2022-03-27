@@ -1,0 +1,459 @@
+& {
+  --mej-clr-bg0: var(--zh-clr-fg0);
+  --mej-clr-bg0-rgb: var(--zh-clr-fg0-rgb);
+  --mej-clr-bg1: var(--zh-clr-fg1);
+  --mej-clr-bg2: var(--zh-clr-fg2);
+  --mej-clr-bg3: var(--zh-clr-fg3);
+  --mej-clr-bg4: var(--zh-clr-fg4);
+  --mej-clr-fg0: var(--zh-clr-bg0);
+  --mej-clr-fg0-rgb: var(--zh-clr-bg0-rgb);
+  --mej-clr-fg1: var(--zh-clr-bg1);
+  --mej-clr-fg1-rgb: var(--zh-clr-bg1-rgb);
+  --mej-clr-fg2: var(--zh-clr-bg2);
+  --mej-clr-fg3: var(--zh-clr-bg3);
+  --mej-clr-fg4: var(--zh-clr-bg4);
+  --mej-clr-orange-bright: var(--zh-clr-orange);
+  --mej-clr-orange-bright-rgb: 255, 180, 0;
+  --mej-clr-orange-dark: var(--zh-clr-orange-alt);
+  --mej-clr-red-dark: var(--zh-clr-aqua-alt);
+  --mej-clr-red-bright: var(--zh-aqua-red);
+  --mej-clr-red-bright-rgb: var(--zh-clr-accent-rgb);
+  --mej-clr-aqua-dark: var(--zh-clr-aqua-alt);
+  --mej-clr-aqua-bright: var(--zh-clr-aqua);
+  --mej-clr-green-bright: var(--zh-clr-green);
+}
+
+.monks-enhanced-journal .window-content {
+  padding: 0;
+}
+
+.monks-enhanced-journal textarea {
+  background: var(--zh-clr-bg0);
+}
+
+.monks-enhanced-journal * {
+  text-shadow: none !important;
+  box-shadow: none !important;
+}
+
+.monks-enhanced-journal > header a.subsheet {
+  background: rgba(var(--mej-clr-fg0-rgb), 0.1);
+}
+.monks-enhanced-journal .directory-sidebar {
+  border-left: 2px groove var(--zh-clr-bg1);
+}
+
+.monks-journal-sheet.sheet .fullscreen-image,
+.monks-enhanced-journal .directory-sidebar,
+.journal-list {
+  background-image: none;
+  background: var(--zh-clr-bg0);
+}
+.monks-enhanced-journal .mainbar > div {
+  border-bottom: 1px solid var(--mej-clr-fg4);
+}
+.monks-enhanced-journal .tab-bar .journal-tab {
+  background: rgba(var(--mej-clr-fg1-rgb), 0.5);
+  border: 1px solid var(--mej-clr-fg4);
+}
+.monks-enhanced-journal .tab-bar .tab-button:hover {
+  text-shadow: 0 0 8px var(--mej-clr-red-bright);
+}
+.monks-enhanced-journal .tab-bar .journal-tab:hover {
+  box-shadow: inset 0 0 5px rgba(var(--mej-clr-bg0-rgb), 0.2);
+}
+.monks-enhanced-journal .tab-bar .journal-tab.active {
+  background-color: var(--mej-clr-fg0);
+}
+.monks-enhanced-journal .mainbar .navigation {
+  background: rgba(var(--mej-clr-fg0-rgb), 0.3);
+}
+.monks-enhanced-journal .mainbar .navigation .nav-button {
+  background: rgba(var(--mej-clr-fg1-rgb), 0.8);
+  border: 1px solid var(--mej-clr-fg4);
+}
+.monks-enhanced-journal .mainbar .navigation .nav-button:hover {
+  box-shadow: 0 0 5px var(--mej-clr-red-bright);
+}
+.monks-enhanced-journal .mainbar .navigation .nav-button.disabled {
+  color: var(--mej-clr-fg4);
+}
+.monks-enhanced-journal .mainbar .navigation .nav-input:focus {
+  background: rgba(var(--mej-clr-fg1-rgb), 0.8);
+  border: 1px solid var(--mej-clr-fg4);
+}
+.monks-enhanced-journal .mainbar .navigation .title input:focus {
+  background: rgba(var(--mej-clr-bg0-rgb), 0.05);
+  border: 1px solid var(--mej-clr-bg2);
+}
+.monks-enhanced-journal .bookmark-bar .bookmark-button:hover {
+  background-color: rgba(var(--mej-clr-bg0-rgb), 0.1);
+}
+.monks-enhanced-journal .bookmark-bar .bookmark-button.add-bookmark {
+  border: 1px solid var(--mej-clr-fg4);
+}
+.monks-enhanced-journal footer {
+  border-top: 1px solid var(--mej-clr-fg4);
+}
+.monks-enhanced-journal footer > div.navigate-next:hover,
+.monks-enhanced-journal footer > div.navigate-prev:hover {
+  text-shadow: 0 0 8px var(--mej-clr-red-bright);
+}
+#journal-directory li.journalentry {
+  border-bottom: 1px solid rgba(var(--mej-clr-bg0-rgb), 0.3);
+  border-top: 1px solid rgba(var(--mej-clr-bg0-rgb), 0.1);
+}
+#journal li.journalentry[status] .document-name,
+#journal-directory li.journalentry[status] .document-name {
+  border-left: 0.45em solid var(--mej-clr-bg3);
+}
+#journal li.journalentry[status="available"] .document-name,
+#journal-directory li.journalentry[status="available"] .document-name {
+  border-left-color: var(--mej-clr-aqua-dark);
+}
+#journal li.journalentry[status="inprogress"] .document-name,
+#journal-directory li.journalentry[status="inprogress"] .document-name {
+  border-left-color: var(--mej-clr-orange-bright);
+}
+#journal li.journalentry[status="completed"] .document-name,
+#journal-directory li.journalentry[status="completed"] .document-name {
+  border-left-color: var(--mej-clr-green-bright);
+}
+#journal li.journalentry[status="failed"] .document-name,
+#journal-directory li.journalentry[status="failed"] .document-name {
+  border-left-color: var(--mej-clr-red-bright);
+}
+#journal-directory .directory-item.active {
+  background: var(--mej-clr-fg3);
+}
+#journal-directory li.folder > .folder-header {
+  background: rgba(var(--mej-clr-bg0-rgb), 0.1);
+}
+#journal-directory li.folder:not(.collapsed) > .folder-header {
+  background: rgba(var(--mej-clr-bg0-rgb), 0.4);
+}
+#journal-directory li.folder.collapsed > .folder-header,
+#journal-directory li.folder > .folder-header {
+  border-top: 1px solid rgba(var(--mej-clr-bg0-rgb), 0.1);
+}
+#journal-directory li.folder.collapsed > .folder-header .create-document,
+#journal-directory li.folder.collapsed > .folder-header .create-folder,
+#journal-directory li.folder.collapsed > .folder-header:not(.customcolor) {
+  color: var(--mej-clr-bg1);
+}
+#journal-directory li.folder.collapsed .folder-header.customcolor {
+  color: var(--mej-clr-fg0);
+}
+#journal-directory
+  li.folder.collapsed
+  > .folder-header.customcolor
+  .create-document,
+#journal-directory
+  li.folder.collapsed
+  > .folder-header.customcolor
+  .create-folder {
+  color: var(--mej-clr-fg3);
+}
+#journal-directory .subdirectory {
+  border-bottom: 4px solid rgba(var(--mej-clr-bg0-rgb), 0.3);
+  border-left: 4px solid rgba(var(--mej-clr-bg0-rgb), 0.3);
+}
+#journal-directory .sidebar-tab .directory-list .document.selected {
+  background: rgba(var(--mej-clr-bg0-rgb), 0.03);
+}
+.monks-journal-sheet.image-popout.dark .header-name input {
+  color: var(--mej-clr-fg0);
+}
+.monks-journal-sheet.sheet header.sheet-header {
+  border-bottom: 2px groove var(--mej-clr-fg1);
+}
+.monks-journal-sheet.sheet .form-group label {
+  color: var(--mej-clr-bg1);
+}
+.monks-journal-sheet.sheet .sheet-navigation .item {
+  border-bottom: 3px solid var(--mej-clr-fg4);
+}
+.monks-journal-sheet.sheet .sheet-navigation .item.active {
+  border-bottom: 3px solid var(--mej-clr-red-dark);
+}
+.monks-journal-sheet.sheet .editor {
+  height: fit-content;
+}
+.monks-journal-sheet.sheet .sheet-header .sheet-image {
+  border-right: 2px groove var(--mej-clr-fg1);
+}
+.monks-journal-sheet .slideshow-container .add-slide {
+  border: 1px dashed rgba(var(--mej-clr-bg0-rgb), 0.2);
+  color: rgba(var(--mej-clr-bg0-rgb), 0.2);
+}
+.slideshow-container .slide-inner {
+  border: 1px solid var(--mej-clr-fg4);
+}
+.monks-journal-sheet .slideshow-container.playing .slide.active {
+  border: 1px solid var(--mej-clr-red-bright);
+  border-bottom: 1px solid var(--mej-clr-orange-dark);
+  box-shadow: 0 0 10px var(--mej-clr-orange-dark);
+}
+#slideshow-canvas {
+  background-color: var(--mej-clr-bg0);
+}
+#slideshow-canvas .slide-padding {
+  background-color: var(--mej-clr-bg0);
+}
+.monks-journal-sheet .slide .slide-textarea .slide-text {
+  color: var(--mej-clr-fg0);
+}
+.slide-config .slide .slide-textarea .slide-text {
+  border: 2px solid rgba(var(--mej-clr-orange-bright-rgb), 0.5);
+}
+.slide-config .slide-textarea .slide-text.selected {
+  border: 2px solid var(--mej-clr-orange-bright);
+  box-shadow: 1px 1px 1px var(--mej-clr-bg0), -1px -1px 1px var(--mej-clr-bg0);
+}
+.slide-config .slide-textarea .mover {
+  background: var(--mej-clr-orange-bright);
+  border: 2px solid var(--mej-clr-bg0);
+}
+.slide-config .slide-textarea .text-create {
+  border: 2px solid var(--mej-clr-orange-bright);
+}
+.monks-journal-sheet .slideshow-container.playing .slide-showing .duration {
+  background-color: rgba(var(--mej-clr-bg0-rgb), 0.5);
+  border: 1px solid var(--mej-clr-bg0);
+}
+.monks-journal-sheet
+  .slideshow-container.playing
+  .slide-showing
+  .duration
+  .duration-bar {
+  background-color: var(--mej-clr-aqua-dark);
+  border-right: 1px solid var(--mej-clr-bg0);
+}
+.monks-journal-sheet
+  .slideshow-container.playing
+  .slide-showing
+  .duration
+  .duration-label {
+  color: var(--mej-clr-fg0);
+  text-shadow: 1px 1px 6px var(--mej-clr-bg0);
+}
+.monks-journal-sheet .header-name {
+  border-bottom: 2px solid var(--mej-clr-red-dark);
+}
+.monks-journal-sheet.sheet .editor .tox-toolbar-overlord {
+  background-color: rgba(var(--mej-clr-fg0-rgb), 0.4);
+}
+.slide-sheet .form-header,
+.slideshow-container .form-header {
+  border-bottom: 1px solid var(--mej-clr-fg1);
+  border-top: 1px solid var(--mej-clr-fg4);
+}
+.slide-sheet .form-header h3,
+.slideshow-container .form-header h3 {
+  border-bottom: 1px solid var(--mej-clr-fg4);
+  border-top: 1px solid var(--mej-clr-fg1);
+}
+.monks-journal-sheet .directory .directory-header .header-search input {
+  background: rgba(var(--mej-clr-fg1-rgb), 0.8);
+  border: 1px solid var(--mej-clr-fg4);
+}
+.monks-journal-sheet .mainbar .navigation .search.error {
+  background-color: rgba(var(--mej-clr-fg1-rgb), 0.1);
+}
+.select-player .inactive {
+  color: var(--mej-clr-bg3);
+}
+.monks-journal-sheet.sheet
+  .quest-container
+  .items-list.objective-items
+  li:nth-child(even) {
+  background-color: rgba(var(--mej-clr-fg0-rgb), 0.3);
+}
+#objective-display {
+  border: 1px solid var(--mej-clr-aqua-dark);
+  box-shadow: 0 0 10px var(--mej-clr-bg0);
+  color: var(--mej-clr-fg1);
+}
+#objective-display .title {
+  background-color: rgba(var(--mej-clr-fg0-rgb), 0.2);
+  border: 1px solid rgba(var(--mej-clr-fg0-rgb), 0.3);
+}
+#objective-display ul ul li:not(:last-child) {
+  border-bottom: 1px solid rgba(var(--mej-clr-fg0-rgb), 0.2);
+}
+.monks-journal-sheet.sheet .items-list {
+  color: var(--mej-clr-bg2);
+}
+.monks-journal-sheet.sheet .items-list .item-content {
+  color: var(--mej-clr-bg1);
+}
+.monks-journal-sheet.sheet
+  .journal-subsheet
+  .objective-items
+  .item-list
+  > li
+  > div:first-child {
+  border-bottom: 1px solid var(--mej-clr-red-dark);
+}
+.monks-journal-sheet.sheet .items-list .item-controls a.active,
+.monks-journal-sheet.sheet
+  .items-list
+  .item-controls
+  input[type="checkbox"]:checked
+  + .item-action,
+.monks-journal-sheet.sheet
+  .items-list
+  .item-controls
+  input[type="checkbox"]:checked
+  + .item-hide {
+  color: var(--mej-clr-orange-dark);
+}
+.monks-journal-sheet.sheet .items-list .item {
+  border-bottom: 1px solid var(--mej-clr-fg3);
+}
+.monks-journal-sheet.sheet .items-list .item .item-name {
+  color: var(--mej-clr-bg0);
+}
+.monks-journal-sheet.sheet .items-list .items-header {
+  background: rgba(var(--mej-clr-bg0-rgb), 0.05);
+  border: 2px groove var(--mej-clr-fg1);
+}
+.monks-journal-sheet.sheet .items-list .item .item-name.item-received {
+  color: var(--mej-clr-bg3);
+}
+.actor-img {
+  border-left: 2px groove var(--mej-clr-fg1);
+}
+.sidebar-tab.directory .directory-item.journalentry .permissions {
+  background-color: rgba(var(--mej-clr-bg0-rgb), 0.5);
+}
+#journal-directory .directory-item.journalentry .permissions {
+  background-color: rgba(var(--mej-clr-fg0-rgb), 0.5);
+}
+.sidebar-tab.directory .directory-item.journalentry .permissions i {
+  text-shadow: 1px 1px 3px var(--mej-clr-bg0);
+}
+.sidebar-tab.directory .directory-item.journalentry .permissions div {
+  background: var(--mej-clr-aqua-bright);
+  border: 1px solid var(--mej-clr-bg0);
+  color: var(--mej-clr-bg0);
+}
+.monks-journal-sheet.sheet .editor-content .polyglot-container {
+  background-color: rgba(var(--mej-clr-orange-bright-rgb), 0.25);
+}
+.monks-journal-sheet.sheet .editor-content .polyglot-container:before {
+  background-color: rgba(var(--mej-clr-bg0-rgb), 0.6);
+  border: 1px solid var(--mej-clr-fg4);
+  color: var(--mej-clr-fg0);
+}
+.journal-select {
+  background: rgba(var(--mej-clr-bg0-rgb), 0.05);
+  border: 1px solid var(--mej-clr-bg2);
+}
+.journal-select:focus {
+  box-shadow: 0 0 5px var(--mej-clr-red-bright);
+}
+.journal-select > div > i {
+  color: var(--mej-clr-bg0);
+}
+.journal-list {
+  border: 1px solid var(--mej-clr-bg3);
+  color: var(--mej-clr-bg0);
+}
+.journal-list .journal-item .journal-title {
+  border-bottom: 1px solid rgba(var(--mej-clr-bg0-rgb), 0.1);
+}
+.journal-list .journal-item.selected,
+.journal-list .journal-item:not(.folder):hover {
+  background-color: var(--mej-clr-aqua-dark);
+  color: var(--mej-clr-fg0);
+}
+.journal-list .journal-item.folder > .journal-title {
+  background: rgba(var(--mej-clr-bg0-rgb), 0.1);
+}
+.journal-list .journal-item.folder > .journal-title:hover {
+  background: rgba(var(--mej-clr-bg0-rgb), 0.3);
+}
+.journal-list .subfolder {
+  border-bottom: 4px solid var(--mej-clr-fg4);
+  border-left: 4px solid var(--mej-clr-fg4);
+}
+.select-player .options {
+  background-color: rgba(var(--mej-clr-fg0-rgb), 0.5);
+}
+.select-player .user-list {
+  border-top: 2px groove var(--mej-clr-fg1);
+}
+a.inline-request-roll {
+  background: var(--mej-clr-fg2);
+  border: 1px solid var(--mej-clr-bg1);
+}
+.monks-journal-sheet .journal-subsheet .person-actor,
+.monks-journal-sheet .journal-subsheet .quest-source,
+.monks-journal-sheet .journal-subsheet .shop-owner {
+  background: rgba(var(--mej-clr-bg0-rgb), 0.05);
+  border: 2px groove var(--mej-clr-fg1);
+}
+.monks-journal-sheet .journal-subsheet .encounter-buttons > div {
+  background: rgba(var(--mej-clr-fg0-rgb), 0.4);
+  border: 1px solid var(--mej-clr-fg4);
+}
+.monks-enhanced-journal.request-item .card-footer {
+  border-top: 2px groove var(--mej-clr-fg0);
+}
+.monks-enhanced-journal.request-item .card-footer span {
+  border-right: 2px groove var(--mej-clr-fg0);
+}
+.monks-journal-sheet .checklist-list .document.item:nth-child(even) {
+  background-color: rgba(var(--mej-clr-bg0-rgb), 0.1);
+}
+.monks-journal-sheet .checklist-list .folder header {
+  border-left: 1px solid var(--mej-clr-bg0);
+  border-right: 1px solid var(--mej-clr-bg0);
+}
+.monks-journal-sheet .checklist-list .subdirectory {
+  border-left: 4px solid var(--mej-clr-bg3);
+}
+.monks-journal-sheet .checklist-list li.folder > .folder-header {
+  background: rgba(var(--mej-clr-bg0-rgb), 0.3);
+  color: var(--mej-clr-fg0);
+}
+.monks-journal-sheet .checklist-list li.folder.collapsed > .folder-header {
+  background: rgba(var(--mej-clr-bg0-rgb), 0.5);
+}
+a.picture-link {
+  background: var(--mej-clr-fg2);
+  border: 1px solid var(--mej-clr-bg1);
+}
+a.inline-request-roll i,
+a.picture-link i {
+  color: var(--mej-clr-bg2);
+}
+a.picture-link.broken {
+  background: rgba(var(--mej-clr-red-bright-rgb), 0.05);
+  border: 1px dashed var(--mej-clr-red-bright);
+}
+.rippers-ui.monks-enhanced-journal
+  .sidebar-directory
+  .directory-list
+  .document {
+  text-shadow: 1px 2px var(--mej-clr-fg0);
+}
+.monks-journal-sheet .loot-player {
+  background: var(--mej-clr-aqua-bright);
+  border: 1px solid var(--mej-clr-bg0);
+  color: var(--mej-clr-bg0);
+}
+.monks-enhanced-journal.request-item button.active {
+  color: var(--mej-clr-orange-dark);
+}
+.monks-enhanced-journal.request-item button:disabled {
+  color: var(--mej-clr-fg4);
+}
+.monks-journal-sheet .item-properties .tag {
+  background: rgba(var(--mej-clr-bg0-rgb), 0.05);
+  border: 1px solid var(--mej-clr-bg4);
+}
+.monks-journal-sheet.sheet .distribute-container a.split {
+  color: var(--mej-clr-bg2);
+}
