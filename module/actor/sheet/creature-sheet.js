@@ -200,14 +200,8 @@ export default class ZweihanderCreatureSheet extends ZweihanderBaseActorSheet {
       width: 260,
       callback: (toggle) => html.find('.skills-list').toggleClass('two-rows', toggle)
     }]);
-    // auto size the details inputs once
-    const autoSizeInput = (el) => el.attr('size', Math.max(el.attr('placeholder').length, el.val().length));
-    const inputsToAutoSize = html.find('aside.details input.auto-size');
-    inputsToAutoSize.each((i, x) => autoSizeInput($(x)));
     // Everything below here is only needed if the sheet is editable
     if (!this.options.editable) return;
-    // auto size the details inputs on change
-    inputsToAutoSize.bind('input', (event) => autoSizeInput($(event.currentTarget)));
     // level skills
     html.find('.skills .skill').contextmenu((event) => {
       const skillId = event.currentTarget.dataset.itemId;

@@ -1,390 +1,277 @@
 .actor-sheet-header {
   border-bottom: 2px groove var(--zh-clr-bg2);
   flex: 0 0 auto;
-
-  .profile {
+  display: flex;
+  flex-flow: row nowrap;
+  > figure {
+    margin: 0;
+    padding: 0;
     border-right: 2px groove var(--zh-clr-bg2);
     display: flex;
-    flex: 0 0 247px;
-    height: 247px;
-    max-width: 247px;
+    flex-flow: row nowrap;
+    justify-content: center;
+    align-items: center;
+    flex: 0 0 min-content;
+    height: 100%;
     .profile-image {
+      min-width: 194px;
+      min-height: 194px;
+
       border: none;
       border-radius: 0;
-      box-sizing: content-box;
-      object-fit: contain;
-      display: block;
       flex: 1;
-      height: auto;
-      // margin: auto;
-      margin: 0;
-      max-height: 100%;
-      max-width: 100%;
+      object-fit: contain;
     }
   }
 
-  .header-details {
-    font-size: 20px;
-    font-weight: 700;
-  }
-
-  h1.charname {
-    flex: 1;
-    height: 60px;
-    margin: 0;
-    padding: 0;
-    input {
-      display: block;
-      font-family: var(--zh-font-title);
-      font-size: 28px;
-      // text-transform: uppercase;
-      height: 40px;
-      line-height: 48px;
-      margin: 10px 5px;
-      text-shadow: 2px 2px 2px var(--zh-clr-fg4);
-      width: 96%;
-    }
-  }
-
-  .header-rp {
-    align-items: flex-end;
-    flex: 0 0 140px;
-    height: 60px;
-    justify-content: start;
-    margin-right: 5px;
-    text-align: right;
-
-    .rp-title {
-      color: var(--zh-clr-aqua);
-      display: block;
-      font-family: var(--zh-font-title);
-      font-size: 13px;
-      text-transform: uppercase;
-    }
-    .rp-title,
-    .rp-content,
-    .rp-other-pts {
-      height: 20px;
-    }
-    .rp-content,
-    .rp-other-pts {
-      align-items: center;
-      font-size: 16px;
-      justify-content: flex-end;
-      .rp-gained,
-      .rp-spent {
-        flex: 0 0 55px;
-      }
-      .rp-fate,
-      .rp-rep {
-        flex: 0 0 3.5ch;
-      }
-      .rp-fate {
-        margin-right: 1ex;
-      }
-      .sep {
-        color: #7a7971;
-        display: inline;
-        flex: none;
-        font-family: var(--zh-font-title);
-        font-size: 13px !important;
-        font-weight: normal;
-        margin: 0 1px;
-        position: relative;
-        text-transform: uppercase;
-      }
-    }
-    .rp-other-pts .sep {
-      color: var(--zh-clr-aqua);
-    }
-  }
-  .summary {
-    border-bottom: 2px groove var(--zh-clr-bg2);
-    border-top: none;
-    flex: 0 0 100%;
+  .character-info {
     font-size: 14px;
-    font-weight: normal;
-    height: 28px;
-    list-style: none;
-    margin: 0;
-    padding: 0;
-
-    li {
-      border-right: 2px groove var(--zh-clr-bg2);
-      color: var(--zh-clr-fg0);
-      height: calc(100% - 6px);
-      line-height: 24px;
-      margin: 4px 0 0 0;
-      padding: 0;
-
-      &:last-of-type {
-        border-right: none;
-      }
-    }
-
-    .ancestry {
-      flex: 1 0 9ex;
-      .ancestry-wrapper {
-        height: 16px;
-        position: relative;
-
-        .ancestry-edit {
-          bottom: 12px;
-          color: var(--zh-clr-aqua);
-          display: none;
-          font-size: 10px;
-          height: 16px;
-          padding: 2px;
-          position: absolute;
-          right: 0.1ex;
-
-          &:hover {
-            display: block;
-          }
-        }
-
-        &:hover .ancestry-edit {
+    flex: 1;
+    display: flex;
+    flex-flow: column nowrap;
+    > header {
+      flex: 0 0 content;
+      display: flex;
+      flex-flow: row nowrap;
+      height: 60px;
+      border-bottom: 2px groove var(--zh-clr-bg2);
+      > h1 {
+        flex: 1;
+        height: 60px;
+        margin: 0;
+        padding: 10px 5px;
+        border: none;
+        input {
           display: block;
+          font-family: var(--zh-font-title);
+          font-size: 28px;
+          height: 40px;
+          line-height: 48px;
+          text-shadow: 2px 2px 2px var(--zh-clr-fg4);
         }
       }
     }
 
-    input,
-    label {
-      display: block;
-      height: 20px;
-      line-height: 20px;
-    }
-    label {
-      color: var(--zh-clr-fg3);
-    }
-    li input {
-      text-align: center;
-    }
-    .summary-multi {
-      flex: 1 0 4.75em;
-      justify-content: space-between;
-      input {
-        flex: 1 0 2.25em;
-        text-align: right;
-      }
-      label {
-        flex: 1 0;
-        flex-basis: auto;
-        margin-left: 0.75ex;
-        text-align: right;
-      }
-      input + label {
-        margin-left: 0;
-        margin-right: 0.75ex;
-        text-align: left;
-      }
-      label + input {
-        text-align: left;
-      }
-    }
-    .summary-profession {
-      flex: 1 0 14ex;
-    }
-    .summary-sex {
-      flex: 1 0 4em;
-    }
-    .summary-social {
-      flex: 1 0 4.95em;
-    }
-    .summary-height {
-      flex: 1 0 3.85em;
-      input {
-        flex: 1 0 2.5em;
-      }
-    }
-    .summary-weight {
-      flex: 1 0 4.25em;
-    }
-    .summary-buildtype {
-      flex: 1 0 10.5ex;
-    }
-    .summary-hair {
-      flex: 1 0 18.75ex;
-      input {
-        flex: 1 0 14ex;
-      }
-    }
-    .summary-eye {
-      flex: 1 0 19.25ex;
-      input {
-        flex: 1 0 14ex;
-      }
-    }
-    .summary-complexion {
-      flex: 1 0 16ex;
-      input {
-        flex: 1 0 11.5ex;
-      }
-    }
-    .summary-season {
-      flex: 1 0 15.5ex;
-      input {
-        flex: 1 0 8ex;
-      }
-    }
-    .summary-upbringing {
-      flex: 1 0 24ex;
-      input {
-        flex: 1 0 13ex;
-      }
-    }
-    .summary-languages {
-      flex: 1 0 30ex;
-      input {
-        flex: 1 0 23ex;
-      }
-    }
-    &.summary-dooming {
-      background-color: var(--zh-clr-aqua);
-      height: 100%;
-      width: 100%;
+    aside.character-rp {
+      flex: 0 0 140px;
+      height: 60px;
+      margin-right: 5px;
+      text-align: right;
 
-      input {
-        color: var(--zh-clr-bg0);
+      .rp-title {
+        color: var(--zh-clr-aqua);
+        display: block;
         font-family: var(--zh-font-title);
         font-size: 13px;
-        text-shadow: var(--zh-text-shadow);
         text-transform: uppercase;
       }
-      input::placeholder {
-        color: var(--zh-clr-bg2);
+      .rp-title,
+      .rp-content,
+      .rp-other-pts {
+        height: 20px;
+      }
+      .rp-content,
+      .rp-other-pts {
+        align-items: center;
+        font-size: 16px;
+        justify-content: flex-end;
+        .rp-gained,
+        .rp-spent {
+          flex: 0 0 55px;
+        }
+        .rp-fate,
+        .rp-rep {
+          flex: 0 0 3.5ch;
+        }
+        .rp-fate {
+          margin-right: 1ex;
+        }
+        .sep {
+          color: #7a7971;
+          display: inline;
+          flex: none;
+          font-family: var(--zh-font-title);
+          font-size: 13px !important;
+          font-weight: normal;
+          margin: 0 1px;
+          position: relative;
+          text-transform: uppercase;
+        }
+      }
+      .rp-other-pts .sep {
+        color: var(--zh-clr-aqua);
       }
     }
-    &:first-of-type {
-      border-top: 2px groove var(--zh-clr-bg2);
-      height: 30px;
-    }
-    &:last-of-type {
-      border-bottom: none;
-      height: 28px;
-    }
+  }
 
-    &.alignment {
-      height: 40px;
-      position: relative;
-      li {
-        border: none;
-        &.chaos-title,
-        &.order-title,
-        &.corruption-title,
-        &.corruption-reset {
-          flex: none;
-          height: 14px;
-          margin: 0;
-          padding: 0;
-          position: absolute;
-          top: -2px;
-          width: calc(50% - 12ex);
-          input,
-          span,
-          label {
-            font-family: var(--zh-font-title);
-            font-size: 10px;
-            text-transform: uppercase;
-          }
+  .character-dooming {
+    flex: 0 0 content;
+    line-height: 24px;
+    height: 28px;
+    border-radius: 0;
+    border: none;
+    margin: 0;
+    margin-top: auto;
+    padding: 0 5px;
+    text-align: center;
+    background-color: var(--zh-clr-aqua);
+    color: var(--zh-clr-bg0);
+    font-family: var(--zh-font-title);
+    font-size: 13px;
+    text-shadow: var(--zh-text-shadow);
+    text-transform: uppercase;
+    &::placeholder {
+      color: var(--zh-clr-bg2);
+    }
+  }
+
+  .alignment-header {
+    flex: 0 0 content;
+    display: flex;
+    flex-flow: row nowrap;
+    font-family: var(--zh-font-title);
+    font-size: 10px;
+    text-transform: uppercase;
+    padding: 1px 3px;
+    > h1 {
+      flex: 0 0 content;
+      color: var(--zh-clr-fg3);
+      text-align: center;
+      font-size: 10px;
+      border: none;
+      margin: 0;
+      padding: 0 5px;
+      a {
+        color: var(--zh-clr-aqua);
+        &:hover,
+        &:focus {
+          color: var(--zh-clr-yellow);
         }
-        &.order-title {
-          left: 2px;
-          input {
-            text-align: left;
-          }
-        }
-        &.corruption-title {
-          color: var(--zh-clr-fg3);
-          left: calc(50% - 7ex);
+      }
+    }
+    input {
+      color: var(--zh-clr-fg1);
+      text-transform: uppercase;
+      &.chaos-title {
+        text-align: right;
+      }
+    }
+  }
+
+  .alignment-content {
+    justify-self: end;
+    flex: 0 0 content;
+    display: flex;
+    flex-flow: row nowrap;
+    align-items: center;
+    .corruption {
+      flex: 0 0 30px;
+      color: var(--zh-clr-aqua);
+      font-size: 18px;
+      height: 20px;
+      text-align: center;
+    }
+    .order-track,
+    .chaos-track {
+      flex: 1;
+      display: flex;
+      flex-flow: row nowrap;
+      justify-content: space-around;
+      justify-items: center;
+      margin: 0;
+      padding: 0;
+      input[type="radio"] {
+        appearance: none;
+        display: none;
+        flex: 0;
+        & + label {
+          display: inline-block;
+          position: relative;
           text-align: center;
-          width: 14ex;
-        }
-        &.corruption-reset {
-          color: var(--zh-clr-aqua);
-          font-size: 12px;
-          left: calc(50% + 7ex);
-          top: -4px;
-        }
-        &.chaos-title {
-          right: 2px;
-          input {
-            text-align: right;
-          }
-        }
-        &.corruption {
-          flex: 0 0 6ex;
-          input {
-            color: var(--zh-clr-aqua);
-            font-size: 18px;
-            margin-top: 14px;
-            text-align: center;
-          }
-        }
-        &.order-track,
-        &.chaos-track {
-          justify-content: space-around;
-          justify-items: center;
-          margin: 0;
-          padding: 0;
-          input[type="radio"] {
-            appearance: none;
-            display: none;
-            flex: 0;
-            & + label {
-              display: inline-block;
-              position: relative;
-              text-align: center;
-              z-index: 2;
-              &.regular-rank {
-                cursor: pointer;
-                font-size: 12px;
-                margin-top: 20px;
-                &:hover {
-                  color: var(--zh-clr-yellow);
-                  &::before {
-                    border-color: var(--zh-clr-yellow);
-                  }
-                }
-              }
-              &.permanent-rank {
-                margin-top: 21px;
-                cursor: default;
-                color: var(--zh-clr-red-alt);
-                font-size: 14px;
-                &:hover {
-                  color: none;
-                  &::before {
-                    border-color: none;
-                  }
-                }
-              }
+          z-index: 2;
+          &.regular-rank {
+            cursor: pointer;
+            font-size: 12px;
+            margin-top: 0px;
+            line-height: 1.5;
+            &:hover {
+              color: var(--zh-clr-yellow);
               &::before {
-                border: 1px solid transparent;
-                border-radius: 50%;
-                content: "";
-                display: block;
-                height: 15px;
-                left: calc(50% - 9px);
-                position: absolute;
-                z-index: -1;
-                top: calc(50% - 9fpx);
-                width: 15px;
-              }
-            }
-            &:checked + label {
-              color: var(--zh-clr-bg0);
-              &::before {
-                border: 1px solid var(--zh-clr-fg2);
-                background: var(--zh-clr-fg0);
+                border-color: var(--zh-clr-yellow);
               }
             }
           }
+          &.permanent-rank {
+            color: var(--zh-clr-red-alt);
+            cursor: default;
+            font-size: 14px;
+            margin-top: 21px;
+            &:hover {
+              color: none;
+              &::before {
+                border-color: none;
+              }
+            }
+          }
+          &::before {
+            border: 1px solid transparent;
+            border-radius: 50%;
+            content: "";
+            display: block;
+            height: 15px;
+            left: calc(50% - 9px);
+            position: absolute;
+            top: calc(50% - 9fpx);
+            width: 15px;
+            z-index: -1;
+          }
         }
-        &.order-track {
-          flex-direction: row-reverse;
+        &:checked + label {
+          color: var(--zh-clr-bg0);
+          &::before {
+            background: var(--zh-clr-fg0);
+            border: 1px solid var(--zh-clr-fg2);
+          }
         }
+      }
+    }
+    .order-track {
+      flex-direction: row-reverse;
+    }
+  }
+
+  aside.details {
+    padding-bottom: 5px;
+    .ancestry-wrapper {
+      position: relative;
+
+      .ancestry-edit {
+        display: none;
+        top: 2px;
+        left: 2px;
+        color: var(--zh-clr-aqua);
+        font-size: 16px;
+        padding-top: 2px;
+        height: calc(100% - 4px);
+        width: calc(100% - 4px);
+        position: absolute;
+        background-color: rgba(var(--zh-clr-bg1-rgb), 0.3);
+        backdrop-filter: blur(0.8px);
+        a {
+          flex: 1;
+          text-align: center;
+        }
+      }
+
+      &:hover .ancestry-edit {
+        display: flex;
+      }
+
+      &:hover input {
+        background-color: var(--zh-clr-bg1);
+        background-color: rgba(var(--zh-clr-bg1-rgb), 0.5);
+        border-color: var(--zh-clr-aqua);
+        box-shadow: 0 0 6px var(--zh-clr-bg2);
       }
     }
   }

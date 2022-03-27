@@ -53,6 +53,74 @@ export default class ZweihanderCharacterSheet extends ZweihanderBaseActorSheet {
       sheetData.data.rewardPoints.current = sheetData.data.rewardPoints.total - sheetData.data.rewardPoints.spent;
     }
     attachTabDefinitions(sheetData);
+    const hidden = this.actor.limited;
+    sheetData.details = [
+      {
+        value: sheetData.ancestry?.[0]?.name ?? '',
+        placeholder: 'Ancestry',
+        template: 'partials/ancestry-detail' 
+      },
+      {
+        value: sheetData.professions[sheetData.professions.length-1].name,
+        hidden
+      },
+      {
+        key: 'physical.sex.value',
+        placeholder: 'Sex'
+      },
+      {
+        key: 'physical.age.value',
+        placeholder: 'Age Group'
+      },
+      {
+        key: 'socialClass.value',
+        placeholder: 'Social Class',
+        hidden
+      },
+      {
+        key: 'physical.height.value',
+        placeholder: 'Height'
+      },
+      {
+        key: 'physical.weight.value',
+        placeholder: 'Weight'
+      },
+      {
+        key: 'physical.buildType.value',
+        placeholder: 'Build Type'
+      },
+      {
+        key: 'physical.hairColor.value',
+        placeholder: 'Hair Color'
+      },
+      {
+        key: 'physical.eyeColor.value',
+        placeholder: 'Eye Color'
+      },
+      {
+        key: 'physical.complexion.value',
+        placeholder: 'Complexion'
+      },
+      {
+        key: 'seasonOfBirth.value',
+        placeholder: 'Season of Birth',
+        hidden
+      },
+      {
+        key: 'upbringing.value',
+        placeholder: 'Upbringing',
+        hidden
+      },
+      {
+        key: 'languages.value',
+        placeholder: 'Languages',
+        hidden
+      },
+      {
+        key: 'physical.distinguishingMarks.value',
+        placeholder: 'Distinguishing Marks'
+      }
+    ];
     return sheetData;
   }
 

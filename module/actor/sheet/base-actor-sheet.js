@@ -106,7 +106,6 @@ export default class ZweihanderBaseActorSheet extends ActorSheet {
     super.activateListeners(html);
     this._damageSheet(html);
     this._perilSheet(html);
-
     html.find('.modded-value-indicator').hover(
       (event) => {
         const tooltip = $(event.currentTarget).find('.modded-value-tooltip').clone();
@@ -120,8 +119,14 @@ export default class ZweihanderBaseActorSheet extends ActorSheet {
       (event) => {
         $('.zh-modded-value-tooltip-instance').remove();
       })
+    // auto size the details inputs once
+    const autoSizeInput = (el) => el.attr('size', Math.max(el.attr('placeholder').length, el.val().length));
+    const inputsToAutoSize = html.find('input.auto-size');
+    inputsToAutoSize.each((i, x) => autoSizeInput($(x)));
     // Everything below here is only needed if the sheet is editable
     if (!this.options.editable) return;
+    // auto size the details inputs on change
+    inputsToAutoSize.bind('input', (event) => autoSizeInput($(event.currentTarget)));
 
     const actor = this.actor;
     const actorData = this.actor.data;

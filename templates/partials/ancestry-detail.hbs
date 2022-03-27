@@ -1,0 +1,12 @@
+<div class="ancestry-wrapper">
+  <input class="auto-size" type="text" value="{{value}}" placeholder="{{placeholder}}" readonly />
+  <div class="ancestry-edit">
+    {{#if value}}
+    <a class="ancestry-edit-button" title="Edit Ancestry"><i class="fas fa-pencil-alt fa-sm"></i></a>
+    <a class="ancestry-delete-button" title="Delete Ancestry"><i class="fas fa-trash-alt fa-sm"></i></a>
+    {{else}}
+    <a class="add-new" data-item-type="ancestry" data-open-packs="zweihander.zh-ancestries" title="Add Ancestry"><i
+        class="fas fa-plus fa-xs"></i></a>
+    {{/if}}
+  </div>
+</div>

@@ -152,65 +152,6 @@ body.game.vtt.system-zweihander .zweihander.sheet.creature {
     }
   }
 
-  aside.details {
-    flex: 0 0 content;
-    padding: 5px 8px 0px 8px;
-    ul {
-      display: flex;
-      flex-flow: row wrap;
-      justify-content: space-between;
-      justify-items: center;
-      list-style: none;
-      margin: 0;
-      padding: 0;
-      li {
-        flex: 1 0 content;
-        margin: 2px;
-        max-width: 100%;
-        &.influences {
-          flex: 2 0 content;
-        }
-        input,
-        select {
-          // backdrop-filter: blur(2px);
-          background-color: rgba(var(--zh-clr-bg0-rgb), 0.5);
-          border: 2px groove var(--zh-clr-bg2);
-          border-radius: 3px;
-          color: var(--zh-clr-fg2);
-          height: 100%;
-          padding: 3px;
-          text-align: center;
-          width: 100%;
-          &:hover,
-          &:focus,
-          &:active {
-            background-color: var(--zh-clr-bg1);
-            background-color: rgba(var(--zh-clr-bg1-rgb), 0.5);
-            border-color: var(--zh-clr-aqua);
-            box-shadow: 0 0 6px var(--zh-clr-bg2);
-          }
-        }
-        select {
-          appearance: none;
-        }
-        &.risk-factor {
-          display: flex;
-          width: auto;
-          .risk-factor-value {
-            border-right-style: none;
-            border-top-right-radius: 0;
-            border-bottom-right-radius: 0;
-          }
-          .risk-factor-notch {
-            border-left-style: none;
-            border-top-left-radius: 0;
-            border-bottom-left-radius: 0;
-          }
-        }
-      }
-    }
-  }
-
   section.sheet-body {
     display: grid;
     grid-auto-flow: dense;
@@ -267,6 +208,9 @@ body.game.vtt.system-zweihander .zweihander.sheet.creature {
         text-align: left;
         text-transform: uppercase;
         color: var(--zh-clr-fg1);
+        position: sticky;
+        top: 0;
+        z-index: 102;
       }
       h1,
       ol.items-list > li {

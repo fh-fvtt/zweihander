@@ -87,6 +87,12 @@ body.game.vtt.system-zweihander {
       &:focus {
         box-shadow: none;
       }
+      option {
+        background-color: var(--zh-clr-bg1);
+        &:hover {
+          background-color: var(--zh-clr-bg2);
+        }
+      }
     }
 
     // @supports (-moz-appearance:none) {
@@ -108,7 +114,6 @@ body.game.vtt.system-zweihander {
         font-size: 12px;
         position: relative;
         text-align: center;
-        z-index: 1000;
         height: 12px;
         width: 12px;
         margin: 0 auto;
