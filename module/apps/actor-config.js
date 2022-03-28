@@ -18,7 +18,8 @@ export default class ZweihanderActorConfig extends FormApplication {
       "dodgeSkills": ["Coordination", "Guile", "Drive", "Ride"],
       "magickSkills": ["Incantation", "Folklore"],
       "isMagickUser": false,
-      "permanentChaosRanks": 0
+      "permanentChaosRanks": 0,
+      "permanentOrderRanks": 0
   };
 
   static getValue(actorData, key) {

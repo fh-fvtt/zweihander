@@ -203,10 +203,15 @@
             }
           }
           &.permanent-rank {
-            color: var(--zh-clr-red-alt);
             cursor: default;
             font-size: 14px;
             margin-top: 1px;
+            &.chaos {
+              color: var(--zh-clr-red-alt);
+            }
+            &.order {
+              color: var(--zh-clr-yellow-alt);
+            }
             &:hover {
               color: none;
               &::before {

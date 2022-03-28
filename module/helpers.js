@@ -42,6 +42,8 @@ export const registerHandlebarHelpers = async function () {
   });
 
   $$('radioRanks', function (name, alignmentRanks, permanentRanks, options) {
+    const alignment = name.split('.')[1].replace('Ranks', '');
+    const icon = alignment === "chaos" ? "ra-cancel" : "ra-horseshoe";
     const checked = options.hash['checked'] || null;
     let html = "";
     let uuid = uuidv4();
@@ -58,8 +60,8 @@ export const registerHandlebarHelpers = async function () {
           ${isPermanentRank ? "disabled" : ""}>
         <label
           for="${uuid}.${name + i}"
-          class="${isPermanentRank ? "permanent-rank" : "regular-rank"}">
-          ${isPermanentRank ? "<span class='ra ra-cancel'></span>" : i}
+          class="${isPermanentRank ? `permanent-rank ${alignment}`  : "regular-rank"}">
+          ${isPermanentRank ? `<span class='ra ${icon}'></span>` : i}
         </label>
       `;
     }
