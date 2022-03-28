@@ -26,7 +26,7 @@ export default class ZweihanderCharacterSheet extends ZweihanderBaseActorSheet {
     return foundry.utils.mergeObject(super.defaultOptions, {
       classes: ["zweihander", "sheet", "actor", "character", "damage-tracker"],
       template: "systems/zweihander/templates/character/main.hbs",
-      width: 750,
+      width: 770,
       height: 900,
       resizable: true,
       tabs: [
@@ -89,10 +89,9 @@ export default class ZweihanderCharacterSheet extends ZweihanderBaseActorSheet {
       {
         key: 'physical.height.value',
         placeholder: '?',
-        postfix: 'ft tall'
+        postfix: 'ft tall and'
       },
       {
-        prefix: 'and',
         key: 'physical.weight.value',
         placeholder: '?',
         postfix: 'lbs heavy,'
@@ -112,22 +111,20 @@ export default class ZweihanderCharacterSheet extends ZweihanderBaseActorSheet {
         prefix: `${pronoun.capitalize()} has/have`,
         key: 'physical.hairColor.value',
         placeholder: '?',
-        postfix: 'hair'
+        postfix: 'hair,'
       },
       {
-        prefix: ',',
+
         key: 'physical.eyeColor.value',
         placeholder: '?',
-        postfix: 'eyes'
+        postfix: 'eyes,'
       },
       {
-        prefix: ',',
         key: 'physical.complexion.value',
         placeholder: '?',
-        postfix: 'skin'
+        postfix: 'skin &'
       },
       {
-        prefix: '&',
         key: 'physical.distinguishingMarks.value',
         placeholder: 'Distinguishing Marks',
         postfix: '.'
