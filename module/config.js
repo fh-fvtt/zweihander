@@ -154,7 +154,7 @@ ZWEI.packSets = {
             taint: "zweihander.zh-taints",
             talent: "zweihander.zh-talents",
             trait: "zweihander.zh-traits",
-            trappings: "zweihander.zh-trappings",
+            trapping: "zweihander.zh-trappings",
             weapon: "zweihander.zh-weapons, zweihander.zh-weapons-alt-damage",
         },
         creature: {
