@@ -5,16 +5,14 @@ body.game.vtt.system-zweihander .zweihander.sheet.character {
   min-height: 500px;
   min-width: 770px;
   &.limited {
-    min-height: 233px;
-    max-height: 233px;
-    max-width: 710px;
-    width: 710px;
-    min-width: 710px;
-    height: 233px;
-    .actor-sheet-header .profile {
-      flex: 0 0 205px;
-      max-width: 205px;
-      height: 203px;
+    min-height: 235px;
+    max-height: 235px;
+    max-width: 650px;
+    min-width: 650px;
+    .actor-sheet-header {
+      flex: 1;
+      overflow-y: scroll;
+      border-bottom: none;
     }
   }
 

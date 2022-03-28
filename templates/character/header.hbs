@@ -55,9 +55,9 @@
         {{/each}}
       </ul>
     </aside>
+    {{#unless limited}}
     <input class="character-dooming" name="data.dooming.value" type="text" value="{{data.dooming.value}}"
       placeholder="Dooming" />
-    {{#unless limited}}
     <section class="alignment-header">
       <input class="order-title" name="data.orderAlignment.value" type="text" value="{{data.orderAlignment.value}}"
         placeholder="Order Alignment" />

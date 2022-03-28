@@ -298,9 +298,11 @@ export default class ZweihanderCharacterSheet extends ZweihanderBaseActorSheet {
 
   async _render(force, options) {
     if (this.actor.limited) {
-      options.classes = ['limited', ...this.constructor.defaultOptions.classes, ...(options.classes?.length ? options.classes : [])];
+      const classesWithoutDamageTracker = this.constructor.defaultOptions.classes;
+      classesWithoutDamageTracker.splice(classesWithoutDamageTracker.indexOf('damage-tracker'),1);
+      options.classes = ['limited', ...classesWithoutDamageTracker, ...(options.classes?.length ? options.classes : [])];
       options.height = 235;
-      options.width = 750;
+      options.width = 650;
       options.resizable = false;
     }
     await super._render(force, options);
