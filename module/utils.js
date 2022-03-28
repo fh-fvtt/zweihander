@@ -302,16 +302,23 @@ export function argMax(array) {
   return [].reduce.call(array, (m, c, i, arr) => c > arr[m] ? i : m, 0)
 }
 
+const _getPacks = (gameSystem, actorType) => (itemType) => {
+  const packSets = ZWEI.packSets[gameSystem];
+  const basePacks = packSets?.base?.[itemType];
+  const actorPacks = packSets?.[actorType]?.[itemType];
+  const delim = basePacks && actorPacks ? ',' : '';
+  return `${basePacks ?? ''}${delim}${actorPacks ?? ''}`;
+}
+
+export function getPacks(actorType, itemType) { 
+  const gameSystem = game.settings.get("zweihander", "gameSystem");
+  return _getPacks(gameSystem, actorType)(itemType);
+}
+
 
 export function assignPacks(actorType, itemGroupDefinition) {
   const gameSystem = game.settings.get("zweihander", "gameSystem");
-  const packSets = ZWEI.packSets[gameSystem];
-  const getPacks = (itemType) => {
-    const basePacks = packSets?.base?.[itemType];
-    const actorPacks = packSets?.[actorType]?.[itemType];
-    const delim = basePacks && actorPacks ? ',' : '';
-    return `${basePacks ?? ''}${delim}${actorPacks ?? ''}`;
-  }
+  const getPacks = _getPacks(gameSystem, actorType);
   Object.values(itemGroupDefinition)
     .flatMap(x => Array.isArray(x) ? x : x.itemGroups)
     .forEach(x => x.packs = getPacks(x.type));

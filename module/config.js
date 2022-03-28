@@ -141,6 +141,7 @@ ZWEI.defaultActorIcons = {
 ZWEI.packSets = {
     zweihander: {
         base: {
+            ancestry: "zweihander.zh-ancestries",
             armor: "zweihander.zh-armor",
             condition: "zweihander.zh-conditions",
             disease: "zweihander.zh-diseases",

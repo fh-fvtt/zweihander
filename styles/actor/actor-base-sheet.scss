@@ -13,10 +13,28 @@ body.game.vtt.system-zweihander .zweihander.sheet.actor {
       padding: 0;
       li {
         flex: 1 0 content;
+        display: flex;
+        flex-flow: row nowrap;
         margin: 2px;
         max-width: 100%;
+        & > * {
+          flex: 1 0 content;
+        }
         &.influences {
           flex: 2 0 content;
+        }
+        .prefix, .postfix {
+          flex: 0 0 content;
+          padding-top: 7px;
+          font-size: 11px;
+          font-style: italic;
+          color: var(--zh-clr-fg3);
+        }
+        .prefix {
+          margin-right: 5px;
+        }
+        .postfix {
+          margin-left: 5px;
         }
         input,
         select {
@@ -28,14 +46,15 @@ body.game.vtt.system-zweihander .zweihander.sheet.actor {
           height: 100%;
           padding: 3px;
           text-align: center;
-          width: 100%;
-          &:hover,
-          &:focus,
-          &:active {
-            background-color: var(--zh-clr-bg1);
-            background-color: rgba(var(--zh-clr-bg1-rgb), 0.5);
-            border-color: var(--zh-clr-aqua);
-            box-shadow: 0 0 6px var(--zh-clr-bg2);
+          &:not(:read-only) {
+            &:hover,
+            &:focus,
+            &:active {
+              background-color: var(--zh-clr-bg1);
+              background-color: rgba(var(--zh-clr-bg1-rgb), 0.5);
+              border-color: var(--zh-clr-aqua);
+              box-shadow: 0 0 6px var(--zh-clr-bg2);
+            }
           }
         }
         select {

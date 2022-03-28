@@ -2,6 +2,7 @@ import ZweihanderActorConfig from "../../apps/actor-config";
 import ZweihanderBaseActorSheet from "./base-actor-sheet";
 import * as ZweihanderDice from "../../dice";
 import { attachTabDefinitions } from "./character-sheet-tabs-def";
+import { getPacks } from "../../utils";
 
 /**
  * The Zweihänder actor sheet class for characters.
@@ -54,71 +55,102 @@ export default class ZweihanderCharacterSheet extends ZweihanderBaseActorSheet {
     }
     attachTabDefinitions(sheetData);
     const hidden = this.actor.limited;
+    const ancestry = sheetData.ancestry?.[0]?.name; 
+    const pronoun = sheetData.data.details.pronoun || '?';
     sheetData.details = [
       {
-        value: sheetData.ancestry?.[0]?.name ?? '',
-        placeholder: 'Ancestry',
-        template: 'partials/ancestry-detail' 
-      },
-      {
-        value: sheetData.professions[sheetData.professions.length-1].name,
-        hidden
+        key: 'physical.age.value',
+        placeholder: 'Age Group',
+        prefix: 'is a(n)'
       },
       {
         key: 'physical.sex.value',
         placeholder: 'Sex'
       },
       {
-        key: 'physical.age.value',
-        placeholder: 'Age Group'
+        value: sheetData.ancestry?.[0]?.name ?? '',
+        placeholder: 'Ancestry',
+        template: 'partials/detail-item-wrapper',
+        packs: getPacks('character', 'ancestry'),
+        type: 'ancestry',
+        id: sheetData.ancestry?.[0]?._id ?? ''
       },
       {
+        value: sheetData.professions[sheetData.professions.length-1].name,
+        hidden
+      },
+      {
+        prefix: 'of the',
         key: 'socialClass.value',
-        placeholder: 'Social Class',
+        placeholder: '?',
+        postfix: 'social class.',
         hidden
       },
       {
         key: 'physical.height.value',
-        placeholder: 'Height'
+        placeholder: '?',
+        postfix: 'ft tall'
       },
       {
+        prefix: 'and',
         key: 'physical.weight.value',
-        placeholder: 'Weight'
+        placeholder: '?',
+        postfix: 'lbs heavy,'
       },
       {
+        key: 'details.pronoun',
+        placeholder: 'Pronoun',
+        postfix: 'is/are'
+      },
+      {
+        prefix: 'of a',
         key: 'physical.buildType.value',
-        placeholder: 'Build Type'
+        placeholder: '?',
+        postfix: `build for a(n) ${hidden ? '??' : (ancestry ?? '??')}.`
       },
       {
+        prefix: `${pronoun.capitalize()} has/have`,
         key: 'physical.hairColor.value',
-        placeholder: 'Hair Color'
+        placeholder: '?',
+        postfix: 'hair'
       },
       {
+        prefix: ',',
         key: 'physical.eyeColor.value',
-        placeholder: 'Eye Color'
+        placeholder: '?',
+        postfix: 'eyes'
       },
       {
+        prefix: ',',
         key: 'physical.complexion.value',
-        placeholder: 'Complexion'
+        placeholder: '?',
+        postfix: 'skin'
       },
       {
-        key: 'seasonOfBirth.value',
-        placeholder: 'Season of Birth',
-        hidden
-      },
-      {
-        key: 'upbringing.value',
-        placeholder: 'Upbringing',
-        hidden
-      },
-      {
-        key: 'languages.value',
-        placeholder: 'Languages',
-        hidden
-      },
-      {
+        prefix: '&',
         key: 'physical.distinguishingMarks.value',
-        placeholder: 'Distinguishing Marks'
+        placeholder: 'Distinguishing Marks',
+        postfix: '.'
+      },
+      {
+        prefix: 'Born in',
+        key: 'seasonOfBirth.value',
+        placeholder: '?',
+        hidden
+      },
+      {
+        prefix: `${pronoun} is/are of a(n)`,
+        key: 'upbringing.value',
+        placeholder: '?',
+        hidden,
+        postfix: `upbringing`
+      },
+      {
+        prefix: 'and speaks',
+        key: 'languages.value',
+        placeholder: '?',
+        hidden,
+        postfix: '.'
       }
     ];
     return sheetData;
@@ -176,24 +208,6 @@ export default class ZweihanderCharacterSheet extends ZweihanderBaseActorSheet {
 
     // Everything below here is only needed if the sheet is editable
     if (!this.options.editable) return;
-
-    // Edit Ancestry Item
-    html.find('.ancestry-edit-button').click(() => {
-      const ancestryId = this.actor.data.items.find(i => i.type === 'ancestry').id;
-      const ancestryItem = this.actor.items.get(ancestryId);
-      ancestryItem.sheet.render(true);
-      try {
-        ancestryItem.sheet.bringToTop();
-      } catch (e) {
-        // TODO check if this is a problem. Doesn't seem to be the case. Maybe can be safeguarded.
-      }
-    });
-
-    // Delete Ancestry Item
-    html.find('.ancestry-delete-button').click(async ev => {
-      const ancestryId = this.actor.data.items.find(i => i.type === 'ancestry').id;
-      await this.actor.deleteEmbeddedDocuments("Item", [ancestryId]);
-    });
 
     const updatePurchased = async (event) => {
       const target = $(event.currentTarget);

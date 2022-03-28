@@ -51,6 +51,6 @@ export const preloadHandlebarsTemplates = async function () {
     $$('character/encumbrance-meter'),
     $$('character/magick-skill-selector'),
     $$('partials/modded-value'),
-    $$('partials/ancestry-detail')
+    $$('partials/detail-item-wrapper')
   ]);
 };

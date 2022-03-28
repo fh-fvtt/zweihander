@@ -46,20 +46,15 @@ body.game.vtt.system-zweihander {
         color: var(--zh-clr-fg2);
         cursor: default;
       }
-      &:hover,
-      &:focus,
-      &:active {
-        box-shadow: 0 0 4px var(--zh-clr-aqua);
-        border-color: var(--zh-clr-aqua);
-
-        &:read-only,
-        &:disabled {
-          border-color: transparent;
-          box-shadow: none;
-          color: var(--zh-clr-fg2);
-          cursor: default;
+      &:not(:read-only, :disabled) {
+        &:hover,
+        &:focus,
+        &:active {
+          box-shadow: 0 0 4px var(--zh-clr-aqua);
+          border-color: var(--zh-clr-aqua);
         }
       }
+      
     }
 
     button.zweihander-button {

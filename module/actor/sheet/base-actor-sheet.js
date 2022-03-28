@@ -132,21 +132,22 @@ export default class ZweihanderBaseActorSheet extends ActorSheet {
     const actorData = this.actor.data;
     // Edit Inventory Item
     html.find('.item-edit').click(ev => {
-      const li = $(ev.currentTarget).parents(".item");
-      const item = this.actor.items.get(li.data("itemId"));
+      const i = $(ev.currentTarget).parents(".item");
+      const item = this.actor.items.get(i.data("itemId"));
       item.sheet.render(true);
     });
 
     // Delete Inventory Item
     html.find('.item-delete').click(async ev => {
-      const li = $(ev.currentTarget).parents(".item");
-      const item = this.actor.items.get(li.data("itemId"));
+      const i = $(ev.currentTarget).parents(".item");
+      const item = this.actor.items.get(i.data("itemId"));
+      const type = game.i18n.localize(CONFIG.Item.typeLabels[item.type]);
       await Dialog.confirm({
-        title: `Delete Embedded Item: ${item.name}`,
-        content: "<p>Are you sure?</p><p>This item will be permanently deleted and cannot be recovered.</p>",
+        title: `Delete Embedded ${type}: ${item.name}`,
+        content: `<p>Are you sure?<br/>This ${type} will be permanently deleted and cannot be recovered.</p>`,
         yes: async () => {
           await this.actor.deleteEmbeddedDocuments("Item", [item.id]);
-          li.slideUp(200, () => this.render(false));
+          i.slideUp(200, () => this.render(false));
         },
         no: () => { },
         defaultYes: true

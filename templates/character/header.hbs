@@ -30,6 +30,9 @@
         {{#each details as | detail | }}
         {{#unless detail.hidden}}
         <li>
+          {{#if detail.prefix}}
+          <span class="prefix">{{detail.prefix}}</span>
+          {{/if}}
           {{#if detail.choices}}
           <select name="data.{{detail.key}}">
             {{#each detail.choices}}
@@ -39,8 +42,13 @@
           {{else if detail.template}}
           {{> ($$ detail.template) detail}}
           {{else}}
-          <input type="text" class="auto-size" {{#unless detail.value}}name="data.{{detail.key}}"{{/unless}} placeholder="{{detail.placeholder}}"
-            value="{{#if detail.key}}{{zhLookup ../data detail.key}}{{else}}{{detail.value}}{{/if}}" {{#unless detail.key}}readonly="readonly"{{/unless}}/>
+          <input type="text" class="auto-size" {{#unless detail.value}}name="data.{{detail.key}}" {{/unless}}
+            placeholder="{{detail.placeholder}}"
+            value="{{#if detail.key}}{{zhLookup ../data detail.key}}{{else}}{{detail.value}}{{/if}}" {{#unless
+            detail.key}}disabled="disabled" {{/unless}} />
+          {{/if}}
+          {{#if detail.postfix}}
+          <span class="postfix">{{detail.postfix}}</span>
           {{/if}}
         </li>
         {{/unless}}
