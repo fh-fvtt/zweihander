@@ -105,7 +105,7 @@ export default class ZweihanderCharacterSheet extends ZweihanderBaseActorSheet {
         prefix: 'of a',
         key: 'physical.buildType.value',
         placeholder: '?',
-        postfix: `build for a(n) ${hidden ? '?' : (ancestry ?? '?')}.`
+        postfix: `build for a(n) ${ancestry ?? '?'}.`
       },
       {
         prefix: `${pronoun.capitalize()} has/have`,
