@@ -76,7 +76,7 @@ export default class ZweihanderCharacterSheet extends ZweihanderBaseActorSheet {
         id: sheetData.ancestry?.[0]?._id ?? ''
       },
       {
-        value: sheetData.professions[sheetData.professions.length-1].name,
+        value: sheetData.professions?.[sheetData.professions.length-1]?.name ?? '?',
         hidden
       },
       {
@@ -106,7 +106,7 @@ export default class ZweihanderCharacterSheet extends ZweihanderBaseActorSheet {
         prefix: 'of a',
         key: 'physical.buildType.value',
         placeholder: '?',
-        postfix: `build for a(n) ${hidden ? '??' : (ancestry ?? '??')}.`
+        postfix: `build for a(n) ${hidden ? '?' : (ancestry ?? '?')}.`
       },
       {
         prefix: `${pronoun.capitalize()} has/have`,
