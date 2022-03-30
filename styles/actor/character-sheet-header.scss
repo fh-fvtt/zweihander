@@ -3,20 +3,15 @@
   flex: 0 0 auto;
   display: flex;
   flex-flow: row nowrap;
+  position: relative;
   > figure {
     margin: 0;
     padding: 0;
-    border-right: 2px groove var(--zh-clr-bg2);
     display: flex;
     flex-flow: row nowrap;
-    justify-content: center;
-    align-items: center;
-    flex: 0 0 min-content;
-    height: 100%;
+    flex: 0 0 auto;
+    max-width: 40%;
     .profile-image {
-      min-width: 194px;
-      min-height: 194px;
-
       border: none;
       border-radius: 0;
       flex: 1;
@@ -24,7 +19,18 @@
     }
   }
 
+  .dimension-change-listener {
+    width: 0;
+    right: unset;
+  }
+
+  .empty-placeholder {
+    flex: 1;
+    position: relative;
+  }
+
   .character-info {
+    border-left: 2px groove var(--zh-clr-bg2);
     font-size: 14px;
     flex: 1;
     display: flex;
@@ -111,7 +117,6 @@
     border-radius: 0;
     border: none;
     margin: 0;
-    margin-top: auto;
     padding: 0 5px;
     text-align: center;
     background-color: var(--zh-clr-aqua);

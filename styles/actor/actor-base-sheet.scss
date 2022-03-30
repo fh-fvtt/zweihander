@@ -344,14 +344,9 @@ body.game.vtt.system-zweihander .zweihander.sheet.actor {
 
   .skills-container {
     position: relative;
-    .width-change-listener {
-      border: none;
+    .dimension-change-listener {
       height: 0;
-      left: 0;
-      position: absolute;
-      right: 0;
-      top: 0;
-      width: 100%;
+      bottom: unset;
     }
     .skills-list {
       display: grid;

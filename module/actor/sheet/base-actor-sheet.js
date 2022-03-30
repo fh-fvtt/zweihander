@@ -308,33 +308,34 @@ export default class ZweihanderBaseActorSheet extends ActorSheet {
     }
   }
 
-  _registerWidthListener(html, selector, breakpoints) {
+  _registerDimensionChangeListener(el, cb) {
     // this magic changes the pattern of the skills list when it resizes beyond the column breakpoint.
     // sadly, this is currently not possible with pure css.
+    el.prepend('<iframe class="dimension-change-listener" tabindex="-1"></iframe>');
+    const listener = el.find(`.dimension-change-listener`);
+    listener.each(function () {
+      $(this.contentWindow).resize(cb);
+      cb.bind(this.contentWindow)();
+    });
+  }
+
+  _getDimensionBreakpointsCallback(dimension, breakpoints) {
     let y = -1;
-    const el = html.find(selector);
-    el.prepend('<iframe class="width-change-listener" tabindex="-1"></iframe>');
-    const onWidthChange = function () {
-      const x = this.innerWidth;
+    return function () {
+      const x = this[dimension];
       for (let [i, bp] of breakpoints.entries()) {
-        const lastW = i === 0 ? 0 : breakpoints[i - 1].width;
-        const nextW = i === breakpoints.length - 1 ? Number.POSITIVE_INFINITY : breakpoints[i + 1].width;
-        if (x > lastW && x < nextW && (y === -1 || (y > lastW && y < nextW))) {
-          const w = bp.width;
-          if (x >= w && y < w) {
+        const lastAt = i === 0 ? 0 : breakpoints[i - 1].at;
+        const nextAt = i === breakpoints.length - 1 ? Number.POSITIVE_INFINITY : breakpoints[i + 1].at;
+        if (x > lastAt && x < nextAt && (y === -1 || (y > lastAt && y < nextAt))) {
+          if (x >= bp.at && y < bp.at) {
             bp.callback(true);
-          } else if (x < w && y >= w) {
+          } else if (x < bp.at && y >= bp.at) {
             bp.callback(false);
           }
         }
       }
       y = x;
     }
-    const listener = html.find(`${selector} .width-change-listener`);
-    listener.each(function () {
-      $(this.contentWindow).resize(onWidthChange);
-      onWidthChange.bind(this.contentWindow)();
-    });
   }
 
   async _onRollSkill(event, testType) {

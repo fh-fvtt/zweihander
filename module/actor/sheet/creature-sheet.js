@@ -196,10 +196,13 @@ export default class ZweihanderCreatureSheet extends ZweihanderBaseActorSheet {
   activateListeners(html) {
     super.activateListeners(html);
     // register width listener for skills container
-    this._registerWidthListener(html, '.skills-container', [{
-      width: 260,
-      callback: (toggle) => html.find('.skills-list').toggleClass('two-rows', toggle)
-    }]);
+    this._registerDimensionChangeListener(
+      html.find('.skills-container'),
+      this._getDimensionBreakpointsCallback('innerWidth', [{
+        at: 260,
+        callback: (toggle) => html.find('.skills-list').toggleClass('two-rows', toggle)
+      }])
+    );
     // Everything below here is only needed if the sheet is editable
     if (!this.options.editable) return;
     // level skills

@@ -185,6 +185,19 @@ body.game.vtt.system-zweihander {
   --line-height-20: 1.25rem;
   --line-height-30: 1.875rem;
 
+  .dimension-change-listener {
+    border: none;
+    height: 0;
+    left: 0;
+    position: absolute;
+    right: 0;
+    top: 0;
+    bottom: 100%;
+    width: 100%;
+    height: 100%;
+    visibility: hidden;
+  }
+
   .window-app .window-content {
     background: var(--zh-clr-bg0);
   }

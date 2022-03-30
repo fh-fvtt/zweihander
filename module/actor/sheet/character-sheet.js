@@ -55,7 +55,7 @@ export default class ZweihanderCharacterSheet extends ZweihanderBaseActorSheet {
     }
     attachTabDefinitions(sheetData);
     const hidden = this.actor.limited;
-    const ancestry = sheetData.ancestry?.[0]?.name; 
+    const ancestry = sheetData.ancestry?.[0]?.name;
     const pronoun = sheetData.data.details.pronoun || '?';
     sheetData.details = [
       {
@@ -76,7 +76,7 @@ export default class ZweihanderCharacterSheet extends ZweihanderBaseActorSheet {
         id: sheetData.ancestry?.[0]?._id ?? ''
       },
       {
-        value: sheetData.professions?.[sheetData.professions.length-1]?.name ?? '?',
+        value: sheetData.professions?.[sheetData.professions.length - 1]?.name ?? '?',
         hidden
       },
       {
@@ -195,10 +195,28 @@ export default class ZweihanderCharacterSheet extends ZweihanderBaseActorSheet {
   activateListeners(html) {
     super.activateListeners(html);
 
-    this._registerWidthListener(html, '.skills-container', [{
-      width: 275,
-      callback: (toggle) => html.find('.skills-list').toggleClass('two-rows', toggle)
-    }]);
+    this._registerDimensionChangeListener(
+      html.find('.skills-container'),
+      this._getDimensionBreakpointsCallback('innerWidth', [{
+        at: 275,
+        callback: (toggle) => html.find('.skills-list').toggleClass('two-rows', toggle)
+      }])
+    );
+
+    const resizePotrait = function () {
+      const header = html.find('.actor-sheet-header');
+      const fig = header.find('figure');
+      const headerHeight = header.innerHeight();
+      const spaceInDetails = header.find('.empty-placeholder').outerHeight();
+      const figHeight = fig.height();
+      if (spaceInDetails > 0) {
+        fig.height(figHeight - spaceInDetails);
+      } else if (figHeight < headerHeight) {
+        fig.height(headerHeight);
+      }
+    };
+    this._registerDimensionChangeListener(html.find('.actor-sheet-header'), resizePotrait);
+    this._registerDimensionChangeListener(html.find('.actor-sheet-header .empty-placeholder'), resizePotrait);
 
     // Update the encumbrance meter
     this._updateEncumbranceMeter(html);
@@ -247,7 +265,7 @@ export default class ZweihanderCharacterSheet extends ZweihanderBaseActorSheet {
 
     // Modify numerable value by clicking '+' and '-' buttons on sheet, e.g. quantity, encumbrance 
     const updateNumerable = (i) => async (event) => {
-      const lookup = function(obj, key) {
+      const lookup = function (obj, key) {
         const keys = key.split('.');
         let val = obj;
         for (let key of keys) {
@@ -263,7 +281,7 @@ export default class ZweihanderCharacterSheet extends ZweihanderBaseActorSheet {
 
       const newNumerableValue = lookup(item.data, numerablePath) + i;
 
-      await item.update({[`${numerablePath}`]: newNumerableValue >= 0 ? newNumerableValue : 0});      
+      await item.update({ [`${numerablePath}`]: newNumerableValue >= 0 ? newNumerableValue : 0 });
     };
 
     html.find('.numerable-field-subtract').click(updateNumerable(-1));
@@ -299,7 +317,7 @@ export default class ZweihanderCharacterSheet extends ZweihanderBaseActorSheet {
   async _render(force, options) {
     if (this.actor.limited) {
       const classesWithoutDamageTracker = this.constructor.defaultOptions.classes;
-      classesWithoutDamageTracker.splice(classesWithoutDamageTracker.indexOf('damage-tracker'),1);
+      classesWithoutDamageTracker.splice(classesWithoutDamageTracker.indexOf('damage-tracker'), 1);
       options.classes = ['limited', ...classesWithoutDamageTracker, ...(options.classes?.length ? options.classes : [])];
       options.height = 235;
       options.width = 650;
