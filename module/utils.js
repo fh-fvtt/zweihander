@@ -1,5 +1,11 @@
 import { ZWEI } from "./config";
 
+export function uuidv4() {
+  return ([1e7] + -1e3 + -4e3 + -8e3 + -1e11).replace(/[018]/g, c =>
+    (c ^ crypto.getRandomValues(new Uint8Array(1))[0] & 15 >> c / 4).toString(16)
+  );
+}
+
 export function getSymmetricDifference(a, b) {
   return [...a.filter(item => !b.includes(item)), ...b.filter(item => !a.includes(item))];
 }
@@ -310,7 +316,7 @@ const _getPacks = (gameSystem, actorType) => (itemType) => {
   return `${basePacks ?? ''}${delim}${actorPacks ?? ''}`;
 }
 
-export function getPacks(actorType, itemType) { 
+export function getPacks(actorType, itemType) {
   const gameSystem = game.settings.get("zweihander", "gameSystem");
   return _getPacks(gameSystem, actorType)(itemType);
 }
@@ -333,14 +339,14 @@ export const updateItems = async (...updateDefinitions) => {
   }
   const updateItem = async (item, source) => {
     for (let { packItemMap, dataPathsToUpdate } of updateDefinitions.filter(d => d.itemType === item.type)) {
-        const packItem = packItemMap.get(normalizeName(item.name));
-        if (!packItem) return;
-        console.log(`Updating item "${item.name}" in ${source} (id: ${item._id}) from pack "${packItem.pack}" (Item "${packItem.name}")...`);
-        const diff = { _id: item._id };
-        for (let dataPath of dataPathsToUpdate) {
-          diff[dataPath] = getProperty(packItem.data, dataPath);
-        }
-        return diff;
+      const packItem = packItemMap.get(normalizeName(item.name));
+      if (!packItem) return;
+      console.log(`Updating item "${item.name}" in ${source} (id: ${item._id}) from pack "${packItem.pack}" (Item "${packItem.name}")...`);
+      const diff = { _id: item._id };
+      for (let dataPath of dataPathsToUpdate) {
+        diff[dataPath] = getProperty(packItem.data, dataPath);
+      }
+      return diff;
     }
   }
   for (let a of game.actors) {

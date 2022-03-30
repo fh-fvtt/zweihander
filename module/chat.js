@@ -1,3 +1,4 @@
+import { sendAnalytics } from "./analytics";
 import * as ZweihanderDice from "./dice";
 import * as ZweihanderUtils from "./utils";
 
@@ -15,6 +16,32 @@ export function addLocalChatListeners(message, html, data) {
 }
 
 function enableChatButtons(html, flags, message, data) {
+  if (flags?.analytics && game.settings.get('zweihander', 'systemId') === '') {
+    html.find('.analytics-agree').prop("disabled", false);
+    html.find('.analytics-decline').prop("disabled", false);
+    $(html).on("click", ".analytics-agree", (event) => {
+      game.settings.set('zweihander', 'systemId', ZweihanderUtils.uuidv4());
+      ChatMessage.create({
+        speaker: ChatMessage.getSpeaker({ alias: 'F&H Development' }),
+        flags: { zweihander: { img: 'systems/zweihander/assets/icons/informer.svg', analytics: {} } },
+        whisper: [game.user.id],
+        content: `Thank you for participating! 🖤<br/> 
+        Please also help us by <a href="https://forms.gle/hTJkMoevk6TzSKmk7" target="_blank">answering this question about which premium content you would be interested in</a>!`
+      });
+      sendAnalytics();
+    });
+    $(html).on("click", ".analytics-decline", (event) => {
+      game.settings.set('zweihander', 'systemId', 'no-analytics');
+      message.update({ 'flags.zweihander.analytics.answered': true });
+      ChatMessage.create({
+        speaker: ChatMessage.getSpeaker({ alias: 'F&H Development' }),
+        flags: { zweihander: { img: 'systems/zweihander/assets/icons/informer.svg', analytics: {} } },
+        whisper: [game.user.id],
+        content: `You will not participate and we won't ask you again!<br/> 
+        However, we would like to ask you to <a href="https://forms.gle/hTJkMoevk6TzSKmk7" target="_blank">answer a question about which premium content you would be interested in</a>!`
+      });
+    });
+  }
   const skillTestData = flags?.skillTestData;
   if (skillTestData) {
     const { outcome, actorId, skillItemId, testType, testConfiguration } = skillTestData;

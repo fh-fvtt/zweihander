@@ -1,6 +1,6 @@
 /**
 * An implementation of the Zweihänder Grim & Perilous RPG system for FoundryVTT
-* Author: Re4XN
+* Authors: Re4XN, kxfin
 */
 
 import ZweihanderActor from "./actor/actor";
@@ -27,6 +27,7 @@ import { ZWEI } from "./config.js";
 import { displayHelpMessage } from "./misc/help";
 
 import "../styles/main.scss"
+import { triggerAnalytics } from "./analytics";
 
 /* -------------------------------------------- */
 /*  Foundry VTT Initialization                  */
@@ -57,6 +58,7 @@ Hooks.once("ready", function () {
   // Monkey-Patch Search Filter
   const cleanQuery = SearchFilter.cleanQuery;
   SearchFilter.cleanQuery = (x) => ZweihanderUtils.removeDiacritics(cleanQuery(x));
+  triggerAnalytics();
 })
 
 Hooks.once("diceSoNiceReady", function () {

@@ -56,6 +56,14 @@ export const registerSystemSettings = function() {
     config: true
   });
 
+  game.settings.register("zweihander", "systemId", {
+    name: "systemId",
+    scope: "global",
+    type: String,
+    default: '',
+    config: false
+  });
+
   game.settings.register("zweihander", "skillPack", {
     name: "Skill List",
     hint: "ID of the compendium pack to use for the list of available skills for new actors.",

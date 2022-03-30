@@ -26,6 +26,17 @@ body.game.vtt.system-zweihander {
     }
   }
   .chat-message.zweihander-chat-message {
+    
+    .flavor-text {
+      line-height: 1.2;
+    }
+
+    button {
+      &:disabled {
+        display: none;
+      }
+    }
+
     background: var(--zh-clr-bg1);
     border-color: var(--zh-clr-bg2);
     color: var(--zh-clr-fg0);

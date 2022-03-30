@@ -1,15 +1,10 @@
-import * as ZweihanderUtils from './utils';
+import { uuidv4, explicitSign } from './utils';
 
 /**
  * Define a set of handlebar helpers
  * @returns {Promise}
  */
 export const registerHandlebarHelpers = async function () {
-  function uuidv4() {
-    return ([1e7] + -1e3 + -4e3 + -8e3 + -1e11).replace(/[018]/g, c =>
-      (c ^ crypto.getRandomValues(new Uint8Array(1))[0] & 15 >> c / 4).toString(16)
-    );
-  }
 
   const $$ = (name, fn) => Handlebars.registerHelper(name, fn);
 
@@ -239,7 +234,7 @@ export const registerHandlebarHelpers = async function () {
     return "";
   })
 
-  $$('explicitSign', ZweihanderUtils.explicitSign);
+  $$('explicitSign', explicitSign);
 
   $$('zhLookup', function(obj, key) {
   	const keys = key.split('.');
