@@ -65,10 +65,11 @@ body.game.vtt.system-zweihander {
         font-size: var(--font-size-12);
       }
       img.chat-profile-image {
-        flex: 0;
+        flex: 0 0 50px;
         height: 50px;
         width: 50px;
         object-fit: cover;
+        object-position: top;
         margin: 0 5px 5px 0;
         border: 2px solid var(--zh-clr-bg2);
         border-radius: 50%;
