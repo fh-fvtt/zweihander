@@ -55,7 +55,7 @@ export const registerHandlebarHelpers = async function () {
           ${isPermanentRank ? "disabled" : ""}>
         <label
           for="${uuid}.${name + i}"
-          class="${isPermanentRank ? `permanent-rank ${alignment}`  : "regular-rank"}">
+          class="${isPermanentRank ? `permanent-rank ${alignment}` : "regular-rank"}">
           ${isPermanentRank ? `<span class='ra ${icon}'></span>` : i}
         </label>
       `;
@@ -181,13 +181,12 @@ export const registerHandlebarHelpers = async function () {
     }
   });
 
-  $$('markdownIt', function (md) {
-    md = TextEditor.enrichHTML(md);
+  $$('processRuleText', function (text) {
+    text = TextEditor.enrichHTML(text);
     if (window.MEME?.markdownIt?.render) {
-      return window.MEME?.markdownIt?.render(md)
-    } else {
-      return md;
+      text = window.MEME?.markdownIt?.render(text)
     }
+    return text;
   })
 
   $$('itemTemplatePath', function (itemType) {
@@ -236,13 +235,13 @@ export const registerHandlebarHelpers = async function () {
 
   $$('explicitSign', explicitSign);
 
-  $$('zhLookup', function(obj, key) {
-  	const keys = key.split('.');
+  $$('zhLookup', function (obj, key) {
+    const keys = key.split('.');
     let val = obj;
-  	for (let key of keys) {
+    for (let key of keys) {
       val = val?.[key];
     }
     return val;
- });
+  });
 
 }

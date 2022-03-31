@@ -14,13 +14,13 @@
           {{/if}}
         </span>
         {{#if message.flavor}}
-        <div class="flavor-text">{{{markdownIt message.flavor}}}</div>
+        <div class="flavor-text">{{{processRuleText message.flavor}}}</div>
         {{/if}}
       </div>
     </div>
     
   </header>
   <div class="message-content">
-    {{{markdownIt message.content}}}
+    {{{processRuleText message.content}}}
   </div>
 </li>

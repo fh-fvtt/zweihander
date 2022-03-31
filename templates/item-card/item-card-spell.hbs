@@ -1,11 +1,11 @@
 <section class="item-card">
     <h2 class="item-card-title">{{name}}</h2>
     <div class="item-card-description">
-      {{{markdownIt data.flavor.description}}}
+      {{{processRuleText data.flavor.description}}}
     </div>
     <br/>
     <div class="item-card-effect" data-effect-label="Effect">
-      {{{markdownIt data.effect.value}}}
+      {{{processRuleText data.effect.value}}}
     </div>
     <dl class="zh-collapsed zh-expandable" data-expand-title="Show Item Details">
       <dt>Tradition</dt>

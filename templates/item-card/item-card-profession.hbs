@@ -2,7 +2,7 @@
   <h2 class="item-card-title">{{capitalize type}}: {{name}}</h2>
   {{#if data.flavor.description}}
   <div class="item-card-description">
-    {{{markdownIt data.flavor.description}}}
+    {{{processRuleText data.flavor.description}}}
   </div>
   <br/>
   {{/if}}

@@ -5,7 +5,7 @@
 
 <div class="form-group stacked">
   <label><a class="open-editor">Effect <i class="fa fa-edit"></i></a></label>
-  <div class="zh-editor-preview open">{{{markdownIt data.effect.value}}}</div>
+  <div class="zh-editor-preview open">{{{processRuleText data.effect.value}}}</div>
   {{editor content=data.effect.value target="data.effect.value" button=true owner=owner editable=editable}}
 </div>
 

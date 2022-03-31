@@ -29,7 +29,7 @@ export const triggerAnalytics = async () => {
         `
       })
     } else if (systemId !== 'no-analytics') {
-      sendAnalytics()
+      await sendAnalytics()
     }
   }
 }
@@ -37,8 +37,6 @@ export const triggerAnalytics = async () => {
 export const sendAnalytics = () => {
   const systemId = game.settings.get("zweihander", "systemId");
   const url = `https://kxfin.xyz/zh-analytics.php?id=${systemId}&version=${game.system.data.version}`;
-  const request = new XMLHttpRequest();
-  request.open('GET', url);
-  request.send();
-  console.info(`Send system id: "${systemId}" & version: "${game.system.data.version}" data to ${url}.`)
+  fetch(url, { method: "GET" });
+  console.info(`Sending system id: "${systemId}" & version: "${game.system.data.version}" data to ${url}.`)
 }
