@@ -1,14 +1,14 @@
 <div>
   <label>Professional Trait:</label>
-  <a class="fetch-item">{{professionalTrait.value}}</a>
+  <a class="fetch-item" data-item-id="{{professionalTrait.linkedId}}">{{professionalTrait.value}}</a>
   <br />
   <label>Special Trait:</label>
   {{#isMissing specialTrait.value}}
-  <a class="fetch-item">{{specialTrait.value}}</a>
+  <a class="fetch-item" data-item-id="{{specialTrait.linkedId}}">{{specialTrait.value}}</a>
   {{else}} - {{/isMissing}} <br />
   <label>Drawback:</label>
   {{#isMissing drawback.value}}
-  <a class="fetch-item">{{drawback.value}}</a>
+  <a class="fetch-item" data-item-id="{{drawback.linkedId}}">{{drawback.value}}</a>
   {{else}} - {{/isMissing}}
 </div>
 <div>
@@ -17,7 +17,7 @@
   <a
     data-purchase-type="skillRanks"
     data-purchase-index="{{i}}"
-    class="purchase-link fetch-item {{#if skillData.purchased}} purchased {{else}} not-purchased {{/if}}"
+    class="purchase-link {{#if skillData.purchased}} purchased {{else}} not-purchased {{/if}}"
   >
     {{skillData.value}} </a
   >{{#unless @last}}<span>,</span>{{/unless}} {{/each}}
@@ -40,6 +40,7 @@
   <a
     data-purchase-type="talents"
     data-purchase-index="{{i}}"
+    data-item-id="{{talentsData.linkedId}}"
     class="purchase-link fetch-item {{#if talentsData.purchased}} purchased {{else}} not-purchased {{/if}}"
     >{{talentsData.value}}</a
   >
