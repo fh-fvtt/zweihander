@@ -133,14 +133,14 @@ export function attachTabDefinitions(data) {
           summaryTemplate: "item-summary/ritual",
           details: [
             {
-              title: "Difficulty",
+              title: "Channel Power As",
               size: 140,
-              key: "data.difficulty.value"
+              key: "data.channelAs.value",
             },
             {
-              title: "Channel Power As",
+              title: "Difficulty",
               size: 200,
-              key: "data.channelAs.value",
+              key: "data.difficulty.value"
             },
             {
               title: "Casting Time",

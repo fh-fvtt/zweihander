@@ -63,6 +63,7 @@
       height: 60px;
       margin-right: 5px;
       text-align: right;
+      padding-top: 2px;
 
       .rp-title {
         color: var(--zh-clr-aqua);
@@ -169,6 +170,7 @@
     display: flex;
     flex-flow: row nowrap;
     align-items: center;
+    padding-bottom: 1px;
     .corruption {
       flex: 0 0 30px;
       color: var(--zh-clr-aqua);
