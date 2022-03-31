@@ -26,7 +26,11 @@ function enableChatButtons(html, flags, message, data) {
         flags: { zweihander: { img: 'systems/zweihander/assets/icons/informer.svg', analytics: {} } },
         whisper: [game.user.id],
         content: `Thank you for participating! 🖤<br/> 
-        Please also help us by <a href="https://forms.gle/hTJkMoevk6TzSKmk7" target="_blank">answering this question about which premium content you would be interested in</a>!`
+        Please also help us by <a href="https://forms.gle/hTJkMoevk6TzSKmk7" target="_blank">answering this question about which premium content you would be interested in</a>!
+        <p>
+        If you would like to receive more news about the system, <a href="https://discord.gg/QP5Ke8ND" target="_blank">visit our channel on the official Zweihänder Discord</a>!
+        </p>
+        `
       });
       sendAnalytics();
     });
@@ -38,7 +42,10 @@ function enableChatButtons(html, flags, message, data) {
         flags: { zweihander: { img: 'systems/zweihander/assets/icons/informer.svg', analytics: {} } },
         whisper: [game.user.id],
         content: `You will not participate and we won't ask you again!<br/> 
-        However, we would like to ask you to <a href="https://forms.gle/hTJkMoevk6TzSKmk7" target="_blank">answer a question about which premium content you would be interested in</a>!`
+        However, we would like to ask you to <a href="https://forms.gle/hTJkMoevk6TzSKmk7" target="_blank">answer a question about which premium content you would be interested in</a>!
+        <p>
+        If you would like to receive more news about the system, <a href="https://discord.gg/QP5Ke8ND" target="_blank">visit our channel on the official Zweihänder Discord</a>!
+        </p>`
       });
     });
   }
