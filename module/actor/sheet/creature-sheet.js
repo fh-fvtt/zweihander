@@ -58,26 +58,26 @@ export default class ZweihanderCreatureSheet extends ZweihanderBaseActorSheet {
     ]);
     sheetData.details = [
       {
-        key: 'size.value',
+        key: 'details.size.value',
         choices: sheetData.choices.sizes
       },
       {
-        key: 'classification.value',
+        key: 'details.classification.value',
         placeholder: 'Classification',
         hidden: this.actor.limited
       },
       {
-        key: 'role.value',
+        key: 'details.role.value',
         placeholder: 'Role',
         hidden: this.actor.limited
       },
       {
-        key: 'influences.value',
+        key: 'details.influences.value',
         placeholder: 'Influences',
         hidden: this.actor.limited
       },
       {
-        key: 'languages',
+        value: sheetData.data.languages,
         placeholder: '?',
         template: 'partials/detail-languages',
         hidden: this.actor.limited

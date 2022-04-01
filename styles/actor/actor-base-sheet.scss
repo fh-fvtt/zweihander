@@ -76,6 +76,38 @@ body.game.vtt.system-zweihander .zweihander.sheet.actor {
         }
       }
     }
+    .item-wrapper {
+      position: relative;
+
+      .item-wrapper-edit {
+        display: none;
+        top: 2px;
+        left: 2px;
+        color: var(--zh-clr-aqua);
+        font-size: 16px;
+        padding-top: 2px;
+        height: calc(100% - 4px);
+        width: calc(100% - 4px);
+        position: absolute;
+        background-color: rgba(var(--zh-clr-bg0-rgb), 0.5);
+        backdrop-filter: blur(0.8px);
+        a {
+          flex: 1;
+          text-align: center;
+        }
+      }
+
+      &:hover .item-wrapper-edit {
+        display: flex;
+      }
+
+      &:hover input {
+        background-color: var(--zh-clr-bg1);
+        background-color: rgba(var(--zh-clr-bg1-rgb), 0.9);
+        border-color: var(--zh-clr-aqua);
+        box-shadow: 0 0 6px var(--zh-clr-bg2);
+      }
+    }
   }
 
   .items-list {

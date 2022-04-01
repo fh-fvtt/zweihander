@@ -61,59 +61,59 @@ import ZweihanderCreatureSheet from "./creature-sheet";
     assignPacks('npc', sheetData.itemGroups);
     sheetData.details = [
       {
-        key: 'age.value',
+        key: 'details.age.value',
         placeholder: 'Age Group'
       },
       {
-        key: 'sex.value',
+        key: 'details.sex.value',
         placeholder: 'Sex'
       },
       {
-        key: 'ancestry.value',
+        key: 'details.ancestry.value',
         placeholder: 'Ancestry'
       },
       {
-        key: 'height.value',
+        key: 'details.height.value',
         placeholder: 'Height'
       },
       {
-        key: 'build.value',
+        key: 'details.build.value',
         placeholder: 'Build'
       },
       {
-        key: 'complexion.value',
+        key: 'details.complexion.value',
         placeholder: 'Complexion'
       },
       {
-        key: 'mannerOfDress.value',
+        key: 'details.mannerOfDress.value',
         placeholder: 'Manner of Dress'
       },
       {
-        key: 'socialClass.value',
+        key: 'details.socialClass.value',
         placeholder: 'Social Class',
         hidden: this.actor.limited
       },
       {
-        key: 'distinguishingMarks.value',
+        key: 'details.distinguishingMarks.value',
         placeholder: 'Distinguishing Marks'
       },
       {
-        key: 'archetype.value',
+        key: 'details.archetype.value',
         placeholder: 'Archetype',
         hidden: this.actor.limited
       },
       {
-        key: 'motivation.value',
+        key: 'details.motivation.value',
         placeholder: 'Motivation',
         hidden: this.actor.limited
       },
       {
-        key: 'alignment.value',
+        key: 'details.alignment.value',
         placeholder: 'Alignment',
         hidden: this.actor.limited
       },
       {
-        key: 'languages',
+        value: sheetData.data.languages,
         placeholder: '?',
         template: 'partials/detail-languages',
         hidden: this.actor.limited
