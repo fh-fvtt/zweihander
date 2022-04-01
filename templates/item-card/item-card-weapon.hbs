@@ -18,9 +18,7 @@
       <dd>{{data.encumbrance.value}}</dd>
       <dt>Price</dt>
       <dd>
-        <i class="fas fa-coins currency-gc"></i> {{data.price.gc}} 
-        <i class="fas fa-coins currency-ss"></i> {{data.price.ss}} 
-        <i class="fas fa-coins currency-bp"></i> {{data.price.bp}} 
+        {{zhPrice data.price}}
       </dd>
     </dl>
     <dl class="item-card-qualities zh-expandable zh-collapsed" data-expand-title="Show Qualities">

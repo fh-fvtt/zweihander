@@ -5,7 +5,6 @@
 
 import ZweihanderActor from "./actor/actor";
 import ZweihanderCharacterSheet from "./actor/sheet/character-sheet";
-import ZweihanderActorConfig from "./apps/actor-config";
 import ZweihanderNpcSheet from "./actor/sheet/npc-sheet";
 import ZweihanderCreatureSheet from "./actor/sheet/creature-sheet";
 import ZweihanderItem from "./item/item";
@@ -47,7 +46,6 @@ Hooks.once("ready", function () {
   migrateWorldSafe();
   socket.then(socket => {
     game.zweihander.socket = socket;
-    FortuneTracker.registerPersistingSettings();
     FortuneTracker.INSTANCE = new FortuneTracker(socket);
     FortuneTracker.INSTANCE?.syncState();
     socket.register("updateChatMessage", (messageId, diffData) => {
@@ -232,16 +230,12 @@ Hooks.once("polyglot.init", (LanguageProvider) => {
     getUserLanguages(actor) {
       let known_languages = new Set();
       let literate_languages = new Set();
-      actor.data.data.languages.value
-        .split(',').forEach(x => {
-          const langAndMod = x.trim().split('(');
-          const lang = langAndMod[0].trim().toLowerCase();
-          const modifier = (langAndMod[1] ?? '').split(')')[0].trim().toLowerCase();
-          known_languages.add(lang);
-          if (modifier === 'literate') {
-            literate_languages.add(lang);
-          }
-        });
+      actor.data.data.languages.forEach(l => {
+        known_languages.add(l.name);
+        if (l.isLiterate) {
+          literate_languages.add(l.name);
+        }
+      });
       return [known_languages, literate_languages];
     }
     conditions(polyglot, lang) {

@@ -380,3 +380,11 @@ export const updateItems = async (...updateDefinitions) => {
 export const updateEffects = async () => {
 
 }
+
+export const formDataToArray = (formData, key) => {
+  const x = key ? foundry.utils.getProperty(foundry.utils.expandObject(formData), key) : foundry.utils.expandObject(formData);
+  const length = Math.max(...Object.keys(x).map(k => k.match(/[0-9]+/)[0])) + 1;
+  const array = new Array(length);
+  Object.entries(x).forEach(([k, v]) => array[k.match(/[0-9]+/)[0]] = v);
+  return array;
+};

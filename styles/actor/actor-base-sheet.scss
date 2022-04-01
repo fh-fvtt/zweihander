@@ -18,7 +18,7 @@ body.game.vtt.system-zweihander .zweihander.sheet.actor {
         margin: 2px;
         max-width: 100%;
         & > * {
-          flex: 1 0 content;
+          flex: 1 0 0;
         }
         &.influences {
           flex: 2 0 content;

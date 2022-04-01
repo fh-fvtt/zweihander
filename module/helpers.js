@@ -236,12 +236,38 @@ export const registerHandlebarHelpers = async function () {
   $$('explicitSign', explicitSign);
 
   $$('zhLookup', function (obj, key) {
-    const keys = key.split('.');
+    const keys = key.toString().split('.');
     let val = obj;
     for (let key of keys) {
       val = val?.[key];
     }
     return val;
+  });
+
+  $$('displayLanguages', (languages) => {
+    if (!languages.length) return '';
+    const displayLanguage = (l) => `${l.name}${l.isLiterate ? ' (Literate)' : ''}`;
+    return languages.slice(1)
+      .reduce((str, l) =>
+        `${str}, ${displayLanguage(l)}`,
+        displayLanguage(languages[0])
+      );
+  });
+
+  $$('zhPrev', (i) => i - 1);
+
+  $$('zhPrice', (price) => {
+    const currencies = game.settings.get('zweihander', 'currencySettings');
+    return new Handlebars.SafeString(currencies.map(c => `<i class="fas fa-coins currency" style="color: ${c.color}"></i> ${price[c.abbreviation] ?? 0} ${c.abbreviation}`).join(' '));
+  });
+
+  $$('zhPriceInputs', (price) => {
+    const currencies = game.settings.get('zweihander', 'currencySettings');
+    const inputs = currencies.map(c => `
+      <i class="fas fa-coins currency" style="color: ${c.color}"></i>
+      <input name="data.price.${c.abbreviation}" type="number" value="${price[c.abbreviation] ?? 0}">
+    `).join('');
+    return new Handlebars.SafeString(`<div class="form-group"><label>Price</label>${inputs}</div>`);
   });
 
 }

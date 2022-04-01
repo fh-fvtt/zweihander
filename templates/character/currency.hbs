@@ -1,0 +1,13 @@
+<div class="currency-container flexrow">
+  {{#each settings.currencies as | currency i | }}
+  <div class="currency flexcol" style="color:{{currency.color}}">
+    <input class="coin-input" style="color:{{currency.color}}" type="number"
+      name="data.currency.{{currency.abbreviation}}" value="{{lookup ../data.currency currency.abbreviation}}"
+      placeholder="0" />
+    <span><i class="fas fa-coins"></i> {{name}}</span>
+    <span>{{#unless @first}}= {{zhLookup../settings.currencies (concat (zhPrev i) '.equivalentOfLower') }}
+      {{zhLookup../settings.currencies (concat (zhPrev i) '.abbreviation') }}{{/unless}}</span>
+  </div>
+  {{/each}}
+  {{!-- <button class="currency-converter" type="button"><i class="fa fa-exchange-alt"></i> Exchange</button> --}}
+</div>

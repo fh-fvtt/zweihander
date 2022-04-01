@@ -1,0 +1,29 @@
+<form autocomplete="off">
+  <button type="submit" disabled style="display: none" aria-hidden="true"></button>
+  <header>
+    <div class="form-group">
+      <span>Abbr.</span>
+      <span>Name</span>
+      <span>Equivalent</span>
+      <span>Color</span>
+    </div>
+  </header>
+  <section class="form-body">
+    {{#each . as | currency index |}}
+    <div class="form-group">
+      <input type="text" name="[{{index}}].abbreviation" value="{{currency.abbreviation}}" placeholder="Abbreviation" />
+      <input type="text" name="[{{index}}].name" value="{{currency.name}}" placeholder="Name" />
+      <input type="number" name="[{{index}}].equivalentOfLower" value="{{currency.equivalentOfLower}}"
+        placeholder="100" />
+      {{colorPicker name=(concat '[' index '].color') value=color}}
+      <button
+        style="flex: 0 0 40px; height: var(--form-field-height); margin-left: 5px; line-height: var(--form-field-height)"
+        type="button" class="del-currency" data-index="{{index}}"><i class="fas fa-minus"></i></button>
+    </div>
+    {{/each}}
+    <div class="form-group">
+      <button type="button" class="add-currency"><i class="fas fa-plus"></i> Add Currency</button>
+    </div>
+  </section>
+  <button type="submit">Submit</button>
+</form>

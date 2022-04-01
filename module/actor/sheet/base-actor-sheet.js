@@ -2,8 +2,16 @@ import * as ZweihanderDice from "../../dice";
 import * as ZweihanderUtils from "../../utils";
 import ZweihanderProfession from "../../item/entity/profession";
 import ZweihanderQuality from "../../item/entity/quality";
+import ZweihanderLanguageConfig from "../../apps/language-config";
 
 export default class ZweihanderBaseActorSheet extends ActorSheet {
+
+  #languageConfig;
+
+  constructor(...args) {
+    super(...args);
+    this.#languageConfig = new ZweihanderLanguageConfig(this.actor);
+  }
 
   /** @override */
   getData(options) {
@@ -18,15 +26,15 @@ export default class ZweihanderBaseActorSheet extends ActorSheet {
       isCharacter: this.actor.type === "character",
       isNPC: this.actor.type === "npc",
       isCreature: this.actor.type === "creature",
-      config: CONFIG.DND5E,
-      rollData: this.actor.getRollData.bind(this.actor)
+      config: CONFIG.ZWEI,
+      rollData: this.actor.getRollData.bind(this.actor),
+      settings: {}
     };
 
     // The Actor's data
     const actorData = this.actor.data.toObject(false);
     data.actor = actorData;
     data.data = actorData.data;
-    data.config = CONFIG.ZWEI;
 
     // Owned Items
     data.items = actorData.items;
@@ -285,6 +293,8 @@ export default class ZweihanderBaseActorSheet extends ActorSheet {
       const quality = await ZweihanderUtils.findItemWorldWide("quality", qualityName);
       quality.sheet.render(true);
     });
+
+    html.find(".open-language-config").click(() => this.#languageConfig.render(true));
 
   }
 

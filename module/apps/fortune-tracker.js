@@ -1,46 +1,3 @@
-const fortuneTrackerSettings = class extends FormApplication {
-
-  static get defaultOptions() {
-    return foundry.utils.mergeObject(super.defaultOptions, {
-      template: 'systems/zweihander/templates/app/fortune-tracker-settings.hbs',
-      popOut: true,
-      minimizable: true,
-      resizable: false,
-      title: 'Fortune Tracker Settings',
-      id: 'fortuneTrackerSettings',
-      classes: ['zweihander'],
-      width: 600,
-      height: 275,
-      submitOnChange: true,
-      submitOnClose: true,
-      closeOnSubmit: false
-    });
-  }
-
-  getData() {
-    const data = game.settings.get('zweihander', 'fortuneTrackerSettings');
-    data.choices = {};
-    data.choices.size = [
-      { value: "compact", label: "Compact (Text)" },
-      { value: "normal", label: "Normal (Tokens)" },
-      { value: "big", label: "Big (Tokens)" },
-      { value: "huge", label: "Huge (Tokens)" }
-    ].map(option => ({ selected: (data.size ?? 'normal') === option.value ? 'selected' : '', ...option }));
-    data.choices.notifications = [
-      { value: "none", label: "Don't Alert" },
-      { value: "notify", label: "Post Foundry Notifications" },
-      { value: "chat", label: "Post Chat Messages" },
-    ].map(option => ({ selected: (data.notifications ?? 'notify') === option.value ? 'selected' : '', ...option }));
-    return data;
-  }
-
-  _updateObject(event, formData) {
-    const data = expandObject(formData);
-    game.settings.set('zweihander', 'fortuneTrackerSettings', data);
-  }
-}
-
-
 export default class FortuneTracker extends Application {
 
   static INSTANCE = undefined;
@@ -75,47 +32,6 @@ export default class FortuneTracker extends Application {
         }
     }
   }
-
-  static registerPersistingSettings() {
-    game.settings.register("zweihander", "fortuneTrackerPersistedState", {
-      scope: "world",
-      config: false,
-      type: Object,
-      default: {
-        total: 0,
-        used: 0,
-        removed: 0
-      }
-    });
-    game.settings.register("zweihander", "fortuneTrackerSettings", {
-      scope: "world",
-      config: false,
-      type: Object,
-      default: {
-        removeUsedMisfortune: false,
-        notifications: "notify",
-        size: "normal",
-        fortunePath: "systems/zweihander/assets/fortune-life.webp",
-        misfortunePath: "systems/zweihander/assets/fortune-death.webp"
-      }
-    });
-    game.settings.registerMenu("zweihander", "fortuneTrackerSettingsMenu", {
-      name: "Fortune Tracker Settings",
-      label: "Fortune Tracker Settings",      // The text label used in the button
-      hint: "Configure the look & behavior of the Fortune Tracker.",
-      icon: "ra ra-scroll-unfurled",               // A Font Awesome icon used in the submenu button
-      type: fortuneTrackerSettings,   // A FormApplication subclass
-      restricted: true                   // Restrict this submenu to gamemaster only?
-    });
-    //todo remove this after a while
-    const settings = game.settings.get('zweihander', 'fortuneTrackerSettings');
-    if (game.user.isGM && settings.fortunePath === 'systems/zweihander/assets/fortune-life.png') {
-      settings.fortunePath = 'systems/zweihander/assets/fortune-life.webp';
-      settings.misfortunePath = 'systems/zweihander/assets/fortune-death.webp';
-      game.settings.set('zweihander', 'fortuneTrackerSettings', settings);
-    }
-  }
-
   // business logic
 
   #waiting = false;

@@ -40,6 +40,8 @@ export default class ZweihanderCharacterSheet extends ZweihanderBaseActorSheet {
     const sheetData = super.getData();
     // get actor config
     sheetData.actorConfig = ZweihanderActorConfig.getConfig(this.actor.data);
+    // bind currency
+    sheetData.settings.currencies = game.settings.get('zweihander', 'currencySettings');
     // calculate reward points automatically
     if (game.settings.get("zweihander", "trackRewardPoints")) {
       const tierMultiplier = {
@@ -144,8 +146,9 @@ export default class ZweihanderCharacterSheet extends ZweihanderBaseActorSheet {
       },
       {
         prefix: 'and speaks',
-        key: 'languages.value',
+        value: sheetData.data.languages,
         placeholder: '?',
+        template: 'partials/detail-languages',
         hidden,
         postfix: '.'
       }

@@ -94,9 +94,9 @@ export default class ZweihanderPC extends ZweihanderBaseActor {
       .filter(t => t.data.data.encumbrance.value !== 0)
       .map(t => t.data.data.encumbrance.value * (t.data.data.quantity.value || 0))
       .reduce((a, b) => a + b, 0);
-    // assign encumbrance from coinage
-    const coinageEnc = Math.floor(
-      Object.entries(data.coinage).map(e => e[1]).reduce((a, b) => a + b, 0) / 1000
+    // assign encumbrance from currency
+    const currencyEnc = Math.floor(
+      Object.values(data.currency).reduce((a, b) => a + b, 0) / 1000
     );
     // assign encumbrance from equipped armor piece
     const armorEnc = equippedArmor
@@ -111,7 +111,7 @@ export default class ZweihanderPC extends ZweihanderBaseActor {
     // assign initial encumbrance threshold
     enc.value = data.stats.primaryAttributes.brawn.bonus + 3 + configOptions.encumbranceModifier;
     // assign current encumbrance
-    enc.current = smallTrappingsEnc + normalTrappingsEnc + coinageEnc
+    enc.current = smallTrappingsEnc + normalTrappingsEnc + currencyEnc
       + armorEnc + weaponEnc;
     // assign overage
     enc.overage = Math.max(0, enc.current - enc.value)

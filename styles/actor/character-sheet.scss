@@ -84,43 +84,24 @@ body.game.vtt.system-zweihander .zweihander.sheet.character {
         color: var(--zh-clr-fg3);
         flex: 0 0 32px;
         margin-bottom: 10px;
-        padding: 0 calc(50% - 220px);
-        .currency-bp {
-          flex: 0 0 100px;
-          i,
-          &.fa-coins,
-          input {
-            color: var(--currency-color);
-          }
-        }
-        .currency-ss {
-          flex: 0 0 110px;
-          i,
-          &.fa-coins,
-          input {
-            color: var(--currency-color);
-          }
-        }
-        .currency-gc {
-          flex: 0 0 90px;
-          i,
-          &.fa-coins,
-          input {
-            color: var(--currency-color);
-          }
+        justify-content: center;
+        .currency {
+          margin: 0 10px;
+          flex: 0 0 content;
+          align-items: center;
         }
         input {
           text-align: center;
+          width: 60px;
         }
         button {
+          flex: 0 0 content;
+          width: auto;
           font-size: 12px;
-          height: 16px;
+          padding: 5px 10px;
           line-height: 12px;
-          margin: 0 auto 5px auto;
-          width: 130px;
-        }
-        .exchange-rates {
-          text-align: center;
+          margin: 0 10px;
+          align-self: center;
         }
       }
       .encumbrance-bar-container {

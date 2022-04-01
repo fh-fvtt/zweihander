@@ -1,7 +1,6 @@
 import { ZWEI } from "./config";
-import ZweihanderBaseItem from "./item/entity/base-item";
 
-export const migrateWorld = async function () {
+export const migrateWorld = async () => {
   ui.notifications.info(`Applying Zweihander System Migration for version ${game.system.data.version}. Please be patient and do not close your game or shut down your server.`, { permanent: true });
   // Migrate World Actors
   for (let a of game.actors) {
@@ -33,20 +32,17 @@ export const migrateWorld = async function () {
 
   // Migrate World Compendium Packs
   for (let p of game.packs) {
-    // if (p.metadata.package !== "world") continue;
+    if (p.metadata.package !== "world") continue;
     if (!["Actor", "Item", "Scene"].includes(p.documentName)) continue;
     await migrateCompendium(p);
   }
-
-  // Fix false flags from earlier versions
-  fixSourceFlags();
 
   // Set the migration as complete
   game.settings.set("zweihander", "systemMigrationVersion", game.system.data.version);
   ui.notifications.info(`Zweihander System Migration to version ${game.system.data.version} completed!`, { permanent: true });
 };
 
-const migrateCompendium = async function (pack) {
+const migrateCompendium = async (pack) => {
   const entity = pack.documentName;
   if (!["Actor", "Item"].includes(entity)) return;
 
@@ -89,14 +85,37 @@ const migrateCompendium = async function (pack) {
   console.log(`Migrated all ${entity} entities from Compendium ${pack.collection}`);
 }
 
-const migrateActorData = async function (actor) {
-  const updateData = {};
+const migrateFieldFactory = (documentDataObject, update) => (oldKey, newKey, del = false, transform = false) => {
+  oldKey = `data.${oldKey}`;
+  newKey = `data.${newKey}`;
+  const updateVal = getProperty(documentDataObject, oldKey);
+  update[newKey] = transform ? transform(updateVal, documentDataObject) : updateVal;
+  if (hasProperty(documentDataObject, oldKey)) {
+    if (del) {
+      update[`.-=${(typeof del == "string") ? `data.${del}` : oldKey}`] = null;
+    }
+  }
+}
+
+const migrateActorData = async (actor) => {
+  const update = {};
   // Actor Data Updates
   if (actor.data) {
     // future migrations might need this
+    const actorData = actor.toObject();
+    const migrateField = migrateFieldFactory(actorData, update);
+    // currency
+    migrateField('coinage.gold', 'currency.gc');
+    migrateField('coinage.silver', 'currency.ss');
+    migrateField('coinage.brass', 'currency.bp', 'coinage');
+    // languages
+    migrateField('languages.value', 'languages', true, (x) =>
+      x.split(',').map(y => ({ name: y.split('(')[0].trim(), isLiterate: y.match(/\(\s*literate\s*\)/i) !== null }))
+    );
+    // 
   }
   // Migrate Owned Items
-  if (!actor.items) return updateData;
+  if (!actor.items) return update;
   const items = [];
   for (let i of actor.items) {
     // Migrate the Owned Item
@@ -107,153 +126,43 @@ const migrateActorData = async function (actor) {
       items.push(expandObject(itemUpdate));
     }
   }
-  if (items.length > 0) updateData.items = items;
-  updateData.img = migrateIcons(actor);
-  return updateData;
+  if (items.length > 0) update.items = items;
+  const updatedImg = migrateIcons(actor);
+  if (updatedImg) {
+    update.img = updatedImg;
+  }
+  return update;
 };
 
-
-export const migrateItemData = async function (item) {
-  let updateData = {};
-  const rmSource = ['trait', 'talent', 'drawback'];
+const migrateItemData = async (item) => {
+  const update = {};
+  const itemData = item.toObject();
+  const migrateField = migrateFieldFactory(itemData, update);
+  // all effects
+  // migrateField('effect.value', 'rules.effect.en');
+  // migrateField('effect.criticalSuccess.value', 'rules.criticalSuccess.en');
+  // migrateField('effect.criticalSuccess', 'rules.criticalSuccess.en');
+  // migrateField('effect.criticalFailure.value', 'rules.criticalFailure.en');
+  // migrateField('effect.criticalFailure', 'rules.criticalFailure.en', 'effect');
+  // all flavors
+  // migrateField('flavor.description', 'description.en');
+  // migrateField('flavor.notes', 'notes', 'flavor');
+  // type specific
   if (item.type === 'ancestry') {
-    updateData = await migrateAncestry(item);
   } else if (item.type === 'profession') {
-    updateData = await migrateProfession(item);
-  } else if (rmSource.includes(item.type)) {
-    // item.setFlag('zweihander', 'source', null);
   }
-  updateData.img = migrateIcons(item);
-  return updateData;
+  const updatedImg = migrateIcons(item);
+  if (updatedImg) {
+    update.img = updatedImg;
+  }
+  return update;
 };
 
-const migrateAncestry = async function (item) {
-  const actor = item.actor;
-  item = item.toObject();
-  let traitId = item.data.ancestralTrait.linkedId ?? null;
-  let traitValue = item.data.ancestralTrait.value;
-  if (actor) {
-    if (traitValue && !traitId) {
-      const trait = await ZweihanderBaseItem.getLinkedItemEntry(actor, traitValue, 'trait', item.name, 'ancestry');
-      traitId = trait.linkedId;
-      traitValue = trait.value;
-      if (trait.itemToCreate) {
-        await Item.create(trait.itemToCreate, { parent: actor, keepId: true });
-      }
-    }
-  }
-  return {
-    'data.ancestralTrait.value': traitValue,
-    'data.ancestralTrait.linkedId': traitId,
-    'data.ancestralModifiers.positive': item.data.ancestralModifiers.positive?.value?.split(',')?.map(v => v.trim()) ?? item.data.ancestralModifiers.positive,
-    'data.ancestralModifiers.negative': item.data.ancestralModifiers.negative?.value?.split(',')?.map(v => v.trim()) ?? item.data.ancestralModifiers.negative
-  }
+const migrateIcons = (document) => {
+  return document.img;
 }
 
-const migrateProfession = async function (item) {
-  const actor = item.actor;
-  item = item.toObject();
-  let bonusAdvances = item.data.bonusAdvances?.arrayOfValues?.map(ba => ({ value: ba.name.trim(), purchased: ba.purchased }))
-    ?? item.data.bonusAdvances?.value?.split(',')?.map(v => ({ value: v.trim(), purchased: false }))
-    ?? item.data.bonusAdvances;
-  let talents = item.data.talents?.arrayOfValues?.map(t => ({ value: t.name.trim(), linkedId: null, purchased: t.purchased }))
-    ?? item.data.talents?.value?.split(',')?.map(v => ({ value: v.trim(), linkedId: null, purchased: false }))
-    ?? item.data.talents.map(t => ({ value: t.value.trim(), linkedId: t.linkedId ?? null, purchased: t.purchased }));
-  const actorTier = actor?.data?.data?.tier;
-  const profTier = item.data.tier?.value;
-  const purchaseAll = actorTier && actorTier !== profTier;
-  let skillRanks = item.data.skillRanks?.arrayOfValues?.map(sr => ({ value: sr.name.trim(), purchased: purchaseAll || sr.timesAvailable === 0 }))
-    ?? item.data.skillRanks?.value?.split(',')?.map(v => ({ value: v.trim(), purchased: false }))
-    ?? item.data.skillRanks;
-  let professionalTraitValue = item.data.professionalTrait.value;
-  let professionalTraitId = item.data.professionalTrait.linkedId ?? null;
-  let specialTraitValue = item.data.specialTrait.value;
-  let specialTraitId = item.data.specialTrait.linkedId ?? null;
-  let drawbackValue = item.data.drawback.value;
-  let drawbackId = item.data.drawback.linkedId ?? null;
-  if (actor) {
-    let i;
-    const itemsToCreate = [];
-    if (professionalTraitValue && !professionalTraitId) {
-      i = await ZweihanderBaseItem.getLinkedItemEntry(actor, professionalTraitValue, 'trait', item.name, 'profession');
-      professionalTraitValue = i.value;
-      professionalTraitId = i.linkedId;
-      if (i.itemToCreate) {
-        itemsToCreate.push(i.itemToCreate);
-      }
-    }
-    if (specialTraitValue && !specialTraitId) {
-      i = await ZweihanderBaseItem.getLinkedItemEntry(actor, specialTraitValue, 'trait', item.name, 'profession');
-      specialTraitValue = i.value;
-      specialTraitId = i.linkedId;
-      if (i.itemToCreate) {
-        itemsToCreate.push(i.itemToCreate);
-      }
-    }
-    if (drawbackValue && !drawbackId) {
-      i = await ZweihanderBaseItem.getLinkedItemEntry(actor, drawbackValue, 'drawback', item.name, 'profession');
-      drawbackValue = i.value;
-      drawbackId = i.linkedId;
-      if (i.itemToCreate) {
-        itemsToCreate.push(i.itemToCreate);
-      }
-    }
-    // const talentNames = talents.map(t => t.value);
-    const talentNames = talents.filter(t => !t.linkedId && t.value).map(t => t.value);
-    if (talentNames.length) {
-      i = await ZweihanderBaseItem.getLinkedItemEntries(actor, talentNames, 'talent', item.name, 'profession');
-      i.map(t => t.itemToCreate).filter(x => x).forEach(x => itemsToCreate.push(x));
-      talents = i.map((t, j) => ZweihanderBaseItem.cleanLinkedItemEntry({ ...t, purchased: talents[j].purchased || false }));
-    }
-    if (itemsToCreate.length) {
-      await Item.create(itemsToCreate, { parent: actor, keepId: true });
-    }
-  }
-  return {
-    'data.bonusAdvances': bonusAdvances,
-    'data.professionalTrait.value': professionalTraitValue,
-    'data.professionalTrait.linkedId': professionalTraitId,
-    'data.specialTrait.value': specialTraitValue,
-    'data.specialTrait.linkedId': specialTraitId,
-    'data.drawback.value': drawbackValue,
-    'data.drawback.linkedId': drawbackId,
-    'data.skillRanks': skillRanks,
-    'data.talents': talents,
-    'data.tier.-=completed': null,
-    'data.tier.-=advancesPurchased': null,
-    'data.tier.value': item?.flags?.zweihander?.professionTier ?? item.data.tier.value,
-    'flags.zweihander.-=professionTier': null
-  }
-}
-
-const migrateIcons = function (document) {
-  const type = document.type;
-  const img = document.img;
-  const r = ['icons/svg/mystery-man.svg', 'icons/svg/item-bag.svg', 'systems/zweihander/assets/icons/cowled.svg'];
-  if ((type in ZWEI.defaultItemIcons) && r.includes(img)) {
-    return ZWEI.defaultItemIcons[type];
-  }
-  if ((type in ZWEI.defaultActorIcons) && r.includes(img)) {
-    return ZWEI.defaultActorIcons[type];
-  }
-  return img?.replaceAll?.('assets/icons/game-icons', 'assets/icons')?.replaceAll?.('assets/skills.png', 'icons/skills.svg') ?? "icons/svg/mystery-man.svg";
-}
-
-const fixSourceFlags = async function () {
-  for (let actor of game.actors.filter(a => a.type === 'character')) {
-    const ancestry = actor.items.find((i) => i.type === 'ancestry')?.name;
-    if (ancestry) {
-      const falseFlagItems = actor.items.filter((i) => i.data.flags?.zweihander?.source?.value === 'ancestry' && !i.data.flags?.zweihander?.source?.label?.startsWith?.(ancestry));
-      for (let item of falseFlagItems) {
-        const label = item.data.flags.zweihander.source.label.replaceAll("Ancestry", "Profession");
-        const value = "profession";
-        await item.setFlag('zweihander', 'source', { label, value });
-      }
-    }
-  }
-}
-
-export const migrateWorldSafe = async function () {
+export const migrateWorldSafe = async () => {
   if (!game.user.isGM) return;
   const currentVersion = game.settings.get("zweihander", "systemMigrationVersion");
   const NEEDS_MIGRATION_VERSION = "4.1.0-beta6c";

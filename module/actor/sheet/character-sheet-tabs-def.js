@@ -3,7 +3,7 @@ import { assignPacks } from "../../utils"
 export function attachTabDefinitions(data) {
   data.tabs = assignPacks('character', {
     trappings: {
-      headerTemplate: "character/coinage",
+      headerTemplate: "character/currency",
       footerTemplate: "character/encumbrance-meter",
       itemGroups: [
         {

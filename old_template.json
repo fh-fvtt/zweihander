@@ -49,19 +49,23 @@
         }
       },
       "flavor": {
-        "description": {
-          "@en": ""
-        },
-        "notes": ""
+        "flavor": {
+          "description": "",
+          "notes": ""
+        }
       },
-      "currency": {
-        "currency": {}
-      },
-      "languages": {
-        "languages": []
+      "coinage": {
+        "coinage": {
+          "gold": 0,
+          "silver": 0,
+          "brass": 0
+        }
       },
       "non-player": {
         "skillRanks": {},
+        "languages": {
+          "value": ""
+        },
         "stats": {
           "manualMode": false,
           "primaryAttributes": {
@@ -125,7 +129,7 @@
       }
     },
     "character": {
-      "templates": ["stats", "flavor", "currency", "languages"],
+      "templates": ["stats", "flavor", "coinage"],
       "details": {
         "pronoun": ""
       },
@@ -148,6 +152,9 @@
         "value": ""
       },
       "upbringing": {
+        "value": ""
+      },
+      "languages": {
         "value": ""
       },
       "orderAlignment": {
@@ -204,7 +211,7 @@
       }
     },
     "creature": {
-      "templates": ["stats", "flavor", "currency", "non-player", "languages"],
+      "templates": ["stats", "flavor", "coinage", "non-player"],
       "details": {
         "classification": {
           "value": ""
@@ -221,7 +228,7 @@
       }
     },
     "npc": {
-      "templates": ["stats", "flavor", "currency", "non-player", "languages"],
+      "templates": ["stats", "flavor", "coinage", "non-player"],
       "details": {
         "ancestry": {
           "value": ""

@@ -113,8 +113,9 @@ import ZweihanderCreatureSheet from "./creature-sheet";
         hidden: this.actor.limited
       },
       {
-        key: 'languages.value',
-        placeholder: 'Languages',
+        key: 'languages',
+        placeholder: '?',
+        template: 'partials/detail-languages',
         hidden: this.actor.limited
       }
     ];

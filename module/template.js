@@ -47,10 +47,11 @@ export const preloadHandlebarsTemplates = async function () {
     $$('item-summary/uniqueAdvance'),
     $$('partials/items-list'),
     $$('partials/skills-list'),
-    $$('character/coinage'),
+    $$('character/currency'),
     $$('character/encumbrance-meter'),
     $$('character/magick-skill-selector'),
     $$('partials/modded-value'),
-    $$('partials/detail-item-wrapper')
+    $$('partials/detail-item-wrapper'),
+    $$('partials/detail-languages')
   ]);
 };
