@@ -399,7 +399,7 @@ body.game.vtt.system-zweihander .zweihander.sheet.actor {
         overflow: hidden;
         padding: 3px;
         .skill-name {
-          flex: 1 0 124px;
+          flex: 1 0 120px;
           height: 100%;
           overflow: hidden;
           min-width: 0;
@@ -427,7 +427,7 @@ body.game.vtt.system-zweihander .zweihander.sheet.actor {
         .skill-gain {
           color: var(--zh-clr-fg3);
           flex: 0 0 4ex;
-          margin-right: 1ex;
+          margin-right: 1.5ex;
           text-align: right;
         }
         .controls {
