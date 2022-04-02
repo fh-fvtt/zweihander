@@ -193,6 +193,21 @@ export default class ZweihanderCharacterSheet extends ZweihanderBaseActorSheet {
     data.talents = data.talents.filter(talent => talent.isManualSource ||
       data.professions.some(p => p.data.talents.some(t => t.linkedId === talent._id && t.purchased))
     );
+    // filter focuses data
+    data.focuses = data.uniqueAdvances.filter((ua) => ua.data.associatedFocusSkill.value).map((ua) => {
+      const skillName = ua.data.associatedFocusSkill.value;
+
+      if (skillName)
+        return {
+          focusSkill: skillName,
+          focusName: ua.name
+        }
+    });
+
+    data.skills.forEach((skill) => {
+      const focuses = data.focuses.filter((focus) => focus.focusSkill === skill.name).map((focus) => focus.focusName);
+      skill.data.focuses = focuses;
+    });
   }
 
   activateListeners(html) {
@@ -268,7 +283,7 @@ export default class ZweihanderCharacterSheet extends ZweihanderBaseActorSheet {
 
     // Modify numerable value by clicking '+' and '-' buttons on sheet, e.g. quantity, encumbrance 
     const updateNumerable = (i) => async (event) => {
-      const lookup = function (obj, key) {
+      const lookup = (obj, key) => {
         const keys = key.split('.');
         let val = obj;
         for (let key of keys) {
@@ -289,6 +304,23 @@ export default class ZweihanderCharacterSheet extends ZweihanderBaseActorSheet {
 
     html.find('.numerable-field-subtract').click(updateNumerable(-1));
     html.find('.numerable-field-add').click(updateNumerable(1));
+
+    html.find('.focus-indicator').hover(
+      (event) => {
+        const tooltip = $(event.currentTarget).parents('.skill-roll').find('.focus-tooltip').clone();
+        if(!tooltip.length)
+          return;
+
+        const offset = $(event.currentTarget).offset();
+        offset.top -= 20;
+        offset.left += 25;
+        tooltip.addClass('zh-focuses-tooltip-instance');
+        tooltip.offset(offset);
+        $('body').append(tooltip);
+      },
+      (event) => {
+        $('.zh-focuses-tooltip-instance').remove();
+      })
   }
 
   _updateEncumbranceMeter(html) {
