@@ -182,15 +182,16 @@ body.game.vtt.system-zweihander {
       }
     }
     .focus-container {
+      cursor: help;
       position: relative;
       flex: 0 0 14px;
       text-align: center;
-      margin-top: 1px;
+     // margin-top: 1px;
       .focus-tooltip {
         display: none;
       }
       .focus-indicator {
-        color: var(--zh-clr-yellow-neutral);
+        color: var(--zh-clr-yellow-alt);
       }
     }
     .modded-value {
@@ -220,17 +221,18 @@ body.game.vtt.system-zweihander {
   .zh-modded-value-tooltip-instance {
     position: absolute;
     display: block;
-    max-width: 200px;
+    width: 200px;
     // height: 200px;
-    background-color: rgba(var(--zh-clr-bg1-rgb), 0.5);
+    background-color: rgba(var(--zh-clr-bg1-rgb), 1);
     list-style: none;
     padding: 5px;
     border-radius: 5px;
     font-size: 12px;
     color: var(--zh-clr-fg0);
-    border: 2px groove var(--zh-clr-bg2);
+    border: 2px ridge var(--zh-clr-bg2);
     backdrop-filter: blur(2px);
     z-index: calc(var(--z-index-window) + 100);
+    box-shadow: 3px 3px 5px 1px rgba(black, 0.75);
     .modded-value-label {
       color: var(--zh-clr-aqua);
     }
@@ -240,15 +242,16 @@ body.game.vtt.system-zweihander {
     display: block;
     width: 125px;
     // height: 200px;
-    background-color: rgba(var(--zh-clr-bg1-rgb), 0.5);
+    background-color: rgba(var(--zh-clr-bg1-rgb), 1);
     list-style: disc inside;
     padding: 5px;
     border-radius: 5px;
     font-size: 12px;
     color: var(--zh-clr-fg0);
-    border: 2px groove var(--zh-clr-bg2);
+    border: 2px ridge var(--zh-clr-bg2);
     backdrop-filter: blur(2px);
     z-index: calc(var(--z-index-window) + 100);
+    box-shadow: 3px 3px 5px 1px rgba(black, 0.75);
     .focus-tooltip-header {
       color: var(--zh-clr-aqua);
     }

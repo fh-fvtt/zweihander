@@ -118,8 +118,8 @@ export default class ZweihanderBaseActorSheet extends ActorSheet {
       (event) => {
         const tooltip = $(event.currentTarget).find('.modded-value-tooltip').clone();
         const offset = $(event.currentTarget).offset();
-        offset.top -= 22;
-        offset.left += 22;
+        offset.top += 25;
+        offset.left -= (200 / 2) - 8;
         tooltip.addClass('zh-modded-value-tooltip-instance');
         tooltip.offset(offset);
         $('body').append(tooltip);

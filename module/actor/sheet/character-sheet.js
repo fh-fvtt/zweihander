@@ -312,8 +312,8 @@ export default class ZweihanderCharacterSheet extends ZweihanderBaseActorSheet {
           return;
 
         const offset = $(event.currentTarget).offset();
-        offset.top -= 20;
-        offset.left += 25;
+        offset.top += 25;
+        offset.left -= (125 / 2) - 7;
         tooltip.addClass('zh-focuses-tooltip-instance');
         tooltip.offset(offset);
         $('body').append(tooltip);
@@ -339,7 +339,7 @@ export default class ZweihanderCharacterSheet extends ZweihanderBaseActorSheet {
     let buttons = super._getHeaderButtons();
     const canConfigure = game.user.isGM || this.actor.isOwner;
     if (this.options.editable && canConfigure) {
-      buttons.splice(1, 0, {
+      buttons.splice(0, 0, {
         label: 'Actor',
         class: 'configure-actor',
         icon: 'fas fa-user-cog',
