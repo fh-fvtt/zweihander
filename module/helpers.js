@@ -254,7 +254,9 @@ export const registerHandlebarHelpers = async function () {
       );
   });
 
-  $$('zhPrev', (i) => i - 1);
+  $$('zhAdd', (...x) => x.slice(0, -1).reduce((a, b) => {
+    return new Number(a) + new Number(b)
+  }, 0));
 
   $$('zhPrice', (price) => {
     const currencies = game.settings.get('zweihander', 'currencySettings');
