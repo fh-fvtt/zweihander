@@ -46,7 +46,7 @@ async function renderConfigurationDialog(testType, label, testConfiguration = {}
     { value: 20, label: "Two Steps (2d6 Chaos Dice)" },
     { value: 30, label: "Three Steps (3d6 Chaos Dice)" },
   ].map(option => ({ selected: (testConfiguration.channelPowerBonus ?? '0') === option.value ? 'selected' : '', ...option }));
-  return createConfigurationDialog(label, '/systems/zweihander/templates/app/test-config.hbs', templateData, (resolve) => (html) => {
+  return createConfigurationDialog(label, 'systems/zweihander/templates/app/test-config.hbs', templateData, (resolve) => (html) => {
     let additionalFuryDice = Number(html.find('[name="extraFury"]').val()) || 0;
     let additionalChaosDice = Number(html.find('[name="extraChaos"]').val()) || 0;
     let difficultyRating = Number(html.find('[name="difficultyRatingSelect"]').val());

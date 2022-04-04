@@ -108,7 +108,7 @@ ZWEI.replacedDefaultCoreIcons = [
     'icons/svg/item-bag.svg'
 ];
 
-const d = "/systems/zweihander/assets/icons";
+const d = "systems/zweihander/assets/icons";
 ZWEI.defaultItemIcons = {
     "_default": `${d}/swap-bag.svg`,
     "trapping": `${d}/swap-bag.svg`,

@@ -84,9 +84,9 @@ Hooks.once("init", async function () {
     formula: "1d10 + @stats.secondaryAttributes.initiative.value",
     decimals: 2
   };
-  CONFIG.TinyMCE.skin_url = '/systems/zweihander/tinymce/skins/ui/zweihander';
+  CONFIG.TinyMCE.skin_url = 'systems/zweihander/tinymce/skins/ui/zweihander';
   CONFIG.TinyMCE.skin = 'zweihander';
-  CONFIG.TinyMCE.content_css = ['/css/mce.css', '/systems/zweihander/tinymce/skins/content/zweihander/content.css'];
+  CONFIG.TinyMCE.content_css = ['/css/mce.css', 'systems/zweihander/tinymce/skins/content/zweihander/content.css'];
   CONFIG.statusEffects = [
     {
       id: "dead",
