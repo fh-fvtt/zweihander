@@ -144,9 +144,15 @@ const migrateCompendium = async (pack) => {
 const migrateFieldFactory = (documentDataObject, update) => (oldKey, newKey, del = false, transform = false) => {
   oldKey = `data.${oldKey}`;
   newKey = `data.${newKey}`;
-  const updateVal = getProperty(documentDataObject, oldKey);
-  update[newKey] = transform ? transform(updateVal, documentDataObject) : updateVal;
-  if (hasProperty(documentDataObject, oldKey)) {
+  let hasOldKey;
+  try {
+    hasOldKey = hasProperty(documentDataObject, oldKey);
+  } catch (e) {
+    hasOldKey = false;
+  }
+  if (hasOldKey) {  
+    const updateVal = getProperty(documentDataObject, oldKey);
+    update[newKey] = transform ? transform(updateVal, documentDataObject) : updateVal;
     if (del) {
       update[`.-=${(typeof del == "string") ? `data.${del}` : oldKey}`] = null;
     }
@@ -164,6 +170,45 @@ const migrateActorData = async (actor) => {
     migrateField('coinage.gold', 'currency.gc');
     migrateField('coinage.silver', 'currency.ss');
     migrateField('coinage.brass', 'currency.bp', 'coinage');
+    // details
+    migrateField('details.socialClass.value', 'details.socialClass', 'details.socialClass');
+    migrateField('socialClass.value', 'details.socialClass', 'socialClass');
+    migrateField('seasonOfBirth.value', 'details.seasonOfBirth', 'seasonOfBirth');
+    migrateField('dooming.value', 'details.dooming', 'dooming');
+    migrateField('distinguishingMarks.value', 'details.distinguishingMarks', 'distinguishingMarks');
+    migrateField('details.distinguishingMarks.value', 'details.distinguishingMarks', 'details.distinguishingMarks');
+    migrateField('upbringing.value', 'details.upbringing', 'upbringing');
+    migrateField('orderAlignment.value', 'alignment.order.name', 'orderAlignment');
+    migrateField('chaosAlignment.value', 'alignment.chaos.name', 'chaosAlignment');
+    migrateField('orderRanks.value', 'alignment.order.rank', 'orderRanks');
+    migrateField('chaosRanks.value', 'alignment.chaos.rank', 'chaosRanks');
+    migrateField('corruption.value', 'alignment.corruption', 'corruption');
+    migrateField('physical.age.value', 'details.age');
+    migrateField('physical.sex.value', 'details.sex');
+    migrateField('physical.height.value', 'details.height');
+    migrateField('physical.weight.value', 'details.weight');
+    migrateField('physical.hairColor.value', 'details.hairColor');
+    migrateField('physical.eyeColor.value', 'details.eyeColor');
+    migrateField('physical.complexion.value', 'details.complexion');
+    migrateField('physical.buildType.value', 'details.buildType', 'physical');
+    migrateField('fate.value', 'stats.fate', 'fate');
+    migrateField('reputation.value', 'stats.reputation', 'reputation');
+    migrateField('rewardPoints', 'stats.rewardPoints');
+    migrateField('details.classification.value', 'details.classification', 'details.classification');
+    migrateField('details.size.value', 'details.size', 'details.size');
+    migrateField('details.role.value', 'details.role', 'details.role');
+    migrateField('details.influences.value', 'details.influences', 'details.influences');
+    migrateField('details.ancestry.value', 'details.ancestry', 'details.ancestry');
+    migrateField('details.archetype.value', 'details.archetype', 'details.archetype');
+    migrateField('details.age.value', 'details.age', 'details.age');
+    migrateField('details.sex.value', 'details.sex', 'details.sex');
+    migrateField('details.height.value', 'details.height', 'details.height');
+    migrateField('details.build.value', 'details.build', 'details.build');
+    migrateField('details.complexion.value', 'details.complexion', 'details.complexion');
+    migrateField('details.persona.value', 'details.persona', 'details.persona');
+    migrateField('details.motivation.value', 'details.motivation', 'details.motivation');
+    migrateField('details.alignment.value', 'details.alignment', 'details.alignment');
+    migrateField('details.mannerOfDress.value', 'details.mannerOfDress', 'details.mannerOfDress');
     // languages
     migrateField('languages.value', 'languages', true, (x) =>
       x.split(',').map(y => ({ name: y.split('(')[0].trim(), isLiterate: y.match(/\(\s*literate\s*\)/i) !== null }))

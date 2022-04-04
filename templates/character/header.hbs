@@ -11,71 +11,44 @@
       <aside class="character-rp flexcol">
         <label class="rp-title"> Reward Points</label>
         <div class="rp-content flexrow">
-          <input class="rp-spent" type="number" name="data.rewardPoints.current" value="{{data.rewardPoints.current}}"
-            {{#rpSettingOn}} readonly {{else}} {{/rpSettingOn}} />
+          <input class="rp-spent" type="number" name="data.stats.rewardPoints.current"
+            value="{{data.stats.rewardPoints.current}}" {{#rpSettingOn}} readonly {{else}} {{/rpSettingOn}} />
           <span class="sep">/</span>
-          <input class="rp-gained" type="number" name="data.rewardPoints.total" value="{{data.rewardPoints.total}}" />
+          <input class="rp-gained" type="number" name="data.stats.rewardPoints.total"
+            value="{{data.stats.rewardPoints.total}}" />
         </div>
         <div class="rp-other-pts flexrow">
           <span class="sep">Fate </span>
-          <input class="rp-fate" type="number" name="data.fate.value" value="{{data.fate.value}}" />
+          <input class="rp-fate" type="number" name="data.stats.fate" value="{{data.stats.fate}}" />
           <span class="sep">Rep. </span>
-          <input class="rp-rep" type="number" name="data.reputation.value" value="{{data.reputation.value}}" />
+          <input class="rp-rep" type="number" name="data.stats.reputation" value="{{data.stats.reputation}}" />
         </div>
       </aside>
       {{/unless}}
     </header>
-    <aside class="details">
-      <ul>
-        {{#each details as | detail | }}
-        {{#unless detail.hidden}}
-        <li>
-          {{#if detail.prefix}}
-          <span class="prefix">{{detail.prefix}}</span>
-          {{/if}}
-          {{#if detail.choices}}
-          <select name="data.{{detail.key}}">
-            {{#each detail.choices}}
-            <option value="{{value}}" {{selected}}>{{label}}</option>
-            {{/each}}
-          </select>
-          {{else if detail.template}}
-          {{> ($$ detail.template) detail}}
-          {{else}}
-          <input type="text" class="auto-size" {{#unless detail.value}}name="data.{{detail.key}}" {{/unless}}
-            placeholder="{{detail.placeholder}}"
-            value="{{#if detail.key}}{{zhLookup ../data detail.key}}{{else}}{{detail.value}}{{/if}}" {{#unless
-            detail.key}}disabled="disabled" {{/unless}} />
-          {{/if}}
-          {{#if detail.postfix}}
-          <span class="postfix">{{detail.postfix}}</span>
-          {{/if}}
-        </li>
-        {{/unless}}
-        {{/each}}
-      </ul>
-    </aside>
+    {{> ($$ 'partials/details-list') }}
     {{#unless limited}}
     <div class="empty-placeholder"></div>
-    <input class="character-dooming" name="data.dooming.value" type="text" value="{{data.dooming.value}}"
+    <input class="character-dooming" name="data.details.dooming" type="text" value="{{data.details.dooming}}"
       placeholder="Dooming" />
     <section class="alignment-header">
-      <input class="order-title" name="data.orderAlignment.value" type="text" value="{{data.orderAlignment.value}}"
+      <input class="order-title" name="data.alignment.order.name" type="text" value="{{data.alignment.order.name}}"
         placeholder="Order Alignment" />
       <h1>Corruption
         <a class="reset-ranks"><i class="fas fa-sync-alt"></i></a>
       </h1>
-      <input class="chaos-title" name="data.chaosAlignment.value" type="text" value="{{data.chaosAlignment.value}}"
+      <input class="chaos-title" name="data.alignment.chaos.name" type="text" value="{{data.alignment.chaos.name}}"
         placeholder="Chaos Alignment" />
     </section>
     <section class="alignment-content">
       <section class="order-track">
-        {{radioRanks "data.orderRanks.value" config.alignmentRanks actorConfig.permanentOrderRanks checked=data.orderRanks.value}}
+        {{radioRanks "data.alignment.order.rank" config.alignmentRanks actorConfig.permanentOrderRanks
+        checked=data.alignment.order.rank}}
       </section>
-      <input class="corruption" name="data.corruption.value" type="number" value="{{data.corruption.value}}" />
+      <input class="corruption" name="data.alignment.corruption" type="number" value="{{data.alignment.corruption}}">
       <section class="chaos-track">
-        {{radioRanks "data.chaosRanks.value" config.alignmentRanks actorConfig.permanentChaosRanks
-        checked=data.chaosRanks.value}}
+        {{radioRanks "data.alignment.chaos.rank" config.alignmentRanks actorConfig.permanentChaosRanks
+        checked=data.alignment.chaos.rank}}
       </section>
     </section>
     {{/unless}}

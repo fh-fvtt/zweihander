@@ -53,6 +53,8 @@ export const preloadHandlebarsTemplates = async function () {
     $$('partials/modded-value'),
     $$('partials/focuses-list'),
     $$('partials/detail-item-wrapper'),
-    $$('partials/detail-languages')
+    $$('partials/detail-languages'),
+    $$('partials/detail-risk-factor'),
+    $$('partials/details-list')
   ]);
 };

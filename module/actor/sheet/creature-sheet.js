@@ -35,7 +35,7 @@ export default class ZweihanderCreatureSheet extends ZweihanderBaseActorSheet {
   getData(options) {
     const sheetData = super.getData();
     sheetData.choices = {};
-    const size = sheetData.data.details.size?.value ?? 1;
+    const size = sheetData.data.details.size ?? 1;
     sheetData.choices.sizes = selectedChoice(size, [
       { value: 0, label: 'Small (S)' },
       { value: 1, label: 'Normal (N)' },
@@ -56,31 +56,37 @@ export default class ZweihanderCreatureSheet extends ZweihanderBaseActorSheet {
       { value: 2, label: '(High)' },
       { value: 3, label: '(Unique)' },
     ]);
+    const hidden = this.actor.limited;
     sheetData.details = [
       {
-        key: 'details.size.value',
+        choices: sheetData.choices,
+        template: 'partials/detail-risk-factor',
+        hidden
+      },
+      {
+        key: 'details.size',
         choices: sheetData.choices.sizes
       },
       {
-        key: 'details.classification.value',
+        key: 'details.classification',
         placeholder: 'Classification',
-        hidden: this.actor.limited
+        hidden
       },
       {
-        key: 'details.role.value',
+        key: 'details.role',
         placeholder: 'Role',
-        hidden: this.actor.limited
+        hidden
       },
       {
-        key: 'details.influences.value',
+        key: 'details.influences',
         placeholder: 'Influences',
-        hidden: this.actor.limited
+        hidden
       },
       {
         value: sheetData.data.languages,
         placeholder: '?',
         template: 'partials/detail-languages',
-        hidden: this.actor.limited
+        hidden
       }
     ];
 

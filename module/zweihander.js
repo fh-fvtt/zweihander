@@ -17,7 +17,6 @@ import { registerSystemSettings } from "./settings";
 import { preloadHandlebarsTemplates } from "./template";
 import { registerHandlebarHelpers } from "./helpers";
 import { migrateWorldSafe, migrateWorld } from "./migration"
-import { migrateFlames } from "./misc/flames-migration";
 import { rollTest } from "./dice";
 import { getTestConfiguration } from "./apps/test-config";
 
@@ -72,8 +71,7 @@ Hooks.once("init", async function () {
     ZweihanderActor,
     ZweihanderItem,
     utils: ZweihanderUtils,
-    migrateWorld,
-    migrateFlames
+    migrateWorld
   };
   CONFIG.ChatMessage.template = "systems/zweihander/templates/chat/chat-message.hbs";
   /**

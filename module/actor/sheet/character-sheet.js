@@ -61,7 +61,7 @@ export default class ZweihanderCharacterSheet extends ZweihanderBaseActorSheet {
     const pronoun = sheetData.data.details.pronoun || '?';
     sheetData.details = [
       {
-        key: 'physical.age.value',
+        key: 'details.age',
         placeholder: 'Age Group',
         prefix: 'is a(n)'
       },
@@ -83,18 +83,18 @@ export default class ZweihanderCharacterSheet extends ZweihanderBaseActorSheet {
       },
       {
         prefix: 'of the',
-        key: 'socialClass.value',
+        key: 'details.socialClass',
         placeholder: '?',
         postfix: 'social class.',
         hidden
       },
       {
-        key: 'physical.height.value',
+        key: 'details.height',
         placeholder: '?',
         postfix: 'ft tall and'
       },
       {
-        key: 'physical.weight.value',
+        key: 'details.weight',
         placeholder: '?',
         postfix: 'lbs heavy,'
       },
@@ -105,41 +105,41 @@ export default class ZweihanderCharacterSheet extends ZweihanderBaseActorSheet {
       },
       {
         prefix: 'of a',
-        key: 'physical.buildType.value',
+        key: 'details.buildType',
         placeholder: '?',
         postfix: `build for a(n) ${ancestry ?? '?'}.`
       },
       {
         prefix: `${pronoun.capitalize()} has/have`,
-        key: 'physical.hairColor.value',
+        key: 'details.hairColor',
         placeholder: '?',
         postfix: 'hair,'
       },
       {
 
-        key: 'physical.eyeColor.value',
+        key: 'details.eyeColor',
         placeholder: '?',
         postfix: 'eyes,'
       },
       {
-        key: 'physical.complexion.value',
+        key: 'details.complexion',
         placeholder: '?',
         postfix: 'skin &'
       },
       {
-        key: 'physical.distinguishingMarks.value',
+        key: 'details.distinguishingMarks',
         placeholder: 'Distinguishing Marks',
         postfix: '.'
       },
       {
         prefix: 'Born in',
-        key: 'seasonOfBirth.value',
+        key: 'details.seasonOfBirth',
         placeholder: '?',
         hidden
       },
       {
         prefix: `${pronoun} is/are of a(n)`,
-        key: 'upbringing.value',
+        key: 'details.upbringing',
         placeholder: '?',
         hidden,
         postfix: `upbringing`

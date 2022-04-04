@@ -19,50 +19,7 @@
     </section>
     {{/unless}}
   </header>
-  <aside class="details">
-    <ul>
-      {{#unless limited}}
-      <li class="risk-factor">
-        <select class="risk-factor-value" name="data.details.riskFactor.value">
-          {{#each choices.riskFactors}}
-          <option value="{{value}}" {{selected}}>{{label}}</option>
-          {{/each}}
-        </select>
-        <select class="risk-factor-notch" name="data.details.riskFactor.notch">
-          {{#each choices.notches}}
-          <option value="{{value}}" {{selected}}>{{label}}</option>
-          {{/each}}
-        </select>
-      </li>
-      {{/unless}}
-      {{#each details as | detail | }}
-      {{#unless detail.hidden}}
-      <li>
-        {{#if detail.prefix}}
-        <span class="prefix">{{detail.prefix}}</span>
-        {{/if}}
-        {{#if detail.choices}}
-        <select name="data.{{detail.key}}">
-          {{#each detail.choices}}
-          <option value="{{value}}" {{selected}}>{{label}}</option>
-          {{/each}}
-        </select>
-        {{else if detail.template}}
-        {{> ($$ detail.template) detail}}
-        {{else}}
-        <input type="text" class="auto-size" {{#unless detail.value}}name="data.{{detail.key}}" {{/unless}}
-          placeholder="{{detail.placeholder}}"
-          value="{{#if detail.key}}{{zhLookup ../data detail.key}}{{else}}{{detail.value}}{{/if}}" {{#unless
-          detail.key}}disabled="disabled" {{/unless}} />
-        {{/if}}
-        {{#if detail.postfix}}
-        <span class="postfix">{{detail.postfix}}</span>
-        {{/if}}
-      </li>
-      {{/unless}}
-      {{/each}}
-    </ul>
-  </aside>
+  {{> ($$ 'partials/details-list') }}
   {{#unless limited}}
   <section class="sheet-body">
     <section class="stats flexcol">

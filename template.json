@@ -127,141 +127,69 @@
     "character": {
       "templates": ["stats", "flavor", "currency", "languages"],
       "details": {
-        "pronoun": ""
+        "pronoun": "",
+        "socialClass": "",
+        "seasonOfBirth": "",
+        "dooming": "",
+        "distinguishingMarks": "",
+        "upbringing": "",
+        "age": "",
+        "sex": "",
+        "height": "",
+        "weight": "",
+        "hairColor": "",
+        "eyeColor": "",
+        "complexion": "",
+        "buildType": ""
       },
-      "socialClass": {
-        "value": ""
+      "stats": {
+        "fate": 0,
+        "reputation": 0,
+        "rewardPoints": {
+          "current": 1000,
+          "total": 1000,
+          "spent": 0
+        }
       },
-      "archetype": {
-        "value": ""
-      },
-      "profession": {
-        "value": ""
-      },
-      "seasonOfBirth": {
-        "value": ""
-      },
-      "dooming": {
-        "value": ""
-      },
-      "distinguishingMarks": {
-        "value": ""
-      },
-      "upbringing": {
-        "value": ""
-      },
-      "orderAlignment": {
-        "value": ""
-      },
-      "chaosAlignment": {
-        "value": ""
-      },
-      "fate": {
-        "value": 0
-      },
-      "reputation": {
-        "value": 0
-      },
-      "rewardPoints": {
-        "current": 1000,
-        "total": 1000,
-        "spent": 0
-      },
-      "corruption": {
-        "value": 0
-      },
-      "orderRanks": {
-        "value": 0
-      },
-      "chaosRanks": {
-        "value": 0
-      },
-      "physical": {
-        "age": {
-          "value": ""
+      "alignment": {
+        "corruption": 0,
+        "order": {
+          "rank": 0,
+          "name": "",
+          "description": ""
         },
-        "sex": {
-          "value": ""
-        },
-        "height": {
-          "value": ""
-        },
-        "weight": {
-          "value": ""
-        },
-        "hairColor": {
-          "value": ""
-        },
-        "eyeColor": {
-          "value": ""
-        },
-        "complexion": {
-          "value": ""
-        },
-        "buildType": {
-          "value": ""
+        "chaos": {
+          "rank": 0,
+          "name": "",
+          "description": ""
         }
       }
     },
     "creature": {
       "templates": ["stats", "flavor", "currency", "non-player", "languages"],
       "details": {
-        "classification": {
-          "value": ""
-        },
-        "size": {
-          "value": 0
-        },
-        "role": {
-          "value": ""
-        },
-        "influences": {
-          "value": ""
-        }
+        "classification":  "",
+        "size": 0,
+        "role": "",
+        "influences": ""
       }
     },
     "npc": {
       "templates": ["stats", "flavor", "currency", "non-player", "languages"],
       "details": {
-        "ancestry": {
-          "value": ""
-        },
-        "archetype": {
-          "value": ""
-        },
-        "age": {
-          "value": ""
-        },
-        "sex": {
-          "value": ""
-        },
-        "height": {
-          "value": ""
-        },
-        "build": {
-          "value": ""
-        },
-        "distinguishingMarks": {
-          "value": ""
-        },
-        "complexion": {
-          "value": ""
-        },
-        "socialClass": {
-          "value": ""
-        },
-        "persona": {
-          "value": ""
-        },
-        "motivation": {
-          "value": ""
-        },
-        "alignment": {
-          "value": ""
-        },
-        "mannerOfDress": {
-          "value": ""
-        }
+        "ancestry": "",
+        "archetype": "",
+        "age": "",
+        "sex": "",
+        "height": "",
+        "build": "",
+        "distinguishingMarks": "",
+        "complexion": "",
+        "socialClass": "",
+        "persona": "",
+        "motivation": "",
+        "alignment": "",
+        "mannerOfDress": ""
       }
     }
   },
