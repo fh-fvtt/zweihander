@@ -23,12 +23,12 @@
     <div class="tab background flexcol" data-group="primary" data-tab="details">
       <div>
         <h4 class="block-title">Biography</h4>
-        {{editor content=data.flavor.description target="data.flavor.description" button=true owner=owner
+        {{editor content=data.description.@en target="data.description.@en" button=true owner=owner
         editable=editable rollData=rollData}}
       </div>
       <div>
         <h4 class="block-title">Character Notes</h4>
-        {{editor content=data.flavor.notes target="data.flavor.notes" button=true owner=owner editable=editable
+        {{editor content=data.notes target="data.notes" button=true owner=owner editable=editable
         rollData=rollData}}
       </div>
     </div>

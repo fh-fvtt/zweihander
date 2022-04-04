@@ -213,7 +213,9 @@ const migrateActorData = async (actor) => {
     migrateField('languages.value', 'languages', true, (x) =>
       x.split(',').map(y => ({ name: y.split('(')[0].trim(), isLiterate: y.match(/\(\s*literate\s*\)/i) !== null }))
     );
-    // 
+    // flavor
+    migrateField('flavor.description', 'description.@en');
+    migrateField('flavor.notes', 'notes', 'flavor');
   }
   // Migrate Owned Items
   if (!actor.items) return update;
@@ -266,7 +268,7 @@ const migrateIcons = (document) => {
 export const migrateWorldSafe = async () => {
   if (!game.user.isGM) return;
   const currentVersion = game.settings.get("zweihander", "systemMigrationVersion");
-  const NEEDS_MIGRATION_VERSION = "4.2.3";
+  const NEEDS_MIGRATION_VERSION = "4.2.3-beta1e";
   const COMPATIBLE_MIGRATION_VERSION = "0.3.30";
   const totalDocuments = game.actors.size + game.scenes.size + game.items.size;
   if (!currentVersion && totalDocuments === 0) return game.settings.set("zweihander", "systemMigrationVersion", game.system.data.version);

@@ -168,7 +168,7 @@
     "creature": {
       "templates": ["stats", "flavor", "currency", "non-player", "languages"],
       "details": {
-        "classification":  "",
+        "classification": "",
         "size": 0,
         "role": "",
         "influences": ""
@@ -216,39 +216,30 @@
     ],
     "templates": {
       "flavor": {
-        "flavor": {
-          "description": "",
-          "notes": ""
-        }
+        "description": {
+          "@en": ""
+        },
+        "notes": ""
       },
       "references": {
-        "references": [
-          {
-            "book": "",
-            "page": 0,
-            "url": ""
-          }
-        ]
+        "references": []
       },
-      "price": {
-        "price": {
-          "gc": 0,
-          "ss": 0,
-          "bp": 0
+      "trapping": {
+        "price": {},
+        "encumbrance": {
+          "value": 0
         }
       },
-      "encumbrance": {
-        "encumbrance": {
-          "base": 0,
-          "value": 0
+      "effect": {
+        "rules": {
+          "effect": {
+            "@en": ""
+          }
         }
       }
     },
     "quality": {
-      "templates": ["flavor"],
-      "effect": {
-        "value": ""
-      }
+      "templates": ["flavor", "effect"]
     },
     "ancestry": {
       "templates": ["flavor"],
@@ -262,19 +253,13 @@
       }
     },
     "drawback": {
-      "templates": ["flavor"],
-      "effect": {
-        "value": ""
-      }
+      "templates": ["flavor", "effect"]
     },
     "trait": {
-      "templates": ["flavor"],
-      "effect": {
-        "value": ""
-      }
+      "templates": ["flavor", "effect"]
     },
     "weapon": {
-      "templates": ["flavor", "price", "encumbrance"],
+      "templates": ["flavor", "trapping"],
       "type": {
         "value": "Bladed"
       },
@@ -297,7 +282,7 @@
       }
     },
     "armor": {
-      "templates": ["flavor", "price", "encumbrance"],
+      "templates": ["flavor", "trapping"],
       "equipped": true,
       "qualities": {
         "value": "",
@@ -308,7 +293,7 @@
       }
     },
     "trapping": {
-      "templates": ["flavor", "price", "encumbrance"],
+      "templates": ["flavor", "trapping"],
       "category": {
         "value": ""
       },
@@ -346,7 +331,7 @@
       }
     },
     "spell": {
-      "templates": ["flavor"],
+      "templates": ["flavor", "effect"],
       "tradition": {
         "value": ""
       },
@@ -366,14 +351,17 @@
         "value": "1 min",
         "ap": 0
       },
-      "effect": {
-        "value": "",
-        "criticalSuccess": "",
-        "criticalFailure": ""
+      "rules": {
+        "criticalSuccess": {
+          "@en": ""
+        },
+        "criticalFailure": {
+          "@en": ""
+        }
       }
     },
     "ritual": {
-      "templates": ["flavor"],
+      "templates": ["flavor", "effect"],
       "difficulty": {
         "value": ""
       },
@@ -391,9 +379,6 @@
       },
       "castingTime": {
         "value": ""
-      },
-      "effect": {
-        "value": ""
       }
     },
     "skill": {
@@ -404,11 +389,7 @@
       }
     },
     "talent": {
-      "templates": ["flavor"],
-      "effect": {
-        "value": ""
-      },
-      "purchased": false
+      "templates": ["flavor", "effect"]
     },
     "uniqueAdvance": {
       "templates": ["flavor"],
@@ -423,14 +404,11 @@
       }
     },
     "disease": {
-      "templates": ["flavor"],
+      "templates": ["flavor", "effect"],
       "resist": {
         "value": ""
       },
       "duration": {
-        "value": ""
-      },
-      "effect": {
         "value": ""
       },
       "treatment": {
@@ -439,44 +417,29 @@
       "active": false
     },
     "disorder": {
-      "templates": ["flavor"],
+      "templates": ["flavor", "effect"],
       "category": {
-        "value": ""
-      },
-      "effect": {
         "value": ""
       },
       "active": false
     },
     "taint": {
-      "templates": ["flavor"],
+      "templates": ["flavor", "effect"],
       "category": {
-        "value": ""
-      },
-      "effect": {
         "value": ""
       },
       "active": false
     },
     "injury": {
-      "templates": ["flavor"],
+      "templates": ["flavor", "effect"],
       "severity": {
-        "value": ""
-      },
-      "effect": {
         "value": ""
       },
       "active": false
     },
     "condition": {
-      "templates": ["flavor"],
+      "templates": ["flavor", "effect"],
       "category": {
-        "value": ""
-      },
-      "test": {
-        "templates": ["flavor"]
-      },
-      "effect": {
         "value": ""
       },
       "active": false
