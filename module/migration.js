@@ -154,7 +154,7 @@ const migrateFieldFactory = (documentDataObject, update) => (oldKey, newKey, del
     const updateVal = getProperty(documentDataObject, oldKey);
     update[newKey] = transform ? transform(updateVal, documentDataObject) : updateVal;
     if (del) {
-      update[`.-=${(typeof del == "string") ? `data.${del}` : oldKey}`] = null;
+      update[(typeof del == "string") ? `data.-=${del}` : `-=${oldKey}`] = null;
     }
   }
 }
@@ -175,7 +175,7 @@ const migrateActorData = async (actor) => {
     migrateField('socialClass.value', 'details.socialClass', 'socialClass');
     migrateField('seasonOfBirth.value', 'details.seasonOfBirth', 'seasonOfBirth');
     migrateField('dooming.value', 'details.dooming', 'dooming');
-    migrateField('distinguishingMarks.value', 'details.distinguishingMarks', 'distinguishingMarks');
+    migrateField('physical.distinguishingMarks.value', 'details.distinguishingMarks');
     migrateField('details.distinguishingMarks.value', 'details.distinguishingMarks', 'details.distinguishingMarks');
     migrateField('upbringing.value', 'details.upbringing', 'upbringing');
     migrateField('orderAlignment.value', 'alignment.order.name', 'orderAlignment');
@@ -193,7 +193,7 @@ const migrateActorData = async (actor) => {
     migrateField('physical.buildType.value', 'details.buildType', 'physical');
     migrateField('fate.value', 'stats.fate', 'fate');
     migrateField('reputation.value', 'stats.reputation', 'reputation');
-    migrateField('rewardPoints', 'stats.rewardPoints');
+    migrateField('rewardPoints', 'stats.rewardPoints', 'rewardPoints');
     migrateField('details.classification.value', 'details.classification', 'details.classification');
     migrateField('details.size.value', 'details.size', 'details.size');
     migrateField('details.role.value', 'details.role', 'details.role');

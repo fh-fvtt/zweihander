@@ -49,11 +49,11 @@ export default class ZweihanderCharacterSheet extends ZweihanderBaseActorSheet {
         "Intermediate": 200,
         "Advanced": 300
       }
-      sheetData.data.rewardPoints.spent = sheetData.professions
+      sheetData.data.stats.rewardPoints.spent = sheetData.professions
         .map(profession => tierMultiplier[profession.data.tier.value] * profession.data.tier.advancesPurchased)
         .concat(sheetData.uniqueAdvances.map(advance => advance.data.rewardPointCost.value))
         .reduce((a, b) => a + b, 0);
-      sheetData.data.rewardPoints.current = sheetData.data.rewardPoints.total - sheetData.data.rewardPoints.spent;
+      sheetData.data.stats.rewardPoints.current = sheetData.data.stats.rewardPoints.total - sheetData.data.stats.rewardPoints.spent;
     }
     attachTabDefinitions(sheetData);
     const hidden = this.actor.limited;
