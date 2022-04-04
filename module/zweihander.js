@@ -17,7 +17,7 @@ import { registerSystemSettings } from "./settings";
 import { preloadHandlebarsTemplates } from "./template";
 import { registerHandlebarHelpers } from "./helpers";
 import { migrateWorldSafe, migrateWorld } from "./migration"
-import { rollTest } from "./dice";
+import { rollTest, ZweihanderDie } from "./dice";
 import { getTestConfiguration } from "./apps/test-config";
 
 import { ZWEI } from "./config.js";
@@ -69,7 +69,6 @@ Hooks.once("diceSoNiceReady", function () {
   // Dice so Nice integration
   game?.dice3d?.addSFXTrigger?.("zh-outcome", "Zweihander d100", ["Critical Failure", "Failure", "Success", "Critical Success"]);
 })
-
 
 Hooks.once("init", async function () {
   // CONFIG.debug.hooks = true;
@@ -168,6 +167,8 @@ Hooks.once("init", async function () {
   // Define custom Document classes
   CONFIG.Actor.documentClass = ZweihanderActor;
   CONFIG.Item.documentClass = ZweihanderItem;
+  CONFIG.Dice.types = [ ZweihanderDie ];
+  CONFIG.Dice.terms.d = ZweihanderDie;
   // Register sheet application classes
   Actors.unregisterSheet("core", ActorSheet);
   Actors.registerSheet("zweihander", ZweihanderCharacterSheet, { "types": ["character"], makeDefault: true });

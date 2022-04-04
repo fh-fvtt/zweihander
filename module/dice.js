@@ -27,15 +27,15 @@ export async function rollPeril(perilType, actor) {
   const resolveSkill = actor.items.find(i => i.type === 'skill' && i.name === 'Resolve');
   const { outcome } = await rollTest(
     resolveSkill, 'skill', {
-      difficultyRating: perilType.difficultyRating,
-      flavor: `Is trying to surpress their ${perilType.title}`,
-      perilType
-    },
+    difficultyRating: perilType.difficultyRating,
+    flavor: `Is trying to surpress their ${perilType.title}`,
+    perilType
+  },
     { showDialog: true }
   );
   if (!isSuccess(outcome)) {
     const roll = new Roll(`${perilType.x}d10+${perilType.x}`);
-    const speaker = ChatMessage.getSpeaker({actor: actor});
+    const speaker = ChatMessage.getSpeaker({ actor: actor });
     roll.toMessage({ flavor: `Is rolling for peril due to ${perilType.title}`, speaker });
   }
 }
@@ -111,7 +111,7 @@ export async function rollTest(skillItem, testType = 'skill', testConfiguration 
   let tensDie = Math.floor(effectiveResult / 10);
   tensDie = tensDie === 0 ? 10 : tensDie;
   const primaryAttributeBonus = actor.data.data.stats.primaryAttributes[primaryAttribute.toLowerCase()].bonus;
-  const crbDegreesOfSuccess = effectiveOutcome < 2 ? 0 : `${tensDie} + ${primaryAttributeBonus} [${primaryAttribute[0]}B] = ${tensDie+primaryAttributeBonus}`;
+  const crbDegreesOfSuccess = effectiveOutcome < 2 ? 0 : `${tensDie} + ${primaryAttributeBonus} [${primaryAttribute[0]}B] = ${tensDie + primaryAttributeBonus}`;
   // const starterKitDegreesOfSuccess = effectiveOutcome < 2 ? 0 : 100 - (totalChance - effectiveResult);
   const templateData = {
     itemId: skillItem.id,
@@ -216,9 +216,9 @@ export async function rollWeaponDamage(actorId, testConfiguration) {
 
 async function getWeaponDamageContent(weapon, roll, exploded = false) {
   weapon.data.qualities = await ZweihanderQuality.getQualities(weapon.data.qualities.value);
-  const rollContent = await roll.render({flavor: 'Fury Die'});
+  const rollContent = await roll.render({ flavor: 'Fury Die' });
   const cardContent = await renderTemplate('systems/zweihander/templates/item-card/item-card-weapon.hbs', weapon);
-  return await renderTemplate(CONFIG.ZWEI.templates.weapon,  { cardContent, rollContent, exploded, weapon });
+  return await renderTemplate(CONFIG.ZWEI.templates.weapon, { cardContent, rollContent, exploded, weapon });
 }
 
 export async function explodeWeaponDamage(message, useFortune) {
@@ -243,10 +243,10 @@ export async function explodeWeaponDamage(message, useFortune) {
     const explodingRoll = await (new Roll(formula)).evaluate();
     setTimeout(() => game?.dice3d?.showForRoll?.(explodingRoll, game.user, true), 1500);
     const results = dice.results;
-    const minimumResult = Math.min(...results.map(r => r.result));
+    const minimumResult = Math.min(...results.filter(x => !x.exploded).map(r => r.result));
     const minimumResultIndex = results.findIndex(r => r.result === minimumResult);
     const updatedTotal = roll._total - minimumResult + 6 + explodingRoll.total;
-    results.splice(minimumResultIndex, 1, {result: 6, active: true, exploded: true}, ...explodingRoll.terms[0].results);
+    results.splice(minimumResultIndex, 1, { result: 6, active: true, exploded: true }, ...explodingRoll.terms[0].results);
     roll._total = updatedTotal;
   }
   const content = await getWeaponDamageContent(weapon, roll, useFortune);
@@ -381,4 +381,119 @@ function getResultOutcome(score, totalChance, match) {
 
 function outcomeLabel(outcome) {
   return ["Critical Failure", "Failure", "Success", "Critical Success"][outcome];
+}
+
+export class ZweihanderDie extends Die {
+  explode(modifier, { recursive = true } = {}) {
+    // Match the explode or "explode once" modifier
+    const rgx = /xo?([0-9,]+)?([<>=]+)?([0-9,]+)?/i;
+    const match = modifier.match(rgx);
+    if (!match) return false;
+    let [max, comparison, target] = match.slice(1);
+
+    // If no comparison or target are provided, treat the max as the target value
+    if (max && !(target || comparison)) {
+      target = max;
+      max = null;
+    }
+    const targets = target.split(',').map(target => Number.isNumeric(target) ? parseInt(target) : this.faces);
+    // Determine target values
+    comparison = comparison || "=";
+
+    // Determine the number of allowed explosions
+    max = Number.isNumeric(max) ? parseInt(max) : (recursive ? null : 1);
+
+    // Recursively explode until there are no remaining results to explode
+    let checked = 0;
+    let initial = this.results.length;
+    while (checked < this.results.length) {
+      let r = this.results[checked];
+      checked++;
+      if (!r.active) continue;
+
+      // Maybe we have run out of explosions
+      if ((max !== null) && (max <= 0)) break;
+
+      // Determine whether to explode the result and roll again!
+      if (targets.some(target => DiceTerm.compareResult(r.result, comparison, target))) {
+        r.exploded = true;
+        this.roll();
+        if (max !== null) max -= 1;
+      }
+
+      // Limit recursion
+      if (!recursive && (checked >= initial)) checked = this.results.length;
+      if (checked > 1000) throw new Error("Maximum recursion depth for exploding dice roll exceeded");
+    }
+  }
+
+  _evaluateModifiers() {
+    const getSignature = (modifier) => {
+      const rgx = /xo?([0-9,]+)?([<>=]+)?([0-9,]+)?/i;
+      const match = modifier.match(rgx);
+      if (!match) return [null, null, null];
+      let [max, comparison, target] = match.slice(1);
+
+      // If no comparison or target are provided, treat the max as the target value
+      if (max && !(target || comparison)) {
+        target = max;
+        max = null;
+      }
+      // Determine target values
+      comparison = comparison || "=";
+
+      // Determine the number of allowed explosions
+      const recursive = !modifier.match(/xo/i);
+      max = Number.isNumeric(max) ? parseInt(max) : (recursive ? null : 1);
+      return [max, comparison, target];
+    }
+    const consolidateExplodes = (a, b) => {
+      const [aMax, aComparison, aTarget] = getSignature(a);
+      const [bMax, bComparison, bTarget] = getSignature(b);
+      if (aMax === bMax && aComparison === bComparison) {
+        const mod = (aMax === 1 ? 'xo' : 'x');
+        const max = (aMax !== null && aMax !== 1) ? aMax : '';
+        const mergedModifier = `${mod}${max}${aComparison}${aTarget},${bTarget}`;
+        return [mergedModifier];
+      } else {
+        return [a, b];
+      }
+    }
+    const cls = this.constructor;
+    const requested = foundry.utils.deepClone(this.modifiers)
+      .reduce((agg, mod) => {
+        if (!agg.length) return [mod];
+        const last = agg.pop();
+        return agg.concat(consolidateExplodes(last, mod));
+      }, []);
+    this.modifiers = [];
+
+    // Iterate over requested modifiers
+    for (let m of requested) {
+      let command = m.match(/[A-z]+/)[0].toLowerCase();
+
+      // Matched command
+      if (command in cls.MODIFIERS) {
+        this._evaluateModifier(command, m);
+        continue;
+      }
+
+      // Unmatched compound command
+      // Sort modifiers from longest to shortest to ensure that the matching algorithm greedily matches the longest
+      // prefixes first.
+      const modifiers = Object.keys(cls.MODIFIERS).sort((a, b) => b.length - a.length);
+      while (!!command) {
+        let matched = false;
+        for (let cmd of modifiers) {
+          if (command.startsWith(cmd)) {
+            matched = true;
+            this._evaluateModifier(cmd, cmd);
+            command = command.replace(cmd, "");
+            break;
+          }
+        }
+        if (!matched) command = "";
+      }
+    }
+  }
 }
