@@ -242,17 +242,20 @@ const migrateItemData = async (item) => {
   const itemData = item.toObject();
   const migrateField = migrateFieldFactory(itemData, update);
   // all effects
-  // migrateField('effect.value', 'rules.effect.en');
-  // migrateField('effect.criticalSuccess.value', 'rules.criticalSuccess.en');
-  // migrateField('effect.criticalSuccess', 'rules.criticalSuccess.en');
-  // migrateField('effect.criticalFailure.value', 'rules.criticalFailure.en');
-  // migrateField('effect.criticalFailure', 'rules.criticalFailure.en', 'effect');
+  migrateField('effect.criticalSuccess.value', 'rules.criticalSuccess.@en');
+  migrateField('effect.criticalSuccess', 'rules.criticalSuccess.@en');
+  migrateField('effect.criticalFailure.value', 'rules.criticalFailure.@en');
+  migrateField('effect.criticalFailure', 'rules.criticalFailure.@en');
+  migrateField('effect.value', 'rules.effect.@en', 'effect');
+
   // all flavors
-  // migrateField('flavor.description', 'description.en');
-  // migrateField('flavor.notes', 'notes', 'flavor');
+  migrateField('flavor.description', 'description.@en');
+  migrateField('flavor.notes', 'notes', 'flavor');
   // type specific
   if (item.type === 'ancestry') {
   } else if (item.type === 'profession') {
+  } else if (item.type === 'weapon') {
+    migrateField('type.value', 'weaponType', 'type');
   }
   const updatedImg = migrateIcons(item);
   if (updatedImg) {
@@ -268,8 +271,8 @@ const migrateIcons = (document) => {
 export const migrateWorldSafe = async () => {
   if (!game.user.isGM) return;
   const currentVersion = game.settings.get("zweihander", "systemMigrationVersion");
-  const NEEDS_MIGRATION_VERSION = "4.2.3-beta1e";
-  const COMPATIBLE_MIGRATION_VERSION = "0.3.30";
+  const NEEDS_MIGRATION_VERSION = "4.2.3-beta1i";
+  const COMPATIBLE_MIGRATION_VERSION = "4.2.0";
   const totalDocuments = game.actors.size + game.scenes.size + game.items.size;
   if (!currentVersion && totalDocuments === 0) return game.settings.set("zweihander", "systemMigrationVersion", game.system.data.version);
   const needsMigration = !currentVersion || isNewerVersion(NEEDS_MIGRATION_VERSION, currentVersion);

@@ -1,5 +1,5 @@
 <div class="form-group stacked">
   <label><a class="open-editor">Effect <i class="fa fa-edit"></i></a></label>
-  <div class="zh-editor-preview open">{{{processRuleText data.effect.value}}}</div>
-  {{editor content=data.effect.value target="data.effect.value" button=true owner=owner editable=editable}}
+    <div class="zh-editor-preview open">{{{processRuleText (zhlocalize data.rules.effect)}}}</div>
+  {{editor content=(zhlocalize data.rules.effect) target="data.rules.effect.@en" button=true owner=owner editable=editable}}
 </div>

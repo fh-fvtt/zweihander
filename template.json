@@ -260,9 +260,7 @@
     },
     "weapon": {
       "templates": ["flavor", "trapping"],
-      "type": {
-        "value": "Bladed"
-      },
+      "weaponType": "",
       "equipped": true,
       "associatedSkill": {
         "value": "Simple Melee"
@@ -293,7 +291,7 @@
       }
     },
     "trapping": {
-      "templates": ["flavor", "trapping"],
+      "templates": ["flavor", "trapping", "effect"],
       "category": {
         "value": ""
       },
