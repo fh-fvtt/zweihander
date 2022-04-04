@@ -1,6 +1,6 @@
 import { ZWEI } from "./config";
 
-export const migrateWorld = async () => {
+export const migrateWorld = async (forceSystemPacks=false) => {
   ui.notifications.info(`Applying Zweihander System Migration for version ${game.system.data.version}. Please be patient and do not close your game or shut down your server.`, { permanent: true });
   // Migrate World Actors
   for (let a of game.actors) {
@@ -48,7 +48,7 @@ export const migrateWorld = async () => {
 
   // Migrate World Compendium Packs
   for (let p of game.packs) {
-    if (p.metadata.package !== "world") continue;
+    if (p.metadata.package !== "world" && !forceSystemPacks) continue;
     if (!["Actor", "Item", "Scene"].includes(p.documentName)) continue;
     await migrateCompendium(p);
   }

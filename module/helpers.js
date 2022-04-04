@@ -274,6 +274,10 @@ export const registerHandlebarHelpers = async function () {
 
   $$('zhLocalize', (localizeObj) => {
     return localizeObj['@en'];
-  })
+  });
+
+  $$('zhLocalizePath', (dataPath) => {
+    return `${dataPath}.@en`;
+  });
 
 }
