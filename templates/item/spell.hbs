@@ -13,9 +13,10 @@
   <input name="data.principle.value" type="text" value="{{data.principle.value}}">
 </div>
 
-<div class="form-group">
-  <label>Reagents</label>
-  <input name="data.reagents.value" type="text" value="{{data.reagents.value}}">
+<div class="form-group stacked">
+  <label><a class="open-editor">Reagents <i class="fa fa-edit"></i></a></label>
+    <div class="zh-editor-preview open">{{{processRuleText (zhLocalize data.rules.reagents)}}}</div>
+  {{editor content=(zhLocalize data.rules.reagents) target=(zhLocalizePath "data.rules.reagents") button=true owner=owner editable=editable}}
 </div>
 
 <div class="form-group">
@@ -40,12 +41,14 @@
   {{editor content=(zhLocalize data.rules.effect) target=(zhLocalizePath "data.rules.effect") button=true owner=owner editable=editable}}
 </div>
 
-<div class="form-group">
-  <label>Critical Hit</label>
-  <input name="{{zhLocalizePath data.rules.criticalSuccess}}" type="text" value="{{zhLocalize data.rules.criticalSuccess}}">
+<div class="form-group stacked">
+  <label><a class="open-editor">Critical Success <i class="fa fa-edit"></i></a></label>
+    <div class="zh-editor-preview open">{{{processRuleText (zhLocalize data.rules.criticalSuccess)}}}</div>
+  {{editor content=(zhLocalize data.rules.criticalSuccess) target=(zhLocalizePath "data.rules.criticalSuccess") button=true owner=owner editable=editable}}
 </div>
 
-<div class="form-group">
-  <label>Critical Fail</label>
-  <input name="{{zhLocalizePath data.rules.criticalFailure}}"  type="text" value="{{zhLocalize data.rules.criticalFailure}}">
+<div class="form-group stacked">
+  <label><a class="open-editor">Critical Failure<i class="fa fa-edit"></i></a></label>
+    <div class="zh-editor-preview open">{{{processRuleText (zhLocalize data.rules.criticalFailure)}}}</div>
+  {{editor content=(zhLocalize data.rules.criticalFailure) target=(zhLocalizePath "data.rules.criticalFailure") button=true owner=owner editable=editable}}
 </div>

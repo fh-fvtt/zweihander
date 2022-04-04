@@ -251,6 +251,13 @@ const migrateItemData = async (item) => {
   // all flavors
   migrateField('flavor.description', 'description.@en');
   migrateField('flavor.notes', 'notes', 'flavor');
+
+  // other long text rules
+  migrateField('treatment.value', 'rules.treatment.@en', 'treatment');
+  migrateField('consequences.value', 'rules.consequences.@en', 'consequences');
+  migrateField('condition.value', 'rules.condition.@en', 'condition');
+  migrateField('reagents.value', 'rules.reagents.@en', 'reagents');
+
   // type specific
   if (item.type === 'ancestry') {
   } else if (item.type === 'profession') {
@@ -265,7 +272,7 @@ const migrateItemData = async (item) => {
 };
 
 const migrateIcons = (document) => {
-  return document.img;
+  return undefined;
 }
 
 export const migrateWorldSafe = async () => {

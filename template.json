@@ -339,9 +339,6 @@
       "distance": {
         "value": ""
       },
-      "reagents": {
-        "value": ""
-      },
       "duration": {
         "value": ""
       },
@@ -350,12 +347,9 @@
         "ap": 0
       },
       "rules": {
-        "criticalSuccess": {
-          "@en": ""
-        },
-        "criticalFailure": {
-          "@en": ""
-        }
+        "criticalSuccess": { "@en": "" },
+        "criticalFailure": { "@en": "" },
+        "reagents": { "@en": "" }
       }
     },
     "ritual": {
@@ -363,20 +357,16 @@
       "difficulty": {
         "value": ""
       },
-      "consequences": {
-        "value": ""
-      },
       "channelAs": {
-        "value": ""
-      },
-      "condition": {
-        "value": ""
-      },
-      "reagents": {
         "value": ""
       },
       "castingTime": {
         "value": ""
+      },
+      "rules": {
+        "consequences": { "@en": "" },
+        "condition": { "@en": "" },
+        "reagents": { "@en": "" }
       }
     },
     "skill": {
@@ -409,8 +399,10 @@
       "duration": {
         "value": ""
       },
-      "treatment": {
-        "value": ""
+      "rules": {
+        "treatment": {
+          "@en": ""
+        }
       },
       "active": false
     },

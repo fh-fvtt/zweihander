@@ -13,14 +13,14 @@
       <dt>Principle</dt>
       <dd>{{data.principle.value}}</dd>
       <dt>Reagents</dt>
-      <dd>{{data.reagents.value}}</dd>
+      <dd>{{{processRuleText (zhLocalize data.rules.reagents)}}}</dd>
       <dt>Duration</dt>
       <dd>{{data.duration.value}}</dd>
       <dt>Distance</dt>
       <dd>{{data.distance.value}}</dd>
       <dt>Critical Success</dt>
-      <dd>{{zhLocalize data.rules.criticalSuccess}}</dd>
+      <dd>{{{processRuleText (zhLocalize data.rules.criticalSuccess)}}}</dd>
       <dt>Critical Failure</dt>
-      <dd>{{zhLocalize data.rules.criticalFailure}}</dd>
+      <dd>{{{processRuleText (zhLocalize data.rules.criticalFailure)}}}</dd>
     </dl>
   </section>
