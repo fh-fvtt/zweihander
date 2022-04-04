@@ -165,7 +165,7 @@ const migrateActorData = async (actor) => {
   // Actor Data Updates
   if (actor.data) {
     // future migrations might need this
-    const actorData = actor.toObject();
+    const actorData = (typeof actor.toObject === 'function') ? actor.toObject() : actor;
     const migrateField = migrateFieldFactory(actorData, update);
     // currency
     migrateField('coinage.gold', 'currency.gc');
@@ -240,7 +240,7 @@ const migrateActorData = async (actor) => {
 
 const migrateItemData = async (item) => {
   const update = {};
-  const itemData = item.toObject();
+  const itemData = (typeof item.toObject === 'function') ? item.toObject() : item;
   const migrateField = migrateFieldFactory(itemData, update);
   // all effects
   migrateField('effect.criticalSuccess.value', 'rules.criticalSuccess.@en');
@@ -304,7 +304,7 @@ const migrateIcons = (document) => {
 export const migrateWorldSafe = async () => {
   if (!game.user.isGM) return;
   const currentVersion = game.settings.get("zweihander", "systemMigrationVersion");
-  const NEEDS_MIGRATION_VERSION = "4.2.3-beta1k";
+  const NEEDS_MIGRATION_VERSION = "4.2.3-beta1l";
   const COMPATIBLE_MIGRATION_VERSION = "4.2.0";
   const totalDocuments = game.actors.size + game.scenes.size + game.items.size;
   if (!currentVersion && totalDocuments === 0) return game.settings.set("zweihander", "systemMigrationVersion", game.system.data.version);
