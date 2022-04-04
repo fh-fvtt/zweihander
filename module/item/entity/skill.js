@@ -15,9 +15,9 @@ export default class ZweihanderSkill extends ZweihanderBaseItem {
     } else {
       data.rank = actor.data.data.skillRanks?.[item.name] ?? 0;
     }
-    data.bonusPerRank = 10
+    data.bonusPerRank = 10;
     data.bonus = data.rank * data.bonusPerRank;
-    data.isFlipToFail = data.requiresTraining && data.rank === 0
+    data.isFlipToFail = data.requiresTraining && data.rank === 0;
   }
 
 }

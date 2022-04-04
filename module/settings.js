@@ -151,12 +151,6 @@ export const registerSystemSettings = function() {
       },
     ]
   });
-  const currencySettings = game.settings.get("zweihander", "currencySettings");
-  // migration, remove this after a while
-  if (currencySettings[0].abbreviation === 'gc' && currencySettings[0].equivalentOfLower === 10) {
-    currencySettings[0].equivalentOfLower = 20;
-    game.settings.set("zweihander", "currencySettings", currencySettings);
-  }
   game.settings.registerMenu("zweihander", "currencySettingsMenu", {
     name: "Currency Settings",
     label: "Currency Settings",      // The text label used in the button

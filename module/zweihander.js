@@ -56,6 +56,13 @@ Hooks.once("ready", function () {
   const cleanQuery = SearchFilter.cleanQuery;
   SearchFilter.cleanQuery = (x) => ZweihanderUtils.removeDiacritics(cleanQuery(x));
   triggerAnalytics();
+  //..
+  const currencySettings = game.settings.get("zweihander", "currencySettings");
+  // migration, remove this after a while
+  if (currencySettings[0].abbreviation === 'gc' && currencySettings[0].equivalentOfLower === 10) {
+    currencySettings[0].equivalentOfLower = 20;
+    game.settings.set("zweihander", "currencySettings", currencySettings);
+  }
 })
 
 Hooks.once("diceSoNiceReady", function () {
