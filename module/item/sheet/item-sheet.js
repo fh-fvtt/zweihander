@@ -28,7 +28,7 @@ export default class ZweihanderItemSheet extends ItemSheet {
   }
 
   _onDragDrop(event) {
-    
+
   }
 
   _onDragStart(event) {
@@ -53,12 +53,12 @@ export default class ZweihanderItemSheet extends ItemSheet {
     data.settings = ZweihanderUtils.getSheetSettings();
     data.choices = {};
     if (data.type === 'skill') {
-    data.choices.associatedPrimaryAttribute = CONFIG.ZWEI.primaryAttributes
-      .map(option => ({ 
-        selected: (data.data.associatedPrimaryAttribute.value.toLowerCase() ?? 'combat') === option ? 'selected' : '',
-        value: option,
-        label: option.capitalize()
-      }));
+      data.choices.associatedPrimaryAttribute = CONFIG.ZWEI.primaryAttributes
+        .map(option => ({
+          selected: (data.data.associatedPrimaryAttribute.value.toLowerCase() ?? 'combat') === option ? 'selected' : '',
+          value: option,
+          label: option.capitalize()
+        }));
     }
     if (data.type === "weapon") {
       const skillPack = game.packs.get(game.settings.get("zweihander", "skillPack"));
@@ -103,10 +103,10 @@ export default class ZweihanderItemSheet extends ItemSheet {
   async _updateObject(event, formData) {
     //@todo move to ZweihanderAncestry#update
     if (this.item.type === 'ancestry') {
-      const trait = formData['data.ancestralTrait.value'];
+      const trait = formData['data.ancestralTrait.name'];
       const item = await ZweihanderUtils.findItemWorldWide('trait', trait);
       if (item) {
-        formData['data.ancestralTrait.value'] = item.name;
+        formData['data.ancestralTrait.name'] = item.name;
       }
       if (!item && trait.trim() !== '') {
         ui?.notifications.warn(`Couldn't find an ancestral trait with a name like ${trait} anywhere in the world or in compendia!`, { permanent: true });
@@ -116,11 +116,11 @@ export default class ZweihanderItemSheet extends ItemSheet {
         }
       }
     } else if (this.item.type === 'profession') {
-      const profTrait = formData['data.professionalTrait.value'];
+      const profTrait = formData['data.professionalTrait.name'];
       let item;
       item = await ZweihanderUtils.findItemWorldWide('trait', profTrait);
       if (item) {
-        formData['data.professionalTrait.value'] = item.name;
+        formData['data.professionalTrait.name'] = item.name;
       }
       if (!item && profTrait.trim() !== '') {
         ui?.notifications.warn(`Couldn't find a professional trait with a name like ${profTrait} anywhere in the world or in compendia!`, { permanent: true });
@@ -129,10 +129,10 @@ export default class ZweihanderItemSheet extends ItemSheet {
           ui?.notifications.error(`Please choose a valid, existing professional trait!`, { permanent: true });
         }
       }
-      const specTrait = formData['data.specialTrait.value'];
+      const specTrait = formData['data.specialTrait.name'];
       item = await ZweihanderUtils.findItemWorldWide('trait', specTrait);
       if (item) {
-        formData['data.specialTrait.value'] = item.name;
+        formData['data.specialTrait.name'] = item.name;
       }
       if (!item && specTrait.trim() !== '') {
         ui?.notifications.warn(`Couldn't find a special trait with a name like ${specTrait} anywhere in the world or in compendia!`, { permanent: true });
@@ -141,10 +141,10 @@ export default class ZweihanderItemSheet extends ItemSheet {
           ui?.notifications.error(`Please choose a valid, existing special trait!`, { permanent: true });
         }
       }
-      const drawback = formData['data.drawback.value'];
+      const drawback = formData['data.drawback.name'];
       item = await ZweihanderUtils.findItemWorldWide('drawback', drawback);
       if (item) {
-        formData['data.drawback.value'] = item.name;
+        formData['data.drawback.name'] = item.name;
       }
       if (!item && drawback.trim() !== '') {
         ui?.notifications.warn(`Couldn't find a drawback with a name like ${drawback} anywhere in the world or in compendia!`, { permanent: true });
@@ -182,7 +182,7 @@ export default class ZweihanderItemSheet extends ItemSheet {
       case 'data.bonusAdvances':
         array = array.concat(
           await this.addInputToArray(inputs, async x => {
-            const vx = await this.validateBonusAbbr(x); return vx ? {value: vx} : vx
+            const vx = await this.validateBonusAbbr(x); return vx ? { name: vx } : vx
           }, false)
         );
         break;
@@ -234,39 +234,39 @@ export default class ZweihanderItemSheet extends ItemSheet {
 
   async validateTalent(talent) {
     const item = this.item;
-    if (item.data.data?.talents?.some(t => ZweihanderUtils.normalizedEquals(t.value,talent))) {
+    if (item.data.data?.talents?.some(t => ZweihanderUtils.normalizedEquals(t.name, talent))) {
       ui?.notifications.warn(`A Talent named "${talent}" already belongs to item "${item.name}" of type "${item.type}". Skill Ranks must be unique!`);
       return;
     }
     const foundItem = await ZweihanderUtils.findItemWorldWide('talent', talent);
     if (foundItem) {
-      return {value: foundItem.name};
+      return { name: foundItem.name };
     } else {
       ui?.notifications.warn(`Couldn't find Talent with a name like ${talent} anywhere in the world or in compendia!`, { permanent: true });
       //TODO move to actor#prepareDerivedData
       if (this.item.isOwned) {
         ui?.notifications.error(`Please choose a valid, existing talent!`, { permanent: true });
       }
-      return {value: talent};
+      return { name: talent };
     }
   }
 
   async validateSkillRank(skillRank) {
     const item = this.item;
-    if (item.data.data?.skillRanks?.some(sr => ZweihanderUtils.normalizedEquals(sr.value,skillRank))) {
+    if (item.data.data?.skillRanks?.some(sr => ZweihanderUtils.normalizedEquals(sr.name, skillRank))) {
       ui?.notifications.warn(`A Skill Rank in "${skillRank}" already belongs to item "${item.name}" of type "${item.type}". Skill Ranks must be unique!`);
       return;
     }
     const foundItem = await ZweihanderUtils.findItemWorldWide('skill', skillRank);
     if (foundItem) {
-      return {value: foundItem.name};
+      return { name: foundItem.name };
     } else {
       ui?.notifications.warn(`Couldn't find Skill Rank with a name like ${skillRank} anywhere in the world or in compendia!`, { permanent: true });
       //TODO move to actor#prepareDerivedData
       if (this.item.isOwned) {
         ui?.notifications.error(`Please choose a valid, existing skill!`, { permanent: true });
       }
-      return {value: skillRank};
+      return { name: skillRank };
     }
   }
 

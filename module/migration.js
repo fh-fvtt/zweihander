@@ -154,7 +154,8 @@ const migrateFieldFactory = (documentDataObject, update) => (oldKey, newKey, del
     const updateVal = getProperty(documentDataObject, oldKey);
     update[newKey] = transform ? transform(updateVal, documentDataObject) : updateVal;
     if (del) {
-      update[(typeof del == "string") ? `data.-=${del}` : `-=${oldKey}`] = null;
+      const oldKeyDel = oldKey.split('.').map((x, i, arr) => (i === arr.length - 1) ? `-=${x}` : x).join('.');
+      update[(typeof del == "string") ? `data.-=${del}` : `${oldKeyDel}`] = null;
     }
   }
 }
@@ -260,7 +261,32 @@ const migrateItemData = async (item) => {
 
   // type specific
   if (item.type === 'ancestry') {
+    migrateField('ancestralTrait.value', 'ancestralTrait.name', 1);    
   } else if (item.type === 'profession') {
+    migrateField('drawback.value', 'drawback.name', 1);
+    migrateField('specialTrait.value', 'specialTrait.name', 1);
+    migrateField('professionalTrait.value', 'professionalTrait.name', 1);
+    if (itemData.data.bonusAdvances.length && itemData.data.bonusAdvances[0].value) {
+      migrateField('bonusAdvances', 'bonusAdvances', 0, (x) => x.map(y=>{
+        y.name = y.value;
+        delete y.value;
+        return y;
+      }));
+    }
+    if (itemData.data.talents.length && itemData.data.talents[0].value) {
+      migrateField('talents', 'talents', 0, (x) => x.map(y=>{
+        y.name = y.value;
+        delete y.value;
+        return y;
+      }));
+    }
+    if (itemData.data.skillRanks.length && itemData.data.skillRanks[0].value) {
+      migrateField('skillRanks', 'skillRanks', 0, (x) => x.map(y=>{
+        y.name = y.value;
+        delete y.value;
+        return y;
+      }));
+    }
   } else if (item.type === 'weapon') {
     migrateField('type.value', 'weaponType', 'type');
   }
