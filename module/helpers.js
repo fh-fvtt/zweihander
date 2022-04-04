@@ -272,4 +272,8 @@ export const registerHandlebarHelpers = async function () {
     return new Handlebars.SafeString(`<div class="form-group"><label>Price</label>${inputs}</div>`);
   });
 
+  $$('zhLocalize', (localizeObj) => {
+    return localizeObj['@en'];
+  })
+
 }
