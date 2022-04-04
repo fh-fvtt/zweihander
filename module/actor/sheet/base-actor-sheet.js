@@ -6,6 +6,18 @@ import ZweihanderLanguageConfig from "../../apps/language-config";
 
 export default class ZweihanderBaseActorSheet extends ActorSheet {
 
+  static get defaultOptions() {
+    const compactMode = game.settings.get("zweihander", "openInCompactMode");
+    const classes = ["zweihander", "sheet", "actor", "damage-tracker"];
+    if (compactMode) {
+      classes.push("zweihander-compact-sheet");
+    }
+    return foundry.utils.mergeObject(super.defaultOptions, {
+      classes,
+      resizable: true,
+    });
+  }
+
   #languageConfig;
 
   constructor(...args) {
@@ -374,6 +386,27 @@ export default class ZweihanderBaseActorSheet extends ActorSheet {
     $(description).slideToggle(function () {
       $(this).toggleClass("open");
     });
+  }
+
+  _getHeaderButtons() {
+    const buttons = super._getHeaderButtons();
+    const compactMode = game.settings.get("zweihander", "openInCompactMode");
+    const canConfigure = game.user.isGM || !this.actor.limited;
+    if (canConfigure) {
+      buttons.splice(0, 0, {
+        label: ' Compact Mode',
+        class: 'hide-background',
+        icon: `hide-background-toggle fas fa-toggle-${compactMode ? "on" : "off"}`,
+        onclick: (event) => {
+          const sheet = $(event.currentTarget).parents('.sheet');
+          sheet.toggleClass('zweihander-compact-sheet');
+          $(event.currentTarget).find('.hide-background-toggle')
+            .toggleClass('fa-toggle-on')
+            .toggleClass('fa-toggle-off');
+        }
+      });
+    }
+    return buttons;
   }
 
 

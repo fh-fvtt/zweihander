@@ -16,6 +16,12 @@ body.game.vtt.system-zweihander .zweihander.sheet.character {
     }
   }
 
+  &.zweihander-compact-sheet {
+    aside.details {
+      display: none !important;
+    }
+  }
+
   @import "character-sheet-header.scss";
 
   .sheet-body {

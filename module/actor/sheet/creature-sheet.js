@@ -17,17 +17,11 @@ export default class ZweihanderCreatureSheet extends ZweihanderBaseActorSheet {
   ]);
 
   static get defaultOptions() {
-    const compactMode = game.settings.get("zweihander", "openInCompactMode");
-    const classes = ["zweihander", "sheet", "actor", "creature", "damage-tracker"];
-    if (compactMode) {
-      classes.push("zweihander-compact-sheet");
-    }
     return foundry.utils.mergeObject(super.defaultOptions, {
-      classes,
+      classes: super.defaultOptions.classes.concat(['creature']),
       template: "systems/zweihander/templates/creature/main.hbs",
       width: compactMode ? 540 : 620,
       height: compactMode ? 540 : 669,
-      resizable: true,
       scrollY: ['.save-scroll', '.sheet-body']
     });
   }
@@ -257,27 +251,6 @@ export default class ZweihanderCreatureSheet extends ZweihanderBaseActorSheet {
       const i = mod(paArray.indexOf(paValue) + (event.shiftKey ? -1 : 1), paArray.length);
       this.actor.update({ [`data.stats.primaryAttributes.${key}.value`]: paArray[i] });
     });
-  }
-
-  _getHeaderButtons() {
-    const buttons = super._getHeaderButtons();
-    const compactMode = game.settings.get("zweihander", "openInCompactMode");
-    const canConfigure = game.user.isGM || !this.actor.limited;
-    if (canConfigure) {
-      buttons.splice(0, 0, {
-        label: ' Compact Mode',
-        class: 'hide-background',
-        icon: `hide-background-toggle fas fa-toggle-${compactMode ? "on" : "off"}`,
-        onclick: (event) => {
-          const sheet = $(event.currentTarget).parents('.sheet');
-          sheet.toggleClass('zweihander-compact-sheet');
-          $(event.currentTarget).find('.hide-background-toggle')
-            .toggleClass('fa-toggle-on')
-            .toggleClass('fa-toggle-off');
-        }
-      });
-    }
-    return buttons;
   }
 
   async _render(force, options) {

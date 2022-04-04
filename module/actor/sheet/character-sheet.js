@@ -24,11 +24,10 @@ export default class ZweihanderCharacterSheet extends ZweihanderBaseActorSheet {
 
   static get defaultOptions() {
     return foundry.utils.mergeObject(super.defaultOptions, {
-      classes: ["zweihander", "sheet", "actor", "character", "damage-tracker"],
+      classes: super.defaultOptions.classes.concat(['character']),
       template: "systems/zweihander/templates/character/main.hbs",
       width: 770,
       height: 900,
-      resizable: true,
       tabs: [
         { navSelector: ".sheet-navigation", contentSelector: ".sheet-body", initial: "main" }
       ],
@@ -339,7 +338,7 @@ export default class ZweihanderCharacterSheet extends ZweihanderBaseActorSheet {
     let buttons = super._getHeaderButtons();
     const canConfigure = game.user.isGM || this.actor.isOwner;
     if (this.options.editable && canConfigure) {
-      buttons.splice(0, 0, {
+      buttons.splice(1, 0, {
         label: 'Actor',
         class: 'configure-actor',
         icon: 'fas fa-user-cog',
