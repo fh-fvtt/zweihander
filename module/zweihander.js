@@ -17,7 +17,7 @@ import { registerSystemSettings } from "./settings";
 import { preloadHandlebarsTemplates } from "./template";
 import { registerHandlebarHelpers } from "./helpers";
 import { migrateWorldSafe, migrateWorld } from "./migration"
-import { rollTest, ZweihanderDie } from "./dice";
+import { rollTest, patchDie } from "./dice";
 import { getTestConfiguration } from "./apps/test-config";
 
 import { ZWEI } from "./config.js";
@@ -63,6 +63,8 @@ Hooks.once("ready", function () {
     currencySettings[0].equivalentOfLower = 20;
     game.settings.set("zweihander", "currencySettings", currencySettings);
   }
+  // patch die class
+  patchDie();
 })
 
 Hooks.once("diceSoNiceReady", function () {
@@ -167,8 +169,6 @@ Hooks.once("init", async function () {
   // Define custom Document classes
   CONFIG.Actor.documentClass = ZweihanderActor;
   CONFIG.Item.documentClass = ZweihanderItem;
-  CONFIG.Dice.types = [ ZweihanderDie ];
-  CONFIG.Dice.terms.d = ZweihanderDie;
   // Register sheet application classes
   Actors.unregisterSheet("core", ActorSheet);
   Actors.registerSheet("zweihander", ZweihanderCharacterSheet, { "types": ["character"], makeDefault: true });
@@ -237,9 +237,9 @@ Hooks.once("polyglot.init", (LanguageProvider) => {
       let known_languages = new Set();
       let literate_languages = new Set();
       actor.data.data.languages.forEach(l => {
-        known_languages.add(l.name);
+        known_languages.add(l.name.toLowerCase());
         if (l.isLiterate) {
-          literate_languages.add(l.name);
+          literate_languages.add(l.name.toLowerCase());
         }
       });
       return [known_languages, literate_languages];

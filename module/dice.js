@@ -383,8 +383,10 @@ function outcomeLabel(outcome) {
   return ["Critical Failure", "Failure", "Success", "Critical Success"][outcome];
 }
 
-export class ZweihanderDie extends Die {
-  explode(modifier, { recursive = true } = {}) {
+
+export const patchDie = () => {
+
+  Die.explode = function (modifier, { recursive = true } = {}) {
     // Match the explode or "explode once" modifier
     const rgx = /xo?([0-9,]+)?([<>=]+)?([0-9,]+)?/i;
     const match = modifier.match(rgx);
@@ -427,7 +429,7 @@ export class ZweihanderDie extends Die {
     }
   }
 
-  _evaluateModifiers() {
+  Die._evaluateModifiers = function () {
     const getSignature = (modifier) => {
       const rgx = /xo?([0-9,]+)?([<>=]+)?([0-9,]+)?/i;
       const match = modifier.match(rgx);
