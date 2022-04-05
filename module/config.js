@@ -187,3 +187,19 @@ ZWEI.packSets = {
         },
     }
 }
+
+ZWEI.archetypes = [
+    "Academic",
+    "Commoner",
+    "Knave",
+    "Ranger",
+    "Socialite",
+    "Warrior",
+    "Expert Profession"
+]
+
+ZWEI.injurySeverities = [
+    { value: 0, label: "Moderate" },
+    { value: 1, label: "Serious" },
+    { value: 2, label: "Grievous" }
+]

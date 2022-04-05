@@ -65,7 +65,7 @@ export async function rollTest(skillItem, testType = 'skill', testConfiguration 
   } else if (isReroll && actor.type !== 'character') {
     testConfiguration.useFortune = 'misfortune';
   }
-  const principle = spell?.data?.data?.principle?.value?.trim?.()?.toLowerCase?.();
+  const principle = spell?.data?.data?.principle?.trim?.()?.toLowerCase?.();
   const defaultSpellDifficulty = {
     'petty': 10,
     'generalist': 10,
@@ -86,7 +86,7 @@ export async function rollTest(skillItem, testType = 'skill', testConfiguration 
     ui.notifications.warn(`Couldn't reroll skill test: There are no ${testConfiguration.useFortune} points left.`);
     return;
   }
-  const primaryAttribute = skillItem.data.data.associatedPrimaryAttribute.value;
+  const primaryAttribute = skillItem.data.data.associatedPrimaryAttribute;
   const primaryAttributeValue = actor.data.data.stats.primaryAttributes[primaryAttribute.toLowerCase()].value;
   const rank = skillItem.data.data.rank;
   const bonusPerRank = skillItem.data.data.bonusPerRank;
@@ -148,8 +148,8 @@ export async function rollTest(skillItem, testType = 'skill', testConfiguration 
   if (spell) {
     templateData.itemId = spell.id;
     templateData.spell = spell.toObject(false);
-    templateData.spell.data.distance.value = await ZweihanderUtils.parseDataPaths(templateData.spell.data.distance.value, actor);
-    templateData.spell.data.duration.value = await ZweihanderUtils.parseDataPaths(templateData.spell.data.duration.value, actor);
+    templateData.spell.data.distance = await ZweihanderUtils.parseDataPaths(templateData.spell.data.distance, actor);
+    templateData.spell.data.duration = await ZweihanderUtils.parseDataPaths(templateData.spell.data.duration, actor);
     const totalChaosDie = testConfiguration.additionalChaosDice + (testConfiguration.channelPowerBonus / 10);
     if (totalChaosDie > 0) {
       const formula = `${totalChaosDie}d6`;

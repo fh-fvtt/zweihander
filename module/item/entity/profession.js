@@ -32,15 +32,15 @@ export default class ZweihanderProfession extends ZweihanderBaseItem {
       + (itemData.data.bonusAdvances?.reduce?.((a, b) => a + Number(b.purchased), 0) ?? 0)
       + (itemData.data.skillRanks?.reduce?.((a, b) => a + Number(b.purchased), 0) ?? 0)
       + (itemData.data.talents?.reduce?.((a, b) => a + Number(b.purchased), 0) ?? 0);
-    itemData.data.tier.advancesPurchased = advancesPurchased;
-    itemData.data.tier.completed = advancesPurchased === 21;
+    itemData.data.advancesPurchased = advancesPurchased;
+    itemData.data.completed = advancesPurchased === 21;
   }
 
   async _preCreate(data, options, user, item) {
     const itemData = item.data;
     const tier = item.parent.items.filter(i => i.type === 'profession').length + 1;
     if (tier > 3) return;
-    itemData.update({ 'data.tier.value': CONFIG.ZWEI.tiers[tier] });
+    itemData.update({ 'data.tier': CONFIG.ZWEI.tiers[tier] });
     itemData.update({ 'data.skillRanks': itemData.data.skillRanks.map(sr => ({ ...sr, purchased: false })) });
     itemData.update({ 'data.bonusAdvances': itemData.data.bonusAdvances.map(ba => ({ ...ba, purchased: false })) });
     await super._preCreate(data, options, user, item);

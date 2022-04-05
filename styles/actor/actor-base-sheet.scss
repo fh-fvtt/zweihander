@@ -46,7 +46,7 @@ body.game.vtt.system-zweihander .zweihander.sheet.actor {
           height: 100%;
           padding: 3px;
           text-align: center;
-          &:not(:read-only) {
+          &:not(:disabled) {
             &:hover,
             &:focus,
             &:active {

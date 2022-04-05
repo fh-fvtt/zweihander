@@ -1,4 +1,4 @@
-import { assignPacks } from "../../utils"
+import { assignPacks, localizePath } from "../../utils"
 
 export function attachTabDefinitions(data) {
   data.tabs = assignPacks('character', {
@@ -11,23 +11,23 @@ export function attachTabDefinitions(data) {
           type: "weapon",
           summaryTemplate: "item-summary/weapon",
           rollType: "weapon-roll",
-          rollLabelKey: "data.associatedSkill.value",
+          rollLabelKey: "data.associatedSkill",
           details: [
             {
               title: "Distance",
               size: 100,
-              key: "data.distance.value",
+              key: "data.distance",
               class: "inject-data"
             },
             {
               title: "Load",
               size: 100,
-              key: "data.load.value"
+              key: "data.load"
             },
             {
               title: "Enc.",
               size: 100,
-              key: "data.encumbrance.value",
+              key: "data.encumbrance",
               isNumerable: true
             },
             {
@@ -47,12 +47,12 @@ export function attachTabDefinitions(data) {
             {
               title: "DTM",
               size: 100,
-              key: "data.damageThresholdModifier.value"
+              key: "data.damageThresholdModifier"
             },
             {
               title: "Enc.",
               size: 100,
-              key: "data.encumbrance.value",
+              key: "data.encumbrance",
               isNumerable: true
             },
             {
@@ -72,18 +72,18 @@ export function attachTabDefinitions(data) {
             {
               title: "Category",
               size: 140,
-              key: "data.category.value"
+              key: localizePath("data.details.category"),
             },
             {
               title: "Qty.",
               size: 100,
-              key: "data.quantity.value",
+              key: "data.quantity",
               isNumerable: true
             },
             {
               title: "Enc.",
               size: 100,
-              key: "data.encumbrance.value",
+              key: "data.encumbrance",
               isNumerable: true
             },
             {
@@ -110,18 +110,18 @@ export function attachTabDefinitions(data) {
             {
               title: "Principle",
               size: 140,
-              key: "data.principle.value"
+              key: "data.principle"
             },
             {
               title: "Distance",
               size: 200,
-              key: "data.distance.value",
+              key: "data.distance",
               class: "inject-data"
             },
             {
               title: "Duration",
               size: 100,
-              key: "data.duration.value",
+              key: "data.duration",
               class: "inject-data"
             }
           ],
@@ -135,17 +135,17 @@ export function attachTabDefinitions(data) {
             {
               title: "Channel Power As",
               size: 140,
-              key: "data.channelAs.value",
+              key: "data.channelAs",
             },
             {
               title: "Difficulty",
               size: 200,
-              key: "data.difficulty.value"
+              key: "data.difficulty"
             },
             {
               title: "Casting Time",
               size: 100,
-              key: "data.castingTime.value",
+              key: "data.castingTime",
               class: "inject-data"
             }
           ],
@@ -163,7 +163,7 @@ export function attachTabDefinitions(data) {
             {
               title: "Category",
               size: 140,
-              key: "data.category.value"
+              key: localizePath("data.details.category")
             },
             {
               title: "Currently in Effect",
@@ -182,7 +182,7 @@ export function attachTabDefinitions(data) {
             {
               title: "Category",
               size: 140,
-              key: "data.category.value"
+              key: localizePath("data.details.category")
             },
             {
               title: "Currently in Effect",
@@ -201,12 +201,12 @@ export function attachTabDefinitions(data) {
             {
               title: "Duration",
               size: 140,
-              key: "data.duration.value"
+              key: "data.duration"
             },
             {
               title: "Resist",
               size: 140,
-              key: "data.resist.value"
+              key: "data.resist"
             },
             {
               title: "Currently in Effect",
@@ -225,7 +225,9 @@ export function attachTabDefinitions(data) {
             {
               title: "Severity",
               size: 140,
-              key: "data.severity.value"
+              value: function () {
+               return CONFIG.ZWEI.injurySeverities[this.data.severity].label
+              }
             },
             {
               title: "Currently in Effect",
@@ -244,7 +246,7 @@ export function attachTabDefinitions(data) {
             {
               title: "Category",
               size: 140,
-              key: "data.category.value"
+              key: localizePath("data.details.category")
             },
             {
               title: "Currently in Effect",
@@ -267,17 +269,17 @@ export function attachTabDefinitions(data) {
             {
               title: "Tier",
               size: 120,
-              key: "data.tier.value"
+              key: "data.tier"
             },
             {
               title: "Archetype",
               size: 140,
-              key: "data.archetype.value"
+              key: "data.archetype"
             },
             {
               title: "Completed",
               size: 100,
-              key: "data.tier.completed",
+              key: "data.completed",
               isCheckbox: true
             }
           ],
@@ -330,12 +332,12 @@ export function attachTabDefinitions(data) {
             {
               title: "Type",
               size: 140,
-              key: "data.advanceType.value"
+              key: "data.advanceType"
             },
             {
               title: "RP Cost",
               size: 100,
-              key: "data.rewardPointCost.value"
+              key: "data.rewardPointCost"
             }
           ],
           items: data.uniqueAdvances

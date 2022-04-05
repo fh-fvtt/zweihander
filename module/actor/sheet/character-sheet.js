@@ -49,8 +49,8 @@ export default class ZweihanderCharacterSheet extends ZweihanderBaseActorSheet {
         "Advanced": 300
       }
       sheetData.data.stats.rewardPoints.spent = sheetData.professions
-        .map(profession => tierMultiplier[profession.data.tier.value] * profession.data.tier.advancesPurchased)
-        .concat(sheetData.uniqueAdvances.map(advance => advance.data.rewardPointCost.value))
+        .map(profession => tierMultiplier[profession.data.tier] * profession.data.advancesPurchased)
+        .concat(sheetData.uniqueAdvances.map(advance => advance.data.rewardPointCost))
         .reduce((a, b) => a + b, 0);
       sheetData.data.stats.rewardPoints.current = sheetData.data.stats.rewardPoints.total - sheetData.data.stats.rewardPoints.spent;
     }
@@ -177,7 +177,7 @@ export default class ZweihanderCharacterSheet extends ZweihanderBaseActorSheet {
     data.skills = data.skills.sort((a, b) => a.name.localeCompare(b.name));
     // sort professions by tier
     data.professions = data.professions.sort((a, b) =>
-      CONFIG.ZWEI.tiersInversed[a.data.tier.value] - CONFIG.ZWEI.tiersInversed[b.data.tier.value]
+      CONFIG.ZWEI.tiersInversed[a.data.tier] - CONFIG.ZWEI.tiersInversed[b.data.tier]
     );
     // add source information from flags
     const addSource = (items) => items.map(i => ({
@@ -193,16 +193,12 @@ export default class ZweihanderCharacterSheet extends ZweihanderBaseActorSheet {
       data.professions.some(p => p.data.talents.some(t => t.linkedId === talent._id && t.purchased))
     );
     // filter focuses data
-    data.focuses = data.uniqueAdvances.filter((ua) => ua.data.associatedFocusSkill.value).map((ua) => {
-      const skillName = ua.data.associatedFocusSkill.value;
-
-      if (skillName)
-        return {
-          focusSkill: skillName,
+    data.focuses = data.uniqueAdvances
+      .filter((ua) => ua.data.associatedFocusSkill)
+      .map((ua) => ({
+          focusSkill: ua.data.associatedFocusSkill,
           focusName: ua.name
-        }
-    });
-
+      }));
     data.skills.forEach((skill) => {
       const focuses = data.focuses.filter((focus) => focus.focusSkill === skill.name).map((focus) => focus.focusName);
       skill.data.focuses = focuses;
@@ -247,9 +243,9 @@ export default class ZweihanderCharacterSheet extends ZweihanderBaseActorSheet {
       const index = target.data('purchaseIndex');
       const professionElement = target.closest(".individual-description").parents(".item");
       const professionItem = this.actor.items.get($(professionElement).data("itemId"));
-      const locked = professionItem.data.data.tier.completed && this.actor.data.data.tier !== professionItem.data.data.tier.value;
+      const locked = professionItem.data.data.completed && this.actor.data.data.tier !== professionItem.data.data.tier;
       if (locked) {
-        ui.notifications.error(`Cannot perform operation: ${professionItem.data.data.tier.value} Tier locked.`);
+        ui.notifications.error(`Cannot perform operation: ${professionItem.data.data.tier} Tier locked.`);
         return;
       }
       const updated = professionItem.data.data[field].map((x, i) => i === index ? { ...x, purchased: !x.purchased } : x);

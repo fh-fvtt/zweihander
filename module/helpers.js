@@ -1,4 +1,4 @@
-import { uuidv4, explicitSign } from './utils';
+import { uuidv4, explicitSign, localize, localizePath } from './utils';
 
 /**
  * Define a set of handlebar helpers
@@ -272,12 +272,8 @@ export const registerHandlebarHelpers = async function () {
     return new Handlebars.SafeString(`<div class="form-group"><label>Price</label>${inputs}</div>`);
   });
 
-  $$('zhLocalize', (localizeObj) => {
-    return localizeObj['@en'];
-  });
+  $$('zhLocalize', localize);
 
-  $$('zhLocalizePath', (dataPath) => {
-    return `${dataPath}.@en`;
-  });
+  $$('zhLocalizePath', localizePath);
 
 }

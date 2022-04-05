@@ -8,26 +8,26 @@
   {{/if}}
   <dl class="zh-expandable" data-expand-title="Show Item Details">
       <dt>Archetype</dt>
-      <dd>{{data.archetype.value}}</dd>
+      <dd>{{data.archetype}}</dd>
       <dt>Professional Trait</dt>
-      <dd>{{data.professionalTrait.value}}</dd>
-      {{#if data.specialTrait.value}}
+      <dd>{{data.professionalTrait.name}}</dd>
+      {{#if data.specialTrait.name}}
       <dt>Special Trait</dt>
-      <dd>{{data.specialTrait.value}}</dd>
+      <dd>{{data.specialTrait.name}}</dd>
       {{/if}}
-      {{#if data.drawback.value}}
+      {{#if data.drawback.name}}
       <dt>Drawback</dt>
-      <dd>{{data.draw.value}}</dd>
+      <dd>{{data.drawback.name}}</dd>
       {{/if}}
-      {{#if data.expert.value}}
+      {{#if data.expert.name}}
       <dt>Expert Profession Requirements</dt>
       <dd>{{data.expert.requirements}}</dd>
       {{/if}}
       <dt>Skill Ranks</dt>
-      <dd>{{#each data.skillRanks}}{{value}}{{#unless @last}}, {{/unless}}{{/each}}</dd>
+      <dd>{{#each data.skillRanks}}{{name}}{{#unless @last}}, {{/unless}}{{/each}}</dd>
       <dt>Bonus Advances</dt>
-      <dd>{{#each data.bonusAdvances}}{{value}}{{#unless @last}}, {{/unless}}{{/each}}</dd>
+      <dd>{{#each data.bonusAdvances}}{{name}}{{#unless @last}}, {{/unless}}{{/each}}</dd>
       <dt>Talents</dt>
-      <dd>{{#each data.talents}}{{value}}{{#unless @last}}, {{/unless}}{{/each}}</dd>
+      <dd>{{#each data.talents}}{{name}}{{#unless @last}}, {{/unless}}{{/each}}</dd>
     </dl>
 </section>

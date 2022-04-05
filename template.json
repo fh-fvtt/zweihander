@@ -226,9 +226,7 @@
       },
       "trapping": {
         "price": {},
-        "encumbrance": {
-          "value": 0
-        }
+        "encumbrance": 0
       },
       "effect": {
         "rules": {
@@ -262,19 +260,13 @@
       "templates": ["flavor", "trapping"],
       "weaponType": "",
       "equipped": true,
-      "associatedSkill": {
-        "value": "Simple Melee"
-      },
-      "load": {
-        "value": 0
-      },
+      "associatedSkill": "Simple Melee",
+      "load": 0,
       "handling": "One-handed",
       "qualities": {
         "value": ""
       },
-      "distance": {
-        "value": "Engaged"
-      },
+      "distance": "",
       "damage": {
         "formula": "[CB] + 0 + (1+[#])d6x6"
       }
@@ -283,24 +275,16 @@
       "templates": ["flavor", "trapping"],
       "equipped": true,
       "qualities": {
-        "value": "",
-        "arrayOfValues": []
+        "value": ""
       },
-      "damageThresholdModifier": {
-        "value": 0
-      }
+      "damageThresholdModifier": 0
     },
     "trapping": {
       "templates": ["flavor", "trapping", "effect"],
-      "category": {
-        "value": ""
+      "details": {
+        "category": { "@en": "" }
       },
-      "quantity": {
-        "value": 1
-      },
-      "encumbrance": {
-        "value": 0
-      },
+      "quantity": 1,
       "carried": true
     },
     "profession": {
@@ -309,9 +293,7 @@
         "value": false,
         "requirements": ""
       },
-      "archetype": {
-        "value": ""
-      },
+      "archetype": "",
       "bonusAdvances": [],
       "skillRanks": [],
       "talents": [],
@@ -324,28 +306,16 @@
       "drawback": {
         "name": ""
       },
-      "tier": {
-        "value": ""
-      }
+      "tier": ""
     },
     "spell": {
       "templates": ["flavor", "effect"],
-      "tradition": {
-        "value": ""
-      },
-      "principle": {
-        "value": ""
-      },
-      "distance": {
-        "value": ""
-      },
-      "duration": {
-        "value": ""
-      },
-      "castingTime": {
-        "value": "1 min",
-        "ap": 0
-      },
+      "tradition": "",
+      "principle": "",
+      "distance": "",
+      "duration": "",
+      "castingTime": "1 min",
+      "castingCost": 0,
       "rules": {
         "criticalSuccess": { "@en": "" },
         "criticalFailure": { "@en": "" },
@@ -354,15 +324,9 @@
     },
     "ritual": {
       "templates": ["flavor", "effect"],
-      "difficulty": {
-        "value": ""
-      },
-      "channelAs": {
-        "value": ""
-      },
-      "castingTime": {
-        "value": ""
-      },
+      "difficulty": "",
+      "channelAs": "",
+      "castingTime": "",
       "rules": {
         "consequences": { "@en": "" },
         "condition": { "@en": "" },
@@ -372,33 +336,21 @@
     "skill": {
       "templates": ["flavor"],
       "requiresTraining": false,
-      "associatedPrimaryAttribute": {
-        "value": "Combat"
-      }
+      "associatedPrimaryAttribute": "Combat"
     },
     "talent": {
       "templates": ["flavor", "effect"]
     },
     "uniqueAdvance": {
       "templates": ["flavor"],
-      "advanceType": {
-        "value": ""
-      },
-      "rewardPointCost": {
-        "value": 0
-      },
-      "associatedFocusSkill": {
-        "value": ""
-      }
+      "advanceType": "",
+      "rewardPointCost": 0,
+      "associatedFocusSkill": ""
     },
     "disease": {
       "templates": ["flavor", "effect"],
-      "resist": {
-        "value": ""
-      },
-      "duration": {
-        "value": ""
-      },
+      "resist": "",
+      "duration": "",
       "rules": {
         "treatment": {
           "@en": ""
@@ -408,29 +360,27 @@
     },
     "disorder": {
       "templates": ["flavor", "effect"],
-      "category": {
-        "value": ""
+      "details": {
+        "category": { "@en": "" }
       },
       "active": false
     },
     "taint": {
       "templates": ["flavor", "effect"],
-      "category": {
-        "value": ""
+      "details": {
+        "category": { "@en": "" }
       },
       "active": false
     },
     "injury": {
       "templates": ["flavor", "effect"],
-      "severity": {
-        "value": ""
-      },
+      "severity": 0,
       "active": false
     },
     "condition": {
       "templates": ["flavor", "effect"],
-      "category": {
-        "value": ""
+      "details": {
+        "category": { "@en": "" }
       },
       "active": false
     }

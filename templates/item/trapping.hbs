@@ -1,16 +1,16 @@
 <div class="form-group">
   <label>Trapping Type</label>
-  <input  name="data.category.value" type="text" value="{{data.category.value}}">
+  <input name="{{zhLocalizePath 'data.details.category'}}" type="text" value="{{zhLocalize data.details.category}}">
 </div>
 
 <div class="form-group">
   <label>Quantity</label>
-  <input  name="data.quantity.value" type="number" value="{{data.quantity.value}}">
+  <input name="data.quantity" type="number" value="{{data.quantity}}">
 </div>
 
 <div class="form-group">
   <label>Encumbrance (Single)</label>
-  <input  name="data.encumbrance.value" type="number" value="{{data.encumbrance.value}}">
+  <input name="data.encumbrance" type="number" value="{{data.encumbrance}}">
 </div>
 
 {{zhPriceInputs data.price}}

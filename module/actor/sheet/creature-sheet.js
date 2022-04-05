@@ -92,7 +92,7 @@ export default class ZweihanderCreatureSheet extends ZweihanderBaseActorSheet {
           type: "weapon",
           summaryTemplate: "item-summary/weapon",
           rollType: "weapon-roll",
-          rollLabelKey: "data.associatedSkill.value",
+          rollLabelKey: "data.associatedSkill",
           details: [
             {
               title: "Chance",
@@ -102,7 +102,7 @@ export default class ZweihanderCreatureSheet extends ZweihanderBaseActorSheet {
             {
               title: "Load",
               size: 40,
-              key: "data.load.value"
+              key: "data.load"
             }
           ],
           items: sheetData.weapons
@@ -117,7 +117,7 @@ export default class ZweihanderCreatureSheet extends ZweihanderBaseActorSheet {
             {
               title: "Qty.",
               size: 40,
-              key: "data.quantity.value"
+              key: "data.quantity"
             }
           ],
           items: sheetData.trappings
@@ -188,8 +188,8 @@ export default class ZweihanderCreatureSheet extends ZweihanderBaseActorSheet {
     data.skills = data.skills.sort((a, b) => a.name.localeCompare(b.name));
     // add base chance to weapon data
     data.weapons = data.weapons.map(w => {
-      const skill = data.skills.find(s => s.name === w.data.associatedSkill.value);
-      const baseChance = data.data.stats.primaryAttributes[skill.data.associatedPrimaryAttribute.value.toLowerCase()].value;
+      const skill = data.skills.find(s => s.name === w.data.associatedSkill);
+      const baseChance = data.data.stats.primaryAttributes[skill.data.associatedPrimaryAttribute.toLowerCase()].value;
       w.chance = baseChance + skill.data.bonus;
       return w;
     });

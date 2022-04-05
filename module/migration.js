@@ -259,9 +259,35 @@ const migrateItemData = async (item) => {
   migrateField('condition.value', 'rules.condition.@en', 'condition');
   migrateField('reagents.value', 'rules.reagents.@en', 'reagents');
 
+  //details (short localized text)
+  migrateField('category.value', 'details.category.@en', 'category');
+
+  //other 
+  migrateField('archetype.value', 'archetype');
+  migrateField('associatedFocusSkill.value', 'associatedFocusSkill');
+  migrateField('associatedSkill.value', 'associatedSkill');
+  migrateField('distance.value', 'distance');
+  migrateField('load.value', 'load');
+  migrateField('duration.value', 'duration');
+  migrateField('castingTime.value', 'castingTime');
+  migrateField('castingTime.ap', 'castingCost');
+  migrateField('principle.value', 'principle');
+  migrateField('tradition.value', 'tradition');
+  migrateField('difficulty.value', 'difficulty');
+  migrateField('channelAs.value', 'channelAs');
+  migrateField('resist.value', 'resist');
+  migrateField('tier.value', 'tier');
+  migrateField('advanceType.value', 'advanceType');
+  migrateField('associatedPrimaryAttribute.value', 'associatedPrimaryAttribute');
+  migrateField('rewardPointCost.value', 'rewardPointCost');
+  migrateField('encumbrance.value', 'encumbrance');
+  migrateField('damageThresholdModifier.value', 'damageThresholdModifier');
+  migrateField('quantity.value', 'quantity');
+  
+
   // type specific
   if (item.type === 'ancestry') {
-    migrateField('ancestralTrait.value', 'ancestralTrait.name', 1);    
+    migrateField('ancestralTrait.value', 'ancestralTrait.name', 1);
   } else if (item.type === 'profession') {
     migrateField('drawback.value', 'drawback.name', 1);
     migrateField('specialTrait.value', 'specialTrait.name', 1);
@@ -289,6 +315,13 @@ const migrateItemData = async (item) => {
     }
   } else if (item.type === 'weapon') {
     migrateField('type.value', 'weaponType', 'type');
+  } else if (item.type === 'injury') {
+    migrateField('severity.value', 'severity', 0, 
+      (x) => {
+        const choices = CONFIG.ZWEI.injurySeverities.map(s => s.label);
+        return Math.max(0, choices.indexOf(x));
+      }
+    );
   }
   const updatedImg = migrateIcons(item);
   if (updatedImg) {
@@ -304,7 +337,7 @@ const migrateIcons = (document) => {
 export const migrateWorldSafe = async () => {
   if (!game.user.isGM) return;
   const currentVersion = game.settings.get("zweihander", "systemMigrationVersion");
-  const NEEDS_MIGRATION_VERSION = "4.2.3-beta1l";
+  const NEEDS_MIGRATION_VERSION = "4.2.3-beta2b";
   const COMPATIBLE_MIGRATION_VERSION = "4.2.0";
   const totalDocuments = game.actors.size + game.scenes.size + game.items.size;
   if (!currentVersion && totalDocuments === 0) return game.settings.set("zweihander", "systemMigrationVersion", game.system.data.version);

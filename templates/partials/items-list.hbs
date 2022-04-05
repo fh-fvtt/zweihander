@@ -29,8 +29,10 @@
             <span class="numerable-field-counter">{{zhLookup item detail.key}}</span>
             <button type="button" class="numerable-field-add" data-numerable-path="{{detail.key}}">+</button>
           </div>
+        {{else if detail.key}}
+          {{zhLookup item detail.key}}
         {{else}}
-        {{zhLookup item detail.key}}
+          {{#with item}} {{detail.value}} {{/with}}
         {{/if}}
       </div>
       {{/each}}

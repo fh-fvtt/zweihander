@@ -1,12 +1,12 @@
 <div class="skills-list save-scroll">
   {{#each skills as | skill | }}
   <div class="skill skill-roll flexrow" data-item-id="{{skill._id}}"
-    data-associated-pa="{{skill.data.associatedPrimaryAttribute.value}}"
+    data-associated-pa="{{skill.data.associatedPrimaryAttribute}}"
     data-rank="{{skill.data.rank}}" data-label="{{skill.name}}">
     <span class="skill-name">
       <span>
         {{skill.name}}
-      ({{getFirstLetter skill.data.associatedPrimaryAttribute.value}})
+      ({{getFirstLetter skill.data.associatedPrimaryAttribute}})
       {{#if skill.data.requiresTraining}}*{{/if}}
       </span>
     </span>

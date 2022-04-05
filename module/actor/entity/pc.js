@@ -34,8 +34,10 @@ export default class ZweihanderPC extends ZweihanderBaseActor {
       applyBonusModifiers(advancesList, +1, `profession ${p.name} of actor ${actorData.name}`);
     })
     // assign inital peril & damage
-    const perilModifier = 3;
-    const initialPeril = data.stats.primaryAttributes[configOptions.pthAttribute].bonus + perilModifier;
+    const sa = data.stats.secondaryAttributes;
+    sa.perilThreshold = {};
+    sa.damageThreshold = {};
+    sa.perilThreshold.value = data.stats.primaryAttributes[configOptions.pthAttribute].bonus + 3;
     // get equipped armor
     const equippedArmor = actorData.items
       .filter(a => a.type === 'armor' && a.data.data.equipped);
@@ -43,17 +45,15 @@ export default class ZweihanderPC extends ZweihanderBaseActor {
     // according to the rule book, this doesn't stack, so we choose the maximium!
     // to account for shields with "maker's mark" quality, we need to implement active effects
     const maxEquippedArmor = equippedArmor?.[
-      ZweihanderUtils.argMax(equippedArmor.map(a => a.data.data.damageThresholdModifier.value))
+      ZweihanderUtils.argMax(equippedArmor.map(a => a.data.data.damageThresholdModifier))
     ];
-    const damageModifier = maxEquippedArmor?.data?.data?.damageThresholdModifier?.value ?? 0;
-    const initialDamage = data.stats.primaryAttributes[configOptions.dthAttribute].bonus + damageModifier;
-    // build ladder
-    this.buildPerilDamageLadder(data, initialPeril, initialDamage);
+    const damageModifier = maxEquippedArmor?.data?.data?.damageThresholdModifier ?? 0;
+    sa.damageThreshold.value = data.stats.primaryAttributes[configOptions.dthAttribute].bonus + damageModifier;;
     // active effects tracking Proof of Concept 
-    data.stats.secondaryAttributes.damageThreshold.base = data.stats.primaryAttributes[configOptions.dthAttribute].bonus;
-    data.stats.secondaryAttributes.damageThreshold.mods = [];
+    sa.damageThreshold.base = data.stats.primaryAttributes[configOptions.dthAttribute].bonus;
+    sa.damageThreshold.mods = [];
     if (maxEquippedArmor && damageModifier > 0) {
-      data.stats.secondaryAttributes.damageThreshold.mods.push(
+      sa.damageThreshold.mods.push(
         { source: `${maxEquippedArmor.name} DTM`, type: 'add', argument: damageModifier }
       );
     }
@@ -68,7 +68,7 @@ export default class ZweihanderPC extends ZweihanderBaseActor {
         item.type === 'skill' && item.name === secAttr.associatedSkill
       );
       if (skill) {
-        const primAttr = skill.data.data.associatedPrimaryAttribute.value.toLowerCase();
+        const primAttr = skill.data.data.associatedPrimaryAttribute.toLowerCase();
         secAttr.value = data.stats.primaryAttributes[primAttr].value + Math.max(0, skill.data.data.bonus - perilMalus);
       } else {
         noWarn || ui?.notifications?.warn(`Can't find associated skill ${secAttr.associatedSkill} for secondary attribute ${name}!`);
@@ -86,13 +86,13 @@ export default class ZweihanderPC extends ZweihanderBaseActor {
     const nine4one = game.settings.get("zweihander", "encumbranceNineForOne");
     const smallTrappingsEnc = !nine4one ? 0 : Math.floor(
       carriedTrappings
-        .filter(t => t.data.data.encumbrance.value === 0)
-        .map(t => t.data.data.quantity.value || 0)
+        .filter(t => t.data.data.encumbrance === 0)
+        .map(t => t.data.data.quantity || 0)
         .reduce((a, b) => a + b, 0) / 9
     );
     const normalTrappingsEnc = carriedTrappings
-      .filter(t => t.data.data.encumbrance.value !== 0)
-      .map(t => t.data.data.encumbrance.value * (t.data.data.quantity.value || 0))
+      .filter(t => t.data.data.encumbrance !== 0)
+      .map(t => t.data.data.encumbrance * (t.data.data.quantity || 0))
       .reduce((a, b) => a + b, 0);
     // assign encumbrance from currency
     const currencyEnc = Math.floor(
@@ -100,12 +100,12 @@ export default class ZweihanderPC extends ZweihanderBaseActor {
     );
     // assign encumbrance from equipped armor piece
     const armorEnc = equippedArmor
-      .map(a => a.data.data.encumbrance.value)
+      .map(a => a.data.data.encumbrance)
       .reduce((a, b) => a + b, 0);
     // assign encumbrance from equipped weapons
     const weaponEnc = actorData.items
       .filter(i => i.type === 'weapon' && i.data.data.equipped)
-      .map(w => w.data.data.encumbrance.value)
+      .map(w => w.data.data.encumbrance)
       .reduce((a, b) => a + b, 0);
     const enc = data.stats.secondaryAttributes.encumbrance = {};
     // assign initial encumbrance threshold
@@ -127,6 +127,20 @@ export default class ZweihanderPC extends ZweihanderBaseActor {
     mov.current = Math.max(0, mov.value - mov.overage);
   }
 
+  async _preCreate(actorData, options, user, that) {
+    // roll primary attributes for new pc
+    await super._preCreate(actorData, options, user, that);
+    const pas = actorData.data.stats.primaryAttributes;
+    if (CONFIG.ZWEI.primaryAttributes.every(pa => pas[pa].value === 0)) {
+      const update = {};
+      for (let pa of CONFIG.ZWEI.primaryAttributes) {
+        const roll = await (new Roll('2d10+35')).evaluate();
+        update[`data.stats.primaryAttributes.${pa}.value`] = roll.total;
+      }
+      await actorData.update(update);
+    }
+  }
+
   async createEmbeddedDocuments(embeddedName, data, context, actor) {
     if (embeddedName === "Item") {
       const filteredData = [];
@@ -136,7 +150,7 @@ export default class ZweihanderPC extends ZweihanderBaseActor {
       for (let item of data) {
         if (item.type === "profession") {
           const previousTiersCompleted = actorProfessions
-            .map(profession => profession.data.data.tier.completed)
+            .map(profession => profession.data.data.completed)
             .every(value => value === true);
           const allTiersAssigned = numberOfProfessionsAttached == 3;
           const dragDroppedOwnProfession = actorProfessions.some(p => p._id === item._id);

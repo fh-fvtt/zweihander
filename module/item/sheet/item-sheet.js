@@ -55,10 +55,22 @@ export default class ZweihanderItemSheet extends ItemSheet {
     if (data.type === 'skill') {
       data.choices.associatedPrimaryAttribute = CONFIG.ZWEI.primaryAttributes
         .map(option => ({
-          selected: (data.data.associatedPrimaryAttribute.value.toLowerCase() ?? 'combat') === option ? 'selected' : '',
+          selected: (data.data.associatedPrimaryAttribute.toLowerCase() ?? 'combat') === option ? 'selected' : '',
           value: option,
           label: option.capitalize()
         }));
+    }
+    if (data.type === 'profession') {
+      data.choices.archetypes = ZweihanderUtils.selectedChoice(
+        data.data.archetype ?? CONFIG.ZWEI.archetypes[0],
+        CONFIG.ZWEI.archetypes.map(option => ({ value: option, label: option }))
+      );
+    }
+    if (data.type === 'injury') {
+      data.choices.severities = ZweihanderUtils.selectedChoice(
+        data.data.severity ?? 0,
+        CONFIG.ZWEI.injurySeverities
+      )
     }
     if (data.type === "weapon") {
       const skillPack = game.packs.get(game.settings.get("zweihander", "skillPack"));

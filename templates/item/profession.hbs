@@ -1,6 +1,10 @@
 <div class="form-group">
   <label>Archetype</label>
-  <input name="data.archetype.value" type="text" value="{{data.archetype.value}}">
+  <select name="data.archetype">
+    {{#each choices.archetypes}}
+    <option value="{{value}}" {{selected}}>{{label}}</option>
+    {{/each}}
+  </select>
 </div>
 
 {{{arrayInputGroup 'Bonus Advances' 'data.bonusAdvances' data.bonusAdvances 7 'name'}}}

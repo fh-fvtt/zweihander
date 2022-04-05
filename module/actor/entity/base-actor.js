@@ -9,24 +9,6 @@ export default class ZweihanderBaseActor {
     return rollData;
   }
 
-
-  buildPerilDamageLadder(data, initialPeril, initialDamage) {
-    const ladder = [
-      "value",
-      "valuePlusSix",
-      "valuePlusTwelve",
-      "valuePlusEighteen"
-    ];
-    let ladderIncrement = 0;
-    data.stats.secondaryAttributes.perilThreshold = {};
-    data.stats.secondaryAttributes.damageThreshold = {};
-    ladder.forEach((v) => {
-      data.stats.secondaryAttributes.perilThreshold[v] = initialPeril + ladderIncrement;
-      data.stats.secondaryAttributes.damageThreshold[v] = initialDamage + ladderIncrement;
-      ladderIncrement += 6;
-    })
-  }
-
   getEffectivePerilLadderValue(baseLadderValue, isIgnoredPerilLadderValue) {
     return isIgnoredPerilLadderValue[Math.max(0,3-baseLadderValue)] ? 5 : baseLadderValue;
   }

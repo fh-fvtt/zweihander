@@ -388,3 +388,11 @@ export const formDataToArray = (formData, key) => {
   Object.entries(x).forEach(([k, v]) => array[k.match(/[0-9]+/)[0]] = v);
   return array;
 };
+
+export const localize = (localizeObj) => {
+  return localizeObj?.['@en'];
+};
+
+export const localizePath = (dataPath) => {
+  return `${dataPath}.@en`;
+};

@@ -225,7 +225,7 @@ export default class ZweihanderBaseActorSheet extends ActorSheet {
       if (item.type === "armor") {
         await item.update({ "data.equipped": event.target.checked });
       } else if (item.type === "profession") {
-        if (!event.target.checked && item.data.data.tier.value !== item.actor.data.data.tier) {
+        if (!event.target.checked && item.data.data.tier !== item.actor.data.data.tier) {
           ui.notifications.error(`In order to reset this professions progress you have to delete the profession above it first!`);
           return;
         }

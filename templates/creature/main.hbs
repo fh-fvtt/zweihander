@@ -75,7 +75,7 @@
               value="{{data.stats.secondaryAttributes.damageThreshold.value}}" {{#unless
               data.stats.manualMode}}readonly{{/unless}}>
             <span
-              class="sa-ladder">({{data.stats.secondaryAttributes.damageThreshold.valuePlusSix}}/{{data.stats.secondaryAttributes.damageThreshold.valuePlusTwelve}}/{{data.stats.secondaryAttributes.damageThreshold.valuePlusEighteen}})</span></span>
+              class="sa-ladder">({{zhAdd data.stats.secondaryAttributes.damageThreshold.value '6'}}/{{zhAdd data.stats.secondaryAttributes.damageThreshold.value '12'}}/{{zhAdd data.stats.secondaryAttributes.damageThreshold.value '18'}})</span></span>
         </li>
         <li class="sa-dth">
           <span class="sa-title">PTh</span>
@@ -84,7 +84,7 @@
               value="{{data.stats.secondaryAttributes.perilThreshold.value}}" {{#unless
               data.stats.manualMode}}readonly{{/unless}}>
             <span
-              class="sa-ladder">({{data.stats.secondaryAttributes.perilThreshold.valuePlusSix}}/{{data.stats.secondaryAttributes.perilThreshold.valuePlusTwelve}}/{{data.stats.secondaryAttributes.perilThreshold.valuePlusEighteen}})</span></span>
+              class="sa-ladder">({{zhAdd data.stats.secondaryAttributes.perilThreshold.value '6'}}/{{zhAdd data.stats.secondaryAttributes.perilThreshold.value '12'}}/{{zhAdd data.stats.secondaryAttributes.perilThreshold.value '18'}})</span></span>
         </li>
         <li class="sa-parry">
           <span class="sa-title">Parry</span>

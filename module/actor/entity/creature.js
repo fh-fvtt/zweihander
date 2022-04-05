@@ -8,13 +8,12 @@ export default class ZweihanderCreature extends ZweihanderBaseActor {
       .forEach(a => a.bonus = a.bonusAdvances + Math.floor(a.value / 10));
     const sa = actorData.data.stats.secondaryAttributes;
     const pa = actorData.data.stats.primaryAttributes;
-    this.buildPerilDamageLadder(actorData.data, sa.perilThreshold.value, sa.damageThreshold.value);
     sa.perilCurrent.effectiveValue = sa.perilCurrent.value;
     if (!actorData.data.stats.manualMode) {
       // main gauche p. 239 "Parry (abbreviated to Par in the Bestiary) is equal to the highest Combat-based Skill the creature has"
       const combatBaseChance = pa.combat.value;
       const combatSkills = actorData.items.filter(i =>
-        i.type === 'skill' && i.data.data.associatedPrimaryAttribute.value.toLowerCase() === 'combat');
+        i.type === 'skill' && i.data.data.associatedPrimaryAttribute.toLowerCase() === 'combat');
       sa.parry.value = Math.max(...combatSkills.map(s => s.data.data.bonus + combatBaseChance));
       // dodge is equal to its coordination value
       const coordinationValue = this.getSkillChance(actor, this.getItem(actor, 'skill', 'coordination'));
@@ -34,7 +33,7 @@ export default class ZweihanderCreature extends ZweihanderBaseActor {
 
   getSkillChance(actor, skill) {
     if (!skill) return 0;
-    const pa = skill.data.data.associatedPrimaryAttribute.value.toLowerCase();
+    const pa = skill.data.data.associatedPrimaryAttribute.toLowerCase();
     const paChance = actor.data.data.stats.primaryAttributes[pa].value;
     const skillBonus = skill.data.data.bonus;
     return paChance + skillBonus;

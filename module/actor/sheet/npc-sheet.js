@@ -1,4 +1,5 @@
-import { assignPacks } from "../../utils";
+import { ZWEI } from "../../config";
+import { assignPacks, selectedChoice } from "../../utils";
 import ZweihanderCreatureSheet from "./creature-sheet";
 
  export default class ZweihanderNpcSheet extends ZweihanderCreatureSheet {
@@ -100,6 +101,9 @@ import ZweihanderCreatureSheet from "./creature-sheet";
       {
         key: 'details.archetype',
         placeholder: 'Archetype',
+        choices: selectedChoice(
+          this.actor.data.data.details.archetype ?? CONFIG.ZWEI.archetypes[0],
+          CONFIG.ZWEI.archetypes.map(a => ({ value: a, label: a }))),
         hidden: this.actor.limited
       },
       {
