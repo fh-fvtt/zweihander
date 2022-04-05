@@ -26,7 +26,7 @@
         {{else if detail.isNumerable}}
           <div class="numerable-field flexrow">
             <button type="button" class="numerable-field-subtract {{#if (zhLookup item detail.key)}}{{else}}hide{{/if}}" data-numerable-path="{{detail.key}}">-</button>
-            <span class="numerable-field-counter">{{zhLookup item detail.key}}</span>
+            <span class="numerable-field-counter">{{zhLookup item detail.key}}{{detail.unit}}</span>
             <button type="button" class="numerable-field-add" data-numerable-path="{{detail.key}}">+</button>
           </div>
         {{else if detail.key}}

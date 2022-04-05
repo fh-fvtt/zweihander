@@ -51,6 +51,7 @@ export default class ZweihanderItemSheet extends ItemSheet {
     data.editable = this.isEditable;
     data.rollData = this.item.getRollData.bind(this.item);
     data.settings = ZweihanderUtils.getSheetSettings();
+    data.actor = this.item.actor;
     data.choices = {};
     if (data.type === 'skill') {
       data.choices.associatedPrimaryAttribute = CONFIG.ZWEI.primaryAttributes

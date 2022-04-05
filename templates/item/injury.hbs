@@ -7,6 +7,13 @@
   </select>
 </div>
 
+{{#if actor}}
+<div class="form-group">
+  <label>Recuperation Time (days)</label>
+  <input name="data.recuperationTime" type="number" value="{{data.recuperationTime}}">
+</div>
+{{/if}}
+
 <div class="form-group stacked">
   <label><a class="open-editor">Effect <i class="fa fa-edit"></i></a></label>
     <div class="zh-editor-preview open">{{{processRuleText (zhLocalize data.rules.effect)}}}</div>

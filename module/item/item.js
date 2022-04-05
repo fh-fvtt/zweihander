@@ -4,6 +4,8 @@ import ZweihanderSkill from "./entity/skill";
 import ZweihanderAncestry from "./entity/ancestry";
 import ZweihanderArmor from "./entity/armor";
 import ZweihanderQuality from "./entity/quality";
+import ZweihanderInjury from "./entity/injury";
+
 import { ZWEI } from "../config";
 
 export default class ZweihanderItem extends Item {
@@ -14,6 +16,7 @@ export default class ZweihanderItem extends Item {
     profession: new ZweihanderProfession(),
     skill: new ZweihanderSkill(),
     ancestry: new ZweihanderAncestry(),
+    injury: new ZweihanderInjury(),
     quality: new ZweihanderQuality()
   };
 

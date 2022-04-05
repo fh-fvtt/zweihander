@@ -223,6 +223,13 @@ export function attachTabDefinitions(data) {
           summaryTemplate: "item-summary/injury",
           details: [
             {
+              title: "Recuperation Time",
+              size: 140,
+              key: "data.recuperationTime",
+              isNumerable: true,
+              unit: ' days'
+            },
+            {
               title: "Severity",
               size: 140,
               value: function () {
