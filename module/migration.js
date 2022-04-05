@@ -32,7 +32,7 @@ export const migrateWorld = async (forceSystemPacks=false) => {
   // Migrate Actor Override Tokens
   for ( let s of game.scenes ) {
     try {
-      const updateData = migrateSceneData(s.data);
+      const updateData = await migrateSceneData(s.data);
       if ( !foundry.utils.isObjectEmpty(updateData) ) {
         console.log(`Migrating Scene document ${s.name}`);
         await s.update(updateData, {enforceTypes: false});
@@ -108,7 +108,7 @@ const migrateCompendium = async (pack) => {
  * @param {object} [migrationData]  Additional data to perform the migration
  * @returns {object}                The updateData to apply
  */
- export const migrateSceneData = function(scene) {
+ export const migrateSceneData = async (scene) => {
   const tokens = scene.tokens.map(token => {
     const t = token.toObject();
     const update = {};
@@ -123,7 +123,7 @@ const migrateCompendium = async (pack) => {
     else if ( !t.actorLink ) {
       const actorData = duplicate(t.actorData);
       actorData.type = token.actor?.type;
-      const update = migrateActorData(actorData);
+      const update = await migrateActorData(actorData);
       ["items", "effects"].forEach(embeddedName => {
         if (!update[embeddedName]?.length) return;
         const updates = new Map(update[embeddedName].map(u => [u._id, u]));
