@@ -116,7 +116,7 @@ body.game.vtt.system-zweihander .zweihander.sheet.creature {
               transform: rotate(-30deg) translateX(-15px);
               transform-origin: center right;
               width: max-content;
-              z-index: 101;
+              z-index: 105;
               > span {
                 background-color: rgba(var(--zh-clr-bg1-rgb), 0.5);
                 backdrop-filter: blur(2px);
