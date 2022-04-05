@@ -109,7 +109,7 @@ const migrateCompendium = async (pack) => {
  * @returns {object}                The updateData to apply
  */
  export const migrateSceneData = async (scene) => {
-  const tokens = scene.tokens.map(token => {
+  const tokens = await Promise.all(scene.tokens.map(async token => {
     const t = token.toObject();
     const update = {};
     if ( Object.keys(update).length ) foundry.utils.mergeObject(t, update);
@@ -137,7 +137,7 @@ const migrateCompendium = async (pack) => {
       mergeObject(t.actorData, update);
     }
     return t;
-  });
+  }));
   return {tokens};
 };
 
