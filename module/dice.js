@@ -386,7 +386,8 @@ function outcomeLabel(outcome) {
 
 export const patchDie = () => {
 
-  Die.explode = function (modifier, { recursive = true } = {}) {
+  Die.prototype.explode = function (modifier, { recursive = true } = {}) {
+    // patched explode
     // Match the explode or "explode once" modifier
     const rgx = /xo?([0-9,]+)?([<>=]+)?([0-9,]+)?/i;
     const match = modifier.match(rgx);
@@ -429,7 +430,7 @@ export const patchDie = () => {
     }
   }
 
-  Die._evaluateModifiers = function () {
+  Die.prototype._evaluateModifiers = function () {
     const getSignature = (modifier) => {
       const rgx = /xo?([0-9,]+)?([<>=]+)?([0-9,]+)?/i;
       const match = modifier.match(rgx);
