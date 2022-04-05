@@ -337,7 +337,7 @@ const migrateIcons = (document) => {
 export const migrateWorldSafe = async () => {
   if (!game.user.isGM) return;
   const currentVersion = game.settings.get("zweihander", "systemMigrationVersion");
-  const NEEDS_MIGRATION_VERSION = "4.2.3-beta2c";
+  const NEEDS_MIGRATION_VERSION = "4.2.3-beta2f";
   const COMPATIBLE_MIGRATION_VERSION = "4.2.0";
   const totalDocuments = game.actors.size + game.scenes.size + game.items.size;
   if (!currentVersion && totalDocuments === 0) return game.settings.set("zweihander", "systemMigrationVersion", game.system.data.version);
