@@ -226,7 +226,7 @@ const migrateActorData = async (actor) => {
     let itemUpdate = await migrateItemData(i);
     // Update the Owned Item
     if (!isObjectEmpty(itemUpdate)) {
-      itemUpdate._id = i.id;
+      itemUpdate._id = i.id ?? i._id;
       items.push(expandObject(itemUpdate));
     }
   }
