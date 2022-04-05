@@ -1,6 +1,8 @@
 {{zhPrice price}}
 <br />
-<label>Description:</label> {{{processRuleText flavor.description}}}
+{{#if (zhLocalize description)}}
+  <label>Description:</label> {{{processRuleText (zhLocalize description)}}}
+{{/if}}
 {{#if (zhLocalize rules.effect)}}
   <br />
   <label>Effect:</label> {{{processRuleText (zhLocalize rules.effect)}}}
