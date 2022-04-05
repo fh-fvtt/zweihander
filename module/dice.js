@@ -207,18 +207,18 @@ export async function rollWeaponDamage(actorId, testConfiguration) {
       weaponTestData: {
         actorId,
         weaponId,
-        exploded: false
+        exploded: 0
       }
     }
   };
   return damageRoll.toMessage({ speaker, flavor, content, flags }, { rollMode: CONST.DICE_ROLL_MODES.PUBLIC });
 }
 
-async function getWeaponDamageContent(weapon, roll, exploded = false) {
+async function getWeaponDamageContent(weapon, roll, exploded = false, explodedCount = 0) {
   weapon.data.qualities = await ZweihanderQuality.getQualities(weapon.data.qualities.value);
   const rollContent = await roll.render({ flavor: 'Fury Die' });
   const cardContent = await renderTemplate('systems/zweihander/templates/item-card/item-card-weapon.hbs', weapon);
-  return await renderTemplate(CONFIG.ZWEI.templates.weapon, { cardContent, rollContent, exploded, weapon });
+  return await renderTemplate(CONFIG.ZWEI.templates.weapon, { cardContent, rollContent, exploded, explodedCount, weapon });
 }
 
 export async function explodeWeaponDamage(message, useFortune) {
@@ -232,7 +232,7 @@ export async function explodeWeaponDamage(message, useFortune) {
     ui.notifications.warn(`Couldn't reroll skill test: There are no ${testConfiguration.useFortune} points left.`);
     return;
   }
-  const { actorId, weaponId } = message.data.flags.zweihander.weaponTestData;
+  const { actorId, weaponId, exploded } = message.data.flags.zweihander.weaponTestData;
   const actor = game.actors.get(actorId);
   const weapon = actor.items.get(weaponId).toObject(false);
   const roll = Roll.fromJSON(message.data.roll);
@@ -249,9 +249,9 @@ export async function explodeWeaponDamage(message, useFortune) {
     results.splice(minimumResultIndex, 1, { result: 6, active: true, exploded: true }, ...explodingRoll.terms[0].results);
     roll._total = updatedTotal;
   }
-  const content = await getWeaponDamageContent(weapon, roll, useFortune);
+  const content = await getWeaponDamageContent(weapon, roll, useFortune, exploded + 1);
   const diffData = {
-    'flags.zweihander.weaponTestData.exploded': true,
+    'flags.zweihander.weaponTestData.exploded': exploded + 1,
     'content': content,
     'roll': roll.toJSON()
   };

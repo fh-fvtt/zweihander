@@ -85,13 +85,15 @@ function enableChatButtons(html, flags, message, data) {
   const weaponTestData = flags?.weaponTestData;
   if (weaponTestData) {
     const actorId = weaponTestData.actorId;
-    if ((game.user.isGM || actorId == ZweihanderUtils.determineCurrentActorId()) && !weaponTestData.exploded) {
+    const showExplodingButtons = !weaponTestData.exploded ||
+      game.settings.get('zweihander', 'unlimitedFortuneExplodes');
+    if ((game.user.isGM || actorId == ZweihanderUtils.determineCurrentActorId()) && showExplodingButtons) {
       html.find('.damage-roll-explode').prop("disabled", false);
       $(html).on("click", ".damage-roll-explode", (event) => {
         ZweihanderDice.explodeWeaponDamage(message, 'fortune');
       });
     }
-    if (game.user.isGM && !weaponTestData.exploded) {
+    if (game.user.isGM && showExplodingButtons) {
       html.find('.damage-roll-explode-misfortune').prop("disabled", false);
       $(html).on("click", ".damage-roll-explode-misfortune", (event) => {
         ZweihanderDice.explodeWeaponDamage(message, 'misfortune');

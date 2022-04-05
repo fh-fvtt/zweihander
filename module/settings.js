@@ -75,6 +75,15 @@ export const registerSystemSettings = function() {
     onChange: updateActorSkillsFromPack
   });
 
+  game.settings.register("zweihander", "unlimitedFortuneExplodes", {
+    name: "Unlimited Fortune Explodes",
+    hint: "Enable to allow to explode fury dice more than once per attack.",
+    scope: "world",
+    type: Boolean,
+    default: false,
+    config: true
+  });
+
   game.settings.register("zweihander", "theme", {
     name: "Zweihander Sheet Theme",
     hint: "Choose a theme for your Zweihander sheets",
