@@ -21,6 +21,8 @@ export default class ZweihanderBaseActorSheet extends ActorSheet {
 
   #languageConfig;
   #actorConfig;
+  sortCriteria = {};
+  filterCriteria = {};
 
   constructor(...args) {
     super(...args);
@@ -58,7 +60,7 @@ export default class ZweihanderBaseActorSheet extends ActorSheet {
     // Prepare owned items
     this._prepareItems(data);
 
-    const itemGroups = this._getItemGroups(data);
+    const itemGroups = this._processItemGroups(this._getItemGroups(data));
     data.itemGroups = ZweihanderUtils.assignPacks(this.actor.type, itemGroups);
 
     // Prepare active effects
@@ -77,6 +79,75 @@ export default class ZweihanderBaseActorSheet extends ActorSheet {
 
   _getItemGroups() {
 
+  }
+
+  _processItemGroups(itemGroups) {
+    const sort = (itemGroup, criteria) => itemGroup.items.sort((a, b) => {
+      for (let sc of criteria) {
+        let aV, bV;
+        if (sc.detail === -1) {
+          aV = a.name;
+          bV = b.name
+        } else if (itemGroup.details[sc.detail].key) {
+          aV = getProperty(a, itemGroup.details[sc.detail].key);
+          bV = getProperty(b, itemGroup.details[sc.detail].key);
+        } else {
+          aV = itemGroup.details[sc.detail].value.call(a);
+          bV = itemGroup.details[sc.detail].value.call(b);
+        }
+        if (aV < bV) {
+          return sc.sort;
+        } else if (aV > bV) {
+          return -sc.sort;
+        }
+      }
+      return 0;
+    });
+    const filter = (itemGroup, criteria) =>
+      itemGroup.items = itemGroup.items.filter((i) => {
+        let filtered = true;
+        for (let fc of criteria) {
+          let v;
+          if (fc.detail === -1) {
+            v = i.name;
+          } else if (itemGroup.details[fc.detail].key) {
+            v = getProperty(i, itemGroup.details[fc.detail].key);
+          } else {
+            v = itemGroup.details[fc.detail].value.call(i);
+          }
+          // only strings supported for now
+          if (typeof v === 'string') {
+            filtered = filtered && v.trim().toLowerCase().indexOf(fc.value.trim().toLowerCase()) >= 0;
+          }
+        }
+        return filtered;
+      });
+    for (let [k, v] of Object.entries(this.sortCriteria)) {
+      sort(itemGroups[k], v.filter(c => !!c.sort));
+      for (let [i, sc] of v.entries()) {
+        if (sc.detail === -1) {
+          itemGroups[k].sortName = sc.sort;
+          itemGroups[k].sortNameOrder = i+1;
+        } else {
+          itemGroups[k].details[sc.detail].sort = sc.sort;
+          itemGroups[k].details[sc.detail].sortOrder = i+1;          
+        }
+      }
+    }
+    for (let [k, v] of Object.entries(this.filterCriteria)) {
+      filter(itemGroups[k], v.filter(c => !!c.value));
+      for (let fc of v) {
+        if (fc.detail === -1) {
+          itemGroups[k].filterName = fc.value;
+          itemGroups[k].filterNameActive = !!fc.active;
+        } else {
+          itemGroups[k].details[fc.detail].filter = fc.value;
+          itemGroups[k].details[fc.detail].filterActive = !!fc.active;
+        }
+      }
+    }
+    Object.entries(itemGroups).forEach(([k,v]) => v.id = k);
+    return itemGroups;
   }
 
   async _onDropItemCreate(itemData) {
@@ -136,16 +207,15 @@ export default class ZweihanderBaseActorSheet extends ActorSheet {
     super.activateListeners(html);
     this._damageSheet(html);
     this._perilSheet(html);
-    html.find('.modded-value-indicator').hover(
-      (event) => {
-        const tooltip = $(event.currentTarget).find('.modded-value-tooltip').clone();
-        const offset = $(event.currentTarget).offset();
-        offset.top += 25;
-        offset.left -= (200 / 2) - 8;
-        tooltip.addClass('zh-modded-value-tooltip-instance');
-        tooltip.offset(offset);
-        $('body').append(tooltip);
-      },
+    html.find('.modded-value-indicator').hover((event) => {
+      const tooltip = $(event.currentTarget).find('.modded-value-tooltip').clone();
+      const offset = $(event.currentTarget).offset();
+      offset.top += 25;
+      offset.left -= (200 / 2) - 8;
+      tooltip.addClass('zh-modded-value-tooltip-instance');
+      tooltip.offset(offset);
+      $('body').append(tooltip);
+    },
       (event) => {
         $('.zh-modded-value-tooltip-instance').remove();
       })
@@ -153,6 +223,78 @@ export default class ZweihanderBaseActorSheet extends ActorSheet {
     const autoSizeInput = (el) => el.attr('size', Math.max(el.attr('placeholder').length, el.val().length));
     const inputsToAutoSize = html.find('input.auto-size');
     inputsToAutoSize.each((i, x) => autoSizeInput($(x)));
+
+    const getItemGroupCriteria = (criteria, itemGroupKey) => {
+      if (!criteria[itemGroupKey]) {
+        criteria[itemGroupKey] = [];
+      }
+      return criteria[itemGroupKey];
+    }
+
+    const getCriterion = (criteria, itemGroupKey, detail, create=true) => {
+      const itemGroupCriteria = getItemGroupCriteria(criteria, itemGroupKey);
+      const existingCriterion = itemGroupCriteria.find(c => c.detail === detail);
+      if (!existingCriterion && create) {
+        const criterion = { detail };
+        itemGroupCriteria.push(criterion);
+        return criterion;
+      }
+      return existingCriterion;
+    }
+
+    html.find('.show-filter').click((event) => {
+      event.stopPropagation();
+      const el = $(event.currentTarget).parents('.filterable');
+      const itemGroup = el.data('itemGroup');
+      const detail = Number.parseInt(el.data('detail'));
+      getCriterion(this.filterCriteria, itemGroup, detail).active = true;
+      el.find('.filter-input').addClass('filter-input-active');
+      el.find('.filter-input input').focus();
+    })
+    html.find('.hide-filter').click((event) => {
+      event.stopPropagation();
+      const el = $(event.currentTarget).parents('.filterable');
+      const itemGroup = el.data('itemGroup');
+      const detail = Number.parseInt(el.data('detail'));
+      $(event.currentTarget).parents('.filter-input').removeClass('filter-input-active');
+      getCriterion(this.filterCriteria, itemGroup, detail).active = false;
+    })
+    html.find('.filter-input input').click((event) => event.stopPropagation());
+    html.find('.filter-input input').keydown((event) => {
+      event.stopPropagation();
+      const el = $(event.currentTarget).parents('.filterable');
+      const itemGroup = el.data('itemGroup');
+      const detail = Number.parseInt(el.data('detail'));
+      if (event.keyCode === 27) {
+        $(event.currentTarget).parent().removeClass('filter-input-active');
+        getCriterion(this.filterCriteria, itemGroup, detail).active = false;
+      } else if (event.keyCode === 13) {
+        const criterion = getCriterion(this.filterCriteria, itemGroup, detail);
+        criterion.value = event.currentTarget.value;
+        if (criterion.value.trim() === '') {
+          $(event.currentTarget).parent().removeClass('filter-input-active');
+          criterion.active = false;
+        }
+        this.render();
+      }
+    });
+    html.find('.sortable').click((event) => {
+      event.stopPropagation();
+      const el = $(event.currentTarget);
+      const itemGroup = el.data('itemGroup');
+      const detail = Number.parseInt(el.data('detail'));
+      const criterion = getCriterion(this.sortCriteria, itemGroup, detail);
+      if (!criterion.sort) {
+        criterion.sort = 1;
+      } else if (criterion.sort === 1) {
+        criterion.sort = -1;
+      } else if (criterion.sort === -1) {
+        criterion.sort = 0;
+        const ig = this.sortCriteria[itemGroup];
+        ig.splice(ig.indexOf(criterion), 1);
+      }
+      this.render();
+    });
     // Everything below here is only needed if the sheet is editable
     if (!this.options.editable) return;
     // auto size the details inputs on change

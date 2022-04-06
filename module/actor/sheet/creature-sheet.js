@@ -2,7 +2,6 @@ import ZweihanderBaseActorSheet from "./base-actor-sheet";
 import { selectedChoice } from "../../utils";
 export default class ZweihanderCreatureSheet extends ZweihanderBaseActorSheet {
 
-
   static unsupportedItemTypes = new Set([
     'ancestry',
     'profession',

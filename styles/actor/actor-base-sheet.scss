@@ -1,5 +1,4 @@
 body.game.vtt.system-zweihander .zweihander.sheet.actor {
-
   aside.details {
     flex: 0 0 content;
     padding: 5px 8px 0px 8px;
@@ -23,7 +22,8 @@ body.game.vtt.system-zweihander .zweihander.sheet.actor {
         &.influences {
           flex: 2 0 content;
         }
-        .prefix, .postfix {
+        .prefix,
+        .postfix {
           flex: 0 0 content;
           padding-top: 7px;
           font-size: 11px;
@@ -118,6 +118,93 @@ body.game.vtt.system-zweihander .zweihander.sheet.actor {
     overflow: auto;
     position: relative;
 
+    .sort-indicator {
+      text-align: left;
+      display: block;
+      position: absolute;
+      left: calc(100% + 2px);
+      top: 0px;
+      font-size: 10px;
+      font-family: var(--font-primary);
+      width: 20px;
+      height: 12px;
+      i {
+        color: var(--zh-clr-bg3);
+        &.fa-sort-up, &.fa-sort-down {
+          color: var(--zh-clr-aqua);
+        }
+      }
+      span.sort-order {
+        position: relative;
+        left: -2px;
+      }
+    }
+    .filter-indicator {
+      display: block;
+      position: absolute;
+      left: -10px;
+      top: 0px;
+      font-size: 8px;
+      color: var(--zh-clr-bg1);
+      background-color: var(--zh-clr-bg4);
+      border-radius: 50%;
+      padding-left: 1px;
+      width: 10px;
+      height: 10px;
+      cursor: pointer;
+      &.filter-active {
+        color: var(--zh-clr-bg1);
+        background-color: var(--zh-clr-yellow-alt);
+      }
+    }
+    .filter-input {
+      display: none;
+      position: absolute;
+      right: 5px;
+      left: 5px;
+      bottom: 0px;
+      top: 0px;
+      background-color: var(--zh-clr-bg1);
+      &.filter-input-active {
+        display: flex;
+      }
+      i {
+        position: absolute;
+        left: 2px;
+        top: 2px;
+        &.filter-active {
+          color: var(--zh-clr-yellow);
+        }
+        font-size: 8px;
+        cursor: pointer;
+      }
+      input {
+        font-family: var(--font-primary);
+        text-align: left;
+        width: unset;
+        flex: 1;
+        padding: 2px 2px 2px 12px;
+        height: 100%;
+        border-radius: 3px;
+        background-color: var(--zh-clr-bg2);
+        border: none;
+        &:focus, &:hover {
+          border: none;
+          box-shadow: none;
+        }
+      }
+    }
+
+    .sortable, .filterable {
+      &, & .detail-title {
+        position: relative;
+      }
+    }
+
+    .sortable {
+      cursor:ns-resize;
+    }
+
     .items-header {
       align-items: center;
       background: var(--zh-clr-bg1);
@@ -125,7 +212,7 @@ body.game.vtt.system-zweihander .zweihander.sheet.actor {
       font-weight: bold;
       height: 28px;
       margin: 2px 0;
-      position:sticky;
+      position: sticky;
       top: 0;
       padding: 0;
       z-index: 102;
@@ -146,6 +233,9 @@ body.game.vtt.system-zweihander .zweihander.sheet.actor {
         text-align: left;
         text-transform: uppercase;
         flex: 1 0 content;
+        .detail-title {
+          margin-left: 5px;
+        }
       }
 
       .item-detail {
@@ -213,7 +303,8 @@ body.game.vtt.system-zweihander .zweihander.sheet.actor {
       }
       & .numerable-field {
         justify-content: center;
-        & .numerable-field-subtract, .numerable-field-add {
+        & .numerable-field-subtract,
+        .numerable-field-add {
           visibility: hidden;
           height: 16px;
           flex: 0 0 16px;
@@ -222,7 +313,8 @@ body.game.vtt.system-zweihander .zweihander.sheet.actor {
           line-height: 1;
           font-size: 14px;
         }
-        &:hover .numerable-field-subtract, &:hover .numerable-field-add {
+        &:hover .numerable-field-subtract,
+        &:hover .numerable-field-add {
           visibility: visible;
           &.hide {
             visibility: hidden;
@@ -507,27 +599,25 @@ body.game.vtt.system-zweihander .zweihander.sheet.actor {
     &.peril-tracker-4 {
       filter: hue-rotate(15deg) blur(0.4px) saturate(1.2) sepia(0.5);
     }
-  
+
     &.peril-tracker-3 {
-      filter: hue-rotate(20deg) blur(0.6px) contrast(1.3) sepia(0.5) saturate(1.2)
-        brightness(1.1);
+      filter: hue-rotate(20deg) blur(0.6px) contrast(1.3) sepia(0.5)
+        saturate(1.2) brightness(1.1);
     }
-  
+
     &.peril-tracker-2 {
       filter: hue-rotate(25deg) blur(0.8px) contrast(1.4) saturate(1.4)
         brightness(1.3) sepia(0.6);
     }
-  
+
     &.peril-tracker-1 {
       filter: hue-rotate(125deg) blur(1px) contrast(1.4) saturate(2.5)
         brightness(1.3) sepia(0.6);
     }
-  
+
     &.peril-tracker-0 {
       filter: hue-rotate(225deg) blur(2px) contrast(1.8) saturate(4)
         brightness(1.8) sepia(0.9);
     }
   }
 }
-
-

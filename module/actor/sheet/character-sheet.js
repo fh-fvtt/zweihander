@@ -261,7 +261,7 @@ export default class ZweihanderCharacterSheet extends ZweihanderBaseActorSheet {
 
     html.find(".reset-ranks").click(() => {
       this.actor.update({
-        "data.corruption.value": 0
+        "data.alignment.corruption": 0
       })
     })
     // Reset Order and Chaos Ranks
@@ -270,8 +270,8 @@ export default class ZweihanderCharacterSheet extends ZweihanderBaseActorSheet {
         title: `Reset Ranks?`,
         content: `<p>Are you sure?<br/>Your order and chaos ranks will reset to 0!</p>`,
         yes: () => this.actor.update({
-          "data.chaosRanks.value": 0,
-          "data.orderRanks.value": 0
+          "data.alignment.chaos.rank": 0,
+          "data.alignment.order.rank": 0
         }),
         defaultYes: false
       });

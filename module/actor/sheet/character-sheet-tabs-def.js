@@ -8,7 +8,6 @@ export function getItemGroups(data) {
       summaryTemplate: "item-summary/weapon",
       rollType: "weapon-roll",
       rollLabelKey: "data.associatedSkill",
-      sortingCriteria: [{ detail: 3, sort: 1 }],
       details: [
         {
           title: "Distance",
@@ -18,24 +17,24 @@ export function getItemGroups(data) {
         },
         {
           title: "Load",
-          size: 60,
+          size: 80,
           key: "data.load"
         },
         {
           title: "Enc.",
-          size: 60,
+          size: 80,
           key: "data.encumbrance",
           isNumerable: true
         },
         {
           title: "Equipped",
-          size: 60,
+          size: 80,
           key: "data.equipped",
           isCheckbox: true
         },
         {
           title: "Carried",
-          size: 60,
+          size: 80,
           key: "data.carried",
           isCheckbox: true
         }
@@ -49,24 +48,24 @@ export function getItemGroups(data) {
       details: [
         {
           title: "DTM",
-          size: 60,
+          size: 80,
           key: "data.damageThresholdModifier"
         },
         {
           title: "Enc.",
-          size: 60,
+          size: 80,
           key: "data.encumbrance",
           isNumerable: true
         },
         {
           title: "Equipped",
-          size: 60,
+          size: 80,
           key: "data.equipped",
           isCheckbox: true
         },
         {
           title: "Carried",
-          size: 60,
+          size: 80,
           key: "data.carried",
           isCheckbox: true
         }
@@ -82,22 +81,23 @@ export function getItemGroups(data) {
           title: "Category",
           size: 160,
           key: localizePath("data.details.category"),
+          filterable: true
         },
         {
           title: "Qty.",
-          size: 60,
+          size: 80,
           key: "data.quantity",
           isNumerable: true
         },
         {
           title: "Enc.",
-          size: 60,
+          size: 80,
           key: "data.encumbrance",
           isNumerable: true
         },
         {
           title: "Carried",
-          size: 120,
+          size: 160,
           key: "data.carried",
           isCheckbox: true
         }
