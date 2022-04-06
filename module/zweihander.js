@@ -65,6 +65,8 @@ Hooks.once("ready", function () {
   }
   // patch die class
   patchDie();
+  console.log(`systems/zweihander/assets/${game.settings.get('zweihander', 'gameSystem')}-logo.webp`);
+  $('#ui-left #logo').attr('src', `systems/zweihander/assets/${game.settings.get('zweihander', 'gameSystem')}-logo.webp`).css('display', 'unset');
 })
 
 Hooks.once("diceSoNiceReady", function () {
