@@ -276,4 +276,12 @@ export const registerHandlebarHelpers = async function () {
 
   $$('zhLocalizePath', localizePath);
 
+  $$('zhSort', (arr, sortingCriteria) => {
+    return arr;
+  });
+
+  $$('zhSortCriteria', (details) => {
+    return details.map(d => d.sort);
+  });
+
 }

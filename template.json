@@ -226,7 +226,8 @@
       },
       "trapping": {
         "price": {},
-        "encumbrance": 0
+        "encumbrance": 0,
+        "carried": false
       },
       "effect": {
         "rules": {
@@ -259,7 +260,7 @@
     "weapon": {
       "templates": ["flavor", "trapping"],
       "weaponType": "",
-      "equipped": true,
+      "equipped": false,
       "associatedSkill": "Simple Melee",
       "load": 0,
       "handling": "One-handed",
@@ -284,8 +285,7 @@
       "details": {
         "category": { "@en": "" }
       },
-      "quantity": 1,
-      "carried": true
+      "quantity": 1
     },
     "profession": {
       "templates": ["flavor"],

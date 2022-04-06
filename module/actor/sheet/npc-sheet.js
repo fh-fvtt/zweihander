@@ -2,9 +2,9 @@ import { ZWEI } from "../../config";
 import { assignPacks, selectedChoice } from "../../utils";
 import ZweihanderCreatureSheet from "./creature-sheet";
 
- export default class ZweihanderNpcSheet extends ZweihanderCreatureSheet {
+export default class ZweihanderNpcSheet extends ZweihanderCreatureSheet {
 
-    static unsupportedItemTypes = new Set([
+  static unsupportedItemTypes = new Set([
     'ancestry',
     'profession',
     'quality',
@@ -20,46 +20,6 @@ import ZweihanderCreatureSheet from "./creature-sheet";
 
   getData(options) {
     const sheetData = super.getData();
-    sheetData.itemGroups.rules.splice(1, 0, {
-        title: "Talents",
-        type: "talent",
-        summaryTemplate: "item-summary/talent",
-        details: [],
-        items: sheetData.talents
-    });
-    sheetData.itemGroups.rules.splice(3, 0, {
-        title: "Rituals",
-        type: "ritual",
-        summaryTemplate: "item-summary/ritual",
-        details: [],
-        items: sheetData.rituals
-    });
-    sheetData.itemGroups.rules.push(
-      {
-        title: "Disorders",
-        type: "disorder",
-        summaryTemplate: "item-summary/disorder",
-        details: [],
-        items: sheetData.disorders
-      },
-      {
-        title: "Diseases",
-        type: "disease",
-        summaryTemplate: "item-summary/disease",
-        details: [],
-        items: sheetData.diseases
-      },
-    );
-    sheetData.itemGroups.loot.push(
-      {
-        title: "Armor",
-        type: "armor",
-        summaryTemplate: "item-summary/armor",
-        details: [],
-        items: sheetData.armor
-      },
-    )
-    assignPacks('npc', sheetData.itemGroups);
     sheetData.details = [
       {
         key: 'details.age',
@@ -123,7 +83,61 @@ import ZweihanderCreatureSheet from "./creature-sheet";
         hidden: this.actor.limited
       }
     ];
+    const $$ = x => sheetData.itemGroups[x];
+    sheetData.itemLists = {
+      attackProfiles: [
+        'weapons'
+      ].map($$),
+      loot: [
+        'trappings',
+        'armor'
+      ].map($$),
+      rules: [
+        'traits', 'talents',
+        'spells', 'rituals',
+        'taints', 'conditions', 'injuries', 'disorders', 'diseases'
+      ].map($$)
+    }
     return sheetData;
+  }
+
+  _getItemGroups(data) {
+    const itemGroups = super._getItemGroups(data);
+    itemGroups.talents = {
+      title: "Talents",
+      type: "talent",
+      summaryTemplate: "item-summary/talent",
+      details: [],
+      items: sheetData.talents
+    };
+    itemGroups.rituals = {
+      title: "Rituals",
+      type: "ritual",
+      summaryTemplate: "item-summary/ritual",
+      details: [],
+      items: sheetData.rituals
+    };
+    itemGroups.disorders = {
+      title: "Disorders",
+      type: "disorder",
+      summaryTemplate: "item-summary/disorder",
+      details: [],
+      items: sheetData.disorders
+    };
+    itemGroups.diseases = {
+      title: "Diseases",
+      type: "disease",
+      summaryTemplate: "item-summary/disease",
+      details: [],
+      items: sheetData.diseases
+    };
+    itemGroups.armor = {
+      title: "Armor",
+      type: "armor",
+      summaryTemplate: "item-summary/armor",
+      details: [],
+      items: sheetData.armor
+    };
   }
 
 }

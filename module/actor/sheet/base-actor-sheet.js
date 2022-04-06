@@ -58,6 +58,9 @@ export default class ZweihanderBaseActorSheet extends ActorSheet {
     // Prepare owned items
     this._prepareItems(data);
 
+    const itemGroups = this._getItemGroups(data);
+    data.itemGroups = ZweihanderUtils.assignPacks(this.actor.type, itemGroups);
+
     // Prepare active effects
     // data.effects = ActiveEffect5e.prepareActiveEffectCategories(this.actor.effects);
 
@@ -69,6 +72,10 @@ export default class ZweihanderBaseActorSheet extends ActorSheet {
   }
 
   _prepareItems() {
+
+  }
+
+  _getItemGroups() {
 
   }
 
@@ -221,34 +228,29 @@ export default class ZweihanderBaseActorSheet extends ActorSheet {
     // "Link" checkboxes on character sheet and item sheet so both have the same state
     html.find(".link-checkbox").click(async event => {
       event.preventDefault();
-
-      const li = $(event.currentTarget).closest(".item");
-      const item = this.actor.items.get(li.data("itemId"));
-
-      if (item.type === "armor") {
-        await item.update({ "data.equipped": event.target.checked });
-      } else if (item.type === "profession") {
-        if (!event.target.checked && item.data.data.tier !== item.actor.data.data.tier) {
-          ui.notifications.error(`In order to reset this professions progress you have to delete the profession above it first!`);
-          return;
-        }
-        Dialog.confirm({
-          title: !event.target.checked ?
-            "Reset Profession Progress" :
-            "Complete Profession",
-          content: !event.target.checked ?
-            "<p>Do you really want to reset your progress in this profession?</p>" :
-            "<p>Do you really want to purchase all advances in this profession? The current purchase state will be lost!</p>",
-          yes: () => ZweihanderProfession.toggleProfessionPurchases(item, !event.target.checked),
-          defaultYes: false
-        });
-      } else if (item.type === "trapping") {
-        await item.update({ "data.carried": event.target.checked });
-      } else if (item.type === "weapon") {
-        await item.update({ "data.equipped": event.target.checked });
-      } else if (item.type === "condition" || item.type === "injury" || item.type === "disease" || item.type === "disorder") {
-        await item.update({ "data.active": event.target.checked });
+      const checkbox = $(event.currentTarget);
+      const item = this.actor.items.get(checkbox.data('itemId'));
+      const key = checkbox.data('key');
+      await item.update({ [key]: checkbox.prop('checked') });
+    });
+    html.find(".profession-checkbox").click(async event => {
+      event.preventDefault();
+      const checkbox = $(event.currentTarget);
+      const item = this.actor.items.get(checkbox.data('itemId'));
+      if (!event.currentTarget.checked && item.data.data.tier !== item.actor.data.data.tier) {
+        ui.notifications.error(`In order to reset this professions progress you have to delete the profession above it first!`);
+        return;
       }
+      Dialog.confirm({
+        title: !event.currentTarget.checked ?
+          "Reset Profession Progress" :
+          "Complete Profession",
+        content: !event.currentTarget.checked ?
+          "<p>Do you really want to reset your progress in this profession?</p>" :
+          "<p>Do you really want to purchase all advances in this profession? The current purchase state will be lost!</p>",
+        yes: () => ZweihanderProfession.toggleProfessionPurchases(item, !event.currentTarget.checked),
+        defaultYes: false
+      });
     });
     // Show item sheet on right click
     html.find(".fetch-item").contextmenu(event => {

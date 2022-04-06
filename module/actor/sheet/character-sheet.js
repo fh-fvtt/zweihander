@@ -1,7 +1,7 @@
 import ZweihanderActorConfig from "../../apps/actor-config";
 import ZweihanderBaseActorSheet from "./base-actor-sheet";
 import * as ZweihanderDice from "../../dice";
-import { attachTabDefinitions } from "./character-sheet-tabs-def";
+import { attachTabDefinitions, getItemGroups } from "./character-sheet-tabs-def";
 import { getPacks } from "../../utils";
 
 /**
@@ -200,6 +200,10 @@ export default class ZweihanderCharacterSheet extends ZweihanderBaseActorSheet {
       const focuses = data.focuses.filter((focus) => focus.focusSkill === skill.name).map((focus) => focus.focusName);
       skill.data.focuses = focuses;
     });
+  }
+
+  _getItemGroups(data) {
+    return getItemGroups(data);
   }
 
   activateListeners(html) {

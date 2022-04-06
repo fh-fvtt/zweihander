@@ -3,14 +3,14 @@
   <li class="items-header flexrow">
     <h3 class="item-name">{{itemGroup.title}}</h3>
     {{#each itemGroup.details as |detail| }}
-    <div class="item-detail item-detail-{{detail.size}}">{{detail.title}}</div>
+    <div class="item-detail" style="width:{{detail.size}}px">{{detail.title}}</div>
     {{/each}}
     <div class="item-controls"><a class="add-new" data-item-type="{{itemGroup.type}}"
         {{#if itemGroup.packs}}data-open-packs="{{itemGroup.packs}}"{{/if}} title="Add New {{itemGroup.title}}"><i class="fa fa-plus"></i> Add</a>
     </div>
   </li>
   <ol class="item-list">
-    {{#each itemGroup.items as |item| }}
+    {{#each (zhSort itemGroup.items (zhSortCriteria itemGroup.details)) as |item| }}
     <li class="item flexrow" data-item-id="{{item._id}}">
       <div class="item-name fetch-item flexrow js-show-item-description {{#if itemGroup.rollType}}rollable{{/if}}">
         <div class="{{itemImageClass item.img}} {{itemGroup.rollType}}" tabindex="0" role="button" aria-label="{{item.name}}"
@@ -18,11 +18,14 @@
         <h4>{{item.name}}</h4>
       </div>
       {{#each itemGroup.details as |detail| }}
-      <div class="item-detail item-detail-{{detail.size}} {{detail.class}}">
+      <div class="item-detail {{detail.class}}" style="width:{{detail.size}}px">
         {{#if detail.isCheckbox}}
-          <input class="zweihander-checkbox link-checkbox" id="{{item._id}}" 
+          <input class="zweihander-checkbox {{#unless detail.classes}}link-checkbox{{else}}{{detail.classes}}{{/unless}}"
+            id="{{item._id}}.{{detail.key}}"
+            data-item-id="{{item._id}}"
+            data-key="{{detail.key}}"
             type="checkbox" {{checked (zhLookup item detail.key)}} />
-          <label for="{{item._id}}"></label>
+          <label for="{{item._id}}.{{detail.key}}"></label>
         {{else if detail.isNumerable}}
           <div class="numerable-field flexrow">
             <button type="button" class="numerable-field-subtract {{#if (zhLookup item detail.key)}}{{else}}hide{{/if}}" data-numerable-path="{{detail.key}}">-</button>

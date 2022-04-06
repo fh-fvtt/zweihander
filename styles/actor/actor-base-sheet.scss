@@ -204,61 +204,19 @@ body.game.vtt.system-zweihander .zweihander.sheet.actor {
       word-break: break-word;
       padding: 0 2px;
       text-overflow: ellipsis;
+      flex: 0 0 auto;
       &:nth-child(2) {
         border-left: 1px solid var(--zh-clr-bg1);
       }
       &:nth-last-child(1) {
         border: none;
       }
-      &.item-detail-40 {
-        flex: 0 0 40px;
-      }
-      &.item-detail-50 {
-        flex: 0 0 50px;
-      }
-      &.item-detail-60 {
-        flex: 0 0 60px;
-      }
-      &.item-detail-70 {
-        flex: 0 0 70px;
-      }
-      &.item-detail-80 {
-        flex: 0 0 80px;
-      }
-      &.item-detail-90 {
-        flex: 0 0 90px;
-      }
-      &.item-detail-100 {
-        flex: 0 0 100px;
-      }
-      &.item-detail-110 {
-        flex: 0 0 110px;
-      }
-      &.item-detail-120 {
-        flex: 0 0 120px;
-      }
-      &.item-detail-130 {
-        flex: 0 0 130px;
-      }
-      &.item-detail-140 {
-        flex: 0 0 140px;
-      }
-      &.item-detail-150 {
-        flex: 0 0 150px;
-      }
-      &.item-detail-200 {
-        flex: 0 0 200px;
-      }
-      &.item-detail-240 {
-        flex: 0 0 240px;
-      }
       & .numerable-field {
-        padding: 0px 20% 0 20%;
+        justify-content: center;
         & .numerable-field-subtract, .numerable-field-add {
           visibility: hidden;
-
           height: 16px;
-          flex: 3 0 12px;
+          flex: 0 0 16px;
           padding: 0;
           text-align: center;
           line-height: 1;
@@ -271,7 +229,8 @@ body.game.vtt.system-zweihander .zweihander.sheet.actor {
           }
         }
         & .numerable-field-counter {
-          flex: 0 0 16px;
+          flex: 0 0 content;
+          padding: 0 3px;
         }
       }
     }

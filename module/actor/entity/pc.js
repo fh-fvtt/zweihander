@@ -82,7 +82,8 @@ export default class ZweihanderPC extends ZweihanderBaseActor {
     calcSecondayAttributeSpecialActionValue(data.stats.secondaryAttributes.magick, "Magick");
     // encumbrance calculations...
     // assign encumbrance from equipped trappings
-    const carriedTrappings = actorData.items.filter(i => i.type === 'trapping' && i.data.data.carried);
+    const carriedTrappings = actorData.items
+      .filter(i => ['trapping', 'armor', 'weapon'].includes(i.type) && i.data.data.carried);
     const nine4one = game.settings.get("zweihander", "encumbranceNineForOne");
     const smallTrappingsEnc = !nine4one ? 0 : Math.floor(
       carriedTrappings
@@ -92,27 +93,17 @@ export default class ZweihanderPC extends ZweihanderBaseActor {
     );
     const normalTrappingsEnc = carriedTrappings
       .filter(t => t.data.data.encumbrance !== 0)
-      .map(t => t.data.data.encumbrance * (t.data.data.quantity || 0))
+      .map(t => t.data.data.encumbrance * (t.data.data.quantity ?? 1))
       .reduce((a, b) => a + b, 0);
     // assign encumbrance from currency
     const currencyEnc = Math.floor(
       Object.values(data.currency).reduce((a, b) => a + b, 0) / 1000
     );
-    // assign encumbrance from equipped armor piece
-    const armorEnc = equippedArmor
-      .map(a => a.data.data.encumbrance)
-      .reduce((a, b) => a + b, 0);
-    // assign encumbrance from equipped weapons
-    const weaponEnc = actorData.items
-      .filter(i => i.type === 'weapon' && i.data.data.equipped)
-      .map(w => w.data.data.encumbrance)
-      .reduce((a, b) => a + b, 0);
     const enc = data.stats.secondaryAttributes.encumbrance = {};
     // assign initial encumbrance threshold
     enc.value = data.stats.primaryAttributes.brawn.bonus + 3 + configOptions.encumbranceModifier;
     // assign current encumbrance
-    enc.current = smallTrappingsEnc + normalTrappingsEnc + currencyEnc
-      + armorEnc + weaponEnc;
+    enc.current = smallTrappingsEnc + normalTrappingsEnc + currencyEnc;
     // assign overage
     enc.overage = Math.max(0, enc.current - enc.value)
     // calculate initiative

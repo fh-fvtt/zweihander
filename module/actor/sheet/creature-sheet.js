@@ -1,5 +1,5 @@
 import ZweihanderBaseActorSheet from "./base-actor-sheet";
-import { assignPacks, selectedChoice } from "../../utils";
+import { selectedChoice } from "../../utils";
 export default class ZweihanderCreatureSheet extends ZweihanderBaseActorSheet {
 
 
@@ -84,85 +84,19 @@ export default class ZweihanderCreatureSheet extends ZweihanderBaseActorSheet {
         hidden
       }
     ];
-
-    sheetData.itemGroups = assignPacks('creature', {
+    const $$ = x => sheetData.itemGroups[x];
+    sheetData.itemLists = {
       attackProfiles: [
-        {
-          title: "Attack Profiles",
-          type: "weapon",
-          summaryTemplate: "item-summary/weapon",
-          rollType: "weapon-roll",
-          rollLabelKey: "data.associatedSkill",
-          details: [
-            {
-              title: "Chance",
-              size: 50,
-              key: "chance"
-            },
-            {
-              title: "Load",
-              size: 40,
-              key: "data.load"
-            }
-          ],
-          items: sheetData.weapons
-        }
-      ],
+        'weapons'
+      ].map($$),
       loot: [
-        {
-          title: "Loot",
-          type: "trapping",
-          summaryTemplate: "item-summary/trapping",
-          details: [
-            {
-              title: "Qty.",
-              size: 40,
-              key: "data.quantity"
-            }
-          ],
-          items: sheetData.trappings
-        }
-      ],
+        'trappings'
+      ].map($$),
       rules: [
-        {
-          title: "Traits",
-          type: "trait",
-          summaryTemplate: "item-summary/trait",
-          details: [],
-          items: sheetData.traits
-        },
-        {
-          title: "Spells",
-          type: "spell",
-          summaryTemplate: "item-summary/spell",
-          rollType: "spell-roll",
-          rollLabel: sheetData.data.stats.secondaryAttributes.magick.associatedSkill,
-          details: [],
-          items: sheetData.spells
-        },
-        {
-          title: "Taints of Chaos",
-          type: "taint",
-          summaryTemplate: "item-summary/taint",
-          details: [],
-          items: sheetData.taints
-        },
-        {
-          title: "Conditions",
-          type: "condition",
-          summaryTemplate: "item-summary/condition",
-          details: [],
-          items: sheetData.conditions
-        },
-        {
-          title: "Injuries",
-          type: "injury",
-          summaryTemplate: "item-summary/injury",
-          details: [],
-          items: sheetData.injuries
-        }
-      ]
-    })
+        'traits', 'spells', 'taints',
+        'conditions', 'injuries'
+      ].map($$)
+    }
     return sheetData;
   }
 
@@ -193,6 +127,81 @@ export default class ZweihanderCreatureSheet extends ZweihanderBaseActorSheet {
       w.chance = baseChance + skill.data.bonus;
       return w;
     });
+  }
+
+  _getItemGroups(data) {
+    return {
+      weapons: {
+        title: "Attack Profiles",
+        type: "weapon",
+        summaryTemplate: "item-summary/weapon",
+        rollType: "weapon-roll",
+        rollLabelKey: "data.associatedSkill",
+        details: [
+          {
+            title: "Chance",
+            size: 50,
+            key: "chance"
+          },
+          {
+            title: "Load",
+            size: 40,
+            key: "data.load"
+          }
+        ],
+        items: data.weapons
+      },
+      trappings: {
+        title: "Loot",
+        type: "trapping",
+        summaryTemplate: "item-summary/trapping",
+        details: [
+          {
+            title: "Qty.",
+            size: 40,
+            key: "data.quantity"
+          }
+        ],
+        items: data.trappings
+      },
+      traits: {
+        title: "Traits",
+        type: "trait",
+        summaryTemplate: "item-summary/trait",
+        details: [],
+        items: data.traits
+      },
+      spells: {
+        title: "Spells",
+        type: "spell",
+        summaryTemplate: "item-summary/spell",
+        rollType: "spell-roll",
+        rollLabel: data.data.stats.secondaryAttributes.magick.associatedSkill,
+        details: [],
+        items: data.spells
+      },
+      taints: {
+        title: "Taints of Chaos",
+        type: "taint",
+        summaryTemplate: "item-summary/taint",
+        details: [],
+        items: data.taints
+      },
+      conditions: {
+        title: "Conditions",
+        type: "condition",
+        summaryTemplate: "item-summary/condition",
+        details: [],
+        items: data.conditions
+      },
+      injuries: {
+        title: "Injuries",
+        type: "injury",
+        summaryTemplate: "item-summary/injury",
+        details: [],
+        items: data.injuries
+      }
+    }
   }
 
   activateListeners(html) {

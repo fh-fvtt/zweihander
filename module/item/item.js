@@ -7,6 +7,7 @@ import ZweihanderQuality from "./entity/quality";
 import ZweihanderInjury from "./entity/injury";
 
 import { ZWEI } from "../config";
+import ZweihanderTrapping from "./entity/trapping";
 
 export default class ZweihanderItem extends Item {
 
@@ -17,7 +18,8 @@ export default class ZweihanderItem extends Item {
     skill: new ZweihanderSkill(),
     ancestry: new ZweihanderAncestry(),
     injury: new ZweihanderInjury(),
-    quality: new ZweihanderQuality()
+    quality: new ZweihanderQuality(),
+    trapping: new ZweihanderTrapping()
   };
 
   constructor(...args) {

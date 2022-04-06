@@ -321,14 +321,11 @@ export function getPacks(actorType, itemType) {
   return _getPacks(gameSystem, actorType)(itemType);
 }
 
-
-export function assignPacks(actorType, itemGroupDefinition) {
+export function assignPacks(actorType, itemGroups) {
   const gameSystem = game.settings.get("zweihander", "gameSystem");
   const getPacks = _getPacks(gameSystem, actorType);
-  Object.values(itemGroupDefinition)
-    .flatMap(x => Array.isArray(x) ? x : x.itemGroups)
-    .forEach(x => x.packs = getPacks(x.type));
-  return itemGroupDefinition;
+  Object.values(itemGroups).forEach(x => x.packs = getPacks(x.type));
+  return itemGroups;
 }
 
 export const updateItems = async (...updateDefinitions) => {
