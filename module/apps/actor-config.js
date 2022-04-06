@@ -74,9 +74,21 @@ export default class ZweihanderActorConfig extends FormApplication {
     const actor = this.object;
     const updateData = foundry.utils.expandObject(formData).flags;
     if (actor.type === 'character') {
+      const sa = actor.data.data.stats.secondaryAttributes;
+      const saPath = 'data.stats.secondaryAttributes';
+      const actorUpdate = {};
       updateData.parrySkills = updateData.parrySkills.split(",").map(skill => skill.trim());
+      if (!updateData.parrySkills.includes(sa.parry.associatedSkill)) {
+        actorUpdate[`${saPath}.parry.associatedSkill`] = updateData.parrySkills[0] ?? '';
+      }
       updateData.dodgeSkills = updateData.dodgeSkills.split(",").map(skill => skill.trim());
+      if (!updateData.dodgeSkills.includes(sa.dodge.associatedSkill)) {
+        actorUpdate[`${saPath}.dodge.associatedSkill`] = updateData.dodgeSkills[0] ?? '';
+      }
       updateData.magickSkills = updateData.magickSkills.split(",").map(skill => skill.trim());
+      if (!updateData.magickSkills.includes(sa.magick.associatedSkill)) {
+        actorUpdate[`${saPath}.magick.associatedSkill`] = updateData.magickSkills[0] ?? '';
+      }
       // wtf is this template system haha
       updateData.isIgnoredPerilLadderValue = [
         updateData.isIgnoredPerilLadderValue['[0]'],
@@ -89,6 +101,9 @@ export default class ZweihanderActorConfig extends FormApplication {
         updateData.isIgnoredPerilLadderValue = [true, true, true];
       } else if (!avoidAllUpdate && avoidAllBefore) {
         updateData.isIgnoredPerilLadderValue = [false, false, false];
+      }
+      if (Object.keys(actorUpdate).length) {
+        await actor.update(actorUpdate);
       }
     }
     await actor.setFlag("zweihander", "actorConfig", updateData);
