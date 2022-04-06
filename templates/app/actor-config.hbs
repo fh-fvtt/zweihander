@@ -1,174 +1,209 @@
 <div class="save-scroll">
   <form autocomplete="off">
-      <section class="form-body">
-        <p class="notes">Configure and fine-tune this Actor's behavior and underlying mechanics.</p>
+    <section class="form-body">
+      <p class="notes">Configure and fine-tune this Actor's behavior and underlying mechanics.</p>
 
-        <hr>
+      <hr>
+      {{#if (eq object.type "character")}}
+      <h3>Underlying Primary Attributes</h3>
 
-        <h3>Underlying Primary Attributes</h3>
+      <div class="form-group">
+        <label>Damage Threshold Primary Attribute</label>
+        <select name="flags.dthAttribute">
+          {{#select flags.dthAttribute}}
+          <option value="combat">Combat</option>
+          <option value="brawn">Brawn</option>
+          <option value="agility">Agility</option>
+          <option value="perception">Perception</option>
+          <option value="intelligence">Intelligence</option>
+          <option value="willpower">Willpower</option>
+          <option value="fellowship">Fellowship</option>
+          {{/select}}
+        </select>
+        <p class="notes">Select the Primary Attribute off of which the Damage Threshold is calculated.</p>
+      </div>
 
-        <div class="form-group">
-          <label>Damage Threshold Primary Attribute</label>
-          <select name="flags.dthAttribute">
-            {{#select flags.dthAttribute}}
-              <option value="combat">Combat</option>
-              <option value="brawn">Brawn</option>
-              <option value="agility">Agility</option>
-              <option value="perception">Perception</option>
-              <option value="intelligence">Intelligence</option>
-              <option value="willpower">Willpower</option>
-              <option value="fellowship">Fellowship</option>
-            {{/select}}
-          </select>
-          <p class="notes">Select the Primary Attribute off of which the Damage Threshold is calculated.</p>
+      <div class="form-group">
+        <label>Peril Threshold Primary Attribute</label>
+        <select name="flags.pthAttribute">
+          {{#select flags.pthAttribute}}
+          <option value="combat">Combat</option>
+          <option value="brawn">Brawn</option>
+          <option value="agility">Agility</option>
+          <option value="perception">Perception</option>
+          <option value="intelligence">Intelligence</option>
+          <option value="willpower">Willpower</option>
+          <option value="fellowship">Fellowship</option>
+          {{/select}}
+        </select>
+        <p class="notes">Select the Primary Attribute off of which the Peril Threshold is calculated.</p>
+      </div>
+
+      <div class="form-group">
+        <label>Initiative Primary Attribute</label>
+        <select name="flags.intAttribute">
+          {{#select flags.intAttribute}}
+          <option value="combat">Combat</option>
+          <option value="brawn">Brawn</option>
+          <option value="agility">Agility</option>
+          <option value="perception">Perception</option>
+          <option value="intelligence">Intelligence</option>
+          <option value="willpower">Willpower</option>
+          <option value="fellowship">Fellowship</option>
+          {{/select}}
+        </select>
+        <p class="notes">Select the Primary Attribute off of which Initiative is calculated.</p>
+      </div>
+
+      <div class="form-group">
+        <label>Movement Primary Attribute</label>
+        <select name="flags.movAttribute">
+          {{#select flags.movAttribute}}
+          <option value="combat">Combat</option>
+          <option value="brawn">Brawn</option>
+          <option value="agility">Agility</option>
+          <option value="perception">Perception</option>
+          <option value="intelligence">Intelligence</option>
+          <option value="willpower">Willpower</option>
+          <option value="fellowship">Fellowship</option>
+          {{/select}}
+        </select>
+        <p class="notes">Select the Primary Attribute off of which Movement is calculated.</p>
+      </div>
+
+      <hr>
+
+      <h3>Global Modifiers</h3>
+
+      <p class="notes">The below fields <strong>should not be used for temporary modifiers</strong>, such as those
+        gained from spells or trappings. The intended use case is for permanent modifiers, such as the Bonepicker's
+        Swagger Wagon professional trait.</p>
+
+      <div class="form-group">
+        <label>Encumbrance Modifier</label>
+        <input type="number" name="flags.encumbranceModifier" value="{{flags.encumbranceModifier}}" />
+        <p class="notes">Set a global Encumbrance modifier.</p>
+      </div>
+
+      <div class="form-group">
+        <label>Initiative Modifier</label>
+        <input type="number" name="flags.initiativeModifier" value="{{flags.initiativeModifier}}" />
+        <p class="notes">Set a global Initiative modifier.</p>
+      </div>
+
+      <div class="form-group">
+        <label>Movement Modifier</label>
+        <input type="number" name="flags.movementModifier" value="{{flags.movementModifier}}" />
+        <p class="notes">Set a global Movement modifier.</p>
+      </div>
+
+      <hr>
+
+      <h3>Underlying Skills</h3>
+
+      <div class="form-group">
+        <label>Parry Skills</label>
+        <input type="text" name="flags.parrySkills" value="{{parrySkills}}" />
+        <p class="notes">Set the skills that can be used when rolling Parry.</p>
+      </div>
+
+      <div class="form-group">
+        <label>Dodge Skills</label>
+        <input type="text" name="flags.dodgeSkills" value="{{dodgeSkills}}" />
+        <p class="notes">Set the skills that can be used when rolling Dodge.</p>
+      </div>
+
+      <hr>
+
+      <h3>Peril Threshold</h3>
+
+      <div class="form-group">
+        <label>Ignore 'Ignore 1 Skill Rank'</label>
+        <input type="checkbox" name="flags.isIgnoredPerilLadderValue.[0]" {{checked
+          flags.isIgnoredPerilLadderValue.[0]}} />
+        <p class="notes">Check this box if Actor doesn't suffer from the ill-effects of Peril at this step.</p>
+      </div>
+
+      <div class="form-group">
+        <label>Ignore 'Ignore 2 Skill Rank'</label>
+        <input type="checkbox" name="flags.isIgnoredPerilLadderValue.[1]" {{checked
+          flags.isIgnoredPerilLadderValue.[1]}} />
+        <p class="notes">Check this box if Actor doesn't suffer from the ill-effects of Peril at this step.</p>
+      </div>
+
+      <div class="form-group">
+        <label>Ignore 'Ignore 3 Skill Rank'</label>
+        <input type="checkbox" name="flags.isIgnoredPerilLadderValue.[2]" {{checked
+          flags.isIgnoredPerilLadderValue.[2]}} />
+        <p class="notes">Check this box if Actor doesn't suffer from the ill-effects of Peril at this step.</p>
+      </div>
+
+      <div class="form-group">
+        <label>Immune to Peril</label>
+        <input type="checkbox" name="avoidAllPeril" {{checked avoidAllPeril}} />
+        <p class="notes">Check this box if Actor doesn't suffer from the ill-effects of Peril, at all.</p>
+      </div>
+
+      <hr>
+
+      <h3>Magick</h3>
+
+      <div class="form-group">
+        <label>Magick User</label>
+        <input type="checkbox" name="flags.isMagickUser" {{checked flags.isMagickUser}} />
+        <p class="notes">Check this box to set this Actor as a Magick user. Opens a new tab on the Actor sheet.</p>
+      </div>
+
+      <div class="form-group">
+        <label>Underlying Magick Skills</label>
+        <input type="text" name="flags.magickSkills" value="{{magickSkills}}" />
+        <p class="notes">Set the skills that can be used when rolling Dodge.</p>
+      </div>
+
+      <hr>
+
+      <h3>Order & Chaos</h3>
+      <div class="form-group">
+        <label>Permanent Chaos Ranks</label>
+        <input type="number" name="flags.permanentChaosRanks" value="{{flags.permanentChaosRanks}}" />
+        <p class="notes">The number of permanent Chaos Ranks this Actor has.</p>
+      </div>
+
+      <div class="form-group">
+        <label>Permanent Order Ranks</label>
+        <input type="number" name="flags.permanentOrderRanks" value="{{flags.permanentOrderRanks}}" />
+        <p class="notes">The number of permanent Order Ranks this Actor has.</p>
+      </div>
+
+      <hr>
+      {{/if}}
+      <h3>Sound FX</h3>
+      <div class="form-group">
+        <label>Dodge SFX</label>
+        <div class="flexrow">
+          <input type="text" name="flags.dodgeSound" value="{{flags.dodgeSound}}" />
+          {{filePicker target="flags.dodgeSound" type="sound"}}
         </div>
-
-        <div class="form-group">
-          <label>Peril Threshold Primary Attribute</label>
-          <select name="flags.pthAttribute">
-            {{#select flags.pthAttribute}}
-              <option value="combat">Combat</option>
-              <option value="brawn">Brawn</option>
-              <option value="agility">Agility</option>
-              <option value="perception">Perception</option>
-              <option value="intelligence">Intelligence</option>
-              <option value="willpower">Willpower</option>
-              <option value="fellowship">Fellowship</option>
-            {{/select}}
-          </select>
-          <p class="notes">Select the Primary Attribute off of which the Peril Threshold is calculated.</p>
+      </div>
+      <div class="form-group">
+        <label>Parry SFX</label>
+        <div class="flexrow">
+          <input type="text" name="flags.parrySound" value="{{flags.parrySound}}" />
+          {{filePicker target="flags.parrySound" type="sound"}}
         </div>
-
-        <div class="form-group">
-          <label>Initiative Primary Attribute</label>
-          <select name="flags.intAttribute">
-            {{#select flags.intAttribute}}
-              <option value="combat">Combat</option>
-              <option value="brawn">Brawn</option>
-              <option value="agility">Agility</option>
-              <option value="perception">Perception</option>
-              <option value="intelligence">Intelligence</option>
-              <option value="willpower">Willpower</option>
-              <option value="fellowship">Fellowship</option>
-            {{/select}}
-          </select>
-          <p class="notes">Select the Primary Attribute off of which Initiative is calculated.</p>
+      </div>
+      <div class="form-group">
+        <label>Grunt SFX</label>
+        <div class="flexrow">
+          <input type="text" name="flags.gruntSound" value="{{flags.gruntSound}}" />
+          {{filePicker target="flags.gruntSound" type="sound"}}
         </div>
-
-        <div class="form-group">
-          <label>Movement Primary Attribute</label>
-          <select name="flags.movAttribute">
-            {{#select flags.movAttribute}}
-              <option value="combat">Combat</option>
-              <option value="brawn">Brawn</option>
-              <option value="agility">Agility</option>
-              <option value="perception">Perception</option>
-              <option value="intelligence">Intelligence</option>
-              <option value="willpower">Willpower</option>
-              <option value="fellowship">Fellowship</option>
-            {{/select}}
-          </select>
-          <p class="notes">Select the Primary Attribute off of which Movement is calculated.</p>
-        </div>
-
-        <hr>
-
-        <h3>Global Modifiers</h3>
-
-        <p class="notes">The below fields <strong>should not be used for temporary modifiers</strong>, such as those gained from spells or trappings. The intended use case is for permanent modifiers, such as the Bonepicker's Swagger Wagon professional trait.</p>
-
-        <div class="form-group">
-          <label>Encumbrance Modifier</label>
-          <input type="number" name="flags.encumbranceModifier" value="{{flags.encumbranceModifier}}" />
-          <p class="notes">Set a global Encumbrance modifier.</p>
-        </div>
-
-        <div class="form-group">
-          <label>Initiative Modifier</label>
-          <input type="number" name="flags.initiativeModifier" value="{{flags.initiativeModifier}}" />
-          <p class="notes">Set a global Initiative modifier.</p>
-        </div>
-
-        <div class="form-group">
-          <label>Movement Modifier</label>
-          <input type="number" name="flags.movementModifier" value="{{flags.movementModifier}}" />
-          <p class="notes">Set a global Movement modifier.</p>
-        </div>
-
-        <hr>
-
-        <h3>Underlying Skills</h3>
-
-        <div class="form-group">
-          <label>Parry Skills</label>
-          <input type="text" name="flags.parrySkills" value="{{parrySkills}}" />
-          <p class="notes">Set the skills that can be used when rolling Parry.</p>
-        </div>
-
-        <div class="form-group">
-          <label>Dodge Skills</label>
-          <input type="text" name="flags.dodgeSkills" value="{{dodgeSkills}}" />
-          <p class="notes">Set the skills that can be used when rolling Dodge.</p>
-        </div>
-
-        <hr>
-
-        <h3>Peril Threshold</h3>
-
-        <div class="form-group">
-          <label>Ignore 'Ignore 1 Skill Rank'</label>
-          <input type="checkbox" name="flags.isIgnoredPerilLadderValue.[0]" {{checked flags.isIgnoredPerilLadderValue.[0]}} />
-          <p class="notes">Check this box if Actor doesn't suffer from the ill-effects of Peril at this step.</p>
-        </div>
-
-        <div class="form-group">
-          <label>Ignore 'Ignore 2 Skill Rank'</label>
-          <input type="checkbox" name="flags.isIgnoredPerilLadderValue.[1]" {{checked flags.isIgnoredPerilLadderValue.[1]}} />
-          <p class="notes">Check this box if Actor doesn't suffer from the ill-effects of Peril at this step.</p>
-        </div>
-
-        <div class="form-group">
-          <label>Ignore 'Ignore 3 Skill Rank'</label>
-          <input type="checkbox" name="flags.isIgnoredPerilLadderValue.[2]" {{checked flags.isIgnoredPerilLadderValue.[2]}} />
-          <p class="notes">Check this box if Actor doesn't suffer from the ill-effects of Peril at this step.</p>
-        </div>
-
-        <div class="form-group">
-          <label>Immune to Peril</label>
-          <input type="checkbox" name="avoidAllPeril" {{checked avoidAllPeril}} />
-          <p class="notes">Check this box if Actor doesn't suffer from the ill-effects of Peril, at all.</p>
-        </div>
-
-        <hr>
-
-        <h3>Magick</h3> 
-
-        <div class="form-group">
-          <label>Magick User</label>
-          <input type="checkbox" name="flags.isMagickUser" {{checked flags.isMagickUser}} />
-          <p class="notes">Check this box to set this Actor as a Magick user. Opens a new tab on the Actor sheet.</p>
-        </div>
-
-        <div class="form-group">
-          <label>Underlying Magick Skills</label>
-          <input type="text" name="flags.magickSkills" value="{{magickSkills}}" />
-          <p class="notes">Set the skills that can be used when rolling Dodge.</p>
-        </div>
-
-        <hr>
-
-        <h3>Order & Chaos</h3>
-        <div class="form-group">
-          <label>Permanent Chaos Ranks</label>
-          <input type="number" name="flags.permanentChaosRanks" value="{{flags.permanentChaosRanks}}" />
-          <p class="notes">The number of permanent Chaos Ranks this Actor has.</p>
-        </div>
-
-        <div class="form-group">
-          <label>Permanent Order Ranks</label>
-          <input type="number" name="flags.permanentOrderRanks" value="{{flags.permanentOrderRanks}}" />
-          <p class="notes">The number of permanent Order Ranks this Actor has.</p>
-        </div>
-      </section>
+      </div>
+      <div class="form-group">
+        <label>Play Grunt Sound</label>
+        <input type="checkbox" name="flags.playGruntSound" {{checked flags.playGruntSound}} />
+        <p class="notes">Check this box to play a grunt SFX when failing to dodge or parry an attack.</p>
+      </div>
+    </section>
   </form>
 </div>

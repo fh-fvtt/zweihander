@@ -3,6 +3,7 @@ import * as ZweihanderUtils from "../../utils";
 import ZweihanderProfession from "../../item/entity/profession";
 import ZweihanderQuality from "../../item/entity/quality";
 import ZweihanderLanguageConfig from "../../apps/language-config";
+import ZweihanderActorConfig from "../../apps/actor-config";
 
 export default class ZweihanderBaseActorSheet extends ActorSheet {
 
@@ -19,10 +20,12 @@ export default class ZweihanderBaseActorSheet extends ActorSheet {
   }
 
   #languageConfig;
+  #actorConfig;
 
   constructor(...args) {
     super(...args);
     this.#languageConfig = new ZweihanderLanguageConfig(this.actor);
+    this.#actorConfig = new ZweihanderActorConfig(this.actor);
   }
 
   /** @override */
@@ -390,9 +393,8 @@ export default class ZweihanderBaseActorSheet extends ActorSheet {
 
   _getHeaderButtons() {
     const buttons = super._getHeaderButtons();
-    const compactMode = game.settings.get("zweihander", "openInCompactMode");
-    const canConfigure = game.user.isGM || !this.actor.limited;
-    if (canConfigure) {
+    if (game.user.isGM || !this.actor.limited) {
+      const compactMode = game.settings.get("zweihander", "openInCompactMode");
       buttons.splice(0, 0, {
         label: ' Compact Mode',
         class: 'hide-background',
@@ -406,8 +408,15 @@ export default class ZweihanderBaseActorSheet extends ActorSheet {
         }
       });
     }
+    if (this.options.editable && (game.user.isGM || this.actor.isOwner)) {
+      buttons.splice(1, 0, {
+        label: 'Actor',
+        class: 'configure-actor',
+        icon: 'fas fa-user-cog',
+        onclick: () => this.#actorConfig.render(true)
+      });
+    }
     return buttons;
   }
-
 
 }

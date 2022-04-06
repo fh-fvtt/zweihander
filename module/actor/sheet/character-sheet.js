@@ -10,11 +10,8 @@ import { getPacks } from "../../utils";
  */
 export default class ZweihanderCharacterSheet extends ZweihanderBaseActorSheet {
 
-  #actorConfig;
-
   constructor(...args) {
     super(...args);
-    this.#actorConfig = new ZweihanderActorConfig(this.actor);
   }
 
   static unsupportedItemTypes = new Set([
@@ -328,20 +325,6 @@ export default class ZweihanderCharacterSheet extends ZweihanderBaseActorSheet {
       html.find(".encumbrance-bar-container").addClass("encumbrance-overage");
     }
     html.find(".encumbrance-bar").css("width", ratio + "%");
-  }
-
-  _getHeaderButtons() {
-    let buttons = super._getHeaderButtons();
-    const canConfigure = game.user.isGM || this.actor.isOwner;
-    if (this.options.editable && canConfigure) {
-      buttons.splice(1, 0, {
-        label: 'Actor',
-        class: 'configure-actor',
-        icon: 'fas fa-user-cog',
-        onclick: () => this.#actorConfig.render(true)
-      });
-    }
-    return buttons;
   }
 
   async _render(force, options) {

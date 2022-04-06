@@ -3,6 +3,7 @@ import ZweihanderQuality from "./item/entity/quality";
 import * as ZweihanderUtils from "./utils";
 import { getTestConfiguration } from "./apps/test-config";
 import { ZWEI } from "./config";
+import ZweihanderActorConfig from "./apps/actor-config";
 
 export const PERIL_ROLL_TYPES = {
   STRESS: { x: 1, title: 'Stress', difficultyRating: 20 },
@@ -180,7 +181,15 @@ export async function rollTest(skillItem, testType = 'skill', testConfiguration 
       }
     }
   };
-  let messageData = await roll.toMessage({ content, flavor, speaker, flags }, { rollMode, create });
+  let sound;
+  if (['dodge','parry'].includes(testType)) {
+    if (isSuccess(effectiveOutcome)) {
+      sound =  ZweihanderActorConfig.getValue(actor.data, `${testType}Sound`);
+    } else if (ZweihanderActorConfig.getValue(actor.data, 'playGruntSound')) {
+      sound =  ZweihanderActorConfig.getValue(actor.data, `gruntSound`);
+    }
+  }
+  let messageData = await roll.toMessage({ content, flavor, speaker, flags, sound }, { rollMode, create });
   // magick content
   if (create) {
     messageData = messageData.toObject();
