@@ -61,12 +61,16 @@ body.game.vtt.system-zweihander .zweihander.sheet.character {
         height: calc(50% - 2ch - 8px);
         margin-bottom: 4px;
         padding: 2ch 5px;
+        display: flex;
+        flex-flow: column nowrap;
       }
       .editor {
-        height: 100%;
-        padding-top: 1em !important;
+        height: unset;
+        flex: 1 0 0;
       }
       h4.block-title {
+        flex: 0 0 content;
+        margin-bottom: 10px;
         font-size: 18px !important;
       }
     }
