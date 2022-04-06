@@ -219,10 +219,15 @@ export default class ZweihanderCharacterSheet extends ZweihanderBaseActorSheet {
       const headerHeight = header.innerHeight();
       const spaceInDetails = header.find('.empty-placeholder').outerHeight();
       const figHeight = fig.height();
+      const img = fig.find('img');
       if (spaceInDetails > 0) {
         fig.height(figHeight - spaceInDetails);
       } else if (figHeight < headerHeight) {
-        fig.height(headerHeight);
+        if (img.naturalHeight < headerHeight) {
+          fig.height(img.naturalHeight);
+        } else {
+          fig.height(headerHeight);
+        }
       }
     };
     this._registerDimensionChangeListener(html.find('.actor-sheet-header'), resizePotrait);
