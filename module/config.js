@@ -202,4 +202,77 @@ ZWEI.injurySeverities = [
     { value: 0, label: "Moderate" },
     { value: 1, label: "Serious" },
     { value: 2, label: "Grievous" }
-]
+];
+
+ZWEI.statusEffects = [
+    {
+        id: "dead",
+        label: "EFFECT.StatusDead",
+        icon: "systems/zweihander/assets/icons/death-skull.svg"
+    },
+    {
+        id: "blind",
+        label: "EFFECT.StatusBlind",
+        icon: "systems/zweihander/assets/icons/sight-disabled.svg"
+    },
+    {
+        id: "choke",
+        label: "EFFECT.StatusChoked",
+        icon: "systems/zweihander/assets/icons/slipknot.svg"
+    },
+    {
+        id: "defenseless",
+        label: "EFFECT.StatusDefenseless",
+        icon: "systems/zweihander/assets/icons/broken-shield.svg"
+    },
+    {
+        id: "disarmed",
+        label: "EFFECT.StatusDisarmed",
+        icon: "systems/zweihander/assets/icons/sword-break.svg"
+    },
+    {
+        id: "helpless",
+        label: "EFFECT.StatusHelpless",
+        icon: "systems/zweihander/assets/icons/handcuffed.svg"
+    },
+    {
+        id: "inspired",
+        label: "EFFECT.StatusInspired",
+        icon: "systems/zweihander/assets/icons/armor-upgrade.svg"
+    },
+    {
+        id: "intimidated",
+        label: "EFFECT.StatusIntimidated",
+        icon: "systems/zweihander/assets/icons/armor-downgrade.svg"
+    },
+    {
+        id: "knocked",
+        label: "EFFECT.StatusKnockedOut",
+        icon: "systems/zweihander/assets/icons/knockout.svg"
+    },
+    {
+        id: "prone",
+        label: "EFFECT.StatusProne",
+        icon: "systems/zweihander/assets/icons/falling.svg"
+    },
+    {
+        id: "stun",
+        label: "EFFECT.StatusStunned",
+        icon: "systems/zweihander/assets/icons/stoned-skull.svg"
+    },
+    {
+        id: "surprised",
+        label: "EFFECT.StatusSurprised",
+        icon: "systems/zweihander/assets/icons/surprised.svg"
+    },
+    {
+        id: "burning",
+        label: "EFFECT.StatusBurning",
+        icon: "systems/zweihander/assets/icons/flame.svg"
+    },
+    {
+        id: "bleeding",
+        label: "EFFECT.StatusBleeding",
+        icon: "systems/zweihander/assets/icons/bleeding-wound.svg"
+    }
+];
