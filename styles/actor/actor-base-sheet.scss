@@ -118,20 +118,43 @@ body.game.vtt.system-zweihander .zweihander.sheet.actor {
     overflow: auto;
     position: relative;
 
+    .padder {
+      order: -2;
+      width: 10px;
+      margin-right: 3px;
+    }
+
     .sort-indicator {
       text-align: left;
       display: block;
+      visibility: hidden;
+      /*
       position: absolute;
       left: calc(100% + 2px);
       top: 0px;
       font-size: 10px;
       font-family: var(--font-primary);
       width: 20px;
-      height: 12px;
+      height: 12px; 
+      flex: 1 0 10px;*/
+      /* position: unset; */
+      font-size: 13px;
+      height: 15px;
+      width: 10px;
+      /* left: unset; */
+      margin-left: 3px;
+      /* margin-top: 1px; */
+      font-family: var(--font-primary);
+      & > .fa-sort-up, & > .fa-sort-down {
+        visibility: visible;
+      }
       i {
         color: var(--zh-clr-bg3);
-        &.fa-sort-up, &.fa-sort-down {
+        &.fa-sort-up {
           color: var(--zh-clr-aqua);
+        }
+        &.fa-sort-down {
+          color: var(--zh-clr-red-alt);
         }
       }
       span.sort-order {
@@ -140,21 +163,32 @@ body.game.vtt.system-zweihander .zweihander.sheet.actor {
       }
     }
     .filter-indicator {
-      display: block;
-      position: absolute;
-      left: -10px;
-      top: 0px;
-      font-size: 8px;
-      color: var(--zh-clr-bg1);
-      background-color: var(--zh-clr-bg4);
-      border-radius: 50%;
-      padding-left: 1px;
+      display: none;
+      /* position: absolute; */
+      /* left: 0px; */
+      /* right: 0; */
+      /* margin-left: -6px; */
+      /* top: 2px; */
+      font-size: 10px;
+      color: var(--zh-clr-bg4);
+      /* border-radius: 50%; */
+      /* padding-left: 2px; */
+      /* width: 12px; */
       width: 10px;
-      height: 10px;
+      height: 15px;
       cursor: pointer;
+      order: -1;
+      margin-right: 3px;
+      &:hover {
+        color: var(--zh-clr-yellow);
+      }
       &.filter-active {
-        color: var(--zh-clr-bg1);
-        background-color: var(--zh-clr-yellow-alt);
+        display: block;
+        color: var(--zh-clr-yellow);
+        & + .padder {
+          display: none;
+        }
+        /* background-color: var(--zh-clr-yellow-alt); */
       }
     }
     .filter-input {
@@ -170,12 +204,12 @@ body.game.vtt.system-zweihander .zweihander.sheet.actor {
       }
       i {
         position: absolute;
-        left: 2px;
-        top: 2px;
+        left: 3px;
+        top: 4px;
         &.filter-active {
           color: var(--zh-clr-yellow);
         }
-        font-size: 8px;
+        font-size: 9px;
         cursor: pointer;
       }
       input {
@@ -183,7 +217,7 @@ body.game.vtt.system-zweihander .zweihander.sheet.actor {
         text-align: left;
         width: unset;
         flex: 1;
-        padding: 2px 2px 2px 12px;
+        padding: 2px 2px 2px 14px;
         height: 100%;
         border-radius: 3px;
         background-color: var(--zh-clr-bg2);
@@ -198,11 +232,35 @@ body.game.vtt.system-zweihander .zweihander.sheet.actor {
     .sortable, .filterable {
       &, & .detail-title {
         position: relative;
+        & .detail-title:hover > .sort-indicator {
+          visibility: visible;
+        }
+        & .detail-title:hover > .filter-indicator {
+          display: block;
+          & + .padder {
+            display: none;
+            background-color: red;
+            height: 15px;
+          }
+        }
+        & .secondary {
+          position: relative;
+          display: flex;
+          flex-direction: row;
+          align-items: center;
+          justify-content: center;
+          &.pad {
+            padding-left: 13px;
+          }
+          & .filter-indicator {
+            margin-top: 3px;
+          }
+        }
       }
     }
 
     .sortable {
-      cursor:ns-resize;
+      cursor: pointer;
     }
 
     .items-header {
@@ -228,13 +286,17 @@ body.game.vtt.system-zweihander .zweihander.sheet.actor {
       h3.item-name {
         font-family: var(--zh-font-title);
         font-size: 12px;
-        padding-left: 10px;
+        padding-left: 5px;
         padding-right: 5px;
         text-align: left;
         text-transform: uppercase;
         flex: 1 0 content;
         .detail-title {
-          margin-left: 5px;
+          display: flex;
+          flex-direction: row;
+          align-items: center;
+          justify-content: flex-start;
+          /* margin-left: 12px; */
         }
       }
 

@@ -7,28 +7,28 @@
         {{#if itemGroup.sortName}}
         <div class="sort-indicator">
           <i class="fa fa-sort-{{#if (eq itemGroup.sortName 1)}}up{{else}}down{{/if}}"></i>
-          <span class="sort-order">{{itemGroup.sortNameOrder}}</span>
+          {{!-- <span class="sort-order">{{itemGroup.sortNameOrder}}</span> --}}
         </div>
         {{else}}
         <div class="sort-indicator">
           <i class="fa fa-sort"></i>
         </div>
         {{/if}}
-        <div class="filter-indicator{{#if itemGroup.filterName}} filter-active{{/if}}"><i class="fa fa-filter show-filter"></i></div>
+        <div class="filter-indicator{{#if itemGroup.filterName}} filter-active{{/if}} show-filter"><i class="fa fa-search"></i></div>
       </span>
       <div class="filter-input{{#if itemGroup.filterNameActive}} filter-input-active{{/if}}">
-        <i class="fa fa-filter hide-filter {{#if itemGroup.filterName}}filter-active{{/if}}"></i>
+        <i class="fa fa-search hide-filter {{#if itemGroup.filterName}}filter-active{{/if}}"></i>
         <input type="text" name="{{itemGroup.id}}-1" value="{{itemGroup.filterName}}">
       </div>
     </h3>
     {{#each itemGroup.details as |detail index| }}
     <div class="item-detail sortable {{#if detail.filterable}}filterable{{/if}}" style="width:{{detail.size}}px" data-detail="{{index}}" data-item-group="{{itemGroup.id}}">
-      <span class="detail-title">
+      <span class="detail-title secondary">
         {{detail.title}}
         {{#if detail.sort}}
         <div class="sort-indicator">
           <i class="fa fa-sort-{{#if (eq detail.sort 1)}}up{{else}}down{{/if}}"></i>
-          <span class="sort-order">{{detail.sortOrder}}</span>
+          {{!-- <span class="sort-order">{{detail.sortOrder}}</span> --}}
         </div>
         {{else}}
         <div class="sort-indicator">
@@ -36,12 +36,13 @@
         </div>
         {{/if}}
         {{#if detail.filterable}}
-        <div class="filter-indicator{{#if detail.filter}} filter-active{{/if}}"><i class="fa fa-filter show-filter"></i></div>
+        <div class="filter-indicator{{#if detail.filter}} filter-active{{/if}} show-filter"><i class="fa fa-search"></i></div>
         {{/if}}
+        <div class="padder"></div>
       </span>
       {{#if detail.filterable}}
       <div class="filter-input{{#if detail.filterActive}} filter-input-active{{/if}}">
-        <i class="fa fa-filter hide-filter{{#if detail.filter}} filter-active{{/if}}"></i>
+        <i class="fa fa-search hide-filter{{#if detail.filter}} filter-active{{/if}}"></i>
         <input type="text" name="{{itemGroup.id}}-{{index}}" value="{{detail.filter}}">
       </div>
       {{/if}}

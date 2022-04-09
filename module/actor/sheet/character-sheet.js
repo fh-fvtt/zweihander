@@ -194,11 +194,11 @@ export default class ZweihanderCharacterSheet extends ZweihanderBaseActorSheet {
     data.focuses = data.uniqueAdvances
       .filter((ua) => ua.data.associatedFocusSkill)
       .map((ua) => ({
-          focusSkill: ua.data.associatedFocusSkill,
-          focusName: ua.name
+          skillName: ua.data.associatedFocusSkill,
+          name: ua.name
       }));
     data.skills.forEach((skill) => {
-      const focuses = data.focuses.filter((focus) => focus.focusSkill === skill.name).map((focus) => focus.focusName);
+      const focuses = data.focuses.filter((focus) => focus.skillName === skill.name).map((focus) => focus.name);
       skill.data.focuses = focuses;
     });
   }
