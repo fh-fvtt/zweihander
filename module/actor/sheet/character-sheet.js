@@ -39,7 +39,8 @@ export default class ZweihanderCharacterSheet extends ZweihanderBaseActorSheet {
     // bind currency
     sheetData.settings.currencies = game.settings.get('zweihander', 'currencySettings');
     // calculate reward points automatically
-    if (game.settings.get("zweihander", "trackRewardPoints")) {
+    sheetData.settings.trackRewardPoints = game.settings.get("zweihander", "trackRewardPoints");
+    if (sheetData.settings.trackRewardPoints) {
       const tierMultiplier = {
         "Basic": 100,
         "Intermediate": 200,

@@ -1,12 +1,12 @@
 <section class="item-card">
-  <h2 class="item-card-title">{{capitalize type}}: {{name}}</h2>
+  <h2 class="item-card-title">{{zhCapitalize type}}: {{name}}</h2>
   {{#if data.flavor.description}}
   <div class="item-card-description">
-    {{{processRuleText data.flavor.description}}}
+    {{{zhProcessRuleText data.flavor.description}}}
   </div>
   <br/>
   {{/if}}
   <div class="item-card-effect" data-effect-label="Effect">
-    {{{processRuleText (zhLocalize data.rules.effect)}}}
+    {{{zhProcessRuleText (zhLocalize data.rules.effect)}}}
   </div>
 </section>

@@ -1,7 +1,7 @@
 <li class="chat-message zweihander-chat-message message flexcol {{cssClass}}" data-message-id="{{message._id}}" {{#if borderColor}}style="border-color:{{borderColor}}" {{/if}}>
   <header class="message-header">
     <div class="flexrow">
-      <img class="chat-profile-image" src="{{speakerPic message}}" />
+      <img class="chat-profile-image" src="{{zhSpeakerPic message}}" />
       <div>
         <time class="message-timestamp">{{timeSince message.timestamp}}</time>
         {{#if user.isGM}}
@@ -14,13 +14,13 @@
           {{/if}}
         </span>
         {{#if message.flavor}}
-        <div class="flavor-text">{{{processRuleText message.flavor}}}</div>
+        <div class="flavor-text">{{{zhProcessRuleText message.flavor}}}</div>
         {{/if}}
       </div>
     </div>
     
   </header>
   <div class="message-content">
-    {{{processRuleText message.content}}}
+    {{{zhProcessRuleText message.content}}}
   </div>
 </li>

@@ -15,7 +15,7 @@
 
 <div class="form-group stacked">
   <label><a class="open-editor">Reagents <i class="fa fa-edit"></i></a></label>
-    <div class="zh-editor-preview open">{{{processRuleText (zhLocalize data.rules.reagents)}}}</div>
+    <div class="zh-editor-preview open">{{{zhProcessRuleText (zhLocalize data.rules.reagents)}}}</div>
   {{editor content=(zhLocalize data.rules.reagents) target=(zhLocalizePath "data.rules.reagents") button=true owner=owner editable=editable}}
 </div>
 
@@ -37,18 +37,18 @@
 
 <div class="form-group stacked">
   <label><a class="open-editor">Effect <i class="fa fa-edit"></i></a></label>
-    <div class="zh-editor-preview open">{{{processRuleText (zhLocalize data.rules.effect)}}}</div>
+    <div class="zh-editor-preview open">{{{zhProcessRuleText (zhLocalize data.rules.effect)}}}</div>
   {{editor content=(zhLocalize data.rules.effect) target=(zhLocalizePath "data.rules.effect") button=true owner=owner editable=editable}}
 </div>
 
 <div class="form-group stacked">
   <label><a class="open-editor">Critical Success <i class="fa fa-edit"></i></a></label>
-    <div class="zh-editor-preview open">{{{processRuleText (zhLocalize data.rules.criticalSuccess)}}}</div>
+    <div class="zh-editor-preview open">{{{zhProcessRuleText (zhLocalize data.rules.criticalSuccess)}}}</div>
   {{editor content=(zhLocalize data.rules.criticalSuccess) target=(zhLocalizePath "data.rules.criticalSuccess") button=true owner=owner editable=editable}}
 </div>
 
 <div class="form-group stacked">
   <label><a class="open-editor">Critical Failure<i class="fa fa-edit"></i></a></label>
-    <div class="zh-editor-preview open">{{{processRuleText (zhLocalize data.rules.criticalFailure)}}}</div>
+    <div class="zh-editor-preview open">{{{zhProcessRuleText (zhLocalize data.rules.criticalFailure)}}}</div>
   {{editor content=(zhLocalize data.rules.criticalFailure) target=(zhLocalizePath "data.rules.criticalFailure") button=true owner=owner editable=editable}}
 </div>

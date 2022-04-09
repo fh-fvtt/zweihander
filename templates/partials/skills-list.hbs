@@ -6,16 +6,16 @@
     <span class="skill-name">
       <span>
         {{skill.name}}
-      ({{getFirstLetter skill.data.associatedPrimaryAttribute}})
+      ({{zhGetFirstLetter skill.data.associatedPrimaryAttribute}})
       {{#if skill.data.requiresTraining}}*{{/if}}
       </span>
     </span>
     <span class="skill-info flexrow">
       <span class="skill-rank" title="{{skill.data.rank}}">
-        {{skillRankAbbreviation skill.data.rank}}
+        {{zhSkillRankAbbreviation skill.data.rank}}
       </span>
       <span class="skill-gain">
-        {{skillBonus skill.data.bonus}}
+        {{zhSkillBonus skill.data.bonus}}
       </span>
     </span>
     {{> ($$ 'partials/focuses-list') skill.data}}

@@ -1,14 +1,14 @@
 <form class="{{cssClass}} flexcol" autocomplete="off">
   <header class="sheet-header item-sheet-draggable flexrow">
     <div class="profile">
-      <div class="profile-image {{itemImageClass img}}" style="{{itemImageStyle img}}"></div>
+      <div class="profile-image {{zhItemImageClass img}}" style="{{zhItemImageStyle img}}"></div>
     </div>
     <div class="header-details flexrow">
       <h1 class="itemname">
-        <input name="name" type="text" value="{{name}}" placeholder="{{capitalize type}} Name">
+        <input name="name" type="text" value="{{name}}" placeholder="{{zhCapitalize type}} Name">
       </h1>
       <div class="item-subtitle">
-        {{capitalize type}}
+        {{zhCapitalize type}}
       </div>
     </div>
   </header>
@@ -19,7 +19,7 @@
   </nav>
   <section class="sheet-body">
     <div class="tab tab-details flexcol" data-group="primary" data-tab="details">
-      {{> (itemTemplatePath type)}}
+      {{> ($$ (concat 'item/' type))}}
     </div>
     <div class="tab tab-description flexcol" data-group="primary" data-tab="description">
       {{editor content=(zhLocalize data.description) target=(zhLocalizePath "data.description") button=true owner=owner editable=editable}}

@@ -1,9 +1,9 @@
 <label>Qualities: </label>
-{{#isMissing qualities.arrayOfValues}}
+{{#if qualities.arrayOfValues}}
 {{#each qualities.arrayOfValues as | qualityData idx |}}
 <a class="js-display-quality">{{qualityData}}</a>{{#unless @last}}<span>, </span>{{/unless}}
 {{/each}}
 {{else}}
 <span> - </span>
-{{/isMissing}} <br />
+{{/if}} <br />
 {{zhPrice price}}

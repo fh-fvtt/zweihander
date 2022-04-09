@@ -241,13 +241,13 @@ export async function parseDataPaths(input, actor) {
   return parsed;
 }
 
-export function explicitSign(number) {
+export function zhExplicitSign(number) {
   const n = Number(number);
   return (n === 0 ? '+-' : (n > 0 ? '+' : '')) + n;
 }
 
 export function getDifficultyRatingLabel(difficultyRating) {
-  const number = explicitSign(difficultyRating);
+  const number = zhExplicitSign(difficultyRating);
   const label = game.i18n.localize(`ZWEI.Difficulty.${number}`);
   return `${label} ${number}%`;
 }

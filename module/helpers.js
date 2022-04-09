@@ -1,4 +1,4 @@
-import { uuidv4, explicitSign, localize, localizePath } from './utils';
+import { uuidv4, zhExplicitSign, localize, localizePath } from './utils';
 
 /**
  * Define a set of handlebar helpers
@@ -12,32 +12,18 @@ export const registerHandlebarHelpers = async function () {
     return 'systems/zweihander/templates/' + path + '.hbs'
   })
 
-  $$('getFirstLetter', function (word) {
+  $$('zhGetFirstLetter', function (word) {
     if (typeof word !== 'string') return '';
     return word.charAt(0).toUpperCase();
   });
 
-  $$('capitalize', function (word) {
+  $$('zhCapitalize', function (word) {
     if (typeof word !== 'string') return '';
     return word.capitalize();
   });
 
-  $$('isMissing', function (toCheck, options) {
-    if (!Array.isArray(toCheck))
-      return toCheck === "" ? options.inverse(this) : options.fn(this);
-    else
-      return toCheck[0] === "" ? options.inverse(this) : options.fn(this);  // An empty input field results in first element of array becoming the empty String
-  });
-
-  $$('oddOrEven', function (idx) {
-    if ((idx + 1) % 2)
-      return "odd";
-    else
-      return "even";
-  });
-
-  $$('radioRanks', function (name, alignmentRanks, permanentRanks, options) {
-    const alignment = name.split('.')[1].replace('Ranks', '');
+  $$('zhAlignmentRanks', function (name, alignmentRanks, permanentRanks, options) {
+    const alignment = name.split('.')[2];
     const icon = alignment === "chaos" ? "ra-cancel" : "ra-horseshoe";
     const checked = options.hash['checked'] || null;
     let html = "";
@@ -60,11 +46,10 @@ export const registerHandlebarHelpers = async function () {
         </label>
       `;
     }
-
     return new Handlebars.SafeString(html);
   });
 
-  $$('radioThresholds', function (name, choices, options) {
+  $$('zhConditionLadder', function (name, choices, options) {
     const checked = options.hash['checked'] ?? 5;
     let html = "";
     let uuid = uuidv4();
@@ -83,105 +68,8 @@ export const registerHandlebarHelpers = async function () {
     return new Handlebars.SafeString(html);
   });
 
-  $$('checkUniqueAdvanceType', function (type, associatedSkill) {
-    if (type.trim().toLowerCase() === "focus") {
-      return `Focus (${associatedSkill})`;
-    } else {
-      return type;
-    }
-  });
 
-  $$('displayNpcSkillBonus', function (ranks) {
-    let modifier = 0;
-
-    for (let key of Object.keys(ranks)) {
-      if (ranks[key].purchased) {
-        modifier += 10;
-      } else {
-        break;
-      }
-    }
-
-    return modifier !== 0 ? "+" + modifier : "";
-  });
-
-  $$('rpSettingOn', function (options) {
-    return game.settings.get("zweihander", "trackRewardPoints") ? options.fn(this) : options.inverse(this);
-  });
-
-  $$('generateResultText', function (testResult, roll, totalChance, showFlip) {
-    const flipString = showFlip ? "*" : "";
-
-    switch (testResult) {
-      case 0:
-        return new Handlebars.SafeString(`<span class="failure">Critical Failure</span> (${roll} vs. ${totalChance})${flipString}`);
-      case 1:
-        return new Handlebars.SafeString(`<span class="failure">Failure</span> (${roll} vs. ${totalChance})${flipString}`);
-      case 2:
-        return new Handlebars.SafeString(`<span class="success">Success</span> (${roll} vs. ${totalChance})${flipString}`);
-      case 3:
-        return new Handlebars.SafeString(`<span class="success">Critical Success</span> (${roll} vs. ${totalChance})${flipString}`);
-      default:
-        break;
-    }
-  });
-
-  $$('generateFlipText', function (flip) {
-    return flip === "no-flip" ? "No" : (flip === "fail" ? "To Fail" : "To Succeed");
-  });
-
-  $$('checkSuccess', function (testResult, options) {
-    return testResult >= 2 ? options.fn(this) : options.inverse(this);
-  });
-
-  $$('checkCriticalSuccess', function (testResult, options) {
-    return testResult === 3 ? options.fn(this) : options.inverse(this);
-  });
-
-  $$('checkCriticalFailure', function (testResult, options) {
-    return testResult === 0 ? options.fn(this) : options.inverse(this);
-  });
-
-  $$('displayIndividualDice', function (arrayOfDice, delimitator, highlight) {
-    let expandedFormula = "";
-
-    for (let d = 0; d < arrayOfDice.length; d++) {
-      let results = arrayOfDice[d].results;
-
-      for (let i = 0; i < results.length; i++) {
-        if (highlight && results[i].result === 6)
-          expandedFormula += `<a class="highlight" title="Generate Chaos Manifestation">` + results[i].result + "</a>";
-        else
-          expandedFormula += results[i].result;
-
-        if (i !== results.length - 1) {
-          expandedFormula += delimitator;
-        }
-      }
-
-      if (d !== arrayOfDice.length - 1) {
-        expandedFormula += delimitator;
-      }
-    }
-
-    return new Handlebars.SafeString(expandedFormula);
-  });
-
-  $$('selectSpellDifficulty', function (optionIdx, principle) {
-    switch (principle) {
-      case "Petty":
-      case "Generalist":
-        return optionIdx === 0 ? "selected" : "";
-      case "Lesser":
-        return optionIdx === 1 ? "selected" : "";
-      case "Greater":
-        return optionIdx === 2 ? "selected" : "";
-      default:
-        break;
-    }
-  });
-
-  $$('processRuleText', function (text) {
+  $$('zhProcessRuleText', function (text) {
     text = TextEditor.enrichHTML(text);
     if (window.MEME?.markdownIt?.render) {
       text = window.MEME?.markdownIt?.render(text)
@@ -189,15 +77,11 @@ export const registerHandlebarHelpers = async function () {
     return text;
   })
 
-  $$('itemTemplatePath', function (itemType) {
-    return 'systems/zweihander/templates/item/' + itemType + '.hbs';
-  })
-
-  $$('itemImageClass', function (img) {
+  $$('zhItemImageClass', function (img) {
     return img.endsWith(".svg") ? "item-image item-image-icon" : "item-image item-image-picture";
   })
 
-  $$('itemImageStyle', function (img) {
+  $$('zhItemImageStyle', function (img) {
     return img.endsWith(".svg") ? `-webkit-mask-image: url('${img}')` : `background-image: url('${img}')`;
   })
 
@@ -216,15 +100,15 @@ export const registerHandlebarHelpers = async function () {
   </div>`
   })
 
-  $$('skillBonus', function (bonus) {
+  $$('zhSkillBonus', function (bonus) {
     return bonus ? `+${bonus}` : '';
   })
 
-  $$('skillRankAbbreviation', function (rank) {
+  $$('zhSkillRankAbbreviation', function (rank) {
     return ['-', 'Appr.', 'Jour.', 'Mstr.'][rank];
   })
 
-  $$('speakerPic', function (message) {
+  $$('zhSpeakerPic', function (message) {
     const actor = ChatMessage.getSpeakerActor(message.speaker);
     if (message.flags?.zweihander?.img) return message.flags.zweihander.img;
     if (actor && actor.img) return actor.img;
@@ -233,7 +117,7 @@ export const registerHandlebarHelpers = async function () {
     return "";
   })
 
-  $$('explicitSign', explicitSign);
+  $$('zhExplicitSign', zhExplicitSign);
 
   $$('zhLookup', function (obj, key) {
     const keys = key.toString().split('.');
@@ -244,14 +128,13 @@ export const registerHandlebarHelpers = async function () {
     return val;
   });
 
-  $$('displayLanguages', (languages) => {
+  $$('zhDisplayLanguages', (languages) => {
     if (!languages.length) return '';
     const displayLanguage = (l) => `${l.name}${l.isLiterate ? ' (Literate)' : ''}`;
-    return languages.slice(1)
-      .reduce((str, l) =>
-        `${str}, ${displayLanguage(l)}`,
-        displayLanguage(languages[0])
-      );
+    return languages.slice(1).reduce((str, l) =>
+      `${str}, ${displayLanguage(l)}`,
+      displayLanguage(languages[0])
+    );
   });
 
   $$('zhAdd', (...x) => x.slice(0, -1).reduce((a, b) => {

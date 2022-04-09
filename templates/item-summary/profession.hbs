@@ -3,13 +3,13 @@
   <a class="fetch-item" data-item-id="{{professionalTrait.linkedId}}">{{professionalTrait.name}}</a>
   <br />
   <label>Special Trait:</label>
-  {{#isMissing specialTrait.name}}
+  {{#if specialTrait.name}}
   <a class="fetch-item" data-item-id="{{specialTrait.linkedId}}">{{specialTrait.name}}</a>
-  {{else}} - {{/isMissing}} <br />
+  {{else}} - {{/if}} <br />
   <label>Drawback:</label>
-  {{#isMissing drawback.name}}
+  {{#if drawback.name}}
   <a class="fetch-item" data-item-id="{{drawback.linkedId}}">{{drawback.name}}</a>
-  {{else}} - {{/isMissing}}
+  {{else}} - {{/if}}
 </div>
 <div>
   <label>Skill Ranks:</label>

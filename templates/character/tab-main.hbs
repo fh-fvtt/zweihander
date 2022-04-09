@@ -9,7 +9,7 @@
         <div class="pa-icon"><span class="{{lookup ../config.primaryAttributeIcons key}}"></span></div>
         <div class="flexcol">
           <span class="pa-bonus">{{attr.bonus}}</span>
-          <span class="pa-bonus-title">{{getFirstLetter key}}B</span>
+          <span class="pa-bonus-title">{{zhGetFirstLetter key}}B</span>
         </div>
       </div>
     </li>
@@ -25,7 +25,7 @@
         <div class="values flexrow">
           <div>
             <span class="value">{{data.stats.secondaryAttributes.movement.value}}</span>
-            <span class="formula">[{{getFirstLetter actorConfig.movAttribute}}B]+3</span>
+            <span class="formula">[{{zhGetFirstLetter actorConfig.movAttribute}}B]+3</span>
           </div>
           <div>
             <span class="value color-overage" data-overage="{{data.stats.secondaryAttributes.movement.overage}}">{{data.stats.secondaryAttributes.movement.overage}}</span>
@@ -42,7 +42,7 @@
         <div class="values flexrow">
           <div>
             <span class="value">{{data.stats.secondaryAttributes.initiative.value}}</span>
-            <span class="formula">[{{getFirstLetter actorConfig.intAttribute}}B]+3</span>
+            <span class="formula">[{{zhGetFirstLetter actorConfig.intAttribute}}B]+3</span>
           </div>
           <div>
             <span class="value color-overage" data-overage="{{data.stats.secondaryAttributes.initiative.overage}}">{{data.stats.secondaryAttributes.initiative.overage}}</span>
@@ -115,7 +115,7 @@
         <div class="values flexrow">
           <div class="threshold-value flexcol">
             <span class="value">{{data.stats.secondaryAttributes.perilThreshold.value}}</span>
-            <span class="formula">[{{getFirstLetter actorConfig.pthAttribute}}B]+3</span>
+            <span class="formula">[{{zhGetFirstLetter actorConfig.pthAttribute}}B]+3</span>
           </div>
           <span class="values-derived-bracket">{</span>
           <div class="flexcol values-derived">
@@ -137,7 +137,7 @@
         <div class="values flexrow">
           <div class="threshold-value flexcol">
             <span class="value">{{> ($$ 'partials/modded-value') data.stats.secondaryAttributes.damageThreshold}}</span>
-            <span class="formula">[{{getFirstLetter actorConfig.dthAttribute}}B]+DTM</span>
+            <span class="formula">[{{zhGetFirstLetter actorConfig.dthAttribute}}B]+DTM</span>
           </div>
           <span class="values-derived-bracket">{</span>
           <div class="flexcol values-derived">
@@ -159,14 +159,14 @@
       <div class="flexcol">
         <h4 class="block-title">Peril Tracker</h4 class="block-title">
         <div class="condition-tracker-list flexcol">
-          {{radioThresholds "data.stats.secondaryAttributes.perilCurrent.value" config.perilOptions
+          {{zhConditionLadder "data.stats.secondaryAttributes.perilCurrent.value" config.perilOptions
           checked=data.stats.secondaryAttributes.perilCurrent.value}}
         </div>
       </div>
       <div class="flexcol">
         <h4 class="block-title">Damage Tracker</h4 class="block-title">
         <div class="condition-tracker-list damage-list flexcol">
-          {{radioThresholds "data.stats.secondaryAttributes.damageCurrent.value" config.damageOptions
+          {{zhConditionLadder "data.stats.secondaryAttributes.damageCurrent.value" config.damageOptions
           checked=data.stats.secondaryAttributes.damageCurrent.value}}
         </div>
       </div>

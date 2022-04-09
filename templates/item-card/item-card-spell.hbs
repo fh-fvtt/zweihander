@@ -1,11 +1,11 @@
 <section class="item-card">
     <h2 class="item-card-title">{{name}}</h2>
     <div class="item-card-description">
-      {{{processRuleText data.flavor.description}}}
+      {{{zhProcessRuleText data.flavor.description}}}
     </div>
     <br/>
     <div class="item-card-effect" data-effect-label="Effect">
-      {{{processRuleText (zhLocalize data.rules.effect)}}}
+      {{{zhProcessRuleText (zhLocalize data.rules.effect)}}}
     </div>
     <dl class="zh-collapsed zh-expandable" data-expand-title="Show Item Details">
       <dt>Tradition</dt>
@@ -13,14 +13,14 @@
       <dt>Principle</dt>
       <dd>{{data.principle}}</dd>
       <dt>Reagents</dt>
-      <dd>{{{processRuleText (zhLocalize data.rules.reagents)}}}</dd>
+      <dd>{{{zhProcessRuleText (zhLocalize data.rules.reagents)}}}</dd>
       <dt>Duration</dt>
       <dd>{{data.duration}}</dd>
       <dt>Distance</dt>
       <dd>{{data.distance}}</dd>
       <dt>Critical Success</dt>
-      <dd>{{{processRuleText (zhLocalize data.rules.criticalSuccess)}}}</dd>
+      <dd>{{{zhProcessRuleText (zhLocalize data.rules.criticalSuccess)}}}</dd>
       <dt>Critical Failure</dt>
-      <dd>{{{processRuleText (zhLocalize data.rules.criticalFailure)}}}</dd>
+      <dd>{{{zhProcessRuleText (zhLocalize data.rules.criticalFailure)}}}</dd>
     </dl>
   </section>

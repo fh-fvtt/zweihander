@@ -1,7 +1,7 @@
 <div data-item-id="{{weapon._id}}">
   {{{cardContent}}}
   <div class="pill-container">
-    {{#if exploded}}<span class="pill pill-{{exploded}}">Exploded with {{capitalize exploded}} {{#if (gte explodedCount 2)}}(x{{explodedCount}}){{/if}}</span>{{/if}}
+    {{#if exploded}}<span class="pill pill-{{exploded}}">Exploded with {{zhCapitalize exploded}} {{#if (gte explodedCount 2)}}(x{{explodedCount}}){{/if}}</span>{{/if}}
   </div>
   {{{rollContent}}}
   <div class="skill-test-controls">

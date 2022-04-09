@@ -56,8 +56,8 @@
     {{#each itemGroup.items as |item| }}
     <li class="item flexrow" data-item-id="{{item._id}}">
       <div class="item-name fetch-item flexrow js-show-item-description {{#if itemGroup.rollType}}rollable{{/if}}">
-        <div class="{{itemImageClass item.img}} {{itemGroup.rollType}}" tabindex="0" role="button"
-          aria-label="{{item.name}}" style="{{itemImageStyle item.img}}"
+        <div class="{{zhItemImageClass item.img}} {{itemGroup.rollType}}" tabindex="0" role="button"
+          aria-label="{{item.name}}" style="{{zhItemImageStyle item.img}}"
           data-label="{{#if itemGroup.rollLabelKey}}{{zhLookup item itemGroup.rollLabelKey}}{{else}}{{itemGroup.rollLabel}}{{/if}}">
         </div>
         <h4>{{item.name}}</h4>

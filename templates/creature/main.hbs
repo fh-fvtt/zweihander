@@ -9,11 +9,11 @@
     {{#unless limited}}
     <section class="actor-resources">
       <section class="peril-ladder">
-        {{radioThresholds "data.stats.secondaryAttributes.perilCurrent.value" config.perilOptions
+        {{zhConditionLadder "data.stats.secondaryAttributes.perilCurrent.value" config.perilOptions
         checked=data.stats.secondaryAttributes.perilCurrent.value}}
       </section>
       <section class="damage-ladder">
-        {{radioThresholds "data.stats.secondaryAttributes.damageCurrent.value" config.damageOptions
+        {{zhConditionLadder "data.stats.secondaryAttributes.damageCurrent.value" config.damageOptions
         checked=data.stats.secondaryAttributes.damageCurrent.value}}
       </section>
     </section>
@@ -35,7 +35,7 @@
             <div class="pa-icon"><span class="{{lookup ../config.primaryAttributeIcons key}}"></span></div>
             <div class="pa-bonus-container flexcol">
               <span class="pa-bonus">{{attr.bonus}}</span>
-              <span class="pa-bonus-title">{{getFirstLetter key}}B</span>
+              <span class="pa-bonus-title">{{zhGetFirstLetter key}}B</span>
             </div>
           </div>
           <div class="pa-bonus-advances flexrow">

@@ -5,15 +5,15 @@
   <h2 class="skill-test-title">{{skill}}</h2>
 {{/if}}
 <dl class="compact-details compact-details-centered zh-collapsed zh-expandable" data-expand-title="Show Roll Details">
-  <dt>{{primaryAttribute}}</dt><dd> {{explicitSign primaryAttributeValue}}%</dd>
-  <dt>Skill rank bonus</dt><dd> {{explicitSign rankBonus}}%</dd>
-  <dt>Penalty from Peril</dt><dd> {{explicitSign perilPenalty}}%</dd>
-  <dt>Special Modifier</dt><dd> {{explicitSign specialBaseChanceModifier}}%</dd>
+  <dt>{{primaryAttribute}}</dt><dd> {{zhExplicitSign primaryAttributeValue}}%</dd>
+  <dt>Skill rank bonus</dt><dd> {{zhExplicitSign rankBonus}}%</dd>
+  <dt>Penalty from Peril</dt><dd> {{zhExplicitSign perilPenalty}}%</dd>
+  <dt>Special Modifier</dt><dd> {{zhExplicitSign specialBaseChanceModifier}}%</dd>
   <dt>Capped Base Chance</dt><dd> {{baseChance}}%</dd>
   {{#if spellTest}}
-  <dt>Raw Difficulty</dt><dd> {{explicitSign difficultyRating.raw}}% ({{capitalize spell.data.principle}} Magick)</dd>
-  <dt>Channel Power Bonus</dt><dd> {{explicitSign difficultyRating.channelPowerBonus}}%</dd>
-  <dt>Total Difficulty</dt>{{else}}<dt>Difficulty</dt>{{/if}}<dd> {{explicitSign difficultyRating.total}}%</dd>
+  <dt>Raw Difficulty</dt><dd> {{zhExplicitSign difficultyRating.raw}}% ({{zhCapitalize spell.data.principle}} Magick)</dd>
+  <dt>Channel Power Bonus</dt><dd> {{zhExplicitSign difficultyRating.channelPowerBonus}}%</dd>
+  <dt>Total Difficulty</dt>{{else}}<dt>Difficulty</dt>{{/if}}<dd> {{zhExplicitSign difficultyRating.total}}%</dd>
   <dt>Result has been flipped</dt><dd> {{#if effectivelyFlipped}} yes {{else}} no {{/if}}</dd>
 </dl>
 <div class="pill-container">
@@ -36,7 +36,7 @@
 
 {{#if chaosManifestation}}
   <div class="additional-outcome-info chaos-manifestation">
-    A {{capitalize spell.data.principle}} Chaos Manifestation spawns!
+    A {{zhCapitalize spell.data.principle}} Chaos Manifestation spawns!
   </div>
 {{/if}}
 

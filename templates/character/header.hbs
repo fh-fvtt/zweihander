@@ -12,7 +12,7 @@
         <label class="rp-title"> Reward Points</label>
         <div class="rp-content flexrow">
           <input class="rp-spent" type="number" name="data.stats.rewardPoints.current"
-            value="{{data.stats.rewardPoints.current}}" {{#rpSettingOn}} readonly {{else}} {{/rpSettingOn}} />
+            value="{{data.stats.rewardPoints.current}}"{{#if settings.trackRewardPoints}} readonly{{/if}} />
           <span class="sep">/</span>
           <input class="rp-gained" type="number" name="data.stats.rewardPoints.total"
             value="{{data.stats.rewardPoints.total}}" />
@@ -42,12 +42,12 @@
     </section>
     <section class="alignment-content">
       <section class="order-track">
-        {{radioRanks "data.alignment.order.rank" config.alignmentRanks actorConfig.permanentOrderRanks
+        {{zhAlignmentRanks "data.alignment.order.rank" config.alignmentRanks actorConfig.permanentOrderRanks
         checked=data.alignment.order.rank}}
       </section>
       <input class="corruption" name="data.alignment.corruption" type="number" value="{{data.alignment.corruption}}">
       <section class="chaos-track">
-        {{radioRanks "data.alignment.chaos.rank" config.alignmentRanks actorConfig.permanentChaosRanks
+        {{zhAlignmentRanks "data.alignment.chaos.rank" config.alignmentRanks actorConfig.permanentChaosRanks
         checked=data.alignment.chaos.rank}}
       </section>
     </section>
