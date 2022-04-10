@@ -7,7 +7,7 @@
         {{#if itemGroup.sortName}}
         <div class="sort-indicator">
           <i class="fa fa-sort-{{#if (eq itemGroup.sortName 1)}}up{{else}}down{{/if}}"></i>
-          {{!-- <span class="sort-order">{{itemGroup.sortNameOrder}}</span> --}}
+          <span class="sort-order sort-order-{{itemGroup.sortName}}">{{itemGroup.sortNameOrder}}</span>
         </div>
         {{else}}
         <div class="sort-indicator">
@@ -28,7 +28,7 @@
         {{#if detail.sort}}
         <div class="sort-indicator">
           <i class="fa fa-sort-{{#if (eq detail.sort 1)}}up{{else}}down{{/if}}"></i>
-          {{!-- <span class="sort-order">{{detail.sortOrder}}</span> --}}
+          <span class="sort-order sort-order-{{detail.sort}}">{{detail.sortOrder}}</span>
         </div>
         {{else}}
         <div class="sort-indicator">
