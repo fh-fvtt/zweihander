@@ -1,7 +1,8 @@
 import { nodeResolve } from '@rollup/plugin-node-resolve';
 import commonjs from '@rollup/plugin-commonjs';
 //import postcss from 'rollup-plugin-postcss'
-import sassPostcss from '@koffeine/rollup-plugin-sass-postcss';
+// import sassPostcss from '@koffeine/rollup-plugin-sass-postcss';
+import styles from "rollup-plugin-styles";
 import autoprefixer from 'autoprefixer';
 import reporter from 'postcss-reporter';
 //import doiuse from 'doiuse';
@@ -22,17 +23,17 @@ export default {
     dir: dev ? "." : "./dist/",
     sourcemap: true,
     sourcemapExcludeSources: dev,
+    assetFileNames: "[name][extname]",
     format: "es",
     banner
   },
   plugins: [
     nodeResolve(),
     commonjs(),
-    sassPostcss({
-      include: [/\.scss/u, /\.css/u],
-      exclude: undefined,
-      sourcemap: true,
-      output: 'zweihander.css',
+    styles({
+      mode: "extract",
+      sourceMap: { content: true },
+      use: ["sass"],
       plugins: [
         require('colorguard'),
         autoprefixer(),
@@ -41,9 +42,26 @@ export default {
           loadPaths: ['assets/'],
           relative: '.'
         }),
+        // require('postcss-safe-important')(),
         reporter({ clearReportedMessages: true })
       ]
     }),
+    // sassPostcss({
+    //   include: [/\.scss/u, /\.css/u],
+    //   exclude: undefined,
+    //   sourcemap: true,
+    //   output: 'zweihander.css',
+    //   plugins: [
+    //     require('colorguard'),
+    //     autoprefixer(),
+    //     // doiuse({browsers: ['> 1.5% and last 3 versions']}),
+    //     require('postcss-assets')({
+    //       loadPaths: ['assets/'],
+    //       relative: '.'
+    //     }),
+    //     reporter({ clearReportedMessages: true })
+    //   ]
+    // }),
     // postcss({
     //   sourceMap: true,
     //   extract: true,
