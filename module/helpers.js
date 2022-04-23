@@ -155,6 +155,8 @@ export const registerHandlebarHelpers = async function () {
     return new Handlebars.SafeString(`<div class="form-group"><label>Price</label>${inputs}</div>`);
   });
 
+  $$('zhTest', (a) => console.log(a))
+
   $$('zhProfessionWarn', (item, options) => {
     if (item.type !== 'profession')
       return options.fn(this);
@@ -171,7 +173,7 @@ export const registerHandlebarHelpers = async function () {
       return options.inverse(this);
     else
       return options.fn(this);
-  })
+  });
 
   $$('zhLocalize', localize);
 
