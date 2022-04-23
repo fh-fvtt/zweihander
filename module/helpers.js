@@ -155,6 +155,24 @@ export const registerHandlebarHelpers = async function () {
     return new Handlebars.SafeString(`<div class="form-group"><label>Price</label>${inputs}</div>`);
   });
 
+  $$('zhProfessionWarn', (item, options) => {
+    if (item.type !== 'profession')
+      return options.fn(this);
+
+    let hasDuplicate = false;
+
+    for (let talent of item.data.talents) {
+      if (talent.linkedId !== null)
+        continue;
+      hasDuplicate = true;
+    }
+    
+    if ((item.data.talents.length !== 3) || hasDuplicate)
+      return options.inverse(this);
+    else
+      return options.fn(this);
+  })
+
   $$('zhLocalize', localize);
 
   $$('zhLocalizePath', localizePath);

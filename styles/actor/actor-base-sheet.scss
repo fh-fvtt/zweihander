@@ -458,6 +458,10 @@ body.game.vtt.system-zweihander .zweihander.sheet.actor {
             }
           }
         }
+        & .profession-warn {
+          margin-left: 5px;
+          color: var(--zh-clr-yellow-alt);
+        }
       }
     }
     .item-summary {

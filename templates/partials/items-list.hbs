@@ -61,7 +61,7 @@
           aria-label="{{item.name}}" style="{{zhItemImageStyle item.img}}"
           data-label="{{#if itemGroup.rollLabelKey}}{{zhLookup item itemGroup.rollLabelKey}}{{else}}{{itemGroup.rollLabel}}{{/if}}">
         </div>
-        <h4>{{item.name}}</h4>
+        <h4 class="flexrow">{{item.name}}{{#zhProfessionWarn item}}{{else}}<div class="profession-warn"><i class="fa fa-exclamation-triangle"></i></div>{{/zhProfessionWarn}}</h4>
       </div>
       {{#each itemGroup.details as |detail| }}
       <div class="item-detail {{detail.class}}" style="width:{{detail.size}}px">
