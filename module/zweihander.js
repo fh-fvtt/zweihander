@@ -83,7 +83,7 @@ async function createItemMacro(bar, data, slot) {
   if (!(item.type === 'weapon' || item.type === 'spell')) return ui?.notifications.warn(`Hotbar macros do not support specified Item type '${item.type}'.`);
 
   const command = `game.zweihander.rollItemMacro("${data.actorId}", "${item._id}", "${item.type}");`;
-  let macro = bar.macros.find(m => (m.name === item.name) && (m.command === command));
+  let macro = bar.macros.find(m => (m.name === item.name) && (m.command === command));  //might be better to use game.macros.find(...)
   if (!macro) {
     macro = await Macro.create({
       name: `${game.actors.get(data.actorId).name}: ${item.name}`,
@@ -120,7 +120,7 @@ Hooks.once("diceSoNiceReady", function () {
 Hooks.once("init", async function () {
   // CONFIG.debug.hooks = true;
   console.log(ZWEI.debugTitle);
-  
+
   game.zweihander = {
     ZweihanderActor,
     ZweihanderItem,

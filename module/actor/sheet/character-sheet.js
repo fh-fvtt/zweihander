@@ -63,7 +63,7 @@ export default class ZweihanderCharacterSheet extends ZweihanderBaseActorSheet {
         prefix: 'is a(n)'
       },
       {
-        key: 'physical.sex.value',
+        key: 'details.sex',
         placeholder: 'Sex'
       },
       {
@@ -75,7 +75,10 @@ export default class ZweihanderCharacterSheet extends ZweihanderBaseActorSheet {
         id: sheetData.ancestry?.[0]?._id ?? ''
       },
       {
-        value: sheetData.professions?.[sheetData.professions.length - 1]?.name ?? '?',
+        value: sheetData.professions?.sort((professionA, professionB) => {
+          const tiers = { "Basic": 1, "Intermediate": 2, "Advanced": 3 };
+          return tiers[professionA.data.tier] - tiers[professionB.data.tier];
+        })[sheetData.professions.length - 1]?.name ?? '?',
         hidden
       },
       {
