@@ -56,6 +56,7 @@ export default class ZweihanderCharacterSheet extends ZweihanderBaseActorSheet {
     const hidden = this.actor.limited;
     const ancestry = sheetData.ancestry?.[0]?.name;
     const pronoun = sheetData.data.details.pronoun || '?';
+
     sheetData.details = [
       {
         key: 'details.age',
@@ -75,7 +76,7 @@ export default class ZweihanderCharacterSheet extends ZweihanderBaseActorSheet {
         id: sheetData.ancestry?.[0]?._id ?? ''
       },
       {
-        value: sheetData.professions?.sort((professionA, professionB) => {
+        value: [...sheetData.professions]?.sort((professionA, professionB) => {
           const tiers = { "Basic": 1, "Intermediate": 2, "Advanced": 3 };
           return tiers[professionA.data.tier] - tiers[professionB.data.tier];
         })[sheetData.professions.length - 1]?.name ?? '?',
