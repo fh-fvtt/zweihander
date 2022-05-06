@@ -454,7 +454,6 @@ export default class ZweihanderBaseActorSheet extends ActorSheet {
     });
 
     html.find(".open-language-config").click(() => this.#languageConfig.render(true));
-
   }
 
   _damageSheet(html) {

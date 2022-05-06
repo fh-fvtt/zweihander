@@ -132,6 +132,44 @@ export default class ZweihanderPC extends ZweihanderBaseActor {
     }
   }
 
+  async _preUpdate(changed, options, user, actor) {
+    const actorData = actor.data;
+    const oldDamage = actorData.data.stats.secondaryAttributes.damageCurrent.value;
+    const newDamage = changed.data.stats.secondaryAttributes.damageCurrent.value;
+
+    if ((newDamage < oldDamage) && ((newDamage > 0) && (newDamage <=3))) {
+      let injuryToRoll = newDamage == 3 ? "Moderate" : newDamage == 2 ? "Serious" : "Grievous";
+
+      await Dialog.confirm({
+        title: `${actor.name}: Injury Configuration`,
+        content: `<p>You are ${injuryToRoll}ly Wounded. Roll for Injury?</p>`,
+        yes: () => this._rollInjury(injuryToRoll, actor),
+        defaultYes: false
+      });
+    }
+  }
+
+  async _rollInjury(injuryToRoll, actor) {
+    const injuryChaosRoll = new Roll(`${injuryToRoll === 'Moderate' ? 1 : injuryToRoll === 'Serious' ? 2 : 3}d6`, actor.data.data);
+    const rollResult = await injuryChaosRoll.evaluate();
+
+    await rollResult.toMessage({ speaker: ChatMessage.getSpeaker({ actor: actor }), content: injuryChaosRoll.total, flavor: `Attempts to avoid Injury...` });
+
+    const injurySustained = rollResult.terms[0].results.some(die => die.result === 6);
+
+    if (!injurySustained) return;
+
+    const tablesPack = game.packs.get("zweihander.zh-gm-tables");
+    const tablesIndex = await tablesPack.getIndex();
+
+    const injuryTableEntry = tablesIndex.find(table => ZweihanderUtils.normalizedIncludes(table.name, injuryToRoll));
+
+    const injuryTable = await tablesPack.getDocument(injuryTableEntry._id);
+
+    const diceRoll = await injuryTable.roll();
+    const finalResult = await injuryTable.draw({ "roll": diceRoll })
+  }
+
   async createEmbeddedDocuments(embeddedName, data, context, actor) {
     if (embeddedName === "Item") {
       const filteredData = [];

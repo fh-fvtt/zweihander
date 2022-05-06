@@ -149,6 +149,10 @@ export function normalizedEquals(a, b) {
   return normalizeName(a) === normalizeName(b);
 }
 
+export function normalizedIncludes(a, b) {
+  return normalizeName(a).includes(normalizeName(b));
+}
+
 export function sortByItemSpecificity({ referenceNames = [], packPriority = true } = {}) {
   const specificityScore = (x) => {
     let score = 0;

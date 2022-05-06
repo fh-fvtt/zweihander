@@ -77,6 +77,11 @@ export default class ZweihanderActor extends Actor {
     await this.dispatch("_preCreate", { args: [this.data, options, user] });
   }
 
+  async _preUpdate(changed, options, user) {
+    await super._preUpdate(changed, options, user);
+    await this.dispatch("_preUpdate", { args: [changed, options, user, this] });
+  }
+
   async _onCreate(data, options, user) {
     await super._onCreate(data, options, user);
     // TODO: user is an incorrect parameter and will be fixed in future versions
