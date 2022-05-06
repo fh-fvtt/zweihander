@@ -70,7 +70,47 @@ Hooks.once("ready", function () {
   patchDie();
   console.log(`systems/zweihander/assets/${game.settings.get('zweihander', 'gameSystem')}-logo.webp`);
   $('#ui-left #logo').attr('src', `systems/zweihander/assets/${game.settings.get('zweihander', 'gameSystem')}-logo.webp`).css('display', 'unset');
+
+  Hooks.on("hotbarDrop", (bar, data, slot) => createItemMacro(bar, data, slot));
 })
+
+async function createItemMacro(bar, data, slot) {
+  if (data.type !== "Item") return;
+  if (!("data" in data)) return ui?.notifications.warn("You can only create macro buttons for owned Items.");
+  const item = data.data;
+
+  console.log(item)
+
+  if (!["weapon", "spell"].includes(item.type)) return ui?.notifications.warn(`Hotbar macros do not support specified Item type '${item.type}'.`);
+
+  const command = `game.zweihander.rollItemMacro("${data.actorId}", "${item._id}", "${item.type}");`;
+  let macro = bar.macros.find(m => (m.name === item.name) && (m.command === command));
+  if (!macro) {
+    macro = await Macro.create({
+      name: item.name,
+      type: "script",
+      img: item.img,
+      command: command,
+      flags: { "zweihander.itemMacro": true }
+    });
+  }
+  game.user.assignHotbarMacro(macro, slot);
+  return false;
+}
+
+async function rollItemMacro(actorId, itemId, testType) {
+  const actor = game.actors.get(actorId);
+  const item = actor.items.find(i => i.id == itemId);
+
+  const skillItem = actor.items.find(i => i.type === 'skill' && ZweihanderUtils.normalizedEquals(i.name, item.data.data.associatedSkill));
+
+  console.log(skillItem)
+
+  const additionalConfiguration = {};
+  additionalConfiguration[`${testType}Id`] = itemId;
+  
+  await rollTest(skillItem, testType, additionalConfiguration, { showDialog: true });
+}
 
 Hooks.once("diceSoNiceReady", function () {
   // Dice so Nice integration
@@ -79,12 +119,14 @@ Hooks.once("diceSoNiceReady", function () {
 
 Hooks.once("init", async function () {
   // CONFIG.debug.hooks = true;
-  console.log(`Initializing ZWEIHÄNDER: Grim & Perilous RPG System`);
+  console.log(ZWEI.debugTitle);
+  
   game.zweihander = {
     ZweihanderActor,
     ZweihanderItem,
     utils: ZweihanderUtils,
-    migrateWorld
+    migrateWorld,
+    rollItemMacro
   };
   CONFIG.ChatMessage.template = "systems/zweihander/templates/chat/chat-message.hbs";
   /**
