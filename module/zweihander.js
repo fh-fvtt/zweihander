@@ -102,7 +102,9 @@ async function rollItemMacro(actorId, itemId, testType) {
   const actor = game.actors.get(actorId);
   const item = actor.items.find(i => i.id == itemId);
 
-  const skillItem = actor.items.find(i => i.type === 'skill' && ZweihanderUtils.normalizedEquals(i.name, item.data.data.associatedSkill));
+  let associatedSkill = testType === 'weapon' ? item.data.data.associatedSkill : actor.data.data.stats.secondaryAttributes.magick.associatedSkill;
+
+  const skillItem = actor.items.find(i => i.type === 'skill' && ZweihanderUtils.normalizedEquals(i.name, associatedSkill));
 
   const additionalConfiguration = {};
   additionalConfiguration[`${testType}Id`] = itemId;
