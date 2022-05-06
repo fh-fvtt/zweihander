@@ -135,11 +135,11 @@ export default class ZweihanderPC extends ZweihanderBaseActor {
   async _preUpdate(changed, options, user, actor) {
     const actorData = actor.data;
     const oldDamage = actorData.data.stats.secondaryAttributes.damageCurrent.value;
-    const newDamage = changed.data.stats.secondaryAttributes.damageCurrent.value;
+    const newDamage = changed.data?.stats?.secondaryAttributes?.damageCurrent?.value;
 
     const injurySettingEnabled = game.settings.get("zweihander", "injuryPrompt");
 
-    if (injurySettingEnabled && (newDamage < oldDamage) && ((newDamage > 0) && (newDamage <=3))) {
+    if (injurySettingEnabled && (newDamage !== undefined) && (newDamage < oldDamage) && ((newDamage > 0) && (newDamage <=3))) {
       let injuryToRoll = newDamage == 3 ? "Moderate" : newDamage == 2 ? "Serious" : "Grievous";
 
       await Dialog.confirm({
