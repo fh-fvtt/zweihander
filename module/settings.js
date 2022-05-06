@@ -47,6 +47,15 @@ export const registerSystemSettings = function() {
     config: true
   });
 
+  game.settings.register("zweihander", "injuryPrompt", {
+    name: "Automatic Injury Prompt",
+    hint: "Automatically prompt user to roll for Injury when falling on the Damage Condition Track.",
+    scope: "world",
+    type: Boolean,
+    default: true,
+    config: true
+  })
+
 
   game.settings.register("zweihander", "openInCompactMode", {
     name: "Open in Compact Mode",

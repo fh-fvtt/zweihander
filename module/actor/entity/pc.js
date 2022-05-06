@@ -137,7 +137,9 @@ export default class ZweihanderPC extends ZweihanderBaseActor {
     const oldDamage = actorData.data.stats.secondaryAttributes.damageCurrent.value;
     const newDamage = changed.data.stats.secondaryAttributes.damageCurrent.value;
 
-    if ((newDamage < oldDamage) && ((newDamage > 0) && (newDamage <=3))) {
+    const injurySettingEnabled = game.settings.get("zweihander", "injuryPrompt");
+
+    if (injurySettingEnabled && (newDamage < oldDamage) && ((newDamage > 0) && (newDamage <=3))) {
       let injuryToRoll = newDamage == 3 ? "Moderate" : newDamage == 2 ? "Serious" : "Grievous";
 
       await Dialog.confirm({
@@ -149,6 +151,7 @@ export default class ZweihanderPC extends ZweihanderBaseActor {
     }
   }
 
+  //@todo: refactor into another class, possibly dice.js
   async _rollInjury(injuryToRoll, actor) {
     const injuryChaosRoll = new Roll(`${injuryToRoll === 'Moderate' ? 1 : injuryToRoll === 'Serious' ? 2 : 3}d6`, actor.data.data);
     const rollResult = await injuryChaosRoll.evaluate();
