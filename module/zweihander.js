@@ -74,20 +74,19 @@ Hooks.once("ready", function () {
   Hooks.on("hotbarDrop", (bar, data, slot) => createItemMacro(bar, data, slot));
 })
 
+//@todo: refactor this function into a different class
 async function createItemMacro(bar, data, slot) {
   if (data.type !== "Item") return;
   if (!("data" in data)) return ui?.notifications.warn("You can only create macro buttons for owned Items.");
   const item = data.data;
 
-  console.log(item)
-
-  if (!["weapon", "spell"].includes(item.type)) return ui?.notifications.warn(`Hotbar macros do not support specified Item type '${item.type}'.`);
+  if (!(item.type === 'weapon' || item.type === 'spell')) return ui?.notifications.warn(`Hotbar macros do not support specified Item type '${item.type}'.`);
 
   const command = `game.zweihander.rollItemMacro("${data.actorId}", "${item._id}", "${item.type}");`;
   let macro = bar.macros.find(m => (m.name === item.name) && (m.command === command));
   if (!macro) {
     macro = await Macro.create({
-      name: item.name,
+      name: `${game.actors.get(data.actorId).name}: ${item.name}`,
       type: "script",
       img: item.img,
       command: command,
@@ -98,13 +97,12 @@ async function createItemMacro(bar, data, slot) {
   return false;
 }
 
+//@todo: refactor this function into a different class
 async function rollItemMacro(actorId, itemId, testType) {
   const actor = game.actors.get(actorId);
   const item = actor.items.find(i => i.id == itemId);
 
   const skillItem = actor.items.find(i => i.type === 'skill' && ZweihanderUtils.normalizedEquals(i.name, item.data.data.associatedSkill));
-
-  console.log(skillItem)
 
   const additionalConfiguration = {};
   additionalConfiguration[`${testType}Id`] = itemId;
