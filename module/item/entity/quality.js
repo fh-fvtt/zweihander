@@ -8,7 +8,7 @@ export default class ZweihanderQuality extends ZweihanderBaseItem {
       .map(async (q) => {
         const name = q.trim();
         const item = await ZweihanderUtils.findItemWorldWide('quality', name);
-        return { name, found: item !== undefined, effect: item?.data?.data?.flavor?.description }
+        return { name, found: item !== undefined, effect: ZweihanderUtils.localize(item?.data?.data?.rules?.effect) }
       }));
   }
 
