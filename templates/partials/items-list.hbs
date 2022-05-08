@@ -65,7 +65,7 @@
           {{item.name}}
           {{#zhProfessionWarn item}}
           {{else}}
-          <div class="profession-warn"><i class="fa fa-exclamation-triangle" title="Profession missing a Talent or has a duplicate one. Please add to/change Talent list."></i></div>
+          <div class="profession-warn"><i class="fa fa-exclamation-triangle" title="Profession is missing a Talent, has a misspelled Talent, or has a duplicate one. Please add to/change Talent list."></i></div>
           {{/zhProfessionWarn}}
         </h4>
       </div>
@@ -97,7 +97,7 @@
           title="Delete Item"><i class="fas fa-trash-alt fa-fw fa-xs"></i></a>
       </div>
       <div class="item-summary individual-description save-toggle item-summary-longform">
-        {{> ($$ itemGroup.summaryTemplate) item.data}}
+        {{> ($$ itemGroup.summaryTemplate) item.data professionItem=item}}
       </div>
     </li>
     {{/each}}

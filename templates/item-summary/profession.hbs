@@ -41,8 +41,9 @@
     data-purchase-type="talents"
     data-purchase-index="{{i}}"
     data-item-id="{{talentsData.linkedId}}"
-    class="purchase-link fetch-item {{#if talentsData.purchased}} purchased {{else}} not-purchased {{/if}}"
-    >{{talentsData.name}}</a
-  >
+    class="purchase-link fetch-item {{#if talentsData.linkedId}}{{#if talentsData.purchased}} purchased {{else}} not-purchased {{/if}} {{else}}duplicate{{/if}}"
+    >{{talentsData.name}}
+    
+  </a>
   {{#unless @last}}<span>,</span>{{/unless}} {{/each}}
 </div>
