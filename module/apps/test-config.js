@@ -1,5 +1,21 @@
 import { ZWEI } from '../config';
-import { getDifficultyRatingLabel, selectedChoice } from '../utils';
+import { getDifficultyRatingLabel, selectedChoice, normalizedEquals } from '../utils';
+
+export const getItemRollConfiguration = (item) => {
+  const actor = item.actor;
+  const itemData = item.data;
+
+  const associatedSkill = item.type === 'weapon' ? itemData.data.associatedSkill : actor.data.data.stats.secondaryAttributes.magick.associatedSkill;
+  const skillItem = actor.items.find(item => item.type === 'skill' && normalizedEquals(item.name, associatedSkill));
+
+  const additionalConfiguration = {};
+  additionalConfiguration[`${item.type}Id`] = item.id;
+
+  return {
+    skillItem: skillItem,
+    additionalConfiguration: additionalConfiguration
+  }
+}
 
 export async function getTestConfiguration(skillItem, testType = 'skill', testConfiguration = {}) {
   testConfiguration.flip = testConfiguration.flip ?? (skillItem.data.data.isFlipToFail ? 'fail' : 'no-flip');

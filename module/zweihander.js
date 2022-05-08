@@ -19,6 +19,7 @@ import { registerHandlebarHelpers } from "./helpers";
 import { migrateWorldSafe, migrateWorld } from "./migration"
 import { rollTest, patchDie } from "./dice";
 import { getTestConfiguration } from "./apps/test-config";
+import { createItemMacro, rollItemMacro } from "./macros";
 
 import { ZWEI } from "./config.js";
 
@@ -71,51 +72,14 @@ Hooks.once("ready", function () {
   console.log(`systems/zweihander/assets/${game.settings.get('zweihander', 'gameSystem')}-logo.webp`);
   $('#ui-left #logo').attr('src', `systems/zweihander/assets/${game.settings.get('zweihander', 'gameSystem')}-logo.webp`).css('display', 'unset');
 
-  Hooks.on("hotbarDrop", (bar, data, slot) => createItemMacro(bar, data, slot));
-})
-
-//@todo: refactor this function into a different class
-async function createItemMacro(bar, data, slot) {
-  if (data.type !== "Item") return;
-  if (!("data" in data)) return ui?.notifications.warn("You can only create macro buttons for owned Items.");
-  const item = data.data;
-
-  if (!(item.type === 'weapon' || item.type === 'spell')) return ui?.notifications.warn(`Hotbar macros do not support specified Item type '${item.type}'.`);
-
-  const command = `game.zweihander.rollItemMacro("${data.actorId}", "${item._id}", "${item.type}");`;
-  let macro = bar.macros.find(m => (m.name === item.name) && (m.command === command));  //might be better to use game.macros.find(...)
-  if (!macro) {
-    macro = await Macro.create({
-      name: `${game.actors.get(data.actorId).name}: ${item.name}`,
-      type: "script",
-      img: item.img,
-      command: command,
-      flags: { "zweihander.itemMacro": true }
-    });
-  }
-  game.user.assignHotbarMacro(macro, slot);
-  return false;
-}
-
-//@todo: refactor this function into a different class
-async function rollItemMacro(actorId, itemId, testType) {
-  const actor = game.actors.get(actorId);
-  const item = actor.items.find(i => i.id == itemId);
-
-  let associatedSkill = testType === 'weapon' ? item.data.data.associatedSkill : actor.data.data.stats.secondaryAttributes.magick.associatedSkill;
-
-  const skillItem = actor.items.find(i => i.type === 'skill' && ZweihanderUtils.normalizedEquals(i.name, associatedSkill));
-
-  const additionalConfiguration = {};
-  additionalConfiguration[`${testType}Id`] = itemId;
-  
-  await rollTest(skillItem, testType, additionalConfiguration, { showDialog: true });
-}
+  // macro bar support
+  Hooks.on("hotbarDrop", (bar, data, slot) => createItemMacro(data, slot));
+});
 
 Hooks.once("diceSoNiceReady", function () {
   // Dice so Nice integration
   game?.dice3d?.addSFXTrigger?.("zh-outcome", "Zweihander d100", ["Critical Failure", "Failure", "Success", "Critical Success"]);
-})
+});
 
 Hooks.once("init", async function () {
   // CONFIG.debug.hooks = true;

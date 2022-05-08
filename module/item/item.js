@@ -5,6 +5,7 @@ import ZweihanderAncestry from "./entity/ancestry";
 import ZweihanderArmor from "./entity/armor";
 import ZweihanderQuality from "./entity/quality";
 import ZweihanderInjury from "./entity/injury";
+import ZweihanderSpell from "./entity/spell";
 
 import { ZWEI } from "../config";
 import ZweihanderTrapping from "./entity/trapping";
@@ -19,7 +20,8 @@ export default class ZweihanderItem extends Item {
     ancestry: new ZweihanderAncestry(),
     injury: new ZweihanderInjury(),
     quality: new ZweihanderQuality(),
-    trapping: new ZweihanderTrapping()
+    trapping: new ZweihanderTrapping(),
+    spell: new ZweihanderSpell()
   };
 
   constructor(...args) {
@@ -118,5 +120,9 @@ export default class ZweihanderItem extends Item {
     if (user !== game.user.id) return
     if (this.parent === null || !changed.data) return;
     await this.dispatch("_onUpdate", { args: [changed, options, user] });
+  }
+
+  async roll() {
+    await this.dispatch("roll", { args: [this] });
   }
 }
