@@ -316,7 +316,7 @@ export default class ZweihanderBaseActorSheet extends ActorSheet {
       const type = game.i18n.localize(CONFIG.Item.typeLabels[item.type]);
       await Dialog.confirm({
         title: `Delete Embedded ${type}: ${item.name}`,
-        content: `<p>Are you sure?<br/>This ${type} will be permanently deleted and cannot be recovered.</p>`,
+        content: `<h4>Are you sure?</h4><p>This ${type} will be permanently deleted and cannot be recovered.</p>`,
         yes: async () => {
           await this.actor.deleteEmbeddedDocuments("Item", [item.id]);
           i.slideUp(200, () => this.render(false));
@@ -394,11 +394,11 @@ export default class ZweihanderBaseActorSheet extends ActorSheet {
       }
       Dialog.confirm({
         title: !event.currentTarget.checked ?
-          "Reset Profession Progress" :
-          "Complete Profession",
+          `Reset Profession Progress: ${item.name}` :
+          `Complete Profession Progress: ${item.name}`,
         content: !event.currentTarget.checked ?
-          "<p>Do you really want to reset your progress in this profession?</p>" :
-          "<p>Do you really want to purchase all advances in this profession? The current purchase state will be lost!</p>",
+          `<h4>Reset Profession progress?</h4>` :
+          `<h4>Purchase all Profession advances?</h4><p>Current purchase state will be lost!</p>`,
         yes: () => ZweihanderProfession.toggleProfessionPurchases(item, !event.currentTarget.checked),
         defaultYes: false
       });

@@ -151,7 +151,7 @@ export default class ZweihanderPC extends ZweihanderBaseActor {
 
       await Dialog.confirm({
         title: `${actor.name}: Injury Configuration`,
-        content: `<p>You are ${injuryToRoll}ly Wounded. Roll for Injury?</p>`,
+        content: `<h4>You are ${injuryToRoll}ly Wounded. Roll for Injury?</h4>`,
         yes: () => this._rollInjury(injuryToRoll, actor),
         defaultYes: false
       });
