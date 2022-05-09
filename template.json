@@ -227,7 +227,7 @@
       "trapping": {
         "price": {},
         "encumbrance": 0,
-        "carried": false
+        "carried": true
       },
       "effect": {
         "rules": {
@@ -356,26 +356,26 @@
           "@en": ""
         }
       },
-      "active": false
+      "active": true
     },
     "disorder": {
       "templates": ["flavor", "effect"],
       "details": {
         "category": { "@en": "" }
       },
-      "active": false
+      "active": true
     },
     "taint": {
       "templates": ["flavor", "effect"],
       "details": {
         "category": { "@en": "" }
       },
-      "active": false
+      "active": true
     },
     "injury": {
       "templates": ["flavor", "effect"],
       "severity": 0,
-      "active": false,
+      "active": true,
       "recuperationTime": 0
     },
     "condition": {
@@ -383,7 +383,7 @@
       "details": {
         "category": { "@en": "" }
       },
-      "active": false
+      "active": true
     }
   }
 }
