@@ -367,6 +367,15 @@ export default class ZweihanderBaseActorSheet extends ActorSheet {
       $(this).text(await ZweihanderUtils.parseDataPaths($(this).text().trim(), actor));
     });
 
+    html.find('.inline-roll').each(async function () {
+      const formula = $(this).text().trim().split('+');
+      const diceRoll = formula[0];
+      const dataPath = formula[1];
+
+      if (dataPath && dataPath.includes('@')) 
+        $(this).html('<i class="fas fa-dice-d20"></i> ' + diceRoll + '+' + await ZweihanderUtils.parseDataPaths(dataPath, actor));
+    });
+
     // "Link" checkboxes on character sheet and item sheet so both have the same state
     html.find(".link-checkbox").click(async event => {
       event.preventDefault();

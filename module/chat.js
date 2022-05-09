@@ -100,4 +100,19 @@ function enableChatButtons(html, flags, message, data) {
       });
     }
   }
+
+  const spellTestData = flags?.skillTestData?.testType === "spell" && flags?.skillTestData;
+  if (spellTestData) {
+    const actorId = spellTestData.actorId;
+    const actor = game.actors.get(actorId);
+
+    html.find('.inline-roll').each(async function () {
+      const formula = $(this).text().trim().split('+');
+      const diceRoll = formula[0];
+      const dataPath = formula[1];
+
+      if (dataPath && dataPath.includes('@')) 
+        $(this).html('<i class="fas fa-dice-d20"></i> ' + diceRoll + '+' + await ZweihanderUtils.parseDataPaths(dataPath, actor));
+    });
+  }
 }
