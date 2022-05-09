@@ -111,8 +111,11 @@ function enableChatButtons(html, flags, message, data) {
       const diceRoll = formula[0];
       const dataPath = formula[1];
 
-      if (dataPath && dataPath.includes('@')) 
-        $(this).html('<i class="fas fa-dice-d20"></i> ' + diceRoll + '+' + await ZweihanderUtils.parseDataPaths(dataPath, actor));
+      if (dataPath && dataPath.includes('@')) {
+        const newFormula = diceRoll + '+' + await ZweihanderUtils.parseDataPaths(dataPath, actor);
+        this.dataset.formula = newFormula;
+        $(this).html('<i class="fas fa-dice-d20"></i> ' + newFormula);
+      }
     });
   }
 }
