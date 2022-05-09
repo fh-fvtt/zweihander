@@ -122,14 +122,21 @@ export default class ZweihanderPC extends ZweihanderBaseActor {
     // roll primary attributes for new pc
     await super._preCreate(actorData, options, user, that);
     const pas = actorData.data.stats.primaryAttributes;
+
+    const update = {};
+
     if (CONFIG.ZWEI.primaryAttributes.every(pa => pas[pa].value === 0)) {
-      const update = {};
       for (let pa of CONFIG.ZWEI.primaryAttributes) {
         const roll = await (new Roll('2d10+35')).evaluate();
         update[`data.stats.primaryAttributes.${pa}.value`] = roll.total;
       }
-      await actorData.update(update);
     }
+
+    if (!update.token) update.token = {}
+
+    update.token.actorLink = true;
+
+    await actorData.update(update);
   }
 
   async _preUpdate(changed, options, user, actor) {
