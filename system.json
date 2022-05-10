@@ -2,10 +2,11 @@
   "name": "zweihander",
   "title": "Zweihänder Grim & Perilous RPG",
   "description": "An implementation of the Zweihänder system for FoundryVTT.",
-  "version": "4.3.2-beta1a",
+  "version": "4.3.2-beta1b",
   "minimumCoreVersion": "0.8.4",
   "compatibleCoreVersion": "9",
   "templateVersion": 2,
+  "manifestPlusVersion": "1.2.0",
   "authors": [
     {
       "name": "Re4XN",
@@ -14,6 +15,13 @@
     {
       "name": "kxfin",
       "discord": "kxfin#0458"
+    }
+  ],
+  "media": [
+    {
+      "type": "cover",
+      "url": "https://i.imgur.com/5pkuu0s.png",
+      "caption": "zweihander"
     }
   ],
   "esmodules": ["zweihander.js"],
@@ -30,7 +38,7 @@
   "socket": true,
   "url": "https://github.com/fh-fvtt/zweihander",
   "manifest": "https://raw.githubusercontent.com/fh-fvtt/zweihander/dev/system.json",
-  "download": "https://github.com/fh-fvtt/zweihander/releases/download/v4.3.2-beta1a/system.zip",
+  "download": "https://github.com/fh-fvtt/zweihander/releases/download/v4.3.2-beta1b/system.zip",
   "license": "LICENCE.txt",
   "primaryTokenAttribute": "stats.secondaryAttributes.damageCurrent",
   "secondaryTokenAttribute": "stats.secondaryAttributes.perilCurrent",
