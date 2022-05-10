@@ -6,7 +6,7 @@ export default class ZweihanderInjury extends ZweihanderBaseItem {
     await super._preCreate(data, options, user);
 
     if (that.actor && data?.data?.recuperationTime === 0) {
-      const d = data.data.severity + 1;
+      const d = Number(data.data.severity) + 1;
       const roll = await (new Roll(`${d}d10+${d}`)).evaluate();
       const speaker = ChatMessage.getSpeaker({actor: that.actor});
       roll.toMessage({flavor: 'Determining Recuperation Time', speaker});
