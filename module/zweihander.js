@@ -60,6 +60,11 @@ Hooks.once("ready", function () {
   const cleanQuery = SearchFilter.cleanQuery;
   SearchFilter.cleanQuery = (x) => ZweihanderUtils.removeDiacritics(cleanQuery(x));
   triggerAnalytics();
+  //Check modules and warn if lacking them
+  if (game.user.isGM && !(game.modules.get("_chatcommands")&&game.modules.get("_chatcommands").active))
+     ui.notifications.warn("You need to install and activate the _chatcommands module for improved commands in chat");
+  if (game.user.isGM && !(game.modules.get("socketlib")&&game.modules.get("socketlib").active)) 
+     ui.notifications.warn("You need to install and activate the socketlib module for improved fortune tracker");
   //..
   const currencySettings = game.settings.get("zweihander", "currencySettings");
   // migration, remove this after a while
