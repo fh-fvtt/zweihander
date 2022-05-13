@@ -73,6 +73,16 @@ describe('Character Creation', () => {
     cy.get('.character').should('be.visible');
   });
 
+  it('can enable Magick tab', () => {
+    cy.get('.configure-actor').click();
+
+    cy.wait(1000);
+
+    cy.get('[name="flags.isMagickUser"]').click();
+
+    cy.contains(`${Cypress.env('characterName')}: Actor Configuration`).parent().find('.close').click();
+  });
+
   it('can change Primary Attributes', () => {
     const primaryAttributes = ['combat', 'brawn', 'agility', 'perception', 'intelligence', 'willpower', 'fellowship'];
 
@@ -96,7 +106,7 @@ describe('Character Creation', () => {
     cy.get('[data-testid="damage"]').should('contain.text', '4');
   });
 
-  it('can add Ancestry (Human)', () => {
+  it('can add Ancestry', () => {
     cy.get('[data-item-type="ancestry"]').rightclick({ force: true });
 
     cy.wait(1000);
@@ -122,11 +132,17 @@ describe('Character Creation', () => {
   
       cy.wait(1000);
   
-      cy.get('.compendium').should('be.visible').find('img[title="Berserker"]').parent().dragTo('.character');
+      cy.get('.compendium').should('be.visible')
+        .find(`img[title="${Cypress.env("professionBasic")}"]`)
+        .parent()
+        .dragTo('.character');
   
       cy.wait(1000);
   
-      cy.get('div[data-tab="tiers"]').find('[data-testid="Berserker"]').should('be.visible').click();
+      cy.get('div[data-tab="tiers"]')
+        .find(`[data-testid="${Cypress.env("professionBasic")}"]`)
+        .should('be.visible')
+        .click();
   
       cy.wait(1000);
 
@@ -139,7 +155,7 @@ describe('Character Creation', () => {
   
       cy.get('[data-testid="skillsBasic"]')
         .find('[data-purchase-index="0"]')
-        .should('have.css', 'color', 'rgb(142, 192, 124)');
+        .should('have.css', 'color', Cypress.env("purchasedColor"));
 
       cy.get('.rp-spent').should('have.value', '800');
     });
@@ -150,7 +166,7 @@ describe('Character Creation', () => {
   
       cy.get('[data-testid="advancesBasic"]')
         .find('[data-purchase-index="0"]')
-        .should('have.css', 'color', 'rgb(142, 192, 124)');
+        .should('have.css', 'color', Cypress.env("purchasedColor"));
 
       cy.get('.rp-spent').should('have.value', '700');
     });
@@ -161,25 +177,112 @@ describe('Character Creation', () => {
   
       cy.get('[data-testid="talentsBasic"]')
         .find('[data-purchase-index="0"]')
-        .should('have.css', 'color', 'rgb(142, 192, 124)');
+        .should('have.css', 'color', Cypress.env("purchasedColor"));
 
       cy.get('.rp-spent').should('have.value', '600');
   
       cy.get('[data-testid="Nerves of Steel"]').should('be.visible');
     });
 
-    it('Skill Rank bonus is visible', () => {
-      cy.get('a[data-tab="main"]').click();
-    })
+    it('does not allow advancing if not complete', () => {
+      cy.get('.compendium')
+        .find(`img[title="${Cypress.env("professionIntermediate")}"]`)
+        .parent()
+        .dragTo('.character');
+
+      cy.contains('A character must complete the previous Tier before entering a new Profession.').should('be.visible');
+    });
+
+    it('can complete Tier', () => {
+      cy.get('[data-key="data.completed"]').click({ force: true });
+
+      cy.wait(1000);
+
+      cy.get('[data-button="yes"]').should('be.visible').click();
+
+      cy.get('[data-testid="skillsBasic"]')
+        .find('[data-purchase-index="9"]')
+        .should('have.css', 'color', Cypress.env("purchasedColor"));
+
+      cy.get('[data-testid="advancesBasic"]')
+        .find('[data-purchase-index="6"]')
+        .should('have.css', 'color', Cypress.env("purchasedColor"));
+
+      cy.get('[data-testid="talentsBasic"]')
+        .find('[data-purchase-index="2"]')
+        .should('have.css', 'color', Cypress.env("purchasedColor"));
+    });
   });
 
-  it('enters Intermediate Tier', () => {
-    console.log('b')
+  describe('Intermediate Tier', () => {
+    it('can purchase Profession', () => {
+      console.log('b')
+    });
+  })
+});
+
+describe('Trappings', () => {
+  it('can add a new Weapon', () => {
+    cy.get('a[data-tab="trappings"]').click();
+
+    cy.get('a[data-item-type="weapon"]').click();
+
+    cy.wait(1000);
+
+    cy.get('.window-header').contains('weapon').should('be.visible').parent().find('.close').click();
   });
+
+  it('can add new Armor', () => {
+    cy.get('a[data-item-type="armor"]').click();
+
+    cy.wait(1000);
+
+    cy.get('.window-header')
+      .contains('armor')
+      .should('be.visible')
+      .parents('.window-app')
+      .find('input[name="data.damageThresholdModifier"]')
+      .clear()
+      .type("1")
+      .parents('.window-app')
+      .find('.close')
+      .click();
+  })
 });
 
 describe('Rolls', () => {
   it('rolls a Weapon attack', () => {
     console.log('c')
+  });
+});
+
+after(() => {
+  cy.get('a[title="Game Settings"]').click();
+
+  cy.get('[data-action="setup"]').click();
+
+  cy.wait(1000);
+
+  // weird Foundry behaviour where 'Return to Setup' doesn't actually do what it says
+  if (cy.get('select[name="userid"]')) {
+    cy.get('select[name="userid"]').select('Gamemaster');
+
+    cy.get('button[name="join"]').click();
+
+    cy.wait(2000);
+
+    cy.get('a[title="Game Settings"]').click();
+
+    cy.get('[data-action="setup"]').click();
+
+    cy.wait(1000);
+  }
+
+  cy.get('[data-package-id="cypress-zweihander-test"]').contains('Delete World').click();
+
+  cy.get('.window-content').find('b').then(($confirmationText) => {
+    cy.get('#delete-confirm').type($confirmationText.text());
+
+    cy.get('[data-button="yes"]').click();
   });
 });
