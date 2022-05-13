@@ -11,7 +11,7 @@
   <a class="fetch-item" data-item-id="{{drawback.linkedId}}">{{drawback.name}}</a>
   {{else}} - {{/if}}
 </div>
-<div>
+<div data-testid="skills{{tier}}">
   <label>Skill Ranks:</label>
   {{#each skillRanks as | skillData i |}}
   <a
@@ -22,7 +22,7 @@
     {{skillData.name}} </a
   >{{#unless @last}}<span>,</span>{{/unless}} {{/each}}
 </div>
-<div>
+<div data-testid="advances{{tier}}">
   <label>Bonus Advances:</label>
   {{#each bonusAdvances as | advancesData i |}}
   <a
@@ -34,7 +34,7 @@
   {{#unless @last}}<span>,</span>{{/unless}} {{/each}}
 </div>
 
-<div>
+<div data-testid="talents{{tier}}">
   <label>Talents:</label>
   {{#each talents as | talentsData i |}}
   <a
