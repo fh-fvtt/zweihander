@@ -81,6 +81,8 @@ describe('Character Creation', () => {
     cy.get('[name="flags.isMagickUser"]').click();
 
     cy.contains(`${Cypress.env('characterName')}: Actor Configuration`).parent().find('.close').click();
+
+    cy.get('.character').get('[data-tab="magick"]').should('be.visible');
   });
 
   it('can change Primary Attributes', () => {
