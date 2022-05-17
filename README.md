@@ -95,3 +95,7 @@ We will regularly have a look at the [issues sorted by reactions](https://github
 ## Development
 
 If you wish to help with development, contact Re4XN#8341 or kxfin#0458 on Discord.
+
+## Disclaimer
+
+This game system is powered by ZWEIHÄNDER Grim & Perilous RPG ™, a trademark of Grim & Perilous Studios LLC, in the USA and other countries. Used with permission. Original text content of ZWEIHÄNDER Grim & Perilous RPG is licensed under a Creative Commons Attribution-Noncommercial-Share Alike 3.0 Unported License. ZWEIHÄNDER Logo, content and original artwork are copyright © 2009–2018, Grim & Perilous Studios, LLC unless otherwise specified.
