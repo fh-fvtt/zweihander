@@ -162,7 +162,7 @@ export default class ZweihanderCharacterSheet extends ZweihanderBaseActorSheet {
     const indexedTypes = [
       "trapping", "condition", "injury", "disease", "disorder", "profession",
       "ancestry", "armor", "weapon", "spell", "ritual", "talent", "trait",
-      "drawback", "quality", "skill", "uniqueAdvance", "taint"
+      "drawback", "quality", "skill", "uniqueAdvance", "taint", "effect"
     ];
     const pluralize = t => ({
       'injury': 'injuries',

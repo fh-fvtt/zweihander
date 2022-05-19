@@ -45,6 +45,7 @@ export const preloadHandlebarsTemplates = async function () {
     $$('item-summary/talent'),
     $$('item-summary/drawback'),
     $$('item-summary/uniqueAdvance'),
+    $$('item-summary/effect'),
     $$('partials/items-list'),
     $$('partials/skills-list'),
     $$('character/currency'),

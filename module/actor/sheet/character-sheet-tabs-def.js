@@ -174,6 +174,26 @@ export function getItemGroups(data) {
       ],
       items: data.conditions
     },
+    effects: {
+      title: "Effects",
+      type: "effect",
+      isEffect: true,
+      summaryTemplate: "item-summary/effect",
+      details: [
+        {
+          title: "Category",
+          size: 140,
+          key: localizePath("data.details.category")
+        },
+        {
+          title: "Currently in Effect",
+          size: 150,
+          key: "data.active",
+          isCheckbox: true
+        }
+      ],
+      items: data.effects
+    },
     disorders: {
       title: "Disorders",
       type: "disorder",
@@ -351,6 +371,7 @@ export function getItemGroups(data) {
 
 export function attachTabDefinitions(data) {
   const $$ = x => data.itemGroups[x];
+  console.log(data.itemGroups)
   data.tabs = {
     trappings: {
       headerTemplate: "character/currency",
@@ -367,7 +388,7 @@ export function attachTabDefinitions(data) {
     },
     afflictions: {
       itemGroups: [
-        'conditions', 'disorders', 'diseases', 'injuries', 'taints'
+        'conditions', 'disorders', 'diseases', 'injuries'/*, 'taints'*/, 'effects'
       ].map($$)
     },
     tiers: {

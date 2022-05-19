@@ -78,11 +78,11 @@ export const registerHandlebarHelpers = async function () {
   })
 
   $$('zhItemImageClass', function (img) {
-    return img.endsWith(".svg") ? "item-image item-image-icon" : "item-image item-image-picture";
+    return img?.endsWith(".svg") ? "item-image item-image-icon" : "item-image item-image-picture";
   })
 
   $$('zhItemImageStyle', function (img) {
-    return img.endsWith(".svg") ? `-webkit-mask-image: url('${img}')` : `background-image: url('${img}')`;
+    return img?.endsWith(".svg") ? `-webkit-mask-image: url('${img}')` : `background-image: url('${img}')`;
   })
 
   $$('arrayInputGroup', function (label, target, array, max = Number.MAX_SAFE_INTEGER, pillDisplayProperty) {

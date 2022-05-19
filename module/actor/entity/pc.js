@@ -4,7 +4,7 @@ import ZweihanderActorConfig from "../../apps/actor-config";
 
 export default class ZweihanderPC extends ZweihanderBaseActor {
 
-  prepareDerivedData(actorData) {
+  prepareBaseData(actorData) {  // changed by re4xn from 'prepareDerivedData' on 19-05-2022
     const noWarn = CONFIG.ZWEI.NO_WARN || actorData._id === null;
     const configOptions = ZweihanderActorConfig.getConfig(actorData);
     // set up utility variables
@@ -118,6 +118,12 @@ export default class ZweihanderPC extends ZweihanderBaseActor {
     mov.current = Math.max(0, mov.value - mov.overage);
   }
 
+/*   applyActiveEffects() {
+    console.log(this);
+    
+    return super.applyActiveEffects();
+  } */
+
   async _preCreate(actorData, options, user, that) {
     // roll primary attributes for new pc
     await super._preCreate(actorData, options, user, that);
@@ -181,6 +187,7 @@ export default class ZweihanderPC extends ZweihanderBaseActor {
   }
 
   async createEmbeddedDocuments(embeddedName, data, context, actor) {
+    console.log(embeddedName, data)
     if (embeddedName === "Item") {
       const filteredData = [];
       let ancestryAttached = actor.data.items.some(i => i.type === 'ancestry');

@@ -60,8 +60,14 @@ export default class ZweihanderBaseActorSheet extends ActorSheet {
     // Prepare owned items
     this._prepareItems(data);
 
+    data.effects = actorData.effects;
+
     const itemGroups = this._processItemGroups(this._getItemGroups(data));
     data.itemGroups = ZweihanderUtils.assignPacks(this.actor.type, itemGroups);
+
+    console.log(itemGroups)
+
+    
 
     // Prepare active effects
     // data.effects = ActiveEffect5e.prepareActiveEffectCategories(this.actor.effects);
@@ -326,21 +332,57 @@ export default class ZweihanderBaseActorSheet extends ActorSheet {
       });
     });
 
+    // Edit Active Effect
+    html.find('.effect-edit').click(ev => {
+      const i = $(ev.currentTarget).parents(".item");
+      const item = this.actor.effects.get(i.data("itemId"));
+      item.sheet.render(true);
+    });
+
+    // Delete Active Effect
+    html.find('.effect-delete').click(async ev => {
+      const i = $(ev.currentTarget).parents(".item");
+      const effect = this.actor.effects.get(i.data("itemId"));
+      const type = game.i18n.localize(CONFIG.ActiveEffect.typeLabels["base"]);
+      await Dialog.confirm({
+        title: `Delete ${type}: ${effect.data.label}`,
+        content: `<h4>Are you sure?</h4><p>This ${type} will be permanently deleted and cannot be recovered.</p>`,
+        yes: async () => {
+          await this.actor.deleteEmbeddedDocuments("ActiveEffect", [effect.id]);
+          i.slideUp(200, () => this.render(false));
+        },
+        no: () => { },
+        defaultYes: true
+      });
+    });
+
     html.find('.skill').hover(async ev => {
       let target = "li.pa.pa-" + ev.currentTarget.attributes['data-associated-pa'].value.toLowerCase();
       $(target).addClass('pa-hover-helper');
     }, async ev => {
       let target = "li.pa.pa-" + ev.currentTarget.attributes['data-associated-pa'].value.toLowerCase();
       $(target).removeClass('pa-hover-helper');
-    })
+    });
 
     // Add new Item (from within the sheet)
     html.find('.add-new').click(async ev => {
       let type = ev.currentTarget.dataset.itemType;
 
-      const createdItemArray = await this.actor.createEmbeddedDocuments("Item", [
-        { "type": type, "name": type }
-      ]);
+      let createdItemArray = [];
+
+      if (type !== 'effect') {
+        createdItemArray = await this.actor.createEmbeddedDocuments("Item", [
+          { "type": type, "name": type }
+        ]);
+      } else {
+        createdItemArray = await this.actor.createEmbeddedDocuments("ActiveEffect", [
+          {
+            "label": "New Effect",
+            "icon": "systems/zweihander/assets/icons/dice-fire.svg",
+            "origin": this.actor.id
+          }
+        ]);
+      }
 
       if (createdItemArray.length)
         createdItemArray[0].sheet.render(true);
@@ -406,8 +448,15 @@ export default class ZweihanderBaseActorSheet extends ActorSheet {
     // Show item sheet on right click
     html.find(".fetch-item").contextmenu(event => {
       const itemId = $(event.currentTarget).parent('.item').data('itemId') ?? $(event.currentTarget).data('itemId');
-      const skillItem = this.actor.items.get(itemId);
-      skillItem.sheet.render(true);
+      const item = this.actor.items.get(itemId);
+      item.sheet.render(true);
+    });
+
+    // Show effect sheet on right click
+    html.find(".fetch-effect").contextmenu(event => {
+      const itemId = $(event.currentTarget).parent('.item').data('itemId') ?? $(event.currentTarget).data('itemId');
+      const effect = this.actor.effects.get(itemId);
+      effect.sheet.render(true);
     });
 
     html.find(".item-post").click(async event => {
