@@ -96,6 +96,7 @@ export default class ZweihanderPC extends ZweihanderBaseActor {
     mov.current = Math.max(0, mov.value - mov.overage);
   }
 
+  // parry, dodge & magick depend on Item preparation being finished
   prepareEmbeddedDocuments(actorData) {
     const configOptions = ZweihanderActorConfig.getConfig(actorData);
     const data = actorData.data;
@@ -113,8 +114,6 @@ export default class ZweihanderPC extends ZweihanderBaseActor {
       if (skill) {
         const primAttr = skill.data.data.associatedPrimaryAttribute.toLowerCase();
         secAttr.value = data.stats.primaryAttributes[primAttr].value + Math.max(0, skill.data.data.bonus - perilMalus);
-
-        console.log(data.stats.primaryAttributes[primAttr].value, skill.data.data)
       } else {
         noWarn || ui?.notifications?.warn(`Can't find associated skill ${secAttr.associatedSkill} for secondary attribute ${name}!`);
       }
@@ -126,12 +125,6 @@ export default class ZweihanderPC extends ZweihanderBaseActor {
     //calculate magick
     calcSecondayAttributeSpecialActionValue(data.stats.secondaryAttributes.magick, "Magick");
   }
-
-/*   applyActiveEffects() {
-    console.log(this);
-    
-    return super.applyActiveEffects();
-  } */
 
   async _preCreate(actorData, options, user, that) {
     // roll primary attributes for new pc

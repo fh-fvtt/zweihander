@@ -97,7 +97,7 @@
           title="Delete {{#if ../isEffect}}Effect{{else}}Item{{/if}}"><i class="fas fa-trash-alt fa-fw fa-xs"></i></a>
       </div>
       <div class="item-summary individual-description save-toggle item-summary-longform">
-        {{> ($$ itemGroup.summaryTemplate) item.data professionItem=item}}
+        {{> ($$ itemGroup.summaryTemplate) item.data item=item}}
       </div>
     </li>
     {{/each}}

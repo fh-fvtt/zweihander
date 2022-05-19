@@ -77,6 +77,16 @@ export const registerHandlebarHelpers = async function () {
     return text;
   })
 
+  $$('zhEffectToHTML', function (effect) {
+    let html = ""
+
+    effect.changes.forEach(e => {
+      html += `<label>Modified Attribute:</label> ${e.key}<br /><label>Mode:</label> ${e.mode}<br /><label>Value:</label> ${e.value}`
+    });
+
+    return new Handlebars.SafeString(html)
+  });
+
   $$('zhItemImageClass', function (img) {
     return img?.endsWith(".svg") ? "item-image item-image-icon" : "item-image item-image-picture";
   })

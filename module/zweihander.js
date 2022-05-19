@@ -30,6 +30,7 @@ import { triggerAnalytics } from "./analytics";
 import ZweihanderCombat from "./combat/combat";
 import ZweihanderCombatant from "./combat/combatant";
 import ZweihanderCombatTracker from "./combat/combat-tracker";
+import ZweihanderActiveEffect from "./effects/active-effect";
 
 /* -------------------------------------------- */
 /*  Foundry VTT Initialization                  */
@@ -109,6 +110,7 @@ Hooks.once("init", async function () {
   // Define custom Document classes
   CONFIG.Actor.documentClass = ZweihanderActor;
   CONFIG.Item.documentClass = ZweihanderItem;
+  CONFIG.ActiveEffect.documentClass = ZweihanderActiveEffect;
   CONFIG.Combat.documentClass = ZweihanderCombat;
   CONFIG.Combatant.documentClass = ZweihanderCombatant;
   CONFIG.ui.combat = ZweihanderCombatTracker;
