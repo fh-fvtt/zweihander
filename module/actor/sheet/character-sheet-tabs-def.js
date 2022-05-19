@@ -181,14 +181,9 @@ export function getItemGroups(data) {
       summaryTemplate: "item-summary/effect",
       details: [
         {
-          title: "Category",
-          size: 140,
-          key: localizePath("data.details.category")
-        },
-        {
-          title: "Currently in Effect",
+          title: "Suspended", // @todo: change this in ZweihanderActiveEffect implementation to be more intuitive
           size: 150,
-          key: "data.active",
+          key: "disabled",
           isCheckbox: true
         }
       ],
@@ -371,7 +366,6 @@ export function getItemGroups(data) {
 
 export function attachTabDefinitions(data) {
   const $$ = x => data.itemGroups[x];
-  console.log(data.itemGroups)
   data.tabs = {
     trappings: {
       headerTemplate: "character/currency",

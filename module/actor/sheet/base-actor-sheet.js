@@ -64,11 +64,7 @@ export default class ZweihanderBaseActorSheet extends ActorSheet {
 
     const itemGroups = this._processItemGroups(this._getItemGroups(data));
     data.itemGroups = ZweihanderUtils.assignPacks(this.actor.type, itemGroups);
-
-    console.log(itemGroups)
-
     
-
     // Prepare active effects
     // data.effects = ActiveEffect5e.prepareActiveEffectCategories(this.actor.effects);
 
@@ -423,6 +419,14 @@ export default class ZweihanderBaseActorSheet extends ActorSheet {
       event.preventDefault();
       const checkbox = $(event.currentTarget);
       const item = this.actor.items.get(checkbox.data('itemId'));
+      const key = checkbox.data('key');
+      await item.update({ [key]: checkbox.prop('checked') });
+    });
+    // "Link" checkboxes on character sheet and active effect sheet so both have the same state
+    html.find(".link-effect-checkbox").click(async event => {
+      event.preventDefault();
+      const checkbox = $(event.currentTarget);
+      const item = this.actor.effects.get(checkbox.data('itemId'));
       const key = checkbox.data('key');
       await item.update({ [key]: checkbox.prop('checked') });
     });

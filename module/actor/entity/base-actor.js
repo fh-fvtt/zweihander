@@ -1,9 +1,5 @@
 export default class ZweihanderBaseActor {
-
-  prepareEmbeddedEntities(actorData) {
-
-  }
-
+  
   getRollData(rollData) {
     //TODO: make attributes more accessible here
     return rollData;

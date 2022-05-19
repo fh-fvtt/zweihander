@@ -72,7 +72,7 @@
       {{#each itemGroup.details as |detail| }}
       <div class="item-detail {{detail.class}}" style="width:{{detail.size}}px">
         {{#if detail.isCheckbox}}
-        <input class="zweihander-checkbox {{#unless detail.classes}}link-checkbox{{else}}{{detail.classes}}{{/unless}}"
+        <input class="zweihander-checkbox {{#unless detail.classes}}link{{#if ../../isEffect}}-effect{{/if}}-checkbox{{else}}{{detail.classes}}{{/unless}}"
           id="{{item._id}}.{{detail.key}}" data-item-id="{{item._id}}" data-key="{{detail.key}}" type="checkbox"
           {{checked (zhLookup item detail.key)}} />
         <label for="{{item._id}}.{{detail.key}}"></label>

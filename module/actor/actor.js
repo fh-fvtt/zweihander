@@ -46,7 +46,7 @@ export default class ZweihanderActor extends Actor {
 
   prepareEmbeddedDocuments(...args) {
     if (super.prepareEmbeddedDocuments) super.prepareEmbeddedDocuments();
-    this.dispatch("prepareEmbeddedEntities");
+    this.dispatch("prepareEmbeddedDocuments");
   }
 
   prepareEmbeddedEntities() {

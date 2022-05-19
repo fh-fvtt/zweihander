@@ -57,29 +57,7 @@ export default class ZweihanderPC extends ZweihanderBaseActor {
         { source: `${maxEquippedArmor.name} DTM`, type: 'add', argument: damageModifier }
       );
     }
-    // get peril malus
-    const basePerilCurrent = data.stats.secondaryAttributes.perilCurrent.value
-    const effectivePerilCurrent = this.getEffectivePerilLadderValue(basePerilCurrent, configOptions.isIgnoredPerilLadderValue);
-    data.stats.secondaryAttributes.perilCurrent.effectiveValue = effectivePerilCurrent;
-    const perilMalus = this.getPerilMalus(effectivePerilCurrent);
-    // calculate special actions underlying values
-    const calcSecondayAttributeSpecialActionValue = (secAttr, name) => {
-      const skill = actorData.items.find(item => 
-        item.type === 'skill' && item.name === secAttr.associatedSkill
-      );
-      if (skill) {
-        const primAttr = skill.data.data.associatedPrimaryAttribute.toLowerCase();
-        secAttr.value = data.stats.primaryAttributes[primAttr].value + Math.max(0, skill.data.data.bonus - perilMalus);
-      } else {
-        noWarn || ui?.notifications?.warn(`Can't find associated skill ${secAttr.associatedSkill} for secondary attribute ${name}!`);
-      }
-    }
-    //calculate parry
-    calcSecondayAttributeSpecialActionValue(data.stats.secondaryAttributes.parry, "Parry");
-    //calculate parry
-    calcSecondayAttributeSpecialActionValue(data.stats.secondaryAttributes.dodge, "Dodge");
-    //calculate parry
-    calcSecondayAttributeSpecialActionValue(data.stats.secondaryAttributes.magick, "Magick");
+
     // encumbrance calculations...
     // assign encumbrance from equipped trappings
     const carriedTrappings = actorData.items
@@ -116,6 +94,37 @@ export default class ZweihanderPC extends ZweihanderBaseActor {
     mov.value = data.stats.primaryAttributes[configOptions.movAttribute].bonus + 3 + configOptions.movementModifier;
     mov.overage = enc.overage;
     mov.current = Math.max(0, mov.value - mov.overage);
+  }
+
+  prepareEmbeddedDocuments(actorData) {
+    const configOptions = ZweihanderActorConfig.getConfig(actorData);
+    const data = actorData.data;
+
+    // get peril malus
+    const basePerilCurrent = data.stats.secondaryAttributes.perilCurrent.value
+    const effectivePerilCurrent = this.getEffectivePerilLadderValue(basePerilCurrent, configOptions.isIgnoredPerilLadderValue);
+    data.stats.secondaryAttributes.perilCurrent.effectiveValue = effectivePerilCurrent;
+    const perilMalus = this.getPerilMalus(effectivePerilCurrent);
+    // calculate special actions underlying values
+    const calcSecondayAttributeSpecialActionValue = (secAttr, name) => {
+      const skill = actorData.items.find(item => 
+        item.type === 'skill' && item.name === secAttr.associatedSkill
+      );
+      if (skill) {
+        const primAttr = skill.data.data.associatedPrimaryAttribute.toLowerCase();
+        secAttr.value = data.stats.primaryAttributes[primAttr].value + Math.max(0, skill.data.data.bonus - perilMalus);
+
+        console.log(data.stats.primaryAttributes[primAttr].value, skill.data.data)
+      } else {
+        noWarn || ui?.notifications?.warn(`Can't find associated skill ${secAttr.associatedSkill} for secondary attribute ${name}!`);
+      }
+    }
+    //calculate parry
+    calcSecondayAttributeSpecialActionValue(data.stats.secondaryAttributes.parry, "Parry");
+    //calculate dodge
+    calcSecondayAttributeSpecialActionValue(data.stats.secondaryAttributes.dodge, "Dodge");
+    //calculate magick
+    calcSecondayAttributeSpecialActionValue(data.stats.secondaryAttributes.magick, "Magick");
   }
 
 /*   applyActiveEffects() {
