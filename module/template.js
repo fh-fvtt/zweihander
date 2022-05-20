@@ -5,7 +5,7 @@
  */
 
 export const preloadHandlebarsTemplates = async function () {
-  const $$ = (path) => 'systems/zweihander/templates/' + path + '.hbs'
+  const $$ = (path) => 'systems/zweihander/templates/' + path + '.hbs';
   return loadTemplates([
     $$('character/tab-main'),
     $$('character/header'),
@@ -56,6 +56,6 @@ export const preloadHandlebarsTemplates = async function () {
     $$('partials/detail-item-wrapper'),
     $$('partials/detail-languages'),
     $$('partials/detail-risk-factor'),
-    $$('partials/details-list')
+    $$('partials/details-list'),
   ]);
 };

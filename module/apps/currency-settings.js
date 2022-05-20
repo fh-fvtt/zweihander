@@ -1,7 +1,6 @@
-import { formDataToArray } from "../utils";
+import { formDataToArray } from '../utils';
 
 export default class CurrencySettings extends FormApplication {
-
   #currencies = [];
 
   constructor(...args) {
@@ -22,7 +21,7 @@ export default class CurrencySettings extends FormApplication {
       height: 'auto',
       submitOnChange: false,
       submitOnClose: false,
-      closeOnSubmit: true
+      closeOnSubmit: true,
     });
   }
 
@@ -41,7 +40,7 @@ export default class CurrencySettings extends FormApplication {
         abbreviation: 'nc',
         name: 'New Currency',
         color: '#000000',
-        equivalentOfLower: 1
+        equivalentOfLower: 1,
       });
       this.render();
     });

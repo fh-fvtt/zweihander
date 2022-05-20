@@ -5,13 +5,13 @@
 .dice-tray button svg {
   height: 30px;
 }
-.dice-tray__button[data-formula="d4"],
-.dice-tray__button[data-formula="d8"],
-.dice-tray__button[data-formula="d12"],
-.dice-tray__button[data-formula="d20"] {
+.dice-tray__button[data-formula='d4'],
+.dice-tray__button[data-formula='d8'],
+.dice-tray__button[data-formula='d12'],
+.dice-tray__button[data-formula='d20'] {
   display: none;
 }
-.dice-tray input[type="text"] {
+.dice-tray input[type='text'] {
   box-shadow: none;
   border: none;
   margin: 0 1px;
@@ -38,14 +38,14 @@
     color: var(--zh-clr-bg1);
     position: relative;
     &::before {
-      content: "";
+      content: '';
       display: block;
       position: absolute;
       top: 0;
       left: 0;
       width: 100%;
       height: 30px;
-      mask-image: url("./assets/icons/rolling-dices.svg");
+      mask-image: url('./assets/icons/rolling-dices.svg');
       mask-repeat: no-repeat;
       mask-position: center center;
       mask-size: 35px;
@@ -58,20 +58,20 @@
       }
     }
   }
-  &.dice-tray__button[data-formula="d6"],
-  &.dice-tray__button[data-formula="d10"],
-  &.dice-tray__button[data-formula="d100"] {
-    &.dice-tray__button[data-formula="d6"]::before {
-      content: "d6";
+  &.dice-tray__button[data-formula='d6'],
+  &.dice-tray__button[data-formula='d10'],
+  &.dice-tray__button[data-formula='d100'] {
+    &.dice-tray__button[data-formula='d6']::before {
+      content: 'd6';
     }
-    &.dice-tray__button[data-formula="d10"]::before {
-      content: "d10";
+    &.dice-tray__button[data-formula='d10']::before {
+      content: 'd10';
     }
-    &.dice-tray__button[data-formula="d100"]::before {
-      content: "d100";
+    &.dice-tray__button[data-formula='d100']::before {
+      content: 'd100';
     }
     &::before {
-      content: " ";
+      content: ' ';
       font-family: var(--zh-font-title);
       display: block;
       width: 100%;

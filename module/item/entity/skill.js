@@ -1,17 +1,20 @@
-import ZweihanderBaseItem from "./base-item";
-import * as ZweihanderUtils from "../../utils";
+import ZweihanderBaseItem from './base-item';
+import * as ZweihanderUtils from '../../utils';
 
 export default class ZweihanderSkill extends ZweihanderBaseItem {
-
   prepareBaseData(itemData, item) {
     if (!item.isOwned || !item?.actor?.data) return;
     const data = itemData.data;
     const actor = item.actor;
     if (actor.type === 'character') {
-      data.rank = actor.items
-      .filter(i => i.type === 'profession')
-      .flatMap(p => p.data.data.skillRanks?.filter?.(sr => sr.name === item.name && sr.purchased))
-      ?.length ?? 0;
+      data.rank =
+        actor.items
+          .filter((i) => i.type === 'profession')
+          .flatMap((p) =>
+            p.data.data.skillRanks?.filter?.(
+              (sr) => sr.name === item.name && sr.purchased
+            )
+          )?.length ?? 0;
     } else {
       data.rank = actor.data.data.skillRanks?.[item.name] ?? 0;
     }
@@ -19,5 +22,4 @@ export default class ZweihanderSkill extends ZweihanderBaseItem {
     data.bonus = data.rank * data.bonusPerRank;
     data.isFlipToFail = data.requiresTraining && data.rank === 0;
   }
-
 }

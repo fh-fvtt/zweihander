@@ -149,7 +149,8 @@ body.game.vtt.system-zweihander .zweihander.sheet.actor {
       margin-left: 3px;
       /* margin-top: 1px; */
       font-family: var(--font-primary);
-      & > .fa-sort-up, & > .fa-sort-down {
+      & > .fa-sort-up,
+      & > .fa-sort-down {
         visibility: visible;
       }
       i {
@@ -169,9 +170,10 @@ body.game.vtt.system-zweihander .zweihander.sheet.actor {
         font-weight: lighter;
         top: -3px;
         &.sort-order-1 {
-          top:6px;  
+          top: 6px;
         }
-        &.sort-order-1, &.sort-order--1 {
+        &.sort-order-1,
+        &.sort-order--1 {
           visibility: visible;
         }
       }
@@ -236,15 +238,18 @@ body.game.vtt.system-zweihander .zweihander.sheet.actor {
         border-radius: 3px;
         background-color: var(--zh-clr-bg2);
         border: none;
-        &:focus, &:hover {
+        &:focus,
+        &:hover {
           border: none;
           box-shadow: none;
         }
       }
     }
 
-    .sortable, .filterable {
-      &, & .detail-title {
+    .sortable,
+    .filterable {
+      &,
+      & .detail-title {
         position: relative;
         & .detail-title:hover > .sort-indicator {
           visibility: visible;
@@ -342,7 +347,7 @@ body.game.vtt.system-zweihander .zweihander.sheet.actor {
           .item-image {
             &.item-image-icon {
               background-color: var(--zh-clr-yellow) !important;
-              mask-image: url("../../icons/svg/d10-grey.svg") !important;
+              mask-image: url('../../icons/svg/d10-grey.svg') !important;
             }
             &.item-image-picture {
               border-color: var(--zh-clr-yellow);
@@ -352,7 +357,7 @@ body.game.vtt.system-zweihander .zweihander.sheet.actor {
         .item-image:hover {
           &.item-image-icon {
             background-color: var(--zh-clr-aqua) !important;
-            mask-image: url("../../icons/svg/d10-grey.svg") !important;
+            mask-image: url('../../icons/svg/d10-grey.svg') !important;
           }
           &.item-image-picture {
             border-color: var(--zh-clr-aqua) !important;
@@ -598,7 +603,7 @@ body.game.vtt.system-zweihander .zweihander.sheet.actor {
     > section.window-content::after,
     > section.window-content > form::before,
     > section.window-content > form::after {
-      content: " ";
+      content: ' ';
       position: absolute;
       display: block;
       width: 100%;
@@ -617,7 +622,7 @@ body.game.vtt.system-zweihander .zweihander.sheet.actor {
     }
 
     > section.window-content::before {
-      background-image: resolve("bloodstains2.webp");
+      background-image: resolve('bloodstains2.webp');
       background-size: 700px 700px;
       background-position: bottom -420px right -320px;
     }
@@ -631,7 +636,7 @@ body.game.vtt.system-zweihander .zweihander.sheet.actor {
       width: 500px;
       left: -130px;
       top: -140px;
-      background-image: resolve("bloodstains.webp");
+      background-image: resolve('bloodstains.webp');
       background-size: 500px 500px;
       transform: rotate(93deg) scale(0.5);
     }
@@ -644,8 +649,8 @@ body.game.vtt.system-zweihander .zweihander.sheet.actor {
     }
 
     &.damage-tracker-2 > section.window-content::before {
-      background-image: resolve("bloodstains2.webp"),
-        resolve("bloodstains2.webp");
+      background-image: resolve('bloodstains2.webp'),
+        resolve('bloodstains2.webp');
       background-size: 700px 700px, 700px 700px;
       background-position: bottom -420px right -320px, bottom -320px left -320px;
       opacity: 0.4;
@@ -654,7 +659,7 @@ body.game.vtt.system-zweihander .zweihander.sheet.actor {
     & > section.window-content > form::after {
       height: 500px;
       width: 500px;
-      background-image: resolve("bloodstains.webp");
+      background-image: resolve('bloodstains.webp');
       background-size: 500px 500px;
       transform: rotate(-123deg);
       bottom: calc(50% - 350px);
@@ -665,7 +670,7 @@ body.game.vtt.system-zweihander .zweihander.sheet.actor {
     }
 
     > section.window-content::after {
-      background-image: resolve("bloodstains.webp");
+      background-image: resolve('bloodstains.webp');
       background-size: 500px 500px;
       background-position: top -150px right -90px;
     }

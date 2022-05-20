@@ -1,3 +1,1 @@
-export default class ZweihanderCombatant extends Combatant {
-  
-}
+export default class ZweihanderCombatant extends Combatant {}

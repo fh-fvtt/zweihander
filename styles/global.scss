@@ -37,8 +37,8 @@
   --zh-clr-aqua-faded: #427b58;
   --zh-clr-orange-faded: #af3a03;
 
-  --zh-font-title: "Dominican Small Caps" !important;
-  --zh-font-default: "Adobe Caslon Pro" !important;
+  --zh-font-title: 'Dominican Small Caps' !important;
+  --zh-font-default: 'Adobe Caslon Pro' !important;
 }
 
 .zweihander-theme-gruvbox-light {
@@ -169,7 +169,7 @@ body.game.vtt.system-zweihander {
   --macro-size: 50px;
   --players-width: 200px;
   --form-field-height: 26px;
-  --font-primary: "Signika", sans-serif;
+  --font-primary: 'Signika', sans-serif;
   --font-mono: monospace;
   --font-size-11: 0.6875rem;
   --font-size-12: 0.75rem;
@@ -190,7 +190,8 @@ body.game.vtt.system-zweihander {
     height: unset;
     object-fit: contain;
     margin: 10px 5px 5px;
-    filter: brightness(100) contrast(2) drop-shadow(2px 2px 1px var(--zh-clr-dark2));
+    filter: brightness(100) contrast(2)
+      drop-shadow(2px 2px 1px var(--zh-clr-dark2));
   }
 
   .dimension-change-listener {
@@ -234,11 +235,11 @@ body.game.vtt.system-zweihander {
     height: 100%;
   }
 
-  input[type="text"],
-  input[type="number"],
-  input[type="password"],
-  input[type="date"],
-  input[type="time"] {
+  input[type='text'],
+  input[type='number'],
+  input[type='password'],
+  input[type='date'],
+  input[type='time'] {
     background-color: var(--zh-clr-bg1);
   }
 
@@ -326,29 +327,29 @@ body.game.vtt.system-zweihander {
 }
 
 @font-face {
-  font-family: "Adobe Caslon Pro";
+  font-family: 'Adobe Caslon Pro';
   font-style: normal;
   font-weight: normal;
-  src: url("./fonts/caslon-pro-regular.woff2") format("woff2");
+  src: url('./fonts/caslon-pro-regular.woff2') format('woff2');
 }
 
 @font-face {
-  font-family: "Adobe Caslon Pro";
+  font-family: 'Adobe Caslon Pro';
   font-style: normal;
   font-weight: bold;
-  src: url("./fonts/caslon-pro-bold.woff2") format("woff2");
+  src: url('./fonts/caslon-pro-bold.woff2') format('woff2');
 }
 
 @font-face {
-  font-family: "Adobe Caslon Pro";
+  font-family: 'Adobe Caslon Pro';
   font-style: italic;
   font-weight: normal;
-  src: url("./fonts/caslon-pro-italic.woff2") format("woff2");
+  src: url('./fonts/caslon-pro-italic.woff2') format('woff2');
 }
 
 @font-face {
-  font-family: "Dominican Small Caps";
+  font-family: 'Dominican Small Caps';
   font-style: normal;
   font-weight: normal;
-  src: url("./fonts/dominican-small-caps.woff2") format("woff2");
+  src: url('./fonts/dominican-small-caps.woff2') format('woff2');
 }

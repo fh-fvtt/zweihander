@@ -1,5 +1,7 @@
 export const displayHelpMessage = async () => {
-  const html = await renderTemplate('systems/zweihander/templates/help/index.hbs');
+  const html = await renderTemplate(
+    'systems/zweihander/templates/help/index.hbs'
+  );
   await ChatMessage.create({
     type: CONST.CHAT_MESSAGE_TYPES.OTHER,
     user: game.user.id,
@@ -7,6 +9,6 @@ export const displayHelpMessage = async () => {
     content: html,
     speaker: { ...ChatMessage.getSpeaker(), alias: 'Zweihänder Help' },
     whisper: [game.user.id],
-    flags: { zweihander: { img: 'systems/zweihander/assets/icons/help.svg'}}
+    flags: { zweihander: { img: 'systems/zweihander/assets/icons/help.svg' } },
   });
-}
+};

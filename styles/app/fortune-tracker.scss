@@ -19,14 +19,19 @@ body.game.vtt.system-zweihander #fortuneTrackerApp {
     color: var(--zh-clr-aqua);
   }
   #fortuneTrackerAppTotal {
-    color: var(--zh-clr-fg1); 
-    &.waiting-true, &.waiting-true + .fortune-tracker-reset {
+    color: var(--zh-clr-fg1);
+    &.waiting-true,
+    &.waiting-true + .fortune-tracker-reset {
       display: none;
     }
   }
   @keyframes fortuneTrackerAppWaitingAnim {
-    0% { transform: rotate(0deg) }
-    100% { transform: rotate(360deg) }
+    0% {
+      transform: rotate(0deg);
+    }
+    100% {
+      transform: rotate(360deg);
+    }
   }
   #fortuneTrackerAppWaiting {
     margin-top: 45px;
@@ -40,7 +45,8 @@ body.game.vtt.system-zweihander #fortuneTrackerApp {
     }
   }
   .fortunetracker-container {
-    .fortune-tracker-text-fortune, .fortune-tracker-text-misfortune {
+    .fortune-tracker-text-fortune,
+    .fortune-tracker-text-misfortune {
       display: block;
       flex: 1 0 100%;
       line-height: 28px;
@@ -57,7 +63,8 @@ body.game.vtt.system-zweihander #fortuneTrackerApp {
     .fortunetracker-token-container {
       position: relative;
       padding: 10px;
-      .fortunetracker-life, .fortunetracker-death {
+      .fortunetracker-life,
+      .fortunetracker-death {
         position: absolute;
         background-size: cover;
         width: 125px;
@@ -68,5 +75,4 @@ body.game.vtt.system-zweihander #fortuneTrackerApp {
       }
     }
   }
-  
 }

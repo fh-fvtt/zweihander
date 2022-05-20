@@ -1,394 +1,388 @@
-import { localizePath } from "../../utils"
+import { localizePath } from '../../utils';
 
 export function getItemGroups(data) {
   return {
     weapons: {
-      title: "Weapons",
-      type: "weapon",
-      summaryTemplate: "item-summary/weapon",
-      rollType: "weapon-roll",
-      rollLabelKey: "data.associatedSkill",
+      title: 'Weapons',
+      type: 'weapon',
+      summaryTemplate: 'item-summary/weapon',
+      rollType: 'weapon-roll',
+      rollLabelKey: 'data.associatedSkill',
       details: [
         {
-          title: "Distance",
+          title: 'Distance',
           size: 100,
-          key: "data.distance",
-          class: "inject-data"
+          key: 'data.distance',
+          class: 'inject-data',
         },
         {
-          title: "Load",
+          title: 'Load',
           size: 80,
-          key: "data.load"
+          key: 'data.load',
         },
         {
-          title: "Enc.",
+          title: 'Enc.',
           size: 80,
-          key: "data.encumbrance",
-          isNumerable: true
+          key: 'data.encumbrance',
+          isNumerable: true,
         },
         {
-          title: "Equipped",
+          title: 'Equipped',
           size: 80,
-          key: "data.equipped",
-          isCheckbox: true
+          key: 'data.equipped',
+          isCheckbox: true,
         },
         {
-          title: "Carried",
+          title: 'Carried',
           size: 80,
-          key: "data.carried",
-          isCheckbox: true
-        }
+          key: 'data.carried',
+          isCheckbox: true,
+        },
       ],
-      items: data.weapons
+      items: data.weapons,
     },
     armor: {
-      title: "Armor",
-      type: "armor",
-      summaryTemplate: "item-summary/armor",
+      title: 'Armor',
+      type: 'armor',
+      summaryTemplate: 'item-summary/armor',
       details: [
         {
-          title: "DTM",
+          title: 'DTM',
           size: 80,
-          key: "data.damageThresholdModifier"
+          key: 'data.damageThresholdModifier',
         },
         {
-          title: "Enc.",
+          title: 'Enc.',
           size: 80,
-          key: "data.encumbrance",
-          isNumerable: true
+          key: 'data.encumbrance',
+          isNumerable: true,
         },
         {
-          title: "Equipped",
+          title: 'Equipped',
           size: 80,
-          key: "data.equipped",
-          isCheckbox: true
+          key: 'data.equipped',
+          isCheckbox: true,
         },
         {
-          title: "Carried",
+          title: 'Carried',
           size: 80,
-          key: "data.carried",
-          isCheckbox: true
-        }
+          key: 'data.carried',
+          isCheckbox: true,
+        },
       ],
-      items: data.armor
+      items: data.armor,
     },
     trappings: {
-      title: "Trappings",
-      type: "trapping",
-      summaryTemplate: "item-summary/trapping",
+      title: 'Trappings',
+      type: 'trapping',
+      summaryTemplate: 'item-summary/trapping',
       details: [
         {
-          title: "Category",
+          title: 'Category',
           size: 160,
-          key: localizePath("data.details.category"),
-          filterable: true
+          key: localizePath('data.details.category'),
+          filterable: true,
         },
         {
-          title: "Qty.",
+          title: 'Qty.',
           size: 80,
-          key: "data.quantity",
-          isNumerable: true
+          key: 'data.quantity',
+          isNumerable: true,
         },
         {
-          title: "Enc.",
+          title: 'Enc.',
           size: 80,
-          key: "data.encumbrance",
-          isNumerable: true
+          key: 'data.encumbrance',
+          isNumerable: true,
         },
         {
-          title: "Carried",
+          title: 'Carried',
           size: 160,
-          key: "data.carried",
-          isCheckbox: true
-        }
+          key: 'data.carried',
+          isCheckbox: true,
+        },
       ],
-      items: data.trappings
+      items: data.trappings,
     },
     spells: {
-      title: "Spells",
-      type: "spell",
-      summaryTemplate: "item-summary/spell",
-      rollType: "spell-roll",
+      title: 'Spells',
+      type: 'spell',
+      summaryTemplate: 'item-summary/spell',
+      rollType: 'spell-roll',
       rollLabel: data.data.stats.secondaryAttributes.magick.associatedSkill,
       details: [
         {
-          title: "Principle",
+          title: 'Principle',
           size: 140,
-          key: "data.principle"
+          key: 'data.principle',
         },
         {
-          title: "Distance",
+          title: 'Distance',
           size: 200,
-          key: "data.distance",
-          class: "inject-data"
+          key: 'data.distance',
+          class: 'inject-data',
         },
         {
-          title: "Duration",
+          title: 'Duration',
           size: 100,
-          key: "data.duration",
-          class: "inject-data"
-        }
+          key: 'data.duration',
+          class: 'inject-data',
+        },
       ],
-      items: data.spells
+      items: data.spells,
     },
     rituals: {
-      title: "Rituals",
-      type: "ritual",
-      summaryTemplate: "item-summary/ritual",
+      title: 'Rituals',
+      type: 'ritual',
+      summaryTemplate: 'item-summary/ritual',
       details: [
         {
-          title: "Channel Power As",
+          title: 'Channel Power As',
           size: 140,
-          key: "data.channelAs",
+          key: 'data.channelAs',
         },
         {
-          title: "Difficulty",
+          title: 'Difficulty',
           size: 200,
-          key: "data.difficulty"
+          key: 'data.difficulty',
         },
         {
-          title: "Casting Time",
+          title: 'Casting Time',
           size: 100,
-          key: "data.castingTime",
-          class: "inject-data"
-        }
+          key: 'data.castingTime',
+          class: 'inject-data',
+        },
       ],
-      items: data.rituals
+      items: data.rituals,
     },
     conditions: {
-      title: "Conditions",
-      type: "condition",
-      summaryTemplate: "item-summary/condition",
+      title: 'Conditions',
+      type: 'condition',
+      summaryTemplate: 'item-summary/condition',
       details: [
         {
-          title: "Category",
+          title: 'Category',
           size: 140,
-          key: localizePath("data.details.category")
+          key: localizePath('data.details.category'),
         },
         {
-          title: "Currently in Effect",
+          title: 'Currently in Effect',
           size: 150,
-          key: "data.active",
-          isCheckbox: true
-        }
+          key: 'data.active',
+          isCheckbox: true,
+        },
       ],
-      items: data.conditions
+      items: data.conditions,
     },
     effects: {
-      title: "Effects",
-      type: "effect",
+      title: 'Effects',
+      type: 'effect',
       isEffect: true,
-      summaryTemplate: "item-summary/effect",
+      summaryTemplate: 'item-summary/effect',
       details: [
         {
-          title: "Suspended", // @todo: change this in ZweihanderActiveEffect implementation to be more intuitive
+          title: 'Suspended', // @todo: change this in ZweihanderActiveEffect implementation to be more intuitive
           size: 150,
-          key: "disabled",
-          isCheckbox: true
-        }
+          key: 'disabled',
+          isCheckbox: true,
+        },
       ],
-      items: data.effects
+      items: data.effects,
     },
     disorders: {
-      title: "Disorders",
-      type: "disorder",
-      summaryTemplate: "item-summary/disorder",
+      title: 'Disorders',
+      type: 'disorder',
+      summaryTemplate: 'item-summary/disorder',
       details: [
         {
-          title: "Category",
+          title: 'Category',
           size: 140,
-          key: localizePath("data.details.category")
+          key: localizePath('data.details.category'),
         },
         {
-          title: "Currently in Effect",
+          title: 'Currently in Effect',
           size: 150,
-          key: "data.active",
-          isCheckbox: true
-        }
+          key: 'data.active',
+          isCheckbox: true,
+        },
       ],
-      items: data.disorders
+      items: data.disorders,
     },
     diseases: {
-      title: "Diseases",
-      type: "disease",
-      summaryTemplate: "item-summary/disease",
+      title: 'Diseases',
+      type: 'disease',
+      summaryTemplate: 'item-summary/disease',
       details: [
         {
-          title: "Duration",
+          title: 'Duration',
           size: 140,
-          key: "data.duration"
+          key: 'data.duration',
         },
         {
-          title: "Resist",
+          title: 'Resist',
           size: 140,
-          key: "data.resist"
+          key: 'data.resist',
         },
         {
-          title: "Currently in Effect",
+          title: 'Currently in Effect',
           size: 150,
-          key: "data.active",
-          isCheckbox: true
-        }
+          key: 'data.active',
+          isCheckbox: true,
+        },
       ],
-      items: data.diseases
+      items: data.diseases,
     },
     injuries: {
-      title: "Injuries",
-      type: "injury",
-      summaryTemplate: "item-summary/injury",
+      title: 'Injuries',
+      type: 'injury',
+      summaryTemplate: 'item-summary/injury',
       details: [
         {
-          title: "Recuperation Time",
+          title: 'Recuperation Time',
           size: 140,
-          key: "data.recuperationTime",
+          key: 'data.recuperationTime',
           isNumerable: true,
-          unit: ' days'
+          unit: ' days',
         },
         {
-          title: "Severity",
+          title: 'Severity',
           size: 140,
           value: function () {
-            return CONFIG.ZWEI.injurySeverities[this.data.severity].label
-          }
+            return CONFIG.ZWEI.injurySeverities[this.data.severity].label;
+          },
         },
         {
-          title: "Currently in Effect",
+          title: 'Currently in Effect',
           size: 150,
-          key: "data.active",
-          isCheckbox: true
-        }
+          key: 'data.active',
+          isCheckbox: true,
+        },
       ],
-      items: data.injuries
+      items: data.injuries,
     },
     taints: {
-      title: "Taints of Chaos",
-      type: "taint",
-      summaryTemplate: "item-summary/taint",
+      title: 'Taints of Chaos',
+      type: 'taint',
+      summaryTemplate: 'item-summary/taint',
       details: [
         {
-          title: "Category",
+          title: 'Category',
           size: 140,
-          key: localizePath("data.details.category")
+          key: localizePath('data.details.category'),
         },
         {
-          title: "Currently in Effect",
+          title: 'Currently in Effect',
           size: 150,
-          key: "data.active",
-          isCheckbox: true
-        }
+          key: 'data.active',
+          isCheckbox: true,
+        },
       ],
-      items: data.taints
+      items: data.taints,
     },
     professions: {
-      title: "Professions",
-      type: "profession",
-      summaryTemplate: "item-summary/profession",
+      title: 'Professions',
+      type: 'profession',
+      summaryTemplate: 'item-summary/profession',
       details: [
         {
-          title: "Tier",
+          title: 'Tier',
           size: 120,
-          key: "data.tier"
+          key: 'data.tier',
         },
         {
-          title: "Archetype",
+          title: 'Archetype',
           size: 140,
-          key: "data.archetype"
+          key: 'data.archetype',
         },
         {
-          title: "Completed",
+          title: 'Completed',
           size: 100,
-          key: "data.completed",
+          key: 'data.completed',
           isCheckbox: true,
-          classes: 'profession-checkbox'
-        }
+          classes: 'profession-checkbox',
+        },
       ],
-      items: data.professions
+      items: data.professions,
     },
     traits: {
-      title: "Traits",
-      type: "trait",
-      summaryTemplate: "item-summary/trait",
+      title: 'Traits',
+      type: 'trait',
+      summaryTemplate: 'item-summary/trait',
       details: [
         {
-          title: "Source",
+          title: 'Source',
           size: 240,
-          key: "source"
-        }
+          key: 'source',
+        },
       ],
-      items: data.traits
+      items: data.traits,
     },
     drawbacks: {
-      title: "Drawbacks",
-      type: "drawback",
-      summaryTemplate: "item-summary/drawback",
+      title: 'Drawbacks',
+      type: 'drawback',
+      summaryTemplate: 'item-summary/drawback',
       details: [
         {
-          title: "Source",
+          title: 'Source',
           size: 240,
-          key: "source"
-        }
+          key: 'source',
+        },
       ],
-      items: data.drawbacks
+      items: data.drawbacks,
     },
     talents: {
-      title: "Talents",
-      type: "talent",
-      summaryTemplate: "item-summary/talent",
+      title: 'Talents',
+      type: 'talent',
+      summaryTemplate: 'item-summary/talent',
       details: [
         {
-          title: "Source",
+          title: 'Source',
           size: 240,
-          key: "source"
-        }
+          key: 'source',
+        },
       ],
-      items: data.talents
+      items: data.talents,
     },
     uniqueAdvances: {
-      title: "Unique Advances",
-      type: "uniqueAdvance",
-      summaryTemplate: "item-summary/uniqueAdvance",
+      title: 'Unique Advances',
+      type: 'uniqueAdvance',
+      summaryTemplate: 'item-summary/uniqueAdvance',
       details: [
         {
-          title: "Type",
+          title: 'Type',
           size: 140,
-          key: "data.advanceType"
+          key: 'data.advanceType',
         },
         {
-          title: "RP Cost",
+          title: 'RP Cost',
           size: 100,
-          key: "data.rewardPointCost"
-        }
+          key: 'data.rewardPointCost',
+        },
       ],
-      items: data.uniqueAdvances
-    }
+      items: data.uniqueAdvances,
+    },
   };
 }
 
 export function attachTabDefinitions(data) {
-  const $$ = x => data.itemGroups[x];
+  const $$ = (x) => data.itemGroups[x];
   data.tabs = {
     trappings: {
-      headerTemplate: "character/currency",
-      footerTemplate: "character/encumbrance-meter",
-      itemGroups: [
-        'weapons', 'armor', 'trappings'
-      ].map($$)
+      headerTemplate: 'character/currency',
+      footerTemplate: 'character/encumbrance-meter',
+      itemGroups: ['weapons', 'armor', 'trappings'].map($$),
     },
     magick: {
-      footerTemplate: "character/magick-skill-selector",
-      itemGroups: [
-        'spells', 'rituals'
-      ].map($$)
+      footerTemplate: 'character/magick-skill-selector',
+      itemGroups: ['spells', 'rituals'].map($$),
     },
     afflictions: {
-      itemGroups: [
-        'conditions', 'disorders', 'diseases', 'injuries'/*, 'taints'*/, 'effects'
-      ].map($$)
+      itemGroups: ['conditions', 'disorders', 'diseases', 'injuries' /*, 'taints'*/, 'effects'].map(
+        $$
+      ),
     },
     tiers: {
-      itemGroups: [
-        'professions', 'traits', 'drawbacks', 'talents', 'uniqueAdvances'
-      ].map($$)
-    }
+      itemGroups: ['professions', 'traits', 'drawbacks', 'talents', 'uniqueAdvances'].map($$),
+    },
   };
 }

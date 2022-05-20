@@ -188,7 +188,7 @@
       justify-items: center;
       margin: 0;
       padding: 0;
-      input[type="radio"] {
+      input[type='radio'] {
         flex: 0 0 0;
         appearance: none;
         display: none;
@@ -230,7 +230,7 @@
           &::before {
             border: 1px solid transparent;
             border-radius: 50%;
-            content: "";
+            content: '';
             display: block;
             height: 15px;
             left: calc(50% - 9px);

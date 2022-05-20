@@ -107,19 +107,19 @@
           min-height: 28px;
           width: 28px;
           &.stress {
-            mask-image: url("../zweihander/assets/icons/paranoia.svg");
+            mask-image: url('../zweihander/assets/icons/paranoia.svg');
             &:hover {
               background-color: var(--zh-clr-yellow);
             }
           }
           &.fear {
-            mask-image: url("../zweihander/assets/icons/surprised.svg");
+            mask-image: url('../zweihander/assets/icons/surprised.svg');
             &:hover {
               background-color: var(--zh-clr-orange);
             }
           }
           &.terror {
-            mask-image: url("../zweihander/assets/icons/screaming.svg");
+            mask-image: url('../zweihander/assets/icons/screaming.svg');
             &:hover {
               background-color: var(--zh-clr-red);
             }
@@ -176,7 +176,7 @@
             margin-right: 0;
             text-align: left;
           }
-          input[type="radio"] + label::before {
+          input[type='radio'] + label::before {
             left: -23px;
           }
         }
@@ -186,7 +186,7 @@
         margin-right: 55px;
         text-align: right;
       }
-      input[type="radio"] {
+      input[type='radio'] {
         appearance: none;
         display: none;
         & + label {
@@ -201,13 +201,13 @@
             &::before {
               border-color: var(--zh-clr-yellow);
               color: var(--zh-clr-yellow);
-              content: "x";
+              content: 'x';
             }
           }
           &::before {
             border: 1px solid var(--zh-clr-bg3);
             border-radius: 50%;
-            content: " ";
+            content: ' ';
             display: block;
             height: 12px;
             line-height: 12px;
@@ -224,7 +224,7 @@
             background: var(--zh-clr-aqua);
             border: 1px solid var(--zh-clr-aqua-alt);
             color: var(--zh-clr-bg0);
-            content: "x";
+            content: 'x';
           }
         }
       }
@@ -237,7 +237,7 @@
         line-height: 24px;
         margin-top: 5px;
         text-align: center;
-        &.color-overage:not([data-overage="0"]) {
+        &.color-overage:not([data-overage='0']) {
           color: var(--zh-clr-red);
         }
       }

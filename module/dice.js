@@ -1,65 +1,104 @@
-import FortuneTracker from "./apps/fortune-tracker";
-import ZweihanderQuality from "./item/entity/quality";
-import * as ZweihanderUtils from "./utils";
-import { getTestConfiguration } from "./apps/test-config";
-import { ZWEI } from "./config";
-import ZweihanderActorConfig from "./apps/actor-config";
+import FortuneTracker from './apps/fortune-tracker';
+import ZweihanderQuality from './item/entity/quality';
+import * as ZweihanderUtils from './utils';
+import { getTestConfiguration } from './apps/test-config';
+import { ZWEI } from './config';
+import ZweihanderActorConfig from './apps/actor-config';
 
 export const PERIL_ROLL_TYPES = {
   STRESS: { x: 1, title: 'Stress', difficultyRating: 20 },
   FEAR: { x: 2, title: 'Fear', difficultyRating: 0 },
-  TERROR: { x: 3, title: 'Terror', difficultyRating: -20 }
-}
+  TERROR: { x: 3, title: 'Terror', difficultyRating: -20 },
+};
 
 export const OUTCOME_TYPES = {
   CRITICAL_SUCCESS: 3,
   SUCCESS: 2,
   FAILURE: 1,
-  CRITICAL_FAILURE: 0
-}
+  CRITICAL_FAILURE: 0,
+};
 
-export async function reRollTest(actorId, skillItemId, testType, testConfiguration = {}, { showDialog = false } = {}) {
+export async function reRollTest(
+  actorId,
+  skillItemId,
+  testType,
+  testConfiguration = {},
+  { showDialog = false } = {}
+) {
   const actor = game.actors.get(actorId);
   const skillItem = actor.items.get(skillItemId);
-  return rollTest(skillItem, testType, testConfiguration, { isReroll: true, showDialog });
+  return rollTest(skillItem, testType, testConfiguration, {
+    isReroll: true,
+    showDialog,
+  });
 }
 
 export async function rollPeril(perilType, actor) {
-  const resolveSkill = actor.items.find(i => i.type === 'skill' && i.name === 'Resolve');
+  const resolveSkill = actor.items.find(
+    (i) => i.type === 'skill' && i.name === 'Resolve'
+  );
   const { outcome } = await rollTest(
-    resolveSkill, 'skill', {
-    difficultyRating: perilType.difficultyRating,
-    flavor: `Is trying to surpress their ${perilType.title}`,
-    perilType
-  },
+    resolveSkill,
+    'skill',
+    {
+      difficultyRating: perilType.difficultyRating,
+      flavor: `Is trying to surpress their ${perilType.title}`,
+      perilType,
+    },
     { showDialog: true }
   );
   if (!isSuccess(outcome)) {
     const roll = new Roll(`${perilType.x}d10+${perilType.x}`);
     const speaker = ChatMessage.getSpeaker({ actor: actor });
-    roll.toMessage({ flavor: `Is rolling for peril due to ${perilType.title}`, speaker });
+    roll.toMessage({
+      flavor: `Is rolling for peril due to ${perilType.title}`,
+      speaker,
+    });
   }
 }
 
-export async function rollCombatReaction(type, enemyActorId, enemyTestConfiguration) {
+export async function rollCombatReaction(
+  type,
+  enemyActorId,
+  enemyTestConfiguration
+) {
   const actor = game.actors.get(ZweihanderUtils.determineCurrentActorId(true));
   if (!actor) return;
-  const associatedSkill = actor.data.data.stats.secondaryAttributes[type].associatedSkill;
-  const skillItem = actor.items.find(i => ZweihanderUtils.normalizedEquals(i.name, associatedSkill) && i.type === 'skill');
+  const associatedSkill =
+    actor.data.data.stats.secondaryAttributes[type].associatedSkill;
+  const skillItem = actor.items.find(
+    (i) =>
+      ZweihanderUtils.normalizedEquals(i.name, associatedSkill) &&
+      i.type === 'skill'
+  );
   const originalActorName = game.actors.get(enemyActorId).name;
   const updatedTestConfiguration = {
     difficultyRating: -enemyTestConfiguration.difficultyRating,
-    flavor: `Trying to ${type} ${originalActorName}'s Attack`
+    flavor: `Trying to ${type} ${originalActorName}'s Attack`,
   };
-  return rollTest(skillItem, type, updatedTestConfiguration, { showDialog: true });
+  return rollTest(skillItem, type, updatedTestConfiguration, {
+    showDialog: true,
+  });
 }
 
-export async function rollTest(skillItem, testType = 'skill', testConfiguration = {}, { showDialog = false, isReroll = false, create = true } = {}) {
+export async function rollTest(
+  skillItem,
+  testType = 'skill',
+  testConfiguration = {},
+  { showDialog = false, isReroll = false, create = true } = {}
+) {
   const actor = skillItem.actor;
-  const weapon = testType === 'weapon' ? actor.items.get(testConfiguration.weaponId) : undefined;
-  const spell = testType === 'spell' ? actor.items.get(testConfiguration.spellId) : undefined;
+  const weapon =
+    testType === 'weapon'
+      ? actor.items.get(testConfiguration.weaponId)
+      : undefined;
+  const spell =
+    testType === 'spell'
+      ? actor.items.get(testConfiguration.spellId)
+      : undefined;
   if (weapon && actor.type === 'creature') {
-    testConfiguration.additionalFuryDice = actor.data.data.details.size.value - 1;
+    testConfiguration.additionalFuryDice =
+      actor.data.data.details.size.value - 1;
   }
   if (isReroll && actor.type === 'character') {
     testConfiguration.useFortune = 'fortune';
@@ -68,14 +107,19 @@ export async function rollTest(skillItem, testType = 'skill', testConfiguration 
   }
   const principle = spell?.data?.data?.principle?.trim?.()?.toLowerCase?.();
   const defaultSpellDifficulty = {
-    'petty': 10,
-    'generalist': 10,
-    'lesser': 0,
-    'greater': -10
+    petty: 10,
+    generalist: 10,
+    lesser: 0,
+    greater: -10,
   }[principle];
   if (showDialog) {
-    testConfiguration.difficultyRating = (testConfiguration.difficultyRating ?? (defaultSpellDifficulty ?? 0));
-    testConfiguration = await getTestConfiguration(skillItem, testType, testConfiguration);
+    testConfiguration.difficultyRating =
+      testConfiguration.difficultyRating ?? defaultSpellDifficulty ?? 0;
+    testConfiguration = await getTestConfiguration(
+      skillItem,
+      testType,
+      testConfiguration
+    );
   }
   try {
     if (testConfiguration.useFortune === 'fortune') {
@@ -84,40 +128,77 @@ export async function rollTest(skillItem, testType = 'skill', testConfiguration 
       await FortuneTracker.INSTANCE.useMisfortune();
     }
   } catch (e) {
-    ui.notifications.warn(`Couldn't reroll skill test: There are no ${testConfiguration.useFortune} points left.`);
+    ui.notifications.warn(
+      `Couldn't reroll skill test: There are no ${testConfiguration.useFortune} points left.`
+    );
     return;
   }
   const primaryAttribute = skillItem.data.data.associatedPrimaryAttribute;
-  const primaryAttributeValue = actor.data.data.stats.primaryAttributes[primaryAttribute.toLowerCase()].value;
+  const primaryAttributeValue =
+    actor.data.data.stats.primaryAttributes[primaryAttribute.toLowerCase()]
+      .value;
   const rank = skillItem.data.data.rank;
   const bonusPerRank = skillItem.data.data.bonusPerRank;
   const rankBonus = skillItem.data.data.bonus;
-  const currentPeril = Number(actor.data.data.stats.secondaryAttributes.perilCurrent.effectiveValue);
-  const ranksPurchasedAfterPeril = Math.max(0, rank - Math.max(0, 4 - currentPeril));
+  const currentPeril = Number(
+    actor.data.data.stats.secondaryAttributes.perilCurrent.effectiveValue
+  );
+  const ranksPurchasedAfterPeril = Math.max(
+    0,
+    rank - Math.max(0, 4 - currentPeril)
+  );
   const ranksIgnoredByPeril = rank - ranksPurchasedAfterPeril;
   const rankBonusAfterPeril = ranksPurchasedAfterPeril * bonusPerRank;
-  const specialBaseChanceModifier = Number(testConfiguration.baseChanceModifier);
-  const baseChance = primaryAttributeValue + Math.max(-30, Math.min(30, rankBonusAfterPeril + specialBaseChanceModifier));
+  const specialBaseChanceModifier = Number(
+    testConfiguration.baseChanceModifier
+  );
+  const baseChance =
+    primaryAttributeValue +
+    Math.max(
+      -30,
+      Math.min(30, rankBonusAfterPeril + specialBaseChanceModifier)
+    );
   const rawDifficultyRating = Number(testConfiguration.difficultyRating);
   const channelPowerBonus = testConfiguration.channelPowerBonus;
-  const difficultyRating = Math.min(30, rawDifficultyRating + (testConfiguration.channelPowerBonus || 0));
-  const difficultyRatingLabel = ZweihanderUtils.getDifficultyRatingLabel(difficultyRating);
+  const difficultyRating = Math.min(
+    30,
+    rawDifficultyRating + (testConfiguration.channelPowerBonus || 0)
+  );
+  const difficultyRatingLabel =
+    ZweihanderUtils.getDifficultyRatingLabel(difficultyRating);
   let totalChance = baseChance + difficultyRating;
-  totalChance = (totalChance >= 100 ? 99 : (totalChance < 1 ? 1 : totalChance))
-    .toLocaleString(undefined, { "minimumIntegerDigits": 2 });
+  totalChance = (
+    totalChance >= 100 ? 99 : totalChance < 1 ? 1 : totalChance
+  ).toLocaleString(undefined, { minimumIntegerDigits: 2 });
   const flip = testConfiguration.flip;
-  const skillTestFn = testConfiguration.testMode === 'assisted' ? simulateAssistedTest : simulateStandardTest;
-  const { effectiveResult, effectiveOutcome, effectivelyFlipped, roll } = await skillTestFn.bind(this)(totalChance, flip);
-  const testModeLabel = ZWEI.testModes[testConfiguration.testMode].label + ' Test';
+  const skillTestFn =
+    testConfiguration.testMode === 'assisted'
+      ? simulateAssistedTest
+      : simulateStandardTest;
+  const { effectiveResult, effectiveOutcome, effectivelyFlipped, roll } =
+    await skillTestFn.bind(this)(totalChance, flip);
+  const testModeLabel =
+    ZWEI.testModes[testConfiguration.testMode].label + ' Test';
   let tensDie = Math.floor(effectiveResult / 10);
   tensDie = tensDie === 0 ? 10 : tensDie;
-  const primaryAttributeBonus = actor.data.data.stats.primaryAttributes[primaryAttribute.toLowerCase()].bonus;
-  const crbDegreesOfSuccess = effectiveOutcome < 2 ? 0 : `${tensDie} + ${primaryAttributeBonus} [${primaryAttribute[0]}B] = ${tensDie + primaryAttributeBonus}`;
+  const primaryAttributeBonus =
+    actor.data.data.stats.primaryAttributes[primaryAttribute.toLowerCase()]
+      .bonus;
+  const crbDegreesOfSuccess =
+    effectiveOutcome < 2
+      ? 0
+      : `${tensDie} + ${primaryAttributeBonus} [${primaryAttribute[0]}B] = ${
+          tensDie + primaryAttributeBonus
+        }`;
   // const starterKitDegreesOfSuccess = effectiveOutcome < 2 ? 0 : 100 - (totalChance - effectiveResult);
   const templateData = {
     itemId: skillItem.id,
     testModeLabel,
-    degreesOfSuccess: ['opposed', 'secret-opposed'].includes(testConfiguration.testMode) ? crbDegreesOfSuccess : false,
+    degreesOfSuccess: ['opposed', 'secret-opposed'].includes(
+      testConfiguration.testMode
+    )
+      ? crbDegreesOfSuccess
+      : false,
     skill: skillItem.name,
     primaryAttribute,
     primaryAttributeValue,
@@ -128,11 +209,13 @@ export async function rollTest(skillItem, testType = 'skill', testConfiguration 
       raw: rawDifficultyRating,
       channelPowerBonus,
       total: difficultyRating,
-      label: difficultyRatingLabel
+      label: difficultyRatingLabel,
     },
     totalChance,
     perilPenalty: -ranksIgnoredByPeril * bonusPerRank,
-    roll: (effectiveResult).toLocaleString(undefined, { "minimumIntegerDigits": 2 }),
+    roll: effectiveResult.toLocaleString(undefined, {
+      minimumIntegerDigits: 2,
+    }),
     diceFormula: roll.formula,
     effectivelyFlipped,
     flipToFail: flip === 'fail',
@@ -144,30 +227,50 @@ export async function rollTest(skillItem, testType = 'skill', testConfiguration 
     outcomeLabel: outcomeLabel(effectiveOutcome),
     weaponTest: testType === 'weapon',
     spellTest: testType === 'spell',
-    tooltip: await roll.getTooltip()
+    tooltip: await roll.getTooltip(),
   };
   if (spell) {
     templateData.itemId = spell.id;
     templateData.spell = spell.toObject(false);
-    templateData.spell.data.distance = await ZweihanderUtils.parseDataPaths(templateData.spell.data.distance, actor);
-    templateData.spell.data.duration = await ZweihanderUtils.parseDataPaths(templateData.spell.data.duration, actor);
-    const totalChaosDie = testConfiguration.additionalChaosDice + (testConfiguration.channelPowerBonus / 10);
+    templateData.spell.data.distance = await ZweihanderUtils.parseDataPaths(
+      templateData.spell.data.distance,
+      actor
+    );
+    templateData.spell.data.duration = await ZweihanderUtils.parseDataPaths(
+      templateData.spell.data.duration,
+      actor
+    );
+    const totalChaosDie =
+      testConfiguration.additionalChaosDice +
+      testConfiguration.channelPowerBonus / 10;
     if (totalChaosDie > 0) {
       const formula = `${totalChaosDie}d6`;
-      const chaosRoll = await (new Roll(formula)).evaluate();
-      setTimeout(() => game?.dice3d?.showForRoll?.(chaosRoll, game.user, true), 1500);
-      const chaosManifestation = chaosRoll.terms[0].results.some(r => r.result === 6);
+      const chaosRoll = await new Roll(formula).evaluate();
+      setTimeout(
+        () => game?.dice3d?.showForRoll?.(chaosRoll, game.user, true),
+        1500
+      );
+      const chaosManifestation = chaosRoll.terms[0].results.some(
+        (r) => r.result === 6
+      );
       templateData.chaosManifestation = chaosManifestation;
     }
   }
-  const content = await renderTemplate(CONFIG.ZWEI.templates.skill, templateData);
-  const flavor = testConfiguration.flavor ?? { //@todo: this could be a funny feature to expand
-    skill: "Is rolling a skill test",
-    dodge: "Is trying to dodge",
-    parry: "Is trying to parry",
-    weapon: `Attacks with ${weapon?.name}`,
-    spell: `Casts ${spell?.name}`
-  }[testType] ?? "";
+  const content = await renderTemplate(
+    CONFIG.ZWEI.templates.skill,
+    templateData
+  );
+  const flavor =
+    testConfiguration.flavor ??
+    {
+      //@todo: this could be a funny feature to expand
+      skill: 'Is rolling a skill test',
+      dodge: 'Is trying to dodge',
+      parry: 'Is trying to parry',
+      weapon: `Attacks with ${weapon?.name}`,
+      spell: `Casts ${spell?.name}`,
+    }[testType] ??
+    '';
   const speaker = ChatMessage.getSpeaker({ actor });
   const rollMode = ZWEI.testModes[testConfiguration.testMode].rollMode;
   const flags = {
@@ -177,26 +280,29 @@ export async function rollTest(skillItem, testType = 'skill', testConfiguration 
         skillItemId: skillItem.id,
         testType,
         testConfiguration,
-        outcome: effectiveOutcome
-      }
-    }
+        outcome: effectiveOutcome,
+      },
+    },
   };
   let sound;
-  if (['dodge','parry'].includes(testType)) {
+  if (['dodge', 'parry'].includes(testType)) {
     if (isSuccess(effectiveOutcome)) {
-      sound =  ZweihanderActorConfig.getValue(actor.data, `${testType}Sound`);
+      sound = ZweihanderActorConfig.getValue(actor.data, `${testType}Sound`);
     } else if (ZweihanderActorConfig.getValue(actor.data, 'playGruntSound')) {
-      sound =  ZweihanderActorConfig.getValue(actor.data, `gruntSound`);
+      sound = ZweihanderActorConfig.getValue(actor.data, `gruntSound`);
     }
   }
-  let messageData = await roll.toMessage({ content, flavor, speaker, flags, sound }, { rollMode, create });
+  let messageData = await roll.toMessage(
+    { content, flavor, speaker, flags, sound },
+    { rollMode, create }
+  );
   // magick content
   if (create) {
     messageData = messageData.toObject();
   }
   return {
     outcome: effectiveOutcome,
-    messageData
+    messageData,
   };
 }
 
@@ -205,9 +311,9 @@ export async function rollWeaponDamage(actorId, testConfiguration) {
   const actor = game.actors.get(actorId);
   const weapon = actor.items.get(weaponId).toObject(false);
   const formula = ZweihanderUtils.abbreviations2DataPath(
-    weapon.data.damage.formula.replace("[#]", additionalFuryDice || 0)
+    weapon.data.damage.formula.replace('[#]', additionalFuryDice || 0)
   );
-  const damageRoll = await (new Roll(formula, actor.data.data)).evaluate();
+  const damageRoll = await new Roll(formula, actor.data.data).evaluate();
   const speaker = ChatMessage.getSpeaker({ actor });
   const flavor = `Determines ${weapon.name}'s Damage`;
   const content = await getWeaponDamageContent(weapon, damageRoll);
@@ -216,18 +322,37 @@ export async function rollWeaponDamage(actorId, testConfiguration) {
       weaponTestData: {
         actorId,
         weaponId,
-        exploded: 0
-      }
-    }
+        exploded: 0,
+      },
+    },
   };
-  return damageRoll.toMessage({ speaker, flavor, content, flags }, { rollMode: CONST.DICE_ROLL_MODES.PUBLIC });
+  return damageRoll.toMessage(
+    { speaker, flavor, content, flags },
+    { rollMode: CONST.DICE_ROLL_MODES.PUBLIC }
+  );
 }
 
-async function getWeaponDamageContent(weapon, roll, exploded = false, explodedCount = 0) {
-  weapon.data.qualities = await ZweihanderQuality.getQualities(weapon.data.qualities.value);
+async function getWeaponDamageContent(
+  weapon,
+  roll,
+  exploded = false,
+  explodedCount = 0
+) {
+  weapon.data.qualities = await ZweihanderQuality.getQualities(
+    weapon.data.qualities.value
+  );
   const rollContent = await roll.render({ flavor: 'Fury Die' });
-  const cardContent = await renderTemplate('systems/zweihander/templates/item-card/item-card-weapon.hbs', weapon);
-  return await renderTemplate(CONFIG.ZWEI.templates.weapon, { cardContent, rollContent, exploded, explodedCount, weapon });
+  const cardContent = await renderTemplate(
+    'systems/zweihander/templates/item-card/item-card-weapon.hbs',
+    weapon
+  );
+  return await renderTemplate(CONFIG.ZWEI.templates.weapon, {
+    cardContent,
+    rollContent,
+    exploded,
+    explodedCount,
+    weapon,
+  });
 }
 
 export async function explodeWeaponDamage(message, useFortune) {
@@ -238,58 +363,101 @@ export async function explodeWeaponDamage(message, useFortune) {
       await FortuneTracker.INSTANCE.useMisfortune();
     }
   } catch (e) {
-    ui.notifications.warn(`Couldn't reroll skill test: There are no ${testConfiguration.useFortune} points left.`);
+    ui.notifications.warn(
+      `Couldn't reroll skill test: There are no ${testConfiguration.useFortune} points left.`
+    );
     return;
   }
-  const { actorId, weaponId, exploded } = message.data.flags.zweihander.weaponTestData;
+  const { actorId, weaponId, exploded } =
+    message.data.flags.zweihander.weaponTestData;
   const actor = game.actors.get(actorId);
   const weapon = actor.items.get(weaponId).toObject(false);
   const roll = Roll.fromJSON(message.data.roll);
-  const dice = roll.dice.find(d => d.faces === 6);
+  const dice = roll.dice.find((d) => d.faces === 6);
   if (dice) {
-    const explodeModifiers = dice.modifiers.filter(m => m.startsWith('x')).join('');
+    const explodeModifiers = dice.modifiers
+      .filter((m) => m.startsWith('x'))
+      .join('');
     const formula = `1d6${explodeModifiers}`;
-    const explodingRoll = await (new Roll(formula)).evaluate();
-    setTimeout(() => game?.dice3d?.showForRoll?.(explodingRoll, game.user, true), 1500);
+    const explodingRoll = await new Roll(formula).evaluate();
+    setTimeout(
+      () => game?.dice3d?.showForRoll?.(explodingRoll, game.user, true),
+      1500
+    );
     const results = dice.results;
-    const minimumResult = Math.min(...results.filter(x => !x.exploded).map(r => r.result));
-    const minimumResultIndex = results.findIndex(r => r.result === minimumResult);
+    const minimumResult = Math.min(
+      ...results.filter((x) => !x.exploded).map((r) => r.result)
+    );
+    const minimumResultIndex = results.findIndex(
+      (r) => r.result === minimumResult
+    );
     const updatedTotal = roll._total - minimumResult + 6 + explodingRoll.total;
-    results.splice(minimumResultIndex, 1, { result: 6, active: true, exploded: true }, ...explodingRoll.terms[0].results);
+    results.splice(
+      minimumResultIndex,
+      1,
+      { result: 6, active: true, exploded: true },
+      ...explodingRoll.terms[0].results
+    );
     roll._total = updatedTotal;
   }
-  const content = await getWeaponDamageContent(weapon, roll, useFortune, exploded + 1);
+  const content = await getWeaponDamageContent(
+    weapon,
+    roll,
+    useFortune,
+    exploded + 1
+  );
   const diffData = {
     'flags.zweihander.weaponTestData.exploded': exploded + 1,
-    'content': content,
-    'roll': roll.toJSON()
+    content: content,
+    roll: roll.toJSON(),
   };
-  await game.zweihander.socket.executeAsGM("updateChatMessage", message.id, diffData);
+  await game.zweihander.socket.executeAsGM(
+    'updateChatMessage',
+    message.id,
+    diffData
+  );
 }
 
 export function isSuccess(outcome) {
-  return outcome === OUTCOME_TYPES.CRITICAL_SUCCESS || outcome === OUTCOME_TYPES.SUCCESS;
+  return (
+    outcome === OUTCOME_TYPES.CRITICAL_SUCCESS ||
+    outcome === OUTCOME_TYPES.SUCCESS
+  );
 }
 
 async function simulateStandardTest(totalChance, flip) {
-  const firstD10 = (await (new Roll("1d10")).evaluate()).total;
-  const secondD10 = (await (new Roll("1d10")).evaluate()).total;
-  const { score, flipped, outcome } = determineTestResult(firstD10, secondD10, flip, totalChance);
+  const firstD10 = (await new Roll('1d10').evaluate()).total;
+  const secondD10 = (await new Roll('1d10').evaluate()).total;
+  const { score, flipped, outcome } = determineTestResult(
+    firstD10,
+    secondD10,
+    flip,
+    totalChance
+  );
   const naturalRoll = getScore(firstD10, secondD10);
-  const roll = Roll.fromTerms([new Die({ number: 1, faces: 100, results: [{ result: naturalRoll, active: true }] })]);
-  roll.dice[0].options.sfx = { id: "zh-outcome", result: outcomeLabel(outcome) };
+  const roll = Roll.fromTerms([
+    new Die({
+      number: 1,
+      faces: 100,
+      results: [{ result: naturalRoll, active: true }],
+    }),
+  ]);
+  roll.dice[0].options.sfx = {
+    id: 'zh-outcome',
+    result: outcomeLabel(outcome),
+  };
   return {
     effectiveResult: score,
     effectiveOutcome: outcome,
     effectivelyFlipped: flipped,
-    roll
-  }
+    roll,
+  };
 }
 
 async function simulateAssistedTest(totalChance, flip) {
-  const firstD10 = (await (new Roll("1d10")).evaluate()).total % 10;
-  const secondD10 = (await (new Roll("1d10")).evaluate()).total % 10;
-  const thirdD10 = (await (new Roll("1d10")).evaluate()).total % 10;
+  const firstD10 = (await new Roll('1d10').evaluate()).total % 10;
+  const secondD10 = (await new Roll('1d10').evaluate()).total % 10;
+  const thirdD10 = (await new Roll('1d10').evaluate()).total % 10;
   const tens = Math.min(firstD10, secondD10);
   const units1 = Math.max(firstD10, secondD10);
   const units2 = thirdD10;
@@ -303,7 +471,7 @@ async function simulateAssistedTest(totalChance, flip) {
     units = Math.min(units1, units2);
   } else if (outcome1 < 2 && outcome2 >= 2) {
     // keep success
-    units = units2
+    units = units2;
   } else if (outcome1 >= 2 && outcome2 < 2) {
     // keep success
     units = units1;
@@ -316,23 +484,40 @@ async function simulateAssistedTest(totalChance, flip) {
   } else if (outcome1 === 3) {
     // prefer critical success
     units = units1;
-  } else { // in this case (outcome2 === 3)
+  } else {
+    // in this case (outcome2 === 3)
     // prefer critical success
     units = units2;
   }
-  const { score, flipped, outcome } = determineTestResult(tens, units, flip, totalChance);
-  const starterKitTerms = [new Die({ number: 3, faces: 10, results: [{ result: firstD10, active: true }, { result: secondD10, active: true }, { result: thirdD10, active: true }] })];
+  const { score, flipped, outcome } = determineTestResult(
+    tens,
+    units,
+    flip,
+    totalChance
+  );
+  const starterKitTerms = [
+    new Die({
+      number: 3,
+      faces: 10,
+      results: [
+        { result: firstD10, active: true },
+        { result: secondD10, active: true },
+        { result: thirdD10, active: true },
+      ],
+    }),
+  ];
   // const crbTerms = [new Die({number: 1, faces: 100, results: [{result: getScore(tens, units1), active: true}]}), await (new OperatorTerm({operator: "+"})).evaluate(), new Die({number: 1, faces: 10, results: [{result: thirdD10 === 0 ? 10 : thirdD10, active: true}]})];
   const roll = Roll.fromTerms(starterKitTerms);
-  roll.dice.forEach(d => d.options.sfx = { id: "zh-outcome", result: outcomeLabel(outcome) });
+  roll.dice.forEach(
+    (d) => (d.options.sfx = { id: 'zh-outcome', result: outcomeLabel(outcome) })
+  );
   return {
     effectiveResult: score,
     effectiveOutcome: outcome,
     effectivelyFlipped: flipped,
-    roll
-  }
+    roll,
+  };
 }
-
 
 function determineTestResult(firstD10, secondD10, flip, totalChance) {
   const normalScore = getScore(firstD10, secondD10);
@@ -350,17 +535,25 @@ function determineTestResult(firstD10, secondD10, flip, totalChance) {
     if (normalOutcome >= 2 && flippedOutcome >= 2) {
       // if both scores are successes, keep the maximum (better for opposed rolls)
       const max = Math.max(normalScore, flippedScore);
-      return { score: max, flipped: max === flippedScore, outcome: normalOutcome };
+      return {
+        score: max,
+        flipped: max === flippedScore,
+        outcome: normalOutcome,
+      };
     } else if (normalOutcome < 2 && flippedOutcome >= 2) {
       return { score: flippedScore, flipped: true, outcome: flippedOutcome };
     } else {
-      return { score: normalScore, flipped: false, outcome: normalOutcome }
+      return { score: normalScore, flipped: false, outcome: normalOutcome };
     }
   } else if (flip === 'fail') {
     if (normalOutcome >= 2 && flippedOutcome >= 2) {
       // if both scores are successes, keep the minimum (worse for opposed rolls)
       const min = Math.min(normalScore, flippedScore);
-      return { score: min, flipped: min === flippedScore, outcome: normalOutcome };
+      return {
+        score: min,
+        flipped: min === flippedScore,
+        outcome: normalOutcome,
+      };
     } else if (normalOutcome >= 2 && flippedOutcome < 2) {
       return { score: flippedScore, flipped: true, outcome: flippedOutcome };
     } else {
@@ -382,19 +575,17 @@ function getResultOutcome(score, totalChance, match) {
     return 0; // critical failure
   else if (score === 1 || (score <= totalChance && match))
     return 3; // critical success
-  else if (score > totalChance && !match)
-    return 1; // failure
-  else if (score <= totalChance && !match)
-    return 2; // success
+  else if (score > totalChance && !match) return 1; // failure
+  else if (score <= totalChance && !match) return 2; // success
 }
 
 function outcomeLabel(outcome) {
-  return ["Critical Failure", "Failure", "Success", "Critical Success"][outcome];
+  return ['Critical Failure', 'Failure', 'Success', 'Critical Success'][
+    outcome
+  ];
 }
 
-
 export const patchDie = () => {
-
   Die.prototype.explode = function (modifier, { recursive = true } = {}) {
     // patched explode
     // Match the explode or "explode once" modifier
@@ -408,12 +599,16 @@ export const patchDie = () => {
       target = max;
       max = null;
     }
-    const targets = target.split(',').map(target => Number.isNumeric(target) ? parseInt(target) : this.faces);
+    const targets = target
+      .split(',')
+      .map((target) =>
+        Number.isNumeric(target) ? parseInt(target) : this.faces
+      );
     // Determine target values
-    comparison = comparison || "=";
+    comparison = comparison || '=';
 
     // Determine the number of allowed explosions
-    max = Number.isNumeric(max) ? parseInt(max) : (recursive ? null : 1);
+    max = Number.isNumeric(max) ? parseInt(max) : recursive ? null : 1;
 
     // Recursively explode until there are no remaining results to explode
     let checked = 0;
@@ -424,20 +619,27 @@ export const patchDie = () => {
       if (!r.active) continue;
 
       // Maybe we have run out of explosions
-      if ((max !== null) && (max <= 0)) break;
+      if (max !== null && max <= 0) break;
 
       // Determine whether to explode the result and roll again!
-      if (targets.some(target => DiceTerm.compareResult(r.result, comparison, target))) {
+      if (
+        targets.some((target) =>
+          DiceTerm.compareResult(r.result, comparison, target)
+        )
+      ) {
         r.exploded = true;
         this.roll();
         if (max !== null) max -= 1;
       }
 
       // Limit recursion
-      if (!recursive && (checked >= initial)) checked = this.results.length;
-      if (checked > 1000) throw new Error("Maximum recursion depth for exploding dice roll exceeded");
+      if (!recursive && checked >= initial) checked = this.results.length;
+      if (checked > 1000)
+        throw new Error(
+          'Maximum recursion depth for exploding dice roll exceeded'
+        );
     }
-  }
+  };
 
   Die.prototype._evaluateModifiers = function () {
     const getSignature = (modifier) => {
@@ -452,27 +654,28 @@ export const patchDie = () => {
         max = null;
       }
       // Determine target values
-      comparison = comparison || "=";
+      comparison = comparison || '=';
 
       // Determine the number of allowed explosions
       const recursive = !modifier.match(/xo/i);
-      max = Number.isNumeric(max) ? parseInt(max) : (recursive ? null : 1);
+      max = Number.isNumeric(max) ? parseInt(max) : recursive ? null : 1;
       return [max, comparison, target];
-    }
+    };
     const consolidateExplodes = (a, b) => {
       const [aMax, aComparison, aTarget] = getSignature(a);
       const [bMax, bComparison, bTarget] = getSignature(b);
       if (aMax === bMax && aComparison === bComparison) {
-        const mod = (aMax === 1 ? 'xo' : 'x');
-        const max = (aMax !== null && aMax !== 1) ? aMax : '';
+        const mod = aMax === 1 ? 'xo' : 'x';
+        const max = aMax !== null && aMax !== 1 ? aMax : '';
         const mergedModifier = `${mod}${max}${aComparison}${aTarget},${bTarget}`;
         return [mergedModifier];
       } else {
         return [a, b];
       }
-    }
+    };
     const cls = this.constructor;
-    const requested = foundry.utils.deepClone(this.modifiers)
+    const requested = foundry.utils
+      .deepClone(this.modifiers)
       .reduce((agg, mod) => {
         if (!agg.length) return [mod];
         const last = agg.pop();
@@ -493,19 +696,21 @@ export const patchDie = () => {
       // Unmatched compound command
       // Sort modifiers from longest to shortest to ensure that the matching algorithm greedily matches the longest
       // prefixes first.
-      const modifiers = Object.keys(cls.MODIFIERS).sort((a, b) => b.length - a.length);
+      const modifiers = Object.keys(cls.MODIFIERS).sort(
+        (a, b) => b.length - a.length
+      );
       while (!!command) {
         let matched = false;
         for (let cmd of modifiers) {
           if (command.startsWith(cmd)) {
             matched = true;
             this._evaluateModifier(cmd, cmd);
-            command = command.replace(cmd, "");
+            command = command.replace(cmd, '');
             break;
           }
         }
-        if (!matched) command = "";
+        if (!matched) command = '';
       }
     }
-  }
-}
+  };
+};

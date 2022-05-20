@@ -13,7 +13,7 @@ body.game.vtt.system-zweihander .zweihander.sheet.creature {
 
   .window-content {
     background-color: var(--zh-clr-bg0);
-    background-image: url("assets/creature-sheet-backdrop.webp?x=23dfs");
+    background-image: url('assets/creature-sheet-backdrop.webp?x=23dfs');
     background-size: contain;
     background-repeat: no-repeat;
     background-position: bottom center;
@@ -68,7 +68,7 @@ body.game.vtt.system-zweihander .zweihander.sheet.creature {
         justify-content: space-around;
         &::before {
           color: var(--zh-clr-aqua);
-          content: "PERIL";
+          content: 'PERIL';
           font-family: var(--zh-font-title);
           font-size: 10px;
           line-height: 1.5;
@@ -80,7 +80,7 @@ body.game.vtt.system-zweihander .zweihander.sheet.creature {
         }
       }
       section.damage-ladder::before {
-        content: "DAMAGE";
+        content: 'DAMAGE';
       }
       .radio-and-status {
         flex: 0 0 20px;
@@ -88,7 +88,7 @@ body.game.vtt.system-zweihander .zweihander.sheet.creature {
         position: relative;
         text-align: right;
         width: 20px;
-        input[type="radio"] {
+        input[type='radio'] {
           display: none;
           & + label {
             cursor: pointer;
@@ -99,7 +99,7 @@ body.game.vtt.system-zweihander .zweihander.sheet.creature {
               background-color: rgba(var(--zh-clr-bg1-rgb), 0.5);
               // backdrop-filter: blur(2px);
               border-radius: 50%;
-              content: " ";
+              content: ' ';
               display: block;
               height: 12px;
               line-height: 1;
@@ -134,7 +134,7 @@ body.game.vtt.system-zweihander .zweihander.sheet.creature {
               &::before {
                 border-color: var(--zh-clr-yellow);
                 color: var(--zh-clr-yellow);
-                content: "x";
+                content: 'x';
               }
             }
           }
@@ -144,7 +144,7 @@ body.game.vtt.system-zweihander .zweihander.sheet.creature {
               background: var(--zh-clr-aqua);
               border: 1px solid var(--zh-clr-aqua-alt);
               color: var(--zh-clr-bg0);
-              content: "x";
+              content: 'x';
             }
           }
         }
@@ -392,17 +392,17 @@ body.game.vtt.system-zweihander .zweihander.sheet.creature {
             width: 14px;
             text-align: center;
           }
-          &[data-rank="0"]::before {
-            content: "-";
+          &[data-rank='0']::before {
+            content: '-';
             color: var(--zh-clr-bg3);
           }
-          &[data-rank="1"]::before {
+          &[data-rank='1']::before {
             color: var(--zh-clr-green);
           }
-          &[data-rank="2"]::before {
+          &[data-rank='2']::before {
             color: var(--zh-clr-yellow);
           }
-          &[data-rank="3"]::before {
+          &[data-rank='3']::before {
             color: var(--zh-clr-red);
           }
         }
@@ -476,7 +476,7 @@ body.game.vtt.system-zweihander .zweihander.sheet.creature {
         height: 16px;
         width: 16px;
         flex: 1 0 16px;
-        input[type="radio"] + label::before {
+        input[type='radio'] + label::before {
           margin: 0 !important;
         }
       }

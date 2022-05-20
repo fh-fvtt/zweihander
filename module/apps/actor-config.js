@@ -1,29 +1,34 @@
 export default class ZweihanderActorConfig extends FormApplication {
-
   static defaultConfiguration = {
-    "dthAttribute": "brawn",
-    "pthAttribute": "willpower",
-    "intAttribute": "perception",
-    "movAttribute": "agility",
-    "isIgnoredPerilLadderValue": [false, false, false],
+    dthAttribute: 'brawn',
+    pthAttribute: 'willpower',
+    intAttribute: 'perception',
+    movAttribute: 'agility',
+    isIgnoredPerilLadderValue: [false, false, false],
     //   "avoidStepOne": false,
     //   "avoidStepTwo": false,
     //   "avoidStepThree": false,
     //   "avoidAll": false
     // },
-    "encumbranceModifier": 0,
-    "initiativeModifier": 0,
-    "movementModifier": 0,
-    "parrySkills": ["Simple Melee", "Martial Melee", "Guile", "Charm", "Incantation"],
-    "dodgeSkills": ["Coordination", "Guile", "Drive", "Ride"],
-    "magickSkills": ["Incantation", "Folklore"],
-    "isMagickUser": false,
-    "permanentChaosRanks": 0,
-    "permanentOrderRanks": 0,
-    "dodgeSound": "systems/zweihander/assets/sounds/dodge.mp3",
-    "parrySound": "systems/zweihander/assets/sounds/parry.mp3",
-    "gruntSound": "systems/zweihander/assets/sounds/grunt_m.mp3",
-    "playGruntSound": true
+    encumbranceModifier: 0,
+    initiativeModifier: 0,
+    movementModifier: 0,
+    parrySkills: [
+      'Simple Melee',
+      'Martial Melee',
+      'Guile',
+      'Charm',
+      'Incantation',
+    ],
+    dodgeSkills: ['Coordination', 'Guile', 'Drive', 'Ride'],
+    magickSkills: ['Incantation', 'Folklore'],
+    isMagickUser: false,
+    permanentChaosRanks: 0,
+    permanentOrderRanks: 0,
+    dodgeSound: 'systems/zweihander/assets/sounds/dodge.mp3',
+    parrySound: 'systems/zweihander/assets/sounds/parry.mp3',
+    gruntSound: 'systems/zweihander/assets/sounds/grunt_m.mp3',
+    playGruntSound: true,
   };
 
   static getValue(actorData, key) {
@@ -41,15 +46,15 @@ export default class ZweihanderActorConfig extends FormApplication {
 
   static get defaultOptions() {
     return foundry.utils.mergeObject(super.defaultOptions, {
-      classes: ["zweihander sheet actor-config"],
-      id: "zweihander_actor_config",
-      template: "systems/zweihander/templates/app/actor-config.hbs",
+      classes: ['zweihander sheet actor-config'],
+      id: 'zweihander_actor_config',
+      template: 'systems/zweihander/templates/app/actor-config.hbs',
       submitOnChange: true,
       submitOnClose: true,
       closeOnSubmit: false,
       width: 500,
       height: 950,
-      scrollY: ['form']
+      scrollY: ['form'],
     });
   }
 
@@ -62,10 +67,13 @@ export default class ZweihanderActorConfig extends FormApplication {
   getData() {
     const data = super.getData();
     data.flags = ZweihanderActorConfig.getConfig(this.object.data);
-    data.parrySkills = data.flags.parrySkills.join(", ");
-    data.dodgeSkills = data.flags.dodgeSkills.join(", ");
-    data.magickSkills = data.flags.magickSkills.join(", ");
-    data.avoidAllPeril = data.flags.isIgnoredPerilLadderValue.reduce((a, b) => a && b, true);
+    data.parrySkills = data.flags.parrySkills.join(', ');
+    data.dodgeSkills = data.flags.dodgeSkills.join(', ');
+    data.magickSkills = data.flags.magickSkills.join(', ');
+    data.avoidAllPeril = data.flags.isIgnoredPerilLadderValue.reduce(
+      (a, b) => a && b,
+      true
+    );
     return data;
   }
 
@@ -77,26 +85,37 @@ export default class ZweihanderActorConfig extends FormApplication {
       const sa = actor.data.data.stats.secondaryAttributes;
       const saPath = 'data.stats.secondaryAttributes';
       const actorUpdate = {};
-      updateData.parrySkills = updateData.parrySkills.split(",").map(skill => skill.trim());
+      updateData.parrySkills = updateData.parrySkills
+        .split(',')
+        .map((skill) => skill.trim());
       if (!updateData.parrySkills.includes(sa.parry.associatedSkill)) {
-        actorUpdate[`${saPath}.parry.associatedSkill`] = updateData.parrySkills[0] ?? '';
+        actorUpdate[`${saPath}.parry.associatedSkill`] =
+          updateData.parrySkills[0] ?? '';
       }
-      updateData.dodgeSkills = updateData.dodgeSkills.split(",").map(skill => skill.trim());
+      updateData.dodgeSkills = updateData.dodgeSkills
+        .split(',')
+        .map((skill) => skill.trim());
       if (!updateData.dodgeSkills.includes(sa.dodge.associatedSkill)) {
-        actorUpdate[`${saPath}.dodge.associatedSkill`] = updateData.dodgeSkills[0] ?? '';
+        actorUpdate[`${saPath}.dodge.associatedSkill`] =
+          updateData.dodgeSkills[0] ?? '';
       }
-      updateData.magickSkills = updateData.magickSkills.split(",").map(skill => skill.trim());
+      updateData.magickSkills = updateData.magickSkills
+        .split(',')
+        .map((skill) => skill.trim());
       if (!updateData.magickSkills.includes(sa.magick.associatedSkill)) {
-        actorUpdate[`${saPath}.magick.associatedSkill`] = updateData.magickSkills[0] ?? '';
+        actorUpdate[`${saPath}.magick.associatedSkill`] =
+          updateData.magickSkills[0] ?? '';
       }
       // wtf is this template system haha
       updateData.isIgnoredPerilLadderValue = [
         updateData.isIgnoredPerilLadderValue['[0]'],
         updateData.isIgnoredPerilLadderValue['[1]'],
-        updateData.isIgnoredPerilLadderValue['[2]']
+        updateData.isIgnoredPerilLadderValue['[2]'],
       ];
       const avoidAllUpdate = foundry.utils.expandObject(formData).avoidAllPeril;
-      const avoidAllBefore = ZweihanderActorConfig.getConfig(this.object.data).isIgnoredPerilLadderValue.reduce((a, b) => a && b, true);
+      const avoidAllBefore = ZweihanderActorConfig.getConfig(
+        this.object.data
+      ).isIgnoredPerilLadderValue.reduce((a, b) => a && b, true);
       if (avoidAllUpdate && !avoidAllBefore) {
         updateData.isIgnoredPerilLadderValue = [true, true, true];
       } else if (!avoidAllUpdate && avoidAllBefore) {
@@ -106,7 +125,7 @@ export default class ZweihanderActorConfig extends FormApplication {
         await actor.update(actorUpdate);
       }
     }
-    await actor.setFlag("zweihander", "actorConfig", updateData);
+    await actor.setFlag('zweihander', 'actorConfig', updateData);
     this.render();
   }
 }

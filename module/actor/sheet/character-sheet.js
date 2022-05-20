@@ -1,34 +1,37 @@
-import ZweihanderActorConfig from "../../apps/actor-config";
-import ZweihanderBaseActorSheet from "./base-actor-sheet";
-import * as ZweihanderDice from "../../dice";
-import { attachTabDefinitions, getItemGroups } from "./character-sheet-tabs-def";
-import { getPacks } from "../../utils";
+import ZweihanderActorConfig from '../../apps/actor-config';
+import ZweihanderBaseActorSheet from './base-actor-sheet';
+import * as ZweihanderDice from '../../dice';
+import {
+  attachTabDefinitions,
+  getItemGroups,
+} from './character-sheet-tabs-def';
+import { getPacks } from '../../utils';
 
 /**
  * The Zweihänder actor sheet class for characters.
  * @extends {ActorSheet}
  */
 export default class ZweihanderCharacterSheet extends ZweihanderBaseActorSheet {
-
   constructor(...args) {
     super(...args);
   }
 
-  static unsupportedItemTypes = new Set([
-    'quality',
-    'skill'
-  ]);
+  static unsupportedItemTypes = new Set(['quality', 'skill']);
 
   static get defaultOptions() {
     return foundry.utils.mergeObject(super.defaultOptions, {
       classes: super.defaultOptions.classes.concat(['character']),
-      template: "systems/zweihander/templates/character/main.hbs",
+      template: 'systems/zweihander/templates/character/main.hbs',
       width: 770,
       height: 900,
       tabs: [
-        { navSelector: ".sheet-navigation", contentSelector: ".sheet-body", initial: "main" }
+        {
+          navSelector: '.sheet-navigation',
+          contentSelector: '.sheet-body',
+          initial: 'main',
+        },
       ],
-      scrollY: ['.save-scroll', '.items-list', '.tab']
+      scrollY: ['.save-scroll', '.items-list', '.tab'],
     });
   }
 
@@ -37,20 +40,36 @@ export default class ZweihanderCharacterSheet extends ZweihanderBaseActorSheet {
     // get actor config
     sheetData.actorConfig = ZweihanderActorConfig.getConfig(this.actor.data);
     // bind currency
-    sheetData.settings.currencies = game.settings.get('zweihander', 'currencySettings');
+    sheetData.settings.currencies = game.settings.get(
+      'zweihander',
+      'currencySettings'
+    );
     // calculate reward points automatically
-    sheetData.settings.trackRewardPoints = game.settings.get("zweihander", "trackRewardPoints");
+    sheetData.settings.trackRewardPoints = game.settings.get(
+      'zweihander',
+      'trackRewardPoints'
+    );
     if (sheetData.settings.trackRewardPoints) {
       const tierMultiplier = {
-        "Basic": 100,
-        "Intermediate": 200,
-        "Advanced": 300
-      }
+        Basic: 100,
+        Intermediate: 200,
+        Advanced: 300,
+      };
       sheetData.data.stats.rewardPoints.spent = sheetData.professions
-        .map(profession => tierMultiplier[profession.data.tier] * profession.data.advancesPurchased)
-        .concat(sheetData.uniqueAdvances.map(advance => advance.data.rewardPointCost))
+        .map(
+          (profession) =>
+            tierMultiplier[profession.data.tier] *
+            profession.data.advancesPurchased
+        )
+        .concat(
+          sheetData.uniqueAdvances.map(
+            (advance) => advance.data.rewardPointCost
+          )
+        )
         .reduce((a, b) => a + b, 0);
-      sheetData.data.stats.rewardPoints.current = sheetData.data.stats.rewardPoints.total - sheetData.data.stats.rewardPoints.spent;
+      sheetData.data.stats.rewardPoints.current =
+        sheetData.data.stats.rewardPoints.total -
+        sheetData.data.stats.rewardPoints.spent;
     }
     attachTabDefinitions(sheetData);
     const hidden = this.actor.limited;
@@ -61,11 +80,11 @@ export default class ZweihanderCharacterSheet extends ZweihanderBaseActorSheet {
       {
         key: 'details.age',
         placeholder: 'Age Group',
-        prefix: 'is a(n)'
+        prefix: 'is a(n)',
       },
       {
         key: 'details.sex',
-        placeholder: 'Sex'
+        placeholder: 'Sex',
       },
       {
         value: sheetData.ancestry?.[0]?.name ?? '',
@@ -73,77 +92,77 @@ export default class ZweihanderCharacterSheet extends ZweihanderBaseActorSheet {
         template: 'partials/detail-item-wrapper',
         packs: getPacks('character', 'ancestry'),
         type: 'ancestry',
-        id: sheetData.ancestry?.[0]?._id ?? ''
+        id: sheetData.ancestry?.[0]?._id ?? '',
       },
       {
-        value: [...sheetData.professions]?.sort((professionA, professionB) => {
-          const tiers = { "Basic": 1, "Intermediate": 2, "Advanced": 3 };
-          return tiers[professionA.data.tier] - tiers[professionB.data.tier];
-        })[sheetData.professions.length - 1]?.name ?? '?',
-        hidden
+        value:
+          [...sheetData.professions]?.sort((professionA, professionB) => {
+            const tiers = { Basic: 1, Intermediate: 2, Advanced: 3 };
+            return tiers[professionA.data.tier] - tiers[professionB.data.tier];
+          })[sheetData.professions.length - 1]?.name ?? '?',
+        hidden,
       },
       {
         prefix: 'of the',
         key: 'details.socialClass',
         placeholder: '?',
         postfix: 'social class.',
-        hidden
+        hidden,
       },
       {
         key: 'details.height',
         placeholder: '?',
-        postfix: 'ft tall and'
+        postfix: 'ft tall and',
       },
       {
         key: 'details.weight',
         placeholder: '?',
-        postfix: 'lbs heavy,'
+        postfix: 'lbs heavy,',
       },
       {
         key: 'details.pronoun',
         placeholder: 'Pronoun',
-        postfix: 'is/are'
+        postfix: 'is/are',
       },
       {
         prefix: 'of a',
         key: 'details.buildType',
         placeholder: '?',
-        postfix: `build for a(n) ${ancestry ?? '?'}.`
+        postfix: `build for a(n) ${ancestry ?? '?'}.`,
       },
       {
         prefix: `${pronoun.capitalize()} has/have`,
         key: 'details.hairColor',
         placeholder: '?',
-        postfix: 'hair,'
+        postfix: 'hair,',
       },
       {
-
         key: 'details.eyeColor',
         placeholder: '?',
-        postfix: 'eyes,'
+        postfix: 'eyes,',
       },
       {
         key: 'details.complexion',
         placeholder: '?',
-        postfix: 'skin &'
+        postfix: 'skin &',
       },
       {
         key: 'details.distinguishingMarks',
         placeholder: 'Distinguishing Marks',
-        postfix: '.'
+        postfix: '.',
       },
       {
         prefix: 'Born in',
         key: 'details.seasonOfBirth',
         placeholder: '?',
-        hidden
+        hidden,
       },
       {
         prefix: `${pronoun} is/are of a(n)`,
         key: 'details.upbringing',
         placeholder: '?',
         hidden,
-        postfix: `upbringing`
+        postfix: `upbringing`,
       },
       {
         prefix: 'and speaks',
@@ -151,8 +170,8 @@ export default class ZweihanderCharacterSheet extends ZweihanderBaseActorSheet {
         placeholder: '?',
         template: 'partials/detail-languages',
         hidden,
-        postfix: '.'
-      }
+        postfix: '.',
+      },
     ];
     return sheetData;
   }
@@ -160,49 +179,75 @@ export default class ZweihanderCharacterSheet extends ZweihanderBaseActorSheet {
   _prepareItems(data) {
     // set up collections for all item types
     const indexedTypes = [
-      "trapping", "condition", "injury", "disease", "disorder", "profession",
-      "ancestry", "armor", "weapon", "spell", "ritual", "talent", "trait",
-      "drawback", "quality", "skill", "uniqueAdvance", "taint", "effect"
+      'trapping',
+      'condition',
+      'injury',
+      'disease',
+      'disorder',
+      'profession',
+      'ancestry',
+      'armor',
+      'weapon',
+      'spell',
+      'ritual',
+      'talent',
+      'trait',
+      'drawback',
+      'quality',
+      'skill',
+      'uniqueAdvance',
+      'taint',
+      'effect',
     ];
-    const pluralize = t => ({
-      'injury': 'injuries',
-      'ancestry': 'ancestry',
-      'armor': 'armor',
-      'quality': 'qualities'
-    }[t] ?? t + "s");
-    indexedTypes.forEach(t => data[pluralize(t)] = []);
+    const pluralize = (t) =>
+      ({
+        injury: 'injuries',
+        ancestry: 'ancestry',
+        armor: 'armor',
+        quality: 'qualities',
+      }[t] ?? t + 's');
+    indexedTypes.forEach((t) => (data[pluralize(t)] = []));
     data.items
-      .filter(i => indexedTypes.includes(i.type))
+      .filter((i) => indexedTypes.includes(i.type))
       .sort((a, b) => (a.sort || 0) - (b.sort || 0))
-      .forEach(i => data[pluralize(i.type)].push(i));
+      .forEach((i) => data[pluralize(i.type)].push(i));
     // sort skills alphabetically
     data.skills = data.skills.sort((a, b) => a.name.localeCompare(b.name));
     // sort professions by tier
-    data.professions = data.professions.sort((a, b) =>
-      CONFIG.ZWEI.tiersInversed[a.data.tier] - CONFIG.ZWEI.tiersInversed[b.data.tier]
+    data.professions = data.professions.sort(
+      (a, b) =>
+        CONFIG.ZWEI.tiersInversed[a.data.tier] -
+        CONFIG.ZWEI.tiersInversed[b.data.tier]
     );
     // add source information from flags
-    const addSource = (items) => items.map(i => ({
-      ...i,
-      source: i.flags.zweihander?.source?.label ?? 'Manual',
-      isManualSource: i.flags.zweihander?.source?.label ? false : true
-    }));
+    const addSource = (items) =>
+      items.map((i) => ({
+        ...i,
+        source: i.flags.zweihander?.source?.label ?? 'Manual',
+        isManualSource: i.flags.zweihander?.source?.label ? false : true,
+      }));
     data.drawbacks = addSource(data.drawbacks);
     data.traits = addSource(data.traits);
     data.talents = addSource(data.talents);
     // filter purchased talents
-    data.talents = data.talents.filter(talent => talent.isManualSource ||
-      data.professions.some(p => p.data.talents.some(t => t.linkedId === talent._id && t.purchased))
+    data.talents = data.talents.filter(
+      (talent) =>
+        talent.isManualSource ||
+        data.professions.some((p) =>
+          p.data.talents.some((t) => t.linkedId === talent._id && t.purchased)
+        )
     );
     // filter focuses data
     data.focuses = data.uniqueAdvances
       .filter((ua) => ua.data.associatedFocusSkill)
       .map((ua) => ({
-          skillName: ua.data.associatedFocusSkill,
-          name: ua.name
+        skillName: ua.data.associatedFocusSkill,
+        name: ua.name,
       }));
     data.skills.forEach((skill) => {
-      const focuses = data.focuses.filter((focus) => focus.skillName === skill.name).map((focus) => focus.name);
+      const focuses = data.focuses
+        .filter((focus) => focus.skillName === skill.name)
+        .map((focus) => focus.name);
       skill.data.focuses = focuses;
     });
   }
@@ -216,10 +261,13 @@ export default class ZweihanderCharacterSheet extends ZweihanderBaseActorSheet {
 
     this._registerDimensionChangeListener(
       html.find('.skills-container'),
-      this._getDimensionBreakpointsCallback('innerWidth', [{
-        at: 275,
-        callback: (toggle) => html.find('.skills-list').toggleClass('two-rows', toggle)
-      }])
+      this._getDimensionBreakpointsCallback('innerWidth', [
+        {
+          at: 275,
+          callback: (toggle) =>
+            html.find('.skills-list').toggleClass('two-rows', toggle),
+        },
+      ])
     );
 
     const resizePotrait = function () {
@@ -239,8 +287,14 @@ export default class ZweihanderCharacterSheet extends ZweihanderBaseActorSheet {
         }
       }
     };
-    this._registerDimensionChangeListener(html.find('.actor-sheet-header'), resizePotrait);
-    this._registerDimensionChangeListener(html.find('.actor-sheet-header .empty-placeholder'), resizePotrait);
+    this._registerDimensionChangeListener(
+      html.find('.actor-sheet-header'),
+      resizePotrait
+    );
+    this._registerDimensionChangeListener(
+      html.find('.actor-sheet-header .empty-placeholder'),
+      resizePotrait
+    );
 
     // Update the encumbrance meter
     this._updateEncumbranceMeter(html);
@@ -252,42 +306,56 @@ export default class ZweihanderCharacterSheet extends ZweihanderBaseActorSheet {
       const target = $(event.currentTarget);
       const field = target.data('purchaseType');
       const index = target.data('purchaseIndex');
-      const professionElement = target.closest(".individual-description").parents(".item");
-      const professionItem = this.actor.items.get($(professionElement).data("itemId"));
-      const locked = professionItem.data.data.completed && this.actor.data.data.tier !== professionItem.data.data.tier;
+      const professionElement = target
+        .closest('.individual-description')
+        .parents('.item');
+      const professionItem = this.actor.items.get(
+        $(professionElement).data('itemId')
+      );
+      const locked =
+        professionItem.data.data.completed &&
+        this.actor.data.data.tier !== professionItem.data.data.tier;
       if (locked) {
-        ui.notifications.error(`Cannot perform operation: ${professionItem.data.data.tier} Tier locked.`);
+        ui.notifications.error(
+          `Cannot perform operation: ${professionItem.data.data.tier} Tier locked.`
+        );
         return;
       }
-      const updated = professionItem.data.data[field].map((x, i) => i === index ? { ...x, purchased: !x.purchased } : x);
+      const updated = professionItem.data.data[field].map((x, i) =>
+        i === index ? { ...x, purchased: !x.purchased } : x
+      );
       await professionItem.update({ [`data.${field}`]: updated });
-    }
-    html.find(".purchase-link").click(updatePurchased);
+    };
+    html.find('.purchase-link').click(updatePurchased);
 
-    html.find(".reset-ranks").click(() => {
+    html.find('.reset-ranks').click(() => {
       this.actor.update({
-        "data.alignment.corruption": 0
-      })
-    })
+        'data.alignment.corruption': 0,
+      });
+    });
     // Reset Order and Chaos Ranks
-    html.find(".reset-ranks").contextmenu(() => {
+    html.find('.reset-ranks').contextmenu(() => {
       Dialog.confirm({
         title: `${this.actor.name}: Reset Ranks`,
         content: `<h4>Are you sure?</h4><p>Your Order and Chaos Ranks will be reset to 0!</p>`,
-        yes: () => this.actor.update({
-          "data.alignment.chaos.rank": 0,
-          "data.alignment.order.rank": 0
-        }),
-        defaultYes: false
+        yes: () =>
+          this.actor.update({
+            'data.alignment.chaos.rank': 0,
+            'data.alignment.order.rank': 0,
+          }),
+        defaultYes: false,
       });
     });
 
-    html.find(".peril-rolls .image-container").click(async (event) => {
-      const perilType = ZweihanderDice.PERIL_ROLL_TYPES[event.currentTarget.dataset.perilType.toUpperCase()];
+    html.find('.peril-rolls .image-container').click(async (event) => {
+      const perilType =
+        ZweihanderDice.PERIL_ROLL_TYPES[
+          event.currentTarget.dataset.perilType.toUpperCase()
+        ];
       ZweihanderDice.rollPeril(perilType, this.actor);
     });
 
-    // Modify numerable value by clicking '+' and '-' buttons on sheet, e.g. quantity, encumbrance 
+    // Modify numerable value by clicking '+' and '-' buttons on sheet, e.g. quantity, encumbrance
     const updateNumerable = (i) => async (event) => {
       const lookup = (obj, key) => {
         const keys = key.split('.');
@@ -300,12 +368,14 @@ export default class ZweihanderCharacterSheet extends ZweihanderBaseActorSheet {
 
       const numerablePath = event.currentTarget.dataset.numerablePath;
 
-      const itemElement = $(event.currentTarget).parents(".item");
-      const item = this.actor.items.get($(itemElement).data("itemId"));
+      const itemElement = $(event.currentTarget).parents('.item');
+      const item = this.actor.items.get($(itemElement).data('itemId'));
 
       const newNumerableValue = lookup(item.data, numerablePath) + i;
 
-      await item.update({ [`${numerablePath}`]: newNumerableValue >= 0 ? newNumerableValue : 0 });
+      await item.update({
+        [`${numerablePath}`]: newNumerableValue >= 0 ? newNumerableValue : 0,
+      });
     };
 
     html.find('.numerable-field-subtract').click(updateNumerable(-1));
@@ -313,44 +383,55 @@ export default class ZweihanderCharacterSheet extends ZweihanderBaseActorSheet {
 
     html.find('.focus-indicator').hover(
       (event) => {
-        const tooltip = $(event.currentTarget).parents('.skill-roll').find('.focus-tooltip').clone();
-        if(!tooltip.length)
-          return;
+        const tooltip = $(event.currentTarget)
+          .parents('.skill-roll')
+          .find('.focus-tooltip')
+          .clone();
+        if (!tooltip.length) return;
 
         const offset = $(event.currentTarget).offset();
         offset.top += 25;
-        offset.left -= (125 / 2) - 7;
+        offset.left -= 125 / 2 - 7;
         tooltip.addClass('zh-focuses-tooltip-instance');
         tooltip.offset(offset);
         $('body').append(tooltip);
       },
       (event) => {
         $('.zh-focuses-tooltip-instance').remove();
-      })
+      }
+    );
   }
 
   _updateEncumbranceMeter(html) {
-    const encumbranceData = this.actor.data.data.stats.secondaryAttributes.encumbrance;
+    const encumbranceData =
+      this.actor.data.data.stats.secondaryAttributes.encumbrance;
     const currentEncumbrance = encumbranceData.current;
     const totalEncumbrance = encumbranceData.value;
     let ratio = (currentEncumbrance / totalEncumbrance) * 100;
     if (ratio > 100) {
       ratio = 100;
-      html.find(".encumbrance-bar-container").addClass("encumbrance-overage");
+      html.find('.encumbrance-bar-container').addClass('encumbrance-overage');
     }
-    html.find(".encumbrance-bar").css("width", ratio + "%");
+    html.find('.encumbrance-bar').css('width', ratio + '%');
   }
 
   async _render(force, options) {
     if (this.actor.limited) {
-      const classesWithoutDamageTracker = this.constructor.defaultOptions.classes;
-      classesWithoutDamageTracker.splice(classesWithoutDamageTracker.indexOf('damage-tracker'), 1);
-      options.classes = ['limited', ...classesWithoutDamageTracker, ...(options.classes?.length ? options.classes : [])];
+      const classesWithoutDamageTracker =
+        this.constructor.defaultOptions.classes;
+      classesWithoutDamageTracker.splice(
+        classesWithoutDamageTracker.indexOf('damage-tracker'),
+        1
+      );
+      options.classes = [
+        'limited',
+        ...classesWithoutDamageTracker,
+        ...(options.classes?.length ? options.classes : []),
+      ];
       options.height = 235;
       options.width = 650;
       options.resizable = false;
     }
     await super._render(force, options);
   }
-
 }

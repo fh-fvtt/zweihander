@@ -1,12 +1,22 @@
 export const triggerAnalytics = async () => {
   if (game.user.isGM) {
-    const systemId = game.settings.get("zweihander", "systemId");
+    const systemId = game.settings.get('zweihander', 'systemId');
     if (systemId === '') {
-      await Promise.all(game.messages.filter(x => x.data.flags?.zweihander?.analytics).map(x => x.delete()));
+      await Promise.all(
+        game.messages
+          .filter((x) => x.data.flags?.zweihander?.analytics)
+          .map((x) => x.delete())
+      );
       await ChatMessage.create({
         speaker: ChatMessage.getSpeaker({ alias: 'F&H Development' }),
-        flavor: 'Wants to create premium content for this system and needs your help',
-        flags: { zweihander: { img: 'systems/zweihander/assets/icons/informer.svg', analytics: {} } },
+        flavor:
+          'Wants to create premium content for this system and needs your help',
+        flags: {
+          zweihander: {
+            img: 'systems/zweihander/assets/icons/informer.svg',
+            analytics: {},
+          },
+        },
         whisper: [game.user.id],
         content: `
           <h2>Usage Survey</h2>
@@ -26,17 +36,19 @@ export const triggerAnalytics = async () => {
           </p>
           <button type="button" class="analytics-agree" disabled="disabled">Yes, I want to participate</button> 
           <button type="button" class="analytics-decline" disabled="disabled">No, I don't want to participate</button> 
-        `
-      })
+        `,
+      });
     } else if (systemId !== 'no-analytics') {
-      await sendAnalytics()
+      await sendAnalytics();
     }
   }
-}
+};
 
 export const sendAnalytics = () => {
-  const systemId = game.settings.get("zweihander", "systemId");
+  const systemId = game.settings.get('zweihander', 'systemId');
   const url = `https://kxfin.xyz/zh-analytics.php?id=${systemId}&version=${game.system.data.version}`;
-  fetch(url, { method: "GET" });
-  console.info(`Sending system id: "${systemId}" & version: "${game.system.data.version}" data to ${url}.`)
-}
+  fetch(url, { method: 'GET' });
+  console.info(
+    `Sending system id: "${systemId}" & version: "${game.system.data.version}" data to ${url}.`
+  );
+};

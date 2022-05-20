@@ -11,12 +11,16 @@ before(() => {
 
   cy.get('input[name="title"]').type('Cypress Zweihander Test');
 
-  cy.get('select[name="system"]').select('Zweihänder Grim & Perilous RPG').should('have.value', 'zweihander');
+  cy.get('select[name="system"]')
+    .select('Zweihänder Grim & Perilous RPG')
+    .should('have.value', 'zweihander');
 
   cy.get('button[title="Create World"]').click();
 
   // launch the newly created world
-  cy.get('[data-package-id="cypress-zweihander-test"] > .package-controls > [name="action"]').click();
+  cy.get(
+    '[data-package-id="cypress-zweihander-test"] > .package-controls > [name="action"]'
+  ).click();
 
   cy.wait(1000);
 
@@ -37,7 +41,9 @@ describe('Fortune Tracker', () => {
 
     cy.wait(1000);
 
-    cy.get('li[data-module-name="socketlib"]').find('input[type="checkbox"]').click();
+    cy.get('li[data-module-name="socketlib"]')
+      .find('input[type="checkbox"]')
+      .click();
 
     cy.contains('Save Module Settings').click();
 
@@ -57,9 +63,11 @@ describe('Character Creation', () => {
 
     cy.wait(1000);
 
-    cy.get('input[name="name"]').type(Cypress.env("characterName"));
+    cy.get('input[name="name"]').type(Cypress.env('characterName'));
 
-    cy.get('select[name="type"]').select('Player Character').should('have.value', 'character');
+    cy.get('select[name="type"]')
+      .select('Player Character')
+      .should('have.value', 'character');
 
     cy.get('button[data-button="ok"]').click();
 
@@ -68,7 +76,7 @@ describe('Character Creation', () => {
     cy.get('ol[class="directory-list"]')
       .find('h4[class="document-name"]')
       .find('a')
-      .should('have.text', Cypress.env("characterName"));
+      .should('have.text', Cypress.env('characterName'));
 
     cy.get('.character').should('be.visible');
   });
@@ -80,13 +88,24 @@ describe('Character Creation', () => {
 
     cy.get('[name="flags.isMagickUser"]').click();
 
-    cy.contains(`${Cypress.env('characterName')}: Actor Configuration`).parent().find('.close').click();
+    cy.contains(`${Cypress.env('characterName')}: Actor Configuration`)
+      .parent()
+      .find('.close')
+      .click();
 
     cy.get('.character').get('[data-tab="magick"]').should('be.visible');
   });
 
   it('can change Primary Attributes', () => {
-    const primaryAttributes = ['combat', 'brawn', 'agility', 'perception', 'intelligence', 'willpower', 'fellowship'];
+    const primaryAttributes = [
+      'combat',
+      'brawn',
+      'agility',
+      'perception',
+      'intelligence',
+      'willpower',
+      'fellowship',
+    ];
 
     for (let pa of primaryAttributes) {
       cy.get(`.pa-${pa}`).find('.pa-value').clear().type('40{enter}');
@@ -112,8 +131,12 @@ describe('Character Creation', () => {
     cy.get('[data-item-type="ancestry"]').rightclick({ force: true });
 
     cy.wait(1000);
-  
-    cy.get('.compendium').should('be.visible').find('img[title="Human"]').parent().dragTo('.character');
+
+    cy.get('.compendium')
+      .should('be.visible')
+      .find('img[title="Human"]')
+      .parent()
+      .dragTo('.character');
 
     cy.wait(1000);
 
@@ -121,7 +144,7 @@ describe('Character Creation', () => {
 
     cy.get('.pa-agility').find('.pa-bonus').should('have.text', '3');
 
-    cy.get('.compendium').parents('.window-app').find('.close').click()
+    cy.get('.compendium').parents('.window-app').find('.close').click();
 
     cy.wait(1000);
   });
@@ -129,70 +152,76 @@ describe('Character Creation', () => {
   describe('Basic Tier', () => {
     it('can purchase Profession', () => {
       cy.get('a[data-tab="tiers"]').click();
-  
+
       cy.get('a[data-item-type="profession"]').rightclick();
-  
+
       cy.wait(1000);
-  
-      cy.get('.compendium').should('be.visible')
-        .find(`img[title="${Cypress.env("professionBasic")}"]`)
+
+      cy.get('.compendium')
+        .should('be.visible')
+        .find(`img[title="${Cypress.env('professionBasic')}"]`)
         .parent()
         .dragTo('.character');
-  
+
       cy.wait(1000);
-  
+
       cy.get('div[data-tab="tiers"]')
-        .find(`[data-testid="${Cypress.env("professionBasic")}"]`)
+        .find(`[data-testid="${Cypress.env('professionBasic')}"]`)
         .should('be.visible')
         .click();
-  
+
       cy.wait(1000);
 
       cy.get('.rp-spent').should('have.value', '900');
     });
-  
+
     it('can purchase Skill Rank', () => {
       cy.get('[data-testid="skillsBasic"]')
-        .find('[data-purchase-index="0"]').click();
-  
+        .find('[data-purchase-index="0"]')
+        .click();
+
       cy.get('[data-testid="skillsBasic"]')
         .find('[data-purchase-index="0"]')
-        .should('have.css', 'color', Cypress.env("purchasedColor"));
+        .should('have.css', 'color', Cypress.env('purchasedColor'));
 
       cy.get('.rp-spent').should('have.value', '800');
     });
-  
+
     it('can purchase Bonus Advance', () => {
       cy.get('[data-testid="advancesBasic"]')
-        .find('[data-purchase-index="0"]').click();
-  
+        .find('[data-purchase-index="0"]')
+        .click();
+
       cy.get('[data-testid="advancesBasic"]')
         .find('[data-purchase-index="0"]')
-        .should('have.css', 'color', Cypress.env("purchasedColor"));
+        .should('have.css', 'color', Cypress.env('purchasedColor'));
 
       cy.get('.rp-spent').should('have.value', '700');
     });
-  
+
     it('can purchase Talent', () => {
       cy.get('[data-testid="talentsBasic"]')
-        .find('[data-purchase-index="0"]').click();
-  
+        .find('[data-purchase-index="0"]')
+        .click();
+
       cy.get('[data-testid="talentsBasic"]')
         .find('[data-purchase-index="0"]')
-        .should('have.css', 'color', Cypress.env("purchasedColor"));
+        .should('have.css', 'color', Cypress.env('purchasedColor'));
 
       cy.get('.rp-spent').should('have.value', '600');
-  
+
       cy.get('[data-testid="Nerves of Steel"]').should('be.visible');
     });
 
     it('does not allow advancing if not complete', () => {
       cy.get('.compendium')
-        .find(`img[title="${Cypress.env("professionIntermediate")}"]`)
+        .find(`img[title="${Cypress.env('professionIntermediate')}"]`)
         .parent()
         .dragTo('.character');
 
-      cy.contains('A character must complete the previous Tier before entering a new Profession.').should('be.visible');
+      cy.contains(
+        'A character must complete the previous Tier before entering a new Profession.'
+      ).should('be.visible');
     });
 
     it('can complete Tier', () => {
@@ -204,23 +233,23 @@ describe('Character Creation', () => {
 
       cy.get('[data-testid="skillsBasic"]')
         .find('[data-purchase-index="9"]')
-        .should('have.css', 'color', Cypress.env("purchasedColor"));
+        .should('have.css', 'color', Cypress.env('purchasedColor'));
 
       cy.get('[data-testid="advancesBasic"]')
         .find('[data-purchase-index="6"]')
-        .should('have.css', 'color', Cypress.env("purchasedColor"));
+        .should('have.css', 'color', Cypress.env('purchasedColor'));
 
       cy.get('[data-testid="talentsBasic"]')
         .find('[data-purchase-index="2"]')
-        .should('have.css', 'color', Cypress.env("purchasedColor"));
+        .should('have.css', 'color', Cypress.env('purchasedColor'));
     });
   });
 
   describe('Intermediate Tier', () => {
     it('can purchase Profession', () => {
-      console.log('b')
+      console.log('b');
     });
-  })
+  });
 });
 
 describe('Trappings', () => {
@@ -231,7 +260,12 @@ describe('Trappings', () => {
 
     cy.wait(1000);
 
-    cy.get('.window-header').contains('weapon').should('be.visible').parent().find('.close').click();
+    cy.get('.window-header')
+      .contains('weapon')
+      .should('be.visible')
+      .parent()
+      .find('.close')
+      .click();
   });
 
   it('can add new Armor', () => {
@@ -245,16 +279,16 @@ describe('Trappings', () => {
       .parents('.window-app')
       .find('input[name="data.damageThresholdModifier"]')
       .clear()
-      .type("1")
+      .type('1')
       .parents('.window-app')
       .find('.close')
       .click();
-  })
+  });
 });
 
 describe('Rolls', () => {
   it('rolls a Weapon attack', () => {
-    console.log('c')
+    console.log('c');
   });
 });
 
@@ -280,11 +314,15 @@ after(() => {
     cy.wait(1000);
   }
 
-  cy.get('[data-package-id="cypress-zweihander-test"]').contains('Delete World').click();
+  cy.get('[data-package-id="cypress-zweihander-test"]')
+    .contains('Delete World')
+    .click();
 
-  cy.get('.window-content').find('b').then(($confirmationText) => {
-    cy.get('#delete-confirm').type($confirmationText.text());
+  cy.get('.window-content')
+    .find('b')
+    .then(($confirmationText) => {
+      cy.get('#delete-confirm').type($confirmationText.text());
 
-    cy.get('[data-button="yes"]').click();
-  });
+      cy.get('[data-button="yes"]').click();
+    });
 });

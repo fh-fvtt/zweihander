@@ -22,7 +22,7 @@ body.game.vtt.system-zweihander .zweihander.sheet.character {
     }
   }
 
-  @import "character-sheet-header.scss";
+  @import 'character-sheet-header.scss';
 
   .sheet-body {
     overflow: hidden;
@@ -48,7 +48,7 @@ body.game.vtt.system-zweihander .zweihander.sheet.character {
       white-space: nowrap;
     }
 
-    @import "character-sheet-tab-main.scss";
+    @import 'character-sheet-tab-main.scss';
 
     .items-list {
       padding: 0 5px;

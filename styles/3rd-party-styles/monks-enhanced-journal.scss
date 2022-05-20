@@ -107,20 +107,20 @@
 #journal-directory li.journalentry[status] .document-name {
   border-left: 0.45em solid var(--mej-clr-bg3);
 }
-#journal li.journalentry[status="available"] .document-name,
-#journal-directory li.journalentry[status="available"] .document-name {
+#journal li.journalentry[status='available'] .document-name,
+#journal-directory li.journalentry[status='available'] .document-name {
   border-left-color: var(--mej-clr-aqua-dark);
 }
-#journal li.journalentry[status="inprogress"] .document-name,
-#journal-directory li.journalentry[status="inprogress"] .document-name {
+#journal li.journalentry[status='inprogress'] .document-name,
+#journal-directory li.journalentry[status='inprogress'] .document-name {
   border-left-color: var(--mej-clr-orange-bright);
 }
-#journal li.journalentry[status="completed"] .document-name,
-#journal-directory li.journalentry[status="completed"] .document-name {
+#journal li.journalentry[status='completed'] .document-name,
+#journal-directory li.journalentry[status='completed'] .document-name {
   border-left-color: var(--mej-clr-green-bright);
 }
-#journal li.journalentry[status="failed"] .document-name,
-#journal-directory li.journalentry[status="failed"] .document-name {
+#journal li.journalentry[status='failed'] .document-name,
+#journal-directory li.journalentry[status='failed'] .document-name {
   border-left-color: var(--mej-clr-red-bright);
 }
 #journal-directory .directory-item.active {
@@ -299,12 +299,12 @@
 .monks-journal-sheet.sheet
   .items-list
   .item-controls
-  input[type="checkbox"]:checked
+  input[type='checkbox']:checked
   + .item-action,
 .monks-journal-sheet.sheet
   .items-list
   .item-controls
-  input[type="checkbox"]:checked
+  input[type='checkbox']:checked
   + .item-hide {
   color: var(--mej-clr-orange-dark);
 }

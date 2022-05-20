@@ -29,12 +29,12 @@ body.game.vtt.system-zweihander {
       color: var(--zh-clr-yellow);
     }
 
-    input[type="text"],
-    input[type="number"],
-    input[type="date"],
-    input[type="password"],
-    input[type="time"],
-    input[type="range"] {
+    input[type='text'],
+    input[type='number'],
+    input[type='date'],
+    input[type='password'],
+    input[type='time'],
+    input[type='range'] {
       text-overflow: ellipsis;
       background: none;
       color: var(--zh-clr-fg0);
@@ -54,7 +54,6 @@ body.game.vtt.system-zweihander {
           border-color: var(--zh-clr-aqua);
         }
       }
-      
     }
 
     button.zweihander-button {
@@ -100,7 +99,7 @@ body.game.vtt.system-zweihander {
     //   }
     // }
 
-    input[type="checkbox"].zweihander-checkbox {
+    input[type='checkbox'].zweihander-checkbox {
       appearance: none;
       display: none;
       & + label {
@@ -115,7 +114,7 @@ body.game.vtt.system-zweihander {
         &:hover {
           color: var(--zh-clr-yellow);
           &::before {
-            content: "✓";
+            content: '✓';
             color: var(--zh-clr-yellow);
             border-color: var(--zh-clr-yellow);
           }
@@ -124,7 +123,7 @@ body.game.vtt.system-zweihander {
           line-height: 14px;
           border: 1px solid var(--zh-clr-bg3);
           // border-radius: 50%;
-          content: " ";
+          content: ' ';
           display: block;
           height: 10px;
           // left: calc(50% - 10px);
@@ -137,7 +136,7 @@ body.game.vtt.system-zweihander {
       &:checked + label {
         color: var(--zh-clr-aqua);
         &::before {
-          content: "✓";
+          content: '✓';
           color: var(--zh-clr-bg0);
           border: 1px solid var(--zh-clr-aqua-alt);
           background: var(--zh-clr-aqua);
@@ -186,7 +185,7 @@ body.game.vtt.system-zweihander {
       position: relative;
       flex: 0 0 14px;
       text-align: center;
-     // margin-top: 1px;
+      // margin-top: 1px;
       .focus-tooltip {
         display: none;
       }
