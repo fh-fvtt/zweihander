@@ -1,5 +1,5 @@
 /// <reference types="cypress" />
-
+/* 
 before(() => {
   // create a new world for testing
   cy.visit('localhost:30000');
@@ -24,6 +24,8 @@ before(() => {
 
   cy.wait(1000);
 
+  cy.location('pathname', { timeout: 60000 });
+
   cy.get('select[name="userid"]').select('Gamemaster');
 
   cy.get('button[name="join"]').click();
@@ -31,7 +33,104 @@ before(() => {
   cy.wait(2000);
 
   cy.get('#logo').should('be.visible');
+}); */
+
+const testWorldData = {
+  name: 'cypress-zweihander-test',
+  title: 'Cypress Zweihänder Test',
+  system: 'zweihander',
+  background: '',
+  nextSession: null,
+};
+
+before(() => {
+  cy.visit('localhost:30000' + '/setup')
+    .url()
+    .then((url) => {
+      const { pathname } = new URL(url);
+      if (!pathname.endsWith('/setup')) {
+        if (pathname.endsWith('/auth')) {
+          // Have to input setup key
+          return cy
+            .get('#key')
+            .type(adminKey)
+            .then(() => cy.get(`button[value="adminAuth"]`).click());
+        }
+
+        if (pathname.endsWith('/join')) {
+          return exitWorld();
+        }
+
+        throw new Error(
+          'Cannot get to setup screen! Can handle /join and /auth but at ' + pathname
+        );
+      }
+
+      return cy;
+    });
+
+  createWorld();
+  launchWorld();
+  joinWorld();
 });
+
+function createWorld() {
+  return cy
+    .request({
+      method: 'POST',
+      url: '/setup',
+      body: {
+        action: 'createWorld',
+        ...testWorldData,
+      },
+    })
+    .then((response) => handleError(response.body));
+}
+
+function launchWorld() {
+  // The #setup-configuration form contains stuff like the setup screen credentials.
+  cy.get('form#setup-configuration').then((elem) => {
+    const formData = new FormData(elem[0]);
+    formData.set('action', 'launchWorld');
+    formData.set('world', testWorldData.name);
+
+    cy.request({
+      url: '/setup',
+      method: 'POST',
+      body: formData,
+      followRedirect: false,
+    }).then((response) => {
+      handleError(response.body);
+
+      expect(response.status).to.eq(302);
+
+      cy.visit(response.redirectedToUrl ?? '');
+    });
+  });
+}
+
+function joinWorld() {
+  const userIdSelector = `select[name="userid"]`;
+
+  cy.get(`${userIdSelector} option:not([value=""])`) // The gamemaster
+    .then((elem) => cy.get(userIdSelector).select(elem.val(), { force: true }));
+
+  cy.get(`button[name="join"]`).click();
+  //cy.waitUntil(() => cy.window().then((window) => window.game?.ready === true)); // Wait until `game.ready`
+  cy.wait(2000);
+}
+
+function handleError(responseJSON) {
+  const errorJSON = responseJSON;
+
+  // This condition is being used as a dumb type guard
+  if (errorJSON.error === 'string') {
+    const error = new Error(game.i18n.localize(errorJSON.error));
+    error.stack = errorJSON.stack;
+
+    throw error;
+  }
+}
 
 describe('Fortune Tracker', () => {
   it('should render correctly', () => {
@@ -41,9 +140,7 @@ describe('Fortune Tracker', () => {
 
     cy.wait(1000);
 
-    cy.get('li[data-module-name="socketlib"]')
-      .find('input[type="checkbox"]')
-      .click();
+    cy.get('li[data-module-name="socketlib"]').find('input[type="checkbox"]').click();
 
     cy.contains('Save Module Settings').click();
 
@@ -57,9 +154,7 @@ describe('Character Creation', () => {
   it('can create an Actor (Player Character)', () => {
     cy.get('a[title="Actors Directory"]').click();
 
-    cy.get('section[data-tab="actors"]')
-      .find('button[class="create-document"]')
-      .click();
+    cy.get('section[data-tab="actors"]').find('button[class="create-document"]').click();
 
     cy.wait(1000);
 
@@ -176,9 +271,7 @@ describe('Character Creation', () => {
     });
 
     it('can purchase Skill Rank', () => {
-      cy.get('[data-testid="skillsBasic"]')
-        .find('[data-purchase-index="0"]')
-        .click();
+      cy.get('[data-testid="skillsBasic"]').find('[data-purchase-index="0"]').click();
 
       cy.get('[data-testid="skillsBasic"]')
         .find('[data-purchase-index="0"]')
@@ -188,9 +281,7 @@ describe('Character Creation', () => {
     });
 
     it('can purchase Bonus Advance', () => {
-      cy.get('[data-testid="advancesBasic"]')
-        .find('[data-purchase-index="0"]')
-        .click();
+      cy.get('[data-testid="advancesBasic"]').find('[data-purchase-index="0"]').click();
 
       cy.get('[data-testid="advancesBasic"]')
         .find('[data-purchase-index="0"]')
@@ -200,9 +291,7 @@ describe('Character Creation', () => {
     });
 
     it('can purchase Talent', () => {
-      cy.get('[data-testid="talentsBasic"]')
-        .find('[data-purchase-index="0"]')
-        .click();
+      cy.get('[data-testid="talentsBasic"]').find('[data-purchase-index="0"]').click();
 
       cy.get('[data-testid="talentsBasic"]')
         .find('[data-purchase-index="0"]')
@@ -286,11 +375,11 @@ describe('Trappings', () => {
   });
 });
 
-describe('Rolls', () => {
+/* describe('Rolls', () => {
   it('rolls a Weapon attack', () => {
     console.log('c');
   });
-});
+}); */
 
 after(() => {
   cy.get('a[title="Game Settings"]').click();
@@ -314,9 +403,7 @@ after(() => {
     cy.wait(1000);
   }
 
-  cy.get('[data-package-id="cypress-zweihander-test"]')
-    .contains('Delete World')
-    .click();
+  cy.get('[data-package-id="cypress-zweihander-test"]').contains('Delete World').click();
 
   cy.get('.window-content')
     .find('b')
