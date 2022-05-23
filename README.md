@@ -3,31 +3,31 @@
 
 An **unofficial** community implementation of the Zweihänder Grim & Perilous RPG game for FoundryVTT.
 
-## Installation
+### Installation
 
 To install the Zweihänder Grim & Perilous RPG system for FoundryVTT, simply paste the following URL into the **Install System** dialog on the Game Systems menu of the application: `https://raw.githubusercontent.com/fh-fvtt/zweihander/main/system.json`.
 
 If you wish to install the latest development version of the system, use the following URL instead: `https://raw.githubusercontent.com/fh-fvtt/zweihander/dev/system.json`. You will receive the latest, bleeding edge features, but the risk of bugs and unintended behavior is much higher. **A world backup is highly recommended!**
 
-## Notable Features
+### Notable Features
 
 - **Automation.** The game system takes care of the most boring parts of the rules for you (cumbersome calculations especially!), so you and your group can focus on the narrative at hand without getting bogged down.
 - **Drag & Drop.** Writing things down? Ain't nobody got time for that! Speed up character creation, Tier advancement and more by simply dragging and dropping things on your character sheet!
 - **Fortune Tracker.** Easily track the expenditure of Fortune & Misfortune with this nifty little tracker! Supports both one-way and ebb-and-flow variants. Requires the [socketlib](https://foundryvtt.com/packages/socketlib) module to be installed and active.
-- **Compendium.** A vast archive of Professions, Spells, Weapons and more, straight from the book! _currently incomplete_
+- **Compendium.** A vast archive of Professions, Spells, Weapons and more, straight from the book!
 - **Homebrew.** Fancy yourself creative? Well, good, because this game system was built from the ground-up thinking about homebrew support! Adding new Professions, Spells, Trappings or whatever else your mind comes up with is super easy!
 - _Much, much more..._
 
 <figure>
   <img src="https://i.imgur.com/ew6zoCC.png">
-  <figcaption style="text-align: center;"><em>Everything you need to play grim characters in a perilous world!</em></figcaption>
+  <figcaption align=center><em>Everything you need to play grim characters in a perilous world!</em></figcaption>
 </figure>
 
-## Module Support
+### Module Support
 
 *"Yeah, that's all great, but does X module work with this system?"* Great question! Zweihänder Grim & Perilous RPG supports many of the more popular system-agnostic modules that the FoundryVTT community has to offer, among them [Dice So Nice!](https://foundryvtt.com/packages/dice-so-nice/), [Health Estimate](https://foundryvtt.com/packages/healthEstimate/), [Polyglot](https://foundryvtt.com/packages/polyglot/) and [GM Screen](https://foundryvtt.com/packages/gm-screen/). If you find a specific system-agnostic module not working, feel free to reach out to the developers and we'll look into it!
 
-## Roadmap & Community Feedback
+### Roadmap & Community Feedback
 
 Although Zweihänder Grim & Perilous RPG implements all core functionalities required for running a game, we're still working hard to improve its usability by adding further automations and Quality of Life features, such as:
 
@@ -40,10 +40,8 @@ Although Zweihänder Grim & Perilous RPG implements all core functionalities req
 
 The above list is incomplete and prone to change. While the primary driver for development is our own use of the system, we also acknowledge that community feedback is very valuable. As such, if you'd like us to develop a new feature, feel free to [start a new discussion](https://github.com/fh-fvtt/zweihander/discussions/new). Otherwise, if something isn't working like it should, you can file a new [bug report](https://github.com/fh-fvtt/zweihander/issues/new?assignees=&labels=&template=bug_report.md&title=). **Please take the time to read the template prompts and give as much contextual information as possible.**
 
-If you wish to help with development (God-Emperor bless your soul!), contact **Re4XN#8341** or **kxfin#0458** on Discord.
+If you wish to help with development (God-Emperor bless your kind soul!), contact **Re4XN#8341** or **kxfin#0458** on Discord.
 
-## Disclaimer
+### Disclaimer
 
-```
-This game system is powered by ZWEIHÄNDER Grim & Perilous RPG ™, a trademark of Grim & Perilous Studios LLC, in the USA and other countries. Used with permission. Original text content of ZWEIHÄNDER Grim & Perilous RPG is licensed under a Creative Commons Attribution-Noncommercial-Share Alike 3.0 Unported License. ZWEIHÄNDER Logo, content and original artwork are copyright © 2009–2018, Grim & Perilous Studios, LLC unless otherwise specified.
-```
+_This game system is powered by ZWEIHÄNDER Grim & Perilous RPG ™, a trademark of Grim & Perilous Studios LLC, in the USA and other countries. Used with permission. Original text content of ZWEIHÄNDER Grim & Perilous RPG is licensed under a Creative Commons Attribution-Noncommercial-Share Alike 3.0 Unported License. ZWEIHÄNDER Logo, content and original artwork are copyright © 2009–2018, Grim & Perilous Studios, LLC unless otherwise specified._
