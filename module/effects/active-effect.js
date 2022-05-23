@@ -1,9 +1,21 @@
 export default class ZweihanderActiveEffect extends ActiveEffect {
-  isSuppressed = false;
-
   apply(actor, change) {
-    if (this.isSuppressed) return null;
+    if (!this.data.details.isActive) return null;
 
     return super.apply(actor, change);
+  }
+
+  prepareData() {
+    const effectData = this.data;
+
+    effectData.details = {
+      category: {
+        '@en': '???',
+      },
+      isActive: false,
+      source: {
+        '@en': '',
+      },
+    };
   }
 }

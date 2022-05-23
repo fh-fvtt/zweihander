@@ -175,13 +175,23 @@ export function getItemGroups(data) {
       items: data.conditions,
     },
     effects: {
-      title: 'Effects',
+      title: 'Temporary Conditions',
       type: 'effect',
       isEffect: true,
       summaryTemplate: 'item-summary/effect',
       details: [
         {
-          title: 'Suspended', // @todo: change this in ZweihanderActiveEffect implementation to be more intuitive
+          title: 'Source',
+          size: 140,
+          key: localizePath('details.source'),
+        },
+        {
+          title: 'Category',
+          size: 140,
+          key: localizePath('details.category'),
+        },
+        {
+          title: 'Active', // @todo: change this in ZweihanderActiveEffect implementation to be more intuitive
           size: 150,
           key: 'disabled',
           isCheckbox: true,
@@ -377,12 +387,18 @@ export function attachTabDefinitions(data) {
       itemGroups: ['spells', 'rituals'].map($$),
     },
     afflictions: {
-      itemGroups: ['conditions', 'disorders', 'diseases', 'injuries' /*, 'taints'*/, 'effects'].map(
-        $$
-      ),
+      itemGroups: [
+        'conditions',
+        'disorders',
+        'diseases',
+        'injuries' /*, 'taints'*/,
+        'effects',
+      ].map($$),
     },
     tiers: {
-      itemGroups: ['professions', 'traits', 'drawbacks', 'talents', 'uniqueAdvances'].map($$),
+      itemGroups: ['professions', 'traits', 'drawbacks', 'talents', 'uniqueAdvances'].map(
+        $$
+      ),
     },
   };
 }

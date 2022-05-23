@@ -117,8 +117,7 @@ export default class ZweihanderBaseActorSheet extends ActorSheet {
           if (typeof v === 'string') {
             filtered =
               filtered &&
-              v.trim().toLowerCase().indexOf(fc.value.trim().toLowerCase()) >=
-                0;
+              v.trim().toLowerCase().indexOf(fc.value.trim().toLowerCase()) >= 0;
           }
         }
         return filtered;
@@ -163,9 +162,7 @@ export default class ZweihanderBaseActorSheet extends ActorSheet {
       return ui.notifications.warn(
         game.i18n.format('ZWEI.ActorWarningInvalidItem', {
           itemType: game.i18n.localize(CONFIG.Item.typeLabels[itemData.type]),
-          actorType: game.i18n.localize(
-            CONFIG.Actor.typeLabels[this.actor.type]
-          ),
+          actorType: game.i18n.localize(CONFIG.Actor.typeLabels[this.actor.type]),
         })
       );
     }
@@ -184,10 +181,7 @@ export default class ZweihanderBaseActorSheet extends ActorSheet {
     await super._render(force, options);
     // restore toggle states for item details
     toggleStates.forEach((id) =>
-      $(this.form)
-        .find(`[data-item-id="${id}"] .save-toggle`)
-        .show()
-        .addClass('open')
+      $(this.form).find(`[data-item-id="${id}"] .save-toggle`).show().addClass('open')
     );
     this._setScrollStates();
   }
@@ -224,9 +218,7 @@ export default class ZweihanderBaseActorSheet extends ActorSheet {
     this._perilSheet(html);
     html.find('.modded-value-indicator').hover(
       (event) => {
-        const tooltip = $(event.currentTarget)
-          .find('.modded-value-tooltip')
-          .clone();
+        const tooltip = $(event.currentTarget).find('.modded-value-tooltip').clone();
         const offset = $(event.currentTarget).offset();
         offset.top += 25;
         offset.left -= 200 / 2 - 8;
@@ -253,9 +245,7 @@ export default class ZweihanderBaseActorSheet extends ActorSheet {
 
     const getCriterion = (criteria, itemGroupKey, detail, create = true) => {
       const itemGroupCriteria = getItemGroupCriteria(criteria, itemGroupKey);
-      const existingCriterion = itemGroupCriteria.find(
-        (c) => c.detail === detail
-      );
+      const existingCriterion = itemGroupCriteria.find((c) => c.detail === detail);
       if (!existingCriterion && create) {
         const criterion = { detail };
         itemGroupCriteria.push(criterion);
@@ -278,9 +268,7 @@ export default class ZweihanderBaseActorSheet extends ActorSheet {
       const el = $(event.currentTarget).parents('.filterable');
       const itemGroup = el.data('itemGroup');
       const detail = Number.parseInt(el.data('detail'));
-      $(event.currentTarget)
-        .parents('.filter-input')
-        .removeClass('filter-input-active');
+      $(event.currentTarget).parents('.filter-input').removeClass('filter-input-active');
       getCriterion(this.filterCriteria, itemGroup, detail).active = false;
     });
     html.find('.filter-input input').click((event) => event.stopPropagation());
@@ -322,9 +310,7 @@ export default class ZweihanderBaseActorSheet extends ActorSheet {
     // Everything below here is only needed if the sheet is editable
     if (!this.options.editable) return;
     // auto size the details inputs on change
-    inputsToAutoSize.bind('input', (event) =>
-      autoSizeInput($(event.currentTarget))
-    );
+    inputsToAutoSize.bind('input', (event) => autoSizeInput($(event.currentTarget)));
 
     const actor = this.actor;
     const actorData = this.actor.data;
@@ -402,16 +388,18 @@ export default class ZweihanderBaseActorSheet extends ActorSheet {
           { type: type, name: type },
         ]);
       } else {
-        createdItemArray = await this.actor.createEmbeddedDocuments(
-          'ActiveEffect',
-          [
-            {
-              label: 'New Effect',
-              icon: 'systems/zweihander/assets/icons/dice-fire.svg',
-              origin: this.actor.id,
+        createdItemArray = await this.actor.createEmbeddedDocuments('ActiveEffect', [
+          {
+            label: 'New Effect',
+            icon: 'systems/zweihander/assets/icons/dice-fire.svg',
+            origin: 'Actor.' + this.actor.id,
+            details: {
+              source: `${this.actor.name} (Manual)`,
+              category: '???',
+              isActive: true,
             },
-          ]
-        );
+          },
+        ]);
       }
 
       if (createdItemArray.length) createdItemArray[0].sheet.render(true);
@@ -435,17 +423,14 @@ export default class ZweihanderBaseActorSheet extends ActorSheet {
         x.render(true, {
           top: actor.sheet.position.top,
           left:
-            actor.sheet.position.left +
-            (i % 2 == 0 ? -350 : actor.sheet.position.width),
+            actor.sheet.position.left + (i % 2 == 0 ? -350 : actor.sheet.position.width),
         })
       );
     });
 
     // Handle formulas for display
     html.find('.inject-data').each(async function () {
-      $(this).text(
-        await ZweihanderUtils.parseDataPaths($(this).text().trim(), actor)
-      );
+      $(this).text(await ZweihanderUtils.parseDataPaths($(this).text().trim(), actor));
     });
 
     html.find('.inline-roll').each(async function () {
@@ -582,16 +567,11 @@ export default class ZweihanderBaseActorSheet extends ActorSheet {
       event.preventDefault();
       const target = $(event.currentTarget);
       const qualityName = target.text();
-      const quality = await ZweihanderUtils.findItemWorldWide(
-        'quality',
-        qualityName
-      );
+      const quality = await ZweihanderUtils.findItemWorldWide('quality', qualityName);
       quality.sheet.render(true);
     });
 
-    html
-      .find('.open-language-config')
-      .click(() => this.#languageConfig.render(true));
+    html.find('.open-language-config').click(() => this.#languageConfig.render(true));
   }
 
   _damageSheet(html) {
@@ -621,9 +601,7 @@ export default class ZweihanderBaseActorSheet extends ActorSheet {
   _registerDimensionChangeListener(el, cb) {
     // this magic changes the pattern of the skills list when it resizes beyond the column breakpoint.
     // sadly, this is currently not possible with pure css.
-    el.prepend(
-      '<iframe class="dimension-change-listener" tabindex="-1"></iframe>'
-    );
+    el.prepend('<iframe class="dimension-change-listener" tabindex="-1"></iframe>');
     const listener = el.find(`.dimension-change-listener`);
     listener.each(function () {
       $(this.contentWindow).resize(cb);
@@ -638,14 +616,8 @@ export default class ZweihanderBaseActorSheet extends ActorSheet {
       for (let [i, bp] of breakpoints.entries()) {
         const lastAt = i === 0 ? 0 : breakpoints[i - 1].at;
         const nextAt =
-          i === breakpoints.length - 1
-            ? Number.POSITIVE_INFINITY
-            : breakpoints[i + 1].at;
-        if (
-          x > lastAt &&
-          x < nextAt &&
-          (y === -1 || (y > lastAt && y < nextAt))
-        ) {
+          i === breakpoints.length - 1 ? Number.POSITIVE_INFINITY : breakpoints[i + 1].at;
+        if (x > lastAt && x < nextAt && (y === -1 || (y > lastAt && y < nextAt))) {
           if (x >= bp.at && y < bp.at) {
             bp.callback(true);
           } else if (x < bp.at && y >= bp.at) {
@@ -665,8 +637,7 @@ export default class ZweihanderBaseActorSheet extends ActorSheet {
     const skill = element.dataset.label;
     const skillItem = this.actor.items.find(
       (item) =>
-        item.type === 'skill' &&
-        ZweihanderUtils.normalizedEquals(item.name, skill)
+        item.type === 'skill' && ZweihanderUtils.normalizedEquals(item.name, skill)
     );
     if (skillItem) {
       const additionalConfiguration = {};
@@ -675,12 +646,9 @@ export default class ZweihanderBaseActorSheet extends ActorSheet {
           .parents('.item')
           .data('itemId');
       }
-      await ZweihanderDice.rollTest(
-        skillItem,
-        testType,
-        additionalConfiguration,
-        { showDialog: true }
-      );
+      await ZweihanderDice.rollTest(skillItem, testType, additionalConfiguration, {
+        showDialog: true,
+      });
     } else {
       ui.notifications.error(
         `Associated Skill "${skill}" does not exist for this actor!`
@@ -705,9 +673,7 @@ export default class ZweihanderBaseActorSheet extends ActorSheet {
       buttons.splice(0, 0, {
         label: ' Compact Mode',
         class: 'hide-background',
-        icon: `hide-background-toggle fas fa-toggle-${
-          compactMode ? 'on' : 'off'
-        }`,
+        icon: `hide-background-toggle fas fa-toggle-${compactMode ? 'on' : 'off'}`,
         onclick: (event) => {
           const sheet = $(event.currentTarget).parents('.sheet');
           sheet.toggleClass('zweihander-compact-sheet');

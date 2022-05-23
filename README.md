@@ -18,10 +18,9 @@ If you wish to install the latest development version of the system, use the fol
 - **Homebrew.** Fancy yourself creative? Well, good, because this game system was built from the ground-up thinking about homebrew support! Adding new Professions, Spells, Trappings or whatever else your mind comes up with is super easy!
 - _Much, much more..._
 
-<figure>
-  <img src="https://i.imgur.com/ew6zoCC.png">
-  <figcaption align=center><em>Everything you need to play grim characters in a perilous world!</em></figcaption>
-</figure>
+![](https://i.imgur.com/ew6zoCC.png)
+
+<p align="center"><em>Everything you need to play grim characters in a perilous world!</em></p>
 
 ### Module Support
 
@@ -40,7 +39,7 @@ Although Zweihänder Grim & Perilous RPG implements all core functionalities req
 
 The above list is incomplete and prone to change. While the primary driver for development is our own use of the system, we also acknowledge that community feedback is very valuable. As such, if you'd like us to develop a new feature, feel free to [start a new discussion](https://github.com/fh-fvtt/zweihander/discussions/new). Otherwise, if something isn't working like it should, you can file a new [bug report](https://github.com/fh-fvtt/zweihander/issues/new?assignees=&labels=&template=bug_report.md&title=). **Please take the time to read the template prompts and give as much contextual information as possible.**
 
-If you wish to help with development (God-Emperor bless your kind soul!), contact **Re4XN#8341** or **kxfin#0458** on Discord.
+If you wish to help with development, contact **Re4XN#8341** or **kxfin#0458** on Discord.
 
 ### Disclaimer
 

@@ -139,6 +139,9 @@ export const registerHandlebarHelpers = async function () {
   $$('zhExplicitSign', zhExplicitSign);
 
   $$('zhLookup', function (obj, key) {
+    if (obj.label) {
+      console.log(obj, key);
+    }
     const keys = key.toString().split('.');
     let val = obj;
     for (let key of keys) {
