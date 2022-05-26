@@ -33,6 +33,7 @@ export default class ZweihanderBaseActorSheet extends ActorSheet {
   getData(options) {
     // Basic data
     let isOwner = this.actor.isOwner;
+    console.log('BARAHRANA', this.actor.data.effects);
     const data = {
       owner: isOwner,
       limited: this.actor.limited,
@@ -44,6 +45,7 @@ export default class ZweihanderBaseActorSheet extends ActorSheet {
       isCreature: this.actor.type === 'creature',
       config: CONFIG.ZWEI,
       rollData: this.actor.getRollData.bind(this.actor),
+      effects: [],
       settings: {},
     };
 
@@ -59,7 +61,9 @@ export default class ZweihanderBaseActorSheet extends ActorSheet {
     // Prepare owned items
     this._prepareItems(data);
 
-    data.effects = actorData.effects;
+    console.log('GET DATAAAAAA ->->->', this.actor.data.effects.contents);
+
+    //data.effects = this.actor.data.toObject(true).effects;
 
     const itemGroups = this._processItemGroups(this._getItemGroups(data));
     data.itemGroups = ZweihanderUtils.assignPacks(this.actor.type, itemGroups);

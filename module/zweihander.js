@@ -31,6 +31,7 @@ import ZweihanderCombat from './combat/combat';
 import ZweihanderCombatant from './combat/combatant';
 import ZweihanderCombatTracker from './combat/combat-tracker';
 import ZweihanderActiveEffect from './effects/active-effect';
+import ZweihanderActiveEffectConfig from './apps/active-effect-config';
 
 /* -------------------------------------------- */
 /*  Foundry VTT Initialization                  */
@@ -101,7 +102,7 @@ Hooks.once('diceSoNiceReady', function () {
 });
 
 Hooks.once('init', async function () {
-  CONFIG.debug.hooks = true;
+  // CONFIG.debug.hooks = true;
   console.log(ZWEI.debugTitle);
 
   game.zweihander = {
@@ -149,8 +150,19 @@ Hooks.once('init', async function () {
     types: ['creature'],
     makeDefault: true,
   });
+
   Items.unregisterSheet('core', ItemSheet);
   Items.registerSheet('zweihander', ZweihanderItemSheet, { makeDefault: true });
+
+  DocumentSheetConfig.unregisterSheet(ActiveEffect, 'core', ActiveEffectConfig);
+  DocumentSheetConfig.registerSheet(
+    ActiveEffect,
+    'zweihader',
+    ZweihanderActiveEffectConfig,
+    {
+      makeDefault: true,
+    }
+  );
   // Register settings
   registerSystemSettings();
   // Register Helpers

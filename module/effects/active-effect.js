@@ -1,14 +1,21 @@
 export default class ZweihanderActiveEffect extends ActiveEffect {
+  isActive = true;
+
   apply(actor, change) {
-    if (!this.data.details.isActive) return null;
+    if (!this.isActive) return null;
 
     return super.apply(actor, change);
   }
 
-  prepareData() {
-    const effectData = this.data;
+  prepareDerivedData() {
+    if (!this.data.details)
+      this.data.details = {
+        category: 'TestCat',
+        source: 'TestSrc',
+      };
+    console.log('effect data ----------- ', this);
 
-    effectData.details = {
+    /*     effectData.details = {
       category: {
         '@en': '???',
       },
@@ -16,6 +23,6 @@ export default class ZweihanderActiveEffect extends ActiveEffect {
       source: {
         '@en': '',
       },
-    };
+    }; */
   }
 }

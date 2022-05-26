@@ -3,16 +3,13 @@ import * as ZweihanderUtils from '../../utils';
 import ZweihanderActorConfig from '../../apps/actor-config';
 
 export default class ZweihanderPC extends ZweihanderBaseActor {
+  // changed by re4xn from 'prepareDerivedData' on 19-05-2022
   prepareBaseData(actorData) {
-    // changed by re4xn from 'prepareDerivedData' on 19-05-2022
-    const noWarn = CONFIG.ZWEI.NO_WARN || actorData._id === null;
     const configOptions = ZweihanderActorConfig.getConfig(actorData);
     // set up utility variables
     const data = actorData.data;
     data.tier =
-      CONFIG.ZWEI.tiers[
-        actorData.items.filter((i) => i.type === 'profession').length
-      ];
+      CONFIG.ZWEI.tiers[actorData.items.filter((i) => i.type === 'profession').length];
     // calculate primary attribute bonuses (first digit)
     Object.values(data.stats.primaryAttributes).forEach(
       (a) => (a.bonus = Math.floor(a.value / 10))
@@ -49,9 +46,8 @@ export default class ZweihanderPC extends ZweihanderBaseActor {
       .filter((i) => i.type === 'profession')
       .forEach((p) => {
         const advancesList =
-          p.data.data.bonusAdvances
-            ?.filter?.((a) => a.purchased)
-            ?.map?.((a) => a.name) ?? [];
+          p.data.data.bonusAdvances?.filter?.((a) => a.purchased)?.map?.((a) => a.name) ??
+          [];
         applyBonusModifiers(
           advancesList,
           +1,
@@ -77,11 +73,9 @@ export default class ZweihanderPC extends ZweihanderBaseActor {
           equippedArmor.map((a) => a.data.data.damageThresholdModifier)
         )
       ];
-    const damageModifier =
-      maxEquippedArmor?.data?.data?.damageThresholdModifier ?? 0;
+    const damageModifier = maxEquippedArmor?.data?.data?.damageThresholdModifier ?? 0;
     sa.damageThreshold.value =
-      data.stats.primaryAttributes[configOptions.dthAttribute].bonus +
-      damageModifier;
+      data.stats.primaryAttributes[configOptions.dthAttribute].bonus + damageModifier;
     // active effects tracking Proof of Concept
     sa.damageThreshold.base =
       data.stats.primaryAttributes[configOptions.dthAttribute].bonus;
@@ -97,8 +91,7 @@ export default class ZweihanderPC extends ZweihanderBaseActor {
     // encumbrance calculations...
     // assign encumbrance from equipped trappings
     const carriedTrappings = actorData.items.filter(
-      (i) =>
-        ['trapping', 'armor', 'weapon'].includes(i.type) && i.data.data.carried
+      (i) => ['trapping', 'armor', 'weapon'].includes(i.type) && i.data.data.carried
     );
     const nine4one = game.settings.get('zweihander', 'encumbranceNineForOne');
     const smallTrappingsEnc = !nine4one
@@ -120,9 +113,7 @@ export default class ZweihanderPC extends ZweihanderBaseActor {
     const enc = (data.stats.secondaryAttributes.encumbrance = {});
     // assign initial encumbrance threshold
     enc.value =
-      data.stats.primaryAttributes.brawn.bonus +
-      3 +
-      configOptions.encumbranceModifier;
+      data.stats.primaryAttributes.brawn.bonus + 3 + configOptions.encumbranceModifier;
     // assign current encumbrance
     enc.current = smallTrappingsEnc + normalTrappingsEnc + currencyEnc;
     // assign overage
@@ -147,6 +138,8 @@ export default class ZweihanderPC extends ZweihanderBaseActor {
 
   // parry, dodge & magick depend on Item preparation being finished
   prepareEmbeddedDocuments(actorData) {
+    const noWarn = CONFIG.ZWEI.NO_WARN || actorData._id === null;
+
     const configOptions = ZweihanderActorConfig.getConfig(actorData);
     const data = actorData.data;
 
@@ -156,8 +149,7 @@ export default class ZweihanderPC extends ZweihanderBaseActor {
       basePerilCurrent,
       configOptions.isIgnoredPerilLadderValue
     );
-    data.stats.secondaryAttributes.perilCurrent.effectiveValue =
-      effectivePerilCurrent;
+    data.stats.secondaryAttributes.perilCurrent.effectiveValue = effectivePerilCurrent;
     const perilMalus = this.getPerilMalus(effectivePerilCurrent);
     // calculate special actions underlying values
     const calcSecondayAttributeSpecialActionValue = (secAttr, name) => {
@@ -165,8 +157,7 @@ export default class ZweihanderPC extends ZweihanderBaseActor {
         (item) => item.type === 'skill' && item.name === secAttr.associatedSkill
       );
       if (skill) {
-        const primAttr =
-          skill.data.data.associatedPrimaryAttribute.toLowerCase();
+        const primAttr = skill.data.data.associatedPrimaryAttribute.toLowerCase();
         secAttr.value =
           data.stats.primaryAttributes[primAttr].value +
           Math.max(0, skill.data.data.bonus - perilMalus);
@@ -217,15 +208,10 @@ export default class ZweihanderPC extends ZweihanderBaseActor {
 
   async _preUpdate(changed, options, user, actor) {
     const actorData = actor.data;
-    const oldDamage =
-      actorData.data.stats.secondaryAttributes.damageCurrent.value;
-    const newDamage =
-      changed.data?.stats?.secondaryAttributes?.damageCurrent?.value;
+    const oldDamage = actorData.data.stats.secondaryAttributes.damageCurrent.value;
+    const newDamage = changed.data?.stats?.secondaryAttributes?.damageCurrent?.value;
 
-    const injurySettingEnabled = game.settings.get(
-      'zweihander',
-      'injuryPrompt'
-    );
+    const injurySettingEnabled = game.settings.get('zweihander', 'injuryPrompt');
 
     if (
       injurySettingEnabled &&
@@ -249,9 +235,7 @@ export default class ZweihanderPC extends ZweihanderBaseActor {
   //@todo: refactor into another class, possibly dice.js
   async _rollInjury(injuryToRoll, actor) {
     const injuryChaosRoll = new Roll(
-      `${
-        injuryToRoll === 'Moderate' ? 1 : injuryToRoll === 'Serious' ? 2 : 3
-      }d6`,
+      `${injuryToRoll === 'Moderate' ? 1 : injuryToRoll === 'Serious' ? 2 : 3}d6`,
       actor.data.data
     );
     const rollResult = await injuryChaosRoll.evaluate();
@@ -262,9 +246,7 @@ export default class ZweihanderPC extends ZweihanderBaseActor {
       flavor: `Attempts to avoid Injury...`,
     });
 
-    const injurySustained = rollResult.terms[0].results.some(
-      (die) => die.result === 6
-    );
+    const injurySustained = rollResult.terms[0].results.some((die) => die.result === 6);
 
     if (!injurySustained) return;
 
@@ -285,12 +267,8 @@ export default class ZweihanderPC extends ZweihanderBaseActor {
     console.log(embeddedName, data);
     if (embeddedName === 'Item') {
       const filteredData = [];
-      let ancestryAttached = actor.data.items.some(
-        (i) => i.type === 'ancestry'
-      );
-      const actorProfessions = actor.data.items.filter(
-        (i) => i.type === 'profession'
-      );
+      let ancestryAttached = actor.data.items.some((i) => i.type === 'ancestry');
+      const actorProfessions = actor.data.items.filter((i) => i.type === 'profession');
       let numberOfProfessionsAttached = actorProfessions.length;
       for (let item of data) {
         if (item.type === 'profession') {
@@ -302,9 +280,7 @@ export default class ZweihanderPC extends ZweihanderBaseActor {
             (p) => p._id === item._id
           );
           if (allTiersAssigned && !dragDroppedOwnProfession) {
-            ui.notifications.error(
-              'A character may not enter more than 3 Professions.'
-            );
+            ui.notifications.error('A character may not enter more than 3 Professions.');
           } else if (!previousTiersCompleted && !dragDroppedOwnProfession) {
             ui.notifications.error(
               'A character must complete the previous Tier before entering a new Profession.'
@@ -316,9 +292,7 @@ export default class ZweihanderPC extends ZweihanderBaseActor {
           }
         } else if (item.type === 'ancestry') {
           if (ancestryAttached) {
-            ui.notifications.error(
-              'A character may not possess more than 1 Ancestry.'
-            );
+            ui.notifications.error('A character may not possess more than 1 Ancestry.');
           } else {
             filteredData.push(item);
             ancestryAttached = true;

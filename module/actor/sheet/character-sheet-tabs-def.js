@@ -1,6 +1,7 @@
 import { localizePath } from '../../utils';
 
 export function getItemGroups(data) {
+  console.log('SHEET TAB DEFS', data);
   return {
     weapons: {
       title: 'Weapons',
@@ -156,7 +157,7 @@ export function getItemGroups(data) {
       items: data.rituals,
     },
     conditions: {
-      title: 'Conditions',
+      title: 'Passive Conditions',
       type: 'condition',
       summaryTemplate: 'item-summary/condition',
       details: [
@@ -191,7 +192,7 @@ export function getItemGroups(data) {
           key: localizePath('details.category'),
         },
         {
-          title: 'Active', // @todo: change this in ZweihanderActiveEffect implementation to be more intuitive
+          title: 'Currently in Effect', // @todo: change this in ZweihanderActiveEffect implementation to be more intuitive
           size: 150,
           key: 'disabled',
           isCheckbox: true,
@@ -388,11 +389,11 @@ export function attachTabDefinitions(data) {
     },
     afflictions: {
       itemGroups: [
+        'effects',
         'conditions',
         'disorders',
         'diseases',
         'injuries' /*, 'taints'*/,
-        'effects',
       ].map($$),
     },
     tiers: {
