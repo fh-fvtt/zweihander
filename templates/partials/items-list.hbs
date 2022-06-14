@@ -54,7 +54,6 @@
     </div>
   </li>
   <ol class="item-list">
-    {{log itemGroup}}
     {{#each itemGroup.items as |item| }}
     <li class="item flexrow" data-item-id="{{item._id}}">
       <div class="item-name fetch-{{#if ../isEffect}}effect{{else}}item{{/if}} flexrow js-show-item-description {{#if itemGroup.rollType}}rollable{{/if}}">

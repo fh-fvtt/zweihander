@@ -264,7 +264,7 @@ export default class ZweihanderPC extends ZweihanderBaseActor {
   }
 
   async createEmbeddedDocuments(embeddedName, data, context, actor) {
-    console.log(embeddedName, data);
+    //console.log(embeddedName, data);
     if (embeddedName === 'Item') {
       const filteredData = [];
       let ancestryAttached = actor.data.items.some((i) => i.type === 'ancestry');
