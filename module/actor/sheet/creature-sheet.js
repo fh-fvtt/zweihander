@@ -112,9 +112,7 @@ export default class ZweihanderCreatureSheet extends ZweihanderBaseActorSheet {
       'skill',
       'uniqueAdvance',
       'taint',
-    ].filter(
-      (t) => t === 'skill' || !this.constructor.unsupportedItemTypes.has(t)
-    );
+    ].filter((t) => t === 'skill' || !this.constructor.unsupportedItemTypes.has(t));
     const pluralize = (t) =>
       ({
         injury: 'injuries',
@@ -151,13 +149,19 @@ export default class ZweihanderCreatureSheet extends ZweihanderBaseActorSheet {
         rollLabelKey: 'data.associatedSkill',
         details: [
           {
+            title: 'Distance',
+            size: 120,
+            key: 'data.distance',
+            class: 'inject-data',
+          },
+          {
             title: 'Chance',
-            size: 50,
+            size: 70,
             key: 'chance',
           },
           {
             title: 'Load',
-            size: 40,
+            size: 55,
             key: 'data.load',
           },
         ],
@@ -170,7 +174,7 @@ export default class ZweihanderCreatureSheet extends ZweihanderBaseActorSheet {
         details: [
           {
             title: 'Qty.',
-            size: 40,
+            size: 50,
             key: 'data.quantity',
           },
         ],
@@ -224,8 +228,7 @@ export default class ZweihanderCreatureSheet extends ZweihanderBaseActorSheet {
       this._getDimensionBreakpointsCallback('innerWidth', [
         {
           at: 260,
-          callback: (toggle) =>
-            html.find('.skills-list').toggleClass('two-rows', toggle),
+          callback: (toggle) => html.find('.skills-list').toggleClass('two-rows', toggle),
         },
       ])
     );
@@ -282,10 +285,7 @@ export default class ZweihanderCreatureSheet extends ZweihanderBaseActorSheet {
         // fix js mod bug -> maybe move this to utils
         return ((n % m) + m) % m;
       }
-      const i = mod(
-        paArray.indexOf(paValue) + (event.shiftKey ? -1 : 1),
-        paArray.length
-      );
+      const i = mod(paArray.indexOf(paValue) + (event.shiftKey ? -1 : 1), paArray.length);
       this.actor.update({
         [`data.stats.primaryAttributes.${key}.value`]: paArray[i],
       });

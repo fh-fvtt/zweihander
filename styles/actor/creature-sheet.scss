@@ -374,10 +374,7 @@ body.game.vtt.system-zweihander .zweihander.sheet.creature {
         flex: 1 0 0;
         font-size: 13px;
         grid-auto-rows: minmax(18px, 1fr);
-        grid-template-columns: repeat(
-          auto-fill,
-          minmax(max(130px, calc(100% / 2)), 1fr)
-        );
+        grid-template-columns: repeat(auto-fill, minmax(max(130px, calc(100% / 2)), 1fr));
         .skill {
           margin: 0;
           height: 18px;
@@ -434,7 +431,7 @@ body.game.vtt.system-zweihander .zweihander.sheet.creature {
         padding: 10px;
         resize: none;
         text-align: justify;
-        text-align-last: center;
+        /* text-align-last: center; */
         text-justify: newspaper;
         white-space: normal;
         &:focus {

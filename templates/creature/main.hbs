@@ -87,7 +87,8 @@
               class="sa-ladder">({{zhAdd data.stats.secondaryAttributes.perilThreshold.value '6'}}/{{zhAdd data.stats.secondaryAttributes.perilThreshold.value '12'}}/{{zhAdd data.stats.secondaryAttributes.perilThreshold.value '18'}})</span></span>
         </li>
         <li class="sa-parry">
-          <span class="sa-title">Parry</span>
+          <span class="sa-title"><a class="parry-roll" data-roll="1d100"
+            data-label="{{data.stats.secondaryAttributes.parry.associatedSkill}}">Parry</a></span>
           <span class="sa-value">
             <input class="sa-solo-value" size="2" type="number" name="data.stats.secondaryAttributes.parry.value"
               value="{{data.stats.secondaryAttributes.parry.value}}" {{#unless
@@ -95,7 +96,8 @@
           </span>
         </li>
         <li class="sa-dodge">
-          <span class="sa-title">Dodge</span>
+          <span class="sa-title dodge-roll"><a class="dodge-roll" data-roll="1d100"
+            data-label="{{data.stats.secondaryAttributes.dodge.associatedSkill}}">Dodge</a></span>
           <span class="sa-value">
             <input class="sa-solo-value" size="2" type="number" name="data.stats.secondaryAttributes.dodge.value"
               value="{{data.stats.secondaryAttributes.dodge.value}}" {{#unless
