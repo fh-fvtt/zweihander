@@ -60,15 +60,18 @@ body.game.vtt.system-zweihander .zweihander.sheet.actor {
         select {
           appearance: none;
         }
-        &.risk-factor {
+        .risk-factor {
           display: flex;
           width: auto;
+          flex: 1 0 content;
           .risk-factor-value {
+            flex: 1 0 0;
             border-right-style: none;
             border-top-right-radius: 0;
             border-bottom-right-radius: 0;
           }
           .risk-factor-notch {
+            flex: 1 0 0;
             border-left-style: none;
             border-top-left-radius: 0;
             border-bottom-left-radius: 0;

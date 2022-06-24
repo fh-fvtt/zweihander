@@ -22,6 +22,11 @@ export default class ZweihanderNpcSheet extends ZweihanderCreatureSheet {
     const sheetData = super.getData();
     sheetData.details = [
       {
+        choices: sheetData.choices,
+        template: 'partials/detail-risk-factor',
+        hidden: this.actor.limited
+      },
+      {
         key: 'details.age',
         placeholder: 'Age Group'
       },
