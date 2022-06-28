@@ -23,25 +23,30 @@ export const registerHandlebarHelpers = async function () {
 
   $$('zhAlignmentRanks', function (name, alignmentRanks, permanentRanks, options) {
     const alignment = name.split('.')[2];
-    const icon = alignment === 'chaos' ? 'ra-cancel' : 'ra-horseshoe';
-    const checked = options.hash['checked'] || null;
-    let html = '';
+    const icon = alignment === "chaos" ? "ra-cancel" : "ra-horseshoe";
+    const checked = options.hash['checked'] || 0;
+    const isChecked = (i) => Number(checked) === i;
+    const isPermanentRank = (i) => i <= permanentRanks;
     let uuid = uuidv4();
+    let html = `<input 
+                  type="radio"
+                  name="${name}"
+                  id="${uuid}.${name + 0}"
+                  value="${0}"
+                  ${isChecked(0) ? "checked" : ""}>`;
     for (let i = 1; i <= alignmentRanks; i++) {
-      const isChecked = Number(checked) === i;
-      const isPermanentRank = i <= permanentRanks;
       html += `
         <input 
           type="radio"
           name="${name}"
           id="${uuid}.${name + i}"
           value="${i}"
-          ${isChecked ? 'checked' : ''}
-          ${isPermanentRank ? 'disabled' : ''}>
+          ${isChecked(i) ? "checked" : ""}
+          ${isPermanentRank(i) ? "disabled" : ""}>
         <label
           for="${uuid}.${name + i}"
-          class="${isPermanentRank ? `permanent-rank ${alignment}` : 'regular-rank'}">
-          ${isPermanentRank ? `<span class='ra ${icon}'></span>` : i}
+          class="${isPermanentRank(i) ? `permanent-rank ${alignment}` : "regular-rank"}">
+          ${isPermanentRank(i) ? `<span class='ra ${icon}'></span>` : i}
         </label>
       `;
     }

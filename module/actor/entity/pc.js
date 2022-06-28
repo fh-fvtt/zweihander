@@ -139,7 +139,6 @@ export default class ZweihanderPC extends ZweihanderBaseActor {
   // parry, dodge & magick depend on Item preparation being finished
   prepareEmbeddedDocuments(actorData) {
     const noWarn = CONFIG.ZWEI.NO_WARN || actorData._id === null;
-
     const configOptions = ZweihanderActorConfig.getConfig(actorData);
     const data = actorData.data;
 
@@ -203,7 +202,7 @@ export default class ZweihanderPC extends ZweihanderBaseActor {
 
     update.token.actorLink = true;
 
-    await actorData.update(update);
+    await that.updateSource(update);
   }
 
   async _preUpdate(changed, options, user, actor) {
@@ -264,8 +263,7 @@ export default class ZweihanderPC extends ZweihanderBaseActor {
   }
 
   async createEmbeddedDocuments(embeddedName, data, context, actor) {
-    //console.log(embeddedName, data);
-    if (embeddedName === 'Item') {
+    if (embeddedName === "Item") {
       const filteredData = [];
       let ancestryAttached = actor.data.items.some((i) => i.type === 'ancestry');
       const actorProfessions = actor.data.items.filter((i) => i.type === 'profession');

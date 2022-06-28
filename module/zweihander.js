@@ -37,6 +37,8 @@ import ZweihanderActiveEffectConfig from './apps/active-effect-config';
 /*  Foundry VTT Initialization                  */
 /* -------------------------------------------- */
 
+CONFIG.compatibility.mode = CONST.COMPATIBILITY_MODES.SILENT
+
 const socket = new Promise((resolve) => {
   Hooks.once('socketlib.ready', () => {
     resolve(socketlib.registerSystem('zweihander'));
