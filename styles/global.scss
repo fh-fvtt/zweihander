@@ -39,6 +39,8 @@
 
   --zh-font-title: 'Dominican Small Caps' !important;
   --zh-font-default: 'Adobe Caslon Pro' !important;
+  --bb-font-title: 'BF' !important;
+  --bb-font-default: 'EF' !important;
 }
 
 .zweihander-theme-gruvbox-light {
@@ -352,4 +354,25 @@ body.game.vtt.system-zweihander {
   font-style: normal;
   font-weight: normal;
   src: url('./fonts/dominican-small-caps.woff2') format('woff2');
+}
+
+@font-face {
+  font-family: 'EF';
+  font-style: normal;
+  font-weight: normal;
+  src: url('./fonts/ef-r.woff2') format('woff2');
+}
+
+@font-face {
+  font-family: 'EF';
+  font-style: normal;
+  font-weight: bold;
+  src: url('./fonts/ef-b.woff2') format('woff2');
+}
+
+@font-face {
+  font-family: 'BF';
+  font-style: normal;
+  font-weight: normal;
+  src: url('./fonts/bf.woff2') format('woff2');
 }
