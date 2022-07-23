@@ -1,6 +1,6 @@
-const $$templatesToLoad= [];
+const $$templatesToLoad = [];
 const $$ = (path) => {
-  $$templatesToLoad.push('systems/zweihander/templates/' + path.split('/templates/')[1])
+  $$templatesToLoad.push('systems/zweihander/templates/' + path.split('/templates/')[1]);
 };
 
 import appActorConfig from '../templates/app/actor-config.hbs';
@@ -147,7 +147,7 @@ export const preloadHandlebarsTemplates = async function () {
 };
 
 if (import.meta.hot) {
-  import.meta.hot.on('handlebars-update', ({file, content}) => {
+  import.meta.hot.on('handlebars-update', ({ file, content }) => {
     const compiled = Handlebars.compile(content);
     Handlebars.registerPartial(file, compiled);
     _templateCache[file] = compiled;
@@ -157,5 +157,5 @@ if (import.meta.hot) {
     for (let w of Object.values(ui.windows)) {
       w.render();
     }
-  })
+  });
 }
