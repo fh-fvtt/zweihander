@@ -11,7 +11,7 @@
   <dt>Special Modifier</dt><dd> {{zhExplicitSign specialBaseChanceModifier}}%</dd>
   <dt>Capped Base Chance</dt><dd> {{baseChance}}%</dd>
   {{#if spellTest}}
-  <dt>Raw Difficulty</dt><dd> {{zhExplicitSign difficultyRating.raw}}% ({{zhCapitalize spell.data.principle}} Magick)</dd>
+  <dt>Raw Difficulty</dt><dd> {{zhExplicitSign difficultyRating.raw}}% ({{zhCapitalize spell.system.principle}} Magick)</dd>
   <dt>Channel Power Bonus</dt><dd> {{zhExplicitSign difficultyRating.channelPowerBonus}}%</dd>
   <dt>Total Difficulty</dt>{{else}}<dt>Difficulty</dt>{{/if}}<dd> {{zhExplicitSign difficultyRating.total}}%</dd>
   <dt>Result has been flipped</dt><dd> {{#if effectivelyFlipped}} yes {{else}} no {{/if}}</dd>
@@ -36,7 +36,7 @@
 
 {{#if chaosManifestation}}
   <div class="additional-outcome-info chaos-manifestation">
-    A {{zhCapitalize spell.data.principle}} Chaos Manifestation spawns!
+    A {{zhCapitalize spell.system.principle}} Chaos Manifestation spawns!
   </div>
 {{/if}}
 

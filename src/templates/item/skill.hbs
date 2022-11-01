@@ -1,6 +1,6 @@
 <div class="form-group stacked">
   <label>Associated Primary Attribute (for Base Chance)</label>
-  <select name="data.associatedPrimaryAttribute">
+  <select name="system.associatedPrimaryAttribute">
   {{#each choices.associatedPrimaryAttribute}}
   <option value="{{value}}" {{selected}}>{{label}}</option>
   {{/each}}
@@ -12,7 +12,7 @@
 <div class="form-group stacked">
   <label>Status</label>
   <label class="checkbox">
-    <input name="data.requiresTraining" type="checkbox" class="link-checkbox" {{checked data.requiresTraining}} />
+    <input name="system.requiresTraining" type="checkbox" class="link-checkbox" {{checked system.requiresTraining}} />
     Requires Training?
   </label>
 </div>

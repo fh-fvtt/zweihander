@@ -1,54 +1,54 @@
 <div class="form-group">
   <label>Distance</label>
-  <input name="data.distance" type="text" value="{{data.distance}}">
+  <input name="system.distance" type="text" value="{{system.distance}}">
 </div>
 
 <div class="form-group">
   <label>Tradition</label>
-  <input name="data.tradition" type="text" value="{{data.tradition}}">
+  <input name="system.tradition" type="text" value="{{system.tradition}}">
 </div>
 
 <div class="form-group">
   <label>Principle</label>
-  <input name="data.principle" type="text" value="{{data.principle}}">
+  <input name="system.principle" type="text" value="{{system.principle}}">
 </div>
 
 <div class="form-group stacked">
   <label><a class="open-editor">Reagents <i class="fa fa-edit"></i></a></label>
-    <div class="zh-editor-preview open">{{{zhProcessRuleText (zhLocalize data.rules.reagents)}}}</div>
-  {{editor content=(zhLocalize data.rules.reagents) target=(zhLocalizePath "data.rules.reagents") button=true owner=owner editable=editable}}
+    <div class="zh-editor-preview open">{{{zhProcessRuleText (zhLocalize system.rules.reagents)}}}</div>
+  {{editor content=(zhLocalize system.rules.reagents) target=(zhLocalizePath "system.rules.reagents") button=true owner=owner editable=editable}}
 </div>
 
 <div class="form-group">
   <label>Duration</label>
-  <input name="data.duration" type="text" value="{{data.duration}}">
+  <input name="system.duration" type="text" value="{{system.duration}}">
 </div>
 
 {{#if (eq settings.gameSystem 'fof') }}
 <div class="form-group">
   <label>Casting Time</label>
-  <input name="data.castingTime" type="text" value="{{data.castingTime}}">
+  <input name="system.castingTime" type="text" value="{{system.castingTime}}">
 </div>
 <div class="form-group">
   <label>Casting AP Cost</label>
-  <input name="data.castingCost" type="number" value="{{data.castingCost}}">
+  <input name="system.castingCost" type="number" value="{{system.castingCost}}">
 </div>
 {{/if}}
 
 <div class="form-group stacked">
   <label><a class="open-editor">Effect <i class="fa fa-edit"></i></a></label>
-    <div class="zh-editor-preview open">{{{zhProcessRuleText (zhLocalize data.rules.effect)}}}</div>
-  {{editor content=(zhLocalize data.rules.effect) target=(zhLocalizePath "data.rules.effect") button=true owner=owner editable=editable}}
+    <div class="zh-editor-preview open">{{{zhProcessRuleText (zhLocalize system.rules.effect)}}}</div>
+  {{editor content=(zhLocalize system.rules.effect) target=(zhLocalizePath "system.rules.effect") button=true owner=owner editable=editable}}
 </div>
 
 <div class="form-group stacked">
   <label><a class="open-editor">Critical Success <i class="fa fa-edit"></i></a></label>
-    <div class="zh-editor-preview open">{{{zhProcessRuleText (zhLocalize data.rules.criticalSuccess)}}}</div>
-  {{editor content=(zhLocalize data.rules.criticalSuccess) target=(zhLocalizePath "data.rules.criticalSuccess") button=true owner=owner editable=editable}}
+    <div class="zh-editor-preview open">{{{zhProcessRuleText (zhLocalize system.rules.criticalSuccess)}}}</div>
+  {{editor content=(zhLocalize system.rules.criticalSuccess) target=(zhLocalizePath "system.rules.criticalSuccess") button=true owner=owner editable=editable}}
 </div>
 
 <div class="form-group stacked">
   <label><a class="open-editor">Critical Failure<i class="fa fa-edit"></i></a></label>
-    <div class="zh-editor-preview open">{{{zhProcessRuleText (zhLocalize data.rules.criticalFailure)}}}</div>
-  {{editor content=(zhLocalize data.rules.criticalFailure) target=(zhLocalizePath "data.rules.criticalFailure") button=true owner=owner editable=editable}}
+    <div class="zh-editor-preview open">{{{zhProcessRuleText (zhLocalize system.rules.criticalFailure)}}}</div>
+  {{editor content=(zhLocalize system.rules.criticalFailure) target=(zhLocalizePath "system.rules.criticalFailure") button=true owner=owner editable=editable}}
 </div>

@@ -11,17 +11,17 @@
       <aside class="character-rp flexcol">
         <label class="rp-title"> Reward Points</label>
         <div class="rp-content flexrow">
-          <input class="rp-spent" type="number" name="data.stats.rewardPoints.current"
-            value="{{data.stats.rewardPoints.current}}"{{#if settings.trackRewardPoints}} readonly{{/if}} />
+          <input class="rp-spent" type="number" name="system.stats.rewardPoints.current"
+            value="{{system.stats.rewardPoints.current}}"{{#if settings.trackRewardPoints}} readonly{{/if}} />
           <span class="sep">/</span>
-          <input class="rp-gained" type="number" name="data.stats.rewardPoints.total"
-            value="{{data.stats.rewardPoints.total}}" />
+          <input class="rp-gained" type="number" name="system.stats.rewardPoints.total"
+            value="{{system.stats.rewardPoints.total}}" />
         </div>
         <div class="rp-other-pts flexrow">
           <span class="sep">Fate </span>
-          <input class="rp-fate" type="number" name="data.stats.fate" value="{{data.stats.fate}}" />
+          <input class="rp-fate" type="number" name="system.stats.fate" value="{{system.stats.fate}}" />
           <span class="sep">Rep. </span>
-          <input class="rp-rep" type="number" name="data.stats.reputation" value="{{data.stats.reputation}}" />
+          <input class="rp-rep" type="number" name="system.stats.reputation" value="{{system.stats.reputation}}" />
         </div>
       </aside>
       {{/unless}}
@@ -29,26 +29,26 @@
     {{> ($$ 'partials/details-list') }}
     {{#unless limited}}
     <div class="empty-placeholder"></div>
-    <input class="character-dooming" name="data.details.dooming" type="text" value="{{data.details.dooming}}"
+    <input class="character-dooming" name="system.details.dooming" type="text" value="{{system.details.dooming}}"
       placeholder="Dooming" />
     <section class="alignment-header">
-      <input class="order-title" name="data.alignment.order.name" type="text" value="{{data.alignment.order.name}}"
+      <input class="order-title" name="system.alignment.order.name" type="text" value="{{system.alignment.order.name}}"
         placeholder="Order Alignment" />
       <h1>Corruption
         <a class="reset-ranks"><i class="fas fa-sync-alt"></i></a>
       </h1>
-      <input class="chaos-title" name="data.alignment.chaos.name" type="text" value="{{data.alignment.chaos.name}}"
+      <input class="chaos-title" name="system.alignment.chaos.name" type="text" value="{{system.alignment.chaos.name}}"
         placeholder="Chaos Alignment" />
     </section>
     <section class="alignment-content">
       <section class="order-track">
-        {{zhAlignmentRanks "data.alignment.order.rank" config.alignmentRanks actorConfig.permanentOrderRanks
-        checked=data.alignment.order.rank}}
+        {{zhAlignmentRanks "system.alignment.order.rank" config.alignmentRanks actorConfig.permanentOrderRanks
+        checked=system.alignment.order.rank}}
       </section>
-      <input class="corruption" name="data.alignment.corruption" type="number" value="{{data.alignment.corruption}}">
+      <input class="corruption" name="system.alignment.corruption" type="number" value="{{system.alignment.corruption}}">
       <section class="chaos-track">
-        {{zhAlignmentRanks "data.alignment.chaos.rank" config.alignmentRanks actorConfig.permanentChaosRanks
-        checked=data.alignment.chaos.rank}}
+        {{zhAlignmentRanks "system.alignment.chaos.rank" config.alignmentRanks actorConfig.permanentChaosRanks
+        checked=system.alignment.chaos.rank}}
       </section>
     </section>
     {{/unless}}

@@ -1,46 +1,45 @@
 import { localizePath } from '../../utils';
 
-export function getItemGroups(data) {
-  console.log('SHEET TAB DEFS', data);
+export function getItemGroups(groupsData) {
   return {
     weapons: {
       title: 'Weapons',
       type: 'weapon',
       summaryTemplate: 'item-summary/weapon',
       rollType: 'weapon-roll',
-      rollLabelKey: 'data.associatedSkill',
+      rollLabelKey: 'system.associatedSkill',
       details: [
         {
           title: 'Distance',
           size: 100,
-          key: 'data.distance',
+          key: 'system.distance',
           class: 'inject-data',
         },
         {
           title: 'Load',
           size: 80,
-          key: 'data.load',
+          key: 'system.load',
         },
         {
           title: 'Enc.',
           size: 80,
-          key: 'data.encumbrance',
+          key: 'system.encumbrance',
           isNumerable: true,
         },
         {
           title: 'Equipped',
           size: 80,
-          key: 'data.equipped',
+          key: 'system.equipped',
           isCheckbox: true,
         },
         {
           title: 'Carried',
           size: 80,
-          key: 'data.carried',
+          key: 'system.carried',
           isCheckbox: true,
         },
       ],
-      items: data.weapons,
+      items: groupsData.weapons,
     },
     armor: {
       title: 'Armor',
@@ -50,28 +49,28 @@ export function getItemGroups(data) {
         {
           title: 'DTM',
           size: 80,
-          key: 'data.damageThresholdModifier',
+          key: 'system.damageThresholdModifier',
         },
         {
           title: 'Enc.',
           size: 80,
-          key: 'data.encumbrance',
+          key: 'system.encumbrance',
           isNumerable: true,
         },
         {
           title: 'Equipped',
           size: 80,
-          key: 'data.equipped',
+          key: 'system.equipped',
           isCheckbox: true,
         },
         {
           title: 'Carried',
           size: 80,
-          key: 'data.carried',
+          key: 'system.carried',
           isCheckbox: true,
         },
       ],
-      items: data.armor,
+      items: groupsData.armor,
     },
     trappings: {
       title: 'Trappings',
@@ -81,56 +80,56 @@ export function getItemGroups(data) {
         {
           title: 'Category',
           size: 160,
-          key: localizePath('data.details.category'),
+          key: localizePath('system.details.category'),
           filterable: true,
         },
         {
           title: 'Qty.',
           size: 80,
-          key: 'data.quantity',
+          key: 'system.quantity',
           isNumerable: true,
         },
         {
           title: 'Enc.',
           size: 80,
-          key: 'data.encumbrance',
+          key: 'system.encumbrance',
           isNumerable: true,
         },
         {
           title: 'Carried',
           size: 160,
-          key: 'data.carried',
+          key: 'system.carried',
           isCheckbox: true,
         },
       ],
-      items: data.trappings,
+      items: groupsData.trappings,
     },
     spells: {
       title: 'Spells',
       type: 'spell',
       summaryTemplate: 'item-summary/spell',
       rollType: 'spell-roll',
-      rollLabel: data.data.stats.secondaryAttributes.magick.associatedSkill,
+      rollLabel: groupsData.system.stats.secondaryAttributes.magick.associatedSkill,
       details: [
         {
           title: 'Principle',
           size: 140,
-          key: 'data.principle',
+          key: 'system.principle',
         },
         {
           title: 'Distance',
           size: 200,
-          key: 'data.distance',
+          key: 'system.distance',
           class: 'inject-data',
         },
         {
           title: 'Duration',
           size: 100,
-          key: 'data.duration',
+          key: 'system.duration',
           class: 'inject-data',
         },
       ],
-      items: data.spells,
+      items: groupsData.spells,
     },
     rituals: {
       title: 'Rituals',
@@ -140,21 +139,21 @@ export function getItemGroups(data) {
         {
           title: 'Channel Power As',
           size: 140,
-          key: 'data.channelAs',
+          key: 'system.channelAs',
         },
         {
           title: 'Difficulty',
           size: 200,
-          key: 'data.difficulty',
+          key: 'system.difficulty',
         },
         {
           title: 'Casting Time',
           size: 100,
-          key: 'data.castingTime',
+          key: 'system.castingTime',
           class: 'inject-data',
         },
       ],
-      items: data.rituals,
+      items: groupsData.rituals,
     },
     conditions: {
       title: 'Passive Conditions',
@@ -164,16 +163,16 @@ export function getItemGroups(data) {
         {
           title: 'Category',
           size: 140,
-          key: localizePath('data.details.category'),
+          key: localizePath('system.details.category'),
         },
         {
           title: 'Currently in Effect',
           size: 150,
-          key: 'data.active',
+          key: 'system.active',
           isCheckbox: true,
         },
       ],
-      items: data.conditions,
+      items: groupsData.conditions,
     },
     effects: {
       title: 'Temporary Conditions',
@@ -198,7 +197,7 @@ export function getItemGroups(data) {
           isCheckbox: true,
         },
       ],
-      items: data.effects,
+      items: groupsData.effects,
     },
     disorders: {
       title: 'Disorders',
@@ -208,16 +207,16 @@ export function getItemGroups(data) {
         {
           title: 'Category',
           size: 140,
-          key: localizePath('data.details.category'),
+          key: localizePath('system.details.category'),
         },
         {
           title: 'Currently in Effect',
           size: 150,
-          key: 'data.active',
+          key: 'system.active',
           isCheckbox: true,
         },
       ],
-      items: data.disorders,
+      items: groupsData.disorders,
     },
     diseases: {
       title: 'Diseases',
@@ -227,21 +226,21 @@ export function getItemGroups(data) {
         {
           title: 'Duration',
           size: 140,
-          key: 'data.duration',
+          key: 'system.duration',
         },
         {
           title: 'Resist',
           size: 140,
-          key: 'data.resist',
+          key: 'system.resist',
         },
         {
           title: 'Currently in Effect',
           size: 150,
-          key: 'data.active',
+          key: 'system.active',
           isCheckbox: true,
         },
       ],
-      items: data.diseases,
+      items: groupsData.diseases,
     },
     injuries: {
       title: 'Injuries',
@@ -251,7 +250,7 @@ export function getItemGroups(data) {
         {
           title: 'Recuperation Time',
           size: 140,
-          key: 'data.recuperationTime',
+          key: 'system.recuperationTime',
           isNumerable: true,
           unit: ' days',
         },
@@ -259,17 +258,17 @@ export function getItemGroups(data) {
           title: 'Severity',
           size: 140,
           value: function () {
-            return CONFIG.ZWEI.injurySeverities[this.data.severity].label;
+            return CONFIG.ZWEI.injurySeverities[this.system.severity].label;
           },
         },
         {
           title: 'Currently in Effect',
           size: 150,
-          key: 'data.active',
+          key: 'system.active',
           isCheckbox: true,
         },
       ],
-      items: data.injuries,
+      items: groupsData.injuries,
     },
     taints: {
       title: 'Taints of Chaos',
@@ -279,16 +278,16 @@ export function getItemGroups(data) {
         {
           title: 'Category',
           size: 140,
-          key: localizePath('data.details.category'),
+          key: localizePath('system.details.category'),
         },
         {
           title: 'Currently in Effect',
           size: 150,
-          key: 'data.active',
+          key: 'system.active',
           isCheckbox: true,
         },
       ],
-      items: data.taints,
+      items: groupsData.taints,
     },
     professions: {
       title: 'Professions',
@@ -298,22 +297,22 @@ export function getItemGroups(data) {
         {
           title: 'Tier',
           size: 120,
-          key: 'data.tier',
+          key: 'system.tier',
         },
         {
           title: 'Archetype',
           size: 140,
-          key: 'data.archetype',
+          key: 'system.archetype',
         },
         {
           title: 'Completed',
           size: 100,
-          key: 'data.completed',
+          key: 'system.completed',
           isCheckbox: true,
           classes: 'profession-checkbox',
         },
       ],
-      items: data.professions,
+      items: groupsData.professions,
     },
     traits: {
       title: 'Traits',
@@ -326,7 +325,7 @@ export function getItemGroups(data) {
           key: 'source',
         },
       ],
-      items: data.traits,
+      items: groupsData.traits,
     },
     drawbacks: {
       title: 'Drawbacks',
@@ -339,7 +338,7 @@ export function getItemGroups(data) {
           key: 'source',
         },
       ],
-      items: data.drawbacks,
+      items: groupsData.drawbacks,
     },
     talents: {
       title: 'Talents',
@@ -352,7 +351,7 @@ export function getItemGroups(data) {
           key: 'source',
         },
       ],
-      items: data.talents,
+      items: groupsData.talents,
     },
     uniqueAdvances: {
       title: 'Unique Advances',
@@ -362,22 +361,22 @@ export function getItemGroups(data) {
         {
           title: 'Type',
           size: 140,
-          key: 'data.advanceType',
+          key: 'system.advanceType',
         },
         {
           title: 'RP Cost',
           size: 100,
-          key: 'data.rewardPointCost',
+          key: 'system.rewardPointCost',
         },
       ],
-      items: data.uniqueAdvances,
+      items: groupsData.uniqueAdvances,
     },
   };
 }
 
-export function attachTabDefinitions(data) {
-  const $$ = (x) => data.itemGroups[x];
-  data.tabs = {
+export function attachTabDefinitions(tabData) {
+  const $$ = (x) => tabData.itemGroups[x];
+  tabData.tabs = {
     trappings: {
       headerTemplate: 'character/currency',
       footerTemplate: 'character/encumbrance-meter',

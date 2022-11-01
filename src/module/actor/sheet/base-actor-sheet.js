@@ -31,10 +31,10 @@ export default class ZweihanderBaseActorSheet extends ActorSheet {
 
   /** @override */
   getData(options) {
+    
     // Basic data
     let isOwner = this.actor.isOwner;
-    console.log('BARAHRANA', this.actor.data.effects);
-    const data = {
+    const sheetData = {
       owner: isOwner,
       limited: this.actor.limited,
       options: this.options,
@@ -50,32 +50,22 @@ export default class ZweihanderBaseActorSheet extends ActorSheet {
     };
 
     // The Actor's data
-    const actorData = this.actor.data.toObject(false);
-    data.actor = actorData;
-    data.data = actorData.data;
+    const actorData = this.actor.toObject(false);
+    sheetData.actor = actorData;
+    sheetData.system = actorData.system;
 
     // Owned Items
-    data.items = actorData.items;
-    data.items.sort((a, b) => (a.sort || 0) - (b.sort || 0));
+    sheetData.items = actorData.items;
+    sheetData.items.sort((a, b) => (a.sort || 0) - (b.sort || 0));
 
     // Prepare owned items
-    this._prepareItems(data);
+    this._prepareItems(sheetData);
 
-    console.log('GET DATAAAAAA ->->->', this.actor.data.effects.contents);
-
-    //data.effects = this.actor.data.toObject(true).effects;
-
-    const itemGroups = this._processItemGroups(this._getItemGroups(data));
-    data.itemGroups = ZweihanderUtils.assignPacks(this.actor.type, itemGroups);
-
-    // Prepare active effects
-    // data.effects = ActiveEffect5e.prepareActiveEffectCategories(this.actor.effects);
-
-    // Prepare warnings
-    // data.warnings = this.actor._preparationWarnings;
+    const itemGroups = this._processItemGroups(this._getItemGroups(sheetData));
+    sheetData.itemGroups = ZweihanderUtils.assignPacks(this.actor.type, itemGroups);
 
     // Return data to the sheet
-    return data;
+    return sheetData;
   }
 
   _prepareItems() {}
@@ -317,7 +307,6 @@ export default class ZweihanderBaseActorSheet extends ActorSheet {
     inputsToAutoSize.bind('input', (event) => autoSizeInput($(event.currentTarget)));
 
     const actor = this.actor;
-    const actorData = this.actor.data;
     // Edit Inventory Item
     html.find('.item-edit').click((ev) => {
       const i = $(ev.currentTarget).parents('.item');
@@ -355,7 +344,7 @@ export default class ZweihanderBaseActorSheet extends ActorSheet {
       const effect = this.actor.effects.get(i.data('itemId'));
       const type = game.i18n.localize(CONFIG.ActiveEffect.typeLabels['base']);
       await Dialog.confirm({
-        title: `Delete ${type}: ${effect.data.label}`,
+        title: `Delete ${type}: ${effect.label}`,
         content: `<h4>Are you sure?</h4><p>This ${type} will be permanently deleted and cannot be recovered.</p>`,
         yes: async () => {
           await this.actor.deleteEmbeddedDocuments('ActiveEffect', [effect.id]);
@@ -473,7 +462,7 @@ export default class ZweihanderBaseActorSheet extends ActorSheet {
       const item = this.actor.items.get(checkbox.data('itemId'));
       if (
         !event.currentTarget.checked &&
-        item.data.data.tier !== item.actor.data.data.tier
+        item.system.tier !== item.actor.system.tier
       ) {
         ui.notifications.error(
           `In order to reset this professions progress you have to delete the profession above it first!`
@@ -517,8 +506,8 @@ export default class ZweihanderBaseActorSheet extends ActorSheet {
       const li = $(event.currentTarget).parents('.item');
       const item = this.actor.items.get(li.data('itemId')).toObject(false);
       if (item.type === 'weapon' || item.type === 'armor') {
-        item.data.qualities = await ZweihanderQuality.getQualities(
-          item.data.qualities.value
+        item.system.qualities = await ZweihanderQuality.getQualities(
+          item.system.qualities.value
         );
       }
       //console.log(item);
@@ -580,7 +569,7 @@ export default class ZweihanderBaseActorSheet extends ActorSheet {
 
   _damageSheet(html) {
     const damage = Number(
-      this.actor.data.data.stats.secondaryAttributes.damageCurrent.value
+      this.actor.system.stats.secondaryAttributes.damageCurrent.value
     );
     const el = html.parents('.damage-tracker');
     for (let i = 0; i <= 4; i++) {
@@ -594,7 +583,7 @@ export default class ZweihanderBaseActorSheet extends ActorSheet {
 
   _perilSheet(html) {
     const peril = Number(
-      this.actor.data.data.stats.secondaryAttributes.perilCurrent.value
+      this.actor.system.stats.secondaryAttributes.perilCurrent.value
     );
     const el = html.find('.peril-tracker');
     for (let i = peril; i <= 4; i++) {

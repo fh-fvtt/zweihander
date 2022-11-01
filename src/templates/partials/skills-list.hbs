@@ -1,24 +1,24 @@
 <div class="skills-list save-scroll">
   {{#each skills as | skill | }}
   <div class="skill skill-roll flexrow" data-item-id="{{skill._id}}"
-    data-associated-pa="{{skill.data.associatedPrimaryAttribute}}"
-    data-rank="{{skill.data.rank}}" data-label="{{skill.name}}">
+    data-associated-pa="{{skill.system.associatedPrimaryAttribute}}"
+    data-rank="{{skill.system.rank}}" data-label="{{skill.name}}">
     <span class="skill-name">
       <span>
         {{skill.name}}
-      ({{zhGetFirstLetter skill.data.associatedPrimaryAttribute}})
-      {{#if skill.data.requiresTraining}}*{{/if}}
+      ({{zhGetFirstLetter skill.system.associatedPrimaryAttribute}})
+      {{#if skill.system.requiresTraining}}*{{/if}}
       </span>
     </span>
     <span class="skill-info flexrow">
-      <span class="skill-rank" title="{{skill.data.rank}}">
-        {{zhSkillRankAbbreviation skill.data.rank}}
+      <span class="skill-rank" title="{{skill.system.rank}}">
+        {{zhSkillRankAbbreviation skill.system.rank}}
       </span>
       <span class="skill-gain">
-        {{zhSkillBonus skill.data.bonus}}
+        {{zhSkillBonus skill.system.bonus}}
       </span>
     </span>
-    {{> ($$ 'partials/focuses-list') skill.data}}
+    {{> ($$ 'partials/focuses-list') skill.system}}
   </div>
   {{/each}}
 </div>

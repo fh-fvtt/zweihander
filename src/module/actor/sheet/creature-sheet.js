@@ -28,21 +28,21 @@ export default class ZweihanderCreatureSheet extends ZweihanderBaseActorSheet {
   getData(options) {
     const sheetData = super.getData();
     sheetData.choices = {};
-    const size = sheetData.data.details.size ?? 1;
+    const size = sheetData.system.details.size ?? 1;
     sheetData.choices.sizes = selectedChoice(size, [
       { value: 0, label: 'Small (S)' },
       { value: 1, label: 'Normal (N)' },
       { value: 2, label: 'Large (L)' },
       { value: 3, label: 'Huge (H)' },
     ]);
-    const rf = sheetData.data.details.riskFactor?.value ?? 0;
+    const rf = sheetData.system.details.riskFactor?.value ?? 0;
     sheetData.choices.riskFactors = selectedChoice(rf, [
       { value: 0, label: 'Basic' },
       { value: 1, label: 'Intermediate' },
       { value: 2, label: 'Advanced' },
       { value: 3, label: 'Elite' },
     ]);
-    const notch = sheetData.data.details.riskFactor?.notch ?? 1;
+    const notch = sheetData.system.details.riskFactor?.notch ?? 1;
     sheetData.choices.notches = selectedChoice(notch, [
       { value: 0, label: '(Low)' },
       { value: 1, label: '(Medium)' },
@@ -76,7 +76,7 @@ export default class ZweihanderCreatureSheet extends ZweihanderBaseActorSheet {
         hidden,
       },
       {
-        value: sheetData.data.languages,
+        value: sheetData.system.languages,
         placeholder: '?',
         template: 'partials/detail-languages',
         hidden,
@@ -91,7 +91,7 @@ export default class ZweihanderCreatureSheet extends ZweihanderBaseActorSheet {
     return sheetData;
   }
 
-  _prepareItems(data) {
+  _prepareItems(sheetData) {
     // set up collections for all item types
     const indexedTypes = [
       'trapping',
@@ -120,38 +120,38 @@ export default class ZweihanderCreatureSheet extends ZweihanderBaseActorSheet {
         armor: 'armor',
         quality: 'qualities',
       }[t] ?? t + 's');
-    indexedTypes.forEach((t) => (data[pluralize(t)] = []));
-    data.items
+    indexedTypes.forEach((t) => (sheetData[pluralize(t)] = []));
+    sheetData.items
       .filter((i) => indexedTypes.includes(i.type))
       .sort((a, b) => (a.sort || 0) - (b.sort || 0))
-      .forEach((i) => data[pluralize(i.type)].push(i));
+      .forEach((i) => sheetData[pluralize(i.type)].push(i));
     // sort skills alphabetically
-    data.skills = data.skills.sort((a, b) => a.name.localeCompare(b.name));
+    sheetData.skills = sheetData.skills.sort((a, b) => a.name.localeCompare(b.name));
     // add base chance to weapon data
-    data.weapons = data.weapons.map((w) => {
-      const skill = data.skills.find((s) => s.name === w.data.associatedSkill);
+    sheetData.weapons = sheetData.weapons.map((w) => {
+      const skill = sheetData.skills.find((s) => s.name === w.system.associatedSkill);
       const baseChance =
-        data.data.stats.primaryAttributes[
-          skill.data.associatedPrimaryAttribute.toLowerCase()
+        system.stats.primaryAttributes[
+          skill.system.associatedPrimaryAttribute.toLowerCase()
         ].value;
-      w.chance = baseChance + skill.data.bonus;
+      w.chance = baseChance + skill.system.bonus;
       return w;
     });
   }
 
-  _getItemGroups(data) {
+  _getItemGroups(sheetData) {
     return {
       weapons: {
         title: 'Attack Profiles',
         type: 'weapon',
         summaryTemplate: 'item-summary/weapon',
         rollType: 'weapon-roll',
-        rollLabelKey: 'data.associatedSkill',
+        rollLabelKey: 'system.associatedSkill',
         details: [
           {
             title: 'Distance',
             size: 120,
-            key: 'data.distance',
+            key: 'system.distance',
             class: 'inject-data',
           },
           {
@@ -162,10 +162,10 @@ export default class ZweihanderCreatureSheet extends ZweihanderBaseActorSheet {
           {
             title: 'Load',
             size: 55,
-            key: 'data.load',
+            key: 'system.load',
           },
         ],
-        items: data.weapons,
+        items: sheetData.weapons,
       },
       trappings: {
         title: 'Loot',
@@ -175,47 +175,47 @@ export default class ZweihanderCreatureSheet extends ZweihanderBaseActorSheet {
           {
             title: 'Qty.',
             size: 50,
-            key: 'data.quantity',
+            key: 'system.quantity',
           },
         ],
-        items: data.trappings,
+        items: sheetData.trappings,
       },
       traits: {
         title: 'Traits',
         type: 'trait',
         summaryTemplate: 'item-summary/trait',
         details: [],
-        items: data.traits,
+        items: sheetData.traits,
       },
       spells: {
         title: 'Spells',
         type: 'spell',
         summaryTemplate: 'item-summary/spell',
         rollType: 'spell-roll',
-        rollLabel: data.data.stats.secondaryAttributes.magick.associatedSkill,
+        rollLabel: system.stats.secondaryAttributes.magick.associatedSkill,
         details: [],
-        items: data.spells,
+        items: sheetData.spells,
       },
       taints: {
         title: 'Taints of Chaos',
         type: 'taint',
         summaryTemplate: 'item-summary/taint',
         details: [],
-        items: data.taints,
+        items: sheetData.taints,
       },
       conditions: {
         title: 'Conditions',
         type: 'condition',
         summaryTemplate: 'item-summary/condition',
         details: [],
-        items: data.conditions,
+        items: sheetData.conditions,
       },
       injuries: {
         title: 'Injuries',
         type: 'injury',
         summaryTemplate: 'item-summary/injury',
         details: [],
-        items: data.injuries,
+        items: sheetData.injuries,
       },
     };
   }
@@ -237,18 +237,18 @@ export default class ZweihanderCreatureSheet extends ZweihanderBaseActorSheet {
     // level skills
     html.find('.skills .skill').contextmenu((event) => {
       const skillId = event.currentTarget.dataset.itemId;
-      const skillName = this.actor.items.get(skillId).data.name;
-      const ranks = this.actor.data.data.skillRanks;
+      const skillName = this.actor.items.get(skillId).name;
+      const ranks = this.actor.system.skillRanks;
       ranks[skillName] = ((ranks[skillName] ?? 0) + 1) % 4;
-      this.actor.update({ 'data.skillRanks': ranks });
+      this.actor.update({ 'system.skillRanks': ranks });
     });
     // level bonus advances
     const updateBonusAdvances = (i) => (event) => {
       const pa = event.currentTarget.dataset.primaryAttribute;
       const bonusAdvances =
-        this.actor.data.data.stats.primaryAttributes[pa]?.bonusAdvances + i;
+        this.actor.system.stats.primaryAttributes[pa]?.bonusAdvances + i;
       this.actor.update({
-        [`data.stats.primaryAttributes.${pa}.bonusAdvances`]: bonusAdvances,
+        [`system.stats.primaryAttributes.${pa}.bonusAdvances`]: bonusAdvances,
       });
     };
     html.find('.pa-bonus-advance-substract').click(updateBonusAdvances(-1));
@@ -258,13 +258,13 @@ export default class ZweihanderCreatureSheet extends ZweihanderBaseActorSheet {
       .find('.manual-mode-button')
       .click(() => {
         this.actor.update({
-          'data.stats.manualMode': !this.actor.data.data.stats.manualMode,
+          'system.stats.manualMode': !this.actor.system.stats.manualMode,
         });
       })
       .contextmenu(() => {
-        if (!this.actor.data.data.stats.manualMode) {
-          const sa = this.actor.data.data.stats.secondaryAttributes;
-          const x = 'data.stats.secondaryAttributes';
+        if (!this.actor.system.stats.manualMode) {
+          const sa = this.actor.system.stats.secondaryAttributes;
+          const x = 'system.stats.secondaryAttributes';
           this.actor.update({
             [`${x}.movement.value`]: sa.movement.value,
             [`${x}.movement.fly`]: sa.movement.fly,
@@ -278,8 +278,8 @@ export default class ZweihanderCreatureSheet extends ZweihanderBaseActorSheet {
       });
     html.find('.primary-attributes .pa').contextmenu((event) => {
       const key = event.currentTarget.dataset.primaryAttribute;
-      const paValue = this.actor.data.data.stats.primaryAttributes[key].value;
-      const rf = this.actor.data.data.details.riskFactor.value;
+      const paValue = this.actor.system.stats.primaryAttributes[key].value;
+      const rf = this.actor.system.details.riskFactor.value;
       const paArray = rf < 3 ? [40, 45, 50, 35] : [50, 55];
       function mod(n, m) {
         // fix js mod bug -> maybe move this to utils
@@ -287,7 +287,7 @@ export default class ZweihanderCreatureSheet extends ZweihanderBaseActorSheet {
       }
       const i = mod(paArray.indexOf(paValue) + (event.shiftKey ? -1 : 1), paArray.length);
       this.actor.update({
-        [`data.stats.primaryAttributes.${key}.value`]: paArray[i],
+        [`system.stats.primaryAttributes.${key}.value`]: paArray[i],
       });
     });
   }

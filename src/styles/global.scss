@@ -212,6 +212,14 @@ body.game.vtt.system-zweihander {
   .window-app .window-content {
     background: var(--zh-clr-bg0);
   }
+
+  .window-app .journal-entry-content {
+    background: var(--zh-clr-bg0);
+    border: none;
+    border-radius: 0;
+    border-left: 2px groove var(--zh-clr-bg1);
+  }
+
   select,
   button {
     background-color: var(--zh-clr-bg1);
@@ -332,47 +340,47 @@ body.game.vtt.system-zweihander {
   font-family: 'Adobe Caslon Pro';
   font-style: normal;
   font-weight: normal;
-  src: url('./systems/zweihander/fonts/caslon-pro-regular.woff2') format('woff2');
+  src: url('/systems/zweihander/fonts/caslon-pro-regular.woff2') format('woff2');
 }
 
 @font-face {
   font-family: 'Adobe Caslon Pro';
   font-style: normal;
   font-weight: bold;
-  src: url('./systems/zweihander/fonts/caslon-pro-bold.woff2') format('woff2');
+  src: url('/systems/zweihander/fonts/caslon-pro-bold.woff2') format('woff2');
 }
 
 @font-face {
   font-family: 'Adobe Caslon Pro';
   font-style: italic;
   font-weight: normal;
-  src: url('./systems/zweihander/fonts/caslon-pro-italic.woff2') format('woff2');
+  src: url('/systems/zweihander/fonts/caslon-pro-italic.woff2') format('woff2');
 }
 
 @font-face {
   font-family: 'Dominican Small Caps';
   font-style: normal;
   font-weight: normal;
-  src: url('./systems/zweihander/fonts/dominican-small-caps.woff2') format('woff2');
+  src: url('/systems/zweihander/fonts/dominican-small-caps.woff2') format('woff2');
 }
 
 @font-face {
   font-family: 'EF';
   font-style: normal;
   font-weight: normal;
-  src: url('./systems/zweihander/fonts/ef-r.woff2') format('woff2');
+  src: url('/systems/zweihander/fonts/ef-r.woff2') format('woff2');
 }
 
 @font-face {
   font-family: 'EF';
   font-style: normal;
   font-weight: bold;
-  src: url('./systems/zweihander/fonts/ef-b.woff2') format('woff2');
+  src: url('/systems/zweihander/fonts/ef-b.woff2') format('woff2');
 }
 
 @font-face {
   font-family: 'BF';
   font-style: normal;
   font-weight: normal;
-  src: url('./systems/zweihander/fonts/bf.woff2') format('woff2');
+  src: url('/systems/zweihander/fonts/bf.woff2') format('woff2');
 }

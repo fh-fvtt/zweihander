@@ -2,7 +2,7 @@ import { ZWEI } from './config';
 
 export const migrateWorld = async (forceSystemPacks = false) => {
   ui.notifications.info(
-    `Applying Zweihander System Migration for version ${game.system.data.version}. Please be patient and do not close your game or shut down your server.`,
+    `Applying Zweihander System Migration for version ${game.system.version}. Please be patient and do not close your game or shut down your server.`,
     { permanent: true }
   );
   // Migrate World Actors
@@ -35,7 +35,7 @@ export const migrateWorld = async (forceSystemPacks = false) => {
   // Migrate Actor Override Tokens
   for (let s of game.scenes) {
     try {
-      const updateData = await migrateSceneData(s.data);
+      const updateData = await migrateSceneData(s);
       if (!foundry.utils.isObjectEmpty(updateData)) {
         console.log(`Migrating Scene document ${s.name}`);
         await s.update(updateData, { enforceTypes: false });
@@ -60,10 +60,10 @@ export const migrateWorld = async (forceSystemPacks = false) => {
   game.settings.set(
     'zweihander',
     'systemMigrationVersion',
-    game.system.data.version
+    game.system.version
   );
   ui.notifications.info(
-    `Zweihander System Migration to version ${game.system.data.version} completed!`,
+    `Zweihander System Migration to version ${game.system.version} completed!`,
     { permanent: true }
   );
 };
@@ -156,8 +156,8 @@ export const migrateSceneData = async (scene) => {
 const migrateFieldFactory =
   (documentDataObject, update) =>
   (oldKey, newKey, del = false, transform = false) => {
-    oldKey = `data.${oldKey}`;
-    newKey = `data.${newKey}`;
+    oldKey = `system.${oldKey}`;
+    newKey = `system.${newKey}`;
     let hasOldKey;
     try {
       hasOldKey = hasProperty(documentDataObject, oldKey);
@@ -174,7 +174,7 @@ const migrateFieldFactory =
           .split('.')
           .map((x, i, arr) => (i === arr.length - 1 ? `-=${x}` : x))
           .join('.');
-        update[typeof del == 'string' ? `data.-=${del}` : `${oldKeyDel}`] =
+        update[typeof del == 'string' ? `system.-=${del}` : `${oldKeyDel}`] =
           null;
       }
     }
@@ -183,7 +183,7 @@ const migrateFieldFactory =
 const migrateActorData = async (actor) => {
   const update = {};
   // Actor Data Updates
-  if (actor.data) {
+  if (actor) {
     // future migrations might need this
     const actorData =
       typeof actor.toObject === 'function' ? actor.toObject() : actor;
@@ -374,8 +374,8 @@ const migrateItemData = async (item) => {
     migrateField('specialTrait.value', 'specialTrait.name', 1);
     migrateField('professionalTrait.value', 'professionalTrait.name', 1);
     if (
-      itemData.data.bonusAdvances.length &&
-      itemData.data.bonusAdvances[0].value
+      itemData.system.bonusAdvances.length &&
+      itemData.system.bonusAdvances[0].value
     ) {
       migrateField('bonusAdvances', 'bonusAdvances', 0, (x) =>
         x.map((y) => {
@@ -385,7 +385,7 @@ const migrateItemData = async (item) => {
         })
       );
     }
-    if (itemData.data.talents.length && itemData.data.talents[0].value) {
+    if (itemData.system.talents.length && itemData.system.talents[0].value) {
       migrateField('talents', 'talents', 0, (x) =>
         x.map((y) => {
           y.name = y.value;
@@ -394,7 +394,7 @@ const migrateItemData = async (item) => {
         })
       );
     }
-    if (itemData.data.skillRanks.length && itemData.data.skillRanks[0].value) {
+    if (itemData.system.skillRanks.length && itemData.system.skillRanks[0].value) {
       migrateField('skillRanks', 'skillRanks', 0, (x) =>
         x.map((y) => {
           y.name = y.value;
@@ -435,7 +435,7 @@ export const migrateWorldSafe = async () => {
     return game.settings.set(
       'zweihander',
       'systemMigrationVersion',
-      game.system.data.version
+      game.system.version
     );
   const needsMigration =
     !currentVersion || isNewerVersion(NEEDS_MIGRATION_VERSION, currentVersion);

@@ -1,39 +1,39 @@
 <div class="form-group">
   <label>Casting Time</label>
-  <input  name="data.castingTime" type="text" value="{{data.castingTime}}">
+  <input  name="system.castingTime" type="text" value="{{system.castingTime}}">
 </div>
 
 <div class="form-group stacked">
   <label><a class="open-editor">Reagents <i class="fa fa-edit"></i></a></label>
-    <div class="zh-editor-preview open">{{{zhProcessRuleText (zhLocalize data.rules.reagents)}}}</div>
-  {{editor content=(zhLocalize data.rules.reagents) target=(zhLocalizePath "data.rules.reagents") button=true owner=owner editable=editable}}
+    <div class="zh-editor-preview open">{{{zhProcessRuleText (zhLocalize system.rules.reagents)}}}</div>
+  {{editor content=(zhLocalize system.rules.reagents) target=(zhLocalizePath "system.rules.reagents") button=true owner=owner editable=editable}}
 </div>
 
 <div class="form-group stacked">
   <label><a class="open-editor">Condition <i class="fa fa-edit"></i></a></label>
-    <div class="zh-editor-preview open">{{{zhProcessRuleText (zhLocalize data.rules.condition)}}}</div>
-  {{editor content=(zhLocalize data.rules.condition) target=(zhLocalizePath "data.rules.condition") button=true owner=owner editable=editable}}
+    <div class="zh-editor-preview open">{{{zhProcessRuleText (zhLocalize system.rules.condition)}}}</div>
+  {{editor content=(zhLocalize system.rules.condition) target=(zhLocalizePath "system.rules.condition") button=true owner=owner editable=editable}}
 </div>
 
 <div class="form-group">
   <label>Channel Power As</label>
-  <input  name="data.channelAs" type="text" value="{{data.channelAs}}">
+  <input  name="system.channelAs" type="text" value="{{system.channelAs}}">
 </div>
 
 <div class="form-group">
   <label>Difficulty</label>
-  <input  name="data.difficulty" type="text" value="{{data.difficulty}}">
+  <input  name="system.difficulty" type="text" value="{{system.difficulty}}">
 </div>
 
 <div class="form-group stacked">
   <label><a class="open-editor">Consequences <i class="fa fa-edit"></i></a></label>
-    <div class="zh-editor-preview open">{{{zhProcessRuleText (zhLocalize data.rules.consequences)}}}</div>
-  {{editor content=(zhLocalize data.rules.consequences) target=(zhLocalizePath "data.rules.consequences") button=true owner=owner editable=editable}}
+    <div class="zh-editor-preview open">{{{zhProcessRuleText (zhLocalize system.rules.consequences)}}}</div>
+  {{editor content=(zhLocalize system.rules.consequences) target=(zhLocalizePath "system.rules.consequences") button=true owner=owner editable=editable}}
 </div>
 
 
 <div class="form-group stacked">
   <label><a class="open-editor">Effect <i class="fa fa-edit"></i></a></label>
-    <div class="zh-editor-preview open">{{{zhProcessRuleText (zhLocalize data.rules.effect)}}}</div>
-  {{editor content=(zhLocalize data.rules.effect) target=(zhLocalizePath "data.rules.effect") button=true owner=owner editable=editable}}
+    <div class="zh-editor-preview open">{{{zhProcessRuleText (zhLocalize system.rules.effect)}}}</div>
+  {{editor content=(zhLocalize system.rules.effect) target=(zhLocalizePath "system.rules.effect") button=true owner=owner editable=editable}}
 </div>

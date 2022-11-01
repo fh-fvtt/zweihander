@@ -1,31 +1,31 @@
 <div class="form-group">
   <label>Resist</label>
-  <input name="data.resist" type="text" value="{{data.resist}}">
+  <input name="system.resist" type="text" value="{{system.resist}}">
 </div>
 
 <div class="form-group">
   <label>Duration</label>
-  <input name="data.duration" type="text" value="{{data.duration}}">
+  <input name="system.duration" type="text" value="{{system.duration}}">
 </div>
 
 <div class="form-group stacked">
   <label><a class="open-editor">Effect <i class="fa fa-edit"></i></a></label>
-  <div class="zh-editor-preview open">{{{zhProcessRuleText (zhLocalize data.rules.effect)}}}</div>
-  {{editor content=(zhLocalize data.rules.effect) target=(zhLocalizePath "data.rules.effect") button=true owner=owner
+  <div class="zh-editor-preview open">{{{zhProcessRuleText (zhLocalize system.rules.effect)}}}</div>
+  {{editor content=(zhLocalize system.rules.effect) target=(zhLocalizePath "system.rules.effect") button=true owner=owner
   editable=editable}}
 </div>
 
 <div class="form-group stacked">
   <label><a class="open-editor">Treatment <i class="fa fa-edit"></i></a></label>
-  <div class="zh-editor-preview open">{{{zhProcessRuleText (zhLocalize data.rules.treatment)}}}</div>
-  {{editor content=(zhLocalize data.rules.treatment) target=(zhLocalizePath "data.rules.treatment") button=true owner=owner
+  <div class="zh-editor-preview open">{{{zhProcessRuleText (zhLocalize system.rules.treatment)}}}</div>
+  {{editor content=(zhLocalize system.rules.treatment) target=(zhLocalizePath "system.rules.treatment") button=true owner=owner
   editable=editable}}
 </div>
 
 <div class="form-group stacked">
   <label>Status</label>
   <label class="checkbox">
-    <input name="data.active" type="checkbox" class="link-checkbox" {{checked data.active}} />
+    <input name="system.active" type="checkbox" class="link-checkbox" {{checked system.active}} />
     Currently in Effect
   </label>
 </div>

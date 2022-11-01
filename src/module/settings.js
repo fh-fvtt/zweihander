@@ -112,9 +112,7 @@ export const registerSystemSettings = function () {
         c
           .split(' ')
           .filter(
-            (c) =>
-              c.startsWith('zweihander-theme-') &&
-              c !== 'zweihander-theme-' + theme
+            (c) => c.startsWith('zweihander-theme-') && c !== 'zweihander-theme-' + theme
           )
       );
     },
@@ -138,8 +136,8 @@ export const registerSystemSettings = function () {
       removeUsedMisfortune: false,
       notifications: 'notify',
       size: 'normal',
-      fortunePath: 'systems/zweihander/assets/fortune-life.webp',
-      misfortunePath: 'systems/zweihander/assets/fortune-death.webp',
+      fortunePath: '/systems/zweihander/assets/fortune-life.webp',
+      misfortunePath: '/systems/zweihander/assets/fortune-death.webp',
     },
   });
   game.settings.registerMenu('zweihander', 'fortuneTrackerSettingsMenu', {

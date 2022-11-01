@@ -1,0 +1,21 @@
+@import 'styles/global.scss';
+@import 'styles/chat.scss';
+
+@import 'styles/base-sheet.scss';
+@import 'styles/actor/actor-base-sheet.scss';
+@import 'styles/actor/character-sheet.scss';
+@import 'styles/actor/creature-sheet.scss';
+@import 'styles/actor/npc-sheet.scss';
+@import 'styles/item/item-sheet.scss';
+
+@import 'styles/app/actor-config.scss';
+@import 'styles/app/fortune-tracker.scss';
+
+body.game.vtt.system-zweihander {
+  @import 'styles/3rd-party-styles/dice-so-nice.scss';
+  @import 'styles/3rd-party-styles/gm-screen.scss';
+  @import 'styles/3rd-party-styles/dice-tray.scss';
+  @import 'styles/3rd-party-styles/monks-enhanced-journal.scss';
+}
+
+@import 'styles/3rd-party-styles/rpg-awesome.scss';

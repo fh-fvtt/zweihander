@@ -14,11 +14,11 @@ export default class ZweihanderBaseActor {
     return Math.max(0, 4 - ladderValue) * 10;
   }
 
-  async _preCreate(actorData, options, user, that) {
+  async _preCreate(actor, options, user, that) {
     // add default set of skills
     const skillPack = game.packs.get(game.settings.get('zweihander', 'skillPack'));
     const skillsFromPack = (await skillPack.getDocuments()).map((i) => i.toObject());
-    await actorData.update(
+    await that.updateSource(
       { items: skillsFromPack },
       { keepId: true, keepEmbeddedIds: true }
     );

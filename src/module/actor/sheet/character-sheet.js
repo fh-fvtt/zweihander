@@ -38,7 +38,7 @@ export default class ZweihanderCharacterSheet extends ZweihanderBaseActorSheet {
   getData(options) {
     const sheetData = super.getData();
     // get actor config
-    sheetData.actorConfig = ZweihanderActorConfig.getConfig(this.actor.data);
+    sheetData.actorConfig = ZweihanderActorConfig.getConfig(this.actor);
     // bind currency
     sheetData.settings.currencies = game.settings.get(
       'zweihander',
@@ -55,26 +55,26 @@ export default class ZweihanderCharacterSheet extends ZweihanderBaseActorSheet {
         Intermediate: 200,
         Advanced: 300,
       };
-      sheetData.data.stats.rewardPoints.spent = sheetData.professions
+      sheetData.system.stats.rewardPoints.spent = sheetData.professions
         .map(
           (profession) =>
-            tierMultiplier[profession.data.tier] *
-            profession.data.advancesPurchased
+            tierMultiplier[profession.system.tier] *
+            profession.system.advancesPurchased
         )
         .concat(
           sheetData.uniqueAdvances.map(
-            (advance) => advance.data.rewardPointCost
+            (advance) => advance.system.rewardPointCost
           )
         )
         .reduce((a, b) => a + b, 0);
-      sheetData.data.stats.rewardPoints.current =
-        sheetData.data.stats.rewardPoints.total -
-        sheetData.data.stats.rewardPoints.spent;
+      sheetData.system.stats.rewardPoints.current =
+        sheetData.system.stats.rewardPoints.total -
+        sheetData.system.stats.rewardPoints.spent;
     }
     attachTabDefinitions(sheetData);
     const hidden = this.actor.limited;
     const ancestry = sheetData.ancestry?.[0]?.name;
-    const pronoun = sheetData.data.details.pronoun || '?';
+    const pronoun = sheetData.system.details.pronoun || '?';
 
     sheetData.details = [
       {
@@ -98,7 +98,7 @@ export default class ZweihanderCharacterSheet extends ZweihanderBaseActorSheet {
         value:
           [...sheetData.professions]?.sort((professionA, professionB) => {
             const tiers = { Basic: 1, Intermediate: 2, Advanced: 3 };
-            return tiers[professionA.data.tier] - tiers[professionB.data.tier];
+            return tiers[professionA.system.tier] - tiers[professionB.system.tier];
           })[sheetData.professions.length - 1]?.name ?? '?',
         hidden,
       },
@@ -166,7 +166,7 @@ export default class ZweihanderCharacterSheet extends ZweihanderBaseActorSheet {
       },
       {
         prefix: 'and speaks',
-        value: sheetData.data.languages,
+        value: sheetData.system.languages,
         placeholder: '?',
         template: 'partials/detail-languages',
         hidden,
@@ -176,7 +176,7 @@ export default class ZweihanderCharacterSheet extends ZweihanderBaseActorSheet {
     return sheetData;
   }
 
-  _prepareItems(data) {
+  _prepareItems(sheetData) {
     // set up collections for all item types
     const indexedTypes = [
       'trapping',
@@ -206,18 +206,18 @@ export default class ZweihanderCharacterSheet extends ZweihanderBaseActorSheet {
         armor: 'armor',
         quality: 'qualities',
       }[t] ?? t + 's');
-    indexedTypes.forEach((t) => (data[pluralize(t)] = []));
-    data.items
+    indexedTypes.forEach((t) => (sheetData[pluralize(t)] = []));
+    sheetData.items
       .filter((i) => indexedTypes.includes(i.type))
       .sort((a, b) => (a.sort || 0) - (b.sort || 0))
-      .forEach((i) => data[pluralize(i.type)].push(i));
+      .forEach((i) => sheetData[pluralize(i.type)].push(i));
     // sort skills alphabetically
-    data.skills = data.skills.sort((a, b) => a.name.localeCompare(b.name));
+    sheetData.skills = sheetData.skills.sort((a, b) => a.name.localeCompare(b.name));
     // sort professions by tier
-    data.professions = data.professions.sort(
+    sheetData.professions = sheetData.professions.sort(
       (a, b) =>
-        CONFIG.ZWEI.tiersInversed[a.data.tier] -
-        CONFIG.ZWEI.tiersInversed[b.data.tier]
+        CONFIG.ZWEI.tiersInversed[a.system.tier] -
+        CONFIG.ZWEI.tiersInversed[b.system.tier]
     );
     // add source information from flags
     const addSource = (items) =>
@@ -226,29 +226,29 @@ export default class ZweihanderCharacterSheet extends ZweihanderBaseActorSheet {
         source: i.flags.zweihander?.source?.label ?? 'Manual',
         isManualSource: i.flags.zweihander?.source?.label ? false : true,
       }));
-    data.drawbacks = addSource(data.drawbacks);
-    data.traits = addSource(data.traits);
-    data.talents = addSource(data.talents);
+    sheetData.drawbacks = addSource(sheetData.drawbacks);
+    sheetData.traits = addSource(sheetData.traits);
+    sheetData.talents = addSource(sheetData.talents);
     // filter purchased talents
-    data.talents = data.talents.filter(
+    sheetData.talents = sheetData.talents.filter(
       (talent) =>
         talent.isManualSource ||
-        data.professions.some((p) =>
-          p.data.talents.some((t) => t.linkedId === talent._id && t.purchased)
+        sheetData.professions.some((p) =>
+          p.system.talents.some((t) => t.linkedId === talent._id && t.purchased)
         )
     );
     // filter focuses data
-    data.focuses = data.uniqueAdvances
-      .filter((ua) => ua.data.associatedFocusSkill)
+    sheetData.focuses = sheetData.uniqueAdvances
+      .filter((ua) => ua.system.associatedFocusSkill)
       .map((ua) => ({
-        skillName: ua.data.associatedFocusSkill,
+        skillName: ua.system.associatedFocusSkill,
         name: ua.name,
       }));
-    data.skills.forEach((skill) => {
-      const focuses = data.focuses
+    sheetData.skills.forEach((skill) => {
+      const focuses = sheetData.focuses
         .filter((focus) => focus.skillName === skill.name)
         .map((focus) => focus.name);
-      skill.data.focuses = focuses;
+      skill.system.focuses = focuses;
     });
   }
 
@@ -313,24 +313,24 @@ export default class ZweihanderCharacterSheet extends ZweihanderBaseActorSheet {
         $(professionElement).data('itemId')
       );
       const locked =
-        professionItem.data.data.completed &&
-        this.actor.data.data.tier !== professionItem.data.data.tier;
+        professionItem.system.completed &&
+        this.actor.system.tier !== professionItem.system.tier;
       if (locked) {
         ui.notifications.error(
-          `Cannot perform operation: ${professionItem.data.data.tier} Tier locked.`
+          `Cannot perform operation: ${professionItem.system.tier} Tier locked.`
         );
         return;
       }
-      const updated = professionItem.data.data[field].map((x, i) =>
+      const updated = professionItem.system[field].map((x, i) =>
         i === index ? { ...x, purchased: !x.purchased } : x
       );
-      await professionItem.update({ [`data.${field}`]: updated });
+      await professionItem.update({ [`system.${field}`]: updated });
     };
     html.find('.purchase-link').click(updatePurchased);
 
     html.find('.reset-ranks').click(() => {
       this.actor.update({
-        'data.alignment.corruption': 0,
+        'system.alignment.corruption': 0,
       });
     });
     // Reset Order and Chaos Ranks
@@ -340,8 +340,8 @@ export default class ZweihanderCharacterSheet extends ZweihanderBaseActorSheet {
         content: `<h4>Are you sure?</h4><p>Your Order and Chaos Ranks will be reset to 0!</p>`,
         yes: () =>
           this.actor.update({
-            'data.alignment.chaos.rank': 0,
-            'data.alignment.order.rank': 0,
+            'system.alignment.chaos.rank': 0,
+            'system.alignment.order.rank': 0,
           }),
         defaultYes: false,
       });
@@ -371,7 +371,7 @@ export default class ZweihanderCharacterSheet extends ZweihanderBaseActorSheet {
       const itemElement = $(event.currentTarget).parents('.item');
       const item = this.actor.items.get($(itemElement).data('itemId'));
 
-      const newNumerableValue = lookup(item.data, numerablePath) + i;
+      const newNumerableValue = lookup(item.system, numerablePath) + i;
 
       await item.update({
         [`${numerablePath}`]: newNumerableValue >= 0 ? newNumerableValue : 0,
@@ -404,7 +404,7 @@ export default class ZweihanderCharacterSheet extends ZweihanderBaseActorSheet {
 
   _updateEncumbranceMeter(html) {
     const encumbranceData =
-      this.actor.data.data.stats.secondaryAttributes.encumbrance;
+      this.actor.system.stats.secondaryAttributes.encumbrance;
     const currentEncumbrance = encumbranceData.current;
     const totalEncumbrance = encumbranceData.value;
     let ratio = (currentEncumbrance / totalEncumbrance) * 100;

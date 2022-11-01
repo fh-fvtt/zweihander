@@ -9,12 +9,12 @@
     {{#unless limited}}
     <section class="actor-resources">
       <section class="peril-ladder">
-        {{zhConditionLadder "data.stats.secondaryAttributes.perilCurrent.value" config.perilOptions
-        checked=data.stats.secondaryAttributes.perilCurrent.value}}
+        {{zhConditionLadder "system.stats.secondaryAttributes.perilCurrent.value" config.perilOptions
+        checked=system.stats.secondaryAttributes.perilCurrent.value}}
       </section>
       <section class="damage-ladder">
-        {{zhConditionLadder "data.stats.secondaryAttributes.damageCurrent.value" config.damageOptions
-        checked=data.stats.secondaryAttributes.damageCurrent.value}}
+        {{zhConditionLadder "system.stats.secondaryAttributes.damageCurrent.value" config.damageOptions
+        checked=system.stats.secondaryAttributes.damageCurrent.value}}
       </section>
     </section>
     {{/unless}}
@@ -24,13 +24,13 @@
   <section class="sheet-body">
     <section class="stats flexcol">
       <h1>Attributes <a class="manual-mode-button"><i
-            class="fas fa-toggle-{{#if data.stats.manualMode}}on{{else}}off{{/if}}"></i> Manual Mode</a></h1>
+            class="fas fa-toggle-{{#if system.stats.manualMode}}on{{else}}off{{/if}}"></i> Manual Mode</a></h1>
       <ul class="primary-attributes flexrow">
-        {{#each data.stats.primaryAttributes as | attr key | }}
+        {{#each system.stats.primaryAttributes as | attr key | }}
         <li class="pa pa-{{key}}" data-primary-attribute="{{key}}">
           <span class="pa-title">{{key}}</span>
           <div class="pa-display flexrow">
-            <input class="pa-value" size="2" type="number" name="data.stats.primaryAttributes.{{key}}.value"
+            <input class="pa-value" size="2" type="number" name="system.stats.primaryAttributes.{{key}}.value"
               value="{{attr.value}}">
             <div class="pa-icon"><span class="{{lookup ../config.primaryAttributeIcons key}}"></span></div>
             <div class="pa-bonus-container flexcol">
@@ -50,58 +50,58 @@
         <li class="sa-int">
           <span class="sa-title">Initiative</span>
           <span class="sa-value">
-            <input class="sa-solo-value" size="2" type="number" name="data.stats.secondaryAttributes.initiative.value"
-              value="{{data.stats.secondaryAttributes.initiative.value}}" {{#unless
-              data.stats.manualMode}}readonly{{/unless}}>
+            <input class="sa-solo-value" size="2" type="number" name="system.stats.secondaryAttributes.initiative.value"
+              value="{{system.stats.secondaryAttributes.initiative.value}}" {{#unless
+              system.stats.manualMode}}readonly{{/unless}}>
           </span>
         </li>
         <li class="sa-mov">
           <span class="sa-title">Move / Fly</span>
           <span class="sa-value">
-            <input size="2" type="number" name="data.stats.secondaryAttributes.movement.value"
-              value="{{data.stats.secondaryAttributes.movement.value}}" {{#unless
-              data.stats.manualMode}}readonly{{/unless}}>
+            <input size="2" type="number" name="system.stats.secondaryAttributes.movement.value"
+              value="{{system.stats.secondaryAttributes.movement.value}}" {{#unless
+              system.stats.manualMode}}readonly{{/unless}}>
             <span class="sa-value-fly">
-              /<input size="2" type="number" name="data.stats.secondaryAttributes.movement.fly"
-                value="{{data.stats.secondaryAttributes.movement.fly}}" {{#unless
-                data.stats.manualMode}}readonly{{/unless}}>
+              /<input size="2" type="number" name="system.stats.secondaryAttributes.movement.fly"
+                value="{{system.stats.secondaryAttributes.movement.fly}}" {{#unless
+                system.stats.manualMode}}readonly{{/unless}}>
             </span>
           </span>
         </li>
         <li class="sa-dth">
           <span class="sa-title">DTh</span>
           <span class="sa-value">
-            <input size="2" type="number" name="data.stats.secondaryAttributes.damageThreshold.value"
-              value="{{data.stats.secondaryAttributes.damageThreshold.value}}" {{#unless
-              data.stats.manualMode}}readonly{{/unless}}>
+            <input size="2" type="number" name="system.stats.secondaryAttributes.damageThreshold.value"
+              value="{{system.stats.secondaryAttributes.damageThreshold.value}}" {{#unless
+              system.stats.manualMode}}readonly{{/unless}}>
             <span
-              class="sa-ladder">({{zhAdd data.stats.secondaryAttributes.damageThreshold.value '6'}}/{{zhAdd data.stats.secondaryAttributes.damageThreshold.value '12'}}/{{zhAdd data.stats.secondaryAttributes.damageThreshold.value '18'}})</span></span>
+              class="sa-ladder">({{zhAdd system.stats.secondaryAttributes.damageThreshold.value '6'}}/{{zhAdd system.stats.secondaryAttributes.damageThreshold.value '12'}}/{{zhAdd system.stats.secondaryAttributes.damageThreshold.value '18'}})</span></span>
         </li>
         <li class="sa-dth">
           <span class="sa-title">PTh</span>
           <span class="sa-value">
-            <input size="2" type="number" name="data.stats.secondaryAttributes.perilThreshold.value"
-              value="{{data.stats.secondaryAttributes.perilThreshold.value}}" {{#unless
-              data.stats.manualMode}}readonly{{/unless}}>
+            <input size="2" type="number" name="system.stats.secondaryAttributes.perilThreshold.value"
+              value="{{system.stats.secondaryAttributes.perilThreshold.value}}" {{#unless
+              system.stats.manualMode}}readonly{{/unless}}>
             <span
-              class="sa-ladder">({{zhAdd data.stats.secondaryAttributes.perilThreshold.value '6'}}/{{zhAdd data.stats.secondaryAttributes.perilThreshold.value '12'}}/{{zhAdd data.stats.secondaryAttributes.perilThreshold.value '18'}})</span></span>
+              class="sa-ladder">({{zhAdd system.stats.secondaryAttributes.perilThreshold.value '6'}}/{{zhAdd system.stats.secondaryAttributes.perilThreshold.value '12'}}/{{zhAdd system.stats.secondaryAttributes.perilThreshold.value '18'}})</span></span>
         </li>
         <li class="sa-parry">
           <span class="sa-title"><a class="parry-roll" data-roll="1d100"
-            data-label="{{data.stats.secondaryAttributes.parry.associatedSkill}}">Parry</a></span>
+            data-label="{{system.stats.secondaryAttributes.parry.associatedSkill}}">Parry</a></span>
           <span class="sa-value">
-            <input class="sa-solo-value" size="2" type="number" name="data.stats.secondaryAttributes.parry.value"
-              value="{{data.stats.secondaryAttributes.parry.value}}" {{#unless
-              data.stats.manualMode}}readonly{{/unless}}>
+            <input class="sa-solo-value" size="2" type="number" name="system.stats.secondaryAttributes.parry.value"
+              value="{{system.stats.secondaryAttributes.parry.value}}" {{#unless
+              system.stats.manualMode}}readonly{{/unless}}>
           </span>
         </li>
         <li class="sa-dodge">
           <span class="sa-title dodge-roll"><a class="dodge-roll" data-roll="1d100"
-            data-label="{{data.stats.secondaryAttributes.dodge.associatedSkill}}">Dodge</a></span>
+            data-label="{{system.stats.secondaryAttributes.dodge.associatedSkill}}">Dodge</a></span>
           <span class="sa-value">
-            <input class="sa-solo-value" size="2" type="number" name="data.stats.secondaryAttributes.dodge.value"
-              value="{{data.stats.secondaryAttributes.dodge.value}}" {{#unless
-              data.stats.manualMode}}readonly{{/unless}}>
+            <input class="sa-solo-value" size="2" type="number" name="system.stats.secondaryAttributes.dodge.value"
+              value="{{system.stats.secondaryAttributes.dodge.value}}" {{#unless
+              system.stats.manualMode}}readonly{{/unless}}>
           </span>
         </li>
       </ul>
@@ -121,8 +121,8 @@
     </section>
     <aside class="description">
       <h1>Description</h1>
-      <textarea spellcheck="false" name="data.flavor.description"
-        placeholder="Put a nice description of your creature here...">{{data.flavor.description}}</textarea>
+      <textarea spellcheck="false" name="system.flavor.description"
+        placeholder="Put a nice description of your creature here...">{{system.flavor.description}}</textarea>
     </aside>
   </section>
   {{/unless}}

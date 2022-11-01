@@ -1,30 +1,30 @@
 <div class="form-group">
   <label>Trapping Type</label>
-  <input name="{{zhLocalizePath 'data.details.category'}}" type="text" value="{{zhLocalize data.details.category}}">
+  <input name="{{zhLocalizePath 'system.details.category'}}" type="text" value="{{zhLocalize system.details.category}}">
 </div>
 
 <div class="form-group">
   <label>Quantity</label>
-  <input name="data.quantity" type="number" value="{{data.quantity}}">
+  <input name="system.quantity" type="number" value="{{system.quantity}}">
 </div>
 
 <div class="form-group">
   <label>Encumbrance (Single)</label>
-  <input name="data.encumbrance" type="number" value="{{data.encumbrance}}">
+  <input name="system.encumbrance" type="number" value="{{system.encumbrance}}">
 </div>
 
 <div class="form-group stacked">
   <label><a class="open-editor">Effect <i class="fa fa-edit"></i></a></label>
-    <div class="zh-editor-preview open">{{{zhProcessRuleText (zhLocalize data.rules.effect)}}}</div>
-  {{editor content=(zhLocalize data.rules.effect) target=(zhLocalizePath "data.rules.effect") button=true owner=owner editable=editable}}
+    <div class="zh-editor-preview open">{{{zhProcessRuleText (zhLocalize system.rules.effect)}}}</div>
+  {{editor content=(zhLocalize system.rules.effect) target=(zhLocalizePath "system.rules.effect") button=true owner=owner editable=editable}}
 </div>
 
-{{zhPriceInputs data.price}}
+{{zhPriceInputs system.price}}
 
 {{!-- <div class="form-group stacked">
   <label>Status</label>
   <label class="checkbox">
-    <input name="data.carried" type="checkbox" class="link-checkbox" {{checked data.carried}} />
+    <input name="system.carried" type="checkbox" class="link-checkbox" {{checked system.carried}} />
     Carried
   </label>
 </div> --}}

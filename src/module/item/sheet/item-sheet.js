@@ -38,9 +38,9 @@ export default class ZweihanderItemSheet extends ItemSheet {
     const actor = this.item.actor;
     const dragData = {
       type: 'Item',
-      data: this.item.data,
+      data: this.item,
       actorId: actor?.id ?? null,
-      ceneId: actor?.isToken ? canvas.scene?.id : null,
+      sceneId: actor?.isToken ? canvas.scene?.id : null,
       tokenId: actor?.isToken ? actor.token.id : null,
     };
     // Set data transfer
@@ -49,18 +49,18 @@ export default class ZweihanderItemSheet extends ItemSheet {
 
   /** @override */
   async getData() {
-    const data = super.getData().data;
-    data.owner = this.item.isOwner;
-    data.editable = this.isEditable;
-    data.rollData = this.item.getRollData.bind(this.item);
-    data.settings = ZweihanderUtils.getSheetSettings();
-    data.actor = this.item.actor;
-    data.choices = {};
-    if (data.type === 'skill') {
-      data.choices.associatedPrimaryAttribute =
+    const sheetData = super.getData().data;
+    sheetData.owner = this.item.isOwner;
+    sheetData.editable = this.isEditable;
+    sheetData.rollData = this.item.getRollData.bind(this.item);
+    sheetData.settings = ZweihanderUtils.getSheetSettings();
+    sheetData.actor = this.item.actor;
+    sheetData.choices = {};
+    if (sheetData.type === 'skill') {
+      sheetData.choices.associatedPrimaryAttribute =
         CONFIG.ZWEI.primaryAttributes.map((option) => ({
           selected:
-            (data.data.associatedPrimaryAttribute.toLowerCase() ?? 'combat') ===
+            (system.associatedPrimaryAttribute.toLowerCase() ?? 'combat') ===
             option
               ? 'selected'
               : '',
@@ -68,41 +68,40 @@ export default class ZweihanderItemSheet extends ItemSheet {
           label: option.capitalize(),
         }));
     }
-    if (data.type === 'profession') {
-      data.choices.archetypes = ZweihanderUtils.selectedChoice(
-        data.data.archetype ?? CONFIG.ZWEI.archetypes[0],
+    if (sheetData.type === 'profession') {
+      sheetData.choices.archetypes = ZweihanderUtils.selectedChoice(
+        system.archetype ?? CONFIG.ZWEI.archetypes[0],
         CONFIG.ZWEI.archetypes.map((option) => ({
           value: option,
           label: option,
         }))
       );
     }
-    if (data.type === 'injury') {
-      data.choices.severities = ZweihanderUtils.selectedChoice(
-        data.data.severity ?? 0,
+    if (sheetData.type === 'injury') {
+      sheetData.choices.severities = ZweihanderUtils.selectedChoice(
+        system.severity ?? 0,
         CONFIG.ZWEI.injurySeverities
       );
     }
-    if (data.type === 'weapon') {
+    if (sheetData.type === 'weapon') {
       const skillPack = game.packs.get(
         game.settings.get('zweihander', 'skillPack')
       );
-      data.skills = (await skillPack.getDocuments())
+      sheetData.skills = (await skillPack.getDocuments())
         .map((x) => x.name)
         .sort((a, b) => a.localeCompare(b));
     }
-    return data;
+    return sheetData;
   }
 
   activateListeners(html) {
     super.activateListeners(html);
-    let data = this.object.data;
     let fp = new FilePicker({
       type: 'image',
-      current: data.img,
+      current: this.object.img,
       displayMode: 'thumbs',
       callback: (path) => {
-        data.document.update({ img: path });
+        this.object.update({ img: path });
         this.render(true);
       },
     });
@@ -140,10 +139,10 @@ export default class ZweihanderItemSheet extends ItemSheet {
   async _updateObject(event, formData) {
     //@todo move to ZweihanderAncestry#update
     if (this.item.type === 'ancestry') {
-      const trait = formData['data.ancestralTrait.name'];
+      const trait = formData['system.ancestralTrait.name'];
       const item = await ZweihanderUtils.findItemWorldWide('trait', trait);
       if (item) {
-        formData['data.ancestralTrait.name'] = item.name;
+        formData['system.ancestralTrait.name'] = item.name;
       }
       if (!item && trait.trim() !== '') {
         ui?.notifications.warn(
@@ -159,11 +158,11 @@ export default class ZweihanderItemSheet extends ItemSheet {
         }
       }
     } else if (this.item.type === 'profession') {
-      const profTrait = formData['data.professionalTrait.name'];
+      const profTrait = formData['system.professionalTrait.name'];
       let item;
       item = await ZweihanderUtils.findItemWorldWide('trait', profTrait);
       if (item) {
-        formData['data.professionalTrait.name'] = item.name;
+        formData['system.professionalTrait.name'] = item.name;
       }
       if (!item && profTrait.trim() !== '') {
         ui?.notifications.warn(
@@ -178,10 +177,10 @@ export default class ZweihanderItemSheet extends ItemSheet {
           );
         }
       }
-      const specTrait = formData['data.specialTrait.name'];
+      const specTrait = formData['system.specialTrait.name'];
       item = await ZweihanderUtils.findItemWorldWide('trait', specTrait);
       if (item) {
-        formData['data.specialTrait.name'] = item.name;
+        formData['system.specialTrait.name'] = item.name;
       }
       if (!item && specTrait.trim() !== '') {
         ui?.notifications.warn(
@@ -196,10 +195,10 @@ export default class ZweihanderItemSheet extends ItemSheet {
           );
         }
       }
-      const drawback = formData['data.drawback.name'];
+      const drawback = formData['system.drawback.name'];
       item = await ZweihanderUtils.findItemWorldWide('drawback', drawback);
       if (item) {
-        formData['data.drawback.name'] = item.name;
+        formData['system.drawback.name'] = item.name;
       }
       if (!item && drawback.trim() !== '') {
         ui?.notifications.warn(
@@ -240,8 +239,8 @@ export default class ZweihanderItemSheet extends ItemSheet {
       if (inputs.length === 0) return;
     }
     switch (target) {
-      case 'data.ancestralModifiers.negative':
-      case 'data.ancestralModifiers.positive':
+      case 'system.ancestralModifiers.negative':
+      case 'system.ancestralModifiers.positive':
         array = array.concat(
           await this.addInputToArray(
             inputs,
@@ -250,7 +249,7 @@ export default class ZweihanderItemSheet extends ItemSheet {
           )
         );
         break;
-      case 'data.bonusAdvances':
+      case 'system.bonusAdvances':
         array = array.concat(
           await this.addInputToArray(
             inputs,
@@ -262,7 +261,7 @@ export default class ZweihanderItemSheet extends ItemSheet {
           )
         );
         break;
-      case 'data.talents':
+      case 'system.talents':
         array = array.concat(
           await this.addInputToArray(
             inputs,
@@ -270,7 +269,7 @@ export default class ZweihanderItemSheet extends ItemSheet {
           )
         );
         break;
-      case 'data.skillRanks':
+      case 'system.skillRanks':
         array = array.concat(
           await this.addInputToArray(
             inputs,
@@ -334,7 +333,7 @@ export default class ZweihanderItemSheet extends ItemSheet {
   async validateTalent(talent) {
     const item = this.item;
     if (
-      item.data.data?.talents?.some((t) =>
+      item.system?.talents?.some((t) =>
         ZweihanderUtils.normalizedEquals(t.name, talent)
       )
     ) {
@@ -364,7 +363,7 @@ export default class ZweihanderItemSheet extends ItemSheet {
   async validateSkillRank(skillRank) {
     const item = this.item;
     if (
-      item.data.data?.skillRanks?.some((sr) =>
+      item.system?.skillRanks?.some((sr) =>
         ZweihanderUtils.normalizedEquals(sr.name, skillRank)
       )
     ) {

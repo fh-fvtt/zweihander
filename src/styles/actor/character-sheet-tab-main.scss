@@ -107,19 +107,19 @@
           min-height: 28px;
           width: 28px;
           &.stress {
-            mask-image: url('./systems/zweihander/assets/icons/paranoia.svg');
+            mask-image: url('/systems/zweihander/assets/icons/paranoia.svg');
             &:hover {
               background-color: var(--zh-clr-yellow);
             }
           }
           &.fear {
-            mask-image: url('./systems/zweihander/assets/icons/surprised.svg');
+            mask-image: url('/systems/zweihander/assets/icons/surprised.svg');
             &:hover {
               background-color: var(--zh-clr-orange);
             }
           }
           &.terror {
-            mask-image: url('./systems/zweihander/assets/icons/screaming.svg');
+            mask-image: url('/systems/zweihander/assets/icons/screaming.svg');
             &:hover {
               background-color: var(--zh-clr-red);
             }

@@ -9,7 +9,7 @@ export function addGlobalChatListeners(html) {
 }
 
 export function addLocalChatListeners(message, html, data) {
-  const flags = message?.data?.flags?.zweihander;
+  const flags = message?.flags?.zweihander;
   if (flags) {
     enableChatButtons(html, flags, message, data);
   }

@@ -23,7 +23,7 @@ export default class ZweihanderActor extends Actor {
         if (cfg?.args?.length) {
           return type[fnName](...cfg.args, this);
         } else {
-          return type[fnName](this.data, this);
+          return type[fnName](this, this);
         }
       }
     }
@@ -65,19 +65,19 @@ export default class ZweihanderActor extends Actor {
 
   getRollData() {
     return this.dispatch('getRollData', {
-      args: [this.data.data],
-      orElse: { value: this.data.data },
+      args: [this.system],
+      orElse: { value: this.system },
     });
   }
 
   async _preCreate(data, options, user) {
     await super._preCreate(data, options, user);
-    if (!this.data.img || ZWEI.replacedDefaultCoreIcons.includes(this.data.img)) {
+    if (!this.img || ZWEI.replacedDefaultCoreIcons.includes(this.img)) {
       const img =
-        ZWEI.defaultActorIcons[this.data.type] ?? ZWEI.defaultActorIcons._default;
-      await this.data.update({ img });
+        ZWEI.defaultActorIcons[this.type] ?? ZWEI.defaultActorIcons._default;
+      await this.updateSource({ img });
     }
-    await this.dispatch('_preCreate', { args: [this.data, options, user] });
+    await this.dispatch('_preCreate', { args: [this, options, user] });
   }
 
   async _preUpdate(changed, options, user) {

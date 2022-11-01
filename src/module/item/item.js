@@ -36,7 +36,7 @@ export default class ZweihanderItem extends Item {
         if (cfg.args?.length) {
           return type[fnName](...cfg.args, this);
         } else {
-          return type[fnName](this.data, this);
+          return type[fnName](this, this);
         }
       }
     }
@@ -79,12 +79,12 @@ export default class ZweihanderItem extends Item {
   async _preCreate(data, options, user) {
     await super._preCreate(data, options, user);
     if (
-      !this.data.img ||
-      ZWEI.replacedDefaultCoreIcons.includes(this.data.img)
+      !this.img ||
+      ZWEI.replacedDefaultCoreIcons.includes(this.img)
     ) {
       const img =
-        ZWEI.defaultItemIcons[this.data.type] ?? ZWEI.defaultItemIcons._default;
-      await this.data.update({ img });
+        ZWEI.defaultItemIcons[this.type] ?? ZWEI.defaultItemIcons._default;
+      await this.updateSource({ img });
     }
     if (this.parent === null) return;
     await this.dispatch('_preCreate', { args: [data, options, user] });
@@ -111,7 +111,7 @@ export default class ZweihanderItem extends Item {
   }
 
   async _preUpdate(changed, options, user) {
-    if (this.parent && changed.data) {
+    if (this.parent && changed.system) {
       await this.dispatch('_preUpdate', { args: [changed, options, user] });
     }
     await super._preUpdate(changed, options, user);
@@ -120,7 +120,7 @@ export default class ZweihanderItem extends Item {
   async _onUpdate(changed, options, user) {
     await super._onUpdate(changed, options, user);
     if (user !== game.user.id) return;
-    if (this.parent === null || !changed.data) return;
+    if (this.parent === null || !changed.system) return;
     await this.dispatch('_onUpdate', { args: [changed, options, user] });
   }
 

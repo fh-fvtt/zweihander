@@ -1,33 +1,33 @@
 <section class="item-card">
   <h2 class="item-card-title">{{zhCapitalize type}}: {{name}}</h2>
-  {{#if data.flavor.description}}
+  {{#if system.flavor.description}}
   <div class="item-card-description">
-    {{{zhProcessRuleText data.flavor.description}}}
+    {{{zhProcessRuleText system.flavor.description}}}
   </div>
   <br/>
   {{/if}}
   <dl class="zh-expandable" data-expand-title="Show Item Details">
       <dt>Archetype</dt>
-      <dd>{{data.archetype}}</dd>
+      <dd>{{system.archetype}}</dd>
       <dt>Professional Trait</dt>
-      <dd>{{data.professionalTrait.name}}</dd>
-      {{#if data.specialTrait.name}}
+      <dd>{{system.professionalTrait.name}}</dd>
+      {{#if system.specialTrait.name}}
       <dt>Special Trait</dt>
-      <dd>{{data.specialTrait.name}}</dd>
+      <dd>{{system.specialTrait.name}}</dd>
       {{/if}}
-      {{#if data.drawback.name}}
+      {{#if system.drawback.name}}
       <dt>Drawback</dt>
-      <dd>{{data.drawback.name}}</dd>
+      <dd>{{system.drawback.name}}</dd>
       {{/if}}
-      {{#if data.expert.name}}
+      {{#if system.expert.name}}
       <dt>Expert Profession Requirements</dt>
-      <dd>{{data.expert.requirements}}</dd>
+      <dd>{{system.expert.requirements}}</dd>
       {{/if}}
       <dt>Skill Ranks</dt>
-      <dd>{{#each data.skillRanks}}{{name}}{{#unless @last}}, {{/unless}}{{/each}}</dd>
+      <dd>{{#each system.skillRanks}}{{name}}{{#unless @last}}, {{/unless}}{{/each}}</dd>
       <dt>Bonus Advances</dt>
-      <dd>{{#each data.bonusAdvances}}{{name}}{{#unless @last}}, {{/unless}}{{/each}}</dd>
+      <dd>{{#each system.bonusAdvances}}{{name}}{{#unless @last}}, {{/unless}}{{/each}}</dd>
       <dt>Talents</dt>
-      <dd>{{#each data.talents}}{{name}}{{#unless @last}}, {{/unless}}{{/each}}</dd>
+      <dd>{{#each system.talents}}{{name}}{{#unless @last}}, {{/unless}}{{/each}}</dd>
     </dl>
 </section>

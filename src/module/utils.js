@@ -408,8 +408,8 @@ export async function parseDataPaths(input, actor) {
   let parsed = abbreviations2DataPath(input, false);
   const dataPathExpr = /(@[a-zA-Z0-9\.]*[a-zA-Z0-9]+)/g;
   parsed = parsed.replaceAll(dataPathExpr, (x) => {
-    let key = `data.${x.slice(1)}`;
-    return getProperty(actor.data, key);
+    let key = `system.${x.slice(1)}`;
+    return getProperty(actor, key);
   });
   if (input !== parsed) {
     const mathExpr = /\-?[0-9]+(\s*[\+\-\*/]\s*\-?[0-9]+)*/g;
@@ -548,7 +548,7 @@ export const updateItems = async (...updateDefinitions) => {
       );
       const diff = { _id: item._id };
       for (let dataPath of dataPathsToUpdate) {
-        diff[dataPath] = getProperty(packItem.data, dataPath);
+        diff[dataPath] = getProperty(packItem, dataPath);
       }
       return diff;
     }

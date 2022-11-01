@@ -65,16 +65,16 @@ export default class ZweihanderActorConfig extends FormApplication {
 
   /** @override */
   getData() {
-    const data = super.getData();
-    data.flags = ZweihanderActorConfig.getConfig(this.object.data);
-    data.parrySkills = data.flags.parrySkills.join(', ');
-    data.dodgeSkills = data.flags.dodgeSkills.join(', ');
-    data.magickSkills = data.flags.magickSkills.join(', ');
-    data.avoidAllPeril = data.flags.isIgnoredPerilLadderValue.reduce(
+    const appData = super.getData();
+    appData.flags = ZweihanderActorConfig.getConfig(this.object);
+    appData.parrySkills = appData.flags.parrySkills.join(', ');
+    appData.dodgeSkills = appData.flags.dodgeSkills.join(', ');
+    appData.magickSkills = appData.flags.magickSkills.join(', ');
+    appData.avoidAllPeril = appData.flags.isIgnoredPerilLadderValue.reduce(
       (a, b) => a && b,
       true
     );
-    return data;
+    return appData;
   }
 
   /** @override */
@@ -82,8 +82,8 @@ export default class ZweihanderActorConfig extends FormApplication {
     const actor = this.object;
     const updateData = foundry.utils.expandObject(formData).flags;
     if (actor.type === 'character') {
-      const sa = actor.data.data.stats.secondaryAttributes;
-      const saPath = 'data.stats.secondaryAttributes';
+      const sa = actor.system.stats.secondaryAttributes;
+      const saPath = 'system.stats.secondaryAttributes';
       const actorUpdate = {};
       updateData.parrySkills = updateData.parrySkills
         .split(',')

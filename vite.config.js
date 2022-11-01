@@ -35,12 +35,12 @@ const config = {
   publicDir: path.resolve(__dirname, 'public'),
   assetsInclude: ['**/*.hbs'],
   server: {
-    port: 40000,
+    port: 40001,
     open: false,
     proxy: {
-      '^(?!/systems/zweihander)': 'http://localhost:30000/',
+      '^(?!/systems/zweihander)': 'http://localhost:40000/',
       '/socket.io': {
-        target: 'ws://localhost:30000',
+        target: 'ws://localhost:40000',
         ws: true,
       },
     },
@@ -66,9 +66,9 @@ const config = {
     // },
     lib: {
       name: 'zweihander',
-      entry: path.resolve(__dirname, 'src/zweihander.js'),
+      entry: path.resolve(__dirname, 'src/index.js'),
       formats: ['es'],
-      fileName: 'zweihander',
+      fileName: 'index',
     },
     rollupOptions: {
       output: {
@@ -82,7 +82,7 @@ const config = {
     commonjs(),
     styles({
       mode: 'emit',
-      sourceMap: { content: true },
+      // sourceMap: { content: true },
       use: ['sass'],
       plugins: [
         require('colorguard'),

@@ -7,12 +7,11 @@ import {
 
 export const getItemRollConfiguration = (item) => {
   const actor = item.actor;
-  const itemData = item.data;
 
   const associatedSkill =
     item.type === 'weapon'
-      ? itemData.data.associatedSkill
-      : actor.data.data.stats.secondaryAttributes.magick.associatedSkill;
+      ? item.system.associatedSkill
+      : actor.system.stats.secondaryAttributes.magick.associatedSkill;
   const skillItem = actor.items.find(
     (item) =>
       item.type === 'skill' && normalizedEquals(item.name, associatedSkill)
@@ -34,7 +33,7 @@ export async function getTestConfiguration(
 ) {
   testConfiguration.flip =
     testConfiguration.flip ??
-    (skillItem.data.data.isFlipToFail ? 'fail' : 'no-flip');
+    (skillItem.system.isFlipToFail ? 'fail' : 'no-flip');
   const configurationFromDialog = await renderConfigurationDialog(
     testType,
     skillItem.name,

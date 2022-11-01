@@ -23,7 +23,7 @@ export const registerHandlebarHelpers = async function () {
 
   $$('zhAlignmentRanks', function (name, alignmentRanks, permanentRanks, options) {
     const alignment = name.split('.')[2];
-    const icon = alignment === "chaos" ? "ra-cancel" : "ra-horseshoe";
+    const icon = alignment === 'chaos' ? 'ra-cancel' : 'ra-horseshoe';
     const checked = options.hash['checked'] || 0;
     const isChecked = (i) => Number(checked) === i;
     const isPermanentRank = (i) => i <= permanentRanks;
@@ -33,7 +33,7 @@ export const registerHandlebarHelpers = async function () {
                   name="${name}"
                   id="${uuid}.${name + 0}"
                   value="${0}"
-                  ${isChecked(0) ? "checked" : ""}>`;
+                  ${isChecked(0) ? 'checked' : ''}>`;
     for (let i = 1; i <= alignmentRanks; i++) {
       html += `
         <input 
@@ -41,11 +41,11 @@ export const registerHandlebarHelpers = async function () {
           name="${name}"
           id="${uuid}.${name + i}"
           value="${i}"
-          ${isChecked(i) ? "checked" : ""}
-          ${isPermanentRank(i) ? "disabled" : ""}>
+          ${isChecked(i) ? 'checked' : ''}
+          ${isPermanentRank(i) ? 'disabled' : ''}>
         <label
           for="${uuid}.${name + i}"
-          class="${isPermanentRank(i) ? `permanent-rank ${alignment}` : "regular-rank"}">
+          class="${isPermanentRank(i) ? `permanent-rank ${alignment}` : 'regular-rank'}">
           ${isPermanentRank(i) ? `<span class='ra ${icon}'></span>` : i}
         </label>
       `;
@@ -186,7 +186,7 @@ export const registerHandlebarHelpers = async function () {
       .map(
         (c) => `
       <i class="fas fa-coins currency" style="color: ${c.color}"></i>
-      <input name="data.price.${c.abbreviation}" type="number" value="${
+      <input name="system.price.${c.abbreviation}" type="number" value="${
           price[c.abbreviation] ?? 0
         }">
     `
@@ -202,12 +202,12 @@ export const registerHandlebarHelpers = async function () {
 
     let hasDuplicate = false;
 
-    for (let talent of item.data.talents) {
+    for (let talent of item.system.talents) {
       if (talent.linkedId !== null) continue;
       hasDuplicate = true;
     }
 
-    if (item.data.talents.length !== 3 || hasDuplicate) return options.inverse(this);
+    if (item.system.talents.length !== 3 || hasDuplicate) return options.inverse(this);
     else return options.fn(this);
   });
 

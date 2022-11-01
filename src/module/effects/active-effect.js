@@ -8,12 +8,12 @@ export default class ZweihanderActiveEffect extends ActiveEffect {
   }
 
   prepareDerivedData() {
-    if (!this.data.details)
-      this.data.details = {
+    if (!this.details)
+      this.details = {
         category: 'TestCat',
         source: 'TestSrc',
       };
-    console.log('effect data ----------- ', this);
+    // console.log('effect data ----------- ', this);
 
     /*     effectData.details = {
       category: {

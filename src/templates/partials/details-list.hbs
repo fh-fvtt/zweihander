@@ -9,13 +9,13 @@
         {{#if detail.template}}
         {{> ($$ detail.template) detail}}
         {{else if detail.choices}}
-        <select name="data.{{detail.key}}">
+        <select name="system.{{detail.key}}">
           {{#each detail.choices}}
           <option value="{{value}}" {{selected}}>{{label}}</option>
           {{/each}}
         </select>
         {{else}}
-        <input type="text" class="auto-size" {{#unless detail.value}}name="data.{{detail.key}}" {{/unless}}
+        <input type="text" class="auto-size" {{#unless detail.value}}name="system.{{detail.key}}" {{/unless}}
           placeholder="{{detail.placeholder}}"
           value="{{#if detail.key}}{{zhLookup ../data detail.key}}{{else}}{{detail.value}}{{/if}}" {{#unless
           detail.key}}disabled="disabled" {{/unless}} />

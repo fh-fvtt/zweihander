@@ -23,30 +23,30 @@ export default class ZweihanderLanguageConfig extends FormApplication {
 
   /** @override */
   getData() {
-    const data = { languages: this.object.data.data.languages };
+    const data = { languages: this.object.system.languages };
     return data;
   }
 
   /** @override */
   async _updateObject(event, formData) {
     const languages = formDataToArray(formData, 'languages');
-    await this.object.update({ 'data.languages': languages });
+    await this.object.update({ 'system.languages': languages });
     this.render();
   }
 
   activateListeners(html) {
     super.activateListeners(html);
     html.find('.add-language').click(() => {
-      const l = this.object.data.data.languages;
+      const l = this.object.system.languages;
       l.push({ name: 'New Language', isLiterate: false });
-      this.object.update({ 'data.languages': l });
+      this.object.update({ 'system.languages': l });
       this.render();
     });
     html.find('.del-language').click((event) => {
-      const l = this.object.data.data.languages;
+      const l = this.object.system.languages;
       const i = $(event.currentTarget).data('index');
       l.splice(i, 1);
-      this.object.update({ 'data.languages': l });
+      this.object.update({ 'system.languages': l });
       this.render();
     });
   }

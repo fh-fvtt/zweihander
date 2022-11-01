@@ -4,7 +4,7 @@ export default class ZweihanderProfession extends ZweihanderBaseItem {
   static async toggleProfessionPurchases(profession, purchase) {
     const updateData = {};
     const updatePurchase = (itemType) =>
-      (updateData[`data.${itemType}`] = profession.data.data[itemType].map(
+      (updateData[`system.${itemType}`] = profession.system[itemType].map(
         (t) => ({ ...t, purchased: purchase })
       ));
     ['talents', 'skillRanks', 'bonusAdvances'].forEach(updatePurchase);
@@ -28,38 +28,35 @@ export default class ZweihanderProfession extends ZweihanderBaseItem {
     },
   ];
 
-  prepareDerivedData(itemData, item) {
+  prepareDerivedData(item) {
     if (!item.isOwned) return;
     const advancesPurchased =
       1 +
-      (itemData.data.bonusAdvances?.reduce?.(
+      (item.system.bonusAdvances?.reduce?.(
         (a, b) => a + Number(b.purchased),
         0
       ) ?? 0) +
-      (itemData.data.skillRanks?.reduce?.(
+      (item.system.skillRanks?.reduce?.(
         (a, b) => a + Number(b.purchased),
         0
       ) ?? 0) +
-      (itemData.data.talents?.reduce?.((a, b) => a + Number(b.purchased), 0) ??
+      (item.system.talents?.reduce?.((a, b) => a + Number(b.purchased), 0) ??
         0);
-    itemData.data.advancesPurchased = advancesPurchased;
-    itemData.data.completed = advancesPurchased === 21;
+    item.system.advancesPurchased = advancesPurchased;
+    item.system.completed = advancesPurchased === 21;
   }
 
   async _preCreate(data, options, user, item) {
-    const itemData = item.data;
     const tier =
       item.parent.items.filter((i) => i.type === 'profession').length + 1;
     if (tier > 3) return;
-    itemData.update({ 'data.tier': CONFIG.ZWEI.tiers[tier] });
-    itemData.update({
-      'data.skillRanks': itemData.data.skillRanks.map((sr) => ({
+    item.updateSource({
+      'system.tier': CONFIG.ZWEI.tiers[tier],
+      'system.skillRanks': item.system.skillRanks.map((sr) => ({
         ...sr,
         purchased: false,
       })),
-    });
-    itemData.update({
-      'data.bonusAdvances': itemData.data.bonusAdvances.map((ba) => ({
+      'system.bonusAdvances': item.system.bonusAdvances.map((ba) => ({
         ...ba,
         purchased: false,
       })),
@@ -68,14 +65,14 @@ export default class ZweihanderProfession extends ZweihanderBaseItem {
   }
 
   async _preUpdate(changed, options, user, item) {
-    if (changed.data['skillRanks'] !== undefined) {
-      changed.data.skillRanks = changed.data.skillRanks.map((sr) => ({
+    if (changed.system['skillRanks'] !== undefined) {
+      changed.system.skillRanks = changed.system.skillRanks.map((sr) => ({
         ...sr,
         purchased: sr.purchased ?? false,
       }));
     }
-    if (changed.data['bonusAdvances'] !== undefined) {
-      changed.data.bonusAdvances = changed.data.bonusAdvances.map((ba) => ({
+    if (changed.system['bonusAdvances'] !== undefined) {
+      changed.system.bonusAdvances = changed.system.bonusAdvances.map((ba) => ({
         ...ba,
         purchased: ba.purchased ?? false,
       }));

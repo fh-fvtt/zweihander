@@ -66,7 +66,7 @@ export default class ZweihanderNpcSheet extends ZweihanderCreatureSheet {
         key: 'details.archetype',
         placeholder: 'Archetype',
         choices: selectedChoice(
-          this.actor.data.data.details.archetype ?? CONFIG.ZWEI.archetypes[0],
+          this.actor.system.details.archetype ?? CONFIG.ZWEI.archetypes[0],
           CONFIG.ZWEI.archetypes.map((a) => ({ value: a, label: a }))
         ),
         hidden: this.actor.limited,
@@ -82,7 +82,7 @@ export default class ZweihanderNpcSheet extends ZweihanderCreatureSheet {
         hidden: this.actor.limited,
       },
       {
-        value: sheetData.data.languages,
+        value: sheetData.system.languages,
         placeholder: '?',
         template: 'partials/detail-languages',
         hidden: this.actor.limited,
@@ -107,42 +107,42 @@ export default class ZweihanderNpcSheet extends ZweihanderCreatureSheet {
     return sheetData;
   }
 
-  _getItemGroups(data) {
-    const itemGroups = super._getItemGroups(data);
+  _getItemGroups(groupsData) {
+    const itemGroups = super._getItemGroups(groupsData);
     itemGroups.talents = {
       title: 'Talents',
       type: 'talent',
       summaryTemplate: 'item-summary/talent',
       details: [],
-      items: data.talents,
+      items: groupsData.talents,
     };
     itemGroups.rituals = {
       title: 'Rituals',
       type: 'ritual',
       summaryTemplate: 'item-summary/ritual',
       details: [],
-      items: data.rituals,
+      items: groupsData.rituals,
     };
     itemGroups.disorders = {
       title: 'Disorders',
       type: 'disorder',
       summaryTemplate: 'item-summary/disorder',
       details: [],
-      items: data.disorders,
+      items: groupsData.disorders,
     };
     itemGroups.diseases = {
       title: 'Diseases',
       type: 'disease',
       summaryTemplate: 'item-summary/disease',
       details: [],
-      items: data.diseases,
+      items: groupsData.diseases,
     };
     itemGroups.armor = {
       title: 'Armor',
       type: 'armor',
       summaryTemplate: 'item-summary/armor',
       details: [],
-      items: data.armor,
+      items: groupsData.armor,
     };
     return itemGroups;
   }

@@ -17,27 +17,26 @@ export default class FortuneTrackerSettings extends FormApplication {
   }
 
   getData() {
-    const data = game.settings.get('zweihander', 'fortuneTrackerSettings');
-    data.choices = {};
-    data.choices.size = [
+    const fortuneTrackerData = game.settings.get('zweihander', 'fortuneTrackerSettings');
+    fortuneTrackerData.choices = {};
+    fortuneTrackerData.choices.size = [
       { value: 'compact', label: 'Compact (Text)' },
       { value: 'normal', label: 'Normal (Tokens)' },
       { value: 'big', label: 'Big (Tokens)' },
       { value: 'huge', label: 'Huge (Tokens)' },
     ].map((option) => ({
-      selected: (data.size ?? 'normal') === option.value ? 'selected' : '',
+      selected: (fortuneTrackerData.size ?? 'normal') === option.value ? 'selected' : '',
       ...option,
     }));
-    data.choices.notifications = [
+    fortuneTrackerData.choices.notifications = [
       { value: 'none', label: "Don't Alert" },
       { value: 'notify', label: 'Post Foundry Notifications' },
       { value: 'chat', label: 'Post Chat Messages' },
     ].map((option) => ({
-      selected:
-        (data.notifications ?? 'notify') === option.value ? 'selected' : '',
+      selected: (fortuneTrackerData.notifications ?? 'notify') === option.value ? 'selected' : '',
       ...option,
     }));
-    return data;
+    return fortuneTrackerData;
   }
 
   _updateObject(event, formData) {

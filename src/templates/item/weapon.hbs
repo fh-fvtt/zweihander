@@ -1,7 +1,7 @@
 <div class="form-group">
   <label>Associated Skill</label>
-  <select name="data.associatedSkill">
-    {{#select data.associatedSkill}}
+  <select name="system.associatedSkill">
+    {{#select system.associatedSkill}}
     {{#each skills as | skill idx | }}
       <option value="{{skill}}">{{skill}}</option>
     {{/each}}
@@ -10,37 +10,37 @@
 </div>
 <div class="form-group">
   <label>Load</label>
-  <input  name="data.load" type="number" value="{{data.load}}">
+  <input  name="system.load" type="number" value="{{system.load}}">
 </div>
 <div class="form-group">
   <label>Handling</label>
-  <input  name="data.handling" type="text" value="{{data.handling}}">
+  <input  name="system.handling" type="text" value="{{system.handling}}">
 </div>
 <div class="form-group">
   <label>Distance</label>
-  <input  name="data.distance" type="text" value="{{data.distance}}">
+  <input  name="system.distance" type="text" value="{{system.distance}}">
 </div>
 <div class="form-group">
   <label>Qualities</label>
-  <input name="data.qualities.value" type="text" value="{{data.qualities.value}}">
+  <input name="system.qualities.value" type="text" value="{{system.qualities.value}}">
 </div>
 <div class="form-group">
   <label>Type</label>
-  <input  name="data.weaponType" type="text" value="{{data.weaponType}}">
+  <input  name="system.weaponType" type="text" value="{{system.weaponType}}">
 </div>
 <div class="form-group">
   <label>Damage Formula</label>
-  <input  name="data.damage.formula" type="text" value="{{data.damage.formula}}">
+  <input  name="system.damage.formula" type="text" value="{{system.damage.formula}}">
 </div>
 <div class="form-group">
   <label>Encumbrance</label>
-  <input  name="data.encumbrance" type="number" value="{{data.encumbrance}}">
+  <input  name="system.encumbrance" type="number" value="{{system.encumbrance}}">
 </div>
-{{zhPriceInputs data.price}}
+{{zhPriceInputs system.price}}
 {{!-- <div class="form-group stacked">
   <label>Status</label>
   <label class="checkbox">
-    <input name="data.equipped" type="checkbox" class="link-checkbox" {{checked data.equipped}} />
+    <input name="system.equipped" type="checkbox" class="link-checkbox" {{checked system.equipped}} />
     Equipped
   </label>
 </div> --}}

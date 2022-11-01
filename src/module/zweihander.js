@@ -3,6 +3,8 @@
  * Authors: Re4XN, kxfin
  */
 
+ import '../index.scss';
+
 import ZweihanderActor from './actor/actor';
 import ZweihanderCharacterSheet from './actor/sheet/character-sheet';
 import ZweihanderNpcSheet from './actor/sheet/npc-sheet';
@@ -25,7 +27,6 @@ import { ZWEI } from './config';
 
 import { displayHelpMessage } from './misc/help';
 
-import '../styles/main.scss';
 import { triggerAnalytics } from './analytics';
 import ZweihanderCombat from './combat/combat';
 import ZweihanderCombatant from './combat/combatant';
@@ -135,9 +136,9 @@ Hooks.once('init', async function () {
   CONFIG.Actor.documentClass = ZweihanderActor;
   CONFIG.Item.documentClass = ZweihanderItem;
   CONFIG.ActiveEffect.documentClass = ZweihanderActiveEffect;
-  CONFIG.Combat.documentClass = ZweihanderCombat;
-  CONFIG.Combatant.documentClass = ZweihanderCombatant;
-  CONFIG.ui.combat = ZweihanderCombatTracker;
+  // CONFIG.Combat.documentClass = ZweihanderCombat;
+  // CONFIG.Combatant.documentClass = ZweihanderCombatant;
+  // CONFIG.ui.combat = ZweihanderCombatTracker;
   // Register sheet application classes
   Actors.unregisterSheet('core', ActorSheet);
   Actors.registerSheet('zweihander', ZweihanderCharacterSheet, {
@@ -234,7 +235,7 @@ Hooks.once('polyglot.init', (LanguageProvider) => {
     getUserLanguages(actor) {
       let known_languages = new Set();
       let literate_languages = new Set();
-      actor.data.data.languages.forEach((l) => {
+      actor.system.languages.forEach((l) => {
         known_languages.add(l.name.toLowerCase());
         if (l.isLiterate) {
           literate_languages.add(l.name.toLowerCase());

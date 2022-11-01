@@ -2,23 +2,23 @@ import ZweihanderBaseActor from './base-actor';
 import * as ZweihanderUtils from '../../utils';
 
 export default class ZweihanderCreature extends ZweihanderBaseActor {
-  prepareDerivedData(actorData, actor) {
-    Object.values(actorData.data.stats.primaryAttributes).forEach(
+  prepareDerivedData(actor) {
+    Object.values(actor.system.stats.primaryAttributes).forEach(
       (a) => (a.bonus = a.bonusAdvances + Math.floor(a.value / 10))
     );
-    const sa = actorData.data.stats.secondaryAttributes;
-    const pa = actorData.data.stats.primaryAttributes;
+    const sa = actor.system.stats.secondaryAttributes;
+    const pa = actor.fvf.stats.primaryAttributes;
     sa.perilCurrent.effectiveValue = sa.perilCurrent.value;
-    if (!actorData.data.stats.manualMode) {
+    if (!actor.system.stats.manualMode) {
       // main gauche p. 239 "Parry (abbreviated to Par in the Bestiary) is equal to the highest Combat-based Skill the creature has"
       const combatBaseChance = pa.combat.value;
-      const combatSkills = actorData.items.filter(
+      const combatSkills = actor.items.filter(
         (i) =>
           i.type === 'skill' &&
-          i.data.data.associatedPrimaryAttribute.toLowerCase() === 'combat'
+          i.system.associatedPrimaryAttribute.toLowerCase() === 'combat'
       );
       sa.parry.value = Math.max(
-        ...combatSkills.map((s) => s.data.data.bonus + combatBaseChance)
+        ...combatSkills.map((s) => s.system.bonus + combatBaseChance)
       );
       // dodge is equal to its coordination value
       const coordinationValue = this.getSkillChance(
@@ -46,9 +46,9 @@ export default class ZweihanderCreature extends ZweihanderBaseActor {
 
   getSkillChance(actor, skill) {
     if (!skill) return 0;
-    const pa = skill.data.data.associatedPrimaryAttribute.toLowerCase();
-    const paChance = actor.data.data.stats.primaryAttributes[pa].value;
-    const skillBonus = skill.data.data.bonus;
+    const pa = skill.system.associatedPrimaryAttribute.toLowerCase();
+    const paChance = actor.system.stats.primaryAttributes[pa].value;
+    const skillBonus = skill.system.bonus;
     return paChance + skillBonus;
   }
 }

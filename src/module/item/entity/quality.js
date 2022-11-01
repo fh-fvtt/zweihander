@@ -10,7 +10,7 @@ export default class ZweihanderQuality extends ZweihanderBaseItem {
         return {
           name,
           found: item !== undefined,
-          effect: ZweihanderUtils.localize(item?.data?.data?.rules?.effect),
+          effect: ZweihanderUtils.localize(item?.system?.rules?.effect),
         };
       })
     );

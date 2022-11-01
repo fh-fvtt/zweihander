@@ -65,7 +65,7 @@ export async function rollCombatReaction(
   const actor = game.actors.get(ZweihanderUtils.determineCurrentActorId(true));
   if (!actor) return;
   const associatedSkill =
-    actor.data.data.stats.secondaryAttributes[type].associatedSkill;
+    actor.system.stats.secondaryAttributes[type].associatedSkill;
   const skillItem = actor.items.find(
     (i) =>
       ZweihanderUtils.normalizedEquals(i.name, associatedSkill) &&
@@ -98,14 +98,14 @@ export async function rollTest(
       : undefined;
   if (weapon && actor.type === 'creature') {
     testConfiguration.additionalFuryDice =
-      actor.data.data.details.size.value - 1;
+      actor.system.details.size.value - 1;
   }
   if (isReroll && actor.type === 'character') {
     testConfiguration.useFortune = 'fortune';
   } else if (isReroll && actor.type !== 'character') {
     testConfiguration.useFortune = 'misfortune';
   }
-  const principle = spell?.data?.data?.principle?.trim?.()?.toLowerCase?.();
+  const principle = spell?.system?.principle?.trim?.()?.toLowerCase?.();
   const defaultSpellDifficulty = {
     petty: 10,
     generalist: 10,
@@ -133,15 +133,15 @@ export async function rollTest(
     );
     return;
   }
-  const primaryAttribute = skillItem.data.data.associatedPrimaryAttribute;
+  const primaryAttribute = skillItem.system.associatedPrimaryAttribute;
   const primaryAttributeValue =
-    actor.data.data.stats.primaryAttributes[primaryAttribute.toLowerCase()]
+    actor.system.stats.primaryAttributes[primaryAttribute.toLowerCase()]
       .value;
-  const rank = skillItem.data.data.rank;
-  const bonusPerRank = skillItem.data.data.bonusPerRank;
-  const rankBonus = skillItem.data.data.bonus;
+  const rank = skillItem.system.rank;
+  const bonusPerRank = skillItem.system.bonusPerRank;
+  const rankBonus = skillItem.system.bonus;
   const currentPeril = Number(
-    actor.data.data.stats.secondaryAttributes.perilCurrent.effectiveValue
+    actor.system.stats.secondaryAttributes.perilCurrent.effectiveValue
   );
   const ranksPurchasedAfterPeril = Math.max(
     0,
@@ -182,7 +182,7 @@ export async function rollTest(
   let tensDie = Math.floor(effectiveResult / 10);
   tensDie = tensDie === 0 ? 10 : tensDie;
   const primaryAttributeBonus =
-    actor.data.data.stats.primaryAttributes[primaryAttribute.toLowerCase()]
+    actor.system.stats.primaryAttributes[primaryAttribute.toLowerCase()]
       .bonus;
   const crbDegreesOfSuccess =
     effectiveOutcome < 2
@@ -232,12 +232,12 @@ export async function rollTest(
   if (spell) {
     templateData.itemId = spell.id;
     templateData.spell = spell.toObject(false);
-    templateData.spell.data.distance = await ZweihanderUtils.parseDataPaths(
-      templateData.spell.data.distance,
+    templateData.spell.system.distance = await ZweihanderUtils.parseDataPaths(
+      templateData.spell.system.distance,
       actor
     );
-    templateData.spell.data.duration = await ZweihanderUtils.parseDataPaths(
-      templateData.spell.data.duration,
+    templateData.spell.system.duration = await ZweihanderUtils.parseDataPaths(
+      templateData.spell.system.duration,
       actor
     );
     const totalChaosDie =
@@ -287,9 +287,9 @@ export async function rollTest(
   let sound;
   if (['dodge', 'parry'].includes(testType)) {
     if (isSuccess(effectiveOutcome)) {
-      sound = ZweihanderActorConfig.getValue(actor.data, `${testType}Sound`);
-    } else if (ZweihanderActorConfig.getValue(actor.data, 'playGruntSound')) {
-      sound = ZweihanderActorConfig.getValue(actor.data, `gruntSound`);
+      sound = ZweihanderActorConfig.getValue(actor, `${testType}Sound`);
+    } else if (ZweihanderActorConfig.getValue(actor, 'playGruntSound')) {
+      sound = ZweihanderActorConfig.getValue(actor, `gruntSound`);
     }
   }
   let messageData = await roll.toMessage(
@@ -311,9 +311,9 @@ export async function rollWeaponDamage(actorId, testConfiguration) {
   const actor = game.actors.get(actorId);
   const weapon = actor.items.get(weaponId).toObject(false);
   const formula = ZweihanderUtils.abbreviations2DataPath(
-    weapon.data.damage.formula.replace('[#]', additionalFuryDice || 0)
+    weapon.system.damage.formula.replace('[#]', additionalFuryDice || 0)
   );
-  const damageRoll = await new Roll(formula, actor.data.data).evaluate();
+  const damageRoll = await new Roll(formula, actor.system).evaluate();
   const speaker = ChatMessage.getSpeaker({ actor });
   const flavor = `Determines ${weapon.name}'s Damage`;
   const content = await getWeaponDamageContent(weapon, damageRoll);
@@ -338,8 +338,8 @@ async function getWeaponDamageContent(
   exploded = false,
   explodedCount = 0
 ) {
-  weapon.data.qualities = await ZweihanderQuality.getQualities(
-    weapon.data.qualities.value
+  weapon.system.qualities = await ZweihanderQuality.getQualities(
+    weapon.system.qualities.value
   );
   const rollContent = await roll.render({ flavor: 'Fury Die' });
   const cardContent = await renderTemplate(
@@ -369,10 +369,10 @@ export async function explodeWeaponDamage(message, useFortune) {
     return;
   }
   const { actorId, weaponId, exploded } =
-    message.data.flags.zweihander.weaponTestData;
+    message.flags.zweihander.weaponTestData;
   const actor = game.actors.get(actorId);
   const weapon = actor.items.get(weaponId).toObject(false);
-  const roll = Roll.fromJSON(message.data.roll);
+  const roll = Roll.fromJSON(message.roll);
   const dice = roll.dice.find((d) => d.faces === 6);
   if (dice) {
     const explodeModifiers = dice.modifiers

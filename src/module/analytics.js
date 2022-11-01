@@ -4,7 +4,7 @@ export const triggerAnalytics = async () => {
     if (systemId === '') {
       await Promise.all(
         game.messages
-          .filter((x) => x.data.flags?.zweihander?.analytics)
+          .filter((x) => x.flags?.zweihander?.analytics)
           .map((x) => x.delete())
       );
       await ChatMessage.create({
@@ -46,9 +46,9 @@ export const triggerAnalytics = async () => {
 
 export const sendAnalytics = () => {
   const systemId = game.settings.get('zweihander', 'systemId');
-  const url = `https://kxfin.xyz/zh-analytics.php?id=${systemId}&version=${game.system.data.version}`;
+  const url = `https://kxfin.xyz/zh-analytics.php?id=${systemId}&version=${game.system.version}`;
   fetch(url, { method: 'GET' });
   console.info(
-    `Sending system id: "${systemId}" & version: "${game.system.data.version}" data to ${url}.`
+    `Sending system id: "${systemId}" & version: "${game.system.version}" data to ${url}.`
   );
 };

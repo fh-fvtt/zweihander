@@ -1,6 +1,6 @@
 <div class="form-group">
   <label>Severity</label>
-    <select name="data.severity">
+    <select name="system.severity">
     {{#each choices.severities}}
     <option value="{{value}}" {{selected}}>{{label}}</option>
     {{/each}}
@@ -10,20 +10,20 @@
 {{#if actor}}
 <div class="form-group">
   <label>Recuperation Time (days)</label>
-  <input name="data.recuperationTime" type="number" value="{{data.recuperationTime}}">
+  <input name="system.recuperationTime" type="number" value="{{system.recuperationTime}}">
 </div>
 {{/if}}
 
 <div class="form-group stacked">
   <label><a class="open-editor">Effect <i class="fa fa-edit"></i></a></label>
-    <div class="zh-editor-preview open">{{{zhProcessRuleText (zhLocalize data.rules.effect)}}}</div>
-  {{editor content=(zhLocalize data.rules.effect) target=(zhLocalizePath "data.rules.effect") button=true owner=owner editable=editable}}
+    <div class="zh-editor-preview open">{{{zhProcessRuleText (zhLocalize system.rules.effect)}}}</div>
+  {{editor content=(zhLocalize system.rules.effect) target=(zhLocalizePath "system.rules.effect") button=true owner=owner editable=editable}}
 </div>
 
 <div class="form-group stacked">
   <label>Status</label>
   <label class="checkbox">
-    <input name="data.active" type="checkbox" class="link-checkbox" {{checked data.active}} />
+    <input name="system.active" type="checkbox" class="link-checkbox" {{checked system.active}} />
     Currently in Effect
   </label>
 </div>

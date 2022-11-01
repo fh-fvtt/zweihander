@@ -1,10 +1,10 @@
 <div class="tab main flexrow" data-group="primary" data-tab="main">
   <ul class="primary-attributes flexcol">
-    {{#each data.stats.primaryAttributes as | attr key | }}
+    {{#each system.stats.primaryAttributes as | attr key | }}
     <li class="pa pa-{{key}}">
       <h4 class="block-title">{{key}}</h4 class="block-title">
       <div class="pa-display flexrow">
-        <input class="pa-value" type="number" name="data.stats.primaryAttributes.{{key}}.value"
+        <input class="pa-value" type="number" name="system.stats.primaryAttributes.{{key}}.value"
           value="{{attr.value}}">
         <div class="pa-icon"><span class="{{lookup ../config.primaryAttributeIcons key}}"></span></div>
         <div class="flexcol">
@@ -24,15 +24,15 @@
         <h4 class="block-title">Movement</h4 class="block-title">
         <div class="values flexrow">
           <div>
-            <span class="value" data-testid="movement">{{data.stats.secondaryAttributes.movement.value}}</span>
+            <span class="value" data-testid="movement">{{system.stats.secondaryAttributes.movement.value}}</span>
             <span class="formula">[{{zhGetFirstLetter actorConfig.movAttribute}}B]+3</span>
           </div>
           <div>
-            <span class="value color-overage" data-overage="{{data.stats.secondaryAttributes.movement.overage}}">{{data.stats.secondaryAttributes.movement.overage}}</span>
-            <span class="formula color-overage" data-overage="{{data.stats.secondaryAttributes.movement.overage}}">Overage</span>
+            <span class="value color-overage" data-overage="{{system.stats.secondaryAttributes.movement.overage}}">{{system.stats.secondaryAttributes.movement.overage}}</span>
+            <span class="formula color-overage" data-overage="{{system.stats.secondaryAttributes.movement.overage}}">Overage</span>
           </div>
           <div>
-            <span class="value">{{data.stats.secondaryAttributes.movement.current}}</span>
+            <span class="value">{{system.stats.secondaryAttributes.movement.current}}</span>
             <span class="formula">Current</span>
           </div>
         </div>
@@ -41,15 +41,15 @@
         <h4 class="block-title">Initiative</h4 class="block-title">
         <div class="values flexrow">
           <div>
-            <span class="value" data-testid="initiative">{{data.stats.secondaryAttributes.initiative.value}}</span>
+            <span class="value" data-testid="initiative">{{system.stats.secondaryAttributes.initiative.value}}</span>
             <span class="formula">[{{zhGetFirstLetter actorConfig.intAttribute}}B]+3</span>
           </div>
           <div>
-            <span class="value color-overage" data-overage="{{data.stats.secondaryAttributes.initiative.overage}}">{{data.stats.secondaryAttributes.initiative.overage}}</span>
-            <span class="formula color-overage" data-overage="{{data.stats.secondaryAttributes.initiative.overage}}">Overage</span>
+            <span class="value color-overage" data-overage="{{system.stats.secondaryAttributes.initiative.overage}}">{{system.stats.secondaryAttributes.initiative.overage}}</span>
+            <span class="formula color-overage" data-overage="{{system.stats.secondaryAttributes.initiative.overage}}">Overage</span>
           </div>
           <div>
-            <span class="value">{{data.stats.secondaryAttributes.initiative.current}}</span>
+            <span class="value">{{system.stats.secondaryAttributes.initiative.current}}</span>
             <span class="formula">Current</span>
           </div>
         </div>
@@ -61,12 +61,12 @@
         <h4 class="block-title">Dodge</h4 class="block-title">
         <div class="values flexrow">
           <a class="combat-icon dodge-roll" data-roll="1d100"
-            data-label="{{data.stats.secondaryAttributes.dodge.associatedSkill}}"><span
+            data-label="{{system.stats.secondaryAttributes.dodge.associatedSkill}}"><span
               class="value ra ra-player-dodge"></span></a>
-          <span class="value" data-testid="dodge">{{data.stats.secondaryAttributes.dodge.value}}</span>
+          <span class="value" data-testid="dodge">{{system.stats.secondaryAttributes.dodge.value}}</span>
         </div>
-        <select class="skill-dropdown" name="data.stats.secondaryAttributes.dodge.associatedSkill">
-          {{#select data.stats.secondaryAttributes.dodge.associatedSkill}}
+        <select class="skill-dropdown" name="system.stats.secondaryAttributes.dodge.associatedSkill">
+          {{#select system.stats.secondaryAttributes.dodge.associatedSkill}}
           {{#each actorConfig.dodgeSkills as | skill idx | }}
           <option value="{{skill}}">{{skill}}</option>
           {{/each}}
@@ -77,12 +77,12 @@
         <h4 class="block-title">Parry</h4 class="block-title">
         <div class="values flexrow">
           <a class="combat-icon parry-roll" data-roll="1d100"
-            data-label="{{data.stats.secondaryAttributes.parry.associatedSkill}}"><span
+            data-label="{{system.stats.secondaryAttributes.parry.associatedSkill}}"><span
               class="value ra ra-round-shield"></span></a>
-          <span class="value" data-testid="parry">{{data.stats.secondaryAttributes.parry.value}}</span>
+          <span class="value" data-testid="parry">{{system.stats.secondaryAttributes.parry.value}}</span>
         </div>
-        <select class="skill-dropdown" name="data.stats.secondaryAttributes.parry.associatedSkill">
-          {{#select data.stats.secondaryAttributes.parry.associatedSkill}}
+        <select class="skill-dropdown" name="system.stats.secondaryAttributes.parry.associatedSkill">
+          {{#select system.stats.secondaryAttributes.parry.associatedSkill}}
           {{#each actorConfig.parrySkills as | skill idx | }}
           <option value="{{skill}}">{{skill}}</option>
           {{/each}}
@@ -114,20 +114,20 @@
         <h4 class="block-title">Peril Threshold</h4 class="block-title">
         <div class="values flexrow">
           <div class="threshold-value flexcol">
-            <span class="value" data-testid="peril">{{data.stats.secondaryAttributes.perilThreshold.value}}</span>
+            <span class="value" data-testid="peril">{{system.stats.secondaryAttributes.perilThreshold.value}}</span>
             <span class="formula">[{{zhGetFirstLetter actorConfig.pthAttribute}}B]+3</span>
           </div>
           <span class="values-derived-bracket">{</span>
           <div class="flexcol values-derived">
             <div>
-              <span class="inline-formula">+6</span> {{zhAdd data.stats.secondaryAttributes.perilThreshold.value '6'}}
+              <span class="inline-formula">+6</span> {{zhAdd system.stats.secondaryAttributes.perilThreshold.value '6'}}
             </div>
             <div>
-              <span class="inline-formula">+12</span> {{zhAdd data.stats.secondaryAttributes.perilThreshold.value '12'}}
+              <span class="inline-formula">+12</span> {{zhAdd system.stats.secondaryAttributes.perilThreshold.value '12'}}
             </div>
             <div>
               <span class="inline-formula">+18</span>
-              {{zhAdd data.stats.secondaryAttributes.perilThreshold.value '18'}}
+              {{zhAdd system.stats.secondaryAttributes.perilThreshold.value '18'}}
             </div>
           </div>
         </div>
@@ -136,20 +136,20 @@
         <h4 class="block-title">Damage Threshold</h4 class="block-title">
         <div class="values flexrow">
           <div class="threshold-value flexcol">
-            <span class="value" data-testid="damage">{{> ($$ 'partials/modded-value') data.stats.secondaryAttributes.damageThreshold}}</span>
+            <span class="value" data-testid="damage">{{> ($$ 'partials/modded-value') system.stats.secondaryAttributes.damageThreshold}}</span>
             <span class="formula">[{{zhGetFirstLetter actorConfig.dthAttribute}}B]+DTM</span>
           </div>
           <span class="values-derived-bracket">{</span>
           <div class="flexcol values-derived">
             <div>
-              <span class="inline-formula">+6</span> {{zhAdd data.stats.secondaryAttributes.damageThreshold.value '6'}}
+              <span class="inline-formula">+6</span> {{zhAdd system.stats.secondaryAttributes.damageThreshold.value '6'}}
             </div>
             <div>
-              <span class="inline-formula">+12</span> {{zhAdd data.stats.secondaryAttributes.damageThreshold.value '12'}}
+              <span class="inline-formula">+12</span> {{zhAdd system.stats.secondaryAttributes.damageThreshold.value '12'}}
             </div>
             <div>
               <span class="inline-formula">+18</span>
-              {{zhAdd data.stats.secondaryAttributes.damageThreshold.value '18'}}
+              {{zhAdd system.stats.secondaryAttributes.damageThreshold.value '18'}}
             </div>
           </div>
         </div>
@@ -159,15 +159,15 @@
       <div class="flexcol">
         <h4 class="block-title">Peril Tracker</h4 class="block-title">
         <div class="condition-tracker-list flexcol">
-          {{zhConditionLadder "data.stats.secondaryAttributes.perilCurrent.value" config.perilOptions
-          checked=data.stats.secondaryAttributes.perilCurrent.value}}
+          {{zhConditionLadder "system.stats.secondaryAttributes.perilCurrent.value" config.perilOptions
+          checked=system.stats.secondaryAttributes.perilCurrent.value}}
         </div>
       </div>
       <div class="flexcol">
         <h4 class="block-title">Damage Tracker</h4 class="block-title">
         <div class="condition-tracker-list damage-list flexcol">
-          {{zhConditionLadder "data.stats.secondaryAttributes.damageCurrent.value" config.damageOptions
-          checked=data.stats.secondaryAttributes.damageCurrent.value}}
+          {{zhConditionLadder "system.stats.secondaryAttributes.damageCurrent.value" config.damageOptions
+          checked=system.stats.secondaryAttributes.damageCurrent.value}}
         </div>
       </div>
     </div>

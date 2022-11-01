@@ -622,7 +622,7 @@ body.game.vtt.system-zweihander .zweihander.sheet.actor {
     }
 
     > section.window-content::before {
-      background-image: url('./systems/zweihander/assets/bloodstains2.webp');
+      background-image: url('/systems/zweihander/assets/bloodstains2.webp');
       background-size: 700px 700px;
       background-position: bottom -420px right -320px;
     }
@@ -636,7 +636,7 @@ body.game.vtt.system-zweihander .zweihander.sheet.actor {
       width: 500px;
       left: -130px;
       top: -140px;
-      background-image: url('./systems/zweihander/assets/bloodstains.webp');
+      background-image: url('/systems/zweihander/assets/bloodstains.webp');
       background-size: 500px 500px;
       transform: rotate(93deg) scale(0.5);
     }
@@ -649,8 +649,8 @@ body.game.vtt.system-zweihander .zweihander.sheet.actor {
     }
 
     &.damage-tracker-2 > section.window-content::before {
-      background-image: url('./systems/zweihander/assets/bloodstains2.webp'),
-        url('./systems/zweihander/assets/bloodstains2.webp');
+      background-image: url('/systems/zweihander/assets/bloodstains2.webp'),
+        url('/systems/zweihander/assets/bloodstains2.webp');
       background-size: 700px 700px, 700px 700px;
       background-position: bottom -420px right -320px, bottom -320px left -320px;
       opacity: 0.4;
@@ -659,7 +659,7 @@ body.game.vtt.system-zweihander .zweihander.sheet.actor {
     & > section.window-content > form::after {
       height: 500px;
       width: 500px;
-      background-image: url('./systems/zweihander/assets/bloodstains.webp');
+      background-image: url('/systems/zweihander/assets/bloodstains.webp');
       background-size: 500px 500px;
       transform: rotate(-123deg);
       bottom: calc(50% - 350px);
@@ -670,7 +670,7 @@ body.game.vtt.system-zweihander .zweihander.sheet.actor {
     }
 
     > section.window-content::after {
-      background-image: url('./systems/zweihander/assets/bloodstains.webp');
+      background-image: url('/systems/zweihander/assets/bloodstains.webp');
       background-size: 500px 500px;
       background-position: top -150px right -90px;
     }
