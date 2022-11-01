@@ -7,7 +7,7 @@ export default class ZweihanderCreature extends ZweihanderBaseActor {
       (a) => (a.bonus = a.bonusAdvances + Math.floor(a.value / 10))
     );
     const sa = actor.system.stats.secondaryAttributes;
-    const pa = actor.fvf.stats.primaryAttributes;
+    const pa = actor.system.stats.primaryAttributes;
     sa.perilCurrent.effectiveValue = sa.perilCurrent.value;
     if (!actor.system.stats.manualMode) {
       // main gauche p. 239 "Parry (abbreviated to Par in the Bestiary) is equal to the highest Combat-based Skill the creature has"
