@@ -64,7 +64,8 @@ Hooks.once('ready', function () {
   // Monkey-Patch Search Filter
   const cleanQuery = SearchFilter.cleanQuery;
   SearchFilter.cleanQuery = (x) => ZweihanderUtils.removeDiacritics(cleanQuery(x));
-  triggerAnalytics();
+  // disable analytics temporarily until I get the chance to update my SSL certificate
+  // triggerAnalytics();
   //..
   const currencySettings = game.settings.get('zweihander', 'currencySettings');
   // migration, remove this after a while
