@@ -3,7 +3,7 @@
  * Authors: Re4XN, kxfin
  */
 
- import '../index.scss';
+import '../index.scss';
 
 import ZweihanderActor from './actor/actor';
 import ZweihanderCharacterSheet from './actor/sheet/character-sheet';
@@ -38,7 +38,7 @@ import ZweihanderActiveEffectConfig from './apps/active-effect-config';
 /*  Foundry VTT Initialization                  */
 /* -------------------------------------------- */
 
-CONFIG.compatibility.mode = CONST.COMPATIBILITY_MODES.SILENT
+CONFIG.compatibility.mode = CONST.COMPATIBILITY_MODES.SILENT;
 
 const socket = new Promise((resolve) => {
   Hooks.once('socketlib.ready', () => {
@@ -220,6 +220,40 @@ Hooks.on('chatCommandsReady', function (chatCommands) {
       description: 'Do a Skill Test',
     })
   );
+  if (game.user.isGM) {
+    chatCommands.registerCommand(
+      chatCommands.createCommandFromData({
+        commandKey: '/nextSession',
+        invokeOnCommand: async (chatlog, messageText, chatdata) => {
+          const nextSession = new Date(messageText).toISOString();
+          const response = await foundry.utils.fetchJsonWithTimeout(
+            foundry.utils.getRoute('setup'),
+            {
+              method: 'POST',
+              headers: { 'Content-Type': 'application/json' },
+              body: JSON.stringify({
+                id: game.world.id,
+                nextSession,
+                action: 'editWorld',
+              }),
+            }
+          );
+          game.world.updateSource(response);
+          await ChatMessage.create({
+            flavor: 'Setting the date for the next session.',
+            content: `
+              <h2>Next Session Date</h2>
+            The next session will be on ${nextSession}.
+            Please block the date in your calendars.
+            `,
+          });
+        },
+        shouldDisplayToChat: true,
+        iconClass: 'fa-calendar',
+        description: 'Set the date for the next session',
+      })
+    );
+  }
   chatCommands.registerCommand(
     chatCommands.createCommandFromData({
       commandKey: '/help',
@@ -271,5 +305,5 @@ if (import.meta.hot) {
     if (newModule) {
       _module = newModule._module;
     }
-  })
+  });
 }
