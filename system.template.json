@@ -3,6 +3,7 @@
   "title": "Zweihänder Grim & Perilous RPG",
   "description": "An implementation of the Zweihänder system for FoundryVTT.",
   "version": "{{version}}",
+  "minimumCoreVersion": "10",
   "compatibility": {
     "minimum": 10,
     "verified": 10,
@@ -27,8 +28,8 @@
       "caption": "zweihander"
     }
   ],
-  "esmodules": ["zweihander.js"],
-  "styles": ["zweihander.css"],
+  "esmodules": ["index.js"],
+  "styles": ["style.css"],
   "languages": [
     {
       "lang": "en",
