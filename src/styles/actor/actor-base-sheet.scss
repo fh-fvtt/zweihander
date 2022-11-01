@@ -310,6 +310,7 @@ body.game.vtt.system-zweihander .zweihander.sheet.actor {
         text-align: left;
         text-transform: uppercase;
         flex: 1 0 content;
+        border: none;
         .detail-title {
           display: flex;
           flex-direction: row;
@@ -347,7 +348,7 @@ body.game.vtt.system-zweihander .zweihander.sheet.actor {
           .item-image {
             &.item-image-icon {
               background-color: var(--zh-clr-yellow) !important;
-              mask-image: url('./icons/svg/d10-grey.svg') !important;
+              mask-image: url('/icons/svg/d10-grey.svg') !important;
             }
             &.item-image-picture {
               border-color: var(--zh-clr-yellow);
@@ -357,7 +358,7 @@ body.game.vtt.system-zweihander .zweihander.sheet.actor {
         .item-image:hover {
           &.item-image-icon {
             background-color: var(--zh-clr-aqua) !important;
-            mask-image: url('./icons/svg/d10-grey.svg') !important;
+            mask-image: url('/icons/svg/d10-grey.svg') !important;
           }
           &.item-image-picture {
             border-color: var(--zh-clr-aqua) !important;
