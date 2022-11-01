@@ -60,7 +60,7 @@ export default class ZweihanderItemSheet extends ItemSheet {
       sheetData.choices.associatedPrimaryAttribute =
         CONFIG.ZWEI.primaryAttributes.map((option) => ({
           selected:
-            (system.associatedPrimaryAttribute.toLowerCase() ?? 'combat') ===
+            (sheetData.system.associatedPrimaryAttribute.toLowerCase() ?? 'combat') ===
             option
               ? 'selected'
               : '',
@@ -70,7 +70,7 @@ export default class ZweihanderItemSheet extends ItemSheet {
     }
     if (sheetData.type === 'profession') {
       sheetData.choices.archetypes = ZweihanderUtils.selectedChoice(
-        system.archetype ?? CONFIG.ZWEI.archetypes[0],
+        sheetData.system.archetype ?? CONFIG.ZWEI.archetypes[0],
         CONFIG.ZWEI.archetypes.map((option) => ({
           value: option,
           label: option,
@@ -79,7 +79,7 @@ export default class ZweihanderItemSheet extends ItemSheet {
     }
     if (sheetData.type === 'injury') {
       sheetData.choices.severities = ZweihanderUtils.selectedChoice(
-        system.severity ?? 0,
+        sheetData.system.severity ?? 0,
         CONFIG.ZWEI.injurySeverities
       );
     }
