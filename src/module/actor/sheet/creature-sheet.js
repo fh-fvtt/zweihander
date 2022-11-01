@@ -131,7 +131,7 @@ export default class ZweihanderCreatureSheet extends ZweihanderBaseActorSheet {
     sheetData.weapons = sheetData.weapons.map((w) => {
       const skill = sheetData.skills.find((s) => s.name === w.system.associatedSkill);
       const baseChance =
-        system.stats.primaryAttributes[
+        sheetData.system.stats.primaryAttributes[
           skill.system.associatedPrimaryAttribute.toLowerCase()
         ].value;
       w.chance = baseChance + skill.system.bonus;
