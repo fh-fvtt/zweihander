@@ -225,7 +225,7 @@ Hooks.on('chatCommandsReady', function (chatCommands) {
       chatCommands.createCommandFromData({
         commandKey: '/nextSession',
         invokeOnCommand: async (chatlog, messageText, chatdata) => {
-          const nextSession = new Date(messageText).toISOString();
+          const nextSession = new Date(messageText);
           const response = await foundry.utils.fetchJsonWithTimeout(
             foundry.utils.getRoute('setup'),
             {
@@ -233,7 +233,7 @@ Hooks.on('chatCommandsReady', function (chatCommands) {
               headers: { 'Content-Type': 'application/json' },
               body: JSON.stringify({
                 id: game.world.id,
-                nextSession,
+                nextSession: nextSession.toISOString(),
                 action: 'editWorld',
               }),
             }
@@ -243,12 +243,12 @@ Hooks.on('chatCommandsReady', function (chatCommands) {
             flavor: 'Setting the date for the next session.',
             content: `
               <h2>Next Session Date</h2>
-            The next session will be on ${nextSession}.
+            The next session will be on ${nextSession.toLocaleDateString()}.
             Please block the date in your calendars.
             `,
           });
         },
-        shouldDisplayToChat: true,
+        shouldDisplayToChat: false,
         iconClass: 'fa-calendar',
         description: 'Set the date for the next session',
       })
