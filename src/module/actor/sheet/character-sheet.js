@@ -1,10 +1,7 @@
 import ZweihanderActorConfig from '../../apps/actor-config';
 import ZweihanderBaseActorSheet from './base-actor-sheet';
 import * as ZweihanderDice from '../../dice';
-import {
-  attachTabDefinitions,
-  getItemGroups,
-} from './character-sheet-tabs-def';
+import { attachTabDefinitions, getItemGroups } from './character-sheet-tabs-def';
 import { getPacks } from '../../utils';
 
 /**
@@ -40,10 +37,7 @@ export default class ZweihanderCharacterSheet extends ZweihanderBaseActorSheet {
     // get actor config
     sheetData.actorConfig = ZweihanderActorConfig.getConfig(this.actor);
     // bind currency
-    sheetData.settings.currencies = game.settings.get(
-      'zweihander',
-      'currencySettings'
-    );
+    sheetData.settings.currencies = game.settings.get('zweihander', 'currencySettings');
     // calculate reward points automatically
     sheetData.settings.trackRewardPoints = game.settings.get(
       'zweihander',
@@ -58,14 +52,9 @@ export default class ZweihanderCharacterSheet extends ZweihanderBaseActorSheet {
       sheetData.system.stats.rewardPoints.spent = sheetData.professions
         .map(
           (profession) =>
-            tierMultiplier[profession.system.tier] *
-            profession.system.advancesPurchased
+            tierMultiplier[profession.system.tier] * profession.system.advancesPurchased
         )
-        .concat(
-          sheetData.uniqueAdvances.map(
-            (advance) => advance.system.rewardPointCost
-          )
-        )
+        .concat(sheetData.uniqueAdvances.map((advance) => advance.system.rewardPointCost))
         .reduce((a, b) => a + b, 0);
       sheetData.system.stats.rewardPoints.current =
         sheetData.system.stats.rewardPoints.total -
@@ -264,8 +253,7 @@ export default class ZweihanderCharacterSheet extends ZweihanderBaseActorSheet {
       this._getDimensionBreakpointsCallback('innerWidth', [
         {
           at: 275,
-          callback: (toggle) =>
-            html.find('.skills-list').toggleClass('two-rows', toggle),
+          callback: (toggle) => html.find('.skills-list').toggleClass('two-rows', toggle),
         },
       ])
     );
@@ -309,9 +297,7 @@ export default class ZweihanderCharacterSheet extends ZweihanderBaseActorSheet {
       const professionElement = target
         .closest('.individual-description')
         .parents('.item');
-      const professionItem = this.actor.items.get(
-        $(professionElement).data('itemId')
-      );
+      const professionItem = this.actor.items.get($(professionElement).data('itemId'));
       const locked =
         professionItem.system.completed &&
         this.actor.system.tier !== professionItem.system.tier;
@@ -371,7 +357,7 @@ export default class ZweihanderCharacterSheet extends ZweihanderBaseActorSheet {
       const itemElement = $(event.currentTarget).parents('.item');
       const item = this.actor.items.get($(itemElement).data('itemId'));
 
-      const newNumerableValue = lookup(item.system, numerablePath) + i;
+      const newNumerableValue = lookup(item, numerablePath) + i;
 
       await item.update({
         [`${numerablePath}`]: newNumerableValue >= 0 ? newNumerableValue : 0,
@@ -403,8 +389,7 @@ export default class ZweihanderCharacterSheet extends ZweihanderBaseActorSheet {
   }
 
   _updateEncumbranceMeter(html) {
-    const encumbranceData =
-      this.actor.system.stats.secondaryAttributes.encumbrance;
+    const encumbranceData = this.actor.system.stats.secondaryAttributes.encumbrance;
     const currentEncumbrance = encumbranceData.current;
     const totalEncumbrance = encumbranceData.value;
     let ratio = (currentEncumbrance / totalEncumbrance) * 100;
@@ -417,8 +402,7 @@ export default class ZweihanderCharacterSheet extends ZweihanderBaseActorSheet {
 
   async _render(force, options) {
     if (this.actor.limited) {
-      const classesWithoutDamageTracker =
-        this.constructor.defaultOptions.classes;
+      const classesWithoutDamageTracker = this.constructor.defaultOptions.classes;
       classesWithoutDamageTracker.splice(
         classesWithoutDamageTracker.indexOf('damage-tracker'),
         1
