@@ -17,7 +17,7 @@
         {{else}}
         <input type="text" class="auto-size" {{#unless detail.value}}name="system.{{detail.key}}" {{/unless}}
           placeholder="{{detail.placeholder}}"
-          value="{{#if detail.key}}{{zhLookup ../data detail.key}}{{else}}{{detail.value}}{{/if}}" {{#unless
+          value="{{#if detail.key}}{{zhLookup ../system detail.key}}{{else}}{{detail.value}}{{/if}}" {{#unless
           detail.key}}disabled="disabled" {{/unless}} />
         {{/if}}
         {{#if detail.postfix}}
