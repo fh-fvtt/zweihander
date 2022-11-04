@@ -192,7 +192,7 @@ export default class ZweihanderCreatureSheet extends ZweihanderBaseActorSheet {
         type: 'spell',
         summaryTemplate: 'item-summary/spell',
         rollType: 'spell-roll',
-        rollLabel: system.stats.secondaryAttributes.magick.associatedSkill,
+        rollLabel: sheetData.system.stats.secondaryAttributes.magick.associatedSkill,
         details: [],
         items: sheetData.spells,
       },
