@@ -57,19 +57,12 @@ export async function rollPeril(perilType, actor) {
   }
 }
 
-export async function rollCombatReaction(
-  type,
-  enemyActorId,
-  enemyTestConfiguration
-) {
+export async function rollCombatReaction(type, enemyActorId, enemyTestConfiguration) {
   const actor = game.actors.get(ZweihanderUtils.determineCurrentActorId(true));
   if (!actor) return;
-  const associatedSkill =
-    actor.system.stats.secondaryAttributes[type].associatedSkill;
+  const associatedSkill = actor.system.stats.secondaryAttributes[type].associatedSkill;
   const skillItem = actor.items.find(
-    (i) =>
-      ZweihanderUtils.normalizedEquals(i.name, associatedSkill) &&
-      i.type === 'skill'
+    (i) => ZweihanderUtils.normalizedEquals(i.name, associatedSkill) && i.type === 'skill'
   );
   const originalActorName = game.actors.get(enemyActorId).name;
   const updatedTestConfiguration = {
@@ -89,16 +82,11 @@ export async function rollTest(
 ) {
   const actor = skillItem.actor;
   const weapon =
-    testType === 'weapon'
-      ? actor.items.get(testConfiguration.weaponId)
-      : undefined;
+    testType === 'weapon' ? actor.items.get(testConfiguration.weaponId) : undefined;
   const spell =
-    testType === 'spell'
-      ? actor.items.get(testConfiguration.spellId)
-      : undefined;
+    testType === 'spell' ? actor.items.get(testConfiguration.spellId) : undefined;
   if (weapon && actor.type === 'creature') {
-    testConfiguration.additionalFuryDice =
-      actor.system.details.size.value - 1;
+    testConfiguration.additionalFuryDice = actor.system.details.size.value - 1;
   }
   if (isReroll && actor.type === 'character') {
     testConfiguration.useFortune = 'fortune';
@@ -135,29 +123,20 @@ export async function rollTest(
   }
   const primaryAttribute = skillItem.system.associatedPrimaryAttribute;
   const primaryAttributeValue =
-    actor.system.stats.primaryAttributes[primaryAttribute.toLowerCase()]
-      .value;
+    actor.system.stats.primaryAttributes[primaryAttribute.toLowerCase()].value;
   const rank = skillItem.system.rank;
   const bonusPerRank = skillItem.system.bonusPerRank;
   const rankBonus = skillItem.system.bonus;
   const currentPeril = Number(
     actor.system.stats.secondaryAttributes.perilCurrent.effectiveValue
   );
-  const ranksPurchasedAfterPeril = Math.max(
-    0,
-    rank - Math.max(0, 4 - currentPeril)
-  );
+  const ranksPurchasedAfterPeril = Math.max(0, rank - Math.max(0, 4 - currentPeril));
   const ranksIgnoredByPeril = rank - ranksPurchasedAfterPeril;
   const rankBonusAfterPeril = ranksPurchasedAfterPeril * bonusPerRank;
-  const specialBaseChanceModifier = Number(
-    testConfiguration.baseChanceModifier
-  );
+  const specialBaseChanceModifier = Number(testConfiguration.baseChanceModifier);
   const baseChance =
     primaryAttributeValue +
-    Math.max(
-      -30,
-      Math.min(30, rankBonusAfterPeril + specialBaseChanceModifier)
-    );
+    Math.max(-30, Math.min(30, rankBonusAfterPeril + specialBaseChanceModifier));
   const rawDifficultyRating = Number(testConfiguration.difficultyRating);
   const channelPowerBonus = testConfiguration.channelPowerBonus;
   const difficultyRating = Math.min(
@@ -177,13 +156,11 @@ export async function rollTest(
       : simulateStandardTest;
   const { effectiveResult, effectiveOutcome, effectivelyFlipped, roll } =
     await skillTestFn.bind(this)(totalChance, flip);
-  const testModeLabel =
-    ZWEI.testModes[testConfiguration.testMode].label + ' Test';
+  const testModeLabel = ZWEI.testModes[testConfiguration.testMode].label + ' Test';
   let tensDie = Math.floor(effectiveResult / 10);
   tensDie = tensDie === 0 ? 10 : tensDie;
   const primaryAttributeBonus =
-    actor.system.stats.primaryAttributes[primaryAttribute.toLowerCase()]
-      .bonus;
+    actor.system.stats.primaryAttributes[primaryAttribute.toLowerCase()].bonus;
   const crbDegreesOfSuccess =
     effectiveOutcome < 2
       ? 0
@@ -194,9 +171,7 @@ export async function rollTest(
   const templateData = {
     itemId: skillItem.id,
     testModeLabel,
-    degreesOfSuccess: ['opposed', 'secret-opposed'].includes(
-      testConfiguration.testMode
-    )
+    degreesOfSuccess: ['opposed', 'secret-opposed'].includes(testConfiguration.testMode)
       ? crbDegreesOfSuccess
       : false,
     skill: skillItem.name,
@@ -241,25 +216,16 @@ export async function rollTest(
       actor
     );
     const totalChaosDie =
-      testConfiguration.additionalChaosDice +
-      testConfiguration.channelPowerBonus / 10;
+      testConfiguration.additionalChaosDice + testConfiguration.channelPowerBonus / 10;
     if (totalChaosDie > 0) {
       const formula = `${totalChaosDie}d6`;
       const chaosRoll = await new Roll(formula).evaluate();
-      setTimeout(
-        () => game?.dice3d?.showForRoll?.(chaosRoll, game.user, true),
-        1500
-      );
-      const chaosManifestation = chaosRoll.terms[0].results.some(
-        (r) => r.result === 6
-      );
+      setTimeout(() => game?.dice3d?.showForRoll?.(chaosRoll, game.user, true), 1500);
+      const chaosManifestation = chaosRoll.terms[0].results.some((r) => r.result === 6);
       templateData.chaosManifestation = chaosManifestation;
     }
   }
-  const content = await renderTemplate(
-    CONFIG.ZWEI.templates.skill,
-    templateData
-  );
+  const content = await renderTemplate(CONFIG.ZWEI.templates.skill, templateData);
   const flavor =
     testConfiguration.flavor ??
     {
@@ -332,18 +298,13 @@ export async function rollWeaponDamage(actorId, testConfiguration) {
   );
 }
 
-async function getWeaponDamageContent(
-  weapon,
-  roll,
-  exploded = false,
-  explodedCount = 0
-) {
+async function getWeaponDamageContent(weapon, roll, exploded = false, explodedCount = 0) {
   weapon.system.qualities = await ZweihanderQuality.getQualities(
     weapon.system.qualities.value
   );
   const rollContent = await roll.render({ flavor: 'Fury Die' });
   const cardContent = await renderTemplate(
-    'systems/zweihander/templates/item-card/item-card-weapon.hbs',
+    'systems/zweihander/src/templates/item-card/item-card-weapon.hbs',
     weapon
   );
   return await renderTemplate(CONFIG.ZWEI.templates.weapon, {
@@ -368,29 +329,21 @@ export async function explodeWeaponDamage(message, useFortune) {
     );
     return;
   }
-  const { actorId, weaponId, exploded } =
-    message.flags.zweihander.weaponTestData;
+  const { actorId, weaponId, exploded } = message.flags.zweihander.weaponTestData;
   const actor = game.actors.get(actorId);
   const weapon = actor.items.get(weaponId).toObject(false);
   const roll = Roll.fromJSON(message.roll);
   const dice = roll.dice.find((d) => d.faces === 6);
   if (dice) {
-    const explodeModifiers = dice.modifiers
-      .filter((m) => m.startsWith('x'))
-      .join('');
+    const explodeModifiers = dice.modifiers.filter((m) => m.startsWith('x')).join('');
     const formula = `1d6${explodeModifiers}`;
     const explodingRoll = await new Roll(formula).evaluate();
-    setTimeout(
-      () => game?.dice3d?.showForRoll?.(explodingRoll, game.user, true),
-      1500
-    );
+    setTimeout(() => game?.dice3d?.showForRoll?.(explodingRoll, game.user, true), 1500);
     const results = dice.results;
     const minimumResult = Math.min(
       ...results.filter((x) => !x.exploded).map((r) => r.result)
     );
-    const minimumResultIndex = results.findIndex(
-      (r) => r.result === minimumResult
-    );
+    const minimumResultIndex = results.findIndex((r) => r.result === minimumResult);
     const updatedTotal = roll._total - minimumResult + 6 + explodingRoll.total;
     results.splice(
       minimumResultIndex,
@@ -400,29 +353,17 @@ export async function explodeWeaponDamage(message, useFortune) {
     );
     roll._total = updatedTotal;
   }
-  const content = await getWeaponDamageContent(
-    weapon,
-    roll,
-    useFortune,
-    exploded + 1
-  );
+  const content = await getWeaponDamageContent(weapon, roll, useFortune, exploded + 1);
   const diffData = {
     'flags.zweihander.weaponTestData.exploded': exploded + 1,
     content: content,
     roll: roll.toJSON(),
   };
-  await game.zweihander.socket.executeAsGM(
-    'updateChatMessage',
-    message.id,
-    diffData
-  );
+  await game.zweihander.socket.executeAsGM('updateChatMessage', message.id, diffData);
 }
 
 export function isSuccess(outcome) {
-  return (
-    outcome === OUTCOME_TYPES.CRITICAL_SUCCESS ||
-    outcome === OUTCOME_TYPES.SUCCESS
-  );
+  return outcome === OUTCOME_TYPES.CRITICAL_SUCCESS || outcome === OUTCOME_TYPES.SUCCESS;
 }
 
 async function simulateStandardTest(totalChance, flip) {
@@ -489,12 +430,7 @@ async function simulateAssistedTest(totalChance, flip) {
     // prefer critical success
     units = units2;
   }
-  const { score, flipped, outcome } = determineTestResult(
-    tens,
-    units,
-    flip,
-    totalChance
-  );
+  const { score, flipped, outcome } = determineTestResult(tens, units, flip, totalChance);
   const starterKitTerms = [
     new Die({
       number: 3,
@@ -571,18 +507,14 @@ function getScore(tens, units) {
 }
 
 function getResultOutcome(score, totalChance, match) {
-  if (score === 100 || (score > totalChance && match))
-    return 0; // critical failure
-  else if (score === 1 || (score <= totalChance && match))
-    return 3; // critical success
+  if (score === 100 || (score > totalChance && match)) return 0; // critical failure
+  else if (score === 1 || (score <= totalChance && match)) return 3; // critical success
   else if (score > totalChance && !match) return 1; // failure
   else if (score <= totalChance && !match) return 2; // success
 }
 
 function outcomeLabel(outcome) {
-  return ['Critical Failure', 'Failure', 'Success', 'Critical Success'][
-    outcome
-  ];
+  return ['Critical Failure', 'Failure', 'Success', 'Critical Success'][outcome];
 }
 
 export const patchDie = () => {
@@ -601,9 +533,7 @@ export const patchDie = () => {
     }
     const targets = target
       .split(',')
-      .map((target) =>
-        Number.isNumeric(target) ? parseInt(target) : this.faces
-      );
+      .map((target) => (Number.isNumeric(target) ? parseInt(target) : this.faces));
     // Determine target values
     comparison = comparison || '=';
 
@@ -623,9 +553,7 @@ export const patchDie = () => {
 
       // Determine whether to explode the result and roll again!
       if (
-        targets.some((target) =>
-          DiceTerm.compareResult(r.result, comparison, target)
-        )
+        targets.some((target) => DiceTerm.compareResult(r.result, comparison, target))
       ) {
         r.exploded = true;
         this.roll();
@@ -635,9 +563,7 @@ export const patchDie = () => {
       // Limit recursion
       if (!recursive && checked >= initial) checked = this.results.length;
       if (checked > 1000)
-        throw new Error(
-          'Maximum recursion depth for exploding dice roll exceeded'
-        );
+        throw new Error('Maximum recursion depth for exploding dice roll exceeded');
     }
   };
 
@@ -674,13 +600,11 @@ export const patchDie = () => {
       }
     };
     const cls = this.constructor;
-    const requested = foundry.utils
-      .deepClone(this.modifiers)
-      .reduce((agg, mod) => {
-        if (!agg.length) return [mod];
-        const last = agg.pop();
-        return agg.concat(consolidateExplodes(last, mod));
-      }, []);
+    const requested = foundry.utils.deepClone(this.modifiers).reduce((agg, mod) => {
+      if (!agg.length) return [mod];
+      const last = agg.pop();
+      return agg.concat(consolidateExplodes(last, mod));
+    }, []);
     this.modifiers = [];
 
     // Iterate over requested modifiers
@@ -696,9 +620,7 @@ export const patchDie = () => {
       // Unmatched compound command
       // Sort modifiers from longest to shortest to ensure that the matching algorithm greedily matches the longest
       // prefixes first.
-      const modifiers = Object.keys(cls.MODIFIERS).sort(
-        (a, b) => b.length - a.length
-      );
+      const modifiers = Object.keys(cls.MODIFIERS).sort((a, b) => b.length - a.length);
       while (!!command) {
         let matched = false;
         for (let cmd of modifiers) {

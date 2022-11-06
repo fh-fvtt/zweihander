@@ -10,7 +10,7 @@ export default class CurrencySettings extends FormApplication {
 
   static get defaultOptions() {
     return foundry.utils.mergeObject(super.defaultOptions, {
-      template: 'systems/zweihander/templates/app/currency-settings.hbs',
+      template: 'systems/zweihander/src/templates/app/currency-settings.hbs',
       popOut: true,
       minimizable: false,
       resizable: false,

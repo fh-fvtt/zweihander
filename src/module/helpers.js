@@ -8,7 +8,7 @@ export const registerHandlebarHelpers = async function () {
   const $$ = (name, fn) => Handlebars.registerHelper(name, fn);
 
   $$('$$', function (path) {
-    return 'systems/zweihander/templates/' + path + '.hbs';
+    return 'systems/zweihander/src/templates/' + path + '.hbs';
   });
 
   $$('zhGetFirstLetter', function (word) {

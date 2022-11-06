@@ -8,7 +8,7 @@ export default class ZweihanderItemSheet extends ItemSheet {
   static get defaultOptions() {
     return mergeObject(super.defaultOptions, {
       classes: ['zweihander', 'sheet', 'item'],
-      template: 'systems/zweihander/templates/item/main.hbs',
+      template: 'systems/zweihander/src/templates/item/main.hbs',
       width: 400,
       height: 550,
       resizable: true,
@@ -57,8 +57,8 @@ export default class ZweihanderItemSheet extends ItemSheet {
     sheetData.actor = this.item.actor;
     sheetData.choices = {};
     if (sheetData.type === 'skill') {
-      sheetData.choices.associatedPrimaryAttribute =
-        CONFIG.ZWEI.primaryAttributes.map((option) => ({
+      sheetData.choices.associatedPrimaryAttribute = CONFIG.ZWEI.primaryAttributes.map(
+        (option) => ({
           selected:
             (sheetData.system.associatedPrimaryAttribute.toLowerCase() ?? 'combat') ===
             option
@@ -66,7 +66,8 @@ export default class ZweihanderItemSheet extends ItemSheet {
               : '',
           value: option,
           label: option.capitalize(),
-        }));
+        })
+      );
     }
     if (sheetData.type === 'profession') {
       sheetData.choices.archetypes = ZweihanderUtils.selectedChoice(
@@ -84,9 +85,7 @@ export default class ZweihanderItemSheet extends ItemSheet {
       );
     }
     if (sheetData.type === 'weapon') {
-      const skillPack = game.packs.get(
-        game.settings.get('zweihander', 'skillPack')
-      );
+      const skillPack = game.packs.get(game.settings.get('zweihander', 'skillPack'));
       sheetData.skills = (await skillPack.getDocuments())
         .map((x) => x.name)
         .sort((a, b) => a.localeCompare(b));
@@ -122,18 +121,12 @@ export default class ZweihanderItemSheet extends ItemSheet {
 
     html
       .find('.array-input input')
-      .keypress(async (event) =>
-        event.which === 13 ? this.acceptArrayInput(event) : 0
-      );
+      .keypress(async (event) => (event.which === 13 ? this.acceptArrayInput(event) : 0));
     html
       .find('.array-input input')
       .focusout(async (event) => this.acceptArrayInput(event));
-    html
-      .find('.array-input-plus')
-      .click(async (event) => this.acceptArrayInput(event));
-    html
-      .find('.array-input-pill')
-      .click(async (event) => this.removeArrayInput(event));
+    html.find('.array-input-plus').click(async (event) => this.acceptArrayInput(event));
+    html.find('.array-input-pill').click(async (event) => this.removeArrayInput(event));
   }
 
   async _updateObject(event, formData) {
@@ -151,10 +144,9 @@ export default class ZweihanderItemSheet extends ItemSheet {
         );
         //TODO move to actor#prepareDerivedData
         if (this.item.isOwned) {
-          ui?.notifications.error(
-            `Please choose a valid, existing ancestral trait!`,
-            { permanent: true }
-          );
+          ui?.notifications.error(`Please choose a valid, existing ancestral trait!`, {
+            permanent: true,
+          });
         }
       }
     } else if (this.item.type === 'profession') {
@@ -171,10 +163,9 @@ export default class ZweihanderItemSheet extends ItemSheet {
         );
         //TODO move to actor#prepareDerivedData
         if (this.item.isOwned) {
-          ui?.notifications.error(
-            `Please choose a valid, existing professional trait!`,
-            { permanent: true }
-          );
+          ui?.notifications.error(`Please choose a valid, existing professional trait!`, {
+            permanent: true,
+          });
         }
       }
       const specTrait = formData['system.specialTrait.name'];
@@ -189,10 +180,9 @@ export default class ZweihanderItemSheet extends ItemSheet {
         );
         //TODO move to actor#prepareDerivedData
         if (this.item.isOwned) {
-          ui?.notifications.error(
-            `Please choose a valid, existing special trait!`,
-            { permanent: true }
-          );
+          ui?.notifications.error(`Please choose a valid, existing special trait!`, {
+            permanent: true,
+          });
         }
       }
       const drawback = formData['system.drawback.name'];
@@ -231,9 +221,7 @@ export default class ZweihanderItemSheet extends ItemSheet {
       .filter((v) => v !== '');
     if (array.length + inputs.length > max) {
       const caption = arrayInput.parents('.form-group').find('label').text();
-      ui?.notifications.warn(
-        `You can't add more than ${max} entries in "${caption}"!`
-      );
+      ui?.notifications.warn(`You can't add more than ${max} entries in "${caption}"!`);
       const toAdd = max - array.length;
       inputs.splice(toAdd, inputs.length - toAdd);
       if (inputs.length === 0) return;
@@ -263,18 +251,12 @@ export default class ZweihanderItemSheet extends ItemSheet {
         break;
       case 'system.talents':
         array = array.concat(
-          await this.addInputToArray(
-            inputs,
-            async (x) => await this.validateTalent(x)
-          )
+          await this.addInputToArray(inputs, async (x) => await this.validateTalent(x))
         );
         break;
       case 'system.skillRanks':
         array = array.concat(
-          await this.addInputToArray(
-            inputs,
-            async (x) => await this.validateSkillRank(x)
-          )
+          await this.addInputToArray(inputs, async (x) => await this.validateSkillRank(x))
         );
         break;
     }
@@ -308,15 +290,7 @@ export default class ZweihanderItemSheet extends ItemSheet {
 
   async validateBonusAbbr(bonusAbbr) {
     //TODO: move to const?
-    const validValues = [
-      '[CB]',
-      '[BB]',
-      '[AB]',
-      '[PB]',
-      '[IB]',
-      '[WB]',
-      '[FB]',
-    ];
+    const validValues = ['[CB]', '[BB]', '[AB]', '[PB]', '[IB]', '[WB]', '[FB]'];
     const sanitized = `[${bonusAbbr
       .trim()
       .replaceAll(/[^a-zA-Z]/g, '')
@@ -333,9 +307,7 @@ export default class ZweihanderItemSheet extends ItemSheet {
   async validateTalent(talent) {
     const item = this.item;
     if (
-      item.system?.talents?.some((t) =>
-        ZweihanderUtils.normalizedEquals(t.name, talent)
-      )
+      item.system?.talents?.some((t) => ZweihanderUtils.normalizedEquals(t.name, talent))
     ) {
       ui?.notifications.warn(
         `A Talent named "${talent}" already belongs to item "${item.name}" of type "${item.type}". Skill Ranks must be unique!`
@@ -372,10 +344,7 @@ export default class ZweihanderItemSheet extends ItemSheet {
       );
       return;
     }
-    const foundItem = await ZweihanderUtils.findItemWorldWide(
-      'skill',
-      skillRank
-    );
+    const foundItem = await ZweihanderUtils.findItemWorldWide('skill', skillRank);
     if (foundItem) {
       return { name: foundItem.name };
     } else {

@@ -4,11 +4,11 @@ ZWEI.debugTitle =
   '\n                                                                     \\\n                Initializing                ---======================]=====O\n                                                                     /\n ________          ________ _____ _    _  _   _  _   _ _____  ______ _____  \n|___  /\\ \\        / /  ____|_   _| |  | |(_)_(_)| \\ | |  __ \\|  ____|  __ \\ \n   / /  \\ \\  /\\  / /| |__    | | | |__| |  / \\  |  \\| | |  | | |__  | |__) |\n  / /    \\ \\/  \\/ / |  __|   | | |  __  | / _ \\ | . ` | |  | |  __| |  _  / \n / /__    \\  /\\  /  | |____ _| |_| |  | |/ ___ \\| |\\  | |__| | |____| | \\ \\ \n/_____|    \\/  \\/   |______|_____|_|  |_/_/   \\_\\_| \\_|_____/|______|_|  \\_\\\n\n      /\nO=====[======================---         Grim & Perilous RPG System         \n      \\';
 
 ZWEI.templates = {
-  skill: 'systems/zweihander/templates/chat/chat-skill.hbs',
-  spell: 'systems/zweihander/templates/chat/chat-spell.hbs',
-  weapon: 'systems/zweihander/templates/chat/chat-weapon.hbs',
+  skill: 'systems/zweihander/src/templates/chat/chat-skill.hbs',
+  spell: 'systems/zweihander/src/templates/chat/chat-spell.hbs',
+  weapon: 'systems/zweihander/src/templates/chat/chat-weapon.hbs',
   skillConfigurationDialog:
-    'systems/zweihander/templates/dialog/dialog-skill-configuration.hbs',
+    'systems/zweihander/src/templates/dialog/dialog-skill-configuration.hbs',
 };
 
 ZWEI.testTypes = {
@@ -107,10 +107,7 @@ ZWEI.supportedGameSystems = {
   fof: 'Flames of Freedom',
 };
 
-ZWEI.replacedDefaultCoreIcons = [
-  'icons/svg/mystery-man.svg',
-  'icons/svg/item-bag.svg',
-];
+ZWEI.replacedDefaultCoreIcons = ['icons/svg/mystery-man.svg', 'icons/svg/item-bag.svg'];
 
 const d = 'systems/zweihander/assets/icons';
 ZWEI.defaultItemIcons = {
@@ -281,11 +278,11 @@ ZWEI.statusEffects = [
   },
 ];
 
-export { ZWEI }
+export { ZWEI };
 
 // this exact if statement guarantees vite will tree-shake this out in prod
 if (import.meta.hot) {
-  import.meta.hot.accept(newModule => {
+  import.meta.hot.accept((newModule) => {
     ZWEI = newModule.ZWEI;
   });
 }

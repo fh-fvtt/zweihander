@@ -13,13 +13,7 @@ export default class ZweihanderActorConfig extends FormApplication {
     encumbranceModifier: 0,
     initiativeModifier: 0,
     movementModifier: 0,
-    parrySkills: [
-      'Simple Melee',
-      'Martial Melee',
-      'Guile',
-      'Charm',
-      'Incantation',
-    ],
+    parrySkills: ['Simple Melee', 'Martial Melee', 'Guile', 'Charm', 'Incantation'],
     dodgeSkills: ['Coordination', 'Guile', 'Drive', 'Ride'],
     magickSkills: ['Incantation', 'Folklore'],
     isMagickUser: false,
@@ -48,7 +42,7 @@ export default class ZweihanderActorConfig extends FormApplication {
     return foundry.utils.mergeObject(super.defaultOptions, {
       classes: ['zweihander sheet actor-config'],
       id: 'zweihander_actor_config',
-      template: 'systems/zweihander/templates/app/actor-config.hbs',
+      template: 'systems/zweihander/src/templates/app/actor-config.hbs',
       submitOnChange: true,
       submitOnClose: true,
       closeOnSubmit: false,
@@ -89,15 +83,13 @@ export default class ZweihanderActorConfig extends FormApplication {
         .split(',')
         .map((skill) => skill.trim());
       if (!updateData.parrySkills.includes(sa.parry.associatedSkill)) {
-        actorUpdate[`${saPath}.parry.associatedSkill`] =
-          updateData.parrySkills[0] ?? '';
+        actorUpdate[`${saPath}.parry.associatedSkill`] = updateData.parrySkills[0] ?? '';
       }
       updateData.dodgeSkills = updateData.dodgeSkills
         .split(',')
         .map((skill) => skill.trim());
       if (!updateData.dodgeSkills.includes(sa.dodge.associatedSkill)) {
-        actorUpdate[`${saPath}.dodge.associatedSkill`] =
-          updateData.dodgeSkills[0] ?? '';
+        actorUpdate[`${saPath}.dodge.associatedSkill`] = updateData.dodgeSkills[0] ?? '';
       }
       updateData.magickSkills = updateData.magickSkills
         .split(',')

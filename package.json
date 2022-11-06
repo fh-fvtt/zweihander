@@ -1,25 +1,34 @@
 {
-  "scripts": {
-    "dev": "vite serve",
-    "build": "vite build"
+  "name": "zweihander",
+  "description": "Implementation of the d100 Zweihänder system for FoundryVTT",
+  "license": "MIT",
+  "private": true,
+  "type": "module",
+  "author": "Saveliy Ivanov <sa_veliy@hotmail.com> (https://github.com/Re4XN)",
+  "contributors": [
+    "Kevin Dreßler <mail@kxfin.xyz> (https://github.com/kvndrsslr)",
+    "Saveliy Ivanov <sa_veliy@hotmail.com> (https://github.com/Re4XN)"
+  ],
+  "dependencies": {
+    "@typhonjs-fvtt/runtime": "^0.0.20",
+    "@typhonjs-fvtt/svelte-standard": "^0.0.16",
+    "svelte": "^3.52.0"
   },
   "devDependencies": {
-    "@rollup/plugin-commonjs": "^21.0.1",
-    "@rollup/plugin-node-resolve": "^13.0.6",
-    "autoprefixer": "^10.4.0",
-    "colorguard": "^1.2.1",
-    "cypress": "^9.6.1",
-    "doiuse": "^4.4.1",
-    "postcss": "^8.4.4",
-    "postcss-cli": "^9.0.2",
-    "postcss-reporter": "^7.0.4",
+    "@typhonjs-config/eslint-config": "^0.3.0",
+    "@typhonjs-fvtt/eslint-config-foundry.js": "^0.8.0",
+    "eslint": "^8",
     "prettier": "^2.7.1",
-    "rollup": "^2.60.1",
-    "rollup-plugin-postcss": "^4.0.2",
-    "rollup-plugin-styles": "^4.0.0",
-    "rpg-awesome": "^0.2.0",
-    "sass": "^1.45.1",
-    "vite": "^3.0.2",
-    "vite-plugin-static-copy": "^0.7.0"
+    "svelte-preprocess": "^4.10.0",
+    "vite": "^3"
+  },
+  "browserslist": [
+    ">5%",
+    "not IE 11"
+  ],
+  "scripts": {
+    "build": "vite build",
+    "dev": "vite",
+    "eslint": "eslint ."
   }
 }

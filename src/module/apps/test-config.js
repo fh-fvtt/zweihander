@@ -1,9 +1,5 @@
 import { ZWEI } from '../config';
-import {
-  getDifficultyRatingLabel,
-  selectedChoice,
-  normalizedEquals,
-} from '../utils';
+import { getDifficultyRatingLabel, selectedChoice, normalizedEquals } from '../utils';
 
 export const getItemRollConfiguration = (item) => {
   const actor = item.actor;
@@ -13,8 +9,7 @@ export const getItemRollConfiguration = (item) => {
       ? item.system.associatedSkill
       : actor.system.stats.secondaryAttributes.magick.associatedSkill;
   const skillItem = actor.items.find(
-    (item) =>
-      item.type === 'skill' && normalizedEquals(item.name, associatedSkill)
+    (item) => item.type === 'skill' && normalizedEquals(item.name, associatedSkill)
   );
 
   const additionalConfiguration = {};
@@ -32,8 +27,7 @@ export async function getTestConfiguration(
   testConfiguration = {}
 ) {
   testConfiguration.flip =
-    testConfiguration.flip ??
-    (skillItem.system.isFlipToFail ? 'fail' : 'no-flip');
+    testConfiguration.flip ?? (skillItem.system.isFlipToFail ? 'fail' : 'no-flip');
   const configurationFromDialog = await renderConfigurationDialog(
     testType,
     skillItem.name,
@@ -43,28 +37,20 @@ export async function getTestConfiguration(
   return testConfiguration;
 }
 
-async function renderConfigurationDialog(
-  testType,
-  label,
-  testConfiguration = {}
-) {
+async function renderConfigurationDialog(testType, label, testConfiguration = {}) {
   const templateData = {
     weaponRoll: testType === 'weapon',
     spellRoll: testType === 'spell',
     additionalFuryDice: testConfiguration.additionalFuryDice,
     additionalChaosDice: testConfiguration.additionalChaosDice,
   };
-  const toPercentileLabel = (i) =>
-    i === 0 ? '+-0%' : i > 0 ? `+${i}%` : `${i}%`;
+  const toPercentileLabel = (i) => (i === 0 ? '+-0%' : i > 0 ? `+${i}%` : `${i}%`);
   templateData.fortuneOptions = [
     { value: 'none', label: "Don't Use" },
     { value: 'fortune', label: 'Use Fortune' },
     { value: 'misfortune', label: 'Use Misfortune' },
   ].map((option) => ({
-    selected:
-      (testConfiguration.useFortune ?? 'none') === option.value
-        ? 'selected'
-        : '',
+    selected: (testConfiguration.useFortune ?? 'none') === option.value ? 'selected' : '',
     ...option,
   }));
   templateData.baseChanceModifiers = [...Array(41).keys()].map((i) => {
@@ -84,8 +70,7 @@ async function renderConfigurationDialog(
     { value: 'no-flip', label: "Don't Flip" },
     { value: 'succeed', label: 'Flip to Succeed' },
   ].map((option) => ({
-    selected:
-      (testConfiguration.flip ?? 'no-flip') === option.value ? 'selected' : '',
+    selected: (testConfiguration.flip ?? 'no-flip') === option.value ? 'selected' : '',
     ...option,
   }));
   templateData.skillModes = selectedChoice(
@@ -102,28 +87,20 @@ async function renderConfigurationDialog(
     { value: 30, label: 'Three Steps (3d6 Chaos Dice)' },
   ].map((option) => ({
     selected:
-      (testConfiguration.channelPowerBonus ?? '0') === option.value
-        ? 'selected'
-        : '',
+      (testConfiguration.channelPowerBonus ?? '0') === option.value ? 'selected' : '',
     ...option,
   }));
   return createConfigurationDialog(
     label,
-    'systems/zweihander/templates/app/test-config.hbs',
+    'systems/zweihander/src/templates/app/test-config.hbs',
     templateData,
     (resolve) => (html) => {
-      let additionalFuryDice =
-        Number(html.find('[name="extraFury"]').val()) || 0;
-      let additionalChaosDice =
-        Number(html.find('[name="extraChaos"]').val()) || 0;
-      let difficultyRating = Number(
-        html.find('[name="difficultyRatingSelect"]').val()
-      );
+      let additionalFuryDice = Number(html.find('[name="extraFury"]').val()) || 0;
+      let additionalChaosDice = Number(html.find('[name="extraChaos"]').val()) || 0;
+      let difficultyRating = Number(html.find('[name="difficultyRatingSelect"]').val());
       let channelPowerBonus = Number(html.find('[name="channelSelect"]').val());
       let flip = html.find('[name="flipSelect"]').val();
-      let baseChanceModifier = Number(
-        html.find('[name="baseChanceModifier"]').val()
-      );
+      let baseChanceModifier = Number(html.find('[name="baseChanceModifier"]').val());
       let testMode = html.find('[name="skillMode"]').val();
       let useFortune = html.find('[name="useFortune"]').val();
       resolve({

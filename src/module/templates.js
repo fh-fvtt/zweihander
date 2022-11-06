@@ -1,4 +1,4 @@
-const $$ = (path) => `systems/zweihander/templates/${path}`;
+const $$ = (path) => `systems/zweihander/src/templates/${path}`;
 
 const templatesToLoad = [
   $$('app/actor-config.hbs'),
@@ -82,6 +82,7 @@ export const preloadHandlebarsTemplates = async function () {
 
 if (import.meta.hot) {
   import.meta.hot.on('handlebars-update', ({ file, content }) => {
+    console.log(`received ${file}!`);
     const compiled = Handlebars.compile(content);
     Handlebars.registerPartial(file, compiled);
     _templateCache[file] = compiled;

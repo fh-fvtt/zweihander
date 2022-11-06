@@ -133,3 +133,12 @@ dist
 
 .vscode/
 .github-labelsrc.json
+
+.idea
+.DS_Store
+.vite-cache/
+.vscode/**/*
+!.vscode/extensions.json
+/index.js
+/index.js.map
+/style.css

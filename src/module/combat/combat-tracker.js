@@ -1,6 +1,6 @@
 export default class ZweihanderCombatTracker extends CombatTracker {
   get template() {
-    return 'systems/zweihander/templates/combat/combat-tracker.hbs';
+    return 'systems/zweihander/src/templates/combat/combat-tracker.hbs';
   }
 
   activateListeners(html) {

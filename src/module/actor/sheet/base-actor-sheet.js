@@ -31,7 +31,6 @@ export default class ZweihanderBaseActorSheet extends ActorSheet {
 
   /** @override */
   getData(options) {
-    
     // Basic data
     let isOwner = this.actor.isOwner;
     const sheetData = {
@@ -460,10 +459,7 @@ export default class ZweihanderBaseActorSheet extends ActorSheet {
       event.preventDefault();
       const checkbox = $(event.currentTarget);
       const item = this.actor.items.get(checkbox.data('itemId'));
-      if (
-        !event.currentTarget.checked &&
-        item.system.tier !== item.actor.system.tier
-      ) {
+      if (!event.currentTarget.checked && item.system.tier !== item.actor.system.tier) {
         ui.notifications.error(
           `In order to reset this professions progress you have to delete the profession above it first!`
         );
@@ -514,12 +510,12 @@ export default class ZweihanderBaseActorSheet extends ActorSheet {
       let html;
       try {
         html = await renderTemplate(
-          `systems/zweihander/templates/item-card/item-card-${item.type}.hbs`,
+          `systems/zweihander/src/templates/item-card/item-card-${item.type}.hbs`,
           item
         );
       } catch (e) {
         html = await renderTemplate(
-          `systems/zweihander/templates/item-card/item-card-fallback.hbs`,
+          `systems/zweihander/src/templates/item-card/item-card-fallback.hbs`,
           item
         );
       }
@@ -582,9 +578,7 @@ export default class ZweihanderBaseActorSheet extends ActorSheet {
   }
 
   _perilSheet(html) {
-    const peril = Number(
-      this.actor.system.stats.secondaryAttributes.perilCurrent.value
-    );
+    const peril = Number(this.actor.system.stats.secondaryAttributes.perilCurrent.value);
     const el = html.find('.peril-tracker');
     for (let i = peril; i <= 4; i++) {
       el.addClass(`peril-tracker-${i}`);

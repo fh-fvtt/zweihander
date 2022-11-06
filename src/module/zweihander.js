@@ -116,7 +116,7 @@ Hooks.once('init', async function () {
     migrateWorld,
     rollItemMacro,
   };
-  CONFIG.ChatMessage.template = 'systems/zweihander/templates/chat/chat-message.hbs';
+  CONFIG.ChatMessage.template = 'systems/zweihander/src/templates/chat/chat-message.hbs';
   /**
    * Set an initiative formula for the system
    * @type {String}

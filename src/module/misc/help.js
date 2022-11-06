@@ -1,7 +1,5 @@
 export const displayHelpMessage = async () => {
-  const html = await renderTemplate(
-    'systems/zweihander/templates/help/index.hbs'
-  );
+  const html = await renderTemplate('systems/zweihander/src/templates/help/index.hbs');
   await ChatMessage.create({
     type: CONST.CHAT_MESSAGE_TYPES.OTHER,
     user: game.user.id,

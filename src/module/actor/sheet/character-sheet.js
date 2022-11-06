@@ -18,7 +18,7 @@ export default class ZweihanderCharacterSheet extends ZweihanderBaseActorSheet {
   static get defaultOptions() {
     return foundry.utils.mergeObject(super.defaultOptions, {
       classes: super.defaultOptions.classes.concat(['character']),
-      template: 'systems/zweihander/templates/character/main.hbs',
+      template: 'systems/zweihander/src/templates/character/main.hbs',
       width: 770,
       height: 900,
       tabs: [

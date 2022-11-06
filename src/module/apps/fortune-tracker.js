@@ -47,7 +47,7 @@ export default class FortuneTracker extends Application {
 
   static get defaultOptions() {
     return foundry.utils.mergeObject(super.defaultOptions, {
-      template: 'systems/zweihander/templates/app/fortune-tracker.hbs',
+      template: 'systems/zweihander/src/templates/app/fortune-tracker.hbs',
       popOut: true,
       minimizable: false,
       resizable: false,
@@ -91,10 +91,7 @@ export default class FortuneTracker extends Application {
 
     socket.register('requestSync', requestSync);
     socket.register('broadcastState', broadcastState);
-    socket.register(
-      'showIllegalStateNotification',
-      showIllegalStateNotification
-    );
+    socket.register('showIllegalStateNotification', showIllegalStateNotification);
 
     this.#socket = socket;
 
@@ -107,8 +104,7 @@ export default class FortuneTracker extends Application {
   }
 
   get removeUsedMisfortune() {
-    return game.settings.get('zweihander', 'fortuneTrackerSettings')
-      .removeUsedMisfortune;
+    return game.settings.get('zweihander', 'fortuneTrackerSettings').removeUsedMisfortune;
   }
 
   get state() {
@@ -130,11 +126,7 @@ export default class FortuneTracker extends Application {
     this.#waiting = false;
     this.#state = updatedState;
     if (game.users.get(game.userId).isGM) {
-      game.settings.set(
-        'zweihander',
-        'fortuneTrackerPersistedState',
-        updatedState
-      );
+      game.settings.set('zweihander', 'fortuneTrackerPersistedState', updatedState);
     }
     this.render(!this.closable);
   }
@@ -302,14 +294,12 @@ export default class FortuneTracker extends Application {
       fortune: {
         value: this.fortune,
         positions: fortunePositions,
-        path: game.settings.get('zweihander', 'fortuneTrackerSettings')
-          .fortunePath,
+        path: game.settings.get('zweihander', 'fortuneTrackerSettings').fortunePath,
       },
       misfortune: {
         value: this.misfortune,
         positions: misfortunePositions,
-        path: game.settings.get('zweihander', 'fortuneTrackerSettings')
-          .misfortunePath,
+        path: game.settings.get('zweihander', 'fortuneTrackerSettings').misfortunePath,
       },
       waiting: this.#waiting,
       params: FortuneTracker.PARAMS,
@@ -318,10 +308,7 @@ export default class FortuneTracker extends Application {
 
   async syncState() {
     if (game.users.get(game.userId).isGM) {
-      this.#state = game.settings.get(
-        'zweihander',
-        'fortuneTrackerPersistedState'
-      );
+      this.#state = game.settings.get('zweihander', 'fortuneTrackerPersistedState');
       this.#waiting = false;
       this.#socket.executeForOthers('broadcastState', this.state);
     } else {
@@ -351,11 +338,7 @@ export default class FortuneTracker extends Application {
   async requestSync(updatedState, rethrow = false) {
     try {
       if (updatedState) {
-        return await this.#socket.executeAsGM(
-          'requestSync',
-          updatedState,
-          game.userId
-        );
+        return await this.#socket.executeAsGM('requestSync', updatedState, game.userId);
       } else {
         return await this.#socket.executeAsGM('requestSync');
       }
@@ -365,9 +348,7 @@ export default class FortuneTracker extends Application {
       }
       this.#waiting = true;
       this.render(!this.closable);
-      ui.notifications.warn(
-        'Fortune Tracker is waiting for a GM to (re)connect.'
-      );
+      ui.notifications.warn('Fortune Tracker is waiting for a GM to (re)connect.');
       if (rethrow) {
         throw e;
       }
@@ -383,8 +364,7 @@ export default class FortuneTracker extends Application {
       canvas.activeLayer &&
       Object.keys(canvas.activeLayer._controlled).length
     ) {
-      if (!canvas.activeLayer.preview?.children.length)
-        canvas.activeLayer.releaseAll();
+      if (!canvas.activeLayer.preview?.children.length) canvas.activeLayer.releaseAll();
       return true;
     }
     ui.menu.toggle();
@@ -415,9 +395,9 @@ export default class FortuneTracker extends Application {
       app
         .find('#fortuneTrackerAppTotal')
         .replaceWith(
-          `<a id="fortuneTrackerAppTotal" class="waiting-${
-            this.#waiting
-          }">Total: ${this.total}</a>`
+          `<a id="fortuneTrackerAppTotal" class="waiting-${this.#waiting}">Total: ${
+            this.total
+          }</a>`
         );
       totalTrigger = app.find('#fortuneTrackerAppTotal');
     }

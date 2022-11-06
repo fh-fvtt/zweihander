@@ -3,7 +3,7 @@ import { formDataToArray } from '../utils';
 export default class ZweihanderLanguageConfig extends FormApplication {
   static get defaultOptions() {
     return foundry.utils.mergeObject(super.defaultOptions, {
-      template: 'systems/zweihander/templates/app/language-config.hbs',
+      template: 'systems/zweihander/src/templates/app/language-config.hbs',
       popOut: true,
       minimizable: false,
       resizable: false,

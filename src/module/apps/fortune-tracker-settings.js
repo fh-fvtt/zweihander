@@ -1,7 +1,7 @@
 export default class FortuneTrackerSettings extends FormApplication {
   static get defaultOptions() {
     return foundry.utils.mergeObject(super.defaultOptions, {
-      template: 'systems/zweihander/templates/app/fortune-tracker-settings.hbs',
+      template: 'systems/zweihander/src/templates/app/fortune-tracker-settings.hbs',
       popOut: true,
       minimizable: true,
       resizable: false,
@@ -33,7 +33,8 @@ export default class FortuneTrackerSettings extends FormApplication {
       { value: 'notify', label: 'Post Foundry Notifications' },
       { value: 'chat', label: 'Post Chat Messages' },
     ].map((option) => ({
-      selected: (fortuneTrackerData.notifications ?? 'notify') === option.value ? 'selected' : '',
+      selected:
+        (fortuneTrackerData.notifications ?? 'notify') === option.value ? 'selected' : '',
       ...option,
     }));
     return fortuneTrackerData;
