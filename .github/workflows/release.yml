@@ -14,7 +14,7 @@ jobs:
       - name: Use Node.js
         uses: actions/setup-node@v3
         with:
-          node-version: '16'
+          node-version: '19'
           cache: 'npm'
       - run: npm install
       - run: npm run build
@@ -22,7 +22,7 @@ jobs:
       # create a zip file with all files required by the module to add to the release
       - name: Zip Files
         working-directory: ./
-        run: zip -r ./system.zip ./dist/*
+        run: zip -r ./system.zip ./assets ./fonts ./lang ./packs ./src ./tinymce index.js index.js.map style.css system.json template.json LICENSE.txt
 
       # Get the version from 'module.json'
       - name: Get Version
