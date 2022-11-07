@@ -18,13 +18,7 @@ export const OUTCOME_TYPES = {
   CRITICAL_FAILURE: 0,
 };
 
-export async function reRollTest(
-  actorId,
-  skillItemId,
-  testType,
-  testConfiguration = {},
-  { showDialog = false } = {}
-) {
+export async function reRollTest(actorId, skillItemId, testType, testConfiguration = {}, { showDialog = false } = {}) {
   const actor = game.actors.get(actorId);
   const skillItem = actor.items.get(skillItemId);
   return rollTest(skillItem, testType, testConfiguration, {
@@ -34,9 +28,7 @@ export async function reRollTest(
 }
 
 export async function rollPeril(perilType, actor) {
-  const resolveSkill = actor.items.find(
-    (i) => i.type === 'skill' && i.name === 'Resolve'
-  );
+  const resolveSkill = actor.items.find((i) => i.type === 'skill' && i.name === 'Resolve');
   const { outcome } = await rollTest(
     resolveSkill,
     'skill',
@@ -81,10 +73,8 @@ export async function rollTest(
   { showDialog = false, isReroll = false, create = true } = {}
 ) {
   const actor = skillItem.actor;
-  const weapon =
-    testType === 'weapon' ? actor.items.get(testConfiguration.weaponId) : undefined;
-  const spell =
-    testType === 'spell' ? actor.items.get(testConfiguration.spellId) : undefined;
+  const weapon = testType === 'weapon' ? actor.items.get(testConfiguration.weaponId) : undefined;
+  const spell = testType === 'spell' ? actor.items.get(testConfiguration.spellId) : undefined;
   if (weapon && actor.type === 'creature') {
     testConfiguration.additionalFuryDice = actor.system.details.size.value - 1;
   }
@@ -101,13 +91,8 @@ export async function rollTest(
     greater: -10,
   }[principle];
   if (showDialog) {
-    testConfiguration.difficultyRating =
-      testConfiguration.difficultyRating ?? defaultSpellDifficulty ?? 0;
-    testConfiguration = await getTestConfiguration(
-      skillItem,
-      testType,
-      testConfiguration
-    );
+    testConfiguration.difficultyRating = testConfiguration.difficultyRating ?? defaultSpellDifficulty ?? 0;
+    testConfiguration = await getTestConfiguration(skillItem, testType, testConfiguration);
   }
   try {
     if (testConfiguration.useFortune === 'fortune') {
@@ -116,64 +101,48 @@ export async function rollTest(
       await FortuneTracker.INSTANCE.useMisfortune();
     }
   } catch (e) {
-    ui.notifications.warn(
-      `Couldn't reroll skill test: There are no ${testConfiguration.useFortune} points left.`
-    );
+    ui.notifications.warn(`Couldn't reroll skill test: There are no ${testConfiguration.useFortune} points left.`);
     return;
   }
   const primaryAttribute = skillItem.system.associatedPrimaryAttribute;
-  const primaryAttributeValue =
-    actor.system.stats.primaryAttributes[primaryAttribute.toLowerCase()].value;
+  const primaryAttributeValue = actor.system.stats.primaryAttributes[primaryAttribute.toLowerCase()].value;
   const rank = skillItem.system.rank;
   const bonusPerRank = skillItem.system.bonusPerRank;
   const rankBonus = skillItem.system.bonus;
-  const currentPeril = Number(
-    actor.system.stats.secondaryAttributes.perilCurrent.effectiveValue
-  );
+  const currentPeril = Number(actor.system.stats.secondaryAttributes.perilCurrent.effectiveValue);
   const ranksPurchasedAfterPeril = Math.max(0, rank - Math.max(0, 4 - currentPeril));
   const ranksIgnoredByPeril = rank - ranksPurchasedAfterPeril;
   const rankBonusAfterPeril = ranksPurchasedAfterPeril * bonusPerRank;
   const specialBaseChanceModifier = Number(testConfiguration.baseChanceModifier);
   const baseChance =
-    primaryAttributeValue +
-    Math.max(-30, Math.min(30, rankBonusAfterPeril + specialBaseChanceModifier));
+    primaryAttributeValue + Math.max(-30, Math.min(30, rankBonusAfterPeril + specialBaseChanceModifier));
   const rawDifficultyRating = Number(testConfiguration.difficultyRating);
   const channelPowerBonus = testConfiguration.channelPowerBonus;
-  const difficultyRating = Math.min(
-    30,
-    rawDifficultyRating + (testConfiguration.channelPowerBonus || 0)
-  );
-  const difficultyRatingLabel =
-    ZweihanderUtils.getDifficultyRatingLabel(difficultyRating);
+  const difficultyRating = Math.min(30, rawDifficultyRating + (testConfiguration.channelPowerBonus || 0));
+  const difficultyRatingLabel = ZweihanderUtils.getDifficultyRatingLabel(difficultyRating);
   let totalChance = baseChance + difficultyRating;
-  totalChance = (
-    totalChance >= 100 ? 99 : totalChance < 1 ? 1 : totalChance
-  ).toLocaleString(undefined, { minimumIntegerDigits: 2 });
+  totalChance = (totalChance >= 100 ? 99 : totalChance < 1 ? 1 : totalChance).toLocaleString(undefined, {
+    minimumIntegerDigits: 2,
+  });
   const flip = testConfiguration.flip;
-  const skillTestFn =
-    testConfiguration.testMode === 'assisted'
-      ? simulateAssistedTest
-      : simulateStandardTest;
-  const { effectiveResult, effectiveOutcome, effectivelyFlipped, roll } =
-    await skillTestFn.bind(this)(totalChance, flip);
+  const skillTestFn = testConfiguration.testMode === 'assisted' ? simulateAssistedTest : simulateStandardTest;
+  const { effectiveResult, effectiveOutcome, effectivelyFlipped, roll } = await skillTestFn.bind(this)(
+    totalChance,
+    flip
+  );
   const testModeLabel = ZWEI.testModes[testConfiguration.testMode].label + ' Test';
   let tensDie = Math.floor(effectiveResult / 10);
   tensDie = tensDie === 0 ? 10 : tensDie;
-  const primaryAttributeBonus =
-    actor.system.stats.primaryAttributes[primaryAttribute.toLowerCase()].bonus;
+  const primaryAttributeBonus = actor.system.stats.primaryAttributes[primaryAttribute.toLowerCase()].bonus;
   const crbDegreesOfSuccess =
     effectiveOutcome < 2
       ? 0
-      : `${tensDie} + ${primaryAttributeBonus} [${primaryAttribute[0]}B] = ${
-          tensDie + primaryAttributeBonus
-        }`;
+      : `${tensDie} + ${primaryAttributeBonus} [${primaryAttribute[0]}B] = ${tensDie + primaryAttributeBonus}`;
   // const starterKitDegreesOfSuccess = effectiveOutcome < 2 ? 0 : 100 - (totalChance - effectiveResult);
   const templateData = {
     itemId: skillItem.id,
     testModeLabel,
-    degreesOfSuccess: ['opposed', 'secret-opposed'].includes(testConfiguration.testMode)
-      ? crbDegreesOfSuccess
-      : false,
+    degreesOfSuccess: ['opposed', 'secret-opposed'].includes(testConfiguration.testMode) ? crbDegreesOfSuccess : false,
     skill: skillItem.name,
     primaryAttribute,
     primaryAttributeValue,
@@ -215,8 +184,7 @@ export async function rollTest(
       templateData.spell.system.duration,
       actor
     );
-    const totalChaosDie =
-      testConfiguration.additionalChaosDice + testConfiguration.channelPowerBonus / 10;
+    const totalChaosDie = testConfiguration.additionalChaosDice + testConfiguration.channelPowerBonus / 10;
     if (totalChaosDie > 0) {
       const formula = `${totalChaosDie}d6`;
       const chaosRoll = await new Roll(formula).evaluate();
@@ -258,10 +226,7 @@ export async function rollTest(
       sound = ZweihanderActorConfig.getValue(actor, `gruntSound`);
     }
   }
-  let messageData = await roll.toMessage(
-    { content, flavor, speaker, flags, sound },
-    { rollMode, create }
-  );
+  let messageData = await roll.toMessage({ content, flavor, speaker, flags, sound }, { rollMode, create });
   // magick content
   if (create) {
     messageData = messageData.toObject();
@@ -292,21 +257,13 @@ export async function rollWeaponDamage(actorId, testConfiguration) {
       },
     },
   };
-  return damageRoll.toMessage(
-    { speaker, flavor, content, flags },
-    { rollMode: CONST.DICE_ROLL_MODES.PUBLIC }
-  );
+  return damageRoll.toMessage({ speaker, flavor, content, flags }, { rollMode: CONST.DICE_ROLL_MODES.PUBLIC });
 }
 
 async function getWeaponDamageContent(weapon, roll, exploded = false, explodedCount = 0) {
-  weapon.system.qualities = await ZweihanderQuality.getQualities(
-    weapon.system.qualities.value
-  );
+  weapon.system.qualities = await ZweihanderQuality.getQualities(weapon.system.qualities.value);
   const rollContent = await roll.render({ flavor: 'Fury Die' });
-  const cardContent = await renderTemplate(
-    'systems/zweihander/src/templates/item-card/item-card-weapon.hbs',
-    weapon
-  );
+  const cardContent = await renderTemplate('systems/zweihander/src/templates/item-card/item-card-weapon.hbs', weapon);
   return await renderTemplate(CONFIG.ZWEI.templates.weapon, {
     cardContent,
     rollContent,
@@ -324,15 +281,13 @@ export async function explodeWeaponDamage(message, useFortune) {
       await FortuneTracker.INSTANCE.useMisfortune();
     }
   } catch (e) {
-    ui.notifications.warn(
-      `Couldn't reroll skill test: There are no ${testConfiguration.useFortune} points left.`
-    );
+    ui.notifications.warn(`Couldn't reroll skill test: There are no ${useFortune} points left.`);
     return;
   }
   const { actorId, weaponId, exploded } = message.flags.zweihander.weaponTestData;
   const actor = game.actors.get(actorId);
   const weapon = actor.items.get(weaponId).toObject(false);
-  const roll = Roll.fromJSON(message.roll);
+  const roll = message.rolls[0];
   const dice = roll.dice.find((d) => d.faces === 6);
   if (dice) {
     const explodeModifiers = dice.modifiers.filter((m) => m.startsWith('x')).join('');
@@ -340,9 +295,7 @@ export async function explodeWeaponDamage(message, useFortune) {
     const explodingRoll = await new Roll(formula).evaluate();
     setTimeout(() => game?.dice3d?.showForRoll?.(explodingRoll, game.user, true), 1500);
     const results = dice.results;
-    const minimumResult = Math.min(
-      ...results.filter((x) => !x.exploded).map((r) => r.result)
-    );
+    const minimumResult = Math.min(...results.filter((x) => !x.exploded).map((r) => r.result));
     const minimumResultIndex = results.findIndex((r) => r.result === minimumResult);
     const updatedTotal = roll._total - minimumResult + 6 + explodingRoll.total;
     results.splice(
@@ -369,12 +322,7 @@ export function isSuccess(outcome) {
 async function simulateStandardTest(totalChance, flip) {
   const firstD10 = (await new Roll('1d10').evaluate()).total;
   const secondD10 = (await new Roll('1d10').evaluate()).total;
-  const { score, flipped, outcome } = determineTestResult(
-    firstD10,
-    secondD10,
-    flip,
-    totalChance
-  );
+  const { score, flipped, outcome } = determineTestResult(firstD10, secondD10, flip, totalChance);
   const naturalRoll = getScore(firstD10, secondD10);
   const roll = Roll.fromTerms([
     new Die({
@@ -444,9 +392,7 @@ async function simulateAssistedTest(totalChance, flip) {
   ];
   // const crbTerms = [new Die({number: 1, faces: 100, results: [{result: getScore(tens, units1), active: true}]}), await (new OperatorTerm({operator: "+"})).evaluate(), new Die({number: 1, faces: 10, results: [{result: thirdD10 === 0 ? 10 : thirdD10, active: true}]})];
   const roll = Roll.fromTerms(starterKitTerms);
-  roll.dice.forEach(
-    (d) => (d.options.sfx = { id: 'zh-outcome', result: outcomeLabel(outcome) })
-  );
+  roll.dice.forEach((d) => (d.options.sfx = { id: 'zh-outcome', result: outcomeLabel(outcome) }));
   return {
     effectiveResult: score,
     effectiveOutcome: outcome,
@@ -531,9 +477,7 @@ export const patchDie = () => {
       target = max;
       max = null;
     }
-    const targets = target
-      .split(',')
-      .map((target) => (Number.isNumeric(target) ? parseInt(target) : this.faces));
+    const targets = target.split(',').map((target) => (Number.isNumeric(target) ? parseInt(target) : this.faces));
     // Determine target values
     comparison = comparison || '=';
 
@@ -552,9 +496,7 @@ export const patchDie = () => {
       if (max !== null && max <= 0) break;
 
       // Determine whether to explode the result and roll again!
-      if (
-        targets.some((target) => DiceTerm.compareResult(r.result, comparison, target))
-      ) {
+      if (targets.some((target) => DiceTerm.compareResult(r.result, comparison, target))) {
         r.exploded = true;
         this.roll();
         if (max !== null) max -= 1;
@@ -562,8 +504,7 @@ export const patchDie = () => {
 
       // Limit recursion
       if (!recursive && checked >= initial) checked = this.results.length;
-      if (checked > 1000)
-        throw new Error('Maximum recursion depth for exploding dice roll exceeded');
+      if (checked > 1000) throw new Error('Maximum recursion depth for exploding dice roll exceeded');
     }
   };
 
