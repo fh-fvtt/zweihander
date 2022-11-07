@@ -1,0 +1,40 @@
+{
+  "_id": "ukbyD1oePYiey21Q",
+  "data": {
+    "castingCost": 0,
+    "castingTime": "1 min",
+    "description": {
+      "@en": "Your body explodes into dizzying angles of divine proto-math. This god-form of twisted viscera and non-Euclidean shapes are inexplicably geometric… but most of all, is terrifying."
+    },
+    "distance": "Yourself",
+    "duration": "9+[WB] minutes",
+    "notes": "",
+    "principle": "Greater",
+    "rules": {
+      "criticalFailure": {
+        "@en": "Your corpulent form temporarily explodes into harrowing shapes and forms: hands where your head was, swords where appendages once were and endless eyes. Those who behold your countenance must succeed at a Resolve Test or else they suffer from Terror. In addition, you must succeed at a Toughness Test or else be immediately Slain! (unless you have a Fate Point to expend). If you succeed, you return to your normal self, but are left Prone and Incapacitated!"
+      },
+      "criticalSuccess": {
+        "@en": "As above, but triple the Duration."
+      },
+      "effect": {
+        "@en": "After successfully casting this spell, both you and all the trappings upon yourself take the shape of a Higher Demon. Temporarily replace your Character sheet with the creature profile of a Numina, gaining its benefits and drawbacks. If you suffer an Injury during this time, the Magick spell immediately ends."
+      },
+      "reagents": {
+        "@en": "A codex bound in a Lower or Higher Demon’s skin, held aloft (expended)"
+      }
+    },
+    "tradition": "Covenant"
+  },
+  "effects": [],
+  "flags": {},
+  "folder": null,
+  "img": "systems/zweihander/assets/icons/wizard-staff.svg",
+  "name": "The Other",
+  "permission": {
+    "4be9WK4Hp7jWrwWe": 3,
+    "default": 0
+  },
+  "sort": 0,
+  "type": "spell"
+}

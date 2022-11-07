@@ -1,0 +1,40 @@
+{
+  "_id": "jSRDQ7iOShRBHxfZ",
+  "data": {
+    "castingCost": 0,
+    "castingTime": "1 min",
+    "description": {
+      "@en": "As you bring your hands together, a bolt of lightning streaks towards your foes, followed by a thunderous clap that can be heard for miles."
+    },
+    "distance": "Yourself",
+    "duration": "Instantaneous",
+    "notes": "",
+    "principle": "Lesser",
+    "rules": {
+      "criticalFailure": {
+        "@en": "As you bring your hands together, a bolt of lightning strikes nearby and you are deafened. You suffer [[/roll 1D10]]+[WB] in physical Peril, 1D10+[WB] in Damage and cannot hear for 48 hours."
+      },
+      "criticalSuccess": {
+        "@en": "As above, but all foes struck automatically fail to Resist."
+      },
+      "effect": {
+        "@en": "After successfully casting this spell, any foes caught in its Cone Template suffer [[/roll 1D10]]+[WB] in physical Peril and 1D10+[WB] in Damage. In addition, they lose 1 AP at the start of their Turns in combat for the next 48 hours. Your foes can successfully Resist with a Coordination Test."
+      },
+      "reagents": {
+        "@en": "Two hands, brought together as a clap"
+      }
+    },
+    "tradition": "Divine (Demiurge)"
+  },
+  "effects": [],
+  "flags": {},
+  "folder": null,
+  "img": "systems/zweihander/assets/icons/wizard-staff.svg",
+  "name": "Thunderclap",
+  "permission": {
+    "9cilLhNTlIyJpmtZ": 3,
+    "default": 0
+  },
+  "sort": 0,
+  "type": "spell"
+}

@@ -1,0 +1,53 @@
+{
+  "_id": "DJ64qPxes3FyKo3v",
+  "data": {
+    "castingCost": 2,
+    "castingTime": "1 Minute",
+    "description": {
+      "@en": "<p>I leave thee in anguish, stricken insensible.</p>"
+    },
+    "distance": "Any one person you can clearly see",
+    "duration": "Special",
+    "notes": "",
+    "principle": "Intermediate Tier",
+    "rules": {
+      "criticalFailure": {
+        "@en": "You are awestruck by a presence other than your own, as you are unable to see for 18+[WB] days and unable to hear for 9+[WB] days after that."
+      },
+      "criticalSuccess": {
+        "@en": "Triple the duration."
+      },
+      "effect": {
+        "@en": "<p>After successfully casting (and one foe cannot or fails to Resist using Awareness), they are unable to see for 6+[WB] days. Once the duration is up, they are unable to hear for 3+[WB] days. You begin to Bleed, no matter whether you succeeded or failed at using this Spell.</p>"
+      },
+      "reagents": {
+        "@en": "Your own blood, squeezed into your palm"
+      }
+    },
+    "tradition": "Black & White"
+  },
+  "effects": [],
+  "flags": {
+    "cf": {
+      "color": "#000000",
+      "id": null,
+      "path": "FOF Spells#/CF_SEP/Black & White Spells"
+    },
+    "core": {
+      "sourceId": "Compendium.zweihander.magick.zfw4EhNqq3sJRnbQ"
+    },
+    "scene-packer": {
+      "hash": "2ad2cd16eb9079080f895c120e74eff27126c209",
+      "sourceId": "Item.aftlKYprEdV8u2sZ"
+    }
+  },
+  "folder": null,
+  "img": "systems/zweihander/assets/icons/concentric-crescents.svg",
+  "name": "Mask the Senses",
+  "permission": {
+    "VOagSWOxwT3osUDT": 3,
+    "default": 0
+  },
+  "sort": 0,
+  "type": "spell"
+}

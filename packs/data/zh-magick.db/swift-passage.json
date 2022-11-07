@@ -1,0 +1,40 @@
+{
+  "_id": "XV43FQ253g3Dpk7F",
+  "data": {
+    "castingCost": 0,
+    "castingTime": "1 min",
+    "description": {
+      "@en": "A gentle touch dispatches the grievously wounded to the hereafter."
+    },
+    "distance": "Any one person you can touch",
+    "duration": "Instantaneous",
+    "notes": "",
+    "principle": "Petty",
+    "rules": {
+      "criticalFailure": {
+        "@en": "The twin pennies begin burning in your hand with a purple light. An Ætheric whiplash of energy springs forth from your hand, as you are automatically set On Fire."
+      },
+      "criticalSuccess": {
+        "@en": "As above, but the foe cannot Resist this Magick."
+      },
+      "effect": {
+        "@en": "After successfully casting this spell, the person you touch (providing they are suffering from a Grievous Injury) must Resist with a successful Coordination Test or be instantly Slain!."
+      },
+      "reagents": {
+        "@en": "Two brass pennies (expended)"
+      }
+    },
+    "tradition": "Arcane (Morticism)"
+  },
+  "effects": [],
+  "flags": {},
+  "folder": null,
+  "img": "systems/zweihander/assets/icons/wizard-staff.svg",
+  "name": "Swift Passage",
+  "permission": {
+    "9cilLhNTlIyJpmtZ": 3,
+    "default": 0
+  },
+  "sort": 0,
+  "type": "spell"
+}

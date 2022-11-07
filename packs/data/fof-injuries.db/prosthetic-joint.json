@@ -1,0 +1,46 @@
+{
+  "_id": "hBYi214B3MHlyh2Q",
+  "data": {
+    "active": true,
+    "description": {
+      "@en": "<p>My elbow and forearm never quite healed upright. I suppose I should have followed the doctor&rsquo;s orders and done my exercises . . .</p>"
+    },
+    "notes": "<p><span style=\"color: #d5c4a1; font-family: Signika, sans-serif; font-style: italic; text-align: justify; background-color: #282828;\">Grievous Injuries must undergo a successful Perform Surgery within twenty-four hours of suffering it, or else a character gains its related Permanent Injury.</span></p>",
+    "rules": {
+      "effect": {
+        "@en": "<p>You must spend a Coin to Assist others&rsquo; Skill Tests.</p>"
+      }
+    },
+    "severity": 0
+  },
+  "effects": [],
+  "flags": {
+    "cf": {
+      "color": "#000000",
+      "id": null,
+      "path": "FOF Injuries#/CF_SEP/Permanent Injuries"
+    },
+    "core": {
+      "sourceId": "Compendium.zweihander.injuries.pMHUxC35U5RHDI7K"
+    },
+    "exportSource": {
+      "coreVersion": "0.8.9",
+      "system": "zweihander",
+      "systemVersion": "0.3.30",
+      "world": "talron2"
+    },
+    "scene-packer": {
+      "hash": "2d9ba1c3b19ad5f241051d20d677ee76fe34ad9a",
+      "sourceId": "Item.0HAA7vxX47Qn4zPS"
+    }
+  },
+  "folder": null,
+  "img": "systems/zweihander/assets/icons/internal-injury.svg",
+  "name": "Prosthetic Joint",
+  "permission": {
+    "VOagSWOxwT3osUDT": 3,
+    "default": 0
+  },
+  "sort": 0,
+  "type": "injury"
+}

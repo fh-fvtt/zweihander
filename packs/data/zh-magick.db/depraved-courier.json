@@ -1,0 +1,40 @@
+{
+  "_id": "8AcjXd2ASFTyvgI5",
+  "data": {
+    "castingCost": 0,
+    "castingTime": "1 min",
+    "description": {
+      "@en": "A horde of flies and locusts emerge from your mouth, carrying a message to a single person. Once the message is uttered through their chittering, they are absorbed into the orifices of the intended."
+    },
+    "distance": "Any one person you have met",
+    "duration": "Instantaneous",
+    "notes": "",
+    "principle": "Petty",
+    "rules": {
+      "criticalFailure": {
+        "@en": "The flies buzz all around you, working their way into your mouth, ears and other orifices. You are rendered blind and deaf for 24 hours."
+      },
+      "criticalSuccess": {
+        "@en": "As above, but the messages can be up to 280 characters."
+      },
+      "effect": {
+        "@en": "After successfully casting this spell, you send a message to one person you can envision, delivered by a swarm of dead flies and locusts. They can move one mile an hour, with no limit to where they can travel: through doors, between cracks in the wall and even deep below the earth. The message can be no longer than 140 characters. Once the message is received, the recipient gains 3 Corruption and has no choice but to respond in kind with another message to you, no longer than 140 characters. Once you receive the message in return, you gain 3 Corruption."
+      },
+      "reagents": {
+        "@en": "The dead husks of locusts and flies, consumed (expended)"
+      }
+    },
+    "tradition": "Covenant"
+  },
+  "effects": [],
+  "flags": {},
+  "folder": null,
+  "img": "systems/zweihander/assets/icons/wizard-staff.svg",
+  "name": "Depraved Courier",
+  "permission": {
+    "4be9WK4Hp7jWrwWe": 3,
+    "default": 0
+  },
+  "sort": 0,
+  "type": "spell"
+}

@@ -1,0 +1,46 @@
+{
+  "_id": "o6mH278RcUvzHVs1",
+  "data": {
+    "active": true,
+    "description": {
+      "@en": "<p>Look&mdash;I know what&rsquo;s best for us. I&rsquo;ve taken us to the limit and know where my pain threshold starts and stops. If you don&rsquo;t come along with me, you&rsquo;ll have hell to pay!</p>"
+    },
+    "notes": "<p><span style=\"color: #d5c4a1; font-family: Signika, sans-serif; font-style: italic; text-align: justify; background-color: #282828;\">Grievous Injuries must undergo a successful Perform Surgery within twenty-four hours of suffering it, or else a character gains its related Permanent Injury.</span></p>",
+    "rules": {
+      "effect": {
+        "@en": "<p>Whenever you deal Damage and don&rsquo;t inflict an Injury upon your foe, you gain 1 Conflict.</p>"
+      }
+    },
+    "severity": 0
+  },
+  "effects": [],
+  "flags": {
+    "cf": {
+      "color": "#000000",
+      "id": null,
+      "path": "FOF Injuries#/CF_SEP/Permanent Injuries"
+    },
+    "core": {
+      "sourceId": "Compendium.zweihander.injuries.pMHUxC35U5RHDI7K"
+    },
+    "exportSource": {
+      "coreVersion": "0.8.9",
+      "system": "zweihander",
+      "systemVersion": "0.3.30",
+      "world": "talron2"
+    },
+    "scene-packer": {
+      "hash": "c9eda5bcfe977d454093e7f234c03a5601aa5a58",
+      "sourceId": "Item.6in7uHECcwDiieOR"
+    }
+  },
+  "folder": null,
+  "img": "systems/zweihander/assets/icons/internal-injury.svg",
+  "name": "Choleric Temperament",
+  "permission": {
+    "VOagSWOxwT3osUDT": 3,
+    "default": 0
+  },
+  "sort": 0,
+  "type": "injury"
+}

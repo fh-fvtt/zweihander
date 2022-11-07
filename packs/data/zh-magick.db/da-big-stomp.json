@@ -1,0 +1,40 @@
+{
+  "_id": "n7sIwZbbUmb5qnqm",
+  "data": {
+    "castingCost": 0,
+    "castingTime": "1 min",
+    "description": {
+      "@en": "With every stomp, a loud ‘CRUNCH!’ rumbles from below."
+    },
+    "distance": "Any person you can see",
+    "duration": "Instantaneous",
+    "notes": "",
+    "principle": "Lesser",
+    "rules": {
+      "criticalFailure": {
+        "@en": "A hideous cacophony of laughter and snickering rings out. You must Resist with a successful Coordination Test or else be made Prone."
+      },
+      "criticalSuccess": {
+        "@en": "As above, but the foe is also Knocked Out if they fail to Dodge."
+      },
+      "effect": {
+        "@en": "After successfully casting this spell, you conjure forth a massive yet invisible jackboot, taking shape only when you stomp the ground. All those caught in a Burst Template suffer [[/roll 2D10]]+[WB] in Damage. They can attempt to Dodge by Resisting with a successful Coordination Test to avoid the Damage. You can inflict Injuries with this Magick, but foes are always left Prone instead."
+      },
+      "reagents": {
+        "@en": "Your boots drenched in blood, stomped on the ground"
+      }
+    },
+    "tradition": "Covenant"
+  },
+  "effects": [],
+  "flags": {},
+  "folder": null,
+  "img": "systems/zweihander/assets/icons/wizard-staff.svg",
+  "name": "Da’ Big Stomp",
+  "permission": {
+    "4be9WK4Hp7jWrwWe": 3,
+    "default": 0
+  },
+  "sort": 0,
+  "type": "spell"
+}

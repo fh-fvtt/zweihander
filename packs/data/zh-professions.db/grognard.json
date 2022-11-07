@@ -1,0 +1,109 @@
+{
+  "_id": "2D1nzc9xf49xWE5e",
+  "data": {
+    "archetype": "Expert Profession",
+    "bonusAdvances": [
+      {
+        "name": "[CB]"
+      },
+      {
+        "name": "[FB]"
+      },
+      {
+        "name": "[FB]"
+      },
+      {
+        "name": "[IB]"
+      },
+      {
+        "name": "[IB]"
+      },
+      {
+        "name": "[WB]"
+      },
+      {
+        "name": "[WB]"
+      }
+    ],
+    "description": {
+      "@en": "Although veterans of all stripes share the same mirthless disposition, Grognards are a breed apart. Due to their flagging physical abilities, they are oftentimes retired from service but notable for their compendious knowledge of simulation and war. Not only visibly hard-bitten and battle-scarred, they articulate these rough qualities with their legendary complaining. While most veterans sulk and let their bitterness turn to self-interest, Grognards vent their frustration loudly, moaning about lamentable conditions they find themselves in. Strangely, instead of being punished, leaders can’t help but find the stubborn candor of the Grognard endearing. Armed with charts, tables, miniature soldiers and unit statistics, the Grognard simply can’t help but to be one step ahead of an opponent – a trait even the foremost soldiers of war find useful.\\nEventually, the obstinate nature of the Grognard can turn even their most ardent defenders against them. Forward- thinkers find the Grognard’s unwillingness to grasp new concepts – or change their routine – somewhat pathetic. The stories of past battles becomes repetitive, and pearls of wisdom devolve into long-winded lectures. These ancient militants become engrossed in bitter feuding with younger warriors. Leaders quickly consign Grognards and their ilk to the back of the camp, as to not bring down the morale of the troops. Fortunately for others, Grognards tend to align with other Grognards, complaining together in veterans’ halls and other echo chambers where obsequious hanger-ons virtually worship every word the Grognard espouses. The constant grumbling about the ‘swine’ of the new school, Gygaxian musings over the many pole weapons of garrisons from yesteryear and grousing over the value of the old school and newly-found military stratagems quickly whittles down even the Grognard’s ability to learn new things. A Grognard simply can’t help it. They see this sort of progressiveness as surrender, and Grognards will always choose death over capitulation."
+    },
+    "drawback": {
+      "linkedId": null,
+      "name": "Grumbler"
+    },
+    "expert": {
+      "requirements": "You must be in the Adult, Middle Aged or Elderly Age Group, and possess at least two Skill Rank in Warfare in order to enter this Expert Profession.",
+      "value": true
+    },
+    "notes": "",
+    "professionalTrait": {
+      "linkedId": null,
+      "name": "Hex-And-Counter"
+    },
+    "skillRanks": [
+      {
+        "name": "Bargain"
+      },
+      {
+        "name": "Folklore"
+      },
+      {
+        "name": "Gamble"
+      },
+      {
+        "name": "Interrogation"
+      },
+      {
+        "name": "Leadership"
+      },
+      {
+        "name": "Martial Melee"
+      },
+      {
+        "name": "Martial Ranged"
+      },
+      {
+        "name": "Resolve"
+      },
+      {
+        "name": "Rumor"
+      },
+      {
+        "name": "Warfare"
+      }
+    ],
+    "specialTrait": {
+      "linkedId": null,
+      "name": ""
+    },
+    "talents": [
+      {
+        "linkedId": null,
+        "name": "Incredible Numeration"
+      },
+      {
+        "linkedId": null,
+        "name": "Long-winded"
+      },
+      {
+        "linkedId": null,
+        "name": "Military Formation"
+      }
+    ],
+    "tier": ""
+  },
+  "effects": [],
+  "flags": {
+    "zweihander": {}
+  },
+  "folder": null,
+  "img": "systems/zweihander/assets/icons/pickelhaube.svg",
+  "name": "Grognard",
+  "permission": {
+    "9cilLhNTlIyJpmtZ": 3,
+    "default": 0
+  },
+  "sort": 0,
+  "type": "profession"
+}

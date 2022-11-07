@@ -1,0 +1,40 @@
+{
+  "_id": "4DC6mrGuRB1fhjvv",
+  "data": {
+    "castingCost": 0,
+    "castingTime": "1 min",
+    "description": {
+      "@en": "Opening a meta-Magickal bridge within the Material Realm, you and your comrades slip through the Æthereal Veil to emerge on the other side."
+    },
+    "distance": "Any one place you have visited",
+    "duration": "Instantaneous",
+    "notes": "",
+    "principle": "Greater",
+    "rules": {
+      "criticalFailure": {
+        "@en": "As you step through the threshold, you move into a swirling darkness. Witnessing the birth of stars, the destruction of galaxies and the emergence of chaos manifest, it drives you and all your allies towards the brink of madness. Everyone instantly suffers 9 Corruption, as you end up right back where you started."
+      },
+      "criticalSuccess": {
+        "@en": "As above, but you are able to save the powdered sapphire reagent for use later."
+      },
+      "effect": {
+        "@en": "After successfully casting this spell, a number of persons equal to your [WB] instantaneously travel to another location. You can only travel to specific locations you have previously visited."
+      },
+      "reagents": {
+        "@en": "A powdered sapphire, lain at the foot of a threshold (expended)"
+      }
+    },
+    "tradition": "Arcane (Astromancy)"
+  },
+  "effects": [],
+  "flags": {},
+  "folder": null,
+  "img": "systems/zweihander/assets/icons/star-gate.svg",
+  "name": "Astral Bridge",
+  "permission": {
+    "9cilLhNTlIyJpmtZ": 3,
+    "default": 0
+  },
+  "sort": 0,
+  "type": "spell"
+}

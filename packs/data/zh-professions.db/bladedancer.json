@@ -1,0 +1,109 @@
+{
+  "_id": "trixpL6lYGZrXpbe",
+  "data": {
+    "archetype": "Expert Profession",
+    "bonusAdvances": [
+      {
+        "name": "[AB]"
+      },
+      {
+        "name": "[BB]"
+      },
+      {
+        "name": "[CB]"
+      },
+      {
+        "name": "[CB]"
+      },
+      {
+        "name": "[FB]"
+      },
+      {
+        "name": "[PB]"
+      },
+      {
+        "name": "[WB]"
+      }
+    ],
+    "description": {
+      "@en": "To the Bladedancer, war is not a means to an end, but rather an art form. The Bladedancer is the ultimate warrior-ascetic: one who has trained their entire life to bring their mind and body into perfect alignment to be able to strike down their enemies swiftly and without pain. They traditionally study a single weapon, ‘bonding’ with it as one does a beloved pet. Of all weapons, the long and deadly greatsword is often the implement of choice. The Bladedancer’s ideology revolves around inward and outer grace, harmoniously living in simpatico with nature far removed from civilization in a hermitage, all to prepare body and mind for the study of their martial art. In order to achieve true equilibrium with the world around them, Bladedancers meditate, perform intricate ceremonies by rote, and even create art and poetry to align their martial spirit with their mortal self. But when battle rears its head, they put down the quill and pick up the sword, carrying the careful strokes of the brush they applied to parchment forward into the melee. Bladedancers then paint the battlefield not with ink, but with the blood of their enemies.\\nAs a result of their training, many Bladedancers are oftentimes aloof and distant, either feeling themselves superior to others or just generally apathetic. This can make them hard to deal with, but the force of their personality, mind for tactics and martial poise are all but unparalleled. The Bladedancer tradition is long and mysterious, and some whisper that certain members of their orders do more than meditate and practice with their weapons. Such Bladedancers seek both revelation and sorcerous abilities to bolster their martial power from cult-like religions that have been banned by civilized society. There may be a kernel of truth to such rumors, for while Bladedancers try to bend instead of break, when they do break – they break hard. If they do suffer this fate, many Bladedancers would rather fall upon their swords than give into to the vile promises of Daemons. But for those who are not brave enough to fall upon their sword, a vaunted new beginning awaits them in the hell-pits of the Abyss."
+    },
+    "drawback": {
+      "linkedId": null,
+      "name": "Nirvana"
+    },
+    "expert": {
+      "requirements": "You must possess at least two Skill Ranks in Martial Melee in order to enter this Expert Profession.",
+      "value": true
+    },
+    "notes": "",
+    "professionalTrait": {
+      "linkedId": null,
+      "name": "Leaf on the Wind (Bladedancer)"
+    },
+    "skillRanks": [
+      {
+        "name": "Awareness"
+      },
+      {
+        "name": "Charm"
+      },
+      {
+        "name": "Coordination"
+      },
+      {
+        "name": "Folklore"
+      },
+      {
+        "name": "Martial Melee"
+      },
+      {
+        "name": "Resolve"
+      },
+      {
+        "name": "Rumor"
+      },
+      {
+        "name": "Scrutinize"
+      },
+      {
+        "name": "Simple Melee"
+      },
+      {
+        "name": "Warfare"
+      }
+    ],
+    "specialTrait": {
+      "linkedId": null,
+      "name": ""
+    },
+    "talents": [
+      {
+        "linkedId": null,
+        "name": "Handspring"
+      },
+      {
+        "linkedId": null,
+        "name": "Lightning Reaction"
+      },
+      {
+        "linkedId": null,
+        "name": "Overwhelming Force"
+      }
+    ],
+    "tier": ""
+  },
+  "effects": [],
+  "flags": {
+    "zweihander": {}
+  },
+  "folder": null,
+  "img": "systems/zweihander/assets/icons/sword-spin.svg",
+  "name": "Bladedancer",
+  "permission": {
+    "9cilLhNTlIyJpmtZ": 3,
+    "default": 0
+  },
+  "sort": 0,
+  "type": "profession"
+}

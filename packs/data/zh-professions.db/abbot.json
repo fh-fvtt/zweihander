@@ -1,0 +1,109 @@
+{
+  "_id": "RmnnQeZxr0JVApTJ",
+  "data": {
+    "archetype": "Expert Profession",
+    "bonusAdvances": [
+      {
+        "name": "[BB]"
+      },
+      {
+        "name": "[FB]"
+      },
+      {
+        "name": "[IB]"
+      },
+      {
+        "name": "[IB]"
+      },
+      {
+        "name": "[PB]"
+      },
+      {
+        "name": "[WB]"
+      },
+      {
+        "name": "[WB]"
+      }
+    ],
+    "description": {
+      "@en": "Many who are chosen by the gods revel in their power and authority, their divine might and Magickal power marking them as chosen above others. This is not so for the Abbot (or Abbess for women), an ordained religious leader who has not been touched by the divine spark in a traditional sense, but nevertheless speaks with the authority of the heavens. An Abbot is always canonized by a monastery’s chapter by secret ballot and rare are the few who reach such a position outside of the ecclesia. Upon election to this holy office, they remain so until the end of their lives (or until frailty demands another to be elected to their position). Many head monasteries, meditative branches of church or even more secular faiths. Abbots also serve as trusted advisors to kings and emperors, while also reporting on the civil needs of the faith to the board of church elders. Abbots are generally more cloistered and calm than a traditional firebrand, many studying the histories and myths of their religious order to obtain a better understanding of how the church has changed and what policies will change over time.\\nWithout a doubt, an Abbot is humbler than their Friar brethren, but their deferential and subdued attitudes make them particularly susceptible to infirmity of the mind. While they certainly respect and follow the traditions of the church, Abbots are oft so lost in self-reflection that they begin to lose sense of the world around them. They may absentmindedly forget their sermons, losing hold of what ties them to their fellow clergy. Some may develop strange habits, navel-gazing and imbibing all manner of drugs to find ‘true oneness’ with their god. Moments of lucidity become less frequent, as the Abbot slips towards total impairment, until they simply wither away and another Abbot is canonized. Thus, the eternal cycle continues as a new Abbot is put into their place."
+    },
+    "drawback": {
+      "linkedId": null,
+      "name": "Feeble-Mindedness"
+    },
+    "expert": {
+      "requirements": "You must possess at least two Skill Ranks in both Education and Heal in order to enter this Expert Profession.",
+      "value": true
+    },
+    "notes": "",
+    "professionalTrait": {
+      "linkedId": null,
+      "name": "Absolve Sin"
+    },
+    "skillRanks": [
+      {
+        "name": "Education"
+      },
+      {
+        "name": "Folklore"
+      },
+      {
+        "name": "Heal"
+      },
+      {
+        "name": "Interrogation"
+      },
+      {
+        "name": "Leadership"
+      },
+      {
+        "name": "Resolve"
+      },
+      {
+        "name": "Rumor"
+      },
+      {
+        "name": "Scrutinize"
+      },
+      {
+        "name": "Simple Melee"
+      },
+      {
+        "name": "Toughness"
+      }
+    ],
+    "specialTrait": {
+      "linkedId": null,
+      "name": ""
+    },
+    "talents": [
+      {
+        "linkedId": null,
+        "name": "Impervious Mind"
+      },
+      {
+        "linkedId": null,
+        "name": "Meeting of the Minds"
+      },
+      {
+        "linkedId": null,
+        "name": "Multilingual"
+      }
+    ],
+    "tier": ""
+  },
+  "effects": [],
+  "flags": {
+    "zweihander": {}
+  },
+  "folder": null,
+  "img": "systems/zweihander/assets/icons/wisdom.svg",
+  "name": "Abbot",
+  "permission": {
+    "9cilLhNTlIyJpmtZ": 3,
+    "default": 0
+  },
+  "sort": 0,
+  "type": "profession"
+}

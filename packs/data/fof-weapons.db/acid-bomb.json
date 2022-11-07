@@ -1,0 +1,47 @@
+{
+  "_id": "JZnMvIBLkbzkbJet",
+  "data": {
+    "associatedSkill": "Simple Ranged",
+    "damage": {
+      "formula": "[PB] + (1+[#])d6x6"
+    },
+    "description": {
+      "@en": "<p>This distillation of elements is the foremost tool of alchemists on the battlefield.</p>"
+    },
+    "distance": "1 + [PB] yards",
+    "encumbrance": 1,
+    "equipped": false,
+    "handling": "One-handed",
+    "load": 1,
+    "notes": "",
+    "price": {
+      "bp": "0",
+      "gc": "0",
+      "ss": "10"
+    },
+    "qualities": {
+      "arrayOfValues": [],
+      "value": "Acid, Break, Throwing"
+    },
+    "weaponType": "Ranged"
+  },
+  "effects": [],
+  "flags": {
+    "core": {
+      "sourceId": "Compendium.zweihander.weapons.R0i7oMG7lojZnFnN"
+    },
+    "scene-packer": {
+      "hash": "99bc4710579279a1fdbb6c5ad1fd5d13f86ff13b",
+      "sourceId": "Item.JZnMvIBLkbzkbJet"
+    }
+  },
+  "folder": null,
+  "img": "systems/zweihander/assets/icons/fire-bottle.svg",
+  "name": "Acid Bomb",
+  "permission": {
+    "VOagSWOxwT3osUDT": 3,
+    "default": 0
+  },
+  "sort": 0,
+  "type": "weapon"
+}

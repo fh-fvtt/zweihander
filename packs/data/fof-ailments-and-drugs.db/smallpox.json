@@ -1,0 +1,39 @@
+{
+  "_id": "cZOciZbdoMHGD44b",
+  "data": {
+    "active": false,
+    "description": {
+      "@en": "<p>The plague spread like wildfire through the settlement. At first, we thought it just the children, but once the adults started breaking out, we knew we were doomed . . .</p>"
+    },
+    "duration": "1D10+1 days",
+    "notes": "",
+    "resist": "(Arduous -30%) Toughness",
+    "rules": {
+      "effect": {
+        "@en": "<p><strong>Effect: </strong>At the beginning of each day, Resist Smallpox. Otherwise, suffer 3D10+3 Peril. If you become Incapacitated! due to it, you remain Unconscious for the remainder of the duration. If you don&rsquo;t successfully Resist on the final day of infection, re-roll the duration as it&rsquo;s extended.</p>\n<p><strong>Critical Success:</strong> You automatically succeed your next Toughness Test to Resist Smallpox.</p>\n<p><strong>Critical Failure:</strong> You are Slain!.</p>\n<p><strong>Other Considerations:</strong> NONE</p>"
+      },
+      "treatment": {
+        "@en": "<p><strong>Ease Symptoms:</strong> A caregiver must have a surgical kit, a bandage, a tincture and spend one hour to Ease Symptoms. Depending on where you&rsquo;re at on the Damage Condition Track, the Difficulty Rating eases or worsens:</p>\n<p><strong>Hurt:</strong> Automatically succeed</p>\n<p><strong>Moderately Wounded:</strong> (Routine +10%) Heal</p>\n<p><strong>Seriously Wounded:</strong> (Standard +/-0%) Heal</p>\n<p><strong>Grievously Wounded:</strong> (Challenging -10%) Heal</p>\n<hr />\n<p><strong>Effect:</strong> If successful, you may flip the results to succeed in your next Toughness Test to Resist an Ailment.</p>\n<p><strong>Critical Success:</strong> You automatically succeed your next Skill Test to Resist an Ailment.</p>\n<p><strong>Critical Failure:</strong> You suffer from Sepsis and must undergo Bloodletting.</p>\n<p><strong>Other Considerations:</strong> A character can only have Ease Symptoms performed on them as the Ailment dictates. You cannot Ease Symptoms on someone with Sepsis.</p>"
+      }
+    }
+  },
+  "effects": [],
+  "flags": {
+    "core": {
+      "sourceId": "Item.Qel9OTFLT9DhjoZ1"
+    },
+    "scene-packer": {
+      "hash": "eabca0d670448cdb71a23717588be9597071da3b",
+      "sourceId": "Item.cZOciZbdoMHGD44b"
+    }
+  },
+  "folder": null,
+  "img": "systems/zweihander/assets/icons/half-dead.svg",
+  "name": "Smallpox",
+  "permission": {
+    "VOagSWOxwT3osUDT": 3,
+    "default": 0
+  },
+  "sort": 0,
+  "type": "disease"
+}

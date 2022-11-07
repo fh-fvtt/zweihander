@@ -1,0 +1,53 @@
+{
+  "_id": "COJn8ySUv2wdQ662",
+  "data": {
+    "castingCost": null,
+    "castingTime": "1 Hour",
+    "description": {
+      "@en": "<p>May your fields be sown with salt for a thousand years . . .</p>"
+    },
+    "distance": "By Touch",
+    "duration": "Thirteen days",
+    "notes": "",
+    "principle": "Basic Tier",
+    "rules": {
+      "criticalFailure": {
+        "@en": "You force yourself to consume the stone, and you suffer from Typhoid. The stone passes at the end of the duration."
+      },
+      "criticalSuccess": {
+        "@en": "As above, but affects food and water within a mile radius."
+      },
+      "effect": {
+        "@en": "<p>After successfully casting, you create a Plague Stone. Once buried, all food and water that come within an Explosion Template of it are contaminated, and those who imbibe it cannot gain sustenance from it. If the stone isn&rsquo;t placed within an hour or is removed from the floorboards, the Spell ends. Once the duration ends, the stone is destroyed.</p>"
+      },
+      "reagents": {
+        "@en": "A dirty rag wrapped around a stone, which is placed beneath a floorboard (expended)"
+      }
+    },
+    "tradition": "Witchcraft"
+  },
+  "effects": [],
+  "flags": {
+    "cf": {
+      "color": "#000000",
+      "id": null,
+      "path": "FOF Spells#/CF_SEP/Witchcraft Spells"
+    },
+    "core": {
+      "sourceId": "Compendium.zweihander.magick.zfw4EhNqq3sJRnbQ"
+    },
+    "scene-packer": {
+      "hash": "c762efad794197da9c5495d6b3ac3af2aec7ecb8",
+      "sourceId": "Item.6diLZcZnzub418X0"
+    }
+  },
+  "folder": null,
+  "img": "systems/zweihander/assets/icons/wizard-staff.svg",
+  "name": "Plague Stone",
+  "permission": {
+    "VOagSWOxwT3osUDT": 3,
+    "default": 0
+  },
+  "sort": 0,
+  "type": "spell"
+}

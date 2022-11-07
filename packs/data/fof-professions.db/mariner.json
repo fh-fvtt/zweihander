@@ -1,0 +1,121 @@
+{
+  "_id": "gRBnV0CZvaChEpNP",
+  "data": {
+    "archetype": "Frontier Profession",
+    "bonusAdvances": [
+      {
+        "name": "[AB]"
+      },
+      {
+        "name": "[AB]"
+      },
+      {
+        "name": "[BB]"
+      },
+      {
+        "name": "[BB]"
+      },
+      {
+        "name": "[CB]"
+      },
+      {
+        "name": "[IB]"
+      },
+      {
+        "name": "[PB]"
+      }
+    ],
+    "description": {
+      "@en": "<p>Though many think of me as a Jack Nasty-Face, doing so is an insult to my worthy occupation. They simply work on the deck or riggings, and their only responsibility is to ensure the boat functions at a bare minimum. A Mariner does far more than that. I have my own routines to ensure the boat stays afloat, and I perform more important duties than simply swabbing the deck. I fight, maintain, navigate and, most importantly, I keep the crew alive. You might think there is no difference between a run-of-the-mill ship hand and me, but when you&rsquo;re adrift in dangerous waters, you&rsquo;ll soon see the truth.</p>\n<p>Tensions are ever-increasing, but I care very little, if at all, what broods between these petulant children. All I care about is making it to the next port with my body, mind and soul intact, as the seas will soon darken with more than just the blood of warfare. I&rsquo;ve seen things of unspeakable beauty on the open water, yes, but the waters hide unspeakable horrors as well. The water hides the evil and then belches it upon the shores, corrupting everything it touches.</p>"
+    },
+    "drawback": {
+      "linkedId": null,
+      "name": "Sea Legs"
+    },
+    "expert": {
+      "requirements": "",
+      "value": false
+    },
+    "notes": "",
+    "professionalTrait": {
+      "linkedId": null,
+      "name": "A Life at Sea"
+    },
+    "skillRanks": [
+      {
+        "name": "Athletics"
+      },
+      {
+        "name": "Awareness"
+      },
+      {
+        "name": "Coordination"
+      },
+      {
+        "name": "Folklore"
+      },
+      {
+        "name": "Martial Ranged"
+      },
+      {
+        "name": "Navigation"
+      },
+      {
+        "name": "Pilot"
+      },
+      {
+        "name": "Simple Melee"
+      },
+      {
+        "name": "Simple Ranged"
+      },
+      {
+        "name": "Toughness"
+      }
+    ],
+    "specialTrait": {
+      "linkedId": null,
+      "name": ""
+    },
+    "talents": [
+      {
+        "linkedId": null,
+        "name": "Full of Beans"
+      },
+      {
+        "linkedId": null,
+        "name": "Herculean Effort"
+      },
+      {
+        "linkedId": null,
+        "name": "Sailing"
+      }
+    ],
+    "tier": ""
+  },
+  "effects": [],
+  "flags": {
+    "cf": {
+      "color": "#000000",
+      "id": null,
+      "path": "FOF Professions#/CF_SEP/Frontier Professions"
+    },
+    "core": {
+      "sourceId": "Compendium.zweihander.professions.RmnnQeZxr0JVApTJ"
+    },
+    "scene-packer": {
+      "hash": "a921352fed8679286acdbc32d92bd83185c9777d",
+      "sourceId": "Item.JD38YhsuFSHMkyf5"
+    },
+    "zweihander": {}
+  },
+  "folder": null,
+  "img": "systems/zweihander/assets/icons/abstract-082.svg",
+  "name": "Mariner",
+  "permission": {
+    "VOagSWOxwT3osUDT": 3,
+    "default": 0
+  },
+  "sort": 0,
+  "type": "profession"
+}

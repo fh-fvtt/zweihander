@@ -1,0 +1,40 @@
+{
+  "_id": "OHUjvzCGuDt2ZFeK",
+  "data": {
+    "castingCost": 0,
+    "castingTime": "1 min",
+    "description": {
+      "@en": "You conjure forth a murder of crows, which harry and harm your enemies."
+    },
+    "distance": "Any one place you can see",
+    "duration": "Instantaneous",
+    "notes": "",
+    "principle": "Lesser",
+    "rules": {
+      "criticalFailure": {
+        "@en": "You call forth a flock of murderous crows – armed with iron beaks and dagger-like talons – not from the Material Realm but from the Abyss! They swoop about you and you suffer [[/roll 2D10]]+[WB] in Damage and begin to Bleed."
+      },
+      "criticalSuccess": {
+        "@en": "As above, but those caught in the Feast for Crows begin to Bleed."
+      },
+      "effect": {
+        "@en": "After successfully casting this spell, you can conjure a flock of murderous crows that swoop about your enemies, dispersing only after tasting blood. All those who are caught within the Burst Template suffer [[/roll 2D10]]+[WB] in Damage."
+      },
+      "reagents": {
+        "@en": "A crow, sacrificed (expended)"
+      }
+    },
+    "tradition": "Arcane (Animism)"
+  },
+  "effects": [],
+  "flags": {},
+  "folder": null,
+  "img": "systems/zweihander/assets/icons/crow-dive.svg",
+  "name": "Feast for Crows",
+  "permission": {
+    "9cilLhNTlIyJpmtZ": 3,
+    "default": 0
+  },
+  "sort": 0,
+  "type": "spell"
+}

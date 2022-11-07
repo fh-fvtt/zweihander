@@ -1,0 +1,43 @@
+{
+  "_id": "FPfivK2Q9UGJfthC",
+  "data": {
+    "associatedSkill": "Simple Melee",
+    "damage": {
+      "formula": "[CB] + 1 + (1+[#])d6x6"
+    },
+    "description": {
+      "@en": "<p>Often fashioned from a large branch and a broken piece of metal, it&rsquo;s heated to make it more robust. Not surprisingly, it&rsquo;s the favorite implement of outlanders and the desperate.</p>"
+    },
+    "distance": "Engaged or 1 yard",
+    "encumbrance": 2,
+    "equipped": false,
+    "handling": "One or Two-handed",
+    "load": 0,
+    "notes": "",
+    "price": {
+      "bp": "0",
+      "gc": "0",
+      "ss": "7"
+    },
+    "qualities": {
+      "arrayOfValues": [],
+      "value": "Adaptable, Reach, Weak"
+    },
+    "weaponType": "Bladed"
+  },
+  "effects": [],
+  "flags": {
+    "core": {
+      "sourceId": "Compendium.zweihander.weapons.aQG00onDKVHlrWFR"
+    }
+  },
+  "folder": null,
+  "img": "systems/zweihander/assets/icons/stone-spear.svg",
+  "name": "Fire-hardened spear",
+  "permission": {
+    "JyjuBRFhP4y9QWxg": 3,
+    "default": 0
+  },
+  "sort": 0,
+  "type": "weapon"
+}

@@ -1,0 +1,31 @@
+{
+  "_id": "okFxFeQ1fgMn4Uyj",
+  "data": {
+    "active": true,
+    "description": {
+      "@en": "Only the foolhardy contract this illness. It is particularly found and spread by would-be adventurers and inexperienced grave robbers. Infection is a tell-tale sign to healers that their patient is likely a criminal who is guilty of at least attempting to rob the dead of their jewels and belongings. Worse still, Tomb Rot is also passed by the corruptive touch of Supernatural creatures and lycanthropes, their filthy claws and nails harboring this Disease. It serves as a reminder that death’s touch curses all and that no one can escape Her scythe."
+    },
+    "duration": "1D10+1 days",
+    "notes": "",
+    "resist": "(Easy +20%) Toughness Test",
+    "rules": {
+      "effect": {
+        "@en": "Over the course of the duration, you cannot recover steps on your Damage Condition Track whatsoever."
+      },
+      "treatment": {
+        "@en": "In order to treat a patient suffering from Tomb Rot, a caregiver must have a Skill Rank in Heal, a sprig of wolfsbane and a Bandage (both of which are expended as part of the treatment) and be left uninterrupted for at least 1 hour. If they succeed at an (Easy +20%) Heal Test, you do not suffer the effects for the following day. You may only be treated in this manner once every 24 hours, no matter whether it is successful or not."
+      }
+    }
+  },
+  "effects": [],
+  "flags": {},
+  "folder": null,
+  "img": "systems/zweihander/assets/icons/half-dead.svg",
+  "name": "Tomb Rot",
+  "permission": {
+    "JyjuBRFhP4y9QWxg": 3,
+    "default": 0
+  },
+  "sort": 0,
+  "type": "disease"
+}

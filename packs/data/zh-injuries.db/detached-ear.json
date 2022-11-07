@@ -1,0 +1,38 @@
+{
+  "_id": "aXbrII21DCJw4XvK",
+  "data": {
+    "active": true,
+    "description": {
+      "@en": ""
+    },
+    "notes": "",
+    "recuperationTime": 0,
+    "rules": {
+      "effect": {
+        "@en": "Until fully Recuperated, you cannot hear as you’re in pain. You must undergo a successful surgery or suffer the consequences. Once a Detached Ear has undergone a failed surgery, you suffer the Crop Ear Drawback. If you already have this Drawback, you permanently lose 9% Perception."
+      }
+    },
+    "severity": 2
+  },
+  "effects": [],
+  "flags": {
+    "core": {
+      "sourceId": "Item.SLJ7uR91MyXFfvsN"
+    },
+    "exportSource": {
+      "coreVersion": "0.8.9",
+      "system": "zweihander",
+      "systemVersion": "0.3.30",
+      "world": "talron2"
+    }
+  },
+  "folder": null,
+  "img": "systems/zweihander/assets/icons/human-ear.svg",
+  "name": "Detached Ear",
+  "permission": {
+    "4be9WK4Hp7jWrwWe": 3,
+    "default": 0
+  },
+  "sort": 0,
+  "type": "injury"
+}

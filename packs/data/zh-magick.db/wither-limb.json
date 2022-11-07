@@ -1,0 +1,40 @@
+{
+  "_id": "K2XM3bl94oNunHsV",
+  "data": {
+    "castingCost": 0,
+    "castingTime": "1 min",
+    "description": {
+      "@en": "The person you gaze at begins to twist and break in place as they’re exposed to this heinous spell."
+    },
+    "distance": "Any one person you can see",
+    "duration": "[WB]+6 minutes",
+    "notes": "",
+    "principle": "Lesser",
+    "rules": {
+      "criticalFailure": {
+        "@en": "As you break the splinter of coffin in your hand, you hear haunted voices. You begin to tremble with trepidation and eventually collapse to the ground like a marionette whose strings have been cut. You are paralyzed, lying Helpless on the ground for the spell’s Duration."
+      },
+      "criticalSuccess": {
+        "@en": "As above, but they cannot use either their arms or legs, and are left Helpless."
+      },
+      "effect": {
+        "@en": "After successfully casting this spell, you immediately cause a single limb of your choice – an arm or a leg – belonging to the person you look at, to atrophy. Although you do not lower their Damage Condition Track, they cannot use this limb for the Duration of the spell."
+      },
+      "reagents": {
+        "@en": "A splinter from a coffin belonging to a Restless Spirit (expended)"
+      }
+    },
+    "tradition": "Arcane (Morticism)"
+  },
+  "effects": [],
+  "flags": {},
+  "folder": null,
+  "img": "systems/zweihander/assets/icons/wizard-staff.svg",
+  "name": "Wither Limb",
+  "permission": {
+    "9cilLhNTlIyJpmtZ": 3,
+    "default": 0
+  },
+  "sort": 0,
+  "type": "spell"
+}

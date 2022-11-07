@@ -1,0 +1,40 @@
+{
+  "_id": "WwiskVngrduOmtcK",
+  "data": {
+    "castingCost": 0,
+    "castingTime": "1 min",
+    "description": {
+      "@en": "Through a complex series of prayers and guidance, you finally bring peace to the afflicted."
+    },
+    "distance": "Any one person you can touch",
+    "duration": "Instantaneous",
+    "notes": "",
+    "principle": "Greater",
+    "rules": {
+      "criticalFailure": {
+        "@en": "You mangled the words to the prayer. The afflicted is not brought peace, but instead inflicted by chaos. You fail to cure the Disorder, instead triggering its Effects instantly"
+      },
+      "criticalSuccess": {
+        "@en": "As above, but if the person lost points from their Primary Attributes from a Disorder’s Effects, they can restore the lost points."
+      },
+      "effect": {
+        "@en": "After successfully casting this spell, the person you touch is cured of one Disorder they are currently suffering from. A Character may only gain the benefit of this Magick once per day."
+      },
+      "reagents": {
+        "@en": "Three vials of holy water, imbibed by the victim (expended)"
+      }
+    },
+    "tradition": "Divine (Martyr)"
+  },
+  "effects": [],
+  "flags": {},
+  "folder": null,
+  "img": "systems/zweihander/assets/icons/wizard-staff.svg",
+  "name": "Suppress Affliction",
+  "permission": {
+    "9cilLhNTlIyJpmtZ": 3,
+    "default": 0
+  },
+  "sort": 0,
+  "type": "spell"
+}

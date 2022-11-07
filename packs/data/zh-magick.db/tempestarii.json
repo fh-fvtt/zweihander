@@ -1,0 +1,40 @@
+{
+  "_id": "FEsbKGfBROzKc051",
+  "data": {
+    "castingCost": 0,
+    "castingTime": "1 min",
+    "description": {
+      "@en": "You possess a greatly valued power: the ability to dismiss storms at-will (bringing adoration from those who behold it) and to summon forth massive ice storms. It freezes objects and people alike."
+    },
+    "distance": "Any one place you can see",
+    "duration": "6+[WB] minutes",
+    "notes": "",
+    "principle": "Lesser",
+    "rules": {
+      "criticalFailure": {
+        "@en": "As you raise your staff, it is immediately struck by a blue thunderbolt. You are frozen in place, left Helpless and paralyzed for the Duration."
+      },
+      "criticalSuccess": {
+        "@en": "As above, but foes automatically fail to Resist this Magick."
+      },
+      "effect": {
+        "@en": "After successfully casting this spell, choose to either repress bad weather or conjure forth an ice storm. If you repress bad weather, it temporarily stops for the Duration of the spell. If you conjure forth an ice storm, all those caught within an Explosion Template must immediately succeed at a Toughness Test or suffer [[/roll 2D10]]+[WB] Damage for each Turn they remain within the Explosion Template. You can inflict Injuries with this Magick, but foes always suffer from Frostbite instead. This Magick only affects creatures classified as Humanoid or Mutant (including player Ancestries)."
+      },
+      "reagents": {
+        "@en": "A staff made from a branch of a tree struck by lightning"
+      }
+    },
+    "tradition": "Covenant"
+  },
+  "effects": [],
+  "flags": {},
+  "folder": null,
+  "img": "systems/zweihander/assets/icons/wizard-staff.svg",
+  "name": "Tempestarii",
+  "permission": {
+    "4be9WK4Hp7jWrwWe": 3,
+    "default": 0
+  },
+  "sort": 0,
+  "type": "spell"
+}

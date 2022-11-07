@@ -1,0 +1,109 @@
+{
+  "_id": "bTl23DXll4ldqnRO",
+  "data": {
+    "archetype": "Expert Profession",
+    "bonusAdvances": [
+      {
+        "name": "[BB]"
+      },
+      {
+        "name": "[FB]"
+      },
+      {
+        "name": "[IB]"
+      },
+      {
+        "name": "[PB]"
+      },
+      {
+        "name": "[PB]"
+      },
+      {
+        "name": "[WB]"
+      },
+      {
+        "name": "[WB]"
+      }
+    ],
+    "description": {
+      "@en": "In the icy climes of the Witch-Queen, Magick takes on a much different hue. The only winds to be harnessed there are the boreal squalls from crevasses between icebergs, said to be the insidious whispers of the Witch-Queen Herself. Some of Her occultists take their mistress’ chilly words and use them to speak with spirits and conjure forth blizzards. Known as Rime Maidens, they are the ‘spiritualists’ of the Witch-Queen. While the name and position can also be bestowed upon men, it is far less common. Powerful occultists of the Witch-Queen, Rime Maidens are intelligent, regal, and know how to survive the often-barren steppes and tundra they call home. They are seen as mediums and leaders among their tribes, but on their own, Rime Maidens are feared and greatly mistrusted.\\nRime Maidens are groomed from an early age for their position, taking years and years to fully grow into their powers. They become much like their Lady – indifferent, cruel and mystifying. Rime Maidens have glacial whims, and may come off as unapproachable and hostile. At the end of the day, they still idolize and follow the gelid vagaries of a Daemon. The Witch-Queen wants nothing more than to spread Her wintry breath across the land, locking all in its place and rendering the world into a barren tundra where life is forever frozen. Rime Maidens desire such a thing as well, but they hope within their hearts that their people will adapt and grow in this new world. Unfortunately, even the Witch-Queen’s chosen ones will not escape Her arctic grip should the Daemon’s plans reach its bitter fruition."
+    },
+    "drawback": {
+      "linkedId": null,
+      "name": "Ruinous Power"
+    },
+    "expert": {
+      "requirements": "You must possess at least one Skill Rank in Incantation in order to enter this Expert Profession. In addition, you must have the Special Trait of either Arcane or Divine Magick.",
+      "value": true
+    },
+    "notes": "",
+    "professionalTrait": {
+      "linkedId": null,
+      "name": "Coldheart"
+    },
+    "skillRanks": [
+      {
+        "name": "Alchemy"
+      },
+      {
+        "name": "Folklore"
+      },
+      {
+        "name": "Incantation"
+      },
+      {
+        "name": "Intimidate"
+      },
+      {
+        "name": "Leadership"
+      },
+      {
+        "name": "Resolve"
+      },
+      {
+        "name": "Scrutinize"
+      },
+      {
+        "name": "Simple Melee"
+      },
+      {
+        "name": "Simple Ranged"
+      },
+      {
+        "name": "Survival"
+      }
+    ],
+    "specialTrait": {
+      "linkedId": null,
+      "name": "Covenant Magick"
+    },
+    "talents": [
+      {
+        "linkedId": null,
+        "name": "Appalling Mien"
+      },
+      {
+        "linkedId": null,
+        "name": "Instincts"
+      },
+      {
+        "linkedId": null,
+        "name": "Winds of Change"
+      }
+    ],
+    "tier": ""
+  },
+  "effects": [],
+  "flags": {
+    "zweihander": {}
+  },
+  "folder": null,
+  "img": "systems/zweihander/assets/icons/ice-iris.svg",
+  "name": "Rime Maiden",
+  "permission": {
+    "9cilLhNTlIyJpmtZ": 3,
+    "default": 0
+  },
+  "sort": 0,
+  "type": "profession"
+}

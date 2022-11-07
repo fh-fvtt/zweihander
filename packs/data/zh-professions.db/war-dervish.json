@@ -1,0 +1,109 @@
+{
+  "_id": "FoRWuJC7CrJVEo3F",
+  "data": {
+    "archetype": "Expert Profession",
+    "bonusAdvances": [
+      {
+        "name": "[AB]"
+      },
+      {
+        "name": "[AB]"
+      },
+      {
+        "name": "[BB]"
+      },
+      {
+        "name": "[CB]"
+      },
+      {
+        "name": "[CB]"
+      },
+      {
+        "name": "[WB]"
+      },
+      {
+        "name": "[WB]"
+      }
+    ],
+    "description": {
+      "@en": "Many faiths have splinter religions. Some are dedicated to particular aspects of their gods, others to saints and similar holy figures, some even to heresies. Mysticism sects are devoted to the study of the ways of gods and of mysteries untapped – the nature of reality, the idea of existence, and the idea of the self-related to the godhead. War Dervishes are wandering mystics who travel to learn both about themselves and the world around them. As they pass through village after village, they make no attempt to convert anyone to their faith, but simply share stories, visit the local scholars and trade a little. They are best known for the beribboned swords and spears they carry and the mesmerizing worship rituals they perform with them involving intricate and graceful dances.\nNeither priest nor warrior, War Dervish is also a quite imposing combatant – they believe that in order to truly know themselves, they must master their bodies just as they master their minds. They perform their rituals on the battlefield, using graceful weapons and sweeping dances to pirouette from one foe to the next, striking at them with their hardly noticing. The path of a War Dervish is wrought with peril, however. The quest for the truth of the world has led many to the Abyss and stare too deep into the Abyss, and the Abyss stares back. These ‘dark’ War Dervishes resort to ever blacker means to see ‘the hidden truth’ of the world, devolving into drug-addled maniacs who swirl and slash at demons they only see in their mind’s eye. More often than not, these demons turn out to be the allies they journey with."
+    },
+    "drawback": {
+      "linkedId": null,
+      "name": "Quality of Mercy"
+    },
+    "expert": {
+      "requirements": "You must possess at least one Skill Rank in both Martial Melee and Resolve in order to enter this Expert Profession.",
+      "value": true
+    },
+    "notes": "",
+    "professionalTrait": {
+      "linkedId": null,
+      "name": "The Dance of War"
+    },
+    "skillRanks": [
+      {
+        "name": "Athletics"
+      },
+      {
+        "name": "Coordination"
+      },
+      {
+        "name": "Folklore"
+      },
+      {
+        "name": "Martial Melee"
+      },
+      {
+        "name": "Resolve"
+      },
+      {
+        "name": "Scrutinize"
+      },
+      {
+        "name": "Simple Melee"
+      },
+      {
+        "name": "Simple Ranged"
+      },
+      {
+        "name": "Toughness"
+      },
+      {
+        "name": "Warfare"
+      }
+    ],
+    "specialTrait": {
+      "linkedId": null,
+      "name": ""
+    },
+    "talents": [
+      {
+        "linkedId": null,
+        "name": "Handspring"
+      },
+      {
+        "linkedId": null,
+        "name": "Impenetrable Wall"
+      },
+      {
+        "linkedId": null,
+        "name": "Lightning Reaction"
+      }
+    ],
+    "tier": ""
+  },
+  "effects": [],
+  "flags": {
+    "zweihander": {}
+  },
+  "folder": null,
+  "img": "systems/zweihander/assets/icons/war-dervish.svg",
+  "name": "War Dervish",
+  "permission": {
+    "9cilLhNTlIyJpmtZ": 3,
+    "default": 0
+  },
+  "sort": 0,
+  "type": "profession"
+}

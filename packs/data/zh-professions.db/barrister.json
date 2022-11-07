@@ -1,0 +1,109 @@
+{
+  "_id": "Uc9DAGN1OS8dIlDh",
+  "data": {
+    "archetype": "Expert Profession",
+    "bonusAdvances": [
+      {
+        "name": "[FB]"
+      },
+      {
+        "name": "[FB]"
+      },
+      {
+        "name": "[IB]"
+      },
+      {
+        "name": "[IB]"
+      },
+      {
+        "name": "[PB]"
+      },
+      {
+        "name": "[WB]"
+      },
+      {
+        "name": "[WB]"
+      }
+    ],
+    "description": {
+      "@en": "The Law is a fickle mistress; at times draconian and labyrinthine, at others, suddenly revised by one emperor or ignored by the next. The Legal system never tires though, people are tried, acquitted, jailed or even executed, worked and driven by the much maligned Barrister. Barristers are lawyers, litigants and mediators, spending their lives studying the law in order to convince the often waif court of their pledge’s innocence. Theirs is a thankless job – they go through years of training and study, only to be spat upon if they lose a case despite the impossibilities stacked against them. Most work for those who can afford their often extortionate fees, but some Barristers specialize in legal interpretation, criminal prosecution or become the official representatives of the nobility or even royalty. The rewards for serving as such legal representatives is high – elevation to minor nobility and with it, lands, titles and income. When such legal representatives fail to successfully represent their masters in court, the punishment is very rarely death. Usually they suffer the sentence that their masters would have, had they been found guilty instead. Unless the Barrister can prove their innocence, this usually marks the end of their legal careers.\nBarristers would appear to be ill-equipped for a life of exile, but they know how to protect themselves, both verbally and physically, having learned to defend themselves against their more unhinged clientele. Those that do not go into exile, stay and play a role as society’s inside man – easily researching legal loopholes, forgiving debts or even bending the ear of a noble or royalty. When they do work, most Barristers have their clients’ best interests in mind, but the power to ruin lives, to gouge clients for unpaid fees and seeing the innocent unjustly sent to their deaths, begins to grind most Barristers down. Eventually, they grow uncaring of their clients’ fates, interested in the bribes they can take and place, the power they can wield and so they become susceptible to the honeyed words of the foul."
+    },
+    "drawback": {
+      "linkedId": null,
+      "name": "Untrustworthy"
+    },
+    "expert": {
+      "requirements": "You must possess at least one Skill Rank in both Bargain and Guile in order to enter this Expert Profession.",
+      "value": true
+    },
+    "notes": "",
+    "professionalTrait": {
+      "linkedId": null,
+      "name": "Pound of Flesh"
+    },
+    "skillRanks": [
+      {
+        "name": "Bargain"
+      },
+      {
+        "name": "Education"
+      },
+      {
+        "name": "Folklore"
+      },
+      {
+        "name": "Guile"
+      },
+      {
+        "name": "Interrogation"
+      },
+      {
+        "name": "Intimidate"
+      },
+      {
+        "name": "Rumor"
+      },
+      {
+        "name": "Scrutinize"
+      },
+      {
+        "name": "Simple Melee"
+      },
+      {
+        "name": "Resolve"
+      }
+    ],
+    "specialTrait": {
+      "linkedId": null,
+      "name": ""
+    },
+    "talents": [
+      {
+        "linkedId": null,
+        "name": "Determination"
+      },
+      {
+        "linkedId": null,
+        "name": "Forked Tongue"
+      },
+      {
+        "linkedId": null,
+        "name": "Menacing Demeanor"
+      }
+    ],
+    "tier": ""
+  },
+  "effects": [],
+  "flags": {
+    "zweihander": {}
+  },
+  "folder": null,
+  "img": "systems/zweihander/assets/icons/barrister.svg",
+  "name": "Barrister",
+  "permission": {
+    "9cilLhNTlIyJpmtZ": 3,
+    "default": 0
+  },
+  "sort": 0,
+  "type": "profession"
+}

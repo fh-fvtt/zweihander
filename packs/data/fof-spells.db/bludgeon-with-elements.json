@@ -1,0 +1,53 @@
+{
+  "_id": "O0N1qttYKyGqXfQo",
+  "data": {
+    "castingCost": 1,
+    "castingTime": "1 Minute",
+    "description": {
+      "@en": "<p>Begone, foul thing!</p>"
+    },
+    "distance": "Any one foe you can see clearly",
+    "duration": "Until the end of combat",
+    "notes": "",
+    "principle": "Basic Tier",
+    "rules": {
+      "criticalFailure": {
+        "@en": "You suffer the Combat Condition instead and drop one object either in hand or from your side 3 yards away."
+      },
+      "criticalSuccess": {
+        "@en": "The foe also drops one object either in hand or from their side 3 yards away."
+      },
+      "effect": {
+        "@en": "<p>Select one element: air, earth, fire or water. After successfully casting, a foe suffers one of the following Combat Conditions, unable to Defend or Resist its effects:</p>\n<p>-<strong> AIR (Gutted)</strong>: Must spend 1 additional AP forMovement Actions until the end of combat.</p>\n<p>- <strong>EARTH (Strained)</strong>: Must spend 1 additional AP for Attack Actions until the end of combat.</p>\n<p>- <strong>FIRE (Intimidated)</strong>: Suffer -1 to Damage Threshold &amp; Peril Threshold until the end of combat.</p>\n<p>- <strong>WATER (Disoriented)</strong>: Must spend 1 additional AP for Reactions until the end of combat.</p>"
+      },
+      "reagents": {
+        "@en": "A breath of air, a pebble, a match or water skin—depending on the element (expended)"
+      }
+    },
+    "tradition": "Common"
+  },
+  "effects": [],
+  "flags": {
+    "cf": {
+      "color": "#000000",
+      "id": null,
+      "path": "FOF Spells#/CF_SEP/Common Spells"
+    },
+    "core": {
+      "sourceId": "Compendium.zweihander.magick.zfw4EhNqq3sJRnbQ"
+    },
+    "scene-packer": {
+      "hash": "63be9d27ae5cc05beadb1bd5cd05b81066ba7085",
+      "sourceId": "Item.I3j1IVJ5SDmwbDhJ"
+    }
+  },
+  "folder": null,
+  "img": "systems/zweihander/assets/icons/spell-book.svg",
+  "name": "Bludgeon With Elements",
+  "permission": {
+    "VOagSWOxwT3osUDT": 3,
+    "default": 0
+  },
+  "sort": 0,
+  "type": "spell"
+}

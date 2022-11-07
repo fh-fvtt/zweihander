@@ -1,0 +1,40 @@
+{
+  "_id": "iaJvRfaiYpCP7mhq",
+  "data": {
+    "castingCost": 0,
+    "castingTime": "1 min",
+    "description": {
+      "@en": "You pinch a ball of wax between your fingers, causing the next object you touch to become plastic and mutable. Nothing has a set form; everything is uncertain."
+    },
+    "distance": "Yourself",
+    "duration": "3+[WB] minutes",
+    "notes": "",
+    "principle": "Petty",
+    "rules": {
+      "criticalFailure": {
+        "@en": "Dripping like hot wax, every metal object you are wearing or carrying about your person is immediately destroyed."
+      },
+      "criticalSuccess": {
+        "@en": "As above, but objects do not return to their normal state at the end of the Duration."
+      },
+      "effect": {
+        "@en": "After successfully casting this spell, any objects you touch (providing they are no larger than a child is tall) can be bent as if made of soft putty. If you intend to touch a foe’s trappings (such as a weapon or their armor), they must Resist with a successful Coordination Test or else their trapping temporarily gains the Ruined! Quality. If you keep your hand on the object for longer than three minutes, you can temporarily destroy the object. This spell has no Effect on trappings with the Castle-forged Quality or Artifacts and Relics. Once the Duration is up, objects affected by this spell return to their normal state."
+      },
+      "reagents": {
+        "@en": "A ball of earwax made from slain prostitutes or dead pimps (expended)"
+      }
+    },
+    "tradition": "Covenant"
+  },
+  "effects": [],
+  "flags": {},
+  "folder": null,
+  "img": "systems/zweihander/assets/icons/wizard-staff.svg",
+  "name": "Warp Reality",
+  "permission": {
+    "4be9WK4Hp7jWrwWe": 3,
+    "default": 0
+  },
+  "sort": 0,
+  "type": "spell"
+}

@@ -1,0 +1,53 @@
+{
+  "_id": "pQUGayNAnQZzofpU",
+  "data": {
+    "castingCost": null,
+    "castingTime": "1 Hour",
+    "description": {
+      "@en": "<p>Hear me, ancient elements, lend me your strength . . .</p>"
+    },
+    "distance": "By Touch",
+    "duration": "3+[WB] hours",
+    "notes": "",
+    "principle": "Basic Tier",
+    "rules": {
+      "criticalFailure": {
+        "@en": "The gemstone shards pierce your hand, as you suffer [[/roll 1D10+1]] Damage and one random Moderate Injury."
+      },
+      "criticalSuccess": {
+        "@en": "They do not suffer Serious Injuries, either."
+      },
+      "effect": {
+        "@en": "<p>An expensive or rare gemstone that you crush (expended)</p>"
+      },
+      "reagents": {
+        "@en": "An expensive or rare gemstone that you crush (expended)"
+      }
+    },
+    "tradition": "Common"
+  },
+  "effects": [],
+  "flags": {
+    "cf": {
+      "color": "#000000",
+      "id": null,
+      "path": "FOF Spells#/CF_SEP/Common Spells"
+    },
+    "core": {
+      "sourceId": "Compendium.zweihander.magick.zfw4EhNqq3sJRnbQ"
+    },
+    "scene-packer": {
+      "hash": "d0a104ca4118ba71f9c5a485675bfce181427c75",
+      "sourceId": "Item.i4F749hRKKFAxmhQ"
+    }
+  },
+  "folder": null,
+  "img": "systems/zweihander/assets/icons/spell-book.svg",
+  "name": "Petition The Mountain",
+  "permission": {
+    "VOagSWOxwT3osUDT": 3,
+    "default": 0
+  },
+  "sort": 0,
+  "type": "spell"
+}

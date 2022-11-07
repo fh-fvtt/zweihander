@@ -1,0 +1,109 @@
+{
+  "_id": "H80WN2v6Fb4tXhuk",
+  "data": {
+    "archetype": "Expert Profession",
+    "bonusAdvances": [
+      {
+        "name": "[AB]"
+      },
+      {
+        "name": "[BB]"
+      },
+      {
+        "name": "[FB]"
+      },
+      {
+        "name": "[FB]"
+      },
+      {
+        "name": "[IB]"
+      },
+      {
+        "name": "[IB]"
+      },
+      {
+        "name": "[WB]"
+      }
+    ],
+    "description": {
+      "@en": "Although there exists many an independent craftsman or scholar, control of manufacturing, craftsmanship, academic subjects and so on rests with the guilds. These fraternal, sometimes maternal, organizations monopolize specific trades or fields of study, from glassblowing and masonry to astronomy and medicine. Each guild inducts apprentices who spend years, even decades, studying their trade or subject until eventually they learn ‘the mysteries’ known only to each guild. Leading each guild in each town and city is a Guildmaster, perhaps a trusted librarian, a reputable merchant or a master craftsman, but all renowned for their knowledge and expertise. Together they control who engages in their trade or field of study, often denying guild membership or the right to trade to independent scholars and craftsmen They set prices too, brooking no competition, but they also present a united front against those who exploit them. Nevertheless, many have become wealthy and in the process, members of the newly burgeoning middle classes – the bourgeois burghers.\nA Guildmaster’s skills will vary according to the trades they represent, but all have leadership skills and know the ins and outs of their craft, trade or field of study. In a grim & perilous world, guilds have even arisen to control banking and mercenary bands, their leaders exercising great influence at court and on the battlefield. All Guildmasters work to protect their guild’s monopoly, but some take their ambitions beyond this, seeking power for the sake of it. This can lead to disaster, as trade shortages leave people hungry and angry, sometimes causing violence to erupt in the marketplace."
+    },
+    "drawback": {
+      "linkedId": null,
+      "name": "Guild Responsibilities"
+    },
+    "expert": {
+      "requirements": "You must possess at least two Skill Ranks in Tradecraft in order to enter this Expert Profession.",
+      "value": true
+    },
+    "notes": "",
+    "professionalTrait": {
+      "linkedId": null,
+      "name": "Maker’s Mark"
+    },
+    "skillRanks": [
+      {
+        "name": "Bargain"
+      },
+      {
+        "name": "Coordination"
+      },
+      {
+        "name": "Education"
+      },
+      {
+        "name": "Folklore"
+      },
+      {
+        "name": "Intimidate"
+      },
+      {
+        "name": "Leadership"
+      },
+      {
+        "name": "Resolve"
+      },
+      {
+        "name": "Rumor"
+      },
+      {
+        "name": "Simple Melee"
+      },
+      {
+        "name": "Tradecraft"
+      }
+    ],
+    "specialTrait": {
+      "linkedId": null,
+      "name": ""
+    },
+    "talents": [
+      {
+        "linkedId": null,
+        "name": "Determination"
+      },
+      {
+        "linkedId": null,
+        "name": "Incredible Numeration"
+      },
+      {
+        "linkedId": null,
+        "name": "Meeting of the Minds"
+      }
+    ],
+    "tier": ""
+  },
+  "effects": [],
+  "flags": {
+    "zweihander": {}
+  },
+  "folder": null,
+  "img": "systems/zweihander/assets/icons/guildmaster.svg",
+  "name": "Guildmaster",
+  "permission": {
+    "9cilLhNTlIyJpmtZ": 3,
+    "default": 0
+  },
+  "sort": 0,
+  "type": "profession"
+}

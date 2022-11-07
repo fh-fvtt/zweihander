@@ -1,0 +1,121 @@
+{
+  "_id": "ehGvJJSkfe2nPCPm",
+  "data": {
+    "archetype": "Mage Profession",
+    "bonusAdvances": [
+      {
+        "name": "[AB]"
+      },
+      {
+        "name": "[BB]"
+      },
+      {
+        "name": "[IB]"
+      },
+      {
+        "name": "[IB]"
+      },
+      {
+        "name": "[PB]"
+      },
+      {
+        "name": "[WB]"
+      },
+      {
+        "name": "[WB]"
+      }
+    ],
+    "description": {
+      "@en": "<p>My work is sacred, and my desire to purify, mature and perfect formulas are ceaseless. It is through common aims that transmutation and distillation bring understanding to all. While the world might be embracing a more elevated view of itself, I know that this is pure folly. Through the concept of &lsquo;natural science,&rsquo; the learned attempt to define God, His works and His creations within their alchemical practices.But they never will. God cannot be defined, nor can He be examined. He just is, and we live in a world of His creation.</p>\n<p>My ancient knowledge is written upon the Tabula Smaragdina, codified in Liber de Compositione Alchemiae and defined by Robert Bacon: it is the true path of understanding how the world works. The shadows loom over the world, and I have seen them. There is evil seeping into the whole of creation. To aid in the coming battle&mdash;and make no mistake, a battle is coming&mdash;new tools must be forged. The first is the Elixir of Life, which wards away death. The second is the Philosopher&rsquo;s Stone, which brings change. Finally, there is Alkahest, which will break the shadows.</p>"
+    },
+    "drawback": {
+      "linkedId": null,
+      "name": "Bound to the Forge"
+    },
+    "expert": {
+      "requirements": "",
+      "value": false
+    },
+    "notes": "<p>THE BOOK OF COMMON SPELLS Mage characters begin with contains all common spells, including the ones listed as Intermediate and Advanced Tier Spells in <strong>Article 9: Hexenmeister&rsquo;s Almanack</strong>.</p>",
+    "professionalTrait": {
+      "linkedId": null,
+      "name": "Through My Eyes"
+    },
+    "skillRanks": [
+      {
+        "name": "Alchemy"
+      },
+      {
+        "name": "Awareness"
+      },
+      {
+        "name": "Education"
+      },
+      {
+        "name": "Folklore"
+      },
+      {
+        "name": "Incantation"
+      },
+      {
+        "name": "Rumor"
+      },
+      {
+        "name": "Simple Melee"
+      },
+      {
+        "name": "Skulduggery"
+      },
+      {
+        "name": "Toughness"
+      },
+      {
+        "name": "Tradecraft"
+      }
+    ],
+    "specialTrait": {
+      "linkedId": null,
+      "name": ""
+    },
+    "talents": [
+      {
+        "linkedId": null,
+        "name": "Distilling"
+      },
+      {
+        "linkedId": null,
+        "name": "Pharmacopoeia"
+      },
+      {
+        "linkedId": null,
+        "name": "Science"
+      }
+    ],
+    "tier": ""
+  },
+  "effects": [],
+  "flags": {
+    "cf": {
+      "color": "#000000",
+      "id": null,
+      "path": "FOF Professions#/CF_SEP/Mage Professions"
+    },
+    "core": {
+      "sourceId": "Compendium.zweihander.professions.RmnnQeZxr0JVApTJ"
+    },
+    "scene-packer": {
+      "hash": "8258e2d5e2643dad6c3744d74b3c91e37fff3d4e",
+      "sourceId": "Item.fYe2z2QuTuEg4fLe"
+    },
+    "zweihander": {}
+  },
+  "folder": null,
+  "img": "systems/zweihander/assets/icons/abstract-082.svg",
+  "name": "Alchemist",
+  "permission": {
+    "VOagSWOxwT3osUDT": 3,
+    "default": 0
+  },
+  "sort": 0,
+  "type": "profession"
+}

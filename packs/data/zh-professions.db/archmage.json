@@ -1,0 +1,109 @@
+{
+  "_id": "edIZXDI191M7ZD79",
+  "data": {
+    "archetype": "Expert Profession",
+    "bonusAdvances": [
+      {
+        "name": "[AB]"
+      },
+      {
+        "name": "[FB]"
+      },
+      {
+        "name": "[IB]"
+      },
+      {
+        "name": "[IB]"
+      },
+      {
+        "name": "[PB]"
+      },
+      {
+        "name": "[WB]"
+      },
+      {
+        "name": "[WB]"
+      }
+    ],
+    "description": {
+      "@en": "Magick holds many dangers, but it also grants many boons – warmth, benisons, defense, healing and more. It has become a great tool in a grim & perilous world, but the Magick practiced today is not that practiced in ages past. Secrets of the original arts have been lost to the ages, consumed by war or destroyed by natural disaster. Rumors abound of still ancient mages, living centuries beyond their time in remote locations where they study the origins of Magick. Much like Black Magisters, practitioners of arcane Magick uses the combined Ætheric Winds, but where the Black Magister crushes them into a swirling mass, the Archmage refracts and refines them into a separate, but together form known as Silver Magick. It takes decades to fully master this technique. In doing so, they reach heights unimagined by most other Magick users, yet in comparison to the Archmages of the past, they still remain apprentices in the high arts. The large majority seek knowledge and experience, striving for the real purity beyond the Material Realm and perhaps even the nascent energies that formed reality at its core.\nTraditionally aloof and cloistered behind walls of esoteric know-how, the Archmage’s might remains unrivaled. This explains why national armies attempt to conscript them to serve as dreaded battle wizards on the battlefield. The searing light of the combined Winds can bore a hole into the Archmage’s soul, making them a lightning rod for Ætheric power rather than its commander. Long have the Abyssal Princes worked to sway Archmages to their side, as having a servant with the might of refined Magick on their side could spell ruin for the entire world."
+    },
+    "drawback": {
+      "linkedId": null,
+      "name": "Warp Dissonance"
+    },
+    "expert": {
+      "requirements": "You must possess at least two Skill Ranks in Incantation in order to enter this Expert Profession. In addition, you must have the Special Trait of Arcane Magick. Finally, you must sacrifice one Fate Point upon entering this Profession.",
+      "value": true
+    },
+    "notes": "",
+    "professionalTrait": {
+      "linkedId": null,
+      "name": "Mastery of the High Arts"
+    },
+    "skillRanks": [
+      {
+        "name": "Alchemy"
+      },
+      {
+        "name": "Awareness"
+      },
+      {
+        "name": "Coordination"
+      },
+      {
+        "name": "Education"
+      },
+      {
+        "name": "Folklore"
+      },
+      {
+        "name": "Incantation"
+      },
+      {
+        "name": "Resolve"
+      },
+      {
+        "name": "Rumor"
+      },
+      {
+        "name": "Simple Melee"
+      },
+      {
+        "name": "Scrutinize"
+      }
+    ],
+    "specialTrait": {
+      "linkedId": null,
+      "name": "Arcane Mastery"
+    },
+    "talents": [
+      {
+        "linkedId": null,
+        "name": "Battle Magick"
+      },
+      {
+        "linkedId": null,
+        "name": "Higher Mysteries"
+      },
+      {
+        "linkedId": null,
+        "name": "Winds of Change"
+      }
+    ],
+    "tier": ""
+  },
+  "effects": [],
+  "flags": {
+    "zweihander": {}
+  },
+  "folder": null,
+  "img": "systems/zweihander/assets/icons/archmage.svg",
+  "name": "Archmage",
+  "permission": {
+    "9cilLhNTlIyJpmtZ": 3,
+    "default": 0
+  },
+  "sort": 0,
+  "type": "profession"
+}

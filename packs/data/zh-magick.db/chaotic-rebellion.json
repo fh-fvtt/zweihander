@@ -1,0 +1,40 @@
+{
+  "_id": "EQiBrVBwVtX9dJpv",
+  "data": {
+    "castingCost": 0,
+    "castingTime": "1 min",
+    "description": {
+      "@en": "Proffering four Abyssal symbols before you, you foment rebellion among the enemy before you, filling them with rage against their commander."
+    },
+    "distance": "Any creatures or persons you can see",
+    "duration": "9+[WB] minutes",
+    "notes": "",
+    "principle": "Greater",
+    "rules": {
+      "criticalFailure": {
+        "@en": "You have deeply offended the Outsider! The ally with the highest Chaos Ranks is decreed to be the leader. Then, select a number of allies who can see and hear you equal to your [WB]. They are instead made victim to this Magick for the Duration. Once the leader is Slain!, the remaining ally with the highest Chaos Ranks is decreed to be the new leader. If none of your allies have any Chaos Ranks, or there are several allies with the same number of Chaos Ranks, the GM will choose one randomly. Finally, the leader cannot Dodge, Parry or Resist attacks made by the Rebellious."
+      },
+      "criticalSuccess": {
+        "@en": "As above, but the leader cannot Dodge, Parry or Resist attacks made by the Rebellious."
+      },
+      "effect": {
+        "@en": "After successfully casting this spell, select a number of foes who can see and hear you equal to your [WB]. They are made Rebellious. While Rebellious, at the beginning of their Turns, they must immediately Resist with a successful Resolve Test or else redirect their Actions in Combat against their leader. If they Resist with a successful Resolve Test, they can act as normal for the remainder of the Turn, but make another Resolve Test at the beginning of their next Turn. Once the leader is Slain!, another will rise among their ranks to take command (and the cycle continues for the Duration of the spell)."
+      },
+      "reagents": {
+        "@en": "Four unholy symbols of the Abyssal Princes, held aloft"
+      }
+    },
+    "tradition": "Covenant"
+  },
+  "effects": [],
+  "flags": {},
+  "folder": null,
+  "img": "systems/zweihander/assets/icons/wizard-staff.svg",
+  "name": "Chaotic Rebellion",
+  "permission": {
+    "4be9WK4Hp7jWrwWe": 3,
+    "default": 0
+  },
+  "sort": 0,
+  "type": "spell"
+}

@@ -1,0 +1,121 @@
+{
+  "_id": "PHvZYx9YP8kAnn8g",
+  "data": {
+    "archetype": "Frontier Profession",
+    "bonusAdvances": [
+      {
+        "name": "[AB]"
+      },
+      {
+        "name": "[CB]"
+      },
+      {
+        "name": "[CB]"
+      },
+      {
+        "name": "[IB]"
+      },
+      {
+        "name": "[IB]"
+      },
+      {
+        "name": "[PB]"
+      },
+      {
+        "name": "[PB]"
+      }
+    ],
+    "description": {
+      "@en": "<p>Surveying may not be an occupation most people require every day, but land speculators and other people of means find my skills invaluable. I stake out the boundaries of their newly purchased parcels, traveling unexplored regions and charting them&mdash;geographical features and all. My alliances with the Indigenous Nations surrounding us are paramount to everyone&rsquo;s survival. Without their aid, I would not know who lived in what lands and in what season.</p>\n<p>Though both Loyalists and Rebels have employed my services, I can tell the tensions between them are reaching a breaking point. I have my opinions on which side is correct, but what concerns me, even more, is the strange things I&rsquo;ve seen on recent surveying assignments&mdash;odd geographic features and cyclopean structures beyond description that sicken the land. A shade is slowly descending over the earth, covering everything in a darkness so thick it is almost tangible. I&rsquo;ve only caught glimpses of it, but I know that the shadow is growing larger and more powerful beyond the horizon.</p>"
+    },
+    "drawback": {
+      "linkedId": null,
+      "name": "Alone Ranger"
+    },
+    "expert": {
+      "requirements": "",
+      "value": false
+    },
+    "notes": "",
+    "professionalTrait": {
+      "linkedId": null,
+      "name": "Land Reader"
+    },
+    "skillRanks": [
+      {
+        "name": "Awareness"
+      },
+      {
+        "name": "Education"
+      },
+      {
+        "name": "Martial Melee"
+      },
+      {
+        "name": "Martial Ranged"
+      },
+      {
+        "name": "Navigation"
+      },
+      {
+        "name": "Ride"
+      },
+      {
+        "name": "Simple Melee"
+      },
+      {
+        "name": "Simple Ranged"
+      },
+      {
+        "name": "Survival"
+      },
+      {
+        "name": "Toughness"
+      }
+    ],
+    "specialTrait": {
+      "linkedId": null,
+      "name": ""
+    },
+    "talents": [
+      {
+        "linkedId": null,
+        "name": "Arithmetic"
+      },
+      {
+        "linkedId": null,
+        "name": "Polar Star"
+      },
+      {
+        "linkedId": null,
+        "name": "Science"
+      }
+    ],
+    "tier": ""
+  },
+  "effects": [],
+  "flags": {
+    "cf": {
+      "color": "#000000",
+      "id": null,
+      "path": "FOF Professions#/CF_SEP/Frontier Professions"
+    },
+    "core": {
+      "sourceId": "Compendium.zweihander.professions.RmnnQeZxr0JVApTJ"
+    },
+    "scene-packer": {
+      "hash": "29623aaa1136b2fe2937e7d2bfc12ee6d6be0e0a",
+      "sourceId": "Item.DiVXTxRt76ytCYrK"
+    },
+    "zweihander": {}
+  },
+  "folder": null,
+  "img": "systems/zweihander/assets/icons/abstract-082.svg",
+  "name": "Surveyor",
+  "permission": {
+    "VOagSWOxwT3osUDT": 3,
+    "default": 0
+  },
+  "sort": 0,
+  "type": "profession"
+}

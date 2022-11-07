@@ -1,0 +1,121 @@
+{
+  "_id": "FzstB0Xozn1RRz9U",
+  "data": {
+    "archetype": "Lawbreaker Profession",
+    "bonusAdvances": [
+      {
+        "name": "[BB]"
+      },
+      {
+        "name": "[BB]"
+      },
+      {
+        "name": "[CB]"
+      },
+      {
+        "name": "[CB]"
+      },
+      {
+        "name": "[FB]"
+      },
+      {
+        "name": "[FB]"
+      },
+      {
+        "name": "[WB]"
+      }
+    ],
+    "description": {
+      "@en": "<p>Do you know what it&rsquo;s like to dedicate your life to something only to find out that you were used, exploited for your loyalty and set up to take the fall for a dire mistake? Well, I do, and I have sworn to myself I will never be that scapegoat again. Ever since that incident, I have decided to look out for myself and never trust anyone again. I&rsquo;m not a traitor or a coward but a realist who understands that those in power do not care about the common folk. Don&rsquo;t look at me like that; I was not born on Newgate Steps&mdash;I have honor!</p>\n<p>I laugh at the absurdity of drawing lines in the conflict to come. On one side, the Rebels are crying louder each day for independence and the right to govern their own nation. On the other side, the Loyalists are trying to exert their dominance over the New World, as anything else would spell the beginning of the end of their British Empire. Some people feel that this situation can be solved with mediation and diplomacy, but they are wrong&mdash;the only way to resolve such a dispute is through a fight. When the fight does come to these shores, people must pick a side, and I already know whose side I will be on&mdash;my own.</p>"
+    },
+    "drawback": {
+      "linkedId": null,
+      "name": "Marked for Death"
+    },
+    "expert": {
+      "requirements": "",
+      "value": false
+    },
+    "notes": "",
+    "professionalTrait": {
+      "linkedId": null,
+      "name": "Fluid Allegiance"
+    },
+    "skillRanks": [
+      {
+        "name": "Athletics"
+      },
+      {
+        "name": "Bargain"
+      },
+      {
+        "name": "Disguise"
+      },
+      {
+        "name": "Interrogation"
+      },
+      {
+        "name": "Intimidate"
+      },
+      {
+        "name": "Martial Melee"
+      },
+      {
+        "name": "Martial Ranged"
+      },
+      {
+        "name": "Simple Melee"
+      },
+      {
+        "name": "Simple Ranged"
+      },
+      {
+        "name": "Toughness"
+      }
+    ],
+    "specialTrait": {
+      "linkedId": null,
+      "name": ""
+    },
+    "talents": [
+      {
+        "linkedId": null,
+        "name": "Poker Face"
+      },
+      {
+        "linkedId": null,
+        "name": "Role Reversal"
+      },
+      {
+        "linkedId": null,
+        "name": "The Third Degree"
+      }
+    ],
+    "tier": ""
+  },
+  "effects": [],
+  "flags": {
+    "cf": {
+      "color": "#000000",
+      "id": null,
+      "path": "FOF Professions#/CF_SEP/Lawbreaker Professions"
+    },
+    "core": {
+      "sourceId": "Compendium.zweihander.professions.RmnnQeZxr0JVApTJ"
+    },
+    "scene-packer": {
+      "hash": "71db9aca82e76f141c571f64b9c4516327cb22c5",
+      "sourceId": "Item.bePPsTUoRMeRyY80"
+    },
+    "zweihander": {}
+  },
+  "folder": null,
+  "img": "systems/zweihander/assets/icons/abstract-082.svg",
+  "name": "Turncoat",
+  "permission": {
+    "VOagSWOxwT3osUDT": 3,
+    "default": 0
+  },
+  "sort": 0,
+  "type": "profession"
+}

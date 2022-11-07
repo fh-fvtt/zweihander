@@ -1,0 +1,31 @@
+{
+  "_id": "u6SJAYzgOIAq2h6N",
+  "data": {
+    "active": true,
+    "description": {
+      "@en": "A terribly disgusting disease, it quickly debilitates those who are exposed to it. Wading through a midden or traipsing through bogs and sewers can expose would-be adventurers to Filth Fever. It inhibits the body’s ability to recover appropriately and causes mental fortitude to grow more severe."
+    },
+    "duration": "1D10+1 days",
+    "notes": "",
+    "resist": "(Routine +10%) Toughness Test",
+    "rules": {
+      "effect": {
+        "@en": "Over the course of the duration, you cannot recover steps on your Peril Condition Track whatsoever."
+      },
+      "treatment": {
+        "@en": "In order to treat a patient suffering from Filth Fever, a caregiver must have a Skill Rank in Heal, a dose of Mandrake Root and a Bandage (both of which are expended as part of the treatment) and be left uninterrupted for at least 1 hour. If they succeed at a (Routine +10%) Heal Test, you do not suffer the effects for the following day. You may only be treated in this manner once every 24 hours, no matter whether it is successful or not."
+      }
+    }
+  },
+  "effects": [],
+  "flags": {},
+  "folder": null,
+  "img": "systems/zweihander/assets/icons/half-dead.svg",
+  "name": "Filth Fever",
+  "permission": {
+    "JyjuBRFhP4y9QWxg": 3,
+    "default": 0
+  },
+  "sort": 0,
+  "type": "disease"
+}

@@ -1,0 +1,40 @@
+{
+  "_id": "OdPg4xKj4eWJ072m",
+  "data": {
+    "castingCost": 0,
+    "castingTime": "1 min",
+    "description": {
+      "@en": "You forestall your comrades’ inevitable end."
+    },
+    "distance": "Yourself",
+    "duration": "[WB]+9 minutes",
+    "notes": "",
+    "principle": "Greater",
+    "rules": {
+      "criticalFailure": {
+        "@en": "Who are you to deny the fates? Lady death punishes you and all others for your transgression. Everyone you intended to cast this Magick on suffers [[/roll 3D10+3]] mental Peril and 9 Corruption."
+      },
+      "criticalSuccess": {
+        "@en": "As above, but triple the Duration."
+      },
+      "effect": {
+        "@en": "After successfully casting this spell, a number of allies equal to your [WB] can deny death. Immediately after they suffer any Damage that would render them Slain!, they can ignore it entirely, therefore negating both Damage and any Injuries they may have suffered."
+      },
+      "reagents": {
+        "@en": "A vial of embalming fluid given to the recipients of this Magick (expended)"
+      }
+    },
+    "tradition": "Arcane (Morticism)"
+  },
+  "effects": [],
+  "flags": {},
+  "folder": null,
+  "img": "systems/zweihander/assets/icons/empty-hourglass.svg",
+  "name": "At the Threshold",
+  "permission": {
+    "9cilLhNTlIyJpmtZ": 3,
+    "default": 0
+  },
+  "sort": 0,
+  "type": "spell"
+}

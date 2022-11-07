@@ -1,0 +1,40 @@
+{
+  "_id": "yYlvivTF6offf4r7",
+  "data": {
+    "castingCost": 0,
+    "castingTime": "1 min",
+    "description": {
+      "@en": "You shout a litany of baleful sacrilege, meant to deny gods and Daemons alike, while espousing the ascendancy of the Outsider from His Ætheric labyrinthine prison."
+    },
+    "distance": "Any persons you can see",
+    "duration": "3+[WB] minutes",
+    "notes": "",
+    "principle": "Petty",
+    "rules": {
+      "criticalFailure": {
+        "@en": "As you thrash and tear at the holy pages, you know that the gods have heard your blasphemies. You immediately suffer [[/roll 1D10+1]] mental Peril from Stress."
+      },
+      "criticalSuccess": {
+        "@en": "As above, but foes also drop one step down the Peril Condition Track negatively when Channeling Power."
+      },
+      "effect": {
+        "@en": "After successfully casting this spell, select a number of foes who can see and hear you equal to your [WB]. They must Resist with a successful Resolve Test or be made Zealous. While Zealous, they must reduce their chances of success for any action by decreasing the Difficulty Rating of all Skill Tests by one negative step. If they elect to Channel Power while affected by this Magick, they must channel by two steps or more. Note that this Magick only affects creatures classified as Abyssal, Humanoid or Mutant (including player Ancestries)."
+      },
+      "reagents": {
+        "@en": "A page from a holy work, torn to shreds (expended)"
+      }
+    },
+    "tradition": "Covenant"
+  },
+  "effects": [],
+  "flags": {},
+  "folder": null,
+  "img": "systems/zweihander/assets/icons/wizard-staff.svg",
+  "name": "Blasphemy!",
+  "permission": {
+    "4be9WK4Hp7jWrwWe": 3,
+    "default": 0
+  },
+  "sort": 0,
+  "type": "spell"
+}

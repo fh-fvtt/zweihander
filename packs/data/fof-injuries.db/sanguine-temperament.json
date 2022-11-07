@@ -1,0 +1,46 @@
+{
+  "_id": "Leb5Zpo7nJMv2zBd",
+  "data": {
+    "active": true,
+    "description": {
+      "@en": "<p>Maybe it was my brush with death, but I feel more alive than ever. Admittedly, it&rsquo;s made me a bit jittery&mdash;ignore my jimmy leg and unsteady hands; I am just so excited to see you!</p>"
+    },
+    "notes": "<p><span style=\"color: #d5c4a1; font-family: Signika, sans-serif; font-style: italic; text-align: justify; background-color: #282828;\">Grievous Injuries must undergo a successful Perform Surgery within twenty-four hours of suffering it, or else a character gains its related Permanent Injury.</span></p>",
+    "rules": {
+      "effect": {
+        "@en": "<p>You cannot Fire Through Cover, Load or Take Aim without spending an additional AP. In addition, whenever you use the Special Action of Wait, you lose 1 AP.</p>"
+      }
+    },
+    "severity": 0
+  },
+  "effects": [],
+  "flags": {
+    "cf": {
+      "color": "#000000",
+      "id": null,
+      "path": "FOF Injuries#/CF_SEP/Permanent Injuries"
+    },
+    "core": {
+      "sourceId": "Compendium.zweihander.injuries.pMHUxC35U5RHDI7K"
+    },
+    "exportSource": {
+      "coreVersion": "0.8.9",
+      "system": "zweihander",
+      "systemVersion": "0.3.30",
+      "world": "talron2"
+    },
+    "scene-packer": {
+      "hash": "cf7e75accc012a15a19c149c28d3a3fc7b8211c6",
+      "sourceId": "Item.zeixpkVnZYMaoXld"
+    }
+  },
+  "folder": null,
+  "img": "systems/zweihander/assets/icons/internal-injury.svg",
+  "name": "Sanguine Temperament",
+  "permission": {
+    "VOagSWOxwT3osUDT": 3,
+    "default": 0
+  },
+  "sort": 0,
+  "type": "injury"
+}

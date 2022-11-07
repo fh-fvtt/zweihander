@@ -1,12 +1,6 @@
 # dev setup
 docker-compose.yml
-fvtt-data/
 
-# Build output
-/zweihander.js
-/zweihander.js.map
-/zweihander.css
-/zweihander.css.map
 # IDE
 .idea/
 .vs/
@@ -142,3 +136,6 @@ dist
 /index.js
 /index.js.map
 /style.css
+
+# built packs
+/packs/*.db

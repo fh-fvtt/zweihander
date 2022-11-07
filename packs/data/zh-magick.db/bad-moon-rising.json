@@ -1,0 +1,40 @@
+{
+  "_id": "AuhDU6GjbOXDi6Qw",
+  "data": {
+    "castingCost": 0,
+    "castingTime": "1 min",
+    "description": {
+      "@en": "A strange illusion falls the moon; a twisted, stitched-together grin, and a hollow frown. Its eyes watch balefully over the battlefield, as the blessing of the Slavering Maw is felt by all."
+    },
+    "distance": "Yourself",
+    "duration": "Instantaneous",
+    "notes": "",
+    "principle": "Greater",
+    "rules": {
+      "criticalFailure": {
+        "@en": "The illusion is seen only by occultists of the Slavering Maw. All those who behold its countenance automatically suffer from Terror."
+      },
+      "criticalSuccess": {
+        "@en": "As above, but foes automatically suffer from Terror."
+      },
+      "effect": {
+        "@en": "After successfully casting this spell, those who are not occultists of the Slavering Maw must succeed at a Resolve Test or else they suffer from Terror. In addition, occultists of the Slavering Maw may flip the results to succeed all Combat-based Skill Tests for the Duration of the spell."
+      },
+      "reagents": {
+        "@en": "The moon, providing it can be seen"
+      }
+    },
+    "tradition": "Covenant"
+  },
+  "effects": [],
+  "flags": {},
+  "folder": null,
+  "img": "systems/zweihander/assets/icons/wizard-staff.svg",
+  "name": "Bad Moon Rising",
+  "permission": {
+    "4be9WK4Hp7jWrwWe": 3,
+    "default": 0
+  },
+  "sort": 0,
+  "type": "spell"
+}

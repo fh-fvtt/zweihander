@@ -1,0 +1,47 @@
+{
+  "_id": "5DfDlmiMmuk5tuUe",
+  "data": {
+    "associatedSkill": "Martial Ranged",
+    "damage": {
+      "formula": "[CB] + (1+[#])d6x6"
+    },
+    "description": {
+      "@en": "<p>A weapon that uses levers to throw a javelin. The atlatl has a shaft with a cup at one end in which the butt of a javelin is placed. It is a favored weapon of Indigenous cultures.</p>"
+    },
+    "distance": "6 + [PB] yards",
+    "encumbrance": 1,
+    "equipped": false,
+    "handling": "One-handed",
+    "load": 1,
+    "notes": "",
+    "price": {
+      "bp": "7",
+      "gc": "0",
+      "ss": "0"
+    },
+    "qualities": {
+      "arrayOfValues": [],
+      "value": "Silent, Throwing"
+    },
+    "weaponType": "Ranged"
+  },
+  "effects": [],
+  "flags": {
+    "core": {
+      "sourceId": "Compendium.zweihander.weapons.fFDXaVFpRsbiyEnr"
+    },
+    "scene-packer": {
+      "hash": "f6d913e470eb724ef3f1304933c05c94098974f8",
+      "sourceId": "Item.5DfDlmiMmuk5tuUe"
+    }
+  },
+  "folder": null,
+  "img": "systems/zweihander/assets/icons/spear-hook.svg",
+  "name": "Atlatl",
+  "permission": {
+    "VOagSWOxwT3osUDT": 3,
+    "default": 0
+  },
+  "sort": 0,
+  "type": "weapon"
+}

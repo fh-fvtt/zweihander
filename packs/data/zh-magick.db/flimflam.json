@@ -1,0 +1,40 @@
+{
+  "_id": "2SkI2N0JUvLXT78J",
+  "data": {
+    "castingCost": 0,
+    "castingTime": "1 min",
+    "description": {
+      "@en": "You hoodwink, cork-screw, swindle, bamboozle or confound one person with Magickal glamour, compelling them to do something they’d normally not do."
+    },
+    "distance": "Any one person you can see",
+    "duration": "Instantaneous",
+    "notes": "",
+    "principle": "Lesser",
+    "rules": {
+      "criticalFailure": {
+        "@en": "Today is not your lucky day. Your ignorance of the proper incantations has left you dumbfounded. You are left Helpless and can be convinced to do anything by the very same person you attempted to Flimflam, for up to three minutes."
+      },
+      "criticalSuccess": {
+        "@en": "As above, but the action can be up to three minutes long."
+      },
+      "effect": {
+        "@en": "After successfully casting this spell, you convince one person to immediately carry through with an action of your choosing. You must tell the person what you wish for them to do out loud. Although this action cannot be used to Damage themselves, it can be used to persuade someone to ignore you, give you the best bargain, look the other way, do something foolish or other critical commands that would benefit you. Once cast, the subject of this Magick carries out the action, but is unaware that they have been given instructions to do so and once done, forget what it was they were instructed to do. Unless proven otherwise, they will deny all knowledge of the action and believe themselves to be innocent of it. The action they are instructed to do must take two minutes or less to complete."
+      },
+      "reagents": {
+        "@en": "A handful of wool (expended)"
+      }
+    },
+    "tradition": "Divine (Nightfather)"
+  },
+  "effects": [],
+  "flags": {},
+  "folder": null,
+  "img": "systems/zweihander/assets/icons/convince.svg",
+  "name": "Flimflam",
+  "permission": {
+    "9cilLhNTlIyJpmtZ": 3,
+    "default": 0
+  },
+  "sort": 0,
+  "type": "spell"
+}

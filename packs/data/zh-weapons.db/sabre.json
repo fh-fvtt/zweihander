@@ -1,0 +1,43 @@
+{
+  "_id": "H2uWmFiHFKWE2na5",
+  "data": {
+    "associatedSkill": "Martial Melee",
+    "damage": {
+      "formula": "[CB] + (1+[#])d6x6"
+    },
+    "description": {
+      "@en": "<p>Not to be confused with the fanciful court sword, this is the standard weapon of civilians. It&rsquo;s a deadly tool in the proper hands, but little more than an unwieldy sharp crowbar for the inept.</p>"
+    },
+    "distance": "Engaged",
+    "encumbrance": 1,
+    "equipped": false,
+    "handling": "One-handed",
+    "load": 0,
+    "notes": "",
+    "price": {
+      "bp": "0",
+      "gc": "6",
+      "ss": "0"
+    },
+    "qualities": {
+      "arrayOfValues": [],
+      "value": "Defensive"
+    },
+    "weaponType": "Bladed"
+  },
+  "effects": [],
+  "flags": {
+    "core": {
+      "sourceId": "Compendium.zweihander.weapons.nFQNf4KhR98iiLhg"
+    }
+  },
+  "folder": null,
+  "img": "systems/zweihander/assets/icons/sparkling-sabre.svg",
+  "name": "Sabre",
+  "permission": {
+    "JyjuBRFhP4y9QWxg": 3,
+    "default": 0
+  },
+  "sort": 0,
+  "type": "weapon"
+}

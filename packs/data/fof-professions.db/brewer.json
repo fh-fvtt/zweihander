@@ -1,0 +1,121 @@
+{
+  "_id": "PCjKCcqFSXf7Y60C",
+  "data": {
+    "archetype": "Commoner Profession",
+    "bonusAdvances": [
+      {
+        "name": "[BB]"
+      },
+      {
+        "name": "[BB]"
+      },
+      {
+        "name": "[CB]"
+      },
+      {
+        "name": "[IB]"
+      },
+      {
+        "name": "[PB]"
+      },
+      {
+        "name": "[WB]"
+      },
+      {
+        "name": "[WB]"
+      }
+    ],
+    "description": {
+      "@en": "<p>Not many know my name, but they are undoubtedly familiar with my work. Brewing is a craft so ancient, so needed and in such demand that when it is done right, people sing my praises. Yes, the work is hot and dirty and breaks my back, but the results speak for themselves. Be it barrels of brown cow, cider, mead, rum, whiskey, wine or anything else with the kick of fire and the ability to make you forget, I can fill a keg with the sweet nectar. Truly, brewing is an art for the ages, and my skill equates me with the great masters of old who brewed the finest wines and meads for royal banquets and mighty emperors.</p>\n<p>In these troubling times&mdash;and make no mistake, these times are troubling&mdash;my job has elevated importance above its typical station. Not only can I help people forget their troubles, but my brews can numb pain and flush wounds. With the growing call for the rebellion and rumors of strange things seen in the dark of night, my skills are needed even more. After all, how better to gain courage than through a stiff and heady drink?</p>"
+    },
+    "drawback": {
+      "linkedId": null,
+      "name": "Just a Sip"
+    },
+    "expert": {
+      "requirements": "",
+      "value": false
+    },
+    "notes": "",
+    "professionalTrait": {
+      "linkedId": null,
+      "name": "I Have Tasted it All"
+    },
+    "skillRanks": [
+      {
+        "name": "Alchemy"
+      },
+      {
+        "name": "Athletics"
+      },
+      {
+        "name": "Awareness"
+      },
+      {
+        "name": "Folklore"
+      },
+      {
+        "name": "Resolve"
+      },
+      {
+        "name": "Rumor"
+      },
+      {
+        "name": "Simple Melee"
+      },
+      {
+        "name": "Simple Ranged"
+      },
+      {
+        "name": "Toughness"
+      },
+      {
+        "name": "Tradecraft"
+      }
+    ],
+    "specialTrait": {
+      "linkedId": null,
+      "name": ""
+    },
+    "talents": [
+      {
+        "linkedId": null,
+        "name": "Distilling"
+      },
+      {
+        "linkedId": null,
+        "name": "Hobnobbery"
+      },
+      {
+        "linkedId": null,
+        "name": "Pot Valiant"
+      }
+    ],
+    "tier": ""
+  },
+  "effects": [],
+  "flags": {
+    "cf": {
+      "color": "#000000",
+      "id": null,
+      "path": "FOF Professions#/CF_SEP/Commoner Professions"
+    },
+    "core": {
+      "sourceId": "Compendium.zweihander.professions.RmnnQeZxr0JVApTJ"
+    },
+    "scene-packer": {
+      "hash": "c704268649307e64713be9213b790dde95ab0d84",
+      "sourceId": "Item.7pCDsxLlPWLSAK1f"
+    },
+    "zweihander": {}
+  },
+  "folder": null,
+  "img": "systems/zweihander/assets/icons/abstract-082.svg",
+  "name": "Brewer",
+  "permission": {
+    "VOagSWOxwT3osUDT": 3,
+    "default": 0
+  },
+  "sort": 0,
+  "type": "profession"
+}

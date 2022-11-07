@@ -1,0 +1,109 @@
+{
+  "_id": "ymTLcOF25BermRcz",
+  "data": {
+    "archetype": "Expert Profession",
+    "bonusAdvances": [
+      {
+        "name": "[FB]"
+      },
+      {
+        "name": "[FB]"
+      },
+      {
+        "name": "[IB]"
+      },
+      {
+        "name": "[IB]"
+      },
+      {
+        "name": "[PB]"
+      },
+      {
+        "name": "[WB]"
+      },
+      {
+        "name": "[WB]"
+      }
+    ],
+    "description": {
+      "@en": "Every peasant and burgher knows of the inherent dangers borne of Arcane Magick. Its power flows from the Æthereal Veil and wraps around the world in invisible but destructive zephyrs – Winds that arcanists mold and control according to their whim. Tapping into even one Wind is dangerous enough, as it carries the risk of caster’s body and soul being ripped apart, but there are some arcanists who wish to amplify this power, opening themselves up to a ravaging storm of Ætheric Winds. Those who risk everything for these dark arts are called Black Magisters, at first warned, then shunned by the arcane community at large for meddling in powers they fail to understand. Such warnings often fall on deaf ears as Black Magisters are too self-centered and narcissistic to care for anything beyond their own quest of real, ultimate power. They seek out natural pools of Magickal energy, where all the Winds swirl together in a lightless, fetid mass – known as Void Magick.\nBlack Magisters are nearly always outcasts, perhaps running from zealous Inquisitors or on a spirit quest to understand demonic might from its immortal practitioners. They are not all power mad though, some Black Magisters’ intent is only to learn and discover more about Void Magick. However, regardless of their intent, the arcane might they study or seek is dangerous and a bane to all who wield or are affected by it. Of course, many Black Magisters are driven to seek the power they desire, but worse, others do traffick with Abyssal demons in the search for all that is dark and corrupt. Either way, one false step and they transform from learned arcanist into gibbering wretch, one knocked about by the Winds of Æther for all of eternity in damnation."
+    },
+    "drawback": {
+      "linkedId": null,
+      "name": "Damned"
+    },
+    "expert": {
+      "requirements": "You must possess at least two Skill Ranks in Incantation in order to enter this Expert Profession. In addition, you must have the Special Trait of Arcane Magick.",
+      "value": true
+    },
+    "notes": "",
+    "professionalTrait": {
+      "linkedId": null,
+      "name": "Mastery of the Void"
+    },
+    "skillRanks": [
+      {
+        "name": "Alchemy"
+      },
+      {
+        "name": "Bargain"
+      },
+      {
+        "name": "Guile"
+      },
+      {
+        "name": "Folklore"
+      },
+      {
+        "name": "Incantation"
+      },
+      {
+        "name": "Interrogation"
+      },
+      {
+        "name": "Intimidate"
+      },
+      {
+        "name": "Rumor"
+      },
+      {
+        "name": "Scrutinize"
+      },
+      {
+        "name": "Simple Melee"
+      }
+    ],
+    "specialTrait": {
+      "linkedId": null,
+      "name": "Arcane Mastery"
+    },
+    "talents": [
+      {
+        "linkedId": null,
+        "name": "Æthereal Alignment"
+      },
+      {
+        "linkedId": null,
+        "name": "Appalling Mien"
+      },
+      {
+        "linkedId": null,
+        "name": "Higher Mysteries"
+      }
+    ],
+    "tier": ""
+  },
+  "effects": [],
+  "flags": {
+    "zweihander": {}
+  },
+  "folder": null,
+  "img": "systems/zweihander/assets/icons/black-magister.svg",
+  "name": "Black Magister",
+  "permission": {
+    "9cilLhNTlIyJpmtZ": 3,
+    "default": 0
+  },
+  "sort": 0,
+  "type": "profession"
+}

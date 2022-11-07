@@ -1,0 +1,109 @@
+{
+  "_id": "pR3nplHsD1FYNLkT",
+  "data": {
+    "archetype": "Expert Profession",
+    "bonusAdvances": [
+      {
+        "name": "[FB]"
+      },
+      {
+        "name": "[FB]"
+      },
+      {
+        "name": "[IB]"
+      },
+      {
+        "name": "[IB]"
+      },
+      {
+        "name": "[PB]"
+      },
+      {
+        "name": "[PB]"
+      },
+      {
+        "name": "[WB]"
+      }
+    ],
+    "description": {
+      "@en": "Fabulously wealthy, ostentatious and perhaps supercilious of manner, Soothsayers are the most extravagant of star-gazers, turning their divination and prognostication into acts of showmanship. They document the movement of stars beyond the Material Realm, they record their dreams, they gaze into crystal balls and more to divine the future for themselves and others around them. While Soothsayers may give the impression that they know practically everything that there is to be said before it is spoken, this is not so. It takes time to interpret and assemble their divinations, though more for others than themselves. When they gather omens of the people around them – their friends, family, and patrons – Soothsayers must carefully and artfully conduct themselves or else be influenced by the future they prognosticate. Surprisingly, given the weight this knowledge yields, they are not all that grim. Soothsayers are matter-of-factly, and surprisingly pragmatic.\nIt is not uncommon for a mundane Astrologer to become a Soothsayer, but it takes one of great resolution and willpower to advance very far without crumbling after peering into the realm of infinite knowledge and not be crushed by the bleak outcomes that destiny has woven for mortal kind. The interpretations of Soothsayers are not well-accepted by other churches and both Soothsayers and their interpretations are often squashed by those churches’ inquisitorial ranks. As a result, Soothsayers will find often themselves gainful employment with nobles to further shield themselves from the scrutinizing eyes of witch hunters."
+    },
+    "drawback": {
+      "linkedId": null,
+      "name": "Blue Temperament"
+    },
+    "expert": {
+      "requirements": "You must possess at least one Skill Rank in Incantation in order to enter this Expert Profession. In addition, you must have the Special Trait of Arcane Magick.",
+      "value": true
+    },
+    "notes": "",
+    "professionalTrait": {
+      "linkedId": null,
+      "name": "The Final Portent"
+    },
+    "skillRanks": [
+      {
+        "name": "Awareness"
+      },
+      {
+        "name": "Bargain"
+      },
+      {
+        "name": "Folklore"
+      },
+      {
+        "name": "Gamble"
+      },
+      {
+        "name": "Handle Animal"
+      },
+      {
+        "name": "Incantation"
+      },
+      {
+        "name": "Navigation"
+      },
+      {
+        "name": "Rumor"
+      },
+      {
+        "name": "Scrutinize"
+      },
+      {
+        "name": "Simple Ranged"
+      }
+    ],
+    "specialTrait": {
+      "linkedId": null,
+      "name": "Arcana of Astromancy"
+    },
+    "talents": [
+      {
+        "linkedId": null,
+        "name": "Azimuth"
+      },
+      {
+        "linkedId": null,
+        "name": "Incredible Numeration"
+      },
+      {
+        "linkedId": null,
+        "name": "Secret Signs"
+      }
+    ],
+    "tier": ""
+  },
+  "effects": [],
+  "flags": {
+    "zweihander": {}
+  },
+  "folder": null,
+  "img": "systems/zweihander/assets/icons/soothsayer.svg",
+  "name": "Soothsayer",
+  "permission": {
+    "9cilLhNTlIyJpmtZ": 3,
+    "default": 0
+  },
+  "sort": 0,
+  "type": "profession"
+}

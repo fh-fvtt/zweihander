@@ -1,0 +1,40 @@
+{
+  "_id": "jSGvjtSHXjQC44VU",
+  "data": {
+    "castingCost": 0,
+    "castingTime": "1 min",
+    "description": {
+      "@en": "The forest is full of secrets, and in its darkest depths, it is a dimension between words. Between here and there, however, spirits inhabit the wood, telepathically speaking through the creaking of branches."
+    },
+    "distance": "Yourself",
+    "duration": "Special",
+    "notes": "",
+    "principle": "Petty",
+    "rules": {
+      "criticalFailure": {
+        "@en": "The tree comes to life, angered at your trespass. Instilled with the anger of the Black Lodge, all of those standing around the tree within a Burst Template must Resist with a successful Coordination Test or else suffer [[/roll 1D10]]+[WB] in Damage."
+      },
+      "criticalSuccess": {
+        "@en": "As above, but you do not have to make a successful Scrutinize Test after each question to understand the tree’s meaning."
+      },
+      "effect": {
+        "@en": "After successfully casting this spell, the tree you touch will ‘speak’ to you with the rattling of its branches. You can ask the tree a number of questions equal to your [WB], specifically about any who have passed within the forest (as if it was able to see people who have passed by it). However, the thoughts of the tree are slow and abstruse, so you must make a Secret Test using Scrutinize after every question to comprehend its meaning."
+      },
+      "reagents": {
+        "@en": "Any tree you see, placing your hand and whispering into it"
+      }
+    },
+    "tradition": "Covenant"
+  },
+  "effects": [],
+  "flags": {},
+  "folder": null,
+  "img": "systems/zweihander/assets/icons/wizard-staff.svg",
+  "name": "Wood-whisper",
+  "permission": {
+    "4be9WK4Hp7jWrwWe": 3,
+    "default": 0
+  },
+  "sort": 0,
+  "type": "spell"
+}

@@ -1,0 +1,109 @@
+{
+  "_id": "z6CTVYR6RN7fUGvj",
+  "data": {
+    "archetype": "Expert Profession",
+    "bonusAdvances": [
+      {
+        "name": "[CB]"
+      },
+      {
+        "name": "[CB]"
+      },
+      {
+        "name": "[BB]"
+      },
+      {
+        "name": "[FB]"
+      },
+      {
+        "name": "[FB]"
+      },
+      {
+        "name": "[WB]"
+      },
+      {
+        "name": "[WB]"
+      }
+    ],
+    "description": {
+      "@en": "Military Officers hold ranks in armies and navies, from sergeants to generals and first mates to admirals. Some have risen from the ranks, others have attended military academies, but they now command small mercenary bands, naval vessels or fleets and army regiments or whole armies. The Military Officer ensures those under their command are kept supplied and plans their maneuvers and strategies in battle, but when the war horns sound, they still don their mail and take up their swords to wade into battle alongside their men. Military Officers are brilliant tacticians, fighters and leaders, often rising to become statesmen and diplomats. Well respected, dedicated to their cause and the leading figures in any campaign, Military Officers are also valuable targets. Sadly, the successful kidnap or assassination attempt of a great captain can break the morale of an entire army.\nMost Military Officers are intelligent soldiers, renowned for their skills and knowledge and their courage and skill on the battlefield. This makes them useful when temporarily assigned to small parties for specialized missions and when they leave military life. Some even sell their skills to the highest bidder, serving one nation, then another, perhaps even fighting a nation they previously served. Others eschew a life of service, rallying their own personal armies to set out and establish their own kingdoms or take existing ones, turning them into militaristic autocracies. These dictators are often cruel, using the only thing they know as a means to rule: excessive force, violence and a cult of terror."
+    },
+    "drawback": {
+      "linkedId": null,
+      "name": "You Can’t Handle the Truth!"
+    },
+    "expert": {
+      "requirements": "You must possess at least one Skill Rank in both Leadership and Warfare in order to enter this Expert Profession.",
+      "value": true
+    },
+    "notes": "",
+    "professionalTrait": {
+      "linkedId": null,
+      "name": "Call of Duty"
+    },
+    "skillRanks": [
+      {
+        "name": "Awareness"
+      },
+      {
+        "name": "Leadership"
+      },
+      {
+        "name": "Martial Melee"
+      },
+      {
+        "name": "Martial Ranged"
+      },
+      {
+        "name": "Resolve"
+      },
+      {
+        "name": "Rumor"
+      },
+      {
+        "name": "Simple Melee"
+      },
+      {
+        "name": "Simple Ranged"
+      },
+      {
+        "name": "Toughness"
+      },
+      {
+        "name": "Warfare"
+      }
+    ],
+    "specialTrait": {
+      "linkedId": null,
+      "name": ""
+    },
+    "talents": [
+      {
+        "linkedId": null,
+        "name": "Impenetrable Wall"
+      },
+      {
+        "linkedId": null,
+        "name": "Instincts"
+      },
+      {
+        "linkedId": null,
+        "name": "Military Formation"
+      }
+    ],
+    "tier": ""
+  },
+  "effects": [],
+  "flags": {
+    "zweihander": {}
+  },
+  "folder": null,
+  "img": "systems/zweihander/assets/icons/military-officer.svg",
+  "name": "Military Officer",
+  "permission": {
+    "9cilLhNTlIyJpmtZ": 3,
+    "default": 0
+  },
+  "sort": 0,
+  "type": "profession"
+}

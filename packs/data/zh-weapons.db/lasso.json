@@ -1,0 +1,50 @@
+{
+  "_id": "ttevR0IGpATVyUlQ",
+  "data": {
+    "associatedSkill": "Simple Ranged",
+    "damage": {
+      "associatedPrimaryAttribute": "Combat",
+      "formula": "0"
+    },
+    "description": {
+      "@en": "<p>A length of rope used by rustlers and horsemen alike, a lasso can prove useful in wrangling cattle or foes in a pinch.</p>"
+    },
+    "distance": "1 + [PB]yard",
+    "encumbrance": 2,
+    "equipped": false,
+    "handling": "Two-handed",
+    "load": 2,
+    "notes": "",
+    "price": {
+      "bp": "0",
+      "gc": "0",
+      "ss": "5"
+    },
+    "qualities": {
+      "arrayOfValues": [],
+      "value": "Arming, Entangling, Ineffective, Throwing"
+    },
+    "weaponType": "Missile"
+  },
+  "effects": [],
+  "flags": {
+    "core": {
+      "sourceId": "Item.WWY5OIrj01yUeNmA"
+    },
+    "exportSource": {
+      "coreVersion": "0.8.9",
+      "system": "zweihander",
+      "systemVersion": "0.3.30",
+      "world": "talron2"
+    }
+  },
+  "folder": null,
+  "img": "systems/zweihander/assets/icons/lasso.svg",
+  "name": "Lasso",
+  "permission": {
+    "JyjuBRFhP4y9QWxg": 3,
+    "default": 0
+  },
+  "sort": 0,
+  "type": "weapon"
+}

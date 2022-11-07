@@ -1,0 +1,50 @@
+{
+  "_id": "g1NDPEOtPnK8nQDC",
+  "data": {
+    "associatedSkill": "Alchemy",
+    "damage": {
+      "associatedPrimaryAttribute": "Agility",
+      "formula": "[AB] + (1+[#])d6x6"
+    },
+    "description": {
+      "@en": "<p>A thin and flexible blade, the foil &ndash; along with the rapier and court sword &ndash; are considered the three most popular blades for fencers and duelists alike.</p>"
+    },
+    "distance": "Engaged",
+    "encumbrance": 1,
+    "equipped": false,
+    "handling": "One-handed",
+    "load": 0,
+    "notes": "",
+    "price": {
+      "bp": "0",
+      "gc": "3",
+      "ss": "0"
+    },
+    "qualities": {
+      "arrayOfValues": [],
+      "value": "Binding, Finesse, Slow, Weak"
+    },
+    "weaponType": "Bladed"
+  },
+  "effects": [],
+  "flags": {
+    "core": {
+      "sourceId": "Item.4A0dpsCmYX0R0cTN"
+    },
+    "exportSource": {
+      "coreVersion": "0.8.9",
+      "system": "zweihander",
+      "systemVersion": "0.3.30",
+      "world": "talron2"
+    }
+  },
+  "folder": null,
+  "img": "systems/zweihander/assets/icons/stiletto.svg",
+  "name": "Foil",
+  "permission": {
+    "JyjuBRFhP4y9QWxg": 3,
+    "default": 0
+  },
+  "sort": 0,
+  "type": "weapon"
+}

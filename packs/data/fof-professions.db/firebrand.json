@@ -1,0 +1,121 @@
+{
+  "_id": "xhGVAaOSOOaTpX26",
+  "data": {
+    "archetype": "Lawbreaker Profession",
+    "bonusAdvances": [
+      {
+        "name": "[AB]"
+      },
+      {
+        "name": "[CB]"
+      },
+      {
+        "name": "[FB]"
+      },
+      {
+        "name": "[FB]"
+      },
+      {
+        "name": "[PB]"
+      },
+      {
+        "name": "[PB]"
+      },
+      {
+        "name": "[WB]"
+      }
+    ],
+    "description": {
+      "@en": "<p>I live life the way I wish&mdash;by doing what I want and refusing to follow convention. Life is too short, and far too dangerous in the current day, not to practice what you preach. Many people don&rsquo;t understand my opinions on this, thinking I am too brazen, even heretical at times. I&rsquo;m not trying to be difficult for argument&rsquo;s sake: it is simply how I am. I don&rsquo;t let people define who I am or what I&rsquo;m supposed to be, and neither should you. At the end of the day, you must define yourself by your own terms or you will never feel comfortable inside your own skin.</p>\n<p>Each day, the cry to join the Rebels&mdash;or snuff out the rebellion with the Loyalists&mdash;grows louder than the day before. Choosing a side to swear allegiance to will be difficult, but doubtless, I will anger someone no matter what I decide. However, what is most important is that the decision sits right within my soul and my mind&mdash; anything less would compromise my principles. I just hope others follow their hearts like I do and don&rsquo;t end up regretting their decision for years to come.</p>"
+    },
+    "drawback": {
+      "linkedId": null,
+      "name": "Bigmouth Strikes Again"
+    },
+    "expert": {
+      "requirements": "",
+      "value": false
+    },
+    "notes": "",
+    "professionalTrait": {
+      "linkedId": null,
+      "name": "Open-Minded"
+    },
+    "skillRanks": [
+      {
+        "name": "Bargain"
+      },
+      {
+        "name": "Eavesdrop"
+      },
+      {
+        "name": "Folklore"
+      },
+      {
+        "name": "Guile"
+      },
+      {
+        "name": "Resolve"
+      },
+      {
+        "name": "Rumor"
+      },
+      {
+        "name": "Scrutinize"
+      },
+      {
+        "name": "Simple Melee"
+      },
+      {
+        "name": "Simple Ranged"
+      },
+      {
+        "name": "Skulduggery"
+      }
+    ],
+    "specialTrait": {
+      "linkedId": null,
+      "name": ""
+    },
+    "talents": [
+      {
+        "linkedId": null,
+        "name": "Bear-Garden Jaw"
+      },
+      {
+        "linkedId": null,
+        "name": "Charismatic"
+      },
+      {
+        "linkedId": null,
+        "name": "Rebel Yell"
+      }
+    ],
+    "tier": ""
+  },
+  "effects": [],
+  "flags": {
+    "cf": {
+      "color": "#000000",
+      "id": null,
+      "path": "FOF Professions#/CF_SEP/Lawbreaker Professions"
+    },
+    "core": {
+      "sourceId": "Compendium.zweihander.professions.RmnnQeZxr0JVApTJ"
+    },
+    "scene-packer": {
+      "hash": "c249ac5e2fd39f49c0f924b313786fd0795f2035",
+      "sourceId": "Item.xB8GyGqy4UUv0rZs"
+    },
+    "zweihander": {}
+  },
+  "folder": null,
+  "img": "systems/zweihander/assets/icons/abstract-082.svg",
+  "name": "Firebrand",
+  "permission": {
+    "VOagSWOxwT3osUDT": 3,
+    "default": 0
+  },
+  "sort": 0,
+  "type": "profession"
+}

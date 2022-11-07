@@ -1,0 +1,40 @@
+{
+  "_id": "BOHXGHCeHHRKV8KN",
+  "data": {
+    "castingCost": 0,
+    "castingTime": "1 min",
+    "description": {
+      "@en": "You seethe within, filled with the passion of the primal lords. All those before you tremble in utter horror!"
+    },
+    "distance": "Yourself",
+    "duration": "[WB]+9 minutes",
+    "notes": "",
+    "principle": "Greater",
+    "rules": {
+      "criticalFailure": {
+        "@en": "Your mask drops to the ground and withers away, turning into worms. You have angered the Demiurge! You are small, unworthy of the primal lord’s light and must pay the price. You immediately suffer 9 Corruption, and cannot cast this spell again until you make another mask."
+      },
+      "criticalSuccess": {
+        "@en": "As above, but triple the Duration."
+      },
+      "effect": {
+        "@en": "After successfully casting this spell, you can invoke Terror. In addition, you add a 1D6 Fury Die to all Damage – regardless of its source, from Magick or with a melee or ranged weapon. As with all Fury Dice, this die will explode on face ‘6’. Finally, you can spend 2 APs on your Turns in order to make two Melee or Ranged Attacks. However, you cannot Counterspell, Dodge or Parry for the Duration of the spell."
+      },
+      "reagents": {
+        "@en": "A mask made from a creature classified as a Beast, worn over your face"
+      }
+    },
+    "tradition": "Divine (Demiurge)"
+  },
+  "effects": [],
+  "flags": {},
+  "folder": null,
+  "img": "systems/zweihander/assets/icons/wizard-staff.svg",
+  "name": "Rage of the Primal Lord",
+  "permission": {
+    "9cilLhNTlIyJpmtZ": 3,
+    "default": 0
+  },
+  "sort": 0,
+  "type": "spell"
+}

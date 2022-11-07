@@ -1,0 +1,109 @@
+{
+  "_id": "0X4EReqK4CJeRqGV",
+  "data": {
+    "archetype": "Expert Profession",
+    "bonusAdvances": [
+      {
+        "name": "[BB]"
+      },
+      {
+        "name": "[CB]"
+      },
+      {
+        "name": "[IB]"
+      },
+      {
+        "name": "[IB]"
+      },
+      {
+        "name": "[PB]"
+      },
+      {
+        "name": "[WB]"
+      },
+      {
+        "name": "[WB]"
+      }
+    ],
+    "description": {
+      "@en": "The Tusked One is comprised of three forms, the most mysterious and merciless of which is the Hellfurnace. Supposedly having manifested in the deepest reaches of a black burbling pit and made from bitumen and brass, the Hellfurnace demands ceaseless subjugation and sacrifice from the Dvergar. Though they rarely practice Magick, His Sirocco Prophet clergy exalt in their Daemon-lord’s blessing by using their foul Magick to fuel the flames of the Hellfurnace’s unearthly belly. These Prophets are both mighty chaos sorcerers and unsparing shaman of the Dvergar people, often directing them in their efforts to build their wretched hell-vaults and Daemon-born machines. Sirocco Prophets spend most of their time divining the meaning of the smoke and pitch their furnaces splurt out, viewing them as divine messages from their ‘father of darkness’. They also see His hatred in sand storms and heatwaves, and take these words as prophetic, too.\\nSirocco Prophets are rarely found beyond the halls of the Dvergar’s inverted pyramids, but they are not unheard of. The Hellfurnace’s rites and witchcraft are absurdly unnatural though, and not just due to its Daemonic influence. His Magick is truly cursed – as Sirocco Prophets manifest their Covenants, their joints stiffen and their movement slows. Over time, they find their skin hardens and begins to flake, starting at their feet and spreading upwards across their whole body. Twisted by their befouled Covenants, their skin becomes stone, their voices become hoarse and gravid with calcified, stony might. The most powerful Sirocco Prophets are nigh immobile, but this is seen as an honor and a true conduit of the Hellfurnace’s power. It is said that when they turn completely pitch-black into stone, their ossified remains are used to forever fuel the fires of the Hellfurnace – a fitting and worthy end indeed."
+    },
+    "drawback": {
+      "linkedId": null,
+      "name": "Ruinous Power"
+    },
+    "expert": {
+      "requirements": "You must possess at least one Skill Rank in Incantation in order to enter this Expert Profession. In addition, you must have the Special Trait of either Arcane or Divine Magick.",
+      "value": true
+    },
+    "notes": "",
+    "professionalTrait": {
+      "linkedId": null,
+      "name": "Hellfurnace's Gift"
+    },
+    "skillRanks": [
+      {
+        "name": "Alchemy"
+      },
+      {
+        "name": "Folklore"
+      },
+      {
+        "name": "Incantation"
+      },
+      {
+        "name": "Martial Melee"
+      },
+      {
+        "name": "Navigation"
+      },
+      {
+        "name": "Rumor"
+      },
+      {
+        "name": "Scrutinize"
+      },
+      {
+        "name": "Simple Melee"
+      },
+      {
+        "name": "Survival"
+      },
+      {
+        "name": "Tradecraft"
+      }
+    ],
+    "specialTrait": {
+      "linkedId": null,
+      "name": "Covenant Magick"
+    },
+    "talents": [
+      {
+        "linkedId": null,
+        "name": "Instincts"
+      },
+      {
+        "linkedId": null,
+        "name": "Left-handed Path"
+      },
+      {
+        "linkedId": null,
+        "name": "Mine Craft"
+      }
+    ],
+    "tier": ""
+  },
+  "effects": [],
+  "flags": {
+    "zweihander": {}
+  },
+  "folder": null,
+  "img": "systems/zweihander/assets/icons/volcano.svg",
+  "name": "Sirocco Prophet",
+  "permission": {
+    "9cilLhNTlIyJpmtZ": 3,
+    "default": 0
+  },
+  "sort": 0,
+  "type": "profession"
+}

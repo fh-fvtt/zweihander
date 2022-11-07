@@ -1,0 +1,40 @@
+{
+  "_id": "ey5mA35ROqcUxiU2",
+  "data": {
+    "castingCost": 0,
+    "castingTime": "1 min",
+    "description": {
+      "@en": "You summon a screaming hail of fiery pink rain, igniting all around you. All that remains is a fine coral dust, which swirls together and forms into blasphemous demonic servants."
+    },
+    "distance": "Any one place you can see",
+    "duration": "Instantaneous",
+    "notes": "",
+    "principle": "Greater",
+    "rules": {
+      "criticalFailure": {
+        "@en": "A storm of pink rain rises from the ground in an Explosion Template at your feet, falling upwards into the sky. Those caught within the Explosion Template immediately suffer [[/roll 3D10]]+[WB] Damage from fire. You can inflict Injuries with this Magick, but foes always gain 9 Corruption instead."
+      },
+      "criticalSuccess": {
+        "@en": "As above, but you also learn the True Name of an Adversary Demon."
+      },
+      "effect": {
+        "@en": "After successfully casting this spell, you call down a hellish storm of fiery pink rain. All those caught within an Explosion Template immediately suffer [[/roll 3D10]]+[WB] Damage from fire. You can inflict Injuries with this Magick, but foes always gains a Mutation called Taint of Chaos instead. If a foe is Slain!, smoke will whorl in place where the Explosion Template occurred, obscuring those inside. Foes who are Slain! by this Magick emerge three minutes later – having turned into Adversary Demons – and attack anyone who is not you. The Adversary Demons will remain for a number of minutes equal to your [WB], until banished back to the Abyss. You are immune to the spell’s Effects."
+      },
+      "reagents": {
+        "@en": "13 charred jawbones of Mutant creatures, shaken in a sack"
+      }
+    },
+    "tradition": "Covenant"
+  },
+  "effects": [],
+  "flags": {},
+  "folder": null,
+  "img": "systems/zweihander/assets/icons/wizard-staff.svg",
+  "name": "Hellfire Transmutation",
+  "permission": {
+    "4be9WK4Hp7jWrwWe": 3,
+    "default": 0
+  },
+  "sort": 0,
+  "type": "spell"
+}

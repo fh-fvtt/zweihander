@@ -1,0 +1,46 @@
+{
+  "_id": "29fuZF6QfbT1dnts",
+  "data": {
+    "active": true,
+    "description": {
+      "@en": "<p>It was an unfortunate accident, yes, but I&rsquo;ve learned to live with a missing foot. I sort of like the noise it makes when I walk; makes me sound taller than I am!</p>"
+    },
+    "notes": "<p><span style=\"color: #d5c4a1; font-family: Signika, sans-serif; font-style: italic; text-align: justify; background-color: #282828;\">Grievous Injuries must undergo a successful Perform Surgery within twenty-four hours of suffering it, or else a character gains its related Permanent Injury.</span></p>",
+    "rules": {
+      "effect": {
+        "@en": "<p>You must spend a Coin to Charge and Maneuver.</p>"
+      }
+    },
+    "severity": 0
+  },
+  "effects": [],
+  "flags": {
+    "cf": {
+      "color": "#000000",
+      "id": null,
+      "path": "FOF Injuries#/CF_SEP/Permanent Injuries"
+    },
+    "core": {
+      "sourceId": "Compendium.zweihander.injuries.pMHUxC35U5RHDI7K"
+    },
+    "exportSource": {
+      "coreVersion": "0.8.9",
+      "system": "zweihander",
+      "systemVersion": "0.3.30",
+      "world": "talron2"
+    },
+    "scene-packer": {
+      "hash": "c7ddff6e23e24993a79563522a71ca45ebdcf3f9",
+      "sourceId": "Item.ngXaVcUj7YLRwyyV"
+    }
+  },
+  "folder": null,
+  "img": "systems/zweihander/assets/icons/internal-injury.svg",
+  "name": "Prosthetic Foot",
+  "permission": {
+    "VOagSWOxwT3osUDT": 3,
+    "default": 0
+  },
+  "sort": 0,
+  "type": "injury"
+}

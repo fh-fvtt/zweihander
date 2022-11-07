@@ -1,0 +1,33 @@
+{
+  "_id": "Af2xXL6wZe8Vomx4",
+  "data": {
+    "description": {
+      "@en": "<p><em>I have fought on the battlefield so long that the horrors I see no </em><em>longer have an effect on me.</em></p>"
+    },
+    "notes": "<p>Every Profession possesses a unique knack, an ability that no other Profession has access to. The Trait immediately follows the Profession&rsquo;s description.</p>",
+    "rules": {
+      "effect": {
+        "@en": "<p>Whenever you are Moderately Wounded, temporarily add +1 to Damage Threshold. Whenever you are Seriously Wounded, temporarily add +2 to Damage Threshold instead. And finally, whenever you are Grievously Wounded, temporarily add +3 to Damage Threshold instead. These benefits do not stack and only count whenever you are in combat.</p>"
+      }
+    }
+  },
+  "effects": [],
+  "flags": {
+    "core": {
+      "sourceId": "Compendium.zweihander.traits.50e9efsnnz7kvvFM"
+    },
+    "scene-packer": {
+      "hash": "2405f2b4c39d72985d5f31322bd2617e47bde931",
+      "sourceId": "Item.Af2xXL6wZe8Vomx4"
+    }
+  },
+  "folder": null,
+  "img": "systems/zweihander/assets/icons/vitruvian-man.svg",
+  "name": "Death Proof",
+  "permission": {
+    "VOagSWOxwT3osUDT": 3,
+    "default": 0
+  },
+  "sort": 0,
+  "type": "trait"
+}

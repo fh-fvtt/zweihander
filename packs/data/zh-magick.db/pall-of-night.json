@@ -1,0 +1,40 @@
+{
+  "_id": "BZoqWZIhIAWk7w1E",
+  "data": {
+    "castingCost": 0,
+    "castingTime": "1 min",
+    "description": {
+      "@en": "You begin to sing a dirge of lament. Suddenly, the light is suddenly snuffed out, as a numbing cloak of stars and darkness floats around you as if lifted by an invisible wind."
+    },
+    "distance": "Yourself",
+    "duration": "3+[WB] minutes",
+    "notes": "",
+    "principle": "Petty",
+    "rules": {
+      "criticalFailure": {
+        "@en": "As you ingest the inky petroleum, you are suddenly paralyzed by a vision: true insight into the nature of the Black Lodge. You unable to see for 24 hours and suffer 3 Corruption."
+      },
+      "criticalSuccess": {
+        "@en": "As above, but enemies within the Pall also suffer [[/roll 1D10+1]] physical Peril now, and at the beginning of their Turn, until they leave it."
+      },
+      "effect": {
+        "@en": "After successfully casting this spell, you conjure a shroud of starlight in a Burst Template around you. This Burst Template follows you wherever you walk. You and a number of allies equal to your [WB] can see within it. Foes standing within the Pall treat it as if it were low- light conditions, but you and your allies maintain clear sight within it. Should you be unable to speak, the Pall is instantly dispelled."
+      },
+      "reagents": {
+        "@en": "A handkerchief of blue velvet, placed over your eyes (expended)"
+      }
+    },
+    "tradition": "Covenant"
+  },
+  "effects": [],
+  "flags": {},
+  "folder": null,
+  "img": "systems/zweihander/assets/icons/wizard-staff.svg",
+  "name": "Pall of Night",
+  "permission": {
+    "4be9WK4Hp7jWrwWe": 3,
+    "default": 0
+  },
+  "sort": 0,
+  "type": "spell"
+}

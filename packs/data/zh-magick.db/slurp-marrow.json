@@ -1,0 +1,40 @@
+{
+  "_id": "zRJXzpTAOgnOnas3",
+  "data": {
+    "castingCost": 0,
+    "castingTime": "1 min",
+    "description": {
+      "@en": "You steal the essence of fallen foes by eating from their remains."
+    },
+    "distance": "Yourself",
+    "duration": "3+[WB] minutes",
+    "notes": "",
+    "principle": "Petty",
+    "rules": {
+      "criticalFailure": {
+        "@en": "Your essence is immediately drained away! You immediately suffer [[/roll 1D10+1]] mental Peril and are left Defenseless for the spell’s Duration."
+      },
+      "criticalSuccess": {
+        "@en": "As above and you are immune to physical Peril inflicted by foes (such as from Chokehold)."
+      },
+      "effect": {
+        "@en": "After successfully casting this spell, add 3 to your Peril Threshold and you cannot become Incapacitated!, instead remaining at Ignore 3 Skill Ranks. At the end of the Duration, you suffer 3 Corruption."
+      },
+      "reagents": {
+        "@en": "A roasted marrow bone made from your own Ancestry, sucked on (expended)"
+      }
+    },
+    "tradition": "Covenant"
+  },
+  "effects": [],
+  "flags": {},
+  "folder": null,
+  "img": "systems/zweihander/assets/icons/wizard-staff.svg",
+  "name": "Slurp Marrow",
+  "permission": {
+    "4be9WK4Hp7jWrwWe": 3,
+    "default": 0
+  },
+  "sort": 0,
+  "type": "spell"
+}

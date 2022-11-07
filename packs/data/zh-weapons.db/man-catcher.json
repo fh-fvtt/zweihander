@@ -1,0 +1,43 @@
+{
+  "_id": "tdGh4adeDdzB9Ubg",
+  "data": {
+    "associatedSkill": "Martial Melee",
+    "damage": {
+      "formula": "[CB] + (1+[#])d6x6"
+    },
+    "description": {
+      "@en": "<p>This odd halberd terminates in a barbed-ring, designed to be placed around a foe&rsquo;s neck or limb. This allows the wielder to control the movement and direction of the foe who risks impalement if they resist while held in the man catcher.</p>"
+    },
+    "distance": "Engaged or 1 yard",
+    "encumbrance": 3,
+    "equipped": false,
+    "handling": "Two-handed",
+    "load": 0,
+    "notes": "",
+    "price": {
+      "bp": "0",
+      "gc": "7",
+      "ss": "0"
+    },
+    "qualities": {
+      "arrayOfValues": [],
+      "value": "Arming, Entangling, Reach, Weak"
+    },
+    "weaponType": "Crushing"
+  },
+  "effects": [],
+  "flags": {
+    "core": {
+      "sourceId": "Compendium.zweihander.weapons.BcdQNwWH5qEGUhzM"
+    }
+  },
+  "folder": null,
+  "img": "systems/zweihander/assets/icons/halberd.svg",
+  "name": "Man Catcher",
+  "permission": {
+    "JyjuBRFhP4y9QWxg": 3,
+    "default": 0
+  },
+  "sort": 0,
+  "type": "weapon"
+}

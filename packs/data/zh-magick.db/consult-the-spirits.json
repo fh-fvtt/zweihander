@@ -1,0 +1,40 @@
+{
+  "_id": "iX3cr8Hr3aBbsTwu",
+  "data": {
+    "castingCost": 0,
+    "castingTime": "1 min",
+    "description": {
+      "@en": "Sitting cross-legged upon the ground, you reach beyond the Material Realm into the Veil to consult the spirits who haunt this place."
+    },
+    "distance": "Yourself",
+    "duration": "3+[WB] minutes",
+    "notes": "",
+    "principle": "Petty",
+    "rules": {
+      "criticalFailure": {
+        "@en": "Your mind is wracked with grief, as you momentarily absorb the anguish of the spirits who linger in this place. You immediately suffer from Stress."
+      },
+      "criticalSuccess": {
+        "@en": "As above, but triple the Duration."
+      },
+      "effect": {
+        "@en": "After successfully casting this spell, you fall into a trance and are rendered Helpless. During this time, you may use any Fellowship-based Skill to directly communicate with Ætheric Spirits and Restless Spirits. This interaction is not always beneficial: many such spirits are skittish, ignorant, confused, cunningly deceptive or even openly aggressive. This empathy acts as an all but supernatural type of communication; the complexity of which is determined by the GM. Finally, any Restless Spirits present will not cause you any harm for the Duration of the spell."
+      },
+      "reagents": {
+        "@en": "An eyeless hood, placed over your face"
+      }
+    },
+    "tradition": "Covenant"
+  },
+  "effects": [],
+  "flags": {},
+  "folder": null,
+  "img": "systems/zweihander/assets/icons/wizard-staff.svg",
+  "name": "Consult the Spirits",
+  "permission": {
+    "4be9WK4Hp7jWrwWe": 3,
+    "default": 0
+  },
+  "sort": 0,
+  "type": "spell"
+}

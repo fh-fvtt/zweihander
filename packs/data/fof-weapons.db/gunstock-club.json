@@ -1,0 +1,55 @@
+{
+  "_id": "c1czReGFBYz8HY2F",
+  "data": {
+    "associatedSkill": "Martial Melee",
+    "damage": {
+      "associatedPrimaryAttribute": "Agility",
+      "formula": "[CB] + (1+[#])d6x6"
+    },
+    "description": {
+      "@en": "<p>This unusual weapon is found in Indigenous warriors&rsquo; hands, made in a musket shape and sporting a sharpened stone or heart-shaped metal blade.</p>"
+    },
+    "distance": "Engaged or 1+[PB] yards",
+    "encumbrance": 2,
+    "equipped": false,
+    "handling": "One or Two-handed",
+    "load": 1,
+    "notes": "",
+    "price": {
+      "bp": "0",
+      "gc": "0",
+      "ss": "9"
+    },
+    "qualities": {
+      "arrayOfValues": [],
+      "value": "Backslash, Throwing"
+    },
+    "weaponType": "Melee or Ranged"
+  },
+  "effects": [],
+  "flags": {
+    "core": {
+      "sourceId": "Item.JmtoI5Ls4nG0VsX3"
+    },
+    "exportSource": {
+      "coreVersion": "0.8.9",
+      "system": "zweihander",
+      "systemVersion": "0.3.30",
+      "world": "talron2"
+    },
+    "scene-packer": {
+      "defaultPermission": 3,
+      "hash": "61c432069b40995b8e78c8398ecb631f9290053b",
+      "sourceId": "Item.c1czReGFBYz8HY2F"
+    }
+  },
+  "folder": null,
+  "img": "systems/zweihander/assets/icons/gun-stock.svg",
+  "name": "Gunstock Club",
+  "permission": {
+    "VOagSWOxwT3osUDT": 3,
+    "default": 0
+  },
+  "sort": 0,
+  "type": "weapon"
+}

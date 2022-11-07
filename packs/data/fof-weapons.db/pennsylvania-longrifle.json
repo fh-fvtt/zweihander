@@ -1,0 +1,48 @@
+{
+  "_id": "dhrZaHbkMHe7TaQM",
+  "data": {
+    "associatedSkill": "Martial Ranged",
+    "damage": {
+      "formula": "[CB] + (1+[#])d6x1,6"
+    },
+    "description": {
+      "@en": "<p>Created by German gunsmiths living in southern Pennsylvania, these rifles are favored by those moving to the frontier areas. With barrels ranging from 44 to 46 inches, these rifles are feared for their deadly accuracy.</p>"
+    },
+    "distance": "12 + [PB] yards",
+    "encumbrance": 4,
+    "equipped": false,
+    "handling": "Two-handed",
+    "load": 4,
+    "notes": "",
+    "price": {
+      "bp": "0",
+      "gc": "6",
+      "ss": "0"
+    },
+    "qualities": {
+      "arrayOfValues": [],
+      "value": "Accurate, Blackpowder, Punishing"
+    },
+    "weaponType": "Ranged"
+  },
+  "effects": [],
+  "flags": {
+    "core": {
+      "sourceId": "Compendium.zweihander.weapons.ezPXLmhxmCWSgwKJ"
+    },
+    "scene-packer": {
+      "defaultPermission": 3,
+      "hash": "5816ef6b99b9007d28b6ceb0bad4110af0408f7f",
+      "sourceId": "Item.dhrZaHbkMHe7TaQM"
+    }
+  },
+  "folder": null,
+  "img": "systems/zweihander/assets/icons/musket.svg",
+  "name": "Pennsylvania Longrifle",
+  "permission": {
+    "VOagSWOxwT3osUDT": 3,
+    "default": 0
+  },
+  "sort": 0,
+  "type": "weapon"
+}

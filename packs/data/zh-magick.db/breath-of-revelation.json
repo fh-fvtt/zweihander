@@ -1,0 +1,40 @@
+{
+  "_id": "Zv09KyuLzVvlUmLn",
+  "data": {
+    "castingCost": 0,
+    "castingTime": "1 min",
+    "description": {
+      "@en": "With an audible ‘sigh’, you breathe Daemonic influence over another. This spark of ghastly revelation remains with that person, filling their head with visions of desire and torment."
+    },
+    "distance": "Any one person you can touch",
+    "duration": "3+[WB] in days",
+    "notes": "",
+    "principle": "Petty",
+    "rules": {
+      "criticalFailure": {
+        "@en": "You immediately grow desirous of the person you touch. You cannot help but pursue them for the Duration of the spell. If they spurn your indecent proposals, you suffer 3 Corruption each day. If they concede, you both gain the benefits of ‘getting lucky’ (taking advantage of the Prostitute’s Professional Trait). However, you must flip the results to fail the Skill Test tied to the Fortune Point. When you or the other person fails the related Skill Test, you gain 3 Corruption."
+      },
+      "criticalSuccess": {
+        "@en": "As above, but triple the Duration."
+      },
+      "effect": {
+        "@en": "After successfully casting this spell, the person you touch can choose to roll a [[/roll 1D6]] Chaos Die before making a Skill Test. Multiply the face value times +3% to determine the Base Chance bonus they can add to the Skill Test. This is a one-time temporary bonus and once applied, the Effects immediately expire. You cannot be made recipient of this Magick more than once over the Duration."
+      },
+      "reagents": {
+        "@en": "A pint of amaretto, imbibed (expended)"
+      }
+    },
+    "tradition": "Covenant"
+  },
+  "effects": [],
+  "flags": {},
+  "folder": null,
+  "img": "systems/zweihander/assets/icons/wizard-staff.svg",
+  "name": "Breath of Revelation",
+  "permission": {
+    "4be9WK4Hp7jWrwWe": 3,
+    "default": 0
+  },
+  "sort": 0,
+  "type": "spell"
+}

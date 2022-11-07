@@ -1,0 +1,40 @@
+{
+  "_id": "vDqtsntTHtXkcxt6",
+  "data": {
+    "castingCost": 0,
+    "castingTime": "1 min",
+    "description": {
+      "@en": "Your contempt for the Prince of Decay’s maladies and the Prince of Violence’s bloody-handedness drives away their corruptive influences."
+    },
+    "distance": "Any one person you can touch",
+    "duration": "3+[WB] hours",
+    "notes": "",
+    "principle": "Petty",
+    "rules": {
+      "criticalFailure": {
+        "@en": "Once again, you have failed the Outsider! Not only do you fail to relieve the person you touched of the Effects of the Disease and Injuries they are suffering from, but all of those Effects of the Disease and Injuries are imparted upon you and their Duration is tripled."
+      },
+      "criticalSuccess": {
+        "@en": "As above, but triple the Duration."
+      },
+      "effect": {
+        "@en": "After successfully casting this spell, the person you touch is temporarily relieved of any ill-effects a Disease has over them and the Effects of their Injuries."
+      },
+      "reagents": {
+        "@en": "A dose of tincture, consumed by the recipient (expended)"
+      }
+    },
+    "tradition": "Covenant"
+  },
+  "effects": [],
+  "flags": {},
+  "folder": null,
+  "img": "systems/zweihander/assets/icons/wizard-staff.svg",
+  "name": "Deny the Princes",
+  "permission": {
+    "4be9WK4Hp7jWrwWe": 3,
+    "default": 0
+  },
+  "sort": 0,
+  "type": "spell"
+}

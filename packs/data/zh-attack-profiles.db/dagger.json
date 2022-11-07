@@ -1,0 +1,46 @@
+{
+  "_id": "xEoyKcVAyjSUqt3l",
+  "_stats": {
+    "coreVersion": "10.288",
+    "createdTime": null,
+    "lastModifiedBy": "5vFvLMyCloE0U6VX",
+    "modifiedTime": 1667812055634,
+    "systemId": "zweihander",
+    "systemVersion": "5.0.1"
+  },
+  "effects": [],
+  "flags": {},
+  "folder": null,
+  "img": "systems/zweihander/assets/icons/plain-dagger.svg",
+  "name": "Dagger",
+  "ownership": {
+    "default": 0
+  },
+  "sort": 0,
+  "system": {
+    "associatedSkill": "Simple Melee",
+    "carried": true,
+    "damage": {
+      "formula": "[CB] + 0 + (1+[#])d6x6"
+    },
+    "description": {
+      "@en": "<p>Simple yet extrange Dagger.</p>"
+    },
+    "distance": "Engaged",
+    "encumbrance": 0,
+    "equipped": true,
+    "handling": "One-handed",
+    "load": 0,
+    "notes": "",
+    "price": {
+      "bp": 0,
+      "gc": 0,
+      "ss": 0
+    },
+    "qualities": {
+      "value": "Fast, Vicious, Weak"
+    },
+    "weaponType": "Bladed"
+  },
+  "type": "weapon"
+}

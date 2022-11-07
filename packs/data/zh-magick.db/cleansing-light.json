@@ -1,0 +1,40 @@
+{
+  "_id": "AtcxQF4HchqJoBrf",
+  "data": {
+    "castingCost": 0,
+    "castingTime": "1 min",
+    "description": {
+      "@en": "A dim mote of light spreads across a surface, creating a glimmering polish."
+    },
+    "distance": "Any one object or person you can touch",
+    "duration": "Instantaneous",
+    "notes": "",
+    "principle": "Petty",
+    "rules": {
+      "criticalFailure": {
+        "@en": "Tiny motes of darkness wash over the objects and persons you touched. They emerge dirty, grimy and stinking of a fetid odor that makes you vomit! You immediately suffer [[/roll 1D10+1]] physical Peril."
+      },
+      "criticalSuccess": {
+        "@en": "As above, but it can affect a number of objects or persons equal to your [WB]."
+      },
+      "effect": {
+        "@en": "After successfully casting this spell, the object or person you touch is instantly cleaned, spick and span. This spell washes dirt away, removes stains, eliminates odors and produces a lemon-like scent. It can even make spoiled foods or despoiled water taste good."
+      },
+      "reagents": {
+        "@en": "A soapstone held in-hand (expended)"
+      }
+    },
+    "tradition": "Arcane (Luminescence)"
+  },
+  "effects": [],
+  "flags": {},
+  "folder": null,
+  "img": "systems/zweihander/assets/icons/wizard-staff.svg",
+  "name": "Cleansing Light",
+  "permission": {
+    "9cilLhNTlIyJpmtZ": 3,
+    "default": 0
+  },
+  "sort": 0,
+  "type": "spell"
+}

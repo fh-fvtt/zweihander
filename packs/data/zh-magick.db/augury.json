@@ -1,0 +1,40 @@
+{
+  "_id": "l7AnMV508u56rlRF",
+  "data": {
+    "castingCost": 0,
+    "castingTime": "1 min",
+    "description": {
+      "@en": "You forecast the future of someone, using entrails and the position of the stars."
+    },
+    "distance": "One person you can touch",
+    "duration": "[WB]+3 hours",
+    "notes": "",
+    "principle": "Petty",
+    "rules": {
+      "criticalFailure": {
+        "@en": "Once again, your auguries have led you astray. This time though, the forecasts of your Augury are detrimental rather than beneficial! The GM will make certain that the person subject to your Augury automatically fails any three Skill Tests of their choice for the Duration of the spell. When they fail, it is always considered a Critical Failure."
+      },
+      "criticalSuccess": {
+        "@en": "As above, but they may automatically Critically Succeed at 3 Skill Tests instead."
+      },
+      "effect": {
+        "@en": "After successfully casting this spell, the person you touch can automatically succeed at one Skill Test of their choice. When they succeed, it is always considered to be a Critical Success."
+      },
+      "reagents": {
+        "@en": "The liver of a bird, opened to reveal a portent in an open sky (expended)"
+      }
+    },
+    "tradition": "Arcane (Astromancy)"
+  },
+  "effects": [],
+  "flags": {},
+  "folder": null,
+  "img": "systems/zweihander/assets/icons/ursa-major.svg",
+  "name": "Augury",
+  "permission": {
+    "9cilLhNTlIyJpmtZ": 3,
+    "default": 0
+  },
+  "sort": 0,
+  "type": "spell"
+}

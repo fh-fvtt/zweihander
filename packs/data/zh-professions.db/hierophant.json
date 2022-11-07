@@ -1,0 +1,109 @@
+{
+  "_id": "j4ZdK0S6FeSovN27",
+  "data": {
+    "archetype": "Expert Profession",
+    "bonusAdvances": [
+      {
+        "name": "[FB]"
+      },
+      {
+        "name": "[IB]"
+      },
+      {
+        "name": "[IB]"
+      },
+      {
+        "name": "[PB]"
+      },
+      {
+        "name": "[PB]"
+      },
+      {
+        "name": "[WB]"
+      },
+      {
+        "name": "[WB]"
+      }
+    ],
+    "description": {
+      "@en": "When the smallfolk talk favorably of wizards, it is usually Hierophants they are praising. Hierophants devote their lives to studying and mastering the Arcana of Luminescence, the school of Magick that has proven time and time again to be anathema to the powers of the Abyss. Where demonic beings propagate chaos, disaster, darkness and destruction, Hierophants bring radiance, order and healing, their power being derived from light. Many give off an air of scholarly knowledge and wisdom, but while quiet and reserved, they can be judgmental and deem themselves more important or influential than other wizards. This is because of the intense pride they take in both their Magick and its purity. Their arrogance does not go unnoticed by other arcanists, but the proof is in their abilities; they can heal the sick, protect those in danger and bring hope where there is none.\nBesides their superiority and aloofness, Hierophants are typically zealous when it comes to opposing the forces of chaos. Steeped in the study of purity and enlightenment, there is always a certain detachment to Hierophants, a detachment that can grow in battling the forces of chaos. If it grows too much, it can be joined by a fascination with their foes and all too readily, a Hierophant is not just battling chaos but attempting to understand and master it. Such apostates become Luminescence’s harshest critics and servants of a ‘universal law of purity’ that only they can envision. Enacting their sense of twisted order generally leads to terrible endings for the ‘unenlightened’, made victim to the Hierophant’s misguided understandings."
+    },
+    "drawback": {
+      "linkedId": null,
+      "name": "White Temperament"
+    },
+    "expert": {
+      "requirements": "You must possess at least one Skill Rank in Incantation in order to enter this Expert Profession. In addition, you must have the Special Trait of Arcane Magick.",
+      "value": true
+    },
+    "notes": "",
+    "professionalTrait": {
+      "linkedId": null,
+      "name": "Light the Darkest Hour"
+    },
+    "skillRanks": [
+      {
+        "name": "Alchemy"
+      },
+      {
+        "name": "Awareness"
+      },
+      {
+        "name": "Bargain"
+      },
+      {
+        "name": "Education"
+      },
+      {
+        "name": "Folklore"
+      },
+      {
+        "name": "Incantation"
+      },
+      {
+        "name": "Resolve"
+      },
+      {
+        "name": "Rumor"
+      },
+      {
+        "name": "Scrutinize"
+      },
+      {
+        "name": "Simple Melee"
+      }
+    ],
+    "specialTrait": {
+      "linkedId": null,
+      "name": "Arcana of Luminescence"
+    },
+    "talents": [
+      {
+        "linkedId": null,
+        "name": "Determination"
+      },
+      {
+        "linkedId": null,
+        "name": "Instincts"
+      },
+      {
+        "linkedId": null,
+        "name": "Light Sleeper"
+      }
+    ],
+    "tier": ""
+  },
+  "effects": [],
+  "flags": {
+    "zweihander": {}
+  },
+  "folder": null,
+  "img": "systems/zweihander/assets/icons/hierophant.svg",
+  "name": "Hierophant",
+  "permission": {
+    "9cilLhNTlIyJpmtZ": 3,
+    "default": 0
+  },
+  "sort": 0,
+  "type": "profession"
+}

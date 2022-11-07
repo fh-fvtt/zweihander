@@ -1,0 +1,55 @@
+{
+  "_id": "Buds7IWzdnxlAj2O",
+  "data": {
+    "associatedSkill": "Simple Melee",
+    "damage": {
+      "associatedPrimaryAttribute": "Agility",
+      "formula": "[CB] + (1+[#])d6x6"
+    },
+    "description": {
+      "@en": "<p>A blackjack is a small leather club favored by robbers. This little weapon is used to knock out an opponent quickly and quietly.</p>"
+    },
+    "distance": "Engaged",
+    "encumbrance": 1,
+    "equipped": false,
+    "handling": "One-handed",
+    "load": 0,
+    "notes": "",
+    "price": {
+      "bp": "6",
+      "gc": "0",
+      "ss": "0"
+    },
+    "qualities": {
+      "arrayOfValues": [],
+      "value": "Pummeling, Silent, Slow"
+    },
+    "weaponType": "Melee"
+  },
+  "effects": [],
+  "flags": {
+    "core": {
+      "sourceId": "Item.JmtoI5Ls4nG0VsX3"
+    },
+    "exportSource": {
+      "coreVersion": "0.8.9",
+      "system": "zweihander",
+      "systemVersion": "0.3.30",
+      "world": "talron2"
+    },
+    "scene-packer": {
+      "defaultPermission": 3,
+      "hash": "2b9f8b6ab94bf4381000095369f9a88fa717cf2f",
+      "sourceId": "Item.Buds7IWzdnxlAj2O"
+    }
+  },
+  "folder": null,
+  "img": "systems/zweihander/assets/icons/baton.svg",
+  "name": "Blackjack",
+  "permission": {
+    "VOagSWOxwT3osUDT": 3,
+    "default": 0
+  },
+  "sort": 0,
+  "type": "weapon"
+}

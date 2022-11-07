@@ -1,0 +1,40 @@
+{
+  "_id": "ryBtBxkTNaKyP7es",
+  "data": {
+    "castingCost": 0,
+    "castingTime": "1 min",
+    "description": {
+      "@en": "An unearthly trumpet sounds not from above, but below. Smoke begins to roil forth from the heavens, as a plague of infernally-diseased locusts consume the flesh of others."
+    },
+    "distance": "Any one place you can see",
+    "duration": "Instantaneous",
+    "notes": "",
+    "principle": "Greater",
+    "rules": {
+      "criticalFailure": {
+        "@en": "The Fifth Trumpet does not call for your enemies, but instead for you. You must succeed at a Toughness Test or else be immediately Slain! (unless you have a Fate Point to expend). If you succeed, you are left Prone and Incapacitated!"
+      },
+      "criticalSuccess": {
+        "@en": "As above, but foes automatically fail their Toughness Test."
+      },
+      "effect": {
+        "@en": "After successfully casting this spell, a plague of locusts rises from the earth amidst a whorl of smoke. All those who are caught within the Explosion Template must Resist with a successful Toughness Test or else contract Chaotic Rot. All ranged weapons used to fire into locust plague or out of the locust plague, automatically fail. In addition, those who begin their Turn within the locust plague must Resist with a successful Resolve Test or else they suffer from Terror. The Fifth Trumpet’s Effects remain in place for a number of minutes equal to your [WB]. You are immune to the spell’s Effects."
+      },
+      "reagents": {
+        "@en": "A diseased liver, consumed by you (expended)"
+      }
+    },
+    "tradition": "Covenant"
+  },
+  "effects": [],
+  "flags": {},
+  "folder": null,
+  "img": "systems/zweihander/assets/icons/wizard-staff.svg",
+  "name": "The Fifth Trumpet",
+  "permission": {
+    "4be9WK4Hp7jWrwWe": 3,
+    "default": 0
+  },
+  "sort": 0,
+  "type": "spell"
+}

@@ -1,0 +1,48 @@
+{
+  "_id": "iuDrXU8xglP0EFDa",
+  "data": {
+    "associatedSkill": "Simple Ranged",
+    "damage": {
+      "formula": "[CB] + (1+[#])d6x1,6"
+    },
+    "description": {
+      "@en": "<p>This pistol does not require loading the conventional way: wadding, powder and shot and shoved down with a ramrod. Instead, a turn-out pistol&rsquo;s barrel is unscrewed, allowing both the powder and shot to be loaded into the firing chamber.</p>"
+    },
+    "distance": "1 + [PB] yards",
+    "encumbrance": 1,
+    "equipped": false,
+    "handling": "One-handed",
+    "load": 1,
+    "notes": "",
+    "price": {
+      "bp": "0",
+      "gc": "1",
+      "ss": "0"
+    },
+    "qualities": {
+      "arrayOfValues": [],
+      "value": "Blackpowder, Innaccurate, Pistol, Weak"
+    },
+    "weaponType": "Ranged"
+  },
+  "effects": [],
+  "flags": {
+    "core": {
+      "sourceId": "Compendium.zweihander.weapons.bA9wnUOOtA2SKs6a"
+    },
+    "scene-packer": {
+      "defaultPermission": 3,
+      "hash": "61d22d9332791c3d88892dd11845e0a11f8b029f",
+      "sourceId": "Item.iuDrXU8xglP0EFDa"
+    }
+  },
+  "folder": null,
+  "img": "systems/zweihander/assets/icons/gunshot.svg",
+  "name": "Turn-out Pistol",
+  "permission": {
+    "VOagSWOxwT3osUDT": 3,
+    "default": 0
+  },
+  "sort": 0,
+  "type": "weapon"
+}

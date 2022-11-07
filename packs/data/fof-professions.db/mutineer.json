@@ -1,0 +1,121 @@
+{
+  "_id": "hJFqKbIJHuDvcJhK",
+  "data": {
+    "archetype": "Lawbreaker Profession",
+    "bonusAdvances": [
+      {
+        "name": "[AB]"
+      },
+      {
+        "name": "[BB]"
+      },
+      {
+        "name": "[CB]"
+      },
+      {
+        "name": "[CB]"
+      },
+      {
+        "name": "[FB]"
+      },
+      {
+        "name": "[IB]"
+      },
+      {
+        "name": "[PB]"
+      }
+    ],
+    "description": {
+      "@en": "<p>There are times when a person must stand up for what they believe in, and I&rsquo;ve lived through one of those times. My crewmates and I overthrew the captain of our vessel, but we were left with few choices. Corporal punishment, starvation and inept leadership aboard the ship were killing us without mercy. It is one thing to be led by someone incompetent and quite another by someone who is a tyrant. I may be called traitor or coward, but drastic times call for extreme measures. If we hadn&rsquo;t rebelled, I am sure we would all be dead.</p>\n<p>Granted, it&rsquo;s all honey or all turd with my fellow mutineers, and like them, I&rsquo;ve been branded a rabblerouser and a whistleblower. I wear these monikers with pride. As the Loyalists and Rebels continue to tear at each other&rsquo;s throats, we need decisive leadership. Neither side has a use for cruel leaders in a time when a false move could spell the end of a nation. Now is the time to rise up and band together, to throw off the fetters of the inept to forge our own destiny in a world teetering on the brink of despair.</p>"
+    },
+    "drawback": {
+      "linkedId": null,
+      "name": "Troublemaker"
+    },
+    "expert": {
+      "requirements": "",
+      "value": false
+    },
+    "notes": "",
+    "professionalTrait": {
+      "linkedId": null,
+      "name": "Call to Arms"
+    },
+    "skillRanks": [
+      {
+        "name": "Awareness"
+      },
+      {
+        "name": "Intimidate"
+      },
+      {
+        "name": "Leadership"
+      },
+      {
+        "name": "Martial Ranged"
+      },
+      {
+        "name": "Navigation"
+      },
+      {
+        "name": "Pilot"
+      },
+      {
+        "name": "Rumor"
+      },
+      {
+        "name": "Simple Melee"
+      },
+      {
+        "name": "Simple Ranged"
+      },
+      {
+        "name": "Toughness"
+      }
+    ],
+    "specialTrait": {
+      "linkedId": null,
+      "name": ""
+    },
+    "talents": [
+      {
+        "linkedId": null,
+        "name": "Jaded"
+      },
+      {
+        "linkedId": null,
+        "name": "Linear Tactics"
+      },
+      {
+        "linkedId": null,
+        "name": "Under the Gun"
+      }
+    ],
+    "tier": ""
+  },
+  "effects": [],
+  "flags": {
+    "cf": {
+      "color": "#000000",
+      "id": null,
+      "path": "FOF Professions#/CF_SEP/Lawbreaker Professions"
+    },
+    "core": {
+      "sourceId": "Compendium.zweihander.professions.RmnnQeZxr0JVApTJ"
+    },
+    "scene-packer": {
+      "hash": "42e9b1665e721b0e5400ba376900a7571d1dd864",
+      "sourceId": "Item.bzzj9sDk5PluMRmn"
+    },
+    "zweihander": {}
+  },
+  "folder": null,
+  "img": "systems/zweihander/assets/icons/abstract-082.svg",
+  "name": "Mutineer",
+  "permission": {
+    "VOagSWOxwT3osUDT": 3,
+    "default": 0
+  },
+  "sort": 0,
+  "type": "profession"
+}

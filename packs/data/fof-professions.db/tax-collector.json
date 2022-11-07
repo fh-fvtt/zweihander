@@ -1,0 +1,121 @@
+{
+  "_id": "Jje9dyGHPgPc8JnW",
+  "data": {
+    "archetype": "Urbane Profession",
+    "bonusAdvances": [
+      {
+        "name": "[BB]"
+      },
+      {
+        "name": "[FB]"
+      },
+      {
+        "name": "[FB]"
+      },
+      {
+        "name": "[IB]"
+      },
+      {
+        "name": "[IB]"
+      },
+      {
+        "name": "[PB]"
+      },
+      {
+        "name": "[PB]"
+      }
+    ],
+    "description": {
+      "@en": "<p>It&rsquo;s no secret. I am one of the most hated people in the cities. Ever since the Stamp Act passed, I have been spat on and had stones thrown at me by Rebels and Loyalists alike. I serve an essential purpose, though: taxes help pay for roadways, ports, imported commodities and the army. It&rsquo;s not my fault my superiors passed these laws; I&rsquo;m just doing my job when I come to collect. However, I grow weary with the daily insults and the fact that I must always watch my back to prevent being assaulted or worse.</p>\n<p>The more tax is squeezed from the people, the angrier they get&mdash;it&rsquo;s inevitable at this point that a conflict will break out. Many are misplacing their anger, though, attacking quill-pushers like myself who have no real power in these deliberations. This anger will soon turn to bloodshed, and I wouldn&rsquo;t be surprised if my fellow collectors are the first to be tarred and feathered.</p>"
+    },
+    "drawback": {
+      "linkedId": null,
+      "name": "Political Responsibilities"
+    },
+    "expert": {
+      "requirements": "",
+      "value": false
+    },
+    "notes": "",
+    "professionalTrait": {
+      "linkedId": null,
+      "name": "Eyes in the Back of my Head"
+    },
+    "skillRanks": [
+      {
+        "name": "Awareness"
+      },
+      {
+        "name": "Bargain"
+      },
+      {
+        "name": "Counterfeit"
+      },
+      {
+        "name": "Eavesdrop"
+      },
+      {
+        "name": "Guile"
+      },
+      {
+        "name": "Intimidate"
+      },
+      {
+        "name": "Rumor"
+      },
+      {
+        "name": "Scrutinize"
+      },
+      {
+        "name": "Simple Melee"
+      },
+      {
+        "name": "Toughness"
+      }
+    ],
+    "specialTrait": {
+      "linkedId": null,
+      "name": ""
+    },
+    "talents": [
+      {
+        "linkedId": null,
+        "name": "Perceptive"
+      },
+      {
+        "linkedId": null,
+        "name": "Rebel Yell"
+      },
+      {
+        "linkedId": null,
+        "name": "Steadfast"
+      }
+    ],
+    "tier": ""
+  },
+  "effects": [],
+  "flags": {
+    "cf": {
+      "color": "#000000",
+      "id": null,
+      "path": "FOF Professions#/CF_SEP/Urbane Professions"
+    },
+    "core": {
+      "sourceId": "Compendium.zweihander.professions.RmnnQeZxr0JVApTJ"
+    },
+    "scene-packer": {
+      "hash": "e50e1ebf2dc0858a5830d84de900e2a8ea4c2104",
+      "sourceId": "Item.jMvGGeiev3tOp3A7"
+    },
+    "zweihander": {}
+  },
+  "folder": null,
+  "img": "systems/zweihander/assets/icons/abstract-082.svg",
+  "name": "Tax Collector",
+  "permission": {
+    "VOagSWOxwT3osUDT": 3,
+    "default": 0
+  },
+  "sort": 0,
+  "type": "profession"
+}

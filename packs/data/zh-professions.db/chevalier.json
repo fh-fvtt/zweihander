@@ -1,0 +1,109 @@
+{
+  "_id": "X5Tasw7STOYRwpFm",
+  "data": {
+    "archetype": "Expert Profession",
+    "bonusAdvances": [
+      {
+        "name": "[BB]"
+      },
+      {
+        "name": "[BB]"
+      },
+      {
+        "name": "[CB]"
+      },
+      {
+        "name": "[IB]"
+      },
+      {
+        "name": "[PB]"
+      },
+      {
+        "name": "[WB]"
+      },
+      {
+        "name": "[WB]"
+      }
+    ],
+    "description": {
+      "@en": "One of the greatest privileges that can be afforded is to be raised to knighthood – a martial rank of pedigree and honor. Though some work their way up from Squire or journey as a Hedge Knight, the most common knight is the Chevalier. These knights do not wander or loan their skills out to the highest bidder like Hedge Knights. Instead, they become members of an order, a group of sisters and brothers who have earned their spurs and share the bonds of a common cause. Knightly orders are broadly arranged into three types: secular, who are pledged to a province and lead soldiers into battle; templars, who are pledged to a religion and are usually the military arm of a church and noble, who are pledged to a social stratum and awarded for excellence. While many attests that these three orders are not similar at all, they often share the same principles, morals and views – though one claims it is for god, the other for country and the last for blue-blooded excellence.\\nChevaliers like to see themselves as infallible and paragons of what it means to be a citizen or a believer, and this often breeds a superiority complex. Many Chevaliers see themselves as a cut above everyone else. At best they are merely arrogant, at worst they see this as an excuse to abuse, exploit, and plunder to their heart’s content. It does not help that the other Chevaliers play off this, building each other’s travesties up feed off of it. At the end of the day, they legitimize it as being for the ‘good of the people’, but is most often for the stock they raise for their own coffers and horrific accolades."
+    },
+    "drawback": {
+      "linkedId": null,
+      "name": "Strictures of the Order"
+    },
+    "expert": {
+      "requirements": "You must possess at least one Skill Rank in both Martial Melee and Ride in order to enter this Expert Profession.",
+      "value": true
+    },
+    "notes": "",
+    "professionalTrait": {
+      "linkedId": null,
+      "name": "Knightly Order"
+    },
+    "skillRanks": [
+      {
+        "name": "Awareness"
+      },
+      {
+        "name": "Folklore"
+      },
+      {
+        "name": "Leadership"
+      },
+      {
+        "name": "Martial Melee"
+      },
+      {
+        "name": "Resolve"
+      },
+      {
+        "name": "Ride"
+      },
+      {
+        "name": "Rumor"
+      },
+      {
+        "name": "Simple Melee"
+      },
+      {
+        "name": "Toughness"
+      },
+      {
+        "name": "Warfare"
+      }
+    ],
+    "specialTrait": {
+      "linkedId": null,
+      "name": ""
+    },
+    "talents": [
+      {
+        "linkedId": null,
+        "name": "Lightning Reaction"
+      },
+      {
+        "linkedId": null,
+        "name": "Saddle-born"
+      },
+      {
+        "linkedId": null,
+        "name": "Sword & Board"
+      }
+    ],
+    "tier": ""
+  },
+  "effects": [],
+  "flags": {
+    "zweihander": {}
+  },
+  "folder": null,
+  "img": "systems/zweihander/assets/icons/mounted-knight.svg",
+  "name": "Chevalier",
+  "permission": {
+    "9cilLhNTlIyJpmtZ": 3,
+    "default": 0
+  },
+  "sort": 0,
+  "type": "profession"
+}

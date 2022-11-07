@@ -18,16 +18,21 @@
     "@typhonjs-config/eslint-config": "^0.3.0",
     "@typhonjs-fvtt/eslint-config-foundry.js": "^0.8.0",
     "eslint": "^8",
+    "nedb-promises": "^6.2.1",
     "prettier": "^2.7.1",
     "svelte-preprocess": "^4.10.0",
-    "vite": "^3"
+    "vite": "^3",
+    "yargs": "^17.6.2"
   },
   "browserslist": [
     ">5%",
     "not IE 11"
   ],
   "scripts": {
-    "build": "vite build",
+    "build": "npm run build:packs && vite build",
+    "build:dev": "npm run build:packs && vite",
+    "build:packs": "node ./packs/scripts/build-packs.mjs",
+    "extractPacks": "node ./packs/scripts/extract-packs.mjs",
     "dev": "vite",
     "eslint": "eslint ."
   }

@@ -1,0 +1,43 @@
+{
+  "_id": "RVuwg0WfdDj5ESZm",
+  "data": {
+    "associatedSkill": "Simple Melee",
+    "damage": {
+      "formula": "[CB] + (1+[#])d6x6"
+    },
+    "description": {
+      "@en": "<p>Perfect for felling trees, splitting logs and dismembering raiders, the axe is the perfunctory tool of foresters. Sometimes, they are edged with silver in case of attack by the supernatural.</p>"
+    },
+    "distance": "Engaged",
+    "encumbrance": 2,
+    "equipped": false,
+    "handling": "One- or Two-handed",
+    "load": 0,
+    "notes": "",
+    "price": {
+      "bp": "0",
+      "gc": "0",
+      "ss": "4"
+    },
+    "qualities": {
+      "arrayOfValues": [],
+      "value": "Adaptable, Slow, Weak"
+    },
+    "weaponType": "Bladed"
+  },
+  "effects": [],
+  "flags": {
+    "core": {
+      "sourceId": "Compendium.zweihander.weapons.UsP8i8Xiqo1HRUpQ"
+    }
+  },
+  "folder": null,
+  "img": "systems/zweihander/assets/icons/fire-axe.svg",
+  "name": "Woodman's axe",
+  "permission": {
+    "JyjuBRFhP4y9QWxg": 3,
+    "default": 0
+  },
+  "sort": 0,
+  "type": "weapon"
+}

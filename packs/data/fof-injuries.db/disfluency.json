@@ -1,0 +1,46 @@
+{
+  "_id": "mJDnHpyciFHlF2fv",
+  "data": {
+    "active": true,
+    "description": {
+      "@en": "<p>&ldquo;When the chips are down,&rdquo; as they say, I tend to get a little more than agitated. If not only because I have difficulty forming words, but because no one can seem to understand me when I am being perfectly clear!</p>"
+    },
+    "notes": "<p><span style=\"color: #d5c4a1; font-family: Signika, sans-serif; font-style: italic; text-align: justify; background-color: #282828;\">Grievous Injuries must undergo a successful Perform Surgery within twenty-four hours of suffering it, or else a character gains its related Permanent Injury.</span></p>",
+    "rules": {
+      "effect": {
+        "@en": "<p>You must flip the results to fail all Skill Tests that rely on your ability to barter, bargain or strike monetary deals in your favor.</p>"
+      }
+    },
+    "severity": 0
+  },
+  "effects": [],
+  "flags": {
+    "cf": {
+      "color": "#000000",
+      "id": null,
+      "path": "FOF Injuries#/CF_SEP/Permanent Injuries"
+    },
+    "core": {
+      "sourceId": "Compendium.zweihander.injuries.pMHUxC35U5RHDI7K"
+    },
+    "exportSource": {
+      "coreVersion": "0.8.9",
+      "system": "zweihander",
+      "systemVersion": "0.3.30",
+      "world": "talron2"
+    },
+    "scene-packer": {
+      "hash": "a1efe053826f1be2ced975d0c0469a136f1cf269",
+      "sourceId": "Item.l8B1Gr4stg7BVgoK"
+    }
+  },
+  "folder": null,
+  "img": "systems/zweihander/assets/icons/internal-injury.svg",
+  "name": "Disfluency",
+  "permission": {
+    "VOagSWOxwT3osUDT": 3,
+    "default": 0
+  },
+  "sort": 0,
+  "type": "injury"
+}

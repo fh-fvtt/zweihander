@@ -1,0 +1,40 @@
+{
+  "_id": "jTYc3VsN8j09gN6L",
+  "data": {
+    "castingCost": 0,
+    "castingTime": "1 min",
+    "description": {
+      "@en": "Today, fortune is in their favor. But tomorrow? Who knows."
+    },
+    "distance": "Any persons you can see",
+    "duration": "[WB]+6 hours",
+    "notes": "",
+    "principle": "Lesser",
+    "rules": {
+      "criticalFailure": {
+        "@en": "Fortune favors the bold and you are not bold. Nor are your comrades. The GM will make certain that the person will automatically fail any three Skill Tests for the Duration of the spell. When they fail, it is always considered a Critical Failure."
+      },
+      "criticalSuccess": {
+        "@en": "As above, but they can automatically succeed at three Skill Tests instead."
+      },
+      "effect": {
+        "@en": "After successfully casting this spell, select a number of allies equal to your [WB]. They automatically succeed at a single Skill Test of their choice. When they succeed, it is always considered a Critical Success."
+      },
+      "reagents": {
+        "@en": "A pair of silver dice, rolled on the ground"
+      }
+    },
+    "tradition": "Divine (Nightfather)"
+  },
+  "effects": [],
+  "flags": {},
+  "folder": null,
+  "img": "systems/zweihander/assets/icons/rolling-dices.svg",
+  "name": "Fortune Favors the Bold",
+  "permission": {
+    "9cilLhNTlIyJpmtZ": 3,
+    "default": 0
+  },
+  "sort": 0,
+  "type": "spell"
+}

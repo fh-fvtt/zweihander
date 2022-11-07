@@ -1,0 +1,50 @@
+{
+  "_id": "OqGdbZKWcnEFcBfd",
+  "data": {
+    "associatedSkill": "Martial Melee",
+    "damage": {
+      "associatedPrimaryAttribute": "Combat",
+      "formula": "[CB] + (1+[#])d6x6"
+    },
+    "description": {
+      "@en": "<p>&nbsp;Little more than a military-grade spear, the pike is extremely long and often used to either dispatch horses and their riders or used in the thicket of a phalanx.</p>"
+    },
+    "distance": "Engaged",
+    "encumbrance": 3,
+    "equipped": false,
+    "handling": "Two-handed",
+    "load": 0,
+    "notes": "",
+    "price": {
+      "bp": "0",
+      "gc": "5",
+      "ss": "0"
+    },
+    "qualities": {
+      "arrayOfValues": [],
+      "value": "Slow, Powerful, Punishing"
+    },
+    "weaponType": "Bladed"
+  },
+  "effects": [],
+  "flags": {
+    "core": {
+      "sourceId": "Item.JmtoI5Ls4nG0VsX3"
+    },
+    "exportSource": {
+      "coreVersion": "0.8.9",
+      "system": "zweihander",
+      "systemVersion": "0.3.30",
+      "world": "talron2"
+    }
+  },
+  "folder": null,
+  "img": "systems/zweihander/assets/icons/spears.svg",
+  "name": "Military Pike",
+  "permission": {
+    "JyjuBRFhP4y9QWxg": 3,
+    "default": 0
+  },
+  "sort": 0,
+  "type": "weapon"
+}

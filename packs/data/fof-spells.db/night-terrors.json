@@ -1,0 +1,53 @@
+{
+  "_id": "WNZuV3sqkaaMfUjK",
+  "data": {
+    "castingCost": null,
+    "castingTime": "1 Hour",
+    "description": {
+      "@en": "<p>I conjure thee, creatures of the night&mdash;infest their minds, let fear take flight!</p>"
+    },
+    "distance": "By Touch",
+    "duration": "Instantaneous",
+    "notes": "",
+    "principle": "Intermediate Tier",
+    "rules": {
+      "criticalFailure": {
+        "@en": "The draught turns to fumes, and you suffer from its effects instead."
+      },
+      "criticalSuccess": {
+        "@en": "The foe cannot Resist."
+      },
+      "effect": {
+        "@en": "<p>After successfully casting, a draught is created. Once consumed, it tastes of sweet syrup. The foe must Resist with a Toughness Test, or go to Sleep for six hours. For six nights, they awaken to Incapacitated!.</p>"
+      },
+      "reagents": {
+        "@en": "A vial of your own spit and bile, mixed into a draught (expended)"
+      }
+    },
+    "tradition": "Witchcraft"
+  },
+  "effects": [],
+  "flags": {
+    "cf": {
+      "color": "#000000",
+      "id": null,
+      "path": "FOF Spells#/CF_SEP/Witchcraft Spells"
+    },
+    "core": {
+      "sourceId": "Compendium.zweihander.magick.zfw4EhNqq3sJRnbQ"
+    },
+    "scene-packer": {
+      "hash": "3230f24eb958e7bb5b1167b4ba11af89a7bd91b1",
+      "sourceId": "Item.bIb3k3XNKjgxg51o"
+    }
+  },
+  "folder": null,
+  "img": "systems/zweihander/assets/icons/wizard-staff.svg",
+  "name": "Night Terrors",
+  "permission": {
+    "VOagSWOxwT3osUDT": 3,
+    "default": 0
+  },
+  "sort": 0,
+  "type": "spell"
+}

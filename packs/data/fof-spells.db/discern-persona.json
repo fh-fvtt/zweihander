@@ -1,0 +1,53 @@
+{
+  "_id": "v1U8V66OyRDlVsE8",
+  "data": {
+    "castingCost": 1,
+    "castingTime": "1 Minute",
+    "description": {
+      "@en": "<p>Do not toy with me, for I see who you really are . . .</p>"
+    },
+    "distance": "By Touch",
+    "duration": "One hour",
+    "notes": "",
+    "principle": "Basic Tier",
+    "rules": {
+      "criticalFailure": {
+        "@en": "You are unable to tell the truth, and it is apparent to everyone who interacts with you."
+      },
+      "criticalSuccess": {
+        "@en": "In addition, you can discern whether they are being truthful or telling lies when you speak with them directly."
+      },
+      "effect": {
+        "@en": "<p>After successfully casting, you immediately learn the Disposition of one person you can clearly see and hear.</p>"
+      },
+      "reagents": {
+        "@en": "A glass or metal receptacle with a closing lid"
+      }
+    },
+    "tradition": "Common"
+  },
+  "effects": [],
+  "flags": {
+    "cf": {
+      "color": "#000000",
+      "id": null,
+      "path": "FOF Spells#/CF_SEP/Common Spells"
+    },
+    "core": {
+      "sourceId": "Compendium.zweihander.magick.zfw4EhNqq3sJRnbQ"
+    },
+    "scene-packer": {
+      "hash": "1f32b44fc3d25d6c6967bee49acefbebdc777de1",
+      "sourceId": "Item.uMT6bApN1pLxkICl"
+    }
+  },
+  "folder": null,
+  "img": "systems/zweihander/assets/icons/spell-book.svg",
+  "name": "Discern Persona",
+  "permission": {
+    "VOagSWOxwT3osUDT": 3,
+    "default": 0
+  },
+  "sort": 0,
+  "type": "spell"
+}

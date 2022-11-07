@@ -1,0 +1,121 @@
+{
+  "_id": "joKFJv7BRbTFzk8o",
+  "data": {
+    "archetype": "Frontier Profession",
+    "bonusAdvances": [
+      {
+        "name": "[AB]"
+      },
+      {
+        "name": "[AB]"
+      },
+      {
+        "name": "[BB]"
+      },
+      {
+        "name": "[CB]"
+      },
+      {
+        "name": "[FB]"
+      },
+      {
+        "name": "[PB]"
+      },
+      {
+        "name": "[PB]"
+      }
+    ],
+    "description": {
+      "@en": "<p>The roads are oftentimes long and treacherous. Though some are well-developed and link the major cities, most are hunting trails connecting smaller communities and homesteads. The world is vast, and it is impossible to ensure every traveler is safe&mdash;which is where I come in. Everyone needs to make a living during these tough times, but I just happen to make it off of the unfortunate souls who wander down the wrong bend. If you travel alone or with no guards, don&rsquo;t be surprised if I step out of a copse of trees and relieve you of your hard-earned cash.</p>\n<p>Life on the road is tough&mdash;I&rsquo;ve seen things, you know. Even though growing tensions have made my job a bit easier, the aggression and desperation I see on my marks&rsquo; faces disturb me. I&rsquo;ve also stumbled across unpleasant things in the wilds by the roads&mdash;things I cannot fully explain. I&rsquo;m no stranger to fending off wild animals or upstart brigands, but ghosts of the civil dead wander the countryside, too. Soon, it won&rsquo;t just be me who is stalking the roadways&mdash;and trust me, spirits aren&rsquo;t as generous as I am.</p>"
+    },
+    "drawback": {
+      "linkedId": null,
+      "name": "Coward's Heart"
+    },
+    "expert": {
+      "requirements": "",
+      "value": false
+    },
+    "notes": "",
+    "professionalTrait": {
+      "linkedId": null,
+      "name": "Hello, Traveler"
+    },
+    "skillRanks": [
+      {
+        "name": "Awareness"
+      },
+      {
+        "name": "Charm"
+      },
+      {
+        "name": "Intimidate"
+      },
+      {
+        "name": "Martial Ranged"
+      },
+      {
+        "name": "Ride"
+      },
+      {
+        "name": "Rumor"
+      },
+      {
+        "name": "Simple Melee"
+      },
+      {
+        "name": "Simple Ranged"
+      },
+      {
+        "name": "Stealth"
+      },
+      {
+        "name": "Survival"
+      }
+    ],
+    "specialTrait": {
+      "linkedId": null,
+      "name": ""
+    },
+    "talents": [
+      {
+        "linkedId": null,
+        "name": "Off the Bridle"
+      },
+      {
+        "linkedId": null,
+        "name": "Pugilism"
+      },
+      {
+        "linkedId": null,
+        "name": "Rebel Yell"
+      }
+    ],
+    "tier": ""
+  },
+  "effects": [],
+  "flags": {
+    "cf": {
+      "color": "#000000",
+      "id": null,
+      "path": "FOF Professions#/CF_SEP/Frontier Professions"
+    },
+    "core": {
+      "sourceId": "Compendium.zweihander.professions.RmnnQeZxr0JVApTJ"
+    },
+    "scene-packer": {
+      "hash": "1a68416b0d402d134681ba14bc28982fe161bc84",
+      "sourceId": "Item.46kk1zMmwrunETr2"
+    },
+    "zweihander": {}
+  },
+  "folder": null,
+  "img": "systems/zweihander/assets/icons/abstract-082.svg",
+  "name": "Road Agent",
+  "permission": {
+    "VOagSWOxwT3osUDT": 3,
+    "default": 0
+  },
+  "sort": 0,
+  "type": "profession"
+}

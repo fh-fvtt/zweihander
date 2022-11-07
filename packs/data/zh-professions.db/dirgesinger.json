@@ -1,0 +1,109 @@
+{
+  "_id": "71eetj3FijDjuWey",
+  "data": {
+    "archetype": "Expert Profession",
+    "bonusAdvances": [
+      {
+        "name": "[AB]"
+      },
+      {
+        "name": "[AB]"
+      },
+      {
+        "name": "[BB]"
+      },
+      {
+        "name": "[FB]"
+      },
+      {
+        "name": "[PB]"
+      },
+      {
+        "name": "[WB]"
+      },
+      {
+        "name": "[WB]"
+      }
+    ],
+    "description": {
+      "@en": "The Black Lodge is the most mystifying and puzzling of all Daemons. It is both a place and an entity, a singular thing built from the ossified remains of dead gods. It is inscrutable, inexplicable and not even overtly malevolent. However, it is so alien that its agents and agendas are abhorrent to humanity. The Black Lodge lends an inkling of its power to occultists, whether they be human or Fey, but this power is far too extreme and obtuse to handle through the standard traditions of Magick. Instead, those blessed by the Black Lodge intone haunting melodies, ones that erode the Æthereal Veil and allow the whispers of the Black Lodge to creep back into our reality. These unsettling troubadours are known as Dirgesingers, and are the primary proselytizers of the Black Lodge ‘faith’... if it can be called that. They are taciturn and inscrutable – though their manner comes to be marked by a capriciousness as the seasons pass – making them inscrutable and alien indeed.\\nManipulating the Æthereal winds merely with their voice, a Dirgesinger warps both their voice and the winds into something both haunting and beautiful, frightening and tearful. Dirgesingers are a thankful rarity, as outright devotion to the Black Lodge is a peculiarity. It is also said that Dirgesingers do not die, so much as they transmutate into the other. Those of an older age begin to take upon an unmistakable tree-like appearance. They suffer from wart- like lesions that grow under their skin and nails. Their flesh takes on the texture of rotted wood. Insects and animals nest in their clothes and hair. Their songs turn from laments of loss to wails of pain. Slowly, as they undergo their arboreal transformations, they become direct conduits to the Black Lodge, with old Dirgesingers eventually driving roots into the ground and becoming portals to that dark dimension."
+    },
+    "drawback": {
+      "linkedId": null,
+      "name": "Ruinous Power"
+    },
+    "expert": {
+      "requirements": "You must possess at least one Skill Rank in Incantation in order to enter this Expert Profession. In addition, you must have the Special Trait of either Arcane or Divine Magick.",
+      "value": true
+    },
+    "notes": "",
+    "professionalTrait": {
+      "linkedId": null,
+      "name": "Seasons of Change"
+    },
+    "skillRanks": [
+      {
+        "name": "Folklore"
+      },
+      {
+        "name": "Handle Animal"
+      },
+      {
+        "name": "Incantation"
+      },
+      {
+        "name": "Intimidate"
+      },
+      {
+        "name": "Resolve"
+      },
+      {
+        "name": "Ride"
+      },
+      {
+        "name": "Simple Melee"
+      },
+      {
+        "name": "Simple Ranged"
+      },
+      {
+        "name": "Stealth"
+      },
+      {
+        "name": "Survival"
+      }
+    ],
+    "specialTrait": {
+      "linkedId": null,
+      "name": "Covenant Magick"
+    },
+    "talents": [
+      {
+        "linkedId": null,
+        "name": "Ambidexterity"
+      },
+      {
+        "linkedId": null,
+        "name": "Indifference"
+      },
+      {
+        "linkedId": null,
+        "name": "Instincts"
+      }
+    ],
+    "tier": ""
+  },
+  "effects": [],
+  "flags": {
+    "zweihander": {}
+  },
+  "folder": null,
+  "img": "systems/zweihander/assets/icons/dead-wood.svg",
+  "name": "Dirgesinger",
+  "permission": {
+    "9cilLhNTlIyJpmtZ": 3,
+    "default": 0
+  },
+  "sort": 0,
+  "type": "profession"
+}

@@ -1,0 +1,43 @@
+{
+  "_id": "B8ACI4AkFEbAYYGj",
+  "data": {
+    "associatedSkill": "Martial Ranged",
+    "damage": {
+      "formula": "[AB] + (1+[#])d6x6"
+    },
+    "description": {
+      "@en": "Used in militias for its great range, they’re entirely worthless in any close encounter... which is why archers always carry a backup knife."
+    },
+    "distance": "12 + [PB] yards",
+    "encumbrance": 3,
+    "equipped": false,
+    "handling": "Two-handed",
+    "load": 2,
+    "notes": "",
+    "price": {
+      "bp": "0",
+      "gc": "7",
+      "ss": "0"
+    },
+    "qualities": {
+      "arrayOfValues": [],
+      "value": "Fast, Finesse"
+    },
+    "weaponType": "Missile"
+  },
+  "effects": [],
+  "flags": {
+    "core": {
+      "sourceId": "Compendium.zweihander.weapons.hZSWJppCrrLqGrEZ"
+    }
+  },
+  "folder": null,
+  "img": "systems/zweihander/assets/icons/pocket-bow.svg",
+  "name": "Composite bow",
+  "permission": {
+    "JyjuBRFhP4y9QWxg": 3,
+    "default": 0
+  },
+  "sort": 0,
+  "type": "weapon"
+}

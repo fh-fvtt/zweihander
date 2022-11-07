@@ -1,0 +1,40 @@
+{
+  "_id": "wffih6wOHI8OAJaL",
+  "data": {
+    "castingCost": 0,
+    "castingTime": "1 min",
+    "description": {
+      "@en": "Crows begin to gather overhead, circling above to cast their grim shadow over the battlefield."
+    },
+    "distance": "Any persons you can see",
+    "duration": "[WB]+9 minutes",
+    "notes": "",
+    "principle": "Greater",
+    "rules": {
+      "criticalFailure": {
+        "@en": "The crow you released is not dead, but becomes murderous, pecking and gnawing at you. For the Duration of the spell, you are unable to cast Magick and must succeed at a Coordination Test at the start of your Turn or else be knocked Prone."
+      },
+      "criticalSuccess": {
+        "@en": "As above, but the affected have their Fury Dice explode on face ‘6’, ‘5’, ‘4’ and ‘3’."
+      },
+      "effect": {
+        "@en": "After successfully casting this spell, a number of allies equal to your [FB] who can see and hear you have their Fury Dice explode on face ‘6’, ‘5’ and ‘4’ when determining Total Damage."
+      },
+      "reagents": {
+        "@en": "A raven, slaughtered in-hand (expended)"
+      }
+    },
+    "tradition": "Divine (Custodian)"
+  },
+  "effects": [],
+  "flags": {},
+  "folder": null,
+  "img": "systems/zweihander/assets/icons/wizard-staff.svg",
+  "name": "Omen of Death",
+  "permission": {
+    "9cilLhNTlIyJpmtZ": 3,
+    "default": 0
+  },
+  "sort": 0,
+  "type": "spell"
+}

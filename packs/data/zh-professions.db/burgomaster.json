@@ -1,0 +1,109 @@
+{
+  "_id": "whaGmh7RLyHYk3Sc",
+  "data": {
+    "archetype": "Expert Profession",
+    "bonusAdvances": [
+      {
+        "name": "[BB]"
+      },
+      {
+        "name": "[FB]"
+      },
+      {
+        "name": "[FB]"
+      },
+      {
+        "name": "[IB]"
+      },
+      {
+        "name": "[PB]"
+      },
+      {
+        "name": "[WB]"
+      },
+      {
+        "name": "[WB]"
+      }
+    ],
+    "description": {
+      "@en": "Not all politicians hold a large power base. Unlike members of the nobility they will never govern an entire country or even a county and neither will they take command of an army and take to the field of battle. Instead, a Burgomaster is a petty politician, typically the mayor of one of the many villages that dot the landscape, a village elder of a tribal clan, a seneschal for a province or county, or a spokesperson for a city borough. Burgomasters are generally not elected by their constituents, but are installed by the aristocracy to act in their stead. Burgomasters are a means to an end for the nobility; a necessary cog in the political machine who takes care of local concerns. That being said, they exist only in part because bluebloods lack the time or patience to govern every community beneath their rule. Surprisingly, Burgomasters do make fairly decent strategists, as it is they who organize the militias as part of a town or village’s defense.\\nThat does not necessarily mean that Burgomasters are well-loved by their people. Many are prone to political corruption, levying a sales tax on all goods coming in and going out of village markets; raising taxation to benefit from others’ labor; and hiring out the labor of constituents while skimming off the top – all to line their own coffers. Burgomasters are often not very strong or even that smart, but many are of low cunning, and able to sway individuals to do their dirty work for them. Sometimes such efforts lead to Burgomasters hiring bands of miscreants to protect their interests and to prevent do-gooding adventurers from interfering. However, when they are found out, Burgomasters are forced to flee, often forced to join the miscreants they hired to survive beyond the wooden palisades of the village or the curtain walls of the town they once controlled. Here they find the world quite savage and forced to turn to banditry to survive, continuing to make miserable – or worse – the lives of the townsfolk whose lives they previously governed."
+    },
+    "drawback": {
+      "linkedId": null,
+      "name": "Do You Know Who I Am?"
+    },
+    "expert": {
+      "requirements": "You must possess at least two Skill Rank in Folklore in order to enter this Expert Profession.",
+      "value": true
+    },
+    "notes": "",
+    "professionalTrait": {
+      "linkedId": null,
+      "name": "De Facto"
+    },
+    "skillRanks": [
+      {
+        "name": "Bargain"
+      },
+      {
+        "name": "Education"
+      },
+      {
+        "name": "Folklore"
+      },
+      {
+        "name": "Intimidate"
+      },
+      {
+        "name": "Leadership"
+      },
+      {
+        "name": "Resolve"
+      },
+      {
+        "name": "Rumor"
+      },
+      {
+        "name": "Scrutinize"
+      },
+      {
+        "name": "Simple Melee"
+      },
+      {
+        "name": "Warfare"
+      }
+    ],
+    "specialTrait": {
+      "linkedId": null,
+      "name": ""
+    },
+    "talents": [
+      {
+        "linkedId": null,
+        "name": "Appalling Mien"
+      },
+      {
+        "linkedId": null,
+        "name": "Incredible Numeration"
+      },
+      {
+        "linkedId": null,
+        "name": "Meeting of the Minds"
+      }
+    ],
+    "tier": ""
+  },
+  "effects": [],
+  "flags": {
+    "zweihander": {}
+  },
+  "folder": null,
+  "img": "systems/zweihander/assets/icons/power-ring.svg",
+  "name": "Burgomaster",
+  "permission": {
+    "9cilLhNTlIyJpmtZ": 3,
+    "default": 0
+  },
+  "sort": 0,
+  "type": "profession"
+}

@@ -1,0 +1,121 @@
+{
+  "_id": "HGcqrKT4YrXS0h1M",
+  "data": {
+    "archetype": "Warrior Profession",
+    "bonusAdvances": [
+      {
+        "name": "[AB]"
+      },
+      {
+        "name": "[BB]"
+      },
+      {
+        "name": "[BB]"
+      },
+      {
+        "name": "[CB]"
+      },
+      {
+        "name": "[IB]"
+      },
+      {
+        "name": "[PB]"
+      },
+      {
+        "name": "[PB]"
+      }
+    ],
+    "description": {
+      "@en": "<p>Admittedly there is not much need for someone skilled with the art of artillery in this day and age. Regardless we&mdash;the proud few&mdash;lead the battle charge. On horseback, we&rsquo;re the first to spy the battlements . . . and often, the first to die. So why would we volunteer for such grim work? The pay and the glory, of course! But we tow-rows are not merely roughnecks. The teachings of Newton, Leibniz, von Guericke and others inform our methods of destruction. All of this reading and study has led me to create theories on artillery, firing angle and the amount of blackpowder to use.</p>\n<p>We are condemned to die, yes. Though tensions are on the rise and I fear there might be some physical altercation, I hope and pray cooler heads prevail. That being said, loath as I am to admit it, the possibility of these tensions boiling over brings excitement. Perhaps if war comes I will finally put into practice all of the time I&rsquo;ve spent teaching myself the finer points of physics and their more &lsquo;creative&rsquo; applications.</p>"
+    },
+    "drawback": {
+      "linkedId": null,
+      "name": "My Ears Still Ring"
+    },
+    "expert": {
+      "requirements": "",
+      "value": false
+    },
+    "notes": "",
+    "professionalTrait": {
+      "linkedId": null,
+      "name": "Forlorn Hope"
+    },
+    "skillRanks": [
+      {
+        "name": "Athletics"
+      },
+      {
+        "name": "Awareness"
+      },
+      {
+        "name": "Intimidate"
+      },
+      {
+        "name": "Martial Ranged"
+      },
+      {
+        "name": "Ride"
+      },
+      {
+        "name": "Rumor"
+      },
+      {
+        "name": "Scrutinize"
+      },
+      {
+        "name": "Simple Ranged"
+      },
+      {
+        "name": "Toughness"
+      },
+      {
+        "name": "Warfare"
+      }
+    ],
+    "specialTrait": {
+      "linkedId": null,
+      "name": ""
+    },
+    "talents": [
+      {
+        "linkedId": null,
+        "name": "Gut Instinct"
+      },
+      {
+        "linkedId": null,
+        "name": "Militaristic"
+      },
+      {
+        "linkedId": null,
+        "name": "Ricochet"
+      }
+    ],
+    "tier": ""
+  },
+  "effects": [],
+  "flags": {
+    "cf": {
+      "color": "#000000",
+      "id": null,
+      "path": "FOF Professions#/CF_SEP/Warrior Professions"
+    },
+    "core": {
+      "sourceId": "Compendium.zweihander.professions.RmnnQeZxr0JVApTJ"
+    },
+    "scene-packer": {
+      "hash": "ac195efad22368ad691707edba0adf8e5e41aeee",
+      "sourceId": "Item.In3dByMsigH6xtjn"
+    },
+    "zweihander": {}
+  },
+  "folder": null,
+  "img": "systems/zweihander/assets/icons/abstract-082.svg",
+  "name": "Grenadier",
+  "permission": {
+    "VOagSWOxwT3osUDT": 3,
+    "default": 0
+  },
+  "sort": 0,
+  "type": "profession"
+}

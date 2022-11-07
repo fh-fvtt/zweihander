@@ -1,0 +1,109 @@
+{
+  "_id": "aK05atkZSvKErk6n",
+  "data": {
+    "archetype": "Expert Profession",
+    "bonusAdvances": [
+      {
+        "name": "[AB]"
+      },
+      {
+        "name": "[BB]"
+      },
+      {
+        "name": "[BB]"
+      },
+      {
+        "name": "[CB]"
+      },
+      {
+        "name": "[CB]"
+      },
+      {
+        "name": "[WB]"
+      },
+      {
+        "name": "[WB]"
+      }
+    ],
+    "description": {
+      "@en": "Among bluebloods and the nouveau riche, there exists a curious legal procedure where one may try to prove their innocence through trial by combat. Usually in these cases, the accused is unable to fight in their own defense, but may call upon a judiciary champion to adjudicate in their stead. Few in number, but practiced in a number of arms, these so-called Sworn Swords are more than capable of defending the honor of the accused. They excel in the martial arts and act with an incredible precision. Oftentimes, Sworn Swords pledge themselves to a noble house, serving as judicial champions in all capacities. Others instead are travelers, offering their services to lesser nobles and Burghers who either lack the martial skill necessary to defend their honor or are too cowardly to stare death in the eye. The Sworn Sword is always ready to lay their life on the line, but their confidence in their own abilities keeps them headstrong and unswerving.\\nThough most duels are usually to ‘first blood’ (that is, to Injury or Bleeding), deaths are not uncommon. However, duels to the death are mandated for crimes such as treason and heresy. These are the type of face-offs that truly haunt the Sworn Sword at night – visions of the lives they have crushed, royal houses they have ruined or images of their own life’s blood pouring from gaping wounds. Many become indifferent to the violence, emotionless and seemingly cruel as a coping mechanism. Sworn Swords train their bodies and minds against breaking, for if they do not, their next opponent will eviscerate both their bodies and their reputations. These imposing figures are perfect vessels for darker thoughts as the Sworn Sword comes to disassociate themselves from other fellows and believes themselves superior to all. Once this empathy is lost, there is nothing left but a stone-cold killer – an ideal way to sow discord and intimidation."
+    },
+    "drawback": {
+      "linkedId": null,
+      "name": "Achilles Heel"
+    },
+    "expert": {
+      "requirements": "You must possess at least two Skill Rank in both Martial Melee and Resolve in order to enter this Expert Profession.",
+      "value": true
+    },
+    "notes": "",
+    "professionalTrait": {
+      "linkedId": null,
+      "name": "Trial by Combat"
+    },
+    "skillRanks": [
+      {
+        "name": "Coordination"
+      },
+      {
+        "name": "Folklore"
+      },
+      {
+        "name": "Heal"
+      },
+      {
+        "name": "Intimidate"
+      },
+      {
+        "name": "Martial Melee"
+      },
+      {
+        "name": "Resolve"
+      },
+      {
+        "name": "Rumor"
+      },
+      {
+        "name": "Scrutinize"
+      },
+      {
+        "name": "Simple Melee"
+      },
+      {
+        "name": "Toughness"
+      }
+    ],
+    "specialTrait": {
+      "linkedId": null,
+      "name": ""
+    },
+    "talents": [
+      {
+        "linkedId": null,
+        "name": "Indifference"
+      },
+      {
+        "linkedId": null,
+        "name": "Overwhelming Force"
+      },
+      {
+        "linkedId": null,
+        "name": "There Will Be Blood"
+      }
+    ],
+    "tier": ""
+  },
+  "effects": [],
+  "flags": {
+    "zweihander": {}
+  },
+  "folder": null,
+  "img": "systems/zweihander/assets/icons/sword-altar.svg",
+  "name": "Sworn Sword",
+  "permission": {
+    "9cilLhNTlIyJpmtZ": 3,
+    "default": 0
+  },
+  "sort": 0,
+  "type": "profession"
+}

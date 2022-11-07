@@ -1,0 +1,109 @@
+{
+  "_id": "h14LmvaJOVyjit8F",
+  "data": {
+    "archetype": "Expert Profession",
+    "bonusAdvances": [
+      {
+        "name": "[BB]"
+      },
+      {
+        "name": "[BB]"
+      },
+      {
+        "name": "[FB]"
+      },
+      {
+        "name": "[IB]"
+      },
+      {
+        "name": "[IB]"
+      },
+      {
+        "name": "[PB]"
+      },
+      {
+        "name": "[WB]"
+      }
+    ],
+    "description": {
+      "@en": "Not all priests of the gods have been blessed with the potential to invoke divine spells – in fact, that blessing is often a rarity. Apostles who rise to the ability of religious leadership, without divine blessing, generally become Friars. Though Abbots serve as paragons of faith, often heading churches and temples with massive congregations or monasteries staffed by many, many monks, the Friar is humbler – educating monastics within a cloister, serving as a deacon for a rural church or any other number of roles that an Abbot finds themselves too busy to fulfill. Friars are far more sociable than most novitiates, and many wander among their congregation, offering charity, healing and aid where the superior general and their congregation cannot. Some Lowborn even say that Friars are more holy than the godhead, Magick-using High Lector.\\nAt some point, it is not uncommon for Friars to venture out from their churches as itinerant priests, either to bring the ‘good word’ of their god to villages too small to be served by a priest or to enter virgin territory where they will convert the heathen. In addition to their humbleness, Friars have learned to take care of themselves well-enough, able to avoid or face dangers that would turn away the laity in fear. Like any person of religious bent on a journey, Friars have their faith constantly tested. Some are emboldened by danger and know their deity has a divine plan for them, while others see the horrors of reality and wonder how any god could allow such a thing to happen – or even curse their god when the horrors of the world are inflicted upon the innocent. Perhaps this is why the gods rarely turn an eye earthward anymore, and is also possibly why Friars are becoming more scarce."
+    },
+    "drawback": {
+      "linkedId": null,
+      "name": "Avowed"
+    },
+    "expert": {
+      "requirements": "You must possess at least one Skill Rank in both Education and Heal in order to enter this Expert Profession.",
+      "value": true
+    },
+    "notes": "",
+    "professionalTrait": {
+      "linkedId": null,
+      "name": "Holy Raiment"
+    },
+    "skillRanks": [
+      {
+        "name": "Athletics"
+      },
+      {
+        "name": "Education"
+      },
+      {
+        "name": "Folklore"
+      },
+      {
+        "name": "Heal"
+      },
+      {
+        "name": "Leadership"
+      },
+      {
+        "name": "Resolve"
+      },
+      {
+        "name": "Rumor"
+      },
+      {
+        "name": "Scrutinize"
+      },
+      {
+        "name": "Simple Melee"
+      },
+      {
+        "name": "Toughness"
+      }
+    ],
+    "specialTrait": {
+      "linkedId": null,
+      "name": ""
+    },
+    "talents": [
+      {
+        "linkedId": null,
+        "name": "Azimuth"
+      },
+      {
+        "linkedId": null,
+        "name": "Lightning Reaction"
+      },
+      {
+        "linkedId": null,
+        "name": "Long-winded"
+      }
+    ],
+    "tier": ""
+  },
+  "effects": [],
+  "flags": {
+    "zweihander": {}
+  },
+  "folder": null,
+  "img": "systems/zweihander/assets/icons/church.svg",
+  "name": "Friar",
+  "permission": {
+    "9cilLhNTlIyJpmtZ": 3,
+    "default": 0
+  },
+  "sort": 0,
+  "type": "profession"
+}

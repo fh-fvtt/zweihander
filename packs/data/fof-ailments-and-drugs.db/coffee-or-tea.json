@@ -1,0 +1,39 @@
+{
+  "_id": "ZFstLCwkwmIJdSJY",
+  "data": {
+    "active": false,
+    "description": {
+      "@en": "<p>The coffee bean and tea leaf may be one of the New World&rsquo;s smartest innovations&mdash;ensures a proper morning constitutional, keeps one awake and happy. It is the best part of waking up, after all.</p>"
+    },
+    "duration": "Instantaneous",
+    "notes": "",
+    "resist": "NONE",
+    "rules": {
+      "effect": {
+        "@en": "<p><strong>Effect:</strong> You immediately move up the Peril Condition Track from Imperiled to Unhindered. In addition, you can ignore the effects of Sleep Deprivation for six hours.</p>\n<p><strong>Other Considerations:</strong> This Drug cannot be applied to a weapon. You can only gain the benefits of drinking Coffee once every twenty-four hours.</p>"
+      },
+      "treatment": {
+        "@en": ""
+      }
+    }
+  },
+  "effects": [],
+  "flags": {
+    "core": {
+      "sourceId": "Item.1aPid9xUWU2BMJTt"
+    },
+    "scene-packer": {
+      "hash": "362afbaf1ee6e2f692886a5d3b14c4fd6a3f8cb3",
+      "sourceId": "Item.ZFstLCwkwmIJdSJY"
+    }
+  },
+  "folder": null,
+  "img": "systems/zweihander/assets/icons/vial.svg",
+  "name": "Coffee or Tea",
+  "permission": {
+    "VOagSWOxwT3osUDT": 3,
+    "default": 0
+  },
+  "sort": 0,
+  "type": "disease"
+}

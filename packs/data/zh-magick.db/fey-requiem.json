@@ -1,0 +1,40 @@
+{
+  "_id": "wdHDKjlyITnr4QCF",
+  "data": {
+    "castingCost": 0,
+    "castingTime": "1 min",
+    "description": {
+      "@en": "All those who listen to your lament are filled with a white light from deep within the Lodge."
+    },
+    "distance": "Any persons you can see",
+    "duration": "9+[WB] minutes",
+    "notes": "",
+    "principle": "Greater",
+    "rules": {
+      "criticalFailure": {
+        "@en": "You have awoken something strange and primal within all your allies. They look at one another, confused and angry, knowing that only one may survive to rise as the alpha. Whenever your ally’s Turn begins, they must Resist the effects of your spell with a successful Resolve Test or be forced to attack one of their allies on their Turn. Your allies can a Resist attempt at the beginning of each of their Turns for the Duration."
+      },
+      "criticalSuccess": {
+        "@en": "As above, but the allies can also add the Vicious Quality to their weapons for the Duration of the spell."
+      },
+      "effect": {
+        "@en": "After successfully casting this spell, select a number of allies equal to your [WB]. Whenever they deal Damage with melee and ranged weapons, they move one step up the Damage Condition Track positively."
+      },
+      "reagents": {
+        "@en": "A mask made from ironwood, worn on your face"
+      }
+    },
+    "tradition": "Covenant"
+  },
+  "effects": [],
+  "flags": {},
+  "folder": null,
+  "img": "systems/zweihander/assets/icons/wizard-staff.svg",
+  "name": "Fey Requiem",
+  "permission": {
+    "4be9WK4Hp7jWrwWe": 3,
+    "default": 0
+  },
+  "sort": 0,
+  "type": "spell"
+}

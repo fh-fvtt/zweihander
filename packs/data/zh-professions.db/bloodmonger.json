@@ -1,0 +1,109 @@
+{
+  "_id": "vdFUJ0gXhjsxTpPs",
+  "data": {
+    "archetype": "Expert Profession",
+    "bonusAdvances": [
+      {
+        "name": "[AB]"
+      },
+      {
+        "name": "[BB]"
+      },
+      {
+        "name": "[CB]"
+      },
+      {
+        "name": "[CB]"
+      },
+      {
+        "name": "[FB]"
+      },
+      {
+        "name": "[PB]"
+      },
+      {
+        "name": "[WB]"
+      }
+    ],
+    "description": {
+      "@en": "In deep warrens below the earth and the riotous fighting pits of the south, from the dark wastelands ruled by Mutants to the lands stalked by coldly-neutral Siabra, the priests known as Bloodmongers make blood sacrifices to their reviled deity, The Crouching One. Worship of The Crouching One has been almost entirely outlawed and Bloodmongers are almost universally despised; devoting yourself to murder holds little sway in the civilized world. Despite this, the Crouching One’s name is often invoked over death sentences and vendettas or whispered by the poor and desperate appealing to the Bloodmongers for revenge. This is not as surprising as it sounds, as there are clearly legends of heroic Bloodmonger killers that perform their deeds upon the villainous with a gross sense of justice. These are only legends though, and only the Bloodmonger priesthood utters His name aloud with any relish.\nBloodmonger initiation involves ritual bathing in the viscera of an exquisitely slaughtered oxen. In their hidden temples, their rituals are long and deadly, animal sacrifice is common, since regular sacrifice quickly attracts the Inquisition’s attention. Where blood sacrifice is demanded, but impossible, Bloodmongers ritually leech themselves of their own blood as petty offerings. Either way, spilling too much blood draws the Crouching One’s ire and spilling too little does the same. Bloodmongers hide their worship of the Crouching One, communicating amongst themselves in public via discrete hand signs every worshipper knows, and suppress their madness so as not to draw the Inquisition’s attention. Eventually, this madness cannot be suppressed and most Bloodmongers slip into the dark crimson of their worship, becoming relentless serial killers or devoting themselves wholly to chaos, wholly taken by their bloody ways."
+    },
+    "drawback": {
+      "linkedId": null,
+      "name": "The Crouching One’s Commandments"
+    },
+    "expert": {
+      "requirements": "You must possess at least one Skill Rank in Incantation in order to enter this Expert Profession. In addition, you must have the Special Trait of Divine Magick.",
+      "value": true
+    },
+    "notes": "",
+    "professionalTrait": {
+      "linkedId": null,
+      "name": "Exsanguinator"
+    },
+    "skillRanks": [
+      {
+        "name": "Eavesdrop"
+      },
+      {
+        "name": "Folklore"
+      },
+      {
+        "name": "Guile"
+      },
+      {
+        "name": "Incantation"
+      },
+      {
+        "name": "Intimidate"
+      },
+      {
+        "name": "Resolve"
+      },
+      {
+        "name": "Rumor"
+      },
+      {
+        "name": "Simple Melee"
+      },
+      {
+        "name": "Stealth"
+      },
+      {
+        "name": "Toughness"
+      }
+    ],
+    "specialTrait": {
+      "linkedId": null,
+      "name": "Prayers of the Crouching One"
+    },
+    "talents": [
+      {
+        "linkedId": null,
+        "name": "Blood Magick"
+      },
+      {
+        "linkedId": null,
+        "name": "Die Hard"
+      },
+      {
+        "linkedId": null,
+        "name": "There Will Be Blood"
+      }
+    ],
+    "tier": ""
+  },
+  "effects": [],
+  "flags": {
+    "zweihander": {}
+  },
+  "folder": null,
+  "img": "systems/zweihander/assets/icons/bloodmonger.svg",
+  "name": "Bloodmonger",
+  "permission": {
+    "9cilLhNTlIyJpmtZ": 3,
+    "default": 0
+  },
+  "sort": 0,
+  "type": "profession"
+}

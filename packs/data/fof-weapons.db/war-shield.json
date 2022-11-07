@@ -1,0 +1,55 @@
+{
+  "_id": "yFfkCng9G1QdhZor",
+  "data": {
+    "associatedSkill": "Simple Melee",
+    "damage": {
+      "associatedPrimaryAttribute": "Agility",
+      "formula": "[BB] + (1+[#])d6x6"
+    },
+    "description": {
+      "@en": "<p>These Indigenous shields of leather are painted with stories and used in war.</p>"
+    },
+    "distance": "Engaged",
+    "encumbrance": 2,
+    "equipped": false,
+    "handling": "One-handed",
+    "load": 0,
+    "notes": "",
+    "price": {
+      "bp": "0",
+      "gc": "0",
+      "ss": "1"
+    },
+    "qualities": {
+      "arrayOfValues": [],
+      "value": "Defensive, Pummeling, Slow"
+    },
+    "weaponType": "Melee"
+  },
+  "effects": [],
+  "flags": {
+    "core": {
+      "sourceId": "Item.JmtoI5Ls4nG0VsX3"
+    },
+    "exportSource": {
+      "coreVersion": "0.8.9",
+      "system": "zweihander",
+      "systemVersion": "0.3.30",
+      "world": "talron2"
+    },
+    "scene-packer": {
+      "defaultPermission": 3,
+      "hash": "700a6573be98b6fb0cebbb8c2f5443ae50ff30d3",
+      "sourceId": "Item.yFfkCng9G1QdhZor"
+    }
+  },
+  "folder": null,
+  "img": "systems/zweihander/assets/icons/tribal-shield.svg",
+  "name": "War Shield",
+  "permission": {
+    "VOagSWOxwT3osUDT": 3,
+    "default": 0
+  },
+  "sort": 0,
+  "type": "weapon"
+}

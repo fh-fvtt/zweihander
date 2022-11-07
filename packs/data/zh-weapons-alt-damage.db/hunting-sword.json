@@ -1,0 +1,50 @@
+{
+  "_id": "OQDYn9npSWR5vriz",
+  "data": {
+    "associatedSkill": "Simple Melee",
+    "damage": {
+      "associatedPrimaryAttribute": "Agility",
+      "formula": "[AB] + (1+[#])d6x6"
+    },
+    "description": {
+      "@en": "<p>These blades are commonly carried by hunting parties to humanely finish off their prey. Dungeoneers, knaves and other ne&rsquo;er-do-wells call them &ldquo;short swords&rdquo;; an obvious description of their length but common misconception of their utility.</p>"
+    },
+    "distance": "Engaged",
+    "encumbrance": 2,
+    "equipped": false,
+    "handling": "One-handed",
+    "load": 0,
+    "notes": "",
+    "price": {
+      "bp": "0",
+      "gc": "2",
+      "ss": "0"
+    },
+    "qualities": {
+      "arrayOfValues": [],
+      "value": "Finesse, Light, Vicious, Weak"
+    },
+    "weaponType": "Bladed"
+  },
+  "effects": [],
+  "flags": {
+    "core": {
+      "sourceId": "Item.4A0dpsCmYX0R0cTN"
+    },
+    "exportSource": {
+      "coreVersion": "0.8.9",
+      "system": "zweihander",
+      "systemVersion": "0.3.30",
+      "world": "talron2"
+    }
+  },
+  "folder": null,
+  "img": "systems/zweihander/assets/icons/dripping-sword.svg",
+  "name": "Hunting Sword",
+  "permission": {
+    "JyjuBRFhP4y9QWxg": 3,
+    "default": 0
+  },
+  "sort": 0,
+  "type": "weapon"
+}

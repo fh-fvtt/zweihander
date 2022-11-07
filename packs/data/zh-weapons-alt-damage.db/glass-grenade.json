@@ -1,0 +1,50 @@
+{
+  "_id": "X9a4sJwC5PVlhU5v",
+  "data": {
+    "associatedSkill": "Simple Ranged",
+    "damage": {
+      "associatedPrimaryAttribute": "Combat",
+      "formula": "0"
+    },
+    "description": {
+      "@en": "<p>Little more than a glass or clay flask, these grenades are filled with toxins that splash upon foes when the vial breaks.</p>"
+    },
+    "distance": "1 + [PB] yard",
+    "encumbrance": 2,
+    "equipped": false,
+    "handling": "One-handed",
+    "load": 1,
+    "notes": "",
+    "price": {
+      "bp": "0",
+      "gc": "0",
+      "ss": "0"
+    },
+    "qualities": {
+      "arrayOfValues": [],
+      "value": "Gas, Ineffective, Throwing"
+    },
+    "weaponType": "Wytch-Science"
+  },
+  "effects": [],
+  "flags": {
+    "core": {
+      "sourceId": "Item.WWY5OIrj01yUeNmA"
+    },
+    "exportSource": {
+      "coreVersion": "0.8.9",
+      "system": "zweihander",
+      "systemVersion": "0.3.30",
+      "world": "talron2"
+    }
+  },
+  "folder": null,
+  "img": "systems/zweihander/assets/icons/bundle-grenade.svg",
+  "name": "Glass Grenade",
+  "permission": {
+    "JyjuBRFhP4y9QWxg": 3,
+    "default": 0
+  },
+  "sort": 0,
+  "type": "weapon"
+}

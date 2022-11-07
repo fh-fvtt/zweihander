@@ -1,0 +1,121 @@
+{
+  "_id": "REiSj9I0UKJzu7s4",
+  "data": {
+    "archetype": "Mage Profession",
+    "bonusAdvances": [
+      {
+        "name": "[FB]"
+      },
+      {
+        "name": "[FB]"
+      },
+      {
+        "name": "[IB]"
+      },
+      {
+        "name": "[PB]"
+      },
+      {
+        "name": "[PB]"
+      },
+      {
+        "name": "[WB]"
+      },
+      {
+        "name": "[WB]"
+      }
+    ],
+    "description": {
+      "@en": "<p>I am one that is able to divine the future. I am in tune with forces beyond the comprehension of mere mortals. With my third eye, I see what is to come. People must simply ask what they wish to know. Do they want true love, fortune, fame? I can consult my tools to see what lies in wait for anyone. From tea leaves to bone casting to reading the tarot, I can see all futures, but it is up to each person to decide what can put them on the path to the future they desire. Fate can be altered, but it is a fickle thing that should not be toyed with.</p>\n<p>I am worried as of late, for there is something terribly wrong. My cards speak ill tidings, and worse, I no longer trust what they reveal. In my attempts to divine what is wrong, my skills fail me. The tea leaves dissolve, the bones are gibberish and even my crystalline ball remains cloudy. It is only through resorting to darker means that I&rsquo;m able to learn something&mdash;and that something spells doom not only for those in cities but potentially all of us. Darkness grows, the shadows advance and an ancient evil is here.</p>"
+    },
+    "drawback": {
+      "linkedId": null,
+      "name": "Unknown Fate"
+    },
+    "expert": {
+      "requirements": "",
+      "value": false
+    },
+    "notes": "<p>THE BOOK OF COMMON SPELLS Mage characters begin with contains all common spells, including the ones listed as Intermediate and Advanced Tier Spells in&nbsp;<strong>Article 9: Hexenmeister&rsquo;s Almanack</strong>.</p>",
+    "professionalTrait": {
+      "linkedId": null,
+      "name": "Want to Know Your Fortune?"
+    },
+    "skillRanks": [
+      {
+        "name": "Awareness"
+      },
+      {
+        "name": "Charm"
+      },
+      {
+        "name": "Folklore"
+      },
+      {
+        "name": "Gamble"
+      },
+      {
+        "name": "Guile"
+      },
+      {
+        "name": "Incantation"
+      },
+      {
+        "name": "Resolve"
+      },
+      {
+        "name": "Rumor"
+      },
+      {
+        "name": "Scrutinize"
+      },
+      {
+        "name": "Simple Melee"
+      }
+    ],
+    "specialTrait": {
+      "linkedId": null,
+      "name": ""
+    },
+    "talents": [
+      {
+        "linkedId": null,
+        "name": "Close Shave"
+      },
+      {
+        "linkedId": null,
+        "name": "Mettle"
+      },
+      {
+        "linkedId": null,
+        "name": "Occult"
+      }
+    ],
+    "tier": ""
+  },
+  "effects": [],
+  "flags": {
+    "cf": {
+      "color": "#000000",
+      "id": null,
+      "path": "FOF Professions#/CF_SEP/Mage Professions"
+    },
+    "core": {
+      "sourceId": "Compendium.zweihander.professions.RmnnQeZxr0JVApTJ"
+    },
+    "scene-packer": {
+      "hash": "fd4c1c4cfe375710713d934a9142aec70189fd5c",
+      "sourceId": "Item.BdRSBdtSOejqOQRy"
+    },
+    "zweihander": {}
+  },
+  "folder": null,
+  "img": "systems/zweihander/assets/icons/abstract-082.svg",
+  "name": "Fortune Teller",
+  "permission": {
+    "VOagSWOxwT3osUDT": 3,
+    "default": 0
+  },
+  "sort": 0,
+  "type": "profession"
+}

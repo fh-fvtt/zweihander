@@ -1,0 +1,109 @@
+{
+  "_id": "8MH6eeCv0HEs04ti",
+  "data": {
+    "archetype": "Expert Profession",
+    "bonusAdvances": [
+      {
+        "name": "[AB]"
+      },
+      {
+        "name": "[BB]"
+      },
+      {
+        "name": "[BB]"
+      },
+      {
+        "name": "[CB]"
+      },
+      {
+        "name": "[FB]"
+      },
+      {
+        "name": "[FB]"
+      },
+      {
+        "name": "[WB]"
+      }
+    ],
+    "description": {
+      "@en": "No one would deny that it takes great skill to be an effective combatant and even creativity in the arts of war in order to think on your feet to avoid mortal blows. Most such fighters serve as soldiers and mercenaries, but there are none who romanticize combat and fighting skill more than Duelists. Dueling is a traditional and effective means of settling legal disputes, typically to first blood, but sometimes to death. The current fashion requires duels to be settled with a quick finality using pistols, but sword duels remain popular amongst traditionalists. Whether brash and swaggering swordsman or serious and dour professionals, Duelists typically make a living serving as intermediaries for quarreling nobles. Depending on their skill, Duelists can fight each other for almost an hour, but against brasher or ill-experienced marks, Duelists will easily run them through with a single thrust before wiping their needle-like blade clean of blood with a single flourish. Considered a step above novitiate Bravos, the best Duelists are often classically trained at fencing or swashbuckling schools, their styles and methods all varied but deadly.\nDuelists are quick fighters who wear little to no armor to best move on their feet and thus avoid blows. Men and beast alike have a hard time pinning down these flighty fighters. The Duelist’s main weakness is their confidence: they often see themselves as indestructible or a cut above the rest, but they bleed just as easily as the many foes they have laid low. Most Duelists hire their skills out to those unable or unwilling to fight on the dueling ground, but others simply seek out worthy opponents to prove their skills or those who have slighted them. As the stresses of life and battle weigh upon a Duelist’s mind, they grow increasingly wanton with their challenges, ever ready to demand an apology or satisfaction for the slightest of affronts or impunities."
+    },
+    "drawback": {
+      "linkedId": null,
+      "name": "Cramp My Style"
+    },
+    "expert": {
+      "requirements": "You must possess at least one Skill Rank in Coordination in order to enter this Expert Profession.",
+      "value": true
+    },
+    "notes": "",
+    "professionalTrait": {
+      "linkedId": null,
+      "name": "Masters of Defense"
+    },
+    "skillRanks": [
+      {
+        "name": "Athletics"
+      },
+      {
+        "name": "Charm"
+      },
+      {
+        "name": "Coordination"
+      },
+      {
+        "name": "Folklore"
+      },
+      {
+        "name": "Guile"
+      },
+      {
+        "name": "Martial Melee"
+      },
+      {
+        "name": "Resolve"
+      },
+      {
+        "name": "Rumor"
+      },
+      {
+        "name": "Simple Melee"
+      },
+      {
+        "name": "Toughness"
+      }
+    ],
+    "specialTrait": {
+      "linkedId": null,
+      "name": ""
+    },
+    "talents": [
+      {
+        "linkedId": null,
+        "name": "Fencer’s Panache"
+      },
+      {
+        "linkedId": null,
+        "name": "No Mercy"
+      },
+      {
+        "linkedId": null,
+        "name": "Lightning Reaction"
+      }
+    ],
+    "tier": ""
+  },
+  "effects": [],
+  "flags": {
+    "zweihander": {}
+  },
+  "folder": null,
+  "img": "systems/zweihander/assets/icons/crossed-pistols.svg",
+  "name": "Duelist",
+  "permission": {
+    "9cilLhNTlIyJpmtZ": 3,
+    "default": 0
+  },
+  "sort": 0,
+  "type": "profession"
+}

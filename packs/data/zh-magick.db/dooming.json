@@ -1,0 +1,40 @@
+{
+  "_id": "jvVibdjdNODZYv3R",
+  "data": {
+    "castingCost": 0,
+    "castingTime": "1 min",
+    "description": {
+      "@en": "You cast a terrible curse on another, sending them towards a fate worse than death."
+    },
+    "distance": "Any person you can imagine, whom you’ve personally met and know their name",
+    "duration": "[WB]+9 hours",
+    "notes": "",
+    "principle": "Greater",
+    "rules": {
+      "criticalFailure": {
+        "@en": "So powerful is this Magick that it rips a hole in the Æthereal Veil, allowing raw chaos-stuff to pour through and coalesce into a doppelganger of the person you intended to cast Dooming over. It takes upon the same characteristics as the intended victim. For the spell’s Duration, this physical doppelganger attempts to take your life, using whatever means or materials they have on-hand. Once destroyed, it dissipates as if it were never there."
+      },
+      "criticalSuccess": {
+        "@en": "As above, but the foe is instead Slain! if they suffer any Injury in the course of the spell’s Duration."
+      },
+      "effect": {
+        "@en": "After successfully casting this spell, they immediately lose 1 Fate Point. Fortune and Misfortune Points cannot be used to augment this Skill Test. In addition, any Injuries they receive for the Duration of the spell are treated as Grievous Injuries. Finally, they cannot use Fortune and Misfortune Points for the Duration of the spell. Your foe can successfully Resist with a Resolve Test."
+      },
+      "reagents": {
+        "@en": "The name of and a lock of hair from the intended victim"
+      }
+    },
+    "tradition": "Arcane (Astromancy)"
+  },
+  "effects": [],
+  "flags": {},
+  "folder": null,
+  "img": "systems/zweihander/assets/icons/voodoo-doll.svg",
+  "name": "Dooming",
+  "permission": {
+    "9cilLhNTlIyJpmtZ": 3,
+    "default": 0
+  },
+  "sort": 0,
+  "type": "spell"
+}

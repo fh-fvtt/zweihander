@@ -1,0 +1,43 @@
+{
+  "_id": "0bjfly9kOztD8Es3",
+  "data": {
+    "associatedSkill": "Martial Melee",
+    "damage": {
+      "formula": "[AB] + (1+[#])d6x6"
+    },
+    "description": {
+      "@en": "<p>Now this is a knife.Favored by swashbucklers and daredevils, they&rsquo;re wielded in an off-hand to parry blows.</p>"
+    },
+    "distance": "Engaged",
+    "encumbrance": 1,
+    "equipped": false,
+    "handling": "One-handed",
+    "load": 0,
+    "notes": "",
+    "price": {
+      "bp": "0",
+      "gc": "1",
+      "ss": "0"
+    },
+    "qualities": {
+      "arrayOfValues": [],
+      "value": "Defensive, Finesse, Weak"
+    },
+    "weaponType": "Bladed"
+  },
+  "effects": [],
+  "flags": {
+    "core": {
+      "sourceId": "Compendium.zweihander.weapons.MPdp4PG6JCQYxpHS"
+    }
+  },
+  "folder": null,
+  "img": "systems/zweihander/assets/icons/pointy-sword.svg",
+  "name": "Main gauche",
+  "permission": {
+    "JyjuBRFhP4y9QWxg": 3,
+    "default": 0
+  },
+  "sort": 0,
+  "type": "weapon"
+}

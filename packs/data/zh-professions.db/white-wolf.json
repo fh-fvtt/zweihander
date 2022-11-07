@@ -1,0 +1,109 @@
+{
+  "_id": "sdpLuLy7CoKLRAi4",
+  "data": {
+    "archetype": "Expert Profession",
+    "bonusAdvances": [
+      {
+        "name": "[AB]"
+      },
+      {
+        "name": "[AB]"
+      },
+      {
+        "name": "[BB]"
+      },
+      {
+        "name": "[CB]"
+      },
+      {
+        "name": "[PB]"
+      },
+      {
+        "name": "[WB]"
+      },
+      {
+        "name": "[WB]"
+      }
+    ],
+    "description": {
+      "@en": "Before the God-Emperor ascended His lordly throne, many paid tribute to the might of the Winter King. Legends state that the God-Emperor himself was a disciple of this frigid god of the north, something many White Wolf priests love to point out to the Godsworn. The White Wolves are berserker priests of the ever-cold and calculating Winter King. They are brutal fighters, decked in the pelt of a white wolf they had to kill as a part of their initiation into the priesthood. Their religion is an ancient one, as the Winter King is brother to the Demiurge – the first god. White Wolves are as cold and steely as the climes they make their homes in, raised by the bite of frost and the ripping of claws.\nWhite Wolves are fiery in their worship, cold in their mentality and hold little mercy for their enemies. They hold worship among ancient stone circles marked with runes of the Winter Kings; circles that many tundra-locked cities were built around. White Wolf prayers are destructive and cold, a boon in any battle their priests fight. Fanaticism is easy to come by in White Wolves, most likely due to their proximity to Corruptive influences; those that succumb turn from battle-hardened soldiers to blood-thirsty berserkers."
+    },
+    "drawback": {
+      "linkedId": null,
+      "name": "The Winter King’s Commandments"
+    },
+    "expert": {
+      "requirements": "You must possess at least one Skill Rank in Incantation in order to enter this Expert Profession. In addition, you must have the special Trait of Divine Magick.",
+      "value": true
+    },
+    "notes": "",
+    "professionalTrait": {
+      "linkedId": null,
+      "name": "Ulv-skinn"
+    },
+    "skillRanks": [
+      {
+        "name": "Awareness"
+      },
+      {
+        "name": "Folklore"
+      },
+      {
+        "name": "Handle Animal"
+      },
+      {
+        "name": "Incantation"
+      },
+      {
+        "name": "Martial Melee"
+      },
+      {
+        "name": "Rumor"
+      },
+      {
+        "name": "Simple Melee"
+      },
+      {
+        "name": "Stealth"
+      },
+      {
+        "name": "Survival"
+      },
+      {
+        "name": "Toughness"
+      }
+    ],
+    "specialTrait": {
+      "linkedId": null,
+      "name": "Prayers of the Winter King"
+    },
+    "talents": [
+      {
+        "linkedId": null,
+        "name": "Bad Axx!"
+      },
+      {
+        "linkedId": null,
+        "name": "Hard To Kill"
+      },
+      {
+        "linkedId": null,
+        "name": "Overwhelming Force"
+      }
+    ],
+    "tier": ""
+  },
+  "effects": [],
+  "flags": {
+    "zweihander": {}
+  },
+  "folder": null,
+  "img": "systems/zweihander/assets/icons/white-wolf.svg",
+  "name": "White Wolf",
+  "permission": {
+    "9cilLhNTlIyJpmtZ": 3,
+    "default": 0
+  },
+  "sort": 0,
+  "type": "profession"
+}

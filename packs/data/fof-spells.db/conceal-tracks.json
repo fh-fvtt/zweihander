@@ -1,0 +1,53 @@
+{
+  "_id": "CoSTKc4KnLY71yR0",
+  "data": {
+    "castingCost": 2,
+    "castingTime": "1 Minute",
+    "description": {
+      "@en": "<p>At first you see me, now you don&rsquo;t . . .</p>"
+    },
+    "distance": "Yourself",
+    "duration": "6+[WB] minutes",
+    "notes": "",
+    "principle": "Intermediate Tier",
+    "rules": {
+      "criticalFailure": {
+        "@en": "You leave a glowing trail in your wake, one that can be easily discovered."
+      },
+      "criticalSuccess": {
+        "@en": "Triple the duration."
+      },
+      "effect": {
+        "@en": "<p>After successfully casting, you do not leave footprints or any trace of your passing.</p>"
+      },
+      "reagents": {
+        "@en": "Your own muddy or wet footwear"
+      }
+    },
+    "tradition": "Common"
+  },
+  "effects": [],
+  "flags": {
+    "cf": {
+      "color": "#000000",
+      "id": null,
+      "path": "FOF Spells#/CF_SEP/Common Spells"
+    },
+    "core": {
+      "sourceId": "Item.opcupO2BLpL53Sdg"
+    },
+    "scene-packer": {
+      "hash": "32b3f0c07859cbb8ba08dcf27332b5238d06677c",
+      "sourceId": "Item.6l2hL1cjKkIBq64E"
+    }
+  },
+  "folder": null,
+  "img": "systems/zweihander/assets/icons/spell-book.svg",
+  "name": "Conceal Tracks",
+  "permission": {
+    "VOagSWOxwT3osUDT": 3,
+    "default": 0
+  },
+  "sort": 0,
+  "type": "spell"
+}

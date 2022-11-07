@@ -1,0 +1,43 @@
+{
+  "_id": "99YjgC4BdkhlVgEm",
+  "data": {
+    "associatedSkill": "Simple Ranged",
+    "damage": {
+      "formula": "[CB] + (1+[#])d6x6"
+    },
+    "description": {
+      "@en": "These are lighter versions of the arbalest, their strings hand-drawn by a crank. They’re typically used as weaponry for peasant militias, or as playthings for lordly children too nearsighted or clumsy to draw a bowstring."
+    },
+    "distance": "6 + [PB] yards",
+    "encumbrance": 3,
+    "equipped": false,
+    "handling": "Two-handed",
+    "load": 1,
+    "notes": "",
+    "price": {
+      "bp": "0",
+      "gc": "3",
+      "ss": "0"
+    },
+    "qualities": {
+      "arrayOfValues": [],
+      "value": "Fast, Punishing, Weak"
+    },
+    "weaponType": "Missile"
+  },
+  "effects": [],
+  "flags": {
+    "core": {
+      "sourceId": "Compendium.zweihander.weapons.gJHvPcIgYQiJKStL"
+    }
+  },
+  "folder": null,
+  "img": "systems/zweihander/assets/icons/crossbow.svg",
+  "name": "Light crossbow",
+  "permission": {
+    "JyjuBRFhP4y9QWxg": 3,
+    "default": 0
+  },
+  "sort": 0,
+  "type": "weapon"
+}

@@ -1,0 +1,53 @@
+{
+  "_id": "tdcb0z15GhJqskZp",
+  "data": {
+    "castingCost": 2,
+    "castingTime": "1 Minute",
+    "description": {
+      "@en": "<p>All things foul, infectious and putrid fall upon thy head!</p>"
+    },
+    "distance": "By Touch",
+    "duration": "6+[WB] days",
+    "notes": "",
+    "principle": "Intermediate Tier",
+    "rules": {
+      "criticalFailure": {
+        "@en": "You immediately move three steps down the Damage Condition Track instead and begin to Bleed."
+      },
+      "criticalSuccess": {
+        "@en": "Triple the duration."
+      },
+      "effect": {
+        "@en": "<p>After successfully casting, select whether you wish to curse a foe, object or a place. If cursing a foe, they gain some sort of gross physical oddity (e.g., constant flatulence, intractable hiccups, oozing pimples), which causes them to flip the results to fail all Skill Tests related to social interactions. If cursing an object, when it is carried, the foe suffers a -20% Base Chance to all Skill Tests. If cursing a place, anyone who is standing inside of it must add an additional [[/roll 1D6]] Chaos Die when they Risk Backlash or are at risk to suffer Injuries. A cursed object can only be discovered through use of Magic or a special circumstance the Historian dictates. You begin to Bleed, no matter whether you succeeded or failed at casting this Spell.</p>"
+      },
+      "reagents": {
+        "@en": "Paint your blood over an object, foe or place (expended)"
+      }
+    },
+    "tradition": "Witchcraft"
+  },
+  "effects": [],
+  "flags": {
+    "cf": {
+      "color": "#000000",
+      "id": null,
+      "path": "FOF Spells#/CF_SEP/Witchcraft Spells"
+    },
+    "core": {
+      "sourceId": "Compendium.zweihander.magick.zfw4EhNqq3sJRnbQ"
+    },
+    "scene-packer": {
+      "hash": "825df79690a1b0826a081a1ac21bc4382af31701",
+      "sourceId": "Item.IpOdZLcF7Ax6SWdz"
+    }
+  },
+  "folder": null,
+  "img": "systems/zweihander/assets/icons/wizard-staff.svg",
+  "name": "Invoke Hex",
+  "permission": {
+    "VOagSWOxwT3osUDT": 3,
+    "default": 0
+  },
+  "sort": 0,
+  "type": "spell"
+}

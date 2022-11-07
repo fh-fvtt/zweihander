@@ -1,0 +1,43 @@
+{
+  "_id": "FmM5a6kBheFhONTN",
+  "data": {
+    "associatedSkill": "Martial Melee",
+    "damage": {
+      "formula": "[CB] + 2 + (1+[#])d6x6"
+    },
+    "description": {
+      "@en": "<p>This weapon is vicious and heavy, often favored by dwarves and Berserkers. Overly-cumbersome, they&rsquo;re usually adorned with skulls &ndash; just for the hell of it.</p>"
+    },
+    "distance": "Engaged",
+    "encumbrance": 2,
+    "equipped": false,
+    "handling": "One- or Two-handed",
+    "load": 0,
+    "notes": "",
+    "price": {
+      "bp": "0",
+      "gc": "2",
+      "ss": "0"
+    },
+    "qualities": {
+      "arrayOfValues": [],
+      "value": "Adaptable, Slow"
+    },
+    "weaponType": "Bladed"
+  },
+  "effects": [],
+  "flags": {
+    "core": {
+      "sourceId": "Compendium.zweihander.weapons.WpzvqdhdPpIVUljZ"
+    }
+  },
+  "folder": null,
+  "img": "systems/zweihander/assets/icons/battle-axe.svg",
+  "name": "Battle axe",
+  "permission": {
+    "JyjuBRFhP4y9QWxg": 3,
+    "default": 0
+  },
+  "sort": 0,
+  "type": "weapon"
+}

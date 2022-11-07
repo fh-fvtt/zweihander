@@ -1,0 +1,53 @@
+{
+  "_id": "ZlNbLxsHMf0m1Vo5",
+  "data": {
+    "castingCost": null,
+    "castingTime": "9 Minutes",
+    "description": {
+      "@en": "<p>Over air, land and sea, mark everything that I can see . . .</p>"
+    },
+    "distance": "Self",
+    "duration": "9+[WB] minutes",
+    "notes": "",
+    "principle": "Advanced Tier",
+    "rules": {
+      "criticalFailure": {
+        "@en": "You witness a vision of your doom, as you are unable to see for seventy-two hours and the cauldron is destroyed."
+      },
+      "criticalSuccess": {
+        "@en": "Triple the duration."
+      },
+      "effect": {
+        "@en": "<p>After successfully casting, you are able to spy upon a foe or place. You can view it as if you were peering from 18 yards away, and can even focus in on details. Furthermore, you can clearly see and hear anything happening within its presence. This Spell requires Concentration.</p>"
+      },
+      "reagents": {
+        "@en": "A cauldron, the real name of a foe or place and a memento of the foe or place you wish to spy upon"
+      }
+    },
+    "tradition": "Witchcraft"
+  },
+  "effects": [],
+  "flags": {
+    "cf": {
+      "color": "#000000",
+      "id": null,
+      "path": "FOF Spells#/CF_SEP/Witchcraft Spells"
+    },
+    "core": {
+      "sourceId": "Compendium.zweihander.magick.zfw4EhNqq3sJRnbQ"
+    },
+    "scene-packer": {
+      "hash": "4b29d661e95cc494dd487b982b81d7cf6b627623",
+      "sourceId": "Item.QdFJXddgb7NdUuCS"
+    }
+  },
+  "folder": null,
+  "img": "systems/zweihander/assets/icons/wizard-staff.svg",
+  "name": "Distant Eye",
+  "permission": {
+    "VOagSWOxwT3osUDT": 3,
+    "default": 0
+  },
+  "sort": 0,
+  "type": "spell"
+}

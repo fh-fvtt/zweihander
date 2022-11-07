@@ -1,0 +1,50 @@
+{
+  "_id": "3fVAaeKWvPszdqrH",
+  "data": {
+    "associatedSkill": "Martial Melee",
+    "damage": {
+      "associatedPrimaryAttribute": "Combat",
+      "formula": "[CB] + (1+[#])d6x6"
+    },
+    "description": {
+      "@en": "<p>A weapon with broad regional differences, the falchion&rsquo;s blade is always curved and seen as the implement of foreigners and sailors alike.</p>"
+    },
+    "distance": "Engaged",
+    "encumbrance": 2,
+    "equipped": false,
+    "handling": "One- or Two-handed",
+    "load": 0,
+    "notes": "",
+    "price": {
+      "bp": "0",
+      "gc": "7",
+      "ss": "0"
+    },
+    "qualities": {
+      "arrayOfValues": [],
+      "value": "Adaptable, Vicious"
+    },
+    "weaponType": "Bladed"
+  },
+  "effects": [],
+  "flags": {
+    "core": {
+      "sourceId": "Item.JmtoI5Ls4nG0VsX3"
+    },
+    "exportSource": {
+      "coreVersion": "0.8.9",
+      "system": "zweihander",
+      "systemVersion": "0.3.30",
+      "world": "talron2"
+    }
+  },
+  "folder": null,
+  "img": "systems/zweihander/assets/icons/cracked-saber.svg",
+  "name": "Falchion",
+  "permission": {
+    "JyjuBRFhP4y9QWxg": 3,
+    "default": 0
+  },
+  "sort": 0,
+  "type": "weapon"
+}

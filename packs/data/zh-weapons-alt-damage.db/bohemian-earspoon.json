@@ -1,0 +1,50 @@
+{
+  "_id": "m1GfMkiqFKv1BzeO",
+  "data": {
+    "associatedSkill": "Martial Melee",
+    "damage": {
+      "associatedPrimaryAttribute": "Combat",
+      "formula": "[CB] + 2 + (1+[#])d6x6"
+    },
+    "description": {
+      "@en": "<p>This diabolical yet oddly- named weapon is little more than a winged spear, affixed with twin, sharply-bent &lsquo;ears&rsquo; on either side.</p>"
+    },
+    "distance": "Engaged",
+    "encumbrance": 3,
+    "equipped": false,
+    "handling": "Two-handed",
+    "load": 0,
+    "notes": "",
+    "price": {
+      "bp": "0",
+      "gc": "5",
+      "ss": "0"
+    },
+    "qualities": {
+      "arrayOfValues": [],
+      "value": "Defensive, Vicious"
+    },
+    "weaponType": "Bladed"
+  },
+  "effects": [],
+  "flags": {
+    "core": {
+      "sourceId": "Item.JmtoI5Ls4nG0VsX3"
+    },
+    "exportSource": {
+      "coreVersion": "0.8.9",
+      "system": "zweihander",
+      "systemVersion": "0.3.30",
+      "world": "talron2"
+    }
+  },
+  "folder": null,
+  "img": "systems/zweihander/assets/icons/spears.svg",
+  "name": "Bohemian Earspoon",
+  "permission": {
+    "JyjuBRFhP4y9QWxg": 3,
+    "default": 0
+  },
+  "sort": 0,
+  "type": "weapon"
+}

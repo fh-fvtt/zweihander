@@ -1,0 +1,54 @@
+{
+  "_id": "j7aLmSGiz3rWlbxg",
+  "data": {
+    "associatedSkill": "Martial Melee",
+    "damage": {
+      "associatedPrimaryAttribute": "Agility",
+      "formula": "[CB] + (1+[#])d6x6"
+    },
+    "description": {
+      "@en": "<p>Mainly used by Cavalry, these swords are designed for chopping at an opponent. Sabres are easily distinguished because the back of the blade is serrated and used to slash back and forth quickly.</p>"
+    },
+    "distance": "Engaged",
+    "encumbrance": 1,
+    "equipped": false,
+    "handling": "One-handed",
+    "load": 0,
+    "notes": "",
+    "price": {
+      "bp": "0",
+      "gc": "5",
+      "ss": "0"
+    },
+    "qualities": {
+      "arrayOfValues": [],
+      "value": "Backslash, Slow"
+    },
+    "weaponType": "Melee"
+  },
+  "effects": [],
+  "flags": {
+    "core": {
+      "sourceId": "Item.JmtoI5Ls4nG0VsX3"
+    },
+    "exportSource": {
+      "coreVersion": "0.8.9",
+      "system": "zweihander",
+      "systemVersion": "0.3.30",
+      "world": "talron2"
+    },
+    "scene-packer": {
+      "hash": "282f5007c939e01d626412a2d3d860c97e3a2f04",
+      "sourceId": "Item.j7aLmSGiz3rWlbxg"
+    }
+  },
+  "folder": null,
+  "img": "systems/zweihander/assets/icons/stiletto.svg",
+  "name": "Cavalry Sabre",
+  "permission": {
+    "VOagSWOxwT3osUDT": 3,
+    "default": 0
+  },
+  "sort": 0,
+  "type": "weapon"
+}

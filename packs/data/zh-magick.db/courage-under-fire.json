@@ -1,0 +1,40 @@
+{
+  "_id": "5MawZYTfDIR8VAnm",
+  "data": {
+    "castingCost": 0,
+    "castingTime": "1 min",
+    "description": {
+      "@en": "You stoke the fires of your allies, invigorating them in the opportunity to bask in glory!"
+    },
+    "distance": "Yourself",
+    "duration": "[WB]+6 hours",
+    "notes": "",
+    "principle": "Lesser",
+    "rules": {
+      "criticalFailure": {
+        "@en": "The battle standard is immediately wreathed in a terrible flame and incinerated! A number of allies equal to your [FB] who can see and hear you suffer a -20 Base Chance to Resolve Tests and their Initiative is reduced by -6 for Duration of the spell."
+      },
+      "criticalSuccess": {
+        "@en": "As above, but increase the same allies’ Initiative by 6."
+      },
+      "effect": {
+        "@en": "After successfully casting this spell, a number of allies equal to your [FB] who can see and hear you gain a +20 Base Chance to Resolve Tests."
+      },
+      "reagents": {
+        "@en": "A tatter of a renowned battle standard, held aloft"
+      }
+    },
+    "tradition": "Arcane (Pyromancy)"
+  },
+  "effects": [],
+  "flags": {},
+  "folder": null,
+  "img": "systems/zweihander/assets/icons/rally-the-troops.svg",
+  "name": "Courage Under Fire",
+  "permission": {
+    "9cilLhNTlIyJpmtZ": 3,
+    "default": 0
+  },
+  "sort": 0,
+  "type": "spell"
+}

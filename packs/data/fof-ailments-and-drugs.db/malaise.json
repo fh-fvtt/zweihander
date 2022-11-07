@@ -1,0 +1,39 @@
+{
+  "_id": "2hPal5IECDQxC2oW",
+  "data": {
+    "active": false,
+    "description": {
+      "@en": "<p>Bursten. Camp Fever. Chin Cough. Gripe. Lung Fever. These are all the names that students know are commonly attributed to a general condition called Malaise. Now, open your manuals to page 245 . . .</p>"
+    },
+    "duration": "1D10+1 days",
+    "notes": "",
+    "resist": "(Hard -20%) Toughness",
+    "rules": {
+      "effect": {
+        "@en": "<p><strong>Effect:</strong> At the beginning of each day, Resist Malaise. Otherwise, temporarily reduce all Primary Attribute Bonuses by -1. If you don&rsquo;t successfully Resist on the final day of infection, re-roll the duration as it&rsquo;s extended.</p>\n<p><strong>Critical Success:</strong> You automatically succeed your next Toughness Test to Resist Malaise.</p>\n<p><strong>Critical Failure:</strong> Temporarily reduce all Primary Attribute Bonuses by -3 instead.</p>\n<p><strong>Other Considerations:</strong> At the end of the duration, Primary Attribute Bonuses restore by +1 every twentyfour hours.</p>"
+      },
+      "treatment": {
+        "@en": "<p><strong>Ease Symptoms:</strong> A caregiver must have a surgical kit, a bandage, a tincture and spend one hour to Ease Symptoms. Depending on where you&rsquo;re at on the Damage Condition Track, the Difficulty Rating eases or worsens:</p>\n<p><strong>Hurt:</strong> Automatically succeed</p>\n<p><strong>Moderately Wounded:</strong> (Routine +10%) Heal</p>\n<p><strong>Seriously Wounded:</strong> (Standard +/-0%) Heal</p>\n<p><strong>Grievously Wounded:</strong> (Challenging -10%) Heal</p>\n<hr />\n<p><strong>Effect:</strong> If successful, you may flip the results to succeed in your next Toughness Test to Resist an Ailment.</p>\n<p><strong>Critical Success:</strong> You automatically succeed your next Skill Test to Resist an Ailment.</p>\n<p><strong>Critical Failure:</strong> You suffer from Sepsis and must undergo Bloodletting.</p>\n<p><strong>Other Considerations:</strong> A character can only have Ease Symptoms performed on them as the Ailment dictates. You cannot Ease Symptoms on someone with Sepsis.</p>"
+      }
+    }
+  },
+  "effects": [],
+  "flags": {
+    "core": {
+      "sourceId": "Item.Qel9OTFLT9DhjoZ1"
+    },
+    "scene-packer": {
+      "hash": "aa3a4850c47646d749ca61fed2b8b2238b0ac2ab",
+      "sourceId": "Item.2hPal5IECDQxC2oW"
+    }
+  },
+  "folder": null,
+  "img": "systems/zweihander/assets/icons/half-dead.svg",
+  "name": "Malaise",
+  "permission": {
+    "VOagSWOxwT3osUDT": 3,
+    "default": 0
+  },
+  "sort": 0,
+  "type": "disease"
+}

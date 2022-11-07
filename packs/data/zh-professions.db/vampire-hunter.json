@@ -1,0 +1,109 @@
+{
+  "_id": "N6Rbvkj5bc7zk8xX",
+  "data": {
+    "archetype": "Expert Profession",
+    "bonusAdvances": [
+      {
+        "name": "[AB]"
+      },
+      {
+        "name": "[AB]"
+      },
+      {
+        "name": "[CB]"
+      },
+      {
+        "name": "[FB]"
+      },
+      {
+        "name": "[PB]"
+      },
+      {
+        "name": "[WB]"
+      },
+      {
+        "name": "[WB]"
+      }
+    ],
+    "description": {
+      "@en": "The restless dead have taken many from us – whether they be sick or healthy, young or old, rich or poor – the unliving and their necromantic resurrectionists do not discriminate. Others, such as the esurient vampire, wish nothing more than the opportunity to eat away at the foundations of civilization, to enslave others and to bring about the downfall of the world. It is not unknown for the survivors of such predations, having loved ones taken from them or seen their homes pulled out from under them, to take to carving out stakes, tar-dipping torches and filling phials with holy water and setting out on a drastic change of career – the Vampire Hunter! These brave, and often foolhardy, hunters stalk the bloodsucking and spirit- stealing supernatural threat of the Vampire and their ilk. Many Vampire Hunters will often group with others to fight the midnight coterie, not only to exchange lore about the nosferatu and its brood, but to combat the restless dead en masse – as many are too powerful to fight alone. One such story tells of a female hunter named Lady Sommers, who surrounded herself with roughshod apprentices, an Antiquarian named Rupert, a man who could transmutate into a wolf and Willow the Hedgewise. At one point, she even reputedly aligned with a vampire to hunt down other vampires!\\nUnlike Slayers, who often loan out their services to fight beasts for glory in the afterlife, Vampire Hunters actively seek out their prey to either earn salvation, enact revenge or fulfil a death wish from an existence made meaningless without their loved ones. Vampire Hunters possess limited knowledge about the foes they seek to destroy, due to the lack of scientific understanding of vampire’s ecology and true weaknesses. Thus, they rely on folklore and apocrypha to prepare themselves. It is said that there is no such thing as an inexperienced Vampire Hunter and that they are often ‘made’ into hunters having somehow survived a vampire’s reign of terror. Even those who do survive constantly look over their shoulder, as they never know who among them could be a vampiric thrall seeking to please their master by capturing the Vampire Hunter."
+    },
+    "drawback": {
+      "linkedId": null,
+      "name": "Curse of Darkness"
+    },
+    "expert": {
+      "requirements": "You must possess at least two Skill Ranks in Resolve in order to enter this Expert Profession.",
+      "value": true
+    },
+    "notes": "",
+    "professionalTrait": {
+      "linkedId": null,
+      "name": "Chosen One"
+    },
+    "skillRanks": [
+      {
+        "name": "Coordination"
+      },
+      {
+        "name": "Folklore"
+      },
+      {
+        "name": "Leadership"
+      },
+      {
+        "name": "Martial Melee"
+      },
+      {
+        "name": "Resolve"
+      },
+      {
+        "name": "Ride"
+      },
+      {
+        "name": "Rumor"
+      },
+      {
+        "name": "Scrutinize"
+      },
+      {
+        "name": "Simple Melee"
+      },
+      {
+        "name": "Simple Ranged"
+      }
+    ],
+    "specialTrait": {
+      "linkedId": null,
+      "name": ""
+    },
+    "talents": [
+      {
+        "linkedId": null,
+        "name": "Impervious Mind"
+      },
+      {
+        "linkedId": null,
+        "name": "Instincts"
+      },
+      {
+        "linkedId": null,
+        "name": "Light Sleeper"
+      }
+    ],
+    "tier": ""
+  },
+  "effects": [],
+  "flags": {
+    "zweihander": {}
+  },
+  "folder": null,
+  "img": "systems/zweihander/assets/icons/heart-stake.svg",
+  "name": "Vampire Hunter",
+  "permission": {
+    "9cilLhNTlIyJpmtZ": 3,
+    "default": 0
+  },
+  "sort": 0,
+  "type": "profession"
+}

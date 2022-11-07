@@ -1,0 +1,40 @@
+{
+  "_id": "foheAGKGjklWW0Qh",
+  "data": {
+    "castingCost": 0,
+    "castingTime": "1 min",
+    "description": {
+      "@en": "Your body turns incorporeal, as you now occupy both the Material Realm and the Æthereal beyond."
+    },
+    "distance": "Yourself",
+    "duration": "[WB]+6 minutes",
+    "notes": "",
+    "principle": "Lesser",
+    "rules": {
+      "criticalFailure": {
+        "@en": "Passing into the Æthereal Veil, you are tossed about by the Winds of chaos, returning a few seconds later. Upon return, you suffer 6 Corruption and are instantly Incapacitated!"
+      },
+      "criticalSuccess": {
+        "@en": "As above, but triple the Duration."
+      },
+      "effect": {
+        "@en": "After successfully casting this spell, you are Æthereal – occupying a different reality but able to see perfectly into the Material Realm. While in Æthereal form, you cannot manipulate objects, but may pass through them effortlessly. You cannot inflict Damage while Æthereal. In addition, you are completely immune to Damage from melee and ranged weapons. However, Magicks and weapons imbued with Magick can harm you. You can manifest into a nonÆthereal, physical form into the Material Realm for 0 APs. However, turning Æthereal once again costs 2 APs."
+      },
+      "reagents": {
+        "@en": "A death shroud, wrapped around you"
+      }
+    },
+    "tradition": "Arcane (Necromancy)"
+  },
+  "effects": [],
+  "flags": {},
+  "folder": null,
+  "img": "systems/zweihander/assets/icons/wizard-staff.svg",
+  "name": "Spectral Form",
+  "permission": {
+    "9cilLhNTlIyJpmtZ": 3,
+    "default": 0
+  },
+  "sort": 0,
+  "type": "spell"
+}

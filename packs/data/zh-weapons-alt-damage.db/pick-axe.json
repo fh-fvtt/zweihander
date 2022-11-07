@@ -1,0 +1,50 @@
+{
+  "_id": "E5rRkIAOkTbUPutu",
+  "data": {
+    "associatedSkill": "Simple Melee",
+    "damage": {
+      "associatedPrimaryAttribute": "Combat",
+      "formula": "[CB] + 1 + (1+[#])d6x6"
+    },
+    "description": {
+      "@en": "<p>A normal pick usually swung to mine for ore or dig for corpses, it can also cause severe puncture wounds and death when hefted at flesh.</p>"
+    },
+    "distance": "Engaged",
+    "encumbrance": 2,
+    "equipped": false,
+    "handling": "Two-handed",
+    "load": 0,
+    "notes": "",
+    "price": {
+      "bp": "0",
+      "gc": "0",
+      "ss": "2"
+    },
+    "qualities": {
+      "arrayOfValues": [],
+      "value": "Slow, Punishing, Weak"
+    },
+    "weaponType": "Bladed"
+  },
+  "effects": [],
+  "flags": {
+    "core": {
+      "sourceId": "Item.4A0dpsCmYX0R0cTN"
+    },
+    "exportSource": {
+      "coreVersion": "0.8.9",
+      "system": "zweihander",
+      "systemVersion": "0.3.30",
+      "world": "talron2"
+    }
+  },
+  "folder": null,
+  "img": "systems/zweihander/assets/icons/war-pick.svg",
+  "name": "Pick Axe",
+  "permission": {
+    "JyjuBRFhP4y9QWxg": 3,
+    "default": 0
+  },
+  "sort": 0,
+  "type": "weapon"
+}

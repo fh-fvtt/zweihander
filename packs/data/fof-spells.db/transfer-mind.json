@@ -1,0 +1,53 @@
+{
+  "_id": "izUGxyfvtk5n0NeG",
+  "data": {
+    "castingCost": 2,
+    "castingTime": "1 Minute",
+    "description": {
+      "@en": "<p>You shall be whisked away to the spirit realm; your body is now mine to control.</p>"
+    },
+    "distance": "By Touch",
+    "duration": "6+[WB] hours",
+    "notes": "",
+    "principle": "Intermediate Tier",
+    "rules": {
+      "criticalFailure": {
+        "@en": "You have an out-of-body experience, as your mind is trapped in the spirit realm. The person who you intended to transfer into is now in control of your body for the duration! You gain one Flaw Rank."
+      },
+      "criticalSuccess": {
+        "@en": "The person cannot Resist this Spell."
+      },
+      "effect": {
+        "@en": "<p>After successfully casting (and one foe cannot or fails to Resist using Resolve), a threat&rsquo;s mind is imprisoned in the spirit realm, and your body goes into hibernation. Your mind is instantaneously transferred into the recipient&rsquo;s own body. Reference your own Primary Attributes and abilities, but you may flip the results to succeed and add an Assist Die to mimic the person whose body you&rsquo;re inside.</p>"
+      },
+      "reagents": {
+        "@en": "A personal item of a foe you seek to transfer into, held in hand"
+      }
+    },
+    "tradition": "Black & White"
+  },
+  "effects": [],
+  "flags": {
+    "cf": {
+      "color": "#000000",
+      "id": null,
+      "path": "FOF Spells#/CF_SEP/Black & White Spells"
+    },
+    "core": {
+      "sourceId": "Compendium.zweihander.magick.zfw4EhNqq3sJRnbQ"
+    },
+    "scene-packer": {
+      "hash": "a38975d6dcd514b9f5a1ced80fbd3aaa714806ff",
+      "sourceId": "Item.cobE13bkvD5U5rwV"
+    }
+  },
+  "folder": null,
+  "img": "systems/zweihander/assets/icons/concentric-crescents.svg",
+  "name": "Transfer Mind",
+  "permission": {
+    "VOagSWOxwT3osUDT": 3,
+    "default": 0
+  },
+  "sort": 0,
+  "type": "spell"
+}

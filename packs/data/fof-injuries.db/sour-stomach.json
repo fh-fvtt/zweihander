@@ -1,0 +1,46 @@
+{
+  "_id": "WEZE4kzH6ZOWAe0F",
+  "data": {
+    "active": true,
+    "description": {
+      "@en": "<p>Ever since I took some lead to my belly, I cannot keep down &lsquo;rich&rsquo; food. It just upsets my tummy. Laudanum doesn&rsquo;t seem to really help, either.</p>"
+    },
+    "notes": "<p><span style=\"color: #d5c4a1; font-family: Signika, sans-serif; font-style: italic; text-align: justify; background-color: #282828;\">Grievous Injuries must undergo a successful Perform Surgery within twenty-four hours of suffering it, or else a character gains its related Permanent Injury.</span></p>",
+    "rules": {
+      "effect": {
+        "@en": "<p>After drinking alcohol, using drugs, laudanum, poisons, smelling salt, injecting tincture or consuming substances the Historian sees as being hard on your stomach, you cannot recover to Unhindered on the Peril Condition Track (only to Imperiled) for the next twenty-four hours.</p>"
+      }
+    },
+    "severity": 0
+  },
+  "effects": [],
+  "flags": {
+    "cf": {
+      "color": "#000000",
+      "id": null,
+      "path": "FOF Injuries#/CF_SEP/Permanent Injuries"
+    },
+    "core": {
+      "sourceId": "Compendium.zweihander.injuries.pMHUxC35U5RHDI7K"
+    },
+    "exportSource": {
+      "coreVersion": "0.8.9",
+      "system": "zweihander",
+      "systemVersion": "0.3.30",
+      "world": "talron2"
+    },
+    "scene-packer": {
+      "hash": "1f43d4d44ef35edff7c1cd963b2b7bc170fb4d88",
+      "sourceId": "Item.WTCjqutGzujMTvOP"
+    }
+  },
+  "folder": null,
+  "img": "systems/zweihander/assets/icons/internal-injury.svg",
+  "name": "Sour Stomach",
+  "permission": {
+    "VOagSWOxwT3osUDT": 3,
+    "default": 0
+  },
+  "sort": 0,
+  "type": "injury"
+}

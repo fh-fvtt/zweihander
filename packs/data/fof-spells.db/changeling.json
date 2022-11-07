@@ -1,0 +1,53 @@
+{
+  "_id": "ALuSKWHTEBh0P1ht",
+  "data": {
+    "castingCost": 1,
+    "castingTime": "1 Minute",
+    "description": {
+      "@en": "<p>I shall turn you into the oaf you are!</p>"
+    },
+    "distance": "Any one person you can clearly see",
+    "duration": "3+[WB] minutes",
+    "notes": "",
+    "principle": "Basic Tier",
+    "rules": {
+      "criticalFailure": {
+        "@en": "Your arms droop to the ground, and your voice turns to a low growl. You cannot cast Spells for the duration."
+      },
+      "criticalSuccess": {
+        "@en": "They are unable to Resist."
+      },
+      "effect": {
+        "@en": "<p>After successfully casting (and one foe cannot or fails to Resist using Scrutinize), they are temporarily made Helpless for the duration.</p>"
+      },
+      "reagents": {
+        "@en": "The skin of a rare frog, burnt (expended)"
+      }
+    },
+    "tradition": "Black & White"
+  },
+  "effects": [],
+  "flags": {
+    "cf": {
+      "color": "#000000",
+      "id": null,
+      "path": "FOF Spells#/CF_SEP/Black & White Spells"
+    },
+    "core": {
+      "sourceId": "Compendium.zweihander.magick.zfw4EhNqq3sJRnbQ"
+    },
+    "scene-packer": {
+      "hash": "8268c2deebccee11f1441a6628f1b73f87f2b712",
+      "sourceId": "Item.DuA4hnImkcKiKG1q"
+    }
+  },
+  "folder": null,
+  "img": "systems/zweihander/assets/icons/concentric-crescents.svg",
+  "name": "Changeling",
+  "permission": {
+    "VOagSWOxwT3osUDT": 3,
+    "default": 0
+  },
+  "sort": 0,
+  "type": "spell"
+}

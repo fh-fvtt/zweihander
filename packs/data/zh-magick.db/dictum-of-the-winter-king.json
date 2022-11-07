@@ -1,0 +1,40 @@
+{
+  "_id": "DhSiB4zIRFkKMFC8",
+  "data": {
+    "castingCost": 0,
+    "castingTime": "1 min",
+    "description": {
+      "@en": "Your god despises cowardice, making you its champion in passing judgement upon the weak."
+    },
+    "distance": "Any one person you can see",
+    "duration": "[WB]+9 minutes",
+    "notes": "",
+    "principle": "Greater",
+    "rules": {
+      "criticalFailure": {
+        "@en": "Your dictum goes unnoticed by the Winter King. You have brought great shame upon yourself and must pay the price. You suffer 9 Corruption!"
+      },
+      "criticalSuccess": {
+        "@en": "As above, but they also begin their Turns with 1 less AP for the Duration of the spell."
+      },
+      "effect": {
+        "@en": "After successfully casting this spell, providing they are considered to be dishonorable or have Chaos Ranks higher than their Order Ranks, the person suffers [[/roll 1D10]]+[WB] in Damage now and at the beginning of their subsequent Turns for the Duration of the spell."
+      },
+      "reagents": {
+        "@en": "A castle-forged axe, leveled at your enemy"
+      }
+    },
+    "tradition": "Divine (Winter King)"
+  },
+  "effects": [],
+  "flags": {},
+  "folder": null,
+  "img": "systems/zweihander/assets/icons/lightning-shout.svg",
+  "name": "Dictum of the Winter King",
+  "permission": {
+    "9cilLhNTlIyJpmtZ": 3,
+    "default": 0
+  },
+  "sort": 0,
+  "type": "spell"
+}

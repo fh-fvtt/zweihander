@@ -1,0 +1,40 @@
+{
+  "_id": "ZPDdrMJ1h3RlQ41p",
+  "data": {
+    "castingCost": 0,
+    "castingTime": "1 min",
+    "description": {
+      "@en": "You call forth a prayer, rewarding both you and your ‘pack’ of friends."
+    },
+    "distance": "Any persons you can see",
+    "duration": "[WB]+6 minutes",
+    "notes": "",
+    "principle": "Lesser",
+    "rules": {
+      "criticalFailure": {
+        "@en": "Lo, for the pack is vicious. You are not the alpha of your kin, another is. You cow before them, showing your belly. You suffer from Terror in the face of your friend, knocked Prone for the spell’s Duration."
+      },
+      "criticalSuccess": {
+        "@en": "As above, but your allies can invoke Terror instead."
+      },
+      "effect": {
+        "@en": "After successfully casting this spell, a number of allies equal to your [FB] who can see and hear you can invoke Fear."
+      },
+      "reagents": {
+        "@en": "A horn made from wolf bone, blown"
+      }
+    },
+    "tradition": "Divine (Winter King)"
+  },
+  "effects": [],
+  "flags": {},
+  "folder": null,
+  "img": "systems/zweihander/assets/icons/wizard-staff.svg",
+  "name": "The Wolfpack",
+  "permission": {
+    "9cilLhNTlIyJpmtZ": 3,
+    "default": 0
+  },
+  "sort": 0,
+  "type": "spell"
+}

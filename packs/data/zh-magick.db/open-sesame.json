@@ -1,0 +1,40 @@
+{
+  "_id": "2wbOUHeC0pcmRcIl",
+  "data": {
+    "castingCost": 0,
+    "castingTime": "1 min",
+    "description": {
+      "@en": "A simple utterance of words is sometimes all you need to gain ingress."
+    },
+    "distance": "Any one portal or lock you can see",
+    "duration": "Instantaneous",
+    "notes": "",
+    "principle": "Petty",
+    "rules": {
+      "criticalFailure": {
+        "@en": "The invocation goes slightly haywire. Not only is the portal or lock permanently jammed, it is held fast with Magick. It cannot be opened by you ever again."
+      },
+      "criticalSuccess": {
+        "@en": "As above, but the mechanism that was used to lock the door is broken. In addition, any Magick that may have been cast on it to hold it fast is dispelled."
+      },
+      "effect": {
+        "@en": "After successfully casting this spell, you unlock one portal or lock of your choosing. If it has been ensorcelled Magickally to be held fast, you dispel this Magick temporarily for one minute, and are able to trespass as you like."
+      },
+      "reagents": {
+        "@en": "A sesame seed, ingested (expended)"
+      }
+    },
+    "tradition": "Divine (Nightfather)"
+  },
+  "effects": [],
+  "flags": {},
+  "folder": null,
+  "img": "systems/zweihander/assets/icons/open-chest.svg",
+  "name": "Open Sesame",
+  "permission": {
+    "9cilLhNTlIyJpmtZ": 3,
+    "default": 0
+  },
+  "sort": 0,
+  "type": "spell"
+}

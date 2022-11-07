@@ -1,0 +1,46 @@
+{
+  "_id": "RMxuQIYzYUg3g2aY",
+  "data": {
+    "active": true,
+    "description": {
+      "@en": "<p>Admittedly, it&rsquo;s hard to really care about anything. If it weren&rsquo;t for all this constant pain in my back, I&rsquo;d likely spend my days in bed.</p>"
+    },
+    "notes": "<p><span style=\"color: #d5c4a1; font-family: Signika, sans-serif; font-style: italic; text-align: justify; background-color: #282828;\">Grievous Injuries must undergo a successful Perform Surgery within twenty-four hours of suffering it, or else a character gains its related Permanent Injury.</span></p>",
+    "rules": {
+      "effect": {
+        "@en": "<p>Whenever you Use Laudanum, you must use two instead of one. Using additional laudanum in this instance has no negative effects.</p>"
+      }
+    },
+    "severity": 0
+  },
+  "effects": [],
+  "flags": {
+    "cf": {
+      "color": "#000000",
+      "id": null,
+      "path": "FOF Injuries#/CF_SEP/Permanent Injuries"
+    },
+    "core": {
+      "sourceId": "Compendium.zweihander.injuries.pMHUxC35U5RHDI7K"
+    },
+    "exportSource": {
+      "coreVersion": "0.8.9",
+      "system": "zweihander",
+      "systemVersion": "0.3.30",
+      "world": "talron2"
+    },
+    "scene-packer": {
+      "hash": "5951e43f36dc9748bba27ff7daec4d0db616d3e3",
+      "sourceId": "Item.w35o11AvJuxnGl9A"
+    }
+  },
+  "folder": null,
+  "img": "systems/zweihander/assets/icons/internal-injury.svg",
+  "name": "Melancholic Temperament",
+  "permission": {
+    "VOagSWOxwT3osUDT": 3,
+    "default": 0
+  },
+  "sort": 0,
+  "type": "injury"
+}

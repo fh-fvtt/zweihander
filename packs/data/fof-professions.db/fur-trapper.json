@@ -1,0 +1,121 @@
+{
+  "_id": "11jnWa4CYmuKhUNr",
+  "data": {
+    "archetype": "Warrior Profession",
+    "bonusAdvances": [
+      {
+        "name": "[BB]"
+      },
+      {
+        "name": "[BB]"
+      },
+      {
+        "name": "[CB]"
+      },
+      {
+        "name": "[CB]"
+      },
+      {
+        "name": "[FB]"
+      },
+      {
+        "name": "[IB]"
+      },
+      {
+        "name": "[PB]"
+      }
+    ],
+    "description": {
+      "@en": "<p>Many think the fur trade is long gone, but the truth is far from that. Cities along the coast might no longer trade in pelts from beavers, bears and other animals. But other regions farther west and north still deal with the furs that everyone desires to withstand the frontier&rsquo;s rigors. I tread in lands even more remote from the border. I stalk the forests of the Illinois Country, Ohio and other wild, hidden places. It is here where I hunt, trap and struggle against wild animals and beasts in order to line my pockets for a few meager meals.</p>\n<p>I have seen many sights in the wild. Some of these vistas are beautiful beyond description, but more often than not, they are despicable lands straight from the depths of hell itself. I have seen foul and horrific monsters and beheld the evil which has stalked the darkness there since the dawn of time. Though many feel war with the British Empire and their Loyalist forces is coming, I know the truth. There is another war, and its soldiers will crawl through the primordial muck to kill us all.</p>"
+    },
+    "drawback": {
+      "linkedId": null,
+      "name": "A High Price to Pay"
+    },
+    "expert": {
+      "requirements": "",
+      "value": false
+    },
+    "notes": "",
+    "professionalTrait": {
+      "linkedId": null,
+      "name": "Beast Slayer"
+    },
+    "skillRanks": [
+      {
+        "name": "Athletics"
+      },
+      {
+        "name": "Folklore"
+      },
+      {
+        "name": "Handle Animal"
+      },
+      {
+        "name": "Martial Melee"
+      },
+      {
+        "name": "Martial Ranged"
+      },
+      {
+        "name": "Navigation"
+      },
+      {
+        "name": "Simple Melee"
+      },
+      {
+        "name": "Simple Ranged"
+      },
+      {
+        "name": "Survival"
+      },
+      {
+        "name": "Toughness"
+      }
+    ],
+    "specialTrait": {
+      "linkedId": null,
+      "name": ""
+    },
+    "talents": [
+      {
+        "linkedId": null,
+        "name": "Animalistic"
+      },
+      {
+        "linkedId": null,
+        "name": "Gut Instinct"
+      },
+      {
+        "linkedId": null,
+        "name": "Leatherworking"
+      }
+    ],
+    "tier": ""
+  },
+  "effects": [],
+  "flags": {
+    "cf": {
+      "color": "#000000",
+      "id": null,
+      "path": "FOF Professions#/CF_SEP/Warrior Professions"
+    },
+    "core": {
+      "sourceId": "Compendium.zweihander.professions.RmnnQeZxr0JVApTJ"
+    },
+    "scene-packer": {
+      "hash": "0c91d5fc3bc7bfdd16453802d161557d2e846aa7",
+      "sourceId": "Item.21ZGZMajX2Kb4pmm"
+    },
+    "zweihander": {}
+  },
+  "folder": null,
+  "img": "systems/zweihander/assets/icons/abstract-082.svg",
+  "name": "Fur Trapper",
+  "permission": {
+    "VOagSWOxwT3osUDT": 3,
+    "default": 0
+  },
+  "sort": 0,
+  "type": "profession"
+}

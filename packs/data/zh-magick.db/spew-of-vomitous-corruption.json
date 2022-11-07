@@ -1,0 +1,40 @@
+{
+  "_id": "VC3rl8hIZ6EnsK2O",
+  "data": {
+    "castingCost": 0,
+    "castingTime": "1 min",
+    "description": {
+      "@en": "Inhaling deeply, you gurgle and belch forth vomitous detritus, consisting of spoiled milk, writhing maggots and pink slime."
+    },
+    "distance": "Yourself",
+    "duration": "Instantaneous",
+    "notes": "",
+    "principle": "Greater",
+    "rules": {
+      "criticalFailure": {
+        "@en": "The rancid pork burbles in your stomach and you are taken by shaking and sickness. You are immediately Incapacitated! and left Helpless for a number of minutes equal to your [WB]. You also suffer from Bloody Flux."
+      },
+      "criticalSuccess": {
+        "@en": "As above, but your foes cannot Resist."
+      },
+      "effect": {
+        "@en": "After successfully casting this spell, any foes caught in its Cone Template suffer [[/roll 3D10]]+[WB] physical Peril and their wounds are instantly Infected. In addition, they must Resist with a successful Toughness Test or else they gain a permanent Chaos Rank."
+      },
+      "reagents": {
+        "@en": "A sliver of rancid pork, consumed (expended)"
+      }
+    },
+    "tradition": "Covenant"
+  },
+  "effects": [],
+  "flags": {},
+  "folder": null,
+  "img": "systems/zweihander/assets/icons/wizard-staff.svg",
+  "name": "Spew of Vomitous Corruption",
+  "permission": {
+    "4be9WK4Hp7jWrwWe": 3,
+    "default": 0
+  },
+  "sort": 0,
+  "type": "spell"
+}

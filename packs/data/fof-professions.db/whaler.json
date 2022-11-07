@@ -1,0 +1,121 @@
+{
+  "_id": "jQnSCezNuqIWyMVu",
+  "data": {
+    "archetype": "Frontier Profession",
+    "bonusAdvances": [
+      {
+        "name": "[AB]"
+      },
+      {
+        "name": "[BB]"
+      },
+      {
+        "name": "[BB]"
+      },
+      {
+        "name": "[CB]"
+      },
+      {
+        "name": "[CB]"
+      },
+      {
+        "name": "[IB]"
+      },
+      {
+        "name": "[WB]"
+      }
+    ],
+    "description": {
+      "@en": "<p>Those cowardly sailors who dare to call themselves &lsquo;Jack Tar&rsquo; make me laugh. Like the Wampanoag Nation&rsquo;s storied ancestors, I hunt and chase my prey: the deadly and enormous leviathan of the sea. When I am in my longboat, harpoon in hand, I stare in death&rsquo;s face and grin. I have stared into the abyssal eyes of the whale and have struck them down. I live for the thrill, for the feats of strength and courage that each hunt requires. I am as dedicated to my code of honor as any knight on horseback ever was.</p>\n<p>I&rsquo;ve noticed the ocean&rsquo;s tides are changing in the lull between looking for new pods to hunt. Every day I pass Loyalist ships loaded with beasts for the west coast, spelling doom for all who live there. But even in the dark waters where giant squids dwell, I have seen odd things. I have come across entire pods of dead whales in the middle of the sea, floating belly-up in a sargasso of blood and ambergris. Even our crew can only take a whale or two at a time&mdash;whatever is killing them is a monster far more powerful than any whale I&rsquo;ve ever hooked.</p>"
+    },
+    "drawback": {
+      "linkedId": null,
+      "name": "White Whale, Holy Grail"
+    },
+    "expert": {
+      "requirements": "",
+      "value": false
+    },
+    "notes": "",
+    "professionalTrait": {
+      "linkedId": null,
+      "name": "Blood & Thunder"
+    },
+    "skillRanks": [
+      {
+        "name": "Athletics"
+      },
+      {
+        "name": "Folklore"
+      },
+      {
+        "name": "Martial Melee"
+      },
+      {
+        "name": "Martial Ranged"
+      },
+      {
+        "name": "Navigation"
+      },
+      {
+        "name": "Pilot"
+      },
+      {
+        "name": "Resolve"
+      },
+      {
+        "name": "Simple Melee"
+      },
+      {
+        "name": "Simple Ranged"
+      },
+      {
+        "name": "Toughness"
+      }
+    ],
+    "specialTrait": {
+      "linkedId": null,
+      "name": ""
+    },
+    "talents": [
+      {
+        "linkedId": null,
+        "name": "Chase the Pain"
+      },
+      {
+        "linkedId": null,
+        "name": "Gut Instinct"
+      },
+      {
+        "linkedId": null,
+        "name": "Take a Gander"
+      }
+    ],
+    "tier": ""
+  },
+  "effects": [],
+  "flags": {
+    "cf": {
+      "color": "#000000",
+      "id": null,
+      "path": "FOF Professions#/CF_SEP/Frontier Professions"
+    },
+    "core": {
+      "sourceId": "Compendium.zweihander.professions.RmnnQeZxr0JVApTJ"
+    },
+    "scene-packer": {
+      "hash": "c74bc184c3fefdfb1d7ff4d97849c0137413e1f7",
+      "sourceId": "Item.OzGd9YhCu287XGXC"
+    },
+    "zweihander": {}
+  },
+  "folder": null,
+  "img": "systems/zweihander/assets/icons/abstract-082.svg",
+  "name": "Whaler",
+  "permission": {
+    "VOagSWOxwT3osUDT": 3,
+    "default": 0
+  },
+  "sort": 0,
+  "type": "profession"
+}

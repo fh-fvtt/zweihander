@@ -1,0 +1,50 @@
+{
+  "_id": "16jEBEknuGcL5KRH",
+  "data": {
+    "associatedSkill": "Simple Melee",
+    "damage": {
+      "associatedPrimaryAttribute": "Agility",
+      "formula": "[AB] + (1+[#])d6x6"
+    },
+    "description": {
+      "@en": "<p>Called &lsquo;the aristocrat&rsquo;s weapon&rsquo;, the swordstick is a narrow blade hidden within a walking stick or cane. A favorite of the well-to-do or enfeebled military veteran to intimidate others, but senseless on the battlefield.</p>"
+    },
+    "distance": "Engaged",
+    "encumbrance": 1,
+    "equipped": false,
+    "handling": "One-handed",
+    "load": 0,
+    "notes": "",
+    "price": {
+      "bp": "0",
+      "gc": "3",
+      "ss": "0"
+    },
+    "qualities": {
+      "arrayOfValues": [],
+      "value": "Finesse, Weak"
+    },
+    "weaponType": "Bladed, Crushing"
+  },
+  "effects": [],
+  "flags": {
+    "core": {
+      "sourceId": "Item.4A0dpsCmYX0R0cTN"
+    },
+    "exportSource": {
+      "coreVersion": "0.8.9",
+      "system": "zweihander",
+      "systemVersion": "0.3.30",
+      "world": "talron2"
+    }
+  },
+  "folder": null,
+  "img": "systems/zweihander/assets/icons/butterfly-knife.svg",
+  "name": "Swordstick",
+  "permission": {
+    "JyjuBRFhP4y9QWxg": 3,
+    "default": 0
+  },
+  "sort": 0,
+  "type": "weapon"
+}

@@ -1,0 +1,40 @@
+{
+  "_id": "fCNA44SHkITyObkq",
+  "data": {
+    "castingCost": 0,
+    "castingTime": "1 min",
+    "description": {
+      "@en": "You fatten your body up, feeling full and well-prepared for travel."
+    },
+    "distance": "Any one person you can touch",
+    "duration": "[WB]+3 days",
+    "notes": "",
+    "principle": "Petty",
+    "rules": {
+      "criticalFailure": {
+        "@en": "Hunger immediately sets in, as the last meal the intended target of this Magick forcefully expels itself into whatever smallclothes they have on. They must eat three times the normal amount of food to fill themselves up each day – unable to sate their hunger – for the Duration of the spell."
+      },
+      "criticalSuccess": {
+        "@en": "As above, but triple the Duration."
+      },
+      "effect": {
+        "@en": "After successfully casting this spell, the person you touch doesn’t need to eat or drink to survive for the Duration of the spell."
+      },
+      "reagents": {
+        "@en": "A handful of oats, eaten (expended)"
+      }
+    },
+    "tradition": "Arcane (Elementalism)"
+  },
+  "effects": [],
+  "flags": {},
+  "folder": null,
+  "img": "systems/zweihander/assets/icons/wizard-staff.svg",
+  "name": "Through Thick and Thin",
+  "permission": {
+    "9cilLhNTlIyJpmtZ": 3,
+    "default": 0
+  },
+  "sort": 0,
+  "type": "spell"
+}

@@ -1,0 +1,40 @@
+{
+  "_id": "c8rv1Uj2igJwTpOT",
+  "data": {
+    "castingCost": 0,
+    "castingTime": "1 min",
+    "description": {
+      "@en": "A willing person swears to carry out a sacred vow or forswears from a specific action."
+    },
+    "distance": "Any one person you can touch",
+    "duration": "Forever",
+    "notes": "",
+    "principle": "Generalist",
+    "rules": {
+      "criticalFailure": {
+        "@en": "Although you word the pledge right, it doesn’t seem to take Effect. You are held to a vow yourself, given at the behest of the Abyssal Princes. You will suffer a -20% to Brawn if you break this vow and must see it through to its completion."
+      },
+      "criticalSuccess": {
+        "@en": "As above, but they instead suffer -20% to Brawn."
+      },
+      "effect": {
+        "@en": "After successfully casting this spell, the person you touch vows to carry out or swear against an action you set. Breaking this vow temporarily drops their Brawn by -10%, until the oath-breaker appeals to you to lift the Magick or completes the task they were charged to do. Once the vow is upheld and comes to fruition, the Magick fades."
+      },
+      "reagents": {
+        "@en": "A willing participant, whose name you announce"
+      }
+    },
+    "tradition": "Generalist"
+  },
+  "effects": [],
+  "flags": {},
+  "folder": null,
+  "img": "systems/zweihander/assets/icons/halt.svg",
+  "name": "Vow of Fealty",
+  "permission": {
+    "9cilLhNTlIyJpmtZ": 3,
+    "default": 0
+  },
+  "sort": 0,
+  "type": "spell"
+}

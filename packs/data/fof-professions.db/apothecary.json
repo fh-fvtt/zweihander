@@ -1,0 +1,121 @@
+{
+  "_id": "1eZuTcEvrxx4saa2",
+  "data": {
+    "archetype": "Mage Profession",
+    "bonusAdvances": [
+      {
+        "name": "[AB]"
+      },
+      {
+        "name": "[FB]"
+      },
+      {
+        "name": "[IB]"
+      },
+      {
+        "name": "[IB]"
+      },
+      {
+        "name": "[PB]"
+      },
+      {
+        "name": "[WB]"
+      },
+      {
+        "name": "[WB]"
+      }
+    ],
+    "description": {
+      "@en": "<p>I possess knowledge of how the human body works, how the various medicinal treatments aid suffering and how to mend a body that&rsquo;s been thoroughly broken. Though Barbers and Midwives are able to perform some of my duties, I bring to bear greater knowledge through the application of drugs called &lsquo;sorcerous&rsquo; by some, traditional by others. Whether healing through the use of yarrow and milkweed, or powders and tinctures, I know what the people need to be well. As an Apothecary, I have learned herbology, the use of spices&mdash;and truthfully, anything that is natural&mdash;to fortify the body against sickness.</p>\n<p>The art I practice may have its roots in the ancient medical practices of white witches and survivalists or Indigenous medicine people, but the integration of medicines from many cultures is the only way to face the world in which we now live. I keep myself ahead of the latest discoveries to continue to hone my skills and perfect my craft. To do this, I work with patients who consent to my new, experimental treatments.</p>"
+    },
+    "drawback": {
+      "linkedId": null,
+      "name": "Theorem, Deduction, Outcome"
+    },
+    "expert": {
+      "requirements": "",
+      "value": false
+    },
+    "notes": "<p>THE BOOK OF COMMON SPELLS Mage characters begin with contains all common spells, including the ones listed as Intermediate and Advanced Tier Spells in&nbsp;<strong>Article 9: Hexenmeister&rsquo;s Almanack</strong>.</p>",
+    "professionalTrait": {
+      "linkedId": null,
+      "name": "What's Old is New"
+    },
+    "skillRanks": [
+      {
+        "name": "Alchemy"
+      },
+      {
+        "name": "Awareness"
+      },
+      {
+        "name": "Bargain"
+      },
+      {
+        "name": "Folklore"
+      },
+      {
+        "name": "Heal"
+      },
+      {
+        "name": "Incantation"
+      },
+      {
+        "name": "Resolve"
+      },
+      {
+        "name": "Rumor"
+      },
+      {
+        "name": "Simple Melee"
+      },
+      {
+        "name": "Survival"
+      }
+    ],
+    "specialTrait": {
+      "linkedId": null,
+      "name": ""
+    },
+    "talents": [
+      {
+        "linkedId": null,
+        "name": "Brains Over Brawn"
+      },
+      {
+        "linkedId": null,
+        "name": "Pharmacopoeia"
+      },
+      {
+        "linkedId": null,
+        "name": "Self-Medication"
+      }
+    ],
+    "tier": ""
+  },
+  "effects": [],
+  "flags": {
+    "cf": {
+      "color": "#000000",
+      "id": null,
+      "path": "FOF Professions#/CF_SEP/Mage Professions"
+    },
+    "core": {
+      "sourceId": "Compendium.zweihander.professions.RmnnQeZxr0JVApTJ"
+    },
+    "scene-packer": {
+      "hash": "7cc3468936f00cb41fdefc332176942d996b9cfc",
+      "sourceId": "Item.dHW8NalAubK3P3AV"
+    },
+    "zweihander": {}
+  },
+  "folder": null,
+  "img": "systems/zweihander/assets/icons/abstract-082.svg",
+  "name": "Apothecary",
+  "permission": {
+    "VOagSWOxwT3osUDT": 3,
+    "default": 0
+  },
+  "sort": 0,
+  "type": "profession"
+}

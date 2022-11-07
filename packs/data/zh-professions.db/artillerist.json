@@ -1,0 +1,106 @@
+{
+  "_id": "l4fSz8ea9KUvKaYJ",
+  "data": {
+    "archetype": "Expert Profession",
+    "bonusAdvances": [
+      {
+        "name": "[AB]"
+      },
+      {
+        "name": "[AB]"
+      },
+      {
+        "name": "[BB]"
+      },
+      {
+        "name": "[IB]"
+      },
+      {
+        "name": "[IB]"
+      },
+      {
+        "name": "[PB]"
+      },
+      {
+        "name": "[PB]"
+      }
+    ],
+    "description": {
+      "@en": "The battlefield has drastically changed in recent years: what were once simple hills and valleys of the dead have become pockmarked with craters, scarred landscapes and diseased trenches. This scattershot landscape is borne from the terrible war machines that have entered the theatre of conflict… and the Artillerists who operate them. Artillerists maintain and man a host of infernal machines upon the fields of battle. They work hand-in-hand with Engineers to find their enemies’ weak points, strongest defensive positions, and most important sites of strategic value – in fact, many Artillerists were once Engineers themselves. In general, it is the common Man-At-Arms who does the actual firing of war machines, but they would be useless if it was not for the Artillerist’s ever-vigilant eye. Obviously, this makes them high priority targets – the bolt throwers and cannons whose fire they direct can rip frontlines apart, so targeting them – whether by a Sharpshooter or a strike squad – makes both perfect tactical sense and prevents many casualties.\\nIt is no wonder that many take to adventuring instead, or even loaning out their services to higher bidders (mercenary- minded as they are). Like all military men, Artillerists can defend themselves, but they are most dangerous behind the ballast of a catapult or the giant windlasses of a bolt thrower. The life of an Artillerist is not easy – the constant strain on their senses while standing next to war machines leave many deaf or with ragged vocal cords, while others have found themselves maimed or killed after a cannon has misfired or the arm of a trebuchet snaps under the strain.\\nIt is a career of deep lows and soaring highs, with little in between. While the drums of war may beat as soldiers take to the field, Artillerists are generally focused on waiting for an opening through which their great war machines can pound their enemies without harming their friends. Unfortunately, not every cannon or catapult is as accurate as Artillerists claim and their commanders would want. Nor is every Artillerist as skilled as they claim. Which at best often means that the field of battle is littered with miscalculated shots and at worst, an Artillerist’s comrades- at-arms face the danger of being crushed, blown apart, or impaled by friendly fire. "
+    },
+    "drawback": {
+      "linkedId": null,
+      "name": "Hard of Hearing"
+    },
+    "expert": {
+      "requirements": "You must possess at least one Skill Rank in Warfare in order to enter this Expert Profession.",
+      "value": true
+    },
+    "notes": "",
+    "professionalTrait": {
+      "linkedId": null,
+      "name": "Bombs Away!"
+    },
+    "skillRanks": [
+      {
+        "name": "Athletics"
+      },
+      {
+        "name": "Coordination"
+      },
+      {
+        "name": "Drive"
+      },
+      {
+        "name": "Folklore"
+      },
+      {
+        "name": "Martial Ranged"
+      },
+      {
+        "name": "Navigation"
+      },
+      {
+        "name": "Ride"
+      },
+      {
+        "name": "Rumor"
+      },
+      {
+        "name": "Simple Ranged"
+      },
+      {
+        "name": "Warfare"
+      }
+    ],
+    "specialTrait": {
+      "linkedId": null,
+      "name": ""
+    },
+    "talents": [
+      {
+        "name": "Eagle Eyes"
+      },
+      {
+        "name": "Siegecraft"
+      },
+      {
+        "name": "Instincts"
+      }
+    ],
+    "tier": ""
+  },
+  "effects": [],
+  "flags": {
+    "zweihander": {}
+  },
+  "folder": null,
+  "img": "systems/zweihander/assets/icons/ballista.svg",
+  "name": "Artillerist",
+  "permission": {
+    "9cilLhNTlIyJpmtZ": 3,
+    "default": 0
+  },
+  "sort": 0,
+  "type": "profession"
+}

@@ -1,0 +1,109 @@
+{
+  "_id": "sLwHAVHlGBuOSIfb",
+  "data": {
+    "archetype": "Expert Profession",
+    "bonusAdvances": [
+      {
+        "name": "[AB]"
+      },
+      {
+        "name": "[FB]"
+      },
+      {
+        "name": "[FB]"
+      },
+      {
+        "name": "[IB]"
+      },
+      {
+        "name": "[IB]"
+      },
+      {
+        "name": "[PB]"
+      },
+      {
+        "name": "[WB]"
+      }
+    ],
+    "description": {
+      "@en": "In a grim & perilous world, the gods have grown distant, only answering the prayers of their most faithful rather than appearing in the material realm as they did long ago. Many of the priests who question why this is, come to hear not their gods, but the ‘worms of ruin’ that whisper a terrible truth – the gods do not exist. Manifestations of the terrible Abyssal Princes of the endless pit, these worms convince such priests that their life-long faith has been a lie, their true devotion to a clever ruse created by the forces of chaos and they are the only true deities. With this realization, the faith that these priests had in the gods grows loathsome and twisted and they become Dark Disciples. Some wander from town to town as crazed scaremongers, preaching the end of reality as we know it; some reject the gods entirely, coming to see themselves as the focus of earthly god-like might; others simply supplicate themselves before the newly-revealed Abyssal powers.\nDark Disciples must hide their change in faith, as even the hint of their worshipping Abyssal powers is reason enough for them to be burned at the stake. Yet when their Abyssal masters actively respond to them in ways their former gods no longer do, Dark Disciples have little choice but to look over the edge of ruin, staring into the ever-roiling maw of the Abyss and questioning not whether, but when, to jump. Only the strongest and most insane resist the call while still trying to make sense of its whispering. Most though, will eventually plunge head first into the sickening, torturous and bloodsoaked orgy that is the realm of the Abyss, fully wrapped in its dark embrace."
+    },
+    "drawback": {
+      "linkedId": null,
+      "name": "Diabolical Mark"
+    },
+    "expert": {
+      "requirements": "You must possess at least two Skill Ranks in Incantation in order to enter this Expert Profession. In addition, you must have the Special Trait of Divine Magick.",
+      "value": true
+    },
+    "notes": "",
+    "professionalTrait": {
+      "linkedId": null,
+      "name": "Faustian Bargain"
+    },
+    "skillRanks": [
+      {
+        "name": "Disguise"
+      },
+      {
+        "name": "Education"
+      },
+      {
+        "name": "Folklore"
+      },
+      {
+        "name": "Heal"
+      },
+      {
+        "name": "Incantation"
+      },
+      {
+        "name": "Leadership"
+      },
+      {
+        "name": "Rumor"
+      },
+      {
+        "name": "Scrutinize"
+      },
+      {
+        "name": "Simple Melee"
+      },
+      {
+        "name": "Stealth"
+      }
+    ],
+    "specialTrait": {
+      "linkedId": null,
+      "name": "Divine Mastery"
+    },
+    "talents": [
+      {
+        "linkedId": null,
+        "name": "Doppelganger"
+      },
+      {
+        "linkedId": null,
+        "name": "Indifference"
+      },
+      {
+        "linkedId": null,
+        "name": "Left-handed Path"
+      }
+    ],
+    "tier": ""
+  },
+  "effects": [],
+  "flags": {
+    "zweihander": {}
+  },
+  "folder": null,
+  "img": "systems/zweihander/assets/icons/dark-disciple.svg",
+  "name": "Dark Disciple",
+  "permission": {
+    "9cilLhNTlIyJpmtZ": 3,
+    "default": 0
+  },
+  "sort": 0,
+  "type": "profession"
+}

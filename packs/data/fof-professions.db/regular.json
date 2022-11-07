@@ -1,0 +1,121 @@
+{
+  "_id": "IE5InKOyQFNY7MFV",
+  "data": {
+    "archetype": "Warrior Profession",
+    "bonusAdvances": [
+      {
+        "name": "[AB]"
+      },
+      {
+        "name": "[BB]"
+      },
+      {
+        "name": "[BB]"
+      },
+      {
+        "name": "[CB]"
+      },
+      {
+        "name": "[CB]"
+      },
+      {
+        "name": "[IB]"
+      },
+      {
+        "name": "[WB]"
+      }
+    ],
+    "description": {
+      "@en": "<p>Since an early age, my life has been dedicated to war. Signing up or being pressed into the military has left an indelible mark upon me. I grew up on the battlefield, drilled into a precise cog that whirs in the military&rsquo;s great machine. My musket and I are one, and together, we&rsquo;ve slain many enemies. I never willingly think about the human cost of my profession, nor do I think about the stain upon my soul, which indeed grows greater every time I dispatch another foe. I know my hands are soaked in blood, and if I were honest with myself, the terror of it haunts me every night when it grows dark.</p>\n<p>I no longer see others as innocent, as I have learned through challenging experience that everyone is a potential enemy. For every person I meet, I think about how best to overpower them or kill them if need be. Now there is a new war coming, and I relish it. The tensions are growing between the Rebels and Loyalists, and I know within my bones that soon I shall be on the battlefield again. Very soon, my peace shall come.</p>"
+    },
+    "drawback": {
+      "linkedId": null,
+      "name": "Guiltless"
+    },
+    "expert": {
+      "requirements": "",
+      "value": false
+    },
+    "notes": "",
+    "professionalTrait": {
+      "linkedId": null,
+      "name": "Death Proof"
+    },
+    "skillRanks": [
+      {
+        "name": "Athletics"
+      },
+      {
+        "name": "Interrogation"
+      },
+      {
+        "name": "Intimidate"
+      },
+      {
+        "name": "Martial Melee"
+      },
+      {
+        "name": "Martial Ranged"
+      },
+      {
+        "name": "Resolve"
+      },
+      {
+        "name": "Simple Melee"
+      },
+      {
+        "name": "Simple Ranged"
+      },
+      {
+        "name": "Toughness"
+      },
+      {
+        "name": "Warfare"
+      }
+    ],
+    "specialTrait": {
+      "linkedId": null,
+      "name": ""
+    },
+    "talents": [
+      {
+        "linkedId": null,
+        "name": "Friendly Fire"
+      },
+      {
+        "linkedId": null,
+        "name": "Militaristic"
+      },
+      {
+        "linkedId": null,
+        "name": "Under the Gun"
+      }
+    ],
+    "tier": ""
+  },
+  "effects": [],
+  "flags": {
+    "cf": {
+      "color": "#000000",
+      "id": null,
+      "path": "FOF Professions#/CF_SEP/Warrior Professions"
+    },
+    "core": {
+      "sourceId": "Compendium.zweihander.professions.RmnnQeZxr0JVApTJ"
+    },
+    "scene-packer": {
+      "hash": "08cb0bc2b9adf952d07869caaaef620645826ea0",
+      "sourceId": "Item.IK5K83caK6CE9Kte"
+    },
+    "zweihander": {}
+  },
+  "folder": null,
+  "img": "systems/zweihander/assets/icons/abstract-082.svg",
+  "name": "Regular",
+  "permission": {
+    "VOagSWOxwT3osUDT": 3,
+    "default": 0
+  },
+  "sort": 0,
+  "type": "profession"
+}

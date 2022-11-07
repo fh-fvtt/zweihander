@@ -1,0 +1,121 @@
+{
+  "_id": "718t3CN8ly1RB7Qz",
+  "data": {
+    "archetype": "Frontier Profession",
+    "bonusAdvances": [
+      {
+        "name": "[FB]"
+      },
+      {
+        "name": "[FB]"
+      },
+      {
+        "name": "[IB]"
+      },
+      {
+        "name": "[IB]"
+      },
+      {
+        "name": "[PB]"
+      },
+      {
+        "name": "[PB]"
+      },
+      {
+        "name": "[WB]"
+      }
+    ],
+    "description": {
+      "@en": "<p>The farmer plants, the fisher fishes and the hunter hunts. All three work to provide for those who hunger and to ensure that bellies are full. That might be good enough for those in the rural areas, but that backward frontier-folk hardly ever think of us folks in the city. That is where I come in as a grocer&mdash;I buy foodstuffs for a low price and sell it at a profit for those incapable of producing their own. Yes, I am a split fig, and some may malign me for marking up the price on essential items. Yet in times like these, every coin counts when it comes to weathering the coming storm.</p>\n<p>There is trouble lately, and not just in the cities. This trouble is not only the never-ending rise in taxes or the growing tensions between the Loyalists and the Rebels. No, the problem is much more sinister. Crops are yielding less, the fish are getting smaller and meat is getting harder to acquire. Worse yet, I am hearing concerning rumors of strange people and creatures stalking the night. Disappearances, t errifying noises, strange lights and chanting from the woods. This all adds up to one thing: evil.</p>"
+    },
+    "drawback": {
+      "linkedId": null,
+      "name": "Out of my Depth"
+    },
+    "expert": {
+      "requirements": "",
+      "value": false
+    },
+    "notes": "",
+    "professionalTrait": {
+      "linkedId": null,
+      "name": "A Fair Price"
+    },
+    "skillRanks": [
+      {
+        "name": "Awareness"
+      },
+      {
+        "name": "Bargain"
+      },
+      {
+        "name": "Counterfeit"
+      },
+      {
+        "name": "Gamble"
+      },
+      {
+        "name": "Guile"
+      },
+      {
+        "name": "Rumor"
+      },
+      {
+        "name": "Scrutinize"
+      },
+      {
+        "name": "Simple Melee"
+      },
+      {
+        "name": "Simple Ranged"
+      },
+      {
+        "name": "Tradecraft"
+      }
+    ],
+    "specialTrait": {
+      "linkedId": null,
+      "name": ""
+    },
+    "talents": [
+      {
+        "linkedId": null,
+        "name": "Arithmetic"
+      },
+      {
+        "linkedId": null,
+        "name": "Hobnobbery"
+      },
+      {
+        "linkedId": null,
+        "name": "Role Reversal"
+      }
+    ],
+    "tier": ""
+  },
+  "effects": [],
+  "flags": {
+    "cf": {
+      "color": "#000000",
+      "id": null,
+      "path": "FOF Professions#/CF_SEP/Frontier Professions"
+    },
+    "core": {
+      "sourceId": "Compendium.zweihander.professions.RmnnQeZxr0JVApTJ"
+    },
+    "scene-packer": {
+      "hash": "a960501916a67a637e9354bd27bb909c0f510752",
+      "sourceId": "Item.HxYcPs0siuOq06JY"
+    },
+    "zweihander": {}
+  },
+  "folder": null,
+  "img": "systems/zweihander/assets/icons/abstract-082.svg",
+  "name": "Greengrocer",
+  "permission": {
+    "VOagSWOxwT3osUDT": 3,
+    "default": 0
+  },
+  "sort": 0,
+  "type": "profession"
+}

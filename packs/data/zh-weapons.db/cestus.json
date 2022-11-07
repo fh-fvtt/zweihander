@@ -1,0 +1,56 @@
+{
+  "_id": "OibFhslX2LjbvCxC",
+  "data": {
+    "associatedSkill": "Simple Melee",
+    "damage": {
+      "associatedPrimaryAttribute": "Brawn",
+      "formula": "[BB] + (1+[#])d6x6"
+    },
+    "description": {
+      "@en": "<p>A battle glove with hardened iron around the knuckles, a cestus is perfect for beating others to a bloody pulp. Usually, they are seen as &lsquo;against the rules&rsquo; in street brawls.</p>"
+    },
+    "details": {
+      "category": {
+        "@en": ""
+      }
+    },
+    "distance": "Engaged",
+    "encumbrance": 1,
+    "equipped": false,
+    "handling": "One-handed",
+    "load": 0,
+    "notes": null,
+    "price": {
+      "bp": "8",
+      "gc": "0",
+      "ss": "0"
+    },
+    "qualities": {
+      "arrayOfValues": [],
+      "value": "Light, Pummeling"
+    },
+    "weaponType": "Brawling"
+  },
+  "effects": [],
+  "flags": {
+    "core": {
+      "sheetClass": "zweihander.FlexdarkZweihanderItemSheet",
+      "sourceId": "Item.4A0dpsCmYX0R0cTN"
+    },
+    "exportSource": {
+      "coreVersion": "0.8.9",
+      "system": "zweihander",
+      "systemVersion": "0.3.30",
+      "world": "talron2"
+    }
+  },
+  "folder": null,
+  "img": "systems/zweihander/assets/icons/mailed-fist.svg",
+  "name": "Cestus",
+  "permission": {
+    "JyjuBRFhP4y9QWxg": 3,
+    "default": 0
+  },
+  "sort": 0,
+  "type": "weapon"
+}

@@ -1,0 +1,121 @@
+{
+  "_id": "I5rfMQws2aOgpsMh",
+  "data": {
+    "archetype": "Urbane Profession",
+    "bonusAdvances": [
+      {
+        "name": "[AB]"
+      },
+      {
+        "name": "[FB]"
+      },
+      {
+        "name": "[FB]"
+      },
+      {
+        "name": "[IB]"
+      },
+      {
+        "name": "[IB]"
+      },
+      {
+        "name": "[PB]"
+      },
+      {
+        "name": "[WB]"
+      }
+    ],
+    "description": {
+      "@en": "<p>A Lawyer uses the word of law to advocate for the guilty and innocent, but I am the true impartial arbiter of the law. It is my duty to know the law inside and out and have the prudence to apply it fairly. My task is not an easy or popular one due to the simple fact that the law must have no prejudice or bias. I spent years in school and as a lawyer myself to represent the government and its laws as fairly as possible, and the summation of my learning is this: justice is simply a matter of true or false&mdash;nothing more, and nothing less.</p>\n<p>It is hard not to notice the growing tensions and how they are boiling over into those eager to break the law. Laws rule society, and society creates the very means to judge those who refuse to obey these laws. I do not care about tax increases or royal blockades&mdash;the law created them, and so they must be upheld. Those who break the law break the contract we all make to our society. It doesn&rsquo;t matter which side of the conflict is right. Whether they be Rebels or the Loyalists, they all break the law and in my eyes, are all equally guilty.</p>"
+    },
+    "drawback": {
+      "linkedId": null,
+      "name": "Even-Handed"
+    },
+    "expert": {
+      "requirements": "",
+      "value": false
+    },
+    "notes": "",
+    "professionalTrait": {
+      "linkedId": null,
+      "name": "Judgment is Here"
+    },
+    "skillRanks": [
+      {
+        "name": "Awareness"
+      },
+      {
+        "name": "Bargain"
+      },
+      {
+        "name": "Education"
+      },
+      {
+        "name": "Guile"
+      },
+      {
+        "name": "Interrogation"
+      },
+      {
+        "name": "Leadership"
+      },
+      {
+        "name": "Ride"
+      },
+      {
+        "name": "Rumor"
+      },
+      {
+        "name": "Simple Melee"
+      },
+      {
+        "name": "Toughness"
+      }
+    ],
+    "specialTrait": {
+      "linkedId": null,
+      "name": ""
+    },
+    "talents": [
+      {
+        "linkedId": null,
+        "name": "Ebb & Flow"
+      },
+      {
+        "linkedId": null,
+        "name": "Sagacity"
+      },
+      {
+        "linkedId": null,
+        "name": "Trivium"
+      }
+    ],
+    "tier": ""
+  },
+  "effects": [],
+  "flags": {
+    "cf": {
+      "color": "#000000",
+      "id": null,
+      "path": "FOF Professions#/CF_SEP/Urbane Professions"
+    },
+    "core": {
+      "sourceId": "Compendium.zweihander.professions.RmnnQeZxr0JVApTJ"
+    },
+    "scene-packer": {
+      "hash": "c78174bc72705300b6da0bfe12dcc6617d5b32cf",
+      "sourceId": "Item.30kPpYG6bzESzCpc"
+    },
+    "zweihander": {}
+  },
+  "folder": null,
+  "img": "systems/zweihander/assets/icons/abstract-082.svg",
+  "name": "Magistrate",
+  "permission": {
+    "VOagSWOxwT3osUDT": 3,
+    "default": 0
+  },
+  "sort": 0,
+  "type": "profession"
+}

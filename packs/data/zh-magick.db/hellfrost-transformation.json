@@ -1,0 +1,40 @@
+{
+  "_id": "FG0Ob8R84rjIk72R",
+  "data": {
+    "castingCost": 0,
+    "castingTime": "1 min",
+    "description": {
+      "@en": "Within a whorl of ice and snow, your form grows to such immensity that it is no longer yours. Your body transmutates into a living thing of frozen terror!"
+    },
+    "distance": "Yourself",
+    "duration": "9+[WB] minutes",
+    "notes": "",
+    "principle": "Greater",
+    "rules": {
+      "criticalFailure": {
+        "@en": "Your half-frozen form temporarily explodes into a bizarre amalgam of fleshy whips and monster: your head turns to the shape of a gaping maw, your teats turn into child-like hands and your legs into prehensile, purple tails. Those who behold your countenance must succeed at a Resolve Test or else they suffer from Terror. In addition, you must succeed at a Toughness Test or else be immediately Slain! (unless you have a Fate Point to expend). If you succeed, you return to your normal self, but are left Prone and Incapacitated!"
+      },
+      "criticalSuccess": {
+        "@en": "As above, but triple the Duration."
+      },
+      "effect": {
+        "@en": "After successfully casting this spell, both you and all the trappings upon yourself take the shape of an avatar of the Witch-Queen. Temporarily replace your Character sheet with the creature profile of a Fomori Crone, gaining its benefits and drawbacks. If you suffer an Injury during this time, the Magick spell immediately ends."
+      },
+      "reagents": {
+        "@en": "A wand made from the humerus of a Fomori Crone, held aloft"
+      }
+    },
+    "tradition": "Covenant"
+  },
+  "effects": [],
+  "flags": {},
+  "folder": null,
+  "img": "systems/zweihander/assets/icons/wizard-staff.svg",
+  "name": "Hellfrost Transformation",
+  "permission": {
+    "4be9WK4Hp7jWrwWe": 3,
+    "default": 0
+  },
+  "sort": 0,
+  "type": "spell"
+}

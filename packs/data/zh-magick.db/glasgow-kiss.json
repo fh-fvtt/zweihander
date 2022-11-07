@@ -1,0 +1,40 @@
+{
+  "_id": "afoek4MMrkyK0krM",
+  "data": {
+    "castingCost": 0,
+    "castingTime": "1 min",
+    "description": {
+      "@en": "As your eyes widen and you ready yourself to headbutt your enemy, you draw your head back and scream the name of your daemon. as your head smashes into the other person, a loud ‘crack!’ resounds in the air."
+    },
+    "distance": "Any one person you can touch",
+    "duration": "Instantaneous",
+    "notes": "",
+    "principle": "Petty",
+    "rules": {
+      "criticalFailure": {
+        "@en": "Staggering forward, you immediately invoke an Opportunity Attack. If you suffer Damage from this attack, you are both Stunned and but are left Prone. You are also left with a really bad headache."
+      },
+      "criticalSuccess": {
+        "@en": "As above, but the foe is also left Prone if they fail to Resist."
+      },
+      "effect": {
+        "@en": "After successfully casting this spell, the person you touch must Resist with a successful Coordination Test or else suffer [[/roll 1D10]]+[WB] in Damage and be Stunned."
+      },
+      "reagents": {
+        "@en": "A broken skull of a Slain! foe"
+      }
+    },
+    "tradition": "Covenant"
+  },
+  "effects": [],
+  "flags": {},
+  "folder": null,
+  "img": "systems/zweihander/assets/icons/wizard-staff.svg",
+  "name": "Glasgow Kiss",
+  "permission": {
+    "4be9WK4Hp7jWrwWe": 3,
+    "default": 0
+  },
+  "sort": 0,
+  "type": "spell"
+}

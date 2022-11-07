@@ -1,0 +1,40 @@
+{
+  "_id": "c7gJRQwLDOk49na8",
+  "data": {
+    "castingCost": 0,
+    "castingTime": "1 min",
+    "description": {
+      "@en": "You chant over a crowd of people, making them calm as sheep. Some even fall asleep, so enchanting are your words."
+    },
+    "distance": "Any persons you can see",
+    "duration": "[WB]+9 minutes",
+    "notes": "",
+    "principle": "Greater",
+    "rules": {
+      "criticalFailure": {
+        "@en": "As you invoke the walk of sleep among the throng, they grow incensed. Suddenly, you find yourself in a situation that begins to spiral out of control! You are left Helpless for the spell’s Duration against those who you intended to use this Magick against."
+      },
+      "criticalSuccess": {
+        "@en": "As above, but the affected automatically fail to Resist."
+      },
+      "effect": {
+        "@en": "After successfully casting this spell, a number of foes equal to your [FB] who can see and hear you suffer a -30 Base Chance to Resolve Tests. In addition, those who fail to immediately Resist with a Resolve Test are left Helpless for the spell’s Duration."
+      },
+      "reagents": {
+        "@en": "A handful of powdered gold, poured onto the ground (expended)"
+      }
+    },
+    "tradition": "Divine (Custodian)"
+  },
+  "effects": [],
+  "flags": {},
+  "folder": null,
+  "img": "systems/zweihander/assets/icons/wizard-staff.svg",
+  "name": "Sleepwalker",
+  "permission": {
+    "9cilLhNTlIyJpmtZ": 3,
+    "default": 0
+  },
+  "sort": 0,
+  "type": "spell"
+}

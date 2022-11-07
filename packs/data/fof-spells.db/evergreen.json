@@ -1,0 +1,53 @@
+{
+  "_id": "iQu2cYH6w3cXB5q8",
+  "data": {
+    "castingCost": 2,
+    "castingTime": "1 Minute",
+    "description": {
+      "@en": "<p>The earth laughs in flowers . . .</p>"
+    },
+    "distance": "By Touch",
+    "duration": "6+[WB] days",
+    "notes": "",
+    "principle": "Intermediate Tier",
+    "rules": {
+      "criticalFailure": {
+        "@en": "The plants immediately die, and the earth where they grew is salted forever, as nothing can grow there ever again."
+      },
+      "criticalSuccess": {
+        "@en": "You can cast Evergreen on 9+[WB] plants instead."
+      },
+      "effect": {
+        "@en": "<p>After successfully casting, a number of plants equal to 6+[WB] cannot wither or die through normal means, remaining perfectly preserved.</p>"
+      },
+      "reagents": {
+        "@en": "Any plant you touch and a pinprick of your own blood"
+      }
+    },
+    "tradition": "Common"
+  },
+  "effects": [],
+  "flags": {
+    "cf": {
+      "color": "#000000",
+      "id": null,
+      "path": "FOF Spells#/CF_SEP/Common Spells"
+    },
+    "core": {
+      "sourceId": "Item.opcupO2BLpL53Sdg"
+    },
+    "scene-packer": {
+      "hash": "1f9f42a5ccec343e32a63de1089f927f62532f98",
+      "sourceId": "Item.6TNSrXau8F2Cs3yc"
+    }
+  },
+  "folder": null,
+  "img": "systems/zweihander/assets/icons/spell-book.svg",
+  "name": "Evergreen",
+  "permission": {
+    "VOagSWOxwT3osUDT": 3,
+    "default": 0
+  },
+  "sort": 0,
+  "type": "spell"
+}

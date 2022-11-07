@@ -1,0 +1,46 @@
+{
+  "_id": "a9jaE5xFQx2bcPX4",
+  "data": {
+    "active": false,
+    "description": {
+      "@en": ""
+    },
+    "notes": "<p>Injuries vary by three types: Moderate, Serious and Grievous Injuries. When determining an Injury, roll a D100, referring to the relevant table below. In addition, player characters gain 3 Conflict for Moderate Injuries, 6 Conflict for Serious Injuries and 9 Conflict for Grievous Injuries. Finally, combatants cannot heal their Damage &amp; Peril Condition Tracks until Injuries are in Recuperation.</p>",
+    "rules": {
+      "effect": {
+        "@en": "<p>You are Bleeding. A caregiver must Treat Injury. Until fully Recuperated, you suffer 1D10+1 Peril after reading and writing.</p>"
+      }
+    },
+    "severity": 0
+  },
+  "effects": [],
+  "flags": {
+    "cf": {
+      "color": "#000000",
+      "id": null,
+      "path": "FOF Injuries#/CF_SEP/Moderate Injuries"
+    },
+    "core": {
+      "sourceId": "Compendium.zweihander.injuries.pMHUxC35U5RHDI7K"
+    },
+    "exportSource": {
+      "coreVersion": "0.8.9",
+      "system": "zweihander",
+      "systemVersion": "0.3.30",
+      "world": "talron2"
+    },
+    "scene-packer": {
+      "hash": "2d8c2767caeed89a2160455b76da85b43e7209b4",
+      "sourceId": "Item.k9DbxXP3f3lTYZsd"
+    }
+  },
+  "folder": null,
+  "img": "systems/zweihander/assets/icons/arm-bandage.svg",
+  "name": "Swollen Eyelid",
+  "permission": {
+    "VOagSWOxwT3osUDT": 3,
+    "default": 0
+  },
+  "sort": 0,
+  "type": "injury"
+}

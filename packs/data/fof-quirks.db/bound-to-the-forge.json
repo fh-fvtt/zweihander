@@ -1,0 +1,33 @@
+{
+  "_id": "kQtqre2uwF0Awt7P",
+  "data": {
+    "description": {
+      "@en": "<p><em>You have spent most of your life in a space filled with fumes, </em><em>liquids and the forge&rsquo;s heat.</em></p>"
+    },
+    "notes": "<p>Whenever you acquire a Trait, it is paired with a Quirk which comes at no additional RP cost. The Quirk immediately follows the Profession&rsquo;s Trait effects.&nbsp;</p>\n<p>After you&rsquo;ve bought all Profession Abilities from your Profession, you are ready to move onto the next Tier. As a reward, you can remove your Tier Profession&rsquo;s Quirk, as your character has overcome its adverse effects throughout the story.</p>",
+    "rules": {
+      "effect": {
+        "@en": "<p>Whenever you engage in physical activities such as running, jumping and climbing, you must flip the results to fail Brawn-based Skill Tests.</p>"
+      }
+    }
+  },
+  "effects": [],
+  "flags": {
+    "core": {
+      "sourceId": "Compendium.zweihander.drawbacks.v2PvssHRQo2MuuBt"
+    },
+    "scene-packer": {
+      "hash": "e626a6fc764ac1be6d847b16a26ae335913d695b",
+      "sourceId": "Item.kQtqre2uwF0Awt7P"
+    }
+  },
+  "folder": null,
+  "img": "systems/zweihander/assets/icons/spiked-halo.svg",
+  "name": "Bound to the Forge",
+  "permission": {
+    "VOagSWOxwT3osUDT": 3,
+    "default": 0
+  },
+  "sort": 0,
+  "type": "drawback"
+}

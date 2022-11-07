@@ -1,0 +1,40 @@
+{
+  "_id": "k5GoUVUhHZ2rQeNP",
+  "data": {
+    "castingCost": 0,
+    "castingTime": "1 min",
+    "description": {
+      "@en": "An ephemeral, skeletal head of a Jurassic-era creature takes shape over your throwing axe. Its eye sockets and maw drips endlessly with steaming asphalt."
+    },
+    "distance": "Yourself",
+    "duration": "9+[WB] minutes",
+    "notes": "",
+    "principle": "Greater",
+    "rules": {
+      "criticalFailure": {
+        "@en": "Kaaleb’s sickle thirsts for you! You immediately suffer [[/roll 3D10+3]] Damage."
+      },
+      "criticalSuccess": {
+        "@en": "As above, but victims cannot Dodge or Parry this attack."
+      },
+      "effect": {
+        "@en": "After successfully casting this spell, a ghastly pterodactyl-like head extends from the end of your sickle. The sickle is a one-handed melee and ranged weapon, with the Throwing and Vicious Qualities. When thrown, it has a Distance of 3+[PB] yards and a Load of 1AP. Instead of using your [CB], refer to your [WB] to determine Damage. Whenever you strike or Parry with this weapon, refer to your Incantation Skill instead of a Combat-based Skill. After throwing this weapon, it automatically returns to your hand. You can inflict Injuries with this Magick, but they are Disarmed instead. If it inflicts an Injury upon a foe who is classified as Abyssal or is an occultist to any one of the Abyssal Princes, roll [[/roll 3D6]] Chaos Dice. If any of the Chaos Dice result in face ‘6’, they are immediately Slain! For every foe Slain! in this fashion, you must sacrifice one Fate Point. If you have no Fate Points, you gain 9 Corruption instead."
+      },
+      "reagents": {
+        "@en": "A sickle made from ironwood, held aloft"
+      }
+    },
+    "tradition": "Covenant"
+  },
+  "effects": [],
+  "flags": {},
+  "folder": null,
+  "img": "systems/zweihander/assets/icons/wizard-staff.svg",
+  "name": "Kaaleb’s Thirst",
+  "permission": {
+    "4be9WK4Hp7jWrwWe": 3,
+    "default": 0
+  },
+  "sort": 0,
+  "type": "spell"
+}

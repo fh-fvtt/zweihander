@@ -1,0 +1,40 @@
+{
+  "_id": "ezvpe6RDUEk2FNbQ",
+  "data": {
+    "castingCost": 0,
+    "castingTime": "1 min",
+    "description": {
+      "@en": "An Ætheric binding of chaotic energy immediately binds a person’s wrists behind their back and above their shoulders, as their legs are spread apart."
+    },
+    "distance": "Any one person you can see",
+    "duration": "6+[WB] minutes",
+    "notes": "",
+    "principle": "Lesser",
+    "rules": {
+      "criticalFailure": {
+        "@en": "You are suddenly surrounded by an array of phallic-shaped rods which thrust up from the ground, criss-crossing each other as they rip through your clothing, holding you in place and leaving you Helpless. To escape, you must attempt to Resist with a successful Toughness Test. Each time you fail, you feel the ‘prick’ of metal sticking into you; you suffer [[/roll 2D10]]+[WB] physical Peril."
+      },
+      "criticalSuccess": {
+        "@en": "As above, but your foe is also left Helpless."
+      },
+      "effect": {
+        "@en": "After successfully casting this spell, a foe who can see and hear you is immediately caught in a Chokehold. They suffer [[/roll 2D10]]+[WB] physical Peril immediately (instead of the normal Peril suffered for Chokehold) and every Turn after that they are unable to escape. An escape attempt can be made at the beginning of their Turn, but they must flip the results to fail their Skill Test."
+      },
+      "reagents": {
+        "@en": "A three-yard length of rope, woven from the scalps of nine prostitutes"
+      }
+    },
+    "tradition": "Covenant"
+  },
+  "effects": [],
+  "flags": {},
+  "folder": null,
+  "img": "systems/zweihander/assets/icons/wizard-staff.svg",
+  "name": "Ætheric Strappado",
+  "permission": {
+    "4be9WK4Hp7jWrwWe": 3,
+    "default": 0
+  },
+  "sort": 0,
+  "type": "spell"
+}

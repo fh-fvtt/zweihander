@@ -1,0 +1,40 @@
+{
+  "_id": "inzEct81ar6woUiq",
+  "data": {
+    "castingCost": 0,
+    "castingTime": "1 min",
+    "description": {
+      "@en": "Blood oozes from your hand, dripping on the ground and congealing beneath your feet."
+    },
+    "distance": "Yourself",
+    "duration": "[WB]+6 minutes",
+    "notes": "",
+    "principle": "Lesser",
+    "rules": {
+      "criticalFailure": {
+        "@en": "Your hand begins to bleed, for real! You suffer from Bleeding for the Duration of the spell, or until it is stemmed."
+      },
+      "criticalSuccess": {
+        "@en": "As above, but your foes are unable to Resist this Magick."
+      },
+      "effect": {
+        "@en": "After successfully casting this spell, your hand begins to weep Ætheric blood. For the Duration of the spell, foes who attempt to target you with Attack Actions or Perilous Stunts must Resist with a Resolve Test or suffer a -20 Base Chance to strike you."
+      },
+      "reagents": {
+        "@en": "The finger bones of a murderer, held in a purse"
+      }
+    },
+    "tradition": "Divine (Crouching One)"
+  },
+  "effects": [],
+  "flags": {},
+  "folder": null,
+  "img": "systems/zweihander/assets/icons/severed-hand.svg",
+  "name": "Hand of the Murdered God",
+  "permission": {
+    "9cilLhNTlIyJpmtZ": 3,
+    "default": 0
+  },
+  "sort": 0,
+  "type": "spell"
+}

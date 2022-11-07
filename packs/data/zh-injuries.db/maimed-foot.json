@@ -1,0 +1,38 @@
+{
+  "_id": "KosEe7KkSuGG6Chf",
+  "data": {
+    "active": true,
+    "description": {
+      "@en": ""
+    },
+    "notes": "",
+    "recuperationTime": 0,
+    "rules": {
+      "effect": {
+        "@en": "Until fully Recuperated, you cannot use any weapon with an Encumbrance Value of 2 or more, as you’re in pain. You must undergo a successful surgery or suffer the consequences. Once a Maimed Foot has undergone a failed surgery, you lose 1D6-1 toes. For every toe lost, you permanently lose 1% Brawn. If you lose all toes, you gain the Veteran’s Boot Drawback. If you already have this Drawback, you permanently lose 9% Brawn."
+      }
+    },
+    "severity": 2
+  },
+  "effects": [],
+  "flags": {
+    "core": {
+      "sourceId": "Item.SLJ7uR91MyXFfvsN"
+    },
+    "exportSource": {
+      "coreVersion": "0.8.9",
+      "system": "zweihander",
+      "systemVersion": "0.3.30",
+      "world": "talron2"
+    }
+  },
+  "folder": null,
+  "img": "systems/zweihander/assets/icons/foot-plaster.svg",
+  "name": "Maimed Foot",
+  "permission": {
+    "4be9WK4Hp7jWrwWe": 3,
+    "default": 0
+  },
+  "sort": 0,
+  "type": "injury"
+}

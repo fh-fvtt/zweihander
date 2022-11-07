@@ -1,0 +1,40 @@
+{
+  "_id": "jXNE5ez2UJd9GaL0",
+  "data": {
+    "castingCost": 0,
+    "castingTime": "1 min",
+    "description": {
+      "@en": "Glowering over your hated enemies, your eyes sear with green rays of light, blinding those whom behold your sickening countenance."
+    },
+    "distance": "Yourself",
+    "duration": "Instantaneous",
+    "notes": "",
+    "principle": "Lesser",
+    "rules": {
+      "criticalFailure": {
+        "@en": "Your eyes burn with a terrible light as you are captivated by visions of your own destruction. You are made Defenseless until your next Turn and suffer from Fear."
+      },
+      "criticalSuccess": {
+        "@en": "As above, but foes cannot Resist this spell."
+      },
+      "effect": {
+        "@en": "After successfully casting this spell, foes caught in its Cone Template suffer [[/roll 2D10]]+[WB] mental Peril. In addition, they must Resist with a successful Awareness Test or be made Defenseless until their next Turn."
+      },
+      "reagents": {
+        "@en": "A monocle made from Wytchstone, worn"
+      }
+    },
+    "tradition": "Covenant"
+  },
+  "effects": [],
+  "flags": {},
+  "folder": null,
+  "img": "systems/zweihander/assets/icons/wizard-staff.svg",
+  "name": "Brain Burner",
+  "permission": {
+    "4be9WK4Hp7jWrwWe": 3,
+    "default": 0
+  },
+  "sort": 0,
+  "type": "spell"
+}

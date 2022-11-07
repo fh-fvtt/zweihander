@@ -1,0 +1,109 @@
+{
+  "_id": "u9s6SNyMkoALOG5G",
+  "data": {
+    "archetype": "Expert Profession",
+    "bonusAdvances": [
+      {
+        "name": "[IB]"
+      },
+      {
+        "name": "[FB]"
+      },
+      {
+        "name": "[FB]"
+      },
+      {
+        "name": "[PB]"
+      },
+      {
+        "name": "[PB]"
+      },
+      {
+        "name": "[WB]"
+      },
+      {
+        "name": "[WB]"
+      }
+    ],
+    "description": {
+      "@en": "Money underpins civilization and society. Gold and shillings make the wheels of commerce, the hands of power and the machinery of war turn. Money speaks to power and when it does, it is with distrust and betrayal, for there are two sides to every coin. To the Grey Guilders, priests of the trickster god the Nightfather, these two sides are commerce and trickery. They believe heavily in chance, luck, deception and the almighty crown, exalting in mischief and mayhem, with many Grey Guilders having been bards, jesters or thieves reformed and turned over a new coin or leaf. Or rather they have found faith, for ‘new leaf ’ does not mean that they have given up their old tricks. Now those are tricks dedicated to the Nightfather. Indeed, some see the Grey Guilders as nothing more than a religiously-organized thieves’ guild. Grey Guilders can only be identified by the crow’s eye carved from onyx worn around their necks. While their worship is not outlawed and every traveler says a prayer to the Nightfather for good luck, the priesthood is rarely trusted due to their furtive and unscrupulous nature.\nGrey Guilders operate and worship in independent cells, communicating with each other in their cant of slang and secret signs. They worship in secret behind the storefronts of ‘honest’ merchants, ceremonies being subtle and rare, little more than a tithe paid and a quick invocation for luck. Their prayers either confuse and misdirect or meddle directly in the flow of commerce, but whatever money is made a tithe is always paid. Grey Guilders who fall from grace embrace fully chance, decisions being made by flips of a marked coin, either to steal from you or kill you. These two-faced criminal priests are reviled and should be feared."
+    },
+    "drawback": {
+      "linkedId": null,
+      "name": "The Nightfather’s Commandments"
+    },
+    "expert": {
+      "requirements": "You must possess at least one Skill Rank in Incantation in order to enter this Expert Profession. In addition, you must have the Special Trait of Divine Magick.",
+      "value": true
+    },
+    "notes": "",
+    "professionalTrait": {
+      "linkedId": null,
+      "name": "‘x’ Marks the Spot"
+    },
+    "skillRanks": [
+      {
+        "name": "Bargain"
+      },
+      {
+        "name": "Counterfeit"
+      },
+      {
+        "name": "Eavesdrop"
+      },
+      {
+        "name": "Gamble"
+      },
+      {
+        "name": "Guile"
+      },
+      {
+        "name": "Incantation"
+      },
+      {
+        "name": "Rumor"
+      },
+      {
+        "name": "Scrutinize"
+      },
+      {
+        "name": "Simple Melee"
+      },
+      {
+        "name": "Stealth"
+      }
+    ],
+    "specialTrait": {
+      "linkedId": null,
+      "name": "Prayers of the Nightfather"
+    },
+    "talents": [
+      {
+        "linkedId": null,
+        "name": "Doppelganger"
+      },
+      {
+        "linkedId": null,
+        "name": "Gallows Humor"
+      },
+      {
+        "linkedId": null,
+        "name": "Forked Tongue"
+      }
+    ],
+    "tier": ""
+  },
+  "effects": [],
+  "flags": {
+    "zweihander": {}
+  },
+  "folder": null,
+  "img": "systems/zweihander/assets/icons/grey-guilder.svg",
+  "name": "Grey Guilder",
+  "permission": {
+    "9cilLhNTlIyJpmtZ": 3,
+    "default": 0
+  },
+  "sort": 0,
+  "type": "profession"
+}

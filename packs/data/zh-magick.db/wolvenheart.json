@@ -1,0 +1,40 @@
+{
+  "_id": "LU9eH9eNA6C05GM5",
+  "data": {
+    "castingCost": 0,
+    "castingTime": "1 min",
+    "description": {
+      "@en": "With but a touch, you instill the fury of the wolf within an ally."
+    },
+    "distance": "Any one person you can touch",
+    "duration": "[WB]+3 minutes",
+    "notes": "",
+    "principle": "Petty",
+    "rules": {
+      "criticalFailure": {
+        "@en": "Your friends are not worthy! Three random allies cannot inflict Injuries for the Duration."
+      },
+      "criticalSuccess": {
+        "@en": "As above, but you can affect up to three allies instead."
+      },
+      "effect": {
+        "@en": "After successfully casting this spell, the person you touch always inflicts Injuries whenever they reduce a foe to Moderately Wounded, Seriously Wounded or Grievously Wounded."
+      },
+      "reagents": {
+        "@en": "Three drops of a wolf ’s blood, smeared on the person (expended)"
+      }
+    },
+    "tradition": "Divine (Winter King)"
+  },
+  "effects": [],
+  "flags": {},
+  "folder": null,
+  "img": "systems/zweihander/assets/icons/wolverine-claws.svg",
+  "name": "Wolvenheart",
+  "permission": {
+    "9cilLhNTlIyJpmtZ": 3,
+    "default": 0
+  },
+  "sort": 0,
+  "type": "spell"
+}

@@ -1,0 +1,50 @@
+{
+  "_id": "spJgSx0TaVrrcQ62",
+  "data": {
+    "associatedSkill": "Simple Ranged",
+    "damage": {
+      "associatedPrimaryAttribute": "Combat",
+      "formula": "0"
+    },
+    "description": {
+      "@en": "<p>Usually used to catch fish or game, a net is perfect for entangling an enemy in order to get a few jabs in for free. It is also used in theatrical fights in arenas, oftentimes snagging a gladiator when they least expect it.</p>"
+    },
+    "distance": "1 + [PB] yard",
+    "encumbrance": 2,
+    "equipped": false,
+    "handling": "One-handed",
+    "load": 2,
+    "notes": "",
+    "price": {
+      "bp": "0",
+      "gc": "0",
+      "ss": "5"
+    },
+    "qualities": {
+      "arrayOfValues": [],
+      "value": "Entangling, Ineffective, Throwing"
+    },
+    "weaponType": "Missile"
+  },
+  "effects": [],
+  "flags": {
+    "core": {
+      "sourceId": "Item.WWY5OIrj01yUeNmA"
+    },
+    "exportSource": {
+      "coreVersion": "0.8.9",
+      "system": "zweihander",
+      "systemVersion": "0.3.30",
+      "world": "talron2"
+    }
+  },
+  "folder": null,
+  "img": "systems/zweihander/assets/icons/fishing-net.svg",
+  "name": "Net",
+  "permission": {
+    "JyjuBRFhP4y9QWxg": 3,
+    "default": 0
+  },
+  "sort": 0,
+  "type": "weapon"
+}

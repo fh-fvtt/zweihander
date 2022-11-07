@@ -1,0 +1,48 @@
+{
+  "_id": "3qJsFBKBZXAuiPg3",
+  "data": {
+    "associatedSkill": "Simple Ranged",
+    "damage": {
+      "formula": "[CB] + (1+[#])d6x1,6"
+    },
+    "description": {
+      "@en": "<p>With a 9-inch barrel length, the flintlock is the most common type of pistol found in the Colonies. Flintlocks are produced by a variety of gunsmiths, both in the Thirteen Colonies and abroad.</p>"
+    },
+    "distance": "3 + [PB] yards",
+    "encumbrance": 1,
+    "equipped": false,
+    "handling": "One-handed",
+    "load": 2,
+    "notes": "",
+    "price": {
+      "bp": "0",
+      "gc": "2",
+      "ss": "0"
+    },
+    "qualities": {
+      "arrayOfValues": [],
+      "value": "Gunpowder, Pistol, Weak"
+    },
+    "weaponType": "Ranged"
+  },
+  "effects": [],
+  "flags": {
+    "core": {
+      "sourceId": "Compendium.zweihander.weapons.bA9wnUOOtA2SKs6a"
+    },
+    "scene-packer": {
+      "defaultPermission": 3,
+      "hash": "4804092f28b27cedfca37318760d75f0eeaabf05",
+      "sourceId": "Item.3qJsFBKBZXAuiPg3"
+    }
+  },
+  "folder": null,
+  "img": "systems/zweihander/assets/icons/gunshot.svg",
+  "name": "Flintlock Pistol",
+  "permission": {
+    "VOagSWOxwT3osUDT": 3,
+    "default": 0
+  },
+  "sort": 0,
+  "type": "weapon"
+}

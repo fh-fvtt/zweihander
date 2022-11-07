@@ -1,0 +1,121 @@
+{
+  "_id": "mlOHRjrem3p0Qo7p",
+  "data": {
+    "archetype": "Urbane Profession",
+    "bonusAdvances": [
+      {
+        "name": "[AB]"
+      },
+      {
+        "name": "[FB]"
+      },
+      {
+        "name": "[FB]"
+      },
+      {
+        "name": "[IB]"
+      },
+      {
+        "name": "[PB]"
+      },
+      {
+        "name": "[PB]"
+      },
+      {
+        "name": "[WB]"
+      }
+    ],
+    "description": {
+      "@en": "<p>I am an artisan, and my fellow artisans and I take pride in the works of art we create every day. My specialty is the humble hat, which is so much more than a head covering. There is purity and honor in working with ones&rsquo; hands to create something that people need. You may think a hat is a plebian item, but all manner of folk wear them upon their heads. I know deep within my soul that the crafting of a hat is a pure art form. Stone, tin and gold are of course beautiful mediums, but there is a subtle grace in the art of felt and leather.</p>\n<p>Like many, it is hard for me not to notice the rising tensions. These tensions are amongst my fellow Milliners, as well as between the Loyalists and Rebels. I really do not know what to think about all of this, and I&rsquo;m not sure if I should have an opinion. My craft involves no bloodshed, save a few pricked fingers, and swears no fealty to any side, but I will lose business whichever way this conflict goes. I worry most for the small crafters such as myself who are caught in the middle of a mess that none of us asked for.</p>"
+    },
+    "drawback": {
+      "linkedId": null,
+      "name": "Mad Hatter Syndrome"
+    },
+    "expert": {
+      "requirements": "",
+      "value": false
+    },
+    "notes": "",
+    "professionalTrait": {
+      "linkedId": null,
+      "name": "It's Just Business"
+    },
+    "skillRanks": [
+      {
+        "name": "Awareness"
+      },
+      {
+        "name": "Bargain"
+      },
+      {
+        "name": "Counterfeit"
+      },
+      {
+        "name": "Eavesdrop"
+      },
+      {
+        "name": "Folklore"
+      },
+      {
+        "name": "Guile"
+      },
+      {
+        "name": "Ride"
+      },
+      {
+        "name": "Rumor"
+      },
+      {
+        "name": "Simple Ranged"
+      },
+      {
+        "name": "Tradecraft"
+      }
+    ],
+    "specialTrait": {
+      "linkedId": null,
+      "name": ""
+    },
+    "talents": [
+      {
+        "linkedId": null,
+        "name": "Costuming"
+      },
+      {
+        "linkedId": null,
+        "name": "Hobnobbery"
+      },
+      {
+        "linkedId": null,
+        "name": "Tailoring"
+      }
+    ],
+    "tier": ""
+  },
+  "effects": [],
+  "flags": {
+    "cf": {
+      "color": "#000000",
+      "id": null,
+      "path": "FOF Professions#/CF_SEP/Urbane Professions"
+    },
+    "core": {
+      "sourceId": "Compendium.zweihander.professions.RmnnQeZxr0JVApTJ"
+    },
+    "scene-packer": {
+      "hash": "d441782d56c4cb50225c9dd46b739e47ab7d5228",
+      "sourceId": "Item.gV1Tc9Tr8C5TXpAb"
+    },
+    "zweihander": {}
+  },
+  "folder": null,
+  "img": "systems/zweihander/assets/icons/abstract-082.svg",
+  "name": "Milliner",
+  "permission": {
+    "VOagSWOxwT3osUDT": 3,
+    "default": 0
+  },
+  "sort": 0,
+  "type": "profession"
+}

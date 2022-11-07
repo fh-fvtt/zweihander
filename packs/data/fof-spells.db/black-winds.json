@@ -1,0 +1,53 @@
+{
+  "_id": "9SHRAne6PiZngHwI",
+  "data": {
+    "castingCost": 1,
+    "castingTime": "1 Minute",
+    "description": {
+      "@en": "<p>I call upon you, oh spirits, to keep mine enemies at bay!</p>"
+    },
+    "distance": "Cone Template, extending from you",
+    "duration": "Instantaneous",
+    "notes": "",
+    "principle": "Basic Tier",
+    "rules": {
+      "criticalFailure": {
+        "@en": "The dirt whirls above you, and knocks you and everyone around you in a Burst Template off their feet Prone. Everyone caught in a Burst Template suffers [[/roll 2D10+1]] Peril."
+      },
+      "criticalSuccess": {
+        "@en": "They also suffer [[/roll 1D10+1]] Peril."
+      },
+      "effect": {
+        "@en": "<p>After successfully casting (and those caught in a Cone Template cannot or fail to Resist using Coordination), they are pushed backward 3+[WB] yards.</p>"
+      },
+      "reagents": {
+        "@en": "Grave dirt gathered from the recently buried dead, thrown overhead"
+      }
+    },
+    "tradition": "Black & White"
+  },
+  "effects": [],
+  "flags": {
+    "cf": {
+      "color": "#000000",
+      "id": null,
+      "path": "FOF Spells#/CF_SEP/Black & White Spells"
+    },
+    "core": {
+      "sourceId": "Compendium.zweihander.magick.zfw4EhNqq3sJRnbQ"
+    },
+    "scene-packer": {
+      "hash": "f4ef7c789b383164213c7e545d9f85c2a83eccc1",
+      "sourceId": "Item.zt7SyIDyu4Rrb8Sq"
+    }
+  },
+  "folder": null,
+  "img": "systems/zweihander/assets/icons/concentric-crescents.svg",
+  "name": "Black Winds",
+  "permission": {
+    "VOagSWOxwT3osUDT": 3,
+    "default": 0
+  },
+  "sort": 0,
+  "type": "spell"
+}

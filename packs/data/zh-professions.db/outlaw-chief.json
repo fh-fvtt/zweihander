@@ -1,0 +1,109 @@
+{
+  "_id": "3N0orGj8vXFLhVNk",
+  "data": {
+    "archetype": "Expert Profession",
+    "bonusAdvances": [
+      {
+        "name": "[BB]"
+      },
+      {
+        "name": "[CB]"
+      },
+      {
+        "name": "[CB]"
+      },
+      {
+        "name": "[FB]"
+      },
+      {
+        "name": "[FB]"
+      },
+      {
+        "name": "[IB]"
+      },
+      {
+        "name": "[WB]"
+      }
+    ],
+    "description": {
+      "@en": "In a grim & perilous world, the roadways are no longer safe – at least for the rich. Bushwackers and blackguards of all stripe make their coin off of the misfortunes of the wealthy, but in times of war, they need coordination to avoid the swords and spears of imperial armies. That is why many brigands come together to form gangs and from their ranks pick an Outlaw Chief – someone crafty, ruthless and larger than life. The Outlaw Chief takes a share of everyone’s plunder in exchange for their expertise in cunning and derring-do. A shrewd leader can quickly raise one of these bands to legendary status, being viewed as champions of the small folk who rob from the rich and give to the poor. While a few Outlaw Chiefs do take pride in protecting the downtrodden and destroying the rich, many are just opportunists who see the Lowborn as… well, too poor to bother with.\\nThe Outlaw Chief is nothing if not paranoid – many of their followers are jealous of their position of power and will stop at nothing to usurp or simply kill their leader in order to assume their mantle as chief. Outlaw justice and succession rules are often brutal and cutthroat, so there is no fear of reprimand by shoving a knife in the back of a rival or a silent death in the rival’s sleep. Those Outlaw Chiefs who become too obsessed with watching their own backs grow to be extremely delusional, suspecting even their most trusted friends of conspiracy. Many will even begin preying on their own, dispatching ‘trusted’ outlaws to haunt the woods and clear them of other bands of outlaws in turn. These ‘border princes’ carve out ragtag tyrannical kingdoms where they must either kill or be killed."
+    },
+    "drawback": {
+      "linkedId": null,
+      "name": "Watch Your Back"
+    },
+    "expert": {
+      "requirements": "You must possess at least two Skill Ranks in Simple Melee in order to enter this Expert Profession.",
+      "value": true
+    },
+    "notes": "",
+    "professionalTrait": {
+      "linkedId": null,
+      "name": "Warmonger"
+    },
+    "skillRanks": [
+      {
+        "name": "Folklore"
+      },
+      {
+        "name": "Gamble"
+      },
+      {
+        "name": "Intimidate"
+      },
+      {
+        "name": "Leadership"
+      },
+      {
+        "name": "Martial Melee"
+      },
+      {
+        "name": "Martial Ranged"
+      },
+      {
+        "name": "Resolve"
+      },
+      {
+        "name": "Rumor"
+      },
+      {
+        "name": "Simple Melee"
+      },
+      {
+        "name": "Warfare"
+      }
+    ],
+    "specialTrait": {
+      "linkedId": null,
+      "name": ""
+    },
+    "talents": [
+      {
+        "linkedId": null,
+        "name": "Light Sleeper"
+      },
+      {
+        "linkedId": null,
+        "name": "Military Formation"
+      },
+      {
+        "linkedId": null,
+        "name": "Supernatural Paranoia"
+      }
+    ],
+    "tier": ""
+  },
+  "effects": [],
+  "flags": {
+    "zweihander": {}
+  },
+  "folder": null,
+  "img": "systems/zweihander/assets/icons/robin-hood-hat.svg",
+  "name": "Outlaw Chief",
+  "permission": {
+    "9cilLhNTlIyJpmtZ": 3,
+    "default": 0
+  },
+  "sort": 0,
+  "type": "profession"
+}

@@ -1,0 +1,50 @@
+{
+  "_id": "oHr5AyYavTXLO5Vw",
+  "data": {
+    "associatedSkill": "Martial Melee",
+    "damage": {
+      "associatedPrimaryAttribute": "Brawn",
+      "formula": "[BB] + (1+[#])d6x6"
+    },
+    "description": {
+      "@en": "<p>Commonly carried by military officers, this rod is a rattan stick tipped in iron and wielded by off-duty soldiers. It serves as a grim reminder to criminals who would step up with the intent to harm or rob a veteran of the arse-beating they will receive in turn.</p>"
+    },
+    "distance": "Engaged",
+    "encumbrance": 1,
+    "equipped": false,
+    "handling": "One-handed",
+    "load": 0,
+    "notes": "",
+    "price": {
+      "bp": "0",
+      "gc": "1",
+      "ss": "0"
+    },
+    "qualities": {
+      "arrayOfValues": [],
+      "value": "Powerful, Pummeling, Slow"
+    },
+    "weaponType": "Crushing"
+  },
+  "effects": [],
+  "flags": {
+    "core": {
+      "sourceId": "Item.JmtoI5Ls4nG0VsX3"
+    },
+    "exportSource": {
+      "coreVersion": "0.8.9",
+      "system": "zweihander",
+      "systemVersion": "0.3.30",
+      "world": "talron2"
+    }
+  },
+  "folder": null,
+  "img": "systems/zweihander/assets/icons/wood-stick.svg",
+  "name": "Swagger Stick",
+  "permission": {
+    "JyjuBRFhP4y9QWxg": 3,
+    "default": 0
+  },
+  "sort": 0,
+  "type": "weapon"
+}

@@ -1,0 +1,40 @@
+{
+  "_id": "QxCzMPuK32ZqL3CV",
+  "data": {
+    "castingCost": 0,
+    "castingTime": "1 min",
+    "description": {
+      "@en": "Raindrops keep falling on your head, but you stay dry despite the weather."
+    },
+    "distance": "Yourself",
+    "duration": "[WB]+3 hours",
+    "notes": "",
+    "principle": "Generalist",
+    "rules": {
+      "criticalFailure": {
+        "@en": "The weather around you grows worse, as you’re drenched to the bone. You suffer [[/roll 1D10+1]] physical Peril."
+      },
+      "criticalSuccess": {
+        "@en": "As above, but you also clear the area of bad weather within a Burst Template around you, so that others may take advantage of this Magick."
+      },
+      "effect": {
+        "@en": "After successfully casting this spell, you can travel in the rain or snow without getting wet. This does not ward against other Effects related to rain or snow that may inflict Peril or other penalties related to weather. However, it will keep your clothes dry, your torch lit and your grimoires safe!"
+      },
+      "reagents": {
+        "@en": "A leafy branch held above your head (expended)"
+      }
+    },
+    "tradition": "Generalist"
+  },
+  "effects": [],
+  "flags": {},
+  "folder": null,
+  "img": "systems/zweihander/assets/icons/wizard-staff.svg",
+  "name": "Rainshade",
+  "permission": {
+    "9cilLhNTlIyJpmtZ": 3,
+    "default": 0
+  },
+  "sort": 0,
+  "type": "spell"
+}

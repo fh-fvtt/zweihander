@@ -1,0 +1,40 @@
+{
+  "_id": "0wkKlS5fsRJ0JpGD",
+  "data": {
+    "castingCost": 0,
+    "castingTime": "1 min",
+    "description": {
+      "@en": "With but a prick of the needle, you can render another dazed."
+    },
+    "distance": "Any one person you can touch",
+    "duration": "Instantaneous",
+    "notes": "",
+    "principle": "Generalist",
+    "rules": {
+      "criticalFailure": {
+        "@en": "Your body is wracked with pain, lightning lancing through your bones. You suffer [[/roll 1D10]]+[WB] in physical Peril."
+      },
+      "criticalSuccess": {
+        "@en": "As above and the foe is unable to Counterspell, Dodge or Parry on their next Turn."
+      },
+      "effect": {
+        "@en": "After successfully casting this spell, one foe suffers [[/roll 1D10]]+[WB] in physical Peril."
+      },
+      "reagents": {
+        "@en": "A small needle, held in-hand (expended)"
+      }
+    },
+    "tradition": "Generalist"
+  },
+  "effects": [],
+  "flags": {},
+  "folder": null,
+  "img": "systems/zweihander/assets/icons/sewing-needle.svg",
+  "name": "Pinprick",
+  "permission": {
+    "9cilLhNTlIyJpmtZ": 3,
+    "default": 0
+  },
+  "sort": 0,
+  "type": "spell"
+}

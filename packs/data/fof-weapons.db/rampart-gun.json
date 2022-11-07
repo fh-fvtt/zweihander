@@ -1,0 +1,48 @@
+{
+  "_id": "oUVTnbGkXSVtPHAG",
+  "data": {
+    "associatedSkill": "Martial Ranged",
+    "damage": {
+      "formula": "[CB] + (1+[#])d6x1,6"
+    },
+    "description": {
+      "@en": "<p>With a 46-inch barrel, these muskets are more like mini-cannons than shoulder arms. Used aboard ships and atop palisades, these guns are a rarity in the Colonies.</p>"
+    },
+    "distance": "15 + [PB] yards",
+    "encumbrance": 6,
+    "equipped": false,
+    "handling": "Two-handed",
+    "load": 6,
+    "notes": "",
+    "price": {
+      "bp": "0",
+      "gc": "10",
+      "ss": "0"
+    },
+    "qualities": {
+      "arrayOfValues": [],
+      "value": "Accurate, Blackpowder, Cumbersome, Devastating"
+    },
+    "weaponType": "Ranged"
+  },
+  "effects": [],
+  "flags": {
+    "core": {
+      "sourceId": "Compendium.zweihander.weapons.ezPXLmhxmCWSgwKJ"
+    },
+    "scene-packer": {
+      "defaultPermission": 3,
+      "hash": "5f90d358d25b4c7307b1fa9eb25b71ff788917ad",
+      "sourceId": "Item.oUVTnbGkXSVtPHAG"
+    }
+  },
+  "folder": null,
+  "img": "systems/zweihander/assets/icons/winchester-rifle.svg",
+  "name": "Rampart Gun",
+  "permission": {
+    "VOagSWOxwT3osUDT": 3,
+    "default": 0
+  },
+  "sort": 0,
+  "type": "weapon"
+}

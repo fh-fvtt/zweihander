@@ -1,0 +1,53 @@
+{
+  "_id": "lfl69HbWImOFqRpe",
+  "data": {
+    "castingCost": null,
+    "castingTime": "9 Minutes",
+    "description": {
+      "@en": "<p>I call forth an element of frost to bring us comfort in the heat . . .</p>"
+    },
+    "distance": "By Touch",
+    "duration": "6+[WB] hours",
+    "notes": "",
+    "principle": "Intermediate Tier",
+    "rules": {
+      "criticalFailure": {
+        "@en": "The allies you touched experience hot flashes over the duration, as they suffer [[/roll 2D10+2]] Peril every hour."
+      },
+      "criticalSuccess": {
+        "@en": "Up to 6x your [WB] allies are affected."
+      },
+      "effect": {
+        "@en": "<p>After successfully casting, up to [WB] allies can ignore the negative effects of warm weather, also avoiding Heatstroke.</p>"
+      },
+      "reagents": {
+        "@en": "A wet towel, dabbed on allies’ heads while incanting"
+      }
+    },
+    "tradition": "Common"
+  },
+  "effects": [],
+  "flags": {
+    "cf": {
+      "color": "#000000",
+      "id": null,
+      "path": "FOF Spells#/CF_SEP/Common Spells"
+    },
+    "core": {
+      "sourceId": "Item.opcupO2BLpL53Sdg"
+    },
+    "scene-packer": {
+      "hash": "509345c911b1ac1b86d8909fd2ce537d1874d43f",
+      "sourceId": "Item.MJJEwokEYwLnk3WC"
+    }
+  },
+  "folder": null,
+  "img": "systems/zweihander/assets/icons/spell-book.svg",
+  "name": "Cool Body",
+  "permission": {
+    "VOagSWOxwT3osUDT": 3,
+    "default": 0
+  },
+  "sort": 0,
+  "type": "spell"
+}

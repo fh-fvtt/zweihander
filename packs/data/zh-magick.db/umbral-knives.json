@@ -1,0 +1,40 @@
+{
+  "_id": "OuzNoshPri3bvDOd",
+  "data": {
+    "castingCost": 0,
+    "castingTime": "1 min",
+    "description": {
+      "@en": "Conjuring forth multiple silhouettes of illusory knives, they are instantly hurled towards your enemies."
+    },
+    "distance": "Yourself",
+    "duration": "Instantaneous",
+    "notes": "",
+    "principle": "Greater",
+    "rules": {
+      "criticalFailure": {
+        "@en": "The dirk drops immediately at your feet, twisting into a single screw and burying itself hundreds of yards beneath the earth. It is lost forever. You immediately suffer [[/roll 3D10]]+[WB] in mental Peril. It also triggers any Disorders you may be suffering from."
+      },
+      "criticalSuccess": {
+        "@en": "As above and it also immediately triggers any Disorders your foes may be suffering from."
+      },
+      "effect": {
+        "@en": "After successfully casting this spell, select a number of foes equal to your [WB]. Providing you can see your foes, each foe suffers [[/roll 3D10]]+[WB] in mental Peril. Regardless, the actual casting of Umbral Knives is never apparent to anyone, perfectly disguised."
+      },
+      "reagents": {
+        "@en": "One castle-forged dirk, held before you"
+      }
+    },
+    "tradition": "Arcane (Shadowmancy)"
+  },
+  "effects": [],
+  "flags": {},
+  "folder": null,
+  "img": "systems/zweihander/assets/icons/wizard-staff.svg",
+  "name": "Umbral Knives",
+  "permission": {
+    "9cilLhNTlIyJpmtZ": 3,
+    "default": 0
+  },
+  "sort": 0,
+  "type": "spell"
+}

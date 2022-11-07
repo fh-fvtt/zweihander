@@ -1,0 +1,109 @@
+{
+  "_id": "E8jq4T27iydxRJ6S",
+  "data": {
+    "archetype": "Expert Profession",
+    "bonusAdvances": [
+      {
+        "name": "[AB]"
+      },
+      {
+        "name": "[FB]"
+      },
+      {
+        "name": "[IB]"
+      },
+      {
+        "name": "[IB]"
+      },
+      {
+        "name": "[PB]"
+      },
+      {
+        "name": "[WB]"
+      },
+      {
+        "name": "[WB]"
+      }
+    ],
+    "description": {
+      "@en": "Warlocks are an unpleasant breed of arcanists who have paid a terrible price in exchange for raw, unbridled power. While many may have started out as reluctant Diabolists or Hedgewise, their impatience to grow into their own has lead them down a very dark path. Deluding themselves into thinking that they can negotiate with other-worldly creatures, they foolishly believe that they have the will to control that which they bring into the material world. Unfortunately, they all too quickly learn the error of their ways. Though they are eventually consumed by their own lust for power, striking such Faustian bargains does indeed grant them great power – if only in the short term.\nEvery practitioner of the dark arts who sets out on this path must strike a deal with an Abyssal master. The powers a Warlock gains is explicitly set down in blood under the terms of an infernal contract. Such a contract is always entangled in doublespeak, esoteric terms, and chthonic provisions which must be kept. Striking a deal with an Abyssal master is excessively complex, and rightfully so; the Warlock’s very soul is at stake. The contract also requires upkeep, maintenance and further addendum, which involves a witness, usually an imp sent to observe the Warlock and independently verify that the Warlock is keeping to the agreement. If one or more terms of the contract is broken, the Warlock isn’t dragged before an Abyssal court. No, instead the contract receives new infernal addendum, further drawing out the stipulations and requirements that the Warlock must now make in order to stay out of the fiery embrace of their Abyssal master."
+    },
+    "drawback": {
+      "linkedId": null,
+      "name": "Black Temperament"
+    },
+    "expert": {
+      "requirements": "You must possess at least one Skill Rank in Incantation in order to enter this Expert Profession. In addition, you must have the Special Trait of Arcane Magick.",
+      "value": true
+    },
+    "notes": "",
+    "professionalTrait": {
+      "linkedId": null,
+      "name": "Infernal Contract"
+    },
+    "skillRanks": [
+      {
+        "name": "Bargain"
+      },
+      {
+        "name": "Education"
+      },
+      {
+        "name": "Folklore"
+      },
+      {
+        "name": "Guile"
+      },
+      {
+        "name": "Incantation"
+      },
+      {
+        "name": "Resolve"
+      },
+      {
+        "name": "Rumor"
+      },
+      {
+        "name": "Scrutinize"
+      },
+      {
+        "name": "Simple Melee"
+      },
+      {
+        "name": "Skulduggery"
+      }
+    ],
+    "specialTrait": {
+      "linkedId": null,
+      "name": "Arcana of Sorcery"
+    },
+    "talents": [
+      {
+        "linkedId": null,
+        "name": "Blood Magick"
+      },
+      {
+        "linkedId": null,
+        "name": "Larceny"
+      },
+      {
+        "linkedId": null,
+        "name": "Strangler’s Union"
+      }
+    ],
+    "tier": ""
+  },
+  "effects": [],
+  "flags": {
+    "zweihander": {}
+  },
+  "folder": null,
+  "img": "systems/zweihander/assets/icons/warlock.svg",
+  "name": "Warlock",
+  "permission": {
+    "9cilLhNTlIyJpmtZ": 3,
+    "default": 0
+  },
+  "sort": 0,
+  "type": "profession"
+}

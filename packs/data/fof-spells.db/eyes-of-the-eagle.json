@@ -1,0 +1,53 @@
+{
+  "_id": "dLjidQ7ejf4Z7sl9",
+  "data": {
+    "castingCost": null,
+    "castingTime": "1 Hour",
+    "description": {
+      "@en": "<p>The Quaker Phillip Masters taught me this Spell . . .</p>"
+    },
+    "distance": "By Touch",
+    "duration": "3+[WB] minutes",
+    "notes": "",
+    "principle": "Basic Tier",
+    "rules": {
+      "criticalFailure": {
+        "@en": "An eagle screams overhead as it attacks you. The Historian will use the Eagle entry from Article 14: Threats."
+      },
+      "criticalSuccess": {
+        "@en": "It also grants the ability to see in the dark."
+      },
+      "effect": {
+        "@en": "<p>After successfully casting, increase Distance by 3+[WB].</p>"
+      },
+      "reagents": {
+        "@en": "A feather, plucked from a live eagle (expended)"
+      }
+    },
+    "tradition": "Common"
+  },
+  "effects": [],
+  "flags": {
+    "cf": {
+      "color": "#000000",
+      "id": null,
+      "path": "FOF Spells#/CF_SEP/Common Spells"
+    },
+    "core": {
+      "sourceId": "Compendium.zweihander.magick.zfw4EhNqq3sJRnbQ"
+    },
+    "scene-packer": {
+      "hash": "d638c14eddf79e1b8747efb7d41af1ba0af22e90",
+      "sourceId": "Item.FXlYv8pQ8CMoIUqa"
+    }
+  },
+  "folder": null,
+  "img": "systems/zweihander/assets/icons/spell-book.svg",
+  "name": "Eyes Of The Eagle",
+  "permission": {
+    "VOagSWOxwT3osUDT": 3,
+    "default": 0
+  },
+  "sort": 0,
+  "type": "spell"
+}

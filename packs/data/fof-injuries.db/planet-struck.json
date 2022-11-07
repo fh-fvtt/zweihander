@@ -1,0 +1,46 @@
+{
+  "_id": "XyMOfuHYls4s2ktx",
+  "data": {
+    "active": true,
+    "description": {
+      "@en": "<p>The movement of the stars has affected us so. I&rsquo;ve seen the horrors that have been wrought by humankind&rsquo;s hand, and the vault of night will foretell of our doom . . .</p>"
+    },
+    "notes": "<p><span style=\"color: #d5c4a1; font-family: Signika, sans-serif; font-style: italic; text-align: justify; background-color: #282828;\">Grievous Injuries must undergo a successful Perform Surgery within twenty-four hours of suffering it, or else a character gains its related Permanent Injury.</span></p>",
+    "rules": {
+      "effect": {
+        "@en": "<p>Whenever you fail to Resist Stress, Fear or Terror, you temporarily reduce your Initiative and Movement by -3. This lasts until you get a good night&rsquo;s rest.</p>"
+      }
+    },
+    "severity": 0
+  },
+  "effects": [],
+  "flags": {
+    "cf": {
+      "color": "#000000",
+      "id": null,
+      "path": "FOF Injuries#/CF_SEP/Permanent Injuries"
+    },
+    "core": {
+      "sourceId": "Compendium.zweihander.injuries.pMHUxC35U5RHDI7K"
+    },
+    "exportSource": {
+      "coreVersion": "0.8.9",
+      "system": "zweihander",
+      "systemVersion": "0.3.30",
+      "world": "talron2"
+    },
+    "scene-packer": {
+      "hash": "295535ac54537f09c826c517f29708530fe3f3dc",
+      "sourceId": "Item.xnCFEap4rCBCsv0z"
+    }
+  },
+  "folder": null,
+  "img": "systems/zweihander/assets/icons/internal-injury.svg",
+  "name": "Planet-Struck",
+  "permission": {
+    "VOagSWOxwT3osUDT": 3,
+    "default": 0
+  },
+  "sort": 0,
+  "type": "injury"
+}

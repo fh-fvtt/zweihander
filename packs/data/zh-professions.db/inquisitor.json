@@ -1,0 +1,109 @@
+{
+  "_id": "Y8YijYrM2DaxOP3V",
+  "data": {
+    "archetype": "Expert Profession",
+    "bonusAdvances": [
+      {
+        "name": "[AB]"
+      },
+      {
+        "name": "[CB]"
+      },
+      {
+        "name": "[CB]"
+      },
+      {
+        "name": "[IB]"
+      },
+      {
+        "name": "[PB]"
+      },
+      {
+        "name": "[WB]"
+      },
+      {
+        "name": "[WB]"
+      }
+    ],
+    "description": {
+      "@en": "Since the dawn of time, the forces of chaos have sought to corrupt the seeds of life and twist the soul of mankind. Locked within this eternal struggle, the Inquisitor knows there is no place for half measures. Vows of unwavering faith and fealty drive them to face the abominations of this world and beyond, and perhaps more importantly, to be the scourge to those tainted souls that would lead their kin down the path of destruction. It is their duty to be ever watchful, ever prepared, and ever ready to use any means necessary to keep their vows. Varied and dangerous duties see them hunting down apostates, rooting out local heresies and taking sword and flame into the depths of cult lairs. In staring down the heretic, the mutant and the supernatural, many Inquisitors come to be touched with madness themselves, an unwelcome side effect from exposure to fell ideas and dark energies. They must soldier on though, as they are the last line of defense when all other measures would be too extreme or too dangerous.\nPious warrior or self-justifying madman, it matters little when an Inquisitor arrives on your doorstep. For ill tidings are abroad, so doors are locked, neighbors accused and pyres prepared in readiness to cleanse witches in holy fire. In pursuit of the greater ‘good’, no sacrifice can be too great – many Inquisitors find themselves maimed or much less of a person than the one that took their vows of purity. And those who choose to stare into the heart of darkness often find it stares right back at them in the light. Some remain stalwart champions of the faith. Others find themselves embraced by the welcoming arms of chaos and destruction they once battled. An Inquisitor knows no deadlier foe than their fallen brethren."
+    },
+    "drawback": {
+      "linkedId": null,
+      "name": "Religious Zealotry"
+    },
+    "expert": {
+      "requirements": "You must possess at least two Skill Ranks in Resolve in order to enter this Expert Profession.",
+      "value": true
+    },
+    "notes": "",
+    "professionalTrait": {
+      "linkedId": null,
+      "name": "Witch Hunter’s Insight"
+    },
+    "skillRanks": [
+      {
+        "name": "Folklore"
+      },
+      {
+        "name": "Interrogation"
+      },
+      {
+        "name": "Intimidate"
+      },
+      {
+        "name": "Martial Melee"
+      },
+      {
+        "name": "Martial Ranged"
+      },
+      {
+        "name": "Resolve"
+      },
+      {
+        "name": "Ride"
+      },
+      {
+        "name": "Scrutinize"
+      },
+      {
+        "name": "Simple Melee"
+      },
+      {
+        "name": "Simple Ranged"
+      }
+    ],
+    "specialTrait": {
+      "linkedId": null,
+      "name": ""
+    },
+    "talents": [
+      {
+        "linkedId": null,
+        "name": "Menacing Demeanor"
+      },
+      {
+        "linkedId": null,
+        "name": "No Mercy"
+      },
+      {
+        "linkedId": null,
+        "name": "Supernatural Paranoia"
+      }
+    ],
+    "tier": ""
+  },
+  "effects": [],
+  "flags": {
+    "zweihander": {}
+  },
+  "folder": null,
+  "img": "systems/zweihander/assets/icons/inquisitor.svg",
+  "name": "Inquisitor",
+  "permission": {
+    "9cilLhNTlIyJpmtZ": 3,
+    "default": 0
+  },
+  "sort": 0,
+  "type": "profession"
+}

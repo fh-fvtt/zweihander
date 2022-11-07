@@ -1,0 +1,40 @@
+{
+  "_id": "KWSgR51Ywj6mntSx",
+  "data": {
+    "castingCost": 0,
+    "castingTime": "1 min",
+    "description": {
+      "@en": "With a wet ‘whoosh’, your body transforms into a black cloud of chattering insects."
+    },
+    "distance": "Yourself",
+    "duration": "[WB]+9 minutes",
+    "notes": "",
+    "principle": "Greater",
+    "rules": {
+      "criticalFailure": {
+        "@en": "The Magick spell fails as your body rips at the seams and you are unable to act. You disappear. Once the Duration of the spell expires, you reform somewhere a number of miles away equal to your [WB] from where you transformed."
+      },
+      "criticalSuccess": {
+        "@en": "All of your trappings metamorphose as well."
+      },
+      "effect": {
+        "@en": "After successfully casting this spell, all your trappings fall to the ground and your body transforms into a swarm of six hundred and sixty-six flies. You can now levitate one yard above the ground as a part of your Movement. Furthermore, you cannot be struck by normal weapons, but can be harmed by Magick. You can move through small spaces unhindered. You can transform back and forth between your regular shape and the swarm of flies at will for the Duration of the spell (or in combat for 2 APs)."
+      },
+      "reagents": {
+        "@en": "A jar of flies smashed onto the ground (expended)"
+      }
+    },
+    "tradition": "Arcane (Sorcery)"
+  },
+  "effects": [],
+  "flags": {},
+  "folder": null,
+  "img": "systems/zweihander/assets/icons/fly.svg",
+  "name": "Metamorphosis",
+  "permission": {
+    "9cilLhNTlIyJpmtZ": 3,
+    "default": 0
+  },
+  "sort": 0,
+  "type": "spell"
+}

@@ -1,0 +1,40 @@
+{
+  "_id": "1v17SwLKNuI3HcvY",
+  "data": {
+    "castingCost": 0,
+    "castingTime": "1 min",
+    "description": {
+      "@en": "A lens levitates before your eye, powerfully magnifying all beyond it."
+    },
+    "distance": "Yourself",
+    "duration": "[WB]+3 minutes",
+    "notes": "",
+    "principle": "Petty",
+    "rules": {
+      "criticalFailure": {
+        "@en": "Levitating before you, the lens is encircled within a burning blue flame. What you see within the lens is not of this world, a far off star of pulsating intelligence surrounded by flute-playing things beyond. You must immediately succeed at a Resolve Test or be subjected to Stress."
+      },
+      "criticalSuccess": {
+        "@en": "As above, but triple the Duration."
+      },
+      "effect": {
+        "@en": "After successfully casting this spell, you can now see three times as far. In addition, you can perfectly see through concealment such as bushes, fog and smoke."
+      },
+      "reagents": {
+        "@en": "A monocle lens"
+      }
+    },
+    "tradition": "Arcane (Astromancy)"
+  },
+  "effects": [],
+  "flags": {},
+  "folder": null,
+  "img": "systems/zweihander/assets/icons/wizard-staff.svg",
+  "name": "Terrestrial Refraction",
+  "permission": {
+    "9cilLhNTlIyJpmtZ": 3,
+    "default": 0
+  },
+  "sort": 0,
+  "type": "spell"
+}

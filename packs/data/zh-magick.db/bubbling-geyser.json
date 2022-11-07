@@ -1,0 +1,40 @@
+{
+  "_id": "kK2ppRGUdUlNg5k2",
+  "data": {
+    "castingCost": 0,
+    "castingTime": "1 min",
+    "description": {
+      "@en": "Bursting forth from the earth comes a geyser, burbling lukewarm with fresh water."
+    },
+    "distance": "Any one place you can see",
+    "duration": "[WB]+9 hours",
+    "notes": "",
+    "principle": "Greater",
+    "rules": {
+      "criticalFailure": {
+        "@en": "The earth below refuses to infuse your lifeblood with her own and saps your strength instead! For every minute you stand upon natural earth, you immediately move one step down the Damage and Peril Condition Tracks negatively. However, you don’t suffer Injuries due to this Magick. This lasts until the Duration of the spell expires."
+      },
+      "criticalSuccess": {
+        "@en": "As above, but you also move one step up the Damage Condition Track positively for every minute as well. However, this Magick doesn’t work if you are suffering from any other status which may normally prevent you from restoring your Damage Condition Track."
+      },
+      "effect": {
+        "@en": "After successfully casting this spell, you can conjure a tall geyser which bubbles forth from the earth. All those who are caught within the Explosion Template are immediately thrown into the air a number of yards equal to [[/roll 3D10]]+[WB], and are knocked Prone. The geyser will continue to produce potable (if hot) water for the spell’s Duration."
+      },
+      "reagents": {
+        "@en": "A dowsing rod made of rare oak, used over a patch of natural earth"
+      }
+    },
+    "tradition": "Arcane (Elementalism)"
+  },
+  "effects": [],
+  "flags": {},
+  "folder": null,
+  "img": "systems/zweihander/assets/icons/fountain.svg",
+  "name": "Bubbling Geyser",
+  "permission": {
+    "9cilLhNTlIyJpmtZ": 3,
+    "default": 0
+  },
+  "sort": 0,
+  "type": "spell"
+}

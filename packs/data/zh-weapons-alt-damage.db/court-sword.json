@@ -1,0 +1,43 @@
+{
+  "_id": "1ZQSyK7sm68ssdfe",
+  "data": {
+    "associatedSkill": "Simple Melee",
+    "damage": {
+      "formula": "[AB] + 2 + (1+[#])d6x6"
+    },
+    "description": {
+      "@en": "<p>Fast and efficient, this blade is carried by both blue-bloods and dandies. Many are unsharpened, carried as status symbol by the latter (but just as dangerous as a poisoned word with the former). Beware ill words with the fop whose expertise in fencing may result in a duel to the death.</p>"
+    },
+    "distance": "Engaged",
+    "encumbrance": 1,
+    "equipped": false,
+    "handling": "One-handed",
+    "load": 0,
+    "notes": "",
+    "price": {
+      "bp": "0",
+      "gc": "7",
+      "ss": "0"
+    },
+    "qualities": {
+      "arrayOfValues": [],
+      "value": "Fast, Finesse"
+    },
+    "weaponType": "Bladed"
+  },
+  "effects": [],
+  "flags": {
+    "core": {
+      "sourceId": "Compendium.zweihander.weapons.NrP6XfHB8j08YMlz"
+    }
+  },
+  "folder": null,
+  "img": "systems/zweihander/assets/icons/broadsword.svg",
+  "name": "Court sword",
+  "permission": {
+    "JyjuBRFhP4y9QWxg": 3,
+    "default": 0
+  },
+  "sort": 0,
+  "type": "weapon"
+}

@@ -1,0 +1,40 @@
+{
+  "_id": "lfzyl6odaJ67FSse",
+  "data": {
+    "castingCost": 0,
+    "castingTime": "1 min",
+    "description": {
+      "@en": "With a clap of thunder, a bolt of lightning arcs to strike your foe!"
+    },
+    "distance": "Any one person you can see",
+    "duration": "Instantaneous",
+    "notes": "",
+    "principle": "Petty",
+    "rules": {
+      "criticalFailure": {
+        "@en": "The bolt arcs upwards into the air, reflecting off the nearest surface and directly back at you! In a flash of lightning, you are knocked off your feet, your hair stood straight on end. You suffer [[/roll 1D10]]+[WB] in Damage and are knocked Prone."
+      },
+      "criticalSuccess": {
+        "@en": "As above, but the foe cannot Resist this Magick."
+      },
+      "effect": {
+        "@en": "After successfully casting this spell, your foe suffers [[/roll 1D10]]+[WB] in Damage and are knocked Prone. Your foe can successfully Resist with a Coordination Test."
+      },
+      "reagents": {
+        "@en": "A vial of rain water, poured into hand and clapped together (expended)"
+      }
+    },
+    "tradition": "Arcane (Astromancy)"
+  },
+  "effects": [],
+  "flags": {},
+  "folder": null,
+  "img": "systems/zweihander/assets/icons/lightning-tree.svg",
+  "name": "Call Lightning",
+  "permission": {
+    "9cilLhNTlIyJpmtZ": 3,
+    "default": 0
+  },
+  "sort": 0,
+  "type": "spell"
+}

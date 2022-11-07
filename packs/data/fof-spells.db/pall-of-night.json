@@ -1,0 +1,53 @@
+{
+  "_id": "qx8B0RuuMfXaCHLH",
+  "data": {
+    "castingCost": null,
+    "castingTime": "3 Days",
+    "description": {
+      "@en": "<p>I am blanketed by the spirits; they shall see me to safety.</p>"
+    },
+    "distance": "Yourself",
+    "duration": "6+[WB] hours",
+    "notes": "",
+    "principle": "Intermediate Tier",
+    "rules": {
+      "criticalFailure": {
+        "@en": "You leave a glowing trail in your wake, one that can be easily discovered."
+      },
+      "criticalSuccess": {
+        "@en": "Triple the duration."
+      },
+      "effect": {
+        "@en": "<p>After successfully casting, you are completely invisible during daylight hours, leaving no trace of your passing, and you cannot be heard (unless you wish to be).</p>"
+      },
+      "reagents": {
+        "@en": "You must Sleep in a safe place during daylight hours, and suffer 2D10+2 Peril from Starvation."
+      }
+    },
+    "tradition": "Black & White"
+  },
+  "effects": [],
+  "flags": {
+    "cf": {
+      "color": "#000000",
+      "id": null,
+      "path": "FOF Spells#/CF_SEP/Black & White Spells"
+    },
+    "core": {
+      "sourceId": "Compendium.zweihander.magick.zfw4EhNqq3sJRnbQ"
+    },
+    "scene-packer": {
+      "hash": "5479b5f334f35c5bdb34aae9d9a88cccfb7d83e3",
+      "sourceId": "Item.TO8KrzQ0KThQJvmt"
+    }
+  },
+  "folder": null,
+  "img": "systems/zweihander/assets/icons/concentric-crescents.svg",
+  "name": "Pall of Night",
+  "permission": {
+    "VOagSWOxwT3osUDT": 3,
+    "default": 0
+  },
+  "sort": 0,
+  "type": "spell"
+}

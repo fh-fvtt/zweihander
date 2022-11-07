@@ -1,0 +1,46 @@
+{
+  "_id": "StZwe8hyDLD5et4s",
+  "data": {
+    "active": false,
+    "description": {
+      "@en": ""
+    },
+    "notes": "<p>Injuries vary by three types: Moderate, Serious and Grievous Injuries. When determining an Injury, roll a D100, referring to the relevant table below. In addition, player characters gain 3 Conflict for Moderate Injuries, 6 Conflict for Serious Injuries and 9 Conflict for Grievous Injuries. Finally, combatants cannot heal their Damage &amp; Peril Condition Tracks until Injuries are in Recuperation.</p>",
+    "rules": {
+      "effect": {
+        "@en": "<p>You are Bleeding. A caregiver must Treat Injury. Until fully Recuperated, all failed Fellowship-based Skill Tests are treated as Critically Failed instead.</p>"
+      }
+    },
+    "severity": 0
+  },
+  "effects": [],
+  "flags": {
+    "cf": {
+      "color": "#000000",
+      "id": null,
+      "path": "FOF Injuries#/CF_SEP/Moderate Injuries"
+    },
+    "core": {
+      "sourceId": "Compendium.zweihander.injuries.pMHUxC35U5RHDI7K"
+    },
+    "exportSource": {
+      "coreVersion": "0.8.9",
+      "system": "zweihander",
+      "systemVersion": "0.3.30",
+      "world": "talron2"
+    },
+    "scene-packer": {
+      "hash": "7ebfd382123dfcbec8b2d5703a190ee9cb5a3412",
+      "sourceId": "Item.gSmFhWAQQT73sTHi"
+    }
+  },
+  "folder": null,
+  "img": "systems/zweihander/assets/icons/arm-bandage.svg",
+  "name": "Vicious Haircut",
+  "permission": {
+    "VOagSWOxwT3osUDT": 3,
+    "default": 0
+  },
+  "sort": 0,
+  "type": "injury"
+}

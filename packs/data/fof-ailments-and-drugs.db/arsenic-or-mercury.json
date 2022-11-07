@@ -1,0 +1,39 @@
+{
+  "_id": "1v5Y4eh86cFT4F37",
+  "data": {
+    "active": false,
+    "description": {
+      "@en": "<p>This poison will cause heart palpitations if ingested . . . perfect for doing away with a lover whose money you wish to abscond with, or a political enemy you need out of the way.</p>"
+    },
+    "duration": "1D10+1 days",
+    "notes": "",
+    "resist": "(Hard -20%) Toughness",
+    "rules": {
+      "effect": {
+        "@en": "<p><strong>Effect:</strong> You temporarily suffer a -6 to all Primary Attribute Bonuses (to a minimum of 1) and 2D10+2 Peril. You must also attempt to Resist again every twenty-four hours, or else suffer the effects again. If you are Incapacitated! due to Arsenic or Mercury, you&rsquo;re Slain!. Your Primary Attribute Bonuses recover +1 a day until fully restored.</p>\n<p><strong>Critical Success:</strong> You are now permanently immune to Arsenic or Mercury.</p>\n<p><strong>Critical Failure:</strong> You are Slain!.</p>\n<p><strong>Other Considerations:</strong> Arsenic and Mercury cannot be discovered when placed in food or drink. Use of an Antidote allows you to immediately recover all Primary Attribute Bonuses.</p>"
+      },
+      "treatment": {
+        "@en": ""
+      }
+    }
+  },
+  "effects": [],
+  "flags": {
+    "core": {
+      "sourceId": "Item.1aPid9xUWU2BMJTt"
+    },
+    "scene-packer": {
+      "hash": "7d078d6f187e599251c17bebb78e1149f8ac9b1a",
+      "sourceId": "Item.1v5Y4eh86cFT4F37"
+    }
+  },
+  "folder": null,
+  "img": "systems/zweihander/assets/icons/vial.svg",
+  "name": "Arsenic or Mercury",
+  "permission": {
+    "VOagSWOxwT3osUDT": 3,
+    "default": 0
+  },
+  "sort": 0,
+  "type": "disease"
+}

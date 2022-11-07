@@ -1,0 +1,43 @@
+{
+  "_id": "BFWxXTzESMp3cEnU",
+  "data": {
+    "associatedSkill": "Simple Ranged",
+    "damage": {
+      "formula": "[BB] + (1+[#])d6x6"
+    },
+    "description": {
+      "@en": "Bottles of beer, a brass pitcher, a sizable rock, a lead plate or even a pair of boots are all serviceable enough to be flung. Mostly, they serve as a minor annoyance."
+    },
+    "distance": "1 + [PB] yards",
+    "encumbrance": 1,
+    "equipped": false,
+    "handling": "One-handed",
+    "load": 1,
+    "notes": "",
+    "price": {
+      "bp": "0",
+      "gc": "0",
+      "ss": "0"
+    },
+    "qualities": {
+      "arrayOfValues": [],
+      "value": "Pummeling, Slow, Throwing"
+    },
+    "weaponType": "Missile"
+  },
+  "effects": [],
+  "flags": {
+    "core": {
+      "sourceId": "Compendium.zweihander.weapons.DmseucfWqqWSHGfQ"
+    }
+  },
+  "folder": null,
+  "img": "systems/zweihander/assets/icons/throwing-ball.svg",
+  "name": "Improvised throwing weapon",
+  "permission": {
+    "JyjuBRFhP4y9QWxg": 3,
+    "default": 0
+  },
+  "sort": 0,
+  "type": "weapon"
+}

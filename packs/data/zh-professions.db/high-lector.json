@@ -1,0 +1,109 @@
+{
+  "_id": "4KApoHtcClnq9Gxb",
+  "data": {
+    "archetype": "Expert Profession",
+    "bonusAdvances": [
+      {
+        "name": "[FB]"
+      },
+      {
+        "name": "[FB]"
+      },
+      {
+        "name": "[IB]"
+      },
+      {
+        "name": "[IB]"
+      },
+      {
+        "name": "[PB]"
+      },
+      {
+        "name": "[WB]"
+      },
+      {
+        "name": "[WB]"
+      }
+    ],
+    "description": {
+      "@en": "Each church is headed by a High Lector, the most holy and trusted of any faith who has communed directly with the heavens and now serves as a holy vessel. To hear the word of the High Lector is to hear the word of god, be it of the Nightfather to a Grey Guilder, the Martyr to a Revered Mother or the God-Emperor to a Godsworn, they all supplicate before their High Lector’s divine guidance. Accession to the position of High Lector almost always involves a vibrant vision and guidance from the gods. They are told to shepherd their people towards a higher order, to be a leader in both spirit, body and mind. They often take on attributes of their beloved deity, such as the God-Emperor’s golden locks or the Nightfather’s cloaked visage. The laity often treat High Lectors as both powerful priests and living avatars – true earthly embodiments of their god, as close to divinity as they are likely to get.\nSome High Lectors revel in the power and ego of their position, but most are humble, mere servants, chosen for a lifetime of pain and glory. They are advisers and leaders, lending their prayers to the smallest of churches and the highest of temples, yet few ever journey beyond their apartments or the halls of power. A rare few take to the road, observing the grim & perilous world through their own eyes to better understand how they can serve a higher purpose. Often this is because their faith has wavered, they have fallen from grace or their prayers have fallen on empty, god-forsaken temples. As close to divinity as they are, High Lectors remain at the whimsy of their gods and those who become too enthralled in their gods tend to disappear forever. Whether this disappearance is an exaltation into the hallowed halls of the heavens or a corruptive descent into the Abyss is yet to be understood."
+    },
+    "drawback": {
+      "linkedId": null,
+      "name": "Not Long for This World"
+    },
+    "expert": {
+      "requirements": "You must possess at least two Skill Ranks in Incantation in order to enter this Expert Profession. In addition, you must have the Special Trait of Divine Magick. Finally, you must sacrifice one Fate Point upon entering this Profession.",
+      "value": true
+    },
+    "notes": "",
+    "professionalTrait": {
+      "linkedId": null,
+      "name": "Living Avatar"
+    },
+    "skillRanks": [
+      {
+        "name": "Bargain"
+      },
+      {
+        "name": "Education"
+      },
+      {
+        "name": "Folklore"
+      },
+      {
+        "name": "Heal"
+      },
+      {
+        "name": "Incantation"
+      },
+      {
+        "name": "Leadership"
+      },
+      {
+        "name": "Resolve"
+      },
+      {
+        "name": "Rumor"
+      },
+      {
+        "name": "Scrutinize"
+      },
+      {
+        "name": "Simple Melee"
+      }
+    ],
+    "specialTrait": {
+      "linkedId": null,
+      "name": "Divine Mastery"
+    },
+    "talents": [
+      {
+        "linkedId": null,
+        "name": "Light Sleeper"
+      },
+      {
+        "linkedId": null,
+        "name": "Multilingual"
+      },
+      {
+        "linkedId": null,
+        "name": "Secret Signs"
+      }
+    ],
+    "tier": ""
+  },
+  "effects": [],
+  "flags": {
+    "zweihander": {}
+  },
+  "folder": null,
+  "img": "systems/zweihander/assets/icons/high_lector.svg",
+  "name": "High Lector",
+  "permission": {
+    "9cilLhNTlIyJpmtZ": 3,
+    "default": 0
+  },
+  "sort": 0,
+  "type": "profession"
+}

@@ -1,0 +1,109 @@
+{
+  "_id": "BhUkG4kfzyQoTKQL",
+  "data": {
+    "archetype": "Expert Profession",
+    "bonusAdvances": [
+      {
+        "name": "[AB]"
+      },
+      {
+        "name": "[FB]"
+      },
+      {
+        "name": "[FB]"
+      },
+      {
+        "name": "[IB]"
+      },
+      {
+        "name": "[IB]"
+      },
+      {
+        "name": "[PB]"
+      },
+      {
+        "name": "[WB]"
+      }
+    ],
+    "description": {
+      "@en": "The Abyssal Princes are forever seeking ways of insinuating their influence into society – high, low and in-between. Their methods range from the brutal to the subtle, but the Prince of Change’s occultists are by far the most insidious. His earthly agents – called Infernal Saboteurs – like to hide in plain sight. Their primary goal is to ensconce themselves into positions of power and influence, and when the time comes to strike at the heart of polite society, they are more than ready. They have infiltrated scholastic circles to disseminate false rhetoric, misdirected knightly orders to strike at targets in their favor, rigged guild elections and tuned many a merchant-lord’s fortunes to ruin. Infernal Saboteurs operate as part of a global conspiracy, greasing the wheels of progress and pushing it into the direction they want… into the ever-shifting and cunning hands of their Daemonic master.\\nIn addition to being powerful manipulators of minds, Infernal Saboteurs possess the strangest, most alien and incalculable of Magicks. The Prince of Change is sometimes called the ‘architect of chaos sorcery’, in that He is able to tear and warp the Æther in unseemly ways. But manipulating Magick energies is very dangerous. Grotesque things lurk within the Æthereal Veil – not just spirits and monsters, but also powers lost to the gods and sorcery unknown to mankind. Working too much with the weft and weave of the Æther can easily ‘rip’ at time and space, rendering unnatural ruin upon Infernal Saboteurs. Stories are whispered of occultists whose haphazard manipulations resulted in their bodies being ripped asunder, exploding from the inside to form a fleshy portal from which monsters spill forth into the Material Realm. As a consequence, Infernal Saboteurs know to be careful and deliberate – one false move, and the schemes and conspiracies they have spent years building can come tumbling down like a house of cards."
+    },
+    "drawback": {
+      "linkedId": null,
+      "name": "Ruinous Power"
+    },
+    "expert": {
+      "requirements": "You must possess at least one Skill Rank in Incantation in order to enter this Expert Profession. In addition, you must have the Special Trait of either Arcane or Divine Magick.",
+      "value": true
+    },
+    "notes": "",
+    "professionalTrait": {
+      "linkedId": null,
+      "name": "Purple Hand of Chance"
+    },
+    "skillRanks": [
+      {
+        "name": "Disguise"
+      },
+      {
+        "name": "Eavesdrop"
+      },
+      {
+        "name": "Education"
+      },
+      {
+        "name": "Folklore"
+      },
+      {
+        "name": "Guile"
+      },
+      {
+        "name": "Incantation"
+      },
+      {
+        "name": "Rumor"
+      },
+      {
+        "name": "Scrutinize"
+      },
+      {
+        "name": "Simple Melee"
+      },
+      {
+        "name": "Stealth"
+      }
+    ],
+    "specialTrait": {
+      "linkedId": null,
+      "name": "Covenant Magick"
+    },
+    "talents": [
+      {
+        "linkedId": null,
+        "name": "Doppelganger"
+      },
+      {
+        "linkedId": null,
+        "name": "Gallows Humor"
+      },
+      {
+        "linkedId": null,
+        "name": "Holdout"
+      }
+    ],
+    "tier": ""
+  },
+  "effects": [],
+  "flags": {
+    "zweihander": {}
+  },
+  "folder": null,
+  "img": "systems/zweihander/assets/icons/body-swapping.svg",
+  "name": "Infernal Saboteur",
+  "permission": {
+    "9cilLhNTlIyJpmtZ": 3,
+    "default": 0
+  },
+  "sort": 0,
+  "type": "profession"
+}

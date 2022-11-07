@@ -1,0 +1,109 @@
+{
+  "_id": "rahuJtFSdfSEp0K2",
+  "data": {
+    "archetype": "Expert Profession",
+    "bonusAdvances": [
+      {
+        "name": "[FB]"
+      },
+      {
+        "name": "[IB]"
+      },
+      {
+        "name": "[IB]"
+      },
+      {
+        "name": "[PB]"
+      },
+      {
+        "name": "[PB]"
+      },
+      {
+        "name": "[WB]"
+      },
+      {
+        "name": "[WB]"
+      }
+    ],
+    "description": {
+      "@en": "From the natural philosopher and the tenured professor to the learned historian and the obtuse alienist, the Scholar values knowledge above all else. Professional academics, Scholars devote their lives to learning, teaching, and discovery and in this grim & perilous world, times are exciting. New and interesting branches of study are constantly popping up, and new discoveries are being made from one week to the next. Scholars can be generalists or specialists, though intellectual snobbery means that the latter – especially those who study history, languages, and Magick – look down on the former. Scholars are often snooty and arrogant in their knowledge towards both their peers and the ill-educated hoi polloi. Although they lead lives of relative luxury compared to other hardscrabble jobs, some even rising to become royal librarians or political advisors, it does not mean that Scholars do not struggle. Many trudge through endless academic research, scouring dusty libraries and ‘trading’ in information with other rival Scholars in hopes of attracting sponsorship.\nSome Scholars do leave the halls of academia, traveling in the hope of making great discoveries and accruing yet more knowledge. Rarely effective combatants, their knowledge of the world, resilience, and wherewithal is often enough to see them through, but their quest to know more can lead many Scholars into dark places and shadowy recesses. Perhaps through anthropological inquiry, the Scholar learns of their own damned heritage; an investigation into a fringe cult ends with the Scholar lying naked upon an altar as a knife flashes down; or the answers they want come at a foul price... Once acquired though, knowledge is certainly power, but whether the Scholar decides to use that power for good or ill is in the end up to them."
+    },
+    "drawback": {
+      "linkedId": null,
+      "name": "Intellectual Rigor"
+    },
+    "expert": {
+      "requirements": "You must possess at least one Skill Rank in both Education and Resolve in order to enter this Expert Profession.",
+      "value": true
+    },
+    "notes": "",
+    "professionalTrait": {
+      "linkedId": null,
+      "name": "Historical Method"
+    },
+    "skillRanks": [
+      {
+        "name": "Alchemy"
+      },
+      {
+        "name": "Bargain"
+      },
+      {
+        "name": "Education"
+      },
+      {
+        "name": "Folklore"
+      },
+      {
+        "name": "Navigation"
+      },
+      {
+        "name": "Resolve"
+      },
+      {
+        "name": "Rumor"
+      },
+      {
+        "name": "Scrutinize"
+      },
+      {
+        "name": "Simple Melee"
+      },
+      {
+        "name": "Survival"
+      }
+    ],
+    "specialTrait": {
+      "linkedId": null,
+      "name": ""
+    },
+    "talents": [
+      {
+        "linkedId": null,
+        "name": "Light Sleeper"
+      },
+      {
+        "linkedId": null,
+        "name": "Multilingual"
+      },
+      {
+        "linkedId": null,
+        "name": "Worldly"
+      }
+    ],
+    "tier": ""
+  },
+  "effects": [],
+  "flags": {
+    "zweihander": {}
+  },
+  "folder": null,
+  "img": "systems/zweihander/assets/icons/scholar.svg",
+  "name": "Scholar",
+  "permission": {
+    "9cilLhNTlIyJpmtZ": 3,
+    "default": 0
+  },
+  "sort": 0,
+  "type": "profession"
+}

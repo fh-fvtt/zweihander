@@ -1,0 +1,47 @@
+{
+  "_id": "6uZyqctjMz7QiDsB",
+  "data": {
+    "associatedSkill": "Simple Ranged",
+    "damage": {
+      "formula": "0"
+    },
+    "description": {
+      "@en": "<p>This bomb is not deadly; instead, it produces a cloud of smoke that obscures vision.</p>"
+    },
+    "distance": "1 + [PB] yards",
+    "encumbrance": 1,
+    "equipped": false,
+    "handling": "One-handed",
+    "load": 1,
+    "notes": "",
+    "price": {
+      "bp": "0",
+      "gc": "1",
+      "ss": ""
+    },
+    "qualities": {
+      "arrayOfValues": [],
+      "value": "Bomb, Break, Smoke"
+    },
+    "weaponType": "Ranged"
+  },
+  "effects": [],
+  "flags": {
+    "core": {
+      "sourceId": "Compendium.zweihander.weapons.R0i7oMG7lojZnFnN"
+    },
+    "scene-packer": {
+      "hash": "865e4975224f4e7fa9a9ef6a212fc4310ebfe230",
+      "sourceId": "Item.6uZyqctjMz7QiDsB"
+    }
+  },
+  "folder": null,
+  "img": "systems/zweihander/assets/icons/fire-bottle.svg",
+  "name": "Powder Bomb",
+  "permission": {
+    "VOagSWOxwT3osUDT": 3,
+    "default": 0
+  },
+  "sort": 0,
+  "type": "weapon"
+}

@@ -1,0 +1,39 @@
+{
+  "_id": "KfBvch1AwihYKmTL",
+  "data": {
+    "active": false,
+    "description": {
+      "@en": "<p>There was a diphtheria outbreak and rumors of bloody flux reported from the riverside stews. I shouldn&rsquo;t have eaten it, because I knew once I woke up with cramps and watery bowels, I had it, too . . .</p>"
+    },
+    "duration": "1D10+1 days",
+    "notes": "",
+    "resist": "(Trivial +30%) Toughness",
+    "rules": {
+      "effect": {
+        "@en": "<p><strong>Effect:</strong> At the beginning of each day, Resist Typhoid. Otherwise, suffer 2D10+2 Peril. If you don&rsquo;t successfully Resist on the final day of infection, re-roll the duration as it&rsquo;s extended.</p>\n<p><strong>Critical Success:</strong> You automatically succeed your next Toughness Test to Resist Typhoid.</p>\n<p><strong>Critical Failure:</strong> You are Slain!.</p>\n<p><strong>Other Considerations:</strong> NONE</p>"
+      },
+      "treatment": {
+        "@en": "<p><strong>Ease Symptoms:</strong> A caregiver must have a surgical kit, a bandage, a tincture and spend one hour to Ease Symptoms. Depending on where you&rsquo;re at on the Damage Condition Track, the Difficulty Rating eases or worsens:</p>\n<p><strong>Hurt:</strong> Automatically succeed</p>\n<p><strong>Moderately Wounded:</strong> (Routine +10%) Heal</p>\n<p><strong>Seriously Wounded:</strong> (Standard +/-0%) Heal</p>\n<p><strong>Grievously Wounded:</strong> (Challenging -10%) Heal</p>\n<hr />\n<p><strong>Effect:</strong> If successful, you may flip the results to succeed in your next Toughness Test to Resist an Ailment.</p>\n<p><strong>Critical Success:</strong> You automatically succeed your next Skill Test to Resist an Ailment.</p>\n<p><strong>Critical Failure:</strong> You suffer from Sepsis and must undergo Bloodletting.</p>\n<p><strong>Other Considerations:</strong> A character can only have Ease Symptoms performed on them as the Ailment dictates. You cannot Ease Symptoms on someone with Sepsis.</p>"
+      }
+    }
+  },
+  "effects": [],
+  "flags": {
+    "core": {
+      "sourceId": "Item.Qel9OTFLT9DhjoZ1"
+    },
+    "scene-packer": {
+      "hash": "3767f3371337c109fb2e60bee49f7fb89c08a2b5",
+      "sourceId": "Item.KfBvch1AwihYKmTL"
+    }
+  },
+  "folder": null,
+  "img": "systems/zweihander/assets/icons/half-dead.svg",
+  "name": "Typhoid",
+  "permission": {
+    "VOagSWOxwT3osUDT": 3,
+    "default": 0
+  },
+  "sort": 0,
+  "type": "disease"
+}

@@ -1,0 +1,55 @@
+{
+  "_id": "IejO0jrGagWoJkn1",
+  "data": {
+    "associatedSkill": "Simple Melee",
+    "damage": {
+      "associatedPrimaryAttribute": "Agility",
+      "formula": "0"
+    },
+    "description": {
+      "@en": "<p>Made from cat muscle or steel wire attached between two spools, this is the quintessential assassin&rsquo;s weapon. Skilled assassins can put people &lsquo;to sleep&rsquo; permanently, whereas the unskilled will butcher a victim&rsquo;s neck in the process, to the sound of much gurgling and screaming.</p>"
+    },
+    "distance": "Engaged",
+    "encumbrance": 1,
+    "equipped": false,
+    "handling": "Two-handed",
+    "load": 0,
+    "notes": "",
+    "price": {
+      "bp": "0",
+      "gc": "0",
+      "ss": "1"
+    },
+    "qualities": {
+      "arrayOfValues": [],
+      "value": "Silent, Strangling"
+    },
+    "weaponType": "Melee"
+  },
+  "effects": [],
+  "flags": {
+    "core": {
+      "sourceId": "Item.JmtoI5Ls4nG0VsX3"
+    },
+    "exportSource": {
+      "coreVersion": "0.8.9",
+      "system": "zweihander",
+      "systemVersion": "0.3.30",
+      "world": "talron2"
+    },
+    "scene-packer": {
+      "defaultPermission": 3,
+      "hash": "85ae920394461f2693cf2ba6297abaf3a7edbeb7",
+      "sourceId": "Item.IejO0jrGagWoJkn1"
+    }
+  },
+  "folder": null,
+  "img": "systems/zweihander/assets/icons/skipping-rope.svg",
+  "name": "Garrote",
+  "permission": {
+    "VOagSWOxwT3osUDT": 3,
+    "default": 0
+  },
+  "sort": 0,
+  "type": "weapon"
+}

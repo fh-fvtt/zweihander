@@ -1,0 +1,40 @@
+{
+  "_id": "VlRZv2EkEJFBdX4C",
+  "data": {
+    "castingCost": 0,
+    "castingTime": "1 min",
+    "description": {
+      "@en": "A terrible brownish gas of roiling sickness rises from the ground around you, choking all who stand within it."
+    },
+    "distance": "Yourself",
+    "duration": "Instantaneous",
+    "notes": "",
+    "principle": "Lesser",
+    "rules": {
+      "criticalFailure": {
+        "@en": "Your body suddenly explodes into a brown, roiling mist. You are immediately Incapacitated!. Select one ally – the mist you have become will follow behind them, trailed by the stench. You cannot return to your former physical self for 48 hours."
+      },
+      "criticalSuccess": {
+        "@en": "As above, but foes must spend an additional 1 AP to use Movement Actions while standing in the Noxious Haze."
+      },
+      "effect": {
+        "@en": "After successfully casting this spell, a miasma of brown sickness with the stench of decay fills the air. All those who are caught within the Explosion Template must flip the results to fail all Skill Tests while standing within it. The Noxious Haze’s Effects remain in place for a number of minutes equal to your [WB]. You are immune to the spell’s Effects."
+      },
+      "reagents": {
+        "@en": "Teardrops of a diseased person, poured onto the ground (expended)"
+      }
+    },
+    "tradition": "Covenant"
+  },
+  "effects": [],
+  "flags": {},
+  "folder": null,
+  "img": "systems/zweihander/assets/icons/wizard-staff.svg",
+  "name": "Noxious Haze",
+  "permission": {
+    "4be9WK4Hp7jWrwWe": 3,
+    "default": 0
+  },
+  "sort": 0,
+  "type": "spell"
+}

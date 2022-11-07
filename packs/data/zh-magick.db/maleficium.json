@@ -1,0 +1,40 @@
+{
+  "_id": "u9Vd9rkPZRItiUkd",
+  "data": {
+    "castingCost": 0,
+    "castingTime": "1 min",
+    "description": {
+      "@en": "Incanting terrible words over an object in-hand, you can call forth a terrible hex to befall the object’s keeper."
+    },
+    "distance": "Any one object you can touch",
+    "duration": "Forever",
+    "notes": "",
+    "principle": "Greater",
+    "rules": {
+      "criticalFailure": {
+        "@en": "Your Magick backfires in the worst way imaginable! An object on your person is cursed instead, as you suffer the Effects so long as you possess the object. Unfortunately, you do not know which object has been bewitched without use of further Magick!"
+      },
+      "criticalSuccess": {
+        "@en": "As above, but the cursed also temporarily reduces every Primary Attribute Bonus by -1 at each new moon."
+      },
+      "effect": {
+        "@en": "After successfully casting this spell, the object you touch is cursed. Whenever another carries this object, they suffer a gruesome curse. As a consequence, the cursed must flip the results to fail all Skill Tests. In addition, they permanently move down an Age Group (growing older) at each new moon, until eventually they die of premature old age. They inspire intense hatred whenever confronting creatures classified as Animals. A foe cannot be made subject to the Effects of more than one curse at a time, which last until the cursed object remains in their possession."
+      },
+      "reagents": {
+        "@en": "An inanimate object belonging to a person you wish to curse"
+      }
+    },
+    "tradition": "Covenant"
+  },
+  "effects": [],
+  "flags": {},
+  "folder": null,
+  "img": "systems/zweihander/assets/icons/wizard-staff.svg",
+  "name": "Maleficium",
+  "permission": {
+    "4be9WK4Hp7jWrwWe": 3,
+    "default": 0
+  },
+  "sort": 0,
+  "type": "spell"
+}

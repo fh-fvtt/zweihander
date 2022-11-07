@@ -1,0 +1,40 @@
+{
+  "_id": "tmMN1nMSJJfXhw98",
+  "data": {
+    "castingCost": 0,
+    "castingTime": "1 min",
+    "description": {
+      "@en": "Holding the eyes aloft, a blue-pink portal opens below a foe, exposing fleshy tendrils hell-bent to draw them into the endless pit of the Abyss."
+    },
+    "distance": "Any one person you can see",
+    "duration": "Instantaneous",
+    "notes": "",
+    "principle": "Greater",
+    "rules": {
+      "criticalFailure": {
+        "@en": "You are hell-bound for the Prince’s labyrinth of crystal and fog. You must succeed at a Resolve Test or else be immediately Slain! (unless you have a Fate Point to expend). If you succeed, you are left Prone and Incapacitated!"
+      },
+      "criticalSuccess": {
+        "@en": "As above, but the foe cannot Resist this Magick."
+      },
+      "effect": {
+        "@en": "After successfully casting this spell, a foe who can see and hear you must Resist with a successful Resolve Test or be instantaneously exiled from the Material Realm into the Abyss. Your foe is Slain!. Note that this only works on creatures who are classified as Humanoid (including player Ancestries). As a result, you gain 9 Corruption."
+      },
+      "reagents": {
+        "@en": "The severed eyes of a Magick-user, held aloft"
+      }
+    },
+    "tradition": "Covenant"
+  },
+  "effects": [],
+  "flags": {},
+  "folder": null,
+  "img": "systems/zweihander/assets/icons/wizard-staff.svg",
+  "name": "Abyssal Deportation",
+  "permission": {
+    "4be9WK4Hp7jWrwWe": 3,
+    "default": 0
+  },
+  "sort": 0,
+  "type": "spell"
+}

@@ -1,0 +1,53 @@
+{
+  "_id": "nOvNwX6OgGAcTJsw",
+  "data": {
+    "castingCost": null,
+    "castingTime": "12 Hours",
+    "description": {
+      "@en": "<p>Through the work of Clavis Maioris Sapientiae, we find the Art of making acid in all its mundane and warlike forms . . .</p>"
+    },
+    "distance": "By Touch",
+    "duration": "Permanent",
+    "notes": "",
+    "principle": "Basic Tier",
+    "rules": {
+      "criticalFailure": {
+        "@en": "You suffer [[/roll 2D10+2]] Damage from fire."
+      },
+      "criticalSuccess": {
+        "@en": "You create three Acidic Bombs."
+      },
+      "effect": {
+        "@en": "<p><span style=\"text-decoration: underline;\"><strong>Create Acid Bomb</strong>:</span> The more potent the bomb is, the more the Difficulty Rating eases or worsens:</p>\n<p><strong>Add +0 Total Damage</strong>: (Routine +10%) Alchemy</p>\n<p><strong>Add +3 Total Damage</strong>: (Standard +/-0%) Alchemy</p>\n<p><strong>Add +6 Total Damage</strong>: (Challenging -10%) Alchemy</p>\n<p><span style=\"text-decoration: underline;\"><strong>Effect:</strong></span> If successful, you create a number of bombs for every 6 points of your [IB]. If failed, nothing happens.</p>\n<p><strong>[IB] 1 to 6</strong>: One bomb</p>\n<p><strong>[IB] 7 to 12</strong>: Two bombs</p>\n<p><strong>[IB] 13+</strong>: Three bombs</p>"
+      },
+      "reagents": {
+        "@en": "You must have access to an alchemical laboratory and Alkali. Acid Bombs can be found in Article 5: Wares & Weapons."
+      }
+    },
+    "tradition": "Alchemical Arts"
+  },
+  "effects": [],
+  "flags": {
+    "cf": {
+      "color": "#000000",
+      "id": null,
+      "path": "FOF Spells#/CF_SEP/Alchemical Arts"
+    },
+    "core": {
+      "sourceId": "Compendium.zweihander.magick.zfw4EhNqq3sJRnbQ"
+    },
+    "scene-packer": {
+      "hash": "99e9f985e402405b49cc62f1b4a8f672b9824c7d",
+      "sourceId": "Item.BDYn5fyFsEbayhsf"
+    }
+  },
+  "folder": null,
+  "img": "systems/zweihander/assets/icons/magic-swirl.svg",
+  "name": "Create Acid Bomb",
+  "permission": {
+    "VOagSWOxwT3osUDT": 3,
+    "default": 0
+  },
+  "sort": 0,
+  "type": "spell"
+}

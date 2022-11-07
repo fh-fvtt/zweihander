@@ -1,0 +1,50 @@
+{
+  "_id": "wtrMrwyXFVyrVR8I",
+  "data": {
+    "associatedSkill": "Martial Ranged",
+    "damage": {
+      "associatedPrimaryAttribute": "Combat",
+      "formula": "[CB] + (1+[#])d6x1,6+3"
+    },
+    "description": {
+      "@en": "<p>These smooth-bore muskets are used by defenders along a wall to take &lsquo;pot shots&rsquo; at besiegers. Generally affixed with either a barrel hook or lain atop a window ledge to fire, tall tales abound of the infamous Condottiere Arnolt Uberschwarz wielding it one-handed against an onslaught of soldiers.</p>"
+    },
+    "distance": "[PB]+18 yards",
+    "encumbrance": 6,
+    "equipped": false,
+    "handling": "One-handed",
+    "load": 6,
+    "notes": "",
+    "price": {
+      "bp": "0",
+      "gc": "0",
+      "ss": "0"
+    },
+    "qualities": {
+      "arrayOfValues": [],
+      "value": "Gunpowder, Punishing, Recoil, Volatile, Two-handed"
+    },
+    "weaponType": "Gunpowder"
+  },
+  "effects": [],
+  "flags": {
+    "core": {
+      "sourceId": "Item.WWY5OIrj01yUeNmA"
+    },
+    "exportSource": {
+      "coreVersion": "0.8.9",
+      "system": "zweihander",
+      "systemVersion": "0.3.30",
+      "world": "talron2"
+    }
+  },
+  "folder": null,
+  "img": "systems/zweihander/assets/icons/sawed-off-shotgun.svg",
+  "name": "Rampart Gun",
+  "permission": {
+    "JyjuBRFhP4y9QWxg": 3,
+    "default": 0
+  },
+  "sort": 0,
+  "type": "weapon"
+}

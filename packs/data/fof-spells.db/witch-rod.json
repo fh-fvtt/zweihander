@@ -1,0 +1,53 @@
+{
+  "_id": "XpL9Ecqhf32EqqWh",
+  "data": {
+    "castingCost": 1,
+    "castingTime": "1 Minute",
+    "description": {
+      "@en": "<p>My will demands aim to find its target . . .and my will is true as steel.</p>"
+    },
+    "distance": "Self",
+    "duration": "3+[WB] in minutes",
+    "notes": "",
+    "principle": "Basic Tier",
+    "rules": {
+      "criticalFailure": {
+        "@en": "The branches split, as you suffer [[/roll 1D10+1]] Damage, but do not suffer Injuries due to it."
+      },
+      "criticalSuccess": {
+        "@en": "Triple the duration."
+      },
+      "effect": {
+        "@en": "<p>After successfully casting, the branch either points the way toward any threat you can name who is classified as Humanoid (including player cultures), finds a source of water or points to a location you can name. This Spell requires Concentration.</p>"
+      },
+      "reagents": {
+        "@en": "Two branches of witch hazel, crossed over one another"
+      }
+    },
+    "tradition": "Witchcraft"
+  },
+  "effects": [],
+  "flags": {
+    "cf": {
+      "color": "#000000",
+      "id": null,
+      "path": "FOF Spells#/CF_SEP/Witchcraft Spells"
+    },
+    "core": {
+      "sourceId": "Compendium.zweihander.magick.zfw4EhNqq3sJRnbQ"
+    },
+    "scene-packer": {
+      "hash": "2fa94c37b6e406e98699624a1a7d757ccb0b6e9a",
+      "sourceId": "Item.oRsh97uO0A5d2smg"
+    }
+  },
+  "folder": null,
+  "img": "systems/zweihander/assets/icons/wizard-staff.svg",
+  "name": "Witch Rod",
+  "permission": {
+    "VOagSWOxwT3osUDT": 3,
+    "default": 0
+  },
+  "sort": 0,
+  "type": "spell"
+}

@@ -1,0 +1,46 @@
+{
+  "_id": "6gEVs3p4WSTvacd0",
+  "data": {
+    "active": true,
+    "description": {
+      "@en": "<p>Look at this scar, right down the middle of my palm! It&rsquo;s nasty, isn&rsquo;t it? Ever since I suffered it, I&rsquo;ve become a bit of a Nervous Nellie.</p>"
+    },
+    "notes": "<p><span style=\"color: #d5c4a1; font-family: Signika, sans-serif; font-style: italic; text-align: justify; background-color: #282828;\">Grievous Injuries must undergo a successful Perform Surgery within twenty-four hours of suffering it, or else a character gains its related Permanent Injury.</span></p>",
+    "rules": {
+      "effect": {
+        "@en": "<p>Whenever you suffer from Stress, Fear or Terror, you immediately drop whatever you are holding. In addition, when you suffer from Bleeding or an Injury, you must succeed a Toughness Test or else drop what you&rsquo;re holding.</p>"
+      }
+    },
+    "severity": 0
+  },
+  "effects": [],
+  "flags": {
+    "cf": {
+      "color": "#000000",
+      "id": null,
+      "path": "FOF Injuries#/CF_SEP/Permanent Injuries"
+    },
+    "core": {
+      "sourceId": "Compendium.zweihander.injuries.pMHUxC35U5RHDI7K"
+    },
+    "exportSource": {
+      "coreVersion": "0.8.9",
+      "system": "zweihander",
+      "systemVersion": "0.3.30",
+      "world": "talron2"
+    },
+    "scene-packer": {
+      "hash": "a117b3417147538150586cd34501149782817b46",
+      "sourceId": "Item.ofg9zeaiyvsERKPe"
+    }
+  },
+  "folder": null,
+  "img": "systems/zweihander/assets/icons/internal-injury.svg",
+  "name": "Butterfingers",
+  "permission": {
+    "VOagSWOxwT3osUDT": 3,
+    "default": 0
+  },
+  "sort": 0,
+  "type": "injury"
+}

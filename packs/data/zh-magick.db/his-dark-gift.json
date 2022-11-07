@@ -1,0 +1,40 @@
+{
+  "_id": "14drLw8RMKmEc0zn",
+  "data": {
+    "castingCost": 0,
+    "castingTime": "1 min",
+    "description": {
+      "@en": "Drawing from the Abyss, you grant a black blessing in exchange for part of the recipient’s soul."
+    },
+    "distance": "Any one person you can touch",
+    "duration": "[WB]+3 minutes",
+    "notes": "",
+    "principle": "Petty",
+    "rules": {
+      "criticalFailure": {
+        "@en": "You have displeased whatever demon would have granted such chaotic power. As a consequence, the intended beneficiary to this Magick instead suffers from His Dark Punishment. The person you touch suffers a -10% to Combat, Fellowship and Willpower-related Skills for the Duration of the spell. In addition, they suffer 3 Corruption once the Duration ends."
+      },
+      "criticalSuccess": {
+        "@en": "As above, but they gain a +10% instead."
+      },
+      "effect": {
+        "@en": "After successfully casting this spell, the person you touch can add +5% to Combat, Fellowship and Willpower-related Skills. However, once the Duration of the spell has expired, they suffer 3 Corruption."
+      },
+      "reagents": {
+        "@en": "An appropriate sacrifice, such as a small kitten (expended)"
+      }
+    },
+    "tradition": "Arcane (Sorcery)"
+  },
+  "effects": [],
+  "flags": {},
+  "folder": null,
+  "img": "systems/zweihander/assets/icons/wizard-staff.svg",
+  "name": "His Dark Gift",
+  "permission": {
+    "9cilLhNTlIyJpmtZ": 3,
+    "default": 0
+  },
+  "sort": 0,
+  "type": "spell"
+}

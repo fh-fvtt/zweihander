@@ -1,0 +1,109 @@
+{
+  "_id": "Cznrk1YzXWYgJG2Q",
+  "data": {
+    "archetype": "Expert Profession",
+    "bonusAdvances": [
+      {
+        "name": "[AB]"
+      },
+      {
+        "name": "[BB]"
+      },
+      {
+        "name": "[BB]"
+      },
+      {
+        "name": "[FB]"
+      },
+      {
+        "name": "[IB]"
+      },
+      {
+        "name": "[PB]"
+      },
+      {
+        "name": "[WB]"
+      }
+    ],
+    "description": {
+      "@en": "Being a Shaman is more than just respecting nature; it’s about becoming one with it. To a Shaman, everything in nature has a spirit and an essence, be it a bear, a babbling brook or a majestic oak. Life to them is a constant battle between these forces, where only the strongest spirits survive. This includes the Shaman, who is also one of these spirits. They are perhaps mages of the wild, even priests in a sense, but they make no attempt to control the energies of this savage eternal war. Instead, Shaman are proxies to their power, guiding it into the Material Realm as conduits of power. The most potent spirits are animalistic spirits and when the Shaman gathers Magick, they are said to take on the very aspects of the beasts they so cherish. Shamans respect all animals, but many of them will have a ‘totem’, an animal that they hold in particularly high regard and feel a kinship towards.\nShamans are wild, unkempt and ripe of smell, being closer to a beast of nature than of their own race. Most of these wild arcanists shun civilized society, making homes in the rural villages that accept the Shaman’s way. Some find any society too much, retreating into the wilderness and their Magick, and taking on the essence of the animals they respect. They become unhinged, violent and sometimes cannibalistic in order to protect their territory. Those who have been driven even further into madness may try to actually overthrow civilization, believing the only path to true enlightenment resides with learning to unleash the beast within."
+    },
+    "drawback": {
+      "linkedId": null,
+      "name": "Brown Temperament"
+    },
+    "expert": {
+      "requirements": "You must possess at least one Skill Rank in Incantation in order to enter this Expert Profession. In addition, you must have the Special Trait of Arcane Magick.",
+      "value": true
+    },
+    "notes": "",
+    "professionalTrait": {
+      "linkedId": null,
+      "name": "Friend of the Wildlands"
+    },
+    "skillRanks": [
+      {
+        "name": "Awareness"
+      },
+      {
+        "name": "Folklore"
+      },
+      {
+        "name": "Handle Animal"
+      },
+      {
+        "name": "Incantation"
+      },
+      {
+        "name": "Intimidate"
+      },
+      {
+        "name": "Navigation"
+      },
+      {
+        "name": "Ride"
+      },
+      {
+        "name": "Simple Melee"
+      },
+      {
+        "name": "Survival"
+      },
+      {
+        "name": "Toughness"
+      }
+    ],
+    "specialTrait": {
+      "linkedId": null,
+      "name": "Arcana of Animism"
+    },
+    "talents": [
+      {
+        "linkedId": null,
+        "name": "Azimuth"
+      },
+      {
+        "linkedId": null,
+        "name": "Instincts"
+      },
+      {
+        "linkedId": null,
+        "name": "Menacing Demeanor"
+      }
+    ],
+    "tier": ""
+  },
+  "effects": [],
+  "flags": {
+    "zweihander": {}
+  },
+  "folder": null,
+  "img": "systems/zweihander/assets/icons/shaman.svg",
+  "name": "Shaman",
+  "permission": {
+    "9cilLhNTlIyJpmtZ": 3,
+    "default": 0
+  },
+  "sort": 0,
+  "type": "profession"
+}

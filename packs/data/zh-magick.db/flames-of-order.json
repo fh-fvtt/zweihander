@@ -1,0 +1,40 @@
+{
+  "_id": "bEjkP8UwGPQDHbtC",
+  "data": {
+    "castingCost": 0,
+    "castingTime": "1 min",
+    "description": {
+      "@en": "You are instantly immolated in holy light, rejecting all that is wrong and chaotic in this world."
+    },
+    "distance": "Yourself",
+    "duration": "Instantaneous",
+    "notes": "",
+    "principle": "Greater",
+    "rules": {
+      "criticalFailure": {
+        "@en": "The flames of your inner passion fizzles out. So distraught are you that you suffer a -30 Base Chance to all Skill Tests for a number of minutes equal to your [WB]."
+      },
+      "criticalSuccess": {
+        "@en": "As above, but those so affected are also set On Fire."
+      },
+      "effect": {
+        "@en": "After successfully casting this spell, you are instantly immolated in a harmless, white blinding light. Providing they are considered to be a heretic or a Mutant creature, those within the Explosion Template centered on you suffer [[/roll 2D10]]+[WB] in Damage. This ignores any Damage Threshold Modifier their armor may confer."
+      },
+      "reagents": {
+        "@en": "A golden amulet inscribed with the holy symbol of your god"
+      }
+    },
+    "tradition": "Divine (God-Emperor)"
+  },
+  "effects": [],
+  "flags": {},
+  "folder": null,
+  "img": "systems/zweihander/assets/icons/flame-tunnel.svg",
+  "name": "Flames of Order",
+  "permission": {
+    "9cilLhNTlIyJpmtZ": 3,
+    "default": 0
+  },
+  "sort": 0,
+  "type": "spell"
+}

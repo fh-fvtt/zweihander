@@ -1,0 +1,40 @@
+{
+  "_id": "PHAnck5Y5aTfJ2ut",
+  "data": {
+    "castingCost": 0,
+    "castingTime": "1 min",
+    "description": {
+      "@en": "You christen the ship with a bottle of grog, wishing good fortune."
+    },
+    "distance": "Any one boat you can touch",
+    "duration": "Special",
+    "notes": "",
+    "principle": "Petty",
+    "rules": {
+      "criticalFailure": {
+        "@en": "The bottle does not shatter against the hull, instead bouncing off of it and rolling away. When it stops, the cork suddenly pops on its own accord and the alcohol flows out not as liquid, but as silt. This boat is cursed and if you choose to board it before it leaves port, all those upon it must flip the results to fail all Navigation Tests instead."
+      },
+      "criticalSuccess": {
+        "@en": "As above, but those who use Navigation Tests gain a +20 Base Chance to succeed instead."
+      },
+      "effect": {
+        "@en": "After successfully casting this spell, a boat you touch grants anyone aboard a +10 Base Chance to Navigation Tests while on the boat. This Magick lasts as long as you remain on the boat and you must name both the port of departure and the destination port. Ports of call do not account for this Magick. Once the boat reaches its destination, the Magick fades."
+      },
+      "reagents": {
+        "@en": "A bottle of wine, shattered on a boat’s hull (expended)"
+      }
+    },
+    "tradition": "Divine (Leviathan)"
+  },
+  "effects": [],
+  "flags": {},
+  "folder": null,
+  "img": "systems/zweihander/assets/icons/broken-bottle.svg",
+  "name": "Bon Voyage",
+  "permission": {
+    "9cilLhNTlIyJpmtZ": 3,
+    "default": 0
+  },
+  "sort": 0,
+  "type": "spell"
+}

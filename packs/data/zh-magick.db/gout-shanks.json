@@ -1,0 +1,40 @@
+{
+  "_id": "ALmtXuZ0s591ogaI",
+  "data": {
+    "castingCost": 0,
+    "castingTime": "1 min",
+    "description": {
+      "@en": "For every step they take, and every move they make, their body begins to rot away."
+    },
+    "distance": "Any one person you can see",
+    "duration": "9+[WB] minutes",
+    "notes": "",
+    "principle": "Greater",
+    "rules": {
+      "criticalFailure": {
+        "@en": "Your legs suddenly give way beneath you as you crumble into a heap onto the ground. You are immediately made Helpless, but can Resist with a successful Toughness Test at the beginning of each of your Turns for the Duration of the spell to escape its Effects."
+      },
+      "criticalSuccess": {
+        "@en": "As above, but your foe is also left Helpless whenever they suffer a Grievous Injury."
+      },
+      "effect": {
+        "@en": "After successfully casting this spell, the foe you can see must Resist with a successful Toughness Test or be made Gouty. While Gouty, as a foe ends their Turn, they must roll a number of [[/roll D6]] Chaos Dice equal to the number of AP they spent on Movement Actions. If one Chaos Die results in face ‘6’, they suffer a Moderate Injury. If two Chaos Dice result in face ‘6’, they suffer a Serious Injury. If three or more Chaos Dice result in face ‘6’, they suffer a Grievous Injury. When this Magick inflicts a Moderate Injury, it is always a Twisted Ankle. When it inflicts a Serious Injury, it is always a Stress Fracture. Finally, when it inflicts a Grievous Injury, it is always a Maimed Foot."
+      },
+      "reagents": {
+        "@en": "A cured leg muscle from your own Ancestry, tied into a knot (expended)"
+      }
+    },
+    "tradition": "Covenant"
+  },
+  "effects": [],
+  "flags": {},
+  "folder": null,
+  "img": "systems/zweihander/assets/icons/wizard-staff.svg",
+  "name": "Gout-shanks",
+  "permission": {
+    "4be9WK4Hp7jWrwWe": 3,
+    "default": 0
+  },
+  "sort": 0,
+  "type": "spell"
+}

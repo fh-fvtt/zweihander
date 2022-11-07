@@ -1,0 +1,43 @@
+{
+  "_id": "vE9EDKotE9TjBmDo",
+  "data": {
+    "associatedSkill": "Simple Melee",
+    "damage": {
+      "formula": "[BB] + (1+[#])d6x6"
+    },
+    "description": {
+      "@en": "<p>These are weapons that shouldn&rsquo;t really be weapons. It could be an ale stein, a stool, pots and pans, a fire poker, a salted leg of pork; the list goes on. They are generally useful in bar scuffles and emergencies, laughable otherwise.</p>"
+    },
+    "distance": "Engaged",
+    "encumbrance": 1,
+    "equipped": false,
+    "handling": "One-handed",
+    "load": 0,
+    "notes": "",
+    "price": {
+      "bp": "0",
+      "gc": "0",
+      "ss": "0"
+    },
+    "qualities": {
+      "arrayOfValues": [],
+      "value": "Pummeling"
+    },
+    "weaponType": "Varies"
+  },
+  "effects": [],
+  "flags": {
+    "core": {
+      "sourceId": "Compendium.zweihander.weapons.Smer2GdCqmSGuYPh"
+    }
+  },
+  "folder": null,
+  "img": "systems/zweihander/assets/icons/card-joker.svg",
+  "name": "Improvised hand weapon",
+  "permission": {
+    "JyjuBRFhP4y9QWxg": 3,
+    "default": 0
+  },
+  "sort": 0,
+  "type": "weapon"
+}

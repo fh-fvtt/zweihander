@@ -1,0 +1,40 @@
+{
+  "_id": "2RuVFH5DysVahPQJ",
+  "data": {
+    "castingCost": 0,
+    "castingTime": "1 min",
+    "description": {
+      "@en": "Heatless pink flames dance upon the ground, taking the shape of delicate, elfin harlequins."
+    },
+    "distance": "Yourself",
+    "duration": "3+[WB] minutes",
+    "notes": "",
+    "principle": "Petty",
+    "rules": {
+      "criticalFailure": {
+        "@en": "The harlequins of Change begin to morph into flaming amalgamations of jesters affixed with crooked beaks, absurdly long limbs and feathery wings. They torment you with a terrible dance for the Duration, as every spell you fail to cast results in 3 Corruption for 24 hours!"
+      },
+      "criticalSuccess": {
+        "@en": "As above, but you do not gain Chaos Ranks if you Critically Fail."
+      },
+      "effect": {
+        "@en": "After successfully casting this spell, you conjure heatless, dancing pink flames in a Burst Template around you. While standing in this circle, if you fail a Skill Test, you may re-roll to generate a better result, but must accept the outcome. If you Critically Fail a Skill Test whilst standing in the circle, you gain 3 Corruption."
+      },
+      "reagents": {
+        "@en": "A shard of Wytchstone or meteorite, held in-hand"
+      }
+    },
+    "tradition": "Covenant"
+  },
+  "effects": [],
+  "flags": {},
+  "folder": null,
+  "img": "systems/zweihander/assets/icons/wizard-staff.svg",
+  "name": "Chaos Into Chaos",
+  "permission": {
+    "4be9WK4Hp7jWrwWe": 3,
+    "default": 0
+  },
+  "sort": 0,
+  "type": "spell"
+}

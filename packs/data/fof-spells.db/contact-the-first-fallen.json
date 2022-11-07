@@ -1,0 +1,53 @@
+{
+  "_id": "xlteED6KzJjtc0tC",
+  "data": {
+    "castingCost": null,
+    "castingTime": "48 Hours",
+    "description": {
+      "@en": "<p>Unto you, the First Fallen&mdash;son of Venus, Favored Son, the Morning Star, Shining One, the Light-Bearer, Lucifer: I beseech thee!</p>"
+    },
+    "distance": "Self",
+    "duration": "One hour",
+    "notes": "",
+    "principle": "Advanced Tier",
+    "rules": {
+      "criticalFailure": {
+        "@en": "You made a misstep, and the Seal of Solomon wasn’t drawn correctly. The demon escapes, and will do as it pleases until returning to the spirit realm twenty-four hours later. You also gain one permanent Flaw Rank."
+      },
+      "criticalSuccess": {
+        "@en": "Add an Assist Die to your Bargain Test."
+      },
+      "effect": {
+        "@en": "<p>After successfully casting, you trap a demon into the Seal of Solomon, and you may attempt to strike a Faustian bargain to convince them to carry out a malevolent deed. Example deeds include blighting a harvest, bringing plague, causing a jury to find someone innocent or guilty, gaining temporary protection from physical or mental harm, harming someone else, killing livestock or teaching Spells. The Historian will determine what is appropriate and help you shape an appropriately devilish request. Then, make a Secret Test using Bargain. The more selfish the deed, the more favorable the Difficulty Rating will be. Success and Critical Success results in the deed being done. Failure and Critical Failure results in your words being twisted against you. You begin to Bleed and gain three Flaw Ranks, no matter whether you succeeded or failed at using this Spell. This Spell requires Concentration.</p>"
+      },
+      "reagents": {
+        "@en": "Six candles burned (expended), your own blood, chalk used to draw the Seal of Solomon and a magic circle"
+      }
+    },
+    "tradition": "Black & White"
+  },
+  "effects": [],
+  "flags": {
+    "cf": {
+      "color": "#000000",
+      "id": null,
+      "path": "FOF Spells#/CF_SEP/Black & White Spells"
+    },
+    "core": {
+      "sourceId": "Compendium.zweihander.magick.zfw4EhNqq3sJRnbQ"
+    },
+    "scene-packer": {
+      "hash": "9147ffaf84762a70ac169d97affe5dd5f66d7d57",
+      "sourceId": "Item.plu7ysKXkGWygrQY"
+    }
+  },
+  "folder": null,
+  "img": "systems/zweihander/assets/icons/concentric-crescents.svg",
+  "name": "Contact the First Fallen",
+  "permission": {
+    "VOagSWOxwT3osUDT": 3,
+    "default": 0
+  },
+  "sort": 0,
+  "type": "spell"
+}

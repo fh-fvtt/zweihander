@@ -1,0 +1,43 @@
+{
+  "_id": "vBOt4F5pvxuLiNFh",
+  "data": {
+    "associatedSkill": "Martial Ranged",
+    "damage": {
+      "formula": "[CB] + (1+[#])d6x1,6"
+    },
+    "description": {
+      "@en": "This long-range matchlock gun is the predecessor to the far-superior musket. Arquebuses are notoriously unreliable and useless when its raining, as the fuse is invariably snuffed out."
+    },
+    "distance": "6 + [PB] yards",
+    "encumbrance": 3,
+    "equipped": false,
+    "handling": "Two-handed",
+    "load": 4,
+    "notes": "",
+    "price": {
+      "bp": "0",
+      "gc": "33",
+      "ss": "0"
+    },
+    "qualities": {
+      "arrayOfValues": [],
+      "value": "Gunpowder, Volatile"
+    },
+    "weaponType": "Gunpowder"
+  },
+  "effects": [],
+  "flags": {
+    "core": {
+      "sourceId": "Compendium.zweihander.weapons.93L0vdmD2Ff3SxPT"
+    }
+  },
+  "folder": null,
+  "img": "systems/zweihander/assets/icons/musket.svg",
+  "name": "Arquebus",
+  "permission": {
+    "JyjuBRFhP4y9QWxg": 3,
+    "default": 0
+  },
+  "sort": 0,
+  "type": "weapon"
+}

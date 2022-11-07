@@ -1,0 +1,121 @@
+{
+  "_id": "96AW56wua7aHeMb8",
+  "data": {
+    "archetype": "Intellectual Profession",
+    "bonusAdvances": [
+      {
+        "name": "[FB]"
+      },
+      {
+        "name": "[FB]"
+      },
+      {
+        "name": "[IB]"
+      },
+      {
+        "name": "[IB]"
+      },
+      {
+        "name": "[PB]"
+      },
+      {
+        "name": "[PB]"
+      },
+      {
+        "name": "[WB]"
+      }
+    ],
+    "description": {
+      "@en": "<p>There is no more critical career than teaching. Whether I&rsquo;m tutoring younger children or students enrolled in one of the colleges, I take my role very seriously. Teaching is a way to share knowledge and experiences, helping society and culture grow. It is the only way to banish the darkness of ignorance. Few can read, write or do simple arithmetic, and I have to teach these skills to as many as possible.</p>\n<p>I have noticed something amiss as of late. It is not just the growing tensions between the Loyalists and Rebels. There is something in the air I just cannot put my finger on. I return to my teachings and textbooks to find an answer among them, but even then, the facts elude me. I believe truth and knowledge will shed light on every problem, but I cannot help but feel this may be different. I fear what the winds of change will bring.</p>"
+    },
+    "drawback": {
+      "linkedId": null,
+      "name": "Fish Out of Water"
+    },
+    "expert": {
+      "requirements": "",
+      "value": false
+    },
+    "notes": "",
+    "professionalTrait": {
+      "linkedId": null,
+      "name": "Well-Read"
+    },
+    "skillRanks": [
+      {
+        "name": "Charm"
+      },
+      {
+        "name": "Counterfeit"
+      },
+      {
+        "name": "Eavesdrop"
+      },
+      {
+        "name": "Education"
+      },
+      {
+        "name": "Folklore"
+      },
+      {
+        "name": "Interrogation"
+      },
+      {
+        "name": "Leadership"
+      },
+      {
+        "name": "Rumor"
+      },
+      {
+        "name": "Scrutinize"
+      },
+      {
+        "name": "Simple Ranged"
+      }
+    ],
+    "specialTrait": {
+      "linkedId": null,
+      "name": ""
+    },
+    "talents": [
+      {
+        "linkedId": null,
+        "name": "Sagacity"
+      },
+      {
+        "linkedId": null,
+        "name": "Trivium"
+      },
+      {
+        "linkedId": null,
+        "name": "Turn the Page"
+      }
+    ],
+    "tier": ""
+  },
+  "effects": [],
+  "flags": {
+    "cf": {
+      "color": "#000000",
+      "id": null,
+      "path": "FOF Professions#/CF_SEP/Intellectual Professions"
+    },
+    "core": {
+      "sourceId": "Compendium.zweihander.professions.RmnnQeZxr0JVApTJ"
+    },
+    "scene-packer": {
+      "hash": "9e7f398d89b94b57fc22e22202208d10e2f73ce5",
+      "sourceId": "Item.fqtzigE2eBW375RU"
+    },
+    "zweihander": {}
+  },
+  "folder": null,
+  "img": "systems/zweihander/assets/icons/abstract-082.svg",
+  "name": "Teacher",
+  "permission": {
+    "VOagSWOxwT3osUDT": 3,
+    "default": 0
+  },
+  "sort": 0,
+  "type": "profession"
+}

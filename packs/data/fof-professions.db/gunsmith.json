@@ -1,0 +1,121 @@
+{
+  "_id": "YBFTB3uIL3JomUfX",
+  "data": {
+    "archetype": "Commoner Profession",
+    "bonusAdvances": [
+      {
+        "name": "[BB]"
+      },
+      {
+        "name": "[CB]"
+      },
+      {
+        "name": "[CB]"
+      },
+      {
+        "name": "[FB]"
+      },
+      {
+        "name": "[IB]"
+      },
+      {
+        "name": "[PB]"
+      },
+      {
+        "name": "[WB]"
+      }
+    ],
+    "description": {
+      "@en": "<p>Many know how to craft a gun, but I am a true artisan when it comes to firearms. I come from a long line of artists who have earned a living via crafting not just a weapon, but a thing of beauty. I know how to forge a long barrel that is rifled for a perfect shot. I have a knack for taking a piece of ordinary wood and carving it into a barrel of incredible beauty and balance. Unlike my more rebellious friends, I mix well with all my customers. Everyone needs my skills after all, as well as my advice when it comes to firearms. I gladly give it, up to a point&mdash;there are secrets to gun making I will not share.</p>\n<p>Trouble is brewing and evil is coming&mdash;an evil that is twofold. One is the growing call to break away from the British Empire and the Loyalists. It is a call that will bring death and ultimately prove that neither side is correct. The second is another call, but one that is far darker, more sinister and more ominous. This evil&mdash;and make no mistake, it is pure evil&mdash;will not be fought with just fate and faith, but with the righteous fury of a finely honed musket.</p>"
+    },
+    "drawback": {
+      "linkedId": null,
+      "name": "Phantom Limb"
+    },
+    "expert": {
+      "requirements": "",
+      "value": false
+    },
+    "notes": "",
+    "professionalTrait": {
+      "linkedId": null,
+      "name": "My Retribution"
+    },
+    "skillRanks": [
+      {
+        "name": "Alchemy"
+      },
+      {
+        "name": "Athletics"
+      },
+      {
+        "name": "Awareness"
+      },
+      {
+        "name": "Bargain"
+      },
+      {
+        "name": "Martial Ranged"
+      },
+      {
+        "name": "Rumor"
+      },
+      {
+        "name": "Simple Melee"
+      },
+      {
+        "name": "Simple Ranged"
+      },
+      {
+        "name": "Toughness"
+      },
+      {
+        "name": "Tradecraft"
+      }
+    ],
+    "specialTrait": {
+      "linkedId": null,
+      "name": ""
+    },
+    "talents": [
+      {
+        "linkedId": null,
+        "name": "Nimble Fingers"
+      },
+      {
+        "linkedId": null,
+        "name": "Ricochet"
+      },
+      {
+        "linkedId": null,
+        "name": "Whites of Their Eyes"
+      }
+    ],
+    "tier": ""
+  },
+  "effects": [],
+  "flags": {
+    "cf": {
+      "color": "#000000",
+      "id": null,
+      "path": "FOF Professions#/CF_SEP/Commoner Professions"
+    },
+    "core": {
+      "sourceId": "Compendium.zweihander.professions.RmnnQeZxr0JVApTJ"
+    },
+    "scene-packer": {
+      "hash": "81999fe825fece5fe15825f7371f62ee3d89c473",
+      "sourceId": "Item.bYcPHfPpTwiD9uQD"
+    },
+    "zweihander": {}
+  },
+  "folder": null,
+  "img": "systems/zweihander/assets/icons/abstract-082.svg",
+  "name": "Gunsmith",
+  "permission": {
+    "VOagSWOxwT3osUDT": 3,
+    "default": 0
+  },
+  "sort": 0,
+  "type": "profession"
+}

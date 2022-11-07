@@ -1,0 +1,40 @@
+{
+  "_id": "YzbBBwl1xuqW3e92",
+  "data": {
+    "castingCost": 0,
+    "castingTime": "1 min",
+    "description": {
+      "@en": "Everyone puts it all on the line: every chip they have, and every bit of their spirit. They may make it out the other side, but will pay in the end."
+    },
+    "distance": "Any persons you can see",
+    "duration": "Special",
+    "notes": "",
+    "principle": "Greater",
+    "rules": {
+      "criticalFailure": {
+        "@en": "You have advanced the plots of an entity greatly opposed to the Slavering Maw. You immediately gain 9 Corruption and suffer from Terror."
+      },
+      "criticalSuccess": {
+        "@en": "As above, but they are immune to Bleeding until the Effects of the spell ends."
+      },
+      "effect": {
+        "@en": "After successfully casting this spell, select a number of allies equal to your [WB]. Immediately after suffering Damage from a melee or ranged weapon, they may choose to ignore it entirely, therefore negating both Damage and any Injuries they may have suffered. However, allies must record all instances of the times they ignored Damage. Once combat ends, roll an equivalent number of Chaos Dice. If one Chaos Die results on face ‘6’, they suffer a Moderate Injury. If two Chaos Dice results on face ‘6’, they suffer a Serious Injury. If three or more Chaos Dice result in face ‘6’, they suffer a Grievous Injury."
+      },
+      "reagents": {
+        "@en": "A shard of Wytchstone, crushed (expended)"
+      }
+    },
+    "tradition": "Covenant"
+  },
+  "effects": [],
+  "flags": {},
+  "folder": null,
+  "img": "systems/zweihander/assets/icons/wizard-staff.svg",
+  "name": "Odds & Sods",
+  "permission": {
+    "4be9WK4Hp7jWrwWe": 3,
+    "default": 0
+  },
+  "sort": 0,
+  "type": "spell"
+}

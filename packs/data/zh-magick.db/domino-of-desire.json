@@ -1,0 +1,40 @@
+{
+  "_id": "10mTfy1FCAGD2zha",
+  "data": {
+    "castingCost": 0,
+    "castingTime": "1 min",
+    "description": {
+      "@en": "Opening the jar, purple scintilla and tiny specks of pink energy float into the air. These fall over a person’s shoulders like a mantle, forming an illusionary mask of beauty and perfection."
+    },
+    "distance": "Any one person you can touch",
+    "duration": "3+[WB] minutes",
+    "notes": "",
+    "principle": "Petty",
+    "rules": {
+      "criticalFailure": {
+        "@en": "The subject of the spell receives not a mask of desire, but one of pain. Instead, the person is immediately Intoxicated and an illusion of a mask of pain and misery is cast over them. For the Duration of the spell, anyone who beholds the domino of pain and misery whose Order Ranks are higher than their Chaos Ranks suffers from Stress."
+      },
+      "criticalSuccess": {
+        "@en": "As above, but triple the Duration."
+      },
+      "effect": {
+        "@en": "After successfully casting this spell, the person you touch is instantly relieved of Intoxication and an illusion is cast over them to temporarily obscure any physical Damage or Injury they have suffered. Finally, the person may flip the results to succeed at Guile Tests."
+      },
+      "reagents": {
+        "@en": "A liar’s tongue, held inside a jar"
+      }
+    },
+    "tradition": "Covenant"
+  },
+  "effects": [],
+  "flags": {},
+  "folder": null,
+  "img": "systems/zweihander/assets/icons/wizard-staff.svg",
+  "name": "Domino of Desire",
+  "permission": {
+    "4be9WK4Hp7jWrwWe": 3,
+    "default": 0
+  },
+  "sort": 0,
+  "type": "spell"
+}

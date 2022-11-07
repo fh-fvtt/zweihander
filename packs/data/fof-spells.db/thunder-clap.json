@@ -1,0 +1,53 @@
+{
+  "_id": "u3GhrIKg0tkcEG2v",
+  "data": {
+    "castingCost": 3,
+    "castingTime": "1 Minute",
+    "description": {
+      "@en": "<p>French military mages developed this magic; I, however, have claimed it as my own . . .</p>"
+    },
+    "distance": "Cone Template, extending from you",
+    "duration": "Special",
+    "notes": "",
+    "principle": "Advanced Tier",
+    "rules": {
+      "criticalFailure": {
+        "@en": "You are momentarily Deafened, and foes gain the advantage of Surprise against you until the end of combat."
+      },
+      "criticalSuccess": {
+        "@en": "As above, but they cannot Resist."
+      },
+      "effect": {
+        "@en": "<p>After successfully casting (and those caught in a Cone Template cannot or fail to Resist using Toughness), foes are Surprised by all Actions In Combat, until combat ends.</p>"
+      },
+      "reagents": {
+        "@en": "Clap your hands together, or clap one hand with another person"
+      }
+    },
+    "tradition": "Common"
+  },
+  "effects": [],
+  "flags": {
+    "cf": {
+      "color": "#000000",
+      "id": null,
+      "path": "FOF Spells#/CF_SEP/Common Spells"
+    },
+    "core": {
+      "sourceId": "Item.opcupO2BLpL53Sdg"
+    },
+    "scene-packer": {
+      "hash": "d772e5f7ee98e22683ca5eea8436508746548820",
+      "sourceId": "Item.BfdRf4GftYtFFkGe"
+    }
+  },
+  "folder": null,
+  "img": "systems/zweihander/assets/icons/spell-book.svg",
+  "name": "Thunder Clap",
+  "permission": {
+    "VOagSWOxwT3osUDT": 3,
+    "default": 0
+  },
+  "sort": 0,
+  "type": "spell"
+}

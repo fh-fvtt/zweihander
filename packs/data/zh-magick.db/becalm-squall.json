@@ -1,0 +1,40 @@
+{
+  "_id": "eEeV6ur7FLyk2RRX",
+  "data": {
+    "castingCost": 0,
+    "castingTime": "1 min",
+    "description": {
+      "@en": "With the thrust of a blade, the mast and sails of your ship are wreathed in St. Elmo’s light."
+    },
+    "distance": "Any one boat you can touch",
+    "duration": "[WB]+9 hours",
+    "notes": "",
+    "principle": "Greater",
+    "rules": {
+      "criticalFailure": {
+        "@en": "The storm grows even more precipitous. Roll a [[/roll 1D6]] Chaos Die. If it lands on face ‘6’, lightning strikes the mast of the boat you’re on, splitting it from the ship."
+      },
+      "criticalSuccess": {
+        "@en": "As above, but triple the Duration."
+      },
+      "effect": {
+        "@en": "After successfully casting this spell, a boat you touch (providing it is a river- or sea-going vessel) is saved from any bad winds or storm that surrounds it. The winds buffet outside of the area, but provide only a gentle breeze upon the boat. An area of calm radiates around the boat a number of yards equal to your [WB], allowing companion boats to take advantage of the Magick. If becalmed, the boat moves as if it were guided by a gentle wind and the thrashing waters no longer impede its ability to navigate."
+      },
+      "reagents": {
+        "@en": "A whalebone dagger, thrust into the boat’s mast (expended)"
+      }
+    },
+    "tradition": "Divine (Leviathan)"
+  },
+  "effects": [],
+  "flags": {},
+  "folder": null,
+  "img": "systems/zweihander/assets/icons/waves.svg",
+  "name": "Becalm Squall",
+  "permission": {
+    "9cilLhNTlIyJpmtZ": 3,
+    "default": 0
+  },
+  "sort": 0,
+  "type": "spell"
+}

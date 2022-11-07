@@ -1,0 +1,40 @@
+{
+  "_id": "cRFlS1MVfNpHDdUb",
+  "data": {
+    "castingCost": 0,
+    "castingTime": "1 min",
+    "description": {
+      "@en": "You are granted the gift of being able to speak the tongue of any creature of the wild, conversing as you would with a stranger. Be warned though, not every creature is willing to hold a normal conversation with you – their savage heart trumps reasoned communication!"
+    },
+    "distance": "Yourself",
+    "duration": "[WB]+3 minutes",
+    "notes": "",
+    "principle": "Petty",
+    "rules": {
+      "criticalFailure": {
+        "@en": "With but a whisper, your voice is stricken from you and replaced by one taken from a Beast of the natural world (the GM will decide which Beast). For 24 hours you can nothing except grunt, growl or roar."
+      },
+      "criticalSuccess": {
+        "@en": "As above, but add a +20 Base Chance instead."
+      },
+      "effect": {
+        "@en": "After successfully casting this spell, you gain the ability to speak with any creature classified as a Beast. In addition, you gain a +10 Base Chance to all Skill Tests to converse with and befriend them."
+      },
+      "reagents": {
+        "@en": "A crabapple, smashed beneath your boot (expended)"
+      }
+    },
+    "tradition": "Divine (Demiurge)"
+  },
+  "effects": [],
+  "flags": {},
+  "folder": null,
+  "img": "systems/zweihander/assets/icons/conversation.svg",
+  "name": "Primordial Tongue",
+  "permission": {
+    "9cilLhNTlIyJpmtZ": 3,
+    "default": 0
+  },
+  "sort": 0,
+  "type": "spell"
+}

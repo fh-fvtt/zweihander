@@ -1,0 +1,38 @@
+{
+  "_id": "UUMiBQtDkF3823BR",
+  "data": {
+    "active": true,
+    "description": {
+      "@en": ""
+    },
+    "notes": "",
+    "recuperationTime": 0,
+    "rules": {
+      "effect": {
+        "@en": "Until fully Recuperated, you start your Turn with 1 less AP."
+      }
+    },
+    "severity": 0
+  },
+  "effects": [],
+  "flags": {
+    "core": {
+      "sourceId": "Item.SLJ7uR91MyXFfvsN"
+    },
+    "exportSource": {
+      "coreVersion": "0.8.9",
+      "system": "zweihander",
+      "systemVersion": "0.3.30",
+      "world": "talron2"
+    }
+  },
+  "folder": null,
+  "img": "systems/zweihander/assets/icons/arm-bandage.svg",
+  "name": "Dislocated Shoulder",
+  "permission": {
+    "4be9WK4Hp7jWrwWe": 3,
+    "default": 0
+  },
+  "sort": 0,
+  "type": "injury"
+}

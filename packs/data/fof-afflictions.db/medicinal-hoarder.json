@@ -1,0 +1,39 @@
+{
+  "_id": "s1NrQKrXB6t6yK2c",
+  "data": {
+    "active": false,
+    "description": {
+      "@en": "<p>I was once gravely injured by a riotous spirit, but now I am prepared. My arsenal of healing remedies keeps me and mine safe and must always be at full stock, lest we fall prey to another blight.</p>"
+    },
+    "details": {
+      "category": {
+        "@en": "Affliction"
+      }
+    },
+    "notes": "",
+    "rules": {
+      "effect": {
+        "@en": "<p>Whenever you suffer an Injury, spend a Coin to stave off its effects for twenty-four hours. However, whenever you don&rsquo;t have at least three tinctures on hand, you are unable to restore your Damage Condition Track positively until you do.</p>"
+      }
+    }
+  },
+  "effects": [],
+  "flags": {
+    "core": {
+      "sourceId": "Item.YT0u7A5T5EyGik9c"
+    },
+    "scene-packer": {
+      "hash": "3c28533966a023cba6e28ab342eb95cab68ac279",
+      "sourceId": "Item.s1NrQKrXB6t6yK2c"
+    }
+  },
+  "folder": null,
+  "img": "systems/zweihander/assets/icons/abstract-057.svg",
+  "name": "Medicinal Hoarder",
+  "permission": {
+    "VOagSWOxwT3osUDT": 3,
+    "default": 0
+  },
+  "sort": 0,
+  "type": "disorder"
+}

@@ -1,0 +1,40 @@
+{
+  "_id": "vcr93N9JivRTg7Hg",
+  "data": {
+    "castingCost": 0,
+    "castingTime": "1 min",
+    "description": {
+      "@en": "You are granted the gift of great speed and military prowess."
+    },
+    "distance": "Yourself",
+    "duration": "[WB]+6 minutes",
+    "notes": "",
+    "principle": "Lesser",
+    "rules": {
+      "criticalFailure": {
+        "@en": "You have made a grave mistake and angered your god. Your body is wracked by electricity, as you suffer [[/roll 2D10+2]] physical Peril."
+      },
+      "criticalSuccess": {
+        "@en": "As above and you can make two Attack Actions on your Turn, spending 0 APs for each."
+      },
+      "effect": {
+        "@en": "After successfully casting this spell, you can immediately make an Opportunity Attack with a melee weapon. In addition, you can make a Called Shot with a melee weapon or Melee Attack for 0 APs for the Duration of the spell. However, you can only use one Attack Action on your Turn."
+      },
+      "reagents": {
+        "@en": "A charm that is shaped like a lightning bolt"
+      }
+    },
+    "tradition": "Divine (Steward)"
+  },
+  "effects": [],
+  "flags": {},
+  "folder": null,
+  "img": "systems/zweihander/assets/icons/wizard-staff.svg",
+  "name": "Blitzkrieg",
+  "permission": {
+    "9cilLhNTlIyJpmtZ": 3,
+    "default": 0
+  },
+  "sort": 0,
+  "type": "spell"
+}

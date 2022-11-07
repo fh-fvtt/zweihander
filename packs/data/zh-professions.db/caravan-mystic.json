@@ -1,0 +1,109 @@
+{
+  "_id": "DuX6RoWiJKyb4rvM",
+  "data": {
+    "archetype": "Expert Profession",
+    "bonusAdvances": [
+      {
+        "name": "[FB]"
+      },
+      {
+        "name": "[FB]"
+      },
+      {
+        "name": "[IB]"
+      },
+      {
+        "name": "[IB]"
+      },
+      {
+        "name": "[PB]"
+      },
+      {
+        "name": "[WB]"
+      },
+      {
+        "name": "[WB]"
+      }
+    ],
+    "description": {
+      "@en": "At every festival or carnival, in a far-off corner there often sits a lone caravan – one resplendent in faded colors and baubles, an enticing presence for anyone seeking to know their future. These enigmatic huts on wheels are home to the Caravan Mystic – an itinerant fortune teller and fate weaver. Caravan Mystics spend their lives wandering from town to town, offering their services as a seer and a scryer for a modest fee. Many brush them aside as peddlers of lies, but the Caravan Mystic has utmost faith in their craft. Using instruments such as tarot cards, bird bones and crystal balls, they can read the stars and feel the winds of the universe to prognosticate the fate to come. Caravan Mystics are not traditional arcanists, but they can tap slightly into the beyond for their craft. Their predictions may not always be accurate, but at times an almost preternatural accuracy overtakes them – a foreboding omen that takes over their body and leaves them weak.\\nCaravan Mystics are always travelling, and often end up on explorations and expeditions with little inkling of their own safety. They find the nature of fortune and fate terribly fascinating, so following occult activities is not an uncommon practice. Risking life and soul, some Caravan Mystics enter into fugue states they never come out of, clawing at their eyes as revelation upon revelation is divulged to them, constantly muttering of the things they see in their visions, until they die of starvation. Caravan Mystics are rarely respected or given aid, so many are left to rot in insanity."
+    },
+    "drawback": {
+      "linkedId": null,
+      "name": "Fugue State"
+    },
+    "expert": {
+      "requirements": "You must possess at least one Skill Rank in Folklore in order to enter this Expert Profession.",
+      "value": true
+    },
+    "notes": "",
+    "professionalTrait": {
+      "linkedId": null,
+      "name": "Weaver of Fate"
+    },
+    "skillRanks": [
+      {
+        "name": "Eavesdrop"
+      },
+      {
+        "name": "Education"
+      },
+      {
+        "name": "Folklore"
+      },
+      {
+        "name": "Guile"
+      },
+      {
+        "name": "Handle Animal"
+      },
+      {
+        "name": "Interrogation"
+      },
+      {
+        "name": "Navigation"
+      },
+      {
+        "name": "Rumor"
+      },
+      {
+        "name": "Simple Melee"
+      },
+      {
+        "name": "Survival"
+      }
+    ],
+    "specialTrait": {
+      "linkedId": null,
+      "name": ""
+    },
+    "talents": [
+      {
+        "linkedId": null,
+        "name": "Azimuth"
+      },
+      {
+        "linkedId": null,
+        "name": "Forked Tongue"
+      },
+      {
+        "linkedId": null,
+        "name": "Impervious Mind"
+      }
+    ],
+    "tier": ""
+  },
+  "effects": [],
+  "flags": {
+    "zweihander": {}
+  },
+  "folder": null,
+  "img": "systems/zweihander/assets/icons/dragon-orb.svg",
+  "name": "Caravan Mystic",
+  "permission": {
+    "9cilLhNTlIyJpmtZ": 3,
+    "default": 0
+  },
+  "sort": 0,
+  "type": "profession"
+}

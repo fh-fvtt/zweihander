@@ -1,0 +1,40 @@
+{
+  "_id": "Aow0DdPMSHA7KUuP",
+  "data": {
+    "castingCost": 0,
+    "castingTime": "1 min",
+    "description": {
+      "@en": "A great horned shadow looms behind you, as your voice grows from a whisper… to a ROAR!"
+    },
+    "distance": "Yourself",
+    "duration": "Instantaneous",
+    "notes": "",
+    "principle": "Lesser",
+    "rules": {
+      "criticalFailure": {
+        "@en": "The shadow falls over you… toying with you. Suddenly, you are jerked into the air like a marionette – and then, the strings are cut. You fall a number of yards equal to [[/roll 2D10]]+[WB]."
+      },
+      "criticalSuccess": {
+        "@en": "As above, but foes cannot Resist this spell."
+      },
+      "effect": {
+        "@en": "After successfully casting this spell, foes caught in its Cone Template must Resist with a successful Athletics Tests or be thrown a number of yards equal to [[/roll 2D10]]+[WB]. Whether they successfully Resist the spell or not, they are left Prone."
+      },
+      "reagents": {
+        "@en": "A miniature brass bull, set on ground"
+      }
+    },
+    "tradition": "Covenant"
+  },
+  "effects": [],
+  "flags": {},
+  "folder": null,
+  "img": "systems/zweihander/assets/icons/wizard-staff.svg",
+  "name": "The Inverted Doom",
+  "permission": {
+    "4be9WK4Hp7jWrwWe": 3,
+    "default": 0
+  },
+  "sort": 0,
+  "type": "spell"
+}

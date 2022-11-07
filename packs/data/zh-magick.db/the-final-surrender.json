@@ -1,0 +1,40 @@
+{
+  "_id": "H3KmeiONJcuqoIkU",
+  "data": {
+    "castingCost": 0,
+    "castingTime": "1 min",
+    "description": {
+      "@en": "With the utterance of a few words, you immediately send the unfortunate soul into the afterlife."
+    },
+    "distance": "Any one person you can see",
+    "duration": "Instantaneous",
+    "notes": "",
+    "principle": "Greater",
+    "rules": {
+      "criticalFailure": {
+        "@en": "You accidentally drop the bottle, breaking beneath your feet. Uttering the person’s name aloud, you feel as if something terrible just passed through you. You immediately suffer 9 Corruption."
+      },
+      "criticalSuccess": {
+        "@en": "As above, but your foe cannot Resist."
+      },
+      "effect": {
+        "@en": "After successfully casting this spell, your foe is immediately Slain! and their spirit is transferred into the bottle. Their corpse remains perfectly intact and unaging. Only by feeding the bottle’s contents back to the deceased’s corpse can they be restored to life. If the body is destroyed, they are trapped in the bottle. Your foe can successfully Resist with a Toughness Test."
+      },
+      "reagents": {
+        "@en": "A silver bottle with a person’s name inscribed on it, spoken aloud"
+      }
+    },
+    "tradition": "Arcane (Necromancy)"
+  },
+  "effects": [],
+  "flags": {},
+  "folder": null,
+  "img": "systems/zweihander/assets/icons/bottled-shadow.svg",
+  "name": "The Final Surrender",
+  "permission": {
+    "9cilLhNTlIyJpmtZ": 3,
+    "default": 0
+  },
+  "sort": 0,
+  "type": "spell"
+}

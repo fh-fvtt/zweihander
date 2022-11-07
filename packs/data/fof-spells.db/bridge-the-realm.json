@@ -1,0 +1,53 @@
+{
+  "_id": "v3Pxin4DB5S1uTCU",
+  "data": {
+    "castingCost": null,
+    "castingTime": "10 Minutes",
+    "description": {
+      "@en": "<p>We shall slip between the material world and where the spirits dwell, to emerge on the other side.</p>"
+    },
+    "distance": "By Touch",
+    "duration": "Instantaneous",
+    "notes": "",
+    "principle": "Intermediate Tier",
+    "rules": {
+      "criticalFailure": {
+        "@en": "You and your comrades step into an everwidening dark pit, which swallows you all whole. It spits you back out where you started, and you all are instantly Incapacitated!, gaining 6 Conflict."
+      },
+      "criticalSuccess": {
+        "@en": "No one suffers Peril."
+      },
+      "effect": {
+        "@en": "<p>After successfully casting, you and a number of persons equal to 6+[WB] instantaneously travel to another location. You can only travel to specific location you have previously visited. Upon arrival, everyone excep for you suffers [[/roll 2D10+2]] Peril.</p>"
+      },
+      "reagents": {
+        "@en": "A powdered sapphire, laid at the foot of a doorway (expended)"
+      }
+    },
+    "tradition": "Black & White"
+  },
+  "effects": [],
+  "flags": {
+    "cf": {
+      "color": "#000000",
+      "id": null,
+      "path": "FOF Spells#/CF_SEP/Black & White Spells"
+    },
+    "core": {
+      "sourceId": "Compendium.zweihander.magick.zfw4EhNqq3sJRnbQ"
+    },
+    "scene-packer": {
+      "hash": "282451ce29c23f2e48483a38d0acc637dac7bbf2",
+      "sourceId": "Item.Bbi3UE5OshiSMv62"
+    }
+  },
+  "folder": null,
+  "img": "systems/zweihander/assets/icons/concentric-crescents.svg",
+  "name": "Bridge the Realm",
+  "permission": {
+    "VOagSWOxwT3osUDT": 3,
+    "default": 0
+  },
+  "sort": 0,
+  "type": "spell"
+}

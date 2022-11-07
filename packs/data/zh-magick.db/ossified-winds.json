@@ -1,0 +1,40 @@
+{
+  "_id": "ewEZ36zSaBzMiqxw",
+  "data": {
+    "castingCost": 0,
+    "castingTime": "1 min",
+    "description": {
+      "@en": "As you blow the pulverized remains of bones from your previous victims, they reform in the air, taking shape as shards and whorl about."
+    },
+    "distance": "Any persons you can see",
+    "duration": "6+[WB] minutes",
+    "notes": "",
+    "principle": "Lesser",
+    "rules": {
+      "criticalFailure": {
+        "@en": "The bones blow about in the wind, until they reform. As they coalesce, a violent Restless Spirit arises to take its vengeance upon you. This Phantom will arise immediately somewhere within sight and seek to kill you."
+      },
+      "criticalSuccess": {
+        "@en": "As above, but foes also cannot Counterspell, Dodge or Parry."
+      },
+      "effect": {
+        "@en": "After successfully casting this spell, select a number of foes who can see and hear you equal to your [WB]. They each must Resist with a successful Coordination Test or be made Harried. While Harried, they immediately suffer [[/roll 2D10]]+[WB] physical Peril when their Turn begins. In addition, they cannot use ranged weapons for Actions in Combat."
+      },
+      "reagents": {
+        "@en": "Powdered bone shards of a person you have Slain!, blown into the air (expended)"
+      }
+    },
+    "tradition": "Covenant"
+  },
+  "effects": [],
+  "flags": {},
+  "folder": null,
+  "img": "systems/zweihander/assets/icons/wizard-staff.svg",
+  "name": "Ossified Winds",
+  "permission": {
+    "4be9WK4Hp7jWrwWe": 3,
+    "default": 0
+  },
+  "sort": 0,
+  "type": "spell"
+}

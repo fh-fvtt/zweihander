@@ -1,0 +1,50 @@
+{
+  "_id": "F74HCnaaypRUdgtm",
+  "data": {
+    "associatedSkill": "Simple Melee",
+    "damage": {
+      "associatedPrimaryAttribute": "Combat",
+      "formula": "[CB] + 1 + (1+[#])d6x6"
+    },
+    "description": {
+      "@en": "<p>A tool for farmers, put to the right use it can be just as deadly as any formal polearm. Also, the name of a leaflet distributed between cities which criticizes bards and other entertainers, written by disillusioned, entitled Burghers.</p>"
+    },
+    "distance": "Engaged or 1 yard",
+    "encumbrance": 2,
+    "equipped": false,
+    "handling": "Two-handed",
+    "load": 0,
+    "notes": "",
+    "price": {
+      "bp": "0",
+      "gc": "0",
+      "ss": "2"
+    },
+    "qualities": {
+      "arrayOfValues": [],
+      "value": "Reach, Slow, Weak"
+    },
+    "weaponType": "Bladed"
+  },
+  "effects": [],
+  "flags": {
+    "core": {
+      "sourceId": "Item.4A0dpsCmYX0R0cTN"
+    },
+    "exportSource": {
+      "coreVersion": "0.8.9",
+      "system": "zweihander",
+      "systemVersion": "0.3.30",
+      "world": "talron2"
+    }
+  },
+  "folder": null,
+  "img": "systems/zweihander/assets/icons/pitchfork.svg",
+  "name": "Pitchfork",
+  "permission": {
+    "JyjuBRFhP4y9QWxg": 3,
+    "default": 0
+  },
+  "sort": 0,
+  "type": "weapon"
+}

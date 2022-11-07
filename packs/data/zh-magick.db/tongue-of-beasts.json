@@ -1,0 +1,40 @@
+{
+  "_id": "VlsZR0jwkqc9kfZW",
+  "data": {
+    "castingCost": 0,
+    "castingTime": "1 min",
+    "description": {
+      "@en": "You are able to speak in your own tongue, despite taking upon a more savage form."
+    },
+    "distance": "Special",
+    "duration": "Special",
+    "notes": "",
+    "principle": "Lesser",
+    "rules": {
+      "criticalFailure": {
+        "@en": "With but a whisper, your voice is stricken from you. You cannot speak for 48 hours."
+      },
+      "criticalSuccess": {
+        "@en": "As above, but triple the Duration."
+      },
+      "effect": {
+        "@en": "After successfully casting this spell, you can retain the ability to speak, use reagents and cast Magick while transmogrified into the form of any animal’s shape you take. This works in conjunction with aforementioned Magick under the Arcana of Animism that enables the caster to transform into various beast forms."
+      },
+      "reagents": {
+        "@en": "The tongue of the creature you want to transform into (expended)"
+      }
+    },
+    "tradition": "Arcane (Animism)"
+  },
+  "effects": [],
+  "flags": {},
+  "folder": null,
+  "img": "systems/zweihander/assets/icons/wizard-staff.svg",
+  "name": "Tongue of Beasts",
+  "permission": {
+    "9cilLhNTlIyJpmtZ": 3,
+    "default": 0
+  },
+  "sort": 0,
+  "type": "spell"
+}

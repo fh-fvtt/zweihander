@@ -1,0 +1,109 @@
+{
+  "_id": "uKivG6FWgEmQh2eN",
+  "data": {
+    "archetype": "Expert Profession",
+    "bonusAdvances": [
+      {
+        "name": "[BB]"
+      },
+      {
+        "name": "[CB]"
+      },
+      {
+        "name": "[CB]"
+      },
+      {
+        "name": "[FB]"
+      },
+      {
+        "name": "[IB]"
+      },
+      {
+        "name": "[WB]"
+      },
+      {
+        "name": "[WB]"
+      }
+    ],
+    "description": {
+      "@en": "The Veteran’s place in society is one of grudging respect, a passing acknowledgment of the horrors they have endured and what few freedoms and luxuries those sacrifices have purchased. Not uncommon among Veterans are false legs, amputated hands, and metal noses; a grim reminder of the physical sacrifices they’ve made. But the spiritual toll is not as outwardly apparent. A haunted look, a thousand-mile stare or even moments of intense psychological disturbance mark the Veteran as more the victim of war. For their sacrifices, they are honored on commemoration days, given at least meager amounts of food when they are hungry and drink when they are thirsty. Their advice in battle is keenly regarded and their ethics in trade are overlooked in lieu of this. They hold a minor place of honor, and while unglamorous, no one can say that it is unearned.\nHowever, in war, there are no survivors – only living victims. The Veteran is one who has lived through this savage brutality. They have seen dead children suckling dying mothers and know the color of flesh charred from the bone. They have smelled the leavings of their captured enemies, wasting away in cages. Their bodies are hardened and their minds more so, but the damage has been done and cannot be mended. They are sour, lost and cruelly indifferent, unable to acknowledge even the least further suffering in their world. While they may be slightly revered, no one cares to hear the Veteran’s stories … and the Veteran cares less to tell them."
+    },
+    "drawback": {
+      "linkedId": null,
+      "name": "Scarred Psyche"
+    },
+    "expert": {
+      "requirements": "You must possess at least two Skill Ranks in Warfare in order to enter this Expert Profession.",
+      "value": true
+    },
+    "notes": "",
+    "professionalTrait": {
+      "linkedId": null,
+      "name": "I’ve Seen Worse"
+    },
+    "skillRanks": [
+      {
+        "name": "Folklore"
+      },
+      {
+        "name": "Gamble"
+      },
+      {
+        "name": "Leadership"
+      },
+      {
+        "name": "Martial Melee"
+      },
+      {
+        "name": "Martial Ranged"
+      },
+      {
+        "name": "Resolve"
+      },
+      {
+        "name": "Simple Melee"
+      },
+      {
+        "name": "Simple Ranged"
+      },
+      {
+        "name": "Toughness"
+      },
+      {
+        "name": "Warfare"
+      }
+    ],
+    "specialTrait": {
+      "linkedId": null,
+      "name": ""
+    },
+    "talents": [
+      {
+        "linkedId": null,
+        "name": "Die Hard"
+      },
+      {
+        "linkedId": null,
+        "name": "Impervious Mind"
+      },
+      {
+        "linkedId": null,
+        "name": "Military Formation"
+      }
+    ],
+    "tier": ""
+  },
+  "effects": [],
+  "flags": {
+    "zweihander": {}
+  },
+  "folder": null,
+  "img": "systems/zweihander/assets/icons/veteran.svg",
+  "name": "Veteran",
+  "permission": {
+    "9cilLhNTlIyJpmtZ": 3,
+    "default": 0
+  },
+  "sort": 0,
+  "type": "profession"
+}

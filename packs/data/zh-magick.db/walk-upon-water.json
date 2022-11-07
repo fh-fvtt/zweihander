@@ -1,0 +1,40 @@
+{
+  "_id": "VgTyathORpajImIw",
+  "data": {
+    "castingCost": 0,
+    "castingTime": "1 min",
+    "description": {
+      "@en": "You can walk atop water as if it were land."
+    },
+    "distance": "Yourself",
+    "duration": "[WB]+6 minutes",
+    "notes": "",
+    "principle": "Lesser",
+    "rules": {
+      "criticalFailure": {
+        "@en": "You cannot walk upon water. Nor, can you walk atop land! You cannot stand up without automatically being knocked Prone for the Duration of the spell."
+      },
+      "criticalSuccess": {
+        "@en": "As above, but triple the Duration."
+      },
+      "effect": {
+        "@en": "After successfully casting this spell, you can walk upon water or wet ground as if it were firm land."
+      },
+      "reagents": {
+        "@en": "A water strider, consumed (expended)"
+      }
+    },
+    "tradition": "Divine (Leviathan)"
+  },
+  "effects": [],
+  "flags": {},
+  "folder": null,
+  "img": "systems/zweihander/assets/icons/wizard-staff.svg",
+  "name": "Walk Upon Water",
+  "permission": {
+    "9cilLhNTlIyJpmtZ": 3,
+    "default": 0
+  },
+  "sort": 0,
+  "type": "spell"
+}

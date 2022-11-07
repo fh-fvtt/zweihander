@@ -1,0 +1,109 @@
+{
+  "_id": "i1SFcwrPwNzwuifG",
+  "data": {
+    "archetype": "Expert Profession",
+    "bonusAdvances": [
+      {
+        "name": "[AB]"
+      },
+      {
+        "name": "[BB]"
+      },
+      {
+        "name": "[IB]"
+      },
+      {
+        "name": "[IB]"
+      },
+      {
+        "name": "[PB]"
+      },
+      {
+        "name": "[WB]"
+      },
+      {
+        "name": "[WB]"
+      }
+    ],
+    "description": {
+      "@en": "Imagine a monocle-wearing academic, standing at the center of a lecture auditorium, wielding a series of frightening blades while cutting into the brainbox of a vivisected corpse. Surrounding the corpse are wide-eyed and eager students observing, as the prodding of a nerve bunch by the academic shows them what makes the corpse move. These academics are called Physikers – trained medical professionals with years of work and study under their belt. They believe illness and pain are not imposed by gods or a result of imbalanced humors. Instead, it can be solved by studying vivisected corpses and use of intensive treatments that border on necromancy. Physikers often work at universities or maintain hospices under the strict, watchful eye of the church to make certain their body of work does not veer into heresy. These hospitals vary greatly in the quality of treatment they provide or the reputation they accrue; many are either sanatoriums where the near-dead ‘live’, while others are only reserved for blue-blooded. Still, whatever chance the Physiker has to further their knowledge and influence, they will take it… even if it means having their work routinely reviewed by church Inquisitors.\\nOf course, just as the church is present to ensure that medical research does not stray into heresy, it is also the Physiker’s biggest obstacle in their journey to understand the human condition. Many churches see the desecration of corpses and vivisection as heretical and blasphemous, as they feel most sickness and pain is godly punishment. Funerary Mages follow a similar path of thinking, claiming that the dead require respect and death is inevitable, and should not be forestalled by science or sorcery. Many Physikers take to the road because they have been run out of their hospitals, forced to operate in secret at the risk of being strung up as a heretic. The most unstable among them – spurned by the stress of losing their life’s work – often start performing drastic, unnecessary surgeries. This is but a slippery slope before the plunge into the true realm of necromancy and biological reconstruction not meant for this world."
+    },
+    "drawback": {
+      "linkedId": null,
+      "name": "Overworked"
+    },
+    "expert": {
+      "requirements": "You must possess at least two Skill Rank in both Education and Heal in order to enter this Expert Profession.",
+      "value": true
+    },
+    "notes": "",
+    "professionalTrait": {
+      "linkedId": null,
+      "name": "Bedside Manner"
+    },
+    "skillRanks": [
+      {
+        "name": "Coordination"
+      },
+      {
+        "name": "Education"
+      },
+      {
+        "name": "Folklore"
+      },
+      {
+        "name": "Heal"
+      },
+      {
+        "name": "Resolve"
+      },
+      {
+        "name": "Rumor"
+      },
+      {
+        "name": "Scrutinize"
+      },
+      {
+        "name": "Simple Melee"
+      },
+      {
+        "name": "Toughness"
+      },
+      {
+        "name": "Tradecraft"
+      }
+    ],
+    "specialTrait": {
+      "linkedId": null,
+      "name": ""
+    },
+    "talents": [
+      {
+        "linkedId": null,
+        "name": "Long-winded"
+      },
+      {
+        "linkedId": null,
+        "name": "Nerves of Steel"
+      },
+      {
+        "linkedId": null,
+        "name": "There Will Be Blood"
+      }
+    ],
+    "tier": ""
+  },
+  "effects": [],
+  "flags": {
+    "zweihander": {}
+  },
+  "folder": null,
+  "img": "systems/zweihander/assets/icons/anatomy.svg",
+  "name": "Physiker",
+  "permission": {
+    "9cilLhNTlIyJpmtZ": 3,
+    "default": 0
+  },
+  "sort": 0,
+  "type": "profession"
+}

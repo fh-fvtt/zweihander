@@ -1,0 +1,40 @@
+{
+  "_id": "kvFHgvMrHLSrd00K",
+  "data": {
+    "castingCost": 0,
+    "castingTime": "1 min",
+    "description": {
+      "@en": "You visibly disturb the Material Realm by opening a breach directly through the Æthereal Veil. A terrifyingly cataclysmic event unfolds as lashing winds and a rain of fire consume the land before you."
+    },
+    "distance": "Any one place you can see",
+    "duration": "[WB]+9 minutes",
+    "notes": "",
+    "principle": "Greater",
+    "rules": {
+      "criticalFailure": {
+        "@en": "The rod of wood splinters and instead of appearing in the desired location, the Cataclysmic Inferno appears in a nearby location, but out of sight. The likelihood is that it will rain down on a nearby village, town square or city slum, killing and injuring all in the area for the spell’s Duration and setting buildings alight. You are made immediately aware of this heinous act by the whispers of the Abyssal Prince of Violence. You immediately suffer 9 Corruption for the countless deaths caused by your Magicks."
+      },
+      "criticalSuccess": {
+        "@en": "As above, but those caught in the inferno automatically fail to Resist."
+      },
+      "effect": {
+        "@en": "After successfully casting this spell, you can conjure a firestorm that rages in place where you targeted it. All those who are caught within the Explosion Template who fail to Resist with a Coordination Test suffer [[/roll 3D10]]+[WB] in Damage from fire. You can inflict Injuries with this Magick, but they are set On Fire instead. For each Turn they remain in the Explosion Template they must make an additional Coordination Test to withstand harm."
+      },
+      "reagents": {
+        "@en": "A rod of petrified wood"
+      }
+    },
+    "tradition": "Arcane (Pyromancy)"
+  },
+  "effects": [],
+  "flags": {},
+  "folder": null,
+  "img": "systems/zweihander/assets/icons/wildfires.svg",
+  "name": "Cataclysmic Inferno",
+  "permission": {
+    "9cilLhNTlIyJpmtZ": 3,
+    "default": 0
+  },
+  "sort": 0,
+  "type": "spell"
+}

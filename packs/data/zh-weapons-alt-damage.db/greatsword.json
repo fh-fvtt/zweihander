@@ -1,0 +1,50 @@
+{
+  "_id": "QL4klHAOh865wh5P",
+  "data": {
+    "associatedSkill": "Martial Melee",
+    "damage": {
+      "associatedPrimaryAttribute": "Agility",
+      "formula": "[AB] + 3 + (1+[#])d6x6"
+    },
+    "description": {
+      "@en": "<p>Oftentimes confused with the ubiquitous (but ill-named) mortuary sword, these long, elegant and graceful swords are the marque of Bladedancers. Notoriously heavy, tall and requiring a flexible grasp, this sword (like its war hammer cousin) has mostly fallen out of favor to the far-superior zweih&auml;nder blade.</p>"
+    },
+    "distance": "Engaged or 1 yard",
+    "encumbrance": 3,
+    "equipped": false,
+    "handling": "Two-handed",
+    "load": 0,
+    "notes": "",
+    "price": {
+      "bp": "0",
+      "gc": "12",
+      "ss": "0"
+    },
+    "qualities": {
+      "arrayOfValues": [],
+      "value": "Finesse, Reach, Slow"
+    },
+    "weaponType": "Bladed"
+  },
+  "effects": [],
+  "flags": {
+    "core": {
+      "sourceId": "Item.JmtoI5Ls4nG0VsX3"
+    },
+    "exportSource": {
+      "coreVersion": "0.8.9",
+      "system": "zweihander",
+      "systemVersion": "0.3.30",
+      "world": "talron2"
+    }
+  },
+  "folder": null,
+  "img": "systems/zweihander/assets/icons/two-handed-sword.svg",
+  "name": "Greatsword",
+  "permission": {
+    "JyjuBRFhP4y9QWxg": 3,
+    "default": 0
+  },
+  "sort": 0,
+  "type": "weapon"
+}

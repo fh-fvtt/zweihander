@@ -1,0 +1,40 @@
+{
+  "_id": "sJCDGJTineuj5gvP",
+  "data": {
+    "castingCost": 0,
+    "castingTime": "1 min",
+    "description": {
+      "@en": "You utter a single word of such power that it obliterates others, condemning them to the swell of chaos beyond."
+    },
+    "distance": "Yourself",
+    "duration": "Instantaneous",
+    "notes": "",
+    "principle": "Greater",
+    "rules": {
+      "criticalFailure": {
+        "@en": "Your words unwittingly unravel your hold over Magick. You immediately suffer [[/roll 3D10]]+[WB] in Damage and are left Helpless for one Turn."
+      },
+      "criticalSuccess": {
+        "@en": "As above, but those caught in the Burst Template cannot Resist this Magick."
+      },
+      "effect": {
+        "@en": "After successfully casting this spell, all those who are caught within the Burst Template immediately suffer [[/roll 3D10]]+[WB] in Damage. In addition, those who fail to Resist with a Resolve Test are left Helpless for one Turn."
+      },
+      "reagents": {
+        "@en": "The blood of an Abyssal creature (expended)"
+      }
+    },
+    "tradition": "Arcane (Sorcery)"
+  },
+  "effects": [],
+  "flags": {},
+  "folder": null,
+  "img": "systems/zweihander/assets/icons/wizard-staff.svg",
+  "name": "Condemnation",
+  "permission": {
+    "9cilLhNTlIyJpmtZ": 3,
+    "default": 0
+  },
+  "sort": 0,
+  "type": "spell"
+}

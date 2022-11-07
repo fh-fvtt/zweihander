@@ -1,0 +1,40 @@
+{
+  "_id": "0cqt73Tsu4URnNYn",
+  "data": {
+    "castingCost": 0,
+    "castingTime": "1 min",
+    "description": {
+      "@en": "A bolt of writhing black energy unerringly strikes out, twisting its way down the throat and orifices of those who have pledged themselves to the Abyss."
+    },
+    "distance": "Any one person you can see",
+    "duration": "Instantaneous",
+    "notes": "",
+    "principle": "Lesser",
+    "rules": {
+      "criticalFailure": {
+        "@en": "Crushing pain wracks your body, as writhing black tendrils penetrate you from stem to stern. You immediately suffer Damage as above and an equal amount of Peril as well."
+      },
+      "criticalSuccess": {
+        "@en": "As above, but your foe is automatically set On Fire."
+      },
+      "effect": {
+        "@en": "After successfully casting this spell, one foe immediately suffers [[/roll 2D10]]+[WB] in Damage. If it strikes a foe who is classified as Abyssal or is an occultist to any one of the Daemonic Princes, they must Resist with a successful Coordination Test or be set On Fire as well."
+      },
+      "reagents": {
+        "@en": "A pinch of bitumen, crushed beneath heel (expended)"
+      }
+    },
+    "tradition": "Covenant"
+  },
+  "effects": [],
+  "flags": {},
+  "folder": null,
+  "img": "systems/zweihander/assets/icons/wizard-staff.svg",
+  "name": "Rend Chaos",
+  "permission": {
+    "4be9WK4Hp7jWrwWe": 3,
+    "default": 0
+  },
+  "sort": 0,
+  "type": "spell"
+}

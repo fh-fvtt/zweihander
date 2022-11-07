@@ -1,0 +1,40 @@
+{
+  "_id": "Q9hs4q3wkzWHT44Y",
+  "data": {
+    "castingCost": 0,
+    "castingTime": "1 min",
+    "description": {
+      "@en": "You project yourself into the Æthereal realm, taking the form of an energy vampire. While in this state, you can bring foes to such pleasure that they may perish in their sleep."
+    },
+    "distance": "Yourself",
+    "duration": "9+[WB] in hours",
+    "notes": "",
+    "principle": "Greater",
+    "rules": {
+      "criticalFailure": {
+        "@en": "My god, it’s full of stars! You are cast through the Æthereal Veil, until you fall through the endless pit of the Abyss at the end of the Duration of the spell. However, far above you is a single pinprick of light which may lead to a way back into the Material Realm. You must succeed at an Awareness Test or else be immediately Slain! (unless you have a Fate Point to expend). If you succeed, you are left Prone and Incapacitated!, returning to the Material Realm where you started."
+      },
+      "criticalSuccess": {
+        "@en": "As above, but you instead move three steps up the Damage and Peril Condition Tracks positively when you would have Injured a foe."
+      },
+      "effect": {
+        "@en": "After successfully casting this spell, name a single foe whom you have personally met and know their name. Once invoked, you leave your physical body behind and are made Æthereal – occupying a different reality, but able to see perfectly into the Material Realm. You immediately manifest beside the named foe. You may manipulate a foe’s physical body (without being seen, heard, tasted or smelled, being felt only). At the end of each hour, the foe suffers either [[/roll 3D10]]+[WB] in Damage or 3D10+[WB] mental Peril (your choice). If your original body would be made to suffer Damage, you are instead ‘snapped’ back into your physical form and awaken, unhurt but gaining one permanent Chaos Rank. At the end of the Duration, you move a number of steps up the Damage or Peril Condition Tracks positively based on the number of steps down the Damage or Peril Condition Track your foe suffered."
+      },
+      "reagents": {
+        "@en": "A cameo of the victim, held while you sleep"
+      }
+    },
+    "tradition": "Covenant"
+  },
+  "effects": [],
+  "flags": {},
+  "folder": null,
+  "img": "systems/zweihander/assets/icons/wizard-staff.svg",
+  "name": "Succubus/Incubus",
+  "permission": {
+    "4be9WK4Hp7jWrwWe": 3,
+    "default": 0
+  },
+  "sort": 0,
+  "type": "spell"
+}

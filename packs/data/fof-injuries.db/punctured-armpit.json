@@ -1,0 +1,46 @@
+{
+  "_id": "Ym4Z39M08hiscPJA",
+  "data": {
+    "active": false,
+    "description": {
+      "@en": ""
+    },
+    "notes": "<p>Injuries vary by three types: Moderate, Serious and Grievous Injuries. When determining an Injury, roll a D100, referring to the relevant table below. In addition, player characters gain 3 Conflict for Moderate Injuries, 6 Conflict for Serious Injuries and 9 Conflict for Grievous Injuries. Finally, combatants cannot heal their Damage &amp; Peril Condition Tracks until Injuries are in Recuperation.</p>",
+    "rules": {
+      "effect": {
+        "@en": "<p>You are Bleeding. A caregiver must Treat Injury. Until fully Recuperated, reduce your Encumbrance Limit by -6.</p>"
+      }
+    },
+    "severity": 1
+  },
+  "effects": [],
+  "flags": {
+    "cf": {
+      "color": "#000000",
+      "id": null,
+      "path": "FOF Injuries#/CF_SEP/Serious Injuries"
+    },
+    "core": {
+      "sourceId": "Compendium.zweihander.injuries.pMHUxC35U5RHDI7K"
+    },
+    "exportSource": {
+      "coreVersion": "0.8.9",
+      "system": "zweihander",
+      "systemVersion": "0.3.30",
+      "world": "talron2"
+    },
+    "scene-packer": {
+      "hash": "1ac32c1ab51a6a383e0737df85bf78bebf70585f",
+      "sourceId": "Item.hhnos0I35DtgIpd7"
+    }
+  },
+  "folder": null,
+  "img": "systems/zweihander/assets/icons/broken-bone.svg",
+  "name": "Punctured Armpit",
+  "permission": {
+    "VOagSWOxwT3osUDT": 3,
+    "default": 0
+  },
+  "sort": 0,
+  "type": "injury"
+}

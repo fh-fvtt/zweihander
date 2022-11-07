@@ -1,0 +1,43 @@
+{
+  "_id": "H065aokIBezehFiP",
+  "data": {
+    "associatedSkill": "Simple Melee",
+    "damage": {
+      "formula": "[CB] + 0 + (1+[#])d6x6"
+    },
+    "description": {
+      "@en": "<p>Often made from cat muscle or steel wire attached between two spools, this is an assassin&rsquo;s weapon. The skilled can put people to sleep permanently, whereas the unskilled will butcher the victim&rsquo;s neck in the process, to the sound of much gurgling and screaming.</p>"
+    },
+    "distance": "Engaged",
+    "encumbrance": 1,
+    "equipped": false,
+    "handling": "Two-handed",
+    "load": 0,
+    "notes": "",
+    "price": {
+      "bp": "0",
+      "gc": "0",
+      "ss": "2"
+    },
+    "qualities": {
+      "arrayOfValues": [],
+      "value": "Entangling, Fast, Ineffective"
+    },
+    "weaponType": "Brawling"
+  },
+  "effects": [],
+  "flags": {
+    "core": {
+      "sourceId": "Compendium.zweihander.weapons.VkGqRLOCnhiOYLUu"
+    }
+  },
+  "folder": null,
+  "img": "systems/zweihander/assets/icons/barbed-wire.svg",
+  "name": "Garotte",
+  "permission": {
+    "JyjuBRFhP4y9QWxg": 3,
+    "default": 0
+  },
+  "sort": 0,
+  "type": "weapon"
+}

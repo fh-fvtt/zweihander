@@ -1,0 +1,40 @@
+{
+  "_id": "zObILd7wnHkcPb6M",
+  "data": {
+    "castingCost": 0,
+    "castingTime": "1 min",
+    "description": {
+      "@en": "The person you touch takes upon the countenance of death."
+    },
+    "distance": "Any one person you can touch",
+    "duration": "Forever",
+    "notes": "",
+    "principle": "Greater",
+    "rules": {
+      "criticalFailure": {
+        "@en": "Suddenly stricken by death’s hand, you fall dead to the ground. Well, you appear dead at least. Hopefully, you don’t awaken buried alive! This lasts for 72 hours."
+      },
+      "criticalSuccess": {
+        "@en": "As above, but the foe cannot perceive anything around them."
+      },
+      "effect": {
+        "@en": "After successfully casting this spell, the person you touch must Resist with a successful Coordination Test or immediately appears Slain! to all. They do not need to breathe or eat during this time, taking upon the color of someone recently deceased (yet do not rot). However, the foe can hear, taste and smell everything, unable to move or communicate as they’re left Helpless. You can lift the Death Mask’s Effects at any time you wish. Regardless, the actual casting of Death Mask is never apparent to anyone, perfectly disguised."
+      },
+      "reagents": {
+        "@en": "An ivory death mask, held to your face"
+      }
+    },
+    "tradition": "Arcane (Shadowmancy)"
+  },
+  "effects": [],
+  "flags": {},
+  "folder": null,
+  "img": "systems/zweihander/assets/icons/wizard-staff.svg",
+  "name": "Death Mask",
+  "permission": {
+    "9cilLhNTlIyJpmtZ": 3,
+    "default": 0
+  },
+  "sort": 0,
+  "type": "spell"
+}

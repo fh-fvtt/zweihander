@@ -1,0 +1,40 @@
+{
+  "_id": "aQ2YeHB7izieOmUG",
+  "data": {
+    "castingCost": 0,
+    "castingTime": "1 min",
+    "description": {
+      "@en": "An explosion of shimmering light emits from an area, searing all within its purifying rays."
+    },
+    "distance": "Any one place you can see",
+    "duration": "[WB]+9 minutes",
+    "notes": "",
+    "principle": "Greater",
+    "rules": {
+      "criticalFailure": {
+        "@en": "The mirror shatters in-hand, as an Ætheric backlash wracks your body every hour. You are unable to muster the strength to cast Magick again, until 72 hours have passed."
+      },
+      "criticalSuccess": {
+        "@en": "As above, but those caught in the Explosion cannot Resist, suffering both Effects."
+      },
+      "effect": {
+        "@en": "After successfully casting this spell, you can conjure a twinkling expulsion that rages in the target location where you cast it. All those who are caught within the Explosion Template who fail to Resist with an Awareness Test suffer a -30 Base Chance to all Agility-based and Combat-based Skill Tests. In addition, they reduce their Combat Movement down by 9 (to a minimum of 1). Those who do Resist instead suffer [[/roll 3D10]]+[WB] in physical Peril and cannot Counterspell, Dodge or Parry while standing in the Explosion Template. Remaining within the Explosion Template requires additional Awareness Tests to Resist against harm."
+      },
+      "reagents": {
+        "@en": "An expensive polished mirror, held outwards"
+      }
+    },
+    "tradition": "Arcane (Luminescence)"
+  },
+  "effects": [],
+  "flags": {},
+  "folder": null,
+  "img": "systems/zweihander/assets/icons/wizard-staff.svg",
+  "name": "Scintillating Explosion",
+  "permission": {
+    "9cilLhNTlIyJpmtZ": 3,
+    "default": 0
+  },
+  "sort": 0,
+  "type": "spell"
+}

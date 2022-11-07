@@ -1,0 +1,40 @@
+{
+  "_id": "rsCItd6Vm98G1FLf",
+  "data": {
+    "castingCost": 0,
+    "castingTime": "1 min",
+    "description": {
+      "@en": "By touching the sleeve of another and turning the key in air, a portal that leads into an impossible labyrinth opens up below them. They are instantly swallowed."
+    },
+    "distance": "Special",
+    "duration": "Special",
+    "notes": "",
+    "principle": "Lesser",
+    "rules": {
+      "criticalFailure": {
+        "@en": "You are hurled through time and space, taking in the endless cyclopean-wrought, awe-inspiring labyrinth of the Outsider. Returning two minutes later, you suffer from Fear. Whatever you were holding in your primary hand is now gone, lost during your travels."
+      },
+      "criticalSuccess": {
+        "@en": "As above, but they are Disarmed, permanently losing whatever weapon or object they were holding in their primary hand."
+      },
+      "effect": {
+        "@en": "After successfully casting this spell, the person you touch must Resist with a successful Coordination Test or be temporarily teleported into the labyrinth of the Outsider. When they return to the Material Realm two minutes later, they appear at place you can clearly see. Upon their return, they suffer from Fear. You can cast this Magick upon yourself, but do not suffer Peril or Fear."
+      },
+      "reagents": {
+        "@en": "A key made from a precious stone, turned in-hand"
+      }
+    },
+    "tradition": "Covenant"
+  },
+  "effects": [],
+  "flags": {},
+  "folder": null,
+  "img": "systems/zweihander/assets/icons/wizard-staff.svg",
+  "name": "Through the Labyrinth",
+  "permission": {
+    "4be9WK4Hp7jWrwWe": 3,
+    "default": 0
+  },
+  "sort": 0,
+  "type": "spell"
+}

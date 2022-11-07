@@ -1,0 +1,40 @@
+{
+  "_id": "pzIkoh4Kde2TSptC",
+  "data": {
+    "castingCost": 0,
+    "castingTime": "1 min",
+    "description": {
+      "@en": "With a ‘whoosh’, a wind is drawn from the Æthereal Veil to blow things about."
+    },
+    "distance": "Any one object you can see",
+    "duration": "Instantaneous",
+    "notes": "",
+    "principle": "Generalist",
+    "rules": {
+      "criticalFailure": {
+        "@en": "A sudden gale of wind blows you over, as you are knocked Prone."
+      },
+      "criticalSuccess": {
+        "@en": "As above, but instead the wind can be directed to open an unlocked door or move a heavy object no larger than a carriage."
+      },
+      "effect": {
+        "@en": "After successfully casting this spell, you can conjure a gust of wind which instantly extinguishes candles, blows papers about and tosses blankets around."
+      },
+      "reagents": {
+        "@en": "The breath of a chaste woman, contained in a jar (expended)"
+      }
+    },
+    "tradition": "Generalist"
+  },
+  "effects": [],
+  "flags": {},
+  "folder": null,
+  "img": "systems/zweihander/assets/icons/windy-stripes.svg",
+  "name": "Gust of Wind",
+  "permission": {
+    "9cilLhNTlIyJpmtZ": 3,
+    "default": 0
+  },
+  "sort": 0,
+  "type": "spell"
+}

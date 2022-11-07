@@ -1,0 +1,40 @@
+{
+  "_id": "Ei7YevFuZo1vc4OA",
+  "data": {
+    "castingCost": 0,
+    "castingTime": "1 min",
+    "description": {
+      "@en": "A mutated tongue uncoils from your mouth, lasciviously probing and twisting its meat into – and around – the throats of your enemies."
+    },
+    "distance": "Yourself",
+    "duration": "3+[WB] minutes",
+    "notes": "",
+    "principle": "Petty",
+    "rules": {
+      "criticalFailure": {
+        "@en": "Your tongue suddenly lolls onto the ground, having mutated into a ginormous, writhing worm of disgust. You are unable to speak for the Duration of the spell and the tongue acts as a Man-Eater for purposes of its creature profile. The tongue will attack both you and allies until it is Slain!"
+      },
+      "criticalSuccess": {
+        "@en": "As above, but a victim suffers an additional [[/roll 1D10]] physical Peril if caught in a Chokehold with the tongue."
+      },
+      "effect": {
+        "@en": "After successfully casting this spell, your tongue mutates and grows in length to grotesquely coil at your feet. Your newly extended tongue is treated as a one- handed ranged weapon with the Entangling, Ineffective and Throwing Qualities, with a Distance of 1+[WB] yards and requires 1 AP to Load. Finally, whenever you strike with this tongue, refer to your Incantation Skill instead of a Combat-based Skill."
+      },
+      "reagents": {
+        "@en": "A perfume made from rose petals, sprayed on your neck"
+      }
+    },
+    "tradition": "Covenant"
+  },
+  "effects": [],
+  "flags": {},
+  "folder": null,
+  "img": "systems/zweihander/assets/icons/wizard-staff.svg",
+  "name": "Florentine Kiss",
+  "permission": {
+    "4be9WK4Hp7jWrwWe": 3,
+    "default": 0
+  },
+  "sort": 0,
+  "type": "spell"
+}

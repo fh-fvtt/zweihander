@@ -1,0 +1,40 @@
+{
+  "_id": "K0AedOPwsBkNN5Fb",
+  "data": {
+    "castingCost": 0,
+    "castingTime": "1 min",
+    "description": {
+      "@en": "When all else fails, you turn to the sword to appease Nemesis."
+    },
+    "distance": "Yourself",
+    "duration": "[WB]+6 minutes",
+    "notes": "",
+    "principle": "Lesser",
+    "rules": {
+      "criticalFailure": {
+        "@en": "The sword takes upon its own personality, dancing into the air as if guided by an apparition, for the spell’s Duration. For the Duration of the spell, roll [[/roll 1D6]] Chaos Die at the start of your Turn. If the result is face ‘1’, it will lash out at you; ‘2-5’, the sword does nothing; and if the result is face ‘6’, it will lash out at a random ally."
+      },
+      "criticalSuccess": {
+        "@en": "As above, but your foes cannot Dodge or Parry this attack."
+      },
+      "effect": {
+        "@en": "After successfully casting this spell, the sword shines like silver. The sword becomes a one-handed melee weapon with the Fast Quality. Instead of using your [CB], refer to your [WB] to determine Damage. Finally, whenever you strike or Parry with this sword, refer to your Incantation Skill instead of a Combat-based Skill. You can inflict Injuries with this Magick, as if it were a melee weapon."
+      },
+      "reagents": {
+        "@en": "Any sword, held in one hand"
+      }
+    },
+    "tradition": "Divine (Learner)"
+  },
+  "effects": [],
+  "flags": {},
+  "folder": null,
+  "img": "systems/zweihander/assets/icons/shining-sword.svg",
+  "name": "Justiciar's Blade",
+  "permission": {
+    "9cilLhNTlIyJpmtZ": 3,
+    "default": 0
+  },
+  "sort": 0,
+  "type": "spell"
+}

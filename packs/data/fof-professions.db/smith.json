@@ -1,0 +1,121 @@
+{
+  "_id": "GpK7hkrt6bAxdGqL",
+  "data": {
+    "archetype": "Commoner Profession",
+    "bonusAdvances": [
+      {
+        "name": "[AB]"
+      },
+      {
+        "name": "[BB]"
+      },
+      {
+        "name": "[BB]"
+      },
+      {
+        "name": "[CB]"
+      },
+      {
+        "name": "[CB]"
+      },
+      {
+        "name": "[PB]"
+      },
+      {
+        "name": "[WB]"
+      }
+    ],
+    "description": {
+      "@en": "<p>With fire and hammer, I take metal and forge it into objects not only useful but also beautiful in their craftsmanship. People take horseshoes, plows and castiron pans for granted, but when their horse throws a shoe, I become the most critical merchant in town. When I have no orders, I let my creative mind wander at the forge&mdash;forging beautiful cavalry sabres or ornate iron sculptures. Through my hands and knowledge, I bring meaning and function to a chaotic world.</p>\n<p>War is coming, though. I have seen the signs and heard the arguments, and I know humankind has a propensity to be unyielding when faced with difference. Humankind is like iron: once it is forged, it is nearly impossible to reshape. However, some nights when I dwell late by the forge, I feel a prickling on the back of my neck&mdash;like someone is watching me, waiting. I&rsquo;ve heard stirrings of things at the edge of the cities. If worse comes to worse though, I am certain I can forge a blade to vanquish whatever is coming.</p>"
+    },
+    "drawback": {
+      "linkedId": null,
+      "name": "Forge-Scarred"
+    },
+    "expert": {
+      "requirements": "",
+      "value": false
+    },
+    "notes": "",
+    "professionalTrait": {
+      "linkedId": null,
+      "name": "Technical Mastery"
+    },
+    "skillRanks": [
+      {
+        "name": "Athletics"
+      },
+      {
+        "name": "Awareness"
+      },
+      {
+        "name": "Coordination"
+      },
+      {
+        "name": "Intimidate"
+      },
+      {
+        "name": "Martial Melee"
+      },
+      {
+        "name": "Rumor"
+      },
+      {
+        "name": "Simple Melee"
+      },
+      {
+        "name": "Simple Ranged"
+      },
+      {
+        "name": "Toughness"
+      },
+      {
+        "name": "Tradecraft"
+      }
+    ],
+    "specialTrait": {
+      "linkedId": null,
+      "name": ""
+    },
+    "talents": [
+      {
+        "linkedId": null,
+        "name": "Ambidexterity"
+      },
+      {
+        "linkedId": null,
+        "name": "Blacksmithing"
+      },
+      {
+        "linkedId": null,
+        "name": "Natural Wrestler"
+      }
+    ],
+    "tier": ""
+  },
+  "effects": [],
+  "flags": {
+    "cf": {
+      "color": "#000000",
+      "id": null,
+      "path": "FOF Professions#/CF_SEP/Commoner Professions"
+    },
+    "core": {
+      "sourceId": "Compendium.zweihander.professions.RmnnQeZxr0JVApTJ"
+    },
+    "scene-packer": {
+      "hash": "5fa894c44b393acb2a7702b252e307f88b41073c",
+      "sourceId": "Item.GIdGrPsvMbPjOL56"
+    },
+    "zweihander": {}
+  },
+  "folder": null,
+  "img": "systems/zweihander/assets/icons/abstract-082.svg",
+  "name": "Smith",
+  "permission": {
+    "VOagSWOxwT3osUDT": 3,
+    "default": 0
+  },
+  "sort": 0,
+  "type": "profession"
+}
