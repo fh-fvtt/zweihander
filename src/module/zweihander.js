@@ -285,19 +285,6 @@ Hooks.once('polyglot.init', (LanguageProvider) => {
   game.polyglot.registerSystem('zweihander', ZweihanderLanguageProvider);
 });
 
-// Fix for Combat Carousel (Remove this after they fixed the bug)
-Hooks.on('updateActor', (actor, updateData, options, userId) => {
-  if (ui.combatCarousel) {
-    const enabled = game.settings.get('combat-carousel', 'enabled');
-
-    if (!enabled || !game.combat || ui.combatCarousel?._collapsed) return;
-
-    if (!game.combat?.combatants.some((c) => c.actor.id === actor.id)) return;
-
-    ui.combatCarousel.render();
-  }
-});
-
 export let _module = null;
 
 if (import.meta.hot) {
