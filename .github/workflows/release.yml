@@ -22,7 +22,7 @@ jobs:
       # create a zip file with all files required by the module to add to the release
       - name: Zip Files
         working-directory: ./
-        run: zip -r ./system.zip ./assets ./fonts ./lang ./packs ./src ./tinymce index.js index.js.map style.css system.json template.json LICENSE.txt
+        run: zip -r ./system.zip ./assets ./fonts ./lang ./packs/*.db ./src ./tinymce index.js index.js.map style.css system.json template.json LICENSE.txt
 
       # Get the version from 'module.json'
       - name: Get Version
