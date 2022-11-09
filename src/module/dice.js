@@ -310,7 +310,7 @@ export async function explodeWeaponDamage(message, useFortune) {
   const diffData = {
     'flags.zweihander.weaponTestData.exploded': exploded + 1,
     content: content,
-    roll: roll.toJSON(),
+    rolls: [roll.toJSON()],
   };
   await game.zweihander.socket.executeAsGM('updateChatMessage', message.id, diffData);
 }
