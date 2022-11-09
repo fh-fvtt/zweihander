@@ -75,7 +75,7 @@ export async function rollTest(
   const actor = skillItem.actor;
   const weapon = testType === 'weapon' ? actor.items.get(testConfiguration.weaponId) : undefined;
   const spell = testType === 'spell' ? actor.items.get(testConfiguration.spellId) : undefined;
-  if (weapon && actor.type === 'creature') {
+  if (weapon && !isReroll && actor.type === 'creature') {
     testConfiguration.additionalFuryDice = actor.system.details.size - 1;
   }
   if (isReroll && actor.type === 'character') {
