@@ -76,7 +76,7 @@ export async function rollTest(
   const weapon = testType === 'weapon' ? actor.items.get(testConfiguration.weaponId) : undefined;
   const spell = testType === 'spell' ? actor.items.get(testConfiguration.spellId) : undefined;
   if (weapon && actor.type === 'creature') {
-    testConfiguration.additionalFuryDice = actor.system.details.size.value - 1;
+    testConfiguration.additionalFuryDice = actor.system.details.size - 1;
   }
   if (isReroll && actor.type === 'character') {
     testConfiguration.useFortune = 'fortune';
