@@ -71,11 +71,7 @@ export default class FortuneTracker extends Application {
           socket.executeForEveryone('broadcastState', state);
         } else {
           socket.executeForEveryone('broadcastState', that.state);
-          socket.executeAsUser(
-            'showIllegalStateNotification',
-            requestingUserId,
-            validationError
-          );
+          socket.executeAsUser('showIllegalStateNotification', requestingUserId, validationError);
         }
       }
       return that.state;
@@ -116,11 +112,7 @@ export default class FortuneTracker extends Application {
   }
 
   set state(updatedState) {
-    if (
-      updatedState.used !== this.used ||
-      updatedState.removed !== this.removed ||
-      updatedState.total !== this.total
-    ) {
+    if (updatedState.used !== this.used || updatedState.removed !== this.removed || updatedState.total !== this.total) {
       this.playAudio();
     }
     this.#waiting = false;
@@ -201,9 +193,7 @@ export default class FortuneTracker extends Application {
       if (i < 200 || (i >= m && i < 400)) {
         this.#positions[i] = getRandomIntInclusive(
           FortuneTracker.PARAMS.padding,
-          FortuneTracker.PARAMS.areaSize -
-            FortuneTracker.PARAMS.tokenSize -
-            FortuneTracker.PARAMS.padding
+          FortuneTracker.PARAMS.areaSize - FortuneTracker.PARAMS.tokenSize - FortuneTracker.PARAMS.padding
         );
       }
     }
@@ -212,10 +202,7 @@ export default class FortuneTracker extends Application {
   validate(updatedState, requestingUserId) {
     // console.log(this.state);
     // console.log(updatedState);
-    const notifySetting = game.settings.get(
-      'zweihander',
-      'fortuneTrackerSettings'
-    ).notifications;
+    const notifySetting = game.settings.get('zweihander', 'fortuneTrackerSettings').notifications;
     const user = game.users.get(requestingUserId);
     if (updatedState.total !== this.total && !user.isGM) {
       return 'You are not privileged to change the total amount of fortune in the game!';
@@ -238,9 +225,9 @@ export default class FortuneTracker extends Application {
         const name = user.charname ? user.charname : user.name;
         if (notifySetting === 'notify') {
           ui.notifications.info(
-            `${name} used a fortune point. Current fortune points: ${
-              updatedState.total - updatedState.used
-            }/${updatedState.total}`
+            `${name} used a fortune point. Current fortune points: ${updatedState.total - updatedState.used}/${
+              updatedState.total
+            }`
           );
         } else if (notifySetting === 'chat') {
           ChatMessage.create({
@@ -251,8 +238,7 @@ export default class FortuneTracker extends Application {
           });
         }
       } else if (
-        (updatedState.remove === this.remove + 1 ||
-          updatedState.used === this.used - 1) &&
+        (updatedState.remove === this.remove + 1 || updatedState.used === this.used - 1) &&
         this.total === updatedState.total
       ) {
         if (notifySetting === 'notify') {
@@ -319,9 +305,7 @@ export default class FortuneTracker extends Application {
 
   resetState() {
     if (game.users.get(game.userId).isGM) {
-      const activePlayers = game.users.players
-        .map((x) => (x.active ? 1 : 0))
-        .reduce((x, y) => x + y, 0);
+      const activePlayers = game.users.players.map((x) => (x.active ? 1 : 0)).reduce((x, y) => x + y, 0);
       this.state = {
         total: activePlayers + 1, //TODO: customize this for rule systems
         used: 0,
@@ -359,11 +343,7 @@ export default class FortuneTracker extends Application {
   async close(event) {
     // Delegate closing event (which I assume to be triggered by pressing ESC)
     //TODO remove this after fortune tracker redesign
-    if (
-      game.user.isGM &&
-      canvas.activeLayer &&
-      Object.keys(canvas.activeLayer._controlled).length
-    ) {
+    if (game.user.isGM && canvas.activeLayer && Object.keys(canvas.activeLayer._controlled).length) {
       if (!canvas.activeLayer.preview?.children.length) canvas.activeLayer.releaseAll();
       return true;
     }
@@ -394,11 +374,7 @@ export default class FortuneTracker extends Application {
     } else {
       app
         .find('#fortuneTrackerAppTotal')
-        .replaceWith(
-          `<a id="fortuneTrackerAppTotal" class="waiting-${this.#waiting}">Total: ${
-            this.total
-          }</a>`
-        );
+        .replaceWith(`<a id="fortuneTrackerAppTotal" class="waiting-${this.#waiting}">Total: ${this.total}</a>`);
       totalTrigger = app.find('#fortuneTrackerAppTotal');
     }
     totalTrigger.click((event) => {

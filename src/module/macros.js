@@ -1,20 +1,13 @@
 export const createItemMacro = async (macroData, slot) => {
   if (macroData.type !== 'Item') return;
-  if (!('data' in macroData))
-    return ui?.notifications.warn(
-      'You can only create macro buttons for owned Items.'
-    );
+  if (!('data' in macroData)) return ui?.notifications.warn('You can only create macro buttons for owned Items.');
   const item = system;
 
   if (!(item.type === 'weapon' || item.type === 'spell'))
-    return ui?.notifications.warn(
-      `Hotbar macros do not support specified Item type '${item.type}'.`
-    );
+    return ui?.notifications.warn(`Hotbar macros do not support specified Item type '${item.type}'.`);
 
   const command = `game.zweihander.rollItemMacro("${macroData.actorId}", "${item._id}");`;
-  let macro = game.macros.find(
-    (m) => m.name === item.name && m.command === command
-  );
+  let macro = game.macros.find((m) => m.name === item.name && m.command === command);
   if (!macro) {
     macro = await Macro.create({
       name: `${game.actors.get(macroData.actorId).name}: ${item.name}`,

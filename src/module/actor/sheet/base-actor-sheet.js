@@ -108,9 +108,7 @@ export default class ZweihanderBaseActorSheet extends ActorSheet {
           }
           // only strings supported for now
           if (typeof v === 'string') {
-            filtered =
-              filtered &&
-              v.trim().toLowerCase().indexOf(fc.value.trim().toLowerCase()) >= 0;
+            filtered = filtered && v.trim().toLowerCase().indexOf(fc.value.trim().toLowerCase()) >= 0;
           }
         }
         return filtered;
@@ -173,9 +171,7 @@ export default class ZweihanderBaseActorSheet extends ActorSheet {
     this._saveScrollStates();
     await super._render(force, options);
     // restore toggle states for item details
-    toggleStates.forEach((id) =>
-      $(this.form).find(`[data-item-id="${id}"] .save-toggle`).show().addClass('open')
-    );
+    toggleStates.forEach((id) => $(this.form).find(`[data-item-id="${id}"] .save-toggle`).show().addClass('open'));
     this._setScrollStates();
   }
 
@@ -224,8 +220,7 @@ export default class ZweihanderBaseActorSheet extends ActorSheet {
       }
     );
     // auto size the details inputs once
-    const autoSizeInput = (el) =>
-      el.attr('size', Math.max(el.attr('placeholder').length, el.val().length));
+    const autoSizeInput = (el) => el.attr('size', Math.max(el.attr('placeholder').length, el.val().length));
     const inputsToAutoSize = html.find('input.auto-size');
     inputsToAutoSize.each((i, x) => autoSizeInput($(x)));
 
@@ -356,15 +351,11 @@ export default class ZweihanderBaseActorSheet extends ActorSheet {
 
     html.find('.skill').hover(
       async (ev) => {
-        let target =
-          'li.pa.pa-' +
-          ev.currentTarget.attributes['data-associated-pa'].value.toLowerCase();
+        let target = 'li.pa.pa-' + ev.currentTarget.attributes['data-associated-pa'].value.toLowerCase();
         $(target).addClass('pa-hover-helper');
       },
       async (ev) => {
-        let target =
-          'li.pa.pa-' +
-          ev.currentTarget.attributes['data-associated-pa'].value.toLowerCase();
+        let target = 'li.pa.pa-' + ev.currentTarget.attributes['data-associated-pa'].value.toLowerCase();
         $(target).removeClass('pa-hover-helper');
       }
     );
@@ -376,9 +367,7 @@ export default class ZweihanderBaseActorSheet extends ActorSheet {
       let createdItemArray = [];
 
       if (type !== 'effect') {
-        createdItemArray = await this.actor.createEmbeddedDocuments('Item', [
-          { type: type, name: type },
-        ]);
+        createdItemArray = await this.actor.createEmbeddedDocuments('Item', [{ type: type, name: type }]);
       } else {
         createdItemArray = await this.actor.createEmbeddedDocuments('ActiveEffect', [
           {
@@ -398,13 +387,9 @@ export default class ZweihanderBaseActorSheet extends ActorSheet {
     });
 
     html.find('.add-new').contextmenu(async (ev) => {
-      const packIds = ev.currentTarget.dataset.openPacks
-        ?.split?.(',')
-        ?.filter?.((x) => x);
+      const packIds = ev.currentTarget.dataset.openPacks?.split?.(',')?.filter?.((x) => x);
       if (!packIds) {
-        ui.notifications.notify(
-          `This item type currently has no system compendium attached!`
-        );
+        ui.notifications.notify(`This item type currently has no system compendium attached!`);
         return;
       }
       const packs = packIds.map((x) => game.packs.get(x.trim()));
@@ -414,8 +399,7 @@ export default class ZweihanderBaseActorSheet extends ActorSheet {
       packs.forEach((x, i) =>
         x.render(true, {
           top: actor.sheet.position.top,
-          left:
-            actor.sheet.position.left + (i % 2 == 0 ? -350 : actor.sheet.position.width),
+          left: actor.sheet.position.left + (i % 2 == 0 ? -350 : actor.sheet.position.width),
         })
       );
     });
@@ -432,10 +416,7 @@ export default class ZweihanderBaseActorSheet extends ActorSheet {
 
       if (dataPath && dataPath.includes('@'))
         $(this).html(
-          '<i class="fas fa-dice-d20"></i> ' +
-            diceRoll +
-            '+' +
-            (await ZweihanderUtils.parseDataPaths(dataPath, actor))
+          '<i class="fas fa-dice-d20"></i> ' + diceRoll + '+' + (await ZweihanderUtils.parseDataPaths(dataPath, actor))
         );
     });
 
@@ -472,28 +453,20 @@ export default class ZweihanderBaseActorSheet extends ActorSheet {
         content: !event.currentTarget.checked
           ? `<h4>Reset Profession progress?</h4>`
           : `<h4>Purchase all Profession advances?</h4><p>Current purchase state will be lost!</p>`,
-        yes: () =>
-          ZweihanderProfession.toggleProfessionPurchases(
-            item,
-            !event.currentTarget.checked
-          ),
+        yes: () => ZweihanderProfession.toggleProfessionPurchases(item, !event.currentTarget.checked),
         defaultYes: false,
       });
     });
     // Show item sheet on right click
     html.find('.fetch-item').contextmenu((event) => {
-      const itemId =
-        $(event.currentTarget).parent('.item').data('itemId') ??
-        $(event.currentTarget).data('itemId');
+      const itemId = $(event.currentTarget).parent('.item').data('itemId') ?? $(event.currentTarget).data('itemId');
       const item = this.actor.items.get(itemId);
       item.sheet.render(true);
     });
 
     // Show effect sheet on right click
     html.find('.fetch-effect').contextmenu((event) => {
-      const itemId =
-        $(event.currentTarget).parent('.item').data('itemId') ??
-        $(event.currentTarget).data('itemId');
+      const itemId = $(event.currentTarget).parent('.item').data('itemId') ?? $(event.currentTarget).data('itemId');
       const effect = this.actor.effects.get(itemId);
       effect.sheet.render(true);
     });
@@ -502,30 +475,20 @@ export default class ZweihanderBaseActorSheet extends ActorSheet {
       const li = $(event.currentTarget).parents('.item');
       const item = this.actor.items.get(li.data('itemId')).toObject(false);
       if (item.type === 'weapon' || item.type === 'armor') {
-        item.system.qualities = await ZweihanderQuality.getQualities(
-          item.system.qualities.value
-        );
+        item.system.qualities = await ZweihanderQuality.getQualities(item.system.qualities.value);
       }
       //console.log(item);
       let html;
       try {
-        html = await renderTemplate(
-          `systems/zweihander/src/templates/item-card/item-card-${item.type}.hbs`,
-          item
-        );
+        html = await renderTemplate(`systems/zweihander/src/templates/item-card/item-card-${item.type}.hbs`, item);
       } catch (e) {
-        html = await renderTemplate(
-          `systems/zweihander/src/templates/item-card/item-card-fallback.hbs`,
-          item
-        );
+        html = await renderTemplate(`systems/zweihander/src/templates/item-card/item-card-fallback.hbs`, item);
       }
       await ChatMessage.create({ content: html });
     });
 
     // Show extra item information on click
-    html
-      .find('.js-show-item-description')
-      .click((event) => this._showItemDescription(event));
+    html.find('.js-show-item-description').click((event) => this._showItemDescription(event));
 
     // Roll Skill
     html.find('.skill-roll').click((event) => {
@@ -564,9 +527,7 @@ export default class ZweihanderBaseActorSheet extends ActorSheet {
   }
 
   _damageSheet(html) {
-    const damage = Number(
-      this.actor.system.stats.secondaryAttributes.damageCurrent.value
-    );
+    const damage = Number(this.actor.system.stats.secondaryAttributes.damageCurrent.value);
     const el = html.parents('.damage-tracker');
     for (let i = 0; i <= 4; i++) {
       if (damage <= i) {
@@ -602,8 +563,7 @@ export default class ZweihanderBaseActorSheet extends ActorSheet {
       const x = this[dimension];
       for (let [i, bp] of breakpoints.entries()) {
         const lastAt = i === 0 ? 0 : breakpoints[i - 1].at;
-        const nextAt =
-          i === breakpoints.length - 1 ? Number.POSITIVE_INFINITY : breakpoints[i + 1].at;
+        const nextAt = i === breakpoints.length - 1 ? Number.POSITIVE_INFINITY : breakpoints[i + 1].at;
         if (x > lastAt && x < nextAt && (y === -1 || (y > lastAt && y < nextAt))) {
           if (x >= bp.at && y < bp.at) {
             bp.callback(true);
@@ -623,23 +583,18 @@ export default class ZweihanderBaseActorSheet extends ActorSheet {
     const element = event.currentTarget;
     const skill = element.dataset.label;
     const skillItem = this.actor.items.find(
-      (item) =>
-        item.type === 'skill' && ZweihanderUtils.normalizedEquals(item.name, skill)
+      (item) => item.type === 'skill' && ZweihanderUtils.normalizedEquals(item.name, skill)
     );
     if (skillItem) {
       const additionalConfiguration = {};
       if (testType === 'weapon' || testType === 'spell') {
-        additionalConfiguration[`${testType}Id`] = $(element)
-          .parents('.item')
-          .data('itemId');
+        additionalConfiguration[`${testType}Id`] = $(element).parents('.item').data('itemId');
       }
       await ZweihanderDice.rollTest(skillItem, testType, additionalConfiguration, {
         showDialog: true,
       });
     } else {
-      ui.notifications.error(
-        `Associated Skill "${skill}" does not exist for this actor!`
-      );
+      ui.notifications.error(`Associated Skill "${skill}" does not exist for this actor!`);
     }
   }
 

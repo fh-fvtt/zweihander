@@ -69,26 +69,15 @@ Hooks.once('ready', function () {
   //..
   const currencySettings = game.settings.get('zweihander', 'currencySettings');
   // migration, remove this after a while
-  if (
-    currencySettings[0].abbreviation === 'gc' &&
-    currencySettings[0].equivalentOfLower === 10
-  ) {
+  if (currencySettings[0].abbreviation === 'gc' && currencySettings[0].equivalentOfLower === 10) {
     currencySettings[0].equivalentOfLower = 20;
     game.settings.set('zweihander', 'currencySettings', currencySettings);
   }
   // patch die class
   patchDie();
-  console.log(
-    `systems/zweihander/assets/${game.settings.get('zweihander', 'gameSystem')}-logo.webp`
-  );
+  console.log(`systems/zweihander/assets/${game.settings.get('zweihander', 'gameSystem')}-logo.webp`);
   $('#ui-left #logo')
-    .attr(
-      'src',
-      `systems/zweihander/assets/${game.settings.get(
-        'zweihander',
-        'gameSystem'
-      )}-logo.webp`
-    )
+    .attr('src', `systems/zweihander/assets/${game.settings.get('zweihander', 'gameSystem')}-logo.webp`)
     .css('display', 'unset');
 
   // macro bar support
@@ -127,10 +116,7 @@ Hooks.once('init', async function () {
   };
   CONFIG.TinyMCE.skin_url = 'systems/zweihander/tinymce/skins/ui/zweihander';
   CONFIG.TinyMCE.skin = 'zweihander';
-  CONFIG.TinyMCE.content_css = [
-    '/css/mce.css',
-    'systems/zweihander/tinymce/skins/content/zweihander/content.css',
-  ];
+  CONFIG.TinyMCE.content_css = ['/css/mce.css', 'systems/zweihander/tinymce/skins/content/zweihander/content.css'];
   CONFIG.statusEffects = ZWEI.statusEffects;
   CONFIG.ZWEI = ZWEI;
   // Define custom Document classes
@@ -159,14 +145,9 @@ Hooks.once('init', async function () {
   Items.registerSheet('zweihander', ZweihanderItemSheet, { makeDefault: true });
 
   DocumentSheetConfig.unregisterSheet(ActiveEffect, 'core', ActiveEffectConfig);
-  DocumentSheetConfig.registerSheet(
-    ActiveEffect,
-    'zweihader',
-    ZweihanderActiveEffectConfig,
-    {
-      makeDefault: true,
-    }
-  );
+  DocumentSheetConfig.registerSheet(ActiveEffect, 'zweihader', ZweihanderActiveEffectConfig, {
+    makeDefault: true,
+  });
   // Register settings
   registerSystemSettings();
   // Register Helpers
@@ -176,9 +157,7 @@ Hooks.once('init', async function () {
 });
 
 Hooks.on('renderChatMessage', ZweihanderChat.addLocalChatListeners);
-Hooks.on('renderChatLog', (app, html, data) =>
-  ZweihanderChat.addGlobalChatListeners(html)
-);
+Hooks.on('renderChatLog', (app, html, data) => ZweihanderChat.addGlobalChatListeners(html));
 Hooks.on('updateCompendium', async (pack, documents, options, userId) => {
   const skillPackId = game.settings.get('zweihander', 'skillPack');
   if (`${pack.metadata.package}.${pack.metadata.name}` === skillPackId) {
@@ -201,8 +180,7 @@ Hooks.on('chatCommandsReady', function (chatCommands) {
         }
         for (let actor of actors) {
           const skillItem = actor?.items?.find?.(
-            (i) =>
-              i.type === 'skill' && ZweihanderUtils.normalizedEquals(i.name, messageText)
+            (i) => i.type === 'skill' && ZweihanderUtils.normalizedEquals(i.name, messageText)
           );
           if (skillItem) {
             if (!testConfiguration) {
@@ -226,18 +204,15 @@ Hooks.on('chatCommandsReady', function (chatCommands) {
         commandKey: '/nextSession',
         invokeOnCommand: async (chatlog, messageText, chatdata) => {
           const nextSession = new Date(messageText);
-          const response = await foundry.utils.fetchJsonWithTimeout(
-            foundry.utils.getRoute('setup'),
-            {
-              method: 'POST',
-              headers: { 'Content-Type': 'application/json' },
-              body: JSON.stringify({
-                id: game.world.id,
-                nextSession: nextSession.toISOString(),
-                action: 'editWorld',
-              }),
-            }
-          );
+          const response = await foundry.utils.fetchJsonWithTimeout(foundry.utils.getRoute('setup'), {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify({
+              id: game.world.id,
+              nextSession: nextSession.toISOString(),
+              action: 'editWorld',
+            }),
+          });
           game.world.updateSource(response);
           await ChatMessage.create({
             flavor: 'Setting the date for the next session.',

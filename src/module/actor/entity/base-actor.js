@@ -5,9 +5,7 @@ export default class ZweihanderBaseActor {
   }
 
   getEffectivePerilLadderValue(baseLadderValue, isIgnoredPerilLadderValue) {
-    return isIgnoredPerilLadderValue[Math.max(0, 3 - baseLadderValue)]
-      ? 5
-      : baseLadderValue;
+    return isIgnoredPerilLadderValue[Math.max(0, 3 - baseLadderValue)] ? 5 : baseLadderValue;
   }
 
   getPerilMalus(ladderValue) {
@@ -18,9 +16,6 @@ export default class ZweihanderBaseActor {
     // add default set of skills
     const skillPack = game.packs.get(game.settings.get('zweihander', 'skillPack'));
     const skillsFromPack = (await skillPack.getDocuments()).map((i) => i.toObject());
-    await that.updateSource(
-      { items: skillsFromPack },
-      { keepId: true, keepEmbeddedIds: true }
-    );
+    await that.updateSource({ items: skillsFromPack }, { keepId: true, keepEmbeddedIds: true });
   }
 }

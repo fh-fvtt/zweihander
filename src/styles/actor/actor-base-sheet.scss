@@ -530,10 +530,7 @@ body.game.vtt.system-zweihander .zweihander.sheet.actor {
       // flex: 1 0 480px;
       // max-height: 100%;
       grid-auto-rows: minmax(24px, 1fr);
-      grid-template-columns: repeat(
-        auto-fill,
-        minmax(max(135px, calc(100% / 2)), 1fr)
-      );
+      grid-template-columns: repeat(auto-fill, minmax(max(135px, calc(100% / 2)), 1fr));
       list-style: none;
       overflow-y: auto;
       padding: 0px 0 0px;
@@ -694,23 +691,19 @@ body.game.vtt.system-zweihander .zweihander.sheet.actor {
     }
 
     &.peril-tracker-3 {
-      filter: hue-rotate(20deg) blur(0.6px) contrast(1.3) sepia(0.5)
-        saturate(1.2) brightness(1.1);
+      filter: hue-rotate(20deg) blur(0.6px) contrast(1.3) sepia(0.5) saturate(1.2) brightness(1.1);
     }
 
     &.peril-tracker-2 {
-      filter: hue-rotate(25deg) blur(0.8px) contrast(1.4) saturate(1.4)
-        brightness(1.3) sepia(0.6);
+      filter: hue-rotate(25deg) blur(0.8px) contrast(1.4) saturate(1.4) brightness(1.3) sepia(0.6);
     }
 
     &.peril-tracker-1 {
-      filter: hue-rotate(125deg) blur(1px) contrast(1.4) saturate(2.5)
-        brightness(1.3) sepia(0.6);
+      filter: hue-rotate(125deg) blur(1px) contrast(1.4) saturate(2.5) brightness(1.3) sepia(0.6);
     }
 
     &.peril-tracker-0 {
-      filter: hue-rotate(225deg) blur(2px) contrast(1.8) saturate(4)
-        brightness(1.8) sepia(0.9);
+      filter: hue-rotate(225deg) blur(2px) contrast(1.8) saturate(4) brightness(1.8) sepia(0.9);
     }
   }
 }

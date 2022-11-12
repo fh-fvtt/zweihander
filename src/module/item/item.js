@@ -78,12 +78,8 @@ export default class ZweihanderItem extends Item {
 
   async _preCreate(data, options, user) {
     await super._preCreate(data, options, user);
-    if (
-      !this.img ||
-      ZWEI.replacedDefaultCoreIcons.includes(this.img)
-    ) {
-      const img =
-        ZWEI.defaultItemIcons[this.type] ?? ZWEI.defaultItemIcons._default;
+    if (!this.img || ZWEI.replacedDefaultCoreIcons.includes(this.img)) {
+      const img = ZWEI.defaultItemIcons[this.type] ?? ZWEI.defaultItemIcons._default;
       await this.updateSource({ img });
     }
     if (this.parent === null) return;

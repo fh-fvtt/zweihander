@@ -24,14 +24,10 @@
 // -- This will overwrite an existing command --
 // Cypress.Commands.overwrite('visit', (originalFn, url, options) => { ... })
 
-Cypress.Commands.add(
-  'dragTo',
-  { prevSubject: 'element' },
-  (subject, targetEl) => {
-    // workaround to shut Foundry up
-    const dt = new DataTransfer();
+Cypress.Commands.add('dragTo', { prevSubject: 'element' }, (subject, targetEl) => {
+  // workaround to shut Foundry up
+  const dt = new DataTransfer();
 
-    cy.wrap(subject).trigger('dragstart', { dataTransfer: dt });
-    cy.get(targetEl).trigger('drop', { dataTransfer: dt });
-  }
-);
+  cy.wrap(subject).trigger('dragstart', { dataTransfer: dt });
+  cy.get(targetEl).trigger('drop', { dataTransfer: dt });
+});

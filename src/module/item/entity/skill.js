@@ -9,11 +9,7 @@ export default class ZweihanderSkill extends ZweihanderBaseItem {
       item.system.rank =
         actor.items
           .filter((i) => i.type === 'profession')
-          .flatMap((p) =>
-            p.system.skillRanks?.filter?.(
-              (sr) => sr.name === item.name && sr.purchased
-            )
-          )?.length ?? 0;
+          .flatMap((p) => p.system.skillRanks?.filter?.((sr) => sr.name === item.name && sr.purchased))?.length ?? 0;
     } else {
       item.system.rank = actor.system.skillRanks?.[item.name] ?? 0;
     }

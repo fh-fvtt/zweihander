@@ -7,8 +7,7 @@ ZWEI.templates = {
   skill: 'systems/zweihander/src/templates/chat/chat-skill.hbs',
   spell: 'systems/zweihander/src/templates/chat/chat-spell.hbs',
   weapon: 'systems/zweihander/src/templates/chat/chat-weapon.hbs',
-  skillConfigurationDialog:
-    'systems/zweihander/src/templates/dialog/dialog-skill-configuration.hbs',
+  skillConfigurationDialog: 'systems/zweihander/src/templates/dialog/dialog-skill-configuration.hbs',
 };
 
 ZWEI.testTypes = {
@@ -82,15 +81,7 @@ ZWEI.tiersInversed = {
   Advanced: 3,
 };
 
-ZWEI.primaryAttributes = [
-  'combat',
-  'brawn',
-  'agility',
-  'perception',
-  'intelligence',
-  'willpower',
-  'fellowship',
-];
+ZWEI.primaryAttributes = ['combat', 'brawn', 'agility', 'perception', 'intelligence', 'willpower', 'fellowship'];
 
 ZWEI.primaryAttributeIcons = {
   combat: 'ra ra-croc-sword',
@@ -189,15 +180,7 @@ ZWEI.packSets = {
   },
 };
 
-ZWEI.archetypes = [
-  'Academic',
-  'Commoner',
-  'Knave',
-  'Ranger',
-  'Socialite',
-  'Warrior',
-  'Expert Profession',
-];
+ZWEI.archetypes = ['Academic', 'Commoner', 'Knave', 'Ranger', 'Socialite', 'Warrior', 'Expert Profession'];
 
 ZWEI.injurySeverities = [
   { value: 0, label: 'Moderate' },

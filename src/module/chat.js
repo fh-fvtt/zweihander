@@ -61,30 +61,21 @@ function enableChatButtons(html, flags, message, data) {
   }
   const skillTestData = flags?.skillTestData;
   if (skillTestData) {
-    const { outcome, actorId, skillItemId, testType, testConfiguration } =
-      skillTestData;
+    const { outcome, actorId, skillItemId, testType, testConfiguration } = skillTestData;
     const actor = game.actors.get(actorId);
     // enable re-roll button
     if (
-      (game.user.isGM ||
-        actorId === ZweihanderUtils.determineCurrentActorId()) &&
+      (game.user.isGM || actorId === ZweihanderUtils.determineCurrentActorId()) &&
       outcome !== ZweihanderDice.OUTCOME_TYPES.CRITICAL_FAILURE
     ) {
       html.find('.skill-test-reroll').prop('disabled', false);
       $(html).on('click', '.skill-test-reroll', (event) => {
-        ZweihanderDice.reRollTest(
-          actorId,
-          skillItemId,
-          testType,
-          testConfiguration,
-          { showDialog: event.shiftKey }
-        );
+        ZweihanderDice.reRollTest(actorId, skillItemId, testType, testConfiguration, { showDialog: event.shiftKey });
       });
     }
     // enable damage button
     if (
-      (game.user.isGM ||
-        actorId === ZweihanderUtils.determineCurrentActorId()) &&
+      (game.user.isGM || actorId === ZweihanderUtils.determineCurrentActorId()) &&
       ZweihanderDice.isSuccess(outcome)
     ) {
       html.find('.skill-test-damage').prop('disabled', false);
@@ -94,8 +85,7 @@ function enableChatButtons(html, flags, message, data) {
     }
     // enable parry button
     if (
-      (game.user.isGM ||
-        actorId !== ZweihanderUtils.determineCurrentActorId()) &&
+      (game.user.isGM || actorId !== ZweihanderUtils.determineCurrentActorId()) &&
       ZweihanderDice.isSuccess(outcome)
     ) {
       html.find('.skill-test-parry').prop('disabled', false);
@@ -105,8 +95,7 @@ function enableChatButtons(html, flags, message, data) {
     }
     // enable dodge button
     if (
-      (game.user.isGM ||
-        actorId !== ZweihanderUtils.determineCurrentActorId()) &&
+      (game.user.isGM || actorId !== ZweihanderUtils.determineCurrentActorId()) &&
       ZweihanderDice.isSuccess(outcome)
     ) {
       html.find('.skill-test-dodge').prop('disabled', false);
@@ -119,13 +108,8 @@ function enableChatButtons(html, flags, message, data) {
   if (weaponTestData) {
     const actorId = weaponTestData.actorId;
     const showExplodingButtons =
-      !weaponTestData.exploded ||
-      game.settings.get('zweihander', 'unlimitedFortuneExplodes');
-    if (
-      (game.user.isGM ||
-        actorId == ZweihanderUtils.determineCurrentActorId()) &&
-      showExplodingButtons
-    ) {
+      !weaponTestData.exploded || game.settings.get('zweihander', 'unlimitedFortuneExplodes');
+    if ((game.user.isGM || actorId == ZweihanderUtils.determineCurrentActorId()) && showExplodingButtons) {
       html.find('.damage-roll-explode').prop('disabled', false);
       $(html).on('click', '.damage-roll-explode', (event) => {
         ZweihanderDice.explodeWeaponDamage(message, 'fortune');
@@ -139,8 +123,7 @@ function enableChatButtons(html, flags, message, data) {
     }
   }
 
-  const spellTestData =
-    flags?.skillTestData?.testType === 'spell' && flags?.skillTestData;
+  const spellTestData = flags?.skillTestData?.testType === 'spell' && flags?.skillTestData;
   if (spellTestData) {
     const actorId = spellTestData.actorId;
     const actor = game.actors.get(actorId);
@@ -151,10 +134,7 @@ function enableChatButtons(html, flags, message, data) {
       const dataPath = formula[1];
 
       if (dataPath && dataPath.includes('@')) {
-        const newFormula =
-          diceRoll +
-          '+' +
-          (await ZweihanderUtils.parseDataPaths(dataPath, actor));
+        const newFormula = diceRoll + '+' + (await ZweihanderUtils.parseDataPaths(dataPath, actor));
         this.dataset.formula = newFormula;
         $(this).html('<i class="fas fa-dice-d20"></i> ' + newFormula);
       }

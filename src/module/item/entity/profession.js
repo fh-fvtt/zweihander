@@ -4,9 +4,7 @@ export default class ZweihanderProfession extends ZweihanderBaseItem {
   static async toggleProfessionPurchases(profession, purchase) {
     const updateData = {};
     const updatePurchase = (itemType) =>
-      (updateData[`system.${itemType}`] = profession.system[itemType].map(
-        (t) => ({ ...t, purchased: purchase })
-      ));
+      (updateData[`system.${itemType}`] = profession.system[itemType].map((t) => ({ ...t, purchased: purchase })));
     ['talents', 'skillRanks', 'bonusAdvances'].forEach(updatePurchase);
     await profession.update(updateData);
   }
@@ -21,10 +19,7 @@ export default class ZweihanderProfession extends ZweihanderBaseItem {
     {
       property: 'talents',
       itemType: 'talent',
-      entryPostProcessor: (x) =>
-        ZweihanderBaseItem.addPurchaseInfo(
-          ZweihanderBaseItem.cleanLinkedItemEntry(x)
-        ),
+      entryPostProcessor: (x) => ZweihanderBaseItem.addPurchaseInfo(ZweihanderBaseItem.cleanLinkedItemEntry(x)),
     },
   ];
 
@@ -32,23 +27,15 @@ export default class ZweihanderProfession extends ZweihanderBaseItem {
     if (!item.isOwned) return;
     const advancesPurchased =
       1 +
-      (item.system.bonusAdvances?.reduce?.(
-        (a, b) => a + Number(b.purchased),
-        0
-      ) ?? 0) +
-      (item.system.skillRanks?.reduce?.(
-        (a, b) => a + Number(b.purchased),
-        0
-      ) ?? 0) +
-      (item.system.talents?.reduce?.((a, b) => a + Number(b.purchased), 0) ??
-        0);
+      (item.system.bonusAdvances?.reduce?.((a, b) => a + Number(b.purchased), 0) ?? 0) +
+      (item.system.skillRanks?.reduce?.((a, b) => a + Number(b.purchased), 0) ?? 0) +
+      (item.system.talents?.reduce?.((a, b) => a + Number(b.purchased), 0) ?? 0);
     item.system.advancesPurchased = advancesPurchased;
     item.system.completed = advancesPurchased === 21;
   }
 
   async _preCreate(data, options, user, item) {
-    const tier =
-      item.parent.items.filter((i) => i.type === 'profession').length + 1;
+    const tier = item.parent.items.filter((i) => i.type === 'profession').length + 1;
     if (tier > 3) return;
     item.updateSource({
       'system.tier': CONFIG.ZWEI.tiers[tier],

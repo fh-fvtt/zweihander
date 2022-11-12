@@ -3,11 +3,7 @@
 import { svelte } from '@sveltejs/vite-plugin-svelte';
 import resolve from '@rollup/plugin-node-resolve'; // This resolves NPM modules from node_modules.
 import preprocess from 'svelte-preprocess';
-import {
-  postcssConfig,
-  terserConfig,
-  typhonjsRuntime,
-} from '@typhonjs-fvtt/runtime/rollup';
+import { postcssConfig, terserConfig, typhonjsRuntime } from '@typhonjs-fvtt/runtime/rollup';
 
 const s_COMPRESS = false; // Set to true to compress the module bundle.
 const s_SOURCEMAPS = true; // Generate sourcemaps for the bundle (recommended).
@@ -74,8 +70,7 @@ export default () => {
       port: 40001,
       open: false,
       proxy: {
-        '^(/systems/zweihander/(lang|packs|assets|fonts|tinymce))':
-          'http://localhost:40000',
+        '^(/systems/zweihander/(lang|packs|assets|fonts|tinymce))': 'http://localhost:40000',
         '^(?!/systems/zweihander/)': 'http://localhost:40000',
         '/socket.io': { target: 'ws://localhost:40000', ws: true },
       },

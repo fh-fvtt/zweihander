@@ -61,9 +61,7 @@ before(() => {
           return exitWorld();
         }
 
-        throw new Error(
-          'Cannot get to setup screen! Can handle /join and /auth but at ' + pathname
-        );
+        throw new Error('Cannot get to setup screen! Can handle /join and /auth but at ' + pathname);
       }
 
       return cy;
@@ -160,9 +158,7 @@ describe('Character Creation', () => {
 
     cy.get('input[name="name"]').type(Cypress.env('characterName'));
 
-    cy.get('select[name="type"]')
-      .select('Player Character')
-      .should('have.value', 'character');
+    cy.get('select[name="type"]').select('Player Character').should('have.value', 'character');
 
     cy.get('button[data-button="ok"]').click();
 
@@ -192,15 +188,7 @@ describe('Character Creation', () => {
   });
 
   it('can change Primary Attributes', () => {
-    const primaryAttributes = [
-      'combat',
-      'brawn',
-      'agility',
-      'perception',
-      'intelligence',
-      'willpower',
-      'fellowship',
-    ];
+    const primaryAttributes = ['combat', 'brawn', 'agility', 'perception', 'intelligence', 'willpower', 'fellowship'];
 
     for (let pa of primaryAttributes) {
       cy.get(`.pa-${pa}`).find('.pa-value').clear().type('40{enter}');
@@ -227,11 +215,7 @@ describe('Character Creation', () => {
 
     cy.wait(1000);
 
-    cy.get('.compendium')
-      .should('be.visible')
-      .find('img[title="Human"]')
-      .parent()
-      .dragTo('.character');
+    cy.get('.compendium').should('be.visible').find('img[title="Human"]').parent().dragTo('.character');
 
     cy.wait(1000);
 
@@ -308,9 +292,7 @@ describe('Character Creation', () => {
         .parent()
         .dragTo('.character');
 
-      cy.contains(
-        'A character must complete the previous Tier before entering a new Profession.'
-      ).should('be.visible');
+      cy.contains('A character must complete the previous Tier before entering a new Profession.').should('be.visible');
     });
 
     it('can complete Tier', () => {
@@ -349,12 +331,7 @@ describe('Trappings', () => {
 
     cy.wait(1000);
 
-    cy.get('.window-header')
-      .contains('weapon')
-      .should('be.visible')
-      .parent()
-      .find('.close')
-      .click();
+    cy.get('.window-header').contains('weapon').should('be.visible').parent().find('.close').click();
   });
 
   it('can add new Armor', () => {

@@ -64,10 +64,7 @@ export default class ZweihanderActorConfig extends FormApplication {
     appData.parrySkills = appData.flags.parrySkills.join(', ');
     appData.dodgeSkills = appData.flags.dodgeSkills.join(', ');
     appData.magickSkills = appData.flags.magickSkills.join(', ');
-    appData.avoidAllPeril = appData.flags.isIgnoredPerilLadderValue.reduce(
-      (a, b) => a && b,
-      true
-    );
+    appData.avoidAllPeril = appData.flags.isIgnoredPerilLadderValue.reduce((a, b) => a && b, true);
     return appData;
   }
 
@@ -79,24 +76,17 @@ export default class ZweihanderActorConfig extends FormApplication {
       const sa = actor.system.stats.secondaryAttributes;
       const saPath = 'system.stats.secondaryAttributes';
       const actorUpdate = {};
-      updateData.parrySkills = updateData.parrySkills
-        .split(',')
-        .map((skill) => skill.trim());
+      updateData.parrySkills = updateData.parrySkills.split(',').map((skill) => skill.trim());
       if (!updateData.parrySkills.includes(sa.parry.associatedSkill)) {
         actorUpdate[`${saPath}.parry.associatedSkill`] = updateData.parrySkills[0] ?? '';
       }
-      updateData.dodgeSkills = updateData.dodgeSkills
-        .split(',')
-        .map((skill) => skill.trim());
+      updateData.dodgeSkills = updateData.dodgeSkills.split(',').map((skill) => skill.trim());
       if (!updateData.dodgeSkills.includes(sa.dodge.associatedSkill)) {
         actorUpdate[`${saPath}.dodge.associatedSkill`] = updateData.dodgeSkills[0] ?? '';
       }
-      updateData.magickSkills = updateData.magickSkills
-        .split(',')
-        .map((skill) => skill.trim());
+      updateData.magickSkills = updateData.magickSkills.split(',').map((skill) => skill.trim());
       if (!updateData.magickSkills.includes(sa.magick.associatedSkill)) {
-        actorUpdate[`${saPath}.magick.associatedSkill`] =
-          updateData.magickSkills[0] ?? '';
+        actorUpdate[`${saPath}.magick.associatedSkill`] = updateData.magickSkills[0] ?? '';
       }
       // wtf is this template system haha
       updateData.isIgnoredPerilLadderValue = [
@@ -105,9 +95,10 @@ export default class ZweihanderActorConfig extends FormApplication {
         updateData.isIgnoredPerilLadderValue['[2]'],
       ];
       const avoidAllUpdate = foundry.utils.expandObject(formData).avoidAllPeril;
-      const avoidAllBefore = ZweihanderActorConfig.getConfig(
-        this.object.data
-      ).isIgnoredPerilLadderValue.reduce((a, b) => a && b, true);
+      const avoidAllBefore = ZweihanderActorConfig.getConfig(this.object.data).isIgnoredPerilLadderValue.reduce(
+        (a, b) => a && b,
+        true
+      );
       if (avoidAllUpdate && !avoidAllBefore) {
         updateData.isIgnoredPerilLadderValue = [true, true, true];
       } else if (!avoidAllUpdate && avoidAllBefore) {

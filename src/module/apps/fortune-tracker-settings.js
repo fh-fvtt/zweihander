@@ -33,8 +33,7 @@ export default class FortuneTrackerSettings extends FormApplication {
       { value: 'notify', label: 'Post Foundry Notifications' },
       { value: 'chat', label: 'Post Chat Messages' },
     ].map((option) => ({
-      selected:
-        (fortuneTrackerData.notifications ?? 'notify') === option.value ? 'selected' : '',
+      selected: (fortuneTrackerData.notifications ?? 'notify') === option.value ? 'selected' : '',
       ...option,
     }));
     return fortuneTrackerData;

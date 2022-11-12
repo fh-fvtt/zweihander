@@ -10,11 +10,7 @@ export default class ZweihanderBaseItem {
 
   static linkedItemEntryCreationProcessor =
     (source) =>
-    async (
-      property,
-      itemType,
-      entryPostProcessor = ZweihanderBaseItem.cleanLinkedItemEntry
-    ) => {
+    async (property, itemType, entryPostProcessor = ZweihanderBaseItem.cleanLinkedItemEntry) => {
       const itemName = source.system[property].name.trim();
       if (itemName) {
         const linkedItemEntry = await ZweihanderBaseItem.getLinkedItemEntry(
@@ -33,11 +29,7 @@ export default class ZweihanderBaseItem {
 
   static linkedItemEntriesCreationProcessor =
     (source) =>
-    async (
-      property,
-      itemType,
-      entryPostProcessor = ZweihanderBaseItem.cleanLinkedItemEntry
-    ) => {
+    async (property, itemType, entryPostProcessor = ZweihanderBaseItem.cleanLinkedItemEntry) => {
       const itemNames = source.system[property].map((v) => v.name);
       if (itemNames.length) {
         const linkedItemEntries = await ZweihanderBaseItem.getLinkedItemEntries(
@@ -50,9 +42,7 @@ export default class ZweihanderBaseItem {
         source.updateSource({
           [`system.${property}`]: linkedItemEntries.map(entryPostProcessor),
         });
-        const itemsToCreate = linkedItemEntries
-          .map((x) => x.itemToCreate)
-          .filter((x) => x !== undefined);
+        const itemsToCreate = linkedItemEntries.map((x) => x.itemToCreate).filter((x) => x !== undefined);
         return itemsToCreate;
       }
       return [];
@@ -60,11 +50,7 @@ export default class ZweihanderBaseItem {
 
   static linkedItemEntryUpdateProcessor =
     (source, changed) =>
-    async (
-      property,
-      itemType,
-      entryPostProcessor = ZweihanderBaseItem.cleanLinkedItemEntry
-    ) => {
+    async (property, itemType, entryPostProcessor = ZweihanderBaseItem.cleanLinkedItemEntry) => {
       if (changed.system[property]?.name !== undefined) {
         const newPropertyName = changed.system[property].name.trim();
         const oldPropertyName = source.system[property].name;
@@ -85,17 +71,12 @@ export default class ZweihanderBaseItem {
 
   static linkedItemEntriesUpdateProcessor =
     (source, changed) =>
-    async (
-      property,
-      itemType,
-      entryPostProcessor = ZweihanderBaseItem.cleanLinkedItemEntry
-    ) => {
+    async (property, itemType, entryPostProcessor = ZweihanderBaseItem.cleanLinkedItemEntry) => {
       if (changed.system[property] !== undefined) {
-        const { idsToDelete, namesToAdd } =
-          ZweihanderBaseItem.getLinkedItemsDifference(
-            changed.system[property],
-            source.system[property]
-          );
+        const { idsToDelete, namesToAdd } = ZweihanderBaseItem.getLinkedItemsDifference(
+          changed.system[property],
+          source.system[property]
+        );
         const addedEntries = await ZweihanderBaseItem.getLinkedItemEntries(
           source.parent,
           namesToAdd,
@@ -103,34 +84,17 @@ export default class ZweihanderBaseItem {
           source.name,
           source.type
         );
-        const itemsToCreate = addedEntries
-          .map((x) => x.itemToCreate)
-          .filter((x) => x !== undefined);
+        const itemsToCreate = addedEntries.map((x) => x.itemToCreate).filter((x) => x !== undefined);
         // update names & linkedIds
-        const lookUp = addedEntries.reduce(
-          (a, b) => ({ ...a, [b.name]: entryPostProcessor(b) }),
-          {}
-        );
-        changed.system[property] = changed.system[property].map((t) =>
-          lookUp[t.name] ? lookUp[t.name] : t
-        );
+        const lookUp = addedEntries.reduce((a, b) => ({ ...a, [b.name]: entryPostProcessor(b) }), {});
+        changed.system[property] = changed.system[property].map((t) => (lookUp[t.name] ? lookUp[t.name] : t));
         return { idsToDelete, itemsToCreate };
       }
     };
 
-  static async getLinkedItemEntry(
-    actor,
-    itemName,
-    itemType,
-    sourceName,
-    sourceType
-  ) {
-    const itemToCreate = (
-      await ZweihanderUtils.findItemWorldWide(itemType, itemName)
-    )?.toObject?.();
-    const existingItemWithSameName = actor.items.find(
-      (t) => t.type === itemType && t.name === itemToCreate?.name
-    );
+  static async getLinkedItemEntry(actor, itemName, itemType, sourceName, sourceType) {
+    const itemToCreate = (await ZweihanderUtils.findItemWorldWide(itemType, itemName))?.toObject?.();
+    const existingItemWithSameName = actor.items.find((t) => t.type === itemType && t.name === itemToCreate?.name);
     const notFoundValue = { linkedId: null, name: itemName };
     if (!itemToCreate && !existingItemWithSameName) return notFoundValue;
     const flag = {
@@ -138,17 +102,12 @@ export default class ZweihanderBaseItem {
       label: `${sourceName} (${sourceType.capitalize()})`,
     };
     if (existingItemWithSameName) {
-      const existingFlag = existingItemWithSameName.getFlag(
-        'zweihander',
-        'source'
-      );
+      const existingFlag = existingItemWithSameName.getFlag('zweihander', 'source');
       if (existingFlag) {
         ui?.notifications.warn(
           `The ${existingItemWithSameName.type.capitalize()} "${
             existingItemWithSameName.name
-          }" has been previously added by ${
-            existingFlag.label
-          }! Please contact your GM to replace this ${
+          }" has been previously added by ${existingFlag.label}! Please contact your GM to replace this ${
             existingItemWithSameName.type
           } on ${flag.label}`
         );
@@ -169,23 +128,9 @@ export default class ZweihanderBaseItem {
     }
   }
 
-  static async getLinkedItemEntries(
-    actor,
-    itemNames,
-    itemType,
-    sourceName,
-    sourceType
-  ) {
+  static async getLinkedItemEntries(actor, itemNames, itemType, sourceName, sourceType) {
     return Promise.all(
-      itemNames.map((itemName) =>
-        this.getLinkedItemEntry(
-          actor,
-          itemName,
-          itemType,
-          sourceName,
-          sourceType
-        )
-      )
+      itemNames.map((itemName) => this.getLinkedItemEntry(actor, itemName, itemType, sourceName, sourceType))
     );
   }
 
@@ -203,8 +148,7 @@ export default class ZweihanderBaseItem {
   }
 
   static getLinkedItemsDifference(newArray, oldArray) {
-    const arrayMinusByName = (a, b) =>
-      a.filter((x) => !b.some((y) => x.name === y.name));
+    const arrayMinusByName = (a, b) => a.filter((x) => !b.some((y) => x.name === y.name));
     return {
       namesToAdd: arrayMinusByName(newArray, oldArray).map((e) => e.name),
       idsToDelete: arrayMinusByName(oldArray, newArray).map((e) => e.linkedId),
@@ -212,38 +156,23 @@ export default class ZweihanderBaseItem {
   }
 
   async _preCreate(data, options, user, item) {
-    if (
-      !this.constructor.linkedListProperties.length &&
-      !this.constructor.linkedSingleProperties.length
-    ) {
+    if (!this.constructor.linkedListProperties.length && !this.constructor.linkedSingleProperties.length) {
       return;
     }
-    const processMultiLinkedPropertyDiff =
-      ZweihanderBaseItem.linkedItemEntriesCreationProcessor(item);
-    const processSingleLinkedPropertyDiff =
-      ZweihanderBaseItem.linkedItemEntryCreationProcessor(item);
+    const processMultiLinkedPropertyDiff = ZweihanderBaseItem.linkedItemEntriesCreationProcessor(item);
+    const processSingleLinkedPropertyDiff = ZweihanderBaseItem.linkedItemEntryCreationProcessor(item);
     const itemsToCreate = (
       await Promise.all(
-        this.constructor.linkedListProperties.map(
-          ({ property, itemType, entryPostProcessor }) =>
-            processMultiLinkedPropertyDiff(
-              property,
-              itemType,
-              entryPostProcessor
-            )
+        this.constructor.linkedListProperties.map(({ property, itemType, entryPostProcessor }) =>
+          processMultiLinkedPropertyDiff(property, itemType, entryPostProcessor)
         )
       )
     ).flatMap((x) => x);
 
     (
       await Promise.all(
-        this.constructor.linkedSingleProperties.map(
-          ({ property, itemType, entryPostProcessor }) =>
-            processSingleLinkedPropertyDiff(
-              property,
-              itemType,
-              entryPostProcessor
-            )
+        this.constructor.linkedSingleProperties.map(({ property, itemType, entryPostProcessor }) =>
+          processSingleLinkedPropertyDiff(property, itemType, entryPostProcessor)
         )
       )
     )
@@ -262,38 +191,23 @@ export default class ZweihanderBaseItem {
   }
 
   async _preUpdate(changed, options, user, item) {
-    if (
-      !this.constructor.linkedListProperties.length &&
-      !this.constructor.linkedSingleProperties.length
-    ) {
+    if (!this.constructor.linkedListProperties.length && !this.constructor.linkedSingleProperties.length) {
       return;
     }
-    const processMultiLinkedPropertyDiff =
-      ZweihanderBaseItem.linkedItemEntriesUpdateProcessor(item, changed);
-    const processSingleLinkedPropertyDiff =
-      ZweihanderBaseItem.linkedItemEntryUpdateProcessor(item, changed);
+    const processMultiLinkedPropertyDiff = ZweihanderBaseItem.linkedItemEntriesUpdateProcessor(item, changed);
+    const processSingleLinkedPropertyDiff = ZweihanderBaseItem.linkedItemEntryUpdateProcessor(item, changed);
     const entries = (
       await Promise.all(
-        this.constructor.linkedListProperties.map(
-          ({ property, itemType, entryPostProcessor }) =>
-            processMultiLinkedPropertyDiff(
-              property,
-              itemType,
-              entryPostProcessor
-            )
+        this.constructor.linkedListProperties.map(({ property, itemType, entryPostProcessor }) =>
+          processMultiLinkedPropertyDiff(property, itemType, entryPostProcessor)
         )
       )
     )
       .flatMap((x) => x)
       .concat(
         await Promise.all(
-          this.constructor.linkedSingleProperties.map(
-            ({ property, itemType, entryPostProcessor }) =>
-              processSingleLinkedPropertyDiff(
-                property,
-                itemType,
-                entryPostProcessor
-              )
+          this.constructor.linkedSingleProperties.map(({ property, itemType, entryPostProcessor }) =>
+            processSingleLinkedPropertyDiff(property, itemType, entryPostProcessor)
           )
         )
       );
@@ -327,34 +241,25 @@ export default class ZweihanderBaseItem {
       });
     }
     if (options.idsToDelete?.length) {
-      await ZweihanderBaseItem.removeLinkedItems(
-        item.parent,
-        options.idsToDelete
-      );
+      await ZweihanderBaseItem.removeLinkedItems(item.parent, options.idsToDelete);
     }
   }
 
   async _preDelete(options, user, item) {
-    if (
-      !this.constructor.linkedListProperties.length &&
-      !this.constructor.linkedSingleProperties.length
-    ) {
+    if (!this.constructor.linkedListProperties.length && !this.constructor.linkedSingleProperties.length) {
       return;
     }
     const singleLinkedIdsToDelete = this.constructor.linkedSingleProperties.map(
       ({ property }) => item.system[property].linkedId
     );
-    const listLinkedIdsToDelete = this.constructor.linkedListProperties.flatMap(
-      ({ property }) => item.system[property].map((x) => x.linkedId)
+    const listLinkedIdsToDelete = this.constructor.linkedListProperties.flatMap(({ property }) =>
+      item.system[property].map((x) => x.linkedId)
     );
     options.idsToDelete = singleLinkedIdsToDelete.concat(listLinkedIdsToDelete);
   }
 
   async _onDelete(options, user, item) {
-    await ZweihanderBaseItem.removeLinkedItems(
-      item.parent,
-      options.idsToDelete
-    );
+    await ZweihanderBaseItem.removeLinkedItems(item.parent, options.idsToDelete);
   }
 
   getRollData(rollData) {

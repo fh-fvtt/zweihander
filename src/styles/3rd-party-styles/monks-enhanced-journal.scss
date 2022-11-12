@@ -144,14 +144,8 @@
 #journal-directory li.folder.collapsed .folder-header.customcolor {
   color: var(--mej-clr-fg0);
 }
-#journal-directory
-  li.folder.collapsed
-  > .folder-header.customcolor
-  .create-document,
-#journal-directory
-  li.folder.collapsed
-  > .folder-header.customcolor
-  .create-folder {
+#journal-directory li.folder.collapsed > .folder-header.customcolor .create-document,
+#journal-directory li.folder.collapsed > .folder-header.customcolor .create-folder {
   color: var(--mej-clr-fg3);
 }
 #journal-directory .subdirectory {
@@ -221,19 +215,11 @@
   background-color: rgba(var(--mej-clr-bg0-rgb), 0.5);
   border: 1px solid var(--mej-clr-bg0);
 }
-.monks-journal-sheet
-  .slideshow-container.playing
-  .slide-showing
-  .duration
-  .duration-bar {
+.monks-journal-sheet .slideshow-container.playing .slide-showing .duration .duration-bar {
   background-color: var(--mej-clr-aqua-dark);
   border-right: 1px solid var(--mej-clr-bg0);
 }
-.monks-journal-sheet
-  .slideshow-container.playing
-  .slide-showing
-  .duration
-  .duration-label {
+.monks-journal-sheet .slideshow-container.playing .slide-showing .duration .duration-label {
   color: var(--mej-clr-fg0);
   text-shadow: 1px 1px 6px var(--mej-clr-bg0);
 }
@@ -263,10 +249,7 @@
 .select-player .inactive {
   color: var(--mej-clr-bg3);
 }
-.monks-journal-sheet.sheet
-  .quest-container
-  .items-list.objective-items
-  li:nth-child(even) {
+.monks-journal-sheet.sheet .quest-container .items-list.objective-items li:nth-child(even) {
   background-color: rgba(var(--mej-clr-fg0-rgb), 0.3);
 }
 #objective-display {
@@ -287,25 +270,12 @@
 .monks-journal-sheet.sheet .items-list .item-content {
   color: var(--mej-clr-bg1);
 }
-.monks-journal-sheet.sheet
-  .journal-subsheet
-  .objective-items
-  .item-list
-  > li
-  > div:first-child {
+.monks-journal-sheet.sheet .journal-subsheet .objective-items .item-list > li > div:first-child {
   border-bottom: 1px solid var(--mej-clr-red-dark);
 }
 .monks-journal-sheet.sheet .items-list .item-controls a.active,
-.monks-journal-sheet.sheet
-  .items-list
-  .item-controls
-  input[type='checkbox']:checked
-  + .item-action,
-.monks-journal-sheet.sheet
-  .items-list
-  .item-controls
-  input[type='checkbox']:checked
-  + .item-hide {
+.monks-journal-sheet.sheet .items-list .item-controls input[type='checkbox']:checked + .item-action,
+.monks-journal-sheet.sheet .items-list .item-controls input[type='checkbox']:checked + .item-hide {
   color: var(--mej-clr-orange-dark);
 }
 .monks-journal-sheet.sheet .items-list .item {
@@ -433,10 +403,7 @@ a.picture-link.broken {
   background: rgba(var(--mej-clr-red-bright-rgb), 0.05);
   border: 1px dashed var(--mej-clr-red-bright);
 }
-.rippers-ui.monks-enhanced-journal
-  .sidebar-directory
-  .directory-list
-  .document {
+.rippers-ui.monks-enhanced-journal .sidebar-directory .directory-list .document {
   text-shadow: 1px 2px var(--mej-clr-fg0);
 }
 .monks-journal-sheet .loot-player {

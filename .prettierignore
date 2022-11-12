@@ -4,6 +4,7 @@ fonts/
 lang/
 node_modules/
 packs/*.db
+packs/data/
 readme-assets/
 tinymce/
 system.json
@@ -13,3 +14,4 @@ dist/
 rollup.config.js
 *.hbs
 *.min.*
+.vite-cache/

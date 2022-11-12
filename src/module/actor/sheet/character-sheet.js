@@ -39,10 +39,7 @@ export default class ZweihanderCharacterSheet extends ZweihanderBaseActorSheet {
     // bind currency
     sheetData.settings.currencies = game.settings.get('zweihander', 'currencySettings');
     // calculate reward points automatically
-    sheetData.settings.trackRewardPoints = game.settings.get(
-      'zweihander',
-      'trackRewardPoints'
-    );
+    sheetData.settings.trackRewardPoints = game.settings.get('zweihander', 'trackRewardPoints');
     if (sheetData.settings.trackRewardPoints) {
       const tierMultiplier = {
         Basic: 100,
@@ -50,15 +47,11 @@ export default class ZweihanderCharacterSheet extends ZweihanderBaseActorSheet {
         Advanced: 300,
       };
       sheetData.system.stats.rewardPoints.spent = sheetData.professions
-        .map(
-          (profession) =>
-            tierMultiplier[profession.system.tier] * profession.system.advancesPurchased
-        )
+        .map((profession) => tierMultiplier[profession.system.tier] * profession.system.advancesPurchased)
         .concat(sheetData.uniqueAdvances.map((advance) => advance.system.rewardPointCost))
         .reduce((a, b) => a + b, 0);
       sheetData.system.stats.rewardPoints.current =
-        sheetData.system.stats.rewardPoints.total -
-        sheetData.system.stats.rewardPoints.spent;
+        sheetData.system.stats.rewardPoints.total - sheetData.system.stats.rewardPoints.spent;
     }
     attachTabDefinitions(sheetData);
     const hidden = this.actor.limited;
@@ -204,9 +197,7 @@ export default class ZweihanderCharacterSheet extends ZweihanderBaseActorSheet {
     sheetData.skills = sheetData.skills.sort((a, b) => a.name.localeCompare(b.name));
     // sort professions by tier
     sheetData.professions = sheetData.professions.sort(
-      (a, b) =>
-        CONFIG.ZWEI.tiersInversed[a.system.tier] -
-        CONFIG.ZWEI.tiersInversed[b.system.tier]
+      (a, b) => CONFIG.ZWEI.tiersInversed[a.system.tier] - CONFIG.ZWEI.tiersInversed[b.system.tier]
     );
     // add source information from flags
     const addSource = (items) =>
@@ -222,9 +213,7 @@ export default class ZweihanderCharacterSheet extends ZweihanderBaseActorSheet {
     sheetData.talents = sheetData.talents.filter(
       (talent) =>
         talent.isManualSource ||
-        sheetData.professions.some((p) =>
-          p.system.talents.some((t) => t.linkedId === talent._id && t.purchased)
-        )
+        sheetData.professions.some((p) => p.system.talents.some((t) => t.linkedId === talent._id && t.purchased))
     );
     // filter focuses data
     sheetData.focuses = sheetData.uniqueAdvances
@@ -234,9 +223,7 @@ export default class ZweihanderCharacterSheet extends ZweihanderBaseActorSheet {
         name: ua.name,
       }));
     sheetData.skills.forEach((skill) => {
-      const focuses = sheetData.focuses
-        .filter((focus) => focus.skillName === skill.name)
-        .map((focus) => focus.name);
+      const focuses = sheetData.focuses.filter((focus) => focus.skillName === skill.name).map((focus) => focus.name);
       skill.system.focuses = focuses;
     });
   }
@@ -275,14 +262,8 @@ export default class ZweihanderCharacterSheet extends ZweihanderBaseActorSheet {
         }
       }
     };
-    this._registerDimensionChangeListener(
-      html.find('.actor-sheet-header'),
-      resizePotrait
-    );
-    this._registerDimensionChangeListener(
-      html.find('.actor-sheet-header .empty-placeholder'),
-      resizePotrait
-    );
+    this._registerDimensionChangeListener(html.find('.actor-sheet-header'), resizePotrait);
+    this._registerDimensionChangeListener(html.find('.actor-sheet-header .empty-placeholder'), resizePotrait);
 
     // Update the encumbrance meter
     this._updateEncumbranceMeter(html);
@@ -294,22 +275,14 @@ export default class ZweihanderCharacterSheet extends ZweihanderBaseActorSheet {
       const target = $(event.currentTarget);
       const field = target.data('purchaseType');
       const index = target.data('purchaseIndex');
-      const professionElement = target
-        .closest('.individual-description')
-        .parents('.item');
+      const professionElement = target.closest('.individual-description').parents('.item');
       const professionItem = this.actor.items.get($(professionElement).data('itemId'));
-      const locked =
-        professionItem.system.completed &&
-        this.actor.system.tier !== professionItem.system.tier;
+      const locked = professionItem.system.completed && this.actor.system.tier !== professionItem.system.tier;
       if (locked) {
-        ui.notifications.error(
-          `Cannot perform operation: ${professionItem.system.tier} Tier locked.`
-        );
+        ui.notifications.error(`Cannot perform operation: ${professionItem.system.tier} Tier locked.`);
         return;
       }
-      const updated = professionItem.system[field].map((x, i) =>
-        i === index ? { ...x, purchased: !x.purchased } : x
-      );
+      const updated = professionItem.system[field].map((x, i) => (i === index ? { ...x, purchased: !x.purchased } : x));
       await professionItem.update({ [`system.${field}`]: updated });
     };
     html.find('.purchase-link').click(updatePurchased);
@@ -334,10 +307,7 @@ export default class ZweihanderCharacterSheet extends ZweihanderBaseActorSheet {
     });
 
     html.find('.peril-rolls .image-container').click(async (event) => {
-      const perilType =
-        ZweihanderDice.PERIL_ROLL_TYPES[
-          event.currentTarget.dataset.perilType.toUpperCase()
-        ];
+      const perilType = ZweihanderDice.PERIL_ROLL_TYPES[event.currentTarget.dataset.perilType.toUpperCase()];
       ZweihanderDice.rollPeril(perilType, this.actor);
     });
 
@@ -369,10 +339,7 @@ export default class ZweihanderCharacterSheet extends ZweihanderBaseActorSheet {
 
     html.find('.focus-indicator').hover(
       (event) => {
-        const tooltip = $(event.currentTarget)
-          .parents('.skill-roll')
-          .find('.focus-tooltip')
-          .clone();
+        const tooltip = $(event.currentTarget).parents('.skill-roll').find('.focus-tooltip').clone();
         if (!tooltip.length) return;
 
         const offset = $(event.currentTarget).offset();
@@ -403,10 +370,7 @@ export default class ZweihanderCharacterSheet extends ZweihanderBaseActorSheet {
   async _render(force, options) {
     if (this.actor.limited) {
       const classesWithoutDamageTracker = this.constructor.defaultOptions.classes;
-      classesWithoutDamageTracker.splice(
-        classesWithoutDamageTracker.indexOf('damage-tracker'),
-        1
-      );
+      classesWithoutDamageTracker.splice(classesWithoutDamageTracker.indexOf('damage-tracker'), 1);
       options.classes = [
         'limited',
         ...classesWithoutDamageTracker,

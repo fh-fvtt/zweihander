@@ -13,18 +13,11 @@ export default class ZweihanderCreature extends ZweihanderBaseActor {
       // main gauche p. 239 "Parry (abbreviated to Par in the Bestiary) is equal to the highest Combat-based Skill the creature has"
       const combatBaseChance = pa.combat.value;
       const combatSkills = actor.items.filter(
-        (i) =>
-          i.type === 'skill' &&
-          i.system.associatedPrimaryAttribute.toLowerCase() === 'combat'
+        (i) => i.type === 'skill' && i.system.associatedPrimaryAttribute.toLowerCase() === 'combat'
       );
-      sa.parry.value = Math.max(
-        ...combatSkills.map((s) => s.system.bonus + combatBaseChance)
-      );
+      sa.parry.value = Math.max(...combatSkills.map((s) => s.system.bonus + combatBaseChance));
       // dodge is equal to its coordination value
-      const coordinationValue = this.getSkillChance(
-        actor,
-        this.getItem(actor, 'skill', 'coordination')
-      );
+      const coordinationValue = this.getSkillChance(actor, this.getItem(actor, 'skill', 'coordination'));
       sa.dodge.value = coordinationValue;
       sa.initiative.value = 3 + pa.perception.bonus;
       sa.movement.value = 3 + pa.agility.bonus;
@@ -36,11 +29,7 @@ export default class ZweihanderCreature extends ZweihanderBaseActor {
 
   getItem(actor, type, name, strict = false) {
     return actor.items.find(
-      (i) =>
-        i.type === type &&
-        (strict
-          ? i.name === name
-          : ZweihanderUtils.normalizedEquals(i.name, name))
+      (i) => i.type === type && (strict ? i.name === name : ZweihanderUtils.normalizedEquals(i.name, name))
     );
   }
 

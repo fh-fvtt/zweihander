@@ -8,9 +8,7 @@ export const getItemRollConfiguration = (item) => {
     item.type === 'weapon'
       ? item.system.associatedSkill
       : actor.system.stats.secondaryAttributes.magick.associatedSkill;
-  const skillItem = actor.items.find(
-    (item) => item.type === 'skill' && normalizedEquals(item.name, associatedSkill)
-  );
+  const skillItem = actor.items.find((item) => item.type === 'skill' && normalizedEquals(item.name, associatedSkill));
 
   const additionalConfiguration = {};
   additionalConfiguration[`${item.type}Id`] = item.id;
@@ -21,18 +19,9 @@ export const getItemRollConfiguration = (item) => {
   };
 };
 
-export async function getTestConfiguration(
-  skillItem,
-  testType = 'skill',
-  testConfiguration = {}
-) {
-  testConfiguration.flip =
-    testConfiguration.flip ?? (skillItem.system.isFlipToFail ? 'fail' : 'no-flip');
-  const configurationFromDialog = await renderConfigurationDialog(
-    testType,
-    skillItem.name,
-    testConfiguration
-  );
+export async function getTestConfiguration(skillItem, testType = 'skill', testConfiguration = {}) {
+  testConfiguration.flip = testConfiguration.flip ?? (skillItem.system.isFlipToFail ? 'fail' : 'no-flip');
+  const configurationFromDialog = await renderConfigurationDialog(testType, skillItem.name, testConfiguration);
   testConfiguration = mergeObject(testConfiguration, configurationFromDialog);
   return testConfiguration;
 }
@@ -55,14 +44,12 @@ async function renderConfigurationDialog(testType, label, testConfiguration = {}
   }));
   templateData.baseChanceModifiers = [...Array(41).keys()].map((i) => {
     const value = i * 5 - 100;
-    const selected =
-      (testConfiguration.baseChanceModifier ?? 0) === value ? 'selected' : '';
+    const selected = (testConfiguration.baseChanceModifier ?? 0) === value ? 'selected' : '';
     return { value, label: toPercentileLabel(value), selected };
   });
   templateData.difficultyRatings = [...Array(7).keys()].map((i) => {
     const value = i * 10 - 30;
-    const selected =
-      (testConfiguration.difficultyRating ?? 0) === value ? 'selected' : '';
+    const selected = (testConfiguration.difficultyRating ?? 0) === value ? 'selected' : '';
     return { value, label: getDifficultyRatingLabel(value), selected };
   });
   templateData.flipOptions = [
@@ -86,8 +73,7 @@ async function renderConfigurationDialog(testType, label, testConfiguration = {}
     { value: 20, label: 'Two Steps (2d6 Chaos Dice)' },
     { value: 30, label: 'Three Steps (3d6 Chaos Dice)' },
   ].map((option) => ({
-    selected:
-      (testConfiguration.channelPowerBonus ?? '0') === option.value ? 'selected' : '',
+    selected: (testConfiguration.channelPowerBonus ?? '0') === option.value ? 'selected' : '',
     ...option,
   }));
   return createConfigurationDialog(

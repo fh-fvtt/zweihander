@@ -3,10 +3,7 @@ import { updateActorSkillsFromPack } from './utils';
 import FortuneTrackerSettings from './apps/fortune-tracker-settings';
 import CurrencySettings from './apps/currency-settings';
 
-export const debouncedReload = foundry.utils.debounce(
-  () => window.location.reload(),
-  500
-);
+export const debouncedReload = foundry.utils.debounce(() => window.location.reload(), 500);
 
 export const registerSystemSettings = function () {
   /* -------------------------------------------- */
@@ -109,11 +106,7 @@ export const registerSystemSettings = function () {
     onChange: (theme) => {
       $('body.system-zweihander').addClass('zweihander-theme-' + theme);
       $('body.system-zweihander').removeClass((i, c) =>
-        c
-          .split(' ')
-          .filter(
-            (c) => c.startsWith('zweihander-theme-') && c !== 'zweihander-theme-' + theme
-          )
+        c.split(' ').filter((c) => c.startsWith('zweihander-theme-') && c !== 'zweihander-theme-' + theme)
       );
     },
   });

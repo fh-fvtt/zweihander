@@ -3,4 +3,4 @@
 // in dev, foundry loads index.js, this file, which loads lancer.ts
 
 window.global = window;
-import * as ZWEIHANDER from "./module/zweihander.js";
+import * as ZWEIHANDER from './module/zweihander.js';

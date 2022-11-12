@@ -192,8 +192,7 @@ body.game.vtt.system-zweihander {
     height: unset;
     object-fit: contain;
     margin: 10px 5px 5px;
-    filter: brightness(100) contrast(2)
-      drop-shadow(2px 2px 1px var(--zh-clr-dark2));
+    filter: brightness(100) contrast(2) drop-shadow(2px 2px 1px var(--zh-clr-dark2));
   }
 
   .dimension-change-listener {
@@ -309,9 +308,7 @@ body.game.vtt.system-zweihander {
   }
 }
 
-
 // PDF Viewer
-
 
 .journal-entry-page.pdf {
   height: 100%;

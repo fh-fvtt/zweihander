@@ -3,13 +3,7 @@ import { assignPacks, selectedChoice } from '../../utils';
 import ZweihanderCreatureSheet from './creature-sheet';
 
 export default class ZweihanderNpcSheet extends ZweihanderCreatureSheet {
-  static unsupportedItemTypes = new Set([
-    'ancestry',
-    'profession',
-    'quality',
-    'skill',
-    'uniqueAdvance',
-  ]);
+  static unsupportedItemTypes = new Set(['ancestry', 'profession', 'quality', 'skill', 'uniqueAdvance']);
 
   static get defaultOptions() {
     return foundry.utils.mergeObject(super.defaultOptions, {
@@ -23,7 +17,7 @@ export default class ZweihanderNpcSheet extends ZweihanderCreatureSheet {
       {
         choices: sheetData.choices,
         template: 'partials/detail-risk-factor',
-        hidden: this.actor.limited
+        hidden: this.actor.limited,
       },
       {
         key: 'details.age',

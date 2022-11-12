@@ -15,14 +15,11 @@ export default class ZweihanderWeapon extends ZweihanderBaseItem {
 
   prepareDerivedData(item) {
     item.system.equipped = item.system.equipped && item.system.carried;
-    item.system.qualities.arrayOfValues = item.system.qualities.value
-      .split(', ')
-      .filter((x) => !!x.trim());
+    item.system.qualities.arrayOfValues = item.system.qualities.value.split(', ').filter((x) => !!x.trim());
   }
 
   async roll(item) {
-    const { skillItem, additionalConfiguration } =
-      getItemRollConfiguration(item);
+    const { skillItem, additionalConfiguration } = getItemRollConfiguration(item);
 
     await rollTest(skillItem, 'weapon', additionalConfiguration, {
       showDialog: true,

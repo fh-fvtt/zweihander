@@ -131,9 +131,7 @@ export default class ZweihanderCreatureSheet extends ZweihanderBaseActorSheet {
     sheetData.weapons = sheetData.weapons.map((w) => {
       const skill = sheetData.skills.find((s) => s.name === w.system.associatedSkill);
       const baseChance =
-        sheetData.system.stats.primaryAttributes[
-          skill.system.associatedPrimaryAttribute.toLowerCase()
-        ].value;
+        sheetData.system.stats.primaryAttributes[skill.system.associatedPrimaryAttribute.toLowerCase()].value;
       w.chance = baseChance + skill.system.bonus;
       return w;
     });
@@ -245,8 +243,7 @@ export default class ZweihanderCreatureSheet extends ZweihanderBaseActorSheet {
     // level bonus advances
     const updateBonusAdvances = (i) => (event) => {
       const pa = event.currentTarget.dataset.primaryAttribute;
-      const bonusAdvances =
-        this.actor.system.stats.primaryAttributes[pa]?.bonusAdvances + i;
+      const bonusAdvances = this.actor.system.stats.primaryAttributes[pa]?.bonusAdvances + i;
       this.actor.update({
         [`system.stats.primaryAttributes.${pa}.bonusAdvances`]: bonusAdvances,
       });

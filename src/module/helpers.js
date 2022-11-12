@@ -91,21 +91,15 @@ export const registerHandlebarHelpers = async function () {
   });
 
   $$('zhItemImageClass', function (img) {
-    return img?.endsWith('.svg')
-      ? 'item-image item-image-icon'
-      : 'item-image item-image-picture';
+    return img?.endsWith('.svg') ? 'item-image item-image-icon' : 'item-image item-image-picture';
   });
 
   $$('zhItemImageStyle', function (img) {
-    return img?.endsWith('.svg')
-      ? `-webkit-mask-image: url('${img}')`
-      : `background-image: url('${img}')`;
+    return img?.endsWith('.svg') ? `-webkit-mask-image: url('${img}')` : `background-image: url('${img}')`;
   });
 
-  $$(
-    'arrayInputGroup',
-    function (label, target, array, max = Number.MAX_SAFE_INTEGER, pillDisplayProperty) {
-      return `<div class="form-group">
+  $$('arrayInputGroup', function (label, target, array, max = Number.MAX_SAFE_INTEGER, pillDisplayProperty) {
+    return `<div class="form-group">
     <label>${label}</label>
     <div class="array-input flexrow" data-array-input-target="${target}" data-array-input-max="${max}">
       <input name="proxy.${target}" type="text" placeholder="Enter values here">
@@ -113,16 +107,13 @@ export const registerHandlebarHelpers = async function () {
       <div class="array-input-pills">
         ${array.map(
           (v, i) => `
-          <span class="array-input-pill" data-array-input-index="${i}">${
-            v[pillDisplayProperty] ?? v
-          }</span>
+          <span class="array-input-pill" data-array-input-index="${i}">${v[pillDisplayProperty] ?? v}</span>
         `
         )}
       </div>
     </div>
   </div>`;
-    }
-  );
+  });
 
   $$('zhSkillBonus', function (bonus) {
     return bonus ? `+${bonus}` : '';
@@ -155,9 +146,7 @@ export const registerHandlebarHelpers = async function () {
   $$('zhDisplayLanguages', (languages) => {
     if (!languages.length) return '';
     const displayLanguage = (l) => `${l.name}${l.isLiterate ? ' (Literate)' : ''}`;
-    return languages
-      .slice(1)
-      .reduce((str, l) => `${str}, ${displayLanguage(l)}`, displayLanguage(languages[0]));
+    return languages.slice(1).reduce((str, l) => `${str}, ${displayLanguage(l)}`, displayLanguage(languages[0]));
   });
 
   $$('zhAdd', (...x) =>
@@ -172,9 +161,9 @@ export const registerHandlebarHelpers = async function () {
       currencies
         .map(
           (c) =>
-            `<i class="fas fa-coins currency" style="color: ${c.color}"></i> ${
-              price[c.abbreviation] ?? 0
-            } ${c.abbreviation}`
+            `<i class="fas fa-coins currency" style="color: ${c.color}"></i> ${price[c.abbreviation] ?? 0} ${
+              c.abbreviation
+            }`
         )
         .join(' ')
     );
@@ -186,15 +175,11 @@ export const registerHandlebarHelpers = async function () {
       .map(
         (c) => `
       <i class="fas fa-coins currency" style="color: ${c.color}"></i>
-      <input name="system.price.${c.abbreviation}" type="number" value="${
-          price[c.abbreviation] ?? 0
-        }">
+      <input name="system.price.${c.abbreviation}" type="number" value="${price[c.abbreviation] ?? 0}">
     `
       )
       .join('');
-    return new Handlebars.SafeString(
-      `<div class="form-group"><label>Price</label>${inputs}</div>`
-    );
+    return new Handlebars.SafeString(`<div class="form-group"><label>Price</label>${inputs}</div>`);
   });
 
   $$('zhProfessionWarn', (item, options) => {
