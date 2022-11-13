@@ -343,7 +343,6 @@ export default class FortuneTracker extends Application {
   async close(event) {
     // Delegate closing event (which I assume to be triggered by pressing ESC)
     //TODO remove this after fortune tracker redesign
-    console.log(canvas);
     if (game.user.isGM && canvas.activeLayer && Object.keys(canvas.activeLayer.controlled).length) {
       if (!canvas.activeLayer.preview?.children.length) canvas.activeLayer.releaseAll();
       return true;
