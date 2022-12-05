@@ -81,7 +81,10 @@ Hooks.once('ready', function () {
     .css('display', 'unset');
 
   // macro bar support
-  Hooks.on('hotbarDrop', (bar, data, slot) => createItemMacro(data, slot));
+  Hooks.on('hotbarDrop', (bar, data, slot) => {
+    createItemMacro(data, slot);
+    return false;
+  });
 });
 
 Hooks.once('diceSoNiceReady', function () {
