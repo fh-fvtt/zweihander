@@ -2,33 +2,33 @@
 {{#if spellTest}}
   {{> ($$ "item-card/item-card-spell") spell }}
 {{else}}
-  <h2 class="skill-test-title">{{skill}}</h2>
+  <h2 class="skill-test-title">{{localize (zhConcat "ZWEI.actor.skills." skill)}}</h2>
 {{/if}}
-<dl class="compact-details compact-details-centered zh-collapsed zh-expandable" data-expand-title="Show Roll Details">
-  <dt>{{primaryAttribute}}</dt><dd> {{zhExplicitSign primaryAttributeValue}}%</dd>
-  <dt>Skill rank bonus</dt><dd> {{zhExplicitSign rankBonus}}%</dd>
-  <dt>Penalty from Peril</dt><dd> {{zhExplicitSign perilPenalty}}%</dd>
-  <dt>Special Modifier</dt><dd> {{zhExplicitSign specialBaseChanceModifier}}%</dd>
-  <dt>Capped Base Chance</dt><dd> {{baseChance}}%</dd>
+<dl class="compact-details compact-details-centered zh-collapsed zh-expandable" data-expand-title="{{localize "ZWEI.chatskill.rolldetails"}}">
+  <dt>{{localize (zhConcat "ZWEI.actor.primaryattribute." primaryAttribute)}}</dt><dd> {{zhExplicitSign primaryAttributeValue}}%</dd>
+  <dt>{{localize "ZWEI.chatskill.skillrank"}}</dt><dd> {{zhExplicitSign rankBonus}}%</dd>
+  <dt>{{localize "ZWEI.chatskill.penaltyperil"}}</dt><dd> {{zhExplicitSign perilPenalty}}%</dd>
+  <dt>{{localize "ZWEI.chatskill.specialmod"}}</dt><dd> {{zhExplicitSign specialBaseChanceModifier}}%</dd>
+  <dt>{{localize "ZWEI.chatskill.cappedchance"}}</dt><dd> {{baseChance}}%</dd>
   {{#if spellTest}}
-  <dt>Raw Difficulty</dt><dd> {{zhExplicitSign difficultyRating.raw}}% ({{zhCapitalize spell.system.principle}} Magick)</dd>
-  <dt>Channel Power Bonus</dt><dd> {{zhExplicitSign difficultyRating.channelPowerBonus}}%</dd>
-  <dt>Total Difficulty</dt>{{else}}<dt>Difficulty</dt>{{/if}}<dd> {{zhExplicitSign difficultyRating.total}}%</dd>
-  <dt>Result has been flipped</dt><dd> {{#if effectivelyFlipped}} yes {{else}} no {{/if}}</dd>
+  <dt>{{localize "ZWEI.chatskill.rawdifficulty"}}</dt><dd> {{zhExplicitSign difficultyRating.raw}}% ({{zhCapitalize spell.system.principle}} Magick)</dd>
+  <dt>{{localize "ZWEI.chatskill.channelpower"}}</dt><dd> {{zhExplicitSign difficultyRating.channelPowerBonus}}%</dd>
+  <dt>{{localize "ZWEI.chatskill.totaldifficulty"}}</dt>{{else}}<dt>{{localize "ZWEI.chatskill.difficulty"}}</dt>{{/if}}<dd> {{zhExplicitSign difficultyRating.total}}%</dd>
+  <dt>{{localize "ZWEI.chatskill.resultflipped"}}</dt><dd> {{#if effectivelyFlipped}} {{localize "ZWEI.chatskill.yes"}} {{else}} {{localize "ZWEI.chatskill.no"}} {{/if}}</dd>
 </dl>
 <div class="pill-container">
-    <span class="pill pill-roll-mode">{{testModeLabel}} ({{diceFormula}})</span>
-    <span class="pill pill-difficulty-{{difficultyRating.total}}">{{difficultyRating.label}}</span>
-    {{#if flipToFail}}<span class="pill pill-flip-fail">Flip To Fail</span>{{/if}}
-    {{#if flipToSucceed}}<span class="pill pill-flip-succeed">Flip To Succeed</span>{{/if}}
-    {{#if usedFortune}}<span class="pill pill-fortune">Used Fortune</span>{{/if}}
-    {{#if usedMisfortune}}<span class="pill pill-misfortune">Used Misfortune</span>{{/if}}
-    {{#if isReroll}}<span class="pill pill-reroll">Reroll</span>{{/if}}
-    {{#if spellTest}}<span class="pill">{{skill}} Test</span>{{/if}}
+    <span class="pill pill-roll-mode">{{localize (zhConcat "ZWEI.rolls." testModeLabel)}} ({{diceFormula}})</span>
+    <span class="pill pill-difficulty-{{difficultyRating.total}}">{{localize (zhConcat "ZWEI.rolls." difficultyRating.label)}}</span>
+    {{#if flipToFail}}<span class="pill pill-flip-fail">{{localize (zhConcat "ZWEI.rolls." "Flip to Fail")}}</span>{{/if}}
+    {{#if flipToSucceed}}<span class="pill pill-flip-succeed">{{localize (zhConcat "ZWEI.rolls." "Flip to Succeed")}}</span>{{/if}}
+    {{#if usedFortune}}<span class="pill pill-fortune">{{localize (zhConcat "ZWEI.rolls." "Use Fortune")}}</span>{{/if}}
+    {{#if usedMisfortune}}<span class="pill pill-misfortune">{{localize (zhConcat "ZWEI.rolls." "Use Misfortune")}}</span>{{/if}}
+    {{#if isReroll}}<span class="pill pill-reroll">{{localize "ZWEI.rolls.reroll"}}</span>{{/if}}
+    {{#if spellTest}}<span class="pill">{{localize "ZWEI.rolls.test"}}: {{localize (zhConcat "ZWEI.actor.skills." skill)}}</span>{{/if}}
 </div>
 <div class="dice-roll">
     <div class="dice-result">
-        <div class="dice-formula">Total Chance:  {{totalChance}}%</div>
+        <div class="dice-formula">{{localize "ZWEI.chatskill.totalchance"}}:  {{totalChance}}%</div>
         {{{tooltip}}}
         <h4 class="dice-total outcome-{{effectiveOutcome}}">{{outcomeLabel}}: {{roll}}</h4>
     </div>

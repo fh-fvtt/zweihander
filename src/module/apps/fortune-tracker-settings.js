@@ -5,7 +5,7 @@ export default class FortuneTrackerSettings extends FormApplication {
       popOut: true,
       minimizable: true,
       resizable: false,
-      title: 'Fortune Tracker Settings',
+      title: "ZWEI.settings.fortunetracker",
       id: 'fortuneTrackerSettings',
       classes: ['zweihander'],
       width: 600,

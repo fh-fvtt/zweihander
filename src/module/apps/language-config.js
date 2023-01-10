@@ -18,7 +18,7 @@ export default class ZweihanderLanguageConfig extends FormApplication {
 
   /** @override */
   get title() {
-    return `${this.object.name}: Languages`;
+    return `${this.object.name}: ` + game.i18n.localize("ZWEI.settings.lasettings.title");
   }
 
   /** @override */

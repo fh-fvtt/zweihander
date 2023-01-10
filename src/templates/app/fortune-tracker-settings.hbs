@@ -1,38 +1,38 @@
 <form autocomplete="off">
   <section class="form-body">
-    <h3>Behavior</h3>
+    <h3>{{localize "ZWEI.settings.ftsettings.behavior"}}</h3>
     <div class="form-group">
-      <label>Remove Used Misfortune</label>
+      <label>{{localize "ZWEI.settings.ftsettings.removemisfortune"}}</label>
       <input type="checkbox" name="removeUsedMisfortune" {{#if removeUsedMisfortune}}checked{{/if}} />
-      <p class="notes">Whether used Misfortune points are removed from the game or transform to Fortune Points again.
+      <p class="notes">{{localize "ZWEI.settings.ftsettings.removemisfortunehint"}}
       </p>
     </div>
     <div class="form-group">
-      <label>Alert on Point Usage</label>
+      <label>{{localize "ZWEI.settings.ftsettings.alertpoint"}}</label>
       <select name="notifications">
         {{#each choices.notifications}}
-        <option value="{{value}}" {{selected}}>{{label}}</option>
+        <option value="{{value}}" {{selected}}>{{localize (zhConcat "ZWEI.settings.ftsettings." label)}}</option>
         {{/each}}
       </select>
     </div>
-    <h3>Appearance</h3>
+    <h3>{{localize "ZWEI.settings.ftsettings.appearance"}}</h3>
     <div class="form-group">
-      <label>Fortune Tracker Size</label>
+      <label>Fortune Tracker Size{{localize "ZWEI.settings.ftsettings.trackersize"}}</label>
       <select name="size">
         {{#each choices.size}}
-        <option value="{{value}}" {{selected}}>{{label}}</option>
+        <option value="{{value}}" {{selected}}>{{localize (zhConcat "ZWEI.settings.ftsettings." label)}}</option>
         {{/each}}
       </select>
     </div>
     <div class="form-group">
-      <label>Fortune Token Image</label>
+      <label>{{localize "ZWEI.settings.ftsettings.fortuneimage"}}</label>
       <div class="flexrow">
         <input type="text" name="fortunePath" value="{{fortunePath}}" />
         {{filePicker target="fortunePath" type="image"}}
       </div>
     </div>
     <div class="form-group">
-      <label>Misfortune Token Image</label>
+      <label> Token Image{{localize "ZWEI.settings.ftsettings.missfortuneimage"}}</label>
       <div class="flexrow">
         <input type="text" name="misfortunePath" value="{{misfortunePath}}" />
         {{filePicker target="misfortunePath" type="image"}}

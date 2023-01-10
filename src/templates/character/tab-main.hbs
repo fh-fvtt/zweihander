@@ -2,14 +2,14 @@
   <ul class="primary-attributes flexcol">
     {{#each system.stats.primaryAttributes as | attr key | }}
     <li class="pa pa-{{key}}">
-      <h4 class="block-title">{{key}}</h4 class="block-title">
+      <h4 class="block-title">{{localize (zhConcat "ZWEI.actor.primary." key)}}</h4 class="block-title">
       <div class="pa-display flexrow">
         <input class="pa-value" type="number" name="system.stats.primaryAttributes.{{key}}.value"
           value="{{attr.value}}">
         <div class="pa-icon"><span class="{{lookup ../config.primaryAttributeIcons key}}"></span></div>
         <div class="flexcol">
           <span class="pa-bonus">{{attr.bonus}}</span>
-          <span class="pa-bonus-title">{{zhGetFirstLetter key}}B</span>
+          <span class="pa-bonus-title">{{zhGetBonus key}}</span>
         </div>
       </div>
     </li>
@@ -21,36 +21,36 @@
   <div class="combat-container flexcol">
     <div class="combat-stats flexrow">
       <div class="movement">
-        <h4 class="block-title">Movement</h4 class="block-title">
+        <h4 class="block-title">{{localize "ZWEI.actor.secondary.movement"}}</h4 class="block-title">
         <div class="values flexrow">
           <div>
             <span class="value" data-testid="movement">{{system.stats.secondaryAttributes.movement.value}}</span>
-            <span class="formula">[{{zhGetFirstLetter actorConfig.movAttribute}}B]+3</span>
+            <span class="formula">[{{zhGetBonus actorConfig.movAttribute}}]+3</span>
           </div>
           <div>
             <span class="value color-overage" data-overage="{{system.stats.secondaryAttributes.movement.overage}}">{{system.stats.secondaryAttributes.movement.overage}}</span>
-            <span class="formula color-overage" data-overage="{{system.stats.secondaryAttributes.movement.overage}}">Overage</span>
+            <span class="formula color-overage" data-overage="{{system.stats.secondaryAttributes.movement.overage}}">{{localize "ZWEI.actor.secondary.overage"}}</span>
           </div>
           <div>
             <span class="value">{{system.stats.secondaryAttributes.movement.current}}</span>
-            <span class="formula">Current</span>
+            <span class="formula">{{localize "ZWEI.actor.secondary.current"}}</span>
           </div>
         </div>
       </div>
       <div class="initiative">
-        <h4 class="block-title">Initiative</h4 class="block-title">
+        <h4 class="block-title">{{localize "ZWEI.actor.secondary.initiative"}}</h4 class="block-title">
         <div class="values flexrow">
           <div>
             <span class="value" data-testid="initiative">{{system.stats.secondaryAttributes.initiative.value}}</span>
-            <span class="formula">[{{zhGetFirstLetter actorConfig.intAttribute}}B]+3</span>
+            <span class="formula">[{{zhGetBonus actorConfig.intAttribute}}]+3</span>
           </div>
           <div>
             <span class="value color-overage" data-overage="{{system.stats.secondaryAttributes.initiative.overage}}">{{system.stats.secondaryAttributes.initiative.overage}}</span>
-            <span class="formula color-overage" data-overage="{{system.stats.secondaryAttributes.initiative.overage}}">Overage</span>
+            <span class="formula color-overage" data-overage="{{system.stats.secondaryAttributes.initiative.overage}}">{{localize "ZWEI.actor.secondary.overage"}}</span>
           </div>
           <div>
             <span class="value">{{system.stats.secondaryAttributes.initiative.current}}</span>
-            <span class="formula">Current</span>
+            <span class="formula">{{localize "ZWEI.actor.secondary.current"}}</span>
           </div>
         </div>
 
@@ -58,7 +58,7 @@
     </div>
     <div class="combat-reactions flexrow">
       <div class="dodge flexcol">
-        <h4 class="block-title">Dodge</h4 class="block-title">
+        <h4 class="block-title">{{localize "ZWEI.actor.secondary.dodge"}}</h4 class="block-title">
         <div class="values flexrow">
           <a class="combat-icon dodge-roll" data-roll="1d100"
             data-label="{{system.stats.secondaryAttributes.dodge.associatedSkill}}"><span
@@ -68,13 +68,13 @@
         <select class="skill-dropdown" name="system.stats.secondaryAttributes.dodge.associatedSkill">
           {{#select system.stats.secondaryAttributes.dodge.associatedSkill}}
           {{#each actorConfig.dodgeSkills as | skill idx | }}
-          <option value="{{skill}}">{{skill}}</option>
+          <option value="{{skill}}">{{localize (zhConcat "ZWEI.actor.skills." skill)}}</option>
           {{/each}}
           {{/select}}
         </select>
       </div>
       <div class="parry flexcol">
-        <h4 class="block-title">Parry</h4 class="block-title">
+        <h4 class="block-title">{{localize "ZWEI.actor.secondary.parry"}}</h4 class="block-title">
         <div class="values flexrow">
           <a class="combat-icon parry-roll" data-roll="1d100"
             data-label="{{system.stats.secondaryAttributes.parry.associatedSkill}}"><span
@@ -84,7 +84,7 @@
         <select class="skill-dropdown" name="system.stats.secondaryAttributes.parry.associatedSkill">
           {{#select system.stats.secondaryAttributes.parry.associatedSkill}}
           {{#each actorConfig.parrySkills as | skill idx | }}
-          <option value="{{skill}}">{{skill}}</option>
+          <option value="{{skill}}">{{localize (zhConcat "ZWEI.actor.skills." skill)}}</option>
           {{/each}}
           {{/select}}
         </select>
@@ -92,30 +92,30 @@
     </div>
     <div class="flexrow peril-rolls">
       <div class="flexcol stress values">
-        <h4 class="block-title">Stress</h4>
+        <h4 class="block-title">{{localize "ZWEI.actor.secondary.stress"}}</h4>
         <a class="image-container stress" data-peril-type="stress"></a>
         <span class="formula">1d10+1</span>
       </div>
 
       <div class="flexcol fear values">
-        <h4 class="block-title">Fear</h4>
+        <h4 class="block-title">{{localize "ZWEI.actor.secondary.fear"}}</h4>
         <a class="image-container fear" data-peril-type="fear"></a>
         <span class="formula">2d10+2</span>
       </div>
 
       <div class="flexcol terror values">
-        <h4 class="block-title">Terror</h4>
+        <h4 class="block-title">{{localize "ZWEI.actor.secondary.terror"}}</h4>
         <a class="image-container terror" data-peril-type="terror"></a>
         <span class="formula">3d10+3</span>
       </div>
     </div>
     <div class="condition-thresholds flexrow">
       <div class="peril flexcol">
-        <h4 class="block-title">Peril Threshold</h4 class="block-title">
+        <h4 class="block-title">{{localize "ZWEI.actor.secondary.perilthreshold"}}</h4 class="block-title">
         <div class="values flexrow">
           <div class="threshold-value flexcol">
             <span class="value" data-testid="peril">{{system.stats.secondaryAttributes.perilThreshold.value}}</span>
-            <span class="formula">[{{zhGetFirstLetter actorConfig.pthAttribute}}B]+3</span>
+            <span class="formula">[{{zhGetBonus actorConfig.pthAttribute}}]+3</span>
           </div>
           <span class="values-derived-bracket">{</span>
           <div class="flexcol values-derived">
@@ -133,11 +133,11 @@
         </div>
       </div>
       <div class="damage flexcol">
-        <h4 class="block-title">Damage Threshold</h4 class="block-title">
+        <h4 class="block-title">{{localize "ZWEI.actor.secondary.damagethreshold"}}</h4 class="block-title">
         <div class="values flexrow">
           <div class="threshold-value flexcol">
             <span class="value" data-testid="damage">{{> ($$ 'partials/modded-value') system.stats.secondaryAttributes.damageThreshold}}</span>
-            <span class="formula">[{{zhGetFirstLetter actorConfig.dthAttribute}}B]+DTM</span>
+            <span class="formula">[{{zhGetBonus actorConfig.dthAttribute}}]+{{localize "ZWEI.actor.secondary.damagethresholdmodifier"}}</span>
           </div>
           <span class="values-derived-bracket">{</span>
           <div class="flexcol values-derived">
@@ -157,16 +157,16 @@
     </div>
     <div class="condition-tracker flexrow">
       <div class="flexcol">
-        <h4 class="block-title">Peril Tracker</h4 class="block-title">
+        <h4 class="block-title">{{localize "ZWEI.actor.secondary.periltracker"}}</h4 class="block-title">
         <div class="condition-tracker-list flexcol">
-          {{zhConditionLadder "system.stats.secondaryAttributes.perilCurrent.value" config.perilOptions
+          {{zhConditionLadderLoc "system.stats.secondaryAttributes.perilCurrent.value" config.perilOptions
           checked=system.stats.secondaryAttributes.perilCurrent.value}}
         </div>
       </div>
       <div class="flexcol">
-        <h4 class="block-title">Damage Tracker</h4 class="block-title">
+        <h4 class="block-title">{{localize "ZWEI.actor.secondary.damagetracker"}}</h4 class="block-title">
         <div class="condition-tracker-list damage-list flexcol">
-          {{zhConditionLadder "system.stats.secondaryAttributes.damageCurrent.value" config.damageOptions
+          {{zhConditionLadderLoc "system.stats.secondaryAttributes.damageCurrent.value" config.damageOptions
           checked=system.stats.secondaryAttributes.damageCurrent.value}}
         </div>
       </div>

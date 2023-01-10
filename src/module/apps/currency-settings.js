@@ -14,7 +14,7 @@ export default class CurrencySettings extends FormApplication {
       popOut: true,
       minimizable: false,
       resizable: false,
-      title: 'Currency Settings',
+      title: "ZWEI.settings.currency",
       id: 'currency-settings',
       classes: ['zweihander'],
       width: 400,

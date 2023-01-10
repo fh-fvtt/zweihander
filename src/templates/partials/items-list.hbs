@@ -3,7 +3,7 @@
   <li class="items-header flexrow">
     <h3 class="item-name sortable filterable" data-detail="-1" data-item-group="{{itemGroup.id}}">
       <span class="detail-title">
-        {{itemGroup.title}}
+        {{localize (zhConcat "ZWEI.actor.items." itemGroup.title)}}
         {{#if itemGroup.sortName}}
         <div class="sort-indicator">
           <i class="fa fa-sort-{{#if (eq itemGroup.sortName 1)}}up{{else}}down{{/if}}"></i>
@@ -24,7 +24,7 @@
     {{#each itemGroup.details as |detail index| }}
     <div class="item-detail sortable {{#if detail.filterable}}filterable{{/if}}" style="width:{{detail.size}}px" data-detail="{{index}}" data-item-group="{{itemGroup.id}}">
       <span class="detail-title secondary">
-        {{detail.title}}
+        {{localize (zhConcat "ZWEI.actor.items." detail.title)}}
         {{#if detail.sort}}
         <div class="sort-indicator">
           <i class="fa fa-sort-{{#if (eq detail.sort 1)}}up{{else}}down{{/if}}"></i>
@@ -50,7 +50,7 @@
     {{/each}}
     <div class="item-controls"><a class="add-new" data-item-type="{{itemGroup.type}}" {{#if
         itemGroup.packs}}data-open-packs="{{itemGroup.packs}}" {{/if}} title="Add New {{itemGroup.title}}"><i
-          class="fa fa-plus"></i> Add</a>
+          class="fa fa-plus"></i> {{localize "ZWEI.actor.items.add"}}</a>
     </div>
   </li>
   <ol class="item-list">

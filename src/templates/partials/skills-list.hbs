@@ -5,14 +5,14 @@
     data-rank="{{skill.system.rank}}" data-label="{{skill.name}}">
     <span class="skill-name">
       <span>
-        {{skill.name}}
-      ({{zhGetFirstLetter skill.system.associatedPrimaryAttribute}})
+        {{localize (zhConcat "ZWEI.actor.skills." skill.name)}}
+      ({{localize (zhConcat "ZWEI.actor.primaryfirstletter." skill.system.associatedPrimaryAttribute)}})
       {{#if skill.system.requiresTraining}}*{{/if}}
       </span>
     </span>
     <span class="skill-info flexrow">
       <span class="skill-rank" title="{{skill.system.rank}}">
-        {{zhSkillRankAbbreviation skill.system.rank}}
+        {{zhSkillRankAbbreviationLoc skill.system.rank}}
       </span>
       <span class="skill-gain">
         {{zhSkillBonus skill.system.bonus}}

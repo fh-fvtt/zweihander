@@ -1,12 +1,12 @@
 <div class="risk-factor">
   <select class="risk-factor-value" name="system.details.riskFactor.value">
     {{#each choices.riskFactors}}
-    <option value="{{value}}" {{selected}}>{{label}}</option>
+    <option value="{{value}}" {{selected}}>{{localize (zhConcat "ZWEI.actor.riskfactors." label)}}</option>
     {{/each}}
   </select>
   <select class="risk-factor-notch" name="system.details.riskFactor.notch">
     {{#each choices.notches}}
-    <option value="{{value}}" {{selected}}>{{label}}</option>
+    <option value="{{value}}" {{selected}}>{{localize (zhConcat "ZWEI.actor.riskfactors." label)}}</option>
     {{/each}}
   </select>
 </div>
