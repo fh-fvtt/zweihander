@@ -1,5 +1,5 @@
 <div class="form-group">
-  <label>Archetype</label>
+  <label>{{localize (zhConcat "ZWEI.actor.items." "Archetype")}}</label>
   <select name="system.archetype">
     {{#each choices.archetypes}}
     <option value="{{value}}" {{selected}}>{{label}}</option>
@@ -12,25 +12,25 @@
 {{{arrayInputGroup 'Talents' 'system.talents' system.talents 3 'name'}}}
 
 <div class="form-group">
-  <label>Professional Trait</label>
+  <label>{{localize (zhConcat "ZWEI.actor.items." "Professional Trait")}}</label>
   <input name="system.professionalTrait.name" type="text" value="{{system.professionalTrait.name}}">
 </div>
 
 <div class="form-group">
-  <label>Special Trait</label>
+  <label>{{localize (zhConcat "ZWEI.actor.items." "Special Trait")}}</label>
   <input name="system.specialTrait.name" type="text" value="{{system.specialTrait.name}}">
 </div>
 
 <div class="form-group">
-  <label>Drawback</label>
+  <label>{{localize (zhConcat "ZWEI.actor.items." "Drawback")}}</label>
   <input name="system.drawback.name" type="text" value="{{system.drawback.name}}">
 </div>
 
 <div class="form-group stacked">
   <label class="checkbox">
     <input name="system.expert.value" type="checkbox" class="link-checkbox" {{checked system.expert.value}} />
-    Expert Profession
+    {{localize (zhConcat "ZWEI.actor.items." "Expert Profession")}}
   </label>
-  <label>Requirements</label>
+  <label>{{localize (zhConcat "ZWEI.actor.items." "Requirements")}}</label>
   <input name="system.expert.requirements" type="text" value="{{system.expert.requirements}}">
 </div>

@@ -1,7 +1,7 @@
-<label>Damage:</label> <span class="inject-data">{{damage.formula}}</span><br />
-<label>Skill:</label> {{associatedSkill}}<br />
-<label>Type:</label> {{weaponType}}<br />
-<label>Qualities: </label>
+<label>{{localize (zhConcat "ZWEI.actor.items." "Damage")}}:</label> <span class="inject-data">{{damage.formula}}</span><br />
+<label>{{localize (zhConcat "ZWEI.actor.items." "Associated Skill")}}:</label> {{localize (zhConcat "ZWEI.actor.skills." associatedSkill)}}<br />
+<label>{{localize (zhConcat "ZWEI.actor.items." "Type")}}:</label> {{weaponType}}<br />
+<label>{{localize (zhConcat "ZWEI.actor.items." "Qualities")}}: </label>
 {{#if qualities.arrayOfValues}}
 {{#each qualities.arrayOfValues as | qualityData idx |}}
 <a class="js-display-quality">{{qualityData}}</a>{{#unless @last}}<span>, </span>{{/unless}}

@@ -1,5 +1,5 @@
 <div class="form-group">
-  <label>Associated Skill</label>
+  <label>{{localize (zhConcat "ZWEI.actor.items." "Associated Skill")}}</label>
   <select name="system.associatedSkill">
     {{#select system.associatedSkill}}
     {{#each skills as | skill idx | }}
@@ -9,38 +9,38 @@
   </select>
 </div>
 <div class="form-group">
-  <label>Load</label>
+  <label>{{localize (zhConcat "ZWEI.actor.items." "Load")}}</label>
   <input  name="system.load" type="number" value="{{system.load}}">
 </div>
 <div class="form-group">
-  <label>Handling</label>
+  <label>{{localize (zhConcat "ZWEI.actor.items." "Handling")}}</label>
   <input  name="system.handling" type="text" value="{{system.handling}}">
 </div>
 <div class="form-group">
-  <label>Distance</label>
+  <label>{{localize (zhConcat "ZWEI.actor.items." "Distance")}}</label>
   <input  name="system.distance" type="text" value="{{system.distance}}">
 </div>
 <div class="form-group">
-  <label>Qualities</label>
+  <label>{{localize (zhConcat "ZWEI.actor.items." "Qualities")}}</label>
   <input name="system.qualities.value" type="text" value="{{system.qualities.value}}">
 </div>
 <div class="form-group">
-  <label>Type</label>
+  <label>{{localize (zhConcat "ZWEI.actor.items." "Type")}}</label>
   <input  name="system.weaponType" type="text" value="{{system.weaponType}}">
 </div>
 <div class="form-group">
-  <label>Damage Formula</label>
+  <label>{{localize (zhConcat "ZWEI.actor.items." "Damage Formula")}}</label>
   <input  name="system.damage.formula" type="text" value="{{system.damage.formula}}">
 </div>
 <div class="form-group">
-  <label>Encumbrance</label>
+  <label>{{localize (zhConcat "ZWEI.actor.items." "Encumbrance")}}</label>
   <input  name="system.encumbrance" type="number" value="{{system.encumbrance}}">
 </div>
 {{zhPriceInputs system.price}}
 {{!-- <div class="form-group stacked">
-  <label>Status</label>
+  <label>{{localize (zhConcat "ZWEI.actor.items." "Status")}}</label>
   <label class="checkbox">
     <input name="system.equipped" type="checkbox" class="link-checkbox" {{checked system.equipped}} />
-    Equipped
+    {{localize (zhConcat "ZWEI.actor.items." "Equipped")}}
   </label>
 </div> --}}

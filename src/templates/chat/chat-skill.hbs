@@ -30,29 +30,29 @@
     <div class="dice-result">
         <div class="dice-formula">{{localize "ZWEI.chatskill.totalchance"}}:  {{totalChance}}%</div>
         {{{tooltip}}}
-        <h4 class="dice-total outcome-{{effectiveOutcome}}">{{outcomeLabel}}: {{roll}}</h4>
+        <h4 class="dice-total outcome-{{effectiveOutcome}}">{{localize (zhConcat "ZWEI.chatskill." outcomeLabel)}}: {{roll}}</h4>
     </div>
 </div>
 
 {{#if chaosManifestation}}
   <div class="additional-outcome-info chaos-manifestation">
-    A {{zhCapitalize spell.system.principle}} Chaos Manifestation spawns!
+    A {{zhCapitalize spell.system.principle}} {{localize "ZWEI.chatskill.chaosspawns"}}
   </div>
 {{/if}}
 
 {{#if degreesOfSuccess}}
   <div class="additional-outcome-info">
-    Degrees of Success: {{degreesOfSuccess}}
+    {{localize "ZWEI.chatskill.degrees"}}: {{degreesOfSuccess}}
   </div>
 {{/if}}
 
 <div class="skill-test-controls">
   <div class="flexrow">
-    <button type="button" class="skill-test-reroll" disabled><i class="fas fa-sync-alt"></i><br/>Reroll</button>
+    <button type="button" class="skill-test-reroll" disabled><i class="fas fa-sync-alt"></i><br/>{{localize "ZWEI.chatskill.goreroll"}}</button>
     {{#if weaponTest}}
-    <button type="button" class="skill-test-damage" disabled><i class="ra ra-sword"></i><br/>Damage</button>
-    <button type="button" class="skill-test-parry" disabled><i class="ra ra-round-shield"></i><br/>Parry</button>
-    <button type="button" class="skill-test-dodge" disabled><i class="ra ra-player-dodge"></i><br/>Dodge</button>
+    <button type="button" class="skill-test-damage" disabled><i class="ra ra-sword"></i><br/>{{localize "ZWEI.chatskill.godamage"}}</button>
+    <button type="button" class="skill-test-parry" disabled><i class="ra ra-round-shield"></i><br/>{{localize "ZWEI.chatskill.goparry"}}</button>
+    <button type="button" class="skill-test-dodge" disabled><i class="ra ra-player-dodge"></i><br/>{{localize "ZWEI.chatskill.gododge"}}</button>
     {{/if}}
   </div>
 </div>

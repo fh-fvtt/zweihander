@@ -1,22 +1,22 @@
 <div class="form-group">
-  <label>Encumbrance</label>
+  <label>{{localize (zhConcat "ZWEI.actor.items." "Encumbrance")}}</label>
   <input  name="system.encumbrance" type="number" value="{{system.encumbrance}}">
 </div>
 
 <div class="form-group">
-  <label>Damage Threshold Modifier</label>
+  <label>{{localize (zhConcat "ZWEI.actor.items." "Damage Threshold Modifier")}}</label>
   <input  name="system.damageThresholdModifier" type="number" value="{{system.damageThresholdModifier}}">
 </div>
 
 <div class="form-group">
-  <label>Qualities</label>
+  <label>{{localize (zhConcat "ZWEI.actor.items." "Qualities")}}</label>
   <input  name="system.qualities.value" type="text" value="{{system.qualities.value}}">
 </div>
 
 {{zhPriceInputs system.price}}
 
 <div class="form-group stacked">
-  <label>Status</label>
+  <label>{{localize (zhConcat "ZWEI.actor.items." "Status")}}</label>
   <label class="checkbox">
     <input name="system.equipped" type="checkbox" class="link-checkbox" {{checked system.equipped}} />
     Equipped

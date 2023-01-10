@@ -1,9 +1,9 @@
 {{zhPrice price}}
 {{#if (zhLocalize description)}}
   <br />
-  <label>Description:</label> {{{zhProcessRuleText (zhLocalize description)}}}
+  <label>{{localize (zhConcat "ZWEI.actor.items." "Description")}}:</label> {{{zhProcessRuleText (zhLocalize description)}}}
 {{/if}}
 {{#if (zhLocalize rules.effect)}}
   <br />
-  <label>Effect:</label> {{{zhProcessRuleText (zhLocalize rules.effect)}}}
+  <label>{{localize (zhConcat "ZWEI.actor.items." "Effect")}}:</label> {{{zhProcessRuleText (zhLocalize rules.effect)}}}
 {{/if}}
