@@ -11,8 +11,8 @@ export const registerSystemSettings = function () {
   /* -------------------------------------------- */
 
   game.settings.register('zweihander', 'gameSystem', {
-    name: 'Game System',
-    hint: 'Choose the specific implementation of the Zweihander d100 system you want to play',
+    name: "ZWEI.settings.gamesystem",
+    hint: "ZWEI.settings.gamesystemhint",
     scope: 'world',
     type: String,
     default: 'zweihander',
@@ -30,8 +30,8 @@ export const registerSystemSettings = function () {
   });
 
   game.settings.register('zweihander', 'encumbranceNineForOne', {
-    name: 'Small Item Encumbrance',
-    hint: 'Enable or disable rule for small item Encumbrance, where 9 small items add up to 1 point of Encumbrance.',
+    name: "ZWEI.settings.smallitem",
+    hint: "ZWEI.settings.smallitemhint",
     scope: 'world',
     type: Boolean,
     default: true,
@@ -39,8 +39,8 @@ export const registerSystemSettings = function () {
   });
 
   game.settings.register('zweihander', 'trackRewardPoints', {
-    name: 'Automatically Track Reward Points',
-    hint: 'Enable or disable the automatic tracking of Reward Point expenditure.',
+    name: "ZWEI.settings.trackreward",
+    hint: "ZWEI.settings.trackrewardhint",
     scope: 'world',
     type: Boolean,
     default: true,
@@ -48,8 +48,8 @@ export const registerSystemSettings = function () {
   });
 
   game.settings.register('zweihander', 'injuryPrompt', {
-    name: 'Automatic Injury Prompt',
-    hint: 'Automatically prompt user to roll for Injury when falling on the Damage Condition Track.',
+    name: "ZWEI.settings.injuryprompt",
+    hint: "ZWEI.settings.injuryprompthint",
     scope: 'world',
     type: Boolean,
     default: true,
@@ -57,8 +57,8 @@ export const registerSystemSettings = function () {
   });
 
   game.settings.register('zweihander', 'openInCompactMode', {
-    name: 'Open in Compact Mode',
-    hint: 'Creature & NPC Sheets will be opened in Compact Mode by default',
+    name: "ZWEI.settings.compactmode",
+    hint: "ZWEI.settings.compactmodehint",
     scope: 'client',
     type: Boolean,
     default: false,
@@ -74,8 +74,8 @@ export const registerSystemSettings = function () {
   });
 
   game.settings.register('zweihander', 'skillPack', {
-    name: 'Skill List',
-    hint: 'ID of the compendium pack to use for the list of available skills for new actors.',
+    name: "ZWEI.settings.skilllist",
+    hint: "ZWEI.settings.skilllisthint",
     scope: 'world',
     type: String,
     default: 'zweihander.skills',
@@ -84,8 +84,8 @@ export const registerSystemSettings = function () {
   });
 
   game.settings.register('zweihander', 'unlimitedFortuneExplodes', {
-    name: 'Unlimited Fortune Explodes',
-    hint: 'Enable to allow to explode fury dice more than once per attack.',
+    name: "ZWEI.settings.fortuneexplodes",
+    hint: "ZWEI.settings.fortuneexplodeshint",
     scope: 'world',
     type: Boolean,
     default: false,
@@ -93,8 +93,8 @@ export const registerSystemSettings = function () {
   });
 
   game.settings.register('zweihander', 'theme', {
-    name: 'Zweihander Sheet Theme',
-    hint: 'Choose a theme for your Zweihander sheets',
+    name: "ZWEI.settings.zweitheme",
+    hint: "ZWEI.settings.zweithemehint",
     scope: 'client',
     type: String,
     default: 'gruvbox-dark',
@@ -134,9 +134,9 @@ export const registerSystemSettings = function () {
     },
   });
   game.settings.registerMenu('zweihander', 'fortuneTrackerSettingsMenu', {
-    name: 'Fortune Tracker Settings',
-    label: 'Fortune Tracker Settings', // The text label used in the button
-    hint: 'Configure the look & behavior of the Fortune Tracker.',
+    name: "ZWEI.settings.fortunetracker",
+    label: "ZWEI.settings.fortunetracker", // The text label used in the button
+    hint: "ZWEI.settings.fortunetrackerhint",
     icon: 'ra ra-scroll-unfurled', // A Font Awesome icon used in the submenu button
     type: FortuneTrackerSettings, // A FormApplication subclass
     restricted: true, // Restrict this submenu to gamemaster only?
@@ -167,9 +167,9 @@ export const registerSystemSettings = function () {
     ],
   });
   game.settings.registerMenu('zweihander', 'currencySettingsMenu', {
-    name: 'Currency Settings',
-    label: 'Currency Settings', // The text label used in the button
-    hint: 'Configure the types and conversion rates of currency in your world',
+    name: "ZWEI.settings.currency",
+    label: "ZWEI.settings.currency", // The text label used in the button
+    hint: "ZWEI.settings.currencyhint",
     icon: 'fas fa-coins', // A Font Awesome icon used in the submenu button
     type: CurrencySettings, // A FormApplication subclass
     restricted: true, // Restrict this submenu to gamemaster only?

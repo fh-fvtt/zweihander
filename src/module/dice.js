@@ -198,11 +198,11 @@ export async function rollTest(
     testConfiguration.flavor ??
     {
       //@todo: this could be a funny feature to expand
-      skill: 'Is rolling a skill test',
-      dodge: 'Is trying to dodge',
-      parry: 'Is trying to parry',
-      weapon: `Attacks with ${weapon?.name}`,
-      spell: `Casts ${spell?.name}`,
+    skill: game.i18n.localize("ZWEI.rolls.skillflavor"),
+    dodge: game.i18n.localize("ZWEI.rolls.dodgeflavor"),
+    parry: game.i18n.localize("ZWEI.rolls.parryflavor"),
+    weapon: game.i18n.localize("ZWEI.rolls.weaponflavor") + ` ${weapon?.name}`,
+    spell: game.i18n.localize("ZWEI.rolls.spellflavor") + ` ${spell?.name}`
     }[testType] ??
     '';
   const speaker = ChatMessage.getSpeaker({ actor });

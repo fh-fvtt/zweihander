@@ -506,7 +506,6 @@ body.game.vtt.system-zweihander .zweihander.sheet.actor {
       }
       a.duplicate {
         color: var(--zh-clr-yellow);
-        pointer-events: none;
         &:hover {
           color: var(--zh-clr-purple);
           text-shadow: none;

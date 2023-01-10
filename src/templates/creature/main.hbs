@@ -4,16 +4,16 @@
       <img class="peril-tracker" src="{{actor.img}}" title="{{actor.name}}" data-edit="img" />
     </figure>
     <h1 class="actor-name">
-      <input name="name" type="text" value="{{actor.name}}" placeholder="NPC Name">
+      <input name="name" type="text" value="{{actor.name}}" placeholder="{{localize "ZWEI.actor.header.npcname"}}">
     </h1>
     {{#unless limited}}
     <section class="actor-resources">
       <section class="peril-ladder">
-        {{zhConditionLadder "system.stats.secondaryAttributes.perilCurrent.value" config.perilOptions
+        {{zhConditionLadderLoc "system.stats.secondaryAttributes.perilCurrent.value" config.perilOptions
         checked=system.stats.secondaryAttributes.perilCurrent.value}}
       </section>
       <section class="damage-ladder">
-        {{zhConditionLadder "system.stats.secondaryAttributes.damageCurrent.value" config.damageOptions
+        {{zhConditionLadderLoc "system.stats.secondaryAttributes.damageCurrent.value" config.damageOptions
         checked=system.stats.secondaryAttributes.damageCurrent.value}}
       </section>
     </section>
@@ -23,19 +23,19 @@
   {{#unless limited}}
   <section class="sheet-body">
     <section class="stats flexcol">
-      <h1>Attributes <a class="manual-mode-button"><i
-            class="fas fa-toggle-{{#if system.stats.manualMode}}on{{else}}off{{/if}}"></i> Manual Mode</a></h1>
+      <h1>{{localize "ZWEI.actor.navigation.attributes"}} <a class="manual-mode-button"><i
+            class="fas fa-toggle-{{#if system.stats.manualMode}}on{{else}}off{{/if}}"></i> {{localize "ZWEI.actor.navigation.manualmode"}}</a></h1>
       <ul class="primary-attributes flexrow">
         {{#each system.stats.primaryAttributes as | attr key | }}
         <li class="pa pa-{{key}}" data-primary-attribute="{{key}}">
-          <span class="pa-title">{{key}}</span>
+          <span class="pa-title">{{localize (zhConcat "ZWEI.actor.primary." key)}}</span>
           <div class="pa-display flexrow">
             <input class="pa-value" size="2" type="number" name="system.stats.primaryAttributes.{{key}}.value"
               value="{{attr.value}}">
             <div class="pa-icon"><span class="{{lookup ../config.primaryAttributeIcons key}}"></span></div>
             <div class="pa-bonus-container flexcol">
               <span class="pa-bonus">{{attr.bonus}}</span>
-              <span class="pa-bonus-title">{{zhGetFirstLetter key}}B</span>
+              <span class="pa-bonus-title">{{zhGetBonus key}}</span>
             </div>
           </div>
           <div class="pa-bonus-advances flexrow">
@@ -48,7 +48,7 @@
       </ul>
       <ul class="secondary-attributes flexrow">
         <li class="sa-int">
-          <span class="sa-title">Initiative</span>
+          <span class="sa-title">{{localize "ZWEI.actor.secondary.initiative"}}</span>
           <span class="sa-value">
             <input class="sa-solo-value" size="2" type="number" name="system.stats.secondaryAttributes.initiative.value"
               value="{{system.stats.secondaryAttributes.initiative.value}}" {{#unless
@@ -56,7 +56,7 @@
           </span>
         </li>
         <li class="sa-mov">
-          <span class="sa-title">Move / Fly</span>
+          <span class="sa-title">{{localize "ZWEI.actor.secondary.movefly"}}</span>
           <span class="sa-value">
             <input size="2" type="number" name="system.stats.secondaryAttributes.movement.value"
               value="{{system.stats.secondaryAttributes.movement.value}}" {{#unless
@@ -69,7 +69,7 @@
           </span>
         </li>
         <li class="sa-dth">
-          <span class="sa-title">DTh</span>
+          <span class="sa-title">{{localize "ZWEI.actor.secondary.dth"}}</span>
           <span class="sa-value">
             <input size="2" type="number" name="system.stats.secondaryAttributes.damageThreshold.value"
               value="{{system.stats.secondaryAttributes.damageThreshold.value}}" {{#unless
@@ -78,7 +78,7 @@
               class="sa-ladder">({{zhAdd system.stats.secondaryAttributes.damageThreshold.value '6'}}/{{zhAdd system.stats.secondaryAttributes.damageThreshold.value '12'}}/{{zhAdd system.stats.secondaryAttributes.damageThreshold.value '18'}})</span></span>
         </li>
         <li class="sa-dth">
-          <span class="sa-title">PTh</span>
+          <span class="sa-title">{{localize "ZWEI.actor.secondary.pth"}}</span>
           <span class="sa-value">
             <input size="2" type="number" name="system.stats.secondaryAttributes.perilThreshold.value"
               value="{{system.stats.secondaryAttributes.perilThreshold.value}}" {{#unless
@@ -88,7 +88,7 @@
         </li>
         <li class="sa-parry">
           <span class="sa-title"><a class="parry-roll" data-roll="1d100"
-            data-label="{{system.stats.secondaryAttributes.parry.associatedSkill}}">Parry</a></span>
+            data-label="{{system.stats.secondaryAttributes.parry.associatedSkill}}">{{localize "ZWEI.actor.secondary.parry"}}</a></span>
           <span class="sa-value">
             <input class="sa-solo-value" size="2" type="number" name="system.stats.secondaryAttributes.parry.value"
               value="{{system.stats.secondaryAttributes.parry.value}}" {{#unless
@@ -97,7 +97,7 @@
         </li>
         <li class="sa-dodge">
           <span class="sa-title dodge-roll"><a class="dodge-roll" data-roll="1d100"
-            data-label="{{system.stats.secondaryAttributes.dodge.associatedSkill}}">Dodge</a></span>
+            data-label="{{system.stats.secondaryAttributes.dodge.associatedSkill}}">{{localize "ZWEI.actor.secondary.dodge"}}</a></span>
           <span class="sa-value">
             <input class="sa-solo-value" size="2" type="number" name="system.stats.secondaryAttributes.dodge.value"
               value="{{system.stats.secondaryAttributes.dodge.value}}" {{#unless
@@ -110,7 +110,7 @@
       {{> ($$ "partials/items-list") itemLists.attackProfiles}}
     </section>
     <section class="skills skills-container flexcol save-scroll">
-      <h1>Skills</h1>
+      <h1>{{localize "ZWEI.actor.navigation.skills"}}</h1>
       {{> ($$ "partials/skills-list" )}}
     </section>
     <section class="rules">
@@ -120,7 +120,7 @@
       {{> ($$ "partials/items-list") itemLists.loot}}
     </section>
     <aside class="description">
-      <h1>Description</h1>
+      <h1>{{localize "ZWEI.actor.navigation.description"}}</h1>
       <textarea spellcheck="false" name="system.flavor.description"
         placeholder="Put a nice description of your creature here...">{{system.flavor.description}}</textarea>
     </aside>

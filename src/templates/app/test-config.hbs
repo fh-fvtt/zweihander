@@ -1,26 +1,26 @@
 <form class="flexcol">
   {{#if weaponRoll}}
   <div class="form-group">
-    <label for="extraFury">Additional Fury Dice</label>
+    <label for="extraFury">{{localize "ZWEI.rolls.furydice"}}</label>
     <input type="number" name="extraFury" placeholder="0" value="{{additionalFuryDice}}">
   </div>
   {{/if}}
   {{#if spellRoll}}
   <div class="form-group">
-    <label for="extraChaos">Additional Chaos Dice</label>
+    <label for="extraChaos">{{localize "ZWEI.rolls.chaosdice"}}</label>
     <input type="number" name="extraChaos" placeholder="0" value="{{additionalChaosDice}}">
   </div>
   <div class="form-group">
-    <label for="channelSelect">Channel Power</label>
+    <label for="channelSelect">{{localize "ZWEI.rolls.channelpower"}}</label>
     <select name="channelSelect">
       {{#each channelPowerBonuses}}
-        <option value="{{value}}" {{selected}}>{{label}}</option>
+        <option value="{{value}}" {{selected}}>{{localize (zhConcat "ZWEI.rolls." label)}}</option>
       {{/each}}
     </select>
   </div>
   {{/if}}
   <div class="form-group">
-    <label for="baseChanceModifier">Base Chance Modifier</label>
+    <label for="baseChanceModifier">{{localize "ZWEI.rolls.basemod"}}</label>
     <select name="baseChanceModifier">
       {{#each baseChanceModifiers}}
         <option value="{{value}}" {{selected}}>{{label}}</option>
@@ -28,34 +28,34 @@
     </select>
   </div>
   <div class="form-group">
-    <label for="difficultyRatingSelect">Difficulty Rating</label>
+    <label for="difficultyRatingSelect">{{localize "ZWEI.rolls.difficulty"}}</label>
     <select name="difficultyRatingSelect">
       {{#each difficultyRatings}}
-        <option value="{{value}}" {{selected}}>{{label}}</option>
+        <option value="{{value}}" {{selected}}>{{localize (zhConcat "ZWEI.rolls." label)}}</option>
       {{/each}}
     </select>
   </div>
   <div class="form-group">
-    <label for="flipSelect">Flip</label>
+    <label for="flipSelect">{{localize "ZWEI.rolls.flip"}}</label>
     <select name="flipSelect">
       {{#each flipOptions}}
-        <option value="{{value}}" {{selected}}>{{label}}</option>
+        <option value="{{value}}" {{selected}}>{{localize (zhConcat "ZWEI.rolls." label)}}</option>
       {{/each}}
     </select>
   </div>
   <div class="form-group">
-    <label for="skillMode">Skill Test Mode</label>
+    <label for="skillMode">{{localize "ZWEI.rolls.testmode"}}</label>
     <select name="skillMode">
       {{#each skillModes}}
-        <option value="{{value}}" {{selected}}>{{label}}</option>
+        <option value="{{value}}" {{selected}}>{{localize (zhConcat "ZWEI.rolls." label)}}</option>
       {{/each}}
     </select>
   </div>
   <div class="form-group">
-    <label for="useFortune">Fortune</label>
+    <label for="useFortune">{{localize "ZWEI.rolls.fortune"}}</label>
     <select name="useFortune">
       {{#each fortuneOptions}}
-        <option value="{{value}}" {{selected}}>{{label}}</option>
+        <option value="{{value}}" {{selected}}>{{localize (zhConcat "ZWEI.rolls." label)}}</option>
       {{/each}}
     </select>
   </div>

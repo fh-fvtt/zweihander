@@ -5,11 +5,11 @@
   <section class="character-info">
     <header>
       <h1>
-        <input name="name" type="text" value="{{actor.name}}" placeholder="Character Name">
+        <input name="name" type="text" value="{{actor.name}}" placeholder='{{localize "ZWEI.actor.header.charactername"}}'>
       </h1>
       {{#unless limited}}
       <aside class="character-rp flexcol">
-        <label class="rp-title"> Reward Points</label>
+        <label class="rp-title"> {{localize "ZWEI.actor.header.rewardpoints"}}</label>
         <div class="rp-content flexrow">
           <input class="rp-spent" type="number" name="system.stats.rewardPoints.current"
             value="{{system.stats.rewardPoints.current}}"{{#if settings.trackRewardPoints}} readonly{{/if}} />
@@ -18,9 +18,9 @@
             value="{{system.stats.rewardPoints.total}}" />
         </div>
         <div class="rp-other-pts flexrow">
-          <span class="sep">Fate </span>
+          <span class="sep">{{localize "ZWEI.actor.header.fate"}} </span>
           <input class="rp-fate" type="number" name="system.stats.fate" value="{{system.stats.fate}}" />
-          <span class="sep">Rep. </span>
+          <span class="sep">{{localize "ZWEI.actor.header.reputationabbr"}} </span>
           <input class="rp-rep" type="number" name="system.stats.reputation" value="{{system.stats.reputation}}" />
         </div>
       </aside>
@@ -30,15 +30,15 @@
     {{#unless limited}}
     <div class="empty-placeholder"></div>
     <input class="character-dooming" name="system.details.dooming" type="text" value="{{system.details.dooming}}"
-      placeholder="Dooming" />
+      placeholder='{{localize "ZWEI.actor.header.dooming"}}' />
     <section class="alignment-header">
       <input class="order-title" name="system.alignment.order.name" type="text" value="{{system.alignment.order.name}}"
-        placeholder="Order Alignment" />
-      <h1>Corruption
+        placeholder='{{localize "ZWEI.actor.header.orderalignment"}}' />
+      <h1>{{localize "ZWEI.actor.header.corruption"}}
         <a class="reset-ranks"><i class="fas fa-sync-alt"></i></a>
       </h1>
       <input class="chaos-title" name="system.alignment.chaos.name" type="text" value="{{system.alignment.chaos.name}}"
-        placeholder="Chaos Alignment" />
+        placeholder='{{localize "ZWEI.actor.header.chaosalignment"}}' />
     </section>
     <section class="alignment-content">
       <section class="order-track">

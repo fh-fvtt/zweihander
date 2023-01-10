@@ -2,10 +2,10 @@
   <button type="submit" disabled style="display: none" aria-hidden="true"></button>
   <header>
     <div class="form-group">
-      <span>Abbr.</span>
-      <span>Name</span>
-      <span>Equivalent</span>
-      <span>Color</span>
+      <span>{{localize "ZWEI.settings.cusettings.abbr"}}</span>
+      <span>{{localize "ZWEI.settings.cusettings.name"}}</span>
+      <span>{{localize "ZWEI.settings.cusettings.equivalent"}}</span>
+      <span>{{localize "ZWEI.settings.cusettings.color"}}</span>
     </div>
   </header>
   <section class="form-body">
@@ -22,8 +22,8 @@
     </div>
     {{/each}}
     <div class="form-group">
-      <button type="button" class="add-currency"><i class="fas fa-plus"></i> Add Currency</button>
+      <button type="button" class="add-currency"><i class="fas fa-plus"></i> {{localize "ZWEI.settings.cusettings.add"}}</button>
     </div>
   </section>
-  <button type="submit">Submit</button>
+  <button type="submit">{{localize "ZWEI.settings.cusettings.submit"}}</button>
 </form>

@@ -51,7 +51,7 @@ export default class FortuneTracker extends Application {
       popOut: true,
       minimizable: false,
       resizable: false,
-      title: 'Fortune Tracker',
+      title: "ZWEI.settings.ftsettings.title",
       id: 'fortuneTrackerApp',
       classes: ['zweihander'],
       width: FortuneTracker.PARAMS.areaSize * 2,
