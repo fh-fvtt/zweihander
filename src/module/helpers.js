@@ -199,4 +199,40 @@ export const registerHandlebarHelpers = async function () {
   $$('zhLocalize', localize);
 
   $$('zhLocalizePath', localizePath);
+	
+  $$("zhConditionLadderLoc", function(name, choices, options) {
+    const checked = options.hash["checked"] ?? 5;
+    let html = "";
+    let uuid = uuidv4();
+    for (let i = choices.length - 1; i >= 0; i--) {
+      const isChecked = checked == i;
+      html += `
+        <div class="radio-and-status">
+          <input type="radio" class="radio-rank"
+            id="${uuid}.${i}" name="${name}"
+            value="${i}" data-dtype="Number" ${isChecked ? "checked" : ""}>
+          <label for="${uuid}.${i}" class="status">
+            <span><span>` + game.i18n.localize('ZWEI.actor.conditions.' + choices[i]) + `</span></span>
+          </label>
+        </div>`;
+    }
+    return new Handlebars.SafeString(html);
+  });
+	
+	$$("zhGetBonus", function(word) {
+    if (typeof word !== "string")
+      return game.i18n.localize('ZWEI.actor.bonuses.' + 'B');
+		return game.i18n.localize('ZWEI.actor.bonuses.' + word.charAt(0).toUpperCase() + 'B')
+  });
+
+  $$("zhConcat", (...strs) =>
+    strs.filter((s) => typeof s !== "object").join("")
+  );
+	
+	$$("zhSkillRankAbbreviationLoc", function(rank) {
+    return ["-", game.i18n.localize('ZWEI.actor.skills.rankabbreviation.apprentice'), 
+		game.i18n.localize('ZWEI.actor.skills.rankabbreviation.journeyman'), 
+		game.i18n.localize('ZWEI.actor.skills.rankabbreviation.master')][rank];
+  });
+
 };
