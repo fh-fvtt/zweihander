@@ -2,7 +2,7 @@
   <label>{{localize (zhConcat "ZWEI.actor.items." "Severity")}}</label>
     <select name="system.severity">
     {{#each choices.severities}}
-    <option value="{{value}}" {{selected}}>{{label}}</option>
+    <option value="{{value}}" {{selected}}>{{localize (zhConcat "ZWEI.actor.items.injuryseverity." label)}}</option>
     {{/each}}
   </select>
 </div>
@@ -15,7 +15,7 @@
 {{/if}}
 
 <div class="form-group stacked">
-  <label><a class="open-editor">Effect <i class="fa fa-edit"></i></a></label>
+  <label><a class="open-editor">{{localize (zhConcat "ZWEI.actor.items." "Effect")}} <i class="fa fa-edit"></i></a></label>
     <div class="zh-editor-preview open">{{{zhProcessRuleText (zhLocalize system.rules.effect)}}}</div>
   {{editor content=(zhLocalize system.rules.effect) target=(zhLocalizePath "system.rules.effect") button=true owner=owner editable=editable}}
 </div>
