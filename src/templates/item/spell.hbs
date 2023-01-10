@@ -1,54 +1,54 @@
 <div class="form-group">
-  <label>Distance</label>
+  <label>{{localize (zhConcat "ZWEI.actor.items." "Distance")}}</label>
   <input name="system.distance" type="text" value="{{system.distance}}">
 </div>
 
 <div class="form-group">
-  <label>Tradition</label>
+  <label>{{localize (zhConcat "ZWEI.actor.items." "Tradition")}}</label>
   <input name="system.tradition" type="text" value="{{system.tradition}}">
 </div>
 
 <div class="form-group">
-  <label>Principle</label>
+  <label>{{localize (zhConcat "ZWEI.actor.items." "Principle")}}</label>
   <input name="system.principle" type="text" value="{{system.principle}}">
 </div>
 
 <div class="form-group stacked">
-  <label><a class="open-editor">Reagents <i class="fa fa-edit"></i></a></label>
+  <label><a class="open-editor">{{localize (zhConcat "ZWEI.actor.items." "Reagents")}} <i class="fa fa-edit"></i></a></label>
     <div class="zh-editor-preview open">{{{zhProcessRuleText (zhLocalize system.rules.reagents)}}}</div>
   {{editor content=(zhLocalize system.rules.reagents) target=(zhLocalizePath "system.rules.reagents") button=true owner=owner editable=editable}}
 </div>
 
 <div class="form-group">
-  <label>Duration</label>
+  <label>{{localize (zhConcat "ZWEI.actor.items." "Duration")}}</label>
   <input name="system.duration" type="text" value="{{system.duration}}">
 </div>
 
 {{#if (eq settings.gameSystem 'fof') }}
 <div class="form-group">
-  <label>Casting Time</label>
+  <label>{{localize (zhConcat "ZWEI.actor.items." "Casting Time")}}</label>
   <input name="system.castingTime" type="text" value="{{system.castingTime}}">
 </div>
 <div class="form-group">
-  <label>Casting AP Cost</label>
+  <label>{{localize (zhConcat "ZWEI.actor.items." "Casting AP Cost")}}</label>
   <input name="system.castingCost" type="number" value="{{system.castingCost}}">
 </div>
 {{/if}}
 
 <div class="form-group stacked">
-  <label><a class="open-editor">Effect <i class="fa fa-edit"></i></a></label>
+  <label><a class="open-editor">{{localize (zhConcat "ZWEI.actor.items." "Effect")}} <i class="fa fa-edit"></i></a></label>
     <div class="zh-editor-preview open">{{{zhProcessRuleText (zhLocalize system.rules.effect)}}}</div>
   {{editor content=(zhLocalize system.rules.effect) target=(zhLocalizePath "system.rules.effect") button=true owner=owner editable=editable}}
 </div>
 
 <div class="form-group stacked">
-  <label><a class="open-editor">Critical Success <i class="fa fa-edit"></i></a></label>
+  <label><a class="open-editor">{{localize (zhConcat "ZWEI.chatskill." "Critical Success")}} <i class="fa fa-edit"></i></a></label>
     <div class="zh-editor-preview open">{{{zhProcessRuleText (zhLocalize system.rules.criticalSuccess)}}}</div>
   {{editor content=(zhLocalize system.rules.criticalSuccess) target=(zhLocalizePath "system.rules.criticalSuccess") button=true owner=owner editable=editable}}
 </div>
 
 <div class="form-group stacked">
-  <label><a class="open-editor">Critical Failure<i class="fa fa-edit"></i></a></label>
+  <label><a class="open-editor">{{localize (zhConcat "ZWEI.chatskill." "Critical Failure")}}<i class="fa fa-edit"></i></a></label>
     <div class="zh-editor-preview open">{{{zhProcessRuleText (zhLocalize system.rules.criticalFailure)}}}</div>
   {{editor content=(zhLocalize system.rules.criticalFailure) target=(zhLocalizePath "system.rules.criticalFailure") button=true owner=owner editable=editable}}
 </div>

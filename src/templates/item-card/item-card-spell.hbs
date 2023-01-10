@@ -7,20 +7,20 @@
     <div class="item-card-effect" data-effect-label="Effect">
       {{{zhProcessRuleText (zhLocalize system.rules.effect)}}}
     </div>
-    <dl class="zh-collapsed zh-expandable" data-expand-title="Show Item Details">
-      <dt>Tradition</dt>
+    <dl class="zh-collapsed zh-expandable" data-expand-title="{{localize "ZWEI.chatskill.itemdetails"}}">
+      <dt>{{localize "ZWEI.actor.items.Tradition"}}</dt>
       <dd>{{system.tradition}}</dd>
-      <dt>Principle</dt>
+      <dt>{{localize "ZWEI.actor.items.Principle"}}</dt>
       <dd>{{system.principle}}</dd>
-      <dt>Reagents</dt>
+      <dt>{{localize "ZWEI.actor.items.Reagents"}}</dt>
       <dd>{{{zhProcessRuleText (zhLocalize system.rules.reagents)}}}</dd>
-      <dt>Duration</dt>
+      <dt>{{localize "ZWEI.actor.items.Duration"}}</dt>
       <dd>{{system.duration}}</dd>
-      <dt>Distance</dt>
+      <dt>{{localize "ZWEI.actor.items.Distance"}}</dt>
       <dd>{{system.distance}}</dd>
-      <dt>Critical Success</dt>
+      <dt>{{localize (zhConcat "ZWEI.chatskill." "Critical Success")}}</dt>
       <dd>{{{zhProcessRuleText (zhLocalize system.rules.criticalSuccess)}}}</dd>
-      <dt>Critical Failure</dt>
+      <dt>{{localize (zhConcat "ZWEI.chatskill." "Critical Failure")}}</dt>
       <dd>{{{zhProcessRuleText (zhLocalize system.rules.criticalFailure)}}}</dd>
     </dl>
   </section>
