@@ -2,7 +2,7 @@
   <label>{{localize (zhConcat "ZWEI.actor.items." "Associated Primary Attribute (for Base Chance)")}}</label>
   <select name="system.associatedPrimaryAttribute">
   {{#each choices.associatedPrimaryAttribute}}
-  <option value="{{value}}" {{selected}}>{{label}}</option>
+  <option value="{{value}}" {{selected}}>{{localize (zhConcat "ZWEI.actor.primaryattribute." label)}}</option>
   {{/each}}
 </select>
 </div>

@@ -2,14 +2,14 @@
   <label>{{localize (zhConcat "ZWEI.actor.items." "Archetype")}}</label>
   <select name="system.archetype">
     {{#each choices.archetypes}}
-    <option value="{{value}}" {{selected}}>{{label}}</option>
+    <option value="{{value}}" {{selected}}>{{localize (zhConcat "ZWEI.actor.details.labels." label)}}</option>
     {{/each}}
   </select>
 </div>
 
-{{{arrayInputGroup 'Bonus Advances' 'system.bonusAdvances' system.bonusAdvances 7 'name'}}}
-{{{arrayInputGroup 'Skill Ranks' 'system.skillRanks' system.skillRanks 10 'name'}}}
-{{{arrayInputGroup 'Talents' 'system.talents' system.talents 3 'name'}}}
+{{{arrayInputGroup (localize (zhConcat "ZWEI.actor.items." "Bonus Advances")) 'system.bonusAdvances' system.bonusAdvances 7 'name'}}}
+{{{arrayInputGroup (localize (zhConcat "ZWEI.actor.items." "Skill Ranks")) 'system.skillRanks' system.skillRanks 10 'name'}}}
+{{{arrayInputGroup (localize (zhConcat "ZWEI.actor.items." "Talents")) 'system.talents' system.talents 3 'name'}}}
 
 <div class="form-group">
   <label>{{localize (zhConcat "ZWEI.actor.items." "Professional Trait")}}</label>

@@ -179,7 +179,7 @@ export const registerHandlebarHelpers = async function () {
     `
       )
       .join('');
-    return new Handlebars.SafeString(`<div class="form-group"><label>Price</label>${inputs}</div>`);
+    return new Handlebars.SafeString(`<div class="form-group"><label>` + game.i18n.localize('ZWEI.actor.items.Price') + `</label>${inputs}</div>`);
   });
 
   $$('zhProfessionWarn', (item, options) => {
