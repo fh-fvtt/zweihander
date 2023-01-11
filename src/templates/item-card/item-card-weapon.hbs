@@ -3,7 +3,7 @@
     <div class="item-card-description">
       {{{zhProcessRuleText system.flavor.description}}}
     </div>
-    <dl class="compact-details zh-collapsed zh-expandable" data-expand-title="Show Item Details">
+    <dl class="compact-details zh-collapsed zh-expandable" data-expand-title="{{localize "ZWEI.chatskill.itemdetails"}}">
       <dt>{{localize (zhConcat "ZWEI.actor.items." "Associated Skill")}}</dt>
       <dd>{{localize (zhConcat "ZWEI.actor.skills." system.associatedSkill)}}</dd>
       <dt>{{localize (zhConcat "ZWEI.actor.items." "Load")}}</dt>
@@ -21,7 +21,7 @@
         {{zhPrice system.price}}
       </dd>
     </dl>
-    <dl class="item-card-qualities zh-expandable zh-collapsed" data-expand-title="Show Qualities">
+    <dl class="item-card-qualities zh-expandable zh-collapsed" data-expand-title="{{localize "ZWEI.chatskill.showqualities"}}">
       {{#each system.qualities}}
       <dt>{{name}}</dt>
       <dd>{{effect}}</dd>

@@ -262,7 +262,7 @@ export async function rollWeaponDamage(actorId, testConfiguration) {
 
 async function getWeaponDamageContent(weapon, roll, exploded = false, explodedCount = 0) {
   weapon.system.qualities = await ZweihanderQuality.getQualities(weapon.system.qualities.value);
-  const rollContent = await roll.render({ flavor: 'Fury Die' });
+  const rollContent = await roll.render({ flavor: game.i18n.localize("ZWEI.rolls.furydie") });
   const cardContent = await renderTemplate('systems/zweihander/src/templates/item-card/item-card-weapon.hbs', weapon);
   return await renderTemplate(CONFIG.ZWEI.templates.weapon, {
     cardContent,

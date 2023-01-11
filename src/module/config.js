@@ -55,20 +55,20 @@ ZWEI.testModes = {
 
 ZWEI.alignmentRanks = 9;
 ZWEI.perilOptions = [
-  'INCAPACITATED!',
-  'Ignore 3 Skill Ranks',
-  'Ignore 2 Skill Ranks',
-  'Ignore 1 Skill Rank',
-  'Imperiled',
-  'Unhindered',
+  'incapacitated',
+  'ignore3',
+  'ignore2',
+  'ignore1',
+  'imperiled',
+  'unhindered',
 ];
 ZWEI.damageOptions = [
-  'SLAIN!',
-  'Grievously Wounded',
-  'Seriously Wounded',
-  'Moderately Wounded',
-  'Lightly Wounded',
-  'Unharmed',
+  'slain',
+  'grievously',
+  'seriously',
+  'moderately',
+  'lightly',
+  'unharmed',
 ];
 ZWEI.tiers = {
   1: 'Basic',

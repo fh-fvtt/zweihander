@@ -261,18 +261,18 @@
                 "Quantity": "Unidades"
             },
             "conditions": {
-                "INCAPACITATED!": "¡INCAPACITADO!",
-                "Ignore 3 Skill Ranks": "Ignora 3 nv habilidad",
-                "Ignore 2 Skill Ranks": "Ignora 2 nv habilidad",
-                "Ignore 1 Skill Rank": "Ignora 1 nv habilidad",
+                "incapacitated": "¡INCAPACITADO!",
+                "ignore3": "Ignora 3 nv habilidad",
+                "ignore2": "Ignora 2 nv habilidad",
+                "ignore1": "Ignora 1 nv habilidad",
                 "Imperiled": "En peligro",
                 "Unhindered": "Sin obstáculos",
-                "SLAIN!": "¡MUERES!",
-                "Grievously Wounded": "Daños graves",
-                "Seriously Wounded": "Daños serios",
-                "Moderately Wounded": "Daños moderados",
-                "Lightly Wounded": "Daños leves",
-                "Unharmed": "Ileso"
+                "slain": "¡MUERES!",
+                "grievously": "Daños graves",
+                "seriously": "Daños serios",
+                "moderately": "Daños moderados",
+                "lightly": "Daños leves",
+                "unharmed": "Ileso"
             },
             "bonuses": {
                 "B": "B",
@@ -356,7 +356,9 @@
             "flip": "Invertir",
             "testmode": "Modo",
             "fortune": "Fortuna",
+            "misfortune": "Desgracia",
             "furydice": "Dado de furia adicional",
+            "furydie": "Dado de furia",
             "chaosdice": "Dado de caos adicional",
             "channelpower": "Canalizar poder",
             "Difficulty -30%": "Arduo -30%",
@@ -396,7 +398,9 @@
             "weaponflavor": "Ataca con",
             "spellflavor": "Lanza",
             "reroll": "Volver a tirar",
-            "test": "Tirada"
+            "test": "Tirada",
+            "roll": "Tirar",
+            "cancel": "Cancelar"
         },
         "settings": {
             "fortunetracker": "Ajustes marcador de fortuna",
@@ -429,7 +433,7 @@
                 "appearance": "Apariencia",
                 "trackersize": "Tamaño del marcador de fortuna",
                 "fortuneimage": "Icono de fortuna",
-                "missfortuneimage": "Icono de desgracia",
+                "misfortuneimage": "Icono de desgracia",
                 "Don't Alert": "No avisar",
                 "Post Foundry Notifications": "Notificación Foundry posterior",
                 "Post Chat Messages": "Mensaje en el chat posterior",
@@ -506,6 +510,7 @@
         "chatskill": {
             "rolldetails": "Detalles de la tirada",
             "itemdetails": "Detalles del objeto",
+            "showqualities": "Mostrar calidades",
             "skillrank": "Bono nivel habilidad",
             "penaltyperil": "Penalizadores estrés",
             "specialmod": "Mod. especiales",
@@ -527,7 +532,10 @@
             "Critical Success": "Crítico",
             "Success": "Éxito",
             "Failure": "Fallo",
-            "Critical Failure": "Pifia"
+            "Critical Failure": "Pifia",
+            "explodewithfortune": "Explotar con fortuna",
+            "explodewithmisfortune": "Explotar con desgracia",
+            "explodedwith": "Explotado con"
         },
         "othermenues": {
             "currentfortune": "Puntos de fortuna actuales",

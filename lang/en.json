@@ -261,18 +261,18 @@
                 "Quantity": "Quantity"
             },
             "conditions": {
-                "INCAPACITATED!": "INCAPACITATED!",
-                "Ignore 3 Skill Ranks": "Ignore 3 Skill Ranks",
-                "Ignore 2 Skill Ranks": "Ignore 2 Skill Ranks",
-                "Ignore 1 Skill Rank": "Ignore 1 Skill Rank",
-                "Imperiled": "Imperiled",
-                "Unhindered": "Unhindered",
-                "SLAIN!": "SLAIN!",
-                "Grievously Wounded": "Grievously Wounded",
-                "Seriously Wounded": "Seriously Wounded",
-                "Moderately Wounded": "Moderately Wounded",
-                "Lightly Wounded": "Lightly Wounded",
-                "Unharmed": "Unharmed"
+                "incapacitated": "INCAPACITATED!",
+                "ignore3": "Ignore 3 Skill Ranks",
+                "ignore2": "Ignore 2 Skill Ranks",
+                "ignore1": "Ignore 1 Skill Rank",
+                "imperiled": "Imperiled",
+                "unhindered": "Unhindered",
+                "slain": "SLAIN!",
+                "grievously": "Grievously Wounded",
+                "seriously": "Seriously Wounded",
+                "moderately": "Moderately Wounded",
+                "lightly": "Lightly Wounded",
+                "unharmed": "Unharmed"
             },
             "bonuses": {
                 "B": "B",
@@ -356,7 +356,9 @@
             "flip": "Flip",
             "testmode": "Skill Test Mode",
             "fortune": "Fortune",
+            "misfortune": "Fortune",
             "furydice": "Additional Fury Dice",
+            "furydie": "Fury Die",
             "chaosdice": "Additional Chaos Dice",
             "channelpower": "Channel Power",
             "Difficulty -30%": "Arduos -30%",
@@ -396,7 +398,9 @@
             "weaponflavor": "Attacks with",
             "spellflavor": "Casts",
             "reroll": "Reroll",
-            "test": "Test"
+            "test": "Test",
+            "roll": "Roll",
+            "cancel": "Cancel"
         },
         "settings": {
             "fortunetracker": "Fortune Tracker Settings",
@@ -429,7 +433,7 @@
                 "appearance": "Appearance",
                 "trackersize": "Fortune Tracker Size",
                 "fortuneimage": "Fortune Token Image",
-                "missfortuneimage": "Misfortune Token Image",
+                "misfortuneimage": "Misfortune Token Image",
                 "Don't Alert": "Don't Alert",
                 "Post Foundry Notifications": "Post Foundry Notifications",
                 "Post Chat Messages": "Post Chat Messages",
@@ -506,6 +510,7 @@
         "chatskill": {
             "rolldetails": "Show Roll Details",
             "itemdetails": "Show Item Details",
+            "showqualities": "Show Qualities",
             "skillrank": "Skill rank bonus",
             "penaltyperil": "Penalty from Peril",
             "specialmod": "Special Modifier",
@@ -527,7 +532,10 @@
             "Critical Success": "Critical Success",
             "Success": "Success",
             "Failure": "Failure",
-            "Critical Failure": "Critical Failure"
+            "Critical Failure": "Critical Failure",
+            "explodewithfortune": "Explode with Fortune",
+            "explodewithmisfortune": "Explode with Misfortune",
+            "explodedwith": "Exploded with"
         },
         "othermenues": {
             "currentfortune": "Current fortune points",

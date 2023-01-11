@@ -112,11 +112,11 @@ function createConfigurationDialog(label, template, templateData, callback) {
         buttons: {
           no: {
             icon: '',
-            label: 'Cancel',
+            label: game.i18n.localize("ZWEI.rolls.cancel"),
           },
           yes: {
             icon: '',
-            label: 'Roll',
+            label: game.i18n.localize("ZWEI.rolls.roll"),
             callback: callback(resolve),
           },
         },
