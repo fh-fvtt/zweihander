@@ -66,9 +66,9 @@ body.game.vtt.system-zweihander .zweihander.sheet.creature {
         display: flex;
         font-size: 12px;
         justify-content: space-around;
-        &::before {
+        h1 {
+          text-transform: uppercase;
           color: var(--zh-clr-aqua);
-          content: 'PERIL';
           font-family: var(--zh-font-title);
           font-size: 10px;
           line-height: 1.5;
@@ -77,10 +77,10 @@ body.game.vtt.system-zweihander .zweihander.sheet.creature {
           width: 9ch;
           height: 15px;
           display: block;
+          margin: 0;
+          text-decoration: none;
+          border: none;
         }
-      }
-      section.damage-ladder::before {
-        content: 'DAMAGE';
       }
       .radio-and-status {
         flex: 0 0 20px;
