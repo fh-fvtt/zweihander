@@ -35,7 +35,7 @@ export async function rollPeril(perilType, actor) {
     {
       difficultyRating: perilType.difficultyRating,
       flavor: game.i18n.format('ZWEI.rolls.suppressperil', {
-        peril: game.i18n.localize("ZWEI.rolls.periltypes." + perilType.title),
+        peril: game.i18n.localize("ZWEI.actor.secondary." + perilType.title),
       }),
       perilType,
     },
@@ -46,7 +46,7 @@ export async function rollPeril(perilType, actor) {
     const speaker = ChatMessage.getSpeaker({ actor: actor });
     roll.toMessage({
       flavor: game.i18n.format('ZWEI.rolls.rollingperil', {
-        peril: game.i18n.localize("ZWEI.rolls.periltypes." + perilType.title),
+        peril: game.i18n.localize("ZWEI.actor.secondary." + perilType.title),
       }),
       speaker,
     });
