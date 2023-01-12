@@ -19,10 +19,10 @@
 <div class="pill-container">
     <span class="pill pill-roll-mode">{{localize (zhConcat "ZWEI.rolls." testModeLabel)}} ({{diceFormula}})</span>
     <span class="pill pill-difficulty-{{difficultyRating.total}}">{{localize (zhConcat "ZWEI.rolls." difficultyRating.label)}}</span>
-    {{#if flipToFail}}<span class="pill pill-flip-fail">{{localize (zhConcat "ZWEI.rolls." "Flip to Fail")}}</span>{{/if}}
-    {{#if flipToSucceed}}<span class="pill pill-flip-succeed">{{localize (zhConcat "ZWEI.rolls." "Flip to Succeed")}}</span>{{/if}}
-    {{#if usedFortune}}<span class="pill pill-fortune">{{localize (zhConcat "ZWEI.rolls." "Use Fortune")}}</span>{{/if}}
-    {{#if usedMisfortune}}<span class="pill pill-misfortune">{{localize (zhConcat "ZWEI.rolls." "Use Misfortune")}}</span>{{/if}}
+    {{#if flipToFail}}<span class="pill pill-flip-fail">{{localize "ZWEI.rolls.flipfail"}}</span>{{/if}}
+    {{#if flipToSucceed}}<span class="pill pill-flip-succeed">{{localize "ZWEI.rolls.flipsucceed"}}</span>{{/if}}
+    {{#if usedFortune}}<span class="pill pill-fortune">{{localize "ZWEI.rolls.usefortune"}}</span>{{/if}}
+    {{#if usedMisfortune}}<span class="pill pill-misfortune">{{localize "ZWEI.rolls.usemisfortune"}}</span>{{/if}}
     {{#if isReroll}}<span class="pill pill-reroll">{{localize "ZWEI.rolls.reroll"}}</span>{{/if}}
     {{#if spellTest}}<span class="pill">{{localize "ZWEI.rolls.test"}}: {{localize (zhConcat "ZWEI.actor.skills." skill)}}</span>{{/if}}
 </div>
@@ -36,7 +36,7 @@
 
 {{#if chaosManifestation}}
   <div class="additional-outcome-info chaos-manifestation">
-    A {{zhCapitalize spell.system.principle}} {{localize "ZWEI.chatskill.chaosspawns"}}
+    {{localize "ZWEI.chatskill.chaosspawns" principle=(localize (zhConcat "ZWEI.rolls.principetypes." (zhLowerCase spell.system.principle)))}}
   </div>
 {{/if}}
 

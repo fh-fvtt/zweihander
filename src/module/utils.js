@@ -391,11 +391,12 @@ export function zhExplicitSign(number) {
 }
 
 export function getDifficultyRatingLabel(difficultyRating) {
-  const number = zhExplicitSign(difficultyRating);
+  //const number = zhExplicitSign(difficultyRating);
   //const label = game.i18n.localize(`ZWEI.Difficulty.${number}`);
   // I localize when rendering the test dialog
-  const label = `Difficulty`;  
-  return `${label} ${number}%`;
+  const number = (difficultyRating+30)/10;
+  const label = `difficulty`;
+  return `${label}${number}`;
 }
 
 export function determineCurrentActorId(interactive = false) {

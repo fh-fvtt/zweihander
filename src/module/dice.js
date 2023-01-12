@@ -6,9 +6,9 @@ import { ZWEI } from './config';
 import ZweihanderActorConfig from './apps/actor-config';
 
 export const PERIL_ROLL_TYPES = {
-  STRESS: { x: 1, title: 'Stress', difficultyRating: 20 },
-  FEAR: { x: 2, title: 'Fear', difficultyRating: 0 },
-  TERROR: { x: 3, title: 'Terror', difficultyRating: -20 },
+  STRESS: { x: 1, title: 'stress', difficultyRating: 20 },
+  FEAR: { x: 2, title: 'fear', difficultyRating: 0 },
+  TERROR: { x: 3, title: 'terror', difficultyRating: -20 },
 };
 
 export const OUTCOME_TYPES = {
@@ -34,7 +34,9 @@ export async function rollPeril(perilType, actor) {
     'skill',
     {
       difficultyRating: perilType.difficultyRating,
-      flavor: `Is trying to surpress their ${perilType.title}`,
+      flavor: game.i18n.format('ZWEI.rolls.suppressperil', {
+        peril: game.i18n.localize("ZWEI.rolls.periltypes." + perilType.title),
+      }),
       perilType,
     },
     { showDialog: true }
@@ -43,7 +45,9 @@ export async function rollPeril(perilType, actor) {
     const roll = new Roll(`${perilType.x}d10+${perilType.x}`);
     const speaker = ChatMessage.getSpeaker({ actor: actor });
     roll.toMessage({
-      flavor: `Is rolling for peril due to ${perilType.title}`,
+      flavor: game.i18n.format('ZWEI.rolls.rollingperil', {
+        peril: game.i18n.localize("ZWEI.rolls.periltypes." + perilType.title),
+      }),
       speaker,
     });
   }
@@ -79,9 +83,9 @@ export async function rollTest(
     testConfiguration.additionalFuryDice = actor.system.details.size - 1;
   }
   if (isReroll && actor.type === 'character') {
-    testConfiguration.useFortune = 'fortune';
+    testConfiguration.useFortune = 'usefortune';
   } else if (isReroll && actor.type !== 'character') {
-    testConfiguration.useFortune = 'misfortune';
+    testConfiguration.useFortune = 'usemisfortune';
   }
   const principle = spell?.system?.principle?.trim?.()?.toLowerCase?.();
   const defaultSpellDifficulty = {
@@ -95,9 +99,9 @@ export async function rollTest(
     testConfiguration = await getTestConfiguration(skillItem, testType, testConfiguration);
   }
   try {
-    if (testConfiguration.useFortune === 'fortune') {
+    if (testConfiguration.useFortune === 'usefortune') {
       await FortuneTracker.INSTANCE.useFortune();
-    } else if (testConfiguration.useFortune === 'misfortune') {
+    } else if (testConfiguration.useFortune === 'usemisfortune') {
       await FortuneTracker.INSTANCE.useMisfortune();
     }
   } catch (e) {
@@ -130,7 +134,8 @@ export async function rollTest(
     totalChance,
     flip
   );
-  const testModeLabel = ZWEI.testModes[testConfiguration.testMode].label + ' Test';
+  //const testModeLabel = ZWEI.testModes[testConfiguration.testMode].label;
+  const testModeLabel = testConfiguration.testMode;
   let tensDie = Math.floor(effectiveResult / 10);
   tensDie = tensDie === 0 ? 10 : tensDie;
   const primaryAttributeBonus = actor.system.stats.primaryAttributes[primaryAttribute.toLowerCase()].bonus;
@@ -142,7 +147,7 @@ export async function rollTest(
   const templateData = {
     itemId: skillItem.id,
     testModeLabel,
-    degreesOfSuccess: ['opposed', 'secret-opposed'].includes(testConfiguration.testMode) ? crbDegreesOfSuccess : false,
+    degreesOfSuccess: ['opposed', 'secretopposed'].includes(testConfiguration.testMode) ? crbDegreesOfSuccess : false,
     skill: skillItem.name,
     primaryAttribute,
     primaryAttributeValue,
@@ -162,11 +167,11 @@ export async function rollTest(
     }),
     diceFormula: roll.formula,
     effectivelyFlipped,
-    flipToFail: flip === 'fail',
-    flipToSucceed: flip === 'succeed',
+    flipToFail: flip === 'flipfail',
+    flipToSucceed: flip === 'flipsucceed',
     isReroll,
-    usedFortune: testConfiguration.useFortune === 'fortune',
-    usedMisfortune: testConfiguration.useFortune === 'misfortune',
+    usedFortune: testConfiguration.useFortune === 'usefortune',
+    usedMisfortune: testConfiguration.useFortune === 'usemisfortune',
     effectiveOutcome,
     outcomeLabel: outcomeLabel(effectiveOutcome),
     weaponTest: testType === 'weapon',
@@ -246,7 +251,10 @@ export async function rollWeaponDamage(actorId, testConfiguration) {
   );
   const damageRoll = await new Roll(formula, actor.system).evaluate();
   const speaker = ChatMessage.getSpeaker({ actor });
-  const flavor = `Determines ${weapon.name}'s Damage`;
+  //const flavor = `Determines ${weapon.name}'s Damage`;
+  const flavor = game.i18n.format('ZWEI.rolls.weapondamage', {
+    weapon: weapon.name,
+  });
   const content = await getWeaponDamageContent(weapon, damageRoll);
   const flags = {
     zweihander: {
@@ -275,9 +283,9 @@ async function getWeaponDamageContent(weapon, roll, exploded = false, explodedCo
 
 export async function explodeWeaponDamage(message, useFortune) {
   try {
-    if (useFortune === 'fortune') {
+    if (useFortune === 'usefortune') {
       await FortuneTracker.INSTANCE.useFortune();
-    } else if (useFortune === 'misfortune') {
+    } else if (useFortune === 'usemisfortune') {
       await FortuneTracker.INSTANCE.useMisfortune();
     }
   } catch (e) {
@@ -413,7 +421,7 @@ function determineTestResult(firstD10, secondD10, flip, totalChance) {
   } else if (match) {
     // die match, don't flip
     return { score: normalScore, flipped: false, outcome: normalOutcome };
-  } else if (flip === 'succeed') {
+  } else if (flip === 'flipsucceed') {
     if (normalOutcome >= 2 && flippedOutcome >= 2) {
       // if both scores are successes, keep the maximum (better for opposed rolls)
       const max = Math.max(normalScore, flippedScore);
@@ -427,7 +435,7 @@ function determineTestResult(firstD10, secondD10, flip, totalChance) {
     } else {
       return { score: normalScore, flipped: false, outcome: normalOutcome };
     }
-  } else if (flip === 'fail') {
+  } else if (flip === 'flipfail') {
     if (normalOutcome >= 2 && flippedOutcome >= 2) {
       // if both scores are successes, keep the minimum (worse for opposed rolls)
       const min = Math.min(normalScore, flippedScore);

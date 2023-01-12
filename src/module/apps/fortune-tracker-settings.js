@@ -20,18 +20,18 @@ export default class FortuneTrackerSettings extends FormApplication {
     const fortuneTrackerData = game.settings.get('zweihander', 'fortuneTrackerSettings');
     fortuneTrackerData.choices = {};
     fortuneTrackerData.choices.size = [
-      { value: 'compact', label: 'Compact (Text)' },
-      { value: 'normal', label: 'Normal (Tokens)' },
-      { value: 'big', label: 'Big (Tokens)' },
-      { value: 'huge', label: 'Huge (Tokens)' },
+      { value: 'compact', label: game.i18n.localize("ZWEI.settings.ftsettings.compact") },
+      { value: 'normal', label: game.i18n.localize("ZWEI.settings.ftsettings.normal") },
+      { value: 'big', label: game.i18n.localize("ZWEI.settings.ftsettings.big") },
+      { value: 'huge', label: game.i18n.localize("ZWEI.settings.ftsettings.huge") },
     ].map((option) => ({
       selected: (fortuneTrackerData.size ?? 'normal') === option.value ? 'selected' : '',
       ...option,
     }));
     fortuneTrackerData.choices.notifications = [
-      { value: 'none', label: "Don't Alert" },
-      { value: 'notify', label: 'Post Foundry Notifications' },
-      { value: 'chat', label: 'Post Chat Messages' },
+      { value: 'none', label: game.i18n.localize("ZWEI.settings.ftsettings.dontalert") },
+      { value: 'notify', label: game.i18n.localize("ZWEI.settings.ftsettings.postnotifications") },
+      { value: 'chat', label: game.i18n.localize("ZWEI.settings.ftsettings.postmessages") },
     ].map((option) => ({
       selected: (fortuneTrackerData.notifications ?? 'notify') === option.value ? 'selected' : '',
       ...option,

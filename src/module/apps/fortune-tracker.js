@@ -403,7 +403,7 @@ export default class FortuneTracker extends Application {
     const fortuneBefore = this.fortune;
     this.state = await this.requestSync(this.spendFortune(), true);
     if (fortuneBefore === this.fortune) {
-      throw "Can't use fortune!";
+      throw game.i18n.localize("ZWEI.othermessages.nofortune");
     }
     return true;
   }
@@ -412,7 +412,7 @@ export default class FortuneTracker extends Application {
     const misfortuneBefore = this.misfortune;
     this.state = await this.requestSync(this.spendMisfortune(), true);
     if (misfortuneBefore === this.misfortune) {
-      throw "Can't use misfortune!";
+      throw game.i18n.localize("ZWEI.othermessages.nomisfortune");
     }
     return true;
   }

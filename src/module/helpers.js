@@ -21,6 +21,11 @@ export const registerHandlebarHelpers = async function () {
     return word.capitalize();
   });
 
+  $$('zhLowerCase', function (word) {
+    if (typeof word !== 'string') return '';
+    return word.toLowerCase();
+  });
+
   $$('zhAlignmentRanks', function (name, alignmentRanks, permanentRanks, options) {
     const alignment = name.split('.')[2];
     const icon = alignment === 'chaos' ? 'ra-cancel' : 'ra-horseshoe';

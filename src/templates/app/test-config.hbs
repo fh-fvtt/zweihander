@@ -39,7 +39,7 @@
     <label for="flipSelect">{{localize "ZWEI.rolls.flip"}}</label>
     <select name="flipSelect">
       {{#each flipOptions}}
-        <option value="{{value}}" {{selected}}>{{localize (zhConcat "ZWEI.rolls." label)}}</option>
+        <option value="{{value}}" {{selected}}>{{localize (zhConcat "ZWEI.rolls." value)}}</option>
       {{/each}}
     </select>
   </div>
@@ -47,7 +47,7 @@
     <label for="skillMode">{{localize "ZWEI.rolls.testmode"}}</label>
     <select name="skillMode">
       {{#each skillModes}}
-        <option value="{{value}}" {{selected}}>{{localize (zhConcat "ZWEI.rolls." label)}}</option>
+        <option value="{{value}}" {{selected}}>{{localize (zhConcat "ZWEI.rolls." value)}}</option>
       {{/each}}
     </select>
   </div>
@@ -55,7 +55,7 @@
     <label for="useFortune">{{localize "ZWEI.rolls.fortune"}}</label>
     <select name="useFortune">
       {{#each fortuneOptions}}
-        <option value="{{value}}" {{selected}}>{{localize (zhConcat "ZWEI.rolls." label)}}</option>
+        <option value="{{value}}" {{selected}}>{{localize (zhConcat "ZWEI.rolls." value)}}</option>
       {{/each}}
     </select>
   </div>

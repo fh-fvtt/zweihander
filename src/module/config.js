@@ -41,7 +41,7 @@ ZWEI.testModes = {
     help: 'Visible for GM',
     rollMode: CONST.DICE_ROLL_MODES.BLIND,
   },
-  'secret-opposed': {
+  secretopposed: {
     label: 'Secret Opposed',
     help: 'Visible for GM',
     rollMode: CONST.DICE_ROLL_MODES.BLIND,
