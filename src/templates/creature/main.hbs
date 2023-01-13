@@ -37,7 +37,7 @@
             <div class="pa-icon"><span class="{{lookup ../config.primaryAttributeIcons key}}"></span></div>
             <div class="pa-bonus-container flexcol">
               <span class="pa-bonus">{{attr.bonus}}</span>
-              <span class="pa-bonus-title">{{zhGetBonus key}}</span>
+              <span class="pa-bonus-title">{{localize (zhConcat "ZWEI.actor.primary." (zhLowerCase key))}}</span>
             </div>
           </div>
           <div class="pa-bonus-advances flexrow">

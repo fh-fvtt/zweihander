@@ -224,12 +224,6 @@ export const registerHandlebarHelpers = async function () {
     return new Handlebars.SafeString(html);
   });
 	
-	$$("zhGetBonus", function(word) {
-    if (typeof word !== "string")
-      return game.i18n.localize('ZWEI.actor.bonuses.' + 'B');
-		return game.i18n.localize('ZWEI.actor.bonuses.' + word.charAt(0).toUpperCase() + 'B')
-  });
-
   $$("zhConcat", (...strs) =>
     strs.filter((s) => typeof s !== "object").join("")
   );

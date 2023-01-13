@@ -9,7 +9,7 @@
         <div class="pa-icon"><span class="{{lookup ../config.primaryAttributeIcons key}}"></span></div>
         <div class="flexcol">
           <span class="pa-bonus">{{attr.bonus}}</span>
-          <span class="pa-bonus-title">{{zhGetBonus key}}</span>
+          <span class="pa-bonus-title">{{localize (zhConcat "ZWEI.actor.bonuses." (zhLowerCase key))}}</span>
         </div>
       </div>
     </li>
@@ -25,7 +25,7 @@
         <div class="values flexrow">
           <div>
             <span class="value" data-testid="movement">{{system.stats.secondaryAttributes.movement.value}}</span>
-            <span class="formula">[{{zhGetBonus actorConfig.movAttribute}}]+3</span>
+            <span class="formula">[{{localize (zhConcat "ZWEI.actor.bonuses." (zhLowerCase actorConfig.movAttribute))}}]+3</span>
           </div>
           <div>
             <span class="value color-overage" data-overage="{{system.stats.secondaryAttributes.movement.overage}}">{{system.stats.secondaryAttributes.movement.overage}}</span>
@@ -42,7 +42,7 @@
         <div class="values flexrow">
           <div>
             <span class="value" data-testid="initiative">{{system.stats.secondaryAttributes.initiative.value}}</span>
-            <span class="formula">[{{zhGetBonus actorConfig.intAttribute}}]+3</span>
+            <span class="formula">[{{localize (zhConcat "ZWEI.actor.bonuses." (zhLowerCase actorConfig.intAttribute))}}]+3</span>
           </div>
           <div>
             <span class="value color-overage" data-overage="{{system.stats.secondaryAttributes.initiative.overage}}">{{system.stats.secondaryAttributes.initiative.overage}}</span>
@@ -115,7 +115,7 @@
         <div class="values flexrow">
           <div class="threshold-value flexcol">
             <span class="value" data-testid="peril">{{system.stats.secondaryAttributes.perilThreshold.value}}</span>
-            <span class="formula">[{{zhGetBonus actorConfig.pthAttribute}}]+3</span>
+            <span class="formula">[{{localize (zhConcat "ZWEI.actor.bonuses." (zhLowerCase actorConfig.pthAttribute))}}]+3</span>
           </div>
           <span class="values-derived-bracket">{</span>
           <div class="flexcol values-derived">
@@ -137,7 +137,7 @@
         <div class="values flexrow">
           <div class="threshold-value flexcol">
             <span class="value" data-testid="damage">{{> ($$ 'partials/modded-value') system.stats.secondaryAttributes.damageThreshold}}</span>
-            <span class="formula">[{{zhGetBonus actorConfig.dthAttribute}}]+{{localize "ZWEI.actor.secondary.damagethresholdmodifier"}}</span>
+            <span class="formula">[{{localize (zhConcat "ZWEI.actor.bonuses." (zhLowerCase actorConfig.dthAttribute))}}]+{{localize "ZWEI.actor.secondary.damagethresholdmodifier"}}</span>
           </div>
           <span class="values-derived-bracket">{</span>
           <div class="flexcol values-derived">

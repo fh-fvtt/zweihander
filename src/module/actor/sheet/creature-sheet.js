@@ -30,24 +30,24 @@ export default class ZweihanderCreatureSheet extends ZweihanderBaseActorSheet {
     sheetData.choices = {};
     const size = sheetData.system.details.size ?? 1;
     sheetData.choices.sizes = selectedChoice(size, [
-      { value: 0, label: 'Small (S)' },
-      { value: 1, label: 'Normal (N)' },
-      { value: 2, label: 'Large (L)' },
-      { value: 3, label: 'Huge (H)' },
+      { value: 0, label: 'small' },
+      { value: 1, label: 'normal' },
+      { value: 2, label: 'large' },
+      { value: 3, label: 'huge' },
     ]);
     const rf = sheetData.system.details.riskFactor?.value ?? 0;
     sheetData.choices.riskFactors = selectedChoice(rf, [
-      { value: 0, label: 'Basic' },
-      { value: 1, label: 'Intermediate' },
-      { value: 2, label: 'Advanced' },
-      { value: 3, label: 'Elite' },
+      { value: 0, label: 'basic' },
+      { value: 1, label: 'intermediate' },
+      { value: 2, label: 'advanced' },
+      { value: 3, label: 'elite' },
     ]);
     const notch = sheetData.system.details.riskFactor?.notch ?? 1;
     sheetData.choices.notches = selectedChoice(notch, [
-      { value: 0, label: '(Low)' },
-      { value: 1, label: '(Medium)' },
-      { value: 2, label: '(High)' },
-      { value: 3, label: '(Unique)' },
+      { value: 0, label: 'low' },
+      { value: 1, label: 'medium' },
+      { value: 2, label: 'high' },
+      { value: 3, label: 'unique' },
     ]);
     const hidden = this.actor.limited;
     sheetData.details = [
@@ -62,22 +62,22 @@ export default class ZweihanderCreatureSheet extends ZweihanderBaseActorSheet {
       },
       {
         key: 'details.classification',
-        placeholder: 'Classification',
+        placeholder: game.i18n.localize('ZWEI.actor.details.placeholders.classification'),
         hidden,
       },
       {
         key: 'details.role',
-        placeholder: 'Role',
+        placeholder: game.i18n.localize('ZWEI.actor.details.placeholders.role'),
         hidden,
       },
       {
         key: 'details.influences',
-        placeholder: 'Influences',
+        placeholder: game.i18n.localize('ZWEI.actor.details.placeholders.influences'),
         hidden,
       },
       {
         value: sheetData.system.languages,
-        placeholder: '?',
+        placeholder: game.i18n.localize('ZWEI.actor.details.placeholders.languages'),
         template: 'partials/detail-languages',
         hidden,
       },
