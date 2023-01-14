@@ -5,7 +5,7 @@
     data-rank="{{skill.system.rank}}" data-label="{{skill.name}}">
     <span class="skill-name">
       <span>
-        {{localize (zhConcat "ZWEI.actor.skills." skill.name)}}
+        {{localize (zhConcat "ZWEI.actor.skills." (zhLowerCaseSpaces skill.name))}}
       ({{zhGetFirstLetter (localize (zhConcat "ZWEI.actor.primary." (zhLowerCase skill.system.associatedPrimaryAttribute)))}})
       {{#if skill.system.requiresTraining}}*{{/if}}
       </span>

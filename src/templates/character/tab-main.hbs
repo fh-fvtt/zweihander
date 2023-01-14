@@ -68,7 +68,7 @@
         <select class="skill-dropdown" name="system.stats.secondaryAttributes.dodge.associatedSkill">
           {{#select system.stats.secondaryAttributes.dodge.associatedSkill}}
           {{#each actorConfig.dodgeSkills as | skill idx | }}
-          <option value="{{skill}}">{{localize (zhConcat "ZWEI.actor.skills." skill)}}</option>
+          <option value="{{skill}}">{{localize (zhConcat "ZWEI.actor.skills." (zhLowerCaseSpaces skill))}}</option>
           {{/each}}
           {{/select}}
         </select>
@@ -84,7 +84,7 @@
         <select class="skill-dropdown" name="system.stats.secondaryAttributes.parry.associatedSkill">
           {{#select system.stats.secondaryAttributes.parry.associatedSkill}}
           {{#each actorConfig.parrySkills as | skill idx | }}
-          <option value="{{skill}}">{{localize (zhConcat "ZWEI.actor.skills." skill)}}</option>
+          <option value="{{skill}}">{{localize (zhConcat "ZWEI.actor.skills." (zhLowerCaseSpaces skill))}}</option>
           {{/each}}
           {{/select}}
         </select>

@@ -1,46 +1,46 @@
 <div class="form-group">
-  <label>{{localize (zhConcat "ZWEI.actor.items." "Associated Skill")}}</label>
+  <label>{{localize "ZWEI.actor.items.associatedskill"}}</label>
   <select name="system.associatedSkill">
     {{#select system.associatedSkill}}
     {{#each skills as | skill idx | }}
-      <option value="{{skill}}">{{localize (zhConcat "ZWEI.actor.skills." skill)}}</option>
+      <option value="{{skill}}">{{localize (zhConcat "ZWEI.actor.skills." (zhLowerCaseSpaces skill))}}</option>
     {{/each}}
     {{/select}}
   </select>
 </div>
 <div class="form-group">
-  <label>{{localize (zhConcat "ZWEI.actor.items." "Load")}}</label>
+  <label>{{localize "ZWEI.actor.items.load"}}</label>
   <input  name="system.load" type="number" value="{{system.load}}">
 </div>
 <div class="form-group">
-  <label>{{localize (zhConcat "ZWEI.actor.items." "Handling")}}</label>
+  <label>{{localize "ZWEI.actor.items.handling"}}</label>
   <input  name="system.handling" type="text" value="{{system.handling}}">
 </div>
 <div class="form-group">
-  <label>{{localize (zhConcat "ZWEI.actor.items." "Distance")}}</label>
+  <label>{{localize "ZWEI.actor.items.distance"}}</label>
   <input  name="system.distance" type="text" value="{{system.distance}}">
 </div>
 <div class="form-group">
-  <label>{{localize (zhConcat "ZWEI.actor.items." "Qualities")}}</label>
+  <label>{{localize "ZWEI.actor.items.qualities"}}</label>
   <input name="system.qualities.value" type="text" value="{{system.qualities.value}}">
 </div>
 <div class="form-group">
-  <label>{{localize (zhConcat "ZWEI.actor.items." "Type")}}</label>
+  <label>{{localize "ZWEI.actor.items.type"}}</label>
   <input  name="system.weaponType" type="text" value="{{system.weaponType}}">
 </div>
 <div class="form-group">
-  <label>{{localize (zhConcat "ZWEI.actor.items." "Damage Formula")}}</label>
+  <label>{{localize "ZWEI.actor.items.damageformula"}}</label>
   <input  name="system.damage.formula" type="text" value="{{system.damage.formula}}">
 </div>
 <div class="form-group">
-  <label>{{localize (zhConcat "ZWEI.actor.items." "Encumbrance")}}</label>
+  <label>{{localize "ZWEI.actor.items.encumbrance"}}</label>
   <input  name="system.encumbrance" type="number" value="{{system.encumbrance}}">
 </div>
 {{zhPriceInputs system.price}}
 {{!-- <div class="form-group stacked">
-  <label>{{localize (zhConcat "ZWEI.actor.items." "Status")}}</label>
+  <label>{{localize "ZWEI.actor.items.status"}}</label>
   <label class="checkbox">
     <input name="system.equipped" type="checkbox" class="link-checkbox" {{checked system.equipped}} />
-    {{localize (zhConcat "ZWEI.actor.items." "Equipped")}}
+    {{localize "ZWEI.actor.items.equipped"}}
   </label>
 </div> --}}

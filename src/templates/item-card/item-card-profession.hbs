@@ -7,27 +7,27 @@
   <br/>
   {{/if}}
   <dl class="zh-expandable" data-expand-title="{{localize "ZWEI.chatskill.itemdetails"}}">
-      <dt>{{localize "ZWEI.actor.items.Archetype"}}</dt>
+      <dt>{{localize "ZWEI.actor.items.archetype"}}</dt>
       <dd>{{system.archetype}}</dd>
-      <dt>{{localize (zhConcat "ZWEI.actor.items." "Professional Trait")}}</dt>
+      <dt>{{localize "ZWEI.actor.items.professionaltrait"}}</dt>
       <dd>{{system.professionalTrait.name}}</dd>
       {{#if system.specialTrait.name}}
-      <dt>{{localize (zhConcat "ZWEI.actor.items." "Special Trait")}}</dt>
+      <dt>{{localize "ZWEI.actor.items.specialtrait"}}</dt>
       <dd>{{system.specialTrait.name}}</dd>
       {{/if}}
       {{#if system.drawback.name}}
-      <dt>{{localize (zhConcat "ZWEI.actor.items." "Drawback")}}</dt>
+      <dt>{{localize "ZWEI.actor.items.drawback"}}</dt>
       <dd>{{system.drawback.name}}</dd>
       {{/if}}
       {{#if system.expert.name}}
-      <dt>{{localize (zhConcat "ZWEI.actor.items." "Expert Profession Requirements")}}</dt>
+      <dt>{{localize "ZWEI.actor.items.expertreq"}}</dt>
       <dd>{{system.expert.requirements}}</dd>
       {{/if}}
-      <dt>{{localize (zhConcat "ZWEI.actor.items." "Skill Ranks")}}</dt>
+      <dt>{{localize "ZWEI.actor.items.skillranks"}}</dt>
       <dd>{{#each system.skillRanks}}{{name}}{{#unless @last}}, {{/unless}}{{/each}}</dd>
-      <dt>{{localize (zhConcat "ZWEI.actor.items." "Bonus Advances")}}</dt>
+      <dt>{{localize "ZWEI.actor.items.bonusadvances"}}</dt>
       <dd>{{#each system.bonusAdvances}}{{name}}{{#unless @last}}, {{/unless}}{{/each}}</dd>
-      <dt>{{localize (zhConcat "ZWEI.actor.items." "Talents")}}</dt>
+      <dt>{{localize "ZWEI.actor.items.talents"}}</dt>
       <dd>{{#each system.talents}}{{name}}{{#unless @last}}, {{/unless}}{{/each}}</dd>
     </dl>
 </section>

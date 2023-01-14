@@ -140,25 +140,25 @@ export default class ZweihanderCreatureSheet extends ZweihanderBaseActorSheet {
   _getItemGroups(sheetData) {
     return {
       weapons: {
-        title: 'Attack Profiles',
+        title: 'attackprofiles',
         type: 'weapon',
         summaryTemplate: 'item-summary/weapon',
         rollType: 'weapon-roll',
         rollLabelKey: 'system.associatedSkill',
         details: [
           {
-            title: 'Distance',
+            title: 'distance',
             size: 120,
             key: 'system.distance',
             class: 'inject-data',
           },
           {
-            title: 'Chance',
+            title: 'chance',
             size: 70,
             key: 'chance',
           },
           {
-            title: 'Load',
+            title: 'load',
             size: 55,
             key: 'system.load',
           },
@@ -166,12 +166,12 @@ export default class ZweihanderCreatureSheet extends ZweihanderBaseActorSheet {
         items: sheetData.weapons,
       },
       trappings: {
-        title: 'Loot',
+        title: 'loot',
         type: 'trapping',
         summaryTemplate: 'item-summary/trapping',
         details: [
           {
-            title: 'Qty.',
+            title: 'qty',
             size: 50,
             key: 'system.quantity',
           },
@@ -179,14 +179,14 @@ export default class ZweihanderCreatureSheet extends ZweihanderBaseActorSheet {
         items: sheetData.trappings,
       },
       traits: {
-        title: 'Traits',
+        title: 'traits',
         type: 'trait',
         summaryTemplate: 'item-summary/trait',
         details: [],
         items: sheetData.traits,
       },
       spells: {
-        title: 'Spells',
+        title: 'spells',
         type: 'spell',
         summaryTemplate: 'item-summary/spell',
         rollType: 'spell-roll',
@@ -195,21 +195,21 @@ export default class ZweihanderCreatureSheet extends ZweihanderBaseActorSheet {
         items: sheetData.spells,
       },
       taints: {
-        title: 'Taints of Chaos',
+        title: 'taintschaos',
         type: 'taint',
         summaryTemplate: 'item-summary/taint',
         details: [],
         items: sheetData.taints,
       },
       conditions: {
-        title: 'Conditions',
+        title: 'conditions',
         type: 'condition',
         summaryTemplate: 'item-summary/condition',
         details: [],
         items: sheetData.conditions,
       },
       injuries: {
-        title: 'Injuries',
+        title: 'injuries',
         type: 'injury',
         summaryTemplate: 'item-summary/injury',
         details: [],

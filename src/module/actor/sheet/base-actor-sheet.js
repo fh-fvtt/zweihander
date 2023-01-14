@@ -151,7 +151,7 @@ export default class ZweihanderBaseActorSheet extends ActorSheet {
     // Check to make sure items of this type are allowed on this actor
     if (this.constructor.unsupportedItemTypes.has(itemData.type)) {
       return ui.notifications.warn(
-        game.i18n.format('ZWEI.ActorWarningInvalidItem', {
+        game.i18n.format('ZWEI.actorwarninginvaliditem', {
           itemType: game.i18n.localize(CONFIG.Item.typeLabels[itemData.type]),
           actorType: game.i18n.localize(CONFIG.Actor.typeLabels[this.actor.type]),
         })

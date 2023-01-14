@@ -1,31 +1,31 @@
 <div class="form-group">
-  <label>{{localize (zhConcat "ZWEI.actor.items." "Resist")}}</label>
+  <label>{{localize "ZWEI.actor.items.resist"}}</label>
   <input name="system.resist" type="text" value="{{system.resist}}">
 </div>
 
 <div class="form-group">
-  <label>{{localize (zhConcat "ZWEI.actor.items." "Duration")}}</label>
+  <label>{{localize "ZWEI.actor.items.duration"}}</label>
   <input name="system.duration" type="text" value="{{system.duration}}">
 </div>
 
 <div class="form-group stacked">
-  <label><a class="open-editor">{{localize (zhConcat "ZWEI.actor.items." "Effect")}} <i class="fa fa-edit"></i></a></label>
+  <label><a class="open-editor">{{localize "ZWEI.actor.items.effect"}} <i class="fa fa-edit"></i></a></label>
   <div class="zh-editor-preview open">{{{zhProcessRuleText (zhLocalize system.rules.effect)}}}</div>
   {{editor content=(zhLocalize system.rules.effect) target=(zhLocalizePath "system.rules.effect") button=true owner=owner
   editable=editable}}
 </div>
 
 <div class="form-group stacked">
-  <label><a class="open-editor">{{localize (zhConcat "ZWEI.actor.items." "Treatment")}} <i class="fa fa-edit"></i></a></label>
+  <label><a class="open-editor">{{localize "ZWEI.actor.items.treatment"}} <i class="fa fa-edit"></i></a></label>
   <div class="zh-editor-preview open">{{{zhProcessRuleText (zhLocalize system.rules.treatment)}}}</div>
   {{editor content=(zhLocalize system.rules.treatment) target=(zhLocalizePath "system.rules.treatment") button=true owner=owner
   editable=editable}}
 </div>
 
 <div class="form-group stacked">
-  <label>{{localize (zhConcat "ZWEI.actor.items." "Status")}}</label>
+  <label>{{localize "ZWEI.actor.items.status"}}</label>
   <label class="checkbox">
     <input name="system.active" type="checkbox" class="link-checkbox" {{checked system.active}} />
-    {{localize (zhConcat "ZWEI.actor.items." "Currently in Effect")}}
+    {{localize "ZWEI.actor.items.ineffect"}}
   </label>
 </div>

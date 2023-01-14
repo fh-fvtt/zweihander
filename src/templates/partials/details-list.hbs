@@ -11,7 +11,7 @@
         {{else if detail.choices}}
         <select name="system.{{detail.key}}">
           {{#each detail.choices}}
-          <option value="{{value}}" {{selected}}>{{localize (zhConcat "ZWEI.actor.details.labels." label)}}</option>
+          <option value="{{value}}" {{selected}}>{{localize (zhConcat "ZWEI.actor.details.labels." (zhLowerCaseSpaces label))}}</option>
           {{/each}}
         </select>
         {{else}}

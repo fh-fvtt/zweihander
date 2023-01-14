@@ -4,19 +4,19 @@
       {{{zhProcessRuleText system.flavor.description}}}
     </div>
     <dl class="compact-details zh-collapsed zh-expandable" data-expand-title="{{localize "ZWEI.chatskill.itemdetails"}}">
-      <dt>{{localize (zhConcat "ZWEI.actor.items." "Associated Skill")}}</dt>
-      <dd>{{localize (zhConcat "ZWEI.actor.skills." system.associatedSkill)}}</dd>
-      <dt>{{localize (zhConcat "ZWEI.actor.items." "Load")}}</dt>
+      <dt>{{localize "ZWEI.actor.items.associatedskill"}}</dt>
+      <dd>{{localize (zhConcat "ZWEI.actor.skills." (zhLowerCaseSpaces system.associatedSkill))}}</dd>
+      <dt>{{localize "ZWEI.actor.items.load"}}</dt>
       <dd>{{system.load}}</dd>
-      <dt>{{localize (zhConcat "ZWEI.actor.items." "Handling")}}</dt>
+      <dt>{{localize "ZWEI.actor.items.handling"}}</dt>
       <dd>{{system.handling}}</dd>
-      <dt>{{localize (zhConcat "ZWEI.actor.items." "Distance")}}</dt>
+      <dt>{{localize "ZWEI.actor.items.distance"}}</dt>
       <dd>{{system.distance}}</dd>
-      <dt>{{localize (zhConcat "ZWEI.actor.items." "Type")}}</dt>
+      <dt>{{localize "ZWEI.actor.items.type"}}</dt>
       <dd>{{system.weaponType}}</dd>
-      <dt>{{localize (zhConcat "ZWEI.actor.items." "Encumbrance")}}</dt>
+      <dt>{{localize "ZWEI.actor.items.encumbrance"}}</dt>
       <dd>{{system.encumbrance}}</dd>
-      <dt>{{localize (zhConcat "ZWEI.actor.items." "Price")}}</dt>
+      <dt>{{localize "ZWEI.actor.items.price"}}</dt>
       <dd>
         {{zhPrice system.price}}
       </dd>

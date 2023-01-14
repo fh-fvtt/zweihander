@@ -1,18 +1,18 @@
 <div>
-  <label>{{localize (zhConcat "ZWEI.actor.items." "Professional Trait")}}:</label>
+  <label>{{localize "ZWEI.actor.items.professionaltrait"}}:</label>
   <a class="fetch-item" data-item-id="{{professionalTrait.linkedId}}">{{professionalTrait.name}}</a>
   <br />
-  <label>{{localize (zhConcat "ZWEI.actor.items." "Special Trait")}}:</label>
+  <label>{{localize "ZWEI.actor.items.specialtrait"}}:</label>
   {{#if specialTrait.name}}
   <a class="fetch-item" data-item-id="{{specialTrait.linkedId}}">{{specialTrait.name}}</a>
   {{else}} - {{/if}} <br />
-  <label>{{localize (zhConcat "ZWEI.actor.items." "Drawback")}}:</label>
+  <label>{{localize "ZWEI.actor.items.drawback"}}:</label>
   {{#if drawback.name}}
   <a class="fetch-item" data-item-id="{{drawback.linkedId}}">{{drawback.name}}</a>
   {{else}} - {{/if}}
 </div>
 <div data-testid="skills{{tier}}">
-  <label>{{localize (zhConcat "ZWEI.actor.items." "Skill Ranks")}}:</label>
+  <label>{{localize "ZWEI.actor.items.skillranks"}}:</label>
   {{#each skillRanks as | skillData i |}}
   <a
     data-purchase-type="skillRanks"
@@ -23,7 +23,7 @@
   >{{#unless @last}}<span>,</span>{{/unless}} {{/each}}
 </div>
 <div data-testid="advances{{tier}}">
-  <label>{{localize (zhConcat "ZWEI.actor.items." "Bonus Advances")}}:</label>
+  <label>{{localize "ZWEI.actor.items.bonusadvances"}}:</label>
   {{#each bonusAdvances as | advancesData i |}}
   <a
     data-purchase-type="bonusAdvances"
@@ -35,7 +35,7 @@
 </div>
 
 <div data-testid="talents{{tier}}">
-  <label>{{localize (zhConcat "ZWEI.actor.items." "Talents")}}:</label>
+  <label>{{localize "ZWEI.actor.items.talents"}}:</label>
   {{#each talents as | talentsData i |}}
   <a
     data-purchase-type="talents"

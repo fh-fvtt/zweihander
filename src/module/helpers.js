@@ -26,6 +26,11 @@ export const registerHandlebarHelpers = async function () {
     return word.toLowerCase();
   });
 
+  $$('zhLowerCaseSpaces', function (word) {
+    if (typeof word !== 'string') return '';
+    return word.toLowerCase().replace(/\s+/g, '');
+  });
+
   $$('zhAlignmentRanks', function (name, alignmentRanks, permanentRanks, options) {
     const alignment = name.split('.')[2];
     const icon = alignment === 'chaos' ? 'ra-cancel' : 'ra-horseshoe';
@@ -184,7 +189,7 @@ export const registerHandlebarHelpers = async function () {
     `
       )
       .join('');
-    return new Handlebars.SafeString(`<div class="form-group"><label>` + game.i18n.localize('ZWEI.actor.items.Price') + `</label>${inputs}</div>`);
+    return new Handlebars.SafeString(`<div class="form-group"><label>` + game.i18n.localize('ZWEI.actor.items.price') + `</label>${inputs}</div>`);
   });
 
   $$('zhProfessionWarn', (item, options) => {

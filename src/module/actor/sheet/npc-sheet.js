@@ -104,35 +104,35 @@ export default class ZweihanderNpcSheet extends ZweihanderCreatureSheet {
   _getItemGroups(groupsData) {
     const itemGroups = super._getItemGroups(groupsData);
     itemGroups.talents = {
-      title: 'Talents',
+      title: 'talents',
       type: 'talent',
       summaryTemplate: 'item-summary/talent',
       details: [],
       items: groupsData.talents,
     };
     itemGroups.rituals = {
-      title: 'Rituals',
+      title: 'rituals',
       type: 'ritual',
       summaryTemplate: 'item-summary/ritual',
       details: [],
       items: groupsData.rituals,
     };
     itemGroups.disorders = {
-      title: 'Disorders',
+      title: 'disorders',
       type: 'disorder',
       summaryTemplate: 'item-summary/disorder',
       details: [],
       items: groupsData.disorders,
     };
     itemGroups.diseases = {
-      title: 'Diseases',
+      title: 'diseases',
       type: 'disease',
       summaryTemplate: 'item-summary/disease',
       details: [],
       items: groupsData.diseases,
     };
     itemGroups.armor = {
-      title: 'Armor',
+      title: 'armor',
       type: 'armor',
       summaryTemplate: 'item-summary/armor',
       details: [],

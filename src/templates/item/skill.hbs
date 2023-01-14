@@ -1,5 +1,5 @@
 <div class="form-group stacked">
-  <label>{{localize (zhConcat "ZWEI.actor.items." "Associated Primary Attribute (for Base Chance)")}}</label>
+  <label>{{localize "ZWEI.actor.items.associatedpa"}}</label>
   <select name="system.associatedPrimaryAttribute">
   {{#each choices.associatedPrimaryAttribute}}
   <option value="{{value}}" {{selected}}>{{localize (zhConcat "ZWEI.actor.primary." (zhLowerCase label))}}</option>
@@ -10,9 +10,9 @@
 
 
 <div class="form-group stacked">
-  <label>{{localize (zhConcat "ZWEI.actor.items." "Status")}}</label>
+  <label>{{localize "ZWEI.actor.items.status"}}</label>
   <label class="checkbox">
     <input name="system.requiresTraining" type="checkbox" class="link-checkbox" {{checked system.requiresTraining}} />
-    {{localize (zhConcat "ZWEI.actor.items." "Requires Training?")}}
+    {{localize "ZWEI.actor.items.requirestraining"}}
   </label>
 </div>
