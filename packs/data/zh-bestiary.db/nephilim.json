@@ -1,0 +1,464 @@
+{
+  "_id": "hviYkouGEhkYeYYW",
+  "effects": [],
+  "img": "systems/zweihander/assets/tokens-border/nephilim.webp",
+  "items": [
+    {
+      "_id": "6DtPO1mNmJp2HaxI",
+      "_stats": {
+        "coreVersion": "10.291",
+        "createdTime": 1672533468272,
+        "lastModifiedBy": "J9BLdjFWV9k3HBYJ",
+        "modifiedTime": 1672533533535,
+        "systemId": "zweihander",
+        "systemVersion": "5.0.4"
+      },
+      "effects": [],
+      "flags": {},
+      "folder": null,
+      "img": "systems/zweihander/assets/icons/sword-hilt.svg",
+      "name": "Tree Trunk",
+      "ownership": {
+        "J9BLdjFWV9k3HBYJ": 3,
+        "default": 0
+      },
+      "sort": 0,
+      "system": {
+        "associatedSkill": "Simple Melee",
+        "carried": true,
+        "damage": {
+          "formula": "[BB] + 0 + (1+[#])d6x6"
+        },
+        "description": {
+          "@en": ""
+        },
+        "distance": "Engaged or 1 Yard",
+        "encumbrance": 0,
+        "equipped": false,
+        "handling": "One-handed",
+        "load": 0,
+        "notes": "",
+        "price": {
+          "bp": 0,
+          "gc": 0,
+          "ss": 0
+        },
+        "qualities": {
+          "value": "Light, Powerful, Reach, Vicious"
+        },
+        "weaponType": ""
+      },
+      "type": "weapon"
+    },
+    {
+      "_id": "ZDpBF0fBgysO9fcm",
+      "_stats": {
+        "coreVersion": "10.291",
+        "createdTime": 1672533587266,
+        "lastModifiedBy": "J9BLdjFWV9k3HBYJ",
+        "modifiedTime": 1672533636391,
+        "systemId": "zweihander",
+        "systemVersion": "5.0.4"
+      },
+      "effects": [],
+      "flags": {},
+      "folder": null,
+      "img": "systems/zweihander/assets/icons/sword-hilt.svg",
+      "name": "Hurled Rock",
+      "ownership": {
+        "J9BLdjFWV9k3HBYJ": 3,
+        "default": 0
+      },
+      "sort": 0,
+      "system": {
+        "associatedSkill": "Simple Ranged",
+        "carried": true,
+        "damage": {
+          "formula": "[BB] + 0 + (1+[#])d6x6"
+        },
+        "description": {
+          "@en": ""
+        },
+        "distance": "5 Yards",
+        "encumbrance": 0,
+        "equipped": false,
+        "handling": "One-handed",
+        "load": 1,
+        "notes": "",
+        "price": {
+          "bp": 0,
+          "gc": 0,
+          "ss": 0
+        },
+        "qualities": {
+          "value": "Pummeling, Punishing, Slow, Throwing"
+        },
+        "weaponType": ""
+      },
+      "type": "weapon"
+    },
+    {
+      "name": "Brute Strength",
+      "__injectId": "zh-creature-traits.KpChaBpeFANUcrux"
+    },
+    {
+      "name": "Dark Sense",
+      "__injectId": "zh-creature-traits.jbt9RrgyQunPC5S3"
+    },
+    {
+      "name": "Dionysian Delights",
+      "__injectId": "zh-creature-traits.lYnlKuCG6pmAOXao"
+    },
+    {
+      "name": "Hideous Might",
+      "__injectId": "zh-creature-traits.DEARqxZiqViAul59"
+    },
+    {
+      "name": "Monstrous Bellow",
+      "__injectId": "zh-creature-traits.LwU4K8jSlxU4KpeJ"
+    },
+    {
+      "name": "Never Surrender",
+      "__injectId": "zh-creature-traits.olRhtqNb8bvufAt1"
+    },
+    {
+      "name": "Sanity-Blasting",
+      "__injectId": "zh-creature-traits.aQb57vLAyDZtXts8"
+    },
+    {
+      "name": "Steely Fortitude",
+      "__injectId": "zh-creature-traits.mi9ZXkdTDkosZ2U2"
+    },
+    {
+      "name": "Stomp the Yard",
+      "__injectId": "zh-creature-traits.miB1KMihuvPXHioU"
+    },
+    {
+      "name": "Swallow Whole",
+      "__injectId": "zh-creature-traits.a6IxmVnZNM7ylSCq"
+    },
+    {
+      "name": "Ungainly",
+      "__injectId": "zh-creature-traits.altNMXDHkjoQfp9b"
+    },
+    {
+      "name": "Unruly",
+      "__injectId": "zh-creature-traits.xkZoJC1RrtuhhcGQ"
+    },
+    {
+      "name": "Bare-handed",
+      "__injectId": "zh-weapons-alt-damage.gc4dmyLpCo2SUEdZ"
+    },
+    {
+      "name": "Alchemy",
+      "__injectId": "skills.013qebwwR0UsPJW3"
+    },
+    {
+      "name": "Leadership",
+      "__injectId": "skills.09BoIxH6f7X0JR7D"
+    },
+    {
+      "name": "Drive",
+      "__injectId": "skills.0H1aT1HQINq8euom"
+    },
+    {
+      "name": "Incantation",
+      "__injectId": "skills.3KDvQ8zcNOxrcZIT"
+    },
+    {
+      "name": "Ride",
+      "__injectId": "skills.4EXrIhf6XL3cC8YW"
+    },
+    {
+      "name": "Heal",
+      "__injectId": "skills.53GCwqszF0yw3Evx"
+    },
+    {
+      "name": "Handle Animal",
+      "__injectId": "skills.6clcPZpa4nmW37WE"
+    },
+    {
+      "name": "Intimidate",
+      "__injectId": "skills.7nFbNzvVCTXOPOJP"
+    },
+    {
+      "name": "Warfare",
+      "__injectId": "skills.DUaQ3tJnvJT7kSv1"
+    },
+    {
+      "name": "Navigation",
+      "__injectId": "skills.Flo1wDWXkfgHgmSC"
+    },
+    {
+      "name": "Simple Melee",
+      "__injectId": "skills.ISOWU2LXU4UStMlM"
+    },
+    {
+      "name": "Counterfeit",
+      "__injectId": "skills.Mxz4jZ5qVxfTt21c"
+    },
+    {
+      "name": "Disguise",
+      "__injectId": "skills.NcUHZKUfmCZzifrC"
+    },
+    {
+      "name": "Resolve",
+      "__injectId": "skills.O9q1tMNrfA7yL1Wc"
+    },
+    {
+      "name": "Athletics",
+      "__injectId": "skills.PeqUxOLue5z66RkH"
+    },
+    {
+      "name": "Pilot",
+      "__injectId": "skills.RS3JSDoEMtQ9g9ci"
+    },
+    {
+      "name": "Scrutinize",
+      "__injectId": "skills.UpCT6nM1pDrrwDNb"
+    },
+    {
+      "name": "Folklore",
+      "__injectId": "skills.UviSlLkTASDHsfWE"
+    },
+    {
+      "name": "Skulduggery",
+      "__injectId": "skills.VvGLd58xqVsauasU"
+    },
+    {
+      "name": "Education",
+      "__injectId": "skills.WrVlpX7sExHC3Vhz"
+    },
+    {
+      "name": "Martial Melee",
+      "__injectId": "skills.YVo0t79ZC3uNCpb6"
+    },
+    {
+      "name": "Bargain",
+      "__injectId": "skills.aG2PyFqhpBm2yfuN"
+    },
+    {
+      "name": "Gamble",
+      "__injectId": "skills.b0AdxogFI1ePq069"
+    },
+    {
+      "name": "Awareness",
+      "__injectId": "skills.cOXHjdhyXZFIOrPR"
+    },
+    {
+      "name": "Tradecraft",
+      "__injectId": "skills.cOgVWBkWyhZB09YG"
+    },
+    {
+      "name": "Charm",
+      "__injectId": "skills.dZJl4nmYtNjaeXgy"
+    },
+    {
+      "name": "Eavesdrop",
+      "__injectId": "skills.jqobIe82ZBGOZmYi"
+    },
+    {
+      "name": "Martial Ranged",
+      "__injectId": "skills.lPfwfPHspXokC0Ao"
+    },
+    {
+      "name": "Survival",
+      "__injectId": "skills.m1VAGBmW3pjriFZr"
+    },
+    {
+      "name": "Stealth",
+      "__injectId": "skills.nXt5D0UEapcq2cAM"
+    },
+    {
+      "name": "Rumor",
+      "__injectId": "skills.r6VL5isi1OFxLS96"
+    },
+    {
+      "name": "Toughness",
+      "__injectId": "skills.s4hMs5SsiR6uhNY8"
+    },
+    {
+      "name": "Guile",
+      "__injectId": "skills.tUlGNzZEfpfrh1wN"
+    },
+    {
+      "name": "Coordination",
+      "__injectId": "skills.uwxLb12nJrZwmheT"
+    },
+    {
+      "name": "Interrogation",
+      "__injectId": "skills.vRWa2nVsYWzbuSo1"
+    },
+    {
+      "name": "Simple Ranged",
+      "__injectId": "skills.z2GfrhmRDmQ4luLz"
+    }
+  ],
+  "name": "Nephilim",
+  "prototypeToken": {
+    "actorLink": false,
+    "alpha": 1,
+    "bar1": {
+      "attribute": "stats.secondaryAttributes.damageCurrent"
+    },
+    "bar2": {
+      "attribute": "stats.secondaryAttributes.perilCurrent"
+    },
+    "detectionModes": [],
+    "displayBars": 0,
+    "displayName": 0,
+    "disposition": -1,
+    "flags": {},
+    "height": 1,
+    "light": {
+      "alpha": 0.5,
+      "angle": 360,
+      "animation": {
+        "intensity": 5,
+        "reverse": false,
+        "speed": 5,
+        "type": null
+      },
+      "attenuation": 0.5,
+      "bright": 0,
+      "color": null,
+      "coloration": 1,
+      "contrast": 0,
+      "darkness": {
+        "max": 1,
+        "min": 0
+      },
+      "dim": 0,
+      "luminosity": 0.5,
+      "saturation": 0,
+      "shadows": 0
+    },
+    "lockRotation": false,
+    "name": "Nephilim",
+    "randomImg": false,
+    "rotation": 0,
+    "sight": {
+      "angle": 360,
+      "attenuation": 0.1,
+      "brightness": 0,
+      "color": null,
+      "contrast": 0,
+      "enabled": false,
+      "range": null,
+      "saturation": 0,
+      "visionMode": "basic"
+    },
+    "texture": {
+      "offsetX": 0,
+      "offsetY": 0,
+      "rotation": 0,
+      "scaleX": 1.5,
+      "scaleY": 1.5,
+      "src": "systems/zweihander/assets/tokens-border/nephilim.webp",
+      "tint": null
+    },
+    "width": 1
+  },
+  "system": {
+    "currency": {},
+    "description": {
+      "@en": ""
+    },
+    "details": {
+      "classification": "Chosen of Chaos",
+      "influences": "",
+      "riskFactor": {
+        "notch": "2",
+        "value": "2"
+      },
+      "role": "",
+      "size": "2"
+    },
+    "flavor": {
+      "description": "Bracelet of Elven ears (3), Hide armor, Heavy hides (9),\nHogshead half full of either cheap wine, Dwarven brew or\nrotgut, Large sack full of rotten meat, Necklace of skulls,\nRock (6), Tree trunk, as cudgel"
+    },
+    "languages": [],
+    "notes": "",
+    "skillRanks": {
+      "Athletics": 3,
+      "Bargain": 3,
+      "Eavesdrop": 3,
+      "Gamble": 3,
+      "Intimidate": 3,
+      "Martial Ranged": 1,
+      "Rumor": 3,
+      "Simple Melee": 3,
+      "Simple Ranged": 3,
+      "Survival": 3,
+      "Toughness": 3
+    },
+    "stats": {
+      "manualMode": true,
+      "primaryAttributes": {
+        "agility": {
+          "bonusAdvances": 3,
+          "value": 40
+        },
+        "brawn": {
+          "bonusAdvances": 9,
+          "value": 50
+        },
+        "combat": {
+          "bonusAdvances": 0,
+          "value": 45
+        },
+        "fellowship": {
+          "bonusAdvances": 0,
+          "value": 40
+        },
+        "intelligence": {
+          "bonusAdvances": 0,
+          "value": 40
+        },
+        "perception": {
+          "bonusAdvances": 0,
+          "value": 40
+        },
+        "willpower": {
+          "bonusAdvances": 2,
+          "value": 40
+        }
+      },
+      "secondaryAttributes": {
+        "damageCurrent": {
+          "max": 5,
+          "value": 5
+        },
+        "damageThreshold": {
+          "value": 15
+        },
+        "dodge": {
+          "associatedSkill": "Coordination",
+          "value": 40
+        },
+        "initiative": {
+          "value": 7
+        },
+        "magick": {
+          "associatedSkill": "Incantation"
+        },
+        "movement": {
+          "fly": 10,
+          "value": 10
+        },
+        "parry": {
+          "associatedSkill": "Simple Melee",
+          "value": 75
+        },
+        "perilCurrent": {
+          "max": 5,
+          "value": 5
+        },
+        "perilThreshold": {
+          "value": 9
+        }
+      }
+    }
+  },
+  "type": "creature"
+}

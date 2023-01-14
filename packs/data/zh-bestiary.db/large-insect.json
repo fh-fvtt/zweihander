@@ -1,0 +1,482 @@
+{
+  "_id": "NVa7TZ9w7NjPFxxC",
+  "effects": [],
+  "img": "systems/zweihander/assets/tokens-border/large_insect.webp",
+  "items": [
+    {
+      "_id": "GG1WTGaYgFiMxUpX",
+      "_stats": {
+        "coreVersion": "10.291",
+        "createdTime": 1670556792559,
+        "lastModifiedBy": "WYhni6JKtGrgUuBo",
+        "modifiedTime": 1670556860620,
+        "systemId": "zweihander",
+        "systemVersion": "5.0.4"
+      },
+      "effects": [],
+      "flags": {
+        "core": {
+          "sourceId": "Actor.AymVMw2pslA5v7qx.Item.GG1WTGaYgFiMxUpX"
+        }
+      },
+      "folder": null,
+      "img": "systems/zweihander/assets/icons/claw.svg",
+      "name": "Teeth or Pincers",
+      "ownership": {
+        "WYhni6JKtGrgUuBo": 3,
+        "default": 0
+      },
+      "sort": 0,
+      "system": {
+        "associatedSkill": "Simple Melee",
+        "carried": true,
+        "damage": {
+          "formula": "[CB] + 0 + (1+[#])d6x6"
+        },
+        "description": {
+          "@en": ""
+        },
+        "distance": "melee engaged",
+        "encumbrance": 0,
+        "equipped": false,
+        "handling": "One-handed",
+        "load": 0,
+        "notes": "",
+        "price": {
+          "bp": 0,
+          "gc": 0,
+          "ss": 0
+        },
+        "qualities": {
+          "value": "fast, entangling, weak"
+        },
+        "weaponType": ""
+      },
+      "type": "weapon"
+    },
+    {
+      "_id": "TgI0j02CnMm6hnGK",
+      "_stats": {
+        "coreVersion": "10.291",
+        "createdTime": 1670562021868,
+        "lastModifiedBy": "WYhni6JKtGrgUuBo",
+        "modifiedTime": 1670562192356,
+        "systemId": "zweihander",
+        "systemVersion": "5.0.4"
+      },
+      "effects": [],
+      "flags": {
+        "core": {
+          "sourceId": "Actor.AymVMw2pslA5v7qx.Item.TgI0j02CnMm6hnGK"
+        }
+      },
+      "folder": null,
+      "img": "systems/zweihander/assets/icons/animal-hide.svg",
+      "name": "Insect hide",
+      "ownership": {
+        "WYhni6JKtGrgUuBo": 3,
+        "default": 0
+      },
+      "sort": 0,
+      "system": {
+        "carried": true,
+        "description": {
+          "@en": ""
+        },
+        "details": {
+          "category": {
+            "@en": ""
+          }
+        },
+        "encumbrance": 0,
+        "notes": "",
+        "price": {
+          "bp": 0,
+          "gc": 0,
+          "ss": 0
+        },
+        "quantity": 1,
+        "rules": {
+          "effect": {
+            "@en": ""
+          }
+        }
+      },
+      "type": "trapping"
+    },
+    {
+      "_id": "ku5bUhC18yIycDVB",
+      "_stats": {
+        "coreVersion": "10.291",
+        "createdTime": 1670562021868,
+        "lastModifiedBy": "WYhni6JKtGrgUuBo",
+        "modifiedTime": 1670562236109,
+        "systemId": "zweihander",
+        "systemVersion": "5.0.4"
+      },
+      "effects": [],
+      "flags": {
+        "core": {
+          "sourceId": "Item.TgI0j02CnMm6hnGK"
+        }
+      },
+      "folder": null,
+      "img": "systems/zweihander/assets/icons/meat.svg",
+      "name": "Insect meat",
+      "ownership": {
+        "WYhni6JKtGrgUuBo": 3,
+        "default": 0
+      },
+      "sort": 0,
+      "system": {
+        "carried": true,
+        "description": {
+          "@en": ""
+        },
+        "details": {
+          "category": {
+            "@en": ""
+          }
+        },
+        "encumbrance": 0,
+        "notes": "",
+        "price": {
+          "bp": 0,
+          "gc": 0,
+          "ss": 0
+        },
+        "quantity": 6,
+        "rules": {
+          "effect": {
+            "@en": ""
+          }
+        }
+      },
+      "type": "trapping"
+    },
+    {
+      "name": "Flammable",
+      "__injectId": "zh-creature-traits.LCGDn0UW1m7lf2MK"
+    },
+    {
+      "name": "Natural Armor (2)",
+      "__rename": true,
+      "__injectId": "zh-creature-traits.hhEeejr6yOlNnvMh"
+    },
+    {
+      "name": "Uncertain Form",
+      "__injectId": "zh-creature-traits.ya7qyYSqvxk6xbu8"
+    },
+    {
+      "name": "Paw/hoof/wing",
+      "__injectId": "zh-creature-traits.d4b0lKqARhGgyyCI"
+    },
+    {
+      "name": "Alchemy",
+      "__injectId": "skills.013qebwwR0UsPJW3"
+    },
+    {
+      "name": "Leadership",
+      "__injectId": "skills.09BoIxH6f7X0JR7D"
+    },
+    {
+      "name": "Drive",
+      "__injectId": "skills.0H1aT1HQINq8euom"
+    },
+    {
+      "name": "Incantation",
+      "__injectId": "skills.3KDvQ8zcNOxrcZIT"
+    },
+    {
+      "name": "Ride",
+      "__injectId": "skills.4EXrIhf6XL3cC8YW"
+    },
+    {
+      "name": "Heal",
+      "__injectId": "skills.53GCwqszF0yw3Evx"
+    },
+    {
+      "name": "Handle Animal",
+      "__injectId": "skills.6clcPZpa4nmW37WE"
+    },
+    {
+      "name": "Intimidate",
+      "__injectId": "skills.7nFbNzvVCTXOPOJP"
+    },
+    {
+      "name": "Warfare",
+      "__injectId": "skills.DUaQ3tJnvJT7kSv1"
+    },
+    {
+      "name": "Navigation",
+      "__injectId": "skills.Flo1wDWXkfgHgmSC"
+    },
+    {
+      "name": "Simple Melee",
+      "__injectId": "skills.ISOWU2LXU4UStMlM"
+    },
+    {
+      "name": "Counterfeit",
+      "__injectId": "skills.Mxz4jZ5qVxfTt21c"
+    },
+    {
+      "name": "Disguise",
+      "__injectId": "skills.NcUHZKUfmCZzifrC"
+    },
+    {
+      "name": "Resolve",
+      "__injectId": "skills.O9q1tMNrfA7yL1Wc"
+    },
+    {
+      "name": "Athletics",
+      "__injectId": "skills.PeqUxOLue5z66RkH"
+    },
+    {
+      "name": "Pilot",
+      "__injectId": "skills.RS3JSDoEMtQ9g9ci"
+    },
+    {
+      "name": "Scrutinize",
+      "__injectId": "skills.UpCT6nM1pDrrwDNb"
+    },
+    {
+      "name": "Folklore",
+      "__injectId": "skills.UviSlLkTASDHsfWE"
+    },
+    {
+      "name": "Skulduggery",
+      "__injectId": "skills.VvGLd58xqVsauasU"
+    },
+    {
+      "name": "Education",
+      "__injectId": "skills.WrVlpX7sExHC3Vhz"
+    },
+    {
+      "name": "Martial Melee",
+      "__injectId": "skills.YVo0t79ZC3uNCpb6"
+    },
+    {
+      "name": "Bargain",
+      "__injectId": "skills.aG2PyFqhpBm2yfuN"
+    },
+    {
+      "name": "Gamble",
+      "__injectId": "skills.b0AdxogFI1ePq069"
+    },
+    {
+      "name": "Awareness",
+      "__injectId": "skills.cOXHjdhyXZFIOrPR"
+    },
+    {
+      "name": "Tradecraft",
+      "__injectId": "skills.cOgVWBkWyhZB09YG"
+    },
+    {
+      "name": "Charm",
+      "__injectId": "skills.dZJl4nmYtNjaeXgy"
+    },
+    {
+      "name": "Eavesdrop",
+      "__injectId": "skills.jqobIe82ZBGOZmYi"
+    },
+    {
+      "name": "Martial Ranged",
+      "__injectId": "skills.lPfwfPHspXokC0Ao"
+    },
+    {
+      "name": "Survival",
+      "__injectId": "skills.m1VAGBmW3pjriFZr"
+    },
+    {
+      "name": "Stealth",
+      "__injectId": "skills.nXt5D0UEapcq2cAM"
+    },
+    {
+      "name": "Rumor",
+      "__injectId": "skills.r6VL5isi1OFxLS96"
+    },
+    {
+      "name": "Toughness",
+      "__injectId": "skills.s4hMs5SsiR6uhNY8"
+    },
+    {
+      "name": "Guile",
+      "__injectId": "skills.tUlGNzZEfpfrh1wN"
+    },
+    {
+      "name": "Coordination",
+      "__injectId": "skills.uwxLb12nJrZwmheT"
+    },
+    {
+      "name": "Interrogation",
+      "__injectId": "skills.vRWa2nVsYWzbuSo1"
+    },
+    {
+      "name": "Simple Ranged",
+      "__injectId": "skills.z2GfrhmRDmQ4luLz"
+    }
+  ],
+  "name": "Large Insect",
+  "prototypeToken": {
+    "actorLink": false,
+    "alpha": 1,
+    "bar1": {
+      "attribute": "stats.secondaryAttributes.damageCurrent"
+    },
+    "bar2": {
+      "attribute": "stats.secondaryAttributes.perilCurrent"
+    },
+    "detectionModes": [],
+    "displayBars": 0,
+    "displayName": 0,
+    "disposition": -1,
+    "flags": {},
+    "height": 2,
+    "light": {
+      "alpha": 0.5,
+      "angle": 360,
+      "animation": {
+        "intensity": 5,
+        "reverse": false,
+        "speed": 5,
+        "type": null
+      },
+      "attenuation": 0.5,
+      "bright": 0,
+      "color": null,
+      "coloration": 1,
+      "contrast": 0,
+      "darkness": {
+        "max": 1,
+        "min": 0
+      },
+      "dim": 0,
+      "luminosity": 0.5,
+      "saturation": 0,
+      "shadows": 0
+    },
+    "lockRotation": false,
+    "name": "Large Insect",
+    "randomImg": false,
+    "rotation": 0,
+    "sight": {
+      "angle": 360,
+      "attenuation": 0.1,
+      "brightness": 0,
+      "color": null,
+      "contrast": 0,
+      "enabled": true,
+      "range": null,
+      "saturation": 0,
+      "visionMode": "basic"
+    },
+    "texture": {
+      "offsetX": 0,
+      "offsetY": 0,
+      "rotation": 0,
+      "scaleX": 1.5,
+      "scaleY": 1.5,
+      "src": "systems/zweihander/assets/tokens-border/large_insect.webp",
+      "tint": null
+    },
+    "width": 2
+  },
+  "system": {
+    "currency": {},
+    "description": {
+      "@en": ""
+    },
+    "details": {
+      "classification": "critter",
+      "influences": "",
+      "riskFactor": {
+        "notch": "0",
+        "value": "0"
+      },
+      "role": "",
+      "size": "2"
+    },
+    "flavor": {
+      "description": "Insects are a common occurrence in a grim & perilous world. They are mainly pests, rarely ever bigger than a person’s palm, but there is no doubt that they outnumber all other living creatures. However, some insects seem to grow much larger and deadlier than others. Whether this is the result of Abyssal influence, mutations brought about by insane Magick wielders or just natural growth is up for debate. Regardless, these Large Insects are hardy and terribly dangerous, many able to grow to the size of a horse. They are extremely resilient creatures, surviving harsh climates and emerging from disastrous cataclysms unscathed. They come in a myriad of shapes and sizes, from spiders to cockroaches to ants to scorpions to dragonflies... and that barely scratches the surface. Large Insects are luckily not as frequently encountered as their smaller brethren; if this was reversed, the awful beasts would have long ago swarmed the earth with gifts of their natural reproductive abilities and sheer numbers"
+    },
+    "languages": [],
+    "notes": "",
+    "skillRanks": {
+      "Athletics": 1,
+      "Awareness": 1,
+      "Coordination": 1,
+      "Resolve": 1,
+      "Simple Melee": 1,
+      "Survival": 1,
+      "Toughness": 1
+    },
+    "stats": {
+      "manualMode": true,
+      "primaryAttributes": {
+        "agility": {
+          "bonusAdvances": 2,
+          "value": 50
+        },
+        "brawn": {
+          "bonusAdvances": 0,
+          "value": 45
+        },
+        "combat": {
+          "bonusAdvances": 0,
+          "value": 40
+        },
+        "fellowship": {
+          "bonusAdvances": 0,
+          "value": 40
+        },
+        "intelligence": {
+          "bonusAdvances": 1,
+          "value": 35
+        },
+        "perception": {
+          "bonusAdvances": 1,
+          "value": 45
+        },
+        "willpower": {
+          "bonusAdvances": 0,
+          "value": 40
+        }
+      },
+      "secondaryAttributes": {
+        "damageCurrent": {
+          "max": 5,
+          "value": 5
+        },
+        "damageThreshold": {
+          "value": 8
+        },
+        "dodge": {
+          "associatedSkill": "Coordination",
+          "value": 0
+        },
+        "initiative": {
+          "value": 7
+        },
+        "magick": {
+          "associatedSkill": "Incantation"
+        },
+        "movement": {
+          "fly": 18,
+          "value": 15
+        },
+        "parry": {
+          "associatedSkill": "Simple Melee",
+          "value": 0
+        },
+        "perilCurrent": {
+          "max": 5,
+          "value": 5
+        },
+        "perilThreshold": {
+          "value": 7
+        }
+      }
+    }
+  },
+  "type": "creature"
+}

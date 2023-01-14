@@ -1,0 +1,448 @@
+{
+  "_id": "fxhT01jHwGXMJXNo",
+  "effects": [],
+  "img": "systems/zweihander/assets/tokens-border/demon_adversary_2_.webp",
+  "items": [
+    {
+      "_id": "NGBjKl1S7FBT9QGW",
+      "_stats": {
+        "coreVersion": "10.291",
+        "createdTime": 1670651446172,
+        "lastModifiedBy": "WYhni6JKtGrgUuBo",
+        "modifiedTime": 1670651633616,
+        "systemId": "zweihander",
+        "systemVersion": "5.0.4"
+      },
+      "effects": [],
+      "flags": {},
+      "folder": null,
+      "img": "systems/zweihander/assets/icons/grasping-claws.svg",
+      "name": "Demonic Claws",
+      "ownership": {
+        "WYhni6JKtGrgUuBo": 3,
+        "default": 0
+      },
+      "sort": 0,
+      "system": {
+        "associatedSkill": "Simple Melee",
+        "carried": true,
+        "damage": {
+          "formula": "[CB] + 0 + (1+[#])d6x6"
+        },
+        "description": {
+          "@en": ""
+        },
+        "distance": "melee engaged",
+        "encumbrance": 0,
+        "equipped": false,
+        "handling": "One-handed",
+        "load": 0,
+        "notes": "",
+        "price": {
+          "bp": 0,
+          "gc": 0,
+          "ss": 0
+        },
+        "qualities": {
+          "value": "fast, vicious"
+        },
+        "weaponType": ""
+      },
+      "type": "weapon"
+    },
+    {
+      "_id": "CFkbdzkBajo3wDsi",
+      "_stats": {
+        "coreVersion": "10.291",
+        "createdTime": 1670651707448,
+        "lastModifiedBy": "WYhni6JKtGrgUuBo",
+        "modifiedTime": 1670651748346,
+        "systemId": "zweihander",
+        "systemVersion": "5.0.4"
+      },
+      "effects": [],
+      "flags": {},
+      "folder": null,
+      "img": "systems/zweihander/assets/icons/cursed-star.svg",
+      "name": "infernal holy symbol",
+      "ownership": {
+        "WYhni6JKtGrgUuBo": 3,
+        "default": 0
+      },
+      "sort": 0,
+      "system": {
+        "carried": true,
+        "description": {
+          "@en": ""
+        },
+        "details": {
+          "category": {
+            "@en": ""
+          }
+        },
+        "encumbrance": 0,
+        "notes": "",
+        "price": {
+          "bp": 0,
+          "gc": 0,
+          "ss": 0
+        },
+        "quantity": 1,
+        "rules": {
+          "effect": {
+            "@en": ""
+          }
+        }
+      },
+      "type": "trapping"
+    },
+    {
+      "name": "Bloodless",
+      "__injectId": "zh-creature-traits.oTCO3b0fIppVOz91"
+    },
+    {
+      "name": "Arcana of Horror",
+      "__injectId": "zh-creature-traits.oAiJh9QmE45Ii4ff"
+    },
+    {
+      "name": "Both-Handedness",
+      "__injectId": "zh-creature-traits.gafcLdG1jtuby5sI"
+    },
+    {
+      "name": "Dark Sense",
+      "__injectId": "zh-creature-traits.jbt9RrgyQunPC5S3"
+    },
+    {
+      "name": "Call of the Abyss",
+      "__injectId": "zh-creature-traits.3id21PS6900HTMM2"
+    },
+    {
+      "name": "Divide & Conquer",
+      "__injectId": "zh-creature-traits.dgXX8HFWITebgY3S"
+    },
+    {
+      "name": "Foul Mutation",
+      "__injectId": "zh-creature-traits.ipFEoJjjBXNbONOm"
+    },
+    {
+      "name": "Horror of the Pit",
+      "__injectId": "zh-creature-traits.7L8NcRyzElVD8H4U"
+    },
+    {
+      "name": "Living Chaos",
+      "__injectId": "zh-creature-traits.NXEZUaKGUqhWz0HC"
+    },
+    {
+      "name": "Alchemy",
+      "__injectId": "skills.013qebwwR0UsPJW3"
+    },
+    {
+      "name": "Leadership",
+      "__injectId": "skills.09BoIxH6f7X0JR7D"
+    },
+    {
+      "name": "Drive",
+      "__injectId": "skills.0H1aT1HQINq8euom"
+    },
+    {
+      "name": "Incantation",
+      "__injectId": "skills.3KDvQ8zcNOxrcZIT"
+    },
+    {
+      "name": "Ride",
+      "__injectId": "skills.4EXrIhf6XL3cC8YW"
+    },
+    {
+      "name": "Heal",
+      "__injectId": "skills.53GCwqszF0yw3Evx"
+    },
+    {
+      "name": "Handle Animal",
+      "__injectId": "skills.6clcPZpa4nmW37WE"
+    },
+    {
+      "name": "Intimidate",
+      "__injectId": "skills.7nFbNzvVCTXOPOJP"
+    },
+    {
+      "name": "Warfare",
+      "__injectId": "skills.DUaQ3tJnvJT7kSv1"
+    },
+    {
+      "name": "Navigation",
+      "__injectId": "skills.Flo1wDWXkfgHgmSC"
+    },
+    {
+      "name": "Simple Melee",
+      "__injectId": "skills.ISOWU2LXU4UStMlM"
+    },
+    {
+      "name": "Counterfeit",
+      "__injectId": "skills.Mxz4jZ5qVxfTt21c"
+    },
+    {
+      "name": "Disguise",
+      "__injectId": "skills.NcUHZKUfmCZzifrC"
+    },
+    {
+      "name": "Resolve",
+      "__injectId": "skills.O9q1tMNrfA7yL1Wc"
+    },
+    {
+      "name": "Athletics",
+      "__injectId": "skills.PeqUxOLue5z66RkH"
+    },
+    {
+      "name": "Pilot",
+      "__injectId": "skills.RS3JSDoEMtQ9g9ci"
+    },
+    {
+      "name": "Scrutinize",
+      "__injectId": "skills.UpCT6nM1pDrrwDNb"
+    },
+    {
+      "name": "Folklore",
+      "__injectId": "skills.UviSlLkTASDHsfWE"
+    },
+    {
+      "name": "Skulduggery",
+      "__injectId": "skills.VvGLd58xqVsauasU"
+    },
+    {
+      "name": "Education",
+      "__injectId": "skills.WrVlpX7sExHC3Vhz"
+    },
+    {
+      "name": "Martial Melee",
+      "__injectId": "skills.YVo0t79ZC3uNCpb6"
+    },
+    {
+      "name": "Bargain",
+      "__injectId": "skills.aG2PyFqhpBm2yfuN"
+    },
+    {
+      "name": "Gamble",
+      "__injectId": "skills.b0AdxogFI1ePq069"
+    },
+    {
+      "name": "Awareness",
+      "__injectId": "skills.cOXHjdhyXZFIOrPR"
+    },
+    {
+      "name": "Tradecraft",
+      "__injectId": "skills.cOgVWBkWyhZB09YG"
+    },
+    {
+      "name": "Charm",
+      "__injectId": "skills.dZJl4nmYtNjaeXgy"
+    },
+    {
+      "name": "Eavesdrop",
+      "__injectId": "skills.jqobIe82ZBGOZmYi"
+    },
+    {
+      "name": "Martial Ranged",
+      "__injectId": "skills.lPfwfPHspXokC0Ao"
+    },
+    {
+      "name": "Survival",
+      "__injectId": "skills.m1VAGBmW3pjriFZr"
+    },
+    {
+      "name": "Stealth",
+      "__injectId": "skills.nXt5D0UEapcq2cAM"
+    },
+    {
+      "name": "Rumor",
+      "__injectId": "skills.r6VL5isi1OFxLS96"
+    },
+    {
+      "name": "Toughness",
+      "__injectId": "skills.s4hMs5SsiR6uhNY8"
+    },
+    {
+      "name": "Guile",
+      "__injectId": "skills.tUlGNzZEfpfrh1wN"
+    },
+    {
+      "name": "Coordination",
+      "__injectId": "skills.uwxLb12nJrZwmheT"
+    },
+    {
+      "name": "Interrogation",
+      "__injectId": "skills.vRWa2nVsYWzbuSo1"
+    },
+    {
+      "name": "Simple Ranged",
+      "__injectId": "skills.z2GfrhmRDmQ4luLz"
+    }
+  ],
+  "name": "Adversary Demon",
+  "prototypeToken": {
+    "actorLink": false,
+    "alpha": 1,
+    "bar1": {
+      "attribute": "stats.secondaryAttributes.damageCurrent"
+    },
+    "bar2": {
+      "attribute": "stats.secondaryAttributes.perilCurrent"
+    },
+    "detectionModes": [],
+    "displayBars": 0,
+    "displayName": 0,
+    "disposition": -1,
+    "flags": {},
+    "height": 1,
+    "light": {
+      "alpha": 0.5,
+      "angle": 360,
+      "animation": {
+        "intensity": 5,
+        "reverse": false,
+        "speed": 5,
+        "type": null
+      },
+      "attenuation": 0.5,
+      "bright": 0,
+      "color": null,
+      "coloration": 1,
+      "contrast": 0,
+      "darkness": {
+        "max": 1,
+        "min": 0
+      },
+      "dim": 0,
+      "luminosity": 0.5,
+      "saturation": 0,
+      "shadows": 0
+    },
+    "lockRotation": false,
+    "name": "Adversary Demon",
+    "randomImg": false,
+    "rotation": 0,
+    "sight": {
+      "angle": 360,
+      "attenuation": 0.1,
+      "brightness": 0,
+      "color": null,
+      "contrast": 0,
+      "enabled": false,
+      "range": null,
+      "saturation": 0,
+      "visionMode": "basic"
+    },
+    "texture": {
+      "offsetX": 0,
+      "offsetY": 0,
+      "rotation": 0,
+      "scaleX": 1.5,
+      "scaleY": 1.5,
+      "src": "systems/zweihander/assets/tokens-border/demon_adversary_2_.webp",
+      "tint": null
+    },
+    "width": 1
+  },
+  "system": {
+    "currency": {},
+    "description": {
+      "@en": ""
+    },
+    "details": {
+      "classification": "LOWER DEMON",
+      "influences": "",
+      "riskFactor": {
+        "notch": "2",
+        "value": "1"
+      },
+      "role": "",
+      "size": "2"
+    },
+    "flavor": {
+      "description": "Sitting upon His hidden throne, the Abyssal Prince of Change schemes for the end times. A conspirator and hoarder of knowledge and magic, He plays the long con when it comes to the oblivion. Unlike the other three Abyssal Princes, the Prince of Change will further exacerbate the mutating form of the Sorrow Demon when it is sponsored, changed into an Adversary Demon. This new demon of nearly pure chaos steps up to join in the Adversary Demon order. Demonologists calls this order of demons Thamiel, translating to ‘duality in the gods’, as the Adversary Demon represents the inherent disharmony of their forms. While almost every other order of demons has at least a Human level of intellect, the Adversary Demon’s minds have become so soured and warped that they are little more than gibbering fiends lashing out at anything that comes their way. Their minds and bodies are at the whims of madness, their physical forms being able to shift before a person’s very eyes. All for the better, as simple minded aides allow the Abyssal Prince of Change to plot unhindered. Aside from being insane foes, the Adversary Demon’s main purpose is that their bodies are literally brimming with Magickal energies. This ability only amplifies as more Adversary Demons gather together, so they are often summoned in small hordes rather than by themselves. Adversary Demons shift their physical structure at a moment’s notice, but their most ‘stable’ form is often an impish, pink humanoid with a wide maw, wild eyes and four long, spindly limbs. Adversary Demons are most often brought to the Material Realm to serve as Magickal conduits or in hopes of revealing arcane secrets a sorcerer cannot find elsewhere. If the Adversary Demon can manage a moment of clarity in their manic minds, then sometimes they will reveal such secrets – the Abyssal Prince of Sacrifice is often very generous with His powers, as He knows how easily they corrupt. More often than not the Adversary Demon will fight, as their particular order can barely stand existing outside of the Abyss. These creatures are more powerful than they appear, many mages falsely associating madness with weakness. Mangled corpses and the lingering sign of powerful Magicks around summoning circles attest to the fact that myth is untrue."
+    },
+    "languages": [],
+    "notes": "",
+    "skillRanks": {
+      "Awareness": 2,
+      "Bargain": 2,
+      "Coordination": 2,
+      "Education": 1,
+      "Folklore": 2,
+      "Guile": 2,
+      "Incantation": 2,
+      "Interrogation": 2,
+      "Intimidate": 2,
+      "Navigation": 0,
+      "Resolve": 1,
+      "Simple Melee": 2
+    },
+    "stats": {
+      "manualMode": true,
+      "primaryAttributes": {
+        "agility": {
+          "bonusAdvances": 3,
+          "value": 40
+        },
+        "brawn": {
+          "bonusAdvances": 2,
+          "value": 45
+        },
+        "combat": {
+          "bonusAdvances": 2,
+          "value": 45
+        },
+        "fellowship": {
+          "bonusAdvances": 0,
+          "value": 40
+        },
+        "intelligence": {
+          "bonusAdvances": 0,
+          "value": 35
+        },
+        "perception": {
+          "bonusAdvances": 1,
+          "value": 40
+        },
+        "willpower": {
+          "bonusAdvances": 3,
+          "value": 50
+        }
+      },
+      "secondaryAttributes": {
+        "damageCurrent": {
+          "max": 5,
+          "value": 5
+        },
+        "damageThreshold": {
+          "value": 6
+        },
+        "dodge": {
+          "associatedSkill": "Coordination",
+          "value": 70
+        },
+        "initiative": {
+          "value": 8
+        },
+        "magick": {
+          "associatedSkill": "Incantation"
+        },
+        "movement": {
+          "fly": 0,
+          "value": 8
+        },
+        "parry": {
+          "associatedSkill": "Simple Melee",
+          "value": 65
+        },
+        "perilCurrent": {
+          "max": 5,
+          "value": 5
+        },
+        "perilThreshold": {
+          "value": 11
+        }
+      }
+    }
+  },
+  "type": "creature"
+}

@@ -1,0 +1,432 @@
+{
+  "_id": "2BFLkC6ChnDNJ6YI",
+  "effects": [],
+  "img": "systems/zweihander/assets/tokens-border/dullahan.webp",
+  "items": [
+    {
+      "_id": "CqYrT3wBfonxqibF",
+      "_stats": {
+        "coreVersion": "10.291",
+        "createdTime": 1673368963648,
+        "lastModifiedBy": "R2NinK2GNCbx26Vm",
+        "modifiedTime": 1673368983348,
+        "systemId": "zweihander",
+        "systemVersion": "5.0.4"
+      },
+      "effects": [],
+      "flags": {
+        "core": {
+          "sourceId": "Compendium.zweihander.weapons.kX7VZJ82JMpgjJxg"
+        },
+        "scene-packer": {
+          "hash": "6b2bc60f4f7c7832b0f84be05a37eb85bcd6f22d"
+        }
+      },
+      "folder": null,
+      "img": "systems/zweihander/assets/icons/two-handed-sword.svg",
+      "name": "Vertabrae Sword",
+      "ownership": {
+        "JyjuBRFhP4y9QWxg": 3,
+        "R2NinK2GNCbx26Vm": 3,
+        "default": 0
+      },
+      "sort": 0,
+      "system": {
+        "associatedSkill": "Martial Melee",
+        "carried": true,
+        "damage": {
+          "formula": "[CB] + (1+[#])d6x6"
+        },
+        "description": {
+          "@en": "<p>Sometimes, it is called a bastard sword (mostly because you will be cursing whoever wields it). Other times, it&rsquo;s called a great sword (partially because it requires wide berth to swing it). However, it is far more efficient and wieldy than its predecessor, the ubiquitous war hammer.</p>"
+        },
+        "distance": "Engaged or 1 yard",
+        "encumbrance": 3,
+        "equipped": false,
+        "handling": "Two-handed",
+        "load": 0,
+        "notes": "",
+        "price": {
+          "bp": 0,
+          "gc": 12,
+          "ss": 0
+        },
+        "qualities": {
+          "arrayOfValues": [],
+          "value": "Punishing, Reach, Slow"
+        },
+        "weaponType": "Bladed"
+      },
+      "type": "weapon"
+    },
+    {
+      "name": "Accursed",
+      "__injectId": "zh-creature-traits.fiTMqxj6Akd4cijs"
+    },
+    {
+      "name": "Bloodless",
+      "__injectId": "zh-creature-traits.oTCO3b0fIppVOz91"
+    },
+    {
+      "name": "Fey Sight",
+      "__injectId": "zh-creature-traits.OfhttkSPGHyUIHa4"
+    },
+    {
+      "name": "Give Me Your Eyes",
+      "__injectId": "zh-creature-traits.SZgO4lpmgTFU05V7"
+    },
+    {
+      "name": "Golden Death",
+      "__injectId": "zh-creature-traits.kHM0qhl50ZGLAWnk"
+    },
+    {
+      "name": "In the Face",
+      "__injectId": "zh-creature-traits.26tBA86dvQT4fWsS"
+    },
+    {
+      "name": "Reanimator",
+      "__injectId": "zh-creature-traits.WL2OPjWuckHn8YV9"
+    },
+    {
+      "name": "Sanity-Blasting",
+      "__injectId": "zh-creature-traits.aQb57vLAyDZtXts8"
+    },
+    {
+      "name": "Scar the Flesh",
+      "__injectId": "zh-creature-traits.u8ENYFAXaDfagL69"
+    },
+    {
+      "name": "Silent Stalker",
+      "__injectId": "zh-creature-traits.Q5UINKSt84xgxM1V"
+    },
+    {
+      "name": "Steely Fortitude",
+      "__injectId": "zh-creature-traits.mi9ZXkdTDkosZ2U2"
+    },
+    {
+      "name": "Uncertain Form",
+      "__injectId": "zh-creature-traits.ya7qyYSqvxk6xbu8"
+    },
+    {
+      "name": "Unlatch Doors",
+      "__injectId": "zh-creature-traits.Z5pcS9aoWBwBsQtY"
+    },
+    {
+      "name": "Word of Death",
+      "__injectId": "zh-creature-traits.q2yeypAT0ET7Lewi"
+    },
+    {
+      "name": "Alchemy",
+      "__injectId": "skills.013qebwwR0UsPJW3"
+    },
+    {
+      "name": "Leadership",
+      "__injectId": "skills.09BoIxH6f7X0JR7D"
+    },
+    {
+      "name": "Drive",
+      "__injectId": "skills.0H1aT1HQINq8euom"
+    },
+    {
+      "name": "Incantation",
+      "__injectId": "skills.3KDvQ8zcNOxrcZIT"
+    },
+    {
+      "name": "Ride",
+      "__injectId": "skills.4EXrIhf6XL3cC8YW"
+    },
+    {
+      "name": "Heal",
+      "__injectId": "skills.53GCwqszF0yw3Evx"
+    },
+    {
+      "name": "Handle Animal",
+      "__injectId": "skills.6clcPZpa4nmW37WE"
+    },
+    {
+      "name": "Intimidate",
+      "__injectId": "skills.7nFbNzvVCTXOPOJP"
+    },
+    {
+      "name": "Warfare",
+      "__injectId": "skills.DUaQ3tJnvJT7kSv1"
+    },
+    {
+      "name": "Navigation",
+      "__injectId": "skills.Flo1wDWXkfgHgmSC"
+    },
+    {
+      "name": "Simple Melee",
+      "__injectId": "skills.ISOWU2LXU4UStMlM"
+    },
+    {
+      "name": "Counterfeit",
+      "__injectId": "skills.Mxz4jZ5qVxfTt21c"
+    },
+    {
+      "name": "Disguise",
+      "__injectId": "skills.NcUHZKUfmCZzifrC"
+    },
+    {
+      "name": "Resolve",
+      "__injectId": "skills.O9q1tMNrfA7yL1Wc"
+    },
+    {
+      "name": "Athletics",
+      "__injectId": "skills.PeqUxOLue5z66RkH"
+    },
+    {
+      "name": "Pilot",
+      "__injectId": "skills.RS3JSDoEMtQ9g9ci"
+    },
+    {
+      "name": "Scrutinize",
+      "__injectId": "skills.UpCT6nM1pDrrwDNb"
+    },
+    {
+      "name": "Folklore",
+      "__injectId": "skills.UviSlLkTASDHsfWE"
+    },
+    {
+      "name": "Skulduggery",
+      "__injectId": "skills.VvGLd58xqVsauasU"
+    },
+    {
+      "name": "Education",
+      "__injectId": "skills.WrVlpX7sExHC3Vhz"
+    },
+    {
+      "name": "Martial Melee",
+      "__injectId": "skills.YVo0t79ZC3uNCpb6"
+    },
+    {
+      "name": "Bargain",
+      "__injectId": "skills.aG2PyFqhpBm2yfuN"
+    },
+    {
+      "name": "Gamble",
+      "__injectId": "skills.b0AdxogFI1ePq069"
+    },
+    {
+      "name": "Awareness",
+      "__injectId": "skills.cOXHjdhyXZFIOrPR"
+    },
+    {
+      "name": "Tradecraft",
+      "__injectId": "skills.cOgVWBkWyhZB09YG"
+    },
+    {
+      "name": "Charm",
+      "__injectId": "skills.dZJl4nmYtNjaeXgy"
+    },
+    {
+      "name": "Eavesdrop",
+      "__injectId": "skills.jqobIe82ZBGOZmYi"
+    },
+    {
+      "name": "Martial Ranged",
+      "__injectId": "skills.lPfwfPHspXokC0Ao"
+    },
+    {
+      "name": "Survival",
+      "__injectId": "skills.m1VAGBmW3pjriFZr"
+    },
+    {
+      "name": "Stealth",
+      "__injectId": "skills.nXt5D0UEapcq2cAM"
+    },
+    {
+      "name": "Rumor",
+      "__injectId": "skills.r6VL5isi1OFxLS96"
+    },
+    {
+      "name": "Toughness",
+      "__injectId": "skills.s4hMs5SsiR6uhNY8"
+    },
+    {
+      "name": "Guile",
+      "__injectId": "skills.tUlGNzZEfpfrh1wN"
+    },
+    {
+      "name": "Coordination",
+      "__injectId": "skills.uwxLb12nJrZwmheT"
+    },
+    {
+      "name": "Interrogation",
+      "__injectId": "skills.vRWa2nVsYWzbuSo1"
+    },
+    {
+      "name": "Simple Ranged",
+      "__injectId": "skills.z2GfrhmRDmQ4luLz"
+    }
+  ],
+  "name": "Dullahan",
+  "prototypeToken": {
+    "actorLink": false,
+    "alpha": 1,
+    "bar1": {
+      "attribute": "stats.secondaryAttributes.damageCurrent"
+    },
+    "bar2": {
+      "attribute": "stats.secondaryAttributes.perilCurrent"
+    },
+    "detectionModes": [],
+    "displayBars": 0,
+    "displayName": 0,
+    "disposition": -1,
+    "flags": {},
+    "height": 1,
+    "light": {
+      "alpha": 0.5,
+      "angle": 360,
+      "animation": {
+        "intensity": 5,
+        "reverse": false,
+        "speed": 5,
+        "type": null
+      },
+      "attenuation": 0.5,
+      "bright": 0,
+      "color": null,
+      "coloration": 1,
+      "contrast": 0,
+      "darkness": {
+        "max": 1,
+        "min": 0
+      },
+      "dim": 0,
+      "luminosity": 0.5,
+      "saturation": 0,
+      "shadows": 0
+    },
+    "lockRotation": false,
+    "name": "Dullahan",
+    "randomImg": false,
+    "rotation": 0,
+    "sight": {
+      "angle": 360,
+      "attenuation": 0.1,
+      "brightness": 0,
+      "color": null,
+      "contrast": 0,
+      "enabled": false,
+      "range": null,
+      "saturation": 0,
+      "visionMode": "basic"
+    },
+    "texture": {
+      "offsetX": 0,
+      "offsetY": 0,
+      "rotation": 0,
+      "scaleX": 1,
+      "scaleY": 1,
+      "src": "systems/zweihander/assets/tokens-border/dullahan.webp",
+      "tint": null
+    },
+    "width": 1
+  },
+  "system": {
+    "currency": {},
+    "description": {
+      "@en": ""
+    },
+    "details": {
+      "classification": "",
+      "influences": "",
+      "riskFactor": {
+        "notch": "1",
+        "value": "2"
+      },
+      "role": "",
+      "size": "1"
+    },
+    "flavor": {
+      "description": "Dullahan’s head (storm lantern which uses blood for fuel), \nVertebrae sword, Witchhunter’s coat & mantle, Witch\u0002hunter’s hat\n"
+    },
+    "languages": [],
+    "notes": "",
+    "skillRanks": {
+      "Athletics": 1,
+      "Awareness": 2,
+      "Drive": 3,
+      "Eavesdrop": 2,
+      "Folklore": 2,
+      "Interrogation": 2,
+      "Intimidate": 3,
+      "Martial Melee": 3,
+      "Navigation": 2,
+      "Pilot": 1,
+      "Ride": 3,
+      "Simple Ranged": 2,
+      "Stealth": 1
+    },
+    "stats": {
+      "manualMode": true,
+      "primaryAttributes": {
+        "agility": {
+          "bonusAdvances": 4,
+          "value": 40
+        },
+        "brawn": {
+          "bonusAdvances": 1,
+          "value": 45
+        },
+        "combat": {
+          "bonusAdvances": 3,
+          "value": 50
+        },
+        "fellowship": {
+          "bonusAdvances": 0,
+          "value": 40
+        },
+        "intelligence": {
+          "bonusAdvances": 0,
+          "value": 35
+        },
+        "perception": {
+          "bonusAdvances": 3,
+          "value": 45
+        },
+        "willpower": {
+          "bonusAdvances": 1,
+          "value": 40
+        }
+      },
+      "secondaryAttributes": {
+        "damageCurrent": {
+          "max": 5,
+          "value": 5
+        },
+        "damageThreshold": {
+          "value": 8
+        },
+        "dodge": {
+          "associatedSkill": "Coordination",
+          "value": 50
+        },
+        "initiative": {
+          "value": 10
+        },
+        "magick": {
+          "associatedSkill": "Incantation"
+        },
+        "movement": {
+          "fly": 0,
+          "value": 11
+        },
+        "parry": {
+          "associatedSkill": "Simple Melee",
+          "value": 80
+        },
+        "perilCurrent": {
+          "max": 5,
+          "value": 5
+        },
+        "perilThreshold": {
+          "value": 8
+        }
+      }
+    }
+  },
+  "type": "creature"
+}

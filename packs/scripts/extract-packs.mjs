@@ -86,6 +86,12 @@ async function extractPack(filePath, packFilename) {
   const packSources = await db.find({});
   for (const source of packSources) {
     const preparedSource = source;
+    delete preparedSource._stats;
+    delete preparedSource.flags;
+    delete preparedSource.folder;
+    delete preparedSource.ownership;
+    delete preparedSource.permission;
+    delete preparedSource.sort;
     const allKeys = new Set();
     JSON.stringify(preparedSource, (key, value) => {
       allKeys.add(key);

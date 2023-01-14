@@ -2,19 +2,8 @@
   "_id": "aXPKKmC6fJgQCLfe",
   "author": "JyjuBRFhP4y9QWxg",
   "command": "function getFolderNames() {\n  let tables = game.folders.filter(f => f.type === 'Item').reduce((acc, table) => {\n    acc.push({ key: table.id, name: table.name });\n    return acc;\n  }, []);\n  return tables;\n}\n\nlet folders = getFolderNames();\nlet content = `<form><div style=\"display: inline-block; width: 100%; margin-bottom: 10px\">\n  <p>This script will transform items in a folder to another type. </p>\n  <label for=\"output-targetFolder\" style=\"vertical-align: top; margin-right: 10px;\">Select Folder:</label>\n  <br /><select name='output-targetFolder' id='output-targetFolder'>`\n\nfolders.forEach(item => {\n  content += `<option value='${item.key}'>${item.name}</option>`;\n});\n\ncontent += `</select><br/><label for=\"output-sourceType\" style=\"vertical-align: top; margin-right: 10px;\">Source Type:</label><br /><select name=\"output-sourceType\" id=\"output-sourceType\">`;\n\n['talent', 'trait', 'quality'].forEach(x => {\n  content += `<option value='${x}'>${x}</option>`;\n});\n\ncontent += `</select><br/><label for=\"output-targetType\" style=\"vertical-align: top; margin-right: 10px;\">Target Type:</label><br /><select name=\"output-targetType\" id=\"output-targetType\">`;\n\n['trait', 'quality', 'talent'].forEach(x => {\n  content += `<option value='${x}'>${x}</option>`;\n});\n\ncontent += `</select></div><br /></form>`;\n\nconst convertTypes = async (f, st, tt) => {\n  const x = game.items.filter(i => i.folder?.id === f && i.type === st);\n\n  for (let i of x) {\n    await i.update({ type: tt });\n  };\n}\n\nnew Dialog({\n  title: `GeekDad's Compendium to Rolltable Converter`,\n  content: content,\n  buttons: {\n    yes: {\n      icon: \"<i class='fas fa-check'></i>\",\n      label: \"Convert\",\n      callback: (html) => {\n        let targetFolder = html.find(\"select[name='output-targetFolder']\").val();\n        let sourceType = html.find(\"select[name='output-sourceType']\").val();\n        let targetType = html.find(\"select[name='output-targetType']\").val();\n        convertTypes(targetFolder, sourceType, targetType);\n      }\n    },\n    no: {\n      icon: \"<i class='fas fa-times'></i>\",\n      label: 'Cancel'\n    }\n  },\n  default: \"yes\"\n}).render(true);",
-  "flags": {
-    "core": {
-      "sourceId": "Macro.T7XuJ2pRlu9EoaVk"
-    }
-  },
-  "folder": null,
   "img": "systems/zweihander/assets/icons/recycle.svg",
   "name": "Convert Item Types",
-  "permission": {
-    "JyjuBRFhP4y9QWxg": 3,
-    "default": 0
-  },
   "scope": "global",
-  "sort": 0,
   "type": "script"
 }

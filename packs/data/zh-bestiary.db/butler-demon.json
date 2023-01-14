@@ -1,0 +1,505 @@
+{
+  "_id": "MJGcLihrTx5I5nqm",
+  "effects": [],
+  "img": "systems/zweihander/assets/tokens-border/demon_butler.webp",
+  "items": [
+    {
+      "_id": "Qa5syyPOsEBYGUhT",
+      "_stats": {
+        "coreVersion": "10.291",
+        "createdTime": 1670652371884,
+        "lastModifiedBy": "WYhni6JKtGrgUuBo",
+        "modifiedTime": 1670652422600,
+        "systemId": "zweihander",
+        "systemVersion": "5.0.4"
+      },
+      "effects": [],
+      "flags": {},
+      "folder": null,
+      "img": "systems/zweihander/assets/icons/gem-chain.svg",
+      "name": "bonds of servitude",
+      "ownership": {
+        "WYhni6JKtGrgUuBo": 3,
+        "default": 0
+      },
+      "sort": 0,
+      "system": {
+        "carried": true,
+        "description": {
+          "@en": ""
+        },
+        "details": {
+          "category": {
+            "@en": ""
+          }
+        },
+        "encumbrance": 0,
+        "notes": "",
+        "price": {
+          "bp": 0,
+          "gc": 0,
+          "ss": 0
+        },
+        "quantity": 1,
+        "rules": {
+          "effect": {
+            "@en": ""
+          }
+        }
+      },
+      "type": "trapping"
+    },
+    {
+      "_id": "Tsz0Ae3b6uKmDdI5",
+      "_stats": {
+        "coreVersion": "10.291",
+        "createdTime": 1670652389463,
+        "lastModifiedBy": "WYhni6JKtGrgUuBo",
+        "modifiedTime": 1670652406721,
+        "systemId": "zweihander",
+        "systemVersion": "5.0.4"
+      },
+      "effects": [],
+      "flags": {},
+      "folder": null,
+      "img": "systems/zweihander/assets/icons/evil-book.svg",
+      "name": "grimoire of chaotic deeds",
+      "ownership": {
+        "WYhni6JKtGrgUuBo": 3,
+        "default": 0
+      },
+      "sort": 0,
+      "system": {
+        "carried": true,
+        "description": {
+          "@en": ""
+        },
+        "details": {
+          "category": {
+            "@en": ""
+          }
+        },
+        "encumbrance": 0,
+        "notes": "",
+        "price": {
+          "bp": 0,
+          "gc": 0,
+          "ss": 0
+        },
+        "quantity": 1,
+        "rules": {
+          "effect": {
+            "@en": ""
+          }
+        }
+      },
+      "type": "trapping"
+    },
+    {
+      "_id": "qGcqXaTATLp4hySF",
+      "_stats": {
+        "coreVersion": "10.291",
+        "createdTime": 1670651707448,
+        "lastModifiedBy": "WYhni6JKtGrgUuBo",
+        "modifiedTime": 1670652431498,
+        "systemId": "zweihander",
+        "systemVersion": "5.0.4"
+      },
+      "effects": [],
+      "flags": {
+        "core": {
+          "sourceId": "Actor.A1fZnrViPSa1Lca8.Item.CFkbdzkBajo3wDsi"
+        }
+      },
+      "folder": "LRcp8wolSYMPVTMy",
+      "img": "systems/zweihander/assets/icons/cursed-star.svg",
+      "name": "infernal holy symbol",
+      "ownership": {
+        "WYhni6JKtGrgUuBo": 3,
+        "default": 0
+      },
+      "sort": 162500,
+      "system": {
+        "carried": true,
+        "description": {
+          "@en": ""
+        },
+        "details": {
+          "category": {
+            "@en": ""
+          }
+        },
+        "encumbrance": 0,
+        "notes": "",
+        "price": {
+          "bp": 0,
+          "gc": 0,
+          "ss": 0
+        },
+        "quantity": 1,
+        "rules": {
+          "effect": {
+            "@en": ""
+          }
+        }
+      },
+      "type": "trapping"
+    },
+    {
+      "name": "Bloodless",
+      "__injectId": "zh-creature-traits.oTCO3b0fIppVOz91"
+    },
+    {
+      "name": "Both-Handedness",
+      "__injectId": "zh-creature-traits.gafcLdG1jtuby5sI"
+    },
+    {
+      "name": "Call of the Abyss",
+      "__injectId": "zh-creature-traits.3id21PS6900HTMM2"
+    },
+    {
+      "name": "Dark Sense",
+      "__injectId": "zh-creature-traits.jbt9RrgyQunPC5S3"
+    },
+    {
+      "name": "Foul Mutation",
+      "__injectId": "zh-creature-traits.ipFEoJjjBXNbONOm"
+    },
+    {
+      "name": "Horror of the Pit",
+      "__injectId": "zh-creature-traits.7L8NcRyzElVD8H4U"
+    },
+    {
+      "name": "Sanity-Blasting",
+      "__injectId": "zh-creature-traits.aQb57vLAyDZtXts8"
+    },
+    {
+      "name": "Fast on Their Feet",
+      "__injectId": "zh-creature-traits.6XQ342g3Sbzwu1rb"
+    },
+    {
+      "name": "Impish Delights",
+      "__injectId": "zh-creature-traits.OjAIzE87pKax6KuK"
+    },
+    {
+      "name": "Steely Fortitude",
+      "__injectId": "zh-creature-traits.mi9ZXkdTDkosZ2U2"
+    },
+    {
+      "name": "Halitosis Bite",
+      "__injectId": "zh-attack-profiles.hlbnOaFK8lVYO9V4"
+    },
+    {
+      "name": "Alchemy",
+      "__injectId": "skills.013qebwwR0UsPJW3"
+    },
+    {
+      "name": "Leadership",
+      "__injectId": "skills.09BoIxH6f7X0JR7D"
+    },
+    {
+      "name": "Drive",
+      "__injectId": "skills.0H1aT1HQINq8euom"
+    },
+    {
+      "name": "Incantation",
+      "__injectId": "skills.3KDvQ8zcNOxrcZIT"
+    },
+    {
+      "name": "Ride",
+      "__injectId": "skills.4EXrIhf6XL3cC8YW"
+    },
+    {
+      "name": "Heal",
+      "__injectId": "skills.53GCwqszF0yw3Evx"
+    },
+    {
+      "name": "Handle Animal",
+      "__injectId": "skills.6clcPZpa4nmW37WE"
+    },
+    {
+      "name": "Intimidate",
+      "__injectId": "skills.7nFbNzvVCTXOPOJP"
+    },
+    {
+      "name": "Warfare",
+      "__injectId": "skills.DUaQ3tJnvJT7kSv1"
+    },
+    {
+      "name": "Navigation",
+      "__injectId": "skills.Flo1wDWXkfgHgmSC"
+    },
+    {
+      "name": "Simple Melee",
+      "__injectId": "skills.ISOWU2LXU4UStMlM"
+    },
+    {
+      "name": "Counterfeit",
+      "__injectId": "skills.Mxz4jZ5qVxfTt21c"
+    },
+    {
+      "name": "Disguise",
+      "__injectId": "skills.NcUHZKUfmCZzifrC"
+    },
+    {
+      "name": "Resolve",
+      "__injectId": "skills.O9q1tMNrfA7yL1Wc"
+    },
+    {
+      "name": "Athletics",
+      "__injectId": "skills.PeqUxOLue5z66RkH"
+    },
+    {
+      "name": "Pilot",
+      "__injectId": "skills.RS3JSDoEMtQ9g9ci"
+    },
+    {
+      "name": "Scrutinize",
+      "__injectId": "skills.UpCT6nM1pDrrwDNb"
+    },
+    {
+      "name": "Folklore",
+      "__injectId": "skills.UviSlLkTASDHsfWE"
+    },
+    {
+      "name": "Skulduggery",
+      "__injectId": "skills.VvGLd58xqVsauasU"
+    },
+    {
+      "name": "Education",
+      "__injectId": "skills.WrVlpX7sExHC3Vhz"
+    },
+    {
+      "name": "Martial Melee",
+      "__injectId": "skills.YVo0t79ZC3uNCpb6"
+    },
+    {
+      "name": "Bargain",
+      "__injectId": "skills.aG2PyFqhpBm2yfuN"
+    },
+    {
+      "name": "Gamble",
+      "__injectId": "skills.b0AdxogFI1ePq069"
+    },
+    {
+      "name": "Awareness",
+      "__injectId": "skills.cOXHjdhyXZFIOrPR"
+    },
+    {
+      "name": "Tradecraft",
+      "__injectId": "skills.cOgVWBkWyhZB09YG"
+    },
+    {
+      "name": "Charm",
+      "__injectId": "skills.dZJl4nmYtNjaeXgy"
+    },
+    {
+      "name": "Eavesdrop",
+      "__injectId": "skills.jqobIe82ZBGOZmYi"
+    },
+    {
+      "name": "Martial Ranged",
+      "__injectId": "skills.lPfwfPHspXokC0Ao"
+    },
+    {
+      "name": "Survival",
+      "__injectId": "skills.m1VAGBmW3pjriFZr"
+    },
+    {
+      "name": "Stealth",
+      "__injectId": "skills.nXt5D0UEapcq2cAM"
+    },
+    {
+      "name": "Rumor",
+      "__injectId": "skills.r6VL5isi1OFxLS96"
+    },
+    {
+      "name": "Toughness",
+      "__injectId": "skills.s4hMs5SsiR6uhNY8"
+    },
+    {
+      "name": "Guile",
+      "__injectId": "skills.tUlGNzZEfpfrh1wN"
+    },
+    {
+      "name": "Coordination",
+      "__injectId": "skills.uwxLb12nJrZwmheT"
+    },
+    {
+      "name": "Interrogation",
+      "__injectId": "skills.vRWa2nVsYWzbuSo1"
+    },
+    {
+      "name": "Simple Ranged",
+      "__injectId": "skills.z2GfrhmRDmQ4luLz"
+    }
+  ],
+  "name": "Butler Demon",
+  "prototypeToken": {
+    "actorLink": false,
+    "alpha": 1,
+    "bar1": {
+      "attribute": "stats.secondaryAttributes.damageCurrent"
+    },
+    "bar2": {
+      "attribute": "stats.secondaryAttributes.perilCurrent"
+    },
+    "detectionModes": [],
+    "displayBars": 0,
+    "displayName": 0,
+    "disposition": -1,
+    "flags": {},
+    "height": 1,
+    "light": {
+      "alpha": 0.5,
+      "angle": 360,
+      "animation": {
+        "intensity": 5,
+        "reverse": false,
+        "speed": 5,
+        "type": null
+      },
+      "attenuation": 0.5,
+      "bright": 0,
+      "color": null,
+      "coloration": 1,
+      "contrast": 0,
+      "darkness": {
+        "max": 1,
+        "min": 0
+      },
+      "dim": 0,
+      "luminosity": 0.5,
+      "saturation": 0,
+      "shadows": 0
+    },
+    "lockRotation": false,
+    "name": "Butler Demon",
+    "randomImg": false,
+    "rotation": 0,
+    "sight": {
+      "angle": 360,
+      "attenuation": 0.1,
+      "brightness": 0,
+      "color": null,
+      "contrast": 0,
+      "enabled": false,
+      "range": null,
+      "saturation": 0,
+      "visionMode": "basic"
+    },
+    "texture": {
+      "offsetX": 0,
+      "offsetY": 0,
+      "rotation": 0,
+      "scaleX": 1,
+      "scaleY": 1,
+      "src": "systems/zweihander/assets/tokens-border/demon_butler.webp",
+      "tint": null
+    },
+    "width": 1
+  },
+  "system": {
+    "currency": {},
+    "description": {
+      "@en": ""
+    },
+    "details": {
+      "classification": "LOWER DEMON",
+      "influences": "",
+      "riskFactor": {
+        "notch": "1",
+        "value": "1"
+      },
+      "role": "",
+      "size": "1"
+    },
+    "flavor": {
+      "description": "When a spark of chaos breaks off through the cauldron of the bottom of the Abyss, they float off to start their hellish existence in the layers above. There, with a terrible birthing cry and the clap of Ætheric lightning, the Butler Demon is birthed. Their order is classified by the term Samael by demonologists, meaning ‘the left hand’, demonologists accurately describe the role of Butler Demons as minor servants to other demons and arcanists alike. They are small and weak creatures – rarely ever larger than a small child – who resort more on wiles and trickery to survive than any kind of martial prowess. Their forms are multitudinous: some appear as attractive sprites or fairies, others as disgusting balls of bile and others as impish hellhounds. All their forms emit a horrendous stench from their mouths. Though they are weak creatures, that does not mean they are slouches – most of them possess useless wings of some sort, as well as razor sharp claws and teeth perfect for rending. The nature of the Abyss is an odd place – we speak of layers and ascension, but the Abyss is not a physical place that can be navigated. It’s a realm of spirit and energy and the layers are as overlapping as they are separate. It is a relentlessly vile and violent place. One tactic the Butler Demon employs to gain power is to actually spread their True Name through dark whispers through the Veil into the Material Realm. They do this in hopes of being bound as a familiar, where they can feed off and corrupt the energies of their summoner. Once powerful enough, they will usually try to kill their summoner to release their binding and return to the Abyss in order to fight their way into the ranks of the Sorrow Demons."
+    },
+    "languages": [],
+    "notes": "",
+    "skillRanks": {
+      "Athletics": 1,
+      "Charm": 2,
+      "Coordination": 2,
+      "Education": 1,
+      "Folklore": 2,
+      "Guile": 2,
+      "Interrogation": 2,
+      "Intimidate": 1,
+      "Resolve": 1,
+      "Rumor": 2,
+      "Scrutinize": 2,
+      "Simple Melee": 1
+    },
+    "stats": {
+      "manualMode": true,
+      "primaryAttributes": {
+        "agility": {
+          "bonusAdvances": 3,
+          "value": 40
+        },
+        "brawn": {
+          "bonusAdvances": 0,
+          "value": 45
+        },
+        "combat": {
+          "bonusAdvances": 0,
+          "value": 35
+        },
+        "fellowship": {
+          "bonusAdvances": 1,
+          "value": 40
+        },
+        "intelligence": {
+          "bonusAdvances": 0,
+          "value": 50
+        },
+        "perception": {
+          "bonusAdvances": 2,
+          "value": 40
+        },
+        "willpower": {
+          "bonusAdvances": 1,
+          "value": 40
+        }
+      },
+      "secondaryAttributes": {
+        "damageCurrent": {
+          "max": 5,
+          "value": 5
+        },
+        "damageThreshold": {
+          "value": 4
+        },
+        "dodge": {
+          "associatedSkill": "Coordination",
+          "value": 70
+        },
+        "initiative": {
+          "value": 9
+        },
+        "magick": {
+          "associatedSkill": "Incantation"
+        },
+        "movement": {
+          "fly": 0,
+          "value": 10
+        },
+        "parry": {
+          "associatedSkill": "Simple Melee",
+          "value": 0
+        },
+        "perilCurrent": {
+          "max": 5,
+          "value": 5
+        },
+        "perilThreshold": {
+          "value": 8
+        }
+      }
+    }
+  },
+  "type": "creature"
+}
