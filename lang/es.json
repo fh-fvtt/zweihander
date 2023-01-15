@@ -1,45 +1,59 @@
 {
+    "ACTOR": {
+        "TypeCharacter": "Personaje jugador",
+        "TypeNpc": "Personaje no jugador",
+        "TypeCreature": "Criatura"
+    },
+    "ITEM": {
+        "TypeAncestry": "Ancestro",
+        "TypeArmor": "Armadura",
+        "TypeCondition": "Condición",
+        "TypeDisease": "Enfermedad",
+        "TypeDisorder": "Trastorno",
+        "TypeDrawback": "Desventaja",
+        "TypeInjury": "Herida",
+        "TypeProfession": "Profesión",
+        "TypeQuality": "Calidad",
+        "TypeRitual": "Ritual",
+        "TypeSkill": "Habilidad",
+        "TypeSpell": "Hechizo",
+        "TypeTalent": "Talento",
+        "TypeTaint": "Mancha del Caos",
+        "TypeTrait": "Rasgo",
+        "TypeTrapping": "Enseres",
+        "TypeUniqueadvance": "Avance único",
+        "TypeWeapon": "Arma"
+    },
+    "ACTIVEEFFECT": {
+        "TypeBase": "Efecto activo"
+    },
+    "EFFECT": {
+        "StatusDead": "¡Mueres!",
+        "StatusBlind": "Cegado",
+        "StatusChoked": "Estrangulado",
+        "StatusDefenseless": "Desprotegido",
+        "StatusDisarmed": "Desarmado",
+        "StatusHelpless": "Indefenso",
+        "StatusInspired": "Inspirado",
+        "StatusIntimidated": "Intimidado",
+        "StatusKnockedOut": "Noqueado",
+        "StatusProne": "Derribado",
+        "StatusStunned": "Aturdido",
+        "StatusSurprised": "Sorprendido",
+        "StatusBurning": "En llamas",
+        "StatusBleeding": "Desangrarse"
+    },
     "ZWEI": {
-        "item": {
-            "typeancestry": "Ancestro",
-            "typearmor": "Armadura",
-            "typecondition": "Condición",
-            "typedisease": "Enfermedad",
-            "typedisorder": "Trastornos",
-            "typedrawback": "Desventajas",
-            "typeinjury": "Herida",
-            "typeprofession": "Profesión",
-            "typequality": "Calidad",
-            "typeritual": "Ritual",
-            "typeskill": "Habilidad",
-            "typespell": "Hechizo",
-            "typetalent": "Talento",
-            "typetaint": "Mancha del Caos",
-            "typetrait": "Rasgo",
-            "typetrapping": "Enseres",
-            "typeuniqueadvance": "Avances únicos",
-            "typeweapon": "Arma"
+        "Difficulty": {
+            "-30": "Arduos",
+            "-20": "Hard",
+            "-10": "Challenging",
+            "+-0": "Standard",
+            "+10": "Routine",
+            "+20": "Easy",
+            "+30": "Trivial"
         },
-        "activeeffect": {
-            "typebase": "Efecto activo"
-        },
-        "effect": {
-            "statusdead": "¡Mueres!",
-            "statusblind": "Cegado",
-            "statuschoked": "Estrangulado",
-            "statusdefenseless": "Desprotegido",
-            "statusdisarmed": "Desarmado",
-            "statushelpless": "Indefenso",
-            "statusinspired": "Inspirado",
-            "statusintimidated": "Intimidado",
-            "statusknockedout": "Noqueado",
-            "statusprone": "Derribado",
-            "statusstunned": "Aturdido",
-            "statussurprised": "Sorprendido",
-            "statusburning": "En llamas",
-            "statusbleeding": "Desangrarse"
-        },
-        "outcome": {
+        "Outcome": {
             "3": "Crítico",
             "2": "Éxito",
             "1": "Fallo",
@@ -47,9 +61,6 @@
         },
         "actorwarninginvaliditem": "¡No se puede añadir directamente un {itemType} a {actorType}!",
         "actor": {
-            "typecharacter": "Personaje jugador",
-            "typenpc": "Personaje no jugador",
-            "typecreature": "Criatura",
             "header": {
                 "charactername": "Personaje",
                 "npcname": "PNJ/Criatura",
