@@ -37,8 +37,8 @@ export default class CurrencySettings extends FormApplication {
     super.activateListeners(html);
     html.find('.add-currency').click(async () => {
       this.#currencies.push({
-        abbreviation: 'nc',
-        name: 'New Currency',
+        abbreviation: game.i18n.localize("ZWEI.coinage.nc"),
+        name: game.i18n.localize("ZWEI.coinage.newcurrency"),
         color: '#000000',
         equivalentOfLower: 1,
       });
