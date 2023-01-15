@@ -529,8 +529,8 @@
             "goparry": "Parar",
             "gododge": "Esquivar",
             "criticalsuccess": "Crítico",
-            "Success": "Éxito",
-            "Failure": "Fallo",
+            "success": "Éxito",
+            "failure": "Fallo",
             "criticalfailure": "Pifia",
             "explodewithfortune": "Explotar con fortuna",
             "explodewithmisfortune": "Explotar con desgracia",
@@ -551,7 +551,20 @@
         },
         "othermessages": {
             "nofortune": "¡No se puede usar fortuna!",
-            "nomisfortune": "¡No se puede usar desgracia!"
+            "nomisfortune": "¡No se puede usar desgracia!",
+            "setfortune": "Ajusta los puntos de fortuna al número de jugadores más uno",
+            "changefortune": "¡No tiene permisos para cambiar los puntos totales de fortuna en juego!",
+            "spendmisfortune1": "¡No tiene permisos para gastar desgracia! ¡Da un paso atrás, plebeyo, o serás castigado!",
+            "spendmisfortune2": "¡No tiene permisos para gastar desgracia! ¡Da un paso atrás, plebeyo!",
+            "negativefortune": "Lamentablemente, no puede haber un número de puntos de fortuna negativos. Kindly turn a demon or a foul god for the equivalent outcome!",
+            "nomisfortuneleft": "El GM no tiene disponibles puntos de desgracia en este momento",
+            "negativeremoved": "¡No puede haber iconos eliminados con negativos! (Jamás debería aparecer este error. Si esto ocurre, contacte con el desarrollador)",
+            "nofortuneleft": "El grupo no tiene disponible ningún punto de fortuna en este momento",
+            "usedfortune": "{name} ha usado un punto de fortuna. Puntos actuales: {points}/{total}",
+            "usedfortunecount": "{name} ha usado un punto de fortuna. ¡Esperemos que merezca la pena! <p><b>Puntos actuales: {points}/{total} </b></p>",
+            "usedmisfortune1": "Preparaos, ¡el GM ha usado un punto de desgracia! Puntos actuales: {points}/{total}",
+            "usedmisfortune2": "Preparaos, ¡el GM ha usado un punto de desgracia! <p><b>Puntos actuales: {points}/{total} </b></p>",
+            "noreroll": "No se pudo volver a tirar: No quedan puntos de {usefortune}"
         }
     }
 }

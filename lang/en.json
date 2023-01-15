@@ -529,8 +529,8 @@
             "goparry": "Parry",
             "gododge": "Dodge",
             "criticalsuccess": "Critical Success",
-            "Success": "Success",
-            "Failure": "Failure",
+            "success": "Success",
+            "failure": "Failure",
             "criticalfailure": "Critical Failure",
             "explodewithfortune": "Explode with Fortune",
             "explodewithmisfortune": "Explode with Misfortune",
@@ -551,7 +551,20 @@
         },
         "othermessages": {
             "nofortune": "Can't use fortune!",
-            "nomisfortune": "Can't use misfortune!"
+            "nomisfortune": "Can't use misfortune!",
+            "setfortune": "Set total fortune points to the number of connected players plus one.",
+            "changefortune": "You are not privileged to change the total amount of fortune in the game!",
+            "spendmisfortune1": "You are not privileged to spend misfortune! Know your place peasant, or be smited!",
+            "spendmisfortune2": "You are not privileged to spend misfortune! Know your place, peasant!",
+            "negativefortune": "Sorry, but you can't have a negative amount of fortune. Kindly turn a demon or a foul god for the equivalent outcome!",
+            "nomisfortuneleft": "There is no misfortune left for the GM at this time.",
+            "negativeremoved": "Can't have negative removed tokens! (You should never see this error. If you do, please contact the developer.)",
+            "nofortuneleft": "There is no fortune left for the party at this time.",
+            "usedfortune": "{name} used a fortune point. Current fortune points: {points}/{total}",
+            "usedfortunecount": "{name} used a fortune point. Let's hope they make it count! <p><b>Current fortune points: {points}/{total} </b></p>",
+            "usedmisfortune1": "Brace yourselves, the GM used a misfortune point! Current fortune points: {points}/{total}",
+            "usedmisfortune2": "Brace yourselves, the GM used a misfortune point! <p><b>Current fortune points: {points}/{total} </b></p>",
+            "noreroll": "Couldn't reroll skill test: There are no {usefortune} points left."
         }
     }
 }

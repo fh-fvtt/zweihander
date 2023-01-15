@@ -106,7 +106,9 @@ export async function rollTest(
       await FortuneTracker.INSTANCE.useMisfortune();
     }
   } catch (e) {
-    ui.notifications.warn(`Couldn't reroll skill test: There are no ${testConfiguration.useFortune} points left.`);
+    ui.notifications.warn(game.i18n.format("ZWEI.othermessages.noreroll", {
+      usefortune: testConfiguration.useFortune
+    }));
     return;
   }
   const primaryAttribute = skillItem.system.associatedPrimaryAttribute;
@@ -290,7 +292,9 @@ export async function explodeWeaponDamage(message, useFortune) {
       await FortuneTracker.INSTANCE.useMisfortune();
     }
   } catch (e) {
-    ui.notifications.warn(`Couldn't reroll skill test: There are no ${useFortune} points left.`);
+    ui.notifications.warn(game.i18n.format("ZWEI.othermessages.noreroll", {
+      usefortune: useFortune
+    }));
     return;
   }
   const { actorId, weaponId, exploded } = message.flags.zweihander.weaponTestData;

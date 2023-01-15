@@ -30,7 +30,7 @@
     <div class="dice-result">
         <div class="dice-formula">{{localize "ZWEI.chatskill.totalchance"}}:  {{totalChance}}%</div>
         {{{tooltip}}}
-        <h4 class="dice-total outcome-{{effectiveOutcome}}">{{localize (zhConcat "ZWEI.chatskill." outcomeLabel)}}: {{roll}}</h4>
+        <h4 class="dice-total outcome-{{effectiveOutcome}}">{{localize (zhConcat "ZWEI.chatskill." (zhLowerCaseSpaces outcomeLabel))}}: {{roll}}</h4>
     </div>
 </div>
 
