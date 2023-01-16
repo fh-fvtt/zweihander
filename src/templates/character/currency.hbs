@@ -5,54 +5,18 @@
       name="system.currency.{{currency.abbreviation}}" value="{{lookup ../system.currency currency.abbreviation}}"
       placeholder="0" />
     <span style="color:{{currency.color}}"><i class="fas fa-coins"></i>
-    {{#if (eq name "Gold Coins")}}
-    {{localize (zhConcat "ZWEI.coinage." (zhLowerCaseSpaces name))}}
-    {{else}}
-			{{#if (eq name "Silver Shilling")}}
-			{{localize (zhConcat "ZWEI.coinage." (zhLowerCaseSpaces name))}}
-			{{else}}
-				{{#if (eq name "Brass Pennies")}}
-				{{localize (zhConcat "ZWEI.coinage." (zhLowerCaseSpaces name))}}
-				{{else}}
-				{{name}}
-				{{/if}}
-			{{/if}}	
-    {{/if}}
+    {{zhLocalizeConditional "ZWEI.coinage." name}}
     </span>
     <span>
       {{#unless @last}}
       <span style="color:{{currency.color}}">
         1
-    {{#if (eq (zhLookup../settings.currencies (concat i '.abbreviation')) "gc")}}
-    {{localize (zhConcat "ZWEI.coinage." (zhLookup../settings.currencies (concat i '.abbreviation'))) }}
-    {{else}}
-			{{#if (eq (zhLookup../settings.currencies (concat i '.abbreviation')) "ss")}}
-			{{localize (zhConcat "ZWEI.coinage." (zhLookup../settings.currencies (concat i '.abbreviation'))) }}
-			{{else}}
-				{{#if (eq (zhLookup../settings.currencies (concat i '.abbreviation')) "bp")}}
-				{{localize (zhConcat "ZWEI.coinage." (zhLookup../settings.currencies (concat i '.abbreviation'))) }}
-				{{else}}
-				{{zhLookup../settings.currencies (concat i '.abbreviation')}}
-				{{/if}}
-			{{/if}}	
-    {{/if}}
+        {{zhLocalizeConditional "ZWEI.coinage." (zhLookup../settings.currencies (concat i '.abbreviation'))}}
       </span>
       =
       <span style="color:{{zhLookup../settings.currencies (concat (zhAdd i '1') '.color') }}">
         {{zhLookup../settings.currencies (concat i '.equivalentOfLower') }}
-    {{#if (eq (zhLookup../settings.currencies (concat (zhAdd i '1') '.abbreviation')) "gc")}}
-    {{localize (zhConcat "ZWEI.coinage." (zhLookup../settings.currencies (concat (zhAdd i '1') '.abbreviation'))) }}
-    {{else}}
-			{{#if (eq (zhLookup../settings.currencies (concat (zhAdd i '1') '.abbreviation')) "ss")}}
-			{{localize (zhConcat "ZWEI.coinage." (zhLookup../settings.currencies (concat (zhAdd i '1') '.abbreviation'))) }}
-			{{else}}
-				{{#if (eq (zhLookup../settings.currencies (concat (zhAdd i '1') '.abbreviation')) "bp")}}
-				{{localize (zhConcat "ZWEI.coinage." (zhLookup../settings.currencies (concat (zhAdd i '1') '.abbreviation'))) }}
-				{{else}}
-				{{zhLookup../settings.currencies (concat (zhAdd i '1') '.abbreviation')}}
-				{{/if}}
-			{{/if}}	
-    {{/if}}
+        {{zhLocalizeConditional "ZWEI.coinage." (zhLookup../settings.currencies (concat (zhAdd i '1') '.abbreviation'))}}
       </span>
       {{/unless}}
     </span>

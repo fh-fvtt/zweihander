@@ -1,9 +1,11 @@
 <div class="form-group">
   <label>{{localize "ZWEI.actor.items.associatedskill"}}</label>
   <select name="system.associatedSkill">
+    {{!-- In case the system.associatedSkill is not in the skill list --}}
+    <option value="{{system.associatedSkill}}">{{zhLocalizeConditional "ZWEI.actor.skills." system.associatedSkill}}</option>
     {{#select system.associatedSkill}}
     {{#each skills as | skill idx | }}
-      <option value="{{skill}}">{{localize (zhConcat "ZWEI.actor.skills." (zhLowerCaseSpaces skill))}}</option>
+      <option value="{{skill}}">{{zhLocalizeConditional "ZWEI.actor.skills." skill}}</option>
     {{/each}}
     {{/select}}
   </select>
