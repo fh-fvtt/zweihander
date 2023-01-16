@@ -4,24 +4,24 @@
       {{#unless detail.hidden}}
       <li>
         {{#if detail.prefix}}
-        <span class="prefix">{{localize (zhConcat "ZWEI.actor.details.prefixes." detail.prefix)}}</span>
+        <span class="prefix">{{detail.prefix}}</span>
         {{/if}}
         {{#if detail.template}}
         {{> ($$ detail.template) detail}}
         {{else if detail.choices}}
         <select name="system.{{detail.key}}">
           {{#each detail.choices}}
-          <option value="{{value}}" {{selected}}>{{localize (zhConcat "ZWEI.actor.details.labels." label)}}</option>
+          <option value="{{value}}" {{selected}}>{{localize (zhConcat "ZWEI.actor.details.labels." (zhLowerCaseSpaces label))}}</option>
           {{/each}}
         </select>
         {{else}}
         <input type="text" class="auto-size" {{#unless detail.value}}name="system.{{detail.key}}" {{/unless}}
-          placeholder="{{localize (zhConcat "ZWEI.actor.details.placeholders." detail.placeholder)}}"
+          placeholder="{{detail.placeholder}}"
           value="{{#if detail.key}}{{zhLookup ../system detail.key}}{{else}}{{detail.value}}{{/if}}" {{#unless
           detail.key}}disabled="disabled" {{/unless}} />
         {{/if}}
         {{#if detail.postfix}}
-        <span class="postfix">{{localize (zhConcat "ZWEI.actor.details.postfixes." detail.postfix)}}</span>
+        <span class="postfix">{{detail.postfix}}</span>
         {{/if}}
       </li>
       {{/unless}}

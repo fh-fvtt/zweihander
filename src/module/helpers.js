@@ -21,6 +21,16 @@ export const registerHandlebarHelpers = async function () {
     return word.capitalize();
   });
 
+  $$('zhLowerCase', function (word) {
+    if (typeof word !== 'string') return '';
+    return word.toLowerCase();
+  });
+
+  $$('zhLowerCaseSpaces', function (word) {
+    if (typeof word !== 'string') return '';
+    return word.toLowerCase().replace(/\s+/g, '');
+  });
+
   $$('zhAlignmentRanks', function (name, alignmentRanks, permanentRanks, options) {
     const alignment = name.split('.')[2];
     const icon = alignment === 'chaos' ? 'ra-cancel' : 'ra-horseshoe';
@@ -179,7 +189,7 @@ export const registerHandlebarHelpers = async function () {
     `
       )
       .join('');
-    return new Handlebars.SafeString(`<div class="form-group"><label>` + game.i18n.localize('ZWEI.actor.items.Price') + `</label>${inputs}</div>`);
+    return new Handlebars.SafeString(`<div class="form-group"><label>` + game.i18n.localize('ZWEI.actor.items.price') + `</label>${inputs}</div>`);
   });
 
   $$('zhProfessionWarn', (item, options) => {
@@ -219,12 +229,6 @@ export const registerHandlebarHelpers = async function () {
     return new Handlebars.SafeString(html);
   });
 	
-	$$("zhGetBonus", function(word) {
-    if (typeof word !== "string")
-      return game.i18n.localize('ZWEI.actor.bonuses.' + 'B');
-		return game.i18n.localize('ZWEI.actor.bonuses.' + word.charAt(0).toUpperCase() + 'B')
-  });
-
   $$("zhConcat", (...strs) =>
     strs.filter((s) => typeof s !== "object").join("")
   );
@@ -235,4 +239,14 @@ export const registerHandlebarHelpers = async function () {
 		game.i18n.localize('ZWEI.actor.skills.rankabbreviation.master')][rank];
   });
 
+  $$("zhLocalizeConditional", function (keypath, keyvalue) {
+    if (typeof keyvalue !== "string") return "";
+    const keyvalueLS = keyvalue.toLowerCase().replace(/\s+/g, "");
+    const keyvaluesList = ["alchemy", "athletics", "awareness", "bargain", "charm", "coordination", "counterfeit", "disguise", "drive", "eavesdrop", "education", "folklore", "gamble", "guile", "handleanimal", "heal", "incantation", "interrogation", "intimidate", "leadership", "martialmelee", "martialranged", "navigation", "pilot", "resolve", "ride", "rumor", "scrutinize", "simplemelee", "simpleranged", "skulduggery", "stealth", "survival", "toughness", "tradecraft", "warfare","gc","goldcoins","ss","silvershilling","bp","crasspennies","nc","newcurrency"];
+    if (keyvaluesList.includes(keyvalueLS)) {
+      return game.i18n.localize(keypath + keyvalueLS)
+    } else {
+      return keyvalue;
+    }
+  });
 };

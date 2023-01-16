@@ -96,7 +96,7 @@ export default class FortuneTracker extends Application {
   }
 
   get resetRule() {
-    return 'Set total fortune points to the number of connected players plus one.';
+    return game.i18n.localize("ZWEI.othermessages.setfortune");
   }
 
   get removeUsedMisfortune() {
@@ -205,36 +205,40 @@ export default class FortuneTracker extends Application {
     const notifySetting = game.settings.get('zweihander', 'fortuneTrackerSettings').notifications;
     const user = game.users.get(requestingUserId);
     if (updatedState.total !== this.total && !user.isGM) {
-      return 'You are not privileged to change the total amount of fortune in the game!';
+      return game.i18n.localize("ZWEI.othermessages.changefortune");
     } else if (updatedState.removed !== this.removed && !user.isGM) {
-      return 'You are not privileged to spend misfortune! Know your place peasant, or be smited!';
+      return game.i18n.localize("ZWEI.othermessages.spendmisfortune1");
     } else if (updatedState.used < this.used && !user.isGM) {
-      return 'You are not privileged to spend misfortune! Know your place, peasant!';
+      return game.i18n.localize("ZWEI.othermessages.spendmisfortune2");
     } else if (updatedState.total < 0) {
-      return "Sorry, but you can't have a negative amount of fortune. Kindly turn a demon or a foul god for the equivalent outcome!";
+      return game.i18n.localize("ZWEI.othermessages.negativefortune");
     } else if (updatedState.used < 0) {
-      return 'There is no misfortune left for the GM at this time.';
+      return game.i18n.localize("ZWEI.othermessages.nomisfortuneleft");
     } else if (updatedState.removed < 0) {
-      return "Can't have negative removed tokens! (You should never see this error. If you do, please contact the developer.)";
+      return game.i18n.localize("ZWEI.othermessages.negativeremoved");
     } else if (updatedState.used > updatedState.total) {
-      return 'There is no fortune left for the party at this time.';
+      return game.i18n.localize("ZWEI.othermessages.nofortuneleft");
     } else if (updatedState.removed > updatedState.used) {
-      return 'There is no misfortune left for the GM at this time.';
+      return game.i18n.localize("ZWEI.othermessages.nomisfortuneleft");
     } else {
       if (updatedState.used === this.used + 1) {
         const name = user.charname ? user.charname : user.name;
         if (notifySetting === 'notify') {
           ui.notifications.info(
-            `${name} used a fortune point. Current fortune points: ${updatedState.total - updatedState.used}/${
-              updatedState.total
-            }`
+            game.i18n.format("ZWEI.othermessages.usedfortune", {
+              name: name,
+              points: updatedState.total - updatedState.used,
+              total: updatedState.total
+            })
           );
         } else if (notifySetting === 'chat') {
           ChatMessage.create({
             user: requestingUserId,
-            content: `${name} used a fortune point. Let's hope they make it count! <p><b>Current fortune points: ${
-              updatedState.total - updatedState.used
-            }/${updatedState.total} </b></p>`,
+            content: game.i18n.format("ZWEI.othermessages.usedfortunecount", {
+              name: name,
+              points: updatedState.total - updatedState.used,
+              total: updatedState.total
+            }),
           });
         }
       } else if (
@@ -243,16 +247,18 @@ export default class FortuneTracker extends Application {
       ) {
         if (notifySetting === 'notify') {
           ui.notifications.info(
-            `Brace yourselves, the GM used a misfortune point! Current fortune points: ${
-              updatedState.total - updatedState.used
-            }/${updatedState.total}`
+            game.i18n.format("ZWEI.othermessages.usedmisfortune1", {
+              points: updatedState.total - updatedState.used,
+              total: updatedState.total
+            })
           );
         } else if (notifySetting === 'chat') {
           ChatMessage.create({
             user: requestingUserId,
-            content: `Brace yourselves, the GM used a misfortune point! <p><b>Current fortune points: ${
-              updatedState.total - updatedState.used
-            }/${updatedState.total} </b></p>`,
+            content: game.i18n.format("ZWEI.othermessages.usedmisfortune2", {
+              points: updatedState.total - updatedState.used,
+              total: updatedState.total
+            }),
           });
         }
       }
@@ -403,7 +409,7 @@ export default class FortuneTracker extends Application {
     const fortuneBefore = this.fortune;
     this.state = await this.requestSync(this.spendFortune(), true);
     if (fortuneBefore === this.fortune) {
-      throw "Can't use fortune!";
+      throw game.i18n.localize("ZWEI.othermessages.nofortune");
     }
     return true;
   }
@@ -412,7 +418,7 @@ export default class FortuneTracker extends Application {
     const misfortuneBefore = this.misfortune;
     this.state = await this.requestSync(this.spendMisfortune(), true);
     if (misfortuneBefore === this.misfortune) {
-      throw "Can't use misfortune!";
+      throw game.i18n.localize("ZWEI.othermessages.nomisfortune");
     }
     return true;
   }

@@ -21,44 +21,44 @@ export default class ZweihanderNpcSheet extends ZweihanderCreatureSheet {
       },
       {
         key: 'details.age',
-        placeholder: 'Age Group',
+        placeholder: game.i18n.localize('ZWEI.actor.details.placeholders.agegroup'),
       },
       {
         key: 'details.sex',
-        placeholder: 'Sex',
+        placeholder: game.i18n.localize('ZWEI.actor.details.placeholders.sex'),
       },
       {
         key: 'details.ancestry',
-        placeholder: 'Ancestry',
+        placeholder: game.i18n.localize('ZWEI.actor.details.placeholders.ancestry'),
       },
       {
         key: 'details.height',
-        placeholder: 'Height',
+        placeholder: game.i18n.localize('ZWEI.actor.details.placeholders.height'),
       },
       {
         key: 'details.build',
-        placeholder: 'Build',
+        placeholder: game.i18n.localize('ZWEI.actor.details.placeholders.build'),
       },
       {
         key: 'details.complexion',
-        placeholder: 'Complexion',
+        placeholder: game.i18n.localize('ZWEI.actor.details.placeholders.complexion'),
       },
       {
         key: 'details.mannerOfDress',
-        placeholder: 'Manner of Dress',
+        placeholder: game.i18n.localize('ZWEI.actor.details.placeholders.manner'),
       },
       {
         key: 'details.socialClass',
-        placeholder: 'Social Class',
+        placeholder: game.i18n.localize('ZWEI.actor.details.placeholders.socialclass'),
         hidden: this.actor.limited,
       },
       {
         key: 'details.distinguishingMarks',
-        placeholder: 'Distinguishing Marks',
+        placeholder: game.i18n.localize('ZWEI.actor.details.placeholders.marks'),
       },
       {
         key: 'details.archetype',
-        placeholder: 'Archetype',
+        placeholder: game.i18n.localize('ZWEI.actor.details.placeholders.archetype'),
         choices: selectedChoice(
           this.actor.system.details.archetype ?? CONFIG.ZWEI.archetypes[0],
           CONFIG.ZWEI.archetypes.map((a) => ({ value: a, label: a }))
@@ -67,17 +67,17 @@ export default class ZweihanderNpcSheet extends ZweihanderCreatureSheet {
       },
       {
         key: 'details.motivation',
-        placeholder: 'Motivation',
+        placeholder: game.i18n.localize('ZWEI.actor.details.placeholders.motivation'),
         hidden: this.actor.limited,
       },
       {
         key: 'details.alignment',
-        placeholder: 'Alignment',
+        placeholder: game.i18n.localize('ZWEI.actor.details.placeholders.alignment'),
         hidden: this.actor.limited,
       },
       {
         value: sheetData.system.languages,
-        placeholder: '?',
+        placeholder: game.i18n.localize('ZWEI.actor.details.placeholders.languages'),
         template: 'partials/detail-languages',
         hidden: this.actor.limited,
       },
@@ -104,35 +104,35 @@ export default class ZweihanderNpcSheet extends ZweihanderCreatureSheet {
   _getItemGroups(groupsData) {
     const itemGroups = super._getItemGroups(groupsData);
     itemGroups.talents = {
-      title: 'Talents',
+      title: 'talents',
       type: 'talent',
       summaryTemplate: 'item-summary/talent',
       details: [],
       items: groupsData.talents,
     };
     itemGroups.rituals = {
-      title: 'Rituals',
+      title: 'rituals',
       type: 'ritual',
       summaryTemplate: 'item-summary/ritual',
       details: [],
       items: groupsData.rituals,
     };
     itemGroups.disorders = {
-      title: 'Disorders',
+      title: 'disorders',
       type: 'disorder',
       summaryTemplate: 'item-summary/disorder',
       details: [],
       items: groupsData.disorders,
     };
     itemGroups.diseases = {
-      title: 'Diseases',
+      title: 'diseases',
       type: 'disease',
       summaryTemplate: 'item-summary/disease',
       details: [],
       items: groupsData.diseases,
     };
     itemGroups.armor = {
-      title: 'Armor',
+      title: 'armor',
       type: 'armor',
       summaryTemplate: 'item-summary/armor',
       details: [],

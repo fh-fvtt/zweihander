@@ -20,7 +20,7 @@ export const getItemRollConfiguration = (item) => {
 };
 
 export async function getTestConfiguration(skillItem, testType = 'skill', testConfiguration = {}) {
-  testConfiguration.flip = testConfiguration.flip ?? (skillItem.system.isFlipToFail ? 'fail' : 'no-flip');
+  testConfiguration.flip = testConfiguration.flip ?? (skillItem.system.isFlipToFail ? 'flipfail' : 'noflip');
   const configurationFromDialog = await renderConfigurationDialog(testType, skillItem.name, testConfiguration);
   testConfiguration = mergeObject(testConfiguration, configurationFromDialog);
   return testConfiguration;
@@ -35,11 +35,11 @@ async function renderConfigurationDialog(testType, label, testConfiguration = {}
   };
   const toPercentileLabel = (i) => (i === 0 ? '+-0%' : i > 0 ? `+${i}%` : `${i}%`);
   templateData.fortuneOptions = [
-    { value: 'none', label: "Don't Use" },
-    { value: 'fortune', label: 'Use Fortune' },
-    { value: 'misfortune', label: 'Use Misfortune' },
+    { value: 'dontuse', label: game.i18n.localize("ZWEI.rolls.dontuse") },
+    { value: 'usefortune', label: game.i18n.localize("ZWEI.rolls.usefortune") },
+    { value: 'usemisfortune', label: game.i18n.localize("ZWEI.rolls.usemisfortune") },
   ].map((option) => ({
-    selected: (testConfiguration.useFortune ?? 'none') === option.value ? 'selected' : '',
+    selected: (testConfiguration.useFortune ?? 'dontuse') === option.value ? 'selected' : '',
     ...option,
   }));
   templateData.baseChanceModifiers = [...Array(41).keys()].map((i) => {
@@ -53,11 +53,11 @@ async function renderConfigurationDialog(testType, label, testConfiguration = {}
     return { value, label: getDifficultyRatingLabel(value), selected };
   });
   templateData.flipOptions = [
-    { value: 'fail', label: 'Flip to Fail' },
-    { value: 'no-flip', label: "Don't Flip" },
-    { value: 'succeed', label: 'Flip to Succeed' },
+    { value: 'noflip', label: game.i18n.localize("ZWEI.rolls.noflip") },
+    { value: 'flipfail', label: game.i18n.localize("ZWEI.rolls.flipfail")},
+    { value: 'flipsucceed', label: game.i18n.localize("ZWEI.rolls.flipsucceed") },
   ].map((option) => ({
-    selected: (testConfiguration.flip ?? 'no-flip') === option.value ? 'selected' : '',
+    selected: (testConfiguration.flip ?? 'noflip') === option.value ? 'selected' : '',
     ...option,
   }));
   templateData.skillModes = selectedChoice(
@@ -68,10 +68,10 @@ async function renderConfigurationDialog(testType, label, testConfiguration = {}
     }))
   );
   templateData.channelPowerBonuses = [
-    { value: 0, label: "Don't Channel" },
-    { value: 10, label: 'One Step (1d6 Chaos Dice)' },
-    { value: 20, label: 'Two Steps (2d6 Chaos Dice)' },
-    { value: 30, label: 'Three Steps (3d6 Chaos Dice)' },
+    { value: 0, label: "channel0" },
+    { value: 10, label: "channel1" },
+    { value: 20, label: "channel2" },
+    { value: 30, label: "channel3" },
   ].map((option) => ({
     selected: (testConfiguration.channelPowerBonus ?? '0') === option.value ? 'selected' : '',
     ...option,
@@ -107,16 +107,16 @@ function createConfigurationDialog(label, template, templateData, callback) {
   return new Promise((resolve) => {
     renderTemplate(template, templateData).then((content) => {
       const dialog = new Dialog({
-        title: `${label}: Test Configuration`,
+        title: `${label}: ` + game.i18n.localize("ZWEI.rolls.testconfig"),
         content,
         buttons: {
           no: {
             icon: '',
-            label: 'Cancel',
+            label: game.i18n.localize("ZWEI.rolls.cancel"),
           },
           yes: {
             icon: '',
-            label: 'Roll',
+            label: game.i18n.localize("ZWEI.rolls.roll"),
             callback: callback(resolve),
           },
         },

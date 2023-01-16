@@ -41,7 +41,7 @@ ZWEI.testModes = {
     help: 'Visible for GM',
     rollMode: CONST.DICE_ROLL_MODES.BLIND,
   },
-  'secret-opposed': {
+  secretopposed: {
     label: 'Secret Opposed',
     help: 'Visible for GM',
     rollMode: CONST.DICE_ROLL_MODES.BLIND,
@@ -55,20 +55,20 @@ ZWEI.testModes = {
 
 ZWEI.alignmentRanks = 9;
 ZWEI.perilOptions = [
-  'INCAPACITATED!',
-  'Ignore 3 Skill Ranks',
-  'Ignore 2 Skill Ranks',
-  'Ignore 1 Skill Rank',
-  'Imperiled',
-  'Unhindered',
+  'incapacitated',
+  'ignore3',
+  'ignore2',
+  'ignore1',
+  'imperiled',
+  'unhindered',
 ];
 ZWEI.damageOptions = [
-  'SLAIN!',
-  'Grievously Wounded',
-  'Seriously Wounded',
-  'Moderately Wounded',
-  'Lightly Wounded',
-  'Unharmed',
+  'slain',
+  'grievously',
+  'seriously',
+  'moderately',
+  'lightly',
+  'unharmed',
 ];
 ZWEI.tiers = {
   1: 'Basic',
@@ -183,80 +183,80 @@ ZWEI.packSets = {
 ZWEI.archetypes = ['Academic', 'Commoner', 'Knave', 'Ranger', 'Socialite', 'Warrior', 'Expert Profession'];
 
 ZWEI.injurySeverities = [
-  { value: 0, label: 'Moderate' },
-  { value: 1, label: 'Serious' },
-  { value: 2, label: 'Grievous' },
+  { value: 0, label: 'moderate' },
+  { value: 1, label: 'serious' },
+  { value: 2, label: 'grievous' },
 ];
 
 ZWEI.statusEffects = [
   {
     id: 'dead',
-    label: 'EFFECT.StatusDead',
+    label: 'ZWEI.effect.statusdead',
     icon: 'systems/zweihander/assets/icons/death-skull.svg',
   },
   {
     id: 'blind',
-    label: 'EFFECT.StatusBlind',
+    label: 'ZWEI.effect.statusblind',
     icon: 'systems/zweihander/assets/icons/sight-disabled.svg',
   },
   {
     id: 'choke',
-    label: 'EFFECT.StatusChoked',
+    label: 'ZWEI.effect.statuschoked',
     icon: 'systems/zweihander/assets/icons/slipknot.svg',
   },
   {
     id: 'defenseless',
-    label: 'EFFECT.StatusDefenseless',
+    label: 'ZWEI.effect.statusdefenseless',
     icon: 'systems/zweihander/assets/icons/broken-shield.svg',
   },
   {
     id: 'disarmed',
-    label: 'EFFECT.StatusDisarmed',
+    label: 'ZWEI.effect.statusdisarmed',
     icon: 'systems/zweihander/assets/icons/sword-break.svg',
   },
   {
     id: 'helpless',
-    label: 'EFFECT.StatusHelpless',
+    label: 'ZWEI.effect.statushelpless',
     icon: 'systems/zweihander/assets/icons/handcuffed.svg',
   },
   {
     id: 'inspired',
-    label: 'EFFECT.StatusInspired',
+    label: 'ZWEI.effect.statusinspired',
     icon: 'systems/zweihander/assets/icons/armor-upgrade.svg',
   },
   {
     id: 'intimidated',
-    label: 'EFFECT.StatusIntimidated',
+    label: 'ZWEI.effect.statusintimidated',
     icon: 'systems/zweihander/assets/icons/armor-downgrade.svg',
   },
   {
     id: 'knocked',
-    label: 'EFFECT.StatusKnockedOut',
+    label: 'ZWEI.effect.statusknockedout',
     icon: 'systems/zweihander/assets/icons/knockout.svg',
   },
   {
     id: 'prone',
-    label: 'EFFECT.StatusProne',
+    label: 'ZWEI.effect.statusprone',
     icon: 'systems/zweihander/assets/icons/falling.svg',
   },
   {
     id: 'stun',
-    label: 'EFFECT.StatusStunned',
+    label: 'ZWEI.effect.statusstunned',
     icon: 'systems/zweihander/assets/icons/stoned-skull.svg',
   },
   {
     id: 'surprised',
-    label: 'EFFECT.StatusSurprised',
+    label: 'ZWEI.effect.statussurprised',
     icon: 'systems/zweihander/assets/icons/surprised.svg',
   },
   {
     id: 'burning',
-    label: 'EFFECT.StatusBurning',
+    label: 'ZWEI.effect.statusburning',
     icon: 'systems/zweihander/assets/icons/flame.svg',
   },
   {
     id: 'bleeding',
-    label: 'EFFECT.StatusBleeding',
+    label: 'ZWEI.effect.statusbleeding',
     icon: 'systems/zweihander/assets/icons/bleeding-wound.svg',
   },
 ];

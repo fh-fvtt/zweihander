@@ -1,4 +1,4 @@
-<label>{{localize (zhConcat "ZWEI.actor.items." "Qualities")}}: </label>
+<label>{{localize "ZWEI.actor.items.qualities"}}: </label>
 {{#if qualities.arrayOfValues}}
 {{#each qualities.arrayOfValues as | qualityData idx |}}
 <a class="js-display-quality">{{qualityData}}</a>{{#unless @last}}<span>, </span>{{/unless}}

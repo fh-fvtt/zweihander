@@ -3,37 +3,37 @@ import { localizePath } from '../../utils';
 export function getItemGroups(groupsData) {
   return {
     weapons: {
-      title: 'Weapons',
+      title: 'weapons',
       type: 'weapon',
       summaryTemplate: 'item-summary/weapon',
       rollType: 'weapon-roll',
       rollLabelKey: 'system.associatedSkill',
       details: [
         {
-          title: 'Distance',
+          title: 'distance',
           size: 100,
           key: 'system.distance',
           class: 'inject-data',
         },
         {
-          title: 'Load',
+          title: 'load',
           size: 80,
           key: 'system.load',
         },
         {
-          title: 'Enc.',
+          title: 'enc',
           size: 80,
           key: 'system.encumbrance',
           isNumerable: true,
         },
         {
-          title: 'Equipped',
+          title: 'equipped',
           size: 80,
           key: 'system.equipped',
           isCheckbox: true,
         },
         {
-          title: 'Carried',
+          title: 'carried',
           size: 80,
           key: 'system.carried',
           isCheckbox: true,
@@ -42,29 +42,29 @@ export function getItemGroups(groupsData) {
       items: groupsData.weapons,
     },
     armor: {
-      title: 'Armor',
+      title: 'armor',
       type: 'armor',
       summaryTemplate: 'item-summary/armor',
       details: [
         {
-          title: 'DTM',
+          title: 'dtm',
           size: 80,
           key: 'system.damageThresholdModifier',
         },
         {
-          title: 'Enc.',
+          title: 'enc',
           size: 80,
           key: 'system.encumbrance',
           isNumerable: true,
         },
         {
-          title: 'Equipped',
+          title: 'equipped',
           size: 80,
           key: 'system.equipped',
           isCheckbox: true,
         },
         {
-          title: 'Carried',
+          title: 'carried',
           size: 80,
           key: 'system.carried',
           isCheckbox: true,
@@ -73,30 +73,30 @@ export function getItemGroups(groupsData) {
       items: groupsData.armor,
     },
     trappings: {
-      title: 'Trappings',
+      title: 'trappings',
       type: 'trapping',
       summaryTemplate: 'item-summary/trapping',
       details: [
         {
-          title: 'Category',
+          title: 'category',
           size: 160,
           key: localizePath('system.details.category'),
           filterable: true,
         },
         {
-          title: 'Qty.',
+          title: 'qty',
           size: 80,
           key: 'system.quantity',
           isNumerable: true,
         },
         {
-          title: 'Enc.',
+          title: 'enc',
           size: 80,
           key: 'system.encumbrance',
           isNumerable: true,
         },
         {
-          title: 'Carried',
+          title: 'carried',
           size: 160,
           key: 'system.carried',
           isCheckbox: true,
@@ -105,25 +105,25 @@ export function getItemGroups(groupsData) {
       items: groupsData.trappings,
     },
     spells: {
-      title: 'Spells',
+      title: 'spells',
       type: 'spell',
       summaryTemplate: 'item-summary/spell',
       rollType: 'spell-roll',
       rollLabel: groupsData.system.stats.secondaryAttributes.magick.associatedSkill,
       details: [
         {
-          title: 'Principle',
+          title: 'principle',
           size: 140,
           key: 'system.principle',
         },
         {
-          title: 'Distance',
+          title: 'distance',
           size: 200,
           key: 'system.distance',
           class: 'inject-data',
         },
         {
-          title: 'Duration',
+          title: 'duration',
           size: 100,
           key: 'system.duration',
           class: 'inject-data',
@@ -132,22 +132,22 @@ export function getItemGroups(groupsData) {
       items: groupsData.spells,
     },
     rituals: {
-      title: 'Rituals',
+      title: 'rituals',
       type: 'ritual',
       summaryTemplate: 'item-summary/ritual',
       details: [
         {
-          title: 'Channel Power As',
+          title: 'channelpoweras',
           size: 140,
           key: 'system.channelAs',
         },
         {
-          title: 'Difficulty',
+          title: 'difficulty',
           size: 200,
           key: 'system.difficulty',
         },
         {
-          title: 'Casting Time',
+          title: "castingtime",
           size: 100,
           key: 'system.castingTime',
           class: 'inject-data',
@@ -156,17 +156,17 @@ export function getItemGroups(groupsData) {
       items: groupsData.rituals,
     },
     conditions: {
-      title: 'Passive Conditions',
+      title: 'passiveconditions',
       type: 'condition',
       summaryTemplate: 'item-summary/condition',
       details: [
         {
-          title: 'Category',
+          title: 'category',
           size: 140,
           key: localizePath('system.details.category'),
         },
         {
-          title: 'Currently in Effect',
+          title: 'ineffect',
           size: 150,
           key: 'system.active',
           isCheckbox: true,
@@ -175,23 +175,23 @@ export function getItemGroups(groupsData) {
       items: groupsData.conditions,
     },
     effects: {
-      title: 'Temporary Conditions',
+      title: 'temporaryconditions',
       type: 'effect',
       isEffect: true,
       summaryTemplate: 'item-summary/effect',
       details: [
         {
-          title: 'Source',
+          title: 'source',
           size: 140,
           key: localizePath('details.source'),
         },
         {
-          title: 'Category',
+          title: 'category',
           size: 140,
           key: localizePath('details.category'),
         },
         {
-          title: 'Currently in Effect', // @todo: change this in ZweihanderActiveEffect implementation to be more intuitive
+          title: 'ineffect', // @todo: change this in ZweihanderActiveEffect implementation to be more intuitive
           size: 150,
           key: 'disabled',
           isCheckbox: true,
@@ -200,17 +200,17 @@ export function getItemGroups(groupsData) {
       items: groupsData.effects,
     },
     disorders: {
-      title: 'Disorders',
+      title: 'disorders',
       type: 'disorder',
       summaryTemplate: 'item-summary/disorder',
       details: [
         {
-          title: 'Category',
+          title: 'category',
           size: 140,
           key: localizePath('system.details.category'),
         },
         {
-          title: 'Currently in Effect',
+          title: 'ineffect',
           size: 150,
           key: 'system.active',
           isCheckbox: true,
@@ -219,22 +219,22 @@ export function getItemGroups(groupsData) {
       items: groupsData.disorders,
     },
     diseases: {
-      title: 'Diseases',
+      title: 'diseases',
       type: 'disease',
       summaryTemplate: 'item-summary/disease',
       details: [
         {
-          title: 'Duration',
+          title: 'duration',
           size: 140,
           key: 'system.duration',
         },
         {
-          title: 'Resist',
+          title: 'resist',
           size: 140,
           key: 'system.resist',
         },
         {
-          title: 'Currently in Effect',
+          title: 'ineffect',
           size: 150,
           key: 'system.active',
           isCheckbox: true,
@@ -243,26 +243,26 @@ export function getItemGroups(groupsData) {
       items: groupsData.diseases,
     },
     injuries: {
-      title: 'Injuries',
+      title: 'injuries',
       type: 'injury',
       summaryTemplate: 'item-summary/injury',
       details: [
         {
-          title: 'Recuperation Time',
+          title: 'recuperationtime',
           size: 140,
           key: 'system.recuperationTime',
           isNumerable: true,
           unit: ' days',
         },
         {
-          title: 'Severity',
+          title: 'severity',
           size: 140,
           value: function () {
             return CONFIG.ZWEI.injurySeverities[this.system.severity].label;
           },
         },
         {
-          title: 'Currently in Effect',
+          title: 'ineffect',
           size: 150,
           key: 'system.active',
           isCheckbox: true,
@@ -271,17 +271,17 @@ export function getItemGroups(groupsData) {
       items: groupsData.injuries,
     },
     taints: {
-      title: 'Taints of Chaos',
+      title: 'taintschaos',
       type: 'taint',
       summaryTemplate: 'item-summary/taint',
       details: [
         {
-          title: 'Category',
+          title: 'category',
           size: 140,
           key: localizePath('system.details.category'),
         },
         {
-          title: 'Currently in Effect',
+          title: 'ineffect',
           size: 150,
           key: 'system.active',
           isCheckbox: true,
@@ -290,22 +290,22 @@ export function getItemGroups(groupsData) {
       items: groupsData.taints,
     },
     professions: {
-      title: 'Professions',
+      title: 'professions',
       type: 'profession',
       summaryTemplate: 'item-summary/profession',
       details: [
         {
-          title: 'Tier',
+          title: 'tier',
           size: 120,
           key: 'system.tier',
         },
         {
-          title: 'Archetype',
+          title: 'archetype',
           size: 140,
           key: 'system.archetype',
         },
         {
-          title: 'Completed',
+          title: 'completed',
           size: 100,
           key: 'system.completed',
           isCheckbox: true,
@@ -315,12 +315,12 @@ export function getItemGroups(groupsData) {
       items: groupsData.professions,
     },
     traits: {
-      title: 'Traits',
+      title: 'traits',
       type: 'trait',
       summaryTemplate: 'item-summary/trait',
       details: [
         {
-          title: 'Source',
+          title: 'source',
           size: 240,
           key: 'source',
         },
@@ -328,12 +328,12 @@ export function getItemGroups(groupsData) {
       items: groupsData.traits,
     },
     drawbacks: {
-      title: 'Drawbacks',
+      title: 'drawbacks',
       type: 'drawback',
       summaryTemplate: 'item-summary/drawback',
       details: [
         {
-          title: 'Source',
+          title: 'source',
           size: 240,
           key: 'source',
         },
@@ -341,12 +341,12 @@ export function getItemGroups(groupsData) {
       items: groupsData.drawbacks,
     },
     talents: {
-      title: 'Talents',
+      title: 'talents',
       type: 'talent',
       summaryTemplate: 'item-summary/talent',
       details: [
         {
-          title: 'Source',
+          title: 'source',
           size: 240,
           key: 'source',
         },
@@ -354,17 +354,17 @@ export function getItemGroups(groupsData) {
       items: groupsData.talents,
     },
     uniqueAdvances: {
-      title: 'Unique Advances',
+      title: 'uniqueadvances',
       type: 'uniqueAdvance',
       summaryTemplate: 'item-summary/uniqueAdvance',
       details: [
         {
-          title: 'Type',
+          title: 'type',
           size: 140,
           key: 'system.advanceType',
         },
         {
-          title: 'RP Cost',
+          title: 'rpcost',
           size: 100,
           key: 'system.rewardPointCost',
         },
