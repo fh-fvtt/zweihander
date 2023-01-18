@@ -172,7 +172,7 @@ export const registerHandlebarHelpers = async function () {
         .map(
           (c) =>
             `<i class="fas fa-coins currency" style="color: ${c.color}"></i> ${price[c.abbreviation] ?? 0} ${
-              c.abbreviation
+              game.i18n.localize("ZWEI.coinage." + c.abbreviation)
             }`
         )
         .join(' ')
@@ -242,7 +242,7 @@ export const registerHandlebarHelpers = async function () {
   $$("zhLocalizeConditional", function (keypath, keyvalue) {
     if (typeof keyvalue !== "string") return "";
     const keyvalueLS = keyvalue.toLowerCase().replace(/\s+/g, "");
-    const keyvaluesList = ["alchemy", "athletics", "awareness", "bargain", "charm", "coordination", "counterfeit", "disguise", "drive", "eavesdrop", "education", "folklore", "gamble", "guile", "handleanimal", "heal", "incantation", "interrogation", "intimidate", "leadership", "martialmelee", "martialranged", "navigation", "pilot", "resolve", "ride", "rumor", "scrutinize", "simplemelee", "simpleranged", "skulduggery", "stealth", "survival", "toughness", "tradecraft", "warfare","gc","goldcoins","ss","silvershilling","bp","crasspennies","nc","newcurrency"];
+    const keyvaluesList = ["alchemy", "athletics", "awareness", "bargain", "charm", "coordination", "counterfeit", "disguise", "drive", "eavesdrop", "education", "folklore", "gamble", "guile", "handleanimal", "heal", "incantation", "interrogation", "intimidate", "leadership", "martialmelee", "martialranged", "navigation", "pilot", "resolve", "ride", "rumor", "scrutinize", "simplemelee", "simpleranged", "skulduggery", "stealth", "survival", "toughness", "tradecraft", "warfare","gc","goldcoins","ss","silvershilling","bp","brasspennies","nc","newcurrency"];
     if (keyvaluesList.includes(keyvalueLS)) {
       return game.i18n.localize(keypath + keyvalueLS)
     } else {
