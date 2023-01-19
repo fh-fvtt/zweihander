@@ -548,9 +548,13 @@ export const formDataToArray = (formData, key) => {
 };
 
 export const localize = (localizeObj) => {
-  return localizeObj?.['@en'];
+  // return localizeObj?.['@en'];
+  const systemlanguage = '@' + game.settings.get('core','language');
+  return localizeObj?.[systemlanguage] ? localizeObj?.[systemlanguage] : localizeObj?.['@en'];
 };
 
 export const localizePath = (dataPath) => {
-  return `${dataPath}.@en`;
+  // return `${dataPath}.@en`;
+  const systemlanguage = '@' + game.settings.get('core','language');
+  return `${dataPath}.${systemlanguage}` ? `${dataPath}.${systemlanguage}` : `${dataPath}.@en`;
 };

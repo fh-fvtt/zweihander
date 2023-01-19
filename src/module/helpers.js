@@ -250,8 +250,4 @@ export const registerHandlebarHelpers = async function () {
     }
   });
 
-  $$('zhLocalizeDesc', function (localizeObj) {
-    const systemlanguage = '@' + game.settings.get('core','language');
-    return localizeObj?.[systemlanguage];
-  });
 };
