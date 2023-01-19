@@ -5,10 +5,10 @@
     </div>
     <div class="header-details flexrow">
       <h1 class="itemname">
-        <input name="name" type="text" value="{{name}}" placeholder="{{zhCapitalize type}} Name">
+        <input name="name" type="text" value="{{name}}" placeholder="{{localize "ZWEI.actor.details.placeholders.name"}} ({{localize (zhConcat "ITEM.Type" (zhCapitalize type))}})">
       </h1>
       <div class="item-subtitle">
-        {{zhCapitalize type}}
+        {{localize (zhConcat "ITEM.Type" (zhCapitalize type))}}
       </div>
     </div>
   </header>
