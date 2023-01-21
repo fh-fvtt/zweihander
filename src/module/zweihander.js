@@ -179,7 +179,9 @@ Hooks.on('chatCommandsReady', function (chatCommands) {
           : [game.actors.get(ZweihanderUtils.determineCurrentActorId(true))];
         let testConfiguration;
         if (actors.length === 0) {
-          ui.notifications.warn(`Please select a token in order to perform this action!`);
+          ui.notifications.warn(
+            game.i18n.localize("ZWEI.othermessages.selecttoken")
+          );
         }
         for (let actor of actors) {
           const skillItem = actor?.items?.find?.(
@@ -191,7 +193,9 @@ Hooks.on('chatCommandsReady', function (chatCommands) {
             }
             await rollTest(skillItem, 'skill', testConfiguration);
           } else if (actor) {
-            ui.notifications.warn(`Couldn't find a skill named ${messageText}`);
+            ui.notifications.warn(
+              game.i18n.format("ZWEI.othermessages.noskill", { message: messageText })
+              );
             break;
           }
         }
@@ -218,17 +222,13 @@ Hooks.on('chatCommandsReady', function (chatCommands) {
           });
           game.world.updateSource(response);
           await ChatMessage.create({
-            flavor: 'Setting the date for the next session.',
-            content: `
-              <h2>Next Session Date</h2>
-            The next session will be on ${nextSession.toLocaleDateString()}.
-            Please block the date in your calendars.
-            `,
+            flavor: game.i18n.localize("ZWEI.othermessages.settingdate"),
+            content: game.i18n.format("ZWEI.othermessages.nextsession", { next: nextSession.toLocaleDateString() }),
           });
         },
         shouldDisplayToChat: false,
         iconClass: 'fa-calendar',
-        description: 'Set the date for the next session',
+        description: game.i18n.localize("ZWEI.othermessages.setdate"),
       })
     );
   }
@@ -238,7 +238,7 @@ Hooks.on('chatCommandsReady', function (chatCommands) {
       invokeOnCommand: displayHelpMessage,
       shouldDisplayToChat: false,
       iconClass: 'fa-question',
-      description: 'Show System Documentation',
+      description: game.i18n.localize("ZWEI.othermessages.showdocs"),
     })
   );
 });

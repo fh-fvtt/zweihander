@@ -2,7 +2,7 @@ import { ZWEI } from './config';
 
 export const migrateWorld = async (forceSystemPacks = false) => {
   ui.notifications.info(
-    `Applying Zweihander System Migration for version ${game.system.version}. Please be patient and do not close your game or shut down your server.`,
+    game.i18n.format("ZWEI.othermessages.migrationsystem", { version: game.system.version }),
     { permanent: true }
   );
   // Migrate World Actors
@@ -14,7 +14,7 @@ export const migrateWorld = async (forceSystemPacks = false) => {
         await a.update(updateData, { enforceTypes: false });
       }
     } catch (err) {
-      err.message = `Failed Zweihander system migration for Actor ${a.name}: ${err.message}`;
+      err.message = game.i18n.format("ZWEI.othermessages.migrationactor", { name: a.name, message: err.message });
       console.error(err);
     }
   }
@@ -28,7 +28,7 @@ export const migrateWorld = async (forceSystemPacks = false) => {
         await i.update(updateData, { enforceTypes: false });
       }
     } catch (err) {
-      err.message = `Failed Zweihander system migration for Item ${i.name}: ${err.message}`;
+      err.message = game.i18n.format("ZWEI.othermessages.migrationitem", { name: i.name, message: err.message });
       console.error(err);
     }
   }
@@ -44,7 +44,7 @@ export const migrateWorld = async (forceSystemPacks = false) => {
         s.tokens.forEach((t) => (t._actor = null));
       }
     } catch (err) {
-      err.message = `Failed Zweihander system migration for Scene ${s.name}: ${err.message}`;
+      err.message = game.i18n.format("ZWEI.othermessages.migrationscene", { name: s.name, message: err.message });
       console.error(err);
     }
   }
@@ -58,7 +58,9 @@ export const migrateWorld = async (forceSystemPacks = false) => {
 
   // Set the migration as complete
   game.settings.set('zweihander', 'systemMigrationVersion', game.system.version);
-  ui.notifications.info(`Zweihander System Migration to version ${game.system.version} completed!`, {
+  ui.notifications.info(
+    game.i18n.format("ZWEI.othermessages.migrationversion", { version: game.system.version }), 
+    {
     permanent: true,
   });
 };
@@ -93,7 +95,7 @@ const migrateCompendium = async (pack) => {
       console.log(`Migrated ${entity} entity ${doc.name} in Compendium ${pack.collection}`);
     } catch (err) {
       // Handle migration failures
-      err.message = `Failed Zweihander system migration for entity ${doc.name} in pack ${pack.collection}: ${err.message}`;
+      err.message = game.i18n.format("ZWEI.othermessages.migrationfailed", { name: doc.name, pack: pack.collection, message: err.message });
       console.error(err);
     }
   }
@@ -361,8 +363,7 @@ export const migrateWorldSafe = async () => {
 
   // Perform the migration
   if (currentVersion && isNewerVersion(COMPATIBLE_MIGRATION_VERSION, currentVersion)) {
-    const warning =
-      'Your Zweihander system data is from too old a Foundry version and cannot be reliably migrated to the latest version. The process will be attempted, but errors may occur.';
+    const warning = game.i18n.localize("ZWEI.othermessages.systemold");
     ui.notifications.error(warning, { permanent: true });
   }
   await migrateWorld();

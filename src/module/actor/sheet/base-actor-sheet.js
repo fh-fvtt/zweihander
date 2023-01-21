@@ -314,8 +314,8 @@ export default class ZweihanderBaseActorSheet extends ActorSheet {
       const item = this.actor.items.get(i.data('itemId'));
       const type = game.i18n.localize(CONFIG.Item.typeLabels[item.type]);
       await Dialog.confirm({
-        title: `Delete Embedded ${type}: ${item.name}`,
-        content: `<h4>Are you sure?</h4><p>This ${type} will be permanently deleted and cannot be recovered.</p>`,
+        title: game.i18n.format("ZWEI.othermessages.deleteembedded", { type: type, name: item.name }),
+        content: game.i18n.format("ZWEI.othermessages.suretype", { type: type }),
         yes: async () => {
           await this.actor.deleteEmbeddedDocuments('Item', [item.id]);
           i.slideUp(200, () => this.render(false));
@@ -338,8 +338,8 @@ export default class ZweihanderBaseActorSheet extends ActorSheet {
       const effect = this.actor.effects.get(i.data('itemId'));
       const type = game.i18n.localize(CONFIG.ActiveEffect.typeLabels['base']);
       await Dialog.confirm({
-        title: `Delete ${type}: ${effect.label}`,
-        content: `<h4>Are you sure?</h4><p>This ${type} will be permanently deleted and cannot be recovered.</p>`,
+        title: game.i18n.format("ZWEI.othermessages.deletetype", { type: type, label: effect.label }),
+        content: game.i18n.format("ZWEI.othermessages.suretype", { type: type }),
         yes: async () => {
           await this.actor.deleteEmbeddedDocuments('ActiveEffect', [effect.id]);
           i.slideUp(200, () => this.render(false));
@@ -389,7 +389,9 @@ export default class ZweihanderBaseActorSheet extends ActorSheet {
     html.find('.add-new').contextmenu(async (ev) => {
       const packIds = ev.currentTarget.dataset.openPacks?.split?.(',')?.filter?.((x) => x);
       if (!packIds) {
-        ui.notifications.notify(`This item type currently has no system compendium attached!`);
+        ui.notifications.notify(
+          game.i18n.localize("ZWEI.othermessages.errortype")
+          );
         return;
       }
       const packs = packIds.map((x) => game.packs.get(x.trim()));
@@ -442,17 +444,17 @@ export default class ZweihanderBaseActorSheet extends ActorSheet {
       const item = this.actor.items.get(checkbox.data('itemId'));
       if (!event.currentTarget.checked && item.system.tier !== item.actor.system.tier) {
         ui.notifications.error(
-          `In order to reset this professions progress you have to delete the profession above it first!`
+          game.i18n.localize("ZWEI.othermessages.errorreset")
         );
         return;
       }
       Dialog.confirm({
         title: !event.currentTarget.checked
-          ? `Reset Profession Progress: ${item.name}`
-          : `Complete Profession Progress: ${item.name}`,
+          ? game.i18n.format("ZWEI.othermessages.resetprogress", { name: item.name })
+          : game.i18n.format("ZWEI.othermessages.completeprogress", { name: item.name }),
         content: !event.currentTarget.checked
-          ? `<h4>Reset Profession progress?</h4>`
-          : `<h4>Purchase all Profession advances?</h4><p>Current purchase state will be lost!</p>`,
+          ? game.i18n.localize("ZWEI.othermessages.reallyresetprogress")
+          : game.i18n.localize("ZWEI.othermessages.purchaseall"),
         yes: () => ZweihanderProfession.toggleProfessionPurchases(item, !event.currentTarget.checked),
         defaultYes: false,
       });
@@ -594,7 +596,9 @@ export default class ZweihanderBaseActorSheet extends ActorSheet {
         showDialog: true,
       });
     } else {
-      ui.notifications.error(`Associated Skill "${skill}" does not exist for this actor!`);
+      ui.notifications.error(
+        game.i18n.format("ZWEI.othermessages.noskillexists", { skill: skill })
+        );
     }
   }
 

@@ -94,7 +94,7 @@ export const registerHandlebarHelpers = async function () {
     let html = '';
 
     effect.changes.forEach((e) => {
-      html += `<label>Modified Attribute:</label> ${e.key}<br /><label>Mode:</label> ${e.mode}<br /><label>Value:</label> ${e.value}<br />`;
+      html += `<label>` + game.i18n.localize("ZWEI.othermessages.modifiedattribute") + `:</label> ${e.key}<br /><label>` + game.i18n.localize("ZWEI.othermessages.mode") + `:</label> ${e.mode}<br /><label>` + game.i18n.localize("ZWEI.othermessages.value") + `:</label> ${e.value}<br />`;
     });
 
     return new Handlebars.SafeString(html);

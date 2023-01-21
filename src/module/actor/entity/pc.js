@@ -18,7 +18,9 @@ export default class ZweihanderPC extends ZweihanderBaseActor {
         const attr = ZweihanderUtils.primaryAttributeMapping[a.slice(1, 2)];
         //TODO should be safe to remove this after migration of existing data
         if (!attr) {
-          ui?.notifications?.warn(`"${a.trim()}" is not a valid primary attribute bonus abbreviation in ${source}!`);
+          ui?.notifications?.warn(
+            game.i18n.format("ZWEI.othermessages.novalidprimary", { primary: a.trim(), source: source })
+            );
           return;
         }
         systemData.stats.primaryAttributes[attr].bonus += mod;
@@ -133,7 +135,7 @@ export default class ZweihanderPC extends ZweihanderBaseActor {
       } else {
         noWarn ||
           ui?.notifications?.warn(
-            `Can't find associated skill ${secAttr.associatedSkill} for secondary attribute ${name}!`
+            game.i18n.format("ZWEI.othermessages.noassociated", { associated: secAttr.associatedSkill, secondary: name })
           );
       }
     };
@@ -176,8 +178,10 @@ export default class ZweihanderPC extends ZweihanderBaseActor {
       let injuryToRoll = newDamage == 3 ? 'moderate' : newDamage == 2 ? 'serious' : 'grievous';
 
       await Dialog.confirm({
-        title: `${actor.name}: Injury Configuration`,
-        content: `<h4>You are ${injuryToRoll}ly Wounded. Roll for Injury?</h4>`,
+        title: `${actor.name}: ` + game.i18n.localize("ZWEI.othermessages.injuryconfig"),
+        content: game.i18n.format("ZWEI.othermessages.rollinjury", { 
+          injury: game.i18n.localize("ZWEI.actor.conditions." + injuryToRoll.toLowerCase() + "ly")
+        }),
         yes: () => this._rollInjury(injuryToRoll, actor),
         defaultYes: false,
       });
@@ -195,7 +199,7 @@ export default class ZweihanderPC extends ZweihanderBaseActor {
     await rollResult.toMessage({
       speaker: ChatMessage.getSpeaker({ actor: actor }),
       content: injuryChaosRoll.total,
-      flavor: `Attempts to avoid Injury...`,
+      flavor: game.i18n.localize("ZWEI.chatskill.avoidinjury"),
     });
 
     const injurySustained = rollResult.terms[0].results.some((die) => die.result === 6);
@@ -227,9 +231,13 @@ export default class ZweihanderPC extends ZweihanderBaseActor {
           const allTiersAssigned = numberOfProfessionsAttached == 3;
           const dragDroppedOwnProfession = actorProfessions.some((p) => p._id === item._id);
           if (allTiersAssigned && !dragDroppedOwnProfession) {
-            ui.notifications.error('A character may not enter more than 3 Professions.');
+            ui.notifications.error(
+              game.i18n.localize("ZWEI.othermessages.errorprofessions")
+              );
           } else if (!previousTiersCompleted && !dragDroppedOwnProfession) {
-            ui.notifications.error('A character must complete the previous Tier before entering a new Profession.');
+            ui.notifications.error(
+              game.i18n.localize("ZWEI.othermessages.errortier")
+              );
           }
           if (!allTiersAssigned && previousTiersCompleted) {
             filteredData.push(item);
@@ -237,7 +245,9 @@ export default class ZweihanderPC extends ZweihanderBaseActor {
           }
         } else if (item.type === 'ancestry') {
           if (ancestryAttached) {
-            ui.notifications.error('A character may not possess more than 1 Ancestry.');
+            ui.notifications.error(
+              game.i18n.localize("ZWEI.othermessages.errorancestry")
+              );
           } else {
             filteredData.push(item);
             ancestryAttached = true;

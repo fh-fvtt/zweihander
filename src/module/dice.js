@@ -517,7 +517,9 @@ export const patchDie = () => {
 
       // Limit recursion
       if (!recursive && checked >= initial) checked = this.results.length;
-      if (checked > 1000) throw new Error('Maximum recursion depth for exploding dice roll exceeded');
+      if (checked > 1000) throw new Error(
+        game.i18n.localize("ZWEI.othermessages.errorrecursion")
+        );
     }
   };
 
