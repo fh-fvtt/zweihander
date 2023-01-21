@@ -21,6 +21,11 @@ export const registerHandlebarHelpers = async function () {
     return word.capitalize();
   });
 
+  $$('zhCapitalizeStrict', function (word) {
+    if (typeof word !== 'string') return '';
+    return word.slice(0, 1).toUpperCase() + word.slice(1).toLowerCase();
+  });
+  
   $$('zhLowerCase', function (word) {
     if (typeof word !== 'string') return '';
     return word.toLowerCase();
