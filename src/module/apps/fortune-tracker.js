@@ -320,7 +320,7 @@ export default class FortuneTracker extends Application {
       this.#socket.executeForOthers('broadcastState', this.state);
     } else {
       ui.notifications.error(
-        'Only the GM may reset the fortune tracker. Keep your dirty hands to yourself, foolish thing!'
+        game.i18n.localize("ZWEI.othermessages.errorft")
       );
     }
   }
@@ -338,7 +338,9 @@ export default class FortuneTracker extends Application {
       }
       this.#waiting = true;
       this.render(!this.closable);
-      ui.notifications.warn('Fortune Tracker is waiting for a GM to (re)connect.');
+      ui.notifications.warn(
+        game.i18n.localize("ZWEI.othermessages.ftwaiting")
+        );
       if (rethrow) {
         throw e;
       }

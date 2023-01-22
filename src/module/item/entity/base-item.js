@@ -105,11 +105,7 @@ export default class ZweihanderBaseItem {
       const existingFlag = existingItemWithSameName.getFlag('zweihander', 'source');
       if (existingFlag) {
         ui?.notifications.warn(
-          `The ${existingItemWithSameName.type.capitalize()} "${
-            existingItemWithSameName.name
-          }" has been previously added by ${existingFlag.label}! Please contact your GM to replace this ${
-            existingItemWithSameName.type
-          } on ${flag.label}`
+          game.i18n.format("ZWEI.othermessages.previouslyadded", { type: existingItemWithSameName.type.capitalize(), name: existingItemWithSameName.name, label: existingFlag.label, existing: existingItemWithSameName.type, flag: flag.label })
         );
         return notFoundValue;
       }

@@ -295,8 +295,8 @@ export default class ZweihanderCharacterSheet extends ZweihanderBaseActorSheet {
     // Reset Order and Chaos Ranks
     html.find('.reset-ranks').contextmenu(() => {
       Dialog.confirm({
-        title: `${this.actor.name}: Reset Ranks`,
-        content: `<h4>Are you sure?</h4><p>Your Order and Chaos Ranks will be reset to 0!</p>`,
+        title: `${this.actor.name}: ` + game.i18n.localize("ZWEI.othermessages.resetranks"),
+        content: game.i18n.localize("ZWEI.othermessages.sureranks"),
         yes: () =>
           this.actor.update({
             'system.alignment.chaos.rank': 0,

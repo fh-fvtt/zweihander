@@ -8,7 +8,7 @@ export default class ZweihanderInjury extends ZweihanderBaseItem {
       const d = Number(item.system.severity) + 1;
       const roll = await new Roll(`${d}d10+${d}`).evaluate();
       const speaker = ChatMessage.getSpeaker({ actor: that.actor });
-      roll.toMessage({ flavor: 'Determining Recuperation Time', speaker });
+      roll.toMessage({ flavor: game.i18n.localize("ZWEI.othermessages.recuperationtime"), speaker });
       that.updateSource({ 'system.recuperationTime': roll.total });
     }
   }

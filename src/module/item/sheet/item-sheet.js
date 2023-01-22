@@ -131,12 +131,14 @@ export default class ZweihanderItemSheet extends ItemSheet {
       }
       if (!item && trait.trim() !== '') {
         ui?.notifications.warn(
-          `Couldn't find an ancestral trait with a name like ${trait} anywhere in the world or in compendia!`,
+          game.i18n.format("ZWEI.othermessages.noancestral", { trait: trait }),
           { permanent: true }
         );
         //TODO move to actor#prepareDerivedData
         if (this.item.isOwned) {
-          ui?.notifications.error(`Please choose a valid, existing ancestral trait!`, {
+          ui?.notifications.error(
+            game.i18n.format("ZWEI.othermessages.validwhat", { what: 'ancestral trait' }), 
+            {
             permanent: true,
           });
         }
@@ -150,12 +152,14 @@ export default class ZweihanderItemSheet extends ItemSheet {
       }
       if (!item && profTrait.trim() !== '') {
         ui?.notifications.warn(
-          `Couldn't find a professional trait with a name like ${profTrait} anywhere in the world or in compendia!`,
+          game.i18n.format("ZWEI.othermessages.notrait", { trait: profTrait }),
           { permanent: true }
         );
         //TODO move to actor#prepareDerivedData
         if (this.item.isOwned) {
-          ui?.notifications.error(`Please choose a valid, existing professional trait!`, {
+          ui?.notifications.error(
+            game.i18n.format("ZWEI.othermessages.validwhat", { what: 'professional trait' }), 
+            {
             permanent: true,
           });
         }
@@ -167,12 +171,14 @@ export default class ZweihanderItemSheet extends ItemSheet {
       }
       if (!item && specTrait.trim() !== '') {
         ui?.notifications.warn(
-          `Couldn't find a special trait with a name like ${specTrait} anywhere in the world or in compendia!`,
+          game.i18n.format("ZWEI.othermessages.nospecial", { trait: specTrait }),
           { permanent: true }
         );
         //TODO move to actor#prepareDerivedData
         if (this.item.isOwned) {
-          ui?.notifications.error(`Please choose a valid, existing special trait!`, {
+          ui?.notifications.error(
+            game.i18n.format("ZWEI.othermessages.validwhat", { what: 'special trait' }), 
+            {
             permanent: true,
           });
         }
@@ -184,12 +190,14 @@ export default class ZweihanderItemSheet extends ItemSheet {
       }
       if (!item && drawback.trim() !== '') {
         ui?.notifications.warn(
-          `Couldn't find a drawback with a name like ${drawback} anywhere in the world or in compendia!`,
+          game.i18n.format("ZWEI.othermessages.nodrawback", { drawback: drawback }),
           { permanent: true }
         );
         //TODO move to actor#prepareDerivedData
         if (this.item.isOwned) {
-          ui?.notifications.error(`Please choose a valid, existing drawback!`, {
+          ui?.notifications.error(
+            game.i18n.format("ZWEI.othermessages.validwhat", { what: 'drawback' }), 
+            {
             permanent: true,
           });
         }
@@ -280,7 +288,9 @@ export default class ZweihanderItemSheet extends ItemSheet {
     if (validValues.includes(sanitized)) {
       return sanitized;
     } else {
-      ui?.notifications.warn(`"${sanitized}" is not a valid Bonus Abbreviation! Valid values: ${validValues}`);
+      ui?.notifications.warn(
+        game.i18n.format("ZWEI.othermessages.novalidbonus", { sanitized: sanitized, valid: validValues })
+        );
     }
   }
 
@@ -288,7 +298,7 @@ export default class ZweihanderItemSheet extends ItemSheet {
     const item = this.item;
     if (item.system?.talents?.some((t) => ZweihanderUtils.normalizedEquals(t.name, talent))) {
       ui?.notifications.warn(
-        `A Talent named "${talent}" already belongs to item "${item.name}" of type "${item.type}". Skill Ranks must be unique!`
+        game.i18n.format("ZWEI.othermessages.talentbelongs", { talent: talent, name: item.name, type: item.type })
       );
       return;
     }
@@ -296,12 +306,16 @@ export default class ZweihanderItemSheet extends ItemSheet {
     if (foundItem) {
       return { name: foundItem.name };
     } else {
-      ui?.notifications.warn(`Couldn't find Talent with a name like ${talent} anywhere in the world or in compendia!`, {
+      ui?.notifications.warn(
+        game.i18n.format("ZWEI.othermessages.notalent", { talent: talent }), 
+        {
         permanent: true,
       });
       //TODO move to actor#prepareDerivedData
       if (this.item.isOwned) {
-        ui?.notifications.error(`Please choose a valid, existing talent!`, {
+        ui?.notifications.error(
+          game.i18n.format("ZWEI.othermessages.validwhat", { what: 'talent' }), 
+          {
           permanent: true,
         });
       }
@@ -313,7 +327,7 @@ export default class ZweihanderItemSheet extends ItemSheet {
     const item = this.item;
     if (item.system?.skillRanks?.some((sr) => ZweihanderUtils.normalizedEquals(sr.name, skillRank))) {
       ui?.notifications.warn(
-        `A Skill Rank in "${skillRank}" already belongs to item "${item.name}" of type "${item.type}". Skill Ranks must be unique!`
+        game.i18n.format("ZWEI.othermessages.rankbelongs", { rank: skillRank, name: item.name, type: item.type })
       );
       return;
     }
@@ -322,12 +336,14 @@ export default class ZweihanderItemSheet extends ItemSheet {
       return { name: foundItem.name };
     } else {
       ui?.notifications.warn(
-        `Couldn't find Skill Rank with a name like ${skillRank} anywhere in the world or in compendia!`,
+        game.i18n.format("ZWEI.othermessages.norank", { rank: skillRank }),
         { permanent: true }
       );
       //TODO move to actor#prepareDerivedData
       if (this.item.isOwned) {
-        ui?.notifications.error(`Please choose a valid, existing skill!`, {
+        ui?.notifications.error(
+          game.i18n.format("ZWEI.othermessages.validwhat", { what: 'skill' }), 
+          {
           permanent: true,
         });
       }

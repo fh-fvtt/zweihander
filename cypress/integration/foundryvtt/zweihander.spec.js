@@ -179,7 +179,7 @@ describe('Character Creation', () => {
 
     cy.get('[name="flags.isMagickUser"]').click();
 
-    cy.contains(`${Cypress.env('characterName')}: Actor Configuration`)
+    cy.contains(`${Cypress.env('characterName')}: ` + game.i18n.localize("ZWEI.othermessages.actorconfig"))
       .parent()
       .find('.close')
       .click();

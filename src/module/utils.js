@@ -408,7 +408,9 @@ export function determineCurrentActorId(interactive = false) {
     } else if (speakerData.actor) {
       return speakerData.actor;
     } else if (interactive) {
-      ui.notifications.warn(`Please select a token in order to perform this action!`);
+      ui.notifications.warn(
+        game.i18n.localize("ZWEI.othermessages.selecttoken")
+      );
     }
   } else {
     if (character) {
@@ -417,7 +419,7 @@ export function determineCurrentActorId(interactive = false) {
       return speakerData.actor;
     } else if (interactive) {
       ui.notifications.error(
-        `There's currently no character assigned to you. Please select a character in your user configuration!`
+        game.i18n.localize("ZWEI.othermessages.nocharacter")
       );
     }
   }
@@ -427,7 +429,7 @@ export async function updateActorSkillsFromPack(skillPackId) {
   const skillPack = game.packs.get(skillPackId);
   if (!skillPack) {
     ui.notifications.error(
-      `Can't find compendium pack identified by "${skillPackId}"! Resetting Skill List to "zweihander.skills"...`
+      game.i18n.format("ZWEI.othermessages.nocompendium", { packid: skillPackId })
     );
     game.settings.set('zweihander', 'skillPack', 'zweihander.skills');
     return;
@@ -548,9 +550,13 @@ export const formDataToArray = (formData, key) => {
 };
 
 export const localize = (localizeObj) => {
-  return localizeObj?.['@en'];
+  // return localizeObj?.['@en'];
+  const systemlanguage = '@' + game.settings.get('core','language');
+  return localizeObj?.[systemlanguage] ? localizeObj?.[systemlanguage] : localizeObj?.['@en'];
 };
 
 export const localizePath = (dataPath) => {
-  return `${dataPath}.@en`;
+  // return `${dataPath}.@en`;
+  const systemlanguage = '@' + game.settings.get('core','language');
+  return `${dataPath}.${systemlanguage}` ? `${dataPath}.${systemlanguage}` : `${dataPath}.@en`;
 };

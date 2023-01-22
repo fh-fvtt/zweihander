@@ -3,10 +3,14 @@ export const createItemMacro = async (macroData, slot) => {
 
   const item = await fromUuid(macroData.uuid);
 
-  if (!('system' in item)) return ui?.notifications.warn('You can only create macro buttons for owned Items.');
+  if (!('system' in item)) return ui?.notifications.warn(
+    game.i18n.localize("ZWEI.othermessages.errormacro")
+    );
 
   if (!(item.type === 'weapon' || item.type === 'spell'))
-    return ui?.notifications.warn(`Hotbar macros do not support specified Item type '${item.type}'.`);
+    return ui?.notifications.warn(
+      game.i18n.format("ZWEI.othermessages.macrossupport", { type: item.type })
+      );
 
   const command = `game.zweihander.rollItemMacro("${item.actor._id}", "${item._id}");`;
 

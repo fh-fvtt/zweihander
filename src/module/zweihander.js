@@ -97,6 +97,42 @@ Hooks.once('diceSoNiceReady', function () {
   ]);
 });
 
+Hooks.once("dragRuler.ready", (SpeedProvider) => {
+  // Drag Ruler integration
+    class zweihanderSpeedProvider extends SpeedProvider {
+        get colors() {
+            return [
+                {id: "maneuver", default: 0x1259b6, name: "zweihander.speeds.maneuver"},
+                {id: "hustle", default: 0x00FF00, name: "zweihander.speeds.hustle"},
+                {id: "charge", default: 0xFFFF00, name: "zweihander.speeds.charge"},
+                {id: "run", default: 0xFF8000, name: "zweihander.speeds.run"}
+            ];
+        };
+
+        getRanges(token) {
+			// MANEUVER: 1 yd
+			// HUSTLE: MOV
+			// CHARGE: MOV*2
+			// RUN: MOV*3
+			
+			const minSpeed = 1;
+            const baseSpeed = token.actor.system.stats.secondaryAttributes.movement.current;
+            const chargeSpeed = baseSpeed * 2;
+            const runSpeed = baseSpeed * 3;
+			
+            const ranges = [
+                {range: minSpeed, color: "maneuver"},
+                {range: baseSpeed, color: "hustle"},
+                {range: chargeSpeed, color: "charge"},
+                {range: runSpeed, color: "run"}
+            ];
+
+            return ranges;
+        };
+    }
+    dragRuler.registerModule("fvtt-module-drag-ruler-zweihander", zweihanderSpeedProvider);
+})
+
 Hooks.once('init', async function () {
   // CONFIG.debug.hooks = true;
   console.log(ZWEI.debugTitle);
@@ -179,7 +215,9 @@ Hooks.on('chatCommandsReady', function (chatCommands) {
           : [game.actors.get(ZweihanderUtils.determineCurrentActorId(true))];
         let testConfiguration;
         if (actors.length === 0) {
-          ui.notifications.warn(`Please select a token in order to perform this action!`);
+          ui.notifications.warn(
+            game.i18n.localize("ZWEI.othermessages.selecttoken")
+          );
         }
         for (let actor of actors) {
           const skillItem = actor?.items?.find?.(
@@ -191,7 +229,9 @@ Hooks.on('chatCommandsReady', function (chatCommands) {
             }
             await rollTest(skillItem, 'skill', testConfiguration);
           } else if (actor) {
-            ui.notifications.warn(`Couldn't find a skill named ${messageText}`);
+            ui.notifications.warn(
+              game.i18n.format("ZWEI.othermessages.noskill", { message: messageText })
+              );
             break;
           }
         }
@@ -218,17 +258,13 @@ Hooks.on('chatCommandsReady', function (chatCommands) {
           });
           game.world.updateSource(response);
           await ChatMessage.create({
-            flavor: 'Setting the date for the next session.',
-            content: `
-              <h2>Next Session Date</h2>
-            The next session will be on ${nextSession.toLocaleDateString()}.
-            Please block the date in your calendars.
-            `,
+            flavor: game.i18n.localize("ZWEI.othermessages.settingdate"),
+            content: game.i18n.format("ZWEI.othermessages.nextsession", { next: nextSession.toLocaleDateString() }),
           });
         },
         shouldDisplayToChat: false,
         iconClass: 'fa-calendar',
-        description: 'Set the date for the next session',
+        description: game.i18n.localize("ZWEI.othermessages.setdate"),
       })
     );
   }
@@ -238,7 +274,7 @@ Hooks.on('chatCommandsReady', function (chatCommands) {
       invokeOnCommand: displayHelpMessage,
       shouldDisplayToChat: false,
       iconClass: 'fa-question',
-      description: 'Show System Documentation',
+      description: game.i18n.localize("ZWEI.othermessages.showdocs"),
     })
   );
 });
