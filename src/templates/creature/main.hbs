@@ -123,8 +123,12 @@
     </section>
     <aside class="description">
       <h1>{{localize "ZWEI.actor.navigation.description"}}</h1>
-      <textarea spellcheck="false" name="system.flavor.description"
-        placeholder="Put a nice description of your creature here...">{{system.flavor.description}}</textarea>
+      {{!-- <textarea spellcheck="false" name="system.flavor.description"
+        placeholder="Put a nice description of your creature here...">{{system.flavor.description}}</textarea> --}}
+      <div>
+        {{editor content=(zhLocalize system.description) target=(zhLocalizePath "system.description") button=true owner=owner
+        editable=editable rollData=rollData}}
+      </div>
     </aside>
   </section>
   {{/unless}}
