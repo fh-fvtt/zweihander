@@ -394,7 +394,7 @@ export function getDifficultyRatingLabel(difficultyRating) {
   //const number = zhExplicitSign(difficultyRating);
   //const label = game.i18n.localize(`ZWEI.Difficulty.${number}`);
   // I localize when rendering the test dialog
-  const number = (difficultyRating+30)/10;
+  const number = (difficultyRating + 30) / 10;
   const label = `difficulty`;
   return `${label}${number}`;
 }
@@ -408,9 +408,7 @@ export function determineCurrentActorId(interactive = false) {
     } else if (speakerData.actor) {
       return speakerData.actor;
     } else if (interactive) {
-      ui.notifications.warn(
-        game.i18n.localize("ZWEI.othermessages.selecttoken")
-      );
+      ui.notifications.warn(game.i18n.localize('ZWEI.othermessages.selecttoken'));
     }
   } else {
     if (character) {
@@ -418,9 +416,7 @@ export function determineCurrentActorId(interactive = false) {
     } else if (speakerData.actor) {
       return speakerData.actor;
     } else if (interactive) {
-      ui.notifications.error(
-        game.i18n.localize("ZWEI.othermessages.nocharacter")
-      );
+      ui.notifications.error(game.i18n.localize('ZWEI.othermessages.nocharacter'));
     }
   }
 }
@@ -428,9 +424,7 @@ export function determineCurrentActorId(interactive = false) {
 export async function updateActorSkillsFromPack(skillPackId) {
   const skillPack = game.packs.get(skillPackId);
   if (!skillPack) {
-    ui.notifications.error(
-      game.i18n.format("ZWEI.othermessages.nocompendium", { packid: skillPackId })
-    );
+    ui.notifications.error(game.i18n.format('ZWEI.othermessages.nocompendium', { packid: skillPackId }));
     game.settings.set('zweihander', 'skillPack', 'zweihander.skills');
     return;
   }
@@ -550,13 +544,10 @@ export const formDataToArray = (formData, key) => {
 };
 
 export const localize = (localizeObj) => {
-  // return localizeObj?.['@en'];
-  const systemlanguage = '@' + game.settings.get('core','language');
-  return localizeObj?.[systemlanguage] ? localizeObj?.[systemlanguage] : localizeObj?.['@en'];
+  return localizeObj?.[`@${game.settings.get('core', 'language')}`];
 };
 
 export const localizePath = (dataPath) => {
-  // return `${dataPath}.@en`;
-  const systemlanguage = '@' + game.settings.get('core','language');
-  return `${dataPath}.${systemlanguage}` ? `${dataPath}.${systemlanguage}` : `${dataPath}.@en`;
+  console.log(dataPath);
+  return `${dataPath}.@${game.settings.get('core', 'language')}`;
 };

@@ -30,7 +30,7 @@ function enableChatButtons(html, flags, message, data) {
           },
         },
         whisper: [game.user.id],
-        content: game.i18n.localize("ZWEI.othermessages.thankyou"),
+        content: game.i18n.localize('ZWEI.othermessages.thankyou'),
       });
       sendAnalytics();
     });
@@ -46,7 +46,7 @@ function enableChatButtons(html, flags, message, data) {
           },
         },
         whisper: [game.user.id],
-        content: game.i18n.localize("ZWEI.othermessages.wontask"),
+        content: game.i18n.localize('ZWEI.othermessages.wontask'),
       });
     });
   }
