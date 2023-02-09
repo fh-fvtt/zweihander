@@ -1,0 +1,31 @@
+{
+  "_id": "SyF47MoTIZNzng0C",
+  "effects": [],
+  "img": "systems/zweihander/assets/icons/hemp.svg",
+  "name": "Devilweed (Sativa)",
+  "system": {
+    "carried": true,
+    "description": {
+      "@en": ""
+    },
+    "details": {
+      "category": {
+        "@en": "Black Market Goods"
+      }
+    },
+    "encumbrance": 0,
+    "notes": "",
+    "price": {
+      "bp": 0,
+      "gc": 3,
+      "ss": 0
+    },
+    "quantity": 1,
+    "rules": {
+      "effect": {
+        "@en": "<p>Immediately restore Corruption you gained due to Moderate, Serious or Grievous Injuries and Stress, Fear or Terror within the last three hours.</p>\n<p>Devilweed reduces your Encumbrance Limit, Initiative and Movement by a -3 penalty for the next six hours.</p>\n<p>Devilweed requires 1D10+1 minutes for preparation.</p>"
+      }
+    }
+  },
+  "type": "trapping"
+}
