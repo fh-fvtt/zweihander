@@ -54,22 +54,8 @@ ZWEI.testModes = {
 };
 
 ZWEI.alignmentRanks = 9;
-ZWEI.perilOptions = [
-  'incapacitated',
-  'ignore3',
-  'ignore2',
-  'ignore1',
-  'imperiled',
-  'unhindered',
-];
-ZWEI.damageOptions = [
-  'slain',
-  'grievously',
-  'seriously',
-  'moderately',
-  'lightly',
-  'unharmed',
-];
+ZWEI.perilOptions = ['incapacitated', 'ignore3', 'ignore2', 'ignore1', 'imperiled', 'unhindered'];
+ZWEI.damageOptions = ['slain', 'grievously', 'seriously', 'moderately', 'lightly', 'unharmed'];
 ZWEI.tiers = {
   1: 'Basic',
   2: 'Intermediate',
@@ -100,7 +86,7 @@ ZWEI.supportedGameSystems = {
 
 ZWEI.replacedDefaultCoreIcons = ['icons/svg/mystery-man.svg', 'icons/svg/item-bag.svg'];
 
-const d = 'systems/zweihander/assets/icons';
+const d = 'systems/zweihander/assets/default-icons';
 ZWEI.defaultItemIcons = {
   _default: `${d}/swap-bag.svg`,
   trapping: `${d}/swap-bag.svg`,
