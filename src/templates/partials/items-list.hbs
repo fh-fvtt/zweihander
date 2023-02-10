@@ -69,7 +69,7 @@
           {{/zhProfessionWarn}}
         </h4>
       </div>
-      {{#each itemGroup.details as |detail| }}
+      {{#each itemGroup.details as |detail| }} 
       <div class="item-detail {{detail.class}}" style="width:{{detail.size}}px">
         {{#if detail.isCheckbox}}
         <input class="zweihander-checkbox {{#unless detail.classes}}link{{#if ../../isEffect}}-effect{{/if}}-checkbox{{else}}{{detail.classes}}{{/unless}}"
@@ -86,7 +86,7 @@
         {{else if detail.key}}
         {{zhLookup item detail.key}}
         {{else}}
-        {{#with item}} {{detail.value}} {{/with}}
+        {{#with item}} {{zhCapitalize (detail.value)}} {{/with}}
         {{/if}}
       </div>
       {{/each}}
