@@ -1,0 +1,30 @@
+{
+  "_id": "GQSFLyB8OzrMIJRC",
+  "effects": [],
+  "img": "systems/zweihander/assets/icons/cursed-star.svg",
+  "name": "Exorcism",
+  "system": {
+    "castingTime": "One hour, and Concentration as needed (outlined below)",
+    "channelAs": "Petty Magick",
+    "description": {
+      "@en": ""
+    },
+    "difficulty": "Special",
+    "notes": "",
+    "rules": {
+      "condition": {
+        "@en": "<p>Graveroot or holy water is sprinkled around the possessed abode, host or object.</p>"
+      },
+      "consequences": {
+        "@en": "<p>For every Call Name (as spelt out in the sidebar) of the demon you know, add an additional 1D6 Chaos Die when attempting to use this Ritual. However, the first time you fail to Coerce or Exorcise the demon or spirit, you suffer from Stress. The second time you fail to Coerce or Exorcise, you suffer from Fear. The third and subsequent times you fail to Coerce or Exorcise, you suffer from Terror. This Ritual requires Concentration. Finally, should the exorcist be Incapacitated! at any time during use of this Ritual, they immediately gain the Disorder of Possessed!.</p>"
+      },
+      "effect": {
+        "@en": "<p>First, determine the Difficulty Rating to cast this Ritual based on the Risk Factor of the demon or spirit who possesses the abode, host or object:</p>\n<p>&bull; <strong>Basic Risk Factor:</strong> (Standard +/-0%) Incantation Test<br>&bull; <strong>Intermediate Risk Factor:</strong> (Challenging -10%) Incantation Test<br>&bull; <strong>Advanced Risk Factor: </strong>(Hard -20%) Incantation Test<br>&bull;<strong> Elite Risk Factor: </strong>(Arduous -30%) Incantation Test</p>\n<p>After successfully casting this Ritual, you can use Exorcism for one of two unique purposes:</p>\n<p><strong>Coerce True Name: </strong>At the end of the Ritual, and over each minute thereafter you maintain Concentration upon this Ritual, you attempt to force the demon or spirit to reveal its True Name. Roll 3D6 Chaos Dice (and add an additional 1D6 Chaos Die for every Call Name you know) for every minute you attempt to Exorcise the demon or spirit in this fashion:</p>\n<p>&bull; Should all three dice or more land on face &lsquo;6&rsquo; (666), pick whether a Call Name or True Name of the demon or spirit possessing the abode, host or object is revealed.<br>&bull; Should two dice land on face &lsquo;6&rsquo; (66), the True Name of the spirit possessing the abode, host or object is revealed.<br>&bull; Should one die land on face &lsquo;6&rsquo; (6), a Call Name of the demon possessing the abode, host or object is revealed.</p>\n<p><strong>Exorcise Abode, Host or Object: </strong>At the end of the Ritual, and over the course of each hour thereafter you maintain Concentration upon this Ritual, you can attempt to force the demon or spirit to leave the abode, host or object it possesses. During this time, you must announce at least one Call Name (if a Lower Demon) or the True Name (if a Higher Demon or Restless Spirit) in order to Exorcise it. Roll 3D6 Chaos Dice (and add an additional 1D6 Chaos Die for every Call Name you know) for every hour you attempt to Exorcise the demon or spirit in this fashion:</p>\n<p>&bull; Should all three dice or more land on face &lsquo;6&rsquo; (666), a Lower Demon, Higher Demon or Restless Spirit is immediately exorcised and will not possess that abode, host or object ever again.</p>\n<p>&bull; Should two dice land on face &lsquo;6&rsquo; (66), a Lower Demon or Restless Spirit is immediately exorcised and will not possess that abode, host or object ever again.</p>\n<p>&bull; Should one die land on face &lsquo;6&rsquo; (6), a Restless Spirit is immediately exorcised and will not possess that abode, host or object ever again.</p>\n<p>Once a demon or spirit has been exorcised, it cannot possess another abode, host or object for one year. However, at the end of the Exorcise ritual, the exorcist must attempt a Secret Test using their Resolve Skill, with the Difficulty Rating determined by the GM. If successful, the exorcist can never be Possessed by the demon or spirit they just Exorcised. A Critical Success causes the demon or spirit to be instantaneously banished from the Material Realm (as the Greater Magick spell of Banishment from the Grimoire chapter of <strong>ZWEIH&Auml;NDER</strong>). Both Failure and Critical Failure means that the exorcist suffers 6 Corruption, while Critical Failure also results in the exorcist gains the Disorder of Possessed!.</p>"
+      },
+      "reagents": {
+        "@en": "<p>An abode, host or object intended to be Exorcised that you can touch, a holy book or other religious work read aloud and no less than three observers who give worship to the Daemon or god you invoke as part of the exorcism. In addition, you must have a dose of graveroot or vial of holy water (either of which are expended).</p>"
+      }
+    }
+  },
+  "type": "ritual"
+}

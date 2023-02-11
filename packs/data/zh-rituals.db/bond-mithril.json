@@ -1,0 +1,30 @@
+{
+  "_id": "zMTsGQTarJtpBsZu",
+  "effects": [],
+  "img": "systems/zweihander/assets/icons/black-bar.svg",
+  "name": "Bond Mithril",
+  "system": {
+    "castingTime": "One day",
+    "channelAs": "Lesser Magick",
+    "description": {
+      "@en": ""
+    },
+    "difficulty": "(Arduous -30%) Incantation Test",
+    "notes": "",
+    "rules": {
+      "condition": {
+        "@en": "<p>This Ritual is traditionally limited to Elves only, unless your GM states otherwise. In addition, this Ritual is cast at the end of the crafting process.</p>"
+      },
+      "consequences": {
+        "@en": "<p>You can only Bond Mithril to one object at a time.</p>"
+      },
+      "effect": {
+        "@en": "<p>After successfully casting this Ritual, you bond mithril into the object you are crafting. The object then immediately takes upon the relevant Qualities of mithril as a Special Material (as stated in<strong> Chapter 2: Liber Armorum</strong>). Weapons made from mithril gain the Fast Quality, whereas shields made from mithril gain the Light Quality. Mail, munitions plate and full plate armor made from mithril gain the Flexible Quality. Any armament from mithril decreases its Encumbrance Value by 1 (to a minimum of 1). Mithril can also be bonded to practically any form, whether it be armor, shield or a weapon. It can even be bonded to shirts of cloth, leatherworks, wooden devices, instruments, mechanical clockworks, jewelry and other works crafted using your Skills. Objects made from mithril cannot be destroyed by normal means and must be made the target of the Petty Magick spell called Dispel Magick in order for it to be destroyed otherwise.</p>"
+      },
+      "reagents": {
+        "@en": "<p>You must have the relevant trade tools for the object you intend to craft and they must have undergone Consecration (as indicated in the Ritual of Blessed Sacrament). In addition, you must have a sample source of mithril bars to bond to the object. Finally, you must have one vial of Void Salt (expended), which is intermixed with the mithril as its bonded to the object.</p>"
+      }
+    }
+  },
+  "type": "ritual"
+}
