@@ -387,7 +387,7 @@ export function attachTabDefinitions(tabData) {
       itemGroups: ['spells', 'rituals'].map($$),
     },
     afflictions: {
-      itemGroups: [/*'effects', */'conditions', 'disorders', 'diseases', 'injuries' /*, 'taints'*/].map($$),
+      itemGroups: ['effects', 'conditions', 'disorders', 'diseases', 'injuries' /*, 'taints'*/].map($$),
     },
     tiers: {
       itemGroups: ['professions', 'traits', 'drawbacks', 'talents', 'uniqueAdvances'].map($$),
