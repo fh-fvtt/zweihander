@@ -64,8 +64,8 @@ export default class ZweihanderPC extends ZweihanderBaseActor {
     sa.damageThreshold.mods = [];
     if (maxEquippedArmor && damageModifier > 0) {
       sa.damageThreshold.mods.push({
-        source: `${maxEquippedArmor.name} DTM`,
-        type: 'add',
+        source: `${maxEquippedArmor.name} ` + game.i18n.localize("ZWEI.actor.secondary.dtm"),
+        type: game.i18n.localize("ZWEI.actor.secondary.dtmadd"),
         argument: damageModifier,
       });
     }
