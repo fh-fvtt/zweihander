@@ -103,13 +103,13 @@ function enableChatButtons(html, flags, message, data) {
     if ((game.user.isGM || actorId == ZweihanderUtils.determineCurrentActorId()) && showExplodingButtons) {
       html.find('.damage-roll-explode').prop('disabled', false);
       $(html).on('click', '.damage-roll-explode', (event) => {
-        ZweihanderDice.explodeWeaponDamage(message, 'fortune');
+        ZweihanderDice.explodeWeaponDamage(message, 'usefortune');
       });
     }
     if (game.user.isGM && showExplodingButtons) {
       html.find('.damage-roll-explode-misfortune').prop('disabled', false);
       $(html).on('click', '.damage-roll-explode-misfortune', (event) => {
-        ZweihanderDice.explodeWeaponDamage(message, 'misfortune');
+        ZweihanderDice.explodeWeaponDamage(message, 'usemisfortune');
       });
     }
   }
