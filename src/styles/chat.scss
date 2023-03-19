@@ -259,6 +259,11 @@ body.game.vtt.system-zweihander {
         color: var(--zh-clr-aqua);
         font-weight: bold;
       }
+      .item-card-qualities {
+        & dd > p {
+          margin: 0;  /*@todo: this might be made more bulletproof, e.g. multi-paragraph qualities, but for now is sufficient*/
+        }
+      }
     }
     dl.compact-details {
       display: flex;
