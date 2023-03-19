@@ -484,8 +484,17 @@ body.game.vtt.system-zweihander .zweihander.sheet.actor {
       &.open {
         display: block;
       }
-      & p:first-of-type {
+      & label + p {
         display: inline;
+      }
+      .separator {
+        margin-bottom: 1px;
+        & p:last-child {
+          margin-bottom: 0;
+        }
+        &:last-child {
+          margin-bottom: 0;
+        }
       }
       label {
         color: var(--zh-clr-fg3);
