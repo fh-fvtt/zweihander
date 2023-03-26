@@ -70,8 +70,16 @@ export default class ZweihanderPC extends ZweihanderBaseActor {
       });
     }
 
-    // encumbrance calculations...
+    const enc = (systemData.stats.secondaryAttributes.encumbrance = this._calculateEnumberance(actor, configOptions));
+
+    systemData.stats.secondaryAttributes.initiative = this._calculateInitiative(actor, enc, configOptions);
+
+    systemData.stats.secondaryAttributes.movement = this._calculateMovement(actor, enc, configOptions);
+  }
+
+  _calculateEnumberance(actor, configOptions) {
     // assign encumbrance from equipped trappings
+    const systemData = actor.system;
     const carriedTrappings = actor.items.filter(
       (i) => ['trapping', 'armor', 'weapon'].includes(i.type) && i.system.carried
     );
@@ -79,36 +87,45 @@ export default class ZweihanderPC extends ZweihanderBaseActor {
     const smallTrappingsEnc = !nine4one
       ? 0
       : Math.floor(
-          carriedTrappings
-            .filter((t) => t.system.encumbrance === 0)
-            .map((t) => t.system.quantity || 0)
-            .reduce((a, b) => a + b, 0) / 9
-        );
+        carriedTrappings
+          .filter((t) => t.system.encumbrance === 0)
+          .map((t) => t.system.quantity || 0)
+          .reduce((a, b) => a + b, 0) / 9
+      );
     const normalTrappingsEnc = carriedTrappings
       .filter((t) => t.system.encumbrance !== 0)
       .map((t) => t.system.encumbrance * (t.system.quantity ?? 1))
       .reduce((a, b) => a + b, 0);
     // assign encumbrance from currency
     const currencyEnc = Math.floor(Object.values(systemData.currency).reduce((a, b) => a + b, 0) / 1000);
-    const enc = (systemData.stats.secondaryAttributes.encumbrance = {});
+    const enc =  {};
     // assign initial encumbrance threshold
     enc.value = systemData.stats.primaryAttributes.brawn.bonus + 3 + configOptions.encumbranceModifier;
     // assign current encumbrance
     enc.current = smallTrappingsEnc + normalTrappingsEnc + currencyEnc;
     // assign overage
     enc.overage = Math.max(0, enc.current - enc.value);
-    // calculate initiative
-    const ini = (systemData.stats.secondaryAttributes.initiative = {});
+    return enc;
+  }
+
+  _calculateInitiative(actor, enc, configOptions) {
+    const systemData = actor.system;
+    const ini = {};
     ini.value =
       systemData.stats.primaryAttributes[configOptions.intAttribute].bonus + 3 + configOptions.initiativeModifier;
     ini.overage = enc.overage;
     ini.current = Math.max(0, ini.value - ini.overage);
-    // calculate movement
-    const mov = (systemData.stats.secondaryAttributes.movement = {});
+    return ini;
+  }
+
+  _calculateMovement(actor, enc, configOptions) {
+    const systemData = actor.system;
+    const mov = {};
     mov.value =
       systemData.stats.primaryAttributes[configOptions.movAttribute].bonus + 3 + configOptions.movementModifier;
     mov.overage = enc.overage;
     mov.current = Math.max(0, mov.value - mov.overage);
+    return mov;
   }
 
   // parry, dodge & magick depend on Item preparation being finished
