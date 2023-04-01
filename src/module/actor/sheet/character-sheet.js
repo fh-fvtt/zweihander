@@ -353,6 +353,19 @@ export default class ZweihanderCharacterSheet extends ZweihanderBaseActorSheet {
         $('.zh-focuses-tooltip-instance').remove();
       }
     );
+
+    // currency exchange
+    html.find('.exchange-currency').click((event) => {
+      const biggerIndex = Number(event.currentTarget.dataset.biggerIndex);
+      const smallerIndex = biggerIndex + 1;
+      this._exchangeCurrency(biggerIndex, smallerIndex);
+    });
+    html.find('.exchange-currency').contextmenu(async (event) => {
+      event.preventDefault();
+      const biggerIndex = Number(event.currentTarget.dataset.biggerIndex);
+      const smallerIndex = biggerIndex + 1;
+      this._exchangeCurrency(smallerIndex, biggerIndex);
+    });
   }
 
   _updateEncumbranceMeter(html) {
@@ -381,5 +394,32 @@ export default class ZweihanderCharacterSheet extends ZweihanderBaseActorSheet {
       options.resizable = false;
     }
     await super._render(force, options);
+  }
+
+  _exchangeCurrency(sourceCurrencyIndex, targetCurrencyIndex) {
+    const currencies = game.settings.get('zweihander', 'currencySettings');
+    const actorMoney = this.actor.system.currency;
+    const source = currencies[sourceCurrencyIndex];
+    const target = currencies[targetCurrencyIndex];
+    const equivalent = currencies[Math.min(sourceCurrencyIndex, targetCurrencyIndex)].equivalentOfLower;
+    let conversion = {};
+    if (sourceCurrencyIndex < targetCurrencyIndex) { 
+      // bigger to lower conversion
+      conversion.sourceDebit = 1;
+      conversion.targetCredit = equivalent;
+    } else {
+      // lower to bigger conversion
+      conversion.sourceDebit = equivalent;
+      conversion.targetCredit = 1;
+    }
+    const newSourceAmount = actorMoney[source.abbreviation] - conversion.sourceDebit;
+    if (newSourceAmount >= 0) {
+      this.actor.update({
+        [`system.currency.${source.abbreviation}`]: newSourceAmount,
+        [`system.currency.${target.abbreviation}`]: actorMoney[target.abbreviation] + conversion.targetCredit
+      });
+    } else {
+      console.warn(`not enough ${source.abbreviation} to perform money conversion`);
+    }
   }
 }
