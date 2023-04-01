@@ -21,6 +21,13 @@
       {{/unless}}
     </span>
   </div>
+  {{#unless @last}}
+  <div class="currency flexcol">
+    <a class="exchange-currency" data-bigger-index="{{i}}">
+      <i class="fa fa-right-left"></i>
+    </a>
+  </div>
+  {{/unless}}
   {{/each}}
   {{!-- <button class="currency-converter" type="button"><i class="fa fa-exchange-alt"></i> Exchange</button> --}}
 </div>
