@@ -84,9 +84,9 @@ export async function rollTest(
     testConfiguration.additionalFuryDice = actor.system.details.size - 1;
   }
   if (isReroll && actor.type === 'character') {
-    testConfiguration.useFortune = 'usefortune';
+    testConfiguration.useFortune = 'fortune';
   } else if (isReroll && actor.type !== 'character') {
-    testConfiguration.useFortune = 'usemisfortune';
+    testConfiguration.useFortune = 'misfortune';
   }
   const principle = spell?.system?.principle?.trim?.()?.toLowerCase?.();
   const defaultSpellDifficulty = {
@@ -100,15 +100,18 @@ export async function rollTest(
     testConfiguration = await getTestConfiguration(skillItem, testType, testConfiguration);
   }
   try {
-    if (testConfiguration.useFortune === 'usefortune') {
+    if (testConfiguration.useFortune === 'fortune') {
       await FortuneTracker.INSTANCE.useFortune();
-    } else if (testConfiguration.useFortune === 'usemisfortune') {
+    } else if (testConfiguration.useFortune === 'misfortune') {
       await FortuneTracker.INSTANCE.useMisfortune();
     }
   } catch (e) {
+    // @todo: I believe it is the responsibility of the Fortune Tracker to throw an error if there are no points left,
+    // otherwise, 2 error messages will be shown, which is annoying
+    /*
     ui.notifications.warn(game.i18n.format("ZWEI.othermessages.noreroll", {
       usefortune: testConfiguration.useFortune
-    }));
+    }));*/
     return;
   }
   const primaryAttribute = skillItem.system.associatedPrimaryAttribute;
@@ -286,15 +289,19 @@ async function getWeaponDamageContent(weapon, roll, exploded = false, explodedCo
 
 export async function explodeWeaponDamage(message, useFortune) {
   try {
-    if (useFortune === 'usefortune') {
+    if (useFortune === 'fortune') {
       await FortuneTracker.INSTANCE.useFortune();
-    } else if (useFortune === 'usemisfortune') {
+    } else if (useFortune === 'misfortune') {
       await FortuneTracker.INSTANCE.useMisfortune();
     }
   } catch (e) {
+    // @todo: I believe it is the responsibility of the Fortune Tracker to throw an error if there are no points left,
+    // otherwise, 2 error messages will be shown, which is annoying
+    /*
     ui.notifications.warn(game.i18n.format("ZWEI.othermessages.noreroll", {
       usefortune: useFortune
     }));
+    */
     return;
   }
   const { actorId, weaponId, exploded } = message.flags.zweihander.weaponTestData;

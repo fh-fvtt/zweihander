@@ -1,0 +1,9 @@
+{
+  "_id": "3Mv5AXR9gahLJnoJ",
+  "author": "5vFvLMyCloE0U6VX",
+  "command": "const defaultIcons = [\n    ...Object.values(CONFIG.ZWEI.defaultActorIcons),\n    ...Object.values(CONFIG.ZWEI.defaultItemIcons),\n];\n\nconst oldDefaultIcons = defaultIcons.map(i => i.replace('/assets/default-icons/', '/assets/icons/'));\n\nfor (const doc of [...game.actors.contents, ...game.items.contents]) {\n    if (oldDefaultIcons.includes(doc.img)) {\n        console.log(doc.img);\n        await doc.update({\n            img: defaultIcons[oldDefaultIcons.indexOf(doc.img)]\n        })\n    }\n}",
+  "img": "icons/svg/daze.svg",
+  "name": "Migrate default icons",
+  "scope": "global",
+  "type": "script"
+}

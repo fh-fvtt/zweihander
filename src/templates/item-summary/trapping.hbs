@@ -1,9 +1,12 @@
 {{zhPrice price}}
-{{#if (zhLocalize description)}}
-  <br />
-  <label>{{localize "ZWEI.actor.items.description"}}:</label> {{{zhProcessRuleText (zhLocalize description)}}}
-{{/if}}
+<br />
 {{#if (zhLocalize rules.effect)}}
-  <br />
+  <div class="separator">
   <label>{{localize "ZWEI.actor.items.effect"}}:</label> {{{zhProcessRuleText (zhLocalize rules.effect)}}}
+  </div>
+{{/if}}
+{{#if (zhLocalize description)}}
+  <div class="separator">
+  <label>{{localize "ZWEI.actor.items.description"}}:</label> {{{zhProcessRuleText (zhLocalize description)}}}
+  </div>
 {{/if}}

@@ -548,6 +548,5 @@ export const localize = (localizeObj) => {
 };
 
 export const localizePath = (dataPath) => {
-  console.log(dataPath);
   return `${dataPath}.@${game.settings.get('core', 'language')}`;
 };
