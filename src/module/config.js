@@ -248,6 +248,8 @@ ZWEI.statusEffects = [
   },
 ];
 
+ZWEI.containerEncumbranceBonus = {};
+
 export { ZWEI };
 
 // this exact if statement guarantees vite will tree-shake this out in prod

@@ -193,8 +193,29 @@ Hooks.once('init', async function () {
   // Register Helpers
   await registerHandlebarHelpers();
   // Register Templates
-  return preloadHandlebarsTemplates();
+  await preloadHandlebarsTemplates();
+
+  // load carrying item data - temporary solution before proper configuration UI is created
+  CONFIG.ZWEI.containerEncumbranceBonus = await loadContainerEncumbranceData();
 });
+
+async function loadContainerEncumbranceData() {
+  const path = `worlds/${game.world.id}/carrying-items.json`;
+  try {
+    const data = await foundry.utils.fetchJsonWithTimeout(path);
+    return data;
+  }
+  catch (error) {
+    if (error.code === 404) {
+      console.log(`zweihander carrying item encumbrance data not found at ${path}\n` + 
+                  `JSON with mapping from item name to bonus expected`);
+    }
+    else {
+      console.warn(`Error loading carrying item encumbrance data from ${path} : ${error}`);
+    }
+  }
+  return {};
+}
 
 Hooks.on('renderChatMessage', ZweihanderChat.addLocalChatListeners);
 Hooks.on('renderChatLog', (app, html, data) => ZweihanderChat.addGlobalChatListeners(html));

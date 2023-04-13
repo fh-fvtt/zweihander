@@ -1,6 +1,7 @@
 import ZweihanderBaseActor from './base-actor';
 import * as ZweihanderUtils from '../../utils';
 import ZweihanderActorConfig from '../../apps/actor-config';
+import {ZWEI} from "../../config";
 
 export default class ZweihanderPC extends ZweihanderBaseActor {
   // changed by re4xn from 'prepareDerivedData' on 19-05-2022
@@ -84,23 +85,29 @@ export default class ZweihanderPC extends ZweihanderBaseActor {
       (i) => ['trapping', 'armor', 'weapon'].includes(i.type) && i.system.carried
     );
     const nine4one = game.settings.get('zweihander', 'encumbranceNineForOne');
-    const smallTrappingsEnc = !nine4one
-      ? 0
-      : Math.floor(
-        carriedTrappings
-          .filter((t) => t.system.encumbrance === 0)
-          .map((t) => t.system.quantity || 0)
-          .reduce((a, b) => a + b, 0) / 9
-      );
+
+    const smallTrappings = carriedTrappings.filter((t) => t.system.encumbrance === 0);
+
+    // bonus to encumbrance limit as described in "Carrying equipment", ZH p.216
+    const containerBonus = smallTrappings
+      .map((t) => ZWEI.containerEncumbranceBonus[t.name] ?? 0)
+      .reduce((a,b) => Math.max(a,b), 0);
+
+    const smallTrappingsCount = smallTrappings
+      .map((t) => t.system.quantity || 0)
+      .reduce((a, b) => a + b, 0);
+    const smallTrappingsEnc = !nine4one ? 0 : Math.floor(smallTrappingsCount / 9);
     const normalTrappingsEnc = carriedTrappings
       .filter((t) => t.system.encumbrance !== 0)
       .map((t) => t.system.encumbrance * (t.system.quantity ?? 1))
       .reduce((a, b) => a + b, 0);
+
     // assign encumbrance from currency
     const currencyEnc = Math.floor(Object.values(systemData.currency).reduce((a, b) => a + b, 0) / 1000);
+
     const enc =  {};
     // assign initial encumbrance threshold
-    enc.value = systemData.stats.primaryAttributes.brawn.bonus + 3 + configOptions.encumbranceModifier;
+    enc.value = systemData.stats.primaryAttributes.brawn.bonus + 3 + configOptions.encumbranceModifier + containerBonus;
     // assign current encumbrance
     enc.current = smallTrappingsEnc + normalTrappingsEnc + currencyEnc;
     // assign overage
