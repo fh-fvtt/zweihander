@@ -184,6 +184,10 @@ export async function rollTest(
     spellTest: testType === 'spell',
     tooltip: await roll.getTooltip(),
   };
+  if (weapon) {
+    templateData.weapon = weapon.toObject(false);
+    templateData.weapon.system.qualities = await ZweihanderQuality.getQualities(weapon.system.qualities.value);
+  }
   if (spell) {
     templateData.itemId = spell.id;
     templateData.spell = spell.toObject(false);
