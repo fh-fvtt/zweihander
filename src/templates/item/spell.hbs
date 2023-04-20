@@ -16,7 +16,7 @@
 <div class="form-group stacked">
   <label><a class="open-editor">{{localize "ZWEI.actor.items.reagents"}} <i class="fa fa-edit"></i></a></label>
     <div class="zh-editor-preview open">{{{zhProcessRuleText (zhLocalize system.rules.reagents)}}}</div>
-  {{editor content=(zhLocalize system.rules.reagents) target=(zhLocalizePath "system.rules.reagents") button=true owner=owner editable=editable}}
+  {{editor (zhLocalize system.rules.reagents) target=(zhLocalizePath "system.rules.reagents") button=true owner=owner editable=editable}}
 </div>
 
 <div class="form-group">
@@ -38,17 +38,17 @@
 <div class="form-group stacked">
   <label><a class="open-editor">{{localize "ZWEI.actor.items.effect"}} <i class="fa fa-edit"></i></a></label>
     <div class="zh-editor-preview open">{{{zhProcessRuleText (zhLocalize system.rules.effect)}}}</div>
-  {{editor content=(zhLocalize system.rules.effect) target=(zhLocalizePath "system.rules.effect") button=true owner=owner editable=editable}}
+  {{editor (zhLocalize system.rules.effect) target=(zhLocalizePath "system.rules.effect") button=true owner=owner editable=editable}}
 </div>
 
 <div class="form-group stacked">
   <label><a class="open-editor">{{localize "ZWEI.chatskill.criticalsuccess"}} <i class="fa fa-edit"></i></a></label>
     <div class="zh-editor-preview open">{{{zhProcessRuleText (zhLocalize system.rules.criticalSuccess)}}}</div>
-  {{editor content=(zhLocalize system.rules.criticalSuccess) target=(zhLocalizePath "system.rules.criticalSuccess") button=true owner=owner editable=editable}}
+  {{editor (zhLocalize system.rules.criticalSuccess) target=(zhLocalizePath "system.rules.criticalSuccess") button=true owner=owner editable=editable}}
 </div>
 
 <div class="form-group stacked">
   <label><a class="open-editor">{{localize "ZWEI.chatskill.criticalfailure"}}<i class="fa fa-edit"></i></a></label>
     <div class="zh-editor-preview open">{{{zhProcessRuleText (zhLocalize system.rules.criticalFailure)}}}</div>
-  {{editor content=(zhLocalize system.rules.criticalFailure) target=(zhLocalizePath "system.rules.criticalFailure") button=true owner=owner editable=editable}}
+  {{editor (zhLocalize system.rules.criticalFailure) target=(zhLocalizePath "system.rules.criticalFailure") button=true owner=owner editable=editable}}
 </div>

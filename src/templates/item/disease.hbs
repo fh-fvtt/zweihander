@@ -11,14 +11,14 @@
 <div class="form-group stacked">
   <label><a class="open-editor">{{localize "ZWEI.actor.items.effect"}} <i class="fa fa-edit"></i></a></label>
   <div class="zh-editor-preview open">{{{zhProcessRuleText (zhLocalize system.rules.effect)}}}</div>
-  {{editor content=(zhLocalize system.rules.effect) target=(zhLocalizePath "system.rules.effect") button=true owner=owner
+  {{editor (zhLocalize system.rules.effect) target=(zhLocalizePath "system.rules.effect") button=true owner=owner
   editable=editable}}
 </div>
 
 <div class="form-group stacked">
   <label><a class="open-editor">{{localize "ZWEI.actor.items.treatment"}} <i class="fa fa-edit"></i></a></label>
   <div class="zh-editor-preview open">{{{zhProcessRuleText (zhLocalize system.rules.treatment)}}}</div>
-  {{editor content=(zhLocalize system.rules.treatment) target=(zhLocalizePath "system.rules.treatment") button=true owner=owner
+  {{editor (zhLocalize system.rules.treatment) target=(zhLocalizePath "system.rules.treatment") button=true owner=owner
   editable=editable}}
 </div>
 

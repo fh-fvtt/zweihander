@@ -23,12 +23,12 @@
     <div class="tab background flexcol" data-group="primary" data-tab="details">
       <div>
         <h4 class="block-title">{{localize "ZWEI.actor.background.biography"}}</h4>
-        {{editor content=(zhLocalize system.description) target=(zhLocalizePath "system.description") button=true owner=owner
+        {{editor (zhLocalize system.description) target=(zhLocalizePath "system.description") button=true owner=owner
         editable=editable rollData=rollData}}
       </div>
       <div>
         <h4 class="block-title">{{localize "ZWEI.actor.background.characternotes"}}</h4>
-        {{editor content=system.notes target="system.notes" button=true owner=owner editable=editable
+        {{editor system.notes target="system.notes" button=true owner=owner editable=editable
         rollData=rollData}}
       </div>
     </div>

@@ -22,10 +22,10 @@
       {{> ($$ (concat 'item/' type))}}
     </div>
     <div class="tab tab-description flexcol" data-group="primary" data-tab="description">
-      {{editor content=(zhLocalize system.description) target=(zhLocalizePath "system.description") button=true owner=owner editable=editable}}
+      {{editor (zhLocalize system.description) target=(zhLocalizePath "system.description") button=true owner=owner editable=editable}}
     </div>
     <div class="tab tab-notes flexcol" data-group="primary" data-tab="notes">
-      {{editor content=system.notes target="system.notes" button=true owner=owner editable=editable}}
+      {{editor system.notes target="system.notes" button=true owner=owner editable=editable}}
     </div>
   </section>
 </form>
