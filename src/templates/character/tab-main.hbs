@@ -163,7 +163,7 @@
       <div class="flexcol">
         <h4 class="block-title">{{localize "ZWEI.actor.secondary.periltracker"}}</h4 class="block-title">
         <div class="condition-tracker-list flexcol">
-          {{zhConditionLadderLoc "system.stats.secondaryAttributes.perilCurrent.value" config.perilOptions
+          {{zhConditionLadderLoc "system.stats.secondaryAttributes.perilCurrent.value" (zhGetPerilSystem)
           checked=system.stats.secondaryAttributes.perilCurrent.value}}
         </div>
       </div>

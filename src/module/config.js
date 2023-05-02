@@ -55,6 +55,7 @@ ZWEI.testModes = {
 
 ZWEI.alignmentRanks = 9;
 ZWEI.perilOptions = ['incapacitated', 'ignore3', 'ignore2', 'ignore1', 'imperiled', 'unhindered'];
+ZWEI.altPerilOptions = ['incapacitated', 'penalty20', 'penalty10', 'penalty5', 'imperiled', 'unhindered'];
 ZWEI.damageOptions = ['slain', 'grievously', 'seriously', 'moderately', 'lightly', 'unharmed'];
 ZWEI.tiers = {
   1: 'Basic',

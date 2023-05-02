@@ -35,7 +35,7 @@ export async function rollPeril(perilType, actor) {
     {
       difficultyRating: perilType.difficultyRating,
       flavor: game.i18n.format('ZWEI.rolls.suppressperil', {
-        periltype: game.i18n.localize("ZWEI.actor.secondary." + perilType.title),
+        periltype: game.i18n.localize('ZWEI.actor.secondary.' + perilType.title),
       }),
       perilType,
     },
@@ -46,8 +46,8 @@ export async function rollPeril(perilType, actor) {
     const speaker = ChatMessage.getSpeaker({ actor: actor });
     roll.toMessage({
       flavor: game.i18n.format('ZWEI.rolls.rollingperil', {
-        peril: game.i18n.localize("ZWEI.actor.secondary.peril"),
-        periltype: game.i18n.localize("ZWEI.actor.secondary." + perilType.title),
+        peril: game.i18n.localize('ZWEI.actor.secondary.peril'),
+        periltype: game.i18n.localize('ZWEI.actor.secondary.' + perilType.title),
       }),
       speaker,
     });
@@ -114,19 +114,41 @@ export async function rollTest(
     }));*/
     return;
   }
+
+  const alternativePerilSystem = game.settings.get('zweihander', 'alternativePerilSystem');
+
+  const alternativePerilTable = {
+    5: 0,
+    4: 0,
+    3: -5,
+    2: -10,
+    1: -20,
+    0: -20,
+  };
+
   const primaryAttribute = skillItem.system.associatedPrimaryAttribute;
   const primaryAttributeValue = actor.system.stats.primaryAttributes[primaryAttribute.toLowerCase()].value;
+
   const rank = skillItem.system.rank;
   const bonusPerRank = skillItem.system.bonusPerRank;
   const rankBonus = skillItem.system.bonus;
+
   const currentPeril = Number(actor.system.stats.secondaryAttributes.perilCurrent.effectiveValue);
+
+  const alternativePerilPenalty = alternativePerilTable[currentPeril];
+
   const ranksPurchasedAfterPeril = Math.max(0, rank - Math.max(0, 4 - currentPeril));
   const ranksIgnoredByPeril = rank - ranksPurchasedAfterPeril;
   const rankBonusAfterPeril = ranksPurchasedAfterPeril * bonusPerRank;
+
   const specialBaseChanceModifier = Number(testConfiguration.baseChanceModifier);
-  const baseChance =
-    primaryAttributeValue + Math.max(-30, Math.min(30, rankBonusAfterPeril + specialBaseChanceModifier));
+
+  const finalRankBonus = alternativePerilSystem ? rankBonus + alternativePerilPenalty : rankBonusAfterPeril;
+
+  const baseChance = primaryAttributeValue + Math.max(-30, Math.min(30, finalRankBonus + specialBaseChanceModifier));
+
   const rawDifficultyRating = Number(testConfiguration.difficultyRating);
+
   const channelPowerBonus = testConfiguration.channelPowerBonus;
   const difficultyRating = Math.min(30, rawDifficultyRating + (testConfiguration.channelPowerBonus || 0));
   const difficultyRatingLabel = ZweihanderUtils.getDifficultyRatingLabel(difficultyRating);
@@ -167,7 +189,7 @@ export async function rollTest(
       label: difficultyRatingLabel,
     },
     totalChance,
-    perilPenalty: -ranksIgnoredByPeril * bonusPerRank,
+    perilPenalty: alternativePerilSystem ? alternativePerilPenalty : -ranksIgnoredByPeril * bonusPerRank,
     roll: effectiveResult.toLocaleString(undefined, {
       minimumIntegerDigits: 2,
     }),
@@ -213,11 +235,11 @@ export async function rollTest(
     testConfiguration.flavor ??
     {
       //@todo: this could be a funny feature to expand
-    skill: game.i18n.localize("ZWEI.rolls.skillflavor"),
-    dodge: game.i18n.localize("ZWEI.rolls.dodgeflavor"),
-    parry: game.i18n.localize("ZWEI.rolls.parryflavor"),
-    weapon: game.i18n.localize("ZWEI.rolls.weaponflavor") + ` ${weapon?.name}`,
-    spell: game.i18n.localize("ZWEI.rolls.spellflavor") + ` ${spell?.name}`
+      skill: game.i18n.localize('ZWEI.rolls.skillflavor'),
+      dodge: game.i18n.localize('ZWEI.rolls.dodgeflavor'),
+      parry: game.i18n.localize('ZWEI.rolls.parryflavor'),
+      weapon: game.i18n.localize('ZWEI.rolls.weaponflavor') + ` ${weapon?.name}`,
+      spell: game.i18n.localize('ZWEI.rolls.spellflavor') + ` ${spell?.name}`,
     }[testType] ??
     '';
   const speaker = ChatMessage.getSpeaker({ actor });
@@ -280,7 +302,7 @@ export async function rollWeaponDamage(actorId, testConfiguration) {
 
 async function getWeaponDamageContent(weapon, roll, exploded = false, explodedCount = 0) {
   weapon.system.qualities = await ZweihanderQuality.getQualities(weapon.system.qualities.value);
-  const rollContent = await roll.render({ flavor: game.i18n.localize("ZWEI.rolls.furydie") });
+  const rollContent = await roll.render({ flavor: game.i18n.localize('ZWEI.rolls.furydie') });
   const cardContent = await renderTemplate('systems/zweihander/src/templates/item-card/item-card-weapon.hbs', weapon);
   return await renderTemplate(CONFIG.ZWEI.templates.weapon, {
     cardContent,
@@ -528,9 +550,7 @@ export const patchDie = () => {
 
       // Limit recursion
       if (!recursive && checked >= initial) checked = this.results.length;
-      if (checked > 1000) throw new Error(
-        game.i18n.localize("ZWEI.othermessages.errorrecursion")
-        );
+      if (checked > 1000) throw new Error(game.i18n.localize('ZWEI.othermessages.errorrecursion'));
     }
   };
 

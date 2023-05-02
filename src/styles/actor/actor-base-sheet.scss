@@ -454,6 +454,9 @@ body.game.vtt.system-zweihander .zweihander.sheet.actor {
       align-items: center;
       border-bottom: 1px solid var(--zh-clr-bg1);
       padding: 0 2px;
+      &:last-of-type {
+        border-bottom: none;
+      }
       .item-name {
         cursor: pointer;
         &:hover {

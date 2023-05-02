@@ -1,3 +1,4 @@
+import { ZWEI } from './config';
 import { uuidv4, zhExplicitSign, localize, localizePath } from './utils';
 
 /**
@@ -215,6 +216,10 @@ export const registerHandlebarHelpers = async function () {
 
   $$('zhLocalizePath', localizePath);
 	
+  $$('zhGetPerilSystem', function() {
+    return game.settings.get('zweihander', 'alternativePerilSystem') ? ZWEI.altPerilOptions : ZWEI.perilOptions;
+  })
+
   $$("zhConditionLadderLoc", function(name, choices, options) {
     const checked = options.hash["checked"] ?? 5;
     let html = "";
@@ -227,7 +232,7 @@ export const registerHandlebarHelpers = async function () {
             id="${uuid}.${i}" name="${name}"
             value="${i}" data-dtype="Number" ${isChecked ? "checked" : ""}>
           <label for="${uuid}.${i}" class="status">
-            <span><span>` + game.i18n.localize('ZWEI.actor.conditions.' + choices[i]) + `</span></span>
+            <span>` + game.i18n.localize('ZWEI.actor.conditions.' + choices[i]) + `</span>
           </label>
         </div>`;
     }

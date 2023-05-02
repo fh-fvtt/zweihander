@@ -11,8 +11,8 @@ export const registerSystemSettings = function () {
   /* -------------------------------------------- */
 
   game.settings.register('zweihander', 'gameSystem', {
-    name: "ZWEI.settings.gamesystem",
-    hint: "ZWEI.settings.gamesystemhint",
+    name: 'ZWEI.settings.gamesystem',
+    hint: 'ZWEI.settings.gamesystemhint',
     scope: 'world',
     type: String,
     default: 'zweihander',
@@ -30,8 +30,8 @@ export const registerSystemSettings = function () {
   });
 
   game.settings.register('zweihander', 'encumbranceNineForOne', {
-    name: "ZWEI.settings.smallitem",
-    hint: "ZWEI.settings.smallitemhint",
+    name: 'ZWEI.settings.smallitem',
+    hint: 'ZWEI.settings.smallitemhint',
     scope: 'world',
     type: Boolean,
     default: true,
@@ -39,8 +39,8 @@ export const registerSystemSettings = function () {
   });
 
   game.settings.register('zweihander', 'trackRewardPoints', {
-    name: "ZWEI.settings.trackreward",
-    hint: "ZWEI.settings.trackrewardhint",
+    name: 'ZWEI.settings.trackreward',
+    hint: 'ZWEI.settings.trackrewardhint',
     scope: 'world',
     type: Boolean,
     default: true,
@@ -48,17 +48,36 @@ export const registerSystemSettings = function () {
   });
 
   game.settings.register('zweihander', 'injuryPrompt', {
-    name: "ZWEI.settings.injuryprompt",
-    hint: "ZWEI.settings.injuryprompthint",
+    name: 'ZWEI.settings.injuryprompt',
+    hint: 'ZWEI.settings.injuryprompthint',
     scope: 'world',
     type: Boolean,
     default: true,
     config: true,
   });
 
+  game.settings.register('zweihander', 'alternativePerilSystem', {
+    scope: 'world',
+    config: 'true',
+    name: 'Use Alternative Peril System',
+    hint: 'This Peril system applies a flat penalty to Base Chance instead of ignoring Skill Ranks.',
+    type: Boolean,
+    default: false,
+    onChange: debouncedReload,
+  });
+
+  game.settings.register('zweihander', 'unlimitedFortuneExplodes', {
+    name: 'ZWEI.settings.fortuneexplodes',
+    hint: 'ZWEI.settings.fortuneexplodeshint',
+    scope: 'world',
+    type: Boolean,
+    default: false,
+    config: true,
+  });
+
   game.settings.register('zweihander', 'openInCompactMode', {
-    name: "ZWEI.settings.compactmode",
-    hint: "ZWEI.settings.compactmodehint",
+    name: 'ZWEI.settings.compactmode',
+    hint: 'ZWEI.settings.compactmodehint',
     scope: 'client',
     type: Boolean,
     default: false,
@@ -74,8 +93,8 @@ export const registerSystemSettings = function () {
   });
 
   game.settings.register('zweihander', 'skillPack', {
-    name: "ZWEI.settings.skilllist",
-    hint: "ZWEI.settings.skilllisthint",
+    name: 'ZWEI.settings.skilllist',
+    hint: 'ZWEI.settings.skilllisthint',
     scope: 'world',
     type: String,
     default: 'zweihander.skills',
@@ -83,18 +102,9 @@ export const registerSystemSettings = function () {
     onChange: updateActorSkillsFromPack,
   });
 
-  game.settings.register('zweihander', 'unlimitedFortuneExplodes', {
-    name: "ZWEI.settings.fortuneexplodes",
-    hint: "ZWEI.settings.fortuneexplodeshint",
-    scope: 'world',
-    type: Boolean,
-    default: false,
-    config: true,
-  });
-
   game.settings.register('zweihander', 'theme', {
-    name: "ZWEI.settings.zweitheme",
-    hint: "ZWEI.settings.zweithemehint",
+    name: 'ZWEI.settings.zweitheme',
+    hint: 'ZWEI.settings.zweithemehint',
     scope: 'client',
     type: String,
     default: 'gruvbox-dark',
@@ -134,9 +144,9 @@ export const registerSystemSettings = function () {
     },
   });
   game.settings.registerMenu('zweihander', 'fortuneTrackerSettingsMenu', {
-    name: "ZWEI.settings.fortunetracker",
-    label: "ZWEI.settings.fortunetracker", // The text label used in the button
-    hint: "ZWEI.settings.fortunetrackerhint",
+    name: 'ZWEI.settings.fortunetracker',
+    label: 'ZWEI.settings.fortunetracker', // The text label used in the button
+    hint: 'ZWEI.settings.fortunetrackerhint',
     icon: 'ra ra-scroll-unfurled', // A Font Awesome icon used in the submenu button
     type: FortuneTrackerSettings, // A FormApplication subclass
     restricted: true, // Restrict this submenu to gamemaster only?
@@ -167,9 +177,9 @@ export const registerSystemSettings = function () {
     ],
   });
   game.settings.registerMenu('zweihander', 'currencySettingsMenu', {
-    name: "ZWEI.settings.currency",
-    label: "ZWEI.settings.currency", // The text label used in the button
-    hint: "ZWEI.settings.currencyhint",
+    name: 'ZWEI.settings.currency',
+    label: 'ZWEI.settings.currency', // The text label used in the button
+    hint: 'ZWEI.settings.currencyhint',
     icon: 'fas fa-coins', // A Font Awesome icon used in the submenu button
     type: CurrencySettings, // A FormApplication subclass
     restricted: true, // Restrict this submenu to gamemaster only?
