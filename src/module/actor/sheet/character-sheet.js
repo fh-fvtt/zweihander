@@ -194,7 +194,11 @@ export default class ZweihanderCharacterSheet extends ZweihanderBaseActorSheet {
       .sort((a, b) => (a.sort || 0) - (b.sort || 0))
       .forEach((i) => sheetData[pluralize(i.type)].push(i));
     // sort skills alphabetically
-    sheetData.skills = sheetData.skills.sort((a, b) => a.name.localeCompare(b.name));
+    sheetData.skills = sheetData.skills.sort((a, b)  =>  {
+      const aloc = game.i18n.localize("ZWEI.actor.skills." + a.name.toLowerCase().replace(/\s+/g, ''));
+      const bloc = game.i18n.localize("ZWEI.actor.skills." + b.name.toLowerCase().replace(/\s+/g, ''));
+      return aloc.localeCompare(bloc);
+    });
     // sort professions by tier
     sheetData.professions = sheetData.professions.sort(
       (a, b) => CONFIG.ZWEI.tiersInversed[a.system.tier] - CONFIG.ZWEI.tiersInversed[b.system.tier]
