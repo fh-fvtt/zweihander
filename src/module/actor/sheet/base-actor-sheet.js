@@ -44,7 +44,6 @@ export default class ZweihanderBaseActorSheet extends ActorSheet {
       isCreature: this.actor.type === 'creature',
       config: CONFIG.ZWEI,
       rollData: this.actor.getRollData.bind(this.actor),
-      effects: [],
       settings: {},
     };
 
@@ -59,6 +58,9 @@ export default class ZweihanderBaseActorSheet extends ActorSheet {
 
     // Prepare owned items
     this._prepareItems(sheetData);
+
+    // Effects
+    sheetData.effects = actorData.effects; // comes *after* Owned Items, as Active Effects are their own thing
 
     const itemGroups = this._processItemGroups(this._getItemGroups(sheetData));
     sheetData.itemGroups = ZweihanderUtils.assignPacks(this.actor.type, itemGroups);
@@ -314,8 +316,8 @@ export default class ZweihanderBaseActorSheet extends ActorSheet {
       const item = this.actor.items.get(i.data('itemId'));
       const type = game.i18n.localize(CONFIG.Item.typeLabels[item.type]);
       await Dialog.confirm({
-        title: game.i18n.format("ZWEI.othermessages.deleteembedded", { type: type, name: item.name }),
-        content: game.i18n.format("ZWEI.othermessages.suretype", { type: type }),
+        title: game.i18n.format('ZWEI.othermessages.deleteembedded', { type: type, name: item.name }),
+        content: game.i18n.format('ZWEI.othermessages.suretype', { type: type }),
         yes: async () => {
           await this.actor.deleteEmbeddedDocuments('Item', [item.id]);
           i.slideUp(200, () => this.render(false));
@@ -338,8 +340,8 @@ export default class ZweihanderBaseActorSheet extends ActorSheet {
       const effect = this.actor.effects.get(i.data('itemId'));
       const type = game.i18n.localize(CONFIG.ActiveEffect.typeLabels['base']);
       await Dialog.confirm({
-        title: game.i18n.format("ZWEI.othermessages.deletetype", { type: type, label: effect.label }),
-        content: game.i18n.format("ZWEI.othermessages.suretype", { type: type }),
+        title: game.i18n.format('ZWEI.othermessages.deletetype', { type: type, label: effect.label }),
+        content: game.i18n.format('ZWEI.othermessages.suretype', { type: type }),
         yes: async () => {
           await this.actor.deleteEmbeddedDocuments('ActiveEffect', [effect.id]);
           i.slideUp(200, () => this.render(false));
@@ -389,9 +391,7 @@ export default class ZweihanderBaseActorSheet extends ActorSheet {
     html.find('.add-new').contextmenu(async (ev) => {
       const packIds = ev.currentTarget.dataset.openPacks?.split?.(',')?.filter?.((x) => x);
       if (!packIds) {
-        ui.notifications.notify(
-          game.i18n.localize("ZWEI.othermessages.errortype")
-          );
+        ui.notifications.notify(game.i18n.localize('ZWEI.othermessages.errortype'));
         return;
       }
       const packs = packIds.map((x) => game.packs.get(x.trim()));
@@ -443,18 +443,16 @@ export default class ZweihanderBaseActorSheet extends ActorSheet {
       const checkbox = $(event.currentTarget);
       const item = this.actor.items.get(checkbox.data('itemId'));
       if (!event.currentTarget.checked && item.system.tier !== item.actor.system.tier) {
-        ui.notifications.error(
-          game.i18n.localize("ZWEI.othermessages.errorreset")
-        );
+        ui.notifications.error(game.i18n.localize('ZWEI.othermessages.errorreset'));
         return;
       }
       Dialog.confirm({
         title: !event.currentTarget.checked
-          ? game.i18n.format("ZWEI.othermessages.resetprogress", { name: item.name })
-          : game.i18n.format("ZWEI.othermessages.completeprogress", { name: item.name }),
+          ? game.i18n.format('ZWEI.othermessages.resetprogress', { name: item.name })
+          : game.i18n.format('ZWEI.othermessages.completeprogress', { name: item.name }),
         content: !event.currentTarget.checked
-          ? game.i18n.localize("ZWEI.othermessages.reallyresetprogress")
-          : game.i18n.localize("ZWEI.othermessages.purchaseall"),
+          ? game.i18n.localize('ZWEI.othermessages.reallyresetprogress')
+          : game.i18n.localize('ZWEI.othermessages.purchaseall'),
         yes: () => ZweihanderProfession.toggleProfessionPurchases(item, !event.currentTarget.checked),
         defaultYes: false,
       });
@@ -596,9 +594,7 @@ export default class ZweihanderBaseActorSheet extends ActorSheet {
         showDialog: true,
       });
     } else {
-      ui.notifications.error(
-        game.i18n.format("ZWEI.othermessages.noskillexists", { skill: skill })
-        );
+      ui.notifications.error(game.i18n.format('ZWEI.othermessages.noskillexists', { skill: skill }));
     }
   }
 

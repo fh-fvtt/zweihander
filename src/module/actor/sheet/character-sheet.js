@@ -40,6 +40,7 @@ export default class ZweihanderCharacterSheet extends ZweihanderBaseActorSheet {
     sheetData.settings.currencies = game.settings.get('zweihander', 'currencySettings');
     // calculate reward points automatically
     sheetData.settings.trackRewardPoints = game.settings.get('zweihander', 'trackRewardPoints');
+
     if (sheetData.settings.trackRewardPoints) {
       const tierMultiplier = {
         Basic: 100,
@@ -53,7 +54,11 @@ export default class ZweihanderCharacterSheet extends ZweihanderBaseActorSheet {
       sheetData.system.stats.rewardPoints.current =
         sheetData.system.stats.rewardPoints.total - sheetData.system.stats.rewardPoints.spent;
     }
+
     attachTabDefinitions(sheetData);
+
+    //sheetData.itemGroups.effects.items = sheetData.effects.contents;
+
     const hidden = this.actor.limited;
     const ancestry = sheetData.ancestry?.[0]?.name;
     const pronoun = sheetData.system.details.pronoun || '?';
@@ -110,10 +115,10 @@ export default class ZweihanderCharacterSheet extends ZweihanderBaseActorSheet {
         prefix: game.i18n.localize('ZWEI.actor.details.prefixes.build'),
         key: 'details.buildType',
         placeholder: game.i18n.localize('ZWEI.actor.details.placeholders.build'),
-        postfix: game.i18n.format('ZWEI.actor.details.postfixes.build', {ancestry: `${ancestry ?? '?'}`}),
+        postfix: game.i18n.format('ZWEI.actor.details.postfixes.build', { ancestry: `${ancestry ?? '?'}` }),
       },
       {
-        prefix: game.i18n.format('ZWEI.actor.details.prefixes.hair', {pronoun: `${pronoun.capitalize() ?? '?'}`}),
+        prefix: game.i18n.format('ZWEI.actor.details.prefixes.hair', { pronoun: `${pronoun.capitalize() ?? '?'}` }),
         key: 'details.hairColor',
         placeholder: game.i18n.localize('ZWEI.actor.details.placeholders.hair'),
         postfix: game.i18n.localize('ZWEI.actor.details.postfixes.hair'),
@@ -140,7 +145,7 @@ export default class ZweihanderCharacterSheet extends ZweihanderBaseActorSheet {
         hidden,
       },
       {
-        prefix: game.i18n.format('ZWEI.actor.details.prefixes.upbringing', {pronoun: `${pronoun ?? '?'}`}),
+        prefix: game.i18n.format('ZWEI.actor.details.prefixes.upbringing', { pronoun: `${pronoun ?? '?'}` }),
         key: 'details.upbringing',
         placeholder: game.i18n.localize('ZWEI.actor.details.placeholders.upbringing'),
         hidden,
@@ -179,7 +184,6 @@ export default class ZweihanderCharacterSheet extends ZweihanderBaseActorSheet {
       'skill',
       'uniqueAdvance',
       'taint',
-      'effect',
     ];
     const pluralize = (t) =>
       ({
@@ -295,8 +299,8 @@ export default class ZweihanderCharacterSheet extends ZweihanderBaseActorSheet {
     // Reset Order and Chaos Ranks
     html.find('.reset-ranks').contextmenu(() => {
       Dialog.confirm({
-        title: `${this.actor.name}: ` + game.i18n.localize("ZWEI.othermessages.resetranks"),
-        content: game.i18n.localize("ZWEI.othermessages.sureranks"),
+        title: `${this.actor.name}: ` + game.i18n.localize('ZWEI.othermessages.resetranks'),
+        content: game.i18n.localize('ZWEI.othermessages.sureranks'),
         yes: () =>
           this.actor.update({
             'system.alignment.chaos.rank': 0,
@@ -403,7 +407,7 @@ export default class ZweihanderCharacterSheet extends ZweihanderBaseActorSheet {
     const target = currencies[targetCurrencyIndex];
     const equivalent = currencies[Math.min(sourceCurrencyIndex, targetCurrencyIndex)].equivalentOfLower;
     let conversion = {};
-    if (sourceCurrencyIndex < targetCurrencyIndex) { 
+    if (sourceCurrencyIndex < targetCurrencyIndex) {
       // bigger to lower conversion
       conversion.sourceDebit = 1;
       conversion.targetCredit = equivalent;
@@ -416,7 +420,7 @@ export default class ZweihanderCharacterSheet extends ZweihanderBaseActorSheet {
     if (newSourceAmount >= 0) {
       this.actor.update({
         [`system.currency.${source.abbreviation}`]: newSourceAmount,
-        [`system.currency.${target.abbreviation}`]: actorMoney[target.abbreviation] + conversion.targetCredit
+        [`system.currency.${target.abbreviation}`]: actorMoney[target.abbreviation] + conversion.targetCredit,
       });
     } else {
       console.warn(`not enough ${source.abbreviation} to perform money conversion`);
