@@ -15,7 +15,7 @@ import FortuneTracker from './apps/fortune-tracker';
 import * as ZweihanderUtils from './utils';
 import * as ZweihanderChat from './chat';
 
-import { registerSystemSettings } from './settings';
+import { registerSystemSettings, setCssTheme } from './settings';
 import { preloadHandlebarsTemplates } from './templates';
 import { registerHandlebarHelpers } from './helpers';
 import { migrateWorldSafe, migrateWorld } from './migration';
@@ -48,9 +48,9 @@ const socket = new Promise((resolve) => {
 
 Hooks.once('ready', function () {
   // this is necessary to apply the theme settings
-  // TODO: refactor into own utility-function/class
   let sheetStyles = game.settings.get('zweihander', 'theme');
-  game.settings.set('zweihander', 'theme', sheetStyles);
+  setCssTheme(sheetStyles);
+  
   migrateWorldSafe();
   socket.then((socket) => {
     game.zweihander.socket = socket;

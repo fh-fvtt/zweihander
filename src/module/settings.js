@@ -113,12 +113,7 @@ export const registerSystemSettings = function () {
       'gruvbox-light': 'Gruvbox Light',
     },
     config: true,
-    onChange: (theme) => {
-      $('body.system-zweihander').addClass('zweihander-theme-' + theme);
-      $('body.system-zweihander').removeClass((i, c) =>
-        c.split(' ').filter((c) => c.startsWith('zweihander-theme-') && c !== 'zweihander-theme-' + theme)
-      );
-    },
+    onChange: setCssTheme,
   });
 
   game.settings.register('zweihander', 'fortuneTrackerPersistedState', {
@@ -184,4 +179,12 @@ export const registerSystemSettings = function () {
     type: CurrencySettings, // A FormApplication subclass
     restricted: true, // Restrict this submenu to gamemaster only?
   });
+};
+
+export const setCssTheme = (theme) => {
+  console.log(`zweihander | setting theme ${theme}`);
+  $('body.system-zweihander').addClass('zweihander-theme-' + theme);
+  $('body.system-zweihander').removeClass((i, c) =>
+    c.split(' ').filter((c) => c.startsWith('zweihander-theme-') && c !== 'zweihander-theme-' + theme)
+  );
 };
