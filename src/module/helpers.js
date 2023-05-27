@@ -89,7 +89,7 @@ export const registerHandlebarHelpers = async function () {
   });
 
   $$('zhProcessRuleText', function (text) {
-    text = TextEditor.enrichHTML(text, {});
+    text = TextEditor.enrichHTML(text, {async: false});
     if (window.MEME?.markdownIt?.render) {
       text = window.MEME?.markdownIt?.render(text);
     }
