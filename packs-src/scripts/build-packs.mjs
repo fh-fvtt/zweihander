@@ -4,7 +4,7 @@ import path from 'node:path';
 import process from 'node:process';
 import getStableIdGenerator from './stable-id-generator.mjs';
 
-const dataPath = path.resolve(process.cwd(), 'packs/data');
+const dataPath = path.resolve(process.cwd(), 'packs-src/data');
 const packsPath = path.resolve(process.cwd(), 'packs');
 
 const stableIds = getStableIdGenerator();

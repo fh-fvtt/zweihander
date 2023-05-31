@@ -43,8 +43,8 @@ const args = yargs(process.argv.slice(2))
   .parseSync();
 
 const packsPath = path.join(process.cwd(), 'packs');
-const dataPath = path.resolve(process.cwd(), 'packs/data');
-const tempDataPath = path.resolve(process.cwd(), 'packs/temp-data');
+const dataPath = path.resolve(process.cwd(), 'packs-src/data');
+const tempDataPath = path.resolve(process.cwd(), 'packs-src/temp-data');
 
 function assertDocIdSame(newSource, jsonPath) {
   if (fsSync.existsSync(jsonPath)) {
@@ -125,7 +125,7 @@ async function extractPacks() {
   await fs.mkdir(tempDataPath);
 
   const foundryPacks = (args.packDb === 'all' ? await fs.readdir(packsPath) : [args.packDb])
-    .filter((f) => f !== '.gitkeep')
+    .filter((f) => f.endsWith('.db'))
     .map((f) => path.resolve(packsPath, f));
 
   return (
