@@ -88,14 +88,6 @@ export const registerHandlebarHelpers = async function () {
     return new Handlebars.SafeString(html);
   });
 
-  $$('zhProcessRuleText', function (text) {
-    text = TextEditor.enrichHTML(text, {async: false});
-    if (window.MEME?.markdownIt?.render) {
-      text = window.MEME?.markdownIt?.render(text);
-    }
-    return text;
-  });
-
   $$('zhEffectToHTML', function (effect) {
     let html = '';
 

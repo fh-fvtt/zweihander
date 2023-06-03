@@ -550,3 +550,25 @@ export const localize = (localizeObj) => {
 export const localizePath = (dataPath) => {
   return `${dataPath}.@${game.settings.get('core', 'language')}`;
 };
+
+export const enrichLocalized = async (entry) => {
+  let text = entry;
+  let hasZhLocalization = Object.keys(entry).filter((prop) => prop.startsWith('@')).length > 0;
+  if (hasZhLocalization) {
+    text = localize(entry);
+  }
+  return TextEditor.enrichHTML(text, {async: true});
+};
+
+export const processRules = async (data) => {
+  if (data.rules === undefined) {
+    return undefined;
+  }
+  const rules = Object.fromEntries(
+    await Promise.all(
+      Object.entries(data.rules)
+        .map(([name, rule]) => enrichLocalized(rule).then((processedRule) => [name, processedRule]))
+    )
+  );
+  return rules;
+};

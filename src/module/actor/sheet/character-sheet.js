@@ -32,8 +32,8 @@ export default class ZweihanderCharacterSheet extends ZweihanderBaseActorSheet {
     });
   }
 
-  getData(options) {
-    const sheetData = super.getData();
+  async getData(options) {
+    const sheetData = await super.getData();
     // get actor config
     sheetData.actorConfig = ZweihanderActorConfig.getConfig(this.actor);
     // bind currency
@@ -158,7 +158,8 @@ export default class ZweihanderCharacterSheet extends ZweihanderBaseActorSheet {
     return sheetData;
   }
 
-  _prepareItems(sheetData) {
+  async _prepareItems(sheetData) {
+    await super._prepareItems(sheetData);
     // set up collections for all item types
     const indexedTypes = [
       'trapping',
@@ -230,6 +231,7 @@ export default class ZweihanderCharacterSheet extends ZweihanderBaseActorSheet {
       const focuses = sheetData.focuses.filter((focus) => focus.skillName === skill.name).map((focus) => focus.name);
       skill.system.focuses = focuses;
     });
+    return sheetData;
   }
 
   _getItemGroups(data) {

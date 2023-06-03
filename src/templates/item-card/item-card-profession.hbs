@@ -1,11 +1,16 @@
 <section class="item-card">
   <h2 class="item-card-title">{{zhCapitalize type}}: {{name}}</h2>
+  {{!--
   {{#if system.flavor.description}}
   <div class="item-card-description">
-    {{{zhProcessRuleText system.flavor.description}}}
+    {{{system.flavor.description}}}
   </div>
   <br/>
   {{/if}}
+  --}}
+  <div class="item-card-description">
+    {{{zhLocalize system.description}}}
+  </div>
   <dl class="zh-expandable" data-expand-title="{{localize "ZWEI.chatskill.itemdetails"}}">
       <dt>{{localize "ZWEI.actor.items.archetype"}}</dt>
       <dd>{{system.archetype}}</dd>

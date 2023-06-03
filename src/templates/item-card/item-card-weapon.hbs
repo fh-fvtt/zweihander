@@ -1,7 +1,7 @@
 <section class="item-card">
     <h2 class="item-card-title">{{name}}</h2>
     <div class="item-card-description">
-      {{{zhProcessRuleText (zhLocalize system.description)}}}
+      {{{zhLocalize system.description}}}
     </div>
     <dl class="compact-details zh-collapsed zh-expandable" data-expand-title="{{localize "ZWEI.chatskill.itemdetails"}}">
       <dt>{{localize "ZWEI.actor.items.associatedskill"}}</dt>
@@ -24,7 +24,7 @@
     <dl class="item-card-qualities zh-expandable zh-collapsed" data-expand-title="{{localize "ZWEI.chatskill.showqualities"}}">
       {{#each system.qualities}}
       <dt>{{name}}</dt>
-      <dd>{{{zhProcessRuleText effect}}}</dd>
+      <dd>{{{effect}}}</dd>
       {{/each}}
     </dl>
   </section>

@@ -56,6 +56,11 @@ export default class ZweihanderItemSheet extends ItemSheet {
     sheetData.settings = ZweihanderUtils.getSheetSettings();
     sheetData.actor = this.item.actor;
     sheetData.choices = {};
+
+    sheetData.html = {
+      rules: await ZweihanderUtils.processRules(sheetData.system)
+    };
+
     if (sheetData.type === 'skill') {
       sheetData.choices.associatedPrimaryAttribute = CONFIG.ZWEI.primaryAttributes.map((option) => ({
         selected: (sheetData.system.associatedPrimaryAttribute.toLowerCase() ?? 'combat') === option ? 'selected' : '',

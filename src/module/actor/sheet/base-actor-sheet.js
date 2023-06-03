@@ -30,7 +30,7 @@ export default class ZweihanderBaseActorSheet extends ActorSheet {
   }
 
   /** @override */
-  getData(options) {
+  async getData(options) {
     // Basic data
     let isOwner = this.actor.isOwner;
     const sheetData = {
@@ -58,7 +58,7 @@ export default class ZweihanderBaseActorSheet extends ActorSheet {
     sheetData.items.sort((a, b) => (a.sort || 0) - (b.sort || 0));
 
     // Prepare owned items
-    this._prepareItems(sheetData);
+    await this._prepareItems(sheetData);
 
     const itemGroups = this._processItemGroups(this._getItemGroups(sheetData));
     sheetData.itemGroups = ZweihanderUtils.assignPacks(this.actor.type, itemGroups);
@@ -67,7 +67,25 @@ export default class ZweihanderBaseActorSheet extends ActorSheet {
     return sheetData;
   }
 
-  _prepareItems() {}
+  async _prepareItems(sheetData) {
+    return this._prepareItemsDisplay(sheetData);
+  }
+
+  async _prepareItemsDisplay(sheetData) {
+    await Promise.all(sheetData.items
+      .map(async (item) => {
+        item.html = {};
+        if (item.system.description) {
+          item.html.description = await ZweihanderUtils.enrichLocalized(item.system.description);
+        }
+        if (item.system.rules) {
+          item.html.rules = await ZweihanderUtils.processRules(item.system);
+        }
+        return item;
+      })
+    );
+    return sheetData;
+  }
 
   _getItemGroups() {}
 
@@ -479,7 +497,7 @@ export default class ZweihanderBaseActorSheet extends ActorSheet {
       if (item.type === 'weapon' || item.type === 'armor') {
         item.system.qualities = await ZweihanderQuality.getQualities(item.system.qualities.value);
       }
-      //console.log(item);
+      // console.log('zweihander | base actor sheet#activateListeners item-post', item);
       let html;
       try {
         html = await renderTemplate(`systems/zweihander/src/templates/item-card/item-card-${item.type}.hbs`, item);

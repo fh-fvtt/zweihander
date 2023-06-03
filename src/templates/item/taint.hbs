@@ -5,8 +5,8 @@
 
 <div class="form-group stacked">
   <label><a class="open-editor">{{localize "ZWEI.actor.items.effect"}} <i class="fa fa-edit"></i></a></label>
-    <div class="zh-editor-preview open">{{{zhProcessRuleText (zhLocalize system.rules.effect)}}}</div>
-  {{editor (zhLocalize system.rules.effect) target=(zhLocalizePath "system.rules.effect") button=true owner=owner editable=editable}}
+    <div class="zh-editor-preview open">{{{html.rules.effect}}}</div>
+  {{editor html.rules.effect target=(zhLocalizePath "system.rules.effect") button=true owner=owner editable=editable}}
 </div>
 
 <div class="form-group stacked">

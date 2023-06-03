@@ -2,11 +2,11 @@
 <br />
 {{#if (zhLocalize rules.effect)}}
   <div class="separator">
-  <label>{{localize "ZWEI.actor.items.effect"}}:</label> {{{zhProcessRuleText (zhLocalize rules.effect)}}}
+  <label>{{localize "ZWEI.actor.items.effect"}}:</label> {{{item.html.rules.effect}}}
   </div>
 {{/if}}
 {{#if (zhLocalize description)}}
   <div class="separator">
-  <label>{{localize "ZWEI.actor.items.description"}}:</label> {{{zhProcessRuleText (zhLocalize description)}}}
+  <label>{{localize "ZWEI.actor.items.description"}}:</label> {{{item.html.description}}}
   </div>
 {{/if}}
