@@ -44,7 +44,7 @@ const testWorldData = {
 };
 
 before(() => {
-  cy.visit('localhost:30000' + '/setup')
+  cy.visit('/setup')
     .url()
     .then((url) => {
       const { pathname } = new URL(url);
