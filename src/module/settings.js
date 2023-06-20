@@ -29,6 +29,17 @@ export const registerSystemSettings = function () {
     default: '',
   });
 
+  game.settings.register('zweihander', 'migrationsRegistry', {
+    name: 'Applied system migrations registry',
+    scope: 'world',
+    config: false,
+    type: Object,
+    default: {
+      systemMigration: '',
+      lastSystemVersion: ''
+    }
+  });
+
   game.settings.register('zweihander', 'encumbranceNineForOne', {
     name: 'ZWEI.settings.smallitem',
     hint: 'ZWEI.settings.smallitemhint',

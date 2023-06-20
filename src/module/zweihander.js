@@ -18,7 +18,7 @@ import * as ZweihanderChat from './chat';
 import { registerSystemSettings, setCssTheme } from './settings';
 import { preloadHandlebarsTemplates } from './templates';
 import { registerHandlebarHelpers } from './helpers';
-import { migrateWorldSafe, migrateWorld } from './migration';
+// import { migrateWorldSafe, migrateWorld } from './migration';
 import { rollTest, patchDie } from './dice';
 import { getTestConfiguration } from './apps/test-config';
 import { createItemMacro, rollItemMacro } from './macros';
@@ -33,6 +33,7 @@ import ZweihanderCombatant from './combat/combatant';
 import ZweihanderCombatTracker from './combat/combat-tracker';
 import ZweihanderActiveEffect from './effects/active-effect';
 import ZweihanderActiveEffectConfig from './apps/active-effect-config';
+import { performWorldMigrations, migrations } from './migration';
 
 /* -------------------------------------------- */
 /*  Foundry VTT Initialization                  */
@@ -51,7 +52,8 @@ Hooks.once('ready', function () {
   let sheetStyles = game.settings.get('zweihander', 'theme');
   setCssTheme(sheetStyles);
   
-  migrateWorldSafe();
+  // migrateWorldSafe();
+  performWorldMigrations();
   socket.then((socket) => {
     game.zweihander.socket = socket;
     FortuneTracker.INSTANCE = new FortuneTracker(socket);
@@ -142,7 +144,8 @@ Hooks.once('init', async function () {
     ZweihanderActor,
     ZweihanderItem,
     utils: ZweihanderUtils,
-    migrateWorld,
+    // migrateWorld,
+    migrations,
     rollItemMacro,
   };
   CONFIG.ChatMessage.template = 'systems/zweihander/src/templates/chat/chat-message.hbs';
@@ -298,6 +301,10 @@ Hooks.once('polyglot.init', (LanguageProvider) => {
     }
   }
   game.polyglot.registerSystem('zweihander', ZweihanderLanguageProvider);
+});
+
+Hooks.once('devModeReady', ({ registerPackageDebugFlag }) => {
+  registerPackageDebugFlag('zweihander');
 });
 
 export let _module = null;
