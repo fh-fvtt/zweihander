@@ -67,6 +67,8 @@ if [ $? -ne 0 ]; then
 fi
 
 RELEASE_DATE=$(date +%F)
+RELEASE_TAG="v${VERSION}"
+
 MANIFEST_BRANCH=$(git branch --show-current)
 
 MANIFEST_URL="https://raw.githubusercontent.com/fh-fvtt/zweihander/${MANIFEST_BRANCH}/system.json"
@@ -74,6 +76,7 @@ MANIFEST_URL="https://raw.githubusercontent.com/fh-fvtt/zweihander/${MANIFEST_BR
 subst_vars=$(cat <<EOF
 s/{{RELEASE_VERSION}}/${VERSION}/g
 s/{{RELEASE_DATE}}/${RELEASE_DATE}/g
+s/{{RELEASE_TAG}}/${RELEASE_TAG}/g
 s,{{MANIFEST_URL}},${MANIFEST_URL},g
 EOF
 )
@@ -81,13 +84,12 @@ EOF
 sed -e "$subst_vars" system.template.json > system.json
 sed -ie "$subst_vars" ChangeLog.md
 
-RELEASE_TAG="v${VERSION}"
 
 [ "$COMMIT_CHANGES" = no ] && exit 0
 
-set -e
+set -ex
 git add system.json ChangeLog.md
 git commit -m "preparing release $RELEASE_TAG"
 git push
 git tag "$RELEASE_TAG"
-git push origin "$RELASE_TAG"
+git push origin "$RELEASE_TAG"

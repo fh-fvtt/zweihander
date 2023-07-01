@@ -6,7 +6,7 @@
   "minimumCoreVersion": "10",
   "compatibility": {
     "minimum": 10,
-    "verified": 10,
+    "verified": 11,
     "maximum": 11
   },
   "templateVersion": 2,
@@ -52,7 +52,9 @@
   "socket": true,
   "url": "https://github.com/fh-fvtt/zweihander",
   "manifest": "{{MANIFEST_URL}}",
-  "download": "https://github.com/fh-fvtt/zweihander/releases/download/v{{RELEASE_VERSION}}/system.zip",
+  "download": "https://github.com/fh-fvtt/zweihander/releases/download/{{RELEASE_TAG}}/system.zip",
+  "bugs": "https://github.com/fh-fvtt/zweihander/issues",
+  "changelog": "https://github.com/fh-fvtt/zweihander/releases/tag/{{RELEASE_TAG}}",
   "license": "LICENCE.txt",
   "primaryTokenAttribute": "stats.secondaryAttributes.damageCurrent",
   "secondaryTokenAttribute": "stats.secondaryAttributes.perilCurrent",
