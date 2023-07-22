@@ -1,0 +1,100 @@
+{
+  "_id": "E5DSEPlN7syp56bu",
+  "data": {
+    "archetype": "Expert Profession",
+    "bonusAdvances": [
+      {
+        "name": "[BB]"
+      },
+      {
+        "name": "[CB]"
+      },
+      {
+        "name": "[CB]"
+      },
+      {
+        "name": "[FB]"
+      },
+      {
+        "name": "[IB]"
+      },
+      {
+        "name": "[WB]"
+      },
+      {
+        "name": "[WB]"
+      }
+    ],
+    "description": {
+      "@en": "There are many subtleties to war. Maneuvers, morale, when to attack, when to retreat; it’s all a deadly dance that culminates in death, defeat and victory. No one knows this more than the Iron Abbots, the priesthood of the god of war and strategy, the Steward, who devote themselves to battle and order. Their armor emblazoned with symbols of the sun and wielding their trusty, blessed spears, these battle priests serve as aide-de-camps to generals or lead regiments themselves. When they do, the Steward’s blazing sun banners fly proudly alongside the banners of the nobility. When battles end, Iron Abbots tend to wounded soldiers and often facilitate parleys between the opposing sides – though ideals may be different, war and honor are universal languages. In times of peace, Iron Abbots lead pilgrimages to ancient battlefields to witness the horrors and beauty of warfare.\nAlthough nearly every guardhouse and encampment has a shrine to the Steward, His steely temples are usually found in barracks and military academies. Iron Abbots worship consists of drills and exercises, each spear thrust and shield block a prayer to their lord of war. These prayers ensure that Iron Abbot soldiers stand firm when other regiments falter, bolstering their morale and rallying them under continued assault. The Steward demands His followers to be disciplined and honorable, so discord is rare among His ranks. Those who give into more dishonorable and chaotic ways become vehicles for bloody, senseless destruction."
+    },
+    "drawback": {
+      "linkedId": null,
+      "name": "The Steward’s Commandments"
+    },
+    "expert": {
+      "requirements": "You must possess at least one Skill Rank in Incantation in order to enter this Expert Profession. In addition, you must have the Special Trait of Divine Magick.",
+      "value": true
+    },
+    "notes": "",
+    "professionalTrait": {
+      "linkedId": null,
+      "name": "Shield of the Blazing Sun"
+    },
+    "skillRanks": [
+      {
+        "name": "Awareness"
+      },
+      {
+        "name": "Folklore"
+      },
+      {
+        "name": "Incantation"
+      },
+      {
+        "name": "Leadership"
+      },
+      {
+        "name": "Martial Melee"
+      },
+      {
+        "name": "Resolve"
+      },
+      {
+        "name": "Ride"
+      },
+      {
+        "name": "Rumor"
+      },
+      {
+        "name": "Simple Melee"
+      },
+      {
+        "name": "Warfare"
+      }
+    ],
+    "specialTrait": {
+      "linkedId": null,
+      "name": "Prayers of the Steward"
+    },
+    "talents": [
+      {
+        "linkedId": null,
+        "name": "Battle Magick"
+      },
+      {
+        "linkedId": null,
+        "name": "Impenetrable Wall"
+      },
+      {
+        "linkedId": null,
+        "name": "Military Formation"
+      }
+    ],
+    "tier": ""
+  },
+  "effects": [],
+  "img": "systems/zweihander/assets/icons/iron-abbot.svg",
+  "name": "Iron Abbot",
+  "type": "profession"
+}

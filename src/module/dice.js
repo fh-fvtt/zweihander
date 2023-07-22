@@ -35,7 +35,7 @@ export async function rollPeril(perilType, actor) {
     {
       difficultyRating: perilType.difficultyRating,
       flavor: game.i18n.format('ZWEI.rolls.suppressperil', {
-        periltype: game.i18n.localize("ZWEI.actor.secondary." + perilType.title),
+        periltype: game.i18n.localize('ZWEI.actor.secondary.' + perilType.title),
       }),
       perilType,
     },
@@ -46,8 +46,8 @@ export async function rollPeril(perilType, actor) {
     const speaker = ChatMessage.getSpeaker({ actor: actor });
     roll.toMessage({
       flavor: game.i18n.format('ZWEI.rolls.rollingperil', {
-        peril: game.i18n.localize("ZWEI.actor.secondary.peril"),
-        periltype: game.i18n.localize("ZWEI.actor.secondary." + perilType.title),
+        peril: game.i18n.localize('ZWEI.actor.secondary.peril'),
+        periltype: game.i18n.localize('ZWEI.actor.secondary.' + perilType.title),
       }),
       speaker,
     });
@@ -84,9 +84,9 @@ export async function rollTest(
     testConfiguration.additionalFuryDice = actor.system.details.size - 1;
   }
   if (isReroll && actor.type === 'character') {
-    testConfiguration.useFortune = 'usefortune';
+    testConfiguration.useFortune = 'fortune';
   } else if (isReroll && actor.type !== 'character') {
-    testConfiguration.useFortune = 'usemisfortune';
+    testConfiguration.useFortune = 'misfortune';
   }
   const principle = spell?.system?.principle?.trim?.()?.toLowerCase?.();
   const defaultSpellDifficulty = {
@@ -100,30 +100,55 @@ export async function rollTest(
     testConfiguration = await getTestConfiguration(skillItem, testType, testConfiguration);
   }
   try {
-    if (testConfiguration.useFortune === 'usefortune') {
+    if (testConfiguration.useFortune === 'fortune') {
       await FortuneTracker.INSTANCE.useFortune();
-    } else if (testConfiguration.useFortune === 'usemisfortune') {
+    } else if (testConfiguration.useFortune === 'misfortune') {
       await FortuneTracker.INSTANCE.useMisfortune();
     }
   } catch (e) {
+    // @todo: I believe it is the responsibility of the Fortune Tracker to throw an error if there are no points left,
+    // otherwise, 2 error messages will be shown, which is annoying
+    /*
     ui.notifications.warn(game.i18n.format("ZWEI.othermessages.noreroll", {
       usefortune: testConfiguration.useFortune
-    }));
+    }));*/
     return;
   }
+
+  const alternativePerilSystem = game.settings.get('zweihander', 'alternativePerilSystem');
+
+  const alternativePerilTable = {
+    5: 0,
+    4: 0,
+    3: -5,
+    2: -10,
+    1: -20,
+    0: -20,
+  };
+
   const primaryAttribute = skillItem.system.associatedPrimaryAttribute;
   const primaryAttributeValue = actor.system.stats.primaryAttributes[primaryAttribute.toLowerCase()].value;
+
   const rank = skillItem.system.rank;
   const bonusPerRank = skillItem.system.bonusPerRank;
   const rankBonus = skillItem.system.bonus;
+
   const currentPeril = Number(actor.system.stats.secondaryAttributes.perilCurrent.effectiveValue);
+
+  const alternativePerilPenalty = alternativePerilTable[currentPeril];
+
   const ranksPurchasedAfterPeril = Math.max(0, rank - Math.max(0, 4 - currentPeril));
   const ranksIgnoredByPeril = rank - ranksPurchasedAfterPeril;
   const rankBonusAfterPeril = ranksPurchasedAfterPeril * bonusPerRank;
+
   const specialBaseChanceModifier = Number(testConfiguration.baseChanceModifier);
-  const baseChance =
-    primaryAttributeValue + Math.max(-30, Math.min(30, rankBonusAfterPeril + specialBaseChanceModifier));
+
+  const finalRankBonus = alternativePerilSystem ? rankBonus + alternativePerilPenalty : rankBonusAfterPeril;
+
+  const baseChance = primaryAttributeValue + Math.max(-30, Math.min(30, finalRankBonus + specialBaseChanceModifier));
+
   const rawDifficultyRating = Number(testConfiguration.difficultyRating);
+
   const channelPowerBonus = testConfiguration.channelPowerBonus;
   const difficultyRating = Math.min(30, rawDifficultyRating + (testConfiguration.channelPowerBonus || 0));
   const difficultyRatingLabel = ZweihanderUtils.getDifficultyRatingLabel(difficultyRating);
@@ -164,7 +189,7 @@ export async function rollTest(
       label: difficultyRatingLabel,
     },
     totalChance,
-    perilPenalty: -ranksIgnoredByPeril * bonusPerRank,
+    perilPenalty: alternativePerilSystem ? alternativePerilPenalty : -ranksIgnoredByPeril * bonusPerRank,
     roll: effectiveResult.toLocaleString(undefined, {
       minimumIntegerDigits: 2,
     }),
@@ -173,14 +198,18 @@ export async function rollTest(
     flipToFail: flip === 'flipfail',
     flipToSucceed: flip === 'flipsucceed',
     isReroll,
-    usedFortune: testConfiguration.useFortune === 'usefortune',
-    usedMisfortune: testConfiguration.useFortune === 'usemisfortune',
+    usedFortune: testConfiguration.useFortune === 'fortune',
+    usedMisfortune: testConfiguration.useFortune === 'misfortune',
     effectiveOutcome,
     outcomeLabel: outcomeLabel(effectiveOutcome),
     weaponTest: testType === 'weapon',
     spellTest: testType === 'spell',
     tooltip: await roll.getTooltip(),
   };
+  if (weapon) {
+    templateData.weapon = weapon.toObject(false);
+    templateData.weapon.system.qualities = await ZweihanderQuality.getQualities(weapon.system.qualities.value);
+  }
   if (spell) {
     templateData.itemId = spell.id;
     templateData.spell = spell.toObject(false);
@@ -206,11 +235,11 @@ export async function rollTest(
     testConfiguration.flavor ??
     {
       //@todo: this could be a funny feature to expand
-    skill: game.i18n.localize("ZWEI.rolls.skillflavor"),
-    dodge: game.i18n.localize("ZWEI.rolls.dodgeflavor"),
-    parry: game.i18n.localize("ZWEI.rolls.parryflavor"),
-    weapon: game.i18n.localize("ZWEI.rolls.weaponflavor") + ` ${weapon?.name}`,
-    spell: game.i18n.localize("ZWEI.rolls.spellflavor") + ` ${spell?.name}`
+      skill: game.i18n.localize('ZWEI.rolls.skillflavor'),
+      dodge: game.i18n.localize('ZWEI.rolls.dodgeflavor'),
+      parry: game.i18n.localize('ZWEI.rolls.parryflavor'),
+      weapon: game.i18n.localize('ZWEI.rolls.weaponflavor') + ` ${weapon?.name}`,
+      spell: game.i18n.localize('ZWEI.rolls.spellflavor') + ` ${spell?.name}`,
     }[testType] ??
     '';
   const speaker = ChatMessage.getSpeaker({ actor });
@@ -273,7 +302,7 @@ export async function rollWeaponDamage(actorId, testConfiguration) {
 
 async function getWeaponDamageContent(weapon, roll, exploded = false, explodedCount = 0) {
   weapon.system.qualities = await ZweihanderQuality.getQualities(weapon.system.qualities.value);
-  const rollContent = await roll.render({ flavor: game.i18n.localize("ZWEI.rolls.furydie") });
+  const rollContent = await roll.render({ flavor: game.i18n.localize('ZWEI.rolls.furydie') });
   const cardContent = await renderTemplate('systems/zweihander/src/templates/item-card/item-card-weapon.hbs', weapon);
   return await renderTemplate(CONFIG.ZWEI.templates.weapon, {
     cardContent,
@@ -286,15 +315,19 @@ async function getWeaponDamageContent(weapon, roll, exploded = false, explodedCo
 
 export async function explodeWeaponDamage(message, useFortune) {
   try {
-    if (useFortune === 'usefortune') {
+    if (useFortune === 'fortune') {
       await FortuneTracker.INSTANCE.useFortune();
-    } else if (useFortune === 'usemisfortune') {
+    } else if (useFortune === 'misfortune') {
       await FortuneTracker.INSTANCE.useMisfortune();
     }
   } catch (e) {
+    // @todo: I believe it is the responsibility of the Fortune Tracker to throw an error if there are no points left,
+    // otherwise, 2 error messages will be shown, which is annoying
+    /*
     ui.notifications.warn(game.i18n.format("ZWEI.othermessages.noreroll", {
       usefortune: useFortune
     }));
+    */
     return;
   }
   const { actorId, weaponId, exploded } = message.flags.zweihander.weaponTestData;
@@ -517,9 +550,7 @@ export const patchDie = () => {
 
       // Limit recursion
       if (!recursive && checked >= initial) checked = this.results.length;
-      if (checked > 1000) throw new Error(
-        game.i18n.localize("ZWEI.othermessages.errorrecursion")
-        );
+      if (checked > 1000) throw new Error(game.i18n.localize('ZWEI.othermessages.errorrecursion'));
     }
   };
 

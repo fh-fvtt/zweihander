@@ -1,12 +1,18 @@
 <section class="item-card">
   <h2 class="item-card-title">{{zhCapitalize type}}: {{name}}</h2>
+  {{!--
   {{#if system.flavor.description}}
   <div class="item-card-description">
-    {{{zhProcessRuleText system.flavor.description}}}
+    {{{system.flavor.description}}}
   </div>
   <br/>
   {{/if}}
+  --}}
+  <div class="item-card-description">
+    {{{zhLocalize system.description}}}
+  </div>
+  <br/>
   <div class="item-card-effect" data-effect-label="Effect">
-    {{{zhProcessRuleText (zhLocalize system.rules.effect)}}}
+    {{{zhLocalize system.rules.effect}}}
   </div>
 </section>

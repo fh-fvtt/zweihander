@@ -11,8 +11,8 @@ export default class ZweihanderNpcSheet extends ZweihanderCreatureSheet {
     });
   }
 
-  getData(options) {
-    const sheetData = super.getData();
+  async getData(options) {
+    const sheetData = await super.getData();
     sheetData.details = [
       {
         choices: sheetData.choices,

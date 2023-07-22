@@ -25,8 +25,8 @@ export default class ZweihanderCreatureSheet extends ZweihanderBaseActorSheet {
     });
   }
 
-  getData(options) {
-    const sheetData = super.getData();
+  async getData(options) {
+    const sheetData = await super.getData();
     sheetData.choices = {};
     const size = sheetData.system.details.size ?? 1;
     sheetData.choices.sizes = selectedChoice(size, [
@@ -91,7 +91,8 @@ export default class ZweihanderCreatureSheet extends ZweihanderBaseActorSheet {
     return sheetData;
   }
 
-  _prepareItems(sheetData) {
+  async _prepareItems(sheetData) {
+    await super._prepareItems(sheetData);
     // set up collections for all item types
     const indexedTypes = [
       'trapping',
@@ -126,7 +127,11 @@ export default class ZweihanderCreatureSheet extends ZweihanderBaseActorSheet {
       .sort((a, b) => (a.sort || 0) - (b.sort || 0))
       .forEach((i) => sheetData[pluralize(i.type)].push(i));
     // sort skills alphabetically
-    sheetData.skills = sheetData.skills.sort((a, b) => a.name.localeCompare(b.name));
+    sheetData.skills = sheetData.skills.sort((a, b)  =>  {
+      const aloc = game.i18n.localize("ZWEI.actor.skills." + a.name.toLowerCase().replace(/\s+/g, ''));
+      const bloc = game.i18n.localize("ZWEI.actor.skills." + b.name.toLowerCase().replace(/\s+/g, ''));
+      return aloc.localeCompare(bloc);
+    });
     // add base chance to weapon data
     sheetData.weapons = sheetData.weapons.map((w) => {
       const skill = sheetData.skills.find((s) => s.name === w.system.associatedSkill);
@@ -135,6 +140,7 @@ export default class ZweihanderCreatureSheet extends ZweihanderBaseActorSheet {
       w.chance = baseChance + skill.system.bonus;
       return w;
     });
+    return sheetData;
   }
 
   _getItemGroups(sheetData) {

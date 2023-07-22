@@ -1,21 +1,95 @@
 #!/usr/bin/env bash
-git diff --exit-code &>/dev/null
-if [ $? -ne 0 ] && [ "$2" != "--force" ]; then
-  echo "You have local changes, which might need to be commited before the release. To continue, commit your changes or pass --force as second argument."
-  exit 1
+#
+# Available variable substitutions:
+# - {{RELEASE_VERSION}} - version passed as parameter to the script
+# - {{RELEASE_DATE}} - today's date
+# - {{MANIFEST_URL}} - URL to system.json location on current branch in GitHub
+#
+
+FORCE=no
+COMMIT_CHANGES=yes
+
+PROG=$(basename $0)
+usage() {
+    echo "Usage: $PROG [--force|-f] [--manifest-only] RELEASE_VERSION"
+}
+
+error() {
+    echo "error: $1"
+}
+
+while [ $# != 0 ]; do
+    case "$1" in
+        --force | -f)
+            FORCE=yes
+            ;;
+        --manifest-only)
+            COMMIT_CHANGES=no
+            ;;
+        -*)
+            error "unrecognized option '$1'"
+            usage
+            exit 1
+            ;;
+        *)
+            VERSION=$1
+            shift
+            break;;
+    esac
+    shift
+done
+
+if [ $# != 0 ]; then
+    error "unexpected parameters after version"
+    usage
+    exit 1
 fi
-git diff --cached --exit-code &>/dev/null
+
+if [ "x$VERSION" = "x" ]; then
+    error "version not specified"
+    usage
+    exit 1
+fi
+
+git diff --quiet
+if [ $? -ne 0 ] && [ "$FORCE" != yes ]; then
+    cat <<EOF
+You have local changes, which might need to be commited before the release.
+To continue, commit your changes or pass --force to the script to ignore them.
+EOF
+    exit 1
+fi
+
+git diff --cached --quiet
 if [ $? -ne 0 ]; then
-  echo "You have staged changes, the release process can not continue."
-  exit 1
+    echo "You have staged changes, the release process can not continue."
+    exit 1
 fi
-version=$1
-manifest_branch=$(git branch --show-current)
-cat system.template.json | sed -e 's/{{version}}/'"${version}"'/g' -e 's/{{manifest}}/https:\/\/raw.githubusercontent.com\/fh-fvtt\/zweihander\/'"${manifest_branch}"'\/system.json/g' > system.json
-if [ "$2" != "--manifest-only" ] && [ "$3" != "--manifest-only" ]; then
-  git add system.json
-  git commit -m "preparing release v${version}"
-  git push
-  git tag "v${version}"
-  git push origin "v${version}"
-fi
+
+RELEASE_DATE=$(date +%F)
+RELEASE_TAG="v${VERSION}"
+
+MANIFEST_BRANCH=$(git branch --show-current)
+
+MANIFEST_URL="https://raw.githubusercontent.com/fh-fvtt/zweihander/${MANIFEST_BRANCH}/system.json"
+
+subst_vars=$(cat <<EOF
+s/{{RELEASE_VERSION}}/${VERSION}/g
+s/{{RELEASE_DATE}}/${RELEASE_DATE}/g
+s/{{RELEASE_TAG}}/${RELEASE_TAG}/g
+s,{{MANIFEST_URL}},${MANIFEST_URL},g
+EOF
+)
+
+sed -e "$subst_vars" system.template.json > system.json
+sed -ie "$subst_vars" ChangeLog.md
+
+
+[ "$COMMIT_CHANGES" = no ] && exit 0
+
+set -ex
+git add system.json ChangeLog.md
+git commit -m "preparing release $RELEASE_TAG"
+git push
+git tag "$RELEASE_TAG"
+git push origin "$RELEASE_TAG"

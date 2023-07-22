@@ -15,10 +15,10 @@ import FortuneTracker from './apps/fortune-tracker';
 import * as ZweihanderUtils from './utils';
 import * as ZweihanderChat from './chat';
 
-import { registerSystemSettings } from './settings';
+import { registerSystemSettings, setCssTheme } from './settings';
 import { preloadHandlebarsTemplates } from './templates';
 import { registerHandlebarHelpers } from './helpers';
-import { migrateWorldSafe, migrateWorld } from './migration';
+// import { migrateWorldSafe, migrateWorld } from './migration';
 import { rollTest, patchDie } from './dice';
 import { getTestConfiguration } from './apps/test-config';
 import { createItemMacro, rollItemMacro } from './macros';
@@ -33,6 +33,7 @@ import ZweihanderCombatant from './combat/combatant';
 import ZweihanderCombatTracker from './combat/combat-tracker';
 import ZweihanderActiveEffect from './effects/active-effect';
 import ZweihanderActiveEffectConfig from './apps/active-effect-config';
+import { performWorldMigrations, migrations } from './migration';
 
 /* -------------------------------------------- */
 /*  Foundry VTT Initialization                  */
@@ -48,10 +49,11 @@ const socket = new Promise((resolve) => {
 
 Hooks.once('ready', function () {
   // this is necessary to apply the theme settings
-  // TODO: refactor into own utility-function/class
   let sheetStyles = game.settings.get('zweihander', 'theme');
-  game.settings.set('zweihander', 'theme', sheetStyles);
-  migrateWorldSafe();
+  setCssTheme(sheetStyles);
+  
+  // migrateWorldSafe();
+  performWorldMigrations();
   socket.then((socket) => {
     game.zweihander.socket = socket;
     FortuneTracker.INSTANCE = new FortuneTracker(socket);
@@ -102,35 +104,36 @@ Hooks.once("dragRuler.ready", (SpeedProvider) => {
     class zweihanderSpeedProvider extends SpeedProvider {
         get colors() {
             return [
-                {id: "maneuver", default: 0x1259b6, name: "zweihander.speeds.maneuver"},
-                {id: "hustle", default: 0x00FF00, name: "zweihander.speeds.hustle"},
-                {id: "charge", default: 0xFFFF00, name: "zweihander.speeds.charge"},
-                {id: "run", default: 0xFF8000, name: "zweihander.speeds.run"}
+                {id: "maneuver", default: 0x1259b6, name: "ZWEI.speeds.maneuver"},
+                {id: "hustle", default: 0x00FF00, name: "ZWEI.speeds.hustle"},
+                {id: "charge", default: 0xFFFF00, name: "ZWEI.speeds.charge"},
+                {id: "run", default: 0xFF8000, name: "ZWEI.speeds.run"}
             ];
         };
 
         getRanges(token) {
-			// MANEUVER: 1 yd
-			// HUSTLE: MOV
-			// CHARGE: MOV*2
-			// RUN: MOV*3
-			
-			const minSpeed = 1;
-            const baseSpeed = token.actor.system.stats.secondaryAttributes.movement.current;
-            const chargeSpeed = baseSpeed * 2;
-            const runSpeed = baseSpeed * 3;
-			
-            const ranges = [
-                {range: minSpeed, color: "maneuver"},
-                {range: baseSpeed, color: "hustle"},
-                {range: chargeSpeed, color: "charge"},
-                {range: runSpeed, color: "run"}
-            ];
+          // MANEUVER: 1 yd
+          // HUSTLE: MOV
+          // CHARGE: MOV*2
+          // RUN: MOV*3
+          const movement = token.actor.system.stats.secondaryAttributes.movement;
 
-            return ranges;
+          const minSpeed = 1;
+          const baseSpeed = movement.current ?? movement.value;
+          const chargeSpeed = baseSpeed * 2;
+          const runSpeed = baseSpeed * 3;
+
+          const ranges = [
+            { range: minSpeed, color: "maneuver" },
+            { range: baseSpeed, color: "hustle" },
+            { range: chargeSpeed, color: "charge" },
+            { range: runSpeed, color: "run" }
+          ];
+
+          return ranges;
         };
     }
-    dragRuler.registerModule("fvtt-module-drag-ruler-zweihander", zweihanderSpeedProvider);
+    dragRuler.registerSystem("zweihander", zweihanderSpeedProvider);
 })
 
 Hooks.once('init', async function () {
@@ -141,7 +144,8 @@ Hooks.once('init', async function () {
     ZweihanderActor,
     ZweihanderItem,
     utils: ZweihanderUtils,
-    migrateWorld,
+    // migrateWorld,
+    migrations,
     rollItemMacro,
   };
   CONFIG.ChatMessage.template = 'systems/zweihander/src/templates/chat/chat-message.hbs';
@@ -297,6 +301,10 @@ Hooks.once('polyglot.init', (LanguageProvider) => {
     }
   }
   game.polyglot.registerSystem('zweihander', ZweihanderLanguageProvider);
+});
+
+Hooks.once('devModeReady', ({ registerPackageDebugFlag }) => {
+  registerPackageDebugFlag('zweihander');
 });
 
 export let _module = null;

@@ -1,0 +1,9 @@
+{
+  "_id": "Rhmq08gRKPkG3VtG",
+  "author": "JyjuBRFhP4y9QWxg",
+  "command": "const pack = game.packs.get('zweihander.zh-trappings');\nconst docs = await pack.getDocuments();\nconst catFolders = {};\nfor (let doc of docs) {\n  const cat = doc.system.details.category['@en'] || 'Trappings';\n  if (!(cat in catFolders)) {\n    catFolders[cat] = await Folder.create({type: \"Item\", name: cat});\n  }\n  const folder = catFolders[cat];\n  const d = doc.toObject();\n  d.folder = folder.id;\n  await Item.create(d);\n}",
+  "img": "systems/zweihander/assets/icons/cloud-download.svg",
+  "name": "Import Zweihander Trappings into Folders by Category",
+  "scope": "global",
+  "type": "script"
+}

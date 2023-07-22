@@ -32,8 +32,8 @@ export default class ZweihanderCharacterSheet extends ZweihanderBaseActorSheet {
     });
   }
 
-  getData(options) {
-    const sheetData = super.getData();
+  async getData(options) {
+    const sheetData = await super.getData();
     // get actor config
     sheetData.actorConfig = ZweihanderActorConfig.getConfig(this.actor);
     // bind currency
@@ -158,7 +158,8 @@ export default class ZweihanderCharacterSheet extends ZweihanderBaseActorSheet {
     return sheetData;
   }
 
-  _prepareItems(sheetData) {
+  async _prepareItems(sheetData) {
+    await super._prepareItems(sheetData);
     // set up collections for all item types
     const indexedTypes = [
       'trapping',
@@ -194,7 +195,11 @@ export default class ZweihanderCharacterSheet extends ZweihanderBaseActorSheet {
       .sort((a, b) => (a.sort || 0) - (b.sort || 0))
       .forEach((i) => sheetData[pluralize(i.type)].push(i));
     // sort skills alphabetically
-    sheetData.skills = sheetData.skills.sort((a, b) => a.name.localeCompare(b.name));
+    sheetData.skills = sheetData.skills.sort((a, b)  =>  {
+      const aloc = game.i18n.localize("ZWEI.actor.skills." + a.name.toLowerCase().replace(/\s+/g, ''));
+      const bloc = game.i18n.localize("ZWEI.actor.skills." + b.name.toLowerCase().replace(/\s+/g, ''));
+      return aloc.localeCompare(bloc);
+    });
     // sort professions by tier
     sheetData.professions = sheetData.professions.sort(
       (a, b) => CONFIG.ZWEI.tiersInversed[a.system.tier] - CONFIG.ZWEI.tiersInversed[b.system.tier]
@@ -226,6 +231,7 @@ export default class ZweihanderCharacterSheet extends ZweihanderBaseActorSheet {
       const focuses = sheetData.focuses.filter((focus) => focus.skillName === skill.name).map((focus) => focus.name);
       skill.system.focuses = focuses;
     });
+    return sheetData;
   }
 
   _getItemGroups(data) {
@@ -353,6 +359,19 @@ export default class ZweihanderCharacterSheet extends ZweihanderBaseActorSheet {
         $('.zh-focuses-tooltip-instance').remove();
       }
     );
+
+    // currency exchange
+    html.find('.exchange-currency').click((event) => {
+      const biggerIndex = Number(event.currentTarget.dataset.biggerIndex);
+      const smallerIndex = biggerIndex + 1;
+      this._exchangeCurrency(biggerIndex, smallerIndex);
+    });
+    html.find('.exchange-currency').contextmenu(async (event) => {
+      event.preventDefault();
+      const biggerIndex = Number(event.currentTarget.dataset.biggerIndex);
+      const smallerIndex = biggerIndex + 1;
+      this._exchangeCurrency(smallerIndex, biggerIndex);
+    });
   }
 
   _updateEncumbranceMeter(html) {
@@ -381,5 +400,32 @@ export default class ZweihanderCharacterSheet extends ZweihanderBaseActorSheet {
       options.resizable = false;
     }
     await super._render(force, options);
+  }
+
+  _exchangeCurrency(sourceCurrencyIndex, targetCurrencyIndex) {
+    const currencies = game.settings.get('zweihander', 'currencySettings');
+    const actorMoney = this.actor.system.currency;
+    const source = currencies[sourceCurrencyIndex];
+    const target = currencies[targetCurrencyIndex];
+    const equivalent = currencies[Math.min(sourceCurrencyIndex, targetCurrencyIndex)].equivalentOfLower;
+    let conversion = {};
+    if (sourceCurrencyIndex < targetCurrencyIndex) { 
+      // bigger to lower conversion
+      conversion.sourceDebit = 1;
+      conversion.targetCredit = equivalent;
+    } else {
+      // lower to bigger conversion
+      conversion.sourceDebit = equivalent;
+      conversion.targetCredit = 1;
+    }
+    const newSourceAmount = actorMoney[source.abbreviation] - conversion.sourceDebit;
+    if (newSourceAmount >= 0) {
+      this.actor.update({
+        [`system.currency.${source.abbreviation}`]: newSourceAmount,
+        [`system.currency.${target.abbreviation}`]: actorMoney[target.abbreviation] + conversion.targetCredit
+      });
+    } else {
+      console.warn(`not enough ${source.abbreviation} to perform money conversion`);
+    }
   }
 }

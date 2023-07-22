@@ -1,5 +1,16 @@
 import { ZWEI } from './config';
 
+export function zhDebug(...args) {
+  try {
+    const isDebugging = game.modules.get('_dev-mode')?.api?.getPackageDebugValue('zweihander');
+    if (isDebugging) {
+      console.log('zweihander |', ...args);
+    }
+  }
+  catch (e) {
+  }
+}
+
 export function uuidv4() {
   return ([1e7] + -1e3 + -4e3 + -8e3 + -1e11).replace(/[018]/g, (c) =>
     (c ^ (crypto.getRandomValues(new Uint8Array(1))[0] & (15 >> (c / 4)))).toString(16)
@@ -548,6 +559,27 @@ export const localize = (localizeObj) => {
 };
 
 export const localizePath = (dataPath) => {
-  console.log(dataPath);
   return `${dataPath}.@${game.settings.get('core', 'language')}`;
+};
+
+export const enrichLocalized = async (entry) => {
+  let text = entry;
+  let hasZhLocalization = Object.keys(entry).filter((prop) => prop.startsWith('@')).length > 0;
+  if (hasZhLocalization) {
+    text = localize(entry);
+  }
+  return TextEditor.enrichHTML(text, {async: true});
+};
+
+export const processRules = async (data) => {
+  if (data.rules === undefined) {
+    return undefined;
+  }
+  const rules = Object.fromEntries(
+    await Promise.all(
+      Object.entries(data.rules)
+        .map(([name, rule]) => enrichLocalized(rule).then((processedRule) => [name, processedRule]))
+    )
+  );
+  return rules;
 };

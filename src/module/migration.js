@@ -1,4 +1,5 @@
 import { ZWEI } from './config';
+import { zhDebug } from './utils';
 
 export const migrateWorld = async (forceSystemPacks = false) => {
   ui.notifications.info(
@@ -351,6 +352,8 @@ const migrateIcons = (document) => {
 };
 
 export const migrateWorldSafe = async () => {
+  zhDebug('migrateWorldSafe');
+
   if (!game.user.isGM) return;
   const currentVersion = game.settings.get('zweihander', 'systemMigrationVersion');
   const NEEDS_MIGRATION_VERSION = '4.2.3-beta2f';
@@ -368,3 +371,100 @@ export const migrateWorldSafe = async () => {
   }
   await migrateWorld();
 };
+
+const MIGRATION_REGISTRY = 'migrationsRegistry';
+
+/**
+    Foundry 11 migration: move existing token.actorData for unlinked actors to
+    token.delta.
+
+    Initiate migration registry, if first run on v11 run token migrations.
+
+    Based on: https://github.com/foundryvtt/dnd5e/blob/master/module/migration.mjs
+ */
+export const migrateToFoundryV11 = async () => {
+  const systemVersionIntroducingMigration = '5.2.0';
+  const registry = game.settings.get('zweihander', MIGRATION_REGISTRY);
+
+  const isFvttV11 = game.release.generation == 11;
+  let migrationRun = false;
+  
+  if (!registry.systemMigration) {
+    // initialize migration registry
+    registry.systemMigration = systemVersionIntroducingMigration;
+    console.log('zweihander | initialize migration registry');
+  }
+
+  if (isFvttV11 && !registry.fvtt11) {
+    registry.fvtt11 = systemVersionIntroducingMigration;
+    console.log('zweihander | running world migration to Foundry 11');
+
+    ui.notifications.info(
+      game.i18n.format("ZWEI.othermessages.migrationsystem", { version: systemVersionIntroducingMigration }),
+      { permanent: true }
+    );
+    migrationRun = true;
+
+    for (let s of game.scenes) {
+      try {
+        console.log(`zweihander | migrating contents of scene ${s.name}`);
+        const updateData = convertTokenActorsToV11(s);
+        zhDebug({updateData});
+        if (!foundry.utils.isEmpty(updateData)) {
+          await s.update(updateData, {enforceTypes: false});
+          s.tokens.forEach(t => t._actor = null);
+        }
+      }
+      catch (err) {
+        err.message = game.i18n.format("ZWEI.othermessages.migrationscene", { name: s.name, message: err.message });
+        console.error(err);
+      }
+    }
+  }
+
+  if (migrationRun) {
+    ui.notifications.info(
+      game.i18n.format("ZWEI.othermessages.migrationversion", { version: systemVersionIntroducingMigration }), 
+      { permanent: true }
+    );
+  }
+  return game.settings.set('zweihander', MIGRATION_REGISTRY, registry);
+};
+
+function convertTokenActorsToV11(s) {
+  const tokens = s.tokens.map((token) => {
+    console.log(`zweihander | migrating token ${token.name}`);
+    const t = token instanceof foundry.abstract.DataModel ? token.toObject() : token;
+    const update = {};
+    if (!game.actors.has(t.actorId))
+      t.actorId = null;
+    if (!t.actorId || t.actorLink) {
+      t.actorData = {};
+    } else {
+      const actorData = token.delta?.toObject() ?? foundry.utils.deepClone(t.actorData);
+      actorData.type = token.actor?.type;
+      t.delta = actorData;
+      // t.actorData = null;
+    }
+    return t;
+  });
+  return {tokens};
+}
+
+export const performWorldMigrations = async () => {
+  if (!game.user.isGM) return;
+
+  zhDebug('performing world migrations');
+
+  await migrateWorldSafe();
+  await migrateToFoundryV11();
+
+  const registry = game.settings.get('zweihander', MIGRATION_REGISTRY);
+  game.settings.set('zweihander', MIGRATION_REGISTRY, {...registry, lastSystemVersion: game.system.version});
+};
+
+export const migrations = {
+  performWorldMigrations,
+  migrateToFoundryV11
+};
+
