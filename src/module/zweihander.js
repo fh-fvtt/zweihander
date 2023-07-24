@@ -14,18 +14,16 @@ import ZweihanderItemSheet from './item/sheet/item-sheet';
 import FortuneTracker from './apps/fortune-tracker';
 import * as ZweihanderUtils from './utils';
 import * as ZweihanderChat from './chat';
+import { registerChatCommands } from './misc/chat-commands';
 
 import { registerSystemSettings, setCssTheme } from './settings';
 import { preloadHandlebarsTemplates } from './templates';
 import { registerHandlebarHelpers } from './helpers';
 // import { migrateWorldSafe, migrateWorld } from './migration';
-import { rollTest, patchDie } from './dice';
-import { getTestConfiguration } from './apps/test-config';
+import { patchDie } from './dice';
 import { createItemMacro, rollItemMacro } from './macros';
 
 import { ZWEI } from './config';
-
-import { displayHelpMessage } from './misc/help';
 
 import { triggerAnalytics } from './analytics';
 import ZweihanderCombat from './combat/combat';
@@ -52,7 +50,6 @@ Hooks.once('ready', function () {
   let sheetStyles = game.settings.get('zweihander', 'theme');
   setCssTheme(sheetStyles);
   
-  // migrateWorldSafe();
   performWorldMigrations();
   socket.then((socket) => {
     game.zweihander.socket = socket;
@@ -144,7 +141,6 @@ Hooks.once('init', async function () {
     ZweihanderActor,
     ZweihanderItem,
     utils: ZweihanderUtils,
-    // migrateWorld,
     migrations,
     rollItemMacro,
   };
@@ -208,80 +204,8 @@ Hooks.on('updateCompendium', async (pack, documents, options, userId) => {
   }
 });
 
-//TODO refactor to other file
-Hooks.on('chatCommandsReady', function (chatCommands) {
-  chatCommands.registerCommand(
-    chatCommands.createCommandFromData({
-      commandKey: '/test',
-      invokeOnCommand: async (chatlog, messageText, chatdata) => {
-        const actors = game.user.isGM
-          ? game.canvas.tokens.controlled.map((t) => t.actor)
-          : [game.actors.get(ZweihanderUtils.determineCurrentActorId(true))];
-        let testConfiguration;
-        if (actors.length === 0) {
-          ui.notifications.warn(
-            game.i18n.localize("ZWEI.othermessages.selecttoken")
-          );
-        }
-        for (let actor of actors) {
-          const skillItem = actor?.items?.find?.(
-            (i) => i.type === 'skill' && ZweihanderUtils.normalizedEquals(i.name, messageText)
-          );
-          if (skillItem) {
-            if (!testConfiguration) {
-              testConfiguration = await getTestConfiguration(skillItem);
-            }
-            await rollTest(skillItem, 'skill', testConfiguration);
-          } else if (actor) {
-            ui.notifications.warn(
-              game.i18n.format("ZWEI.othermessages.noskill", { message: messageText })
-              );
-            break;
-          }
-        }
-      },
-      shouldDisplayToChat: false,
-      iconClass: 'fa-comment-dots',
-      description: 'Do a Skill Test',
-    })
-  );
-  if (game.user.isGM) {
-    chatCommands.registerCommand(
-      chatCommands.createCommandFromData({
-        commandKey: '/nextSession',
-        invokeOnCommand: async (chatlog, messageText, chatdata) => {
-          const nextSession = new Date(messageText);
-          const response = await foundry.utils.fetchJsonWithTimeout(foundry.utils.getRoute('setup'), {
-            method: 'POST',
-            headers: { 'Content-Type': 'application/json' },
-            body: JSON.stringify({
-              id: game.world.id,
-              nextSession: nextSession.toISOString(),
-              action: 'editWorld',
-            }),
-          });
-          game.world.updateSource(response);
-          await ChatMessage.create({
-            flavor: game.i18n.localize("ZWEI.othermessages.settingdate"),
-            content: game.i18n.format("ZWEI.othermessages.nextsession", { next: nextSession.toLocaleDateString() }),
-          });
-        },
-        shouldDisplayToChat: false,
-        iconClass: 'fa-calendar',
-        description: game.i18n.localize("ZWEI.othermessages.setdate"),
-      })
-    );
-  }
-  chatCommands.registerCommand(
-    chatCommands.createCommandFromData({
-      commandKey: '/help',
-      invokeOnCommand: displayHelpMessage,
-      shouldDisplayToChat: false,
-      iconClass: 'fa-question',
-      description: game.i18n.localize("ZWEI.othermessages.showdocs"),
-    })
-  );
-});
+// Chat Commander integartion
+Hooks.on('chatCommandsReady', registerChatCommands);
 
 Hooks.once('polyglot.init', (LanguageProvider) => {
   class ZweihanderLanguageProvider extends LanguageProvider {

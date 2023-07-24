@@ -8,6 +8,9 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 ## [{{RELEASE_VERSION}}] - {{RELEASE_DATE}}
 Compatible Foundry version: 10-11
 
+### Fixed
+- Update deprecated Chat Commander integration
+
 
 ## [5.2.0] - 2023-07-22
 Compatible Foundry version: 10-11
