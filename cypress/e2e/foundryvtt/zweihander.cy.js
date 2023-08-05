@@ -1,39 +1,4 @@
 /// <reference types="cypress" />
-/* 
-before(() => {
-  // create a new world for testing
-  cy.visit('localhost:30000');
-
-  cy.get('#create-world').click();
-
-  // wait for world configuration to render; not ideal, but other methods are inconsistent
-  cy.wait(1000);
-
-  cy.get('input[name="title"]').type('Cypress Zweihander Test');
-
-  cy.get('select[name="system"]')
-    .select('Zweihänder Grim & Perilous RPG')
-    .should('have.value', 'zweihander');
-
-  cy.get('button[title="Create World"]').click();
-
-  // launch the newly created world
-  cy.get(
-    '[data-package-id="cypress-zweihander-test"] > .package-controls > [name="action"]'
-  ).click();
-
-  cy.wait(1000);
-
-  cy.location('pathname', { timeout: 60000 });
-
-  cy.get('select[name="userid"]').select('Gamemaster');
-
-  cy.get('button[name="join"]').click();
-
-  cy.wait(2000);
-
-  cy.get('#logo').should('be.visible');
-}); */
 
 const testWorldData = {
   name: 'cypress-zweihander-test',
@@ -44,6 +9,18 @@ const testWorldData = {
 };
 
 before(() => {
+  cy.clearLocalStorage();
+
+  cy.window().then((window) => {
+    // lower performance requirements
+    window.localStorage.setItem('core.performanceMode', "0");
+
+    // turn off "New World Welcome Tour"
+    window.localStorage.setItem("core.tourProgress", JSON.stringify({
+      core: { welcome: 3 }
+    }));
+  });
+
   cy.visit('/setup')
     .url()
     .then((url) => {
@@ -53,7 +30,7 @@ before(() => {
           // Have to input setup key
           return cy
             .get('#key')
-            .type(adminKey)
+            .type(Cypress.env('adminKey'))
             .then(() => cy.get(`button[value="adminAuth"]`).click());
         }
 
@@ -86,36 +63,29 @@ function createWorld() {
 }
 
 function launchWorld() {
-  // The #setup-configuration form contains stuff like the setup screen credentials.
-  cy.get('form#setup-configuration').then((elem) => {
-    const formData = new FormData(elem[0]);
-    formData.set('action', 'launchWorld');
-    formData.set('world', testWorldData.name);
-
-    cy.request({
-      url: '/setup',
-      method: 'POST',
-      body: formData,
-      followRedirect: false,
-    }).then((response) => {
-      handleError(response.body);
-
-      expect(response.status).to.eq(302);
-
-      cy.visit(response.redirectedToUrl ?? '');
-    });
-  });
+  const worldId = testWorldData.name;
+  cy.get(`[data-package-id="${worldId}"]`).rightclick();
+  cy.get('.context-items').contains('Launch World').click();
 }
 
 function joinWorld() {
-  const userIdSelector = `select[name="userid"]`;
+  cy.get('select').select('Gamemaster');
+  cy.get('button[name="join"]').click();
 
-  cy.get(`${userIdSelector} option:not([value=""])`) // The gamemaster
-    .then((elem) => cy.get(userIdSelector).select(elem.val(), { force: true }));
+  // wait for game initialization, hint: add timeout to window() if 4s is not enough
+  cy.window().its('game.ready').should('equal', true);
+  clearNotifications();
+}
 
-  cy.get(`button[name="join"]`).click();
-  //cy.waitUntil(() => cy.window().then((window) => window.game?.ready === true)); // Wait until `game.ready`
-  cy.wait(2000);
+function clearNotifications() {
+  cy.window().then((window) => {
+    window.ui.notifications.clear();
+  });
+}
+
+function exitWorld() {
+  cy.get('input[name="adminPassword"]').type(Cypress.env('adminKey'));
+  cy.get('button[name="shutdown"]').click()
 }
 
 function handleError(responseJSON) {
@@ -130,42 +100,57 @@ function handleError(responseJSON) {
   }
 }
 
+after(() => {
+  // delete test world
+  const worldId = testWorldData.name;
+  cy.get('#sidebar-tabs > [data-tab="settings"]').click();
+  cy.get('[data-action="setup"]').click();
+  
+  cy.get(`[data-package-id="${worldId}"]`).rightclick();
+  cy.get('.context-items').contains('Delete World').click();
+
+  cy.get('.reference').then((ref) => {
+    const refText = ref.text();
+
+    cy.get('#delete-confirm').type(refText);
+    cy.get('.yes').click();
+  });
+
+  cy.get('.info').contains(`${worldId}`).should('contain.text', 'uninstalled successfully');
+});
+
+describe('Game world loads Zweihander system', () => {
+  it('loads fully', () => {
+    cy.window().its('game.ready').should('equal', true);
+  });
+
+  it('runs Zweihander system', () => {
+    cy.get('#sidebar-tabs > [data-tab="settings"]').click();
+    cy.get('.system-title').should('contain.text', 'Zweihänder');
+  });
+});
+
 describe('Fortune Tracker', () => {
   it('should render correctly', () => {
-    cy.get('a[title="Game Settings"]').click();
-
-    cy.get('button[data-action="modules"]').click();
-
-    cy.wait(1000);
-
-    cy.get('li[data-module-name="socketlib"]').find('input[type="checkbox"]').click();
-
-    cy.contains('Save Module Settings').click();
-
-    cy.wait(1000);
-
     cy.get('#fortuneTrackerApp').should('be.visible');
   });
 });
 
 describe('Character Creation', () => {
+  beforeEach(() => {
+    clearNotifications();
+  });
+
   it('can create an Actor (Player Character)', () => {
-    cy.get('a[title="Actors Directory"]').click();
-
-    cy.get('section[data-tab="actors"]').find('button[class="create-document"]').click();
-
-    cy.wait(1000);
+    cy.get('#sidebar-tabs > [data-tab="actors"]').click();
+    cy.get('section[data-tab="actors"]').find('button.create-document').click();
 
     cy.get('input[name="name"]').type(Cypress.env('characterName'));
-
     cy.get('select[name="type"]').select('Player Character').should('have.value', 'character');
-
     cy.get('button[data-button="ok"]').click();
 
-    cy.wait(1000);
-
     cy.get('ol[class="directory-list"]')
-      .find('h4[class="document-name"]')
+      .find('h4.document-name')
       .find('a')
       .should('have.text', Cypress.env('characterName'));
 
@@ -173,13 +158,13 @@ describe('Character Creation', () => {
   });
 
   it('can enable Magick tab', () => {
-    cy.get('.configure-actor').click();
-
     cy.wait(1000);
+    cy.get('a.configure-actor').click();
+    cy.contains(`${Cypress.env('characterName')}: Actor Configuration`)
 
     cy.get('[name="flags.isMagickUser"]').click();
 
-    cy.contains(`${Cypress.env('characterName')}: ` + game.i18n.localize("ZWEI.othermessages.actorconfig"))
+    cy.contains(`${Cypress.env('characterName')}: Actor Configuration`)
       .parent()
       .find('.close')
       .click();
@@ -224,8 +209,6 @@ describe('Character Creation', () => {
     cy.get('.pa-agility').find('.pa-bonus').should('have.text', '3');
 
     cy.get('.compendium').parents('.window-app').find('.close').click();
-
-    cy.wait(1000);
   });
 
   describe('Basic Tier', () => {
@@ -248,8 +231,6 @@ describe('Character Creation', () => {
         .find(`[data-testid="${Cypress.env('professionBasic')}"]`)
         .should('be.visible')
         .click();
-
-      cy.wait(1000);
 
       cy.get('.rp-spent').should('have.value', '900');
     });
@@ -296,7 +277,7 @@ describe('Character Creation', () => {
     });
 
     it('can complete Tier', () => {
-      cy.get('[data-key="data.completed"]').click({ force: true });
+      cy.get('[data-key="system.completed"]').click({ force: true });
 
       cy.wait(1000);
 
@@ -317,9 +298,7 @@ describe('Character Creation', () => {
   });
 
   describe('Intermediate Tier', () => {
-    it('can purchase Profession', () => {
-      console.log('b');
-    });
+    it('can purchase Profession')
   });
 });
 
@@ -329,21 +308,17 @@ describe('Trappings', () => {
 
     cy.get('a[data-item-type="weapon"]').click();
 
-    cy.wait(1000);
-
     cy.get('.window-header').contains('weapon').should('be.visible').parent().find('.close').click();
   });
 
   it('can add new Armor', () => {
     cy.get('a[data-item-type="armor"]').click();
 
-    cy.wait(1000);
-
     cy.get('.window-header')
       .contains('armor')
       .should('be.visible')
       .parents('.window-app')
-      .find('input[name="data.damageThresholdModifier"]')
+      .find('input[name="system.damageThresholdModifier"]')
       .clear()
       .type('1')
       .parents('.window-app')
@@ -352,41 +327,6 @@ describe('Trappings', () => {
   });
 });
 
-/* describe('Rolls', () => {
-  it('rolls a Weapon attack', () => {
-    console.log('c');
-  });
-}); */
-
-after(() => {
-  cy.get('a[title="Game Settings"]').click();
-
-  cy.get('[data-action="setup"]').click();
-
-  cy.wait(1000);
-
-  // weird Foundry behaviour where 'Return to Setup' doesn't actually do what it says
-  if (cy.get('select[name="userid"]')) {
-    cy.get('select[name="userid"]').select('Gamemaster');
-
-    cy.get('button[name="join"]').click();
-
-    cy.wait(2000);
-
-    cy.get('a[title="Game Settings"]').click();
-
-    cy.get('[data-action="setup"]').click();
-
-    cy.wait(1000);
-  }
-
-  cy.get('[data-package-id="cypress-zweihander-test"]').contains('Delete World').click();
-
-  cy.get('.window-content')
-    .find('b')
-    .then(($confirmationText) => {
-      cy.get('#delete-confirm').type($confirmationText.text());
-
-      cy.get('[data-button="yes"]').click();
-    });
+describe('Rolls', () => {
+  it('rolls a Weapon attack')
 });
