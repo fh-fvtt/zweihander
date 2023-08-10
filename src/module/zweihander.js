@@ -9,6 +9,7 @@ import ZweihanderActor from './actor/actor';
 import ZweihanderCharacterSheet from './actor/sheet/character-sheet';
 import ZweihanderNpcSheet from './actor/sheet/npc-sheet';
 import ZweihanderCreatureSheet from './actor/sheet/creature-sheet';
+import ZweihanderVehicleSheet from './actor/sheet/vehicle-sheet';
 import ZweihanderItem from './item/item';
 import ZweihanderItemSheet from './item/sheet/item-sheet';
 import FortuneTracker from './apps/fortune-tracker';
@@ -51,7 +52,7 @@ Hooks.once('ready', function () {
   // this is necessary to apply the theme settings
   let sheetStyles = game.settings.get('zweihander', 'theme');
   setCssTheme(sheetStyles);
-  
+
   // migrateWorldSafe();
   performWorldMigrations();
   socket.then((socket) => {
@@ -99,42 +100,42 @@ Hooks.once('diceSoNiceReady', function () {
   ]);
 });
 
-Hooks.once("dragRuler.ready", (SpeedProvider) => {
+Hooks.once('dragRuler.ready', (SpeedProvider) => {
   // Drag Ruler integration
-    class zweihanderSpeedProvider extends SpeedProvider {
-        get colors() {
-            return [
-                {id: "maneuver", default: 0x1259b6, name: "ZWEI.speeds.maneuver"},
-                {id: "hustle", default: 0x00FF00, name: "ZWEI.speeds.hustle"},
-                {id: "charge", default: 0xFFFF00, name: "ZWEI.speeds.charge"},
-                {id: "run", default: 0xFF8000, name: "ZWEI.speeds.run"}
-            ];
-        };
-
-        getRanges(token) {
-          // MANEUVER: 1 yd
-          // HUSTLE: MOV
-          // CHARGE: MOV*2
-          // RUN: MOV*3
-          const movement = token.actor.system.stats.secondaryAttributes.movement;
-
-          const minSpeed = 1;
-          const baseSpeed = movement.current ?? movement.value;
-          const chargeSpeed = baseSpeed * 2;
-          const runSpeed = baseSpeed * 3;
-
-          const ranges = [
-            { range: minSpeed, color: "maneuver" },
-            { range: baseSpeed, color: "hustle" },
-            { range: chargeSpeed, color: "charge" },
-            { range: runSpeed, color: "run" }
-          ];
-
-          return ranges;
-        };
+  class zweihanderSpeedProvider extends SpeedProvider {
+    get colors() {
+      return [
+        { id: 'maneuver', default: 0x1259b6, name: 'ZWEI.speeds.maneuver' },
+        { id: 'hustle', default: 0x00ff00, name: 'ZWEI.speeds.hustle' },
+        { id: 'charge', default: 0xffff00, name: 'ZWEI.speeds.charge' },
+        { id: 'run', default: 0xff8000, name: 'ZWEI.speeds.run' },
+      ];
     }
-    dragRuler.registerSystem("zweihander", zweihanderSpeedProvider);
-})
+
+    getRanges(token) {
+      // MANEUVER: 1 yd
+      // HUSTLE: MOV
+      // CHARGE: MOV*2
+      // RUN: MOV*3
+      const movement = token.actor.system.stats.secondaryAttributes.movement;
+
+      const minSpeed = 1;
+      const baseSpeed = movement.current ?? movement.value;
+      const chargeSpeed = baseSpeed * 2;
+      const runSpeed = baseSpeed * 3;
+
+      const ranges = [
+        { range: minSpeed, color: 'maneuver' },
+        { range: baseSpeed, color: 'hustle' },
+        { range: chargeSpeed, color: 'charge' },
+        { range: runSpeed, color: 'run' },
+      ];
+
+      return ranges;
+    }
+  }
+  dragRuler.registerSystem('zweihander', zweihanderSpeedProvider);
+});
 
 Hooks.once('init', async function () {
   // CONFIG.debug.hooks = true;
@@ -183,6 +184,10 @@ Hooks.once('init', async function () {
     types: ['creature'],
     makeDefault: true,
   });
+  Actors.registerSheet('zweihander', ZweihanderVehicleSheet, {
+    types: ['vehicle'],
+    makeDefault: true,
+  });
 
   Items.unregisterSheet('core', ItemSheet);
   Items.registerSheet('zweihander', ZweihanderItemSheet, { makeDefault: true });
@@ -219,9 +224,7 @@ Hooks.on('chatCommandsReady', function (chatCommands) {
           : [game.actors.get(ZweihanderUtils.determineCurrentActorId(true))];
         let testConfiguration;
         if (actors.length === 0) {
-          ui.notifications.warn(
-            game.i18n.localize("ZWEI.othermessages.selecttoken")
-          );
+          ui.notifications.warn(game.i18n.localize('ZWEI.othermessages.selecttoken'));
         }
         for (let actor of actors) {
           const skillItem = actor?.items?.find?.(
@@ -233,9 +236,7 @@ Hooks.on('chatCommandsReady', function (chatCommands) {
             }
             await rollTest(skillItem, 'skill', testConfiguration);
           } else if (actor) {
-            ui.notifications.warn(
-              game.i18n.format("ZWEI.othermessages.noskill", { message: messageText })
-              );
+            ui.notifications.warn(game.i18n.format('ZWEI.othermessages.noskill', { message: messageText }));
             break;
           }
         }
@@ -262,13 +263,13 @@ Hooks.on('chatCommandsReady', function (chatCommands) {
           });
           game.world.updateSource(response);
           await ChatMessage.create({
-            flavor: game.i18n.localize("ZWEI.othermessages.settingdate"),
-            content: game.i18n.format("ZWEI.othermessages.nextsession", { next: nextSession.toLocaleDateString() }),
+            flavor: game.i18n.localize('ZWEI.othermessages.settingdate'),
+            content: game.i18n.format('ZWEI.othermessages.nextsession', { next: nextSession.toLocaleDateString() }),
           });
         },
         shouldDisplayToChat: false,
         iconClass: 'fa-calendar',
-        description: game.i18n.localize("ZWEI.othermessages.setdate"),
+        description: game.i18n.localize('ZWEI.othermessages.setdate'),
       })
     );
   }
@@ -278,7 +279,7 @@ Hooks.on('chatCommandsReady', function (chatCommands) {
       invokeOnCommand: displayHelpMessage,
       shouldDisplayToChat: false,
       iconClass: 'fa-question',
-      description: game.i18n.localize("ZWEI.othermessages.showdocs"),
+      description: game.i18n.localize('ZWEI.othermessages.showdocs'),
     })
   );
 });

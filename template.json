@@ -1,6 +1,6 @@
 {
   "Actor": {
-    "types": ["npc", "creature", "character"],
+    "types": ["npc", "creature", "character", "vehicle"],
     "templates": {
       "stats": {
         "stats": {
@@ -172,6 +172,21 @@
         "size": 0,
         "role": "",
         "influences": ""
+      }
+    },
+    "vehicle": {
+      "templates": ["stats", "flavor", "non-player"],
+      "stats": {
+        "secondaryAttributes": {
+          "sizeModifier": {
+            "value": 0
+          }
+        }
+      },
+      "details": {
+        "associatedPrimaryAttribute": "Brawn",
+        "operateSkill": "drive",
+        "horsepower": ""
       }
     },
     "npc": {
