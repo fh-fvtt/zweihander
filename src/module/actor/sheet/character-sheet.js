@@ -110,10 +110,10 @@ export default class ZweihanderCharacterSheet extends ZweihanderBaseActorSheet {
         prefix: game.i18n.localize('ZWEI.actor.details.prefixes.build'),
         key: 'details.buildType',
         placeholder: game.i18n.localize('ZWEI.actor.details.placeholders.build'),
-        postfix: game.i18n.format('ZWEI.actor.details.postfixes.build', {ancestry: `${ancestry ?? '?'}`}),
+        postfix: game.i18n.format('ZWEI.actor.details.postfixes.build', { ancestry: `${ancestry ?? '?'}` }),
       },
       {
-        prefix: game.i18n.format('ZWEI.actor.details.prefixes.hair', {pronoun: `${pronoun.capitalize() ?? '?'}`}),
+        prefix: game.i18n.format('ZWEI.actor.details.prefixes.hair', { pronoun: `${pronoun.capitalize() ?? '?'}` }),
         key: 'details.hairColor',
         placeholder: game.i18n.localize('ZWEI.actor.details.placeholders.hair'),
         postfix: game.i18n.localize('ZWEI.actor.details.postfixes.hair'),
@@ -140,7 +140,7 @@ export default class ZweihanderCharacterSheet extends ZweihanderBaseActorSheet {
         hidden,
       },
       {
-        prefix: game.i18n.format('ZWEI.actor.details.prefixes.upbringing', {pronoun: `${pronoun ?? '?'}`}),
+        prefix: game.i18n.format('ZWEI.actor.details.prefixes.upbringing', { pronoun: `${pronoun ?? '?'}` }),
         key: 'details.upbringing',
         placeholder: game.i18n.localize('ZWEI.actor.details.placeholders.upbringing'),
         hidden,
@@ -195,9 +195,9 @@ export default class ZweihanderCharacterSheet extends ZweihanderBaseActorSheet {
       .sort((a, b) => (a.sort || 0) - (b.sort || 0))
       .forEach((i) => sheetData[pluralize(i.type)].push(i));
     // sort skills alphabetically
-    sheetData.skills = sheetData.skills.sort((a, b)  =>  {
-      const aloc = game.i18n.localize("ZWEI.actor.skills." + a.name.toLowerCase().replace(/\s+/g, ''));
-      const bloc = game.i18n.localize("ZWEI.actor.skills." + b.name.toLowerCase().replace(/\s+/g, ''));
+    sheetData.skills = sheetData.skills.sort((a, b) => {
+      const aloc = game.i18n.localize('ZWEI.actor.skills.' + a.name.toLowerCase().replace(/\s+/g, ''));
+      const bloc = game.i18n.localize('ZWEI.actor.skills.' + b.name.toLowerCase().replace(/\s+/g, ''));
       return aloc.localeCompare(bloc);
     });
     // sort professions by tier
@@ -301,8 +301,8 @@ export default class ZweihanderCharacterSheet extends ZweihanderBaseActorSheet {
     // Reset Order and Chaos Ranks
     html.find('.reset-ranks').contextmenu(() => {
       Dialog.confirm({
-        title: `${this.actor.name}: ` + game.i18n.localize("ZWEI.othermessages.resetranks"),
-        content: game.i18n.localize("ZWEI.othermessages.sureranks"),
+        title: `${this.actor.name}: ` + game.i18n.localize('ZWEI.othermessages.resetranks'),
+        content: game.i18n.localize('ZWEI.othermessages.sureranks'),
         yes: () =>
           this.actor.update({
             'system.alignment.chaos.rank': 0,
@@ -318,30 +318,30 @@ export default class ZweihanderCharacterSheet extends ZweihanderBaseActorSheet {
     });
 
     // Modify numerable value by clicking '+' and '-' buttons on sheet, e.g. quantity, encumbrance
-    const updateNumerable = (i) => async (event) => {
-      const lookup = (obj, key) => {
-        const keys = key.split('.');
-        let val = obj;
-        for (let key of keys) {
-          val = val?.[key];
-        }
-        return val;
-      };
+    // const updateNumerable = (i) => async (event) => {
+    //   const lookup = (obj, key) => {
+    //     const keys = key.split('.');
+    //     let val = obj;
+    //     for (let key of keys) {
+    //       val = val?.[key];
+    //     }
+    //     return val;
+    //   };
 
-      const numerablePath = event.currentTarget.dataset.numerablePath;
+    //   const numerablePath = event.currentTarget.dataset.numerablePath;
 
-      const itemElement = $(event.currentTarget).parents('.item');
-      const item = this.actor.items.get($(itemElement).data('itemId'));
+    //   const itemElement = $(event.currentTarget).parents('.item');
+    //   const item = this.actor.items.get($(itemElement).data('itemId'));
 
-      const newNumerableValue = lookup(item, numerablePath) + i;
+    //   const newNumerableValue = lookup(item, numerablePath) + i;
 
-      await item.update({
-        [`${numerablePath}`]: newNumerableValue >= 0 ? newNumerableValue : 0,
-      });
-    };
+    //   await item.update({
+    //     [`${numerablePath}`]: newNumerableValue >= 0 ? newNumerableValue : 0,
+    //   });
+    // };
 
-    html.find('.numerable-field-subtract').click(updateNumerable(-1));
-    html.find('.numerable-field-add').click(updateNumerable(1));
+    // html.find('.numerable-field-subtract').click(updateNumerable(-1));
+    // html.find('.numerable-field-add').click(updateNumerable(1));
 
     html.find('.focus-indicator').hover(
       (event) => {
@@ -409,7 +409,7 @@ export default class ZweihanderCharacterSheet extends ZweihanderBaseActorSheet {
     const target = currencies[targetCurrencyIndex];
     const equivalent = currencies[Math.min(sourceCurrencyIndex, targetCurrencyIndex)].equivalentOfLower;
     let conversion = {};
-    if (sourceCurrencyIndex < targetCurrencyIndex) { 
+    if (sourceCurrencyIndex < targetCurrencyIndex) {
       // bigger to lower conversion
       conversion.sourceDebit = 1;
       conversion.targetCredit = equivalent;
@@ -422,7 +422,7 @@ export default class ZweihanderCharacterSheet extends ZweihanderBaseActorSheet {
     if (newSourceAmount >= 0) {
       this.actor.update({
         [`system.currency.${source.abbreviation}`]: newSourceAmount,
-        [`system.currency.${target.abbreviation}`]: actorMoney[target.abbreviation] + conversion.targetCredit
+        [`system.currency.${target.abbreviation}`]: actorMoney[target.abbreviation] + conversion.targetCredit,
       });
     } else {
       console.warn(`not enough ${source.abbreviation} to perform money conversion`);

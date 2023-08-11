@@ -2,9 +2,12 @@ import ZweihanderBaseActor from './base-actor';
 
 export default class ZweihanderVehicle extends ZweihanderBaseActor {
   prepareBaseData(actor) {
-    // const configOptions = ZweihanderActorConfig.getConfig(actor);
     // set up utility variables
     const systemData = actor.system;
+    const vehicleOccupants = actor.getFlag('zweihander', 'vehicleOccupants');
+    const drivers = vehicleOccupants?.drivers;
+
+    const driversUpdated = drivers ? drivers.map((d) => fromUuidSync(d.uuid).toObject(false)) : [];
 
     // encumbrance calculations...
     // assign encumbrance from equipped trappings
@@ -25,19 +28,67 @@ export default class ZweihanderVehicle extends ZweihanderBaseActor {
       .map((t) => t.system.encumbrance * (t.system.quantity ?? 1))
       .reduce((a, b) => a + b, 0);
 
-    const enc = systemData.stats.secondaryAttributes.encumbrance;
+    const enc = systemData.stats.secondaryAttributes.encumbranceLimit;
 
-    // assign initial encumbrance threshold
-    enc.value = enc.value ?? 0;
     // assign current encumbrance
     enc.current = smallTrappingsEnc + normalTrappingsEnc; // + currencyEnc;
     // assign overage
     enc.overage = Math.max(0, enc.current - enc.value);
 
+    let { driversBestPb, driversBestMovBonus } = this._prepareDriverDerivedData(systemData, driversUpdated);
+
+    systemData.stats.secondaryAttributes.damageThreshold.value =
+      systemData.stats.secondaryAttributes.sizeModifier.value + driversBestPb;
+
     // calculate movement
     const mov = systemData.stats.secondaryAttributes.movement;
     mov.value = mov.value ?? 0;
     mov.overage = enc.overage;
-    mov.current = Math.max(0, mov.value - mov.overage);
+    mov.current = Math.max(0, mov.value - mov.overage) + driversBestMovBonus;
+  }
+
+  _prepareDriverDerivedData(systemData, drivers) {
+    let driversBestPb = 0,
+      driversBestMovBonus = 0;
+
+    if (drivers) {
+      for (let i = 0; i < drivers.length; i++) {
+        const pb = drivers[i].system.stats.primaryAttributes.perception.bonus;
+
+        if (pb > driversBestPb) {
+          driversBestPb = pb;
+        }
+      }
+
+      const pa = systemData.details.associatedPrimaryAttribute;
+
+      for (let i = 0; i < drivers.length; i++) {
+        const mb = drivers[i].system.stats.primaryAttributes[pa].bonus;
+
+        console.log('MB', mb);
+
+        if (mb > driversBestMovBonus) {
+          driversBestMovBonus = mb;
+        }
+      }
+    }
+
+    return {
+      driversBestPb: driversBestPb,
+      driversBestMovBonus: driversBestMovBonus,
+    };
+  }
+
+  async _preCreate(data, options, userId) {
+    data.updateSource({
+      flags: {
+        ['zweihander']: {
+          vehicleOccupants: {
+            drivers: [],
+            passengers: [],
+          },
+        },
+      },
+    });
   }
 }

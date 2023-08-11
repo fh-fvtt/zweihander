@@ -64,6 +64,15 @@ export default class ZweihanderBaseActorSheet extends ActorSheet {
     const itemGroups = this._processItemGroups(this._getItemGroups(sheetData));
     sheetData.itemGroups = ZweihanderUtils.assignPacks(this.actor.type, itemGroups);
 
+    if (this.actor.type === 'vehicle') {
+      const vehicleOccupants = this.actor.getFlag('zweihander', 'vehicleOccupants');
+
+      sheetData.passengers = vehicleOccupants.passengers;
+      sheetData.drivers = vehicleOccupants.drivers;
+
+      sheetData.actorGroups = this._getActorGroups(sheetData);
+    }
+
     // Return data to the sheet
     return sheetData;
   }
@@ -87,6 +96,8 @@ export default class ZweihanderBaseActorSheet extends ActorSheet {
     );
     return sheetData;
   }
+
+  _getActorGroups() {}
 
   _getItemGroups() {}
 
@@ -541,6 +552,32 @@ export default class ZweihanderBaseActorSheet extends ActorSheet {
     });
 
     html.find('.open-language-config').click(() => this.#languageConfig.render(true));
+
+    // Modify numerable value by clicking '+' and '-' buttons on sheet, e.g. quantity, encumbrance
+    const updateNumerable = (i) => async (event) => {
+      const lookup = (obj, key) => {
+        const keys = key.split('.');
+        let val = obj;
+        for (let key of keys) {
+          val = val?.[key];
+        }
+        return val;
+      };
+
+      const numerablePath = event.currentTarget.dataset.numerablePath;
+
+      const itemElement = $(event.currentTarget).parents('.item');
+      const item = this.actor.items.get($(itemElement).data('itemId'));
+
+      const newNumerableValue = lookup(item, numerablePath) + i;
+
+      await item.update({
+        [`${numerablePath}`]: newNumerableValue >= 0 ? newNumerableValue : 0,
+      });
+    };
+
+    html.find('.numerable-field-subtract').click(updateNumerable(-1));
+    html.find('.numerable-field-add').click(updateNumerable(1));
   }
 
   _damageSheet(html) {

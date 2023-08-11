@@ -389,6 +389,9 @@ body.game.vtt.system-zweihander .zweihander.sheet.vehicle {
           padding: 0;
           .sa-value {
             font-size: 18px;
+            &.movement {
+              font-size: 13px;
+            }
             input {
               width: 24px;
               margin: 0;
@@ -400,9 +403,9 @@ body.game.vtt.system-zweihander .zweihander.sheet.vehicle {
                 text-align: center;
               }
             }
-            .sa-value-fly {
+            .sa-value-current {
               color: var(--zh-clr-fg4);
-              font-size: 13px;
+              font-size: 18px;
               input {
                 color: var(--zh-clr-fg3);
                 text-align: left;

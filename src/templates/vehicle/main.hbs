@@ -10,7 +10,7 @@
     <section class="actor-resources">
       <section class="damage-ladder">
         <h1>{{localize "ZWEI.actor.secondary.damage"}}</h1>
-        {{zhConditionLadderLoc "system.stats.secondaryAttributes.damageCurrent.value" config.damageOptions
+        {{zhConditionLadderLoc "system.stats.secondaryAttributes.damageCurrent.value" config.vehicleDamageOptions
         checked=system.stats.secondaryAttributes.damageCurrent.value}}
       </section>
     </section>
@@ -27,17 +27,27 @@
           <span class="sa-title">{{localize "ZWEI.actor.secondary.sizeModifier"}}</span>
           <span class="sa-value">
             <input class="sa-solo-value" size="2" type="number" name="system.stats.secondaryAttributes.sizeModifier.value"
-              value="{{system.stats.secondaryAttributes.sizeModifier.value}}" {{#unless
-              system.stats.manualMode}}readonly{{/unless}}>
+              value="{{system.stats.secondaryAttributes.sizeModifier.value}}">
           </span>
         </li>
         <li class="sa-mov">
           <span class="sa-title">{{localize "ZWEI.actor.secondary.movement"}}</span>
-          <span class="sa-value">
+          <span class="sa-value movement">
+            <input size="2" type="number" name="system.stats.secondaryAttributes.movement.value"
+              value="{{system.stats.secondaryAttributes.movement.value}}">
+            
+            <span class="sa-value-current">
+              <span>/</span>
+              <input size="2" type="number" name="system.stats.secondaryAttributes.movement.current"
+                value="{{system.stats.secondaryAttributes.movement.current}}" {{#unless
+                system.stats.manualMode}}readonly{{/unless}}>
+            </span>
+          </span>
+          {{!-- <span class="sa-value">
             <input class="sa-solo-value" size="2" type="number" name="system.stats.secondaryAttributes.movement.value"
               value="{{system.stats.secondaryAttributes.movement.value}}" {{#unless
               system.stats.manualMode}}readonly{{/unless}}>
-          </span>
+          </span> --}}
         </li>
         <li class="sa-dth">
           <span class="sa-title">{{localize "ZWEI.actor.secondary.vth"}}</span>
@@ -51,15 +61,14 @@
         <li class="sa-int">
           <span class="sa-title">{{localize "ZWEI.actor.secondary.encumbranceLimit"}}</span>
           <span class="sa-value">
-            <input class="sa-solo-value" size="2" type="number" name="system.stats.secondaryAttributes.encumbrance.value"
-              value="{{system.stats.secondaryAttributes.encumbrance.value}}" {{#unless
-              system.stats.manualMode}}readonly{{/unless}}>
+            <input class="sa-solo-value" size="2" type="number" name="system.stats.secondaryAttributes.encumbranceLimit.value"
+              value="{{system.stats.secondaryAttributes.encumbranceLimit.value}}">
           </span>
         </li>
       </ul>
     </section>
     <section class="rules">
-      {{> ($$ "partials/items-list") itemLists.rules}}
+      {{> ($$ "partials/actors-list") actorLists.vehicleOccupants}}
     </section>
     <section class="qualities">
       {{> ($$ "partials/items-list") itemLists.qualities}}

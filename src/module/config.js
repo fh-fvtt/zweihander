@@ -57,6 +57,7 @@ ZWEI.alignmentRanks = 9;
 ZWEI.perilOptions = ['incapacitated', 'ignore3', 'ignore2', 'ignore1', 'imperiled', 'unhindered'];
 ZWEI.altPerilOptions = ['incapacitated', 'penalty20', 'penalty10', 'penalty5', 'imperiled', 'unhindered'];
 ZWEI.damageOptions = ['slain', 'grievously', 'seriously', 'moderately', 'lightly', 'unharmed'];
+ZWEI.vehicleDamageOptions = ['wrecked', 'gSmashed', 'sSmashed', 'mSmashed', 'lSmashed', 'fixed'];
 ZWEI.tiers = {
   1: 'Basic',
   2: 'Intermediate',
@@ -114,7 +115,7 @@ ZWEI.defaultActorIcons = {
   _default: `${d}/cowled.svg`,
   character: `${d}/character.svg`,
   creature: `${d}/daemon-skull.svg`,
-  vehicle: `${d}/daemon-skull.svg`,
+  vehicle: `${d}/cartwheel.svg`,
   npc: `${d}/cowled.svg`,
 };
 

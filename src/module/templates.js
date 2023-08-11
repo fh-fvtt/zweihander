@@ -66,6 +66,7 @@ const templatesToLoad = [
   $$('item-summary/trait.hbs'),
   $$('item-summary/trapping.hbs'),
   $$('item-summary/quality.hbs'),
+  $$('item-summary/vehicleOccupant.hbs'),
   $$('item-summary/uniqueAdvance.hbs'),
   $$('item-summary/weapon.hbs'),
 
@@ -75,6 +76,7 @@ const templatesToLoad = [
   $$('partials/details-list.hbs'),
   $$('partials/focuses-list.hbs'),
   $$('partials/items-list.hbs'),
+  $$('partials/actors-list.hbs'),
   $$('partials/modded-value.hbs'),
   $$('partials/skills-list.hbs'),
 ];
