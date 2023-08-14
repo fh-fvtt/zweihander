@@ -87,10 +87,10 @@
       </div>
       {{/each}}
       <div class="item-controls flexrow">
-        <a class="item-control actor-{{#if actor.isDriver}}demote{{else}}promote{{/if}}" title="{{#if actor.isDriver}}Demote to Passenger{{else}}Promote to Driver{{/if}}"><i class="fa-{{#if actor.isDriver}}regular{{else}}solid{{/if}} fa-star fa-fw fa-xs"></i></a>
+        <a class="item-control actor-{{#if actor.isDriver}}demote{{else}}promote{{/if}}" data-tooltip="{{#if actor.isDriver}}Demote to Passenger{{else}}Promote to Driver{{/if}}"><i class="fa-solid fa-{{#if actor.isDriver}}down{{else}}up{{/if}} fa-fw fa-xs"></i></a>
         {{!-- <a class="item-control actor-post" title="Post Actor to Chat"><i class="fas fa-comment fa-fw fa-xs"></i></a> --}}
-        <a class="item-control actor-edit" title="Edit Actor"><i class="fas fa-pencil-alt fa-fw fa-xs"></i></a>
-        <a class="item-control actor-delete" title="Exit Vehicle"><i class="fas fa-trash-alt fa-fw fa-xs"></i></a>
+        <a class="item-control actor-edit" data-tooltip="Edit Actor"><i class="fas fa-pencil-alt fa-fw fa-xs"></i></a>
+        <a class="item-control actor-delete" data-tooltip="Remove from Vehicle"><i class="fas fa-trash-alt fa-fw fa-xs"></i></a>
       </div>
       <div class="item-summary individual-description save-toggle item-summary-longform">
         {{> ($$ actorGroup.summaryTemplate) actor.system item=item}}

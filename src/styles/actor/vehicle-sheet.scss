@@ -6,6 +6,13 @@ body.game.vtt.system-zweihander .zweihander.sheet.vehicle {
   min-height: 669px;
   min-width: 620px;
 
+  .actor-demote:hover {
+    color: var(--zh-clr-red-alt);
+  }
+  .actor-promote:hover {
+    color: var(--zh-clr-aqua-alt);
+  }
+
   &.limited {
     min-height: 150px;
     min-width: 300px;

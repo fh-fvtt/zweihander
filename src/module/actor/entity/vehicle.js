@@ -1,13 +1,22 @@
 import ZweihanderBaseActor from './base-actor';
 
 export default class ZweihanderVehicle extends ZweihanderBaseActor {
+  constructor(...args) {
+    super(...args);
+
+    Hooks.on('updateActor', (actor) => this.#updateOccupantsData(actor));
+  }
+
   prepareBaseData(actor) {
     // set up utility variables
     const systemData = actor.system;
     const vehicleOccupants = actor.getFlag('zweihander', 'vehicleOccupants');
     const drivers = vehicleOccupants?.drivers;
 
-    const driversUpdated = drivers ? drivers.map((d) => fromUuidSync(d.uuid).toObject(false)) : [];
+    const pa = systemData.details.associatedPrimaryAttribute;
+    systemData.details.associatedPrimaryAttribute = pa || 'brawn';
+
+    // const driversUpdated = drivers ? drivers.map((d) => fromUuidSync(d.uuid).toObject(false)) : [];
 
     // encumbrance calculations...
     // assign encumbrance from equipped trappings
@@ -35,7 +44,7 @@ export default class ZweihanderVehicle extends ZweihanderBaseActor {
     // assign overage
     enc.overage = Math.max(0, enc.current - enc.value);
 
-    let { driversBestPb, driversBestMovBonus } = this._prepareDriverDerivedData(systemData, driversUpdated);
+    let { driversBestPb, driversBestMovBonus } = this._prepareDriverDerivedData(systemData, drivers);
 
     systemData.stats.secondaryAttributes.damageThreshold.value =
       systemData.stats.secondaryAttributes.sizeModifier.value + driversBestPb;
@@ -61,6 +70,8 @@ export default class ZweihanderVehicle extends ZweihanderBaseActor {
       }
 
       const pa = systemData.details.associatedPrimaryAttribute;
+
+      console.log(pa, drivers);
 
       for (let i = 0; i < drivers.length; i++) {
         const mb = drivers[i].system.stats.primaryAttributes[pa].bonus;
@@ -90,5 +101,9 @@ export default class ZweihanderVehicle extends ZweihanderBaseActor {
         },
       },
     });
+  }
+
+  #updateOccupantsData(actor) {
+    console.log(actor, '\n\n\n', this);
   }
 }

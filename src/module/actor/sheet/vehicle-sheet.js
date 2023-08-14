@@ -1,6 +1,7 @@
 import ZweihanderBaseActorSheet from './base-actor-sheet';
 
 import { selectedChoice, localizePath } from '../../utils';
+import { ZWEI } from '../../../module/config';
 
 export default class ZweihanderVehicleSheet extends ZweihanderBaseActorSheet {
   static unsupportedItemTypes = new Set([
@@ -32,8 +33,7 @@ export default class ZweihanderVehicleSheet extends ZweihanderBaseActorSheet {
 
     sheetData.choices = {};
 
-    const associatedPrimaryAttribute =
-      sheetData.system.details.associatedPrimaryAttribute ?? game.i18n.localize('ZWEI.actor.primary.brawn');
+    const associatedPrimaryAttribute = sheetData.system.details.associatedPrimaryAttribute;
     sheetData.choices.associatedPrimaryAttribute = selectedChoice(associatedPrimaryAttribute, [
       { value: 'combat', label: 'combat' },
       { value: 'brawn', label: 'brawn' },
@@ -298,11 +298,10 @@ export default class ZweihanderVehicleSheet extends ZweihanderBaseActorSheet {
   }
 
   async _onDropActor(event, data) {
-    console.log(event, data);
-    const actor = this.object;
+    const vehicle = this.object;
     const uuid = data.uuid;
 
-    const vehicleOccupants = await actor.getFlag('zweihander', 'vehicleOccupants');
+    const vehicleOccupants = await vehicle.getFlag('zweihander', 'vehicleOccupants');
 
     // add everyone as passenger by default; driver logic handled elsewhere
     if (!vehicleOccupants.passengers.includes(uuid) && !vehicleOccupants.drivers.includes(uuid)) {
@@ -317,10 +316,10 @@ export default class ZweihanderVehicleSheet extends ZweihanderBaseActorSheet {
         isDriver: false,
       });
     } else {
-      ui.notifications.warn(`Actor with UUID ${uuid} is already an occupant of this vehicle.`);
+      ui.notifications.warn(`Actor '${actor.name}' is already an occupant of this vehicle.`);
     }
 
-    await actor.setFlag('zweihander', 'vehicleOccupants', {
+    await vehicle.setFlag('zweihander', 'vehicleOccupants', {
       drivers: vehicleOccupants.drivers,
       passengers: vehicleOccupants.passengers,
     });
