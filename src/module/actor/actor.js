@@ -15,6 +15,50 @@ export default class ZweihanderActor extends Actor {
 
   constructor(...args) {
     super(...args);
+
+    Hooks.on('updateActor', (actor, changed) => this.#updateOccupantsData(actor, changed));
+  }
+
+  // @todo: refactor this after getting rid of the entire 'dispatch' system
+  async #updateOccupantsData(actor, changed) {
+    if (this.type !== 'vehicle') return;
+
+    console.log(changed);
+
+    const vehicleOccupants = this.getFlag('zweihander', 'vehicleOccupants');
+    const drivers = vehicleOccupants.drivers;
+    const passengers = vehicleOccupants.passengers;
+
+    const foundDriver = drivers.find((d) => d.uuid === actor.uuid);
+
+    const foundPassenger = passengers.find((d) => d.uuid === actor.uuid);
+
+    if (!foundDriver && !foundPassenger) return;
+
+    if (foundDriver) {
+      drivers[drivers.indexOf(foundDriver)] = {
+        name: actor.name,
+        img: actor.img,
+        uuid: actor.uuid,
+        system: actor.system,
+        isDriver: true,
+      };
+    } else if (foundPassenger) {
+      passengers[passengers.indexOf(foundPassenger)] = {
+        name: actor.name,
+        img: actor.img,
+        uuid: actor.uuid,
+        system: actor.system,
+        isDriver: true,
+      };
+    }
+
+    const newVehicleOccupants = {
+      drivers: drivers,
+      passengers: passengers,
+    };
+
+    await this.setFlag('zweihander', 'vehicleOccupants', newVehicleOccupants);
   }
 
   // convention: dispatch is async when the function it calls is

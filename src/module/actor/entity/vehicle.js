@@ -3,8 +3,6 @@ import ZweihanderBaseActor from './base-actor';
 export default class ZweihanderVehicle extends ZweihanderBaseActor {
   constructor(...args) {
     super(...args);
-
-    Hooks.on('updateActor', (actor) => this.#updateOccupantsData(actor));
   }
 
   prepareBaseData(actor) {
@@ -101,9 +99,5 @@ export default class ZweihanderVehicle extends ZweihanderBaseActor {
         },
       },
     });
-  }
-
-  #updateOccupantsData(actor) {
-    console.log(actor, '\n\n\n', this);
   }
 }
