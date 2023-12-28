@@ -49,7 +49,7 @@
     </div>
     {{/each}}
     <div class="item-controls"><a class="add-new" data-item-type="{{itemGroup.type}}" {{#if
-        itemGroup.packs}}data-open-packs="{{itemGroup.packs}}" {{/if}} title="Add New {{itemGroup.title}}"><i
+        itemGroup.packs}}data-open-packs="{{itemGroup.packs}}" {{/if}} data-tooltip="Add New {{localize (zhConcat "ZWEI.actor.items." itemGroup.title)}}" data-tooltip-direction="UP"><i
           class="fa fa-plus"></i> {{localize "ZWEI.actor.items.add"}}</a>
     </div>
   </li>
@@ -65,7 +65,7 @@
           {{#if ../isEffect}}{{item.label}}{{else}}{{item.name}}{{/if}}
           {{#zhProfessionWarn item}}
           {{else}}
-          <div class="profession-warn"><i class="fa fa-exclamation-triangle" title="Profession is missing a Talent, has a misspelled Talent, or has a duplicate one. Please add to/change Talent list."></i></div>
+          <div class="profession-warn"><i class="fa fa-exclamation-triangle" data-tooltip="Profession is missing a Talent, has a misspelled Talent, or has a duplicate one. Please add to/change Talent list." data-tooltip-direction="UP"></i></div>
           {{/zhProfessionWarn}}
         </h4>
       </div>
@@ -90,11 +90,11 @@
         {{/if}}
       </div>
       {{/each}}
-      <div class="item-controls flexrow">
-        <a class="item-control {{#if ../isEffect}}effect{{else}}item{{/if}}-post" title="Post {{#if ../isEffect}}Effect{{else}}Item{{/if}} to Chat"><i class="fas fa-comment fa-fw fa-xs"></i></a>
-        <a class="item-control {{#if ../isEffect}}effect{{else}}item{{/if}}-edit" title="Edit {{#if ../isEffect}}Effect{{else}}Item{{/if}}"><i class="fas fa-pencil-alt fa-fw fa-xs"></i></a>
+      <div class="item-controls flexrow" data-tooltip-direction="UP">
+        <a class="item-control {{#if ../isEffect}}effect{{else}}item{{/if}}-post" data-tooltip="Post {{#if ../isEffect}}Effect{{else}}Item{{/if}} to Chat"><i class="fas fa-comment fa-fw fa-xs"></i></a>
+        <a class="item-control {{#if ../isEffect}}effect{{else}}item{{/if}}-edit" data-tooltip="Edit {{#if ../isEffect}}Effect{{else}}Item{{/if}}"><i class="fas fa-pencil-alt fa-fw fa-xs"></i></a>
         <a class="item-control {{#if itemGroup.managed}}{{#if item.isManualSource}}item-no-delete{{else}}{{#if ../isEffect}}effect{{else}}item{{/if}}-delete{{/if}}{{else}}{{#if ../isEffect}}effect{{else}}item{{/if}}-delete{{/if}}"
-          title="Delete {{#if ../isEffect}}Effect{{else}}Item{{/if}}"><i class="fas fa-trash-alt fa-fw fa-xs"></i></a>
+          data-tooltip="Delete {{#if ../isEffect}}Effect{{else}}Item{{/if}}"><i class="fas fa-trash-alt fa-fw fa-xs"></i></a>
       </div>
       <div class="item-summary individual-description save-toggle item-summary-longform">
         {{> ($$ itemGroup.summaryTemplate) item.system item=item}}

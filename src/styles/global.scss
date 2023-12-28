@@ -195,6 +195,22 @@ body.game.vtt.system-zweihander {
     filter: brightness(100) contrast(2) drop-shadow(2px 2px 1px var(--zh-clr-dark2));
   }
 
+  #pause {
+    font-size: 12px;
+    font-style: italic;
+    bottom: 13%;
+    background: none;
+  }
+
+  #pause > img {
+    top: -80px;
+    left: calc(50% - 128px);
+    height: 256px;
+    width: 256px;
+    --fa-animation-duration: 15s;
+    opacity: 0.75;
+  }
+
   .dimension-change-listener {
     border: none;
     height: 0;

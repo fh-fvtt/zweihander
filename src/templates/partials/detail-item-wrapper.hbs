@@ -1,12 +1,20 @@
-<div class="item-wrapper item" data-item-id="{{id}}">
-  <input class="auto-size" type="text" value="{{value}}" placeholder="{{placeholder}}" disabled="disabled" />
-  <div class="item-wrapper-edit">
+<div class='item-wrapper item' data-item-id='{{id}}'>
+  <input class='auto-size' type='text' value='{{value}}' placeholder='{{placeholder}}' disabled='disabled' />
+  <div class='item-wrapper-edit' data-tooltip-direction='UP'>
     {{#if value}}
-    <a class="item-edit" title="{{localize "ZWEI.actor.items.edit"}} {{placeholder}}"><i class="fas fa-pencil-alt fa-sm"></i></a>
-    <a class="item-delete" title="{{localize "ZWEI.actor.items.delete"}} {{placeholder}}"><i class="fas fa-trash-alt fa-sm"></i></a>
+      <a class='item-edit' data-tooltip='{{localize "ZWEI.actor.items.edit"}} {{placeholder}}'><i
+          class='fas fa-pencil-alt fa-sm'
+        ></i></a>
+      <a class='item-delete' data-tooltip='{{localize "ZWEI.actor.items.delete"}} {{placeholder}}'><i
+          class='fas fa-trash-alt fa-sm'
+        ></i></a>
     {{else}}
-    <a class="add-new" data-item-type="{{type}}" data-open-packs="{{packs}}" title="{{localize "ZWEI.actor.items.add"}} {{placeholder}}"><i
-        class="fas fa-plus fa-xs"></i></a>
+      <a
+        class='add-new'
+        data-item-type='{{type}}'
+        data-open-packs='{{packs}}'
+        data-tooltip='{{localize "ZWEI.actor.items.add"}} {{placeholder}}'
+      ><i class='fas fa-plus fa-xs'></i></a>
     {{/if}}
   </div>
 </div>

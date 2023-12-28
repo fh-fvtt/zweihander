@@ -1,7 +1,6 @@
 import ZweihanderBaseActorSheet from './base-actor-sheet';
 
 import { selectedChoice, localizePath } from '../../utils';
-import { ZWEI } from '../../../module/config';
 
 export default class ZweihanderVehicleSheet extends ZweihanderBaseActorSheet {
   static unsupportedItemTypes = new Set([
@@ -72,6 +71,8 @@ export default class ZweihanderVehicleSheet extends ZweihanderBaseActorSheet {
       vehicleOccupants: ['drivers', 'passengers'].map(actorMap),
     };
 
+    console.log(sheetData.actorLists);
+
     return sheetData;
   }
 
@@ -120,6 +121,8 @@ export default class ZweihanderVehicleSheet extends ZweihanderBaseActorSheet {
         summaryTemplate: 'item-summary/vehicleOccupant',
         details: [],
         actors: sheetData.drivers,
+        rollType: 'skill-roll',
+        rollLabelKey: 'system.details.operateSkill',
       },
       passengers: {
         title: 'passengers',
