@@ -301,11 +301,23 @@ Hooks.once('polyglot.init', (LanguageProvider) => {
       return polyglot.literate_languages.has(lang);
     }
   }
-  game.polyglot.registerSystem('zweihander', ZweihanderLanguageProvider);
+  game.polyglot.registerSystem(ZweihanderLanguageProvider);
 });
 
 Hooks.once('devModeReady', ({ registerPackageDebugFlag }) => {
   registerPackageDebugFlag('zweihander');
+});
+
+Hooks.on('renderPause', (app, html) => {
+  if (game.data.paused) {
+    const doomingIndex = Math.floor(Math.random() * 100);
+
+    html.find('img').attr('src', '../../systems/zweihander/assets/hexagram.png');
+
+    if (game.settings.get('zweihander', 'immersivePause')) {
+      html.find('figcaption').text(game.i18n.localize(`ZWEI.pauseDoomings.${doomingIndex}`));
+    }
+  }
 });
 
 export let _module = null;

@@ -36,8 +36,8 @@ export const registerSystemSettings = function () {
     type: Object,
     default: {
       systemMigration: '',
-      lastSystemVersion: ''
-    }
+      lastSystemVersion: '',
+    },
   });
 
   game.settings.register('zweihander', 'encumbranceNineForOne', {
@@ -75,6 +75,15 @@ export const registerSystemSettings = function () {
     type: Boolean,
     default: false,
     onChange: debouncedReload,
+  });
+
+  game.settings.register('zweihander', 'immersivePause', {
+    scope: 'world',
+    config: 'true',
+    name: 'Show Immersive Pause Messages',
+    hint: 'If enabled, will show a randomly selected dooming when the game is paused.',
+    type: Boolean,
+    default: true,
   });
 
   game.settings.register('zweihander', 'unlimitedFortuneExplodes', {

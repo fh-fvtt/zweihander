@@ -49,7 +49,7 @@ export default class ZweihanderActor extends Actor {
         img: actor.img,
         uuid: actor.uuid,
         system: actor.system,
-        isDriver: true,
+        isDriver: false,
       };
     }
 

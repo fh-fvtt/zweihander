@@ -234,8 +234,18 @@ body.game.vtt.system-zweihander .zweihander.sheet.vehicle {
         &.item-image-icon {
           mask-size: 18px;
         }
+        &.item-image-picture {
+          -webkit-mask-size: 18px;
+          mask-size: 18px;
+        }
         height: 18px;
         flex: 0 0 18px;
+        &:hover.item-image-picture.rollable {
+          -webkit-mask-image: url(/icons/svg/d10-grey.svg) !important;
+          mask-image: url(/icons/svg/d10-grey.svg) !important;
+          background-color: var(--zh-clr-aqua);
+          background-image: none !important;
+        }
       }
     }
 
