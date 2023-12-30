@@ -10,6 +10,7 @@ Compatible Foundry version: 10-11
 
 ### Fixed
 - Update deprecated Chat Commander integration
+- Add missing Zweihander drawbacks' descriptions and effects
 
 
 ## [5.2.0] - 2023-07-22
