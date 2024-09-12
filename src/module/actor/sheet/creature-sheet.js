@@ -19,7 +19,7 @@ export default class ZweihanderCreatureSheet extends ZweihanderBaseActorSheet {
     return foundry.utils.mergeObject(super.defaultOptions, {
       classes: super.defaultOptions.classes.concat(['creature']),
       template: 'systems/zweihander/src/templates/creature/main.hbs',
-      width: compactMode ? 540 : 620,
+      width: compactMode ? 540 : 625,
       height: compactMode ? 540 : 669,
       scrollY: ['.save-scroll', '.sheet-body'],
     });
@@ -127,9 +127,9 @@ export default class ZweihanderCreatureSheet extends ZweihanderBaseActorSheet {
       .sort((a, b) => (a.sort || 0) - (b.sort || 0))
       .forEach((i) => sheetData[pluralize(i.type)].push(i));
     // sort skills alphabetically
-    sheetData.skills = sheetData.skills.sort((a, b)  =>  {
-      const aloc = game.i18n.localize("ZWEI.actor.skills." + a.name.toLowerCase().replace(/\s+/g, ''));
-      const bloc = game.i18n.localize("ZWEI.actor.skills." + b.name.toLowerCase().replace(/\s+/g, ''));
+    sheetData.skills = sheetData.skills.sort((a, b) => {
+      const aloc = game.i18n.localize('ZWEI.actor.skills.' + a.name.toLowerCase().replace(/\s+/g, ''));
+      const bloc = game.i18n.localize('ZWEI.actor.skills.' + b.name.toLowerCase().replace(/\s+/g, ''));
       return aloc.localeCompare(bloc);
     });
     // add base chance to weapon data

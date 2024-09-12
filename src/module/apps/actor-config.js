@@ -95,7 +95,7 @@ export default class ZweihanderActorConfig extends FormApplication {
         updateData.isIgnoredPerilLadderValue['[2]'],
       ];
       const avoidAllUpdate = foundry.utils.expandObject(formData).avoidAllPeril;
-      const avoidAllBefore = ZweihanderActorConfig.getConfig(this.object.data).isIgnoredPerilLadderValue.reduce(
+      const avoidAllBefore = ZweihanderActorConfig.getConfig(this.object.system).isIgnoredPerilLadderValue.reduce(
         (a, b) => a && b,
         true
       );

@@ -21,7 +21,7 @@ export default class ZweihanderVehicleSheet extends ZweihanderBaseActorSheet {
     return foundry.utils.mergeObject(super.defaultOptions, {
       classes: super.defaultOptions.classes.concat(['vehicle']),
       template: 'systems/zweihander/src/templates/vehicle/main.hbs',
-      width: compactMode ? 540 : 620,
+      width: compactMode ? 540 : 625,
       height: compactMode ? 540 : 669,
       scrollY: ['.save-scroll', '.sheet-body'],
     });

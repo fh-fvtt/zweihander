@@ -6,9 +6,7 @@ export function zhDebug(...args) {
     if (isDebugging) {
       console.log('zweihander |', ...args);
     }
-  }
-  catch (e) {
-  }
+  } catch (e) {}
 }
 
 export function uuidv4() {
@@ -337,7 +335,21 @@ export async function findItemsByType(
   const packItems = (
     await Promise.all(
       game.packs
-        .filter((pack) => pack.documentClass.documentName === 'Item')
+        .filter((pack) => {
+          const title = pack.metadata.name;
+
+          // @todo: quick-and-dirty performance optimization; refactor later
+          if (
+            title === 'zh-talents' ||
+            title === 'zh-traits' ||
+            title === 'zh-drawbacks' ||
+            title === 'zh-ancestral-traits' ||
+            title === 'zh-qualities' ||
+            title === 'zh-skills'
+          ) {
+            return pack;
+          }
+        })
         .map((pack) => pack.getDocuments(filterExpression))
     )
   ).flatMap((x) => x);
@@ -568,7 +580,7 @@ export const enrichLocalized = async (entry) => {
   if (hasZhLocalization) {
     text = localize(entry);
   }
-  return TextEditor.enrichHTML(text, {async: true});
+  return TextEditor.enrichHTML(text, { async: true });
 };
 
 export const processRules = async (data) => {
@@ -577,8 +589,9 @@ export const processRules = async (data) => {
   }
   const rules = Object.fromEntries(
     await Promise.all(
-      Object.entries(data.rules)
-        .map(([name, rule]) => enrichLocalized(rule).then((processedRule) => [name, processedRule]))
+      Object.entries(data.rules).map(([name, rule]) =>
+        enrichLocalized(rule).then((processedRule) => [name, processedRule])
+      )
     )
   );
   return rules;

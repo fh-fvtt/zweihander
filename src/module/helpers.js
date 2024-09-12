@@ -224,7 +224,7 @@ export const registerHandlebarHelpers = async function () {
             id="${uuid}.${i}" name="${name}"
             value="${i}" data-dtype="Number" ${isChecked ? "checked" : ""}>
           <label for="${uuid}.${i}" class="status">
-            <span>` + game.i18n.localize('ZWEI.actor.conditions.' + choices[i]) + `</span>
+            <span><span>` + game.i18n.localize('ZWEI.actor.conditions.' + choices[i]) + `</span></span>
           </label>
         </div>`;
     }

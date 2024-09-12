@@ -4,7 +4,7 @@ body.game.vtt.system-zweihander .zweihander.sheet.creature {
   max-height: 1200px;
   max-width: 1280px;
   min-height: 669px;
-  min-width: 620px;
+  min-width: 625px;
 
   &.limited {
     min-height: 150px;
@@ -475,6 +475,15 @@ body.game.vtt.system-zweihander .zweihander.sheet.creature {
         flex: 1 0 16px;
         input[type='radio'] + label::before {
           margin: 0 !important;
+        }
+        .status-label {
+          background-color: rgba(var(--zh-clr-bg1-rgb), 1);
+          padding: 3px;
+          border-radius: 5px;
+          border: 2px ridge var(--zh-clr-bg2);
+          backdrop-filter: blur(2px);
+          z-index: calc(var(--z-index-window) + 100);
+          box-shadow: 3px 3px 5px 1px rgba(0, 0, 0, 0.75);
         }
       }
     }

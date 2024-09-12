@@ -253,14 +253,17 @@ export default class ZweihanderCharacterSheet extends ZweihanderBaseActorSheet {
 
     const resizePotrait = function () {
       const header = html.find('.actor-sheet-header');
+      const actualHeader = header.find('.character-info');
       const fig = header.find('figure');
-      const headerHeight = header.innerHeight();
+      const headerHeight = actualHeader.innerHeight();
+
       const spaceInDetails = header.find('.empty-placeholder').outerHeight();
       const figHeight = fig.height();
+      //console.log(headerHeight, '-> HEADER HEIGHT\\n', figHeight, '-> FIG HEIGHT');
       const img = fig.find('img');
       if (spaceInDetails > 0) {
         fig.height(figHeight - spaceInDetails);
-      } else if (figHeight < headerHeight) {
+      } else if (figHeight - headerHeight > -5) {
         if (img.naturalHeight < headerHeight) {
           fig.height(img.naturalHeight);
         } else {
