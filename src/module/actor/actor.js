@@ -23,7 +23,7 @@ export default class ZweihanderActor extends Actor {
   async #updateOccupantsData(actor, changed) {
     if (this.type !== 'vehicle') return;
 
-    console.log(changed);
+    // console.log(changed);
 
     const vehicleOccupants = this.getFlag('zweihander', 'vehicleOccupants');
     const drivers = vehicleOccupants.drivers;
