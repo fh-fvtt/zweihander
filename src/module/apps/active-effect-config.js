@@ -11,7 +11,7 @@ export default class ZweihanderActiveEffectConfig extends ActiveEffectConfig {
   getData() {
     const data = super.getData();
 
-    console.log('getDATA @ ZweihanderActiveEffectConfig', data);
+    // console.log('getDATA @ ZweihanderActiveEffectConfig', data);
 
     return data;
   }

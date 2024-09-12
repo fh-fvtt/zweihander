@@ -71,7 +71,7 @@ export default class ZweihanderVehicleSheet extends ZweihanderBaseActorSheet {
       vehicleOccupants: ['drivers', 'passengers'].map(actorMap),
     };
 
-    console.log(sheetData.actorLists);
+    // console.log(sheetData.actorLists);
 
     return sheetData;
   }

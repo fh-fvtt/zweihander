@@ -69,12 +69,12 @@ export default class ZweihanderVehicle extends ZweihanderBaseActor {
 
       const pa = systemData.details.associatedPrimaryAttribute;
 
-      console.log(pa, drivers);
+      // console.log(pa, drivers);
 
       for (let i = 0; i < drivers.length; i++) {
         const mb = drivers[i].system.stats.primaryAttributes[pa].bonus;
 
-        console.log('MB', mb);
+        // console.log('MB', mb);
 
         if (mb > driversBestMovBonus) {
           driversBestMovBonus = mb;

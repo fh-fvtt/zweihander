@@ -476,15 +476,6 @@ body.game.vtt.system-zweihander .zweihander.sheet.creature {
         input[type='radio'] + label::before {
           margin: 0 !important;
         }
-        .status-label {
-          background-color: rgba(var(--zh-clr-bg1-rgb), 1);
-          padding: 3px;
-          border-radius: 5px;
-          border: 2px ridge var(--zh-clr-bg2);
-          backdrop-filter: blur(2px);
-          z-index: calc(var(--z-index-window) + 100);
-          box-shadow: 3px 3px 5px 1px rgba(0, 0, 0, 0.75);
-        }
       }
     }
     section.sheet-body {
