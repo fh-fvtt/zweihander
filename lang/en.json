@@ -2,7 +2,8 @@
     "ACTOR": {
         "TypeCharacter": "Player Character",
         "TypeNpc": "Non-Player Character",
-        "TypeCreature": "Creature"
+        "TypeCreature": "Creature",
+        "TypeVehicle": "Vehicle"
     },
     "ITEM": {
         "TypeAncestry": "Ancestry",
@@ -112,7 +113,11 @@
                 "dtm": "DTM",
                 "movefly": "Move / Fly",
                 "dth": "DTh",
-                "pth": "PTh"
+                "pth": "PTh",
+                "vth": "VTh",
+                "sizeModifier": "Vehicle Size Modifier",
+                "horsepower": "Horsepower",
+                "encumbranceLimit": "Encumbrance Limit"
             },
             "background": {
                 "biography": "Biography",
@@ -162,6 +167,8 @@
                 }
             },
             "items": {
+                "drivers": "Drivers",
+                "passengers": "Passengers",
                 "weapons": "Weapons",
                 "armor": "Armor",
                 "trappings": "Trappings",
@@ -323,7 +330,9 @@
                     "hair": "Hair",
                     "eyes": "Eyes",
                     "upbringing": "upbringing",
-                    "born": "Born"
+                    "born": "Born",
+                    "horsepower": "Horsepower",
+                    "operateSkill": "Operate Skill"
                 },
                 "labels": {
                     "small": "Small (S)",
@@ -336,7 +345,14 @@
                     "ranger": "Ranger",
                     "socialite": "Socialite",
                     "warrior": "Warrior",
-                    "expertprofession": "Expert Profession"
+                    "expertprofession": "Expert Profession",
+                    "combat": "Combat",
+                    "brawn": "Brawn",
+                    "agility": "Agility",
+                    "perception": "Perception",
+                    "intelligence": "Intelligence",
+                    "willpower": "Willpower",
+                    "fellowship": "Fellowship"
                 }
             },
             "riskfactors": {

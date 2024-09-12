@@ -23,6 +23,8 @@ const templatesToLoad = [
   $$('combat/combat-tracker.hbs'),
 
   $$('creature/main.hbs'),
+  $$('vehicle/main.hbs'),
+  $$('vehicle/vehicle-encumbrance-meter.hbs'),
 
   $$('item/ancestry.hbs'),
   $$('item/armor.hbs'),
@@ -63,6 +65,7 @@ const templatesToLoad = [
   $$('item-summary/talent.hbs'),
   $$('item-summary/trait.hbs'),
   $$('item-summary/trapping.hbs'),
+  $$('item-summary/quality.hbs'),
   $$('item-summary/uniqueAdvance.hbs'),
   $$('item-summary/weapon.hbs'),
 

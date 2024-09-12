@@ -1,6 +1,8 @@
 import ZweihanderPC from './entity/pc';
 import ZweihanderNPC from './entity/npc';
 import ZweihanderCreature from './entity/creature';
+import ZweihanderVehicle from './entity/vehicle';
+
 import { ZWEI } from '../config';
 
 export default class ZweihanderActor extends Actor {
@@ -8,6 +10,7 @@ export default class ZweihanderActor extends Actor {
     character: new ZweihanderPC(),
     npc: new ZweihanderNPC(),
     creature: new ZweihanderCreature(),
+    vehicle: new ZweihanderVehicle(),
   };
 
   constructor(...args) {

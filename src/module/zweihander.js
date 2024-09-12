@@ -9,6 +9,7 @@ import ZweihanderActor from './actor/actor';
 import ZweihanderCharacterSheet from './actor/sheet/character-sheet';
 import ZweihanderNpcSheet from './actor/sheet/npc-sheet';
 import ZweihanderCreatureSheet from './actor/sheet/creature-sheet';
+import ZweihanderVehicleSheet from './actor/sheet/vehicle-sheet';
 import ZweihanderItem from './item/item';
 import ZweihanderItemSheet from './item/sheet/item-sheet';
 import FortuneTracker from './apps/fortune-tracker';
@@ -49,7 +50,7 @@ Hooks.once('ready', function () {
   // this is necessary to apply the theme settings
   let sheetStyles = game.settings.get('zweihander', 'theme');
   setCssTheme(sheetStyles);
-  
+
   performWorldMigrations();
   socket.then((socket) => {
     game.zweihander.socket = socket;
@@ -96,42 +97,42 @@ Hooks.once('diceSoNiceReady', function () {
   ]);
 });
 
-Hooks.once("dragRuler.ready", (SpeedProvider) => {
+Hooks.once('dragRuler.ready', (SpeedProvider) => {
   // Drag Ruler integration
-    class zweihanderSpeedProvider extends SpeedProvider {
-        get colors() {
-            return [
-                {id: "maneuver", default: 0x1259b6, name: "ZWEI.speeds.maneuver"},
-                {id: "hustle", default: 0x00FF00, name: "ZWEI.speeds.hustle"},
-                {id: "charge", default: 0xFFFF00, name: "ZWEI.speeds.charge"},
-                {id: "run", default: 0xFF8000, name: "ZWEI.speeds.run"}
-            ];
-        };
-
-        getRanges(token) {
-          // MANEUVER: 1 yd
-          // HUSTLE: MOV
-          // CHARGE: MOV*2
-          // RUN: MOV*3
-          const movement = token.actor.system.stats.secondaryAttributes.movement;
-
-          const minSpeed = 1;
-          const baseSpeed = movement.current ?? movement.value;
-          const chargeSpeed = baseSpeed * 2;
-          const runSpeed = baseSpeed * 3;
-
-          const ranges = [
-            { range: minSpeed, color: "maneuver" },
-            { range: baseSpeed, color: "hustle" },
-            { range: chargeSpeed, color: "charge" },
-            { range: runSpeed, color: "run" }
-          ];
-
-          return ranges;
-        };
+  class zweihanderSpeedProvider extends SpeedProvider {
+    get colors() {
+      return [
+        { id: 'maneuver', default: 0x1259b6, name: 'ZWEI.speeds.maneuver' },
+        { id: 'hustle', default: 0x00ff00, name: 'ZWEI.speeds.hustle' },
+        { id: 'charge', default: 0xffff00, name: 'ZWEI.speeds.charge' },
+        { id: 'run', default: 0xff8000, name: 'ZWEI.speeds.run' },
+      ];
     }
-    dragRuler.registerSystem("zweihander", zweihanderSpeedProvider);
-})
+
+    getRanges(token) {
+      // MANEUVER: 1 yd
+      // HUSTLE: MOV
+      // CHARGE: MOV*2
+      // RUN: MOV*3
+      const movement = token.actor.system.stats.secondaryAttributes.movement;
+
+      const minSpeed = 1;
+      const baseSpeed = movement.current ?? movement.value;
+      const chargeSpeed = baseSpeed * 2;
+      const runSpeed = baseSpeed * 3;
+
+      const ranges = [
+        { range: minSpeed, color: 'maneuver' },
+        { range: baseSpeed, color: 'hustle' },
+        { range: chargeSpeed, color: 'charge' },
+        { range: runSpeed, color: 'run' },
+      ];
+
+      return ranges;
+    }
+  }
+  dragRuler.registerSystem('zweihander', zweihanderSpeedProvider);
+});
 
 Hooks.once('init', async function () {
   // CONFIG.debug.hooks = true;
@@ -177,6 +178,10 @@ Hooks.once('init', async function () {
   });
   Actors.registerSheet('zweihander', ZweihanderCreatureSheet, {
     types: ['creature'],
+    makeDefault: true,
+  });
+  Actors.registerSheet('zweihander', ZweihanderVehicleSheet, {
+    types: ['vehicle'],
     makeDefault: true,
   });
 
