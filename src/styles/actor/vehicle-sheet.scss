@@ -4,7 +4,7 @@ body.game.vtt.system-zweihander .zweihander.sheet.vehicle {
   max-height: 1200px;
   max-width: 1280px;
   min-height: 669px;
-  min-width: 620px;
+  min-width: 625px;
 
   .actor-demote:hover {
     color: var(--zh-clr-red-alt);
@@ -570,7 +570,7 @@ body.game.vtt.system-zweihander .zweihander.sheet.vehicle {
     section.loot,
     section.skills {
       grid-column: span 1 !important;
-      grid-row: span 1 !important;
+      grid-row: span 2 !important;
     }
     section.stats {
       grid-row: span 1 !important;

@@ -209,6 +209,7 @@ body.game.vtt.system-zweihander {
     width: 256px;
     --fa-animation-duration: 15s;
     opacity: 0.75;
+    filter: drop-shadow(0px 0px 8px var(--zh-clr-fg3));
   }
 
   .dimension-change-listener {
@@ -343,6 +344,15 @@ body.game.vtt.system-zweihander {
   height: 5px;
 }
 
+/* ----------------------------------------- */
+/* Select
+/* ----------------------------------------- */
+
+option,
+optgroup {
+  background: var(--zh-clr-bg2);
+}
+
 ::-webkit-scrollbar-track {
   box-shadow: none;
   border: none;
@@ -356,7 +366,7 @@ body.game.vtt.system-zweihander {
   border-radius: 5px;
 }
 
-:root > * {
+* {
   scrollbar-width: thin;
   scrollbar-color: var(--zh-clr-aqua-alt) var(--zh-clr-bg0);
 }

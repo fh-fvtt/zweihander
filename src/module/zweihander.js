@@ -301,7 +301,7 @@ Hooks.once('polyglot.init', (LanguageProvider) => {
       return polyglot.literate_languages.has(lang);
     }
   }
-  game.polyglot.registerSystem(ZweihanderLanguageProvider);
+  game.polyglot.api.registerSystem(ZweihanderLanguageProvider);
 });
 
 Hooks.once('devModeReady', ({ registerPackageDebugFlag }) => {

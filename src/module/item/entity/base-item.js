@@ -13,6 +13,8 @@ export default class ZweihanderBaseItem {
     async (property, itemType, entryPostProcessor = ZweihanderBaseItem.cleanLinkedItemEntry) => {
       const itemName = source.system[property].name.trim();
       if (itemName) {
+        let start = Date.now();
+
         const linkedItemEntry = await ZweihanderBaseItem.getLinkedItemEntry(
           source.parent,
           itemName,
@@ -20,6 +22,9 @@ export default class ZweihanderBaseItem {
           source.name,
           source.type
         );
+        let end = Date.now();
+
+        console.log('FIND TIME (ENTRY):', end - start);
         source.updateSource({
           [`system.${property}`]: entryPostProcessor(linkedItemEntry),
         });
@@ -32,6 +37,8 @@ export default class ZweihanderBaseItem {
     async (property, itemType, entryPostProcessor = ZweihanderBaseItem.cleanLinkedItemEntry) => {
       const itemNames = source.system[property].map((v) => v.name);
       if (itemNames.length) {
+        let start = Date.now();
+
         const linkedItemEntries = await ZweihanderBaseItem.getLinkedItemEntries(
           source.parent,
           itemNames,
@@ -39,6 +46,11 @@ export default class ZweihanderBaseItem {
           source.name,
           source.type
         );
+
+        let end = Date.now();
+
+        console.log('FIND TIME (ENTRIES):', end - start);
+        console.log(linkedItemEntries, 'itemszzzz');
         source.updateSource({
           [`system.${property}`]: linkedItemEntries.map(entryPostProcessor),
         });
@@ -94,6 +106,9 @@ export default class ZweihanderBaseItem {
 
   static async getLinkedItemEntry(actor, itemName, itemType, sourceName, sourceType) {
     const itemToCreate = (await ZweihanderUtils.findItemWorldWide(itemType, itemName))?.toObject?.();
+
+    // console.log(itemToCreate, '22222222');
+
     const existingItemWithSameName = actor.items.find((t) => t.type === itemType && t.name === itemToCreate?.name);
     const notFoundValue = { linkedId: null, name: itemName };
     if (!itemToCreate && !existingItemWithSameName) return notFoundValue;
@@ -105,7 +120,13 @@ export default class ZweihanderBaseItem {
       const existingFlag = existingItemWithSameName.getFlag('zweihander', 'source');
       if (existingFlag) {
         ui?.notifications.warn(
-          game.i18n.format("ZWEI.othermessages.previouslyadded", { type: existingItemWithSameName.type.capitalize(), name: existingItemWithSameName.name, label: existingFlag.label, existing: existingItemWithSameName.type, flag: flag.label })
+          game.i18n.format('ZWEI.othermessages.previouslyadded', {
+            type: existingItemWithSameName.type.capitalize(),
+            name: existingItemWithSameName.name,
+            label: existingFlag.label,
+            existing: existingItemWithSameName.type,
+            flag: flag.label,
+          })
         );
         return notFoundValue;
       }
@@ -152,11 +173,15 @@ export default class ZweihanderBaseItem {
   }
 
   async _preCreate(data, options, user, item) {
+    let start = Date.now();
+
     if (!this.constructor.linkedListProperties.length && !this.constructor.linkedSingleProperties.length) {
       return;
     }
     const processMultiLinkedPropertyDiff = ZweihanderBaseItem.linkedItemEntriesCreationProcessor(item);
+
     const processSingleLinkedPropertyDiff = ZweihanderBaseItem.linkedItemEntryCreationProcessor(item);
+
     const itemsToCreate = (
       await Promise.all(
         this.constructor.linkedListProperties.map(({ property, itemType, entryPostProcessor }) =>
@@ -175,14 +200,24 @@ export default class ZweihanderBaseItem {
       .filter((x) => x !== undefined)
       .forEach((x) => itemsToCreate.push(x));
     options.itemsToCreate = itemsToCreate;
+
+    let end = Date.now();
+
+    console.log('PRE-CREATE TIME:', end - start);
   }
 
   async _onCreate(data, options, user, item) {
     if (options.itemsToCreate?.length) {
+      let start = Date.now();
+
       await Item.create(options.itemsToCreate, {
         parent: item.parent,
         keepId: true,
       });
+
+      let end = Date.now();
+
+      console.log('CREATE TIME:', end - start);
     }
   }
 
