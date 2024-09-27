@@ -74,6 +74,7 @@ const templatesToLoad = [
   $$('partials/detail-languages.hbs'),
   $$('partials/detail-risk-factor.hbs'),
   $$('partials/details-list.hbs'),
+  $$('partials/details-list-npc.hbs'),
   $$('partials/focuses-list.hbs'),
   $$('partials/items-list.hbs'),
   $$('partials/actors-list.hbs'),

@@ -1,6 +1,26 @@
 body.game.vtt.system-zweihander .zweihander.sheet.actor {
+  .aside-and-figure {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+
+    & > figure {
+      height: 100%;
+      display: flex;
+      flex-direction: row;
+      align-items: center;
+
+      margin: 0;
+      min-width: 125px;
+      max-width: 185px;
+      border-right: 2px groove var(--zh-clr-bg2);
+    }
+  }
+
   aside.details {
-    flex: 0 0 content;
+    &.npc {
+      flex: 0 0 content;
+    }
     padding: 5px 8px 0px 8px;
     ul {
       display: flex;

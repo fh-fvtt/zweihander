@@ -1,4 +1,8 @@
-<aside class="details">
+<div class="aside-and-figure">
+  <figure>
+    <img class="profile-image peril-tracker" src="{{actor.img}}" title="{{actor.name}}" data-edit="img" />
+  </figure>
+  <aside class="details">
     <ul>
       {{#each details as | detail | }}
       {{#unless detail.hidden}}
@@ -28,3 +32,4 @@
       {{/each}}
     </ul>
   </aside>
+</div>

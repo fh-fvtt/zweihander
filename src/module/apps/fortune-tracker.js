@@ -51,7 +51,7 @@ export default class FortuneTracker extends Application {
       popOut: true,
       minimizable: false,
       resizable: false,
-      title: "ZWEI.settings.ftsettings.title",
+      title: 'ZWEI.settings.ftsettings.title',
       id: 'fortuneTrackerApp',
       classes: ['zweihander'],
       width: FortuneTracker.PARAMS.areaSize * 2,
@@ -96,7 +96,7 @@ export default class FortuneTracker extends Application {
   }
 
   get resetRule() {
-    return game.i18n.localize("ZWEI.othermessages.setfortune");
+    return game.i18n.localize('ZWEI.othermessages.setfortune');
   }
 
   get removeUsedMisfortune() {
@@ -205,39 +205,39 @@ export default class FortuneTracker extends Application {
     const notifySetting = game.settings.get('zweihander', 'fortuneTrackerSettings').notifications;
     const user = game.users.get(requestingUserId);
     if (updatedState.total !== this.total && !user.isGM) {
-      return game.i18n.localize("ZWEI.othermessages.changefortune");
+      return game.i18n.localize('ZWEI.othermessages.changefortune');
     } else if (updatedState.removed !== this.removed && !user.isGM) {
-      return game.i18n.localize("ZWEI.othermessages.spendmisfortune1");
+      return game.i18n.localize('ZWEI.othermessages.spendmisfortune1');
     } else if (updatedState.used < this.used && !user.isGM) {
-      return game.i18n.localize("ZWEI.othermessages.spendmisfortune2");
+      return game.i18n.localize('ZWEI.othermessages.spendmisfortune2');
     } else if (updatedState.total < 0) {
-      return game.i18n.localize("ZWEI.othermessages.negativefortune");
+      return game.i18n.localize('ZWEI.othermessages.negativefortune');
     } else if (updatedState.used < 0) {
-      return game.i18n.localize("ZWEI.othermessages.nomisfortuneleft");
+      return game.i18n.localize('ZWEI.othermessages.nomisfortuneleft');
     } else if (updatedState.removed < 0) {
-      return game.i18n.localize("ZWEI.othermessages.negativeremoved");
+      return game.i18n.localize('ZWEI.othermessages.negativeremoved');
     } else if (updatedState.used > updatedState.total) {
-      return game.i18n.localize("ZWEI.othermessages.nofortuneleft");
+      return game.i18n.localize('ZWEI.othermessages.nofortuneleft');
     } else if (updatedState.removed > updatedState.used) {
-      return game.i18n.localize("ZWEI.othermessages.nomisfortuneleft");
+      return game.i18n.localize('ZWEI.othermessages.nomisfortuneleft');
     } else {
       if (updatedState.used === this.used + 1) {
         const name = user.charname ? user.charname : user.name;
         if (notifySetting === 'notify') {
           ui.notifications.info(
-            game.i18n.format("ZWEI.othermessages.usedfortune", {
+            game.i18n.format('ZWEI.othermessages.usedfortune', {
               name: name,
               points: updatedState.total - updatedState.used,
-              total: updatedState.total
+              total: updatedState.total,
             })
           );
         } else if (notifySetting === 'chat') {
           ChatMessage.create({
             user: requestingUserId,
-            content: game.i18n.format("ZWEI.othermessages.usedfortunecount", {
+            content: game.i18n.format('ZWEI.othermessages.usedfortunecount', {
               name: name,
               points: updatedState.total - updatedState.used,
-              total: updatedState.total
+              total: updatedState.total,
             }),
           });
         }
@@ -247,17 +247,17 @@ export default class FortuneTracker extends Application {
       ) {
         if (notifySetting === 'notify') {
           ui.notifications.info(
-            game.i18n.format("ZWEI.othermessages.usedmisfortune1", {
+            game.i18n.format('ZWEI.othermessages.usedmisfortune1', {
               points: updatedState.total - updatedState.used,
-              total: updatedState.total
+              total: updatedState.total,
             })
           );
         } else if (notifySetting === 'chat') {
           ChatMessage.create({
             user: requestingUserId,
-            content: game.i18n.format("ZWEI.othermessages.usedmisfortune2", {
+            content: game.i18n.format('ZWEI.othermessages.usedmisfortune2', {
               points: updatedState.total - updatedState.used,
-              total: updatedState.total
+              total: updatedState.total,
             }),
           });
         }
@@ -319,9 +319,7 @@ export default class FortuneTracker extends Application {
       };
       this.#socket.executeForOthers('broadcastState', this.state);
     } else {
-      ui.notifications.error(
-        game.i18n.localize("ZWEI.othermessages.errorft")
-      );
+      ui.notifications.error(game.i18n.localize('ZWEI.othermessages.errorft'));
     }
   }
 
@@ -338,9 +336,7 @@ export default class FortuneTracker extends Application {
       }
       this.#waiting = true;
       this.render(!this.closable);
-      ui.notifications.warn(
-        game.i18n.localize("ZWEI.othermessages.ftwaiting")
-        );
+      ui.notifications.warn(game.i18n.localize('ZWEI.othermessages.ftwaiting'));
       if (rethrow) {
         throw e;
       }
@@ -355,7 +351,7 @@ export default class FortuneTracker extends Application {
       if (!canvas.activeLayer.preview?.children.length) canvas.activeLayer.releaseAll();
       return true;
     }
-    ui.menu.toggle();
+
     // Save the fog immediately rather than waiting for the 3s debounced save as part of commitFog.
     if (canvas.ready) canvas.fog.save();
   }
@@ -411,7 +407,7 @@ export default class FortuneTracker extends Application {
     const fortuneBefore = this.fortune;
     this.state = await this.requestSync(this.spendFortune(), true);
     if (fortuneBefore === this.fortune) {
-      throw game.i18n.localize("ZWEI.othermessages.nofortune");
+      throw game.i18n.localize('ZWEI.othermessages.nofortune');
     }
     return true;
   }
@@ -420,7 +416,7 @@ export default class FortuneTracker extends Application {
     const misfortuneBefore = this.misfortune;
     this.state = await this.requestSync(this.spendMisfortune(), true);
     if (misfortuneBefore === this.misfortune) {
-      throw game.i18n.localize("ZWEI.othermessages.nomisfortune");
+      throw game.i18n.localize('ZWEI.othermessages.nomisfortune');
     }
     return true;
   }

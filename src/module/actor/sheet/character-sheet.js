@@ -19,8 +19,8 @@ export default class ZweihanderCharacterSheet extends ZweihanderBaseActorSheet {
     return foundry.utils.mergeObject(super.defaultOptions, {
       classes: super.defaultOptions.classes.concat(['character']),
       template: 'systems/zweihander/src/templates/character/main.hbs',
-      width: 770,
-      height: 900,
+      width: 780,
+      height: 915,
       tabs: [
         {
           navSelector: '.sheet-navigation',
@@ -250,29 +250,6 @@ export default class ZweihanderCharacterSheet extends ZweihanderBaseActorSheet {
         },
       ])
     );
-
-    const resizePotrait = function () {
-      const header = html.find('.actor-sheet-header');
-      const actualHeader = header.find('.character-info');
-      const fig = header.find('figure');
-      const headerHeight = actualHeader.innerHeight();
-
-      const spaceInDetails = header.find('.empty-placeholder').outerHeight();
-      const figHeight = fig.height();
-      //console.log(headerHeight, '-> HEADER HEIGHT\\n', figHeight, '-> FIG HEIGHT');
-      const img = fig.find('img');
-      if (spaceInDetails > 0) {
-        fig.height(figHeight - spaceInDetails);
-      } else if (figHeight - headerHeight > -5) {
-        if (img.naturalHeight < headerHeight) {
-          fig.height(img.naturalHeight);
-        } else {
-          fig.height(headerHeight);
-        }
-      }
-    };
-    this._registerDimensionChangeListener(html.find('.actor-sheet-header'), resizePotrait);
-    this._registerDimensionChangeListener(html.find('.actor-sheet-header .empty-placeholder'), resizePotrait);
 
     // Update the encumbrance meter
     this._updateEncumbranceMeter(html);

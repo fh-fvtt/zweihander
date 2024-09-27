@@ -1,8 +1,8 @@
 .tab.main {
   overflow-y: auto;
-  scrollbar-gutter: stable both-edges;
+  // scrollbar-gutter: stable both-edges;
   margin: 10px 0 5px;
-  padding: 0px 5px;
+  padding: 0px 10px; // 0px 5px;
   .primary-attributes {
     border: 2px groove var(--zh-clr-bg2);
     border-radius: 3px;

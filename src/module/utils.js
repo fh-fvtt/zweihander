@@ -339,13 +339,17 @@ export async function findItemsByType(
           const title = pack.metadata.name;
 
           // @todo: quick-and-dirty performance optimization; refactor later
+          const lang = game.i18n.lang;
+          const packLang =
+            lang == 'de' ? '-de' : lang == 'es' ? '-es' : lang == 'fr' ? '-fr' : lang == 'ru' ? '-ru' : '';
+
           if (
-            title === 'zh-talents' ||
-            title === 'zh-traits' ||
-            title === 'zh-drawbacks' ||
-            title === 'zh-ancestral-traits' ||
-            title === 'zh-qualities' ||
-            title === 'zh-skills'
+            title === `zh-talents${packLang}` ||
+            title === `zh-traits${packLang}` ||
+            title === `zh-drawbacks${packLang}` ||
+            title === `zh-ancestral-traits${packLang}` ||
+            title === `zh-qualities${packLang}` ||
+            title === `zh-skills${packLang}`
           ) {
             return pack;
           }
