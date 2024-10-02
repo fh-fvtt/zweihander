@@ -46,8 +46,10 @@
       "path": "lang/fr.json"
     }
   ],
-  "gridDistance": 1,
-  "gridUnits": "yd",
+  "grid": {
+    "distance": 1,
+    "gridUnits": "yd"
+  },
   "background": "systems/zweihander/assets/zweihander-splash-alt.webp",
   "socket": true,
   "url": "https://github.com/fh-fvtt/zweihander",
@@ -67,62 +69,92 @@
       }
     ]
   },
-  "packFolders": [{
+  "packFolders": [
+    {
       "name": "Flames of Freedom",
       "sorting": "a",
       "color": "#788c73",
-      "folders": [{
+      "folders": [
+        {
           "name": "Characters",
           "sorting": "a",
           "color": "#4f4a40",
-          "packs": ["fof-afflictions", "fof-professional-traits", "fof-professions", "fof-quirks", "fof-talents", "fof-traits"]
-        }, {
+          "packs": [
+            "fof-afflictions",
+            "fof-professional-traits",
+            "fof-professions",
+            "fof-quirks",
+            "fof-talents",
+            "fof-traits"
+          ]
+        },
+        {
           "name": "Equipment",
           "sorting": "a",
           "color": "#788c73",
           "packs": ["fof-ailments-and-drugs", "fof-qualities", "fof-weapons"]
-        }, {
+        },
+        {
           "name": "Magick",
           "sorting": "a",
           "color": "#4f4a40",
           "packs": ["fof-spells"]
-        }, {
+        },
+        {
           "name": "Rules",
           "sorting": "a",
           "color": "#788c73",
           "packs": ["fof-injuries"]
         }
       ]
-    }, {
+    },
+    {
       "name": "Zweihänder",
       "sorting": "a",
       "color": "#788c73",
-      "folders": [{
+      "folders": [
+        {
           "name": "Bestiary",
           "sorting": "a",
           "color": "#4f4a40",
           "packs": ["zh-attack-profiles", "zh-bestiary", "zh-creature-traits", "zh-taints"]
-        }, {
+        },
+        {
           "name": "Characters",
           "sorting": "a",
           "color": "#788c73",
-          "packs": ["skills", "zh-ancestral-traits", "zh-ancestries", "zh-charactercreation-tables", "zh-diseases", "zh-disorders","zh-drawbacks", "zh-professions", "zh-talents", "zh-traits"]
-        }, {
+          "packs": [
+            "skills",
+            "zh-ancestral-traits",
+            "zh-ancestries",
+            "zh-charactercreation-tables",
+            "zh-diseases",
+            "zh-disorders",
+            "zh-drawbacks",
+            "zh-professions",
+            "zh-talents",
+            "zh-traits"
+          ]
+        },
+        {
           "name": "Equipment",
           "sorting": "a",
           "color": "#4f4a40",
           "packs": ["zh-armor", "zh-qualities", "zh-trappings", "zh-weapons", "zh-weapons-alt-damage"]
-        }, {
+        },
+        {
           "name": "Macros",
           "sorting": "a",
           "color": "#788c73",
           "packs": ["zh-macros"]
-        }, {
+        },
+        {
           "name": "Magick",
           "sorting": "a",
           "color": "#4f4a40",
           "packs": ["zh-magick", "zh-rituals"]
-        }, {
+        },
+        {
           "name": "Rules",
           "sorting": "a",
           "color": "#788c73",

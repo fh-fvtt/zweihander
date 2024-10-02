@@ -348,8 +348,7 @@ export async function findItemsByType(
             title === `zh-traits${packLang}` ||
             title === `zh-drawbacks${packLang}` ||
             title === `zh-ancestral-traits${packLang}` ||
-            title === `zh-qualities${packLang}` ||
-            title === `zh-skills${packLang}`
+            title === `zh-qualities${packLang}`
           ) {
             return pack;
           }
