@@ -32,8 +32,8 @@
   "scripts": {
     "build": "npm run build:packs && vite build",
     "build:dev": "npm run build:packs && vite",
-    "build:packs": "node ./packs-src/scripts/build-packs.mjs",
-    "extractPacks": "node ./packs-src/scripts/extract-packs.mjs",
+    "build:packs": "node ./packs-src/scripts/build-packs-fvtt.mjs",
+    "extractPacks": "node ./packs-src/scripts/extract-packs-fvtt.mjs",
     "dev": "vite",
     "eslint": "eslint ."
   }
