@@ -546,7 +546,6 @@ export const patchDie = () => {
 
       // Determine whether to explode the result and roll again!
       if (targets.some((t) => DiceTerm.compareResult(r.result, comparison, t))) {
-        console.log('EXPLODED', r.result);
         r.exploded = true;
         await this.roll({ explode: true });
         if (max !== null) max -= 1;
@@ -559,7 +558,6 @@ export const patchDie = () => {
   };
 
   Die.prototype._evaluateModifiers = async function () {
-    console.log('EVALUATE 1111', this);
     const getSignature = (modifier) => {
       const rgx = /xo?([0-9\&]+)?([<>=]+)?([0-9\&]+)?/i;
       const match = modifier.match(rgx);
