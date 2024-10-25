@@ -510,10 +510,10 @@ function outcomeLabel(outcome) {
 }
 
 export const patchDie = () => {
-  Die.prototype.explode = function (modifier, { recursive = true } = {}) {
+  Die.prototype.explode = async function (modifier, { recursive = true } = {}) {
     // patched explode
     // Match the explode or "explode once" modifier
-    const rgx = /xo?([0-9,]+)?([<>=]+)?([0-9,]+)?/i;
+    const rgx = /xo?([0-9\&]+)?([<>=]+)?([0-9\&]+)?/i;
     const match = modifier.match(rgx);
     if (!match) return false;
     let [max, comparison, target] = match.slice(1);
@@ -523,7 +523,9 @@ export const patchDie = () => {
       target = max;
       max = null;
     }
-    const targets = target.split(',').map((target) => (Number.isNumeric(target) ? parseInt(target) : this.faces));
+
+    const targets = target.split('&').map((target) => (Number.isNumeric(target) ? parseInt(target) : this.faces));
+
     // Determine target values
     comparison = comparison || '=';
 
@@ -535,6 +537,7 @@ export const patchDie = () => {
     let initial = this.results.length;
     while (checked < this.results.length) {
       let r = this.results[checked];
+
       checked++;
       if (!r.active) continue;
 
@@ -542,9 +545,10 @@ export const patchDie = () => {
       if (max !== null && max <= 0) break;
 
       // Determine whether to explode the result and roll again!
-      if (targets.some((target) => DiceTerm.compareResult(r.result, comparison, target))) {
+      if (targets.some((t) => DiceTerm.compareResult(r.result, comparison, t))) {
+        console.log('EXPLODED', r.result);
         r.exploded = true;
-        this.roll();
+        await this.roll({ explode: true });
         if (max !== null) max -= 1;
       }
 
@@ -554,9 +558,10 @@ export const patchDie = () => {
     }
   };
 
-  Die.prototype._evaluateModifiers = function () {
+  Die.prototype._evaluateModifiers = async function () {
+    console.log('EVALUATE 1111', this);
     const getSignature = (modifier) => {
-      const rgx = /xo?([0-9,]+)?([<>=]+)?([0-9,]+)?/i;
+      const rgx = /xo?([0-9\&]+)?([<>=]+)?([0-9\&]+)?/i;
       const match = modifier.match(rgx);
       if (!match) return [null, null, null];
       let [max, comparison, target] = match.slice(1);
@@ -600,7 +605,7 @@ export const patchDie = () => {
 
       // Matched command
       if (command in cls.MODIFIERS) {
-        this._evaluateModifier(command, m);
+        await this._evaluateModifier(command, m);
         continue;
       }
 
@@ -613,7 +618,7 @@ export const patchDie = () => {
         for (let cmd of modifiers) {
           if (command.startsWith(cmd)) {
             matched = true;
-            this._evaluateModifier(cmd, cmd);
+            await this._evaluateModifier(cmd, cmd);
             command = command.replace(cmd, '');
             break;
           }

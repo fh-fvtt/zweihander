@@ -74,6 +74,7 @@ Hooks.once('ready', function () {
     game.settings.set('zweihander', 'currencySettings', currencySettings);
   }
   // patch die class
+  console.log('TEST 111');
   patchDie();
   console.log(`systems/zweihander/assets/${game.settings.get('zweihander', 'gameSystem')}-logo.webp`);
   $('#ui-left #logo')
