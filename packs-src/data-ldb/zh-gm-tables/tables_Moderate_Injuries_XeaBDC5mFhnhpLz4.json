@@ -9,7 +9,6 @@
   "results": [
     {
       "_id": "6LOCNOc1h5Pilwyg",
-      "collection": null,
       "drawn": false,
       "flags": {},
       "img": "systems/zweihander/assets/icons/shamrock.svg",
@@ -17,16 +16,14 @@
         1,
         1
       ],
-      "rangeH": 1,
-      "rangeL": 1,
-      "resultId": null,
       "text": "Fortune's Mercy! Ignore Injury, keep your Fate Point and continue fighting onwards!",
-      "type": 0,
-      "weight": 1
+      "type": "text",
+      "weight": 1,
+      "documentId": null,
+      "_key": "!tables.results!XeaBDC5mFhnhpLz4.6LOCNOc1h5Pilwyg"
     },
     {
       "_id": "eZTSgNLqCMfkaXTu",
-      "collection": "zweihander.zh-injuries",
       "drawn": false,
       "flags": {},
       "img": "systems/zweihander/assets/icons/tired-eye.svg",
@@ -34,16 +31,15 @@
         2,
         2
       ],
-      "rangeH": 2,
-      "rangeL": 2,
-      "resultId": "pMHUxC35U5RHDI7K",
       "text": "Black Eye",
-      "type": 2,
-      "weight": 1
+      "type": "pack",
+      "weight": 1,
+      "documentCollection": "zweihander.zh-injuries",
+      "documentId": "pMHUxC35U5RHDI7K",
+      "_key": "!tables.results!XeaBDC5mFhnhpLz4.eZTSgNLqCMfkaXTu"
     },
     {
       "_id": "MnN7Ag8w6qaEzEek",
-      "collection": "zweihander.zh-injuries",
       "drawn": false,
       "flags": {},
       "img": "systems/zweihander/assets/icons/ribcage.svg",
@@ -51,16 +47,15 @@
         3,
         3
       ],
-      "rangeH": 3,
-      "rangeL": 3,
-      "resultId": "yfdgpIP8Nc35RiOh",
       "text": "Bruised Ribs",
-      "type": 2,
-      "weight": 1
+      "type": "pack",
+      "weight": 1,
+      "documentCollection": "zweihander.zh-injuries",
+      "documentId": "yfdgpIP8Nc35RiOh",
+      "_key": "!tables.results!XeaBDC5mFhnhpLz4.MnN7Ag8w6qaEzEek"
     },
     {
       "_id": "9M77glWeLzd2nylA",
-      "collection": "zweihander.zh-injuries",
       "drawn": false,
       "flags": {},
       "img": "systems/zweihander/assets/icons/arm-bandage.svg",
@@ -68,16 +63,15 @@
         4,
         4
       ],
-      "rangeH": 4,
-      "rangeL": 4,
-      "resultId": "UUMiBQtDkF3823BR",
       "text": "Dislocated Shoulder",
-      "type": 2,
-      "weight": 1
+      "type": "pack",
+      "weight": 1,
+      "documentCollection": "zweihander.zh-injuries",
+      "documentId": "UUMiBQtDkF3823BR",
+      "_key": "!tables.results!XeaBDC5mFhnhpLz4.9M77glWeLzd2nylA"
     },
     {
       "_id": "EHpP1jow2qxwX8yP",
-      "collection": "zweihander.zh-injuries",
       "drawn": false,
       "flags": {},
       "img": "systems/zweihander/assets/icons/arm-sling.svg",
@@ -85,16 +79,15 @@
         5,
         5
       ],
-      "rangeH": 5,
-      "rangeL": 5,
-      "resultId": "ieFwwsyoUnlNc6gX",
       "text": "Hyperextended Elbow",
-      "type": 2,
-      "weight": 1
+      "type": "pack",
+      "weight": 1,
+      "documentCollection": "zweihander.zh-injuries",
+      "documentId": "ieFwwsyoUnlNc6gX",
+      "_key": "!tables.results!XeaBDC5mFhnhpLz4.EHpP1jow2qxwX8yP"
     },
     {
       "_id": "nukuAQPxtKR7hz2f",
-      "collection": "zweihander.zh-injuries",
       "drawn": false,
       "flags": {},
       "img": "systems/zweihander/assets/icons/fingernail.svg",
@@ -102,16 +95,15 @@
         6,
         6
       ],
-      "rangeH": 6,
-      "rangeL": 6,
-      "resultId": "AkB7wwf0pz1nYDGy",
       "text": "Jammed Finger",
-      "type": 2,
-      "weight": 1
+      "type": "pack",
+      "weight": 1,
+      "documentCollection": "zweihander.zh-injuries",
+      "documentId": "AkB7wwf0pz1nYDGy",
+      "_key": "!tables.results!XeaBDC5mFhnhpLz4.nukuAQPxtKR7hz2f"
     },
     {
       "_id": "8UUJzyBezjJxukkD",
-      "collection": "zweihander.zh-injuries",
       "drawn": false,
       "flags": {},
       "img": "systems/zweihander/assets/icons/back-pain.svg",
@@ -119,16 +111,15 @@
         7,
         7
       ],
-      "rangeH": 7,
-      "rangeL": 7,
-      "resultId": "P8mywNMToLhba472",
       "text": "Pulled Muscle",
-      "type": 2,
-      "weight": 1
+      "type": "pack",
+      "weight": 1,
+      "documentCollection": "zweihander.zh-injuries",
+      "documentId": "P8mywNMToLhba472",
+      "_key": "!tables.results!XeaBDC5mFhnhpLz4.8UUJzyBezjJxukkD"
     },
     {
       "_id": "kHQG6s8Axh76YvXX",
-      "collection": "zweihander.zh-injuries",
       "drawn": false,
       "flags": {},
       "img": "systems/zweihander/assets/icons/brain-dump.svg",
@@ -136,16 +127,15 @@
         8,
         8
       ],
-      "rangeH": 8,
-      "rangeL": 8,
-      "resultId": "qY90GsaYnjRVsjsX",
       "text": "Rattled Brain",
-      "type": 2,
-      "weight": 1
+      "type": "pack",
+      "weight": 1,
+      "documentCollection": "zweihander.zh-injuries",
+      "documentId": "qY90GsaYnjRVsjsX",
+      "_key": "!tables.results!XeaBDC5mFhnhpLz4.kHQG6s8Axh76YvXX"
     },
     {
       "_id": "TcJcL8XvXcRIemde",
-      "collection": "zweihander.zh-injuries",
       "drawn": false,
       "flags": {},
       "img": "systems/zweihander/assets/icons/hand-bandage.svg",
@@ -153,16 +143,15 @@
         9,
         9
       ],
-      "rangeH": 9,
-      "rangeL": 9,
-      "resultId": "m6A8jWK3eNjjeBS1",
       "text": "Sprained Wrist",
-      "type": 2,
-      "weight": 1
+      "type": "pack",
+      "weight": 1,
+      "documentCollection": "zweihander.zh-injuries",
+      "documentId": "m6A8jWK3eNjjeBS1",
+      "_key": "!tables.results!XeaBDC5mFhnhpLz4.TcJcL8XvXcRIemde"
     },
     {
       "_id": "oUyVtmZ9AQSoqZXz",
-      "collection": "zweihander.zh-injuries",
       "drawn": false,
       "flags": {},
       "img": "systems/zweihander/assets/icons/back-pain.svg",
@@ -170,16 +159,15 @@
         10,
         10
       ],
-      "rangeH": 10,
-      "rangeL": 10,
-      "resultId": "nB8Co1Fy68ymrMfR",
       "text": "Strained Groin",
-      "type": 2,
-      "weight": 1
+      "type": "pack",
+      "weight": 1,
+      "documentCollection": "zweihander.zh-injuries",
+      "documentId": "nB8Co1Fy68ymrMfR",
+      "_key": "!tables.results!XeaBDC5mFhnhpLz4.oUyVtmZ9AQSoqZXz"
     },
     {
       "_id": "Yf43iyJkriTYXwSV",
-      "collection": "zweihander.zh-injuries",
       "drawn": false,
       "flags": {},
       "img": "systems/zweihander/assets/icons/foot-plaster.svg",
@@ -187,16 +175,15 @@
         11,
         11
       ],
-      "rangeH": 11,
-      "rangeL": 11,
-      "resultId": "5zhoatfivqTDstHR",
       "text": "Twisted Ankle",
-      "type": 2,
-      "weight": 1
+      "type": "pack",
+      "weight": 1,
+      "documentCollection": "zweihander.zh-injuries",
+      "documentId": "5zhoatfivqTDstHR",
+      "_key": "!tables.results!XeaBDC5mFhnhpLz4.Yf43iyJkriTYXwSV"
     },
     {
       "_id": "rtPr45ynudauWQhB",
-      "collection": "zweihander.zh-gm-tables",
       "drawn": false,
       "flags": {},
       "img": "systems/zweihander/assets/icons/internal-injury.svg",
@@ -204,14 +191,29 @@
         12,
         12
       ],
-      "rangeH": 12,
-      "rangeL": 12,
-      "resultId": "DMOX9ZUBvW8rQeJe",
       "text": "Serious Injuries",
-      "type": 2,
-      "weight": 1
+      "type": "pack",
+      "weight": 1,
+      "documentCollection": "zweihander.zh-gm-tables",
+      "documentId": "DMOX9ZUBvW8rQeJe",
+      "_key": "!tables.results!XeaBDC5mFhnhpLz4.rtPr45ynudauWQhB"
     }
   ],
-  "effects": [],
-  "_key": "!items!XeaBDC5mFhnhpLz4"
+  "_stats": {
+    "coreVersion": "12.331",
+    "systemId": null,
+    "systemVersion": null,
+    "createdTime": null,
+    "modifiedTime": null,
+    "lastModifiedBy": null,
+    "compendiumSource": null,
+    "duplicateSource": null
+  },
+  "folder": null,
+  "sort": 0,
+  "ownership": {
+    "default": 0
+  },
+  "flags": {},
+  "_key": "!tables!XeaBDC5mFhnhpLz4"
 }

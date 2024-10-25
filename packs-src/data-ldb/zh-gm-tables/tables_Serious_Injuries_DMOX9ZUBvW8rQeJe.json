@@ -9,7 +9,6 @@
   "results": [
     {
       "_id": "6LOCNOc1h5Pilwyg",
-      "collection": null,
       "drawn": false,
       "flags": {},
       "img": "systems/zweihander/assets/icons/shamrock.svg",
@@ -17,16 +16,14 @@
         1,
         1
       ],
-      "rangeH": 1,
-      "rangeL": 1,
-      "resultId": null,
       "text": "Fortune's Mercy! Ignore Injury, keep your Fate Point and continue fighting onwards!",
-      "type": 0,
-      "weight": 1
+      "type": "text",
+      "weight": 1,
+      "documentId": null,
+      "_key": "!tables.results!DMOX9ZUBvW8rQeJe.6LOCNOc1h5Pilwyg"
     },
     {
       "_id": "u3WVnnL0OVUHMbQK",
-      "collection": "zweihander.zh-injuries",
       "drawn": false,
       "flags": {},
       "img": "systems/zweihander/assets/icons/ribcage.svg",
@@ -34,16 +31,15 @@
         2,
         2
       ],
-      "rangeH": 2,
-      "rangeL": 2,
-      "resultId": "GkWoIpK8YpDo4QxJ",
       "text": "Broken Rib",
-      "type": 2,
-      "weight": 1
+      "type": "pack",
+      "weight": 1,
+      "documentCollection": "zweihander.zh-injuries",
+      "documentId": "GkWoIpK8YpDo4QxJ",
+      "_key": "!tables.results!DMOX9ZUBvW8rQeJe.u3WVnnL0OVUHMbQK"
     },
     {
       "_id": "lcxUYTrS21v28pjz",
-      "collection": "zweihander.zh-injuries",
       "drawn": false,
       "flags": {},
       "img": "systems/zweihander/assets/icons/knee-cap.svg",
@@ -51,16 +47,15 @@
         3,
         3
       ],
-      "rangeH": 3,
-      "rangeL": 3,
-      "resultId": "XO7vZyOUEie8KTGD",
       "text": "Busted Kneecap",
-      "type": 2,
-      "weight": 1
+      "type": "pack",
+      "weight": 1,
+      "documentCollection": "zweihander.zh-injuries",
+      "documentId": "XO7vZyOUEie8KTGD",
+      "_key": "!tables.results!DMOX9ZUBvW8rQeJe.lcxUYTrS21v28pjz"
     },
     {
       "_id": "ND0lUjx9wm0MHoTi",
-      "collection": "zweihander.zh-injuries",
       "drawn": false,
       "flags": {},
       "img": "systems/zweihander/assets/icons/broken-bone.svg",
@@ -68,16 +63,15 @@
         4,
         4
       ],
-      "rangeH": 4,
-      "rangeL": 4,
-      "resultId": "vpoqziaXJkWhCAn7",
       "text": "Fractured Larynx",
-      "type": 2,
-      "weight": 1
+      "type": "pack",
+      "weight": 1,
+      "documentCollection": "zweihander.zh-injuries",
+      "documentId": "vpoqziaXJkWhCAn7",
+      "_key": "!tables.results!DMOX9ZUBvW8rQeJe.ND0lUjx9wm0MHoTi"
     },
     {
       "_id": "R9tvQJkLtep640bU",
-      "collection": "zweihander.zh-injuries",
       "drawn": false,
       "flags": {},
       "img": "systems/zweihander/assets/icons/stoned-skull.svg",
@@ -85,16 +79,15 @@
         5,
         5
       ],
-      "rangeH": 5,
-      "rangeL": 5,
-      "resultId": "AABKxORvwNh9dw6z",
       "text": "Head Trauma",
-      "type": 2,
-      "weight": 1
+      "type": "pack",
+      "weight": 1,
+      "documentCollection": "zweihander.zh-injuries",
+      "documentId": "AABKxORvwNh9dw6z",
+      "_key": "!tables.results!DMOX9ZUBvW8rQeJe.R9tvQJkLtep640bU"
     },
     {
       "_id": "yj7lU26pYJaJO1MF",
-      "collection": "zweihander.zh-injuries",
       "drawn": false,
       "flags": {},
       "img": "systems/zweihander/assets/icons/skull-crack.svg",
@@ -102,16 +95,15 @@
         6,
         6
       ],
-      "rangeH": 6,
-      "rangeL": 6,
-      "resultId": "sVylrNB5aWZoySBy",
       "text": "Minor Concussion",
-      "type": 2,
-      "weight": 1
+      "type": "pack",
+      "weight": 1,
+      "documentCollection": "zweihander.zh-injuries",
+      "documentId": "sVylrNB5aWZoySBy",
+      "_key": "!tables.results!DMOX9ZUBvW8rQeJe.yj7lU26pYJaJO1MF"
     },
     {
       "_id": "3J5WgPZbCmczFEEE",
-      "collection": "zweihander.zh-injuries",
       "drawn": false,
       "flags": {},
       "img": "systems/zweihander/assets/icons/brain.svg",
@@ -119,16 +111,15 @@
         7,
         7
       ],
-      "rangeH": 7,
-      "rangeL": 7,
-      "resultId": "F5rA4MtYU5g6N73i",
       "text": "Shell Shock",
-      "type": 2,
-      "weight": 1
+      "type": "pack",
+      "weight": 1,
+      "documentCollection": "zweihander.zh-injuries",
+      "documentId": "F5rA4MtYU5g6N73i",
+      "_key": "!tables.results!DMOX9ZUBvW8rQeJe.3J5WgPZbCmczFEEE"
     },
     {
       "_id": "BcdE2gAJER1xqPFl",
-      "collection": "zweihander.zh-injuries",
       "drawn": false,
       "flags": {},
       "img": "systems/zweihander/assets/icons/broken-skull.svg",
@@ -136,16 +127,15 @@
         8,
         8
       ],
-      "rangeH": 8,
-      "rangeL": 8,
-      "resultId": "CtfGKqz3Pc4QpUa1",
       "text": "Skull Fracture",
-      "type": 2,
-      "weight": 1
+      "type": "pack",
+      "weight": 1,
+      "documentCollection": "zweihander.zh-injuries",
+      "documentId": "CtfGKqz3Pc4QpUa1",
+      "_key": "!tables.results!DMOX9ZUBvW8rQeJe.BcdE2gAJER1xqPFl"
     },
     {
       "_id": "uajuUvQUK06gSkav",
-      "collection": "zweihander.zh-injuries",
       "drawn": false,
       "flags": {},
       "img": "systems/zweihander/assets/icons/broken-bone.svg",
@@ -153,16 +143,15 @@
         9,
         9
       ],
-      "rangeH": 9,
-      "rangeL": 9,
-      "resultId": "kDOQ9KgS8J619bSD",
       "text": "Stress Fracture",
-      "type": 2,
-      "weight": 1
+      "type": "pack",
+      "weight": 1,
+      "documentCollection": "zweihander.zh-injuries",
+      "documentId": "kDOQ9KgS8J619bSD",
+      "_key": "!tables.results!DMOX9ZUBvW8rQeJe.uajuUvQUK06gSkav"
     },
     {
       "_id": "E4tvjJxC40kzVBlI",
-      "collection": "zweihander.zh-injuries",
       "drawn": false,
       "flags": {},
       "img": "systems/zweihander/assets/icons/stoned-skull.svg",
@@ -170,16 +159,15 @@
         10,
         10
       ],
-      "rangeH": 10,
-      "rangeL": 10,
-      "resultId": "IUDTRmoBhggipYnl",
       "text": "Temporary Paralysis",
-      "type": 2,
-      "weight": 1
+      "type": "pack",
+      "weight": 1,
+      "documentCollection": "zweihander.zh-injuries",
+      "documentId": "IUDTRmoBhggipYnl",
+      "_key": "!tables.results!DMOX9ZUBvW8rQeJe.E4tvjJxC40kzVBlI"
     },
     {
       "_id": "huh8hHJqdYWchjsj",
-      "collection": "zweihander.zh-injuries",
       "drawn": false,
       "flags": {},
       "img": "systems/zweihander/assets/icons/arm-sling.svg",
@@ -187,16 +175,15 @@
         11,
         11
       ],
-      "rangeH": 11,
-      "rangeL": 11,
-      "resultId": "VFKBRYkeieBYbciS",
       "text": "Torn Shoulder",
-      "type": 2,
-      "weight": 1
+      "type": "pack",
+      "weight": 1,
+      "documentCollection": "zweihander.zh-injuries",
+      "documentId": "VFKBRYkeieBYbciS",
+      "_key": "!tables.results!DMOX9ZUBvW8rQeJe.huh8hHJqdYWchjsj"
     },
     {
       "_id": "rtPr45ynudauWQhB",
-      "collection": "zweihander.zh-gm-tables",
       "drawn": false,
       "flags": {},
       "img": "systems/zweihander/assets/icons/deadly-strike.svg",
@@ -204,14 +191,29 @@
         12,
         12
       ],
-      "rangeH": 12,
-      "rangeL": 12,
-      "resultId": "GWec40ev4OEYJiKv",
       "text": "Grievous Injuries",
-      "type": 2,
-      "weight": 1
+      "type": "pack",
+      "weight": 1,
+      "documentCollection": "zweihander.zh-gm-tables",
+      "documentId": "GWec40ev4OEYJiKv",
+      "_key": "!tables.results!DMOX9ZUBvW8rQeJe.rtPr45ynudauWQhB"
     }
   ],
-  "effects": [],
-  "_key": "!items!DMOX9ZUBvW8rQeJe"
+  "_stats": {
+    "coreVersion": "12.331",
+    "systemId": null,
+    "systemVersion": null,
+    "createdTime": null,
+    "modifiedTime": null,
+    "lastModifiedBy": null,
+    "compendiumSource": null,
+    "duplicateSource": null
+  },
+  "folder": null,
+  "sort": 0,
+  "ownership": {
+    "default": 0
+  },
+  "flags": {},
+  "_key": "!tables!DMOX9ZUBvW8rQeJe"
 }
