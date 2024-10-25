@@ -1,0 +1,50 @@
+{
+  "_id": "MP9XYllYCc3fwqHm",
+  "effects": [],
+  "img": "systems/zweihander/assets/icons/wizard-staff.svg",
+  "name": "Spring's Bounty",
+  "type": "spell",
+  "_stats": {
+    "coreVersion": "12.331",
+    "systemId": null,
+    "systemVersion": null,
+    "createdTime": null,
+    "modifiedTime": null,
+    "lastModifiedBy": null,
+    "compendiumSource": null,
+    "duplicateSource": null
+  },
+  "system": {
+    "description": {
+      "@en": "Calling upon the earth-mother, you bring a bountiful harvest and hope to new mothers and practitioners of animal husbandry."
+    },
+    "notes": "",
+    "rules": {
+      "effect": {
+        "@en": "After successfully casting this spell, you cause one place to instantly burst forth with life, as crops, flowers, bushes and the like slowly blossom. A harvest is very likely come autumn. This can be used on fallow and despoiled land, restoring it to its fertile nature. If used on a person or creature, it guarantees that natural conception will take place and produce at least one child if bred under normal conditions, at the appropriate time."
+      },
+      "criticalSuccess": {
+        "@en": "As above, but the harvest or conception takes half as long."
+      },
+      "criticalFailure": {
+        "@en": "Instantly, the land is salted and the soil blackens. Nothing will ever grow here again. If used on a person or creature, they will certainly give birth to something, but not likely that which they’d intended. Abyssal fiends are acutely attuned to this Magick, oftentimes placing their illseed within the bellies of would-be mothers. Whether you disclose this to the person is up to you, but either way, you suffer 6 Corruption (as does the mother once they find out whose seed they carry in their belly)."
+      },
+      "reagents": {
+        "@en": "A handful of manure, sprinkled (expended)"
+      }
+    },
+    "tradition": "Arcane (Elementalism)",
+    "principle": "Lesser",
+    "distance": "Any one place or person you can see",
+    "duration": "Instantaneous",
+    "castingTime": "1 min",
+    "castingCost": 0
+  },
+  "folder": null,
+  "sort": 0,
+  "ownership": {
+    "default": 0
+  },
+  "flags": {},
+  "_key": "!items!MP9XYllYCc3fwqHm"
+}

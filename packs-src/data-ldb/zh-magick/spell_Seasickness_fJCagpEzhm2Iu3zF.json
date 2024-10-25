@@ -1,0 +1,50 @@
+{
+  "_id": "fJCagpEzhm2Iu3zF",
+  "effects": [],
+  "img": "systems/zweihander/assets/icons/wizard-staff.svg",
+  "name": "Seasickness",
+  "type": "spell",
+  "_stats": {
+    "coreVersion": "12.331",
+    "systemId": null,
+    "systemVersion": null,
+    "createdTime": null,
+    "modifiedTime": null,
+    "lastModifiedBy": null,
+    "compendiumSource": null,
+    "duplicateSource": null
+  },
+  "system": {
+    "description": {
+      "@en": "You invoke a curse, making the afflicted believe they are atop a seaborne ship, wracked by a terrible storm!"
+    },
+    "notes": "",
+    "rules": {
+      "effect": {
+        "@en": "After successfully casting this spell, a foe is knocked Prone and suffers a -20 Base Chance to all Skill Tests for that Turn. Your foe can successfully Resist with a Coordination Test when this spell is cast and at the beginning of their subsequent Turns for the Duration of the spell, or continue to be knocked Prone and suffer a -20 Base Chance to all Skill Tests for that Turn."
+      },
+      "criticalSuccess": {
+        "@en": "As above, but the foe cannot Resist this Magick."
+      },
+      "criticalFailure": {
+        "@en": "Your stomach begins to turn, as if you had been drawn from the depths of the sea too quickly. Taken by the bends, you are unable to stand, knocked Prone every Turn and suffer a -20 Base Chance to all Skill Tests for the Duration of the spell."
+      },
+      "reagents": {
+        "@en": "A splinter of a wrecked boat, snapped in half (expended)"
+      }
+    },
+    "tradition": "Divine (Leviathan)",
+    "principle": "Lesser",
+    "distance": "Any one person you can see",
+    "duration": "[WB]+6 minutes",
+    "castingTime": "1 min",
+    "castingCost": 0
+  },
+  "folder": null,
+  "sort": 0,
+  "ownership": {
+    "default": 0
+  },
+  "flags": {},
+  "_key": "!items!fJCagpEzhm2Iu3zF"
+}

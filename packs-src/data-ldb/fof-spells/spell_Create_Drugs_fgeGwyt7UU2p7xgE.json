@@ -1,0 +1,50 @@
+{
+  "_id": "fgeGwyt7UU2p7xgE",
+  "effects": [],
+  "img": "systems/zweihander/assets/icons/magic-swirl.svg",
+  "name": "Create Drugs",
+  "type": "spell",
+  "_stats": {
+    "coreVersion": "12.331",
+    "systemId": null,
+    "systemVersion": null,
+    "createdTime": null,
+    "modifiedTime": null,
+    "lastModifiedBy": null,
+    "compendiumSource": null,
+    "duplicateSource": null
+  },
+  "system": {
+    "description": {
+      "@en": "<p>Some distill gin, others make tea . . . as for me, I make Yupa.</p>"
+    },
+    "notes": "",
+    "rules": {
+      "effect": {
+        "@en": "<p><span style=\"text-decoration: underline;\"><strong>Create Drugs:</strong></span> Decide first which one Drug type you wish to create. Depending on where you&rsquo;re at on the Damage Condition Track, the Difficulty Rating eases or worsens:</p>\n<p><strong>Unharmed:</strong> (Easy +20%) Alchemy</p>\n<p><strong>Hurt:</strong> (Routine +10%) Alchemy</p>\n<p><strong>Moderately Wounded:</strong> (Standard +/-0%) Alchemy</p>\n<p><strong>Seriously Wounded:</strong> (Challenging -10%) Alchemy</p>\n<p><strong>Grievously Wounded:</strong> (Hard -20%) Alchemy</p>\n<p><span style=\"text-decoration: underline;\"><strong>Effect:</strong></span> If successful, you create a number of doses for every 6 points of your [IB]. If failed, nothing happens.</p>\n<p><strong>[IB] 1 to 6:</strong> One dose</p>\n<p><strong>[IB] 7 to 12:</strong> Two doses</p>\n<p><strong>[IB] 13+:</strong> Three doses</p>"
+      },
+      "criticalSuccess": {
+        "@en": "You create Three doses of Drugs."
+      },
+      "criticalFailure": {
+        "@en": "You suffer the effects of the Drug instead."
+      },
+      "reagents": {
+        "@en": "You must have access to an alchemical laboratory, arsenic and hemlock. The Historian may require other processes up front to properly prepare drugs and medicine. For instance, you may have to find a Yupa plant to create proper Yupa, or process tea leaves to create Tea. Preparation times do not account for this, assuming that you’ve worked with the Historian to procure the needed ingredients."
+      }
+    },
+    "tradition": "Alchemical Arts",
+    "principle": "Basic Tier",
+    "distance": "By Touch",
+    "duration": "Permanent",
+    "castingTime": "24 Hours",
+    "castingCost": null
+  },
+  "folder": null,
+  "sort": 0,
+  "ownership": {
+    "default": 0
+  },
+  "flags": {},
+  "_key": "!items!fgeGwyt7UU2p7xgE"
+}

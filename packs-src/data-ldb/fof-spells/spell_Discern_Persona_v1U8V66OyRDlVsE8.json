@@ -1,0 +1,50 @@
+{
+  "_id": "v1U8V66OyRDlVsE8",
+  "effects": [],
+  "img": "systems/zweihander/assets/icons/spell-book.svg",
+  "name": "Discern Persona",
+  "type": "spell",
+  "_stats": {
+    "coreVersion": "12.331",
+    "systemId": null,
+    "systemVersion": null,
+    "createdTime": null,
+    "modifiedTime": null,
+    "lastModifiedBy": null,
+    "compendiumSource": null,
+    "duplicateSource": null
+  },
+  "system": {
+    "description": {
+      "@en": "<p>Do not toy with me, for I see who you really are . . .</p>"
+    },
+    "notes": "",
+    "rules": {
+      "effect": {
+        "@en": "<p>After successfully casting, you immediately learn the Disposition of one person you can clearly see and hear.</p>"
+      },
+      "criticalSuccess": {
+        "@en": "In addition, you can discern whether they are being truthful or telling lies when you speak with them directly."
+      },
+      "criticalFailure": {
+        "@en": "You are unable to tell the truth, and it is apparent to everyone who interacts with you."
+      },
+      "reagents": {
+        "@en": "A glass or metal receptacle with a closing lid"
+      }
+    },
+    "tradition": "Common",
+    "principle": "Basic Tier",
+    "distance": "By Touch",
+    "duration": "One hour",
+    "castingTime": "1 Minute",
+    "castingCost": 1
+  },
+  "folder": null,
+  "sort": 0,
+  "ownership": {
+    "default": 0
+  },
+  "flags": {},
+  "_key": "!items!v1U8V66OyRDlVsE8"
+}

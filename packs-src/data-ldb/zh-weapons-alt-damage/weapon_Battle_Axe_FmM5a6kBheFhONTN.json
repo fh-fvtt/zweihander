@@ -1,0 +1,50 @@
+{
+  "_id": "FmM5a6kBheFhONTN",
+  "effects": [],
+  "img": "systems/zweihander/assets/icons/battle-axe.svg",
+  "name": "Battle Axe",
+  "type": "weapon",
+  "_stats": {
+    "coreVersion": "12.331",
+    "systemId": null,
+    "systemVersion": null,
+    "createdTime": null,
+    "modifiedTime": null,
+    "lastModifiedBy": null,
+    "compendiumSource": null,
+    "duplicateSource": null
+  },
+  "system": {
+    "description": {
+      "@en": "<p>This weapon is vicious and heavy, often favored by dwarves and Berserkers. Overly-cumbersome, they&rsquo;re usually adorned with skulls &ndash; just for the hell of it.</p>"
+    },
+    "notes": "",
+    "price": {
+      "bp": "0",
+      "gc": "2",
+      "ss": "0"
+    },
+    "encumbrance": 2,
+    "carried": true,
+    "weaponType": "Bladed",
+    "equipped": false,
+    "associatedSkill": "Martial Melee",
+    "load": 0,
+    "handling": "One- or Two-handed",
+    "qualities": {
+      "value": "Adaptable, Slow",
+      "arrayOfValues": []
+    },
+    "distance": "Engaged",
+    "damage": {
+      "formula": "[CB] + 2 + (1+[#])d6x6"
+    }
+  },
+  "folder": null,
+  "sort": 0,
+  "ownership": {
+    "default": 0
+  },
+  "flags": {},
+  "_key": "!items!FmM5a6kBheFhONTN"
+}

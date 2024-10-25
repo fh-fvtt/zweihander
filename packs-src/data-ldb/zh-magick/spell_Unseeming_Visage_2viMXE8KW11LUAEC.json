@@ -1,0 +1,50 @@
+{
+  "_id": "2viMXE8KW11LUAEC",
+  "effects": [],
+  "img": "systems/zweihander/assets/icons/wizard-staff.svg",
+  "name": "Unseeming Visage",
+  "type": "spell",
+  "_stats": {
+    "coreVersion": "12.331",
+    "systemId": null,
+    "systemVersion": null,
+    "createdTime": null,
+    "modifiedTime": null,
+    "lastModifiedBy": null,
+    "compendiumSource": null,
+    "duplicateSource": null
+  },
+  "system": {
+    "description": {
+      "@en": "Tiny tendrils bore into a person’s face, meticulously rearranging their facial muscles and skin to appear clean, unblemished and perfect. But that perfection produces oddly high cheekbones, eyes that are spread too far apart and teeth so white they appear to be made of pure ivory."
+    },
+    "notes": "",
+    "rules": {
+      "effect": {
+        "@en": "After successfully casting this spell, the person you touch temporarily takes upon the pallor of someone whose skin is nearly perfect, as blemishes and signs of sickness are washed away. This is a total physical change, so no illusion is cast. However, the person must flip the result to fail all future Skill Tests to Resist Disease."
+      },
+      "criticalSuccess": {
+        "@en": "As above, but triple the Duration."
+      },
+      "criticalFailure": {
+        "@en": "As your fingers touch the person’s face, both their face and yours immediately turn inside-out for a minute. This does not cause any Injuries, but both you and they permanently lose 3% Fellowship. Any who witness this strange event also suffers from Stress."
+      },
+      "reagents": {
+        "@en": "An umbilical cord of your own Ancestry, wrapped around the person’s neck"
+      }
+    },
+    "tradition": "Covenant",
+    "principle": "Petty",
+    "distance": "Any one person you can touch",
+    "duration": "3+[WB] in hours",
+    "castingTime": "1 min",
+    "castingCost": 0
+  },
+  "folder": null,
+  "sort": 0,
+  "ownership": {
+    "default": 0
+  },
+  "flags": {},
+  "_key": "!items!2viMXE8KW11LUAEC"
+}

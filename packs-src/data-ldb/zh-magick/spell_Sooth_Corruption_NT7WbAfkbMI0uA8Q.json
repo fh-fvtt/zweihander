@@ -1,0 +1,50 @@
+{
+  "_id": "NT7WbAfkbMI0uA8Q",
+  "effects": [],
+  "img": "systems/zweihander/assets/icons/wizard-staff.svg",
+  "name": "Sooth Corruption",
+  "type": "spell",
+  "_stats": {
+    "coreVersion": "12.331",
+    "systemId": null,
+    "systemVersion": null,
+    "createdTime": null,
+    "modifiedTime": null,
+    "lastModifiedBy": null,
+    "compendiumSource": null,
+    "duplicateSource": null
+  },
+  "system": {
+    "description": {
+      "@en": "Your warm embrace and tears bring comfort to the troubled."
+    },
+    "notes": "",
+    "rules": {
+      "effect": {
+        "@en": "After successfully casting this spell, the person you touch immediately removes 1 Corruption. In addition, it temporarily delays the Effects of all Diseases, Disorders, Poisons and similar Effects for the spell’s Duration. Anyone who has this spell cast upon them must spend a Fortune Point for it to take Effect."
+      },
+      "criticalSuccess": {
+        "@en": "As above, but triple the Duration."
+      },
+      "criticalFailure": {
+        "@en": "You bear crocodile tears and your god knows it. You are withdrawn and cannot muster the inner fortitude to bring yourself to act. You must flog yourself before casting Magick again, moving one step down the Damage and Peril Condition Tracks negatively."
+      },
+      "reagents": {
+        "@en": "Your tears, placed upon the cheek of a victim"
+      }
+    },
+    "tradition": "Divine (Martyr)",
+    "principle": "Petty",
+    "distance": "Any one person you can touch",
+    "duration": "[WB]+3 hours",
+    "castingTime": "1 min",
+    "castingCost": 0
+  },
+  "folder": null,
+  "sort": 0,
+  "ownership": {
+    "default": 0
+  },
+  "flags": {},
+  "_key": "!items!NT7WbAfkbMI0uA8Q"
+}

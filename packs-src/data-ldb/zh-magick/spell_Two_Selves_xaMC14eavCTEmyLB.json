@@ -1,0 +1,50 @@
+{
+  "_id": "xaMC14eavCTEmyLB",
+  "effects": [],
+  "img": "systems/zweihander/assets/icons/double-face-mask.svg",
+  "name": "Two Selves",
+  "type": "spell",
+  "_stats": {
+    "coreVersion": "12.331",
+    "systemId": null,
+    "systemVersion": null,
+    "createdTime": null,
+    "modifiedTime": null,
+    "lastModifiedBy": null,
+    "compendiumSource": null,
+    "duplicateSource": null
+  },
+  "system": {
+    "description": {
+      "@en": "A mirror image of yourself instantly appears and will follow a set of prescribed actions while you manage to slip away."
+    },
+    "notes": "",
+    "rules": {
+      "effect": {
+        "@en": "After successfully casting this spell, you produce a mirror image – an illusion – of yourself. This mirror image does whatever you command it to do, although it is incapable of physically manipulating objects. While the mirror image conducts its activity, you are rendered completely invisible. If you attempt to take any actions which will directly affect another (such as attacking them, lifting something off their person, etc.), they can immediately make a Scrutinize Test to see through this illusion before you take action. Regardless, the actual casting of Two Selves is never apparent to anyone, perfectly disguised."
+      },
+      "criticalSuccess": {
+        "@en": "As above, but triple the Duration."
+      },
+      "criticalFailure": {
+        "@en": "As your second self steps away from you, it takes upon the same physical characteristics as you and your trappings (including the ability to cast Magick). For the spell’s Duration, this doppelganger threatens to take your life, using whatever means or materials you had on-hand which it now also possesses. Once destroyed, the doppelganger and its possessions dissipate into a gray mist."
+      },
+      "reagents": {
+        "@en": "Your pointer fingers brought together side by side"
+      }
+    },
+    "tradition": "Arcane (Shadowmancy)",
+    "principle": "Lesser",
+    "distance": "Yourself",
+    "duration": "[WB]+6 minutes",
+    "castingTime": "1 min",
+    "castingCost": 0
+  },
+  "folder": null,
+  "sort": 0,
+  "ownership": {
+    "default": 0
+  },
+  "flags": {},
+  "_key": "!items!xaMC14eavCTEmyLB"
+}

@@ -1,0 +1,50 @@
+{
+  "_id": "Z63qxKKgVwlvqBMf",
+  "effects": [],
+  "img": "systems/zweihander/assets/icons/horseshoe.svg",
+  "name": "My Lucky Day",
+  "type": "spell",
+  "_stats": {
+    "coreVersion": "12.331",
+    "systemId": null,
+    "systemVersion": null,
+    "createdTime": null,
+    "modifiedTime": null,
+    "lastModifiedBy": null,
+    "compendiumSource": null,
+    "duplicateSource": null
+  },
+  "system": {
+    "description": {
+      "@en": "Drop a coin in the well for wishes, but spin a shilling for luck."
+    },
+    "notes": "",
+    "rules": {
+      "effect": {
+        "@en": "After successfully casting this spell, you can restore one Fortune Point to the Fortune Pool, but only if it has already been spent. Every time you cast this Magick, roll [[/roll 1D6]] Chaos Die to determine whether you provoke Divine Punishment."
+      },
+      "criticalSuccess": {
+        "@en": "As above, but may avoid rolling a [[/roll 1D6]] Chaos Die to determine whether you provoke Divine Punishment."
+      },
+      "criticalFailure": {
+        "@en": "You have made a critical error in your summoning to the god of fortune. You are punished with a setback. Remove one Fortune Point from the pool and convert it into a Misfortune Point for the GM. If there is one not available, you provoke Divine Punishment."
+      },
+      "reagents": {
+        "@en": "One silver shilling, spun in place (expended)"
+      }
+    },
+    "tradition": "Divine (Nightfather)",
+    "principle": "Petty",
+    "distance": "Yourself",
+    "duration": "Instantaneous",
+    "castingTime": "1 min",
+    "castingCost": 0
+  },
+  "folder": null,
+  "sort": 0,
+  "ownership": {
+    "default": 0
+  },
+  "flags": {},
+  "_key": "!items!Z63qxKKgVwlvqBMf"
+}

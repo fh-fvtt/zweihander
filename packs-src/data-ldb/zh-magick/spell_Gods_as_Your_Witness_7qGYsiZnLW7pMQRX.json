@@ -1,0 +1,50 @@
+{
+  "_id": "7qGYsiZnLW7pMQRX",
+  "effects": [],
+  "img": "systems/zweihander/assets/icons/wizard-staff.svg",
+  "name": "Gods as Your Witness",
+  "type": "spell",
+  "_stats": {
+    "coreVersion": "12.331",
+    "systemId": null,
+    "systemVersion": null,
+    "createdTime": null,
+    "modifiedTime": null,
+    "lastModifiedBy": null,
+    "compendiumSource": null,
+    "duplicateSource": null
+  },
+  "system": {
+    "description": {
+      "@en": "A truthful testimony will be compelled out of a person, by the god’s divine will."
+    },
+    "notes": "",
+    "rules": {
+      "effect": {
+        "@en": "After successfully casting this spell, the person you touch must give a truthful telling to your questions. You can only ask a number of questions equal to your [WB]. The person can only answer to the best of their abilities and must give honest answers."
+      },
+      "criticalSuccess": {
+        "@en": "As above, but triple the number of questions you can ask."
+      },
+      "criticalFailure": {
+        "@en": "You have made a critical error. You’re not sure whether they’re telling the truth or not. In fact, this may not bode well for you or your well-being. Stricken with anxiety, you immediately suffer [[/roll 3D10+3]] mental Peril."
+      },
+      "reagents": {
+        "@en": "Invoking ‘gods as your witness…’ before asking a question"
+      }
+    },
+    "tradition": "Divine (Learner)",
+    "principle": "Greater",
+    "distance": "Any one person you can touch",
+    "duration": "Special",
+    "castingTime": "1 min",
+    "castingCost": 0
+  },
+  "folder": null,
+  "sort": 0,
+  "ownership": {
+    "default": 0
+  },
+  "flags": {},
+  "_key": "!items!7qGYsiZnLW7pMQRX"
+}

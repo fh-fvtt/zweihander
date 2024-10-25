@@ -1,0 +1,50 @@
+{
+  "_id": "UyBDh0VebAnwTbp2",
+  "effects": [],
+  "img": "systems/zweihander/assets/icons/wolf-howl.svg",
+  "name": "Savage Transformation",
+  "type": "spell",
+  "_stats": {
+    "coreVersion": "12.331",
+    "systemId": null,
+    "systemVersion": null,
+    "createdTime": null,
+    "modifiedTime": null,
+    "lastModifiedBy": null,
+    "compendiumSource": null,
+    "duplicateSource": null
+  },
+  "system": {
+    "description": {
+      "@en": "Fur erupts from your shoulders as your mouth elongates into a snout. Falling onto all fours, you take upon a lupine form."
+    },
+    "notes": "",
+    "rules": {
+      "effect": {
+        "@en": "After successfully casting this spell, both you and all the trappings upon yourself take the shape of a Silverback Warg. You retain your mental attributes (Intelligence, Perception and Willpower) and Damage Threshold, but cannot communicate nor use Magick while in this form. If you suffer an Injury during this time, the spell ends immediately."
+      },
+      "criticalSuccess": {
+        "@en": "As above, but triple the Duration."
+      },
+      "criticalFailure": {
+        "@en": "Your transformation goes terribly awry. Your body covered in fur, you take on the form of a wolf-like amalgamation that resembles a demon from the depths of the Abyss. You maintain this form for the spell’s Duration, unable to communicate or use Magick. Those who witness this transformation must succeed at a Resolve Test, or be subjected to Fear."
+      },
+      "reagents": {
+        "@en": "A hide of a silverback warg, worn on your shoulders"
+      }
+    },
+    "tradition": "Arcane (Animism)",
+    "principle": "Lesser",
+    "distance": "Yourself",
+    "duration": "[WB]+6 hours",
+    "castingTime": "1 min",
+    "castingCost": 0
+  },
+  "folder": null,
+  "sort": 0,
+  "ownership": {
+    "default": 0
+  },
+  "flags": {},
+  "_key": "!items!UyBDh0VebAnwTbp2"
+}

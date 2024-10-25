@@ -1,0 +1,50 @@
+{
+  "_id": "GyZ1TF6sSlHM5txd",
+  "effects": [],
+  "img": "systems/zweihander/assets/icons/blade-fall.svg",
+  "name": "Court Sword",
+  "type": "weapon",
+  "_stats": {
+    "coreVersion": "12.331",
+    "systemId": "zweihander",
+    "systemVersion": "5.3.2",
+    "createdTime": null,
+    "modifiedTime": 1729889767582,
+    "lastModifiedBy": "rivg6xcMxdlVDM8y",
+    "compendiumSource": null,
+    "duplicateSource": null
+  },
+  "system": {
+    "description": {
+      "@en": "<p>Fast and efficient, this blade is carried by both blue-bloods and dandies. Many are unsharpened, carried as status symbol by the latter (but just as dangerous as a poisoned word with the former). Beware ill words with the fop whose expertise in fencing may result in a duel to the death.</p>"
+    },
+    "notes": "",
+    "price": {
+      "bp": 0,
+      "gc": 7,
+      "ss": 0
+    },
+    "encumbrance": 1,
+    "carried": true,
+    "weaponType": "Bladed",
+    "equipped": false,
+    "associatedSkill": "Simple Melee",
+    "load": 0,
+    "handling": "One-handed",
+    "qualities": {
+      "value": "Fast, Finesse",
+      "arrayOfValues": []
+    },
+    "distance": "Engaged",
+    "damage": {
+      "formula": "[AB] + (1+[#])d6x6"
+    }
+  },
+  "folder": null,
+  "sort": 0,
+  "ownership": {
+    "default": 0
+  },
+  "flags": {},
+  "_key": "!items!GyZ1TF6sSlHM5txd"
+}

@@ -1,0 +1,50 @@
+{
+  "_id": "yEMI0YONwr8NyNVt",
+  "effects": [],
+  "img": "systems/zweihander/assets/icons/wizard-staff.svg",
+  "name": "Pillars of the Earth",
+  "type": "spell",
+  "_stats": {
+    "coreVersion": "12.331",
+    "systemId": null,
+    "systemVersion": null,
+    "createdTime": null,
+    "modifiedTime": null,
+    "lastModifiedBy": null,
+    "compendiumSource": null,
+    "duplicateSource": null
+  },
+  "system": {
+    "description": {
+      "@en": "Beloved earth mother accepts you into Her womb, as you reemerge elsewhere."
+    },
+    "notes": "",
+    "rules": {
+      "effect": {
+        "@en": "After successfully casting this spell, you are immediately swallowed into the earth and reappear anywhere within sight. You can only disappear and reappear upon a patch of natural earth."
+      },
+      "criticalSuccess": {
+        "@en": "As above, but you immediately gain a Surprise Turn against your foes."
+      },
+      "criticalFailure": {
+        "@en": "The earth mother denies you, as every step you take despoils the very grass and land you step upon. You immediately take six steps in the direction you intended to go, suffering [[/roll 2D10+2]] mental Peril for the destruction you wrought in the process."
+      },
+      "reagents": {
+        "@en": "An iron key, dropped at your feet on a patch of natural earth (expended)"
+      }
+    },
+    "tradition": "Arcane (Elementalism)",
+    "principle": "Lesser",
+    "distance": "Yourself",
+    "duration": "Instantaneous",
+    "castingTime": "1 min",
+    "castingCost": 0
+  },
+  "folder": null,
+  "sort": 0,
+  "ownership": {
+    "default": 0
+  },
+  "flags": {},
+  "_key": "!items!yEMI0YONwr8NyNVt"
+}

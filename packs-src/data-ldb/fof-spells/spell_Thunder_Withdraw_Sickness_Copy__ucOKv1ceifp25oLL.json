@@ -1,0 +1,50 @@
+{
+  "_id": "ucOKv1ceifp25oLL",
+  "effects": [],
+  "img": "systems/zweihander/assets/icons/spell-book.svg",
+  "name": "Thunder Withdraw Sickness(Copy)",
+  "type": "spell",
+  "_stats": {
+    "coreVersion": "12.331",
+    "systemId": null,
+    "systemVersion": null,
+    "createdTime": null,
+    "modifiedTime": null,
+    "lastModifiedBy": null,
+    "compendiumSource": null,
+    "duplicateSource": null
+  },
+  "system": {
+    "description": {
+      "@en": "<p>I dispel thee, foul disease . . .</p>"
+    },
+    "notes": "",
+    "rules": {
+      "effect": {
+        "@en": "<p>After successfully casting, you remove an Ailment or other sickness from a threat, person or plant. It is then contained as a black liquid inside the receptacle. If the receptacle is opened, it can be released upon a threat, person or plant it is poured upon as they are infected with the Ailment.</p>"
+      },
+      "criticalSuccess": {
+        "@en": "It also restores any lost Damage, Peril and temporary Primary Attribute penalties lost due to the Ailment."
+      },
+      "criticalFailure": {
+        "@en": "You now suffer from the Ailment."
+      },
+      "reagents": {
+        "@en": "A glass or metal receptacle with a closing lid"
+      }
+    },
+    "tradition": "Common",
+    "principle": "Advanced Tier",
+    "distance": "By Touch",
+    "duration": "Instantaneous",
+    "castingTime": "24 Hours",
+    "castingCost": null
+  },
+  "folder": null,
+  "sort": 0,
+  "ownership": {
+    "default": 0
+  },
+  "flags": {},
+  "_key": "!items!ucOKv1ceifp25oLL"
+}

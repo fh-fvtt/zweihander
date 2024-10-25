@@ -1,0 +1,50 @@
+{
+  "_id": "YtUN1dpMdnLX0BPI",
+  "effects": [],
+  "img": "systems/zweihander/assets/icons/wingfoot.svg",
+  "name": "Hare's Speed",
+  "type": "spell",
+  "_stats": {
+    "coreVersion": "12.331",
+    "systemId": null,
+    "systemVersion": null,
+    "createdTime": null,
+    "modifiedTime": null,
+    "lastModifiedBy": null,
+    "compendiumSource": null,
+    "duplicateSource": null
+  },
+  "system": {
+    "description": {
+      "@en": "You bound and sprint like a rabbit in the wild."
+    },
+    "notes": "",
+    "rules": {
+      "effect": {
+        "@en": "After successfully casting this spell, you can increase your Combat Movement by 3. In addition, you reduce the number of APs required by 1 whenever you Charge, Get Up, Maneuver and Run."
+      },
+      "criticalSuccess": {
+        "@en": "As above, but triple the Duration."
+      },
+      "criticalFailure": {
+        "@en": "You accidentally bound upwards into the air, a number of feet equal to [[/roll 1D10]]+[WB]. You immediately suffer a fall, and are knocked Prone. In addition, you manifest a puff of fur on your bottom, your ears grow fuzzy and you have a yearning for carrots for the next 24 hours."
+      },
+      "reagents": {
+        "@en": "A rabbit’s foot, held on a chain"
+      }
+    },
+    "tradition": "Divine (Demiurge)",
+    "principle": "Petty",
+    "distance": "Yourself",
+    "duration": "[WB]+3 minutes",
+    "castingTime": "1 min",
+    "castingCost": 0
+  },
+  "folder": null,
+  "sort": 0,
+  "ownership": {
+    "default": 0
+  },
+  "flags": {},
+  "_key": "!items!YtUN1dpMdnLX0BPI"
+}

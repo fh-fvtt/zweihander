@@ -1,0 +1,35 @@
+{
+  "_id": "g1YJTe6G1qdV8DGs",
+  "effects": [],
+  "img": "systems/zweihander/assets/icons/spiked-halo.svg",
+  "name": "Feeble-Mindedness",
+  "type": "drawback",
+  "_stats": {
+    "coreVersion": "12.331",
+    "systemId": null,
+    "systemVersion": null,
+    "createdTime": null,
+    "modifiedTime": null,
+    "lastModifiedBy": null,
+    "compendiumSource": null,
+    "duplicateSource": null
+  },
+  "system": {
+    "description": {
+      "@en": "Corruption affects everyone differently. For the Abbot, it does not result in the erosion of their spirit, but instead leads to frailty of the mind."
+    },
+    "notes": "",
+    "rules": {
+      "effect": {
+        "@en": "Whenever you would gain 10 Chaos Ranks, you do not gain a Disorder. Instead, reduce your Willpower by 9% each time you would normally gain a Disorder. Should your Willpower ever reach 0%, your Character must be retired."
+      }
+    }
+  },
+  "folder": null,
+  "sort": 0,
+  "ownership": {
+    "default": 0
+  },
+  "flags": {},
+  "_key": "!items!g1YJTe6G1qdV8DGs"
+}

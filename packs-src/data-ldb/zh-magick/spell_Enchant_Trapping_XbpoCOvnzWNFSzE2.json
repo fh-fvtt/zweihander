@@ -1,0 +1,50 @@
+{
+  "_id": "XbpoCOvnzWNFSzE2",
+  "effects": [],
+  "img": "systems/zweihander/assets/icons/wizard-staff.svg",
+  "name": "Enchant Trapping",
+  "type": "spell",
+  "_stats": {
+    "coreVersion": "12.331",
+    "systemId": null,
+    "systemVersion": null,
+    "createdTime": null,
+    "modifiedTime": null,
+    "lastModifiedBy": null,
+    "compendiumSource": null,
+    "duplicateSource": null
+  },
+  "system": {
+    "description": {
+      "@en": "You instill temporary Ætheric power into an object through a simple rite."
+    },
+    "notes": "",
+    "rules": {
+      "effect": {
+        "@en": "After successfully casting this spell, the object you touch is temporarily turned into an arcane artifact. Whenever you enchant the object, it grants +10% towards one relevant Primary Attribute. For instance, you can enchant a jaunty hat to grant a boon to Intelligence or a codpiece to grant a benefit to Combat. Perhaps you enchant a set of slippers to grant a boost to Agility or a pair of silken gloves to improve Brawn; it is your choice. Whatever you wish to enchant, the form must follow its function. Such objects may only bear one enchantment at a time. Furthermore, a person cannot wield more than one Enchanted Trapping at a time."
+      },
+      "criticalSuccess": {
+        "@en": "As above, but triple the Duration."
+      },
+      "criticalFailure": {
+        "@en": "Not only does the Magick fail, it also instantly dispels all Magick around within a Burst Template, centered on the trapping you were attempting to enchant (as if affected by the Generalist Magick called Dispel Magick)."
+      },
+      "reagents": {
+        "@en": "The feather of a rare creature, used to draft a formula on paper (expended)"
+      }
+    },
+    "tradition": "Arcane (Transmutation)",
+    "principle": "Lesser",
+    "distance": "Any one object you touch",
+    "duration": "[WB]+6 hours",
+    "castingTime": "1 min",
+    "castingCost": 0
+  },
+  "folder": null,
+  "sort": 0,
+  "ownership": {
+    "default": 0
+  },
+  "flags": {},
+  "_key": "!items!XbpoCOvnzWNFSzE2"
+}

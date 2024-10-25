@@ -1,0 +1,50 @@
+{
+  "_id": "lhnK28AAXlJ0ciJA",
+  "effects": [],
+  "img": "systems/zweihander/assets/icons/wizard-staff.svg",
+  "name": "Mask Fragrance",
+  "type": "spell",
+  "_stats": {
+    "coreVersion": "12.331",
+    "systemId": null,
+    "systemVersion": null,
+    "createdTime": null,
+    "modifiedTime": null,
+    "lastModifiedBy": null,
+    "compendiumSource": null,
+    "duplicateSource": null
+  },
+  "system": {
+    "description": {
+      "@en": "<p>The dead shall walk these streets, with none the wiser of their true origin . . .</p>"
+    },
+    "notes": "",
+    "rules": {
+      "effect": {
+        "@en": "<p>After successfully casting, a number of allies or objects equal to 3+[WB] have their scent completely masked. This includes the rotting smell of death.</p>"
+      },
+      "criticalSuccess": {
+        "@en": "As above, and the allies’ or objects’ movement is rendered completely silent."
+      },
+      "criticalFailure": {
+        "@en": "The scent of death becomes immediately unbearable, as you and everyone else around the allies or objects you touch suffer [[/roll 2D10+2]] Peril every minute."
+      },
+      "reagents": {
+        "@en": "Grave dirt, intermingled with perfume (expended)"
+      }
+    },
+    "tradition": "Witchcraft",
+    "principle": "Basic Tier",
+    "distance": "By Touch",
+    "duration": "3+[WB] hours",
+    "castingTime": "1 Minute",
+    "castingCost": 3
+  },
+  "folder": null,
+  "sort": 0,
+  "ownership": {
+    "default": 0
+  },
+  "flags": {},
+  "_key": "!items!lhnK28AAXlJ0ciJA"
+}

@@ -1,0 +1,47 @@
+{
+  "_id": "CEnnwBepZUNiHxJL",
+  "effects": [],
+  "img": "systems/zweihander/assets/icons/rune-stone.svg",
+  "name": "Inscribe Magic Rune",
+  "system": {
+    "description": {
+      "@en": "Language is one of the few things that separate man from beast, a consistent way of communicating through writing and words that flows across culture. Writing has not always been the same, it has changed and grown over time. But many scholars have found evidence of a proto-language, one that existed before mankind stalked the earth – a language thought to be the very utterances of the gods or perhaps even demons. These Runes are carved upon ancient stone monoliths and in the deepest of caves, emanating eldritch power. Dwarven blacksmiths have seen the power in these inscriptions and have struck them into the designs of armor, weapons and shields. In the process, it has been discovered is that Runes are a bane to the monstrous, perhaps serving as a reminder of times when they were bound by divine providence.\n  Striking Runes is a fairly simple and short process, but usually not permanent. Only the oral histories of the Dwarves tell of smiths who can emblazon their maker’s mark permanently, girding their wielders against the chaotic horrors of the world."
+    },
+    "notes": "",
+    "rules": {
+      "effect": {
+        "@en": "After successfully casting this Ritual, you inscribe any single Rune on a suit of armor, shield or weapon. Each Rune grants different abilities to the person that wields the item. However, no item can bear more than three Apprentice Runes, two Journeyman Runes or one Master Rune, nor can an item ever have more than three Runes upon it. Please see Main Gauche page 345 for rune types."
+      },
+      "consequences": {
+        "@en": "Temporary Runes last for a number of days equal to your [WB]. Permanent Runes last forever."
+      },
+      "condition": {
+        "@en": "You must have the Skill Focus (Runesmith)"
+      },
+      "reagents": {
+        "@en": "Permanent runes require one powder of Wytchstone Essence for Apprentice Runes, two for Journeyman Runes or three for Master Runes (all are expended). Temporary runes forgo the need for Wytchstone Essence. You must also have a suit of armor, shield or weapon (crafted by you) and a writing kit."
+      }
+    },
+    "difficulty": "Varies",
+    "channelAs": "NONE",
+    "castingTime": "Special"
+  },
+  "type": "ritual",
+  "_stats": {
+    "coreVersion": "12.331",
+    "systemId": null,
+    "systemVersion": null,
+    "createdTime": null,
+    "modifiedTime": null,
+    "lastModifiedBy": null,
+    "compendiumSource": null,
+    "duplicateSource": null
+  },
+  "folder": null,
+  "sort": 0,
+  "ownership": {
+    "default": 0
+  },
+  "flags": {},
+  "_key": "!items!CEnnwBepZUNiHxJL"
+}

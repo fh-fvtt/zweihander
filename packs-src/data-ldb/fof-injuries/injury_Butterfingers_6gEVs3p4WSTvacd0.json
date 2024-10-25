@@ -1,0 +1,38 @@
+{
+  "_id": "6gEVs3p4WSTvacd0",
+  "effects": [],
+  "img": "systems/zweihander/assets/icons/internal-injury.svg",
+  "name": "Butterfingers",
+  "type": "injury",
+  "_stats": {
+    "coreVersion": "12.331",
+    "systemId": null,
+    "systemVersion": null,
+    "createdTime": null,
+    "modifiedTime": null,
+    "lastModifiedBy": null,
+    "compendiumSource": null,
+    "duplicateSource": null
+  },
+  "system": {
+    "description": {
+      "@en": "<p>Look at this scar, right down the middle of my palm! It&rsquo;s nasty, isn&rsquo;t it? Ever since I suffered it, I&rsquo;ve become a bit of a Nervous Nellie.</p>"
+    },
+    "notes": "<p><span style=\"color: #d5c4a1; font-family: Signika, sans-serif; font-style: italic; text-align: justify; background-color: #282828;\">Grievous Injuries must undergo a successful Perform Surgery within twenty-four hours of suffering it, or else a character gains its related Permanent Injury.</span></p>",
+    "rules": {
+      "effect": {
+        "@en": "<p>Whenever you suffer from Stress, Fear or Terror, you immediately drop whatever you are holding. In addition, when you suffer from Bleeding or an Injury, you must succeed a Toughness Test or else drop what you&rsquo;re holding.</p>"
+      }
+    },
+    "severity": 0,
+    "active": true,
+    "recuperationTime": 0
+  },
+  "folder": null,
+  "sort": 0,
+  "ownership": {
+    "default": 0
+  },
+  "flags": {},
+  "_key": "!items!6gEVs3p4WSTvacd0"
+}

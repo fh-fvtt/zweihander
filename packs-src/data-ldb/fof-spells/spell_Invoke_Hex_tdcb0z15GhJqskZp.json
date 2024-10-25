@@ -1,0 +1,50 @@
+{
+  "_id": "tdcb0z15GhJqskZp",
+  "effects": [],
+  "img": "systems/zweihander/assets/icons/wizard-staff.svg",
+  "name": "Invoke Hex",
+  "type": "spell",
+  "_stats": {
+    "coreVersion": "12.331",
+    "systemId": null,
+    "systemVersion": null,
+    "createdTime": null,
+    "modifiedTime": null,
+    "lastModifiedBy": null,
+    "compendiumSource": null,
+    "duplicateSource": null
+  },
+  "system": {
+    "description": {
+      "@en": "<p>All things foul, infectious and putrid fall upon thy head!</p>"
+    },
+    "notes": "",
+    "rules": {
+      "effect": {
+        "@en": "<p>After successfully casting, select whether you wish to curse a foe, object or a place. If cursing a foe, they gain some sort of gross physical oddity (e.g., constant flatulence, intractable hiccups, oozing pimples), which causes them to flip the results to fail all Skill Tests related to social interactions. If cursing an object, when it is carried, the foe suffers a -20% Base Chance to all Skill Tests. If cursing a place, anyone who is standing inside of it must add an additional [[/roll 1D6]] Chaos Die when they Risk Backlash or are at risk to suffer Injuries. A cursed object can only be discovered through use of Magic or a special circumstance the Historian dictates. You begin to Bleed, no matter whether you succeeded or failed at casting this Spell.</p>"
+      },
+      "criticalSuccess": {
+        "@en": "Triple the duration."
+      },
+      "criticalFailure": {
+        "@en": "You immediately move three steps down the Damage Condition Track instead and begin to Bleed."
+      },
+      "reagents": {
+        "@en": "Paint your blood over an object, foe or place (expended)"
+      }
+    },
+    "tradition": "Witchcraft",
+    "principle": "Intermediate Tier",
+    "distance": "By Touch",
+    "duration": "6+[WB] days",
+    "castingTime": "1 Minute",
+    "castingCost": 2
+  },
+  "folder": null,
+  "sort": 0,
+  "ownership": {
+    "default": 0
+  },
+  "flags": {},
+  "_key": "!items!tdcb0z15GhJqskZp"
+}

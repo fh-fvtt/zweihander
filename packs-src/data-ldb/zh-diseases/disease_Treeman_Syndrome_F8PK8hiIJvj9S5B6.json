@@ -1,0 +1,41 @@
+{
+  "_id": "F8PK8hiIJvj9S5B6",
+  "effects": [],
+  "img": "systems/zweihander/assets/icons/half-dead.svg",
+  "name": "Treeman Syndrome",
+  "type": "disease",
+  "_stats": {
+    "coreVersion": "12.331",
+    "systemId": null,
+    "systemVersion": null,
+    "createdTime": null,
+    "modifiedTime": null,
+    "lastModifiedBy": null,
+    "compendiumSource": null,
+    "duplicateSource": null
+  },
+  "system": {
+    "description": {
+      "@en": "A rapacious disease that seethes forth from the corruptive Black Lodge, this cancerous illness afflicts those who dare trespass into Fey sanctuaries. As the skin disease takes hold over its victim, horn-like, warty lesions develop upon a person’s limbs, strangely resembling tree bark. It viciously petrifies a victim’s hands and feet, until they become immobile like an ossified tree... until finally becoming one with the Black Lodge. Transformation into ‘the other’ is complete!"
+    },
+    "notes": "",
+    "rules": {
+      "effect": {
+        "@en": "Over the course of the duration, you permanently reduce 1 from your [PB] value each week. Should you ever lose all of your [PB], your Character is Slain!"
+      },
+      "treatment": {
+        "@en": "In order to treat a patient suffering from Treeman Syndrome, a caregiver must have a Skill Rank in Heal, have access to surgical tools, a vial of Void Salt, a Bandage (both of which are expended as part of the treatment) and be left uninterrupted for at least one hour. If they succeed at a (Hard -20%) Heal Test, you do not suffer the effects for the following week. You may only be treated in this manner once every 24 hours, no matter whether it is successful or not."
+      }
+    },
+    "resist": "(Hard -20%) Toughness Test",
+    "duration": "Until cured",
+    "active": true
+  },
+  "folder": null,
+  "sort": 0,
+  "ownership": {
+    "default": 0
+  },
+  "flags": {},
+  "_key": "!items!F8PK8hiIJvj9S5B6"
+}

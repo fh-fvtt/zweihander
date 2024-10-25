@@ -1,0 +1,51 @@
+{
+  "_id": "FmuCQuJvpeDrZ6Y1",
+  "effects": [],
+  "img": "systems/zweihander/assets/icons/cannon-shot.svg",
+  "name": "Hand Bombard",
+  "type": "weapon",
+  "_stats": {
+    "coreVersion": "12.331",
+    "systemId": "zweihander",
+    "systemVersion": "5.3.2",
+    "createdTime": null,
+    "modifiedTime": 1729890682188,
+    "lastModifiedBy": "rivg6xcMxdlVDM8y",
+    "compendiumSource": null,
+    "duplicateSource": null
+  },
+  "system": {
+    "description": {
+      "@en": "<p>This deadly precursor to the bazooka is uncommon, and only a brave few dare tote one around in a fight. Many a limb and life have been lost to a grenade that didn&rsquo;t fire from the mouth of this absurd launcher.</p>"
+    },
+    "notes": "",
+    "price": {
+      "bp": 0,
+      "gc": 0,
+      "ss": 0
+    },
+    "encumbrance": 3,
+    "carried": true,
+    "weaponType": "Gunpowder",
+    "equipped": false,
+    "associatedSkill": "Martial Ranged",
+    "load": 4,
+    "handling": "One-handed",
+    "qualities": {
+      "value": "Detonate, Gunpowder, Volatile",
+      "arrayOfValues": []
+    },
+    "distance": "[PB]+3 yards",
+    "damage": {
+      "formula": "[CB] + (1+[#])d6x1&6",
+      "associatedPrimaryAttribute": "Combat"
+    }
+  },
+  "folder": null,
+  "sort": 0,
+  "ownership": {
+    "default": 0
+  },
+  "flags": {},
+  "_key": "!items!FmuCQuJvpeDrZ6Y1"
+}

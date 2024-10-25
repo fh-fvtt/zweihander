@@ -1,0 +1,50 @@
+{
+  "_id": "Go3jjnku4IarNkiQ",
+  "effects": [],
+  "img": "systems/zweihander/assets/icons/diving-dagger.svg",
+  "name": "Knife in the Dark",
+  "type": "spell",
+  "_stats": {
+    "coreVersion": "12.331",
+    "systemId": null,
+    "systemVersion": null,
+    "createdTime": null,
+    "modifiedTime": null,
+    "lastModifiedBy": null,
+    "compendiumSource": null,
+    "duplicateSource": null
+  },
+  "system": {
+    "description": {
+      "@en": "Flashing out from the darkness, a blade immediately strikes the foe you’re Engaged with."
+    },
+    "notes": "",
+    "rules": {
+      "effect": {
+        "@en": "After successfully casting this spell, the person you touch must Resist with a successful Coordination Test or suffer [[/roll 1D10]]+[WB] in Damage and be unable to use any Movement Actions for one Turn. You can inflict Injuries with this Magick, as if it were a melee weapon."
+      },
+      "criticalSuccess": {
+        "@en": "As above, but the foe also begins to Bleed."
+      },
+      "criticalFailure": {
+        "@en": "The scorpion’s tail stings you, instantly dissolving in-hand. You are affected by scorpion’s venom, as indicated in Chapter 9: Hazards & Healing."
+      },
+      "reagents": {
+        "@en": "A tail of a scorpion, held in-hand"
+      }
+    },
+    "tradition": "Divine (Crouching One)",
+    "principle": "Petty",
+    "distance": "Any one person you can touch",
+    "duration": "Instantaneous",
+    "castingTime": "1 min",
+    "castingCost": 0
+  },
+  "folder": null,
+  "sort": 0,
+  "ownership": {
+    "default": 0
+  },
+  "flags": {},
+  "_key": "!items!Go3jjnku4IarNkiQ"
+}

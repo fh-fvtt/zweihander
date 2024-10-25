@@ -1,0 +1,50 @@
+{
+  "_id": "HedVhwVRBS61g3qO",
+  "effects": [],
+  "img": "systems/zweihander/assets/icons/dispel.svg",
+  "name": "Dispel Magick",
+  "type": "spell",
+  "_stats": {
+    "coreVersion": "12.331",
+    "systemId": null,
+    "systemVersion": null,
+    "createdTime": null,
+    "modifiedTime": null,
+    "lastModifiedBy": null,
+    "compendiumSource": null,
+    "duplicateSource": null
+  },
+  "system": {
+    "description": {
+      "@en": "Weaving your hands about, you instantly cause a Magick spell to end abruptly."
+    },
+    "notes": "",
+    "rules": {
+      "effect": {
+        "@en": "After successfully casting this spell, you immediately cause one Magickal spell’s Effect to end permanently. This can be used to dismiss Magickal Effects, such as Ægis or other Magick spells which may protect another. This has no Effect on summoned creatures or Rituals. You must have this Magick in order to Counterspell. Finally, you can never use Dispel Magick to dismiss the Effects of other Magick spells whose Duration is listed as Instantaneous."
+      },
+      "criticalSuccess": {
+        "@en": "As above and the person who was affected by the Dispel Magick suffers [[/roll 1D10+1]] physical Peril."
+      },
+      "criticalFailure": {
+        "@en": "As the tuning fork strikes the ground, your ears begin to bleed as you are deafened and concussed. You immediately suffer [[/roll 1D10+1]] physical Peril and cannot hear for 24 hours."
+      },
+      "reagents": {
+        "@en": "A silver tuning fork, struck against the ground"
+      }
+    },
+    "tradition": "Generalist",
+    "principle": "Generalist",
+    "distance": "Any one object or person you can see",
+    "duration": "Instantaneous",
+    "castingTime": "1 min",
+    "castingCost": 0
+  },
+  "folder": null,
+  "sort": 0,
+  "ownership": {
+    "default": 0
+  },
+  "flags": {},
+  "_key": "!items!HedVhwVRBS61g3qO"
+}

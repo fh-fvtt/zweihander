@@ -1,0 +1,50 @@
+{
+  "_id": "lUFkQlOoOP7B97sE",
+  "effects": [],
+  "img": "systems/zweihander/assets/icons/spiked-mace.svg",
+  "name": "Morgenstern",
+  "type": "weapon",
+  "_stats": {
+    "coreVersion": "12.331",
+    "systemId": "zweihander",
+    "systemVersion": "5.3.2",
+    "createdTime": null,
+    "modifiedTime": 1729891336937,
+    "lastModifiedBy": "rivg6xcMxdlVDM8y",
+    "compendiumSource": null,
+    "duplicateSource": null
+  },
+  "system": {
+    "description": {
+      "@en": "<p>This is a round-headed club, dotted with small barbs and tipped with a stout iron spike. Viscera has a tendency to stick to its barbs in a most gruesome fashion. Morgenstern are never topped with rattling chains affixed to iron spheres; those are weapons of pure fantasy or historic ignorance.</p>"
+    },
+    "notes": "",
+    "price": {
+      "bp": 0,
+      "gc": 5,
+      "ss": 0
+    },
+    "encumbrance": 2,
+    "carried": true,
+    "weaponType": "Crushing",
+    "equipped": false,
+    "associatedSkill": "Martial Melee",
+    "load": 0,
+    "handling": "One or Two-handed",
+    "qualities": {
+      "value": "Adaptable, Powerful, Vicious",
+      "arrayOfValues": []
+    },
+    "distance": "Engaged",
+    "damage": {
+      "formula": "[CB] + (1+[#])d6x6"
+    }
+  },
+  "folder": null,
+  "sort": 0,
+  "ownership": {
+    "default": 0
+  },
+  "flags": {},
+  "_key": "!items!lUFkQlOoOP7B97sE"
+}

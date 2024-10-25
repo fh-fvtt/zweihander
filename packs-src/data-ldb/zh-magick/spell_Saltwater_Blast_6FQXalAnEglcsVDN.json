@@ -1,0 +1,50 @@
+{
+  "_id": "6FQXalAnEglcsVDN",
+  "effects": [],
+  "img": "systems/zweihander/assets/icons/wizard-staff.svg",
+  "name": "Saltwater Blast",
+  "type": "spell",
+  "_stats": {
+    "coreVersion": "12.331",
+    "systemId": null,
+    "systemVersion": null,
+    "createdTime": null,
+    "modifiedTime": null,
+    "lastModifiedBy": null,
+    "compendiumSource": null,
+    "duplicateSource": null
+  },
+  "system": {
+    "description": {
+      "@en": "A powerful blast of seawater and coral stings your foes, knocking them about"
+    },
+    "notes": "",
+    "rules": {
+      "effect": {
+        "@en": "After successfully casting this spell, you conjure forth a briny, powerful blast of water and dangerously sharp coral. All those who are caught within the Cone Template suffers[[/roll 2D10]]+[WB] in Damage. This Magick also extinguishes Mildly and Moderately Dangerous fire and those who are already On Fire."
+      },
+      "criticalSuccess": {
+        "@en": "As above, but all foes caught in the Saltwater Blast are knocked Prone."
+      },
+      "criticalFailure": {
+        "@en": "A briny blast of water washes up over you from below your feet. You suffer [[/roll 2D10]]+[WB] in Damage and are knocked Prone."
+      },
+      "reagents": {
+        "@en": "A piece of coral (expended)"
+      }
+    },
+    "tradition": "Divine (Leviathan)",
+    "principle": "Lesser",
+    "distance": "Yourself",
+    "duration": "Instantaneous",
+    "castingTime": "1 min",
+    "castingCost": 0
+  },
+  "folder": null,
+  "sort": 0,
+  "ownership": {
+    "default": 0
+  },
+  "flags": {},
+  "_key": "!items!6FQXalAnEglcsVDN"
+}

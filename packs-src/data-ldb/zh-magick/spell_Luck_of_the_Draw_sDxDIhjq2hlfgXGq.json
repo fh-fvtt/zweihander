@@ -1,0 +1,50 @@
+{
+  "_id": "sDxDIhjq2hlfgXGq",
+  "effects": [],
+  "img": "systems/zweihander/assets/icons/card-random.svg",
+  "name": "Luck of the Draw",
+  "type": "spell",
+  "_stats": {
+    "coreVersion": "12.331",
+    "systemId": null,
+    "systemVersion": null,
+    "createdTime": null,
+    "modifiedTime": null,
+    "lastModifiedBy": null,
+    "compendiumSource": null,
+    "duplicateSource": null
+  },
+  "system": {
+    "description": {
+      "@en": "Calling upon the god of fortune’s favor, you bring providence to all."
+    },
+    "notes": "",
+    "rules": {
+      "effect": {
+        "@en": "After successfully casting this spell, roll a [[/roll 1D6]] Chaos Die. Whatever the value is, place that many Fortune Points into the Fortune Pool. An equal number of gold crowns (gc), multiplied by three, disappear from your pockets. Every time you cast this Magick, roll [[/roll 3D6]] Chaos Die to determine whether you provoke Divine Punishment."
+      },
+      "criticalSuccess": {
+        "@en": "As above, but only one gold crown (gc) disappears for every Fortune Point."
+      },
+      "criticalFailure": {
+        "@en": "You were a fool to believe that you could bend the rules in your favor. Roll [[/roll 3D6]] Chaos Dice. Whatever the result is, you suffer Corruption equal to the result."
+      },
+      "reagents": {
+        "@en": "Special (expended)"
+      }
+    },
+    "tradition": "Divine (Nightfather)",
+    "principle": "Greater",
+    "distance": "Yourself",
+    "duration": "Instantaneous",
+    "castingTime": "1 min",
+    "castingCost": 0
+  },
+  "folder": null,
+  "sort": 0,
+  "ownership": {
+    "default": 0
+  },
+  "flags": {},
+  "_key": "!items!sDxDIhjq2hlfgXGq"
+}

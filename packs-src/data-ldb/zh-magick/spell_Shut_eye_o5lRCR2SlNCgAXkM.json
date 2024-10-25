@@ -1,0 +1,50 @@
+{
+  "_id": "o5lRCR2SlNCgAXkM",
+  "effects": [],
+  "img": "systems/zweihander/assets/icons/wizard-staff.svg",
+  "name": "Shut-eye",
+  "type": "spell",
+  "_stats": {
+    "coreVersion": "12.331",
+    "systemId": null,
+    "systemVersion": null,
+    "createdTime": null,
+    "modifiedTime": null,
+    "lastModifiedBy": null,
+    "compendiumSource": null,
+    "duplicateSource": null
+  },
+  "system": {
+    "description": {
+      "@en": "Between the lines of awake and asleep, in the haze that is wakeful slumber. After the darkness spreads, but before the sandman arrives, I hear your name leave my lips."
+    },
+    "notes": "",
+    "rules": {
+      "effect": {
+        "@en": "After successfully casting this spell, you immediately render one foe Helpless as they are knocked Prone. Your foe can successfully Resist with an Awareness Test."
+      },
+      "criticalSuccess": {
+        "@en": "As above, but your foe cannot Resist this Magick."
+      },
+      "criticalFailure": {
+        "@en": "You cannot seem to rest, despite what you do. You suffer from Sleep Deprivation for 24 hours."
+      },
+      "reagents": {
+        "@en": "A handful of sand poured onto the ground (expended)"
+      }
+    },
+    "tradition": "Generalist",
+    "principle": "Generalist",
+    "distance": "Any one person you can touch",
+    "duration": "[WB]+3 minutes",
+    "castingTime": "1 min",
+    "castingCost": 0
+  },
+  "folder": null,
+  "sort": 0,
+  "ownership": {
+    "default": 0
+  },
+  "flags": {},
+  "_key": "!items!o5lRCR2SlNCgAXkM"
+}

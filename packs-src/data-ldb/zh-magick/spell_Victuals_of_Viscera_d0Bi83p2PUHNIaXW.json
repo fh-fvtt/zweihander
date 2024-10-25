@@ -1,0 +1,50 @@
+{
+  "_id": "d0Bi83p2PUHNIaXW",
+  "effects": [],
+  "img": "systems/zweihander/assets/icons/wizard-staff.svg",
+  "name": "Victuals of Viscera",
+  "type": "spell",
+  "_stats": {
+    "coreVersion": "12.331",
+    "systemId": null,
+    "systemVersion": null,
+    "createdTime": null,
+    "modifiedTime": null,
+    "lastModifiedBy": null,
+    "compendiumSource": null,
+    "duplicateSource": null
+  },
+  "system": {
+    "description": {
+      "@en": "The innards of another is vivifying."
+    },
+    "notes": "",
+    "rules": {
+      "effect": {
+        "@en": "After successfully casting this spell, select a number of allies equal to your [WB]. They move one step up the Damage Condition Track positively. All those who ate the chitterlings and bung suffer 6 Corruption."
+      },
+      "criticalSuccess": {
+        "@en": "As above, but they do not suffer any Corruption whatsoever."
+      },
+      "criticalFailure": {
+        "@en": "The chitterlings are absolutely disgusting. If you do not drink the blood from your own Ancestry within 24 hours, you move one step down the Damage Condition Track negatively (but do not suffer an Injury due to it)."
+      },
+      "reagents": {
+        "@en": "Cooked chitterlings and bung made from your own Ancestry, eaten by others (expended)"
+      }
+    },
+    "tradition": "Covenant",
+    "principle": "Lesser",
+    "distance": "Any persons you can see",
+    "duration": "Instantaneous",
+    "castingTime": "1 min",
+    "castingCost": 0
+  },
+  "folder": null,
+  "sort": 0,
+  "ownership": {
+    "default": 0
+  },
+  "flags": {},
+  "_key": "!items!d0Bi83p2PUHNIaXW"
+}

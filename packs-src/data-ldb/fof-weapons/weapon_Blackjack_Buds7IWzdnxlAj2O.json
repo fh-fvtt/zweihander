@@ -1,0 +1,51 @@
+{
+  "_id": "Buds7IWzdnxlAj2O",
+  "effects": [],
+  "img": "systems/zweihander/assets/icons/baton.svg",
+  "name": "Blackjack",
+  "type": "weapon",
+  "_stats": {
+    "coreVersion": "12.331",
+    "systemId": null,
+    "systemVersion": null,
+    "createdTime": null,
+    "modifiedTime": null,
+    "lastModifiedBy": null,
+    "compendiumSource": null,
+    "duplicateSource": null
+  },
+  "system": {
+    "description": {
+      "@en": "<p>A blackjack is a small leather club favored by robbers. This little weapon is used to knock out an opponent quickly and quietly.</p>"
+    },
+    "notes": "",
+    "price": {
+      "bp": "6",
+      "gc": "0",
+      "ss": "0"
+    },
+    "encumbrance": 1,
+    "carried": true,
+    "weaponType": "Melee",
+    "equipped": false,
+    "associatedSkill": "Simple Melee",
+    "load": 0,
+    "handling": "One-handed",
+    "qualities": {
+      "value": "Pummeling, Silent, Slow",
+      "arrayOfValues": []
+    },
+    "distance": "Engaged",
+    "damage": {
+      "formula": "[CB] + (1+[#])d6x6",
+      "associatedPrimaryAttribute": "Agility"
+    }
+  },
+  "folder": null,
+  "sort": 0,
+  "ownership": {
+    "default": 0
+  },
+  "flags": {},
+  "_key": "!items!Buds7IWzdnxlAj2O"
+}

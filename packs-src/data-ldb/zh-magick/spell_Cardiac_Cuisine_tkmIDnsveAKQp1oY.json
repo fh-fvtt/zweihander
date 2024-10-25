@@ -1,0 +1,50 @@
+{
+  "_id": "tkmIDnsveAKQp1oY",
+  "effects": [],
+  "img": "systems/zweihander/assets/icons/wizard-staff.svg",
+  "name": "Cardiac Cuisine",
+  "type": "spell",
+  "_stats": {
+    "coreVersion": "12.331",
+    "systemId": null,
+    "systemVersion": null,
+    "createdTime": null,
+    "modifiedTime": null,
+    "lastModifiedBy": null,
+    "compendiumSource": null,
+    "duplicateSource": null
+  },
+  "system": {
+    "description": {
+      "@en": "After eating the heart of a fallen foe, you are invigorated by its raw strength."
+    },
+    "notes": "",
+    "rules": {
+      "effect": {
+        "@en": "After successfully casting this spell, add 3 to Total Damage results and an additional [[/roll 1D6]] Chaos Die when determining whether you inflict Injuries to your foes. At the end of the Duration, you suffer 3 Corruption."
+      },
+      "criticalSuccess": {
+        "@en": "As above, but triple the duration."
+      },
+      "criticalFailure": {
+        "@en": "Imbibing the heart, you immediately bowl over, growing sick. You instantly suffer [[/roll 1D10+1]] physical Peril and are left Defenseless for the spell’s Duration."
+      },
+      "reagents": {
+        "@en": "A salted chunk of a heart from your own Ancestry, consumed (expended)"
+      }
+    },
+    "tradition": "Covenant",
+    "principle": "Petty",
+    "distance": "Yourself",
+    "duration": "3+[WB] minutes",
+    "castingTime": "1 min",
+    "castingCost": 0
+  },
+  "folder": null,
+  "sort": 0,
+  "ownership": {
+    "default": 0
+  },
+  "flags": {},
+  "_key": "!items!tkmIDnsveAKQp1oY"
+}

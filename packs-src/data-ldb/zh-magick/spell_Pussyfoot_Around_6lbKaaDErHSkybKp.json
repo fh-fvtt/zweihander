@@ -1,0 +1,50 @@
+{
+  "_id": "6lbKaaDErHSkybKp",
+  "effects": [],
+  "img": "systems/zweihander/assets/icons/wizard-staff.svg",
+  "name": "Pussyfoot Around",
+  "type": "spell",
+  "_stats": {
+    "coreVersion": "12.331",
+    "systemId": null,
+    "systemVersion": null,
+    "createdTime": null,
+    "modifiedTime": null,
+    "lastModifiedBy": null,
+    "compendiumSource": null,
+    "duplicateSource": null
+  },
+  "system": {
+    "description": {
+      "@en": "You are slippery like water and quick as a cat. You are hard to catch and even when you are, you manage to slip away."
+    },
+    "notes": "",
+    "rules": {
+      "effect": {
+        "@en": "After successfully casting this spell, if you are caught while shadowing or hiding with a Stealth Test, you may reroll to generate a better result, but must accept the outcome. When you succeed at this Skill Test, those who originally found you completely ignore you for the spell’s Duration, forgetting that you were ever there."
+      },
+      "criticalSuccess": {
+        "@en": "As above, but triple the Duration."
+      },
+      "criticalFailure": {
+        "@en": "The price you paid to foolishly miscast this Magick wasn’t enough. Your god demands tribute. You must sacrifice one gold coin or else suffer 6 Corruption in turn."
+      },
+      "reagents": {
+        "@en": "One silver shilling, flipped over your shoulder (expended)"
+      }
+    },
+    "tradition": "Divine (Nightfather)",
+    "principle": "Lesser",
+    "distance": "Yourself",
+    "duration": "[WB]+6 minutes",
+    "castingTime": "1 min",
+    "castingCost": 0
+  },
+  "folder": null,
+  "sort": 0,
+  "ownership": {
+    "default": 0
+  },
+  "flags": {},
+  "_key": "!items!6lbKaaDErHSkybKp"
+}

@@ -1,0 +1,51 @@
+{
+  "_id": "PnaavdgdTJSGJXB1",
+  "effects": [],
+  "img": "systems/zweihander/assets/icons/scythe.svg",
+  "name": "Scythe",
+  "type": "weapon",
+  "_stats": {
+    "coreVersion": "12.331",
+    "systemId": null,
+    "systemVersion": null,
+    "createdTime": null,
+    "modifiedTime": null,
+    "lastModifiedBy": null,
+    "compendiumSource": null,
+    "duplicateSource": null
+  },
+  "system": {
+    "description": {
+      "@en": "<p>A massive curved blade at one end with a jagged pole on the other, the scythe is terrifying&nbsp;if used as a weapon. The scythe is also seen as a symbol of death &ndash; many students of Morticism, Necromancy and the Custodian revere them.</p>"
+    },
+    "notes": "",
+    "price": {
+      "bp": "0",
+      "gc": "0",
+      "ss": "4"
+    },
+    "encumbrance": 3,
+    "carried": true,
+    "weaponType": "Bladed",
+    "equipped": false,
+    "associatedSkill": "Simple Melee",
+    "load": 0,
+    "handling": "Two-handed",
+    "qualities": {
+      "value": "Powerful, Slow, Vicious, Weak",
+      "arrayOfValues": []
+    },
+    "distance": "Engaged",
+    "damage": {
+      "formula": "[CB] + 1 + (1+[#])d6x6",
+      "associatedPrimaryAttribute": "Combat"
+    }
+  },
+  "folder": null,
+  "sort": 0,
+  "ownership": {
+    "default": 0
+  },
+  "flags": {},
+  "_key": "!items!PnaavdgdTJSGJXB1"
+}

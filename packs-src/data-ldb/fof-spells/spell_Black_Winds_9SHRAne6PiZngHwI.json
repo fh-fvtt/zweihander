@@ -1,0 +1,50 @@
+{
+  "_id": "9SHRAne6PiZngHwI",
+  "effects": [],
+  "img": "systems/zweihander/assets/icons/concentric-crescents.svg",
+  "name": "Black Winds",
+  "type": "spell",
+  "_stats": {
+    "coreVersion": "12.331",
+    "systemId": null,
+    "systemVersion": null,
+    "createdTime": null,
+    "modifiedTime": null,
+    "lastModifiedBy": null,
+    "compendiumSource": null,
+    "duplicateSource": null
+  },
+  "system": {
+    "description": {
+      "@en": "<p>I call upon you, oh spirits, to keep mine enemies at bay!</p>"
+    },
+    "notes": "",
+    "rules": {
+      "effect": {
+        "@en": "<p>After successfully casting (and those caught in a Cone Template cannot or fail to Resist using Coordination), they are pushed backward 3+[WB] yards.</p>"
+      },
+      "criticalSuccess": {
+        "@en": "They also suffer [[/roll 1D10+1]] Peril."
+      },
+      "criticalFailure": {
+        "@en": "The dirt whirls above you, and knocks you and everyone around you in a Burst Template off their feet Prone. Everyone caught in a Burst Template suffers [[/roll 2D10+1]] Peril."
+      },
+      "reagents": {
+        "@en": "Grave dirt gathered from the recently buried dead, thrown overhead"
+      }
+    },
+    "tradition": "Black & White",
+    "principle": "Basic Tier",
+    "distance": "Cone Template, extending from you",
+    "duration": "Instantaneous",
+    "castingTime": "1 Minute",
+    "castingCost": 1
+  },
+  "folder": null,
+  "sort": 0,
+  "ownership": {
+    "default": 0
+  },
+  "flags": {},
+  "_key": "!items!9SHRAne6PiZngHwI"
+}

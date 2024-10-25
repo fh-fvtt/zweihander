@@ -1,0 +1,50 @@
+{
+  "_id": "5DfDlmiMmuk5tuUe",
+  "effects": [],
+  "img": "systems/zweihander/assets/icons/spear-hook.svg",
+  "name": "Atlatl",
+  "type": "weapon",
+  "_stats": {
+    "coreVersion": "12.331",
+    "systemId": null,
+    "systemVersion": null,
+    "createdTime": null,
+    "modifiedTime": null,
+    "lastModifiedBy": null,
+    "compendiumSource": null,
+    "duplicateSource": null
+  },
+  "system": {
+    "description": {
+      "@en": "<p>A weapon that uses levers to throw a javelin. The atlatl has a shaft with a cup at one end in which the butt of a javelin is placed. It is a favored weapon of Indigenous cultures.</p>"
+    },
+    "notes": "",
+    "price": {
+      "bp": "7",
+      "gc": "0",
+      "ss": "0"
+    },
+    "encumbrance": 1,
+    "carried": true,
+    "weaponType": "Ranged",
+    "equipped": false,
+    "associatedSkill": "Martial Ranged",
+    "load": 1,
+    "handling": "One-handed",
+    "qualities": {
+      "value": "Silent, Throwing",
+      "arrayOfValues": []
+    },
+    "distance": "6 + [PB] yards",
+    "damage": {
+      "formula": "[CB] + (1+[#])d6x6"
+    }
+  },
+  "folder": null,
+  "sort": 0,
+  "ownership": {
+    "default": 0
+  },
+  "flags": {},
+  "_key": "!items!5DfDlmiMmuk5tuUe"
+}

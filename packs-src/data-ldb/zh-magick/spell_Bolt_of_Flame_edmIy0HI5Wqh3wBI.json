@@ -1,0 +1,50 @@
+{
+  "_id": "edmIy0HI5Wqh3wBI",
+  "effects": [],
+  "img": "systems/zweihander/assets/icons/bolt-of-flame.svg",
+  "name": "Bolt of Flame",
+  "type": "spell",
+  "_stats": {
+    "coreVersion": "12.331",
+    "systemId": null,
+    "systemVersion": null,
+    "createdTime": null,
+    "modifiedTime": null,
+    "lastModifiedBy": null,
+    "compendiumSource": null,
+    "duplicateSource": null
+  },
+  "system": {
+    "description": {
+      "@en": "With a flick of a match, a searing bolt of fire dashes towards your foe."
+    },
+    "notes": "",
+    "rules": {
+      "effect": {
+        "@en": "After successfully casting this spell, one foe immediately suffers [[/roll 1D10]]+[WB] in Damage from fire. You can inflict Injuries with this Magick, but they are set On Fire instead."
+      },
+      "criticalSuccess": {
+        "@en": "As above, but your foes are automatically set On Fire."
+      },
+      "criticalFailure": {
+        "@en": "The searing bolt transforms into a frigid boomerang of ice, arcing back to strike you instead! As you are struck, you are frozen in place for a number of minutes equal to your [WB] and left Helpless."
+      },
+      "reagents": {
+        "@en": "A match, which must be struck (expended)"
+      }
+    },
+    "tradition": "Arcane (Pyromancy)",
+    "principle": "Petty",
+    "distance": "Any one person you can see",
+    "duration": "Instantaneous",
+    "castingTime": "1 min",
+    "castingCost": 0
+  },
+  "folder": null,
+  "sort": 0,
+  "ownership": {
+    "default": 0
+  },
+  "flags": {},
+  "_key": "!items!edmIy0HI5Wqh3wBI"
+}

@@ -1,0 +1,51 @@
+{
+  "_id": "AafmhAUqtJOTfKgL",
+  "effects": [],
+  "img": "systems/zweihander/assets/icons/whiplash.svg",
+  "name": "Urumi",
+  "type": "weapon",
+  "_stats": {
+    "coreVersion": "12.331",
+    "systemId": null,
+    "systemVersion": null,
+    "createdTime": null,
+    "modifiedTime": null,
+    "lastModifiedBy": null,
+    "compendiumSource": null,
+    "duplicateSource": null
+  },
+  "system": {
+    "description": {
+      "@en": "<p>These strange swords are not only flexible, but downright floppy. When swung, it acts like a whip &ndash; one shod entirely in metal, and with two deadly edges. It is generally worn like a belt when not in use, making it easy to conceal.</p>"
+    },
+    "notes": "",
+    "price": {
+      "bp": "0",
+      "gc": "2",
+      "ss": "0"
+    },
+    "encumbrance": 2,
+    "carried": true,
+    "weaponType": "Bladed",
+    "equipped": false,
+    "associatedSkill": "Martial Melee",
+    "load": 0,
+    "handling": "One-handed",
+    "qualities": {
+      "value": "Distraction, Fast, Weak",
+      "arrayOfValues": []
+    },
+    "distance": "Engaged",
+    "damage": {
+      "formula": "[CB] + (1+[#])d6x6",
+      "associatedPrimaryAttribute": "Combat"
+    }
+  },
+  "folder": null,
+  "sort": 0,
+  "ownership": {
+    "default": 0
+  },
+  "flags": {},
+  "_key": "!items!AafmhAUqtJOTfKgL"
+}

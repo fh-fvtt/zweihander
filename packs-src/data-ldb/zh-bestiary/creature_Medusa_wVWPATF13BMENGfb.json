@@ -1,0 +1,978 @@
+{
+  "_id": "wVWPATF13BMENGfb",
+  "effects": [],
+  "img": "systems/zweihander/assets/tokens-border/medusa.webp",
+  "items": [
+    {
+      "_id": "sK1VHps3Q8Cfool2",
+      "effects": [],
+      "img": "systems/zweihander/assets/icons/annexation.svg",
+      "name": "Ambush Tactics",
+      "system": {
+        "description": {
+          "@en": ""
+        },
+        "notes": "",
+        "rules": {
+          "effect": {
+            "@en": "These creatures roll 2D10 to determine Initiative."
+          }
+        }
+      },
+      "type": "trait"
+    },
+    {
+      "_id": "DVsFVT5A6enX8pL9",
+      "effects": [],
+      "img": "systems/zweihander/assets/icons/sing.svg",
+      "name": "Captivating Cry",
+      "system": {
+        "description": {
+          "@en": ""
+        },
+        "notes": "",
+        "rules": {
+          "effect": {
+            "@en": "When foes can hear this creature, they must Resist with a successful Resolve Test or be drawn towards the sound. Should they enter a dangerous area to find the sound, they can attempt another Resolve Test. Once they are able to visually see the creature, the Captivating Cry’s effects end."
+          }
+        }
+      },
+      "type": "trait"
+    },
+    {
+      "_id": "AZ9ykQqNULz7dqUm",
+      "effects": [],
+      "img": "systems/zweihander/assets/icons/squid-head.svg",
+      "name": "Chthonian Dweller",
+      "system": {
+        "description": {
+          "@en": ""
+        },
+        "notes": "",
+        "rules": {
+          "effect": {
+            "@en": "These creatures do not need to breathe and are immune to Chokehold. In addition, they can burrow or swim at the same rate of Movement as they can on foot. Finally, they may flip the results to succeed at Resolve Tests."
+          }
+        }
+      },
+      "type": "trait"
+    },
+    {
+      "_id": "jbt9RrgyQunPC5S3",
+      "effects": [],
+      "img": "systems/zweihander/assets/icons/hunter-eyes.svg",
+      "name": "Dark Sense",
+      "system": {
+        "description": {
+          "@en": ""
+        },
+        "notes": "",
+        "rules": {
+          "effect": {
+            "@en": "These creatures can see in the dark."
+          }
+        }
+      },
+      "type": "trait"
+    },
+    {
+      "_id": "3Ug7PT3QuOG0dyFn",
+      "effects": [],
+      "img": "systems/zweihander/assets/icons/bleeding-eye.svg",
+      "name": "Eyes Wide Shut",
+      "system": {
+        "description": {
+          "@en": ""
+        },
+        "notes": "",
+        "rules": {
+          "effect": {
+            "@en": "When this creature’s eyes are successfully struck with a Called Shot (otherwise treated as their head), they lose their ability to use Petrifying Gaze."
+          }
+        }
+      },
+      "type": "trait"
+    },
+    {
+      "_id": "6XQ342g3Sbzwu1rb",
+      "effects": [],
+      "img": "systems/zweihander/assets/icons/wingfoot.svg",
+      "name": "Fast on Their Feet",
+      "system": {
+        "description": {
+          "@en": ""
+        },
+        "notes": "",
+        "rules": {
+          "effect": {
+            "@en": "These creatures reduce all Movement Actions by 1 AP (to a minimum of 1 AP). They can also Dodge both melee and ranged weapons."
+          }
+        }
+      },
+      "type": "trait"
+    },
+    {
+      "_id": "ipFEoJjjBXNbONOm",
+      "effects": [],
+      "img": "systems/zweihander/assets/icons/suckered-tentacle.svg",
+      "name": "Foul Mutation",
+      "system": {
+        "description": {
+          "@en": ""
+        },
+        "notes": "",
+        "rules": {
+          "effect": {
+            "@en": "When these creatures are encountered, roll 1D6 Chaos Dice if of Basic Risk Factor; 2D6 Chaos Dice if of Intermediate Risk Factor; 3D6 if of Advanced Risk Factor; 4D6 if of Elite Risk Factor. For every face ‘6’, add one Taint of Chaos to the creature."
+          }
+        }
+      },
+      "type": "trait"
+    },
+    {
+      "_id": "SZgO4lpmgTFU05V7",
+      "effects": [],
+      "img": "systems/zweihander/assets/icons/surrounded-eye.svg",
+      "name": "Give Me Your Eyes",
+      "system": {
+        "description": {
+          "@en": ""
+        },
+        "notes": "",
+        "rules": {
+          "effect": {
+            "@en": "When these creatures inflict a Moderate Injury, it is always a Black Eye. When they inflict a Serious Injury, it is always Head Trauma. Finally, when they inflict a Grievous Injury, it is always a Vitreous Hemorrhage."
+          }
+        }
+      },
+      "type": "trait"
+    },
+    {
+      "_id": "cJbFNJytYMxfNPD2",
+      "effects": [],
+      "img": "systems/zweihander/assets/icons/axe-swing.svg",
+      "name": "I Got Axe for You",
+      "system": {
+        "description": {
+          "@en": ""
+        },
+        "notes": "",
+        "rules": {
+          "effect": {
+            "@en": "After this creature makes an Attack Action with a melee weapon, they can immediately make an Opportunity Attack with any one-handed ranged weapon with the Throwing Quality on the same Turn."
+          }
+        }
+      },
+      "type": "trait"
+    },
+    {
+      "_id": "e6wmZCkNNT2VpHdH",
+      "effects": [],
+      "img": "systems/zweihander/assets/icons/medusa-head.svg",
+      "name": "Petrifying Gaze",
+      "system": {
+        "description": {
+          "@en": ""
+        },
+        "notes": "",
+        "rules": {
+          "effect": {
+            "@en": "When foes are Engaged with this creature (and the creature can see them), they must Resist with a successful Awareness Test or be Petrified. While Petrified, they are left Helpless and unconscious. Petrification lasts until the heart of the creature that caused the Petrification is pulverized into a bloody concoction and poured over the victim with a successful Alchemy Test."
+          }
+        }
+      },
+      "type": "trait"
+    },
+    {
+      "_id": "aQb57vLAyDZtXts8",
+      "effects": [],
+      "img": "systems/zweihander/assets/icons/screaming.svg",
+      "name": "Sanity-Blasting",
+      "system": {
+        "description": {
+          "@en": ""
+        },
+        "notes": "",
+        "rules": {
+          "effect": {
+            "@en": "When first encountered, these creatures provoke one of the three brands of Madness; if of Basic Risk Factor, they provoke Stress; if of Intermediate Risk Factor, they provoke Fear; if of Advanced or Elite Risk Factor, they provoke Horror."
+          }
+        }
+      },
+      "type": "trait"
+    },
+    {
+      "_id": "iIePOvYgsWtHaZ18",
+      "data": {
+        "associatedSkill": "Simple Melee",
+        "damage": {
+          "formula": "[AB] + 1 + (1+[#])d6x6"
+        },
+        "description": {
+          "@en": "<p>Arm of choice for both cavalry and to give airs that you know what you&rsquo;re doing. Many Veterans hang their sabre in honor of the blood and sanity they shed for whatever nameless count marched them off to war.</p>"
+        },
+        "distance": "Engaged",
+        "encumbrance": 1,
+        "equipped": false,
+        "handling": "One-handed",
+        "load": 0,
+        "notes": "",
+        "price": {
+          "bp": "0",
+          "gc": "5",
+          "ss": "0"
+        },
+        "qualities": {
+          "arrayOfValues": [],
+          "value": "Fast, Finesse, Weak"
+        },
+        "weaponType": "Bladed"
+      },
+      "effects": [],
+      "img": "systems/zweihander/assets/icons/stiletto.svg",
+      "name": "Rapier",
+      "type": "weapon"
+    },
+    {
+      "_id": "elBfh7f80PwIwXAu",
+      "data": {
+        "associatedSkill": "Martial Ranged",
+        "damage": {
+          "formula": "[AB] + 2 + (1+[#])d6x6"
+        },
+        "description": {
+          "@en": "Used in militias for its great range, they’re entirely worthless in any close encounter... which is why archers always carry a backup knife."
+        },
+        "distance": "12 + [PB] yards",
+        "encumbrance": 3,
+        "equipped": false,
+        "handling": "Two-handed",
+        "load": 2,
+        "notes": "",
+        "price": {
+          "bp": "0",
+          "gc": "7",
+          "ss": "0"
+        },
+        "qualities": {
+          "arrayOfValues": [],
+          "value": "Fast, Finesse"
+        },
+        "weaponType": "Missile"
+      },
+      "effects": [],
+      "img": "systems/zweihander/assets/icons/pocket-bow.svg",
+      "name": "Composite bow",
+      "type": "weapon"
+    },
+    {
+      "_id": "013qebwwR0UsPJW3",
+      "data": {
+        "associatedPrimaryAttribute": "Intelligence",
+        "description": {
+          "@en": ""
+        },
+        "notes": "",
+        "requiresTraining": true
+      },
+      "effects": [],
+      "img": "systems/zweihander/assets/icons/skills.svg",
+      "name": "Alchemy",
+      "type": "skill"
+    },
+    {
+      "_id": "09BoIxH6f7X0JR7D",
+      "data": {
+        "associatedPrimaryAttribute": "Fellowship",
+        "description": {
+          "@en": ""
+        },
+        "notes": "",
+        "requiresTraining": true
+      },
+      "effects": [],
+      "img": "systems/zweihander/assets/icons/skills.svg",
+      "name": "Leadership",
+      "type": "skill"
+    },
+    {
+      "_id": "0H1aT1HQINq8euom",
+      "data": {
+        "associatedPrimaryAttribute": "Brawn",
+        "description": {
+          "@en": ""
+        },
+        "notes": "",
+        "requiresTraining": true
+      },
+      "effects": [],
+      "img": "systems/zweihander/assets/icons/skills.svg",
+      "name": "Drive",
+      "type": "skill"
+    },
+    {
+      "_id": "3KDvQ8zcNOxrcZIT",
+      "data": {
+        "associatedPrimaryAttribute": "Willpower",
+        "description": {
+          "@en": ""
+        },
+        "notes": "",
+        "requiresTraining": true
+      },
+      "effects": [],
+      "img": "systems/zweihander/assets/icons/skills.svg",
+      "name": "Incantation",
+      "type": "skill"
+    },
+    {
+      "_id": "4EXrIhf6XL3cC8YW",
+      "data": {
+        "associatedPrimaryAttribute": "Agility",
+        "description": {
+          "@en": ""
+        },
+        "notes": "",
+        "requiresTraining": true
+      },
+      "effects": [],
+      "img": "systems/zweihander/assets/icons/skills.svg",
+      "name": "Ride",
+      "type": "skill"
+    },
+    {
+      "_id": "53GCwqszF0yw3Evx",
+      "data": {
+        "associatedPrimaryAttribute": "Intelligence",
+        "description": {
+          "@en": ""
+        },
+        "notes": "",
+        "requiresTraining": true
+      },
+      "effects": [],
+      "img": "systems/zweihander/assets/icons/skills.svg",
+      "name": "Heal",
+      "type": "skill"
+    },
+    {
+      "_id": "6clcPZpa4nmW37WE",
+      "data": {
+        "associatedPrimaryAttribute": "Fellowship",
+        "description": {
+          "@en": ""
+        },
+        "notes": "",
+        "requiresTraining": true
+      },
+      "effects": [],
+      "img": "systems/zweihander/assets/icons/skills.svg",
+      "name": "Handle Animal",
+      "type": "skill"
+    },
+    {
+      "_id": "7nFbNzvVCTXOPOJP",
+      "data": {
+        "associatedPrimaryAttribute": "Brawn",
+        "description": {
+          "@en": ""
+        },
+        "notes": "",
+        "requiresTraining": false
+      },
+      "effects": [],
+      "img": "systems/zweihander/assets/icons/skills.svg",
+      "name": "Intimidate",
+      "type": "skill"
+    },
+    {
+      "_id": "DUaQ3tJnvJT7kSv1",
+      "data": {
+        "associatedPrimaryAttribute": "Intelligence",
+        "description": {
+          "@en": ""
+        },
+        "notes": "",
+        "requiresTraining": true
+      },
+      "effects": [],
+      "img": "systems/zweihander/assets/icons/skills.svg",
+      "name": "Warfare",
+      "type": "skill"
+    },
+    {
+      "_id": "Flo1wDWXkfgHgmSC",
+      "data": {
+        "associatedPrimaryAttribute": "Intelligence",
+        "description": {
+          "@en": ""
+        },
+        "notes": "",
+        "requiresTraining": true
+      },
+      "effects": [],
+      "img": "systems/zweihander/assets/icons/skills.svg",
+      "name": "Navigation",
+      "type": "skill"
+    },
+    {
+      "_id": "ISOWU2LXU4UStMlM",
+      "data": {
+        "associatedPrimaryAttribute": "Combat",
+        "description": {
+          "@en": ""
+        },
+        "notes": "",
+        "requiresTraining": false
+      },
+      "effects": [],
+      "img": "systems/zweihander/assets/icons/skills.svg",
+      "name": "Simple Melee",
+      "type": "skill"
+    },
+    {
+      "_id": "Mxz4jZ5qVxfTt21c",
+      "data": {
+        "associatedPrimaryAttribute": "Intelligence",
+        "description": {
+          "@en": ""
+        },
+        "notes": "",
+        "requiresTraining": true
+      },
+      "effects": [],
+      "img": "systems/zweihander/assets/icons/skills.svg",
+      "name": "Counterfeit",
+      "type": "skill"
+    },
+    {
+      "_id": "NcUHZKUfmCZzifrC",
+      "data": {
+        "associatedPrimaryAttribute": "Fellowship",
+        "description": {
+          "@en": ""
+        },
+        "notes": "",
+        "requiresTraining": true
+      },
+      "effects": [],
+      "img": "systems/zweihander/assets/icons/skills.svg",
+      "name": "Disguise",
+      "type": "skill"
+    },
+    {
+      "_id": "O9q1tMNrfA7yL1Wc",
+      "data": {
+        "associatedPrimaryAttribute": "Willpower",
+        "description": {
+          "@en": ""
+        },
+        "notes": "",
+        "requiresTraining": false
+      },
+      "effects": [],
+      "img": "systems/zweihander/assets/icons/skills.svg",
+      "name": "Resolve",
+      "type": "skill"
+    },
+    {
+      "_id": "PeqUxOLue5z66RkH",
+      "data": {
+        "associatedPrimaryAttribute": "Brawn",
+        "description": {
+          "@en": ""
+        },
+        "notes": "",
+        "requiresTraining": false
+      },
+      "effects": [],
+      "img": "systems/zweihander/assets/icons/skills.svg",
+      "name": "Athletics",
+      "type": "skill"
+    },
+    {
+      "_id": "RS3JSDoEMtQ9g9ci",
+      "data": {
+        "associatedPrimaryAttribute": "Agility",
+        "description": {
+          "@en": ""
+        },
+        "notes": "",
+        "requiresTraining": true
+      },
+      "effects": [],
+      "img": "systems/zweihander/assets/icons/skills.svg",
+      "name": "Pilot",
+      "type": "skill"
+    },
+    {
+      "_id": "UpCT6nM1pDrrwDNb",
+      "data": {
+        "associatedPrimaryAttribute": "Perception",
+        "description": {
+          "@en": ""
+        },
+        "notes": "",
+        "requiresTraining": false
+      },
+      "effects": [],
+      "img": "systems/zweihander/assets/icons/skills.svg",
+      "name": "Scrutinize",
+      "type": "skill"
+    },
+    {
+      "_id": "UviSlLkTASDHsfWE",
+      "data": {
+        "associatedPrimaryAttribute": "Intelligence",
+        "description": {
+          "@en": ""
+        },
+        "notes": "",
+        "requiresTraining": false
+      },
+      "effects": [],
+      "img": "systems/zweihander/assets/icons/skills.svg",
+      "name": "Folklore",
+      "type": "skill"
+    },
+    {
+      "_id": "VvGLd58xqVsauasU",
+      "data": {
+        "associatedPrimaryAttribute": "Agility",
+        "description": {
+          "@en": ""
+        },
+        "notes": "",
+        "requiresTraining": true
+      },
+      "effects": [],
+      "img": "systems/zweihander/assets/icons/skills.svg",
+      "name": "Skulduggery",
+      "type": "skill"
+    },
+    {
+      "_id": "WrVlpX7sExHC3Vhz",
+      "data": {
+        "associatedPrimaryAttribute": "Intelligence",
+        "description": {
+          "@en": ""
+        },
+        "notes": "",
+        "requiresTraining": true
+      },
+      "effects": [],
+      "img": "systems/zweihander/assets/icons/skills.svg",
+      "name": "Education",
+      "type": "skill"
+    },
+    {
+      "_id": "YVo0t79ZC3uNCpb6",
+      "data": {
+        "associatedPrimaryAttribute": "Combat",
+        "description": {
+          "@en": ""
+        },
+        "notes": "",
+        "requiresTraining": true
+      },
+      "effects": [],
+      "img": "systems/zweihander/assets/icons/skills.svg",
+      "name": "Martial Melee",
+      "type": "skill"
+    },
+    {
+      "_id": "aG2PyFqhpBm2yfuN",
+      "data": {
+        "associatedPrimaryAttribute": "Fellowship",
+        "description": {
+          "@en": ""
+        },
+        "notes": "",
+        "requiresTraining": false
+      },
+      "effects": [],
+      "img": "systems/zweihander/assets/icons/skills.svg",
+      "name": "Bargain",
+      "type": "skill"
+    },
+    {
+      "_id": "b0AdxogFI1ePq069",
+      "data": {
+        "associatedPrimaryAttribute": "Intelligence",
+        "description": {
+          "@en": ""
+        },
+        "notes": "",
+        "requiresTraining": false
+      },
+      "effects": [],
+      "img": "systems/zweihander/assets/icons/skills.svg",
+      "name": "Gamble",
+      "type": "skill"
+    },
+    {
+      "_id": "cOXHjdhyXZFIOrPR",
+      "data": {
+        "associatedPrimaryAttribute": "Perception",
+        "description": {
+          "@en": ""
+        },
+        "notes": "",
+        "requiresTraining": false
+      },
+      "effects": [],
+      "img": "systems/zweihander/assets/icons/skills.svg",
+      "name": "Awareness",
+      "type": "skill"
+    },
+    {
+      "_id": "cOgVWBkWyhZB09YG",
+      "data": {
+        "associatedPrimaryAttribute": "Willpower",
+        "description": {
+          "@en": ""
+        },
+        "notes": "",
+        "requiresTraining": true
+      },
+      "effects": [],
+      "img": "systems/zweihander/assets/icons/skills.svg",
+      "name": "Tradecraft",
+      "type": "skill"
+    },
+    {
+      "_id": "dZJl4nmYtNjaeXgy",
+      "data": {
+        "associatedPrimaryAttribute": "Fellowship",
+        "description": {
+          "@en": ""
+        },
+        "notes": "",
+        "requiresTraining": false
+      },
+      "effects": [],
+      "img": "systems/zweihander/assets/icons/skills.svg",
+      "name": "Charm",
+      "type": "skill"
+    },
+    {
+      "_id": "jqobIe82ZBGOZmYi",
+      "data": {
+        "associatedPrimaryAttribute": "Perception",
+        "description": {
+          "@en": ""
+        },
+        "notes": "",
+        "requiresTraining": false
+      },
+      "effects": [],
+      "img": "systems/zweihander/assets/icons/skills.svg",
+      "name": "Eavesdrop",
+      "type": "skill"
+    },
+    {
+      "_id": "lPfwfPHspXokC0Ao",
+      "data": {
+        "associatedPrimaryAttribute": "Combat",
+        "description": {
+          "@en": ""
+        },
+        "notes": "",
+        "requiresTraining": true
+      },
+      "effects": [],
+      "img": "systems/zweihander/assets/icons/skills.svg",
+      "name": "Martial Ranged",
+      "type": "skill"
+    },
+    {
+      "_id": "m1VAGBmW3pjriFZr",
+      "data": {
+        "associatedPrimaryAttribute": "Perception",
+        "description": {
+          "@en": ""
+        },
+        "notes": "",
+        "requiresTraining": false
+      },
+      "effects": [],
+      "img": "systems/zweihander/assets/icons/skills.svg",
+      "name": "Survival",
+      "type": "skill"
+    },
+    {
+      "_id": "nXt5D0UEapcq2cAM",
+      "data": {
+        "associatedPrimaryAttribute": "Agility",
+        "description": {
+          "@en": ""
+        },
+        "notes": "",
+        "requiresTraining": false
+      },
+      "effects": [],
+      "img": "systems/zweihander/assets/icons/skills.svg",
+      "name": "Stealth",
+      "type": "skill"
+    },
+    {
+      "_id": "r6VL5isi1OFxLS96",
+      "data": {
+        "associatedPrimaryAttribute": "Fellowship",
+        "description": {
+          "@en": ""
+        },
+        "notes": "",
+        "requiresTraining": false
+      },
+      "effects": [],
+      "img": "systems/zweihander/assets/icons/skills.svg",
+      "name": "Rumor",
+      "type": "skill"
+    },
+    {
+      "_id": "s4hMs5SsiR6uhNY8",
+      "data": {
+        "associatedPrimaryAttribute": "Brawn",
+        "description": {
+          "@en": ""
+        },
+        "notes": "",
+        "requiresTraining": false
+      },
+      "effects": [],
+      "img": "systems/zweihander/assets/icons/skills.svg",
+      "name": "Toughness",
+      "type": "skill"
+    },
+    {
+      "_id": "tUlGNzZEfpfrh1wN",
+      "data": {
+        "associatedPrimaryAttribute": "Fellowship",
+        "description": {
+          "@en": ""
+        },
+        "notes": "",
+        "requiresTraining": false
+      },
+      "effects": [],
+      "img": "systems/zweihander/assets/icons/skills.svg",
+      "name": "Guile",
+      "type": "skill"
+    },
+    {
+      "_id": "uwxLb12nJrZwmheT",
+      "data": {
+        "associatedPrimaryAttribute": "Agility",
+        "description": {
+          "@en": ""
+        },
+        "notes": "",
+        "requiresTraining": false
+      },
+      "effects": [],
+      "img": "systems/zweihander/assets/icons/skills.svg",
+      "name": "Coordination",
+      "type": "skill"
+    },
+    {
+      "_id": "vRWa2nVsYWzbuSo1",
+      "data": {
+        "associatedPrimaryAttribute": "Willpower",
+        "description": {
+          "@en": ""
+        },
+        "notes": "",
+        "requiresTraining": true
+      },
+      "effects": [],
+      "img": "systems/zweihander/assets/icons/skills.svg",
+      "name": "Interrogation",
+      "type": "skill"
+    },
+    {
+      "_id": "z2GfrhmRDmQ4luLz",
+      "data": {
+        "associatedPrimaryAttribute": "Combat",
+        "description": {
+          "@en": ""
+        },
+        "notes": "",
+        "requiresTraining": false
+      },
+      "effects": [],
+      "img": "systems/zweihander/assets/icons/skills.svg",
+      "name": "Simple Ranged",
+      "type": "skill"
+    }
+  ],
+  "name": "Medusa",
+  "prototypeToken": {
+    "actorLink": false,
+    "alpha": 1,
+    "bar1": {
+      "attribute": "stats.secondaryAttributes.damageCurrent"
+    },
+    "bar2": {
+      "attribute": "stats.secondaryAttributes.perilCurrent"
+    },
+    "detectionModes": [],
+    "displayBars": 0,
+    "displayName": 0,
+    "disposition": -1,
+    "flags": {},
+    "height": 1,
+    "light": {
+      "alpha": 0.5,
+      "angle": 360,
+      "animation": {
+        "intensity": 5,
+        "reverse": false,
+        "speed": 5,
+        "type": null
+      },
+      "attenuation": 0.5,
+      "bright": 0,
+      "color": null,
+      "coloration": 1,
+      "contrast": 0,
+      "darkness": {
+        "max": 1,
+        "min": 0
+      },
+      "dim": 0,
+      "luminosity": 0.5,
+      "saturation": 0,
+      "shadows": 0
+    },
+    "lockRotation": false,
+    "name": "Medusa",
+    "randomImg": false,
+    "rotation": 0,
+    "sight": {
+      "angle": 360,
+      "attenuation": 0.1,
+      "brightness": 0,
+      "color": null,
+      "contrast": 0,
+      "enabled": false,
+      "range": null,
+      "saturation": 0,
+      "visionMode": "basic"
+    },
+    "texture": {
+      "offsetX": 0,
+      "offsetY": 0,
+      "rotation": 0,
+      "scaleX": 1.5,
+      "scaleY": 1.5,
+      "src": "systems/zweihander/assets/tokens-border/medusa.webp",
+      "tint": null
+    },
+    "width": 1
+  },
+  "system": {
+    "currency": {},
+    "description": {
+      "@en": "Arrows (9), Composite bow, Mask of golden coins, Medusa’s head, Medusa’s heart, Quilted armor, Rapier"
+    },
+    "details": {
+      "classification": "Mutants",
+      "influences": "",
+      "riskFactor": {
+        "notch": "2",
+        "value": "2"
+      },
+      "role": "",
+      "size": "2"
+    },
+    "flavor": {},
+    "languages": [],
+    "notes": "",
+    "skillRanks": {
+      "Athletics": 2,
+      "Awareness": 2,
+      "Charm": 3,
+      "Coordination": 3,
+      "Disguise": 3,
+      "Folklore": 1,
+      "Guile": 2,
+      "Interrogation": 2,
+      "Intimidate": 3,
+      "Martial Melee": 0,
+      "Martial Ranged": 3,
+      "Resolve": 2,
+      "Scrutinize": 1,
+      "Simple Melee": 2
+    },
+    "stats": {
+      "manualMode": true,
+      "primaryAttributes": {
+        "agility": {
+          "bonusAdvances": 7,
+          "value": 45
+        },
+        "brawn": {
+          "bonusAdvances": 2,
+          "value": 50
+        },
+        "combat": {
+          "bonusAdvances": 0,
+          "value": 45
+        },
+        "fellowship": {
+          "bonusAdvances": 0,
+          "value": 40
+        },
+        "intelligence": {
+          "bonusAdvances": 0,
+          "value": 35
+        },
+        "perception": {
+          "bonusAdvances": 0,
+          "value": 40
+        },
+        "willpower": {
+          "bonusAdvances": 2,
+          "value": 40
+        }
+      },
+      "secondaryAttributes": {
+        "damageCurrent": {
+          "max": 5,
+          "value": 5
+        },
+        "damageThreshold": {
+          "value": 8
+        },
+        "dodge": {
+          "associatedSkill": "Coordination",
+          "value": 75
+        },
+        "initiative": {
+          "value": 7
+        },
+        "magick": {
+          "associatedSkill": "Incantation"
+        },
+        "movement": {
+          "fly": 17,
+          "value": 14
+        },
+        "parry": {
+          "associatedSkill": "Simple Melee",
+          "value": null
+        },
+        "perilCurrent": {
+          "max": 5,
+          "value": 5
+        },
+        "perilThreshold": {
+          "value": 10
+        }
+      }
+    }
+  },
+  "type": "creature",
+  "_key": "!items!wVWPATF13BMENGfb"
+}

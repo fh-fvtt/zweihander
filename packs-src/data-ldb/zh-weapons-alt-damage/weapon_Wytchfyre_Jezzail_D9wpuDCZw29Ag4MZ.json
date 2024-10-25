@@ -1,0 +1,51 @@
+{
+  "_id": "D9wpuDCZw29Ag4MZ",
+  "effects": [],
+  "img": "systems/zweihander/assets/icons/winchester-rifle.svg",
+  "name": "Wytchfyre Jezzail",
+  "type": "weapon",
+  "_stats": {
+    "coreVersion": "12.331",
+    "systemId": null,
+    "systemVersion": null,
+    "createdTime": null,
+    "modifiedTime": null,
+    "lastModifiedBy": null,
+    "compendiumSource": null,
+    "duplicateSource": null
+  },
+  "system": {
+    "description": {
+      "@en": "<p>A long range rifle used by the Skrzzak, the jezzail shoots a fast and accurate screaming ball of Wytchfyre that explodes in green flames upon impact.</p>"
+    },
+    "notes": "",
+    "price": {
+      "bp": "0",
+      "gc": "0",
+      "ss": "0"
+    },
+    "encumbrance": 4,
+    "carried": true,
+    "weaponType": "Wytch- Science",
+    "equipped": false,
+    "associatedSkill": "Martial Ranged",
+    "load": 4,
+    "handling": "One-handed",
+    "qualities": {
+      "value": "Finesse, Gunpowder, Volatile, Wytchfyre",
+      "arrayOfValues": []
+    },
+    "distance": "[PB]+12 yards",
+    "damage": {
+      "formula": "[AB] + (1+[#])d6x1&6+2",
+      "associatedPrimaryAttribute": "Agility"
+    }
+  },
+  "folder": null,
+  "sort": 0,
+  "ownership": {
+    "default": 0
+  },
+  "flags": {},
+  "_key": "!items!D9wpuDCZw29Ag4MZ"
+}

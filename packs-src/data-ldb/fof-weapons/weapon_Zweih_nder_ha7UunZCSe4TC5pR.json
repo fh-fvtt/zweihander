@@ -1,0 +1,51 @@
+{
+  "_id": "ha7UunZCSe4TC5pR",
+  "effects": [],
+  "img": "systems/zweihander/assets/icons/two-handed-sword.svg",
+  "name": "Zweihänder",
+  "type": "weapon",
+  "_stats": {
+    "coreVersion": "12.331",
+    "systemId": null,
+    "systemVersion": null,
+    "createdTime": null,
+    "modifiedTime": null,
+    "lastModifiedBy": null,
+    "compendiumSource": null,
+    "duplicateSource": null
+  },
+  "system": {
+    "description": {
+      "@en": "<p>Sometimes, it is called a bastard sword (mostly because you will be cursing whoever wields it). Other times, it&rsquo;s called a great sword (partially because it requires great strength to swing it). It is a surprisingly more popular alternative than its predecessor, the ubiquitous war hammer.</p>"
+    },
+    "notes": "",
+    "price": {
+      "bp": "0",
+      "gc": "12",
+      "ss": "0"
+    },
+    "encumbrance": 3,
+    "carried": true,
+    "weaponType": "Melee",
+    "equipped": false,
+    "associatedSkill": "Martial Melee",
+    "load": 0,
+    "handling": "Two-handed",
+    "qualities": {
+      "value": "Punishing, Reach",
+      "arrayOfValues": []
+    },
+    "distance": "Engaged or 1 yard",
+    "damage": {
+      "formula": "[CB] + (1+[#])d6x6",
+      "associatedPrimaryAttribute": "Combat"
+    }
+  },
+  "folder": null,
+  "sort": 0,
+  "ownership": {
+    "default": 0
+  },
+  "flags": {},
+  "_key": "!items!ha7UunZCSe4TC5pR"
+}

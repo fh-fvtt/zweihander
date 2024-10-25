@@ -1,0 +1,50 @@
+{
+  "_id": "7998tdQ3hGbVeLcM",
+  "effects": [],
+  "img": "systems/zweihander/assets/icons/top-paw.svg",
+  "name": "Inhuman Fury",
+  "type": "spell",
+  "_stats": {
+    "coreVersion": "12.331",
+    "systemId": null,
+    "systemVersion": null,
+    "createdTime": null,
+    "modifiedTime": null,
+    "lastModifiedBy": null,
+    "compendiumSource": null,
+    "duplicateSource": null
+  },
+  "system": {
+    "description": {
+      "@en": "Wretched talons extend from your hands, as you’re possessed by a creature’s animus."
+    },
+    "notes": "",
+    "rules": {
+      "effect": {
+        "@en": "After successfully casting this spell, your hands no longer terminate in fingers and thumbs, but in deadly claws or talons. Claws are a two-handed melee weapon with the Vicious Quality. Talons are a two-handed melee weapon with the Fast Quality. Instead of using your [CB], refer to your [WB] to determine Damage. Finally, whenever you strike or Parry with these claws or talons, refer to your Incantation Skill instead of a Combat-based Skill. You can inflict Injuries with this Magick, but your foes Bleed instead."
+      },
+      "criticalSuccess": {
+        "@en": "As above, but victims cannot Dodge or Parry this attack."
+      },
+      "criticalFailure": {
+        "@en": "Wicked thing! Your fingers and thumbs immediately bend backwards and a horrendous snapping is heard as they fold over your palms like a rakshasa’s paws. You suffer no damage from this mutation, but are unable to use your hands for 24 hours."
+      },
+      "reagents": {
+        "@en": "Talons of a raptor or claws of a bear"
+      }
+    },
+    "tradition": "Arcane (Animism)",
+    "principle": "Petty",
+    "distance": "Yourself",
+    "duration": "[WB]+3 minutes",
+    "castingTime": "1 min",
+    "castingCost": 0
+  },
+  "folder": null,
+  "sort": 0,
+  "ownership": {
+    "default": 0
+  },
+  "flags": {},
+  "_key": "!items!7998tdQ3hGbVeLcM"
+}

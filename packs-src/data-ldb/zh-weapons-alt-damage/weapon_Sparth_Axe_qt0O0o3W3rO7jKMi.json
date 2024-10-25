@@ -1,0 +1,51 @@
+{
+  "_id": "qt0O0o3W3rO7jKMi",
+  "effects": [],
+  "img": "systems/zweihander/assets/icons/sharp-halberd.svg",
+  "name": "Sparth Axe",
+  "type": "weapon",
+  "_stats": {
+    "coreVersion": "12.331",
+    "systemId": null,
+    "systemVersion": null,
+    "createdTime": null,
+    "modifiedTime": null,
+    "lastModifiedBy": null,
+    "compendiumSource": null,
+    "duplicateSource": null
+  },
+  "system": {
+    "description": {
+      "@en": "<p>Similar to a halberd, the sparth axe blade sweeps up, meaning it is better for upward strikes. Unfortunately, it is a clumsy affair for its wielder.</p>"
+    },
+    "notes": "",
+    "price": {
+      "bp": "0",
+      "gc": "2",
+      "ss": "0"
+    },
+    "encumbrance": 3,
+    "carried": true,
+    "weaponType": "Bladed",
+    "equipped": false,
+    "associatedSkill": "Martial Melee",
+    "load": 0,
+    "handling": "Two-handed",
+    "qualities": {
+      "value": "Punishing, Slow, Vicious",
+      "arrayOfValues": []
+    },
+    "distance": "Engaged",
+    "damage": {
+      "formula": "[CB] + 3 + (1+[#])d6x6",
+      "associatedPrimaryAttribute": "Combat"
+    }
+  },
+  "folder": null,
+  "sort": 0,
+  "ownership": {
+    "default": 0
+  },
+  "flags": {},
+  "_key": "!items!qt0O0o3W3rO7jKMi"
+}

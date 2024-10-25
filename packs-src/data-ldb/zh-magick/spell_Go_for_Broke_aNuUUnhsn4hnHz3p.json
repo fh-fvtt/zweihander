@@ -1,0 +1,50 @@
+{
+  "_id": "aNuUUnhsn4hnHz3p",
+  "effects": [],
+  "img": "systems/zweihander/assets/icons/wizard-staff.svg",
+  "name": "Go for Broke",
+  "type": "spell",
+  "_stats": {
+    "coreVersion": "12.331",
+    "systemId": null,
+    "systemVersion": null,
+    "createdTime": null,
+    "modifiedTime": null,
+    "lastModifiedBy": null,
+    "compendiumSource": null,
+    "duplicateSource": null
+  },
+  "system": {
+    "description": {
+      "@en": "A ringlet of iron will fill you with the powa’ of the Slavering Maw."
+    },
+    "notes": "",
+    "rules": {
+      "effect": {
+        "@en": "After successfully casting this spell, the person you touch may make an Opportunity Attack at the beginning of their Turns. In addition, their Damage with melee weapons explodes on face ‘5-6’."
+      },
+      "criticalSuccess": {
+        "@en": "As above, but they also cannot be Disarmed by the actions of a foe."
+      },
+      "criticalFailure": {
+        "@en": "The torc wrenches and twists. If it’s on your arm, you’re unable to use that hand for 24 hours. If around your neck, you immediately suffer [[/roll 1D10+1]] physical Peril at the beginning of every hour. It requires a successful (Arduous -30%) Athletics Test to remove the torc."
+      },
+      "reagents": {
+        "@en": "A torc of iron, placed around your arm or throat"
+      }
+    },
+    "tradition": "Covenant",
+    "principle": "Petty",
+    "distance": "Any one person you can touch",
+    "duration": "3+[WB] minutes",
+    "castingTime": "1 min",
+    "castingCost": 0
+  },
+  "folder": null,
+  "sort": 0,
+  "ownership": {
+    "default": 0
+  },
+  "flags": {},
+  "_key": "!items!aNuUUnhsn4hnHz3p"
+}

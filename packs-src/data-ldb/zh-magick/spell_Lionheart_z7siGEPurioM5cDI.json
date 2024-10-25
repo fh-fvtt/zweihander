@@ -1,0 +1,50 @@
+{
+  "_id": "z7siGEPurioM5cDI",
+  "effects": [],
+  "img": "systems/zweihander/assets/icons/sword-brandish.svg",
+  "name": "Lionheart",
+  "type": "spell",
+  "_stats": {
+    "coreVersion": "12.331",
+    "systemId": null,
+    "systemVersion": null,
+    "createdTime": null,
+    "modifiedTime": null,
+    "lastModifiedBy": null,
+    "compendiumSource": null,
+    "duplicateSource": null
+  },
+  "system": {
+    "description": {
+      "@en": "You instill your god’s might and fortitude in your allies."
+    },
+    "notes": "",
+    "rules": {
+      "effect": {
+        "@en": "After successfully casting this spell, a number of allies equal to your [FB] who can see and hear you are immune to the Intimidate Skill and cannot be subjected to Stress or Fear."
+      },
+      "criticalSuccess": {
+        "@en": "As above, but your allies are also immune to Terror."
+      },
+      "criticalFailure": {
+        "@en": "Your words fail, as you invoke the damnation of your own god. Not only that, your allies are instilled with cowardice. A number of allies equal to your [FB] suffer a -6 to their Peril Condition Track until the Duration is up."
+      },
+      "reagents": {
+        "@en": "Your holy symbol, raised aloft"
+      }
+    },
+    "tradition": "Divine (God-Emperor)",
+    "principle": "Lesser",
+    "distance": "Yourself",
+    "duration": "[WB]+6 minutes",
+    "castingTime": "1 min",
+    "castingCost": 0
+  },
+  "folder": null,
+  "sort": 0,
+  "ownership": {
+    "default": 0
+  },
+  "flags": {},
+  "_key": "!items!z7siGEPurioM5cDI"
+}

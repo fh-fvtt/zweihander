@@ -1,0 +1,50 @@
+{
+  "_id": "6QgbEJX949uDvRzr",
+  "effects": [],
+  "img": "systems/zweihander/assets/icons/wizard-staff.svg",
+  "name": "Frock of Ice",
+  "type": "spell",
+  "_stats": {
+    "coreVersion": "12.331",
+    "systemId": null,
+    "systemVersion": null,
+    "createdTime": null,
+    "modifiedTime": null,
+    "lastModifiedBy": null,
+    "compendiumSource": null,
+    "duplicateSource": null
+  },
+  "system": {
+    "description": {
+      "@en": "Your frock glimmers with cold light, hardening into ice. Wind whirls around you, and with every step you take, the ground is frozen solid."
+    },
+    "notes": "",
+    "rules": {
+      "effect": {
+        "@en": "After successfully casting this spell, all melee weapons that are not Magickal in nature cannot apply Fury Dice to their Total Damage when harming you. In addition, foes must Maneuver in order to Engage with you. If they are already Engaged with you when you first cast this spell, they are immediately pushed 1 yard away."
+      },
+      "criticalSuccess": {
+        "@en": "As above, but foes cannot Engage with you."
+      },
+      "criticalFailure": {
+        "@en": "Let it go, let it go! With a terrible tearing sound, the white frock takes to the air, ripping from your neck. A gust of chilly wind catches it and it flies off, never to be found again."
+      },
+      "reagents": {
+        "@en": "An expensive white frock, worn"
+      }
+    },
+    "tradition": "Covenant",
+    "principle": "Petty",
+    "distance": "Yourself",
+    "duration": "3+[WB] minutes",
+    "castingTime": "1 min",
+    "castingCost": 0
+  },
+  "folder": null,
+  "sort": 0,
+  "ownership": {
+    "default": 0
+  },
+  "flags": {},
+  "_key": "!items!6QgbEJX949uDvRzr"
+}

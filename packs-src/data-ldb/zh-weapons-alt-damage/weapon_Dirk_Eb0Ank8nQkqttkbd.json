@@ -1,0 +1,50 @@
+{
+  "_id": "Eb0Ank8nQkqttkbd",
+  "effects": [],
+  "img": "systems/zweihander/assets/icons/plain-dagger.svg",
+  "name": "Dirk",
+  "type": "weapon",
+  "_stats": {
+    "coreVersion": "12.331",
+    "systemId": null,
+    "systemVersion": null,
+    "createdTime": null,
+    "modifiedTime": null,
+    "lastModifiedBy": null,
+    "compendiumSource": null,
+    "duplicateSource": null
+  },
+  "system": {
+    "description": {
+      "@en": "<p>Slender and sharp, this is used to either cut your meat or your enemy.</p>"
+    },
+    "notes": "",
+    "price": {
+      "bp": "0",
+      "gc": "0",
+      "ss": "5"
+    },
+    "encumbrance": 1,
+    "carried": true,
+    "weaponType": "Bladed",
+    "equipped": false,
+    "associatedSkill": "Simple Melee",
+    "load": 0,
+    "handling": "One-handed",
+    "qualities": {
+      "value": "Fast, Finesse, Light, Weak",
+      "arrayOfValues": []
+    },
+    "distance": "Engaged",
+    "damage": {
+      "formula": "[AB] + 0 + (1+[#])d6x6"
+    }
+  },
+  "folder": null,
+  "sort": 0,
+  "ownership": {
+    "default": 0
+  },
+  "flags": {},
+  "_key": "!items!Eb0Ank8nQkqttkbd"
+}

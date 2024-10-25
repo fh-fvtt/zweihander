@@ -1,0 +1,50 @@
+{
+  "_id": "PM6kc6p1B62OaULH",
+  "effects": [],
+  "img": "systems/zweihander/assets/icons/tentacles-barrier.svg",
+  "name": "Mark of Chaos",
+  "type": "spell",
+  "_stats": {
+    "coreVersion": "12.331",
+    "systemId": null,
+    "systemVersion": null,
+    "createdTime": null,
+    "modifiedTime": null,
+    "lastModifiedBy": null,
+    "compendiumSource": null,
+    "duplicateSource": null
+  },
+  "system": {
+    "description": {
+      "@en": "Using the black, twisted tip of the horn, your victim is instantly mutated before your eyes and weakened by chaos incarnate."
+    },
+    "notes": "",
+    "rules": {
+      "effect": {
+        "@en": "After successfully casting this spell, the person you touch must Resist with a successful Coordination Test or gain a Mutation called Taint of Chaos. In addition, they are left Helpless for one Turn."
+      },
+      "criticalSuccess": {
+        "@en": "As above, but your foe cannot Resist this."
+      },
+      "criticalFailure": {
+        "@en": "The touch of the horn does nothing, at least at first. Instead, you find your hand instantly atrophies. You are unable to use your primary hand for 48 hours."
+      },
+      "reagents": {
+        "@en": "The horn of an Abyssal creature, used to touch a victim"
+      }
+    },
+    "tradition": "Arcane (Sorcery)",
+    "principle": "Lesser",
+    "distance": "Any one person you can touch",
+    "duration": "Instantaneous",
+    "castingTime": "1 min",
+    "castingCost": 0
+  },
+  "folder": null,
+  "sort": 0,
+  "ownership": {
+    "default": 0
+  },
+  "flags": {},
+  "_key": "!items!PM6kc6p1B62OaULH"
+}

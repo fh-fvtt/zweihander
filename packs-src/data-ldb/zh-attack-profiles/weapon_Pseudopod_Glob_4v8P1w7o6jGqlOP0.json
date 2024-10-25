@@ -1,0 +1,49 @@
+{
+  "_id": "4v8P1w7o6jGqlOP0",
+  "effects": [],
+  "img": "systems/zweihander/assets/icons/carnivore-mouth.svg",
+  "name": "Pseudopod Glob",
+  "type": "weapon",
+  "_stats": {
+    "coreVersion": "12.331",
+    "systemId": null,
+    "systemVersion": null,
+    "createdTime": null,
+    "modifiedTime": null,
+    "lastModifiedBy": null,
+    "compendiumSource": null,
+    "duplicateSource": null
+  },
+  "system": {
+    "description": {
+      "@en": ""
+    },
+    "notes": "",
+    "price": {
+      "bp": 0,
+      "gc": 0,
+      "ss": 0
+    },
+    "encumbrance": 0,
+    "carried": true,
+    "weaponType": "Bladed",
+    "equipped": true,
+    "associatedSkill": "Simple Melee",
+    "load": 1,
+    "handling": "One-handed",
+    "qualities": {
+      "value": "Slow, Pummeling, Throwing"
+    },
+    "distance": "3+[PB] yards",
+    "damage": {
+      "formula": "[BB] + (1+[#])d6x6"
+    }
+  },
+  "folder": null,
+  "sort": 0,
+  "ownership": {
+    "default": 0
+  },
+  "flags": {},
+  "_key": "!items!4v8P1w7o6jGqlOP0"
+}

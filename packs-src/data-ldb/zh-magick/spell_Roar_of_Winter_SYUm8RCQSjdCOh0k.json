@@ -1,0 +1,50 @@
+{
+  "_id": "SYUm8RCQSjdCOh0k",
+  "effects": [],
+  "img": "systems/zweihander/assets/icons/wizard-staff.svg",
+  "name": "Roar of Winter",
+  "type": "spell",
+  "_stats": {
+    "coreVersion": "12.331",
+    "systemId": null,
+    "systemVersion": null,
+    "createdTime": null,
+    "modifiedTime": null,
+    "lastModifiedBy": null,
+    "compendiumSource": null,
+    "duplicateSource": null
+  },
+  "system": {
+    "description": {
+      "@en": "You speak aloud your unswerving loyalty to the Winter King, bequeathing all with a gift of unmitigated fury."
+    },
+    "notes": "",
+    "rules": {
+      "effect": {
+        "@en": "After successfully casting this spell, select a number of allies equal to your [FB]. All allies may spend 1 AP to make two Attack Actions or two Perilous Stunts on their Turn, despite the normal limitations presented in Combat."
+      },
+      "criticalSuccess": {
+        "@en": "As above, but those so affected gain 2 APs instead."
+      },
+      "criticalFailure": {
+        "@en": "You have trespassed upon the threshold of your god and must pay the price. The Winter King demands that you sacrifice a part of yourself, as you suffer a Grievous Injury, Serious Injury and Moderate Injury."
+      },
+      "reagents": {
+        "@en": "The tail of a wolf, incinerated (expended)"
+      }
+    },
+    "tradition": "Divine (Winter King)",
+    "principle": "Greater",
+    "distance": "Any persons you can see",
+    "duration": "[WB]+9 minutes",
+    "castingTime": "1 min",
+    "castingCost": 0
+  },
+  "folder": null,
+  "sort": 0,
+  "ownership": {
+    "default": 0
+  },
+  "flags": {},
+  "_key": "!items!SYUm8RCQSjdCOh0k"
+}

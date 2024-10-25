@@ -1,0 +1,50 @@
+{
+  "_id": "sXZIDFRYtJczVB96",
+  "effects": [],
+  "img": "systems/zweihander/assets/icons/wizard-staff.svg",
+  "name": "Imposter",
+  "type": "spell",
+  "_stats": {
+    "coreVersion": "12.331",
+    "systemId": null,
+    "systemVersion": null,
+    "createdTime": null,
+    "modifiedTime": null,
+    "lastModifiedBy": null,
+    "compendiumSource": null,
+    "duplicateSource": null
+  },
+  "system": {
+    "description": {
+      "@en": "The shadows transmogrify your body into someone else’s, a perfect mirror image."
+    },
+    "notes": "",
+    "rules": {
+      "effect": {
+        "@en": "After successfully casting this spell, you take upon the outer shape of a specific humanoid figure detailed in a sketch. The transformation doesn’t change your voice nor does it impart the ability to speak the language of the figure you’re impersonating. Regardless, the actual casting of Imposter is never apparent to anyone, perfectly disguised."
+      },
+      "criticalSuccess": {
+        "@en": "As above, but you can also mimic their voice and language perfectly."
+      },
+      "criticalFailure": {
+        "@en": "Outwardly, you take upon the appearance of whomever you intended to impersonate. However, when confronted with those you wished to fool, your semblance becomes a horrid, wretched thing – monstrously disfigured. This lasts for the Duration of the spell."
+      },
+      "reagents": {
+        "@en": "A sketch of the person you wish to impersonate, immolated in fire (expended)"
+      }
+    },
+    "tradition": "Arcane (Shadowmancy)",
+    "principle": "Petty",
+    "distance": "Yourself",
+    "duration": "[WB]+3 minutes",
+    "castingTime": "1 min",
+    "castingCost": 0
+  },
+  "folder": null,
+  "sort": 0,
+  "ownership": {
+    "default": 0
+  },
+  "flags": {},
+  "_key": "!items!sXZIDFRYtJczVB96"
+}

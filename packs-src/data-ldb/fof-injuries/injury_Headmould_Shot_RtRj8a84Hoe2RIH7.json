@@ -1,0 +1,38 @@
+{
+  "_id": "RtRj8a84Hoe2RIH7",
+  "effects": [],
+  "img": "systems/zweihander/assets/icons/internal-injury.svg",
+  "name": "Headmould-Shot",
+  "type": "injury",
+  "_stats": {
+    "coreVersion": "12.331",
+    "systemId": null,
+    "systemVersion": null,
+    "createdTime": null,
+    "modifiedTime": null,
+    "lastModifiedBy": null,
+    "compendiumSource": null,
+    "duplicateSource": null
+  },
+  "system": {
+    "description": {
+      "@en": "<p>I used to be a soldier like you until I took a wallop to the head. The migraines never seem to go away, so please be patient with me . . . it takes a minute to compose my thoughts.</p>"
+    },
+    "notes": "<p><span style=\"color: #d5c4a1; font-family: Signika, sans-serif; font-style: italic; text-align: justify; background-color: #282828;\">Grievous Injuries must undergo a successful Perform Surgery within twenty-four hours of suffering it, or else a character gains its related Permanent Injury.</span></p>",
+    "rules": {
+      "effect": {
+        "@en": "<p>Whenever you suffer Peril, move one additional step down the Peril Condition Track negatively while gaining 1 Conflict.</p>"
+      }
+    },
+    "severity": 0,
+    "active": true,
+    "recuperationTime": 0
+  },
+  "folder": null,
+  "sort": 0,
+  "ownership": {
+    "default": 0
+  },
+  "flags": {},
+  "_key": "!items!RtRj8a84Hoe2RIH7"
+}

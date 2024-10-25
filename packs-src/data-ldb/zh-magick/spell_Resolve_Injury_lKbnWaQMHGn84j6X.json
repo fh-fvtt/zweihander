@@ -1,0 +1,50 @@
+{
+  "_id": "lKbnWaQMHGn84j6X",
+  "effects": [],
+  "img": "systems/zweihander/assets/icons/wizard-staff.svg",
+  "name": "Resolve Injury",
+  "type": "spell",
+  "_stats": {
+    "coreVersion": "12.331",
+    "systemId": null,
+    "systemVersion": null,
+    "createdTime": null,
+    "modifiedTime": null,
+    "lastModifiedBy": null,
+    "compendiumSource": null,
+    "duplicateSource": null
+  },
+  "system": {
+    "description": {
+      "@en": "Calling forth a blessing, the consumption of the holy honey treats the injured."
+    },
+    "notes": "",
+    "rules": {
+      "effect": {
+        "@en": "After successfully casting this spell, the person you touch removes one Injury they are suffering from, as it has completely Recuperated. A Character may only gain the benefit of this Magick once per day."
+      },
+      "criticalSuccess": {
+        "@en": "As above, but if the person lost points from their Primary Attributes from an Injury’s Effects, they can restore the lost points."
+      },
+      "criticalFailure": {
+        "@en": "A buzzing sound can be heard from the honeycomb. You pay no mind, as they eat the honeycomb. A bee then stings the victim’s throat and they are unable to speak for 48 hours."
+      },
+      "reagents": {
+        "@en": "A honeycomb, imbibed by the victim (expended)"
+      }
+    },
+    "tradition": "Divine (Martyr)",
+    "principle": "Greater",
+    "distance": "Any one person you can touch",
+    "duration": "Instantaneous",
+    "castingTime": "1 min",
+    "castingCost": 0
+  },
+  "folder": null,
+  "sort": 0,
+  "ownership": {
+    "default": 0
+  },
+  "flags": {},
+  "_key": "!items!lKbnWaQMHGn84j6X"
+}

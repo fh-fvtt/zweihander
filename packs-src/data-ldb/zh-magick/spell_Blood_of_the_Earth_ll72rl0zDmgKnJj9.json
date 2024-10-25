@@ -1,0 +1,50 @@
+{
+  "_id": "ll72rl0zDmgKnJj9",
+  "effects": [],
+  "img": "systems/zweihander/assets/icons/wizard-staff.svg",
+  "name": "Blood of the Earth",
+  "type": "spell",
+  "_stats": {
+    "coreVersion": "12.331",
+    "systemId": null,
+    "systemVersion": null,
+    "createdTime": null,
+    "modifiedTime": null,
+    "lastModifiedBy": null,
+    "compendiumSource": null,
+    "duplicateSource": null
+  },
+  "system": {
+    "description": {
+      "@en": "The earth-mother feeds you from Her bosom, warming you from within."
+    },
+    "notes": "",
+    "rules": {
+      "effect": {
+        "@en": "After successfully casting this spell, you immediately move one step up the Peril Condition Track positively for every minute you stand upon natural earth. However, this Magick doesn’t work if you are suffering from any other status which may normally prevent you from restoring your Peril Condition Track. A Character may only gain the benefit of this Magick once per day."
+      },
+      "criticalSuccess": {
+        "@en": "As above, but you also move one step up the Damage Condition Track positively for every minute as well. However, this Magick doesn’t work if you are suffering from any other status which may normally prevent you from restoring your Damage Condition Track."
+      },
+      "criticalFailure": {
+        "@en": "The earth below refuses to infuse your lifeblood with her own and saps your strength instead! For every minute you stand upon natural earth, you immediately move one step down the Damage and Peril Condition Tracks negatively. However, you don’t suffer Injuries due to this Magick. This lasts until the Duration of the spell expires."
+      },
+      "reagents": {
+        "@en": "A ceremonial knife, plunged into a patch of natural earth"
+      }
+    },
+    "tradition": "Arcane (Elementalism)",
+    "principle": "Petty",
+    "distance": "Yourself",
+    "duration": "[WB]+3 minutes",
+    "castingTime": "1 min",
+    "castingCost": 0
+  },
+  "folder": null,
+  "sort": 0,
+  "ownership": {
+    "default": 0
+  },
+  "flags": {},
+  "_key": "!items!ll72rl0zDmgKnJj9"
+}

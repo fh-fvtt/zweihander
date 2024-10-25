@@ -1,0 +1,38 @@
+{
+  "_id": "kDOQ9KgS8J619bSD",
+  "effects": [],
+  "img": "systems/zweihander/assets/icons/broken-bone.svg",
+  "name": "Stress Fracture",
+  "type": "injury",
+  "_stats": {
+    "coreVersion": "12.331",
+    "systemId": null,
+    "systemVersion": null,
+    "createdTime": null,
+    "modifiedTime": null,
+    "lastModifiedBy": null,
+    "compendiumSource": null,
+    "duplicateSource": null
+  },
+  "system": {
+    "description": {
+      "@en": ""
+    },
+    "notes": "",
+    "rules": {
+      "effect": {
+        "@en": "Until fully Recuperated, you cannot Counterspell, Dodge or Parry."
+      }
+    },
+    "severity": 1,
+    "active": true,
+    "recuperationTime": 0
+  },
+  "folder": null,
+  "sort": 0,
+  "ownership": {
+    "default": 0
+  },
+  "flags": {},
+  "_key": "!items!kDOQ9KgS8J619bSD"
+}

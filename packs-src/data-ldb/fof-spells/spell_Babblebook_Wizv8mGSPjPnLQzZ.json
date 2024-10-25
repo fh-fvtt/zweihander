@@ -1,0 +1,50 @@
+{
+  "_id": "Wizv8mGSPjPnLQzZ",
+  "effects": [],
+  "img": "systems/zweihander/assets/icons/spell-book.svg",
+  "name": "Babblebook",
+  "type": "spell",
+  "_stats": {
+    "coreVersion": "12.331",
+    "systemId": null,
+    "systemVersion": null,
+    "createdTime": null,
+    "modifiedTime": null,
+    "lastModifiedBy": null,
+    "compendiumSource": null,
+    "duplicateSource": null
+  },
+  "system": {
+    "description": {
+      "@en": "<p>The great Gotthilf first recorded this Spell in their grimoire Words of Power &amp; Faith . . .</p>"
+    },
+    "notes": "",
+    "rules": {
+      "effect": {
+        "@en": "<p>After successfully casting, a number of pages you draw or write onto equal to 3+[WB] are Encrypted. While Encrypted, they cannot be read by anyone but you and one other person you name while casting. You begin to Bleed, no matter whether you succeeded or failed at using this Spell.</p>"
+      },
+      "criticalSuccess": {
+        "@en": "You do not Bleed."
+      },
+      "criticalFailure": {
+        "@en": "The pages are instantly incinerated, as you suffer [[/roll 1D10+1]] Damage from fire."
+      },
+      "reagents": {
+        "@en": "Drops of your own blood, ink and pages you write onto"
+      }
+    },
+    "tradition": "Common",
+    "principle": "Basic Tier",
+    "distance": "By touch",
+    "duration": "Until read by you or another person you selected that can read the Encryption",
+    "castingTime": "1 Hour",
+    "castingCost": null
+  },
+  "folder": null,
+  "sort": 0,
+  "ownership": {
+    "default": 0
+  },
+  "flags": {},
+  "_key": "!items!Wizv8mGSPjPnLQzZ"
+}

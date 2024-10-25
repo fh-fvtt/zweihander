@@ -1,0 +1,50 @@
+{
+  "_id": "QJ2h7nE8gcbnF4Ty",
+  "effects": [],
+  "img": "systems/zweihander/assets/icons/mute.svg",
+  "name": "Hush",
+  "type": "spell",
+  "_stats": {
+    "coreVersion": "12.331",
+    "systemId": null,
+    "systemVersion": null,
+    "createdTime": null,
+    "modifiedTime": null,
+    "lastModifiedBy": null,
+    "compendiumSource": null,
+    "duplicateSource": null
+  },
+  "system": {
+    "description": {
+      "@en": "With but an utterance, you steal the ability of another to speak."
+    },
+    "notes": "",
+    "rules": {
+      "effect": {
+        "@en": "After successfully casting this spell, you immediately silence one foe and render them unable to verbally communicate whatsoever. Your foe can successfully Resist with an Awareness Test."
+      },
+      "criticalSuccess": {
+        "@en": "As above, but your foe is unable to Resist this Magick."
+      },
+      "criticalFailure": {
+        "@en": "An invisible, demonic cat steals your tongue and will not return it for 24 hours. During this time, you cannot speak."
+      },
+      "reagents": {
+        "@en": "A silver thimble placed upon your finger, raised to your lips"
+      }
+    },
+    "tradition": "Generalist",
+    "principle": "Generalist",
+    "distance": "Any one person you can see",
+    "duration": "[WB]+3 minutes",
+    "castingTime": "1 min",
+    "castingCost": 0
+  },
+  "folder": null,
+  "sort": 0,
+  "ownership": {
+    "default": 0
+  },
+  "flags": {},
+  "_key": "!items!QJ2h7nE8gcbnF4Ty"
+}

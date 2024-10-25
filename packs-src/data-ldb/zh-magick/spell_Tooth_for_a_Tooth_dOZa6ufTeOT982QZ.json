@@ -1,0 +1,50 @@
+{
+  "_id": "dOZa6ufTeOT982QZ",
+  "effects": [],
+  "img": "systems/zweihander/assets/icons/tooth.svg",
+  "name": "Tooth for a Tooth",
+  "type": "spell",
+  "_stats": {
+    "coreVersion": "12.331",
+    "systemId": null,
+    "systemVersion": null,
+    "createdTime": null,
+    "modifiedTime": null,
+    "lastModifiedBy": null,
+    "compendiumSource": null,
+    "duplicateSource": null
+  },
+  "system": {
+    "description": {
+      "@en": "You enact the old adage ‘tooth for a tooth’ upon a criminal, fully knowing what transgressions they’ve made and exact a toll in return."
+    },
+    "notes": "",
+    "rules": {
+      "effect": {
+        "@en": "After successfully casting this spell, a foe who can see and hear you must Resist with a Resolve Test or lose 3 APs at the start of their Turns in combat. A foe can attempt to Resist this Magick at the beginning of their Turns for the Duration of the spell."
+      },
+      "criticalSuccess": {
+        "@en": "As above, but the affected cannot Resist this Magick."
+      },
+      "criticalFailure": {
+        "@en": "Petty mortal! Who are you to exact revenge in the name of the gods? Today, you are not the arbiter of right and wrong. As punishment, you cannot cast Magick for 72 hours."
+      },
+      "reagents": {
+        "@en": "The blood of a victim who has suffered injustice (expended)"
+      }
+    },
+    "tradition": "Divine (Learner)",
+    "principle": "Greater",
+    "distance": "Any person you can see",
+    "duration": "[WB]+9 minutes",
+    "castingTime": "1 min",
+    "castingCost": 0
+  },
+  "folder": null,
+  "sort": 0,
+  "ownership": {
+    "default": 0
+  },
+  "flags": {},
+  "_key": "!items!dOZa6ufTeOT982QZ"
+}

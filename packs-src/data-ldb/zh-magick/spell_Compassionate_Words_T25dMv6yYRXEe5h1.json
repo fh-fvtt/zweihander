@@ -1,0 +1,50 @@
+{
+  "_id": "T25dMv6yYRXEe5h1",
+  "effects": [],
+  "img": "systems/zweihander/assets/icons/wizard-staff.svg",
+  "name": "Compassionate Words",
+  "type": "spell",
+  "_stats": {
+    "coreVersion": "12.331",
+    "systemId": null,
+    "systemVersion": null,
+    "createdTime": null,
+    "modifiedTime": null,
+    "lastModifiedBy": null,
+    "compendiumSource": null,
+    "duplicateSource": null
+  },
+  "system": {
+    "description": {
+      "@en": "Careful words and explicit prayer leads your compatriots to a zen-like state."
+    },
+    "notes": "",
+    "rules": {
+      "effect": {
+        "@en": "After successfully casting this spell, a number of allies equal to your [FB] who can see and hear you add a +20 Base Chance to Resist Perilous Stunts and Magick."
+      },
+      "criticalSuccess": {
+        "@en": "As above, but they are also immune to Stress and Fear, but not Terror."
+      },
+      "criticalFailure": {
+        "@en": "While the words seem to work, they fall upon deaf ears. Your comrades have been made the victims of a terrible hex on your behalf. Whenever they have to Resist Perilous Stunts and Magick, they suffer a -20 Base Chance to Resist. In addition, when they are subjected to Stress and Fear, they are unable to Resist their Effects, for the Duration of the spell."
+      },
+      "reagents": {
+        "@en": "A vial of holy water, sprinkled over the recipients of this Magick"
+      }
+    },
+    "tradition": "Divine (Martyr)",
+    "principle": "Lesser",
+    "distance": "Any persons you can see",
+    "duration": "[WB]+6 minutes",
+    "castingTime": "1 min",
+    "castingCost": 0
+  },
+  "folder": null,
+  "sort": 0,
+  "ownership": {
+    "default": 0
+  },
+  "flags": {},
+  "_key": "!items!T25dMv6yYRXEe5h1"
+}

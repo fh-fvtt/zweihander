@@ -1,0 +1,50 @@
+{
+  "_id": "Sv25DBgJ9sIQgm3Y",
+  "effects": [],
+  "img": "systems/zweihander/assets/icons/saber-slash.svg",
+  "name": "Mortuary Sword",
+  "type": "weapon",
+  "_stats": {
+    "coreVersion": "12.331",
+    "systemId": null,
+    "systemVersion": null,
+    "createdTime": null,
+    "modifiedTime": null,
+    "lastModifiedBy": null,
+    "compendiumSource": null,
+    "duplicateSource": null
+  },
+  "system": {
+    "description": {
+      "@en": "<p>The most common weapon for explorers, it is useful and evokes little fuss. Not surprisingly, it tends to cleave violently &ndash; thus its namesake.</p>"
+    },
+    "notes": "",
+    "price": {
+      "bp": "0",
+      "gc": "10",
+      "ss": "0"
+    },
+    "encumbrance": 1,
+    "carried": true,
+    "weaponType": "Bladed",
+    "equipped": false,
+    "associatedSkill": "Martial Melee",
+    "load": 0,
+    "handling": "One-handed",
+    "qualities": {
+      "value": "Vicious",
+      "arrayOfValues": []
+    },
+    "distance": "Engaged",
+    "damage": {
+      "formula": "[CB] + 1 + (1+[#])d6x6"
+    }
+  },
+  "folder": null,
+  "sort": 0,
+  "ownership": {
+    "default": 0
+  },
+  "flags": {},
+  "_key": "!items!Sv25DBgJ9sIQgm3Y"
+}

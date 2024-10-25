@@ -1,0 +1,50 @@
+{
+  "_id": "5ECLNCqKuKd2ZRKJ",
+  "effects": [],
+  "img": "systems/zweihander/assets/icons/wizard-staff.svg",
+  "name": "Brain Drain",
+  "type": "spell",
+  "_stats": {
+    "coreVersion": "12.331",
+    "systemId": null,
+    "systemVersion": null,
+    "createdTime": null,
+    "modifiedTime": null,
+    "lastModifiedBy": null,
+    "compendiumSource": null,
+    "duplicateSource": null
+  },
+  "system": {
+    "description": {
+      "@en": "Greedily scooping the mushy grey matter from the head between your fingers, your enemy begins to experience an extreme sense of disquieting disgust at your depravity."
+    },
+    "notes": "",
+    "rules": {
+      "effect": {
+        "@en": "After successfully casting this spell, you immediately cause one foe to suffer from waking nightmares, as well as on each of the following Turns. They will suffer from Stress on your first Turn, Fear on your second Turn and Terror on your third Turn. This Magick requires Concentration."
+      },
+      "criticalSuccess": {
+        "@en": "As above, but instead the foe suffers from Terror instead of Fear on your first Turn."
+      },
+      "criticalFailure": {
+        "@en": "Staring long and deep into the eyes of your victim, you momentarily are taken by the inhumanity of this act. As you eat the brain, you immediately suffer from Fear. Again, you then suffer from Fear. And finally, Terror. You cannot help but take three bites of the brain, despite the mental anguish."
+      },
+      "reagents": {
+        "@en": "A head, dashed open and its contents consumed as you cast Magick (expended)"
+      }
+    },
+    "tradition": "Covenant",
+    "principle": "Greater",
+    "distance": "Any one person you can see",
+    "duration": "Special",
+    "castingTime": "1 min",
+    "castingCost": 0
+  },
+  "folder": null,
+  "sort": 0,
+  "ownership": {
+    "default": 0
+  },
+  "flags": {},
+  "_key": "!items!5ECLNCqKuKd2ZRKJ"
+}

@@ -1,0 +1,50 @@
+{
+  "_id": "vDYT9d0sBBfHDKq3",
+  "effects": [],
+  "img": "systems/zweihander/assets/icons/wave-strike.svg",
+  "name": "Anoint Weapon",
+  "type": "spell",
+  "_stats": {
+    "coreVersion": "12.331",
+    "systemId": null,
+    "systemVersion": null,
+    "createdTime": null,
+    "modifiedTime": null,
+    "lastModifiedBy": null,
+    "compendiumSource": null,
+    "duplicateSource": null
+  },
+  "system": {
+    "description": {
+      "@en": "With but a touch, you imbue a weapon with righteous might."
+    },
+    "notes": "",
+    "rules": {
+      "effect": {
+        "@en": "After successfully casting this spell, a weapon you touch gains the ability to strike enemies that may be normally unharmed by non-Magickal weapons."
+      },
+      "criticalSuccess": {
+        "@en": "As above, but you can anoint up to three weapons instead."
+      },
+      "criticalFailure": {
+        "@en": "Your call to bless a weapon has angered gods unknown, as you now suffer from a terrible curse. For the next 24 hours, you must add an additional [[/roll 1D6]] Chaos Die to all Magicks you cast."
+      },
+      "reagents": {
+        "@en": "Three drops of holy water dabbed upon the weapon (expended)"
+      }
+    },
+    "tradition": "Generalist",
+    "principle": "Generalist",
+    "distance": "Any one weapon you can touch",
+    "duration": "[WB]+3 hours",
+    "castingTime": "1 min",
+    "castingCost": 0
+  },
+  "folder": null,
+  "sort": 0,
+  "ownership": {
+    "default": 0
+  },
+  "flags": {},
+  "_key": "!items!vDYT9d0sBBfHDKq3"
+}

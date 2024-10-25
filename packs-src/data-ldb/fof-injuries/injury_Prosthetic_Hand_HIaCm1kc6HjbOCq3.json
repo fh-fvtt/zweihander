@@ -1,0 +1,38 @@
+{
+  "_id": "HIaCm1kc6HjbOCq3",
+  "effects": [],
+  "img": "systems/zweihander/assets/icons/internal-injury.svg",
+  "name": "Prosthetic Hand",
+  "type": "injury",
+  "_stats": {
+    "coreVersion": "12.331",
+    "systemId": null,
+    "systemVersion": null,
+    "createdTime": null,
+    "modifiedTime": null,
+    "lastModifiedBy": null,
+    "compendiumSource": null,
+    "duplicateSource": null
+  },
+  "system": {
+    "description": {
+      "@en": "<p>I lost my hand in a pretty nasty fight. As you can see, however, with a combination of straps, wooden digits and other mechanics, I still have use of it.</p>"
+    },
+    "notes": "<p><span style=\"color: #d5c4a1; font-family: Signika, sans-serif; font-style: italic; text-align: justify; background-color: #282828;\">Grievous Injuries must undergo a successful Perform Surgery within twenty-four hours of suffering it, or else a character gains its related Permanent Injury.</span></p>",
+    "rules": {
+      "effect": {
+        "@en": "<p>You must spend a Coin to attack with a twohanded melee weapon.</p>"
+      }
+    },
+    "severity": 0,
+    "active": true,
+    "recuperationTime": 0
+  },
+  "folder": null,
+  "sort": 0,
+  "ownership": {
+    "default": 0
+  },
+  "flags": {},
+  "_key": "!items!HIaCm1kc6HjbOCq3"
+}

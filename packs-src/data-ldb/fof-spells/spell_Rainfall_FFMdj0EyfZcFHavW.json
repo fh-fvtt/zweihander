@@ -1,0 +1,50 @@
+{
+  "_id": "FFMdj0EyfZcFHavW",
+  "effects": [],
+  "img": "systems/zweihander/assets/icons/spell-book.svg",
+  "name": "Rainfall",
+  "type": "spell",
+  "_stats": {
+    "coreVersion": "12.331",
+    "systemId": null,
+    "systemVersion": null,
+    "createdTime": null,
+    "modifiedTime": null,
+    "lastModifiedBy": null,
+    "compendiumSource": null,
+    "duplicateSource": null
+  },
+  "system": {
+    "description": {
+      "@en": "<p>We pray to the heavens that this parched earth shall drink once again . . .</p>"
+    },
+    "notes": "",
+    "rules": {
+      "effect": {
+        "@en": "<p>After successfully casting, you conjure forth rainy weather. Based on your [WB], the strength of the weather produces the following effects in combat:</p>\n<p>- <strong>[WB] 1 to 6</strong>: Light Obscurement (light rain), reduces foe&rsquo;s Movement by -1.</p>\n<p>- <strong>[WB] 7 to 12</strong>: Medium Obscurement (thunderstorm), reduces foe&rsquo;s Movement by -2.</p>\n<p>- <strong>[WB] 13+</strong>: Heavy Obscurement (sleet), reduces foe&rsquo;s Movement by -3.</p>"
+      },
+      "criticalSuccess": {
+        "@en": "Choose the strength of the weather instead."
+      },
+      "criticalFailure": {
+        "@en": "Acidic rain will fall for 9+[WB] days in the area, killing all plants."
+      },
+      "reagents": {
+        "@en": "A chant, dance or ritual that would urge rain to fall from the sky"
+      }
+    },
+    "tradition": "Common",
+    "principle": "Advanced Tier",
+    "distance": "Any place you can see clearly",
+    "duration": "9+[WB] days",
+    "castingTime": "1 Hour",
+    "castingCost": null
+  },
+  "folder": null,
+  "sort": 0,
+  "ownership": {
+    "default": 0
+  },
+  "flags": {},
+  "_key": "!items!FFMdj0EyfZcFHavW"
+}

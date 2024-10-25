@@ -1,0 +1,50 @@
+{
+  "_id": "otnVTuoehyYcYk4P",
+  "effects": [],
+  "img": "systems/zweihander/assets/icons/footsteps.svg",
+  "name": "Trackless Step",
+  "type": "spell",
+  "_stats": {
+    "coreVersion": "12.331",
+    "systemId": null,
+    "systemVersion": null,
+    "createdTime": null,
+    "modifiedTime": null,
+    "lastModifiedBy": null,
+    "compendiumSource": null,
+    "duplicateSource": null
+  },
+  "system": {
+    "description": {
+      "@en": "Sprinkling salt in your wake covers your tracks, unable to be followed by even the most seasoned of rangers."
+    },
+    "notes": "",
+    "rules": {
+      "effect": {
+        "@en": "After successfully casting this spell, you and a number of allies equal to your [WB] are able to pass over surfaces such as snow, mud and vegetation without leaving a trace behind. You must be on foot and can run as well as walk while still benefiting from this spell. Your progress cannot be tracked for the Duration of the spell. It does not work while riding beasts or aboard a wagon or coach."
+      },
+      "criticalSuccess": {
+        "@en": "As above, but triple the Duration."
+      },
+      "criticalFailure": {
+        "@en": "Your feet give out from underneath of you, as you grow tired and weak. You and your allies suffer from [[/roll 1D10+1]] physical Peril for every hour of travel for the Duration of the spell."
+      },
+      "reagents": {
+        "@en": "A jar of epsom salt, sprinkled in your wake (expended)"
+      }
+    },
+    "tradition": "Generalist",
+    "principle": "Generalist",
+    "distance": "Yourself",
+    "duration": "[WB]+3 hours",
+    "castingTime": "1 min",
+    "castingCost": 0
+  },
+  "folder": null,
+  "sort": 0,
+  "ownership": {
+    "default": 0
+  },
+  "flags": {},
+  "_key": "!items!otnVTuoehyYcYk4P"
+}

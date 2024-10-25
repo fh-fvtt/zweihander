@@ -1,0 +1,51 @@
+{
+  "_id": "D3jFCeFgCC24d8I3",
+  "effects": [],
+  "img": "systems/zweihander/assets/icons/flamethrower.svg",
+  "name": "Wytchfyre Thrower",
+  "type": "weapon",
+  "_stats": {
+    "coreVersion": "12.331",
+    "systemId": null,
+    "systemVersion": null,
+    "createdTime": null,
+    "modifiedTime": null,
+    "lastModifiedBy": null,
+    "compendiumSource": null,
+    "duplicateSource": null
+  },
+  "system": {
+    "description": {
+      "@en": "<p>Appearing as a broad tube with a billow at one end and connected to an iron- bound barrel full of oil, pitch and Wytchstone Essence, the thrower shoots out plumes of flame that consume those in a wide cone.</p>"
+    },
+    "notes": "",
+    "price": {
+      "bp": "0",
+      "gc": "0",
+      "ss": "0"
+    },
+    "encumbrance": 6,
+    "carried": true,
+    "weaponType": "Wytch- Science",
+    "equipped": false,
+    "associatedSkill": "Martial Ranged",
+    "load": 4,
+    "handling": "One-handed",
+    "qualities": {
+      "value": "Brace, Finesse, Gunpowder, Repeating, Shrapnel, Volatile, Wytchfyre",
+      "arrayOfValues": []
+    },
+    "distance": "[PB]+3 yards",
+    "damage": {
+      "formula": "[CB] + (1+[#])d6x1&6+2",
+      "associatedPrimaryAttribute": "Combat"
+    }
+  },
+  "folder": null,
+  "sort": 0,
+  "ownership": {
+    "default": 0
+  },
+  "flags": {},
+  "_key": "!items!D3jFCeFgCC24d8I3"
+}

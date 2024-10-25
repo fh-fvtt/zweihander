@@ -1,0 +1,51 @@
+{
+  "_id": "pYnmbHlukRskIqP0",
+  "effects": [],
+  "img": "systems/zweihander/assets/icons/glaive.svg",
+  "name": "Guisarme",
+  "type": "weapon",
+  "_stats": {
+    "coreVersion": "12.331",
+    "systemId": "zweihander",
+    "systemVersion": "5.3.2",
+    "createdTime": null,
+    "modifiedTime": 1729890668568,
+    "lastModifiedBy": "rivg6xcMxdlVDM8y",
+    "compendiumSource": null,
+    "duplicateSource": null
+  },
+  "system": {
+    "description": {
+      "@en": "<p>Similar to the fauchard, the guisarme is of military design, and has a hook on it to drag opponents around the battlefield or riders from their saddles.</p>"
+    },
+    "notes": "",
+    "price": {
+      "bp": 0,
+      "gc": 4,
+      "ss": 0
+    },
+    "encumbrance": 3,
+    "carried": true,
+    "weaponType": "Bladed",
+    "equipped": false,
+    "associatedSkill": "Martial Melee",
+    "load": 0,
+    "handling": "One-handed",
+    "qualities": {
+      "value": "Entangling, Finesse, Reach",
+      "arrayOfValues": []
+    },
+    "distance": "Engaged or 1 yard",
+    "damage": {
+      "formula": "[AB] + (1+[#])d6x6",
+      "associatedPrimaryAttribute": "Agility"
+    }
+  },
+  "folder": null,
+  "sort": 0,
+  "ownership": {
+    "default": 0
+  },
+  "flags": {},
+  "_key": "!items!pYnmbHlukRskIqP0"
+}

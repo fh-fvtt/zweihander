@@ -1,0 +1,50 @@
+{
+  "_id": "xVBWas5CJylmb4MW",
+  "effects": [],
+  "img": "systems/zweihander/assets/icons/wizard-staff.svg",
+  "name": "Imperial Might",
+  "type": "spell",
+  "_stats": {
+    "coreVersion": "12.331",
+    "systemId": null,
+    "systemVersion": null,
+    "createdTime": null,
+    "modifiedTime": null,
+    "lastModifiedBy": null,
+    "compendiumSource": null,
+    "duplicateSource": null
+  },
+  "system": {
+    "description": {
+      "@en": "Your hammer glows with a white light, purifying all those whom you ‘purify’ with it."
+    },
+    "notes": "",
+    "rules": {
+      "effect": {
+        "@en": "After successfully casting this spell, your hammer beams with pure, white light. Instead of using your [CB], refer to your [WB] to determine Damage. Finally, ever you strike or Parry with this weapon, refer to your Incantation Skill instead of a Combat-based Skill. You can inflict Injuries with this Magick, as if it were a melee weapon."
+      },
+      "criticalSuccess": {
+        "@en": "As above, but any victim struck with the weapon cannot Dodge or Parry it."
+      },
+      "criticalFailure": {
+        "@en": "You invoke the names of the sacred gods above incorrectly, you fool! As punishment, your weapon is sundered, ruined forever."
+      },
+      "reagents": {
+        "@en": "Your hammer held aloft"
+      }
+    },
+    "tradition": "Divine (God-Emperor)",
+    "principle": "Petty",
+    "distance": "Yourself",
+    "duration": "[WB]+3 minutes",
+    "castingTime": "1 min",
+    "castingCost": 0
+  },
+  "folder": null,
+  "sort": 0,
+  "ownership": {
+    "default": 0
+  },
+  "flags": {},
+  "_key": "!items!xVBWas5CJylmb4MW"
+}

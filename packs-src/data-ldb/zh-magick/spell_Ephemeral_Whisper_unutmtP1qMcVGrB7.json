@@ -1,0 +1,50 @@
+{
+  "_id": "unutmtP1qMcVGrB7",
+  "effects": [],
+  "img": "systems/zweihander/assets/icons/wizard-staff.svg",
+  "name": "Ephemeral Whisper",
+  "type": "spell",
+  "_stats": {
+    "coreVersion": "12.331",
+    "systemId": null,
+    "systemVersion": null,
+    "createdTime": null,
+    "modifiedTime": null,
+    "lastModifiedBy": null,
+    "compendiumSource": null,
+    "duplicateSource": null
+  },
+  "system": {
+    "description": {
+      "@en": "You are given the strength of the mountain and the flames of the earth below."
+    },
+    "notes": "",
+    "rules": {
+      "effect": {
+        "@en": "After successfully casting this spell, add +30% to your Brawn. In addition, any attack you make with a melee weapon adds the Powerful Quality to it."
+      },
+      "criticalSuccess": {
+        "@en": "As above, but triple the Duration."
+      },
+      "criticalFailure": {
+        "@en": "The clay statuette shatters in your hands. The earth rejects your calling, as your flesh turns soft and your energy is sapped from you. Heavy and ponderous in your gait, you must subtract -30% from your Agility for the spell’s Duration. In addition, any attack you make with a melee weapon adds the Slow Quality to it."
+      },
+      "reagents": {
+        "@en": "A clay statuette of yourself"
+      }
+    },
+    "tradition": "Arcane (Elementalism)",
+    "principle": "Lesser",
+    "distance": "Yourself",
+    "duration": "[WB]+9 minutes",
+    "castingTime": "1 min",
+    "castingCost": 0
+  },
+  "folder": null,
+  "sort": 0,
+  "ownership": {
+    "default": 0
+  },
+  "flags": {},
+  "_key": "!items!unutmtP1qMcVGrB7"
+}

@@ -1,0 +1,35 @@
+{
+  "_id": "ITdiaGklrk5epo54",
+  "effects": [],
+  "img": "systems/zweihander/assets/icons/spiked-halo.svg",
+  "name": "Runic Instability",
+  "type": "drawback",
+  "_stats": {
+    "coreVersion": "12.331",
+    "systemId": null,
+    "systemVersion": null,
+    "createdTime": null,
+    "modifiedTime": null,
+    "lastModifiedBy": null,
+    "compendiumSource": null,
+    "duplicateSource": null
+  },
+  "system": {
+    "description": {
+      "@en": "Your Runic enhancements are unstable, and threaten to explode with Ætheric might. Your Runes cannot be inscribed upon living things – unfortunate for those who wished to raise a litter of exploding kittens!"
+    },
+    "notes": "",
+    "rules": {
+      "effect": {
+        "@en": "Whenever an object you have inscribed a Rune upon is broken, Ruined! or Wrecked!, it explodes, destroying the object. Those caught in a Burst Template area of effect must succeed at a (Challenging -10%) Coordination Test or suffer 3D10+3 Damage from fire."
+      }
+    }
+  },
+  "folder": null,
+  "sort": 0,
+  "ownership": {
+    "default": 0
+  },
+  "flags": {},
+  "_key": "!items!ITdiaGklrk5epo54"
+}

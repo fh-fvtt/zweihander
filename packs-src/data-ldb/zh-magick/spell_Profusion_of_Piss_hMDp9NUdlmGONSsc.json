@@ -1,0 +1,50 @@
+{
+  "_id": "hMDp9NUdlmGONSsc",
+  "effects": [],
+  "img": "systems/zweihander/assets/icons/wizard-staff.svg",
+  "name": "Profusion of Piss",
+  "type": "spell",
+  "_stats": {
+    "coreVersion": "12.331",
+    "systemId": null,
+    "systemVersion": null,
+    "createdTime": null,
+    "modifiedTime": null,
+    "lastModifiedBy": null,
+    "compendiumSource": null,
+    "duplicateSource": null
+  },
+  "system": {
+    "description": {
+      "@en": "A golden torrent sprays from your mouth, rendering another nostalgic and blithesome."
+    },
+    "notes": "",
+    "rules": {
+      "effect": {
+        "@en": "After successfully casting this spell, the foe you touch must Resist with a successful Coordination Test or be made Euphoric. While Euphoric, a foe must succeed at a Resolve Test before taking any action, ever. Only by succeeding at three successful Resolve Tests will the Euphoric condition end."
+      },
+      "criticalSuccess": {
+        "@en": "As above, but the spell affects all foes in a Cone Template instead."
+      },
+      "criticalFailure": {
+        "@en": "Your body is made wet, smelling of piss and pipesmoke. The stench clings to you for the next 48 hours, unable to be washed away. Those who stand within a Burst Template of you cannot add their Apprentice or Journeyman Ranks to any Skill Test."
+      },
+      "reagents": {
+        "@en": "A pint of rotgut, gargled (expended)"
+      }
+    },
+    "tradition": "Covenant",
+    "principle": "Lesser",
+    "distance": "Any one person you can touch",
+    "duration": "Special",
+    "castingTime": "1 min",
+    "castingCost": 0
+  },
+  "folder": null,
+  "sort": 0,
+  "ownership": {
+    "default": 0
+  },
+  "flags": {},
+  "_key": "!items!hMDp9NUdlmGONSsc"
+}

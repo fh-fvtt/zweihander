@@ -1,0 +1,50 @@
+{
+  "_id": "Czsqs5bKD16H6RNC",
+  "effects": [],
+  "img": "systems/zweihander/assets/icons/wizard-staff.svg",
+  "name": "Charcoal Of The Appertain",
+  "type": "spell",
+  "_stats": {
+    "coreVersion": "12.331",
+    "systemId": null,
+    "systemVersion": null,
+    "createdTime": null,
+    "modifiedTime": null,
+    "lastModifiedBy": null,
+    "compendiumSource": null,
+    "duplicateSource": null
+  },
+  "system": {
+    "description": {
+      "@en": "<p>The flames reveal, the shadows conceal . . .</p>"
+    },
+    "notes": "",
+    "rules": {
+      "effect": {
+        "@en": "<p>After successfully casting, you spend three hours over a bonfire until one lump of charcoal is produced. If the charcoal is thrown into any new fire, you conjure forth an illusion of anything you can imagine, guaranteeing it&rsquo;s smaller than an oxen. It has no physical tangibility, nor emits a smell, sound or taste. Anyone who sees the illusion can attempt to see through it with a successful Secret Test using Awareness. Once the duration is over, the charcoal is destroyed. This Spell requires Concentration.</p>"
+      },
+      "criticalSuccess": {
+        "@en": "You create three pieces of lump charcoal instead."
+      },
+      "criticalFailure": {
+        "@en": "The fire causes you to fall to Sleep for three hours, unable to be awakened."
+      },
+      "reagents": {
+        "@en": "Set a bonfire, and you create one piece of charcoal from it (expended)"
+      }
+    },
+    "tradition": "Witchcraft",
+    "principle": "Intermediate Tier",
+    "distance": "By Touch",
+    "duration": "6+[WB] minutes",
+    "castingTime": "3 Hours",
+    "castingCost": null
+  },
+  "folder": null,
+  "sort": 0,
+  "ownership": {
+    "default": 0
+  },
+  "flags": {},
+  "_key": "!items!Czsqs5bKD16H6RNC"
+}

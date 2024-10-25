@@ -1,0 +1,50 @@
+{
+  "_id": "axZOSPVOjzM0yoxb",
+  "effects": [],
+  "img": "systems/zweihander/assets/icons/candle-flame.svg",
+  "name": "Candlelight",
+  "type": "spell",
+  "_stats": {
+    "coreVersion": "12.331",
+    "systemId": null,
+    "systemVersion": null,
+    "createdTime": null,
+    "modifiedTime": null,
+    "lastModifiedBy": null,
+    "compendiumSource": null,
+    "duplicateSource": null
+  },
+  "system": {
+    "description": {
+      "@en": "With a snap of your fingers, you can ignite a candle, torch or other tiny object that’s flammable."
+    },
+    "notes": "",
+    "rules": {
+      "effect": {
+        "@en": "After successfully casting this spell, you can ignite a candle, torch or other tiny object you can see. It provides an insignificant amount of heat and light, equivalent to a candle. Its flames are considered to be Mildly Dangerous. Optionally, you can hold this burning light in your palm without risk of harm, until you must use your hand again."
+      },
+      "criticalSuccess": {
+        "@en": "As above, but you can ignite up to three objects instead."
+      },
+      "criticalFailure": {
+        "@en": "Fire suddenly engulfs your arm. You immediately suffer [[/roll 1D10+1]] Damage from fire. If you suffer Injuries from this Damage, you are On Fire instead."
+      },
+      "reagents": {
+        "@en": "A drop of lantern oil rubbed between your fingers (expended)"
+      }
+    },
+    "tradition": "Generalist",
+    "principle": "Generalist",
+    "distance": "Any one object you can see",
+    "duration": "Instantaneous",
+    "castingTime": "1 min",
+    "castingCost": 0
+  },
+  "folder": null,
+  "sort": 0,
+  "ownership": {
+    "default": 0
+  },
+  "flags": {},
+  "_key": "!items!axZOSPVOjzM0yoxb"
+}

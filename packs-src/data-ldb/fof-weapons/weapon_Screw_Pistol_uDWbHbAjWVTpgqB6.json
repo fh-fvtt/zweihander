@@ -1,0 +1,50 @@
+{
+  "_id": "uDWbHbAjWVTpgqB6",
+  "effects": [],
+  "img": "systems/zweihander/assets/icons/gunshot.svg",
+  "name": "Screw Pistol",
+  "type": "weapon",
+  "_stats": {
+    "coreVersion": "12.331",
+    "systemId": null,
+    "systemVersion": null,
+    "createdTime": null,
+    "modifiedTime": null,
+    "lastModifiedBy": null,
+    "compendiumSource": null,
+    "duplicateSource": null
+  },
+  "system": {
+    "description": {
+      "@en": "<p>Sometimes called a cannon barrel pistol, this pistol is designed to be deadly at close range. It is readily hidden, as its barrel can be released by unscrewing it from the stock.</p>"
+    },
+    "notes": "",
+    "price": {
+      "bp": "0",
+      "gc": "2",
+      "ss": "0"
+    },
+    "encumbrance": 1,
+    "carried": true,
+    "weaponType": "Ranged",
+    "equipped": false,
+    "associatedSkill": "Simple Ranged",
+    "load": 3,
+    "handling": "One-handed",
+    "qualities": {
+      "value": "Blackpowder, Pistol, Weak",
+      "arrayOfValues": []
+    },
+    "distance": "3 + [PB] yards",
+    "damage": {
+      "formula": "[CB] + (1+[#])d6x1,6"
+    }
+  },
+  "folder": null,
+  "sort": 0,
+  "ownership": {
+    "default": 0
+  },
+  "flags": {},
+  "_key": "!items!uDWbHbAjWVTpgqB6"
+}

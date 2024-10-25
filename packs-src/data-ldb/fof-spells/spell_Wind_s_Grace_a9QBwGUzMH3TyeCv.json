@@ -1,0 +1,50 @@
+{
+  "_id": "a9QBwGUzMH3TyeCv",
+  "effects": [],
+  "img": "systems/zweihander/assets/icons/spell-book.svg",
+  "name": "Wind’s Grace",
+  "type": "spell",
+  "_stats": {
+    "coreVersion": "12.331",
+    "systemId": null,
+    "systemVersion": null,
+    "createdTime": null,
+    "modifiedTime": null,
+    "lastModifiedBy": null,
+    "compendiumSource": null,
+    "duplicateSource": null
+  },
+  "system": {
+    "description": {
+      "@en": "<p>A breath of spring to restore your aches and pains . . .</p>"
+    },
+    "notes": "",
+    "rules": {
+      "effect": {
+        "@en": "<p>After successfully casting, one ally reduces the time to Recuperate from one Injury by three days.</p>"
+      },
+      "criticalSuccess": {
+        "@en": "They reduce the time to Recuperate from all Injuries by nine days instead."
+      },
+      "criticalFailure": {
+        "@en": "The wind blows you over, as you suffer [[/roll 1D10+1]] Damage, but do not suffer Injuries due to it."
+      },
+      "reagents": {
+        "@en": "A bottle of spring air, which you inhale and exhale over an Injured ally"
+      }
+    },
+    "tradition": "Common",
+    "principle": "Basic Tier",
+    "distance": "By Touch",
+    "duration": "Instantaneous",
+    "castingTime": "1 Minute",
+    "castingCost": 1
+  },
+  "folder": null,
+  "sort": 0,
+  "ownership": {
+    "default": 0
+  },
+  "flags": {},
+  "_key": "!items!a9QBwGUzMH3TyeCv"
+}

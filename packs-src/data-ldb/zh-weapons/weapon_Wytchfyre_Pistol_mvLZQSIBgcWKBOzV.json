@@ -1,0 +1,51 @@
+{
+  "_id": "mvLZQSIBgcWKBOzV",
+  "effects": [],
+  "img": "systems/zweihander/assets/icons/fire-tail.svg",
+  "name": "Wytchfyre Pistol",
+  "type": "weapon",
+  "_stats": {
+    "coreVersion": "12.331",
+    "systemId": "zweihander",
+    "systemVersion": "5.3.2",
+    "createdTime": null,
+    "modifiedTime": 1729892158921,
+    "lastModifiedBy": "rivg6xcMxdlVDM8y",
+    "compendiumSource": null,
+    "duplicateSource": null
+  },
+  "system": {
+    "description": {
+      "@en": "<p>Like a normal pistol, save that the barrel propels a Wytchstone&nbsp; charge that explodes upon impact in warping pain. It is the favored sidearm of the Skrzzak.</p>"
+    },
+    "notes": "",
+    "price": {
+      "bp": 0,
+      "gc": 0,
+      "ss": 0
+    },
+    "encumbrance": 2,
+    "carried": true,
+    "weaponType": "Wytch- Science",
+    "equipped": false,
+    "associatedSkill": "Martial Ranged",
+    "load": 3,
+    "handling": "One-handed",
+    "qualities": {
+      "value": "Finesse, Gunpowder, Vicious, Volatile, Wytchfyre",
+      "arrayOfValues": []
+    },
+    "distance": "[PB]+9 yards",
+    "damage": {
+      "formula": "[AB] + (1+[#])d6x1&6",
+      "associatedPrimaryAttribute": "Agility"
+    }
+  },
+  "folder": null,
+  "sort": 0,
+  "ownership": {
+    "default": 0
+  },
+  "flags": {},
+  "_key": "!items!mvLZQSIBgcWKBOzV"
+}

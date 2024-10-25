@@ -1,0 +1,50 @@
+{
+  "_id": "LnWFgWxxbF37HBr5",
+  "effects": [],
+  "img": "systems/zweihander/assets/icons/wizard-staff.svg",
+  "name": "Addle-coved",
+  "type": "spell",
+  "_stats": {
+    "coreVersion": "12.331",
+    "systemId": null,
+    "systemVersion": null,
+    "createdTime": null,
+    "modifiedTime": null,
+    "lastModifiedBy": null,
+    "compendiumSource": null,
+    "duplicateSource": null
+  },
+  "system": {
+    "description": {
+      "@en": "The mystic sigils you make with your hand dazzles and confuses your intended victim."
+    },
+    "notes": "",
+    "rules": {
+      "effect": {
+        "@en": "After successfully casting this spell, one foe must roll [[/roll 1D6]] Chaos Die at the start of their Turn. If the result is face ‘1’, they lose 1 AP on their next Turn. If the result is face ‘2’, they lose 2 APs on their next Turn. If the result is face ‘3’, they must spend their next Turn running in a random direction. If the result is face ‘4’, they must attack the nearest ally. If the result is face ‘5’, they cannot attack anyone, but can defend themselves. However, if the result is face ‘6’, they are left Helpless. Your foe can successfully Resist with a Scrutinize Test when this spell is cast and at the beginning of their Turn to shake off its Effects. Regardless, the actual casting of Addle-Coved is never apparent to anyone, perfectly disguised."
+      },
+      "criticalSuccess": {
+        "@en": "As above, but the foe is always left Helpless on a result of face ‘1’ or ‘6’."
+      },
+      "criticalFailure": {
+        "@en": "You find yourself exhausted, uncertain of what is occurring around you. You lose 2 APs for your Turns in combat for the spell’s Duration."
+      },
+      "reagents": {
+        "@en": "A mirror shattered onto the ground (expended)"
+      }
+    },
+    "tradition": "Arcane (Shadowmancy)",
+    "principle": "Petty",
+    "distance": "Any one person you can see",
+    "duration": "[WB]+3 minutes",
+    "castingTime": "1 min",
+    "castingCost": 0
+  },
+  "folder": null,
+  "sort": 0,
+  "ownership": {
+    "default": 0
+  },
+  "flags": {},
+  "_key": "!items!LnWFgWxxbF37HBr5"
+}

@@ -1,0 +1,50 @@
+{
+  "_id": "6byFRAlgMI6GYptg",
+  "effects": [],
+  "img": "systems/zweihander/assets/icons/sword-hilt.svg",
+  "name": "Rapier",
+  "type": "weapon",
+  "_stats": {
+    "coreVersion": "12.331",
+    "systemId": "zweihander",
+    "systemVersion": "5.3.2",
+    "createdTime": null,
+    "modifiedTime": 1729891436813,
+    "lastModifiedBy": "rivg6xcMxdlVDM8y",
+    "compendiumSource": null,
+    "duplicateSource": null
+  },
+  "system": {
+    "description": {
+      "@en": "<p>Arm of choice for both cavalry and to give airs that you know what you&rsquo;re doing. Many Veterans hang their sabre in honor of the blood and sanity they shed for whatever nameless count marched them off to war.</p>"
+    },
+    "notes": "",
+    "price": {
+      "bp": 0,
+      "gc": 5,
+      "ss": 0
+    },
+    "encumbrance": 1,
+    "carried": true,
+    "weaponType": "Bladed",
+    "equipped": false,
+    "associatedSkill": "Simple Melee",
+    "load": 0,
+    "handling": "One-handed",
+    "qualities": {
+      "value": "Fast, Finesse, Weak",
+      "arrayOfValues": []
+    },
+    "distance": "Engaged",
+    "damage": {
+      "formula": "[AB] + (1+[#])d6x6"
+    }
+  },
+  "folder": null,
+  "sort": 0,
+  "ownership": {
+    "default": 0
+  },
+  "flags": {},
+  "_key": "!items!6byFRAlgMI6GYptg"
+}

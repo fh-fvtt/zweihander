@@ -1,0 +1,50 @@
+{
+  "_id": "GMgqrsVsTKkE2gP8",
+  "effects": [],
+  "img": "systems/zweihander/assets/icons/wizard-staff.svg",
+  "name": "Psychic Enslavement",
+  "type": "spell",
+  "_stats": {
+    "coreVersion": "12.331",
+    "systemId": null,
+    "systemVersion": null,
+    "createdTime": null,
+    "modifiedTime": null,
+    "lastModifiedBy": null,
+    "compendiumSource": null,
+    "duplicateSource": null
+  },
+  "system": {
+    "description": {
+      "@en": "Slipping into a comatose state, your spirit ‘slips’ into the body of another. You see through their eyes, speak with their tongue, and kill with their hands."
+    },
+    "notes": "",
+    "rules": {
+      "effect": {
+        "@en": "After successfully casting this spell, you immediately move your spirit Ætherically into a foe’s body and gain control of it. You bend them to your will, forcing them to commit any act you can conceive of (even if the act is suicidal). You retain your ability to cast Magick while in your foe’s body, despite taking on their attributes. However, your original body is left Helpless for the Duration of the spell. Once you slip back into your own skin, the foe must Resist with a successful Resolve Test or else gain a Mutation called Taint of Chaos."
+      },
+      "criticalSuccess": {
+        "@en": "As above, but triple the Duration."
+      },
+      "criticalFailure": {
+        "@en": "Your spirit is temporarily displaced into the Æthereal Veil, and for 48 hours, you are under the control of something else. The exact nature of the something now controlling you will be determined by the GM and neither its exact nature or the fact that you are possessed should be shared with the other players. Embrace your Chaos Alignment and play the part of the possessed!"
+      },
+      "reagents": {
+        "@en": "A handful of pink sand, inhaled (expended)"
+      }
+    },
+    "tradition": "Covenant",
+    "principle": "Lesser",
+    "distance": "Any one person you can see",
+    "duration": "6+[WB] minutes",
+    "castingTime": "1 min",
+    "castingCost": 0
+  },
+  "folder": null,
+  "sort": 0,
+  "ownership": {
+    "default": 0
+  },
+  "flags": {},
+  "_key": "!items!GMgqrsVsTKkE2gP8"
+}

@@ -1,0 +1,41 @@
+{
+  "_id": "dG8Mu7jstYASdIQU",
+  "effects": [],
+  "img": "systems/zweihander/assets/icons/half-dead.svg",
+  "name": "Grey Plague",
+  "type": "disease",
+  "_stats": {
+    "coreVersion": "12.331",
+    "systemId": null,
+    "systemVersion": null,
+    "createdTime": null,
+    "modifiedTime": null,
+    "lastModifiedBy": null,
+    "compendiumSource": null,
+    "duplicateSource": null
+  },
+  "system": {
+    "description": {
+      "@en": "Sometimes also referred to as ‘greyscale’, the Grey Plague is a relentless disease. It tends to take hold over those who live in damp conditions, affecting the very young or very old. The afflicted exhibit oddities upon their flesh, hardening their skin like thin scales – thus its namesake. It leaves limbs dead and atrophied, causes feverish episodes periodically and even moments of epilepsy before the offending limbs must be removed. For all of its victims, it is a death sentence – albeit a slow, painful one. Cowbells and personal clappers are often forced upon its victims, to warn others of their dire illness as they go about their suffering."
+    },
+    "notes": "",
+    "rules": {
+      "effect": {
+        "@en": "Over the course of the duration, you permanently lose 3% Agility each week."
+      },
+      "treatment": {
+        "@en": "In order to treat a patient suffering from the Grey Plague, a caregiver must have a Skill Rank in Heal, have access to surgical tools, a vial of holy water and a Bandage (both of which are expended as part of the treatment) and be left uninterrupted for at least 1 hour. If they succeed at a (Challenging -10%) Heal Test, you do not suffer the effects for the following week. You may only be treated in this manner once every 24 hours, no matter whether it is successful or not."
+      }
+    },
+    "resist": "(Challenging -10%) Toughness Test",
+    "duration": "Until cured",
+    "active": true
+  },
+  "folder": null,
+  "sort": 0,
+  "ownership": {
+    "default": 0
+  },
+  "flags": {},
+  "_key": "!items!dG8Mu7jstYASdIQU"
+}

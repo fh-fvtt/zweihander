@@ -1,0 +1,50 @@
+{
+  "_id": "hSGpUSINLAigGONv",
+  "effects": [],
+  "img": "systems/zweihander/assets/icons/wizard-staff.svg",
+  "name": "Reshape Metal",
+  "type": "spell",
+  "_stats": {
+    "coreVersion": "12.331",
+    "systemId": null,
+    "systemVersion": null,
+    "createdTime": null,
+    "modifiedTime": null,
+    "lastModifiedBy": null,
+    "compendiumSource": null,
+    "duplicateSource": null
+  },
+  "system": {
+    "description": {
+      "@en": "Tapping the hammer against an object three times, it instantly takes a new shape before your eyes."
+    },
+    "notes": "",
+    "rules": {
+      "effect": {
+        "@en": "After successfully casting this spell, the object you touch (providing it’s no larger than a human is tall) can be physically altered. For instance, you could reshape a door into a sled, a lead flagon into a fishing lure or a sword into a dirk. The object being changed must be larger than the new object, although you can reshape objects into similarly-shaped or sized objects. In addition, it cannot change the properties of the metal (meaning you could not turn a lead ball into a gold coin). If you attempt to use this on a foe’s armor, they can avoid it with a successful Coordination Test as the metal reshapes. Otherwise, they are knocked Prone."
+      },
+      "criticalSuccess": {
+        "@en": "As above, but the object is crafted as if Castle-forged or the best quality you can create."
+      },
+      "criticalFailure": {
+        "@en": "The tolling of the bell rings in your head, as you immediately double over and vomit copiously. Your hearing is stricken from you and you are temporarily deaf for 48 hours. During this time, you automatically fail any Skill Test which requires you to hear."
+      },
+      "reagents": {
+        "@en": "An iron hammer, touched to the object you want to reshape"
+      }
+    },
+    "tradition": "Arcane (Transmutation)",
+    "principle": "Lesser",
+    "distance": "Any one object you touch",
+    "duration": "Forever",
+    "castingTime": "1 min",
+    "castingCost": 0
+  },
+  "folder": null,
+  "sort": 0,
+  "ownership": {
+    "default": 0
+  },
+  "flags": {},
+  "_key": "!items!hSGpUSINLAigGONv"
+}

@@ -1,0 +1,50 @@
+{
+  "_id": "dQrViualGa7eMKNc",
+  "effects": [],
+  "img": "systems/zweihander/assets/icons/wizard-staff.svg",
+  "name": "Law of Order",
+  "type": "spell",
+  "_stats": {
+    "coreVersion": "12.331",
+    "systemId": null,
+    "systemVersion": null,
+    "createdTime": null,
+    "modifiedTime": null,
+    "lastModifiedBy": null,
+    "compendiumSource": null,
+    "duplicateSource": null
+  },
+  "system": {
+    "description": {
+      "@en": "Your Magick instills a better sense of tactics and stratagem into the mind of the one you touch."
+    },
+    "notes": "",
+    "rules": {
+      "effect": {
+        "@en": "After successfully casting this spell, the person you touch can automatically succeed at one Skill Test they make for the Duration of the spell. The Skill Test can be any one of their choice, even one that has been failed or Critically Failed."
+      },
+      "criticalSuccess": {
+        "@en": "As above, but triple the Duration"
+      },
+      "criticalFailure": {
+        "@en": "Misfortune hexes the would-be recipient. The GM will determine one Skill Test the person will automatically fail – even if they Critically Succeed – for the Duration of the spell."
+      },
+      "reagents": {
+        "@en": "A piece of paper with a mathematical formula written on it (expended)"
+      }
+    },
+    "tradition": "Arcane (Transmutation)",
+    "principle": "Petty",
+    "distance": "Any one person you can touch",
+    "duration": "[WB]+3 minutes",
+    "castingTime": "1 min",
+    "castingCost": 0
+  },
+  "folder": null,
+  "sort": 0,
+  "ownership": {
+    "default": 0
+  },
+  "flags": {},
+  "_key": "!items!dQrViualGa7eMKNc"
+}

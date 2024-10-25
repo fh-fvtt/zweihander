@@ -1,0 +1,50 @@
+{
+  "_id": "nW6Eum2cBRuxd8MQ",
+  "effects": [],
+  "img": "systems/zweihander/assets/icons/primitive-torch.svg",
+  "name": "Torch",
+  "type": "weapon",
+  "_stats": {
+    "coreVersion": "12.331",
+    "systemId": null,
+    "systemVersion": null,
+    "createdTime": null,
+    "modifiedTime": null,
+    "lastModifiedBy": null,
+    "compendiumSource": null,
+    "duplicateSource": null
+  },
+  "system": {
+    "description": {
+      "@en": "<p>Swabbed in oil and rough cloth, torches are oftentimes used by peasants and witch hunters to burn cruel lords and heretics. Rarely are torches employed otherwise, unless one is so inclined to descend into a tomb to rob it.</p>"
+    },
+    "notes": "",
+    "price": {
+      "bp": "3",
+      "gc": "0",
+      "ss": "0"
+    },
+    "encumbrance": 1,
+    "carried": true,
+    "weaponType": "None",
+    "equipped": false,
+    "associatedSkill": "Simple Melee",
+    "load": 0,
+    "handling": "One-handed",
+    "qualities": {
+      "value": "Immolate, Ineffective, Slow",
+      "arrayOfValues": []
+    },
+    "distance": "Engaged",
+    "damage": {
+      "formula": "[CB] + (1+[#])d6x6"
+    }
+  },
+  "folder": null,
+  "sort": 0,
+  "ownership": {
+    "default": 0
+  },
+  "flags": {},
+  "_key": "!items!nW6Eum2cBRuxd8MQ"
+}

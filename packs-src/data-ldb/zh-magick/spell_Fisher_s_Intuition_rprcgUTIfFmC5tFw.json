@@ -1,0 +1,50 @@
+{
+  "_id": "rprcgUTIfFmC5tFw",
+  "effects": [],
+  "img": "systems/zweihander/assets/icons/wizard-staff.svg",
+  "name": "Fisher's Intuition",
+  "type": "spell",
+  "_stats": {
+    "coreVersion": "12.331",
+    "systemId": null,
+    "systemVersion": null,
+    "createdTime": null,
+    "modifiedTime": null,
+    "lastModifiedBy": null,
+    "compendiumSource": null,
+    "duplicateSource": null
+  },
+  "system": {
+    "description": {
+      "@en": "You momentarily possess the uncanny eye of an able fisherman."
+    },
+    "notes": "",
+    "rules": {
+      "effect": {
+        "@en": "After successfully casting this spell, name any one creature of the sea. You now know the inherent direction to find it, providing it dwells in an area within your field of vision. Once located, the Magick fades."
+      },
+      "criticalSuccess": {
+        "@en": "As above, but you are guaranteed to catch your prey."
+      },
+      "criticalFailure": {
+        "@en": "Your Magick leads you astray, as whomever attempts to catch the prey draws something terrible from below the depths. Likely, it will attempt to either swallow them once captured or pull them back into the waters!"
+      },
+      "reagents": {
+        "@en": "A fishing lure, dropped into the water (expended)"
+      }
+    },
+    "tradition": "Divine (Leviathan)",
+    "principle": "Petty",
+    "distance": "Self",
+    "duration": "Instantaneous",
+    "castingTime": "1 min",
+    "castingCost": 0
+  },
+  "folder": null,
+  "sort": 0,
+  "ownership": {
+    "default": 0
+  },
+  "flags": {},
+  "_key": "!items!rprcgUTIfFmC5tFw"
+}

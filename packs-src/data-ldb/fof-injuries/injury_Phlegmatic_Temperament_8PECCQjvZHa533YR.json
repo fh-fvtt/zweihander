@@ -1,0 +1,38 @@
+{
+  "_id": "8PECCQjvZHa533YR",
+  "effects": [],
+  "img": "systems/zweihander/assets/icons/internal-injury.svg",
+  "name": "Phlegmatic Temperament",
+  "type": "injury",
+  "_stats": {
+    "coreVersion": "12.331",
+    "systemId": null,
+    "systemVersion": null,
+    "createdTime": null,
+    "modifiedTime": null,
+    "lastModifiedBy": null,
+    "compendiumSource": null,
+    "duplicateSource": null
+  },
+  "system": {
+    "description": {
+      "@en": "<p>You see that thing over there? There&rsquo;s no chance I&rsquo;m going near it . . .</p>"
+    },
+    "notes": "<p><span style=\"color: #d5c4a1; font-family: Signika, sans-serif; font-style: italic; text-align: justify; background-color: #282828;\">Grievous Injuries must undergo a successful Perform Surgery within twenty-four hours of suffering it, or else a character gains its related Permanent Injury.</span></p>",
+    "rules": {
+      "effect": {
+        "@en": "<p>Whenever you are suffering from Stress, Fear or Terror, your Fury Dice do not explode. This lasts until you go to Sleep.</p>"
+      }
+    },
+    "severity": 0,
+    "active": true,
+    "recuperationTime": 0
+  },
+  "folder": null,
+  "sort": 0,
+  "ownership": {
+    "default": 0
+  },
+  "flags": {},
+  "_key": "!items!8PECCQjvZHa533YR"
+}

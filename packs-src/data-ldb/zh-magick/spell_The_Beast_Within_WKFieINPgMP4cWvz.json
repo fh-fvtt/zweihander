@@ -1,0 +1,50 @@
+{
+  "_id": "WKFieINPgMP4cWvz",
+  "effects": [],
+  "img": "systems/zweihander/assets/icons/heart-organ.svg",
+  "name": "The Beast Within",
+  "type": "spell",
+  "_stats": {
+    "coreVersion": "12.331",
+    "systemId": null,
+    "systemVersion": null,
+    "createdTime": null,
+    "modifiedTime": null,
+    "lastModifiedBy": null,
+    "compendiumSource": null,
+    "duplicateSource": null
+  },
+  "system": {
+    "description": {
+      "@en": "Your words unleash the beast within the hearts of your allies, calling them into a frenzy!"
+    },
+    "notes": "",
+    "rules": {
+      "effect": {
+        "@en": "After successfully casting this spell, select a number of allies equal to your [WB]. They can add a 1D6 Fury Die to their Total Damage rolls with melee and ranged weapons."
+      },
+      "criticalSuccess": {
+        "@en": "As above, but the allies can also add the Punishing Quality to their weapons."
+      },
+      "criticalFailure": {
+        "@en": "Your invocation has angered the ancient beasts of the woods. In due time, it will call forth its most powerful representative, savage and primal, to exact its revenge. Likely, this may be a Man-Eater... or potentially worse. Only your GM truly knows."
+      },
+      "reagents": {
+        "@en": "A sliver of a silverback warg’s heart, eaten by you (expended)"
+      }
+    },
+    "tradition": "Arcane (Animism)",
+    "principle": "Greater",
+    "distance": "Any persons you can see",
+    "duration": "[WB]+9 minutes",
+    "castingTime": "1 min",
+    "castingCost": 0
+  },
+  "folder": null,
+  "sort": 0,
+  "ownership": {
+    "default": 0
+  },
+  "flags": {},
+  "_key": "!items!WKFieINPgMP4cWvz"
+}

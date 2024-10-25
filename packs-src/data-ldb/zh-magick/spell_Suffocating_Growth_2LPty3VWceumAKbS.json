@@ -1,0 +1,50 @@
+{
+  "_id": "2LPty3VWceumAKbS",
+  "effects": [],
+  "img": "systems/zweihander/assets/icons/beanstalk.svg",
+  "name": "Suffocating Growth",
+  "type": "spell",
+  "_stats": {
+    "coreVersion": "12.331",
+    "systemId": null,
+    "systemVersion": null,
+    "createdTime": null,
+    "modifiedTime": null,
+    "lastModifiedBy": null,
+    "compendiumSource": null,
+    "duplicateSource": null
+  },
+  "system": {
+    "description": {
+      "@en": "Creeping vines and thorns come alive, as it entangles limbs and hands to the ground."
+    },
+    "notes": "",
+    "rules": {
+      "effect": {
+        "@en": "After successfully casting this spell, a crawling patch of vines and creeping plants surges up out of the ground, seeking to swallow those within its reach. All those who are caught within the Burst Template begin to suffer from Suffocation. The growth is considered to be Hard Terrain. In addition, those attempting to escape the growth must Resist with an Athletics Test or continue to suffer from Suffocation. Finally, any Movement Action made within the growth requires the expenditure of 1 additional AP to use."
+      },
+      "criticalSuccess": {
+        "@en": "As above, but Movement Actions instead require the expenditure of 2 additional APs to use."
+      },
+      "criticalFailure": {
+        "@en": "Vines burst from the ground beneath you, their fronds wrapping themselves around you and creeping down your throat. They threaten to tear you from the inside out. You must Resist with an Athletics Test now and at the start of your Turn for the Duration of the spell or suffer from Suffocation."
+      },
+      "reagents": {
+        "@en": "A patch of solid earth you can see"
+      }
+    },
+    "tradition": "Divine (Demiurge)",
+    "principle": "Lesser",
+    "distance": "Any one place you can see",
+    "duration": "[WB]+6 minutes",
+    "castingTime": "1 min",
+    "castingCost": 0
+  },
+  "folder": null,
+  "sort": 0,
+  "ownership": {
+    "default": 0
+  },
+  "flags": {},
+  "_key": "!items!2LPty3VWceumAKbS"
+}

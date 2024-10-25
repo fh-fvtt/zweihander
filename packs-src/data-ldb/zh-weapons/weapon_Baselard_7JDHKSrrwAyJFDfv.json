@@ -1,0 +1,51 @@
+{
+  "_id": "7JDHKSrrwAyJFDfv",
+  "effects": [],
+  "img": "systems/zweihander/assets/icons/stiletto.svg",
+  "name": "Baselard",
+  "type": "weapon",
+  "_stats": {
+    "coreVersion": "12.331",
+    "systemId": "zweihander",
+    "systemVersion": "5.3.2",
+    "createdTime": null,
+    "modifiedTime": 1729875633280,
+    "lastModifiedBy": "rivg6xcMxdlVDM8y",
+    "compendiumSource": null,
+    "duplicateSource": null
+  },
+  "system": {
+    "description": {
+      "@en": "<p>These weapons go from occupying tombs to finding their way into the hands of criminals. Oversized versions of these daggers are sometimes a centerpiece of discussion among nobles as a fashion accessory.</p>"
+    },
+    "notes": "",
+    "price": {
+      "bp": 0,
+      "gc": 1,
+      "ss": 0
+    },
+    "encumbrance": 1,
+    "carried": true,
+    "weaponType": "Bladed",
+    "equipped": false,
+    "associatedSkill": "Simple Melee",
+    "load": 0,
+    "handling": "One-handed",
+    "qualities": {
+      "value": "Fast, Finesse, Light, Weak",
+      "arrayOfValues": []
+    },
+    "distance": "Engaged",
+    "damage": {
+      "formula": "[CB] + (1+[#])d6x6",
+      "associatedPrimaryAttribute": "Agility"
+    }
+  },
+  "folder": null,
+  "sort": 0,
+  "ownership": {
+    "default": 0
+  },
+  "flags": {},
+  "_key": "!items!7JDHKSrrwAyJFDfv"
+}

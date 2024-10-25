@@ -1,0 +1,50 @@
+{
+  "_id": "pJJXX4rmZ7Y3owTe",
+  "effects": [],
+  "img": "systems/zweihander/assets/icons/wizard-staff.svg",
+  "name": "Wytchfyre Discharge",
+  "type": "spell",
+  "_stats": {
+    "coreVersion": "12.331",
+    "systemId": null,
+    "systemVersion": null,
+    "createdTime": null,
+    "modifiedTime": null,
+    "lastModifiedBy": null,
+    "compendiumSource": null,
+    "duplicateSource": null
+  },
+  "system": {
+    "description": {
+      "@en": "A scourge of oozing viridescent electricity explodes from your hand, moving upon their own accord."
+    },
+    "notes": "",
+    "rules": {
+      "effect": {
+        "@en": "After successfully casting this spell, your hand explodes with a scourge of electrified, green energy. The affected hand becomes a two-handed melee weapon with the Reach, Powerful and Slow Qualities. Instead of using your [CB], refer to your [WB] to determine Damage. Finally, whenever you strike or Parry with this discharge, refer to your Incantation Skill instead of a Combat-based Skill. You can inflict Injuries with this Magick, but foes are always left Prone instead."
+      },
+      "criticalSuccess": {
+        "@en": "As above, but victims are automatically Stunned if they cannot Parry the attack."
+      },
+      "criticalFailure": {
+        "@en": "The skin from your hands suddenly sloughs off, changing into a snake-like Man-Eater for purposes of its creature profile. The Man-Eater will attack you and your allies until it is Slain!"
+      },
+      "reagents": {
+        "@en": "A powder of Wytchstone Essence, snorted (expended)"
+      }
+    },
+    "tradition": "Covenant",
+    "principle": "Lesser",
+    "distance": "Yourself",
+    "duration": "6+[WB] minutes",
+    "castingTime": "1 min",
+    "castingCost": 0
+  },
+  "folder": null,
+  "sort": 0,
+  "ownership": {
+    "default": 0
+  },
+  "flags": {},
+  "_key": "!items!pJJXX4rmZ7Y3owTe"
+}

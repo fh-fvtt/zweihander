@@ -1,0 +1,117 @@
+{
+  "_id": "zIpKOgynLGGJmk8q",
+  "effects": [],
+  "img": "systems/zweihander/assets/icons/heptagram.svg",
+  "name": "Occult Magician",
+  "type": "profession",
+  "_stats": {
+    "coreVersion": "12.331",
+    "systemId": null,
+    "systemVersion": null,
+    "createdTime": null,
+    "modifiedTime": null,
+    "lastModifiedBy": null,
+    "compendiumSource": null,
+    "duplicateSource": null
+  },
+  "system": {
+    "description": {
+      "@en": "Covenant Magick is dangerous indeed, and most do not have the faculties (or lack of sanity) to study the eldritch mysteries of their Daemon. The Occult Magician gladly takes upon this role. Often working hand-in-hand with a Havoc Conjuror, they channel the true might of their Daemon. Some Occult Magicians manage to form cabals of their own, but they are almost always organizations of like-minded occultists, created in order to best perform more unsavory spells. Occult Magicians are without a doubt powerful wizards, but they differ from Havoc Conjurors as they have not fully succumbed to dark temptation. They somehow still retain a shred of their humanity. Sometimes this is born of ignorance of the true reality of their Daemonic ‘god’, while in other instances, it is a cruel joke the Daemon will reveal (and revel in) when all the cards are laid out on the table.\\nOccult Magicians choose to operate from the shadows, leading their cabals through indirection and suggestion rather than direct missive. This leaves time to focus on their Magickal studies, always pushing the edge of their limitations while legitimizing it. Occult Magicians strike many, many deals with a myriad of Daemons; deals that they generally feel are ironclad in their favor. To an Occult Magician, the price of hubris is but a drop in the ocean of souls owed to their Daemon master. On the contrary, the Daemon has seen everything three steps in advance. Whether it be a foul coupling between man and beast, or a sanguination to open a portal to another mind-blasting reality, a Daemon will always come to collect - no matter how small the price."
+    },
+    "notes": "",
+    "expert": {
+      "value": true,
+      "requirements": "You must possess at least two Skill Ranks in Incantation in order to enter this Expert Profession. In addition, you must have the Special Trait of Covenant Magick and Drawback of Ruinous Power."
+    },
+    "archetype": "Expert Profession",
+    "bonusAdvances": [
+      {
+        "name": "[BB]"
+      },
+      {
+        "name": "[FB]"
+      },
+      {
+        "name": "[IB]"
+      },
+      {
+        "name": "[IB]"
+      },
+      {
+        "name": "[PB]"
+      },
+      {
+        "name": "[WB]"
+      },
+      {
+        "name": "[WB]"
+      }
+    ],
+    "skillRanks": [
+      {
+        "name": "Alchemy"
+      },
+      {
+        "name": "Bargain"
+      },
+      {
+        "name": "Education"
+      },
+      {
+        "name": "Folklore"
+      },
+      {
+        "name": "Incantation"
+      },
+      {
+        "name": "Intimidate"
+      },
+      {
+        "name": "Resolve"
+      },
+      {
+        "name": "Rumor"
+      },
+      {
+        "name": "Scrutinize"
+      },
+      {
+        "name": "Simple Melee"
+      }
+    ],
+    "talents": [
+      {
+        "linkedId": null,
+        "name": "Blood Magick"
+      },
+      {
+        "linkedId": null,
+        "name": "Indifference"
+      },
+      {
+        "linkedId": null,
+        "name": "Supernatural Paranoia"
+      }
+    ],
+    "professionalTrait": {
+      "name": "Psionik Disruption",
+      "linkedId": null
+    },
+    "specialTrait": {
+      "name": "",
+      "linkedId": null
+    },
+    "drawback": {
+      "name": "Damned",
+      "linkedId": null
+    },
+    "tier": ""
+  },
+  "folder": null,
+  "sort": 0,
+  "ownership": {
+    "default": 0
+  },
+  "flags": {},
+  "_key": "!items!zIpKOgynLGGJmk8q"
+}

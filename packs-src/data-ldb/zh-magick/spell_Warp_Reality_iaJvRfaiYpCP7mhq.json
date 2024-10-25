@@ -1,0 +1,50 @@
+{
+  "_id": "iaJvRfaiYpCP7mhq",
+  "effects": [],
+  "img": "systems/zweihander/assets/icons/wizard-staff.svg",
+  "name": "Warp Reality",
+  "type": "spell",
+  "_stats": {
+    "coreVersion": "12.331",
+    "systemId": null,
+    "systemVersion": null,
+    "createdTime": null,
+    "modifiedTime": null,
+    "lastModifiedBy": null,
+    "compendiumSource": null,
+    "duplicateSource": null
+  },
+  "system": {
+    "description": {
+      "@en": "You pinch a ball of wax between your fingers, causing the next object you touch to become plastic and mutable. Nothing has a set form; everything is uncertain."
+    },
+    "notes": "",
+    "rules": {
+      "effect": {
+        "@en": "After successfully casting this spell, any objects you touch (providing they are no larger than a child is tall) can be bent as if made of soft putty. If you intend to touch a foe’s trappings (such as a weapon or their armor), they must Resist with a successful Coordination Test or else their trapping temporarily gains the Ruined! Quality. If you keep your hand on the object for longer than three minutes, you can temporarily destroy the object. This spell has no Effect on trappings with the Castle-forged Quality or Artifacts and Relics. Once the Duration is up, objects affected by this spell return to their normal state."
+      },
+      "criticalSuccess": {
+        "@en": "As above, but objects do not return to their normal state at the end of the Duration."
+      },
+      "criticalFailure": {
+        "@en": "Dripping like hot wax, every metal object you are wearing or carrying about your person is immediately destroyed."
+      },
+      "reagents": {
+        "@en": "A ball of earwax made from slain prostitutes or dead pimps (expended)"
+      }
+    },
+    "tradition": "Covenant",
+    "principle": "Petty",
+    "distance": "Yourself",
+    "duration": "3+[WB] minutes",
+    "castingTime": "1 min",
+    "castingCost": 0
+  },
+  "folder": null,
+  "sort": 0,
+  "ownership": {
+    "default": 0
+  },
+  "flags": {},
+  "_key": "!items!iaJvRfaiYpCP7mhq"
+}

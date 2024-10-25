@@ -1,0 +1,50 @@
+{
+  "_id": "FG0Ob8R84rjIk72R",
+  "effects": [],
+  "img": "systems/zweihander/assets/icons/wizard-staff.svg",
+  "name": "Hellfrost Transformation",
+  "type": "spell",
+  "_stats": {
+    "coreVersion": "12.331",
+    "systemId": null,
+    "systemVersion": null,
+    "createdTime": null,
+    "modifiedTime": null,
+    "lastModifiedBy": null,
+    "compendiumSource": null,
+    "duplicateSource": null
+  },
+  "system": {
+    "description": {
+      "@en": "Within a whorl of ice and snow, your form grows to such immensity that it is no longer yours. Your body transmutates into a living thing of frozen terror!"
+    },
+    "notes": "",
+    "rules": {
+      "effect": {
+        "@en": "After successfully casting this spell, both you and all the trappings upon yourself take the shape of an avatar of the Witch-Queen. Temporarily replace your Character sheet with the creature profile of a Fomori Crone, gaining its benefits and drawbacks. If you suffer an Injury during this time, the Magick spell immediately ends."
+      },
+      "criticalSuccess": {
+        "@en": "As above, but triple the Duration."
+      },
+      "criticalFailure": {
+        "@en": "Your half-frozen form temporarily explodes into a bizarre amalgam of fleshy whips and monster: your head turns to the shape of a gaping maw, your teats turn into child-like hands and your legs into prehensile, purple tails. Those who behold your countenance must succeed at a Resolve Test or else they suffer from Terror. In addition, you must succeed at a Toughness Test or else be immediately Slain! (unless you have a Fate Point to expend). If you succeed, you return to your normal self, but are left Prone and Incapacitated!"
+      },
+      "reagents": {
+        "@en": "A wand made from the humerus of a Fomori Crone, held aloft"
+      }
+    },
+    "tradition": "Covenant",
+    "principle": "Greater",
+    "distance": "Yourself",
+    "duration": "9+[WB] minutes",
+    "castingTime": "1 min",
+    "castingCost": 0
+  },
+  "folder": null,
+  "sort": 0,
+  "ownership": {
+    "default": 0
+  },
+  "flags": {},
+  "_key": "!items!FG0Ob8R84rjIk72R"
+}

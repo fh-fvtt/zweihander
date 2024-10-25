@@ -1,0 +1,41 @@
+{
+  "_id": "uNkweJa2bp0JI2Yy",
+  "effects": [],
+  "img": "systems/zweihander/assets/icons/vial.svg",
+  "name": "Opium",
+  "type": "disease",
+  "_stats": {
+    "coreVersion": "12.331",
+    "systemId": null,
+    "systemVersion": null,
+    "createdTime": null,
+    "modifiedTime": null,
+    "lastModifiedBy": null,
+    "compendiumSource": null,
+    "duplicateSource": null
+  },
+  "system": {
+    "description": {
+      "@en": "<p>When processed, opium can be used as a painkiller. For us, however, it expands our minds and allows us to forget the drudgeries of life.</p>"
+    },
+    "notes": "",
+    "rules": {
+      "effect": {
+        "@en": "<p><strong>Effect:</strong> After ingestion, you are Unconscious. However, your Peril Condition Track is restored to Unharmed.</p>\n<p><strong>Other Considerations:</strong> This Drug cannot be applied to a weapon. You can only take Opium once every twentyfour hours. Using it more than once causes you to move one step down the Peril Condition Track negatively.</p>"
+      },
+      "treatment": {
+        "@en": ""
+      }
+    },
+    "resist": "NONE",
+    "duration": "One hour",
+    "active": false
+  },
+  "folder": null,
+  "sort": 0,
+  "ownership": {
+    "default": 0
+  },
+  "flags": {},
+  "_key": "!items!uNkweJa2bp0JI2Yy"
+}

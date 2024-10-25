@@ -1,0 +1,50 @@
+{
+  "_id": "GRQVonXZ3k9SYRW4",
+  "effects": [],
+  "img": "systems/zweihander/assets/icons/wizard-staff.svg",
+  "name": "Warp-step",
+  "type": "spell",
+  "_stats": {
+    "coreVersion": "12.331",
+    "systemId": null,
+    "systemVersion": null,
+    "createdTime": null,
+    "modifiedTime": null,
+    "lastModifiedBy": null,
+    "compendiumSource": null,
+    "duplicateSource": null
+  },
+  "system": {
+    "description": {
+      "@en": "With a flick of the wrist and a gout of green smoke, you and another instantly ‘step’ away and reappear."
+    },
+    "notes": "",
+    "rules": {
+      "effect": {
+        "@en": "After successfully casting this spell, you and another ally you touch instantly leap to any place you can see. Once you complete Warp-step, you can both attempt a Stealth Test to hide from sight."
+      },
+      "criticalSuccess": {
+        "@en": "As above, but you and the ally who leap are automatically hidden from sight."
+      },
+      "criticalFailure": {
+        "@en": "With a flash of Wytchfyre, you and the ally are instantaneously teleported into the most disadvantageous situation within sight. This may be directly in front of an enemy Prone onto the ground, bound up in ropes or an otherwise dangerous situation determined by the GM."
+      },
+      "reagents": {
+        "@en": "A pinch of Wytchstone Essence, tossed into the air (expended)"
+      }
+    },
+    "tradition": "Covenant",
+    "principle": "Lesser",
+    "distance": "Special",
+    "duration": "Instantaneous",
+    "castingTime": "1 min",
+    "castingCost": 0
+  },
+  "folder": null,
+  "sort": 0,
+  "ownership": {
+    "default": 0
+  },
+  "flags": {},
+  "_key": "!items!GRQVonXZ3k9SYRW4"
+}

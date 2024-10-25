@@ -1,0 +1,50 @@
+{
+  "_id": "kvq7jncegMYy3lAP",
+  "effects": [],
+  "img": "systems/zweihander/assets/icons/wizard-staff.svg",
+  "name": "Coruscating Mantle",
+  "type": "spell",
+  "_stats": {
+    "coreVersion": "12.331",
+    "systemId": null,
+    "systemVersion": null,
+    "createdTime": null,
+    "modifiedTime": null,
+    "lastModifiedBy": null,
+    "compendiumSource": null,
+    "duplicateSource": null
+  },
+  "system": {
+    "description": {
+      "@en": "Your cloak glimmers and twinkles with brilliant light, as to obfuscate your true location."
+    },
+    "notes": "",
+    "rules": {
+      "effect": {
+        "@en": "After successfully casting this spell, all ranged weapons that aren’t Magickal in nature cannot apply Fury Dice to their Total Damage when harming you. However, because the cloak shimmers with a low light, you cannot use the Stealth Skill to hide."
+      },
+      "criticalSuccess": {
+        "@en": "As above, but all ranged weapon attacks automatically miss you."
+      },
+      "criticalFailure": {
+        "@en": "With a terrible tearing sound, the velvet mantle takes to the air, ripping from your neck. A gust of wind catches it and it flies off, never to be found again."
+      },
+      "reagents": {
+        "@en": "An expensive velvet mantle, worn on your back"
+      }
+    },
+    "tradition": "Arcane (Luminescence)",
+    "principle": "Petty",
+    "distance": "Yourself",
+    "duration": "[WB]+3 minutes",
+    "castingTime": "1 min",
+    "castingCost": 0
+  },
+  "folder": null,
+  "sort": 0,
+  "ownership": {
+    "default": 0
+  },
+  "flags": {},
+  "_key": "!items!kvq7jncegMYy3lAP"
+}

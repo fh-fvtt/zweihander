@@ -1,0 +1,50 @@
+{
+  "_id": "rSERkabvuN3SbOZ2",
+  "effects": [],
+  "img": "systems/zweihander/assets/icons/wizard-staff.svg",
+  "name": "Unholy Vision",
+  "type": "spell",
+  "_stats": {
+    "coreVersion": "12.331",
+    "systemId": null,
+    "systemVersion": null,
+    "createdTime": null,
+    "modifiedTime": null,
+    "lastModifiedBy": null,
+    "compendiumSource": null,
+    "duplicateSource": null
+  },
+  "system": {
+    "description": {
+      "@en": "Your eyes glow softly with a ghastly blue light, letting you see within the shadows of the Material Realm."
+    },
+    "notes": "",
+    "rules": {
+      "effect": {
+        "@en": "After successfully casting this spell, your eyes begin to glow pink and you can see perfectly in the dark. You can also see through fog, mist or smoke. For the Duration of the spell, anyone who sees your eyes glowing and recoil ever so slightly at the horror of it. The contempt in which they hold you means that you cannot succeed at Fellowship- based Skill Tests when interacting with them."
+      },
+      "criticalSuccess": {
+        "@en": "As above, but triple the Duration."
+      },
+      "criticalFailure": {
+        "@en": "Your eyes burn in intense pain. For the Duration of the spell, every time you expose your eyes to light of any kind, natural or unnatural, you suffer [[/roll 1D10+1]] physical Peril."
+      },
+      "reagents": {
+        "@en": "The noose of a hanged criminal, tied around your neck"
+      }
+    },
+    "tradition": "Covenant",
+    "principle": "Petty",
+    "distance": "Yourself",
+    "duration": "3+[WB] in hours",
+    "castingTime": "1 min",
+    "castingCost": 0
+  },
+  "folder": null,
+  "sort": 0,
+  "ownership": {
+    "default": 0
+  },
+  "flags": {},
+  "_key": "!items!rSERkabvuN3SbOZ2"
+}

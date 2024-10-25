@@ -1,0 +1,51 @@
+{
+  "_id": "nFIPysGxEH8bcKZK",
+  "effects": [],
+  "img": "systems/zweihander/assets/icons/american-football-ball.svg",
+  "name": "Pigskin",
+  "type": "weapon",
+  "_stats": {
+    "coreVersion": "12.331",
+    "systemId": null,
+    "systemVersion": null,
+    "createdTime": null,
+    "modifiedTime": null,
+    "lastModifiedBy": null,
+    "compendiumSource": null,
+    "duplicateSource": null
+  },
+  "system": {
+    "description": {
+      "@en": "<p>This oblong-shaped inflated ball is made from pig or cow&rsquo;s stomach. Despite its origins, the slang term pigskin is used by Blitzballers out on the field, whom often throw the ball at the heads of opposing players to take them out.</p>"
+    },
+    "notes": "",
+    "price": {
+      "bp": "0",
+      "gc": "0",
+      "ss": "1"
+    },
+    "encumbrance": 1,
+    "carried": true,
+    "weaponType": "Missile",
+    "equipped": false,
+    "associatedSkill": "Simple Ranged",
+    "load": 1,
+    "handling": "One-handed",
+    "qualities": {
+      "value": "Fast, Ineffective, Throwing",
+      "arrayOfValues": []
+    },
+    "distance": "18 + [PB] yards",
+    "damage": {
+      "formula": "0",
+      "associatedPrimaryAttribute": "Combat"
+    }
+  },
+  "folder": null,
+  "sort": 0,
+  "ownership": {
+    "default": 0
+  },
+  "flags": {},
+  "_key": "!items!nFIPysGxEH8bcKZK"
+}

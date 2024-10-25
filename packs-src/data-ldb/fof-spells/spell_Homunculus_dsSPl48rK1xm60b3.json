@@ -1,0 +1,50 @@
+{
+  "_id": "dsSPl48rK1xm60b3",
+  "effects": [],
+  "img": "systems/zweihander/assets/icons/concentric-crescents.svg",
+  "name": "Homunculus",
+  "type": "spell",
+  "_stats": {
+    "coreVersion": "12.331",
+    "systemId": null,
+    "systemVersion": null,
+    "createdTime": null,
+    "modifiedTime": null,
+    "lastModifiedBy": null,
+    "compendiumSource": null,
+    "duplicateSource": null
+  },
+  "system": {
+    "description": {
+      "@en": "<p>I shall trap the spirit inside this familiar, and it shall obey my every command.</p>"
+    },
+    "notes": "",
+    "rules": {
+      "effect": {
+        "@en": "<p>After successfully casting, you create a homunculus: a creature loyal to your every command. Homunculi can be of a shape no larger than a child is tall. Examples include brooms, dolls, a small animal or windup toy. Homunculi are able to use the power of speech. You can only command a number of homunculi equal to your [WB] at any one time, but you may replace those which have been Slain!. A homunculus takes on the stats of a Homunculus or similar threat from Article 14: Threats. The only way to heal a homunculus from Damage is to cast this Spell again, but it does not require reagents and only takes ten minutes instead of one week. You begin to Bleed, no matter whether you succeeded or failed at using this Spell.</p>"
+      },
+      "criticalSuccess": {
+        "@en": "You create two homunculi instead."
+      },
+      "criticalFailure": {
+        "@en": "You create two homunculi who are intent on your destruction. They vanish before your eyes, but will take out their revenge at a point and time the Historian decides."
+      },
+      "reagents": {
+        "@en": "An object made from your blood and grave dirt, shaped into a small creature or person"
+      }
+    },
+    "tradition": "Black & White",
+    "principle": "Basic Tier",
+    "distance": "Special",
+    "duration": "Forever",
+    "castingTime": "1 Day",
+    "castingCost": null
+  },
+  "folder": null,
+  "sort": 0,
+  "ownership": {
+    "default": 0
+  },
+  "flags": {},
+  "_key": "!items!dsSPl48rK1xm60b3"
+}

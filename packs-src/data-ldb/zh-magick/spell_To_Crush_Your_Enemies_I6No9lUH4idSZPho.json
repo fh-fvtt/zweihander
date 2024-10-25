@@ -1,0 +1,50 @@
+{
+  "_id": "I6No9lUH4idSZPho",
+  "effects": [],
+  "img": "systems/zweihander/assets/icons/wizard-staff.svg",
+  "name": "To Crush Your Enemies",
+  "type": "spell",
+  "_stats": {
+    "coreVersion": "12.331",
+    "systemId": null,
+    "systemVersion": null,
+    "createdTime": null,
+    "modifiedTime": null,
+    "lastModifiedBy": null,
+    "compendiumSource": null,
+    "duplicateSource": null
+  },
+  "system": {
+    "description": {
+      "@en": "Utterance of such a prayer is assured see them driven before you."
+    },
+    "notes": "",
+    "rules": {
+      "effect": {
+        "@en": "After successfully casting this spell, whenever you fail an Attack Action or Perilous Stunt, you may re-roll to generate a better result, but must accept the outcome. Whenever you strike successfully, add a 1D6 Fury Die to the Total Damage."
+      },
+      "criticalSuccess": {
+        "@en": "As above, but if you don’t like the outcome, re-roll one final time and accept the outcome."
+      },
+      "criticalFailure": {
+        "@en": "Your prayers go unanswered. Your ignorance of the proper form has angered the Winter King. Filled with anguish, whenever you succeed at an Attack Action or Perilous Stunt, you must re-roll to generate a worse result and must accept the outcome."
+      },
+      "reagents": {
+        "@en": "A paw of a wolf, worn around your neck"
+      }
+    },
+    "tradition": "Divine (Winter King)",
+    "principle": "Lesser",
+    "distance": "Yourself",
+    "duration": "[WB]+6 minutes",
+    "castingTime": "1 min",
+    "castingCost": 0
+  },
+  "folder": null,
+  "sort": 0,
+  "ownership": {
+    "default": 0
+  },
+  "flags": {},
+  "_key": "!items!I6No9lUH4idSZPho"
+}

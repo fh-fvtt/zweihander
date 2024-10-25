@@ -1,0 +1,50 @@
+{
+  "_id": "9OF8m1fH6VPYiVMT",
+  "effects": [],
+  "img": "systems/zweihander/assets/icons/wizard-staff.svg",
+  "name": "Expel Poison",
+  "type": "spell",
+  "_stats": {
+    "coreVersion": "12.331",
+    "systemId": null,
+    "systemVersion": null,
+    "createdTime": null,
+    "modifiedTime": null,
+    "lastModifiedBy": null,
+    "compendiumSource": null,
+    "duplicateSource": null
+  },
+  "system": {
+    "description": {
+      "@en": "Leading in prayer, you beseech your god to extract the poison from the victim’s blood."
+    },
+    "notes": "",
+    "rules": {
+      "effect": {
+        "@en": "After successfully casting this spell, the person you touch instantly recovers from the Poison they were suffering from. This also allows them to recover from Intoxication. A Character may only gain the benefit of this Magick once per day."
+      },
+      "criticalSuccess": {
+        "@en": "As above, but if the person suffered Corruption from a Poison’s Effects, they can also remove the Corruption."
+      },
+      "criticalFailure": {
+        "@en": "The only mercy for the wounded is simply to let them pass onwards into the mother’s loving arms. Your victim is immediately affected by an additional dose of the same Poison you had sought to expel."
+      },
+      "reagents": {
+        "@en": "The blood of a poisonous snake, consumed by the victim (expended)"
+      }
+    },
+    "tradition": "Divine (Martyr)",
+    "principle": "Petty",
+    "distance": "Any one person you can touch",
+    "duration": "Instantaneous",
+    "castingTime": "1 min",
+    "castingCost": 0
+  },
+  "folder": null,
+  "sort": 0,
+  "ownership": {
+    "default": 0
+  },
+  "flags": {},
+  "_key": "!items!9OF8m1fH6VPYiVMT"
+}

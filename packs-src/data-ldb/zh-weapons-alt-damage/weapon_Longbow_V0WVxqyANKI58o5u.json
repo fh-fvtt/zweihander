@@ -1,0 +1,50 @@
+{
+  "_id": "V0WVxqyANKI58o5u",
+  "effects": [],
+  "img": "systems/zweihander/assets/icons/bow-arrow.svg",
+  "name": "Longbow",
+  "type": "weapon",
+  "_stats": {
+    "coreVersion": "12.331",
+    "systemId": null,
+    "systemVersion": null,
+    "createdTime": null,
+    "modifiedTime": null,
+    "lastModifiedBy": null,
+    "compendiumSource": null,
+    "duplicateSource": null
+  },
+  "system": {
+    "description": {
+      "@en": "Used by scouts and raiders, these great bows as tall as a man are the cause of many a death at archers’ hands. The mere length of the arrows they fire is enough to put a well-hung Ogre to shame."
+    },
+    "notes": "",
+    "price": {
+      "bp": "0",
+      "gc": "5",
+      "ss": "0"
+    },
+    "encumbrance": 3,
+    "carried": true,
+    "weaponType": "Missile",
+    "equipped": false,
+    "associatedSkill": "Martial Ranged",
+    "load": 1,
+    "handling": "Two-handed",
+    "qualities": {
+      "value": "Finesse",
+      "arrayOfValues": []
+    },
+    "distance": "12 + [PB] yards",
+    "damage": {
+      "formula": "[AB] + 2 + (1+[#])d6x6"
+    }
+  },
+  "folder": null,
+  "sort": 0,
+  "ownership": {
+    "default": 0
+  },
+  "flags": {},
+  "_key": "!items!V0WVxqyANKI58o5u"
+}

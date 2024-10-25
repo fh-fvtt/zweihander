@@ -1,0 +1,50 @@
+{
+  "_id": "gmZdxuLK6myfYSlk",
+  "effects": [],
+  "img": "systems/zweihander/assets/icons/wizard-staff.svg",
+  "name": "Battle Rage",
+  "type": "spell",
+  "_stats": {
+    "coreVersion": "12.331",
+    "systemId": null,
+    "systemVersion": null,
+    "createdTime": null,
+    "modifiedTime": null,
+    "lastModifiedBy": null,
+    "compendiumSource": null,
+    "duplicateSource": null
+  },
+  "system": {
+    "description": {
+      "@en": "The spirit of the wolf inhabits your body, as you rage outwards with fury and anger!"
+    },
+    "notes": "",
+    "rules": {
+      "effect": {
+        "@en": "After successfully casting this spell, you can make additional Attack Actions or Perilous Stunts on your Turn, despite the normal limitations presented in Combat. However, you cannot retain your APs to Counterspell, Dodge or Parry."
+      },
+      "criticalSuccess": {
+        "@en": "As above, but you can Counterspell, Dodge and Parry as you wish."
+      },
+      "criticalFailure": {
+        "@en": "You are so possessed by a blinding rage that you cannot see straight. You are left Defenseless and cannot use Attack Actions on your Turn."
+      },
+      "reagents": {
+        "@en": "Fresh blood, smeared on your face (expended)"
+      }
+    },
+    "tradition": "Divine (Winter King)",
+    "principle": "Lesser",
+    "distance": "Yourself",
+    "duration": "[WB]+6 minutes",
+    "castingTime": "1 min",
+    "castingCost": 0
+  },
+  "folder": null,
+  "sort": 0,
+  "ownership": {
+    "default": 0
+  },
+  "flags": {},
+  "_key": "!items!gmZdxuLK6myfYSlk"
+}

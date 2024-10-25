@@ -1,0 +1,50 @@
+{
+  "_id": "0zfMvu03h1D1BjrK",
+  "effects": [],
+  "img": "systems/zweihander/assets/icons/scar-wound.svg",
+  "name": "Cauterize Wound",
+  "type": "spell",
+  "_stats": {
+    "coreVersion": "12.331",
+    "systemId": null,
+    "systemVersion": null,
+    "createdTime": null,
+    "modifiedTime": null,
+    "lastModifiedBy": null,
+    "compendiumSource": null,
+    "duplicateSource": null
+  },
+  "system": {
+    "description": {
+      "@en": "With but a touch, wounds miraculously close shut and are purged from infection."
+    },
+    "notes": "",
+    "rules": {
+      "effect": {
+        "@en": "After successfully casting this spell, any wounds currently suffered by the person you touch immediately have their Bleeding staunched and the Infection seared from them."
+      },
+      "criticalSuccess": {
+        "@en": "As above, but the person also moves one step up the Damage Condition Track positively."
+      },
+      "criticalFailure": {
+        "@en": "Your touch is utterly painful, as a searing pain singes the skin and quickly spreads like wildfire. Although you staunch the Bleeding and sear the Infection from any wounds suffered by the person you are touching, you are set On Fire."
+      },
+      "reagents": {
+        "@en": "A spoonful of honey rubbed into a wound (expended)"
+      }
+    },
+    "tradition": "Arcane (Pyromancy)",
+    "principle": "Petty",
+    "distance": "Any one person you can touch",
+    "duration": "Instantaneous",
+    "castingTime": "1 min",
+    "castingCost": 0
+  },
+  "folder": null,
+  "sort": 0,
+  "ownership": {
+    "default": 0
+  },
+  "flags": {},
+  "_key": "!items!0zfMvu03h1D1BjrK"
+}

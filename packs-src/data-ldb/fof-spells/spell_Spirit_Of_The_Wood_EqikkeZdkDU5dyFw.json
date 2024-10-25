@@ -1,0 +1,50 @@
+{
+  "_id": "EqikkeZdkDU5dyFw",
+  "effects": [],
+  "img": "systems/zweihander/assets/icons/spell-book.svg",
+  "name": "Spirit Of The Wood",
+  "type": "spell",
+  "_stats": {
+    "coreVersion": "12.331",
+    "systemId": null,
+    "systemVersion": null,
+    "createdTime": null,
+    "modifiedTime": null,
+    "lastModifiedBy": null,
+    "compendiumSource": null,
+    "duplicateSource": null
+  },
+  "system": {
+    "description": {
+      "@en": "<p>Ancient forests, elder trees&mdash;I beseech thee to stand aside . . .</p>"
+    },
+    "notes": "",
+    "rules": {
+      "effect": {
+        "@en": "<p>After successfully casting (and those caught in a Burst Template cannot or fail to Resist using Coordination), they are Entangled. Entangled people cannot use any Actions In Combat, except to Resist Entanglement. If they start their Turn in the Burst Template, they must Resist once again. Alternatively, you can use this Spell to command trees to bend their branches down to be easily climbed, or move branches to create a clear path.</p>"
+      },
+      "criticalSuccess": {
+        "@en": "Reference an Explosion Template instead."
+      },
+      "criticalFailure": {
+        "@en": "The forest grows wildly around, as you and all others within an Explosion Template must Resist being Entangled."
+      },
+      "reagents": {
+        "@en": "A freshly cut green branch that you twist until snapped (expended)"
+      }
+    },
+    "tradition": "Common",
+    "principle": "Intermediate Tier",
+    "distance": "Burst Template, extending from a copse of trees you can clearly see",
+    "duration": "6+[WB] minutes",
+    "castingTime": "1 Minute",
+    "castingCost": 3
+  },
+  "folder": null,
+  "sort": 0,
+  "ownership": {
+    "default": 0
+  },
+  "flags": {},
+  "_key": "!items!EqikkeZdkDU5dyFw"
+}

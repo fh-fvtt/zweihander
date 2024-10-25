@@ -1,0 +1,50 @@
+{
+  "_id": "bGzBLUpF4zFtw8yX",
+  "effects": [],
+  "img": "systems/zweihander/assets/icons/burning-skull.svg",
+  "name": "Turn Undead",
+  "type": "spell",
+  "_stats": {
+    "coreVersion": "12.331",
+    "systemId": null,
+    "systemVersion": null,
+    "createdTime": null,
+    "modifiedTime": null,
+    "lastModifiedBy": null,
+    "compendiumSource": null,
+    "duplicateSource": null
+  },
+  "system": {
+    "description": {
+      "@en": "Denouncing the supernatural, you turn away and destroy those who are an anathema to the Material Realm. They burst into blue flames."
+    },
+    "notes": "",
+    "rules": {
+      "effect": {
+        "@en": "After successfully casting this spell, as long as they are classified as a Supernatural creature, you deal [[/roll 2D10]]+[WB] in Damage to a single foe."
+      },
+      "criticalSuccess": {
+        "@en": "As above, but the foe is also set On Fire."
+      },
+      "criticalFailure": {
+        "@en": "You are suddenly filled with crippling anxiety, crushed as your god momentarily turns away from you. You suffer [[/roll 2D10+2]] mental Peril and are knocked Prone."
+      },
+      "reagents": {
+        "@en": "Your holy symbol, held before you."
+      }
+    },
+    "tradition": "Divine (Custodian)",
+    "principle": "Lesser",
+    "distance": "Any one person you can see",
+    "duration": "Instantaneous",
+    "castingTime": "1 min",
+    "castingCost": 0
+  },
+  "folder": null,
+  "sort": 0,
+  "ownership": {
+    "default": 0
+  },
+  "flags": {},
+  "_key": "!items!bGzBLUpF4zFtw8yX"
+}

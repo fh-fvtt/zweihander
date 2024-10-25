@@ -1,0 +1,51 @@
+{
+  "_id": "EvYypNy5ZEggXTWw",
+  "effects": [],
+  "img": "systems/zweihander/assets/icons/glaive.svg",
+  "name": "Military Fork",
+  "type": "weapon",
+  "_stats": {
+    "coreVersion": "12.331",
+    "systemId": "zweihander",
+    "systemVersion": "5.3.2",
+    "createdTime": null,
+    "modifiedTime": 1729891240470,
+    "lastModifiedBy": "rivg6xcMxdlVDM8y",
+    "compendiumSource": null,
+    "duplicateSource": null
+  },
+  "system": {
+    "description": {
+      "@en": "<p>A long and elegant bident on a pole, the fork impales with the best of them.</p>"
+    },
+    "notes": "",
+    "price": {
+      "bp": 0,
+      "gc": 7,
+      "ss": 0
+    },
+    "encumbrance": 2,
+    "carried": true,
+    "weaponType": "Bladed",
+    "equipped": false,
+    "associatedSkill": "Martial Melee",
+    "load": 0,
+    "handling": "One- or Two-handed",
+    "qualities": {
+      "value": "Adaptable, Finesse",
+      "arrayOfValues": []
+    },
+    "distance": "Engaged",
+    "damage": {
+      "formula": "[AB] + (1+[#])d6x6",
+      "associatedPrimaryAttribute": "Agility"
+    }
+  },
+  "folder": null,
+  "sort": 0,
+  "ownership": {
+    "default": 0
+  },
+  "flags": {},
+  "_key": "!items!EvYypNy5ZEggXTWw"
+}

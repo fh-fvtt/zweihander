@@ -1,0 +1,50 @@
+{
+  "_id": "EOJEoGlvLCsVy21O",
+  "effects": [],
+  "img": "systems/zweihander/assets/icons/wizard-staff.svg",
+  "name": "Horde of Vermin",
+  "type": "spell",
+  "_stats": {
+    "coreVersion": "12.331",
+    "systemId": null,
+    "systemVersion": null,
+    "createdTime": null,
+    "modifiedTime": null,
+    "lastModifiedBy": null,
+    "compendiumSource": null,
+    "duplicateSource": null
+  },
+  "system": {
+    "description": {
+      "@en": "Either a tide of nasty rats swells from beneath your robes at your feet or biting gnats and flies swarm about from your sleeves."
+    },
+    "notes": "",
+    "rules": {
+      "effect": {
+        "@en": "After successfully casting this spell, you conjure forth either a Burst Template of flies or rats immediately at your feet (select one type). All those who are caught within the Burst Template of flies suffer a -10 Base Chance to all Skill Tests that rely on vision. Foes suffer [[/roll 1D10]]+[WB] Damage for every Turn they remain within the Burst Template of rats. You can move the rats a number of yards equal to 3+[WB] on your Turn for 1 AP. You are immune to the spell’s Effects."
+      },
+      "criticalSuccess": {
+        "@en": "As above, but both the flies and rats are considered Hard Terrain."
+      },
+      "criticalFailure": {
+        "@en": "Both flies and rats scurry up your legs and bite and gnaw at your face. Waving your hands about wildly in the air, you are left Defenseless for the Duration of the spell."
+      },
+      "reagents": {
+        "@en": "Either a piece of dried dung for flies or a wheel of moldy cheese for rats (expended)"
+      }
+    },
+    "tradition": "Covenant",
+    "principle": "Petty",
+    "distance": "Special",
+    "duration": "3+[WB] minutes",
+    "castingTime": "1 min",
+    "castingCost": 0
+  },
+  "folder": null,
+  "sort": 0,
+  "ownership": {
+    "default": 0
+  },
+  "flags": {},
+  "_key": "!items!EOJEoGlvLCsVy21O"
+}

@@ -1,0 +1,50 @@
+{
+  "_id": "ZS2NscfM8modbAUH",
+  "effects": [],
+  "img": "systems/zweihander/assets/icons/wizard-staff.svg",
+  "name": "Bargain Bin",
+  "type": "spell",
+  "_stats": {
+    "coreVersion": "12.331",
+    "systemId": null,
+    "systemVersion": null,
+    "createdTime": null,
+    "modifiedTime": null,
+    "lastModifiedBy": null,
+    "compendiumSource": null,
+    "duplicateSource": null
+  },
+  "system": {
+    "description": {
+      "@en": "Intoning a prayer of fortune, you know the best place to buy equipment at the right price."
+    },
+    "notes": "",
+    "rules": {
+      "effect": {
+        "@en": "After successfully casting this spell, you automatically know the best source for any goods you’re seeking at the cheapest prices in the area. While using this prayer, you must intone the settlement you’re in and name the specific goods you’re seeking (black market or otherwise). If these goods are unavailable in the area, you automatically learn this. The prices of the goods you seek are usually 25% less than market cost."
+      },
+      "criticalSuccess": {
+        "@en": "As above, but you so compel the retailer to sell the desired goods to you at 50% less than the market cost."
+      },
+      "criticalFailure": {
+        "@en": "You have made a critical error. Merchants are compelled to refuse service to you, until you successfully cast this Magick again in the same settlement."
+      },
+      "reagents": {
+        "@en": "One brass penny, thrown into a well or body of water (expended)"
+      }
+    },
+    "tradition": "Divine (Nightfather)",
+    "principle": "Petty",
+    "distance": "Yourself",
+    "duration": "Instantaneous",
+    "castingTime": "1 min",
+    "castingCost": 0
+  },
+  "folder": null,
+  "sort": 0,
+  "ownership": {
+    "default": 0
+  },
+  "flags": {},
+  "_key": "!items!ZS2NscfM8modbAUH"
+}

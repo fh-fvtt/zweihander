@@ -1,0 +1,50 @@
+{
+  "_id": "Z8x23BCnsOUWokPj",
+  "effects": [],
+  "img": "systems/zweihander/assets/icons/spell-book.svg",
+  "name": "Inspiring Homily",
+  "type": "spell",
+  "_stats": {
+    "coreVersion": "12.331",
+    "systemId": null,
+    "systemVersion": null,
+    "createdTime": null,
+    "modifiedTime": null,
+    "lastModifiedBy": null,
+    "compendiumSource": null,
+    "duplicateSource": null
+  },
+  "system": {
+    "description": {
+      "@en": "<p>Together, we can achieve anything because the holy word inspires us . . .</p>"
+    },
+    "notes": "",
+    "rules": {
+      "effect": {
+        "@en": "<p>After successfully casting, a number of allies equal to 3+[WB] who listen to you gain +10% Base Chance to Defend and Resist.</p>"
+      },
+      "criticalSuccess": {
+        "@en": "Up to 3x your [WB] allies are affected."
+      },
+      "criticalFailure": {
+        "@en": "Your homily is poorly told, as up to 3x your [WB] allies suffer a -10% Base Chance to Skill Tests to Defend and Resist."
+      },
+      "reagents": {
+        "@en": "Orate a religious lesson, sermon or story"
+      }
+    },
+    "tradition": "Common",
+    "principle": "Basic Tier",
+    "distance": "Special",
+    "duration": "3+[WB] hours",
+    "castingTime": "1 Hour",
+    "castingCost": null
+  },
+  "folder": null,
+  "sort": 0,
+  "ownership": {
+    "default": 0
+  },
+  "flags": {},
+  "_key": "!items!Z8x23BCnsOUWokPj"
+}

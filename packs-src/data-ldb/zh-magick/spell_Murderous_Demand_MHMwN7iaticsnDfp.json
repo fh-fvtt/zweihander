@@ -1,0 +1,50 @@
+{
+  "_id": "MHMwN7iaticsnDfp",
+  "effects": [],
+  "img": "systems/zweihander/assets/icons/william-tell-skull.svg",
+  "name": "Murderous Demand",
+  "type": "spell",
+  "_stats": {
+    "coreVersion": "12.331",
+    "systemId": null,
+    "systemVersion": null,
+    "createdTime": null,
+    "modifiedTime": null,
+    "lastModifiedBy": null,
+    "compendiumSource": null,
+    "duplicateSource": null
+  },
+  "system": {
+    "description": {
+      "@en": "Your god requires a blood sacrifice, and you shall deliver it unto them."
+    },
+    "notes": "",
+    "rules": {
+      "effect": {
+        "@en": "After successfully casting this spell, you can kill with a single blow. Anytime you inflict at least 12 Damage or cause an Injury with a melee weapon, you automatically render your foe Slain! instead. Those who are not Slain! begin to Bleed."
+      },
+      "criticalSuccess": {
+        "@en": "As above, but you can slay someone when inflicting at least 9 Damage."
+      },
+      "criticalFailure": {
+        "@en": "Your wounds begin to Bleed endlessly. Your Damage Threshold is reduced by 9, instead of the normal 6. For the Duration of the spell, should you suffer an Injury, you are Slain! instead."
+      },
+      "reagents": {
+        "@en": "A vial of blood from a corrupt priest other than yourself (expended)"
+      }
+    },
+    "tradition": "Divine (Crouching One)",
+    "principle": "Greater",
+    "distance": "Yourself",
+    "duration": "[WB]+9 minutes",
+    "castingTime": "1 min",
+    "castingCost": 0
+  },
+  "folder": null,
+  "sort": 0,
+  "ownership": {
+    "default": 0
+  },
+  "flags": {},
+  "_key": "!items!MHMwN7iaticsnDfp"
+}

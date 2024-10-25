@@ -1,0 +1,35 @@
+{
+  "_id": "OSc7kHfLLtnRv1I7",
+  "effects": [],
+  "img": "systems/zweihander/assets/icons/vitruvian-man.svg",
+  "name": "Born in the Saddle",
+  "type": "trait",
+  "_stats": {
+    "coreVersion": "12.331",
+    "systemId": null,
+    "systemVersion": null,
+    "createdTime": null,
+    "modifiedTime": null,
+    "lastModifiedBy": null,
+    "compendiumSource": null,
+    "duplicateSource": null
+  },
+  "system": {
+    "description": {
+      "@en": "<p><em>A life spent in the saddle has brought me much, including an </em><em>empathetic bond with horses.</em></p>"
+    },
+    "notes": "<p>Every Profession possesses a unique knack, an ability that no other Profession has access to. The Trait immediately follows the Profession&rsquo;s description.</p>",
+    "rules": {
+      "effect": {
+        "@en": "<p>When you fail a Handle Animal or Ride Test, you may re-roll to generate a better result, but must accept the outcome. In addition, when using the Movement subtype of Riding, you do not have to add the additional 1 Action Point cost.</p>"
+      }
+    }
+  },
+  "folder": null,
+  "sort": 0,
+  "ownership": {
+    "default": 0
+  },
+  "flags": {},
+  "_key": "!items!OSc7kHfLLtnRv1I7"
+}

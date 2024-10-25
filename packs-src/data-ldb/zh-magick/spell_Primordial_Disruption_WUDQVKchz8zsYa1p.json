@@ -1,0 +1,50 @@
+{
+  "_id": "WUDQVKchz8zsYa1p",
+  "effects": [],
+  "img": "systems/zweihander/assets/icons/wizard-staff.svg",
+  "name": "Primordial Disruption",
+  "type": "spell",
+  "_stats": {
+    "coreVersion": "12.331",
+    "systemId": null,
+    "systemVersion": null,
+    "createdTime": null,
+    "modifiedTime": null,
+    "lastModifiedBy": null,
+    "compendiumSource": null,
+    "duplicateSource": null
+  },
+  "system": {
+    "description": {
+      "@en": "As you tap the rod against the ground, gouts of magma and ash randomly spew upwards towards the sky."
+    },
+    "notes": "",
+    "rules": {
+      "effect": {
+        "@en": "After successfully casting this spell, roll a [[/roll 1D6]] Chaos Die. On face ‘1-5’, a number of foes equal to your [WB]. They must Resist with a successful Coordination Test or suffer 3D10+[WB] in Damage from fire. On face ‘6’, a number of allies equal to your [WB] must Resist with a successful Coordination Test or suffer 3D10+[WB] in Damage from fire. You must roll this [[/roll 1D6]] Chaos Die at the beginning of your Turn for the Duration of the spell. You can inflict Injuries with this Magick, but foes are always On Fire instead."
+      },
+      "criticalSuccess": {
+        "@en": "As above, but your foes cannot Resist this Magick."
+      },
+      "criticalFailure": {
+        "@en": "The volcanic rod suddenly cracks and breaks. With a rumbling of earth below, a lance of magma engulfs you. You suffer [[/roll 3D10]]+[WB] in Damage from fire and all of your belongings are engulfed in flame and destroyed."
+      },
+      "reagents": {
+        "@en": "A volcanic rod made from a live volcano, struck on the ground"
+      }
+    },
+    "tradition": "Covenant",
+    "principle": "Greater",
+    "distance": "Any persons you can see",
+    "duration": "9+[WB] minutes",
+    "castingTime": "1 min",
+    "castingCost": 0
+  },
+  "folder": null,
+  "sort": 0,
+  "ownership": {
+    "default": 0
+  },
+  "flags": {},
+  "_key": "!items!WUDQVKchz8zsYa1p"
+}

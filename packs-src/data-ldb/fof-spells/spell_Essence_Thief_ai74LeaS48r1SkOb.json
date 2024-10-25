@@ -1,0 +1,50 @@
+{
+  "_id": "ai74LeaS48r1SkOb",
+  "effects": [],
+  "img": "systems/zweihander/assets/icons/concentric-crescents.svg",
+  "name": "Essence Thief",
+  "type": "spell",
+  "_stats": {
+    "coreVersion": "12.331",
+    "systemId": null,
+    "systemVersion": null,
+    "createdTime": null,
+    "modifiedTime": null,
+    "lastModifiedBy": null,
+    "compendiumSource": null,
+    "duplicateSource": null
+  },
+  "system": {
+    "description": {
+      "@en": "<p>Your soul is mine!</p>"
+    },
+    "notes": "",
+    "rules": {
+      "effect": {
+        "@en": "<p>After successfully casting, a foe must Resist with a Toughness Test, or else suffer [[/roll 1D10]]+[WB] Peril. Depending on how many steps down they move negatively, you move an equal number of steps up the Peril Condition Track positively.</p>"
+      },
+      "criticalSuccess": {
+        "@en": "The foe is paralyzed in place for one minute, left Helpless."
+      },
+      "criticalFailure": {
+        "@en": "The ring crumbles to dust, as you suffer [[/roll 2D10]]+[WB] Peril and are left Helpless for one minute. The foe moves up an equal number of steps on the Peril Condition Track positively."
+      },
+      "reagents": {
+        "@en": "A ring of antinomy, worn upon the ring finger."
+      }
+    },
+    "tradition": "Black & White",
+    "principle": "Basic Tier",
+    "distance": "Any one person you can clearly see",
+    "duration": "Instantaneous",
+    "castingTime": "1 Minute",
+    "castingCost": 1
+  },
+  "folder": null,
+  "sort": 0,
+  "ownership": {
+    "default": 0
+  },
+  "flags": {},
+  "_key": "!items!ai74LeaS48r1SkOb"
+}

@@ -1,0 +1,50 @@
+{
+  "_id": "Ei7YevFuZo1vc4OA",
+  "effects": [],
+  "img": "systems/zweihander/assets/icons/wizard-staff.svg",
+  "name": "Florentine Kiss",
+  "type": "spell",
+  "_stats": {
+    "coreVersion": "12.331",
+    "systemId": null,
+    "systemVersion": null,
+    "createdTime": null,
+    "modifiedTime": null,
+    "lastModifiedBy": null,
+    "compendiumSource": null,
+    "duplicateSource": null
+  },
+  "system": {
+    "description": {
+      "@en": "A mutated tongue uncoils from your mouth, lasciviously probing and twisting its meat into – and around – the throats of your enemies."
+    },
+    "notes": "",
+    "rules": {
+      "effect": {
+        "@en": "After successfully casting this spell, your tongue mutates and grows in length to grotesquely coil at your feet. Your newly extended tongue is treated as a one- handed ranged weapon with the Entangling, Ineffective and Throwing Qualities, with a Distance of 1+[WB] yards and requires 1 AP to Load. Finally, whenever you strike with this tongue, refer to your Incantation Skill instead of a Combat-based Skill."
+      },
+      "criticalSuccess": {
+        "@en": "As above, but a victim suffers an additional [[/roll 1D10]] physical Peril if caught in a Chokehold with the tongue."
+      },
+      "criticalFailure": {
+        "@en": "Your tongue suddenly lolls onto the ground, having mutated into a ginormous, writhing worm of disgust. You are unable to speak for the Duration of the spell and the tongue acts as a Man-Eater for purposes of its creature profile. The tongue will attack both you and allies until it is Slain!"
+      },
+      "reagents": {
+        "@en": "A perfume made from rose petals, sprayed on your neck"
+      }
+    },
+    "tradition": "Covenant",
+    "principle": "Petty",
+    "distance": "Yourself",
+    "duration": "3+[WB] minutes",
+    "castingTime": "1 min",
+    "castingCost": 0
+  },
+  "folder": null,
+  "sort": 0,
+  "ownership": {
+    "default": 0
+  },
+  "flags": {},
+  "_key": "!items!Ei7YevFuZo1vc4OA"
+}

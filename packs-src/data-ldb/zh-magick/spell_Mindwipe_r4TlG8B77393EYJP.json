@@ -1,0 +1,50 @@
+{
+  "_id": "r4TlG8B77393EYJP",
+  "effects": [],
+  "img": "systems/zweihander/assets/icons/wizard-staff.svg",
+  "name": "Mindwipe",
+  "type": "spell",
+  "_stats": {
+    "coreVersion": "12.331",
+    "systemId": null,
+    "systemVersion": null,
+    "createdTime": null,
+    "modifiedTime": null,
+    "lastModifiedBy": null,
+    "compendiumSource": null,
+    "duplicateSource": null
+  },
+  "system": {
+    "description": {
+      "@en": "By tracing your finger into the air, you unravel the mind of another, stealing their memories."
+    },
+    "notes": "",
+    "rules": {
+      "effect": {
+        "@en": "After successfully casting this spell, your foe completely forgets who you are, what you are doing here and everything else about you, up to the point after you cast the spell. Your foes can successfully Resist with a Scrutinize Test. Regardless, the actual casting of Mindwipe is never apparent to anyone, perfectly disguised."
+      },
+      "criticalSuccess": {
+        "@en": "As above, but you gain the last 48 hours of the person’s memory you had Mindwiped."
+      },
+      "criticalFailure": {
+        "@en": "Your mind is foggy, you seem to have forgotten something and you cannot recall what it is. Riddled with anxiety, you constantly fret and worry at your loss… Two valuable objects you own disappear. You can never get them back."
+      },
+      "reagents": {
+        "@en": "River water poured onto the ground (expended)"
+      }
+    },
+    "tradition": "Arcane (Shadowmancy)",
+    "principle": "Lesser",
+    "distance": "Any one person you can see",
+    "duration": "[WB]+6 minutes",
+    "castingTime": "1 min",
+    "castingCost": 0
+  },
+  "folder": null,
+  "sort": 0,
+  "ownership": {
+    "default": 0
+  },
+  "flags": {},
+  "_key": "!items!r4TlG8B77393EYJP"
+}

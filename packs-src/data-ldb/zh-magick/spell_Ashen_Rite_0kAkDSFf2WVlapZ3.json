@@ -1,0 +1,50 @@
+{
+  "_id": "0kAkDSFf2WVlapZ3",
+  "effects": [],
+  "img": "systems/zweihander/assets/icons/wizard-staff.svg",
+  "name": "Ashen Rite",
+  "type": "spell",
+  "_stats": {
+    "coreVersion": "12.331",
+    "systemId": null,
+    "systemVersion": null,
+    "createdTime": null,
+    "modifiedTime": null,
+    "lastModifiedBy": null,
+    "compendiumSource": null,
+    "duplicateSource": null
+  },
+  "system": {
+    "description": {
+      "@en": "Your exhalation of breath covers all with ash, instilling a sense of deep hatred and cruelty."
+    },
+    "notes": "",
+    "rules": {
+      "effect": {
+        "@en": "After successfully casting this spell, both you and any allies caught in its Cone Template suffer [[/roll 1D10]]+[WB] physical Peril. In exchange, whenever they generate face ‘6’ on their Fury Die with melee and ranged weapons, their foe begins to Bleed. This spell lasts for 24 hours, unless the ash is washed away."
+      },
+      "criticalSuccess": {
+        "@en": "As above, but allies automatically Knockout any foes they Injure (as the Perilous Stunt)."
+      },
+      "criticalFailure": {
+        "@en": "Your throat burns from the ash, as your lungs begin to seize. You immediately begin to suffer from Suffocation."
+      },
+      "reagents": {
+        "@en": "A handful of ash, consumed (expended)"
+      }
+    },
+    "tradition": "Covenant",
+    "principle": "Petty",
+    "distance": "Special",
+    "duration": "Special",
+    "castingTime": "1 min",
+    "castingCost": 0
+  },
+  "folder": null,
+  "sort": 0,
+  "ownership": {
+    "default": 0
+  },
+  "flags": {},
+  "_key": "!items!0kAkDSFf2WVlapZ3"
+}

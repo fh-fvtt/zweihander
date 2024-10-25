@@ -1,0 +1,1183 @@
+{
+  "_id": "06ZfPwChqkJycKdh",
+  "effects": [],
+  "img": "systems/zweihander/assets/tokens-border/light_eater.webp",
+  "items": [
+    {
+      "_id": "OZHuGJNvFVCtNXTK",
+      "_stats": {
+        "coreVersion": "10.290",
+        "createdTime": 1670592797111,
+        "lastModifiedBy": "Utysx5mMgmUGpIMt",
+        "modifiedTime": 1670592844148,
+        "systemId": "zweihander",
+        "systemVersion": "5.0.4"
+      },
+      "effects": [],
+      "flags": {
+        "core": {
+          "sourceId": "Item.4A0dpsCmYX0R0cTN"
+        },
+        "exportSource": {
+          "coreVersion": "0.8.9",
+          "system": "zweihander",
+          "systemVersion": "0.3.30",
+          "world": "talron2"
+        }
+      },
+      "folder": null,
+      "img": "systems/zweihander/assets/icons/scythe.svg",
+      "name": "Weeping Scythe",
+      "ownership": {
+        "JyjuBRFhP4y9QWxg": 3,
+        "Utysx5mMgmUGpIMt": 3,
+        "default": 0
+      },
+      "sort": 0,
+      "system": {
+        "associatedSkill": "Martial Melee",
+        "carried": true,
+        "damage": {
+          "associatedPrimaryAttribute": "Combat",
+          "formula": "[AB] + (1+[#])d6x6"
+        },
+        "description": {
+          "@en": "<p>A massive curved blade at one end with a jagged pole on the other, the scythe is terrifying&nbsp;if used as a weapon. The scythe is also seen as a symbol of death &ndash; many students of Morticism, Necromancy and the Custodian revere them.</p>"
+        },
+        "distance": "Engaged or 1 yard",
+        "encumbrance": 3,
+        "equipped": false,
+        "handling": "Two-handed",
+        "load": 0,
+        "notes": "",
+        "price": {
+          "bp": 0,
+          "gc": 0,
+          "ss": 4
+        },
+        "qualities": {
+          "arrayOfValues": [],
+          "value": "Powerful, Reach, Vicious"
+        },
+        "weaponType": "Bladed"
+      },
+      "type": "weapon"
+    },
+    {
+      "_id": "CXiem289Fqg90LtV",
+      "effects": [],
+      "img": "systems/zweihander/assets/icons/barbed-star.svg",
+      "name": "Ætheric Domination",
+      "system": {
+        "description": {
+          "@en": ""
+        },
+        "notes": "",
+        "rules": {
+          "effect": {
+            "@en": "When these creatures would potentially invoke a Chaos Manifestation, they must have two or more face ‘6’ on Chaos Dice to invoke it."
+          }
+        }
+      },
+      "type": "trait"
+    },
+    {
+      "_id": "vA6upUbf1GI2H71Q",
+      "effects": [],
+      "img": "systems/zweihander/assets/icons/mushrooms.svg",
+      "name": "Battle Frenzy",
+      "system": {
+        "description": {
+          "@en": ""
+        },
+        "notes": "",
+        "rules": {
+          "effect": {
+            "@en": "When these creatures are encountered, roll 1D6 Chaos Die. If it lands on a face ‘1’, ‘2’ or ‘3’, they are under the effect of that many doses of red cap mushrooms."
+          }
+        }
+      },
+      "type": "trait"
+    },
+    {
+      "_id": "oTCO3b0fIppVOz91",
+      "effects": [],
+      "img": "systems/zweihander/assets/icons/bandage-roll.svg",
+      "name": "Bloodless",
+      "system": {
+        "description": {
+          "@en": ""
+        },
+        "notes": "",
+        "rules": {
+          "effect": {
+            "@en": "These creatures cannot Bleed."
+          }
+        }
+      },
+      "type": "trait"
+    },
+    {
+      "_id": "gafcLdG1jtuby5sI",
+      "effects": [],
+      "img": "systems/zweihander/assets/icons/high-five.svg",
+      "name": "Both-Handedness",
+      "system": {
+        "description": {
+          "@en": ""
+        },
+        "notes": "",
+        "rules": {
+          "effect": {
+            "@en": "When they wield 2 one-handed melee weapons and fail a Combat-based Skill Test, they may re-roll to generate a better result, but must accept the outcome."
+          }
+        }
+      },
+      "type": "trait"
+    },
+    {
+      "_id": "3id21PS6900HTMM2",
+      "effects": [],
+      "img": "systems/zweihander/assets/icons/floor-hatch.svg",
+      "name": "Call of the Abyss",
+      "system": {
+        "description": {
+          "@en": ""
+        },
+        "notes": "",
+        "rules": {
+          "effect": {
+            "@en": "When this creature suffers Damage and is unable to deal Damage by the end of its next Turn, roll 3D6. If all three dice show face ‘6’, the creature is banished back to the Abyss, until summoned once again."
+          }
+        }
+      },
+      "type": "trait"
+    },
+    {
+      "_id": "jbt9RrgyQunPC5S3",
+      "effects": [],
+      "img": "systems/zweihander/assets/icons/hunter-eyes.svg",
+      "name": "Dark Sense",
+      "system": {
+        "description": {
+          "@en": ""
+        },
+        "notes": "",
+        "rules": {
+          "effect": {
+            "@en": "These creatures can see in the dark."
+          }
+        }
+      },
+      "type": "trait"
+    },
+    {
+      "_id": "QqDETnBeYJQcDkZl",
+      "effects": [],
+      "img": "systems/zweihander/assets/icons/lips.svg",
+      "name": "Entrancing",
+      "system": {
+        "description": {
+          "@en": ""
+        },
+        "notes": "",
+        "rules": {
+          "effect": {
+            "@en": "When this creature uses a Transfixed Gaze, they can use other Actions while they maintain its Mesmerizing effect. In addition, foes suffer 1 Corruption and 2D10+2 mental Peril on each of their Turns while they remain Mesmerized."
+          }
+        }
+      },
+      "type": "trait"
+    },
+    {
+      "_id": "rvsI2S0puxLfw2LP",
+      "effects": [],
+      "img": "systems/zweihander/assets/icons/all-seeing-eye.svg",
+      "name": "Foresight",
+      "system": {
+        "description": {
+          "@en": ""
+        },
+        "notes": "",
+        "rules": {
+          "effect": {
+            "@en": "When these creatures fail any Skill Test, they may re-roll to generate a better result but must accept the outcome."
+          }
+        }
+      },
+      "type": "trait"
+    },
+    {
+      "_id": "ipFEoJjjBXNbONOm",
+      "effects": [],
+      "img": "systems/zweihander/assets/icons/suckered-tentacle.svg",
+      "name": "Foul Mutation",
+      "system": {
+        "description": {
+          "@en": ""
+        },
+        "notes": "",
+        "rules": {
+          "effect": {
+            "@en": "When these creatures are encountered, roll 1D6 Chaos Dice if of Basic Risk Factor; 2D6 Chaos Dice if of Intermediate Risk Factor; 3D6 if of Advanced Risk Factor; 4D6 if of Elite Risk Factor. For every face ‘6’, add one Taint of Chaos to the creature."
+          }
+        }
+      },
+      "type": "trait"
+    },
+    {
+      "_id": "7L8NcRyzElVD8H4U",
+      "effects": [],
+      "img": "systems/zweihander/assets/icons/sly.svg",
+      "name": "Horror of the Pit",
+      "system": {
+        "description": {
+          "@en": ""
+        },
+        "notes": "",
+        "rules": {
+          "effect": {
+            "@en": "These creatures do not need to breathe and are immune to Chokehold. In addition, PCs whose Order Ranks exceed their Chaos Ranks reduce their Damage by -3 when striking these creatures."
+          }
+        }
+      },
+      "type": "trait"
+    },
+    {
+      "_id": "hhEeejr6yOlNnvMh",
+      "effects": [],
+      "img": "systems/zweihander/assets/icons/dorsal-scales.svg",
+      "name": "Natural Armor (2)",
+      "system": {
+        "description": {
+          "@en": ""
+        },
+        "notes": "",
+        "rules": {
+          "effect": {
+            "@en": "These creatures have factored in a bonus to their Damage Threshold, equal to the value in parentheses."
+          }
+        }
+      },
+      "type": "trait"
+    },
+    {
+      "_id": "QlJi2RfTr3jHvhO6",
+      "effects": [],
+      "img": "systems/zweihander/assets/icons/sword-spin.svg",
+      "name": "Masterfully Adroit",
+      "system": {
+        "description": {
+          "@en": ""
+        },
+        "notes": "",
+        "rules": {
+          "effect": {
+            "@en": "These creatures refer to their [AB] for all Damage they inflict with weapons. They also have factored in +3 to their [AB]."
+          }
+        }
+      },
+      "type": "trait"
+    },
+    {
+      "_id": "d4b0lKqARhGgyyCI",
+      "effects": [],
+      "img": "systems/zweihander/assets/icons/hoof.svg",
+      "name": "Paw/hoof/wing",
+      "system": {
+        "description": {
+          "@en": ""
+        },
+        "notes": "",
+        "rules": {
+          "effect": {
+            "@en": "These creatures’ movement uses 6+[AB] on foot and 9+[AB] for flight. Fliers are indicated under Movement."
+          }
+        }
+      },
+      "type": "trait"
+    },
+    {
+      "_id": "gcIUJl8DR3KpbvWt",
+      "effects": [],
+      "img": "systems/zweihander/assets/icons/sword-wound.svg",
+      "name": "Potent Blows",
+      "system": {
+        "description": {
+          "@en": ""
+        },
+        "notes": "",
+        "rules": {
+          "effect": {
+            "@en": "When these creatures succeed any Attack Action to strike, their foe must flip the results to fail when Dodging or Parrying the attack."
+          }
+        }
+      },
+      "type": "trait"
+    },
+    {
+      "_id": "aQb57vLAyDZtXts8",
+      "effects": [],
+      "img": "systems/zweihander/assets/icons/screaming.svg",
+      "name": "Sanity-Blasting",
+      "system": {
+        "description": {
+          "@en": ""
+        },
+        "notes": "",
+        "rules": {
+          "effect": {
+            "@en": "When first encountered, these creatures provoke one of the three brands of Madness; if of Basic Risk Factor, they provoke Stress; if of Intermediate Risk Factor, they provoke Fear; if of Advanced or Elite Risk Factor, they provoke Horror."
+          }
+        }
+      },
+      "type": "trait"
+    },
+    {
+      "_id": "mi9ZXkdTDkosZ2U2",
+      "effects": [],
+      "img": "systems/zweihander/assets/icons/brain.svg",
+      "name": "Steely Fortitude",
+      "system": {
+        "description": {
+          "@en": ""
+        },
+        "notes": "",
+        "rules": {
+          "effect": {
+            "@en": "These creatures always succeed at Resolve Tests and cannot be Intimidated."
+          }
+        }
+      },
+      "type": "trait"
+    },
+    {
+      "_id": "aIYj9ActjWUxAZvL",
+      "effects": [],
+      "img": "systems/zweihander/assets/icons/bird-claw.svg",
+      "name": "Strafing Talons",
+      "system": {
+        "description": {
+          "@en": ""
+        },
+        "notes": "",
+        "rules": {
+          "effect": {
+            "@en": "When these creatures execute a successful attack while flying, they also deal 1D10+[AB]physical Peril."
+          }
+        }
+      },
+      "type": "trait"
+    },
+    {
+      "_id": "CEiRI68q4aURQ6Ow",
+      "effects": [],
+      "img": "systems/zweihander/assets/icons/pentarrows-tornado.svg",
+      "name": "The Changer of Ways",
+      "system": {
+        "description": {
+          "@en": ""
+        },
+        "notes": "",
+        "rules": {
+          "effect": {
+            "@en": "When these creatures are made subject to Chaos Manifestations, they can roll twice and choose the most desirous result. Finally, they can Counterspell for 0 APs and can use Dispel Magick without having to make an Incantation Test."
+          }
+        }
+      },
+      "type": "trait"
+    },
+    {
+      "_id": "0ALU4A7XFLgC24xC",
+      "effects": [],
+      "img": "systems/zweihander/assets/icons/gaze.svg",
+      "name": "Transfixed Gaze",
+      "system": {
+        "description": {
+          "@en": ""
+        },
+        "notes": "",
+        "rules": {
+          "effect": {
+            "@en": "When these creatures can see a foe (who can also see them), they force a foe to Resist with a Resolve Test or be Mesmerized. Mesmerized foes cannot use any Actions In Combat, but may attempt to Resist again at the beginning of their Turn to escape. The creature cannot use any other Actions while they maintain a Transfixed Gaze. However, they can release the gaze at any time. If the creature suffers Damage while a foe is Mesmerized, they immediately relinquish the hold. Foes who attempt to Resist must flip the results to fail their Skill Test."
+          }
+        }
+      },
+      "type": "trait"
+    },
+    {
+      "_id": "APBhQB6ZomAli12f",
+      "effects": [],
+      "img": "systems/zweihander/assets/icons/cursed-star.svg",
+      "name": "True Name",
+      "system": {
+        "description": {
+          "@en": ""
+        },
+        "notes": "",
+        "rules": {
+          "effect": {
+            "@en": "Unless foes invoke this creature’s True Name before casting Magick, it fails to affect the creature."
+          }
+        }
+      },
+      "type": "trait"
+    },
+    {
+      "_id": "QaoEKQx3WgkIUHQe",
+      "effects": [],
+      "img": "systems/zweihander/assets/icons/scythe.svg",
+      "name": "Weeping Scythe",
+      "system": {
+        "description": {
+          "@en": ""
+        },
+        "notes": "",
+        "rules": {
+          "effect": {
+            "@en": "When these creatures are encountered, they carry a scythe infused with the blood of mortals. When they deal Damage, the foe also begins to Bleed. This can only be used in the hands of these creatures, being otherwise useless relics to others. If picked up by PCs whose Order Ranks are higher than their Chaos Ranks, they are instantly disintegrated into ash, Slain!."
+          }
+        }
+      },
+      "type": "trait"
+    },
+    {
+      "_id": "YJFWPskbJxl3hxl7",
+      "data": {
+        "associatedSkill": "Simple Melee",
+        "damage": {
+          "formula": "[BB] + (1+[#])d6x6"
+        },
+        "description": {
+          "@en": ""
+        },
+        "distance": "Engaged",
+        "encumbrance": 0,
+        "equipped": true,
+        "handling": "One-handed",
+        "load": 0,
+        "notes": "",
+        "price": {
+          "bp": 0,
+          "gc": 0,
+          "ss": 0
+        },
+        "qualities": {
+          "value": "Pummeling, Punishing, Slow"
+        },
+        "weaponType": "Bladed"
+      },
+      "effects": [],
+      "img": "systems/zweihander/assets/icons/carnivore-mouth.svg",
+      "name": "Demonic Beak",
+      "type": "weapon"
+    },
+    {
+      "_id": "013qebwwR0UsPJW3",
+      "data": {
+        "associatedPrimaryAttribute": "Intelligence",
+        "description": {
+          "@en": ""
+        },
+        "notes": "",
+        "requiresTraining": true
+      },
+      "effects": [],
+      "img": "systems/zweihander/assets/icons/skills.svg",
+      "name": "Alchemy",
+      "type": "skill"
+    },
+    {
+      "_id": "09BoIxH6f7X0JR7D",
+      "data": {
+        "associatedPrimaryAttribute": "Fellowship",
+        "description": {
+          "@en": ""
+        },
+        "notes": "",
+        "requiresTraining": true
+      },
+      "effects": [],
+      "img": "systems/zweihander/assets/icons/skills.svg",
+      "name": "Leadership",
+      "type": "skill"
+    },
+    {
+      "_id": "0H1aT1HQINq8euom",
+      "data": {
+        "associatedPrimaryAttribute": "Brawn",
+        "description": {
+          "@en": ""
+        },
+        "notes": "",
+        "requiresTraining": true
+      },
+      "effects": [],
+      "img": "systems/zweihander/assets/icons/skills.svg",
+      "name": "Drive",
+      "type": "skill"
+    },
+    {
+      "_id": "3KDvQ8zcNOxrcZIT",
+      "data": {
+        "associatedPrimaryAttribute": "Willpower",
+        "description": {
+          "@en": ""
+        },
+        "notes": "",
+        "requiresTraining": true
+      },
+      "effects": [],
+      "img": "systems/zweihander/assets/icons/skills.svg",
+      "name": "Incantation",
+      "type": "skill"
+    },
+    {
+      "_id": "4EXrIhf6XL3cC8YW",
+      "data": {
+        "associatedPrimaryAttribute": "Agility",
+        "description": {
+          "@en": ""
+        },
+        "notes": "",
+        "requiresTraining": true
+      },
+      "effects": [],
+      "img": "systems/zweihander/assets/icons/skills.svg",
+      "name": "Ride",
+      "type": "skill"
+    },
+    {
+      "_id": "53GCwqszF0yw3Evx",
+      "data": {
+        "associatedPrimaryAttribute": "Intelligence",
+        "description": {
+          "@en": ""
+        },
+        "notes": "",
+        "requiresTraining": true
+      },
+      "effects": [],
+      "img": "systems/zweihander/assets/icons/skills.svg",
+      "name": "Heal",
+      "type": "skill"
+    },
+    {
+      "_id": "6clcPZpa4nmW37WE",
+      "data": {
+        "associatedPrimaryAttribute": "Fellowship",
+        "description": {
+          "@en": ""
+        },
+        "notes": "",
+        "requiresTraining": true
+      },
+      "effects": [],
+      "img": "systems/zweihander/assets/icons/skills.svg",
+      "name": "Handle Animal",
+      "type": "skill"
+    },
+    {
+      "_id": "7nFbNzvVCTXOPOJP",
+      "data": {
+        "associatedPrimaryAttribute": "Brawn",
+        "description": {
+          "@en": ""
+        },
+        "notes": "",
+        "requiresTraining": false
+      },
+      "effects": [],
+      "img": "systems/zweihander/assets/icons/skills.svg",
+      "name": "Intimidate",
+      "type": "skill"
+    },
+    {
+      "_id": "DUaQ3tJnvJT7kSv1",
+      "data": {
+        "associatedPrimaryAttribute": "Intelligence",
+        "description": {
+          "@en": ""
+        },
+        "notes": "",
+        "requiresTraining": true
+      },
+      "effects": [],
+      "img": "systems/zweihander/assets/icons/skills.svg",
+      "name": "Warfare",
+      "type": "skill"
+    },
+    {
+      "_id": "Flo1wDWXkfgHgmSC",
+      "data": {
+        "associatedPrimaryAttribute": "Intelligence",
+        "description": {
+          "@en": ""
+        },
+        "notes": "",
+        "requiresTraining": true
+      },
+      "effects": [],
+      "img": "systems/zweihander/assets/icons/skills.svg",
+      "name": "Navigation",
+      "type": "skill"
+    },
+    {
+      "_id": "ISOWU2LXU4UStMlM",
+      "data": {
+        "associatedPrimaryAttribute": "Combat",
+        "description": {
+          "@en": ""
+        },
+        "notes": "",
+        "requiresTraining": false
+      },
+      "effects": [],
+      "img": "systems/zweihander/assets/icons/skills.svg",
+      "name": "Simple Melee",
+      "type": "skill"
+    },
+    {
+      "_id": "Mxz4jZ5qVxfTt21c",
+      "data": {
+        "associatedPrimaryAttribute": "Intelligence",
+        "description": {
+          "@en": ""
+        },
+        "notes": "",
+        "requiresTraining": true
+      },
+      "effects": [],
+      "img": "systems/zweihander/assets/icons/skills.svg",
+      "name": "Counterfeit",
+      "type": "skill"
+    },
+    {
+      "_id": "NcUHZKUfmCZzifrC",
+      "data": {
+        "associatedPrimaryAttribute": "Fellowship",
+        "description": {
+          "@en": ""
+        },
+        "notes": "",
+        "requiresTraining": true
+      },
+      "effects": [],
+      "img": "systems/zweihander/assets/icons/skills.svg",
+      "name": "Disguise",
+      "type": "skill"
+    },
+    {
+      "_id": "O9q1tMNrfA7yL1Wc",
+      "data": {
+        "associatedPrimaryAttribute": "Willpower",
+        "description": {
+          "@en": ""
+        },
+        "notes": "",
+        "requiresTraining": false
+      },
+      "effects": [],
+      "img": "systems/zweihander/assets/icons/skills.svg",
+      "name": "Resolve",
+      "type": "skill"
+    },
+    {
+      "_id": "PeqUxOLue5z66RkH",
+      "data": {
+        "associatedPrimaryAttribute": "Brawn",
+        "description": {
+          "@en": ""
+        },
+        "notes": "",
+        "requiresTraining": false
+      },
+      "effects": [],
+      "img": "systems/zweihander/assets/icons/skills.svg",
+      "name": "Athletics",
+      "type": "skill"
+    },
+    {
+      "_id": "RS3JSDoEMtQ9g9ci",
+      "data": {
+        "associatedPrimaryAttribute": "Agility",
+        "description": {
+          "@en": ""
+        },
+        "notes": "",
+        "requiresTraining": true
+      },
+      "effects": [],
+      "img": "systems/zweihander/assets/icons/skills.svg",
+      "name": "Pilot",
+      "type": "skill"
+    },
+    {
+      "_id": "UpCT6nM1pDrrwDNb",
+      "data": {
+        "associatedPrimaryAttribute": "Perception",
+        "description": {
+          "@en": ""
+        },
+        "notes": "",
+        "requiresTraining": false
+      },
+      "effects": [],
+      "img": "systems/zweihander/assets/icons/skills.svg",
+      "name": "Scrutinize",
+      "type": "skill"
+    },
+    {
+      "_id": "UviSlLkTASDHsfWE",
+      "data": {
+        "associatedPrimaryAttribute": "Intelligence",
+        "description": {
+          "@en": ""
+        },
+        "notes": "",
+        "requiresTraining": false
+      },
+      "effects": [],
+      "img": "systems/zweihander/assets/icons/skills.svg",
+      "name": "Folklore",
+      "type": "skill"
+    },
+    {
+      "_id": "VvGLd58xqVsauasU",
+      "data": {
+        "associatedPrimaryAttribute": "Agility",
+        "description": {
+          "@en": ""
+        },
+        "notes": "",
+        "requiresTraining": true
+      },
+      "effects": [],
+      "img": "systems/zweihander/assets/icons/skills.svg",
+      "name": "Skulduggery",
+      "type": "skill"
+    },
+    {
+      "_id": "WrVlpX7sExHC3Vhz",
+      "data": {
+        "associatedPrimaryAttribute": "Intelligence",
+        "description": {
+          "@en": ""
+        },
+        "notes": "",
+        "requiresTraining": true
+      },
+      "effects": [],
+      "img": "systems/zweihander/assets/icons/skills.svg",
+      "name": "Education",
+      "type": "skill"
+    },
+    {
+      "_id": "YVo0t79ZC3uNCpb6",
+      "data": {
+        "associatedPrimaryAttribute": "Combat",
+        "description": {
+          "@en": ""
+        },
+        "notes": "",
+        "requiresTraining": true
+      },
+      "effects": [],
+      "img": "systems/zweihander/assets/icons/skills.svg",
+      "name": "Martial Melee",
+      "type": "skill"
+    },
+    {
+      "_id": "aG2PyFqhpBm2yfuN",
+      "data": {
+        "associatedPrimaryAttribute": "Fellowship",
+        "description": {
+          "@en": ""
+        },
+        "notes": "",
+        "requiresTraining": false
+      },
+      "effects": [],
+      "img": "systems/zweihander/assets/icons/skills.svg",
+      "name": "Bargain",
+      "type": "skill"
+    },
+    {
+      "_id": "b0AdxogFI1ePq069",
+      "data": {
+        "associatedPrimaryAttribute": "Intelligence",
+        "description": {
+          "@en": ""
+        },
+        "notes": "",
+        "requiresTraining": false
+      },
+      "effects": [],
+      "img": "systems/zweihander/assets/icons/skills.svg",
+      "name": "Gamble",
+      "type": "skill"
+    },
+    {
+      "_id": "cOXHjdhyXZFIOrPR",
+      "data": {
+        "associatedPrimaryAttribute": "Perception",
+        "description": {
+          "@en": ""
+        },
+        "notes": "",
+        "requiresTraining": false
+      },
+      "effects": [],
+      "img": "systems/zweihander/assets/icons/skills.svg",
+      "name": "Awareness",
+      "type": "skill"
+    },
+    {
+      "_id": "cOgVWBkWyhZB09YG",
+      "data": {
+        "associatedPrimaryAttribute": "Willpower",
+        "description": {
+          "@en": ""
+        },
+        "notes": "",
+        "requiresTraining": true
+      },
+      "effects": [],
+      "img": "systems/zweihander/assets/icons/skills.svg",
+      "name": "Tradecraft",
+      "type": "skill"
+    },
+    {
+      "_id": "dZJl4nmYtNjaeXgy",
+      "data": {
+        "associatedPrimaryAttribute": "Fellowship",
+        "description": {
+          "@en": ""
+        },
+        "notes": "",
+        "requiresTraining": false
+      },
+      "effects": [],
+      "img": "systems/zweihander/assets/icons/skills.svg",
+      "name": "Charm",
+      "type": "skill"
+    },
+    {
+      "_id": "jqobIe82ZBGOZmYi",
+      "data": {
+        "associatedPrimaryAttribute": "Perception",
+        "description": {
+          "@en": ""
+        },
+        "notes": "",
+        "requiresTraining": false
+      },
+      "effects": [],
+      "img": "systems/zweihander/assets/icons/skills.svg",
+      "name": "Eavesdrop",
+      "type": "skill"
+    },
+    {
+      "_id": "lPfwfPHspXokC0Ao",
+      "data": {
+        "associatedPrimaryAttribute": "Combat",
+        "description": {
+          "@en": ""
+        },
+        "notes": "",
+        "requiresTraining": true
+      },
+      "effects": [],
+      "img": "systems/zweihander/assets/icons/skills.svg",
+      "name": "Martial Ranged",
+      "type": "skill"
+    },
+    {
+      "_id": "m1VAGBmW3pjriFZr",
+      "data": {
+        "associatedPrimaryAttribute": "Perception",
+        "description": {
+          "@en": ""
+        },
+        "notes": "",
+        "requiresTraining": false
+      },
+      "effects": [],
+      "img": "systems/zweihander/assets/icons/skills.svg",
+      "name": "Survival",
+      "type": "skill"
+    },
+    {
+      "_id": "nXt5D0UEapcq2cAM",
+      "data": {
+        "associatedPrimaryAttribute": "Agility",
+        "description": {
+          "@en": ""
+        },
+        "notes": "",
+        "requiresTraining": false
+      },
+      "effects": [],
+      "img": "systems/zweihander/assets/icons/skills.svg",
+      "name": "Stealth",
+      "type": "skill"
+    },
+    {
+      "_id": "r6VL5isi1OFxLS96",
+      "data": {
+        "associatedPrimaryAttribute": "Fellowship",
+        "description": {
+          "@en": ""
+        },
+        "notes": "",
+        "requiresTraining": false
+      },
+      "effects": [],
+      "img": "systems/zweihander/assets/icons/skills.svg",
+      "name": "Rumor",
+      "type": "skill"
+    },
+    {
+      "_id": "s4hMs5SsiR6uhNY8",
+      "data": {
+        "associatedPrimaryAttribute": "Brawn",
+        "description": {
+          "@en": ""
+        },
+        "notes": "",
+        "requiresTraining": false
+      },
+      "effects": [],
+      "img": "systems/zweihander/assets/icons/skills.svg",
+      "name": "Toughness",
+      "type": "skill"
+    },
+    {
+      "_id": "tUlGNzZEfpfrh1wN",
+      "data": {
+        "associatedPrimaryAttribute": "Fellowship",
+        "description": {
+          "@en": ""
+        },
+        "notes": "",
+        "requiresTraining": false
+      },
+      "effects": [],
+      "img": "systems/zweihander/assets/icons/skills.svg",
+      "name": "Guile",
+      "type": "skill"
+    },
+    {
+      "_id": "uwxLb12nJrZwmheT",
+      "data": {
+        "associatedPrimaryAttribute": "Agility",
+        "description": {
+          "@en": ""
+        },
+        "notes": "",
+        "requiresTraining": false
+      },
+      "effects": [],
+      "img": "systems/zweihander/assets/icons/skills.svg",
+      "name": "Coordination",
+      "type": "skill"
+    },
+    {
+      "_id": "vRWa2nVsYWzbuSo1",
+      "data": {
+        "associatedPrimaryAttribute": "Willpower",
+        "description": {
+          "@en": ""
+        },
+        "notes": "",
+        "requiresTraining": true
+      },
+      "effects": [],
+      "img": "systems/zweihander/assets/icons/skills.svg",
+      "name": "Interrogation",
+      "type": "skill"
+    },
+    {
+      "_id": "z2GfrhmRDmQ4luLz",
+      "data": {
+        "associatedPrimaryAttribute": "Combat",
+        "description": {
+          "@en": ""
+        },
+        "notes": "",
+        "requiresTraining": false
+      },
+      "effects": [],
+      "img": "systems/zweihander/assets/icons/skills.svg",
+      "name": "Simple Ranged",
+      "type": "skill"
+    }
+  ],
+  "name": "Light-Eater",
+  "prototypeToken": {
+    "actorLink": false,
+    "alpha": 1,
+    "bar1": {
+      "attribute": "stats.secondaryAttributes.damageCurrent"
+    },
+    "bar2": {
+      "attribute": "stats.secondaryAttributes.perilCurrent"
+    },
+    "detectionModes": [],
+    "displayBars": 0,
+    "displayName": 0,
+    "disposition": -1,
+    "flags": {},
+    "height": 1,
+    "light": {
+      "alpha": 0.5,
+      "angle": 360,
+      "animation": {
+        "intensity": 5,
+        "reverse": false,
+        "speed": 5,
+        "type": null
+      },
+      "attenuation": 0.5,
+      "bright": 0,
+      "color": null,
+      "coloration": 1,
+      "contrast": 0,
+      "darkness": {
+        "max": 1,
+        "min": 0
+      },
+      "dim": 0,
+      "luminosity": 0.5,
+      "saturation": 0,
+      "shadows": 0
+    },
+    "lockRotation": false,
+    "name": "Light-Eater",
+    "randomImg": false,
+    "rotation": 0,
+    "sight": {
+      "angle": 360,
+      "attenuation": 0.1,
+      "brightness": 0,
+      "color": null,
+      "contrast": 0,
+      "enabled": false,
+      "range": null,
+      "saturation": 0,
+      "visionMode": "basic"
+    },
+    "texture": {
+      "offsetX": 0,
+      "offsetY": 0,
+      "rotation": 0,
+      "scaleX": 2.25,
+      "scaleY": 2.25,
+      "src": "systems/zweihander/assets/tokens-border/light_eater.webp",
+      "tint": null
+    },
+    "width": 1
+  },
+  "system": {
+    "currency": {},
+    "description": {
+      "@en": ""
+    },
+    "details": {
+      "classification": "Higher Demon",
+      "influences": "",
+      "riskFactor": {
+        "notch": "3",
+        "value": "3"
+      },
+      "role": "",
+      "size": "3"
+    },
+    "flavor": {},
+    "languages": [],
+    "notes": "",
+    "skillRanks": {
+      "Bargain": 3,
+      "Coordination": 3,
+      "Education": 3,
+      "Guile": 3,
+      "Incantation": 2,
+      "Interrogation": 3,
+      "Intimidate": 2,
+      "Leadership": 1,
+      "Martial Melee": 2,
+      "Scrutinize": 3,
+      "Toughness": 1,
+      "Warfare": 3
+    },
+    "stats": {
+      "manualMode": true,
+      "primaryAttributes": {
+        "agility": {
+          "bonusAdvances": 5,
+          "value": 50
+        },
+        "brawn": {
+          "bonusAdvances": 2,
+          "value": 50
+        },
+        "combat": {
+          "bonusAdvances": 0,
+          "value": 50
+        },
+        "fellowship": {
+          "bonusAdvances": 0,
+          "value": 50
+        },
+        "intelligence": {
+          "bonusAdvances": 2,
+          "value": 50
+        },
+        "perception": {
+          "bonusAdvances": 0,
+          "value": 50
+        },
+        "willpower": {
+          "bonusAdvances": 6,
+          "value": 55
+        }
+      },
+      "secondaryAttributes": {
+        "damageCurrent": {
+          "max": 5,
+          "value": 5
+        },
+        "damageThreshold": {
+          "value": 9
+        },
+        "dodge": {
+          "associatedSkill": "Coordination",
+          "value": 90
+        },
+        "initiative": {
+          "value": 8
+        },
+        "magick": {
+          "associatedSkill": "Incantation"
+        },
+        "movement": {
+          "fly": 16,
+          "value": 16
+        },
+        "parry": {
+          "associatedSkill": "Simple Melee",
+          "value": 70
+        },
+        "perilCurrent": {
+          "max": 5,
+          "value": 5
+        },
+        "perilThreshold": {
+          "value": 14
+        }
+      }
+    }
+  },
+  "type": "creature",
+  "_key": "!items!06ZfPwChqkJycKdh"
+}

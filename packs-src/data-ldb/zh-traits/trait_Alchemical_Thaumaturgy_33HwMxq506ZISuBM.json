@@ -1,0 +1,35 @@
+{
+  "_id": "33HwMxq506ZISuBM",
+  "effects": [],
+  "img": "systems/zweihander/assets/icons/drink-me.svg",
+  "name": "Alchemical Thaumaturgy",
+  "type": "trait",
+  "_stats": {
+    "coreVersion": "12.331",
+    "systemId": null,
+    "systemVersion": null,
+    "createdTime": null,
+    "modifiedTime": null,
+    "lastModifiedBy": null,
+    "compendiumSource": null,
+    "duplicateSource": null
+  },
+  "system": {
+    "description": {
+      "@en": "With alchemical instruments, you have learned to mix Wytchstone into liquid, distilling it into a usable Elixir. However, the risks associated with concocting your Elixirs is severely diminished by your innate know-how."
+    },
+    "notes": "",
+    "rules": {
+      "effect": {
+        "@en": "Immediately after concocting an Elixir, roll D100 three times and pick the one you prefer best. In addition, you never suffer the ill-effects of Critical Failures when preparing Elixirs, instead treating it as a failed Skill Test."
+      }
+    }
+  },
+  "folder": null,
+  "sort": 0,
+  "ownership": {
+    "default": 0
+  },
+  "flags": {},
+  "_key": "!items!33HwMxq506ZISuBM"
+}

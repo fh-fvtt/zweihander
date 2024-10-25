@@ -1,0 +1,50 @@
+{
+  "_id": "PvmIfVnnZ7pL5Z5a",
+  "effects": [],
+  "img": "systems/zweihander/assets/icons/wizard-staff.svg",
+  "name": "Brittlebone Curse",
+  "type": "spell",
+  "_stats": {
+    "coreVersion": "12.331",
+    "systemId": null,
+    "systemVersion": null,
+    "createdTime": null,
+    "modifiedTime": null,
+    "lastModifiedBy": null,
+    "compendiumSource": null,
+    "duplicateSource": null
+  },
+  "system": {
+    "description": {
+      "@en": "A shadow of your brass Daemon of ash and bone falls over the battlefield."
+    },
+    "notes": "",
+    "rules": {
+      "effect": {
+        "@en": "After successfully casting this spell, a shadow that smells of bitumen falls over your enemies. All those caught within a Burst Template are Maledicted. While Maledicted, whenever they suffer Damage, they can be Injured on a result of face ‘4-6’. You are immune to this spell’s Effects."
+      },
+      "criticalSuccess": {
+        "@en": "As above, and they instead can be Injured on a result of face ‘3-6’."
+      },
+      "criticalFailure": {
+        "@en": "A brief storm of ash and salt rises in an Explosion Template at your feet, rising like a tornado into the sky. Those caught within an Explosion Template immediately suffer [[/roll 2D10]]+[WB] physical Peril."
+      },
+      "reagents": {
+        "@en": "13 bones of a broken man, shaken in a sack"
+      }
+    },
+    "tradition": "Covenant",
+    "principle": "Lesser",
+    "distance": "Any one place you can see",
+    "duration": "6+[WB] minutes",
+    "castingTime": "1 min",
+    "castingCost": 0
+  },
+  "folder": null,
+  "sort": 0,
+  "ownership": {
+    "default": 0
+  },
+  "flags": {},
+  "_key": "!items!PvmIfVnnZ7pL5Z5a"
+}

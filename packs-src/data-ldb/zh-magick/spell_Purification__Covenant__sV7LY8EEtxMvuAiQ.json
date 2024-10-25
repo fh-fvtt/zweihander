@@ -1,0 +1,50 @@
+{
+  "_id": "sV7LY8EEtxMvuAiQ",
+  "effects": [],
+  "img": "systems/zweihander/assets/icons/wizard-staff.svg",
+  "name": "Purification (Covenant)",
+  "system": {
+    "description": {
+      "@en": "Imbibing the innards, the person begins heaving up any and all ‘impurities’ they are suffering from."
+    },
+    "notes": "",
+    "rules": {
+      "effect": {
+        "@en": "After successfully casting this spell, the person you touch can attempt a Toughness Test. If successful, they are cured of any Intoxication and Poison Effects they are suffering from. The spell also cures their Frostbite. If they fail, they suffer [[/roll 1D10+1]] physical Peril and are left Helpless for an hour. A Character may only gain the benefit of this Magick once per day."
+      },
+      "criticalSuccess": {
+        "@en": "As above, but they are also cured of one Disease they are suffering from."
+      },
+      "criticalFailure": {
+        "@en": "Your touch brings great sadness, as the person you touch suffers from Frostbite on their fingers."
+      },
+      "reagents": {
+        "@en": "The guts of a frozen fish, consumed (expended)"
+      }
+    },
+    "tradition": "Covenant",
+    "principle": "Petty",
+    "distance": "Any one person you can touch",
+    "duration": "Instantaneous",
+    "castingTime": "1 min",
+    "castingCost": 0
+  },
+  "type": "spell",
+  "_stats": {
+    "coreVersion": "12.331",
+    "systemId": null,
+    "systemVersion": null,
+    "createdTime": null,
+    "modifiedTime": null,
+    "lastModifiedBy": null,
+    "compendiumSource": null,
+    "duplicateSource": null
+  },
+  "folder": null,
+  "sort": 0,
+  "ownership": {
+    "default": 0
+  },
+  "flags": {},
+  "_key": "!items!sV7LY8EEtxMvuAiQ"
+}

@@ -1,0 +1,50 @@
+{
+  "_id": "Zlri9BChM96UvdhE",
+  "effects": [],
+  "img": "systems/zweihander/assets/icons/wizard-staff.svg",
+  "name": "Breath of the Æther",
+  "type": "spell",
+  "_stats": {
+    "coreVersion": "12.331",
+    "systemId": null,
+    "systemVersion": null,
+    "createdTime": null,
+    "modifiedTime": null,
+    "lastModifiedBy": null,
+    "compendiumSource": null,
+    "duplicateSource": null
+  },
+  "system": {
+    "description": {
+      "@en": "By covering your mouth with a kerchief – or a kiss – you are able to draw in deeper breaths."
+    },
+    "notes": "",
+    "rules": {
+      "effect": {
+        "@en": "After successfully casting this spell, the person you touch adds your [WB] to their [BB] to determine how many minutes they can hold their breath to withstand the Effects of Suffocation (or drowning). Once these minutes pass by, the Magick fades."
+      },
+      "criticalSuccess": {
+        "@en": "As above, but they also gain a +10 Base Chance to Athletics Tests to swim."
+      },
+      "criticalFailure": {
+        "@en": "As the woman places her kiss upon the unwitting, it spells their doom. Once they hold their breath, they fall unconscious from Suffocation, requiring a Kiss of Life!"
+      },
+      "reagents": {
+        "@en": "The kiss of a woman, placed on a kerchief or the mouth (expended)"
+      }
+    },
+    "tradition": "Divine (Leviathan)",
+    "principle": "Petty",
+    "distance": "Any one person you can touch",
+    "duration": "Instantaneous",
+    "castingTime": "1 min",
+    "castingCost": 0
+  },
+  "folder": null,
+  "sort": 0,
+  "ownership": {
+    "default": 0
+  },
+  "flags": {},
+  "_key": "!items!Zlri9BChM96UvdhE"
+}

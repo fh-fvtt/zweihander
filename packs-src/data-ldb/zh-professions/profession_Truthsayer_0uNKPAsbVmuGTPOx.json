@@ -1,0 +1,117 @@
+{
+  "_id": "0uNKPAsbVmuGTPOx",
+  "effects": [],
+  "img": "systems/zweihander/assets/icons/truthsayer.svg",
+  "name": "Truthsayer",
+  "type": "profession",
+  "_stats": {
+    "coreVersion": "12.331",
+    "systemId": null,
+    "systemVersion": null,
+    "createdTime": null,
+    "modifiedTime": null,
+    "lastModifiedBy": null,
+    "compendiumSource": null,
+    "duplicateSource": null
+  },
+  "system": {
+    "description": {
+      "@en": "Education is expensive and hard to come by in modern times, but those who become blessed with the gift of knowledge have the Learner to thank. As the god of knowledge, wisdom, and truth, His church is led by the serious and immovable Truthsayers. These priests are academics first and foremost, wearing circlets engraved with eyes to show their all-knowing vision. Truthsayers work alongside Scholars of all sorts, and many are the preeminent authorities on religion and apocryphal histories. Truthsayers also serve as judges and arbitrators: townsfolk who cannot afford Barristers seek the counsel of a Truthsayer to resolve any dispute involving money, land or lineage. Many see Truthsayers as the least religious of all priesthoods, for they take an objective, theological approach towards the divine. This is simply untrue, as Truthsayers believe the purpose of divinity is to reveal all knowledge and truth, no matter how frightening it may be. The Learner’s worship also extends to arcanists and craftsmen, as anything that requires knowledge falls under His purview.\nLearner temples are massive libraries, chronicling the histories of both their faith and the known world. Truthsayer worship often revolves around deep meditation, communing with their god and chronicling the past and present. Truthsayers also use their prayers to dispense justice and offer rulings. Those that become too absorbed by their erudite ways use their terrible knowledge and insight to give unfair rulings, altering verdicts and condemning innocents for sheer pleasure. Others seek to upend other faiths, condemning them as they counsel inquisitors to erase these perceived ‘heretical’ religions from the face of the earth. Once destroyed, they’ll re-appropriate those religions’ Magicks for their own benefit, leading them down the path towards dark incantations of prayers unknown to other Truthsayers."
+    },
+    "notes": "",
+    "expert": {
+      "value": true,
+      "requirements": "You must possess at least one Skill Rank in Incantation in order to enter this Expert Profession. In addition, you must have the Special Trait of Divine Magick."
+    },
+    "archetype": "Expert Profession",
+    "bonusAdvances": [
+      {
+        "name": "[FB]"
+      },
+      {
+        "name": "[IB]"
+      },
+      {
+        "name": "[IB]"
+      },
+      {
+        "name": "[PB]"
+      },
+      {
+        "name": "[PB]"
+      },
+      {
+        "name": "[WB]"
+      },
+      {
+        "name": "[WB]"
+      }
+    ],
+    "skillRanks": [
+      {
+        "name": "Awareness"
+      },
+      {
+        "name": "Coordination"
+      },
+      {
+        "name": "Counterfeit"
+      },
+      {
+        "name": "Education"
+      },
+      {
+        "name": "Folklore"
+      },
+      {
+        "name": "Incantation"
+      },
+      {
+        "name": "Resolve"
+      },
+      {
+        "name": "Rumor"
+      },
+      {
+        "name": "Scrutinize"
+      },
+      {
+        "name": "Simple Melee"
+      }
+    ],
+    "talents": [
+      {
+        "linkedId": null,
+        "name": "Æthereal Alignment"
+      },
+      {
+        "linkedId": null,
+        "name": "Incredible Numeration"
+      },
+      {
+        "linkedId": null,
+        "name": "Meeting of the Minds"
+      }
+    ],
+    "professionalTrait": {
+      "name": "Ogham of Truth",
+      "linkedId": null
+    },
+    "specialTrait": {
+      "name": "Prayers of the Learner",
+      "linkedId": null
+    },
+    "drawback": {
+      "name": "The Learner’s Commandments",
+      "linkedId": null
+    },
+    "tier": ""
+  },
+  "folder": null,
+  "sort": 0,
+  "ownership": {
+    "default": 0
+  },
+  "flags": {},
+  "_key": "!items!0uNKPAsbVmuGTPOx"
+}

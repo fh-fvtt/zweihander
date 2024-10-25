@@ -1,0 +1,50 @@
+{
+  "_id": "876WzauIEAcptsRC",
+  "effects": [],
+  "img": "systems/zweihander/assets/icons/wizard-staff.svg",
+  "name": "Bow Before Me",
+  "type": "spell",
+  "_stats": {
+    "coreVersion": "12.331",
+    "systemId": null,
+    "systemVersion": null,
+    "createdTime": null,
+    "modifiedTime": null,
+    "lastModifiedBy": null,
+    "compendiumSource": null,
+    "duplicateSource": null
+  },
+  "system": {
+    "description": {
+      "@en": "With a deafening roar, your body completely transmutates into a Brass Primarch – the penultimate form of the Hellfurnance Himself!"
+    },
+    "notes": "",
+    "rules": {
+      "effect": {
+        "@en": "After successfully casting this spell, both you and all the trappings upon yourself take the shape of an avatar of the Hellfurnance. Temporarily replace your Character sheet with the creature profile of a Brass Primarch, gaining its benefits and drawbacks. If you suffer an Injury during this time, the Magick spell immediately ends."
+      },
+      "criticalSuccess": {
+        "@en": "As above, but triple the Duration."
+      },
+      "criticalFailure": {
+        "@en": "Your body pulsates with lava bubbles and smoke, temporarily exploding into a foaming smoke monster, whose mouth flows with magma. Those who behold your countenance must succeed at a Resolve Test or else they suffer from Terror. In addition, you must succeed at a Toughness Test or else be immediately Slain! (unless you have a Fate Point to expend). If you succeed, you return to your normal self, but are left Prone and Incapacitated!"
+      },
+      "reagents": {
+        "@en": "A helmet made from the jawbone of a Brass Primarch, worn for the Duration"
+      }
+    },
+    "tradition": "Covenant",
+    "principle": "Greater",
+    "distance": "Yourself",
+    "duration": "9+[WB] minutes",
+    "castingTime": "1 min",
+    "castingCost": 0
+  },
+  "folder": null,
+  "sort": 0,
+  "ownership": {
+    "default": 0
+  },
+  "flags": {},
+  "_key": "!items!876WzauIEAcptsRC"
+}

@@ -1,0 +1,50 @@
+{
+  "_id": "5giBUNuKBfVOn3VB",
+  "effects": [],
+  "img": "systems/zweihander/assets/icons/stiletto.svg",
+  "name": "Stiletto",
+  "type": "weapon",
+  "_stats": {
+    "coreVersion": "12.331",
+    "systemId": "zweihander",
+    "systemVersion": "5.3.2",
+    "createdTime": null,
+    "modifiedTime": 1729891599076,
+    "lastModifiedBy": "rivg6xcMxdlVDM8y",
+    "compendiumSource": null,
+    "duplicateSource": null
+  },
+  "system": {
+    "description": {
+      "@en": "<p>Another weapon favored by the assassin, it&rsquo;s concealable and designed for quick stabbing thrusts. An intended victim can bleed like a stuck pig if this weapon is thrust in the right way.</p>"
+    },
+    "notes": "",
+    "price": {
+      "bp": 0,
+      "gc": 1,
+      "ss": 0
+    },
+    "encumbrance": 1,
+    "carried": true,
+    "weaponType": "Bladed",
+    "equipped": false,
+    "associatedSkill": "Simple Melee",
+    "load": 0,
+    "handling": "One-handed",
+    "qualities": {
+      "value": "Fast, Vicious, Weak",
+      "arrayOfValues": []
+    },
+    "distance": "Engaged",
+    "damage": {
+      "formula": "[CB] + (1+[#])d6x6"
+    }
+  },
+  "folder": null,
+  "sort": 0,
+  "ownership": {
+    "default": 0
+  },
+  "flags": {},
+  "_key": "!items!5giBUNuKBfVOn3VB"
+}

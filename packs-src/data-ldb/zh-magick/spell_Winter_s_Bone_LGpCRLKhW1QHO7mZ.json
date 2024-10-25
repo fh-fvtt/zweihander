@@ -1,0 +1,50 @@
+{
+  "_id": "LGpCRLKhW1QHO7mZ",
+  "effects": [],
+  "img": "systems/zweihander/assets/icons/animal-hide.svg",
+  "name": "Winter's Bone",
+  "type": "spell",
+  "_stats": {
+    "coreVersion": "12.331",
+    "systemId": null,
+    "systemVersion": null,
+    "createdTime": null,
+    "modifiedTime": null,
+    "lastModifiedBy": null,
+    "compendiumSource": null,
+    "duplicateSource": null
+  },
+  "system": {
+    "description": {
+      "@en": "You radiate an air of ill, Ætheric coldness and any foes who attempt to bring harm to you suffer the consequences."
+    },
+    "notes": "",
+    "rules": {
+      "effect": {
+        "@en": "After successfully casting this spell, any foes who are engaged with you suffer a -10 Base Chance to all Skill Tests. This affects foes as they attempt to strike you and persists for the Duration of the spell – even if they elect to attack others."
+      },
+      "criticalSuccess": {
+        "@en": "As above, but triple the Duration."
+      },
+      "criticalFailure": {
+        "@en": "You are instantly possessed by a dank chill that radiates from your body. Although your enemies do not suffer, your hands are rigid and cold. You suffer a -10 Base Chance to all Attack Actions and Perilous Stunts you make, until the Duration of the spell expires."
+      },
+      "reagents": {
+        "@en": "A wolf hide, worn on your shoulders"
+      }
+    },
+    "tradition": "Divine (Winter King)",
+    "principle": "Petty",
+    "distance": "Yourself",
+    "duration": "[WB]+3 minutes",
+    "castingTime": "1 min",
+    "castingCost": 0
+  },
+  "folder": null,
+  "sort": 0,
+  "ownership": {
+    "default": 0
+  },
+  "flags": {},
+  "_key": "!items!LGpCRLKhW1QHO7mZ"
+}

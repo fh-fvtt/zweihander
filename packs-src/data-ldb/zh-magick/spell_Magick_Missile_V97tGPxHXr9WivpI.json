@@ -1,0 +1,50 @@
+{
+  "_id": "V97tGPxHXr9WivpI",
+  "effects": [],
+  "img": "systems/zweihander/assets/icons/rolling-energy.svg",
+  "name": "Magick Missile",
+  "type": "spell",
+  "_stats": {
+    "coreVersion": "12.331",
+    "systemId": null,
+    "systemVersion": null,
+    "createdTime": null,
+    "modifiedTime": null,
+    "lastModifiedBy": null,
+    "compendiumSource": null,
+    "duplicateSource": null
+  },
+  "system": {
+    "description": {
+      "@en": "You conjure a missile of energy that darts forth to harm your enemies (but not the darkness)."
+    },
+    "notes": "",
+    "rules": {
+      "effect": {
+        "@en": "After successfully casting this spell, one foe suffers [[/roll 1D10]]+[WB] in Damage."
+      },
+      "criticalSuccess": {
+        "@en": "As above and the foe drops whatever is in their hands just outside of easy reach."
+      },
+      "criticalFailure": {
+        "@en": "<p>The bolt flickers outwards before turning and striking you! You suffer [[/roll 1D10]]+[WB] in Damage and drop whatever is in your hands just outside of easy reach.</p>"
+      },
+      "reagents": {
+        "@en": "A silver dart, held in-hand (expended)"
+      }
+    },
+    "tradition": "Generalist",
+    "principle": "Generalist",
+    "distance": "Any one person you can see",
+    "duration": "Instantaneous",
+    "castingTime": "1 min",
+    "castingCost": 0
+  },
+  "folder": null,
+  "sort": 0,
+  "ownership": {
+    "default": 0
+  },
+  "flags": {},
+  "_key": "!items!V97tGPxHXr9WivpI"
+}

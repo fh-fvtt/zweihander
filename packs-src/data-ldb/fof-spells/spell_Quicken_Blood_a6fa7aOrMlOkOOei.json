@@ -1,0 +1,50 @@
+{
+  "_id": "a6fa7aOrMlOkOOei",
+  "effects": [],
+  "img": "systems/zweihander/assets/icons/spell-book.svg",
+  "name": "Quicken Blood",
+  "type": "spell",
+  "_stats": {
+    "coreVersion": "12.331",
+    "systemId": null,
+    "systemVersion": null,
+    "createdTime": null,
+    "modifiedTime": null,
+    "lastModifiedBy": null,
+    "compendiumSource": null,
+    "duplicateSource": null
+  },
+  "system": {
+    "description": {
+      "@en": "<p>You shall move like the zephyr . . .</p>"
+    },
+    "notes": "",
+    "rules": {
+      "effect": {
+        "@en": "<p>After successfully casting, the ally may increase their Movement and Initiative by +3.</p>"
+      },
+      "criticalSuccess": {
+        "@en": "They also gain 1 additional AP on their Turn in combat."
+      },
+      "criticalFailure": {
+        "@en": "The ally feels sluggish, as they must reduce their Movement and Initiative by -3, and begins their Turn with 1 less AP."
+      },
+      "reagents": {
+        "@en": "Orate and give commentary on a religious lesson"
+      }
+    },
+    "tradition": "Common",
+    "principle": "Basic Tier",
+    "distance": "By Touch",
+    "duration": "3+[WB] minutes",
+    "castingTime": "1 Minute",
+    "castingCost": 1
+  },
+  "folder": null,
+  "sort": 0,
+  "ownership": {
+    "default": 0
+  },
+  "flags": {},
+  "_key": "!items!a6fa7aOrMlOkOOei"
+}

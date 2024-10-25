@@ -1,0 +1,50 @@
+{
+  "_id": "nSDo19qrpJ0ZMRqc",
+  "effects": [],
+  "img": "systems/zweihander/assets/icons/lightning-tear.svg",
+  "name": "Wytchsight",
+  "type": "spell",
+  "_stats": {
+    "coreVersion": "12.331",
+    "systemId": null,
+    "systemVersion": null,
+    "createdTime": null,
+    "modifiedTime": null,
+    "lastModifiedBy": null,
+    "compendiumSource": null,
+    "duplicateSource": null
+  },
+  "system": {
+    "description": {
+      "@en": "You peer into the spirit realm beyond through a swath of cloth."
+    },
+    "notes": "",
+    "rules": {
+      "effect": {
+        "@en": "After successfully casting this spell, you can visually determine if an object or person is imbued or under the influence of Magick. Naturally, since dark Magick flows within the unliving, you can also detect creatures that are classified as Supernatural."
+      },
+      "criticalSuccess": {
+        "@en": "As above, but you can also detect what sort of Magick spell has affected the object or person, if any."
+      },
+      "criticalFailure": {
+        "@en": "You behold a terrible vision of nightmare beings beyond the mortal realm. Your eyesight is stricken from you, as you’re temporarily blinded for 24 hours. During this time, you automatically fail any Skill Test which requires you to see."
+      },
+      "reagents": {
+        "@en": "A blindfold placed over your eyes"
+      }
+    },
+    "tradition": "Generalist",
+    "principle": "Generalist",
+    "distance": "Yourself",
+    "duration": "[WB]+3 minutes",
+    "castingTime": "1 min",
+    "castingCost": 0
+  },
+  "folder": null,
+  "sort": 0,
+  "ownership": {
+    "default": 0
+  },
+  "flags": {},
+  "_key": "!items!nSDo19qrpJ0ZMRqc"
+}

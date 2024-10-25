@@ -1,0 +1,38 @@
+{
+  "_id": "pifCfmHv8FBGqke5",
+  "effects": [],
+  "img": "systems/zweihander/assets/icons/lungs.svg",
+  "name": "Punctured Lung",
+  "type": "injury",
+  "_stats": {
+    "coreVersion": "12.331",
+    "systemId": null,
+    "systemVersion": null,
+    "createdTime": null,
+    "modifiedTime": null,
+    "lastModifiedBy": null,
+    "compendiumSource": null,
+    "duplicateSource": null
+  },
+  "system": {
+    "description": {
+      "@en": ""
+    },
+    "notes": "",
+    "rules": {
+      "effect": {
+        "@en": "Until fully Recuperated, you remain unconscious. You must undergo a successful surgery or suffer the consequences. Once a Punctured Lung has undergone a failed surgery, you permanently gain the Weak Lungs Drawback. If you already have this Drawback, you permanently lose 9% Willpower."
+      }
+    },
+    "severity": 2,
+    "active": true,
+    "recuperationTime": 0
+  },
+  "folder": null,
+  "sort": 0,
+  "ownership": {
+    "default": 0
+  },
+  "flags": {},
+  "_key": "!items!pifCfmHv8FBGqke5"
+}

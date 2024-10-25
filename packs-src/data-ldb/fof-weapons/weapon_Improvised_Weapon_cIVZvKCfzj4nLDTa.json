@@ -1,0 +1,51 @@
+{
+  "_id": "cIVZvKCfzj4nLDTa",
+  "effects": [],
+  "img": "systems/zweihander/assets/icons/cross-mark.svg",
+  "name": "Improvised Weapon",
+  "type": "weapon",
+  "_stats": {
+    "coreVersion": "12.331",
+    "systemId": null,
+    "systemVersion": null,
+    "createdTime": null,
+    "modifiedTime": null,
+    "lastModifiedBy": null,
+    "compendiumSource": null,
+    "duplicateSource": null
+  },
+  "system": {
+    "description": {
+      "@en": "<p>Ale steins, billiards cues, broken chair legs, fire pokers and the like are examples of these types of shoddy weapons.</p>"
+    },
+    "notes": "<p>Knife &bull; Simple Melee (Simple Ranged thrown) &bull; 1H &bull; Load: 0 AP (1 AP thrown) &bull; Distance: Engaged or 1+[PB] yard &bull; Damage: [AB] &bull; Fast, Throwing, Weak&nbsp; &bull; Enc: 1</p>",
+    "price": {
+      "bp": "0",
+      "gc": "0",
+      "ss": "0"
+    },
+    "encumbrance": 1,
+    "carried": true,
+    "weaponType": "Melee or Ranged",
+    "equipped": false,
+    "associatedSkill": "Simple Melee",
+    "load": 0,
+    "handling": "One or Two-handed",
+    "qualities": {
+      "value": "Break, Pummeling, Throwing",
+      "arrayOfValues": []
+    },
+    "distance": "Engaged or 1+[PB] yard",
+    "damage": {
+      "formula": "[BB] + (1+[#])d6x6",
+      "associatedPrimaryAttribute": "Combat"
+    }
+  },
+  "folder": null,
+  "sort": 0,
+  "ownership": {
+    "default": 0
+  },
+  "flags": {},
+  "_key": "!items!cIVZvKCfzj4nLDTa"
+}

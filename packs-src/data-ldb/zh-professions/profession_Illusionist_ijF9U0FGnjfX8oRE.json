@@ -1,0 +1,117 @@
+{
+  "_id": "ijF9U0FGnjfX8oRE",
+  "effects": [],
+  "img": "systems/zweihander/assets/icons/illusionist.svg",
+  "name": "Illusionist",
+  "type": "profession",
+  "_stats": {
+    "coreVersion": "12.331",
+    "systemId": null,
+    "systemVersion": null,
+    "createdTime": null,
+    "modifiedTime": null,
+    "lastModifiedBy": null,
+    "compendiumSource": null,
+    "duplicateSource": null
+  },
+  "system": {
+    "description": {
+      "@en": "Illusionists rarely congregate or stay in one place. Curious, restless and beset by wanderlust, they spend their lives on the road ever in the pursuit of occult knowledge. Illusionists prefer to remain inconspicuous, for their endless pursuit for the arcane takes them to dark places – dark places that might be seen as ‘evil’ by those ignorant of the esoteric arts. Knowing that this can bring them to the attention of witch hunters, they tend to slip into the night and shadows or travel under another guise. Their mix of the esoteric and the practical, scholarship and worldliness, gives them a curious skillset – unheard of for arcanists, they have a knack for swordsmanship, used to travel and are skilled diplomats. Their vow of pragmatism and poverty aids their diplomatic skills, as they cannot be easily persuaded by coin or worldly goods.\nHowever, upon these roads less traveled, these grey pilgrims can become twisted by their own sense of secrecy. The constant need for secrecy and to hide their motives, means that Illusionists feel better prepared to hide their infernal pursuits should their search for knowledge and secrets take them in such a direction. Despite being masters of deception, witch hunters have an uncanny knack to sniff out renegade illusionists."
+    },
+    "notes": "",
+    "expert": {
+      "value": true,
+      "requirements": "You must possess at least one Skill Rank in Incantation in order to enter this Expert Profession. In addition, you must have the Special Trait of Arcane Magick."
+    },
+    "archetype": "Expert Profession",
+    "bonusAdvances": [
+      {
+        "name": "[AB]"
+      },
+      {
+        "name": "[CB]"
+      },
+      {
+        "name": "[FB]"
+      },
+      {
+        "name": "[FB]"
+      },
+      {
+        "name": "[IB]"
+      },
+      {
+        "name": "[PB]"
+      },
+      {
+        "name": "[WB]"
+      }
+    ],
+    "skillRanks": [
+      {
+        "name": "Bargain"
+      },
+      {
+        "name": "Disguise"
+      },
+      {
+        "name": "Folklore"
+      },
+      {
+        "name": "Incantation"
+      },
+      {
+        "name": "Martial Melee"
+      },
+      {
+        "name": "Navigation"
+      },
+      {
+        "name": "Rumor"
+      },
+      {
+        "name": "Simple Melee"
+      },
+      {
+        "name": "Survival"
+      },
+      {
+        "name": "Stealth"
+      }
+    ],
+    "talents": [
+      {
+        "linkedId": null,
+        "name": "Doppelganger"
+      },
+      {
+        "linkedId": null,
+        "name": "Meeting of the Minds"
+      },
+      {
+        "linkedId": null,
+        "name": "Rural Sensibility"
+      }
+    ],
+    "professionalTrait": {
+      "name": "Face In the Crowd",
+      "linkedId": null
+    },
+    "specialTrait": {
+      "name": "Arcana of Shadowmancy",
+      "linkedId": null
+    },
+    "drawback": {
+      "name": "Grey Temperament",
+      "linkedId": null
+    },
+    "tier": ""
+  },
+  "folder": null,
+  "sort": 0,
+  "ownership": {
+    "default": 0
+  },
+  "flags": {},
+  "_key": "!items!ijF9U0FGnjfX8oRE"
+}

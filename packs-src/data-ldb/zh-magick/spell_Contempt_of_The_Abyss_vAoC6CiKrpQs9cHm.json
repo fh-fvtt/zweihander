@@ -1,0 +1,50 @@
+{
+  "_id": "vAoC6CiKrpQs9cHm",
+  "effects": [],
+  "img": "systems/zweihander/assets/icons/wizard-staff.svg",
+  "name": "Contempt of The Abyss",
+  "type": "spell",
+  "_stats": {
+    "coreVersion": "12.331",
+    "systemId": null,
+    "systemVersion": null,
+    "createdTime": null,
+    "modifiedTime": null,
+    "lastModifiedBy": null,
+    "compendiumSource": null,
+    "duplicateSource": null
+  },
+  "system": {
+    "description": {
+      "@en": "You temporarily dispel the Prince of Change’s twisted Magicks and the Prince of Pleasure’s depravity over another."
+    },
+    "notes": "",
+    "rules": {
+      "effect": {
+        "@en": "After successfully casting this spell, the person you touch is temporarily relieved of any ill-effects which Magick has over them and instantly breaks any charms or curses (Magickal or otherwise) they may be under the Effects of."
+      },
+      "criticalSuccess": {
+        "@en": "As above, but triple the Duration."
+      },
+      "criticalFailure": {
+        "@en": "You have failed the Outsider! Not only do you fail to relieve the person you touched of the ill-effects of Magick or charms or curses they are under, but all of those Effects are imparted upon you and their Duration is tripled."
+      },
+      "reagents": {
+        "@en": "An ampule of quicksilver, injected into the recipient (expended)"
+      }
+    },
+    "tradition": "Covenant",
+    "principle": "Lesser",
+    "distance": "6+[WB] hours",
+    "duration": "9+[WB] minutes",
+    "castingTime": "1 min",
+    "castingCost": 0
+  },
+  "folder": null,
+  "sort": 0,
+  "ownership": {
+    "default": 0
+  },
+  "flags": {},
+  "_key": "!items!vAoC6CiKrpQs9cHm"
+}

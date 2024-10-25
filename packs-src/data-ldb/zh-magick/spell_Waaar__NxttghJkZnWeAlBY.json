@@ -1,0 +1,50 @@
+{
+  "_id": "NxttghJkZnWeAlBY",
+  "effects": [],
+  "img": "systems/zweihander/assets/icons/wizard-staff.svg",
+  "name": "Waaar!",
+  "type": "spell",
+  "_stats": {
+    "coreVersion": "12.331",
+    "systemId": null,
+    "systemVersion": null,
+    "createdTime": null,
+    "modifiedTime": null,
+    "lastModifiedBy": null,
+    "compendiumSource": null,
+    "duplicateSource": null
+  },
+  "system": {
+    "description": {
+      "@en": "Evil minds that plot destruction, sorcerer of death’s construction."
+    },
+    "notes": "",
+    "rules": {
+      "effect": {
+        "@en": "After successfully casting this spell, select a number of allies equal to your [WB]. Providing you can see them, they cannot suffer from Peril, Stress, Fear or Terror for the Duration of the spell. However, at the beginning of their Turn, they must Resist with a successful Toughness Test or else begin to Bleed."
+      },
+      "criticalSuccess": {
+        "@en": "As above, but for every six allies who are fighting, add an additional +1 to all melee and ranged Damage they inflict (to a maximum of +6 Damage)."
+      },
+      "criticalFailure": {
+        "@en": "A great green mist begins pouring forth from all of your orifices and with it, the reek of the slaughterhouse. Those who smell your charnel stench must succeed at a Resolve Test or else they suffer from Terror. In addition, you must succeed at a Toughness Test or else be immediately Slain! (unless you have a Fate Point to expend). If you succeed, you return to your normal self, but are left Prone and Incapacitated!"
+      },
+      "reagents": {
+        "@en": "A shard of Wytchstone, crushed (expended)"
+      }
+    },
+    "tradition": "Covenant",
+    "principle": "Greater",
+    "distance": "Any persons you can see",
+    "duration": "9+[WB] minutes",
+    "castingTime": "1 min",
+    "castingCost": 0
+  },
+  "folder": null,
+  "sort": 0,
+  "ownership": {
+    "default": 0
+  },
+  "flags": {},
+  "_key": "!items!NxttghJkZnWeAlBY"
+}

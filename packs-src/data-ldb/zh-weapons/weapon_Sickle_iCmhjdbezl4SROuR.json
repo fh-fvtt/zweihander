@@ -1,0 +1,51 @@
+{
+  "_id": "iCmhjdbezl4SROuR",
+  "effects": [],
+  "img": "systems/zweihander/assets/icons/sickle.svg",
+  "name": "Sickle",
+  "type": "weapon",
+  "_stats": {
+    "coreVersion": "12.331",
+    "systemId": null,
+    "systemVersion": null,
+    "createdTime": null,
+    "modifiedTime": null,
+    "lastModifiedBy": null,
+    "compendiumSource": null,
+    "duplicateSource": null
+  },
+  "system": {
+    "description": {
+      "@en": "<p>Similar to a scythe, but much smaller and able to be wielded in one hand, it is normally used to cut sheaves of wheat, but druids are said to use sacred versions of this weapon to cut the holly they revere. It is also used in-hand by the common rabble when pushed to the fore of battle.</p>"
+    },
+    "notes": "",
+    "price": {
+      "bp": "0",
+      "gc": "0",
+      "ss": "3"
+    },
+    "encumbrance": 2,
+    "carried": true,
+    "weaponType": "Bladed",
+    "equipped": false,
+    "associatedSkill": "Simple Melee",
+    "load": 0,
+    "handling": "One-handed",
+    "qualities": {
+      "value": "Finesse, Slow, Vicious, Weak",
+      "arrayOfValues": []
+    },
+    "distance": "Engaged",
+    "damage": {
+      "formula": "[AB] + (1+[#])d6x6",
+      "associatedPrimaryAttribute": "Agility"
+    }
+  },
+  "folder": null,
+  "sort": 0,
+  "ownership": {
+    "default": 0
+  },
+  "flags": {},
+  "_key": "!items!iCmhjdbezl4SROuR"
+}

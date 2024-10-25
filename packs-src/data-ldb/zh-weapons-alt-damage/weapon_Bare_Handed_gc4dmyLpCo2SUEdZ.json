@@ -1,0 +1,50 @@
+{
+  "_id": "gc4dmyLpCo2SUEdZ",
+  "effects": [],
+  "img": "systems/zweihander/assets/icons/fist.svg",
+  "name": "Bare-Handed",
+  "type": "weapon",
+  "_stats": {
+    "coreVersion": "12.331",
+    "systemId": null,
+    "systemVersion": null,
+    "createdTime": null,
+    "modifiedTime": null,
+    "lastModifiedBy": null,
+    "compendiumSource": null,
+    "duplicateSource": null
+  },
+  "system": {
+    "description": {
+      "@en": "<p>You were born with two hands and feet, and (hopefully) will live with all of them intact. Real weapons are far more effective, but a cross to the jaw, roundhouse kick to the kidney or knee to the groin sometimes speaks louder than words alone.</p>"
+    },
+    "notes": "",
+    "price": {
+      "bp": "0",
+      "gc": "0",
+      "ss": "0"
+    },
+    "encumbrance": 0,
+    "carried": true,
+    "weaponType": "Brawling",
+    "equipped": false,
+    "associatedSkill": "Simple Melee",
+    "load": 0,
+    "handling": "One-handed",
+    "qualities": {
+      "value": "Pummeling, Slow",
+      "arrayOfValues": []
+    },
+    "distance": "Engaged",
+    "damage": {
+      "formula": "[BB] + 0 + (1+[#])d6x6"
+    }
+  },
+  "folder": null,
+  "sort": 0,
+  "ownership": {
+    "default": 0
+  },
+  "flags": {},
+  "_key": "!items!gc4dmyLpCo2SUEdZ"
+}

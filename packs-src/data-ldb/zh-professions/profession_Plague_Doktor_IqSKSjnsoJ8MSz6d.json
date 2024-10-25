@@ -1,0 +1,117 @@
+{
+  "_id": "IqSKSjnsoJ8MSz6d",
+  "effects": [],
+  "img": "systems/zweihander/assets/icons/plague-doktor.svg",
+  "name": "Plague Doktor",
+  "type": "profession",
+  "_stats": {
+    "coreVersion": "12.331",
+    "systemId": null,
+    "systemVersion": null,
+    "createdTime": null,
+    "modifiedTime": null,
+    "lastModifiedBy": null,
+    "compendiumSource": null,
+    "duplicateSource": null
+  },
+  "system": {
+    "description": {
+      "@en": "As much as culture and technology have advanced in recent years, medical sciences have lagged behind and remain a relative mystery. Indeed, the discovery that sickness and disease is natural, almost a living creature that could be spread by breathing, is only a recent one. This discovery was made by Plague Doktors, who make made it their life’s calling to devote themselves to this new science and aid the science. Though many have standard training and can set bones, lance boils, and so on, Plague Doktors spend most of their time researching disease. Wearing a long, bird-like mask stuffed with herbs and spices to block out the smell of decay, Plague Doktors explore festering sores, amputate limbs, apply leech therapy and watch people die from hundreds of nasty illnesses. This includes Magickal diseases born from mutation and the stench of the Abyss that bring a host of new challenges. For patients, treatment can be as deadly as the disease – there are no antibiotics or anesthesia; the only alternatives being a prayer to the gods and a bottle of rotgut.\nSome Plague Doktors rarely leave their surgical theaters, but others are natural wanderers, traveling the world looking for cures and discovering even stranger diseases. The entire countryside is sick, so they have little remorse leaving behind ‘regulars’ in search of new breakthroughs. Highly intelligent and inquisitive, Plague Doktors employ scientific methods in their research and while some are amazing healers, their abilities are limited by their scientific knowledge. Being a Plague Doktor is grim and gruesome work; hearing the screams of your patient as you burn the stub that was once their hand, watching children cough up blood or seeing a friend succumb to mutation places a massive strain on their mental state. This can make some Plague Doktors erratic and unstable – and worse, drive others to see that the only way to find cures is to examine their symptoms again and again, which means spreading disease after disease. Then they truly become Plague Doktors!"
+    },
+    "notes": "",
+    "expert": {
+      "value": true,
+      "requirements": "You must possess at least one Skill Rank in Heal in order to enter this Expert Profession."
+    },
+    "archetype": "Expert Profession",
+    "bonusAdvances": [
+      {
+        "name": "[AB]"
+      },
+      {
+        "name": "[BB]"
+      },
+      {
+        "name": "[IB]"
+      },
+      {
+        "name": "[IB]"
+      },
+      {
+        "name": "[PB]"
+      },
+      {
+        "name": "[WB]"
+      },
+      {
+        "name": "[WB]"
+      }
+    ],
+    "skillRanks": [
+      {
+        "name": "Coordination"
+      },
+      {
+        "name": "Education"
+      },
+      {
+        "name": "Folklore"
+      },
+      {
+        "name": "Heal"
+      },
+      {
+        "name": "Interrogation"
+      },
+      {
+        "name": "Resolve"
+      },
+      {
+        "name": "Rumor"
+      },
+      {
+        "name": "Scrutinize"
+      },
+      {
+        "name": "Simple Melee"
+      },
+      {
+        "name": "Toughness"
+      }
+    ],
+    "talents": [
+      {
+        "linkedId": null,
+        "name": "Ambidexterity"
+      },
+      {
+        "linkedId": null,
+        "name": "Impervious Mind"
+      },
+      {
+        "linkedId": null,
+        "name": "Indifference"
+      }
+    ],
+    "professionalTrait": {
+      "name": "Blight-Born Immunity",
+      "linkedId": null
+    },
+    "specialTrait": {
+      "name": "",
+      "linkedId": null
+    },
+    "drawback": {
+      "name": "Death Has Come to Town",
+      "linkedId": null
+    },
+    "tier": ""
+  },
+  "folder": null,
+  "sort": 0,
+  "ownership": {
+    "default": 0
+  },
+  "flags": {},
+  "_key": "!items!IqSKSjnsoJ8MSz6d"
+}

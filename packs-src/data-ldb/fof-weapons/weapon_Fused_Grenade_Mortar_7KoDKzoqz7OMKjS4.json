@@ -1,0 +1,50 @@
+{
+  "_id": "7KoDKzoqz7OMKjS4",
+  "effects": [],
+  "img": "systems/zweihander/assets/icons/blunderbuss.svg",
+  "name": "Fused Grenade Mortar",
+  "type": "weapon",
+  "_stats": {
+    "coreVersion": "12.331",
+    "systemId": null,
+    "systemVersion": null,
+    "createdTime": null,
+    "modifiedTime": null,
+    "lastModifiedBy": null,
+    "compendiumSource": null,
+    "duplicateSource": null
+  },
+  "system": {
+    "description": {
+      "@en": "<p>This is the ubiquitous grenade lobber. Though it looks like a blunderbuss, it fires a grenade much farther than it is typically thrown.</p>"
+    },
+    "notes": "",
+    "price": {
+      "bp": "0",
+      "gc": "4",
+      "ss": "0"
+    },
+    "encumbrance": 3,
+    "carried": true,
+    "weaponType": "Ranged",
+    "equipped": false,
+    "associatedSkill": "Martial Ranged",
+    "load": 4,
+    "handling": "Two-handed",
+    "qualities": {
+      "value": "Blackpowder, Bomb, Throwing",
+      "arrayOfValues": []
+    },
+    "distance": "6 + [PB] yards",
+    "damage": {
+      "formula": "[CB] + (1+[#])d6x1,6"
+    }
+  },
+  "folder": null,
+  "sort": 0,
+  "ownership": {
+    "default": 0
+  },
+  "flags": {},
+  "_key": "!items!7KoDKzoqz7OMKjS4"
+}

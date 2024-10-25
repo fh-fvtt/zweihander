@@ -1,0 +1,50 @@
+{
+  "_id": "kfCaHx79v5zEPXbS",
+  "effects": [],
+  "img": "systems/zweihander/assets/icons/wizard-staff.svg",
+  "name": "Dance of Death",
+  "type": "spell",
+  "_stats": {
+    "coreVersion": "12.331",
+    "systemId": null,
+    "systemVersion": null,
+    "createdTime": null,
+    "modifiedTime": null,
+    "lastModifiedBy": null,
+    "compendiumSource": null,
+    "duplicateSource": null
+  },
+  "system": {
+    "description": {
+      "@en": "Your prayers are gruesome and threatening, causing foes to dance maniacally – pulling their own hair, picking at their own flesh and poking at any orifice – harming themselves in the process."
+    },
+    "notes": "",
+    "rules": {
+      "effect": {
+        "@en": "Effect:After successfully casting this spell, select a number of foes equal to your [WB]. They must Resist with a Resolve Test or immediately suffer [[/roll 3D10]]+their [BB] in Damage and dance in place for three minutes, unable to Counterspell, Dodge or Parry during this time. Those who do Resist suffer from Terror instead."
+      },
+      "criticalSuccess": {
+        "@en": "Critical Success:As above, but your foes cannot Resist this Magick."
+      },
+      "criticalFailure": {
+        "@en": "Critical Failure:Your words send you into an endless dance, unable to do anything else and inflicting harm upon yourself in the process. You begin to dance and must do so for 72 hours; throughout, you are rendered Helpless. At the end of the dance, you suffer one Moderate, Serious and Grievous Injury."
+      },
+      "reagents": {
+        "@en": "Reagents:A vial of blood from an honest priest (expended)"
+      }
+    },
+    "tradition": "Divine (Crouching One)",
+    "principle": "Greater",
+    "distance": "Distance:Any persons you can see",
+    "duration": "Duration:Instantaneous",
+    "castingTime": "1 min",
+    "castingCost": 0
+  },
+  "folder": null,
+  "sort": 0,
+  "ownership": {
+    "default": 0
+  },
+  "flags": {},
+  "_key": "!items!kfCaHx79v5zEPXbS"
+}

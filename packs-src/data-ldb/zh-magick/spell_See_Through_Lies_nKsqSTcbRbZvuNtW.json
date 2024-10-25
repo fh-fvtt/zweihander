@@ -1,0 +1,50 @@
+{
+  "_id": "nKsqSTcbRbZvuNtW",
+  "effects": [],
+  "img": "systems/zweihander/assets/icons/wizard-staff.svg",
+  "name": "See Through Lies",
+  "type": "spell",
+  "_stats": {
+    "coreVersion": "12.331",
+    "systemId": null,
+    "systemVersion": null,
+    "createdTime": null,
+    "modifiedTime": null,
+    "lastModifiedBy": null,
+    "compendiumSource": null,
+    "duplicateSource": null
+  },
+  "system": {
+    "description": {
+      "@en": "The balance between chaos and order will be preserved. Justice for all!"
+    },
+    "notes": "",
+    "rules": {
+      "effect": {
+        "@en": "After successfully casting this spell, you are able to detect a lie made by anyone who you can hear. Note that you are completely blind to the Material Realm during this time, automatically failing any Skill Tests based on vision."
+      },
+      "criticalSuccess": {
+        "@en": "As above, but you are not blind during this time."
+      },
+      "criticalFailure": {
+        "@en": "You behold a terrible vision of nightmare beings beyond the mortal realm. Your eyesight is stricken from you and you’re temporarily blinded for the spell’s Duration. During this time, you automatically fail any Skill Test which requires you to see."
+      },
+      "reagents": {
+        "@en": "A silken blindfold, worn for the Duration of the spell"
+      }
+    },
+    "tradition": "Divine (Learner)",
+    "principle": "Lesser",
+    "distance": "Yourself",
+    "duration": "[WB]+6 minutes",
+    "castingTime": "1 min",
+    "castingCost": 0
+  },
+  "folder": null,
+  "sort": 0,
+  "ownership": {
+    "default": 0
+  },
+  "flags": {},
+  "_key": "!items!nKsqSTcbRbZvuNtW"
+}

@@ -1,0 +1,51 @@
+{
+  "_id": "ZpMKcjmR1JjTmRzC",
+  "effects": [],
+  "img": "systems/zweihander/assets/icons/nunchaku.svg",
+  "name": "Threshing Flail",
+  "type": "weapon",
+  "_stats": {
+    "coreVersion": "12.331",
+    "systemId": "zweihander",
+    "systemVersion": "5.3.2",
+    "createdTime": null,
+    "modifiedTime": 1729891945960,
+    "lastModifiedBy": "rivg6xcMxdlVDM8y",
+    "compendiumSource": null,
+    "duplicateSource": null
+  },
+  "system": {
+    "description": {
+      "@en": "<p>As a farmer&rsquo;s tool, it&rsquo;s used to separate grain from husks.In other hands,it can be used to bash about raiders who steal farming supplies or foolish lords that demand too much grain. Although it possesses a long reach, it looks rather foolish when whirled around above the head.</p>"
+    },
+    "notes": "",
+    "price": {
+      "bp": 0,
+      "gc": 0,
+      "ss": 1
+    },
+    "encumbrance": 2,
+    "carried": true,
+    "weaponType": "Crushing",
+    "equipped": false,
+    "associatedSkill": "Simple Melee",
+    "load": 0,
+    "handling": "One-handed",
+    "qualities": {
+      "value": "Adaptable, Weak",
+      "arrayOfValues": []
+    },
+    "distance": "Engaged",
+    "damage": {
+      "formula": "[CB] + (1+[#])d6x6",
+      "associatedPrimaryAttribute": "Combat"
+    }
+  },
+  "folder": null,
+  "sort": 0,
+  "ownership": {
+    "default": 0
+  },
+  "flags": {},
+  "_key": "!items!ZpMKcjmR1JjTmRzC"
+}

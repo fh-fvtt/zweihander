@@ -1,0 +1,41 @@
+{
+  "_id": "P3siCug3FY0C2GVI",
+  "effects": [],
+  "img": "systems/zweihander/assets/icons/half-dead.svg",
+  "name": "Bloody Flux",
+  "type": "disease",
+  "_stats": {
+    "coreVersion": "12.331",
+    "systemId": null,
+    "systemVersion": null,
+    "createdTime": null,
+    "modifiedTime": null,
+    "lastModifiedBy": null,
+    "compendiumSource": null,
+    "duplicateSource": null
+  },
+  "system": {
+    "description": {
+      "@en": "Blood in your feces, dehydration, general weakness and inability to focus are symptomatic of the Bloody Flux. Your stools become watery, causing your bowels to cramp in a most uncomfortable manner. The squalor found among the cities and soldiers’ camps makes this uncomfortable Disease easier to spread from person to person. Blood sausages, spicy foods and eel pies are oftentimes prescribed to ward away its effects, along with a makeshift diaper to catch the sudden flows of excrescence that are the most obvious and noxious symptoms of the Bloody Flux."
+    },
+    "notes": "",
+    "rules": {
+      "effect": {
+        "@en": "Over the course of the duration, you awaken each day suffering 2D10+2 physical Peril."
+      },
+      "treatment": {
+        "@en": "Unlike many other diseases, someone suffering from Bloody Flux can treat themselves. You must use a bottle of rotgut and a Bandage (both of which are expended as part of the treatment) and be left uninterrupted for at least 1 hour. If you succeed at a (Trivial +30%) Toughness Test, you do not suffer its effects the following day. You may only be treated in this manner once every 24 hours, no matter whether it is successful or not."
+      }
+    },
+    "resist": "(Trivial +30%) Toughness Test",
+    "duration": "1D10+1 days",
+    "active": true
+  },
+  "folder": null,
+  "sort": 0,
+  "ownership": {
+    "default": 0
+  },
+  "flags": {},
+  "_key": "!items!P3siCug3FY0C2GVI"
+}

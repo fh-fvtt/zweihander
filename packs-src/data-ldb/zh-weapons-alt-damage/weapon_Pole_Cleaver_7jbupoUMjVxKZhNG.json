@@ -1,0 +1,50 @@
+{
+  "_id": "7jbupoUMjVxKZhNG",
+  "effects": [],
+  "img": "systems/zweihander/assets/icons/halberd.svg",
+  "name": "Pole Cleaver",
+  "type": "weapon",
+  "_stats": {
+    "coreVersion": "12.331",
+    "systemId": null,
+    "systemVersion": null,
+    "createdTime": null,
+    "modifiedTime": null,
+    "lastModifiedBy": null,
+    "compendiumSource": null,
+    "duplicateSource": null
+  },
+  "system": {
+    "description": {
+      "@en": "<p>A very long stick with an axe on the end. It&rsquo;s far more intimidating than a pike, but less embarrassing than a mere butcher&rsquo;s cleaver. Soldiers often partake in &lsquo;Gygaxian musings&rsquo; over the vast array of pole arms that dominate weapon racks &ndash; in which the pole cleaver is called by a variety of names.</p>"
+    },
+    "notes": "",
+    "price": {
+      "bp": "0",
+      "gc": "4",
+      "ss": "0"
+    },
+    "encumbrance": 3,
+    "carried": true,
+    "weaponType": "Bladed",
+    "equipped": false,
+    "associatedSkill": "Martial Melee",
+    "load": 0,
+    "handling": "Two-handed",
+    "qualities": {
+      "value": "Reach",
+      "arrayOfValues": []
+    },
+    "distance": "Engaged or 1 yard",
+    "damage": {
+      "formula": "[CB] + 3 + (1+[#])d6x6"
+    }
+  },
+  "folder": null,
+  "sort": 0,
+  "ownership": {
+    "default": 0
+  },
+  "flags": {},
+  "_key": "!items!7jbupoUMjVxKZhNG"
+}

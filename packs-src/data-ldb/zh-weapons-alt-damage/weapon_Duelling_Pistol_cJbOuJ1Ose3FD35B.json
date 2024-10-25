@@ -1,0 +1,50 @@
+{
+  "_id": "cJbOuJ1Ose3FD35B",
+  "effects": [],
+  "img": "systems/zweihander/assets/icons/crossed-pistols.svg",
+  "name": "Duelling Pistol",
+  "type": "weapon",
+  "_stats": {
+    "coreVersion": "12.331",
+    "systemId": null,
+    "systemVersion": null,
+    "createdTime": null,
+    "modifiedTime": null,
+    "lastModifiedBy": null,
+    "compendiumSource": null,
+    "duplicateSource": null
+  },
+  "system": {
+    "description": {
+      "@en": "Ostentatious and unusually decorated, these flintlock pistols are deadly quick. A true ‘gentleman’s’ weapon, if there ever was one to be named."
+    },
+    "notes": "",
+    "price": {
+      "bp": "0",
+      "gc": "50",
+      "ss": "0"
+    },
+    "encumbrance": 2,
+    "carried": true,
+    "weaponType": "Gunpowder",
+    "equipped": false,
+    "associatedSkill": "Martial Ranged",
+    "load": 3,
+    "handling": "One-handed",
+    "qualities": {
+      "value": "Gunpowder",
+      "arrayOfValues": []
+    },
+    "distance": "3 + [PB] yards",
+    "damage": {
+      "formula": "[CB] + 2 + (1+[#])d6x1&6"
+    }
+  },
+  "folder": null,
+  "sort": 0,
+  "ownership": {
+    "default": 0
+  },
+  "flags": {},
+  "_key": "!items!cJbOuJ1Ose3FD35B"
+}

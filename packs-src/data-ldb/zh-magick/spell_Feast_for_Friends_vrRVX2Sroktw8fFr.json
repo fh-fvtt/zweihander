@@ -1,0 +1,50 @@
+{
+  "_id": "vrRVX2Sroktw8fFr",
+  "effects": [],
+  "img": "systems/zweihander/assets/icons/wizard-staff.svg",
+  "name": "Feast for Friends",
+  "type": "spell",
+  "_stats": {
+    "coreVersion": "12.331",
+    "systemId": null,
+    "systemVersion": null,
+    "createdTime": null,
+    "modifiedTime": null,
+    "lastModifiedBy": null,
+    "compendiumSource": null,
+    "duplicateSource": null
+  },
+  "system": {
+    "description": {
+      "@en": "With questionable ingredients, you whip up a stew that’s extremely tasty yet curiously spicy."
+    },
+    "notes": "",
+    "rules": {
+      "effect": {
+        "@en": "After successfully casting this spell, select a number of allies equal to your [WB]. Whenever they Injure a foe, they move one step up the Peril Condition Track positively. At the end of the Duration, all those who ate the stew suffer 3 Corruption."
+      },
+      "criticalSuccess": {
+        "@en": "As above, but triple the number of allies affected."
+      },
+      "criticalFailure": {
+        "@en": "The feast is unsettling on everyone’s stomachs. For the Duration, any allies who ate the stew must Resist with a successful Toughness Test every hour for the Duration of the spell or else suffer [[/roll 1D10+1]] physical Peril."
+      },
+      "reagents": {
+        "@en": "Fresh innards from your own Ancestry, eaten by others (expended)"
+      }
+    },
+    "tradition": "Covenant",
+    "principle": "Petty",
+    "distance": "Any persons you can see",
+    "duration": "3+[WB] in hours",
+    "castingTime": "1 min",
+    "castingCost": 0
+  },
+  "folder": null,
+  "sort": 0,
+  "ownership": {
+    "default": 0
+  },
+  "flags": {},
+  "_key": "!items!vrRVX2Sroktw8fFr"
+}

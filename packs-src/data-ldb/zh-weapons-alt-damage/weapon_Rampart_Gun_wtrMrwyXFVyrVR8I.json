@@ -1,0 +1,51 @@
+{
+  "_id": "wtrMrwyXFVyrVR8I",
+  "effects": [],
+  "img": "systems/zweihander/assets/icons/sawed-off-shotgun.svg",
+  "name": "Rampart Gun",
+  "type": "weapon",
+  "_stats": {
+    "coreVersion": "12.331",
+    "systemId": null,
+    "systemVersion": null,
+    "createdTime": null,
+    "modifiedTime": null,
+    "lastModifiedBy": null,
+    "compendiumSource": null,
+    "duplicateSource": null
+  },
+  "system": {
+    "description": {
+      "@en": "<p>These smooth-bore muskets are used by defenders along a wall to take &lsquo;pot shots&rsquo; at besiegers. Generally affixed with either a barrel hook or lain atop a window ledge to fire, tall tales abound of the infamous Condottiere Arnolt Uberschwarz wielding it one-handed against an onslaught of soldiers.</p>"
+    },
+    "notes": "",
+    "price": {
+      "bp": "0",
+      "gc": "0",
+      "ss": "0"
+    },
+    "encumbrance": 6,
+    "carried": true,
+    "weaponType": "Gunpowder",
+    "equipped": false,
+    "associatedSkill": "Martial Ranged",
+    "load": 6,
+    "handling": "One-handed",
+    "qualities": {
+      "value": "Brace, Gunpowder, Punishing, Vicious",
+      "arrayOfValues": []
+    },
+    "distance": "[PB]+18 yards",
+    "damage": {
+      "formula": "[CB] + (1+[#])d6x1&6+3",
+      "associatedPrimaryAttribute": "Combat"
+    }
+  },
+  "folder": null,
+  "sort": 0,
+  "ownership": {
+    "default": 0
+  },
+  "flags": {},
+  "_key": "!items!wtrMrwyXFVyrVR8I"
+}

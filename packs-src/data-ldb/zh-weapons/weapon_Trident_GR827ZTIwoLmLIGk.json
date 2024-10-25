@@ -1,0 +1,51 @@
+{
+  "_id": "GR827ZTIwoLmLIGk",
+  "effects": [],
+  "img": "systems/zweihander/assets/icons/harpoon-trident.svg",
+  "name": "Trident",
+  "type": "weapon",
+  "_stats": {
+    "coreVersion": "12.331",
+    "systemId": "zweihander",
+    "systemVersion": "5.3.2",
+    "createdTime": null,
+    "modifiedTime": 1729892024165,
+    "lastModifiedBy": "rivg6xcMxdlVDM8y",
+    "compendiumSource": null,
+    "duplicateSource": null
+  },
+  "system": {
+    "description": {
+      "@en": "<p>Originally designed for spearfishing, the trident is similar to the military fork, albeit terminating in three prongs. The weapon is associated with both the sea and the Leviathan.</p>"
+    },
+    "notes": "",
+    "price": {
+      "bp": 0,
+      "gc": 0,
+      "ss": 4
+    },
+    "encumbrance": 2,
+    "carried": true,
+    "weaponType": "Bladed",
+    "equipped": false,
+    "associatedSkill": "Simple Melee",
+    "load": 0,
+    "handling": "One- or Two-handed",
+    "qualities": {
+      "value": "Adaptable, Finesse, Weak",
+      "arrayOfValues": []
+    },
+    "distance": "Engaged",
+    "damage": {
+      "formula": "[AB] + (1+[#])d6x6",
+      "associatedPrimaryAttribute": "Agility"
+    }
+  },
+  "folder": null,
+  "sort": 0,
+  "ownership": {
+    "default": 0
+  },
+  "flags": {},
+  "_key": "!items!GR827ZTIwoLmLIGk"
+}

@@ -1,0 +1,50 @@
+{
+  "_id": "bWO2kArzCwsUZSO2",
+  "effects": [],
+  "img": "systems/zweihander/assets/icons/gunshot.svg",
+  "name": "Duck-Foot Pistol",
+  "type": "weapon",
+  "_stats": {
+    "coreVersion": "12.331",
+    "systemId": null,
+    "systemVersion": null,
+    "createdTime": null,
+    "modifiedTime": null,
+    "lastModifiedBy": null,
+    "compendiumSource": null,
+    "duplicateSource": null
+  },
+  "system": {
+    "description": {
+      "@en": "<p>A pistol with four splayed barrels, the duck-foot is particularly useful against rowdy crowds but impossible to aim precisely. Also, every trigger blast carries a significant amount of kickback.</p>"
+    },
+    "notes": "<h2 style=\"border-bottom: 1px solid var(--color-underline-header);\">Cone Template</h2>\n<p><span style=\"font-size: var(--font-size-14);\">Extends straight in a 16-yard line from where you stand, 1 yard wide at its starting point and 5 yards wide at its endpoint. You can aim weapons that reference the Cone Template so that it can be used to hit foes only. However, you will need to succeed at an Awareness Test to not harm allies.</span></p>",
+    "price": {
+      "bp": "0",
+      "gc": "3",
+      "ss": "0"
+    },
+    "encumbrance": 1,
+    "carried": true,
+    "weaponType": "Ranged",
+    "equipped": false,
+    "associatedSkill": "Simple Ranged",
+    "load": 3,
+    "handling": "One-handed",
+    "qualities": {
+      "value": "Blackpowder Pistol, Slow, Weak",
+      "arrayOfValues": []
+    },
+    "distance": "Cone Template",
+    "damage": {
+      "formula": "[PB] + (1+[#])d6x1,6"
+    }
+  },
+  "folder": null,
+  "sort": 0,
+  "ownership": {
+    "default": 0
+  },
+  "flags": {},
+  "_key": "!items!bWO2kArzCwsUZSO2"
+}

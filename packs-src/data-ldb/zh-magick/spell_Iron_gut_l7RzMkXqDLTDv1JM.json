@@ -1,0 +1,50 @@
+{
+  "_id": "l7RzMkXqDLTDv1JM",
+  "effects": [],
+  "img": "systems/zweihander/assets/icons/wizard-staff.svg",
+  "name": "Iron-gut",
+  "type": "spell",
+  "_stats": {
+    "coreVersion": "12.331",
+    "systemId": null,
+    "systemVersion": null,
+    "createdTime": null,
+    "modifiedTime": null,
+    "lastModifiedBy": null,
+    "compendiumSource": null,
+    "duplicateSource": null
+  },
+  "system": {
+    "description": {
+      "@en": "Baking a tasty pie or something else using ingredients from your ‘six-demon bag’, it immediately satiates your friend’s hunger and thirst."
+    },
+    "notes": "",
+    "rules": {
+      "effect": {
+        "@en": "After successfully casting this spell, select a number of allies equal to your [WB]. They need not eat or drink for the Duration. At the end of the Duration, all those who ate the stomach suffer 6 Corruption."
+      },
+      "criticalSuccess": {
+        "@en": "As above, but triple the number of allies affected."
+      },
+      "criticalFailure": {
+        "@en": "The stomachs of all those who ate the Reagents grow sour! They must Resist with a successful Toughness Test or else contract Bloody Flux."
+      },
+      "reagents": {
+        "@en": "Powdered granite and a stomach from your own Ancestry, eaten by others (expended)"
+      }
+    },
+    "tradition": "Covenant",
+    "principle": "Lesser",
+    "distance": "Any persons you can see",
+    "duration": "6+[WB] in days",
+    "castingTime": "1 min",
+    "castingCost": 0
+  },
+  "folder": null,
+  "sort": 0,
+  "ownership": {
+    "default": 0
+  },
+  "flags": {},
+  "_key": "!items!l7RzMkXqDLTDv1JM"
+}

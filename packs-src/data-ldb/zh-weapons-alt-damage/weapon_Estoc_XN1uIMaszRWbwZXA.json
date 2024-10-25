@@ -1,0 +1,50 @@
+{
+  "_id": "XN1uIMaszRWbwZXA",
+  "effects": [],
+  "img": "systems/zweihander/assets/icons/stiletto.svg",
+  "name": "Estoc",
+  "type": "weapon",
+  "_stats": {
+    "coreVersion": "12.331",
+    "systemId": null,
+    "systemVersion": null,
+    "createdTime": null,
+    "modifiedTime": null,
+    "lastModifiedBy": null,
+    "compendiumSource": null,
+    "duplicateSource": null
+  },
+  "system": {
+    "description": {
+      "@en": "<p>This needle-like sword is useless for slashing anything more than loose parchment. Its thrust, however, is deadly sharp.</p>"
+    },
+    "notes": "",
+    "price": {
+      "bp": "0",
+      "gc": "7",
+      "ss": "0"
+    },
+    "encumbrance": 2,
+    "carried": true,
+    "weaponType": "Bladed",
+    "equipped": false,
+    "associatedSkill": "Martial Melee",
+    "load": 0,
+    "handling": "One or Two-handed",
+    "qualities": {
+      "value": "Adaptable, Finesse",
+      "arrayOfValues": []
+    },
+    "distance": "Engaged",
+    "damage": {
+      "formula": "[AB] + 2 + (1+[#])d6x6"
+    }
+  },
+  "folder": null,
+  "sort": 0,
+  "ownership": {
+    "default": 0
+  },
+  "flags": {},
+  "_key": "!items!XN1uIMaszRWbwZXA"
+}

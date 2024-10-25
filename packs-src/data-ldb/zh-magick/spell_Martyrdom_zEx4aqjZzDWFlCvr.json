@@ -1,0 +1,50 @@
+{
+  "_id": "zEx4aqjZzDWFlCvr",
+  "effects": [],
+  "img": "systems/zweihander/assets/icons/arrowed.svg",
+  "name": "Martyrdom",
+  "type": "spell",
+  "_stats": {
+    "coreVersion": "12.331",
+    "systemId": null,
+    "systemVersion": null,
+    "createdTime": null,
+    "modifiedTime": null,
+    "lastModifiedBy": null,
+    "compendiumSource": null,
+    "duplicateSource": null
+  },
+  "system": {
+    "description": {
+      "@en": "You create an indelible bond between you and another, suffering in their place."
+    },
+    "notes": "",
+    "rules": {
+      "effect": {
+        "@en": "After successfully casting this spell, the person you touch ignores any Damage or Peril they suffer. Instead, it is dealt to you. You need not be near the person in order for Martyrdom to work."
+      },
+      "criticalSuccess": {
+        "@en": "As above, but if they begin to Bleed, suffer from Infection or an Injury, you suffer it in their stead."
+      },
+      "criticalFailure": {
+        "@en": "A terrible mangling of the proper form renders this Magick completely useless. Not only does the person suffer, but you suffer in kind also. This means if they suffer Damage, you suffer it as well. The same goes for Bleeding, Infection and Injuries for the spell’s Duration."
+      },
+      "reagents": {
+        "@en": "A lock of hair from the victim (expended)"
+      }
+    },
+    "tradition": "Divine (Martyr)",
+    "principle": "Lesser",
+    "distance": "Any one person you can touch",
+    "duration": "[WB]+6 days",
+    "castingTime": "1 min",
+    "castingCost": 0
+  },
+  "folder": null,
+  "sort": 0,
+  "ownership": {
+    "default": 0
+  },
+  "flags": {},
+  "_key": "!items!zEx4aqjZzDWFlCvr"
+}

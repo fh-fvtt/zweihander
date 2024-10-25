@@ -1,0 +1,50 @@
+{
+  "_id": "oIdZ1KgjrQ9gfFUJ",
+  "effects": [],
+  "img": "systems/zweihander/assets/icons/frozen-orb.svg",
+  "name": "Frostbite",
+  "type": "spell",
+  "_stats": {
+    "coreVersion": "12.331",
+    "systemId": null,
+    "systemVersion": null,
+    "createdTime": null,
+    "modifiedTime": null,
+    "lastModifiedBy": null,
+    "compendiumSource": null,
+    "duplicateSource": null
+  },
+  "system": {
+    "description": {
+      "@en": "You give prayer to the gods to freeze the limbs of your enemy, rendering them weak."
+    },
+    "notes": "",
+    "rules": {
+      "effect": {
+        "@en": "After successfully casting this spell, your foe immediately drops one step down the Peril Condition Track negatively. In addition, they cannot Counterspell, Dodge or Parry for the spell’s Duration."
+      },
+      "criticalSuccess": {
+        "@en": "As above, but your foe immediately drops two steps down the Peril Condition Track negatively."
+      },
+      "criticalFailure": {
+        "@en": "Your bones creak and rattle from a bitter cold wind. You drop two steps down the Peril Condition Track negatively and cannot Counterspell, Dodge or Parry for the Duration of the spell."
+      },
+      "reagents": {
+        "@en": "A drop of frozen blood (expended)"
+      }
+    },
+    "tradition": "Divine (Winter King)",
+    "principle": "Petty",
+    "distance": "Any one person you can see",
+    "duration": "[WB]+3 minutes",
+    "castingTime": "1 min",
+    "castingCost": 0
+  },
+  "folder": null,
+  "sort": 0,
+  "ownership": {
+    "default": 0
+  },
+  "flags": {},
+  "_key": "!items!oIdZ1KgjrQ9gfFUJ"
+}

@@ -1,0 +1,50 @@
+{
+  "_id": "LVRwk1umRenv5iej",
+  "effects": [],
+  "img": "systems/zweihander/assets/icons/wizard-staff.svg",
+  "name": "Waxen Doll",
+  "type": "spell",
+  "_stats": {
+    "coreVersion": "12.331",
+    "systemId": null,
+    "systemVersion": null,
+    "createdTime": null,
+    "modifiedTime": null,
+    "lastModifiedBy": null,
+    "compendiumSource": null,
+    "duplicateSource": null
+  },
+  "system": {
+    "description": {
+      "@en": "<p>Vex me, and you will be as a sinner in the hands of an angry god.</p>"
+    },
+    "notes": "",
+    "rules": {
+      "effect": {
+        "@en": "<p>After successfully casting, a wax doll is created that is impervious until you are Slain!. Call out the foe&rsquo;s name you wish to torment, and prick the doll with a pin as they move one, two or three steps down the Peril Condition Tracks negatively (your choice). Hold it over a fire, and they suffer from Mildly, Moderately or Seriously Dangerous Fire (your choice). Tie the doll&rsquo;s legs together, and the foe is paralyzed for twenty-four hours. Tie the doll&rsquo;s hands together, and the foe is unable to use their arms for twenty-four hours. Sew the mouth of the doll shut, and the foe is unable to speak for twenty-four hours. Bury it into the earth, and the foe temporarily reduces all of their Primary Attribute Bonuses by -9. If the doll isn&rsquo;t used within a week or is destroyed by fire, the Spell ends. Each time you use the doll, you move one step down the Peril Condition Track and gain 3 Conflict. This Spell requires Concentration.</p>"
+      },
+      "criticalSuccess": {
+        "@en": "Gain 1 Conflict instead."
+      },
+      "criticalFailure": {
+        "@en": "The waxen doll twists and contorts, and you immediately take on every single effect. The doll then melts."
+      },
+      "reagents": {
+        "@en": "A small wax doll, with a personal item of a foe you seek to torment embedded inside"
+      }
+    },
+    "tradition": "Witchcraft",
+    "principle": "Advanced Tier",
+    "distance": "By Touch",
+    "duration": "Special",
+    "castingTime": "1 Hour",
+    "castingCost": null
+  },
+  "folder": null,
+  "sort": 0,
+  "ownership": {
+    "default": 0
+  },
+  "flags": {},
+  "_key": "!items!LVRwk1umRenv5iej"
+}

@@ -1,0 +1,50 @@
+{
+  "_id": "yHGxW1dqQxS5kxBT",
+  "effects": [],
+  "img": "systems/zweihander/assets/icons/dripping-knife.svg",
+  "name": "Lustful Blade",
+  "type": "spell",
+  "_stats": {
+    "coreVersion": "12.331",
+    "systemId": null,
+    "systemVersion": null,
+    "createdTime": null,
+    "modifiedTime": null,
+    "lastModifiedBy": null,
+    "compendiumSource": null,
+    "duplicateSource": null
+  },
+  "system": {
+    "description": {
+      "@en": "Your stiletto has an unquenchable thirst for blood, which must be sated."
+    },
+    "notes": "",
+    "rules": {
+      "effect": {
+        "@en": "After successfully casting this spell, the blade of the stiletto oozes acid. Instead of using your [CB], refer to your [WB] to determine Damage. Finally, whenever you strike or Parry with this stiletto, refer to your Incantation Skill instead of a Combat-based Skill. When you inflict an Injury on a foe, you instead move one step up the Damage Condition Track positively."
+      },
+      "criticalSuccess": {
+        "@en": "As above, but victims cannot Dodge or Parry this attack."
+      },
+      "criticalFailure": {
+        "@en": "The stiletto takes upon its own personality, dancing into the air as if guided by an apparition, for the spell’s Duration. For the Duration of the spell, roll [[/roll 1D6]] Chaos Die at the start of your Turn. If the result is face ‘1’, it will lash out at you; if the result is face ‘2-5’, the stiletto does nothing; and if the result is face ‘6’, it will lash out at a random ally."
+      },
+      "reagents": {
+        "@en": "A castle-forged stiletto, held in-hand"
+      }
+    },
+    "tradition": "Divine (Crouching One)",
+    "principle": "Lesser",
+    "distance": "Yourself",
+    "duration": "[WB]+6 minutes",
+    "castingTime": "1 min",
+    "castingCost": 0
+  },
+  "folder": null,
+  "sort": 0,
+  "ownership": {
+    "default": 0
+  },
+  "flags": {},
+  "_key": "!items!yHGxW1dqQxS5kxBT"
+}

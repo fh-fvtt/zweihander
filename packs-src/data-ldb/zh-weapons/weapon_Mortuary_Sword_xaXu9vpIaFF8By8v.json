@@ -1,0 +1,50 @@
+{
+  "_id": "xaXu9vpIaFF8By8v",
+  "effects": [],
+  "img": "systems/zweihander/assets/icons/blade-fall.svg",
+  "name": "Mortuary Sword",
+  "type": "weapon",
+  "_stats": {
+    "coreVersion": "12.331",
+    "systemId": "zweihander",
+    "systemVersion": "5.3.2",
+    "createdTime": null,
+    "modifiedTime": 1729891346013,
+    "lastModifiedBy": "rivg6xcMxdlVDM8y",
+    "compendiumSource": null,
+    "duplicateSource": null
+  },
+  "system": {
+    "description": {
+      "@en": "<p>The most common weapon for explorers, it is useful and evokes little fuss. Not surprisingly, it tends to cleave violently &ndash; thus its namesake.</p>"
+    },
+    "notes": "",
+    "price": {
+      "bp": 0,
+      "gc": 10,
+      "ss": 0
+    },
+    "encumbrance": 1,
+    "carried": true,
+    "weaponType": "Bladed",
+    "equipped": false,
+    "associatedSkill": "Martial Melee",
+    "load": 0,
+    "handling": "One-handed",
+    "qualities": {
+      "value": "Vicious",
+      "arrayOfValues": []
+    },
+    "distance": "Engaged",
+    "damage": {
+      "formula": "[CB] + (1+[#])d6x6"
+    }
+  },
+  "folder": null,
+  "sort": 0,
+  "ownership": {
+    "default": 0
+  },
+  "flags": {},
+  "_key": "!items!xaXu9vpIaFF8By8v"
+}

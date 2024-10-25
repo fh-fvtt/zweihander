@@ -1,0 +1,50 @@
+{
+  "_id": "V74gNyuGTC7THT2F",
+  "effects": [],
+  "img": "systems/zweihander/assets/icons/trumpet-flag.svg",
+  "name": "Voice of the Legion",
+  "type": "spell",
+  "_stats": {
+    "coreVersion": "12.331",
+    "systemId": null,
+    "systemVersion": null,
+    "createdTime": null,
+    "modifiedTime": null,
+    "lastModifiedBy": null,
+    "compendiumSource": null,
+    "duplicateSource": null
+  },
+  "system": {
+    "description": {
+      "@en": "Your voice booms with bravado and issues to any who you can envision – either nearby, lying in a ditch or upon a nearby battlefield where the fight rages on."
+    },
+    "notes": "",
+    "rules": {
+      "effect": {
+        "@en": "After successfully casting this spell, all allies you can see can hear your words clearly, as if you were standing beside them. In addition, it grants a +10 Base Chance to any Leadership Tests you wish to make for the Duration of the spell."
+      },
+      "criticalSuccess": {
+        "@en": "As above, but you triple the Duration."
+      },
+      "criticalFailure": {
+        "@en": "The horn does not call forth your god’s blessing, but warns of the end times. Anyone who can hear the trumpet’s blare suffers [[/roll 1D10+1]] mental Peril."
+      },
+      "reagents": {
+        "@en": "A trumpet wrought into the shape of an eagle, held to your lips"
+      }
+    },
+    "tradition": "Divine (Steward)",
+    "principle": "Petty",
+    "distance": "Yourself",
+    "duration": "[WB]+3 minutes",
+    "castingTime": "1 min",
+    "castingCost": 0
+  },
+  "folder": null,
+  "sort": 0,
+  "ownership": {
+    "default": 0
+  },
+  "flags": {},
+  "_key": "!items!V74gNyuGTC7THT2F"
+}

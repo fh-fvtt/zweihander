@@ -1,0 +1,50 @@
+{
+  "_id": "icAhCxhWSzIYyyBJ",
+  "effects": [],
+  "img": "systems/zweihander/assets/icons/grim-reaper.svg",
+  "name": "Death's Visage",
+  "type": "spell",
+  "_stats": {
+    "coreVersion": "12.331",
+    "systemId": null,
+    "systemVersion": null,
+    "createdTime": null,
+    "modifiedTime": null,
+    "lastModifiedBy": null,
+    "compendiumSource": null,
+    "duplicateSource": null
+  },
+  "system": {
+    "description": {
+      "@en": "Behold and stare into the face of death incarnate!"
+    },
+    "notes": "",
+    "rules": {
+      "effect": {
+        "@en": "After successfully casting this spell, your foe is subjected to Stress. In addition, they cannot Counterspell, Dodge or Parry for one Turn. Your foe can successfully Resist with a Coordination Test."
+      },
+      "criticalSuccess": {
+        "@en": "As above, but your foe cannot Resist this Magick."
+      },
+      "criticalFailure": {
+        "@en": "The jaw of the skull unhinges, cackling maniacally. You must immediately succeed at a Resolve Test or be subjected to Stress."
+      },
+      "reagents": {
+        "@en": "A skull held aloft"
+      }
+    },
+    "tradition": "Arcane (Necromancy)",
+    "principle": "Petty",
+    "distance": "Any one person you can see",
+    "duration": "Instantaneous",
+    "castingTime": "1 min",
+    "castingCost": 0
+  },
+  "folder": null,
+  "sort": 0,
+  "ownership": {
+    "default": 0
+  },
+  "flags": {},
+  "_key": "!items!icAhCxhWSzIYyyBJ"
+}

@@ -1,0 +1,50 @@
+{
+  "_id": "YzfuJBQpgBtS5AW3",
+  "effects": [],
+  "img": "systems/zweihander/assets/icons/wizard-staff.svg",
+  "name": "Guttering Flame",
+  "type": "spell",
+  "_stats": {
+    "coreVersion": "12.331",
+    "systemId": null,
+    "systemVersion": null,
+    "createdTime": null,
+    "modifiedTime": null,
+    "lastModifiedBy": null,
+    "compendiumSource": null,
+    "duplicateSource": null
+  },
+  "system": {
+    "description": {
+      "@en": "Lances of pink energy violently spurts from your fingertips, arcing towards a single foe as they’re blasted with hellish wrath."
+    },
+    "notes": "",
+    "rules": {
+      "effect": {
+        "@en": "After successfully casting this spell, one foe immediately suffers [[/roll 2D10]]+[WB] in Damage from fire. You can inflict Injuries with this Magick, but gains a Mutation called Taint of Chaos instead. This ignores any Damage Threshold Modifier their armor might confer."
+      },
+      "criticalSuccess": {
+        "@en": "As above, but your foe automatically gains a Mutation called Taint of Chaos."
+      },
+      "criticalFailure": {
+        "@en": "The pinkish energy twists skyward and blasts all who stand nearby. All those within a Burst Template around suffers [[/roll 1D10]]+[WB] in Damage from fire. You can inflict Injuries with this Magick, but gains a Mutation called Taint of Chaos instead."
+      },
+      "reagents": {
+        "@en": "A lit candle made of Humanoid fat, held in- hand (expended)"
+      }
+    },
+    "tradition": "Covenant",
+    "principle": "Lesser",
+    "distance": "Any one person you can see",
+    "duration": "Instantaneous",
+    "castingTime": "1 min",
+    "castingCost": 0
+  },
+  "folder": null,
+  "sort": 0,
+  "ownership": {
+    "default": 0
+  },
+  "flags": {},
+  "_key": "!items!YzfuJBQpgBtS5AW3"
+}

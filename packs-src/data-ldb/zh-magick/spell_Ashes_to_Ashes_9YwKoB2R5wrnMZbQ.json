@@ -1,0 +1,50 @@
+{
+  "_id": "9YwKoB2R5wrnMZbQ",
+  "effects": [],
+  "img": "systems/zweihander/assets/icons/wizard-staff.svg",
+  "name": "Ashes to Ashes",
+  "type": "spell",
+  "_stats": {
+    "coreVersion": "12.331",
+    "systemId": null,
+    "systemVersion": null,
+    "createdTime": null,
+    "modifiedTime": null,
+    "lastModifiedBy": null,
+    "compendiumSource": null,
+    "duplicateSource": null
+  },
+  "system": {
+    "description": {
+      "@en": "We come from dust and we return to dust."
+    },
+    "notes": "",
+    "rules": {
+      "effect": {
+        "@en": "After successfully casting this spell, you immediately blind one foe and they are unable to Counterspell, Dodge or Parry for the spell’s Duration."
+      },
+      "criticalSuccess": {
+        "@en": "As above, but triple the Duration."
+      },
+      "criticalFailure": {
+        "@en": "The dust blows into the air, entirely ineffective. However, you are struck by a terrible Ætheric whiplash – a punishment! You are unable to Counterspell, Dodge or Parry for the spell’s Duration."
+      },
+      "reagents": {
+        "@en": "A handful of grave dirt blown into the air (expended)"
+      }
+    },
+    "tradition": "Arcane (Necromancy)",
+    "principle": "Petty",
+    "distance": "Any one person you can see",
+    "duration": "[WB]+3 minutes",
+    "castingTime": "1 min",
+    "castingCost": 0
+  },
+  "folder": null,
+  "sort": 0,
+  "ownership": {
+    "default": 0
+  },
+  "flags": {},
+  "_key": "!items!9YwKoB2R5wrnMZbQ"
+}

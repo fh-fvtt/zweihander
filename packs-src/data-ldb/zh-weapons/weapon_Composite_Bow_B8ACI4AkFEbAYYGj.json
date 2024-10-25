@@ -1,0 +1,50 @@
+{
+  "_id": "B8ACI4AkFEbAYYGj",
+  "effects": [],
+  "img": "systems/zweihander/assets/icons/bow-arrow.svg",
+  "name": "Composite Bow",
+  "type": "weapon",
+  "_stats": {
+    "coreVersion": "12.331",
+    "systemId": "zweihander",
+    "systemVersion": "5.3.2",
+    "createdTime": null,
+    "modifiedTime": 1729889758436,
+    "lastModifiedBy": "rivg6xcMxdlVDM8y",
+    "compendiumSource": null,
+    "duplicateSource": null
+  },
+  "system": {
+    "description": {
+      "@en": "Used in militias for its great range, they’re entirely worthless in any close encounter... which is why archers always carry a backup knife."
+    },
+    "notes": "",
+    "price": {
+      "bp": 0,
+      "gc": 7,
+      "ss": 0
+    },
+    "encumbrance": 3,
+    "carried": true,
+    "weaponType": "Missile",
+    "equipped": false,
+    "associatedSkill": "Martial Ranged",
+    "load": 2,
+    "handling": "Two-handed",
+    "qualities": {
+      "value": "Fast, Finesse",
+      "arrayOfValues": []
+    },
+    "distance": "12 + [PB] yards",
+    "damage": {
+      "formula": "[AB] + (1+[#])d6x6"
+    }
+  },
+  "folder": null,
+  "sort": 0,
+  "ownership": {
+    "default": 0
+  },
+  "flags": {},
+  "_key": "!items!B8ACI4AkFEbAYYGj"
+}

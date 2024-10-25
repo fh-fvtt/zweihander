@@ -1,0 +1,50 @@
+{
+  "_id": "07iOaC90Me07prAX",
+  "effects": [],
+  "img": "systems/zweihander/assets/icons/wizard-staff.svg",
+  "name": "Questionable Salve",
+  "type": "spell",
+  "_stats": {
+    "coreVersion": "12.331",
+    "systemId": null,
+    "systemVersion": null,
+    "createdTime": null,
+    "modifiedTime": null,
+    "lastModifiedBy": null,
+    "compendiumSource": null,
+    "duplicateSource": null
+  },
+  "system": {
+    "description": {
+      "@en": "<p>Oil of snake and sugar water, this will cure what ails you . . .</p>"
+    },
+    "notes": "",
+    "rules": {
+      "effect": {
+        "@en": "<p>After successfully casting, a salve is created. Once applied, the person moves one step up or one step down the Damage &amp; Peril Condition Tracks positively or negatively (your choice).</p>"
+      },
+      "criticalSuccess": {
+        "@en": "They are moved two steps up or down instead (your choice)."
+      },
+      "criticalFailure": {
+        "@en": "The salve spreads across your hands like rot. You move two steps down the Damage & Peril Condition Tracks negatively."
+      },
+      "reagents": {
+        "@en": "Arsenic and a bandage, combined together (expended)"
+      }
+    },
+    "tradition": "Witchcraft",
+    "principle": "Basic Tier",
+    "distance": "By Touch",
+    "duration": "Instantaneous",
+    "castingTime": "1 Hour",
+    "castingCost": null
+  },
+  "folder": null,
+  "sort": 0,
+  "ownership": {
+    "default": 0
+  },
+  "flags": {},
+  "_key": "!items!07iOaC90Me07prAX"
+}

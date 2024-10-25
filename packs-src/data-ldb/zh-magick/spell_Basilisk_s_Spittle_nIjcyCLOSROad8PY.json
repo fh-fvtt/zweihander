@@ -1,0 +1,50 @@
+{
+  "_id": "nIjcyCLOSROad8PY",
+  "effects": [],
+  "img": "systems/zweihander/assets/icons/goo-spurt.svg",
+  "name": "Basilisk's Spittle",
+  "type": "spell",
+  "_stats": {
+    "coreVersion": "12.331",
+    "systemId": null,
+    "systemVersion": null,
+    "createdTime": null,
+    "modifiedTime": null,
+    "lastModifiedBy": null,
+    "compendiumSource": null,
+    "duplicateSource": null
+  },
+  "system": {
+    "description": {
+      "@en": "Ingesting the vile liquid, you spit a stream of hot, acidic blood towards a hated foe."
+    },
+    "notes": "",
+    "rules": {
+      "effect": {
+        "@en": "After successfully casting this spell, the foe’s armor loses 3 from its Damage Threshold Modifier from acid damage until it is repaired. Your foe can successfully Resist with a Coordination Test."
+      },
+      "criticalSuccess": {
+        "@en": "As above, but the foe’s armor and clothing are instantly destroyed."
+      },
+      "criticalFailure": {
+        "@en": "Your stomach makes a terrible noise, as if you had too much blood sausage. You instantly soil your smallclothes and now suffer from Bloody Flux."
+      },
+      "reagents": {
+        "@en": "A vial of blood from your own Ancestry, ingested (expended)"
+      }
+    },
+    "tradition": "Arcane (Sorcery)",
+    "principle": "Petty",
+    "distance": "Any one person you can see",
+    "duration": "Instantaneous",
+    "castingTime": "1 min",
+    "castingCost": 0
+  },
+  "folder": null,
+  "sort": 0,
+  "ownership": {
+    "default": 0
+  },
+  "flags": {},
+  "_key": "!items!nIjcyCLOSROad8PY"
+}

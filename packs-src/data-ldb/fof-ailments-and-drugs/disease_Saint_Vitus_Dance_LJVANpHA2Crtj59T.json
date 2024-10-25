@@ -1,0 +1,41 @@
+{
+  "_id": "LJVANpHA2Crtj59T",
+  "effects": [],
+  "img": "systems/zweihander/assets/icons/half-dead.svg",
+  "name": "Saint Vitus Dance",
+  "type": "disease",
+  "_stats": {
+    "coreVersion": "12.331",
+    "systemId": null,
+    "systemVersion": null,
+    "createdTime": null,
+    "modifiedTime": null,
+    "lastModifiedBy": null,
+    "compendiumSource": null,
+    "duplicateSource": null
+  },
+  "system": {
+    "description": {
+      "@en": "<p>I remember my auntie had it&mdash;she&rsquo;d jerk and act strange all around the house. It eventually developed in me&mdash;I can&rsquo;t control my hands and legs, and it gets worse in tough situations . . .</p>"
+    },
+    "notes": "",
+    "rules": {
+      "effect": {
+        "@en": "<p><strong>Effect:</strong> At the beginning of each week, Resist Saint Vitus Dance. Otherwise, whenever you fail to hit a foe in combat, you must re-roll to see if you hit the nearest ally. If successful, they cannot Defend or Resist it. If you don&rsquo;t successfully Resist on the final day of infection, re-roll the duration as it&rsquo;s extended.</p>\n<p><strong>Critical Success:</strong> You automatically succeed your next Toughness Test to Resist Saint Vitus Dance.</p>\n<p><strong>Critical Failure:</strong> Permanently lose -3% from Brawn instead.</p>\n<p><strong>Other Considerations:</strong> NONE</p>"
+      },
+      "treatment": {
+        "@en": "<p><strong>Ease Symptoms:</strong> A caregiver must have a surgical kit, a bandage, a tincture and spend one hour to Ease Symptoms. Depending on where you&rsquo;re at on the Damage Condition Track, the Difficulty Rating eases or worsens:</p>\n<p><strong>Hurt:</strong> Automatically succeed</p>\n<p><strong>Moderately Wounded:</strong> (Routine +10%) Heal</p>\n<p><strong>Seriously Wounded:</strong> (Standard +/-0%) Heal</p>\n<p><strong>Grievously Wounded:</strong> (Challenging -10%) Heal</p>\n<hr />\n<p><strong>Effect:</strong> If successful, you may flip the results to succeed in your next Toughness Test to Resist an Ailment.</p>\n<p><strong>Critical Success:</strong> You automatically succeed your next Skill Test to Resist an Ailment.</p>\n<p><strong>Critical Failure:</strong> You suffer from Sepsis and must undergo Bloodletting.</p>\n<p><strong>Other Considerations:</strong> A character can only have Ease Symptoms performed on them as the Ailment dictates. You cannot Ease Symptoms on someone with Sepsis.</p>"
+      }
+    },
+    "resist": "(Standard +/-0%) Toughness",
+    "duration": "1D10+1 weeks",
+    "active": false
+  },
+  "folder": null,
+  "sort": 0,
+  "ownership": {
+    "default": 0
+  },
+  "flags": {},
+  "_key": "!items!LJVANpHA2Crtj59T"
+}

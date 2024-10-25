@@ -1,0 +1,50 @@
+{
+  "_id": "nsCxKFiFyiQZlx50",
+  "effects": [],
+  "img": "systems/zweihander/assets/icons/bow-string.svg",
+  "name": "Hunting Bow",
+  "type": "weapon",
+  "_stats": {
+    "coreVersion": "12.331",
+    "systemId": null,
+    "systemVersion": null,
+    "createdTime": null,
+    "modifiedTime": null,
+    "lastModifiedBy": null,
+    "compendiumSource": null,
+    "duplicateSource": null
+  },
+  "system": {
+    "description": {
+      "@en": "Lightweight and easy to wield, these bows are favored by forest stalkers. They have a strong pull, but not strong enough to split an arrow in twain."
+    },
+    "notes": "",
+    "price": {
+      "bp": "0",
+      "gc": "4",
+      "ss": "0"
+    },
+    "encumbrance": 3,
+    "carried": true,
+    "weaponType": "Missile",
+    "equipped": false,
+    "associatedSkill": "Simple Ranged",
+    "load": 1,
+    "handling": "Two-handed",
+    "qualities": {
+      "value": "Finesse, Weak",
+      "arrayOfValues": []
+    },
+    "distance": "9 + [PB] yards",
+    "damage": {
+      "formula": "[AB] + 1 + (1+[#])d6x6"
+    }
+  },
+  "folder": null,
+  "sort": 0,
+  "ownership": {
+    "default": 0
+  },
+  "flags": {},
+  "_key": "!items!nsCxKFiFyiQZlx50"
+}

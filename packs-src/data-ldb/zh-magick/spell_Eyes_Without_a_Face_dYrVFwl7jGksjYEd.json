@@ -1,0 +1,50 @@
+{
+  "_id": "dYrVFwl7jGksjYEd",
+  "effects": [],
+  "img": "systems/zweihander/assets/icons/wizard-staff.svg",
+  "name": "Eyes Without a Face",
+  "type": "spell",
+  "_stats": {
+    "coreVersion": "12.331",
+    "systemId": null,
+    "systemVersion": null,
+    "createdTime": null,
+    "modifiedTime": null,
+    "lastModifiedBy": null,
+    "compendiumSource": null,
+    "duplicateSource": null
+  },
+  "system": {
+    "description": {
+      "@en": "Intoning a prayer, you protect your real identity with an illusion that inspired the legends of personalities like Spring-heeled Jack."
+    },
+    "notes": "",
+    "rules": {
+      "effect": {
+        "@en": "After successfully casting this spell, make up a nom de guerre – an alternative appearance and personality – and describe it to the GM. You make it difficult for others to remember what you truly look like while under this illusion. This could be anything as crazy as appearing as a brooding bat-winged freak, a caped man clad entirely in red and blue steel or even a crazily-painted maniacal jester. While under this Magick’s Effects, this the appearance you take on, except to those you deem worthy of seeing your true countenance. This allows you to build a reputation without bringing harm to your true identity."
+      },
+      "criticalSuccess": {
+        "@en": "As above and you retain the reagent."
+      },
+      "criticalFailure": {
+        "@en": "Oh, how fickle are the gods? You are made the catspaw of the Abyssal Prince of Pleasure for the Duration of the spell. You vanish from sight. Returning after the Duration of the spell ends, you are unaware of what you did during your time. So ridden are you with anxiety with what you might have done, that you suffer [[/roll 3D10+3]] mental Peril. Only time will tell what terrible deeds you committed."
+      },
+      "reagents": {
+        "@en": "An expensive gold and ivory venetian mask, held to your face (expended)"
+      }
+    },
+    "tradition": "Divine (Nightfather)",
+    "principle": "Greater",
+    "distance": "Yourself",
+    "duration": "[WB]+9 hours",
+    "castingTime": "1 min",
+    "castingCost": 0
+  },
+  "folder": null,
+  "sort": 0,
+  "ownership": {
+    "default": 0
+  },
+  "flags": {},
+  "_key": "!items!dYrVFwl7jGksjYEd"
+}

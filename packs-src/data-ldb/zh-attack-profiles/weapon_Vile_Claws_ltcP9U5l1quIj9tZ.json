@@ -1,0 +1,49 @@
+{
+  "_id": "ltcP9U5l1quIj9tZ",
+  "effects": [],
+  "img": "systems/zweihander/assets/icons/carnivore-mouth.svg",
+  "name": "Vile Claws",
+  "type": "weapon",
+  "_stats": {
+    "coreVersion": "12.331",
+    "systemId": null,
+    "systemVersion": null,
+    "createdTime": null,
+    "modifiedTime": null,
+    "lastModifiedBy": null,
+    "compendiumSource": null,
+    "duplicateSource": null
+  },
+  "system": {
+    "description": {
+      "@en": ""
+    },
+    "notes": "",
+    "price": {
+      "bp": 0,
+      "gc": 0,
+      "ss": 0
+    },
+    "encumbrance": 0,
+    "carried": true,
+    "weaponType": "Bladed",
+    "equipped": true,
+    "associatedSkill": "Simple Melee",
+    "load": 0,
+    "handling": "One-handed",
+    "qualities": {
+      "value": "Pummeling, Slow"
+    },
+    "distance": "Engaged",
+    "damage": {
+      "formula": "[BB] + (1+[#])d6x6"
+    }
+  },
+  "folder": null,
+  "sort": 0,
+  "ownership": {
+    "default": 0
+  },
+  "flags": {},
+  "_key": "!items!ltcP9U5l1quIj9tZ"
+}

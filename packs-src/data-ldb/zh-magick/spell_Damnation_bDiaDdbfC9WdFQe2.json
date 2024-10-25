@@ -1,0 +1,50 @@
+{
+  "_id": "bDiaDdbfC9WdFQe2",
+  "effects": [],
+  "img": "systems/zweihander/assets/icons/wizard-staff.svg",
+  "name": "Damnation",
+  "type": "spell",
+  "_stats": {
+    "coreVersion": "12.331",
+    "systemId": null,
+    "systemVersion": null,
+    "createdTime": null,
+    "modifiedTime": null,
+    "lastModifiedBy": null,
+    "compendiumSource": null,
+    "duplicateSource": null
+  },
+  "system": {
+    "description": {
+      "@en": "As the heretic gazes into the mirror, they see the error of their ways."
+    },
+    "notes": "",
+    "rules": {
+      "effect": {
+        "@en": "After successfully casting this spell, the person you touch (providing they’re classified as a Mutant creature or have a Taint of Chaos) must Resist with a successful Coordination Test or be unable to Counterspell, Dodge or Parry for the Duration of the spell. In addition, they suffer a -20 Base Chance to Resist your Magicks for the Duration of the spell."
+      },
+      "criticalSuccess": {
+        "@en": "As above, but the foe cannot Resist this Magick."
+      },
+      "criticalFailure": {
+        "@en": "‘Tis not your enemy who is damned, but you instead! You suffer a -20 Base Chance to Resist Magicks for the Duration of the spell and are left Defenseless against them."
+      },
+      "reagents": {
+        "@en": "A mirror, held before the person you touch"
+      }
+    },
+    "tradition": "Divine (God-Emperor)",
+    "principle": "Lesser",
+    "distance": "Any one person you can touch",
+    "duration": "[WB]+6 minutes",
+    "castingTime": "1 min",
+    "castingCost": 0
+  },
+  "folder": null,
+  "sort": 0,
+  "ownership": {
+    "default": 0
+  },
+  "flags": {},
+  "_key": "!items!bDiaDdbfC9WdFQe2"
+}

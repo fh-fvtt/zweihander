@@ -1,0 +1,50 @@
+{
+  "_id": "9sxgx1csLvqtBRFe",
+  "effects": [],
+  "img": "systems/zweihander/assets/icons/flat-hammer.svg",
+  "name": "Splitting Maul",
+  "type": "weapon",
+  "_stats": {
+    "coreVersion": "12.331",
+    "systemId": null,
+    "systemVersion": null,
+    "createdTime": null,
+    "modifiedTime": null,
+    "lastModifiedBy": null,
+    "compendiumSource": null,
+    "duplicateSource": null
+  },
+  "system": {
+    "description": {
+      "@en": "<p>Both a carpenter&rsquo;s and a mason&rsquo;s tool, it&rsquo;s one-part axe and one-part hammer. Verily, an easy choice for rioting peasants or an adventurer who is short on money but efficient with scavenged farming tools.</p>"
+    },
+    "notes": "",
+    "price": {
+      "bp": "0",
+      "gc": "0",
+      "ss": "0"
+    },
+    "encumbrance": 0,
+    "carried": true,
+    "weaponType": "Bladed",
+    "equipped": false,
+    "associatedSkill": "Simple Melee",
+    "load": 0,
+    "handling": "Two-handed",
+    "qualities": {
+      "value": "Slow, Weak",
+      "arrayOfValues": []
+    },
+    "distance": "Engaged",
+    "damage": {
+      "formula": "[BB] + 0 + (1+[#])d6x6"
+    }
+  },
+  "folder": null,
+  "sort": 0,
+  "ownership": {
+    "default": 0
+  },
+  "flags": {},
+  "_key": "!items!9sxgx1csLvqtBRFe"
+}

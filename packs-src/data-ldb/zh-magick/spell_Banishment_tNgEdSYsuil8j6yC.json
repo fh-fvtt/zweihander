@@ -1,0 +1,50 @@
+{
+  "_id": "tNgEdSYsuil8j6yC",
+  "effects": [],
+  "img": "systems/zweihander/assets/icons/pointing.svg",
+  "name": "Banishment",
+  "type": "spell",
+  "_stats": {
+    "coreVersion": "12.331",
+    "systemId": null,
+    "systemVersion": null,
+    "createdTime": null,
+    "modifiedTime": null,
+    "lastModifiedBy": null,
+    "compendiumSource": null,
+    "duplicateSource": null
+  },
+  "system": {
+    "description": {
+      "@en": "Locked in an epic struggle against chaos incarnate, you order the servants of chaos back from whence they came. You only need repeat these words: “Klaatu barada nikito” ...or was it nikto?"
+    },
+    "notes": "",
+    "rules": {
+      "effect": {
+        "@en": "After successfully casting this spell (and if your foe fails to Resist with a Resolve Test), they are instantaneously banished from the Material Realm. Note that this only works on creatures who are Abyssal in nature. You can also use this Magick to banish a Supernatural creature’s possession of another, but it does not cause the Supernatural spirit to be banished from the Material Realm, only driven away from possessing others for nine days."
+      },
+      "criticalSuccess": {
+        "@en": "As above, but the creature cannot Resist this Magick."
+      },
+      "criticalFailure": {
+        "@en": "Despite calling out its True Name, you horribly mangle the words. In fact, it only serves to further empower it! The Banishment fails and calls forth another creature of lesser power that manifests within a few yards of you."
+      },
+      "reagents": {
+        "@en": "The True Name of the creature you wish to banish, spoken aloud"
+      }
+    },
+    "tradition": "Arcane (Luminescence)",
+    "principle": "Greater",
+    "distance": "Any one person you can see",
+    "duration": "Instantaneous",
+    "castingTime": "1 min",
+    "castingCost": 0
+  },
+  "folder": null,
+  "sort": 0,
+  "ownership": {
+    "default": 0
+  },
+  "flags": {},
+  "_key": "!items!tNgEdSYsuil8j6yC"
+}

@@ -1,0 +1,50 @@
+{
+  "_id": "oc8tUH6kHFJnPlnp",
+  "effects": [],
+  "img": "systems/zweihander/assets/icons/wizard-staff.svg",
+  "name": "Feces’ Fetor",
+  "type": "spell",
+  "_stats": {
+    "coreVersion": "12.331",
+    "systemId": null,
+    "systemVersion": null,
+    "createdTime": null,
+    "modifiedTime": null,
+    "lastModifiedBy": null,
+    "compendiumSource": null,
+    "duplicateSource": null
+  },
+  "system": {
+    "description": {
+      "@en": "The horrid stench of the last meal you ate is emitted from your smallclothes. It turns instantly into a green, noxious gas which surrounds all around in a cloud of stomach-churning nastiness."
+    },
+    "notes": "",
+    "rules": {
+      "effect": {
+        "@en": "After successfully casting this spell, the rotten stench of yesterday’s meal wafts around you. All those who are Engaged with you must Resist with a successful Toughness Test or else be left Helpless for a minute. Those who successfully Resist drop one step down the Peril Condition Track negatively."
+      },
+      "criticalSuccess": {
+        "@en": "As above, but foes who successfully Resist drop two steps down the Peril Condition Track negatively."
+      },
+      "criticalFailure": {
+        "@en": "Your body is torturously wracked with convulsions from incessant dry heaving. You begin to Suffocate, immediately suffering from [[/roll 2D10+2]] physical Peril. Refer to the Suffocation section of Hazards & Healing from ZWEIHÄNDER."
+      },
+      "reagents": {
+        "@en": "A meal of rotten eggs and curdled milk, eaten in the last 24 hours (expended)"
+      }
+    },
+    "tradition": "Covenant",
+    "principle": "Petty",
+    "distance": "Yourself",
+    "duration": "Instantaneous",
+    "castingTime": "1 min",
+    "castingCost": 0
+  },
+  "folder": null,
+  "sort": 0,
+  "ownership": {
+    "default": 0
+  },
+  "flags": {},
+  "_key": "!items!oc8tUH6kHFJnPlnp"
+}

@@ -1,0 +1,51 @@
+{
+  "_id": "xCrucNETeC96U3wm",
+  "effects": [],
+  "img": "systems/zweihander/assets/icons/slingshot.svg",
+  "name": "Staff Sling",
+  "type": "weapon",
+  "_stats": {
+    "coreVersion": "12.331",
+    "systemId": "zweihander",
+    "systemVersion": "5.3.2",
+    "createdTime": null,
+    "modifiedTime": 1729891593813,
+    "lastModifiedBy": "rivg6xcMxdlVDM8y",
+    "compendiumSource": null,
+    "duplicateSource": null
+  },
+  "system": {
+    "description": {
+      "@en": "<p>A walking staff as expected, but with a leather sling attached to the tip in order to toss stones or other objects at a moment&rsquo;s notice. It should not be confused with the &lsquo;wrist rocket on a stick&rsquo; of thieving little Halflings.</p>"
+    },
+    "notes": "",
+    "price": {
+      "bp": 0,
+      "gc": 0,
+      "ss": 6
+    },
+    "encumbrance": 1,
+    "carried": true,
+    "weaponType": "Missile",
+    "equipped": false,
+    "associatedSkill": "Simple Ranged",
+    "load": 2,
+    "handling": "Two-handed",
+    "qualities": {
+      "value": "Fast, Pummeling, Throwing",
+      "arrayOfValues": []
+    },
+    "distance": "3 + [PB] yards",
+    "damage": {
+      "formula": "[BB] + (1+[#])d6x6",
+      "associatedPrimaryAttribute": "Brawn"
+    }
+  },
+  "folder": null,
+  "sort": 0,
+  "ownership": {
+    "default": 0
+  },
+  "flags": {},
+  "_key": "!items!xCrucNETeC96U3wm"
+}

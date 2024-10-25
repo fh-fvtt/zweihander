@@ -1,0 +1,51 @@
+{
+  "_id": "LwYAcy3k7tNtLInl",
+  "effects": [],
+  "img": "systems/zweihander/assets/icons/fire-axe.svg",
+  "name": "Hatchet",
+  "type": "weapon",
+  "_stats": {
+    "coreVersion": "12.331",
+    "systemId": null,
+    "systemVersion": null,
+    "createdTime": null,
+    "modifiedTime": null,
+    "lastModifiedBy": null,
+    "compendiumSource": null,
+    "duplicateSource": null
+  },
+  "system": {
+    "description": {
+      "@en": "<p>Hatchets are small, handheld axes used for clearing trails, foraging and a variety of other survival skills. An excellent multipurpose blade, it allows the lightweight hatchet to be readily carried on a belt or into a fight.</p>"
+    },
+    "notes": "",
+    "price": {
+      "bp": "10",
+      "gc": "0",
+      "ss": "0"
+    },
+    "encumbrance": 1,
+    "carried": true,
+    "weaponType": "Melee",
+    "equipped": false,
+    "associatedSkill": "Simple Melee",
+    "load": 0,
+    "handling": "One-handed",
+    "qualities": {
+      "value": "Slow, Weak",
+      "arrayOfValues": []
+    },
+    "distance": "Engaged",
+    "damage": {
+      "formula": "[CB] + (1+[#])d6x6",
+      "associatedPrimaryAttribute": "Agility"
+    }
+  },
+  "folder": null,
+  "sort": 0,
+  "ownership": {
+    "default": 0
+  },
+  "flags": {},
+  "_key": "!items!LwYAcy3k7tNtLInl"
+}

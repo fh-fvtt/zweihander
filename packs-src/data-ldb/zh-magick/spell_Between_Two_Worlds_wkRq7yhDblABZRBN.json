@@ -1,0 +1,50 @@
+{
+  "_id": "wkRq7yhDblABZRBN",
+  "effects": [],
+  "img": "systems/zweihander/assets/icons/wizard-staff.svg",
+  "name": "Between Two Worlds",
+  "type": "spell",
+  "_stats": {
+    "coreVersion": "12.331",
+    "systemId": null,
+    "systemVersion": null,
+    "createdTime": null,
+    "modifiedTime": null,
+    "lastModifiedBy": null,
+    "compendiumSource": null,
+    "duplicateSource": null
+  },
+  "system": {
+    "description": {
+      "@en": "You pass from the Material Realm into a strange purgatory of velvet curtains and the ossified remains of the Fey progenitor Ancestry. You emerge upon the other side, far away from where you began."
+    },
+    "notes": "",
+    "rules": {
+      "effect": {
+        "@en": "After successfully casting this spell, you and a number of allies equal to your [WB] step into the Black Lodge. Time is strange within the Lodge, as one minute within the Lodge is equal to one hour in the Material Realm. You may remain within the Lodge’s ‘waiting room’ as long as you wish, however when you leave, you emerge from a tree that you have touched anywhere within the Material Realm."
+      },
+      "criticalSuccess": {
+        "@en": "As above, but add one Fortune Point to the Fortune Pool."
+      },
+      "criticalFailure": {
+        "@en": "Caught between two worlds, you and your allies become lost within the Black Lodge. In order to escape, you must fight your own doppelgangers. Facedancers who have not yet transformed will arise immediately somewhere within the Lodge and seek to steal your faces."
+      },
+      "reagents": {
+        "@en": "An old sycamore tree, where you drop a ring made of formica (expended)"
+      }
+    },
+    "tradition": "Covenant",
+    "principle": "Lesser",
+    "distance": "Special",
+    "duration": "Special",
+    "castingTime": "1 min",
+    "castingCost": 0
+  },
+  "folder": null,
+  "sort": 0,
+  "ownership": {
+    "default": 0
+  },
+  "flags": {},
+  "_key": "!items!wkRq7yhDblABZRBN"
+}

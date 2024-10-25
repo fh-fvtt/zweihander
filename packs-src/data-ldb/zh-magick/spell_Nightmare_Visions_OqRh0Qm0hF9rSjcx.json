@@ -1,0 +1,50 @@
+{
+  "_id": "OqRh0Qm0hF9rSjcx",
+  "effects": [],
+  "img": "systems/zweihander/assets/icons/gluttonous-smile.svg",
+  "name": "Nightmare Visions",
+  "type": "spell",
+  "_stats": {
+    "coreVersion": "12.331",
+    "systemId": null,
+    "systemVersion": null,
+    "createdTime": null,
+    "modifiedTime": null,
+    "lastModifiedBy": null,
+    "compendiumSource": null,
+    "duplicateSource": null
+  },
+  "system": {
+    "description": {
+      "@en": "Your foe’s mind is filled with a waking dream of a great cyclopean city, glistening with ooze and latent with sinister horror as brooding Abyssal entities loom over them as gods."
+    },
+    "notes": "",
+    "rules": {
+      "effect": {
+        "@en": "After successfully casting this spell, your foe starts with 1 less AP at the start of their Turns in combat. Your foe can successfully Resist with a Resolve Test."
+      },
+      "criticalSuccess": {
+        "@en": "As above, but triple the Duration."
+      },
+      "criticalFailure": {
+        "@en": "Your body is wracked with pain, lighting lances through your bones. Your own skin seemingly melts before you, dripping like hot butter into your boots. You have 1 less AP at the start of your Turns in combat for the Duration of the spell."
+      },
+      "reagents": {
+        "@en": "A flaming candle made from fat of your own Ancestry, ignited"
+      }
+    },
+    "tradition": "Arcane (Sorcery)",
+    "principle": "Petty",
+    "distance": "Any one person you can see",
+    "duration": "[WB]+3 minutes",
+    "castingTime": "1 min",
+    "castingCost": 0
+  },
+  "folder": null,
+  "sort": 0,
+  "ownership": {
+    "default": 0
+  },
+  "flags": {},
+  "_key": "!items!OqRh0Qm0hF9rSjcx"
+}

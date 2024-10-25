@@ -1,0 +1,50 @@
+{
+  "_id": "TO5XUzLMvAXjSfNK",
+  "effects": [],
+  "img": "systems/zweihander/assets/icons/tentacle-heart.svg",
+  "name": "Kraken's Curse",
+  "type": "spell",
+  "_stats": {
+    "coreVersion": "12.331",
+    "systemId": null,
+    "systemVersion": null,
+    "createdTime": null,
+    "modifiedTime": null,
+    "lastModifiedBy": null,
+    "compendiumSource": null,
+    "duplicateSource": null
+  },
+  "system": {
+    "description": {
+      "@en": "A curse of the depths is lain upon the unworthy, made fragile before you."
+    },
+    "notes": "",
+    "rules": {
+      "effect": {
+        "@en": "After successfully casting this spell, select a number of foes equal to your [WB]. Each foe suffers a Grievous Injury."
+      },
+      "criticalSuccess": {
+        "@en": "As above, but your foes also begin to Bleed."
+      },
+      "criticalFailure": {
+        "@en": "The rod of the ancient seat creature dissolves, turning into silt between your fingers. You immediately suffer a Grievous Injury, and begin to Bleed."
+      },
+      "reagents": {
+        "@en": "A bone rod made from a deep sea monster"
+      }
+    },
+    "tradition": "Divine (Leviathan)",
+    "principle": "Greater",
+    "distance": "Any persons you can see",
+    "duration": "Instantaneous",
+    "castingTime": "1 min",
+    "castingCost": 0
+  },
+  "folder": null,
+  "sort": 0,
+  "ownership": {
+    "default": 0
+  },
+  "flags": {},
+  "_key": "!items!TO5XUzLMvAXjSfNK"
+}

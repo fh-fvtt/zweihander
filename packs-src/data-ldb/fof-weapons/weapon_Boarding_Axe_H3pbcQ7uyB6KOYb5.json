@@ -1,0 +1,51 @@
+{
+  "_id": "H3pbcQ7uyB6KOYb5",
+  "effects": [],
+  "img": "systems/zweihander/assets/icons/fire-axe.svg",
+  "name": "Boarding Axe",
+  "type": "weapon",
+  "_stats": {
+    "coreVersion": "12.331",
+    "systemId": null,
+    "systemVersion": null,
+    "createdTime": null,
+    "modifiedTime": null,
+    "lastModifiedBy": null,
+    "compendiumSource": null,
+    "duplicateSource": null
+  },
+  "system": {
+    "description": {
+      "@en": "<p>This naval weapon is used to cut nets, slash rigging and smash through cabin doors. It is an easy, inexpensive multitool for Privateers.</p>"
+    },
+    "notes": "",
+    "price": {
+      "bp": "0",
+      "gc": "0",
+      "ss": "7"
+    },
+    "encumbrance": 1,
+    "carried": true,
+    "weaponType": "Melee",
+    "equipped": false,
+    "associatedSkill": "Martial Melee",
+    "load": 0,
+    "handling": "One or Two-handed",
+    "qualities": {
+      "value": "Backslash, Fast",
+      "arrayOfValues": []
+    },
+    "distance": "Engaged",
+    "damage": {
+      "formula": "[AB] + (1+[#])d6x6",
+      "associatedPrimaryAttribute": "Agility"
+    }
+  },
+  "folder": null,
+  "sort": 0,
+  "ownership": {
+    "default": 0
+  },
+  "flags": {},
+  "_key": "!items!H3pbcQ7uyB6KOYb5"
+}

@@ -1,0 +1,50 @@
+{
+  "_id": "4NGSwW8w4cbb18MP",
+  "effects": [],
+  "img": "systems/zweihander/assets/icons/brass-knuckles.svg",
+  "name": "Knuckleduster",
+  "type": "weapon",
+  "_stats": {
+    "coreVersion": "12.331",
+    "systemId": null,
+    "systemVersion": null,
+    "createdTime": null,
+    "modifiedTime": null,
+    "lastModifiedBy": null,
+    "compendiumSource": null,
+    "duplicateSource": null
+  },
+  "system": {
+    "description": {
+      "@en": "<p>The &lsquo;gentleman&rsquo;s friend&rsquo; is for the more discerning brawler. It can be bought on the open market, but is often improvised from gloves stitched with weighty rings or even a few skeleton keys gripped between the fingers.</p>"
+    },
+    "notes": "",
+    "price": {
+      "bp": "0",
+      "gc": "0",
+      "ss": "7"
+    },
+    "encumbrance": 1,
+    "carried": true,
+    "weaponType": "Brawling",
+    "equipped": false,
+    "associatedSkill": "Simple Melee",
+    "load": 0,
+    "handling": "One-handed",
+    "qualities": {
+      "value": "Fast, Pummeling",
+      "arrayOfValues": []
+    },
+    "distance": "Engaged",
+    "damage": {
+      "formula": "[BB] + 0 + (1+[#])d6x6"
+    }
+  },
+  "folder": null,
+  "sort": 0,
+  "ownership": {
+    "default": 0
+  },
+  "flags": {},
+  "_key": "!items!4NGSwW8w4cbb18MP"
+}

@@ -1,0 +1,41 @@
+{
+  "_id": "SbTRPXcyt5kJJudA",
+  "effects": [],
+  "img": "systems/zweihander/assets/icons/vial.svg",
+  "name": "Alcohol",
+  "type": "disease",
+  "_stats": {
+    "coreVersion": "12.331",
+    "systemId": null,
+    "systemVersion": null,
+    "createdTime": null,
+    "modifiedTime": null,
+    "lastModifiedBy": null,
+    "compendiumSource": null,
+    "duplicateSource": null
+  },
+  "system": {
+    "description": {
+      "@en": "<p>And besides, I&rsquo;ll instruct you like me, to entwine the myrtle of Venus with Bacchus&rsquo;s vine! Here comes the barrel fever . . . bleurgh!</p>"
+    },
+    "notes": "",
+    "rules": {
+      "effect": {
+        "@en": "<p><strong>Effect:</strong> When you succeed, you may continue drinking for another hour without any negative effects. If you fail, you&rsquo;re Intoxicated. While Intoxicated, temporarily add +3 to Damage Threshold &amp; Peril Thresholds, but immediately suffer 3D10+3 Peril.</p>\n<p><strong>Critical Success:</strong> You may drink for three hours without becoming Intoxicated.</p>\n<p><strong>Critical Failure:</strong> You are Incapacitated! and Unconscious for twelve hours.</p>\n<p><strong>Other Considerations:</strong> This Drug cannot be applied to a weapon. You cannot recover your Damage &amp; Peril Condition Tracks for twenty-four hours after being Intoxicated. Furthermore, if you become Incapacitated! while Intoxicated, you are Unconscious for twelve hours.</p>"
+      },
+      "treatment": {
+        "@en": ""
+      }
+    },
+    "resist": "For every hour you drink, make a Toughness Test. Depending on how many hours you’ve been drinking, the Difficulty Rating eases or worsens: 1 hour: (Trivial +30%) Toughness, 2 hours: (Easy +20%) Toughness, 3 hours: (Routine +10%) Toughness, 4 hours: (Standard +/-0%) Toughness, 5 hours: (Challenging -10%) Toughness, 6 hours: (Hard -20%) Toughness, 7 hours or more: (Arduous -30%) Toughness",
+    "duration": "Six hours",
+    "active": false
+  },
+  "folder": null,
+  "sort": 0,
+  "ownership": {
+    "default": 0
+  },
+  "flags": {},
+  "_key": "!items!SbTRPXcyt5kJJudA"
+}

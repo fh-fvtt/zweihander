@@ -1,0 +1,51 @@
+{
+  "_id": "FhJTzob8M0o73boT",
+  "effects": [],
+  "img": "systems/zweihander/assets/icons/stiletto.svg",
+  "name": "Infantry Sword",
+  "type": "weapon",
+  "_stats": {
+    "coreVersion": "12.331",
+    "systemId": null,
+    "systemVersion": null,
+    "createdTime": null,
+    "modifiedTime": null,
+    "lastModifiedBy": null,
+    "compendiumSource": null,
+    "duplicateSource": null
+  },
+  "system": {
+    "description": {
+      "@en": "<p>Though soldiers are slowly adopting the bayonet, the infantry sword is still carried by the rank and file. Unlike the sabre, the infantry sword is a cutting weapon designed to be used on foot.</p>"
+    },
+    "notes": "",
+    "price": {
+      "bp": "0",
+      "gc": "3",
+      "ss": "0"
+    },
+    "encumbrance": 1,
+    "carried": true,
+    "weaponType": "Melee",
+    "equipped": false,
+    "associatedSkill": "Martial Melee",
+    "load": 0,
+    "handling": "One-handed",
+    "qualities": {
+      "value": "Defensive",
+      "arrayOfValues": []
+    },
+    "distance": "Engaged",
+    "damage": {
+      "formula": "[CB] + (1+[#])d6x6",
+      "associatedPrimaryAttribute": "Agility"
+    }
+  },
+  "folder": null,
+  "sort": 0,
+  "ownership": {
+    "default": 0
+  },
+  "flags": {},
+  "_key": "!items!FhJTzob8M0o73boT"
+}

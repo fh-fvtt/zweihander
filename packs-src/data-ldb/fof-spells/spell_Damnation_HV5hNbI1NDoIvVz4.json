@@ -1,0 +1,50 @@
+{
+  "_id": "HV5hNbI1NDoIvVz4",
+  "effects": [],
+  "img": "systems/zweihander/assets/icons/concentric-crescents.svg",
+  "name": "Damnation",
+  "type": "spell",
+  "_stats": {
+    "coreVersion": "12.331",
+    "systemId": null,
+    "systemVersion": null,
+    "createdTime": null,
+    "modifiedTime": null,
+    "lastModifiedBy": null,
+    "compendiumSource": null,
+    "duplicateSource": null
+  },
+  "system": {
+    "description": {
+      "@en": "<p>Misery loves company, but damnation needs it.</p>"
+    },
+    "notes": "",
+    "rules": {
+      "effect": {
+        "@en": "<p>After successfully casting, an object is Damned. While Damned, the person carrying the object treats every failed Skill Test as if it were Critically Failed instead. Furthermore, should the person die while in possession of the object, they are forced to relive the last twentyfour hours of their life, including reliving their death. Finally, they cannot be healed from Damage or Injuries. A Damned object can only be discovered through use of Magic or a special circumstance the Historian dictates. You gain three Flaw Ranks.</p>"
+      },
+      "criticalSuccess": {
+        "@en": "You gain two Flaw Ranks instead."
+      },
+      "criticalFailure": {
+        "@en": "The object disintegrates to dust, and you gain one permanent Flaw Rank."
+      },
+      "reagents": {
+        "@en": "An ink-filled circle drawn on an object belonging to the person you wish to damn"
+      }
+    },
+    "tradition": "Black & White",
+    "principle": "Advanced Tier",
+    "distance": "By Touch",
+    "duration": "9+[WB] days",
+    "castingTime": "1 Hour",
+    "castingCost": null
+  },
+  "folder": null,
+  "sort": 0,
+  "ownership": {
+    "default": 0
+  },
+  "flags": {},
+  "_key": "!items!HV5hNbI1NDoIvVz4"
+}

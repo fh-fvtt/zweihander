@@ -1,0 +1,50 @@
+{
+  "_id": "GHd41gDVoPdUe2QV",
+  "effects": [],
+  "img": "systems/zweihander/assets/icons/wizard-staff.svg",
+  "name": "Banshee's Wail",
+  "type": "spell",
+  "_stats": {
+    "coreVersion": "12.331",
+    "systemId": null,
+    "systemVersion": null,
+    "createdTime": null,
+    "modifiedTime": null,
+    "lastModifiedBy": null,
+    "compendiumSource": null,
+    "duplicateSource": null
+  },
+  "system": {
+    "description": {
+      "@en": "A terrifying howl emits from your throat, crippling all who hear it."
+    },
+    "notes": "",
+    "rules": {
+      "effect": {
+        "@en": "After successfully casting this spell, any foes caught in its Cone Template suffer [[/roll 3D10]]+[WB] in mental Peril. Your foes can successfully Resist with a Resolve Test."
+      },
+      "criticalSuccess": {
+        "@en": "As above, but they automatically fail their Resolve Test."
+      },
+      "criticalFailure": {
+        "@en": "A distant howling is heard as you lay your head down to rest. The veil is instantly torn from your hands and disappears into the Wind. You are haunted by terrible dreams of a wailing woman in a tattered dress as she rebukes you for leaving her at the altar. Her voice haunts your dreams, as you must succeed at a Resolve Test now and every morning for nine days or be made a victim of Terror."
+      },
+      "reagents": {
+        "@en": "A veil from the wedding dress of a Restless Spirit"
+      }
+    },
+    "tradition": "Arcane (Necromancy)",
+    "principle": "Greater",
+    "distance": "Yourself",
+    "duration": "Instantaneous",
+    "castingTime": "1 min",
+    "castingCost": 0
+  },
+  "folder": null,
+  "sort": 0,
+  "ownership": {
+    "default": 0
+  },
+  "flags": {},
+  "_key": "!items!GHd41gDVoPdUe2QV"
+}

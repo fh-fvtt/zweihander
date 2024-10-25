@@ -1,0 +1,50 @@
+{
+  "_id": "RWOyh6GCcvKpxOpR",
+  "effects": [],
+  "img": "systems/zweihander/assets/icons/feathered-wing.svg",
+  "name": "Heavenly Wings",
+  "type": "spell",
+  "_stats": {
+    "coreVersion": "12.331",
+    "systemId": null,
+    "systemVersion": null,
+    "createdTime": null,
+    "modifiedTime": null,
+    "lastModifiedBy": null,
+    "compendiumSource": null,
+    "duplicateSource": null
+  },
+  "system": {
+    "description": {
+      "@en": "Beautiful, white and yellow wings sprout from your back."
+    },
+    "notes": "",
+    "rules": {
+      "effect": {
+        "@en": "After successfully casting this spell, you can now fly. Add your [AB]+9 determine how many yards you can fly in a minute. Should you ever suffer an Injury while under the Effects of Heavenly Wings, you must make a successful Coordination Test or plummet to the ground, the wings destroyed. Note that if you fly too high, you can suffer from Suffocation. The GM will explain any additional details you’ll need to refer to when flying."
+      },
+      "criticalSuccess": {
+        "@en": "As above, but triple the Duration."
+      },
+      "criticalFailure": {
+        "@en": "The feathery wings turn vestigial, akin to a bat’s. Uncontrollably, they take you higher and higher, until the wings break off at your shoulders! You plummet to the ground, falling from a height equal to [[/roll 2D10+2]] yards."
+      },
+      "reagents": {
+        "@en": "The feather of a dove (expended)"
+      }
+    },
+    "tradition": "Arcane (Astromancy)",
+    "principle": "Lesser",
+    "distance": "Yourself",
+    "duration": "[WB]+6 minutes",
+    "castingTime": "1 min",
+    "castingCost": 0
+  },
+  "folder": null,
+  "sort": 0,
+  "ownership": {
+    "default": 0
+  },
+  "flags": {},
+  "_key": "!items!RWOyh6GCcvKpxOpR"
+}

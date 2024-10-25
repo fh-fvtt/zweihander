@@ -1,0 +1,50 @@
+{
+  "_id": "Kd7Xgy99CJ41xf5r",
+  "effects": [],
+  "img": "systems/zweihander/assets/icons/wizard-staff.svg",
+  "name": "Purifying Halo",
+  "type": "spell",
+  "_stats": {
+    "coreVersion": "12.331",
+    "systemId": null,
+    "systemVersion": null,
+    "createdTime": null,
+    "modifiedTime": null,
+    "lastModifiedBy": null,
+    "compendiumSource": null,
+    "duplicateSource": null
+  },
+  "system": {
+    "description": {
+      "@en": "Crowning your head is a golden halo, hovering in place."
+    },
+    "notes": "",
+    "rules": {
+      "effect": {
+        "@en": "After successfully casting this spell, a halo of golden light hovers above your head. During this time, you are entirely immune to Diseases, Infection, Injuries and Poison. In addition, any foes who may be classified as Abyssal or Supernatural creatures automatically suffer a -30 Base Chance to strike you with Attack Actions and Perilous Stunts."
+      },
+      "criticalSuccess": {
+        "@en": "As above, but foes who are Abyssal or Supernatural creatures are automatically set on On Fire if they attempt to bring harm to you."
+      },
+      "criticalFailure": {
+        "@en": "The flames of your inner passion fizzles out. You are so distraught that you suffer a -30 Base Chance to all Skill Tests for a number of minutes equal to your [WB]."
+      },
+      "reagents": {
+        "@en": "A halo made from an unbroken circle of gold leaf"
+      }
+    },
+    "tradition": "Divine (Martyr)",
+    "principle": "Greater",
+    "distance": "Yourself",
+    "duration": "[WB]+9 minutes",
+    "castingTime": "1 min",
+    "castingCost": 0
+  },
+  "folder": null,
+  "sort": 0,
+  "ownership": {
+    "default": 0
+  },
+  "flags": {},
+  "_key": "!items!Kd7Xgy99CJ41xf5r"
+}

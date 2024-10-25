@@ -1,0 +1,51 @@
+{
+  "_id": "Vq4nsbhqTumWrbZ5",
+  "effects": [],
+  "img": "systems/zweihander/assets/icons/crossbow.svg",
+  "name": "Repeating Crossbow",
+  "type": "weapon",
+  "_stats": {
+    "coreVersion": "12.331",
+    "systemId": null,
+    "systemVersion": null,
+    "createdTime": null,
+    "modifiedTime": null,
+    "lastModifiedBy": null,
+    "compendiumSource": null,
+    "duplicateSource": null
+  },
+  "system": {
+    "description": {
+      "@en": "<p>A crossbow with an automatic feeding and reloading mechanism, even the least trained soldier can unleash a hail of bolts in a matter of seconds.</p>"
+    },
+    "notes": "",
+    "price": {
+      "bp": "0",
+      "gc": "0",
+      "ss": "0"
+    },
+    "encumbrance": 3,
+    "carried": true,
+    "weaponType": "Missile",
+    "equipped": false,
+    "associatedSkill": "Martial Ranged",
+    "load": 4,
+    "handling": "One-handed",
+    "qualities": {
+      "value": "Fast, Punishing, Repeating",
+      "arrayOfValues": []
+    },
+    "distance": "[PB]+6 yards",
+    "damage": {
+      "formula": "[CB] + (1+[#])d6x6",
+      "associatedPrimaryAttribute": "Combat"
+    }
+  },
+  "folder": null,
+  "sort": 0,
+  "ownership": {
+    "default": 0
+  },
+  "flags": {},
+  "_key": "!items!Vq4nsbhqTumWrbZ5"
+}

@@ -1,0 +1,35 @@
+{
+  "_id": "cMTH0dgcfu78bw9g",
+  "effects": [],
+  "img": "systems/zweihander/assets/icons/vitruvian-man.svg",
+  "name": "Town Gossip",
+  "type": "trait",
+  "_stats": {
+    "coreVersion": "12.331",
+    "systemId": null,
+    "systemVersion": null,
+    "createdTime": null,
+    "modifiedTime": null,
+    "lastModifiedBy": null,
+    "compendiumSource": null,
+    "duplicateSource": null
+  },
+  "system": {
+    "description": {
+      "@en": "The Servant is an invisible presence, able to blend into the background around their employers and less reputable members of society. This provides them ample opportunity to eavesdrop, covertly observing others while picking up juicy rumors."
+    },
+    "notes": "",
+    "rules": {
+      "effect": {
+        "@en": "When you fail an Eavesdrop or Rumor Test, you may re-roll to generate a better result, but must accept the outcome."
+      }
+    }
+  },
+  "folder": null,
+  "sort": 0,
+  "ownership": {
+    "default": 0
+  },
+  "flags": {},
+  "_key": "!items!cMTH0dgcfu78bw9g"
+}

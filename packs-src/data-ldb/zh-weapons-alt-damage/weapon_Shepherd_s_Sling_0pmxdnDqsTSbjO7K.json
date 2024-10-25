@@ -1,0 +1,50 @@
+{
+  "_id": "0pmxdnDqsTSbjO7K",
+  "effects": [],
+  "img": "systems/zweihander/assets/icons/sling.svg",
+  "name": "Shepherd's Sling",
+  "type": "weapon",
+  "_stats": {
+    "coreVersion": "12.331",
+    "systemId": null,
+    "systemVersion": null,
+    "createdTime": null,
+    "modifiedTime": null,
+    "lastModifiedBy": null,
+    "compendiumSource": null,
+    "duplicateSource": null
+  },
+  "system": {
+    "description": {
+      "@en": "Used to deter wolves from flocks of sheep, they can be used to fell the greatest of goliaths if slung correctly."
+    },
+    "notes": "",
+    "price": {
+      "bp": "0",
+      "gc": "0",
+      "ss": "2"
+    },
+    "encumbrance": 1,
+    "carried": true,
+    "weaponType": "Missile",
+    "equipped": false,
+    "associatedSkill": "Simple Ranged",
+    "load": 1,
+    "handling": "One-handed",
+    "qualities": {
+      "value": "Fast, Throwing, Weak",
+      "arrayOfValues": []
+    },
+    "distance": "3 + [PB] yards",
+    "damage": {
+      "formula": "[CB] + 0 + (1+[#])d6x6"
+    }
+  },
+  "folder": null,
+  "sort": 0,
+  "ownership": {
+    "default": 0
+  },
+  "flags": {},
+  "_key": "!items!0pmxdnDqsTSbjO7K"
+}

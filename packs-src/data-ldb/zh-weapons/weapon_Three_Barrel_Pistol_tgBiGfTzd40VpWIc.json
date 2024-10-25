@@ -1,0 +1,50 @@
+{
+  "_id": "tgBiGfTzd40VpWIc",
+  "effects": [],
+  "img": "systems/zweihander/assets/icons/gunshot.svg",
+  "name": "Three-Barrel Pistol",
+  "type": "weapon",
+  "_stats": {
+    "coreVersion": "12.331",
+    "systemId": "zweihander",
+    "systemVersion": "5.3.2",
+    "createdTime": null,
+    "modifiedTime": 1729891886306,
+    "lastModifiedBy": "rivg6xcMxdlVDM8y",
+    "compendiumSource": null,
+    "duplicateSource": null
+  },
+  "system": {
+    "description": {
+      "@en": "Although considered to be the king of all pistols, they are inaccurate and make an incredibly intimidating explosive sound when fired. Given the amount of gunpowder stuffed into the three barrels, it is no wonder that they’re notorious for exploding in the wielder’s hand."
+    },
+    "notes": "",
+    "price": {
+      "bp": 0,
+      "gc": 83,
+      "ss": 0
+    },
+    "encumbrance": 2,
+    "carried": true,
+    "weaponType": "Gunpowder",
+    "equipped": false,
+    "associatedSkill": "Martial Ranged",
+    "load": 4,
+    "handling": "One-handed",
+    "qualities": {
+      "value": "Gunpowder, Repeating, Volatile",
+      "arrayOfValues": []
+    },
+    "distance": "3 + [PB] yards",
+    "damage": {
+      "formula": "[CB] + (1+[#])d6x1&6"
+    }
+  },
+  "folder": null,
+  "sort": 0,
+  "ownership": {
+    "default": 0
+  },
+  "flags": {},
+  "_key": "!items!tgBiGfTzd40VpWIc"
+}

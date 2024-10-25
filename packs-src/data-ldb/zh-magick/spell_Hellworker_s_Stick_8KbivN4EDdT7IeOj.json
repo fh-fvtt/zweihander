@@ -1,0 +1,50 @@
+{
+  "_id": "8KbivN4EDdT7IeOj",
+  "effects": [],
+  "img": "systems/zweihander/assets/icons/wizard-staff.svg",
+  "name": "Hellworker's Stick",
+  "type": "spell",
+  "_stats": {
+    "coreVersion": "12.331",
+    "systemId": null,
+    "systemVersion": null,
+    "createdTime": null,
+    "modifiedTime": null,
+    "lastModifiedBy": null,
+    "compendiumSource": null,
+    "duplicateSource": null
+  },
+  "system": {
+    "description": {
+      "@en": "Tapping your stick upon the ground, distant bells clang, hearkening the Hellfurnance’s prophet."
+    },
+    "notes": "",
+    "rules": {
+      "effect": {
+        "@en": "After successfully casting this spell, your staff temporarily turns into petrified wood. It becomes a one or two-handed melee weapon with the Adaptive, Defensive and Pummeling Qualities. Instead of using your [BB], refer to your [WB] to determine Damage. Finally, whenever you strike with this stick, your foe must Resist with a successful Athletics Test or be Disarmed. You can inflict Injuries with this Magick, but foes are always left Prone instead."
+      },
+      "criticalSuccess": {
+        "@en": "As above, but victims are automatically Disarmed if they cannot Parry the attack."
+      },
+      "criticalFailure": {
+        "@en": "Your stick completely shatters, and the bells toll for you. You are unable to cast Magick for the next 24 hours."
+      },
+      "reagents": {
+        "@en": "A staff wrought of simple wood"
+      }
+    },
+    "tradition": "Covenant",
+    "principle": "Petty",
+    "distance": "Yourself",
+    "duration": "3+[WB] minutes",
+    "castingTime": "1 min",
+    "castingCost": 0
+  },
+  "folder": null,
+  "sort": 0,
+  "ownership": {
+    "default": 0
+  },
+  "flags": {},
+  "_key": "!items!8KbivN4EDdT7IeOj"
+}

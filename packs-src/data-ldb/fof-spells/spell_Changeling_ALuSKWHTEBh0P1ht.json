@@ -1,0 +1,50 @@
+{
+  "_id": "ALuSKWHTEBh0P1ht",
+  "effects": [],
+  "img": "systems/zweihander/assets/icons/concentric-crescents.svg",
+  "name": "Changeling",
+  "type": "spell",
+  "_stats": {
+    "coreVersion": "12.331",
+    "systemId": null,
+    "systemVersion": null,
+    "createdTime": null,
+    "modifiedTime": null,
+    "lastModifiedBy": null,
+    "compendiumSource": null,
+    "duplicateSource": null
+  },
+  "system": {
+    "description": {
+      "@en": "<p>I shall turn you into the oaf you are!</p>"
+    },
+    "notes": "",
+    "rules": {
+      "effect": {
+        "@en": "<p>After successfully casting (and one foe cannot or fails to Resist using Scrutinize), they are temporarily made Helpless for the duration.</p>"
+      },
+      "criticalSuccess": {
+        "@en": "They are unable to Resist."
+      },
+      "criticalFailure": {
+        "@en": "Your arms droop to the ground, and your voice turns to a low growl. You cannot cast Spells for the duration."
+      },
+      "reagents": {
+        "@en": "The skin of a rare frog, burnt (expended)"
+      }
+    },
+    "tradition": "Black & White",
+    "principle": "Basic Tier",
+    "distance": "Any one person you can clearly see",
+    "duration": "3+[WB] minutes",
+    "castingTime": "1 Minute",
+    "castingCost": 1
+  },
+  "folder": null,
+  "sort": 0,
+  "ownership": {
+    "default": 0
+  },
+  "flags": {},
+  "_key": "!items!ALuSKWHTEBh0P1ht"
+}

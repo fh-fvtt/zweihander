@@ -1,0 +1,50 @@
+{
+  "_id": "gYDinhpLBh4A8mq3",
+  "effects": [],
+  "img": "systems/zweihander/assets/icons/wizard-staff.svg",
+  "name": "Skin Guest",
+  "type": "spell",
+  "_stats": {
+    "coreVersion": "12.331",
+    "systemId": null,
+    "systemVersion": null,
+    "createdTime": null,
+    "modifiedTime": null,
+    "lastModifiedBy": null,
+    "compendiumSource": null,
+    "duplicateSource": null
+  },
+  "system": {
+    "description": {
+      "@en": "Whispering as you play cat’s cradle with delicate strings, you exercise limitless control over another."
+    },
+    "notes": "",
+    "rules": {
+      "effect": {
+        "@en": "After successfully casting this spell, you immediately gain control of another. You bend them to your will, forcing them to commit acts they would normally not do. Although not truly ‘charmed’, they cannot defy your commands. They may speak as they normally would. This Magick requires Concentration. Your foe can successfully Resist with a Resolve Test."
+      },
+      "criticalSuccess": {
+        "@en": "As above, but your foe cannot Resist this Magick."
+      },
+      "criticalFailure": {
+        "@en": "Suddenly, your limbs jerk upwards as if controlled by an invisible puppeteer. You are immediately made the cat’s paw of an Abyssal fiend, and fight your own allies for the Duration of the spell."
+      },
+      "reagents": {
+        "@en": "A cat’s cradle made from muscle sinew of the Ancestry of the person you wish to control"
+      }
+    },
+    "tradition": "Arcane (Sorcery)",
+    "principle": "Lesser",
+    "distance": "Any one person you can see",
+    "duration": "[WB]+6 minutes",
+    "castingTime": "1 min",
+    "castingCost": 0
+  },
+  "folder": null,
+  "sort": 0,
+  "ownership": {
+    "default": 0
+  },
+  "flags": {},
+  "_key": "!items!gYDinhpLBh4A8mq3"
+}

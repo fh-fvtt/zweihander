@@ -1,0 +1,51 @@
+{
+  "_id": "yUwgxeCY47EC070A",
+  "effects": [],
+  "img": "systems/zweihander/assets/icons/two-handed-sword.svg",
+  "name": "Claymore",
+  "type": "weapon",
+  "_stats": {
+    "coreVersion": "12.331",
+    "systemId": null,
+    "systemVersion": null,
+    "createdTime": null,
+    "modifiedTime": null,
+    "lastModifiedBy": null,
+    "compendiumSource": null,
+    "duplicateSource": null
+  },
+  "system": {
+    "description": {
+      "@en": "<p>An enormous sword that takes two hands to wield, it can slice the head off a stallion in one swing.</p>\n<p>It is also oftentimes conflated with a bastard sword; the namesake of the bastards who wield them.</p>"
+    },
+    "notes": "",
+    "price": {
+      "bp": "0",
+      "gc": "10",
+      "ss": "0"
+    },
+    "encumbrance": 2,
+    "carried": true,
+    "weaponType": "Bladed",
+    "equipped": false,
+    "associatedSkill": "Martial Melee",
+    "load": 0,
+    "handling": "One- or Two-handed",
+    "qualities": {
+      "value": "Adaptable, Punishing, Slow",
+      "arrayOfValues": []
+    },
+    "distance": "Engaged",
+    "damage": {
+      "formula": "[CB] +2 + (1+[#])d6x6",
+      "associatedPrimaryAttribute": "Combat"
+    }
+  },
+  "folder": null,
+  "sort": 0,
+  "ownership": {
+    "default": 0
+  },
+  "flags": {},
+  "_key": "!items!yUwgxeCY47EC070A"
+}

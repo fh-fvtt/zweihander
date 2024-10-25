@@ -1,0 +1,51 @@
+{
+  "_id": "aGgbZhAIxHEyIVW8",
+  "effects": [],
+  "img": "systems/zweihander/assets/icons/rolling-bomb.svg",
+  "name": "Cast-Iron Grenade",
+  "type": "weapon",
+  "_stats": {
+    "coreVersion": "12.331",
+    "systemId": "zweihander",
+    "systemVersion": "5.3.2",
+    "createdTime": null,
+    "modifiedTime": 1729874527788,
+    "lastModifiedBy": "rivg6xcMxdlVDM8y",
+    "compendiumSource": null,
+    "duplicateSource": null
+  },
+  "system": {
+    "description": {
+      "@en": "<p>Made from sturdy iron and often filled with shards of metal, these explosives tear limb from body in a grisly fashion.</p>"
+    },
+    "notes": "deadly",
+    "price": {
+      "bp": 0,
+      "gc": 3,
+      "ss": 0
+    },
+    "encumbrance": 2,
+    "carried": true,
+    "weaponType": "Gunpowder",
+    "equipped": false,
+    "associatedSkill": "Martial Ranged",
+    "load": 2,
+    "handling": "One-handed",
+    "qualities": {
+      "value": "Detonate, Gunpowder, Volatile",
+      "arrayOfValues": []
+    },
+    "distance": "[PB]+1 yards",
+    "damage": {
+      "formula": "[CB] + (1+[#])d6x1&6",
+      "associatedPrimaryAttribute": "Combat"
+    }
+  },
+  "folder": null,
+  "sort": 0,
+  "ownership": {
+    "default": 0
+  },
+  "flags": {},
+  "_key": "!items!aGgbZhAIxHEyIVW8"
+}

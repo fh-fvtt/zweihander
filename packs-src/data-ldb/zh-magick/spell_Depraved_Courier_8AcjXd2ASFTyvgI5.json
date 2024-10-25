@@ -1,0 +1,50 @@
+{
+  "_id": "8AcjXd2ASFTyvgI5",
+  "effects": [],
+  "img": "systems/zweihander/assets/icons/wizard-staff.svg",
+  "name": "Depraved Courier",
+  "type": "spell",
+  "_stats": {
+    "coreVersion": "12.331",
+    "systemId": null,
+    "systemVersion": null,
+    "createdTime": null,
+    "modifiedTime": null,
+    "lastModifiedBy": null,
+    "compendiumSource": null,
+    "duplicateSource": null
+  },
+  "system": {
+    "description": {
+      "@en": "A horde of flies and locusts emerge from your mouth, carrying a message to a single person. Once the message is uttered through their chittering, they are absorbed into the orifices of the intended."
+    },
+    "notes": "",
+    "rules": {
+      "effect": {
+        "@en": "After successfully casting this spell, you send a message to one person you can envision, delivered by a swarm of dead flies and locusts. They can move one mile an hour, with no limit to where they can travel: through doors, between cracks in the wall and even deep below the earth. The message can be no longer than 140 characters. Once the message is received, the recipient gains 3 Corruption and has no choice but to respond in kind with another message to you, no longer than 140 characters. Once you receive the message in return, you gain 3 Corruption."
+      },
+      "criticalSuccess": {
+        "@en": "As above, but the messages can be up to 280 characters."
+      },
+      "criticalFailure": {
+        "@en": "The flies buzz all around you, working their way into your mouth, ears and other orifices. You are rendered blind and deaf for 24 hours."
+      },
+      "reagents": {
+        "@en": "The dead husks of locusts and flies, consumed (expended)"
+      }
+    },
+    "tradition": "Covenant",
+    "principle": "Petty",
+    "distance": "Any one person you have met",
+    "duration": "Instantaneous",
+    "castingTime": "1 min",
+    "castingCost": 0
+  },
+  "folder": null,
+  "sort": 0,
+  "ownership": {
+    "default": 0
+  },
+  "flags": {},
+  "_key": "!items!8AcjXd2ASFTyvgI5"
+}

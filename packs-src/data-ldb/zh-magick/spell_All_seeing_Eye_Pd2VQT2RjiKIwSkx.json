@@ -1,0 +1,50 @@
+{
+  "_id": "Pd2VQT2RjiKIwSkx",
+  "effects": [],
+  "img": "systems/zweihander/assets/icons/wizard-staff.svg",
+  "name": "All-seeing Eye",
+  "type": "spell",
+  "_stats": {
+    "coreVersion": "12.331",
+    "systemId": null,
+    "systemVersion": null,
+    "createdTime": null,
+    "modifiedTime": null,
+    "lastModifiedBy": null,
+    "compendiumSource": null,
+    "duplicateSource": null
+  },
+  "system": {
+    "description": {
+      "@en": "The eye of providence gives you insight others cannot possibly see without use of their third eye."
+    },
+    "notes": "",
+    "rules": {
+      "effect": {
+        "@en": "After successfully casting this spell, you can learn both the Order and Chaos Alignment of a person you can see and hear."
+      },
+      "criticalSuccess": {
+        "@en": "As above, but you can also learn what Disorders or Drawbacks they are suffering from."
+      },
+      "criticalFailure": {
+        "@en": "You behold not a vision of the person’s temperament, but of the psychological horrors which have befallen them. You immediately suffer 3 Corruption as punishment."
+      },
+      "reagents": {
+        "@en": "A miniature pyramid of clay, crushed (expended)"
+      }
+    },
+    "tradition": "Divine (Learner)",
+    "principle": "Petty",
+    "distance": "Any one person you can see",
+    "duration": "Instantaneous",
+    "castingTime": "1 min",
+    "castingCost": 0
+  },
+  "folder": null,
+  "sort": 0,
+  "ownership": {
+    "default": 0
+  },
+  "flags": {},
+  "_key": "!items!Pd2VQT2RjiKIwSkx"
+}

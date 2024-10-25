@@ -1,0 +1,50 @@
+{
+  "_id": "VOGy6ldyUCUlLpKg",
+  "effects": [],
+  "img": "systems/zweihander/assets/icons/locked-door.svg",
+  "name": "Heresy Denied",
+  "type": "spell",
+  "_stats": {
+    "coreVersion": "12.331",
+    "systemId": null,
+    "systemVersion": null,
+    "createdTime": null,
+    "modifiedTime": null,
+    "lastModifiedBy": null,
+    "compendiumSource": null,
+    "duplicateSource": null
+  },
+  "system": {
+    "description": {
+      "@en": "You permanently lock a door, preventing Mutants from ever entering."
+    },
+    "notes": "",
+    "rules": {
+      "effect": {
+        "@en": "After successfully casting this spell, the portal cannot be trespassed by creatures that are classified as Mutants or other Humanoids possessing mutations unless they successfully Resist with a Resolve Test. Should they cross the portal, they suffer [[/roll 1D10]]+[WB] in Damage, regardless of whether they successfully Resisted or not."
+      },
+      "criticalSuccess": {
+        "@en": "As above, but your foes cannot Resist this Magick."
+      },
+      "criticalFailure": {
+        "@en": "The three nails you hammer into the threshold instantly break. Strange symbols of judgement begin to ebb upon the threshold. Those who behold these symbols whose Chaos Ranks are higher than their Order Ranks are subjected to Stress."
+      },
+      "reagents": {
+        "@en": "Three bent nails, hammered into a threshold (expended)"
+      }
+    },
+    "tradition": "Divine (God-Emperor)",
+    "principle": "Petty",
+    "distance": "Any one portal you can touch",
+    "duration": "[WB]+3 hours",
+    "castingTime": "1 min",
+    "castingCost": 0
+  },
+  "folder": null,
+  "sort": 0,
+  "ownership": {
+    "default": 0
+  },
+  "flags": {},
+  "_key": "!items!VOGy6ldyUCUlLpKg"
+}

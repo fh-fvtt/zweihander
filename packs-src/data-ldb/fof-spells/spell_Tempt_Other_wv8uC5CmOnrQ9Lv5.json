@@ -1,0 +1,50 @@
+{
+  "_id": "wv8uC5CmOnrQ9Lv5",
+  "effects": [],
+  "img": "systems/zweihander/assets/icons/wizard-staff.svg",
+  "name": "Tempt Other",
+  "type": "spell",
+  "_stats": {
+    "coreVersion": "12.331",
+    "systemId": null,
+    "systemVersion": null,
+    "createdTime": null,
+    "modifiedTime": null,
+    "lastModifiedBy": null,
+    "compendiumSource": null,
+    "duplicateSource": null
+  },
+  "system": {
+    "description": {
+      "@en": "<p>Dance for me, pretty poppet! Now click your heels . . .</p>"
+    },
+    "notes": "",
+    "rules": {
+      "effect": {
+        "@en": "<p>After successfully casting (and the target cannot or fails to Resist using Resolve), they are Tempted. While Tempted, you can mentally speak to the person, and act as the devil or angel on their shoulder, luring them toward temptations or mortal acts they may not normally entertain. Should these temptations or mortal acts conflict &nbsp;with their morals, however, they will not take the action. This Spell requires Concentration.</p>"
+      },
+      "criticalSuccess": {
+        "@en": "As above, but your foe cannot Resist."
+      },
+      "criticalFailure": {
+        "@en": "The foe has now made you subject to Dominate, and the Historian can control you for the duration."
+      },
+      "reagents": {
+        "@en": "A cat’s cradle made from muscle sinew"
+      }
+    },
+    "tradition": "Witchcraft",
+    "principle": "Basic Tier",
+    "distance": "Any one foe you can see",
+    "duration": "3+[WB] in minutes",
+    "castingTime": "1 Minute",
+    "castingCost": 1
+  },
+  "folder": null,
+  "sort": 0,
+  "ownership": {
+    "default": 0
+  },
+  "flags": {},
+  "_key": "!items!wv8uC5CmOnrQ9Lv5"
+}

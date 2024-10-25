@@ -1,0 +1,50 @@
+{
+  "_id": "OvDLZ0UZlLKje3yG",
+  "effects": [],
+  "img": "systems/zweihander/assets/icons/wizard-staff.svg",
+  "name": "Pungent Godsend",
+  "type": "spell",
+  "_stats": {
+    "coreVersion": "12.331",
+    "systemId": null,
+    "systemVersion": null,
+    "createdTime": null,
+    "modifiedTime": null,
+    "lastModifiedBy": null,
+    "compendiumSource": null,
+    "duplicateSource": null
+  },
+  "system": {
+    "description": {
+      "@en": "Your touch ‘miraculously’ relieves the diseased of their illness… for a time. But then you become a vehicle for the Prince of Decay’s despoiling nature. The clock begins ticking before you are infected."
+    },
+    "notes": "",
+    "rules": {
+      "effect": {
+        "@en": "After successfully casting this spell, the person you touch is temporarily relieved of any ill-effects that a Disease has over them. The symptoms temporarily clear up, as the person is unburdened of their Effects for the Duration of the spell (and if you make a successful Charm Test, they likely believe they have been ‘cured’ completely of the Disease). However, you are now a carrier of the Disease yourself. You must either impart the Disease upon another by touch (which a foe is entitled to Resist with a successful Toughness Test) before the Duration runs out or else you contract to the Disease yourself."
+      },
+      "criticalSuccess": {
+        "@en": "As above, but triple the Duration."
+      },
+      "criticalFailure": {
+        "@en": "Not only does your touch fail to relieve the victim of their Disease, it immediately infects everyone within a Burst Template around the victim, including yourself."
+      },
+      "reagents": {
+        "@en": "A pint of your vomit, imbibed by the recipient (expended)"
+      }
+    },
+    "tradition": "Covenant",
+    "principle": "Lesser",
+    "distance": "Any one person you can touch",
+    "duration": "6+[WB] in hours",
+    "castingTime": "1 min",
+    "castingCost": 0
+  },
+  "folder": null,
+  "sort": 0,
+  "ownership": {
+    "default": 0
+  },
+  "flags": {},
+  "_key": "!items!OvDLZ0UZlLKje3yG"
+}

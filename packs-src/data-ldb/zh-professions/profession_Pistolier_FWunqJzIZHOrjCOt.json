@@ -1,0 +1,117 @@
+{
+  "_id": "FWunqJzIZHOrjCOt",
+  "effects": [],
+  "img": "systems/zweihander/assets/icons/pistolier.svg",
+  "name": "Pistolier",
+  "type": "profession",
+  "_stats": {
+    "coreVersion": "12.331",
+    "systemId": null,
+    "systemVersion": null,
+    "createdTime": null,
+    "modifiedTime": null,
+    "lastModifiedBy": null,
+    "compendiumSource": null,
+    "duplicateSource": null
+  },
+  "system": {
+    "description": {
+      "@en": "As much as cannons and artillery have changed the battlefield and how war is waged, there is no single figure that has benefited from the advances in gunpowder and firearms technology more than the Pistolier. They have wholeheartedly adopted the musket and wheellock as their own, and though they can use any gunpowder weapon with alacrity, they favor handguns above all else. Though such weapons are rare, and many regard them as brutal, Pistoliers see them as elegant and the way of the future. Many Pistoliers find service in mercenary companies, often wading into battle wielding, with intimidating ferocity, a gun in each hand and many more strapped to a bandolier draped across their chest. Others hire out their expertise as duelists or bodyguards, while simply making a spare shilling or three from public displays of their skill.\nMany are naturally intimidated by Pistoliers, for certain death lies at the end of the barrel of their guns. Yet they are romantic figures too, quick-draws who take pride in their skills and cocksure in their fantastic twirls of their guns and trick shots that would leave even the greatest jesters agape. Their skills end at the end of their gun’s barrels; few carry other weapons larger than a knife and regard bows as archaic. Some consider Pistoliers obsessed with their guns, in that they treat their weapons almost like children, and when Pistoliers fall into madness’ grip this is often true. They collect and hoard guns, cooing at them and aching to fire them in aggressive displays of dominance. They display these weapons openly, and are quick to pull – and shoot – at a moment’s notice. They are loose cannons, stuck permanently on the edge between tension and utter ruin."
+    },
+    "notes": "",
+    "expert": {
+      "value": true,
+      "requirements": "You must possess at least one Skill Rank in both Coordination and Martial Ranged in order to enter this Expert Profession."
+    },
+    "archetype": "Expert Profession",
+    "bonusAdvances": [
+      {
+        "name": "[AB]"
+      },
+      {
+        "name": "[AB]"
+      },
+      {
+        "name": "[CB]"
+      },
+      {
+        "name": "[CB]"
+      },
+      {
+        "name": "[IB]"
+      },
+      {
+        "name": "[WB]"
+      },
+      {
+        "name": "[WB]"
+      }
+    ],
+    "skillRanks": [
+      {
+        "name": "Athletics"
+      },
+      {
+        "name": "Coordination"
+      },
+      {
+        "name": "Guile"
+      },
+      {
+        "name": "Martial Melee"
+      },
+      {
+        "name": "Martial Ranged"
+      },
+      {
+        "name": "Resolve"
+      },
+      {
+        "name": "Rumor"
+      },
+      {
+        "name": "Simple Melee"
+      },
+      {
+        "name": "Simple Ranged"
+      },
+      {
+        "name": "Warfare"
+      }
+    ],
+    "talents": [
+      {
+        "linkedId": null,
+        "name": "Gangster Grip"
+      },
+      {
+        "linkedId": null,
+        "name": "Gruesome Shot"
+      },
+      {
+        "linkedId": null,
+        "name": "Shoot From The Hip"
+      }
+    ],
+    "professionalTrait": {
+      "name": "Gunslinger",
+      "linkedId": null
+    },
+    "specialTrait": {
+      "name": "",
+      "linkedId": null
+    },
+    "drawback": {
+      "name": "Black Hat",
+      "linkedId": null
+    },
+    "tier": ""
+  },
+  "folder": null,
+  "sort": 0,
+  "ownership": {
+    "default": 0
+  },
+  "flags": {},
+  "_key": "!items!FWunqJzIZHOrjCOt"
+}

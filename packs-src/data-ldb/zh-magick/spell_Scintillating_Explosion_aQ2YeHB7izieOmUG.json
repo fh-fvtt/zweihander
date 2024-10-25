@@ -1,0 +1,50 @@
+{
+  "_id": "aQ2YeHB7izieOmUG",
+  "effects": [],
+  "img": "systems/zweihander/assets/icons/wizard-staff.svg",
+  "name": "Scintillating Explosion",
+  "type": "spell",
+  "_stats": {
+    "coreVersion": "12.331",
+    "systemId": null,
+    "systemVersion": null,
+    "createdTime": null,
+    "modifiedTime": null,
+    "lastModifiedBy": null,
+    "compendiumSource": null,
+    "duplicateSource": null
+  },
+  "system": {
+    "description": {
+      "@en": "An explosion of shimmering light emits from an area, searing all within its purifying rays."
+    },
+    "notes": "",
+    "rules": {
+      "effect": {
+        "@en": "After successfully casting this spell, you can conjure a twinkling expulsion that rages in the target location where you cast it. All those who are caught within the Explosion Template who fail to Resist with an Awareness Test suffer a -30 Base Chance to all Agility-based and Combat-based Skill Tests. In addition, they reduce their Combat Movement down by 9 (to a minimum of 1). Those who do Resist instead suffer [[/roll 3D10]]+[WB] in physical Peril and cannot Counterspell, Dodge or Parry while standing in the Explosion Template. Remaining within the Explosion Template requires additional Awareness Tests to Resist against harm."
+      },
+      "criticalSuccess": {
+        "@en": "As above, but those caught in the Explosion cannot Resist, suffering both Effects."
+      },
+      "criticalFailure": {
+        "@en": "The mirror shatters in-hand, as an Ætheric backlash wracks your body every hour. You are unable to muster the strength to cast Magick again, until 72 hours have passed."
+      },
+      "reagents": {
+        "@en": "An expensive polished mirror, held outwards"
+      }
+    },
+    "tradition": "Arcane (Luminescence)",
+    "principle": "Greater",
+    "distance": "Any one place you can see",
+    "duration": "[WB]+9 minutes",
+    "castingTime": "1 min",
+    "castingCost": 0
+  },
+  "folder": null,
+  "sort": 0,
+  "ownership": {
+    "default": 0
+  },
+  "flags": {},
+  "_key": "!items!aQ2YeHB7izieOmUG"
+}

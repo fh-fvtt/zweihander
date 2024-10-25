@@ -1,0 +1,117 @@
+{
+  "_id": "U49B7DGPr3vJXNhz",
+  "effects": [],
+  "img": "systems/zweihander/assets/icons/necromancer.svg",
+  "name": "Necromancer",
+  "type": "profession",
+  "_stats": {
+    "coreVersion": "12.331",
+    "systemId": null,
+    "systemVersion": null,
+    "createdTime": null,
+    "modifiedTime": null,
+    "lastModifiedBy": null,
+    "compendiumSource": null,
+    "duplicateSource": null
+  },
+  "system": {
+    "description": {
+      "@en": "Most arcanists draw the Ætheric Winds through the Æthereal Veil to manipulate and improve the Material World around them. The Necromancer draws the Ætheric Winds through the Æthereal Veil for one base goal – to live forever. Their life’s work is to cheat death, living into eternity either in their current body or a more ‘divine’ form able to withstand the march of time. Rejecting the ideas of godly dominion, Abyssal service and the wheel of fate, their singular task is to bind their spirit permanently to the Material Realm. To them, there are no gods, only men and through Necromancy, they seek to ensorcel their bodies with the darkest of Magicks to live forever. Not an inherently evil aim, so much as a selfish one. Preserving themselves for all eternity to see the fruit of their labors – whether for lineage, largesse or their innovations – is the ultimate goal of every Necromancer.\nA combination of inherently dangerous Magicks and the ceaseless trafficking with the dead cannot fail but corrupt the Necromancer. Controlling death is a prerequisite to understanding how to prolong life, which involves inhuman experiments upon the living, grave-robbing and desecration of the recently deceased. Eventually their experiments include that most deplorable of necromantic practices – the creation of the undead. It takes a dark mind to set out on this path and by the time a Necromancer has created their first undead, they are utterly corrupted. To further explore the secrets to eternal life, the Necromancer must read fouler tomes and swallow their pride to seek audience with Abyssal creatures. They offer the Necromancer the blackest of Magicks and in return, the Necromancer offers their service."
+    },
+    "notes": "",
+    "expert": {
+      "value": true,
+      "requirements": "You must possess at least one Skill Rank in Incantation in order to enter this Expert Profession. In addition, you must have the Special Trait of Arcane Magick."
+    },
+    "archetype": "Expert Profession",
+    "bonusAdvances": [
+      {
+        "name": "[BB]"
+      },
+      {
+        "name": "[FB]"
+      },
+      {
+        "name": "[FB]"
+      },
+      {
+        "name": "[IB]"
+      },
+      {
+        "name": "[IB]"
+      },
+      {
+        "name": "[WB]"
+      },
+      {
+        "name": "[WB]"
+      }
+    ],
+    "skillRanks": [
+      {
+        "name": "Bargain"
+      },
+      {
+        "name": "Education"
+      },
+      {
+        "name": "Folklore"
+      },
+      {
+        "name": "Handle Animal"
+      },
+      {
+        "name": "Heal"
+      },
+      {
+        "name": "Incantation"
+      },
+      {
+        "name": "Resolve"
+      },
+      {
+        "name": "Rumor"
+      },
+      {
+        "name": "Simple Melee"
+      },
+      {
+        "name": "Toughness"
+      }
+    ],
+    "talents": [
+      {
+        "linkedId": null,
+        "name": "Indifference"
+      },
+      {
+        "linkedId": null,
+        "name": "Larceny"
+      },
+      {
+        "linkedId": null,
+        "name": "Left-handed Path"
+      }
+    ],
+    "professionalTrait": {
+      "name": "Rise From Your Grave",
+      "linkedId": null
+    },
+    "specialTrait": {
+      "name": "Arcana of Necromancy",
+      "linkedId": null
+    },
+    "drawback": {
+      "name": "Black Temperament",
+      "linkedId": null
+    },
+    "tier": ""
+  },
+  "folder": null,
+  "sort": 0,
+  "ownership": {
+    "default": 0
+  },
+  "flags": {},
+  "_key": "!items!U49B7DGPr3vJXNhz"
+}

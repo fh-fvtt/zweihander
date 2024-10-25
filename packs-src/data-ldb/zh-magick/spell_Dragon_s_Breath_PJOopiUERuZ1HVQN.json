@@ -1,0 +1,50 @@
+{
+  "_id": "PJOopiUERuZ1HVQN",
+  "effects": [],
+  "img": "systems/zweihander/assets/icons/fire-breath.svg",
+  "name": "Dragon's Breath",
+  "type": "spell",
+  "_stats": {
+    "coreVersion": "12.331",
+    "systemId": null,
+    "systemVersion": null,
+    "createdTime": null,
+    "modifiedTime": null,
+    "lastModifiedBy": null,
+    "compendiumSource": null,
+    "duplicateSource": null
+  },
+  "system": {
+    "description": {
+      "@en": "Inhaling deeply, you belch forth a gout of flame and smoke."
+    },
+    "notes": "",
+    "rules": {
+      "effect": {
+        "@en": "After successfully casting this spell, any foes caught in its Cone Template suffer [[/roll 3D10]]+[WB] in Damage from fire. You can inflict Injuries with this Magick, but they are set On Fire instead. Your foes can successfully Resist with a Coordination Test."
+      },
+      "criticalSuccess": {
+        "@en": "As above, but all foes struck automatically fail to Resist."
+      },
+      "criticalFailure": {
+        "@en": "A grave mishap has occurred, as your breath uncontrollably ignites everything around you in an Explosion Template, centered on you. Those exposed suffer [[/roll 3D10]]+[WB] in Damage from fire, including yourself as you are seared from inside. You can inflict Injuries with this Magick, but they are set On Fire instead."
+      },
+      "reagents": {
+        "@en": "The hide of a desert creature"
+      }
+    },
+    "tradition": "Arcane (Pyromancy)",
+    "principle": "Greater",
+    "distance": "Yourself",
+    "duration": "Instantaneous",
+    "castingTime": "1 min",
+    "castingCost": 0
+  },
+  "folder": null,
+  "sort": 0,
+  "ownership": {
+    "default": 0
+  },
+  "flags": {},
+  "_key": "!items!PJOopiUERuZ1HVQN"
+}

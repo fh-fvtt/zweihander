@@ -1,0 +1,50 @@
+{
+  "_id": "fqhHc74UFr0Ojxz0",
+  "effects": [],
+  "img": "systems/zweihander/assets/icons/wizard-staff.svg",
+  "name": "Order's Majesty",
+  "type": "spell",
+  "_stats": {
+    "coreVersion": "12.331",
+    "systemId": null,
+    "systemVersion": null,
+    "createdTime": null,
+    "modifiedTime": null,
+    "lastModifiedBy": null,
+    "compendiumSource": null,
+    "duplicateSource": null
+  },
+  "system": {
+    "description": {
+      "@en": "The power of your god glows in your eyes, causing all those who behold it to turn away from fear and superstition."
+    },
+    "notes": "",
+    "rules": {
+      "effect": {
+        "@en": "After successfully casting this spell, select a number of allies equal to your [FB]. Providing you can see your allies, those who are subjected to Stress, Fear or Terror can immediately move three steps up the Peril Condition Track positively while lifting any lingering Effects of any Disorder that may have been triggered."
+      },
+      "criticalSuccess": {
+        "@en": "As above, but those so affected also gain one Fortune Point."
+      },
+      "criticalFailure": {
+        "@en": "The vision from your eyes is not of emboldening light, but of holy, unrepentant judgement! Those who behold your countenance must succeed at a Resolve Test or else they suffer from Terror."
+      },
+      "reagents": {
+        "@en": "A prism held to your eye"
+      }
+    },
+    "tradition": "Divine (God-Emperor)",
+    "principle": "Greater",
+    "distance": "Yourself",
+    "duration": "Instantaneous",
+    "castingTime": "1 min",
+    "castingCost": 0
+  },
+  "folder": null,
+  "sort": 0,
+  "ownership": {
+    "default": 0
+  },
+  "flags": {},
+  "_key": "!items!fqhHc74UFr0Ojxz0"
+}

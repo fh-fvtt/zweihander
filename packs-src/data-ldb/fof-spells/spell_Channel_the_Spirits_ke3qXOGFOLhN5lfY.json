@@ -1,0 +1,50 @@
+{
+  "_id": "ke3qXOGFOLhN5lfY",
+  "effects": [],
+  "img": "systems/zweihander/assets/icons/concentric-crescents.svg",
+  "name": "Channel the Spirits",
+  "type": "spell",
+  "_stats": {
+    "coreVersion": "12.331",
+    "systemId": null,
+    "systemVersion": null,
+    "createdTime": null,
+    "modifiedTime": null,
+    "lastModifiedBy": null,
+    "compendiumSource": null,
+    "duplicateSource": null
+  },
+  "system": {
+    "description": {
+      "@en": "<p>I call upon you, ghost of Davy Jones, to tell us of folktales and buried treasure . . .</p>"
+    },
+    "notes": "",
+    "rules": {
+      "effect": {
+        "@en": "<p>After successfully casting, you channel the soul of a specific dead person into your body. While it remains in your body, you may ask one question every minute of the spirit, and they will always answer truthfully. For every question you ask, roll [[/roll 3D6]] Chaos Dice. For every face &lsquo;6,&rsquo; you drop one step down the Peril Condition Track. If you are Incapacitated! by this, you gain two Flaw Ranks. This Spell requires Concentration.</p>"
+      },
+      "criticalSuccess": {
+        "@en": "Roll [[/roll 1D6]] Chaos Die instead."
+      },
+      "criticalFailure": {
+        "@en": "Your body lifts into the air, as you gain the Affliction of Possessed."
+      },
+      "reagents": {
+        "@en": "A personal item of the dead person you want to channel, and a silver ring"
+      }
+    },
+    "tradition": "Black & White",
+    "principle": "Intermediate Tier",
+    "distance": "By Touch",
+    "duration": "One hour",
+    "castingTime": "10 Minutes",
+    "castingCost": null
+  },
+  "folder": null,
+  "sort": 0,
+  "ownership": {
+    "default": 0
+  },
+  "flags": {},
+  "_key": "!items!ke3qXOGFOLhN5lfY"
+}

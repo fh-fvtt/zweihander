@@ -1,0 +1,50 @@
+{
+  "_id": "jkEuqrCQSuNIiVS8",
+  "effects": [],
+  "img": "systems/zweihander/assets/icons/wizard-staff.svg",
+  "name": "Grotesque Miasma",
+  "type": "spell",
+  "_stats": {
+    "coreVersion": "12.331",
+    "systemId": null,
+    "systemVersion": null,
+    "createdTime": null,
+    "modifiedTime": null,
+    "lastModifiedBy": null,
+    "compendiumSource": null,
+    "duplicateSource": null
+  },
+  "system": {
+    "description": {
+      "@en": "Scattering dust to the ground, a miasma arises in the distance, choking all caught within it. And as they breath the deadly gasses, their bodies begin to grow misshapen."
+    },
+    "notes": "",
+    "rules": {
+      "effect": {
+        "@en": "After successfully casting this spell, all those caught within an Explosion Template immediately move one step down the Damage Condition Track negatively and gain a Mutation called Taint of Chaos. It is possible to successfully Resist this Effect with a Toughness Test, but foes must succeed at the Toughness Test every Turn while standing in the Explosion Template or drop one more step down the Damage Condition Track negatively. Mutations are covered in Chapter 11: Game Mastery (Not Currently in Compendium). This Magick lasts up to the point when the affected finally succeed at a Toughness Test. A foe is never Slain! by this Magick, instead remaining Grievously Wounded. This Magick requires Concentration."
+      },
+      "criticalSuccess": {
+        "@en": "As above, but those affected automatically fail their first three Toughness Tests to Resist."
+      },
+      "criticalFailure": {
+        "@en": "Suddenly, you fall to the ground. As you twist and contort, your body does not seem to be your own. You suffer 9 Corruption as a result. At the end of the session, whenever the GM determines whether you gain an Order or Chaos Rank, if you gain a Chaos Rank, you also gain a Taint of Chaos."
+      },
+      "reagents": {
+        "@en": "A plague victim’s bones, ground into dust (expended)"
+      }
+    },
+    "tradition": "Arcane (Sorcery)",
+    "principle": "Greater",
+    "distance": "Any one place you can see",
+    "duration": "Special",
+    "castingTime": "1 min",
+    "castingCost": 0
+  },
+  "folder": null,
+  "sort": 0,
+  "ownership": {
+    "default": 0
+  },
+  "flags": {},
+  "_key": "!items!jkEuqrCQSuNIiVS8"
+}

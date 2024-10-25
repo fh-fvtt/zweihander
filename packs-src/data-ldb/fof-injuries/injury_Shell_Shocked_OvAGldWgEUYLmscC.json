@@ -1,0 +1,38 @@
+{
+  "_id": "OvAGldWgEUYLmscC",
+  "effects": [],
+  "img": "systems/zweihander/assets/icons/broken-bone.svg",
+  "name": "Shell Shocked",
+  "type": "injury",
+  "_stats": {
+    "coreVersion": "12.331",
+    "systemId": null,
+    "systemVersion": null,
+    "createdTime": null,
+    "modifiedTime": null,
+    "lastModifiedBy": null,
+    "compendiumSource": null,
+    "duplicateSource": null
+  },
+  "system": {
+    "description": {
+      "@en": ""
+    },
+    "notes": "<p>Injuries vary by three types: Moderate, Serious and Grievous Injuries. When determining an Injury, roll a D100, referring to the relevant table below. In addition, player characters gain 3 Conflict for Moderate Injuries, 6 Conflict for Serious Injuries and 9 Conflict for Grievous Injuries. Finally, combatants cannot heal their Damage &amp; Peril Condition Tracks until Injuries are in Recuperation.</p>",
+    "rules": {
+      "effect": {
+        "@en": "<p>You are Bleeding. A caregiver must Treat Injury. Until fully Recuperated, you cannot add any Fury Dice to Damage.</p>"
+      }
+    },
+    "severity": 1,
+    "active": false,
+    "recuperationTime": 0
+  },
+  "folder": null,
+  "sort": 0,
+  "ownership": {
+    "default": 0
+  },
+  "flags": {},
+  "_key": "!items!OvAGldWgEUYLmscC"
+}

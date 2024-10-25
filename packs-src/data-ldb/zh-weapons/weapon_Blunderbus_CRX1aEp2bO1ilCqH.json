@@ -1,0 +1,51 @@
+{
+  "_id": "CRX1aEp2bO1ilCqH",
+  "effects": [],
+  "img": "systems/zweihander/assets/icons/cannon-shot.svg",
+  "name": "Blunderbus",
+  "type": "weapon",
+  "_stats": {
+    "coreVersion": "12.331",
+    "systemId": "zweihander",
+    "systemVersion": "5.3.2",
+    "createdTime": null,
+    "modifiedTime": 1729889517257,
+    "lastModifiedBy": "rivg6xcMxdlVDM8y",
+    "compendiumSource": null,
+    "duplicateSource": null
+  },
+  "system": {
+    "description": {
+      "@en": "<p>This wheellock hand cannon is stuffed with blackpowder, boot nails and pebbles &ndash; for when you absolutely, positively, have to kill everyone in the room? Accept no substitute.</p>"
+    },
+    "notes": "",
+    "price": {
+      "bp": 0,
+      "gc": 13,
+      "ss": 0
+    },
+    "encumbrance": 3,
+    "carried": true,
+    "weaponType": "Gunpowder",
+    "equipped": false,
+    "associatedSkill": "Simple Ranged",
+    "load": 4,
+    "handling": "Two-handed",
+    "qualities": {
+      "value": "Gunpowder, Shrapnel, Volatile, Weak",
+      "arrayOfValues": []
+    },
+    "distance": "3 + [PB] yards",
+    "damage": {
+      "formula": "[CB] + (1+[#])d6x1&6",
+      "associatedPrimaryAttribute": "Combat"
+    }
+  },
+  "folder": null,
+  "sort": 0,
+  "ownership": {
+    "default": 0
+  },
+  "flags": {},
+  "_key": "!items!CRX1aEp2bO1ilCqH"
+}

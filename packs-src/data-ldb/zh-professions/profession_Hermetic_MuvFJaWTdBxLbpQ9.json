@@ -1,0 +1,117 @@
+{
+  "_id": "MuvFJaWTdBxLbpQ9",
+  "effects": [],
+  "img": "systems/zweihander/assets/icons/hermetic.svg",
+  "name": "Hermetic",
+  "type": "profession",
+  "_stats": {
+    "coreVersion": "12.331",
+    "systemId": null,
+    "systemVersion": null,
+    "createdTime": null,
+    "modifiedTime": null,
+    "lastModifiedBy": null,
+    "compendiumSource": null,
+    "duplicateSource": null
+  },
+  "system": {
+    "description": {
+      "@en": "Hermetics study the science of alchemy, with their primary study based on the properties of the four basic elements. However, they also recognize that the Æther permeates everything around them and is thus the primary element. They see it as a universal solvent, breaking down the traditional elements into lesser substances such as gases and matter. This influences their understanding of how Magick affects both the makeup of the Material Realm and their primary concern – the transmutation of metals and ore. Hermetics are metallurgists without peer, able to weave elements of the Æthereal Veil in subtle – and not so subtle – ways to change substances. Despite them being able make such transmutations, there is still one transmutation that eludes them all, that of one base metal into another, of nickel into iron, of lead into gold and so on. Discovering the secret of ‘true transmutation’ remains every Hermetic’s dream.\nPursuit of the secret of ‘true transmutation’ has also been many a Hermetic’s downfall. Younger Hermetics who lack the training and knowledge can spend years searching for it without success. It can drive some into madness – or worse, lead them onto darker paths, especially if they are seeking to transmute lead into gold. Their desire for the secret can transmute into a lust for gold to equal that of any dwarf and a Hermetic may end up using unsavory substances or making pacts with the Abyssal princes. One needs only to remember the tale of Midas to understand what becomes of a person whose greed consumes them."
+    },
+    "notes": "",
+    "expert": {
+      "value": true,
+      "requirements": "You must possess at least one Skill Rank in Incantation in order to enter this Expert Profession. In addition, you must have the Special Trait of Arcane Magick."
+    },
+    "archetype": "Expert Profession",
+    "bonusAdvances": [
+      {
+        "name": "[AB]"
+      },
+      {
+        "name": "[IB]"
+      },
+      {
+        "name": "[IB]"
+      },
+      {
+        "name": "[PB]"
+      },
+      {
+        "name": "[PB]"
+      },
+      {
+        "name": "[WB]"
+      },
+      {
+        "name": "[WB]"
+      }
+    ],
+    "skillRanks": [
+      {
+        "name": "Alchemy"
+      },
+      {
+        "name": "Coordination"
+      },
+      {
+        "name": "Education"
+      },
+      {
+        "name": "Folklore"
+      },
+      {
+        "name": "Incantation"
+      },
+      {
+        "name": "Rumor"
+      },
+      {
+        "name": "Scrutinize"
+      },
+      {
+        "name": "Simple Melee"
+      },
+      {
+        "name": "Survival"
+      },
+      {
+        "name": "Tradecraft"
+      }
+    ],
+    "talents": [
+      {
+        "linkedId": null,
+        "name": "Ambidexterity"
+      },
+      {
+        "linkedId": null,
+        "name": "Determination"
+      },
+      {
+        "linkedId": null,
+        "name": "Impervious Mind"
+      }
+    ],
+    "professionalTrait": {
+      "name": "Alchemical Thaumaturgy",
+      "linkedId": null
+    },
+    "specialTrait": {
+      "name": "Arcana of Transmutation",
+      "linkedId": null
+    },
+    "drawback": {
+      "name": "Yellow Temperament",
+      "linkedId": null
+    },
+    "tier": ""
+  },
+  "folder": null,
+  "sort": 0,
+  "ownership": {
+    "default": 0
+  },
+  "flags": {},
+  "_key": "!items!MuvFJaWTdBxLbpQ9"
+}

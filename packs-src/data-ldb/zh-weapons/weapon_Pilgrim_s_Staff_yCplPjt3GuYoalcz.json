@@ -1,0 +1,51 @@
+{
+  "_id": "yCplPjt3GuYoalcz",
+  "effects": [],
+  "img": "systems/zweihander/assets/icons/wizard-staff.svg",
+  "name": "Pilgrim’s Staff",
+  "type": "weapon",
+  "_stats": {
+    "coreVersion": "12.331",
+    "systemId": "zweihander",
+    "systemVersion": "5.3.2",
+    "createdTime": null,
+    "modifiedTime": 1729891407480,
+    "lastModifiedBy": "rivg6xcMxdlVDM8y",
+    "compendiumSource": null,
+    "duplicateSource": null
+  },
+  "system": {
+    "description": {
+      "@en": "<p>Oftentimes seen in the hands of wayward travelers to navigate the wilderness, this utilitarian&nbsp;stick is obscenely large. It is often a prop wielded by clerics, wizards and their ilk, who like to make a grand entrance before they preach the word.</p>"
+    },
+    "notes": "",
+    "price": {
+      "bp": 0,
+      "gc": 0,
+      "ss": 2
+    },
+    "encumbrance": 2,
+    "carried": true,
+    "weaponType": "Crushing",
+    "equipped": false,
+    "associatedSkill": "Simple Melee",
+    "load": 0,
+    "handling": "Two-handed",
+    "qualities": {
+      "value": "Defensive, Powerful, Pummeling",
+      "arrayOfValues": []
+    },
+    "distance": "Engaged",
+    "damage": {
+      "formula": "[BB] + (1+[#])d6x6",
+      "associatedPrimaryAttribute": "Brawn"
+    }
+  },
+  "folder": null,
+  "sort": 0,
+  "ownership": {
+    "default": 0
+  },
+  "flags": {},
+  "_key": "!items!yCplPjt3GuYoalcz"
+}

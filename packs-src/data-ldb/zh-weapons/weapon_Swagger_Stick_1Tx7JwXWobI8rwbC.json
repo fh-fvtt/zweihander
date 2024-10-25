@@ -1,0 +1,51 @@
+{
+  "_id": "1Tx7JwXWobI8rwbC",
+  "effects": [],
+  "img": "systems/zweihander/assets/icons/orb-wand.svg",
+  "name": "Swagger Stick",
+  "type": "weapon",
+  "_stats": {
+    "coreVersion": "12.331",
+    "systemId": "zweihander",
+    "systemVersion": "5.3.2",
+    "createdTime": null,
+    "modifiedTime": 1729891639008,
+    "lastModifiedBy": "rivg6xcMxdlVDM8y",
+    "compendiumSource": null,
+    "duplicateSource": null
+  },
+  "system": {
+    "description": {
+      "@en": "<p>Commonly carried by military officers, this rod is a rattan stick tipped in iron and wielded by off-duty soldiers. It serves as a grim reminder to criminals who would step up with the intent to harm or rob a veteran of the arse-beating they will receive in turn.</p>"
+    },
+    "notes": "",
+    "price": {
+      "bp": 0,
+      "gc": 1,
+      "ss": 0
+    },
+    "encumbrance": 1,
+    "carried": true,
+    "weaponType": "Crushing",
+    "equipped": false,
+    "associatedSkill": "Martial Melee",
+    "load": 0,
+    "handling": "One-handed",
+    "qualities": {
+      "value": "Powerful, Pummeling, Slow",
+      "arrayOfValues": []
+    },
+    "distance": "Engaged",
+    "damage": {
+      "formula": "[BB] + (1+[#])d6x6",
+      "associatedPrimaryAttribute": "Brawn"
+    }
+  },
+  "folder": null,
+  "sort": 0,
+  "ownership": {
+    "default": 0
+  },
+  "flags": {},
+  "_key": "!items!1Tx7JwXWobI8rwbC"
+}

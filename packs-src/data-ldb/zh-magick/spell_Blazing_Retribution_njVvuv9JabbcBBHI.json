@@ -1,0 +1,50 @@
+{
+  "_id": "njVvuv9JabbcBBHI",
+  "effects": [],
+  "img": "systems/zweihander/assets/icons/wizard-staff.svg",
+  "name": "Blazing Retribution",
+  "type": "spell",
+  "_stats": {
+    "coreVersion": "12.331",
+    "systemId": null,
+    "systemVersion": null,
+    "createdTime": null,
+    "modifiedTime": null,
+    "lastModifiedBy": null,
+    "compendiumSource": null,
+    "duplicateSource": null
+  },
+  "system": {
+    "description": {
+      "@en": "Blinding flames of retribution strike down at your foes, causing them to burn like human candles!"
+    },
+    "notes": "",
+    "rules": {
+      "effect": {
+        "@en": "After successfully casting this spell, select a number of foes equal to your [WB]. Providing you can see your foes, each foe suffers [[/roll 3D10]]+[WB] in physical Peril. In addition, they must Resist with a Resolve Test or lose 1 AP on their next Turn."
+      },
+      "criticalSuccess": {
+        "@en": "As above, but your foes cannot Resist and are also set On Fire."
+      },
+      "criticalFailure": {
+        "@en": "Your words betray you; you are nothing more than a false avatar! Condemned by the gods, you immediately suffer [[/roll 3D10]]+[WB] in physical Peril. In addition, you lose 1 AP on your next Turn and are set On Fire."
+      },
+      "reagents": {
+        "@en": "A religious condemnation, written upon paper (expended)"
+      }
+    },
+    "tradition": "Divine (Steward)",
+    "principle": "Greater",
+    "distance": "Yourself",
+    "duration": "Instantaneous",
+    "castingTime": "1 min",
+    "castingCost": 0
+  },
+  "folder": null,
+  "sort": 0,
+  "ownership": {
+    "default": 0
+  },
+  "flags": {},
+  "_key": "!items!njVvuv9JabbcBBHI"
+}

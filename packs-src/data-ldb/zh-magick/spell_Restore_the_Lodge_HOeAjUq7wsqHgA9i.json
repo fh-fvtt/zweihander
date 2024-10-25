@@ -1,0 +1,50 @@
+{
+  "_id": "HOeAjUq7wsqHgA9i",
+  "effects": [],
+  "img": "systems/zweihander/assets/icons/wizard-staff.svg",
+  "name": "Restore the Lodge",
+  "type": "spell",
+  "_stats": {
+    "coreVersion": "12.331",
+    "systemId": null,
+    "systemVersion": null,
+    "createdTime": null,
+    "modifiedTime": null,
+    "lastModifiedBy": null,
+    "compendiumSource": null,
+    "duplicateSource": null
+  },
+  "system": {
+    "description": {
+      "@en": "You incant the unholiest of all Covenants of the Black Lodge, restoring its brittle bones with the soul of a living victim."
+    },
+    "notes": "",
+    "rules": {
+      "effect": {
+        "@en": "After successfully casting this spell, a foe who can see and hear you is instantly Slain!. In exchange, you immediately gain one permanent Chaos Rank and are Incapacitated!. Note that this Magick only affects creatures classified as Humanoid or Mutant (including player Ancestries)."
+      },
+      "criticalSuccess": {
+        "@en": "As above, but you are not Incapacitated! by casting this spell."
+      },
+      "criticalFailure": {
+        "@en": "The ring crumbles to dust, completely destroyed. In return, you suffer [[/roll 2D10+2]] mental Peril."
+      },
+      "reagents": {
+        "@en": "A gold ring with a jade inset, worn (expended)"
+      }
+    },
+    "tradition": "Covenant",
+    "principle": "Greater",
+    "distance": "Any one person you can see",
+    "duration": "Instantaneous",
+    "castingTime": "1 min",
+    "castingCost": 0
+  },
+  "folder": null,
+  "sort": 0,
+  "ownership": {
+    "default": 0
+  },
+  "flags": {},
+  "_key": "!items!HOeAjUq7wsqHgA9i"
+}

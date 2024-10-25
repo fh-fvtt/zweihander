@@ -1,0 +1,50 @@
+{
+  "_id": "0k2kYoMrHM3E6z6A",
+  "effects": [],
+  "img": "systems/zweihander/assets/icons/half-dead.svg",
+  "name": "The Invitation",
+  "type": "spell",
+  "_stats": {
+    "coreVersion": "12.331",
+    "systemId": null,
+    "systemVersion": null,
+    "createdTime": null,
+    "modifiedTime": null,
+    "lastModifiedBy": null,
+    "compendiumSource": null,
+    "duplicateSource": null
+  },
+  "system": {
+    "description": {
+      "@en": "Holding the mirror over the dead’s face, their haunted gaze reflects within it and they speak to you."
+    },
+    "notes": "",
+    "rules": {
+      "effect": {
+        "@en": "After successfully casting this spell, the person you touch (providing they are already Slain!) summons their spirit back from the dead to their corpse to speak with you. You can ask any questions and they will always answer truthfully. However, they cannot answer questions they did not know the answers to in life."
+      },
+      "criticalSuccess": {
+        "@en": "As above, but triple the Duration."
+      },
+      "criticalFailure": {
+        "@en": "Behold, the terrible countenance of a Supernatural creature from beyond. ‘Tis not the one you commanded to return. The mirror suddenly shatters, breaking in your hand! You are subjected to Fear."
+      },
+      "reagents": {
+        "@en": "A mirror, which you hold to the face of a corpse"
+      }
+    },
+    "tradition": "Divine (Custodian)",
+    "principle": "Lesser",
+    "distance": "Any one person you can touch",
+    "duration": "[WB]+6 minutes",
+    "castingTime": "1 min",
+    "castingCost": 0
+  },
+  "folder": null,
+  "sort": 0,
+  "ownership": {
+    "default": 0
+  },
+  "flags": {},
+  "_key": "!items!0k2kYoMrHM3E6z6A"
+}

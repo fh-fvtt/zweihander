@@ -1,0 +1,50 @@
+{
+  "_id": "Jy8jMneKNaHvUFqr",
+  "effects": [],
+  "img": "systems/zweihander/assets/icons/wizard-staff.svg",
+  "name": "Cure Malady",
+  "type": "spell",
+  "_stats": {
+    "coreVersion": "12.331",
+    "systemId": null,
+    "systemVersion": null,
+    "createdTime": null,
+    "modifiedTime": null,
+    "lastModifiedBy": null,
+    "compendiumSource": null,
+    "duplicateSource": null
+  },
+  "system": {
+    "description": {
+      "@en": "Your prayers lead the suffering away from the threshold and back to the light."
+    },
+    "notes": "",
+    "rules": {
+      "effect": {
+        "@en": "After successfully casting this spell, the person you touch is cured of the Disease they are suffering from. A Character may only gain the benefit of this Magick once per day."
+      },
+      "criticalSuccess": {
+        "@en": "As above, but if the person lost points from their Primary Attributes due to a Disease’s Effects, these points are restored."
+      },
+      "criticalFailure": {
+        "@en": "Your words are twisted, as you forget the correct convocation to draw your god’s might. Your victim immediately suffers the Effects of another Disease (of the GM’s choosing)."
+      },
+      "reagents": {
+        "@en": "The proper treatment agents required to normally treat the Disease (expended)"
+      }
+    },
+    "tradition": "Divine (Martyr)",
+    "principle": "Lesser",
+    "distance": "Any one person you can touch",
+    "duration": "Instantaneous",
+    "castingTime": "1 min",
+    "castingCost": 0
+  },
+  "folder": null,
+  "sort": 0,
+  "ownership": {
+    "default": 0
+  },
+  "flags": {},
+  "_key": "!items!Jy8jMneKNaHvUFqr"
+}

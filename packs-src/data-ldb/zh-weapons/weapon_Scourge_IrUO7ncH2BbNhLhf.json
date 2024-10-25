@@ -1,0 +1,51 @@
+{
+  "_id": "IrUO7ncH2BbNhLhf",
+  "effects": [],
+  "img": "systems/zweihander/assets/icons/whip.svg",
+  "name": "Scourge",
+  "type": "weapon",
+  "_stats": {
+    "coreVersion": "12.331",
+    "systemId": "zweihander",
+    "systemVersion": "5.3.2",
+    "createdTime": null,
+    "modifiedTime": 1729891472325,
+    "lastModifiedBy": "rivg6xcMxdlVDM8y",
+    "compendiumSource": null,
+    "duplicateSource": null
+  },
+  "system": {
+    "description": {
+      "@en": "<p>This painful &lsquo;kill-whip&rsquo; is used to dole out lasting punishment to enemies, with barbs or iron balls affixed to the end of its leather lashes.</p>"
+    },
+    "notes": "",
+    "price": {
+      "bp": 0,
+      "gc": 0,
+      "ss": 12
+    },
+    "encumbrance": 2,
+    "carried": true,
+    "weaponType": "Brawling",
+    "equipped": false,
+    "associatedSkill": "Simple Melee",
+    "load": 0,
+    "handling": "One-handed",
+    "qualities": {
+      "value": "Pummeling, Reach",
+      "arrayOfValues": []
+    },
+    "distance": "Engaged or 1 yard",
+    "damage": {
+      "formula": "[BB] + (1+[#])d6x6",
+      "associatedPrimaryAttribute": "Brawn"
+    }
+  },
+  "folder": null,
+  "sort": 0,
+  "ownership": {
+    "default": 0
+  },
+  "flags": {},
+  "_key": "!items!IrUO7ncH2BbNhLhf"
+}

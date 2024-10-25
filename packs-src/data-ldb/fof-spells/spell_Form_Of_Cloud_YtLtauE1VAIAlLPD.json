@@ -1,0 +1,50 @@
+{
+  "_id": "YtLtauE1VAIAlLPD",
+  "effects": [],
+  "img": "systems/zweihander/assets/icons/spell-book.svg",
+  "name": "Form Of Cloud",
+  "type": "spell",
+  "_stats": {
+    "coreVersion": "12.331",
+    "systemId": null,
+    "systemVersion": null,
+    "createdTime": null,
+    "modifiedTime": null,
+    "lastModifiedBy": null,
+    "compendiumSource": null,
+    "duplicateSource": null
+  },
+  "system": {
+    "description": {
+      "@en": "<p>I join my body with the elemental spirits of air and water, transmogrifying into mist . . .</p>"
+    },
+    "notes": "",
+    "rules": {
+      "effect": {
+        "@en": "<p>After successfully casting, you turn into mist, unable to be harmed by normal means. You may pass through cracks, keyholes and other tight confines. You can also hover 3 yards above the ground and take on a Movement of 12+[AB] in combat. However, your trappings do not change into a mist, nor can you speak in this form or cast spells. When you turn into human form, the Spell ends.</p>"
+      },
+      "criticalSuccess": {
+        "@en": "Triple the duration."
+      },
+      "criticalFailure": {
+        "@en": "Your body turns to mist for a moment, then immediately back to flesh. You suffer [[/roll 3D10+3]] Damage, but do not suffer Injuries due to it."
+      },
+      "reagents": {
+        "@en": "A glass or metal receptacle with a closing lid"
+      }
+    },
+    "tradition": "Common",
+    "principle": "Advanced Tier",
+    "distance": "Yourself",
+    "duration": "9+[WB] minutes",
+    "castingTime": "1 Minute",
+    "castingCost": 3
+  },
+  "folder": null,
+  "sort": 0,
+  "ownership": {
+    "default": 0
+  },
+  "flags": {},
+  "_key": "!items!YtLtauE1VAIAlLPD"
+}

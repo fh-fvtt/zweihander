@@ -1,0 +1,51 @@
+{
+  "_id": "2wwITuwNbyYterPf",
+  "effects": [],
+  "img": "systems/zweihander/assets/icons/straight-pipe.svg",
+  "name": "Blowpipe",
+  "type": "weapon",
+  "_stats": {
+    "coreVersion": "12.331",
+    "systemId": "zweihander",
+    "systemVersion": "5.3.2",
+    "createdTime": null,
+    "modifiedTime": 1729889508459,
+    "lastModifiedBy": "rivg6xcMxdlVDM8y",
+    "compendiumSource": null,
+    "duplicateSource": null
+  },
+  "system": {
+    "description": {
+      "@en": "<p>Found in many hunter cultures, the blowpipe is little more than a hollow reed you blow into to propel a dart. The dart, however, is harmless unless laden with toxic poison.</p>"
+    },
+    "notes": "",
+    "price": {
+      "bp": 0,
+      "gc": 1,
+      "ss": 0
+    },
+    "encumbrance": 1,
+    "carried": true,
+    "weaponType": "Missile",
+    "equipped": false,
+    "associatedSkill": "Simple Ranged",
+    "load": 1,
+    "handling": "1",
+    "qualities": {
+      "value": "Fast, Ineffective, Throwing",
+      "arrayOfValues": []
+    },
+    "distance": "1 + [PB] yard",
+    "damage": {
+      "formula": "0",
+      "associatedPrimaryAttribute": "Combat"
+    }
+  },
+  "folder": null,
+  "sort": 0,
+  "ownership": {
+    "default": 0
+  },
+  "flags": {},
+  "_key": "!items!2wwITuwNbyYterPf"
+}

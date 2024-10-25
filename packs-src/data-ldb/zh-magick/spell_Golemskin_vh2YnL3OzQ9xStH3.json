@@ -1,0 +1,50 @@
+{
+  "_id": "vh2YnL3OzQ9xStH3",
+  "effects": [],
+  "img": "systems/zweihander/assets/icons/rock-golem.svg",
+  "name": "Golemskin",
+  "type": "spell",
+  "_stats": {
+    "coreVersion": "12.331",
+    "systemId": null,
+    "systemVersion": null,
+    "createdTime": null,
+    "modifiedTime": null,
+    "lastModifiedBy": null,
+    "compendiumSource": null,
+    "duplicateSource": null
+  },
+  "system": {
+    "description": {
+      "@en": "Your skin hardens, rendering you protected from outside forces which could harm you."
+    },
+    "notes": "",
+    "rules": {
+      "effect": {
+        "@en": "After successfully casting this spell, add 6 to your Damage Threshold. In addition, you are immune to Injury and cannot Bleed."
+      },
+      "criticalSuccess": {
+        "@en": "As above, but add 9 to your Damage Threshold instead."
+      },
+      "criticalFailure": {
+        "@en": "Your skin cracks from weakness and you are wracked with intense pain. You suffer [[/roll 2D10+2]] physical Peril."
+      },
+      "reagents": {
+        "@en": "The skin of a dead strongman"
+      }
+    },
+    "tradition": "Arcane (Necromancy)",
+    "principle": "Lesser",
+    "distance": "Yourself",
+    "duration": "[WB]+6 minutes",
+    "castingTime": "1 min",
+    "castingCost": 0
+  },
+  "folder": null,
+  "sort": 0,
+  "ownership": {
+    "default": 0
+  },
+  "flags": {},
+  "_key": "!items!vh2YnL3OzQ9xStH3"
+}

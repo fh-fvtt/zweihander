@@ -1,0 +1,50 @@
+{
+  "_id": "XID0bck6Kfwc4XyS",
+  "effects": [],
+  "img": "systems/zweihander/assets/icons/wizard-staff.svg",
+  "name": "Corrosion",
+  "type": "spell",
+  "_stats": {
+    "coreVersion": "12.331",
+    "systemId": null,
+    "systemVersion": null,
+    "createdTime": null,
+    "modifiedTime": null,
+    "lastModifiedBy": null,
+    "compendiumSource": null,
+    "duplicateSource": null
+  },
+  "system": {
+    "description": {
+      "@en": "A glancing touch is all you need to rust and destroy objects."
+    },
+    "notes": "",
+    "rules": {
+      "effect": {
+        "@en": "After successfully casting this spell, the object you touch (providing it’s no larger than a human is tall) is permanently rusted, considered to be useless until repaired."
+      },
+      "criticalSuccess": {
+        "@en": "As above, but you can permanently rust an object no larger than a carriage is tall."
+      },
+      "criticalFailure": {
+        "@en": "As you stomp on the nail, it drives deep into your foot! Although you do not suffer Damage, all terrain is treated as Hard Terrain for 24 hours."
+      },
+      "reagents": {
+        "@en": "A rusted nail, crushed beneath your heel (expended)"
+      }
+    },
+    "tradition": "Arcane (Transmutation)",
+    "principle": "Petty",
+    "distance": "Any one object you can touch",
+    "duration": "Instantaneous",
+    "castingTime": "1 min",
+    "castingCost": 0
+  },
+  "folder": null,
+  "sort": 0,
+  "ownership": {
+    "default": 0
+  },
+  "flags": {},
+  "_key": "!items!XID0bck6Kfwc4XyS"
+}

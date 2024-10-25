@@ -1,0 +1,50 @@
+{
+  "_id": "SdlQDU4kccW4vAMl",
+  "effects": [],
+  "img": "systems/zweihander/assets/icons/wizard-staff.svg",
+  "name": "Get Outta Here",
+  "type": "spell",
+  "_stats": {
+    "coreVersion": "12.331",
+    "systemId": null,
+    "systemVersion": null,
+    "createdTime": null,
+    "modifiedTime": null,
+    "lastModifiedBy": null,
+    "compendiumSource": null,
+    "duplicateSource": null
+  },
+  "system": {
+    "description": {
+      "@en": "A taloned hand wraps around the throat of an enemy, as they are drawn upwards into the air."
+    },
+    "notes": "",
+    "rules": {
+      "effect": {
+        "@en": "After successfully casting this spell, one foe who can see and hear you is immediately caught in a Chokehold (as the Perilous Stunt) and lifted 3 yards into the air. For the Duration of the spell, the foe remains in the Chokehold and rises another 3 yards on each of your Turns unless they can escape. Should your foe escape or the Duration expires, they drop to the ground and are subject to the effects of falling depending upon how high they were up in the air. This spell requires Concentration."
+      },
+      "criticalSuccess": {
+        "@en": "As above, but you do not have to maintain Concentration."
+      },
+      "criticalFailure": {
+        "@en": "A hideous cacophony of laughter and snickering rings out. You must Resist with a successful Coordination Test or else be left Prone for the Duration."
+      },
+      "reagents": {
+        "@en": "A mummified hand, wrapped in bandages"
+      }
+    },
+    "tradition": "Covenant",
+    "principle": "Petty",
+    "distance": "Any person you can see",
+    "duration": "3+[WB] minutes",
+    "castingTime": "1 min",
+    "castingCost": 0
+  },
+  "folder": null,
+  "sort": 0,
+  "ownership": {
+    "default": 0
+  },
+  "flags": {},
+  "_key": "!items!SdlQDU4kccW4vAMl"
+}

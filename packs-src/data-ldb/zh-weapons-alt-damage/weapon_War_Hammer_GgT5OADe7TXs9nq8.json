@@ -1,0 +1,50 @@
+{
+  "_id": "GgT5OADe7TXs9nq8",
+  "effects": [],
+  "img": "systems/zweihander/assets/icons/warhammer.svg",
+  "name": "War Hammer",
+  "type": "weapon",
+  "_stats": {
+    "coreVersion": "12.331",
+    "systemId": null,
+    "systemVersion": null,
+    "createdTime": null,
+    "modifiedTime": null,
+    "lastModifiedBy": null,
+    "compendiumSource": null,
+    "duplicateSource": null
+  },
+  "system": {
+    "description": {
+      "@en": "<p>The trademark weapon of your favorite Uncle Siggy. Big, laborious, terrifying: much like its wielders. This hammer was crafted for war, not driving nails.fa</p>"
+    },
+    "notes": "",
+    "price": {
+      "bp": "0",
+      "gc": "5",
+      "ss": "0"
+    },
+    "encumbrance": 3,
+    "carried": true,
+    "weaponType": "Crushing",
+    "equipped": false,
+    "associatedSkill": "Martial Melee",
+    "load": 0,
+    "handling": "Two-handed",
+    "qualities": {
+      "value": "Powerful, Slow",
+      "arrayOfValues": []
+    },
+    "distance": "Engaged",
+    "damage": {
+      "formula": "[CB] + 3 + (1+[#])d6x6"
+    }
+  },
+  "folder": null,
+  "sort": 0,
+  "ownership": {
+    "default": 0
+  },
+  "flags": {},
+  "_key": "!items!GgT5OADe7TXs9nq8"
+}

@@ -1,0 +1,50 @@
+{
+  "_id": "9YW1q5pxDptPB9qC",
+  "effects": [],
+  "img": "systems/zweihander/assets/icons/skipping-rope.svg",
+  "name": "Garotte",
+  "type": "weapon",
+  "_stats": {
+    "coreVersion": "12.331",
+    "systemId": "zweihander",
+    "systemVersion": "5.3.2",
+    "createdTime": null,
+    "modifiedTime": 1729890395828,
+    "lastModifiedBy": "rivg6xcMxdlVDM8y",
+    "compendiumSource": null,
+    "duplicateSource": null
+  },
+  "system": {
+    "description": {
+      "@en": "<p>Often made from cat muscle or steel wire attached between two spools, this is an assassin&rsquo;s weapon. The skilled can put people to sleep permanently, whereas the unskilled will butcher the victim&rsquo;s neck in the process, to the sound of much gurgling and screaming.</p>"
+    },
+    "notes": "",
+    "price": {
+      "bp": 0,
+      "gc": 0,
+      "ss": 2
+    },
+    "encumbrance": 1,
+    "carried": true,
+    "weaponType": "Brawling",
+    "equipped": false,
+    "associatedSkill": "Simple Melee",
+    "load": 0,
+    "handling": "Two-handed",
+    "qualities": {
+      "value": "Entangling, Fast, Ineffective",
+      "arrayOfValues": []
+    },
+    "distance": "Engaged",
+    "damage": {
+      "formula": "[CB] + (1+[#])d6x6"
+    }
+  },
+  "folder": null,
+  "sort": 0,
+  "ownership": {
+    "default": 0
+  },
+  "flags": {},
+  "_key": "!items!9YW1q5pxDptPB9qC"
+}

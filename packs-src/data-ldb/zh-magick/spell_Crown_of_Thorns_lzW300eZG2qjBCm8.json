@@ -1,0 +1,50 @@
+{
+  "_id": "lzW300eZG2qjBCm8",
+  "effects": [],
+  "img": "systems/zweihander/assets/icons/crown-of-thorns.svg",
+  "name": "Crown of Thorns",
+  "type": "spell",
+  "_stats": {
+    "coreVersion": "12.331",
+    "systemId": null,
+    "systemVersion": null,
+    "createdTime": null,
+    "modifiedTime": null,
+    "lastModifiedBy": null,
+    "compendiumSource": null,
+    "duplicateSource": null
+  },
+  "system": {
+    "description": {
+      "@en": "A foe is wracked with painful thorns, which grows from their insides-out."
+    },
+    "notes": "",
+    "rules": {
+      "effect": {
+        "@en": "After successfully casting this spell, your foe immediately suffers [[/roll 1D10]]+[WB] in Damage. In addition, they suffer a -10 Base Chance to all Skill Tests for the Duration of the spell. Your foe can successfully Resist with a Resolve Test when this spell is cast or at the beginning of their subsequent Turns."
+      },
+      "criticalSuccess": {
+        "@en": "As above, but the affected suffers a -20 Base Chance instead."
+      },
+      "criticalFailure": {
+        "@en": "Heartless worm, you shall lay prostrated before your enemies! For the spell’s Duration, you are held in-place, rendered Helpless and Prone on the ground by thorny vines."
+      },
+      "reagents": {
+        "@en": "A rose held in-hand (expended)"
+      }
+    },
+    "tradition": "Arcane (Elementalism)",
+    "principle": "Petty",
+    "distance": "Any one person you can see",
+    "duration": "[WB]+3 minutes",
+    "castingTime": "1 min",
+    "castingCost": 0
+  },
+  "folder": null,
+  "sort": 0,
+  "ownership": {
+    "default": 0
+  },
+  "flags": {},
+  "_key": "!items!lzW300eZG2qjBCm8"
+}

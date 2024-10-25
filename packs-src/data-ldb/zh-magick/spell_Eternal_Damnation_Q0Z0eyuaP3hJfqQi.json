@@ -1,0 +1,50 @@
+{
+  "_id": "Q0Z0eyuaP3hJfqQi",
+  "effects": [],
+  "img": "systems/zweihander/assets/icons/wizard-staff.svg",
+  "name": "Eternal Damnation",
+  "type": "spell",
+  "_stats": {
+    "coreVersion": "12.331",
+    "systemId": null,
+    "systemVersion": null,
+    "createdTime": null,
+    "modifiedTime": null,
+    "lastModifiedBy": null,
+    "compendiumSource": null,
+    "duplicateSource": null
+  },
+  "system": {
+    "description": {
+      "@en": "You claim a soul for the blood god, damning them to eternal torment at the hands of the Abyssal Prince of Pleasure."
+    },
+    "notes": "",
+    "rules": {
+      "effect": {
+        "@en": "Effect:After successfully casting this spell, the person you touch (providing they are already Slain!) is unable to be raised from the dead."
+      },
+      "criticalSuccess": {
+        "@en": "Critical Success:As above, but you can affect a living person who is suffering from any kind of Injury."
+      },
+      "criticalFailure": {
+        "@en": "Critical Failure:Refusal of the blood god takes a wearisome toll upon you. For three nights hence, your Peril Condition Track may only recover to Imperiled as if you were resting in an unsafe place (as noted in Chapter 9: Hazards & Healing)."
+      },
+      "reagents": {
+        "@en": "Reagents:The blood of your victim (expended)"
+      }
+    },
+    "tradition": "Divine (Crouching One)",
+    "principle": "Lesser",
+    "distance": "Distance:Any one person you can touch",
+    "duration": "Duration:Forever",
+    "castingTime": "1 min",
+    "castingCost": 0
+  },
+  "folder": null,
+  "sort": 0,
+  "ownership": {
+    "default": 0
+  },
+  "flags": {},
+  "_key": "!items!Q0Z0eyuaP3hJfqQi"
+}

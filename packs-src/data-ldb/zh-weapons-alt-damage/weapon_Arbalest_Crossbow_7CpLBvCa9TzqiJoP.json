@@ -1,0 +1,50 @@
+{
+  "_id": "7CpLBvCa9TzqiJoP",
+  "effects": [],
+  "img": "systems/zweihander/assets/icons/crossbow.svg",
+  "name": "Arbalest Crossbow",
+  "type": "weapon",
+  "_stats": {
+    "coreVersion": "12.331",
+    "systemId": null,
+    "systemVersion": null,
+    "createdTime": null,
+    "modifiedTime": null,
+    "lastModifiedBy": null,
+    "compendiumSource": null,
+    "duplicateSource": null
+  },
+  "system": {
+    "description": {
+      "@en": "Wound by hand and cranequin- driven, the bolt unleashed by this weapon can decapitate nearly anything at a pace of a few yards. Any further, and it produces merely a bloody ruin."
+    },
+    "notes": "",
+    "price": {
+      "bp": "0",
+      "gc": "5",
+      "ss": "0"
+    },
+    "encumbrance": 3,
+    "carried": true,
+    "weaponType": "Missile",
+    "equipped": false,
+    "associatedSkill": "Martial Ranged",
+    "load": 2,
+    "handling": "Two-handed",
+    "qualities": {
+      "value": "Fast, Punishing",
+      "arrayOfValues": []
+    },
+    "distance": "9 + [PB] yards",
+    "damage": {
+      "formula": "[CB] + 2 + (1+[#])d6x6"
+    }
+  },
+  "folder": null,
+  "sort": 0,
+  "ownership": {
+    "default": 0
+  },
+  "flags": {},
+  "_key": "!items!7CpLBvCa9TzqiJoP"
+}

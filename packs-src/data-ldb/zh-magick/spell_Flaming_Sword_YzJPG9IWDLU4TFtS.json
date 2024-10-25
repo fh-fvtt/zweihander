@@ -1,0 +1,50 @@
+{
+  "_id": "YzJPG9IWDLU4TFtS",
+  "effects": [],
+  "img": "systems/zweihander/assets/icons/flame-sword.svg",
+  "name": "Flaming Sword",
+  "type": "spell",
+  "_stats": {
+    "coreVersion": "12.331",
+    "systemId": null,
+    "systemVersion": null,
+    "createdTime": null,
+    "modifiedTime": null,
+    "lastModifiedBy": null,
+    "compendiumSource": null,
+    "duplicateSource": null
+  },
+  "system": {
+    "description": {
+      "@en": "You ignite the hilt of a sword and a burning flame emerges from the cross guard."
+    },
+    "notes": "",
+    "rules": {
+      "effect": {
+        "@en": "After successfully casting this spell, a fiery blade extends from the glowing hilt. The blade is a one-handed melee weapon with the Punishing Quality. The Flaming Sword provides a significant amount of heat and light, equivalent to a torch. Its flames are considered to be Moderately Dangerous. Instead of using your [CB], refer to your [WB] to determine Damage. Finally, whenever you strike or Parry with this sword, refer to your Incantation Skill instead of a Combat-based Skill. You can inflict Injuries with this Magick, but they are set On Fire instead."
+      },
+      "criticalSuccess": {
+        "@en": "As above, but victims cannot Dodge or Parry this attack."
+      },
+      "criticalFailure": {
+        "@en": "The sword takes upon its own personality, dancing into the air as if guided by an apparition. It glides effortlessly back and forth, teleporting when needed, and remanifesting out of thin air as it strikes. For the Duration of the spell, roll [[/roll 1D6]] Chaos Die at the start of your Turn. If the result is face ‘1’, it will lash out at you; if the result is face ‘2-5’, the sword does nothing; and if the result is face ‘6’, it will lash out at a random ally."
+      },
+      "reagents": {
+        "@en": "A hilt of any castle-forged sword, held aloft"
+      }
+    },
+    "tradition": "Arcane (Pyromancy)",
+    "principle": "Lesser",
+    "distance": "Yourself",
+    "duration": "[WB]+6 minutes",
+    "castingTime": "1 min",
+    "castingCost": 0
+  },
+  "folder": null,
+  "sort": 0,
+  "ownership": {
+    "default": 0
+  },
+  "flags": {},
+  "_key": "!items!YzJPG9IWDLU4TFtS"
+}

@@ -1,0 +1,50 @@
+{
+  "_id": "UDm28Vt5m4x0d2v5",
+  "effects": [],
+  "img": "systems/zweihander/assets/icons/stake-hammer.svg",
+  "name": "Final Rest",
+  "type": "spell",
+  "_stats": {
+    "coreVersion": "12.331",
+    "systemId": null,
+    "systemVersion": null,
+    "createdTime": null,
+    "modifiedTime": null,
+    "lastModifiedBy": null,
+    "compendiumSource": null,
+    "duplicateSource": null
+  },
+  "system": {
+    "description": {
+      "@en": "As you touch one of the undead, they instantly disintegrate into dust, forever destroyed"
+    },
+    "notes": "",
+    "rules": {
+      "effect": {
+        "@en": "After successfully casting this spell, the person you touch (providing they are classified as a Supernatural creature) must Resist with a successful Coordination Test or be Slain!. If they fail, they are turned entirely to dust, and cannot be raised from the dead."
+      },
+      "criticalSuccess": {
+        "@en": "As above, but your foe cannot Resist this Magick."
+      },
+      "criticalFailure": {
+        "@en": "The stake splinters in-hand and the very Supernatural creature you intended to drive it into, is reinvigorated with ‘unlife’. The Supernatural creature is instantly restored to Unhindered, Unharmed and loses all Injuries."
+      },
+      "reagents": {
+        "@en": "A stake carved from rare ironwood, driven into the unliving (expended)"
+      }
+    },
+    "tradition": "Divine (Custodian)",
+    "principle": "Greater",
+    "distance": "Any one person you can touch",
+    "duration": "Instantaneous",
+    "castingTime": "1 min",
+    "castingCost": 0
+  },
+  "folder": null,
+  "sort": 0,
+  "ownership": {
+    "default": 0
+  },
+  "flags": {},
+  "_key": "!items!UDm28Vt5m4x0d2v5"
+}

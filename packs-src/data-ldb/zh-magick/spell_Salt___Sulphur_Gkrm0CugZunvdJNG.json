@@ -1,0 +1,50 @@
+{
+  "_id": "Gkrm0CugZunvdJNG",
+  "effects": [],
+  "img": "systems/zweihander/assets/icons/wizard-staff.svg",
+  "name": "Salt & Sulphur",
+  "type": "spell",
+  "_stats": {
+    "coreVersion": "12.331",
+    "systemId": null,
+    "systemVersion": null,
+    "createdTime": null,
+    "modifiedTime": null,
+    "lastModifiedBy": null,
+    "compendiumSource": null,
+    "duplicateSource": null
+  },
+  "system": {
+    "description": {
+      "@en": "As the story of Sodom and Gomorrah, you are the Hellfurnace’s wrath. Radiant light falls over those who behold your fell countenance."
+    },
+    "notes": "",
+    "rules": {
+      "effect": {
+        "@en": "After successfully casting this spell, foes who look at you or make you the target of an Attack Action or Perilous Stunt must Resist with a successful Scrutinize Test or be turned to a pillar of salt, instantly Slain!. Those who Resist suffer [[/roll 3D10]]+[WB] Damage from fire. You can inflict Injuries with this Magick, but foes are always On Fire instead."
+      },
+      "criticalSuccess": {
+        "@en": "As above, but those who Resist are also Defenseless."
+      },
+      "criticalFailure": {
+        "@en": "You have hell to pay to the Hellfurnace. You must succeed at a Resolve Test or else suffer from a random, but permanent Malignancy."
+      },
+      "reagents": {
+        "@en": "The desiccated remains of a body left to dehydrate, held in a sack"
+      }
+    },
+    "tradition": "Covenant",
+    "principle": "Greater",
+    "distance": "Yourself",
+    "duration": "Instantaneous",
+    "castingTime": "1 min",
+    "castingCost": 0
+  },
+  "folder": null,
+  "sort": 0,
+  "ownership": {
+    "default": 0
+  },
+  "flags": {},
+  "_key": "!items!Gkrm0CugZunvdJNG"
+}

@@ -1,0 +1,50 @@
+{
+  "_id": "LsulAkmOM9A3cZCb",
+  "effects": [],
+  "img": "systems/zweihander/assets/icons/sunbeams.svg",
+  "name": "Praise the Light",
+  "type": "spell",
+  "_stats": {
+    "coreVersion": "12.331",
+    "systemId": null,
+    "systemVersion": null,
+    "createdTime": null,
+    "modifiedTime": null,
+    "lastModifiedBy": null,
+    "compendiumSource": null,
+    "duplicateSource": null
+  },
+  "system": {
+    "description": {
+      "@en": "You chant words of praise to the Steward, rewarding His chosen people."
+    },
+    "notes": "",
+    "rules": {
+      "effect": {
+        "@en": "After successfully casting this spell, a number of allies equal to your [FB] who can see and hear you (providing their Order Ranks exceeds their Chaos Ranks) may increase their Initiative by their Order Rank. This lasts until combat ends."
+      },
+      "criticalSuccess": {
+        "@en": "As above, but they are also immune to Intimidate, Stress and Fear."
+      },
+      "criticalFailure": {
+        "@en": "Once weapons are drawn and your chanting ends, you are not chosen to be the victors. Nay, but the losers! Everyone you had intended to affect with this Magick immediately reduces their Initiative by their Chaos Rank. This lasts until combat ends."
+      },
+      "reagents": {
+        "@en": "Stand before your enemies, as your allies draw their weapons"
+      }
+    },
+    "tradition": "Divine (Steward)",
+    "principle": "Lesser",
+    "distance": "Any persons you can see",
+    "duration": "Special",
+    "castingTime": "1 min",
+    "castingCost": 0
+  },
+  "folder": null,
+  "sort": 0,
+  "ownership": {
+    "default": 0
+  },
+  "flags": {},
+  "_key": "!items!LsulAkmOM9A3cZCb"
+}

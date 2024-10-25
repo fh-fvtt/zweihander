@@ -1,0 +1,50 @@
+{
+  "_id": "VS7AC0CJdEahXNJV",
+  "effects": [],
+  "img": "systems/zweihander/assets/icons/drop-weapon.svg",
+  "name": "Cack-handed Grasp",
+  "type": "spell",
+  "_stats": {
+    "coreVersion": "12.331",
+    "systemId": null,
+    "systemVersion": null,
+    "createdTime": null,
+    "modifiedTime": null,
+    "lastModifiedBy": null,
+    "compendiumSource": null,
+    "duplicateSource": null
+  },
+  "system": {
+    "description": {
+      "@en": "Take one dab of fat, rub between the fingers and a foe will immediately drop whatever is in-hand."
+    },
+    "notes": "",
+    "rules": {
+      "effect": {
+        "@en": "After successfully casting this spell, one foe instantly drops whatever is in their hands onto the ground just outside of easy reach."
+      },
+      "criticalSuccess": {
+        "@en": "As above and your foe is knocked Prone."
+      },
+      "criticalFailure": {
+        "@en": "Butter weeps from your hands. You are rendered maladroit for 24 hours. You cannot hold anything in your hands without it slipping out of grasp."
+      },
+      "reagents": {
+        "@en": "A dab of animal fat, rubbed between two fingers (expended)"
+      }
+    },
+    "tradition": "Generalist",
+    "principle": "Generalist",
+    "distance": "Any one person you can see",
+    "duration": "Instantaneous",
+    "castingTime": "1 min",
+    "castingCost": 0
+  },
+  "folder": null,
+  "sort": 0,
+  "ownership": {
+    "default": 0
+  },
+  "flags": {},
+  "_key": "!items!VS7AC0CJdEahXNJV"
+}

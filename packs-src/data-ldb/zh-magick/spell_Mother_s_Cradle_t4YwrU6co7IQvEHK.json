@@ -1,0 +1,50 @@
+{
+  "_id": "t4YwrU6co7IQvEHK",
+  "effects": [],
+  "img": "systems/zweihander/assets/icons/pouring-pot.svg",
+  "name": "Mother's Cradle",
+  "type": "spell",
+  "_stats": {
+    "coreVersion": "12.331",
+    "systemId": null,
+    "systemVersion": null,
+    "createdTime": null,
+    "modifiedTime": null,
+    "lastModifiedBy": null,
+    "compendiumSource": null,
+    "duplicateSource": null
+  },
+  "system": {
+    "description": {
+      "@en": "The bounty of the earth-mother’s creatures reinvigorates her other children."
+    },
+    "notes": "",
+    "rules": {
+      "effect": {
+        "@en": "After successfully casting this spell, select a number of allies equal to your [WB]. Those so affected immediately restore their Peril Condition Track as if they had rested in safety."
+      },
+      "criticalSuccess": {
+        "@en": "As above, but the allies may also move two steps up the Damage Condition Track positively."
+      },
+      "criticalFailure": {
+        "@en": "The moment that everyone has drunk of the milk, it turns sour, tasting vile. Their tummies begin to rumble and ache. Those who partook of the milk suffer [[/roll 3D10+3]] physical Peril and contract Bloody Flux. Note that there is no indication that the milk has soured until after everyone has swallowed (so no spitting it out)."
+      },
+      "reagents": {
+        "@en": "The breast milk of a woodland nymph, shared between the beneficiaries (expended)"
+      }
+    },
+    "tradition": "Divine (Demiurge)",
+    "principle": "Greater",
+    "distance": "Any persons you can touch",
+    "duration": "Instantaneous",
+    "castingTime": "1 min",
+    "castingCost": 0
+  },
+  "folder": null,
+  "sort": 0,
+  "ownership": {
+    "default": 0
+  },
+  "flags": {},
+  "_key": "!items!t4YwrU6co7IQvEHK"
+}

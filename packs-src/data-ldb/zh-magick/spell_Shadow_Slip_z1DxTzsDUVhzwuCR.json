@@ -1,0 +1,50 @@
+{
+  "_id": "z1DxTzsDUVhzwuCR",
+  "effects": [],
+  "img": "systems/zweihander/assets/icons/wizard-staff.svg",
+  "name": "Shadow Slip",
+  "type": "spell",
+  "_stats": {
+    "coreVersion": "12.331",
+    "systemId": null,
+    "systemVersion": null,
+    "createdTime": null,
+    "modifiedTime": null,
+    "lastModifiedBy": null,
+    "compendiumSource": null,
+    "duplicateSource": null
+  },
+  "system": {
+    "description": {
+      "@en": "You slip into the shadows, nigh invisible save to the keenest of eye."
+    },
+    "notes": "",
+    "rules": {
+      "effect": {
+        "@en": "After successfully casting this spell, you gain a +10 Base Chance to Stealth Tests. In addition, you do not require concealment or cover in order to sneak around, able to hide in plain sight. Regardless, the actual casting of Shadow Slip is never apparent to anyone, perfectly disguised."
+      },
+      "criticalSuccess": {
+        "@en": "As above, but triple the Duration."
+      },
+      "criticalFailure": {
+        "@en": "As you step into the shadows, you are immediately struck by a sense of vertigo. Spiraling through the darkness, you seem to visit a dream-like reality where everyone around you is an apparition, a shade of their former selves. Eventually, you stumble out of the shadows after the Duration of the spell ends. You suffer 3 Corruption upon your return."
+      },
+      "reagents": {
+        "@en": "One piece of charcoal, crushed beneath your boot (expended)"
+      }
+    },
+    "tradition": "Arcane (Shadowmancy)",
+    "principle": "Petty",
+    "distance": "Yourself",
+    "duration": "[WB]+3 minutes",
+    "castingTime": "1 min",
+    "castingCost": 0
+  },
+  "folder": null,
+  "sort": 0,
+  "ownership": {
+    "default": 0
+  },
+  "flags": {},
+  "_key": "!items!z1DxTzsDUVhzwuCR"
+}

@@ -1,0 +1,50 @@
+{
+  "_id": "cgQHWnKU0MsMCkbC",
+  "effects": [],
+  "img": "systems/zweihander/assets/icons/night-sleep.svg",
+  "name": "Dreamweaver",
+  "type": "spell",
+  "_stats": {
+    "coreVersion": "12.331",
+    "systemId": null,
+    "systemVersion": null,
+    "createdTime": null,
+    "modifiedTime": null,
+    "lastModifiedBy": null,
+    "compendiumSource": null,
+    "duplicateSource": null
+  },
+  "system": {
+    "description": {
+      "@en": "You personally appear in the dreams of another, delivering a haunting message."
+    },
+    "notes": "",
+    "rules": {
+      "effect": {
+        "@en": "After successfully casting this spell, you send a message to one person you can envision. They will receive it the next time they go to sleep. The message can be no longer than one minute. The GM will likely time you with a watch."
+      },
+      "criticalSuccess": {
+        "@en": "As above, but the message can be up to three minutes long."
+      },
+      "criticalFailure": {
+        "@en": "As you weave the dream, the message becomes muddled. The person you envisioned as the recipient will wake up confused and bewildered and immediately suffer [[/roll 1D10+1]] mental Peril."
+      },
+      "reagents": {
+        "@en": "A bit of wool, pulled between your forefingers and thumbs (expended)"
+      }
+    },
+    "tradition": "Divine (Custodian)",
+    "principle": "Petty",
+    "distance": "Any one person you have met",
+    "duration": "Instantaneous",
+    "castingTime": "1 min",
+    "castingCost": 0
+  },
+  "folder": null,
+  "sort": 0,
+  "ownership": {
+    "default": 0
+  },
+  "flags": {},
+  "_key": "!items!cgQHWnKU0MsMCkbC"
+}

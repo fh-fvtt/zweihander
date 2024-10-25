@@ -1,0 +1,51 @@
+{
+  "_id": "rRUMIFrwTP7df3cU",
+  "effects": [],
+  "img": "systems/zweihander/assets/icons/sickle.svg",
+  "name": "Agricultural Tool",
+  "type": "weapon",
+  "_stats": {
+    "coreVersion": "12.331",
+    "systemId": null,
+    "systemVersion": null,
+    "createdTime": null,
+    "modifiedTime": null,
+    "lastModifiedBy": null,
+    "compendiumSource": null,
+    "duplicateSource": null
+  },
+  "system": {
+    "description": {
+      "@en": "<p>Ranging from useful tools such as pitchforks, scythes and sledgehammers, these ubiquitous weapons are used in farming and war.</p>"
+    },
+    "notes": "",
+    "price": {
+      "bp": "0",
+      "gc": "0",
+      "ss": "3"
+    },
+    "encumbrance": 2,
+    "carried": true,
+    "weaponType": "Melee",
+    "equipped": false,
+    "associatedSkill": "Simple Melee",
+    "load": 0,
+    "handling": "Two-handed",
+    "qualities": {
+      "value": "Sweeping, Slow, Weak",
+      "arrayOfValues": []
+    },
+    "distance": "Engaged or 1 yard",
+    "damage": {
+      "formula": "[CB] + (1+[#])d6x6",
+      "associatedPrimaryAttribute": "Agility"
+    }
+  },
+  "folder": null,
+  "sort": 0,
+  "ownership": {
+    "default": 0
+  },
+  "flags": {},
+  "_key": "!items!rRUMIFrwTP7df3cU"
+}

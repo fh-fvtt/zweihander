@@ -1,0 +1,50 @@
+{
+  "_id": "5hyJrbE5OzwhcGTw",
+  "effects": [],
+  "img": "systems/zweihander/assets/icons/arrow-flights.svg",
+  "name": "Dancing Arrows",
+  "type": "spell",
+  "_stats": {
+    "coreVersion": "12.331",
+    "systemId": null,
+    "systemVersion": null,
+    "createdTime": null,
+    "modifiedTime": null,
+    "lastModifiedBy": null,
+    "compendiumSource": null,
+    "duplicateSource": null
+  },
+  "system": {
+    "description": {
+      "@en": "Shimmering arrows lance outward towards the nearest foe."
+    },
+    "notes": "",
+    "rules": {
+      "effect": {
+        "@en": "After successfully casting this spell, select a number of foes equal to your [WB]. Providing you can see your foes, each foe suffers [[/roll 3D10]]+[WB] in Damage. In addition, if your foes fail to Resist with a Coordination Test, they drop whatever is in their hands just outside of easy reach."
+      },
+      "criticalSuccess": {
+        "@en": "As above, but your foes cannot Resist this Magick."
+      },
+      "criticalFailure": {
+        "@en": "The dancing arrows shoot off into the air, all but one misses and that one returns to strike you. You suffer [[/roll 3D10]]+[WB] in Damage and drop whatever is in your hands just outside of easy reach."
+      },
+      "reagents": {
+        "@en": "A number of silver arrowheads equal to your [WB] (expended)"
+      }
+    },
+    "tradition": "Arcane (Transmutation)",
+    "principle": "Greater",
+    "distance": "Any persons you can see",
+    "duration": "Instantaneous",
+    "castingTime": "1 min",
+    "castingCost": 0
+  },
+  "folder": null,
+  "sort": 0,
+  "ownership": {
+    "default": 0
+  },
+  "flags": {},
+  "_key": "!items!5hyJrbE5OzwhcGTw"
+}

@@ -1,0 +1,50 @@
+{
+  "_id": "6VlVridXs7xqIBk4",
+  "effects": [],
+  "img": "systems/zweihander/assets/icons/concentric-crescents.svg",
+  "name": "Forget",
+  "type": "spell",
+  "_stats": {
+    "coreVersion": "12.331",
+    "systemId": null,
+    "systemVersion": null,
+    "createdTime": null,
+    "modifiedTime": null,
+    "lastModifiedBy": null,
+    "compendiumSource": null,
+    "duplicateSource": null
+  },
+  "system": {
+    "description": {
+      "@en": "<p>Nothing lasts forever . . .</p>"
+    },
+    "notes": "",
+    "rules": {
+      "effect": {
+        "@en": "<p>After successfully casting (and one foe cannot or fails to Resist using Scrutinize), they temporarily forget 6+[WB] days of memories, including the moment when you cast the Spell.</p>"
+      },
+      "criticalSuccess": {
+        "@en": "They forget 6+[WB] days of memories permanently."
+      },
+      "criticalFailure": {
+        "@en": "Your mind is suddenly awash in confusion. How did you get here? You lose 6+[WB] days of memories permanently."
+      },
+      "reagents": {
+        "@en": "A ring of obsidian, worn on the hand you place upon your victim"
+      }
+    },
+    "tradition": "Black & White",
+    "principle": "Intermediate Tier",
+    "distance": "By Touch",
+    "duration": "Instantaneous",
+    "castingTime": "1 Minute",
+    "castingCost": 2
+  },
+  "folder": null,
+  "sort": 0,
+  "ownership": {
+    "default": 0
+  },
+  "flags": {},
+  "_key": "!items!6VlVridXs7xqIBk4"
+}

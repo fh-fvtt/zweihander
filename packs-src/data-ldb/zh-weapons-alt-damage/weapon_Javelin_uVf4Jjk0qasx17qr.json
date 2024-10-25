@@ -1,0 +1,50 @@
+{
+  "_id": "uVf4Jjk0qasx17qr",
+  "effects": [],
+  "img": "systems/zweihander/assets/icons/spear-hook.svg",
+  "name": "Javelin",
+  "type": "weapon",
+  "_stats": {
+    "coreVersion": "12.331",
+    "systemId": null,
+    "systemVersion": null,
+    "createdTime": null,
+    "modifiedTime": null,
+    "lastModifiedBy": null,
+    "compendiumSource": null,
+    "duplicateSource": null
+  },
+  "system": {
+    "description": {
+      "@en": "Used both in sport and murder, these short spears are carried by the half dozen. The range it can be thrown is a point of pride on both fields."
+    },
+    "notes": "",
+    "price": {
+      "bp": "0",
+      "gc": "0",
+      "ss": "6"
+    },
+    "encumbrance": 1,
+    "carried": true,
+    "weaponType": "Missile",
+    "equipped": false,
+    "associatedSkill": "Simple Ranged",
+    "load": 1,
+    "handling": "One-handed",
+    "qualities": {
+      "value": "Throwing, Weak",
+      "arrayOfValues": []
+    },
+    "distance": "3 + [PB] yards",
+    "damage": {
+      "formula": "[CB] + 0 + (1+[#])d6x6"
+    }
+  },
+  "folder": null,
+  "sort": 0,
+  "ownership": {
+    "default": 0
+  },
+  "flags": {},
+  "_key": "!items!uVf4Jjk0qasx17qr"
+}

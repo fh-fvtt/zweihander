@@ -1,0 +1,50 @@
+{
+  "_id": "UHclsfUiIClxsDDU",
+  "effects": [],
+  "img": "systems/zweihander/assets/icons/wizard-staff.svg",
+  "name": "Malign Subjugation",
+  "type": "spell",
+  "_stats": {
+    "coreVersion": "12.331",
+    "systemId": null,
+    "systemVersion": null,
+    "createdTime": null,
+    "modifiedTime": null,
+    "lastModifiedBy": null,
+    "compendiumSource": null,
+    "duplicateSource": null
+  },
+  "system": {
+    "description": {
+      "@en": "A dark force infiltrates the minds of your enemies, causing confusion."
+    },
+    "notes": "",
+    "rules": {
+      "effect": {
+        "@en": "After successfully casting this spell, select a number of foes who can see and hear you equal to your [WB]. They must Resist with a successful Coordination Test or be made Maligned. While Maligned, they must Resist with a successful Scrutinize Test at the beginning of their Turn or else lose their Turn."
+      },
+      "criticalSuccess": {
+        "@en": "As above, but triple the Duration."
+      },
+      "criticalFailure": {
+        "@en": "You are forced down to your knees and must pray to your dark Daemon in penitence. You are left Helpless for two minutes."
+      },
+      "reagents": {
+        "@en": "A pinch of powdered gemstone, inhaled (expended)"
+      }
+    },
+    "tradition": "Covenant",
+    "principle": "Lesser",
+    "distance": "Any persons you can see",
+    "duration": "6+[WB] minutes",
+    "castingTime": "1 min",
+    "castingCost": 0
+  },
+  "folder": null,
+  "sort": 0,
+  "ownership": {
+    "default": 0
+  },
+  "flags": {},
+  "_key": "!items!UHclsfUiIClxsDDU"
+}

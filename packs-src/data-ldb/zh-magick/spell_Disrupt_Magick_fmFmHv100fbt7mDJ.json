@@ -1,0 +1,50 @@
+{
+  "_id": "fmFmHv100fbt7mDJ",
+  "effects": [],
+  "img": "systems/zweihander/assets/icons/wizard-staff.svg",
+  "name": "Disrupt Magick",
+  "type": "spell",
+  "_stats": {
+    "coreVersion": "12.331",
+    "systemId": null,
+    "systemVersion": null,
+    "createdTime": null,
+    "modifiedTime": null,
+    "lastModifiedBy": null,
+    "compendiumSource": null,
+    "duplicateSource": null
+  },
+  "system": {
+    "description": {
+      "@en": "Intoning the words of your Daemon, you draw chaos within yourself, retarding Magickal power within sight."
+    },
+    "notes": "",
+    "rules": {
+      "effect": {
+        "@en": "After successfully casting this spell, an object you see has all its Magick temporarily nullified. If cast upon a person, they are temporarily unable to cast Magick (and all Magicks they have cast within your sight are subject to Dispel Magick). Magicks are temporarily nullified for your [WB] in minutes. In both cases, you must immediately Resist with a successful Toughness Test or gain the Mutation called Taint of Chaos."
+      },
+      "criticalSuccess": {
+        "@en": "As above, but you do not have to make the Toughness Test."
+      },
+      "criticalFailure": {
+        "@en": "The intonations work, but the fickle Prince of Change has chosen to punish you instead! Your ability to wield Magick is instead nullified for a number of minutes equal to your [WB] and you immediately gain the Mutation called Taint of Chaos."
+      },
+      "reagents": {
+        "@en": "One pint of blood from a Man-eater, poured onto the ground (expended)"
+      }
+    },
+    "tradition": "Covenant",
+    "principle": "Lesser",
+    "distance": "Any one object or person you can see",
+    "duration": "Special",
+    "castingTime": "1 min",
+    "castingCost": 0
+  },
+  "folder": null,
+  "sort": 0,
+  "ownership": {
+    "default": 0
+  },
+  "flags": {},
+  "_key": "!items!fmFmHv100fbt7mDJ"
+}

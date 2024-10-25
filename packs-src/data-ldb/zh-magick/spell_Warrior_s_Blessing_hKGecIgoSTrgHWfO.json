@@ -1,0 +1,50 @@
+{
+  "_id": "hKGecIgoSTrgHWfO",
+  "effects": [],
+  "img": "systems/zweihander/assets/icons/wizard-staff.svg",
+  "name": "Warrior's Blessing",
+  "type": "spell",
+  "_stats": {
+    "coreVersion": "12.331",
+    "systemId": null,
+    "systemVersion": null,
+    "createdTime": null,
+    "modifiedTime": null,
+    "lastModifiedBy": null,
+    "compendiumSource": null,
+    "duplicateSource": null
+  },
+  "system": {
+    "description": {
+      "@en": "You bless a person with keen insight, evening the odds in their favor."
+    },
+    "notes": "",
+    "rules": {
+      "effect": {
+        "@en": "After successfully casting this spell, the person you touch is immediately moved to the top of the Initiative Ladder and can take their Turn immediately. A Character can only gain the benefit of this Magick once per day."
+      },
+      "criticalSuccess": {
+        "@en": "As above, but you do not expend the reagent."
+      },
+      "criticalFailure": {
+        "@en": "Your Magick utterly fails, as the person you would have touched immediately moves to the bottom of the Initiative Ladder and loses their next Turn."
+      },
+      "reagents": {
+        "@en": "A pebble with an eagle’s eye etched onto it (expended)"
+      }
+    },
+    "tradition": "Divine (Steward)",
+    "principle": "Petty",
+    "distance": "Any one person you can touch",
+    "duration": "Instantaneous",
+    "castingTime": "1 min",
+    "castingCost": 0
+  },
+  "folder": null,
+  "sort": 0,
+  "ownership": {
+    "default": 0
+  },
+  "flags": {},
+  "_key": "!items!hKGecIgoSTrgHWfO"
+}

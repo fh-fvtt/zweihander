@@ -1,0 +1,50 @@
+{
+  "_id": "FTV4Cdw8vDh9B7Ig",
+  "effects": [],
+  "img": "systems/zweihander/assets/icons/wizard-staff.svg",
+  "name": "Bewitched",
+  "type": "spell",
+  "_stats": {
+    "coreVersion": "12.331",
+    "systemId": null,
+    "systemVersion": null,
+    "createdTime": null,
+    "modifiedTime": null,
+    "lastModifiedBy": null,
+    "compendiumSource": null,
+    "duplicateSource": null
+  },
+  "system": {
+    "description": {
+      "@en": "With a simple rhyme and an object in-hand, you can call forth a terrible hex to befall the object’s keeper."
+    },
+    "notes": "",
+    "rules": {
+      "effect": {
+        "@en": "After successfully casting this spell, the object you touch is bewitched. Whenever another carries this object, they suffer an irritating curse – such as flatulence, hiccups, pimples, warts or an otherwise innocuous but annoying Effect. As a consequence, the cursed suffers a -10 Base Chance to all Fellowship-based Skill Tests while the object remains in their possession. A foe cannot be made subject to the Effects of more than one curse at a time."
+      },
+      "criticalSuccess": {
+        "@en": "As above, but the cursed instead suffers a -20 Base Chance to all Fellowship-based Skill Tests."
+      },
+      "criticalFailure": {
+        "@en": "Your Magick backfires in the worst way imaginable! An object on your person is cursed instead, as you suffer a -20 Base Chance to all Fellowship-based Skill Tests so as long as you possess the object. Unfortunately, you do not know which object has been bewitched without use of further Magick!"
+      },
+      "reagents": {
+        "@en": "An inanimate object you wish to curse, which must be small enough to carry in the hand"
+      }
+    },
+    "tradition": "Generalist",
+    "principle": "Generalist",
+    "distance": "Any one object you can touch",
+    "duration": "Forever",
+    "castingTime": "1 min",
+    "castingCost": 0
+  },
+  "folder": null,
+  "sort": 0,
+  "ownership": {
+    "default": 0
+  },
+  "flags": {},
+  "_key": "!items!FTV4Cdw8vDh9B7Ig"
+}

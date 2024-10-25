@@ -1,0 +1,51 @@
+{
+  "_id": "kdqzD9fRflNClhtv",
+  "effects": [],
+  "img": "systems/zweihander/assets/icons/magic-trident.svg",
+  "name": "Trident Dagger",
+  "type": "weapon",
+  "_stats": {
+    "coreVersion": "12.331",
+    "systemId": null,
+    "systemVersion": null,
+    "createdTime": null,
+    "modifiedTime": null,
+    "lastModifiedBy": null,
+    "compendiumSource": null,
+    "duplicateSource": null
+  },
+  "system": {
+    "description": {
+      "@en": "<p>These spring-loaded knives look like ordinary heavy blades, but with a click of a button, the blades split into three. They are used by common street duelists, &lsquo;sprung&rsquo; at a moment&rsquo;s notice when they need to catch an incoming attack.</p>"
+    },
+    "notes": "",
+    "price": {
+      "bp": "0",
+      "gc": "1",
+      "ss": "0"
+    },
+    "encumbrance": 1,
+    "carried": true,
+    "weaponType": "Bladed",
+    "equipped": false,
+    "associatedSkill": "Simple Melee",
+    "load": 0,
+    "handling": "One-handed",
+    "qualities": {
+      "value": "Binding, Light, Weak",
+      "arrayOfValues": []
+    },
+    "distance": "Engaged",
+    "damage": {
+      "formula": "[CB] + (1+[#])d6x6",
+      "associatedPrimaryAttribute": "Combat"
+    }
+  },
+  "folder": null,
+  "sort": 0,
+  "ownership": {
+    "default": 0
+  },
+  "flags": {},
+  "_key": "!items!kdqzD9fRflNClhtv"
+}

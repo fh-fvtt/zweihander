@@ -1,0 +1,50 @@
+{
+  "_id": "Rg663iV5PMIugdt5",
+  "effects": [],
+  "img": "systems/zweihander/assets/icons/spell-book.svg",
+  "name": "Liquid Courage",
+  "type": "spell",
+  "_stats": {
+    "coreVersion": "12.331",
+    "systemId": null,
+    "systemVersion": null,
+    "createdTime": null,
+    "modifiedTime": null,
+    "lastModifiedBy": null,
+    "compendiumSource": null,
+    "duplicateSource": null
+  },
+  "system": {
+    "description": {
+      "@en": "<p>Jolly mortals, fill your glasses, let us drink and be merry . . .</p>"
+    },
+    "notes": "",
+    "rules": {
+      "effect": {
+        "@en": "<p>After successfully casting, anyone who drinks the alcohol gains +10% Base Chance to Skill Tests to withstand Stress, Fear and Terror.</p>"
+      },
+      "criticalSuccess": {
+        "@en": "You can also affect an entire barrel of alcohol."
+      },
+      "criticalFailure": {
+        "@en": "Everyone who drinks is immediately Intoxicated for six hours."
+      },
+      "reagents": {
+        "@en": "A pitcher of alcohol that you touch before singing a song"
+      }
+    },
+    "tradition": "Common",
+    "principle": "Basic Tier",
+    "distance": "By Touch",
+    "duration": "3+[WB] hours",
+    "castingTime": "Six minutes",
+    "castingCost": null
+  },
+  "folder": null,
+  "sort": 0,
+  "ownership": {
+    "default": 0
+  },
+  "flags": {},
+  "_key": "!items!Rg663iV5PMIugdt5"
+}

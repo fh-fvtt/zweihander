@@ -1,0 +1,50 @@
+{
+  "_id": "wdHDKjlyITnr4QCF",
+  "effects": [],
+  "img": "systems/zweihander/assets/icons/wizard-staff.svg",
+  "name": "Fey Requiem",
+  "type": "spell",
+  "_stats": {
+    "coreVersion": "12.331",
+    "systemId": null,
+    "systemVersion": null,
+    "createdTime": null,
+    "modifiedTime": null,
+    "lastModifiedBy": null,
+    "compendiumSource": null,
+    "duplicateSource": null
+  },
+  "system": {
+    "description": {
+      "@en": "All those who listen to your lament are filled with a white light from deep within the Lodge."
+    },
+    "notes": "",
+    "rules": {
+      "effect": {
+        "@en": "After successfully casting this spell, select a number of allies equal to your [WB]. Whenever they deal Damage with melee and ranged weapons, they move one step up the Damage Condition Track positively."
+      },
+      "criticalSuccess": {
+        "@en": "As above, but the allies can also add the Vicious Quality to their weapons for the Duration of the spell."
+      },
+      "criticalFailure": {
+        "@en": "You have awoken something strange and primal within all your allies. They look at one another, confused and angry, knowing that only one may survive to rise as the alpha. Whenever your ally’s Turn begins, they must Resist the effects of your spell with a successful Resolve Test or be forced to attack one of their allies on their Turn. Your allies can a Resist attempt at the beginning of each of their Turns for the Duration."
+      },
+      "reagents": {
+        "@en": "A mask made from ironwood, worn on your face"
+      }
+    },
+    "tradition": "Covenant",
+    "principle": "Greater",
+    "distance": "Any persons you can see",
+    "duration": "9+[WB] minutes",
+    "castingTime": "1 min",
+    "castingCost": 0
+  },
+  "folder": null,
+  "sort": 0,
+  "ownership": {
+    "default": 0
+  },
+  "flags": {},
+  "_key": "!items!wdHDKjlyITnr4QCF"
+}

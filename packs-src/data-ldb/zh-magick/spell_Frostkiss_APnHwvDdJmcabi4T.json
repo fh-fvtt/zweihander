@@ -1,0 +1,50 @@
+{
+  "_id": "APnHwvDdJmcabi4T",
+  "effects": [],
+  "img": "systems/zweihander/assets/icons/wizard-staff.svg",
+  "name": "Frostkiss",
+  "type": "spell",
+  "_stats": {
+    "coreVersion": "12.331",
+    "systemId": null,
+    "systemVersion": null,
+    "createdTime": null,
+    "modifiedTime": null,
+    "lastModifiedBy": null,
+    "compendiumSource": null,
+    "duplicateSource": null
+  },
+  "system": {
+    "description": {
+      "@en": "Your exhalation of breath twinkles with frost, as your foes grow numb and others turn into statues of ice."
+    },
+    "notes": "",
+    "rules": {
+      "effect": {
+        "@en": "After successfully casting this spell, any foes caught in its Cone Template suffer [[/roll 2D10]]+[WB] physical Peril. If they move one step down the Peril Condition Track negatively, they are Defenseless for one minute. If they move two steps down the Peril Condition Track negatively, they are Defenseless and also Stunned for one minute. If they move three or more steps down the Peril Condition Track negatively, they are Defenseless, Stunned and unable to use Movement Actions for one minute. Should they be Incapacitated! from Frostkiss, they also suffer from Frostbite. Your foes can Resist with a successful Coordination Test."
+      },
+      "criticalSuccess": {
+        "@en": "As above, but foes cannot Resist this Magick."
+      },
+      "criticalFailure": {
+        "@en": "Your throat tightens from the cold air, as your lungs begin to seize. You immediately begin to suffer from Suffocation."
+      },
+      "reagents": {
+        "@en": "A handful of snow, consumed (expended)"
+      }
+    },
+    "tradition": "Covenant",
+    "principle": "Lesser",
+    "distance": "Yourself",
+    "duration": "Instantaneous",
+    "castingTime": "1 min",
+    "castingCost": 0
+  },
+  "folder": null,
+  "sort": 0,
+  "ownership": {
+    "default": 0
+  },
+  "flags": {},
+  "_key": "!items!APnHwvDdJmcabi4T"
+}

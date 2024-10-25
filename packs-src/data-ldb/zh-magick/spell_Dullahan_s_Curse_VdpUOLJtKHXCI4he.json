@@ -1,0 +1,50 @@
+{
+  "_id": "VdpUOLJtKHXCI4he",
+  "effects": [],
+  "img": "systems/zweihander/assets/icons/wizard-staff.svg",
+  "name": "Dullahan’s Curse",
+  "type": "spell",
+  "_stats": {
+    "coreVersion": "12.331",
+    "systemId": null,
+    "systemVersion": null,
+    "createdTime": null,
+    "modifiedTime": null,
+    "lastModifiedBy": null,
+    "compendiumSource": null,
+    "duplicateSource": null
+  },
+  "system": {
+    "description": {
+      "@en": "You invoke a terrible curse upon a single victim, a remembrance of the Black Lodge’s vexing and inscrutable ways."
+    },
+    "notes": "",
+    "rules": {
+      "effect": {
+        "@en": "After successfully casting this spell, the foe you touch must Resist with a successful Coordination Test or be made Doomed. While Doomed, whenever they are Seriously or Grievously Wounded, they are forced to make an Opportunity Attack against one of their allies selected randomly by the GM."
+      },
+      "criticalSuccess": {
+        "@en": "As above, but they also make an Opportunity Attack when they are Slain! just before they die."
+      },
+      "criticalFailure": {
+        "@en": "The ring crumbles to dust, completely destroyed. In return, you suffer [[/roll 1D10+1]] mental Peril."
+      },
+      "reagents": {
+        "@en": "A gold ring with an owl symbol on it, placed upon the hand of a victim"
+      }
+    },
+    "tradition": "Covenant",
+    "principle": "Petty",
+    "distance": "Any one person you can touch",
+    "duration": "3+[WB] minutes",
+    "castingTime": "1 min",
+    "castingCost": 0
+  },
+  "folder": null,
+  "sort": 0,
+  "ownership": {
+    "default": 0
+  },
+  "flags": {},
+  "_key": "!items!VdpUOLJtKHXCI4he"
+}

@@ -1,0 +1,50 @@
+{
+  "_id": "ukbyD1oePYiey21Q",
+  "effects": [],
+  "img": "systems/zweihander/assets/icons/wizard-staff.svg",
+  "name": "The Other",
+  "type": "spell",
+  "_stats": {
+    "coreVersion": "12.331",
+    "systemId": null,
+    "systemVersion": null,
+    "createdTime": null,
+    "modifiedTime": null,
+    "lastModifiedBy": null,
+    "compendiumSource": null,
+    "duplicateSource": null
+  },
+  "system": {
+    "description": {
+      "@en": "Your body explodes into dizzying angles of divine proto-math. This god-form of twisted viscera and non-Euclidean shapes are inexplicably geometric… but most of all, is terrifying."
+    },
+    "notes": "",
+    "rules": {
+      "effect": {
+        "@en": "After successfully casting this spell, both you and all the trappings upon yourself take the shape of a Higher Demon. Temporarily replace your Character sheet with the creature profile of a Numina, gaining its benefits and drawbacks. If you suffer an Injury during this time, the Magick spell immediately ends."
+      },
+      "criticalSuccess": {
+        "@en": "As above, but triple the Duration."
+      },
+      "criticalFailure": {
+        "@en": "Your corpulent form temporarily explodes into harrowing shapes and forms: hands where your head was, swords where appendages once were and endless eyes. Those who behold your countenance must succeed at a Resolve Test or else they suffer from Terror. In addition, you must succeed at a Toughness Test or else be immediately Slain! (unless you have a Fate Point to expend). If you succeed, you return to your normal self, but are left Prone and Incapacitated!"
+      },
+      "reagents": {
+        "@en": "A codex bound in a Lower or Higher Demon’s skin, held aloft (expended)"
+      }
+    },
+    "tradition": "Covenant",
+    "principle": "Greater",
+    "distance": "Yourself",
+    "duration": "9+[WB] minutes",
+    "castingTime": "1 min",
+    "castingCost": 0
+  },
+  "folder": null,
+  "sort": 0,
+  "ownership": {
+    "default": 0
+  },
+  "flags": {},
+  "_key": "!items!ukbyD1oePYiey21Q"
+}

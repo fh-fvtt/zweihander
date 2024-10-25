@@ -1,0 +1,51 @@
+{
+  "_id": "UMNfQXR23N1vQMFd",
+  "effects": [],
+  "img": "systems/zweihander/assets/icons/barbed-spear.svg",
+  "name": "Barbed Spear",
+  "type": "weapon",
+  "_stats": {
+    "coreVersion": "12.331",
+    "systemId": null,
+    "systemVersion": null,
+    "createdTime": null,
+    "modifiedTime": null,
+    "lastModifiedBy": null,
+    "compendiumSource": null,
+    "duplicateSource": null
+  },
+  "system": {
+    "description": {
+      "@en": "<p>This frightening instrument is generally found in the hands of coldly-neutral Elves of the forest. Its vicious barbs pull at the flesh when expunged from their victims&rsquo; bodies.</p>"
+    },
+    "notes": "",
+    "price": {
+      "bp": "0",
+      "gc": "1",
+      "ss": "0"
+    },
+    "encumbrance": 2,
+    "carried": true,
+    "weaponType": "Bladed",
+    "equipped": false,
+    "associatedSkill": "Martial Melee",
+    "load": 0,
+    "handling": "One- or Two-handed",
+    "qualities": {
+      "value": "Adaptable, Fast, Vicious",
+      "arrayOfValues": []
+    },
+    "distance": "Engaged",
+    "damage": {
+      "formula": "[CB] + 1 +(1+[#])d6x6",
+      "associatedPrimaryAttribute": "Combat"
+    }
+  },
+  "folder": null,
+  "sort": 0,
+  "ownership": {
+    "default": 0
+  },
+  "flags": {},
+  "_key": "!items!UMNfQXR23N1vQMFd"
+}

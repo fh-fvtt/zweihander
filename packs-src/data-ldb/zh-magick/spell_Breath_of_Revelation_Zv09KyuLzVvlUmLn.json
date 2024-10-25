@@ -1,0 +1,50 @@
+{
+  "_id": "Zv09KyuLzVvlUmLn",
+  "effects": [],
+  "img": "systems/zweihander/assets/icons/wizard-staff.svg",
+  "name": "Breath of Revelation",
+  "type": "spell",
+  "_stats": {
+    "coreVersion": "12.331",
+    "systemId": null,
+    "systemVersion": null,
+    "createdTime": null,
+    "modifiedTime": null,
+    "lastModifiedBy": null,
+    "compendiumSource": null,
+    "duplicateSource": null
+  },
+  "system": {
+    "description": {
+      "@en": "With an audible ‘sigh’, you breathe Daemonic influence over another. This spark of ghastly revelation remains with that person, filling their head with visions of desire and torment."
+    },
+    "notes": "",
+    "rules": {
+      "effect": {
+        "@en": "After successfully casting this spell, the person you touch can choose to roll a [[/roll 1D6]] Chaos Die before making a Skill Test. Multiply the face value times +3% to determine the Base Chance bonus they can add to the Skill Test. This is a one-time temporary bonus and once applied, the Effects immediately expire. You cannot be made recipient of this Magick more than once over the Duration."
+      },
+      "criticalSuccess": {
+        "@en": "As above, but triple the Duration."
+      },
+      "criticalFailure": {
+        "@en": "You immediately grow desirous of the person you touch. You cannot help but pursue them for the Duration of the spell. If they spurn your indecent proposals, you suffer 3 Corruption each day. If they concede, you both gain the benefits of ‘getting lucky’ (taking advantage of the Prostitute’s Professional Trait). However, you must flip the results to fail the Skill Test tied to the Fortune Point. When you or the other person fails the related Skill Test, you gain 3 Corruption."
+      },
+      "reagents": {
+        "@en": "A pint of amaretto, imbibed (expended)"
+      }
+    },
+    "tradition": "Covenant",
+    "principle": "Petty",
+    "distance": "Any one person you can touch",
+    "duration": "3+[WB] in days",
+    "castingTime": "1 min",
+    "castingCost": 0
+  },
+  "folder": null,
+  "sort": 0,
+  "ownership": {
+    "default": 0
+  },
+  "flags": {},
+  "_key": "!items!Zv09KyuLzVvlUmLn"
+}

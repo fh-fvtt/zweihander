@@ -1,0 +1,117 @@
+{
+  "_id": "vW9e6TJXeCio93fR",
+  "effects": [],
+  "img": "systems/zweihander/assets/icons/village.svg",
+  "name": "Mootwarden",
+  "type": "profession",
+  "_stats": {
+    "coreVersion": "12.331",
+    "systemId": null,
+    "systemVersion": null,
+    "createdTime": null,
+    "modifiedTime": null,
+    "lastModifiedBy": null,
+    "compendiumSource": null,
+    "duplicateSource": null
+  },
+  "system": {
+    "description": {
+      "@en": "Within fortified townships and walled cities, residents have little worry about potential violence beyond the gates. While their gates are guarded by soldiers of an army or by the town watch, beyond in the hamlets and villages that dot the landscape, there is no such protection and the inhabitants must rely on their own wits and strengths to defend against the dangers of a grim & perilous world. At times, when this is not enough, a champion of the people rises up to take on the mantle of Mootwarden. As provincial peasant-heroes, they see it as their duty not to focus on attacking active threats, but to deter unwanted visitors and persuade them to move on. Mootwardens lead border patrols, staying out of sight while watching for threats attempting to enter the settlement they are protecting. Any unwanted intruder, beast or monstrosity who makes such an attempt are either deterred or dealt with, depending on the situation.\\nAs more of the countryside is settled, and travel between settlements is increasingly commercialized, Mootwardens are becoming a rarity. However, they are still found in the service of those remote settlements which do not fall under the jurisdiction of some local baron or count, while many Halfling shires proudly employ these ‘wardens of the road’ to shoo away unwanted visitors and so maintain the status quo. Their stealth and dedication to their home is admirable, but can also backfire. As more vicious creatures and unscrupulous bushwhackers encroach upon their lands, the Mootwarden starts to see everything as a threat – from clueless mutts and itinerant peddlers to lost travelers and desperate refugees, even their own kin. Soon the Mootwarden runs all outsiders away from the settlement, believing that only they can preserve the village and that only they know what is best for it. These delusional lawmen are often left alone – either that, or they become the target of a mob of villagers they once swore to protect."
+    },
+    "notes": "",
+    "expert": {
+      "value": true,
+      "requirements": "You must possess at least one Skill Rank in Survival in order to enter this Expert Profession."
+    },
+    "archetype": "Expert Profession",
+    "bonusAdvances": [
+      {
+        "name": "[AB]"
+      },
+      {
+        "name": "[AB]"
+      },
+      {
+        "name": "[BB]"
+      },
+      {
+        "name": "[CB]"
+      },
+      {
+        "name": "[PB]"
+      },
+      {
+        "name": "[PB]"
+      },
+      {
+        "name": "[WB]"
+      }
+    ],
+    "skillRanks": [
+      {
+        "name": "Athletics"
+      },
+      {
+        "name": "Awareness"
+      },
+      {
+        "name": "Ride"
+      },
+      {
+        "name": "Rumor"
+      },
+      {
+        "name": "Simple Melee"
+      },
+      {
+        "name": "Simple Ranged"
+      },
+      {
+        "name": "Stealth"
+      },
+      {
+        "name": "Survival"
+      },
+      {
+        "name": "Toughness"
+      },
+      {
+        "name": "Warfare"
+      }
+    ],
+    "talents": [
+      {
+        "linkedId": null,
+        "name": "Eagle Eyes"
+      },
+      {
+        "linkedId": null,
+        "name": "Light Sleeper"
+      },
+      {
+        "linkedId": null,
+        "name": "Rural Sensibility"
+      }
+    ],
+    "professionalTrait": {
+      "name": "Border Patrol",
+      "linkedId": null
+    },
+    "specialTrait": {
+      "name": "",
+      "linkedId": null
+    },
+    "drawback": {
+      "name": "Noblesse Oblige",
+      "linkedId": null
+    },
+    "tier": ""
+  },
+  "folder": null,
+  "sort": 0,
+  "ownership": {
+    "default": 0
+  },
+  "flags": {},
+  "_key": "!items!vW9e6TJXeCio93fR"
+}

@@ -1,0 +1,41 @@
+{
+  "_id": "1aPid9xUWU2BMJTt",
+  "effects": [],
+  "img": "systems/zweihander/assets/icons/half-dead.svg",
+  "name": "Ague",
+  "type": "disease",
+  "_stats": {
+    "coreVersion": "12.331",
+    "systemId": null,
+    "systemVersion": null,
+    "createdTime": null,
+    "modifiedTime": null,
+    "lastModifiedBy": null,
+    "compendiumSource": null,
+    "duplicateSource": null
+  },
+  "system": {
+    "description": {
+      "@en": "<p>One thing I can tell you about the Great Dismal Swamp: it&rsquo;s full of mosquitoes. And ever since I got back, I cannot seem to shake off these chills and fever . . .</p>"
+    },
+    "notes": "",
+    "rules": {
+      "effect": {
+        "@en": "<p><strong>Effect:</strong> At the beginning of each day, Resist Ague. Otherwise, suffer 1D10+1 Peril. If you don&rsquo;t successfully Resist on the final day of infection, re-roll the duration as it&rsquo;s extended.</p>\n<p><strong>Critical Success:</strong> You automatically succeed in your next Toughness Test to Resist Ague.</p>\n<p><strong>Critical Failure</strong>: Suffer 2D10+2 Peril instead.</p>\n<p><strong>Other Considerations:</strong> NONE</p>"
+      },
+      "treatment": {
+        "@en": "<p><strong>Ease Symptoms:</strong> A caregiver must have a surgical kit, a bandage, a tincture and spend one hour to Ease Symptoms. Depending on where you&rsquo;re at on the Damage Condition Track, the Difficulty Rating eases or worsens:</p>\n<p><strong>Hurt:</strong> Automatically succeed</p>\n<p><strong>Moderately Wounded:</strong> (Routine +10%) Heal</p>\n<p><strong>Seriously Wounded:</strong> (Standard +/-0%) Heal</p>\n<p><strong>Grievously Wounded:</strong> (Challenging -10%) Heal</p>\n<hr />\n<p><strong>Effect:</strong> If successful, you may flip the results to succeed in your next Toughness Test to Resist an Ailment.</p>\n<p><strong>Critical Success:</strong> You automatically succeed your next Skill Test to Resist an Ailment.</p>\n<p><strong>Critical Failure:</strong> You suffer from Sepsis and must undergo Bloodletting.</p>\n<p><strong>Other Considerations:</strong> A character can only have Ease Symptoms performed on them as the Ailment dictates. You cannot Ease Symptoms on someone with Sepsis.</p>"
+      }
+    },
+    "resist": "(Easy +20%) Toughness",
+    "duration": "1D10+1 days",
+    "active": false
+  },
+  "folder": null,
+  "sort": 0,
+  "ownership": {
+    "default": 0
+  },
+  "flags": {},
+  "_key": "!items!1aPid9xUWU2BMJTt"
+}

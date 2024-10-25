@@ -1,0 +1,41 @@
+{
+  "_id": "n5BcGUAtJGqzmrvs",
+  "effects": [],
+  "img": "systems/zweihander/assets/icons/vial.svg",
+  "name": "Ergot",
+  "type": "disease",
+  "_stats": {
+    "coreVersion": "12.331",
+    "systemId": null,
+    "systemVersion": null,
+    "createdTime": null,
+    "modifiedTime": null,
+    "lastModifiedBy": null,
+    "compendiumSource": null,
+    "duplicateSource": null
+  },
+  "system": {
+    "description": {
+      "@en": "<p>Using a simple fungus, we can create a drug that can help with menstruation, cause a reddish outbreak on the skin or Saint Anthony&rsquo;s Fire. Medicine in strong enough doses is poison, after all.</p>"
+    },
+    "notes": "",
+    "rules": {
+      "effect": {
+        "@en": "<p><strong>Effect:</strong> You must flip the results to fail vision-based Skill Tests. You must also attempt to Resist again every twentyfour hours, or else suffer the effects again.</p>\n<p><strong>Critical Success:</strong> You are now permanently immune to Ergot.</p>\n<p><strong>Critical Failure:</strong> You treat lighting conditions as Total Darkness for twenty-four hours.</p>\n<p><strong>Other Considerations:</strong> Before being drugged by Ergot, you can attempt a (Standard +/0%) Awareness Test to discover that you&rsquo;re being drugged. The use of an Antidote terminates its effects.</p>"
+      },
+      "treatment": {
+        "@en": ""
+      }
+    },
+    "resist": "(Standard +/-0%) Toughness",
+    "duration": "1D10+1 days",
+    "active": false
+  },
+  "folder": null,
+  "sort": 0,
+  "ownership": {
+    "default": 0
+  },
+  "flags": {},
+  "_key": "!items!n5BcGUAtJGqzmrvs"
+}

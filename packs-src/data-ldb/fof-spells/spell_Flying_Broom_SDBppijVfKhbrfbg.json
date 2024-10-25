@@ -1,0 +1,50 @@
+{
+  "_id": "SDBppijVfKhbrfbg",
+  "effects": [],
+  "img": "systems/zweihander/assets/icons/wizard-staff.svg",
+  "name": "Flying Broom",
+  "type": "spell",
+  "_stats": {
+    "coreVersion": "12.331",
+    "systemId": null,
+    "systemVersion": null,
+    "createdTime": null,
+    "modifiedTime": null,
+    "lastModifiedBy": null,
+    "compendiumSource": null,
+    "duplicateSource": null
+  },
+  "system": {
+    "description": {
+      "@en": "<p>Once you&rsquo;ve got a handle on it, flying is simple . . .</p>"
+    },
+    "notes": "",
+    "rules": {
+      "effect": {
+        "@en": "<p>After successfully casting, you gain the power of flight. When in combat, you gain the Movement Subtype of Flying and reference the benefits of Flying Foes from Article 7: Combat Encounters. Any maneuver you attempt to do that may be perilous requires a Fail Forward Test using Awareness, or else suffer [[/roll 2D10+2]] Peril. Upon a Critical Failure, you fall to the ground. This Spell requires Concentration.</p>"
+      },
+      "criticalSuccess": {
+        "@en": "Triple the duration."
+      },
+      "criticalFailure": {
+        "@en": "You sail into the air for a number of yards equal to 3+[WB], and as the broom snaps, you plummet an equal number of yards to the ground."
+      },
+      "reagents": {
+        "@en": "A hawthorn stave, held between the legs"
+      }
+    },
+    "tradition": "Witchcraft",
+    "principle": "Intermediate Tier",
+    "distance": "Self",
+    "duration": "6+[WB] in hours",
+    "castingTime": "1 Minute",
+    "castingCost": 2
+  },
+  "folder": null,
+  "sort": 0,
+  "ownership": {
+    "default": 0
+  },
+  "flags": {},
+  "_key": "!items!SDBppijVfKhbrfbg"
+}

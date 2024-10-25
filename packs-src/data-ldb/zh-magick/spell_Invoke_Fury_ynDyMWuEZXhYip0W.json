@@ -1,0 +1,50 @@
+{
+  "_id": "ynDyMWuEZXhYip0W",
+  "effects": [],
+  "img": "systems/zweihander/assets/icons/angry-eyes.svg",
+  "name": "Invoke Fury",
+  "type": "spell",
+  "_stats": {
+    "coreVersion": "12.331",
+    "systemId": null,
+    "systemVersion": null,
+    "createdTime": null,
+    "modifiedTime": null,
+    "lastModifiedBy": null,
+    "compendiumSource": null,
+    "duplicateSource": null
+  },
+  "system": {
+    "description": {
+      "@en": "Invoking righteous anger and vengeance, you instill the god’s power unto another."
+    },
+    "notes": "",
+    "rules": {
+      "effect": {
+        "@en": "After successfully casting this spell, the person you touch is given the gift of retribution. They may add a 1D6 Fury Die to their next Total Damage roll with a melee or ranged weapon."
+      },
+      "criticalSuccess": {
+        "@en": "As above and the person may add the Punishing Quality to their weapon."
+      },
+      "criticalFailure": {
+        "@en": "Your invocation has angered the god of war. As a result, the next attack successfully made upon you with a melee or ranged weapon inflicts an additional 1D6 Fury Die to the Total Damage roll and adds the Punishing Quality."
+      },
+      "reagents": {
+        "@en": "Ink or dye, which is painted on the person’s hands or face (expended)"
+      }
+    },
+    "tradition": "Generalist",
+    "principle": "Generalist",
+    "distance": "Any one person you can touch",
+    "duration": "Instantaneous",
+    "castingTime": "1 min",
+    "castingCost": 0
+  },
+  "folder": null,
+  "sort": 0,
+  "ownership": {
+    "default": 0
+  },
+  "flags": {},
+  "_key": "!items!ynDyMWuEZXhYip0W"
+}

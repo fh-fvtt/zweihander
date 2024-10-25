@@ -1,0 +1,50 @@
+{
+  "_id": "bKVrmPxaOZtzTjFt",
+  "effects": [],
+  "img": "systems/zweihander/assets/icons/concentric-crescents.svg",
+  "name": "Ritual Binding",
+  "type": "spell",
+  "_stats": {
+    "coreVersion": "12.331",
+    "systemId": null,
+    "systemVersion": null,
+    "createdTime": null,
+    "modifiedTime": null,
+    "lastModifiedBy": null,
+    "compendiumSource": null,
+    "duplicateSource": null
+  },
+  "system": {
+    "description": {
+      "@en": "<p>The spirit contained within this knife is that of Captain John Smith, with all his ire.</p>"
+    },
+    "notes": "",
+    "rules": {
+      "effect": {
+        "@en": "<p>After successfully casting, the object you touch is bound with a spirit. When the object is held, it temporarily enhances one Primary Attribute by +10%. For instance, you can enchant a book to boost Intelligence or a knife to grant a benefit to Combat. Whatever you wish to enchant, the form must follow its function. Such objects may only be Ritually Bound once. Furthermore, a person cannot wield more than one Ritually Bound object at a time. Finally, the time to cast the Spell is the same length of time it takes for you to craft the object (as described in <strong>Article 5: Wares &amp; Weapons</strong>).</p>"
+      },
+      "criticalSuccess": {
+        "@en": "As above, but the object enhances two different Primary Attributes instead."
+      },
+      "criticalFailure": {
+        "@en": "The supernatural threat is unleashed, and knocks you Unconscious for 9+[WB] days. The spirit will enact its revenge against you at a time the Historian feels appropriate."
+      },
+      "reagents": {
+        "@en": "A ware or weapon you have crafted, and the name of a Slain! supernatural threat invoked as you finish crafting"
+      }
+    },
+    "tradition": "Black & White",
+    "principle": "Advanced Tier",
+    "distance": "By Touch",
+    "duration": "Forever",
+    "castingTime": "Special",
+    "castingCost": null
+  },
+  "folder": null,
+  "sort": 0,
+  "ownership": {
+    "default": 0
+  },
+  "flags": {},
+  "_key": "!items!bKVrmPxaOZtzTjFt"
+}

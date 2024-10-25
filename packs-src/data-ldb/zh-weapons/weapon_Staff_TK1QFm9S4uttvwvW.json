@@ -1,0 +1,50 @@
+{
+  "_id": "TK1QFm9S4uttvwvW",
+  "effects": [],
+  "img": "systems/zweihander/assets/icons/bo.svg",
+  "name": "Staff",
+  "type": "weapon",
+  "_stats": {
+    "coreVersion": "12.331",
+    "systemId": "zweihander",
+    "systemVersion": "5.3.2",
+    "createdTime": null,
+    "modifiedTime": 1729891554621,
+    "lastModifiedBy": "rivg6xcMxdlVDM8y",
+    "compendiumSource": null,
+    "duplicateSource": null
+  },
+  "system": {
+    "description": {
+      "@en": "<p>Mostly used as walking sticks by the scholarly and elderly, travelers swear by it (particularly ten-foot long poles). Proper ones are beautifully designed and weighted, while poor ones are simply gnarled tree limbs.</p>"
+    },
+    "notes": "",
+    "price": {
+      "bp": 0,
+      "gc": 1,
+      "ss": 0
+    },
+    "encumbrance": 2,
+    "carried": true,
+    "weaponType": "Crushing",
+    "equipped": false,
+    "associatedSkill": "Simple Melee",
+    "load": 0,
+    "handling": "One- or Two-handed",
+    "qualities": {
+      "value": "Adaptable, Defensive, Pummeling",
+      "arrayOfValues": []
+    },
+    "distance": "Engaged",
+    "damage": {
+      "formula": "[BB] + (1+[#])d6x6"
+    }
+  },
+  "folder": null,
+  "sort": 0,
+  "ownership": {
+    "default": 0
+  },
+  "flags": {},
+  "_key": "!items!TK1QFm9S4uttvwvW"
+}

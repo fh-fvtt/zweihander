@@ -1,0 +1,50 @@
+{
+  "_id": "JfbBtEFb7oLNE398",
+  "effects": [],
+  "img": "systems/zweihander/assets/icons/fire-ring.svg",
+  "name": "Shimmering Crown",
+  "type": "spell",
+  "_stats": {
+    "coreVersion": "12.331",
+    "systemId": null,
+    "systemVersion": null,
+    "createdTime": null,
+    "modifiedTime": null,
+    "lastModifiedBy": null,
+    "compendiumSource": null,
+    "duplicateSource": null
+  },
+  "system": {
+    "description": {
+      "@en": "A crown of burning flames adorns your head, burning with an effervescent brightness that forestalls foes from acting and raises the morale of allies."
+    },
+    "notes": "",
+    "rules": {
+      "effect": {
+        "@en": "After successfully casting this spell, you gain a +10 Base Chance to Intimidate and Leadership Tests. In addition, foes who attempt to attack you must immediately succeed at a Resolve Test or choose to ignore you for the spell’s Duration. Finally, the Shimmering Crown provides a significant amount of heat and light, equivalent to a candle. Its flames are considered to be Mildly Dangerous."
+      },
+      "criticalSuccess": {
+        "@en": "As above, but triple the Duration."
+      },
+      "criticalFailure": {
+        "@en": "The crown of flame collapses at your feet, fizzling into a crumbled ashen ruin. Flames begin to lick up your pant legs and smolder. You immediately suffer [[/roll 1D10]]+[WB] in Damage from fire. You can inflict Injuries on yourself with this Magick, but you are set On Fire instead. The spell ends immediately."
+      },
+      "reagents": {
+        "@en": "One gold coin (expended)"
+      }
+    },
+    "tradition": "Arcane (Pyromancy)",
+    "principle": "Petty",
+    "distance": "Yourself",
+    "duration": "[WB]+3 minutes",
+    "castingTime": "1 min",
+    "castingCost": 0
+  },
+  "folder": null,
+  "sort": 0,
+  "ownership": {
+    "default": 0
+  },
+  "flags": {},
+  "_key": "!items!JfbBtEFb7oLNE398"
+}

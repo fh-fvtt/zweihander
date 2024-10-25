@@ -1,0 +1,50 @@
+{
+  "_id": "Rf2O5vhaJGvMFsGu",
+  "effects": [],
+  "img": "systems/zweihander/assets/icons/wizard-staff.svg",
+  "name": "Beyond the Pale",
+  "type": "spell",
+  "_stats": {
+    "coreVersion": "12.331",
+    "systemId": null,
+    "systemVersion": null,
+    "createdTime": null,
+    "modifiedTime": null,
+    "lastModifiedBy": null,
+    "compendiumSource": null,
+    "duplicateSource": null
+  },
+  "system": {
+    "description": {
+      "@en": "You pour a line of salt upon the ground, calling for your god to deny the passage of the unliving across it."
+    },
+    "notes": "",
+    "rules": {
+      "effect": {
+        "@en": "After successfully casting this spell, you draw a threeyard long line upon the ground. Unless they successfully Resist with a Resolve Test, no creature classified as being Supernatural can cross it. If they do, they suffer [[/roll 1D10]]+[WB] Damage, whether they successfully Resisted it or not."
+      },
+      "criticalSuccess": {
+        "@en": "As above, but triple the Duration."
+      },
+      "criticalFailure": {
+        "@en": "Strange symbols begin to glow upon the ground. Those who behold these ebbing symbols whose Chaos Ranks are higher than their Order Ranks are subjected to Stress."
+      },
+      "reagents": {
+        "@en": "A jar of epsom salt, poured upon the ground (expended)"
+      }
+    },
+    "tradition": "Divine (Custodian)",
+    "principle": "Petty",
+    "distance": "Yourself",
+    "duration": "[WB]+3 hours",
+    "castingTime": "1 min",
+    "castingCost": 0
+  },
+  "folder": null,
+  "sort": 0,
+  "ownership": {
+    "default": 0
+  },
+  "flags": {},
+  "_key": "!items!Rf2O5vhaJGvMFsGu"
+}

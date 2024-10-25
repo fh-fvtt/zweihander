@@ -1,0 +1,51 @@
+{
+  "_id": "SKDA5boz8fgZgjqt",
+  "effects": [],
+  "img": "systems/zweihander/assets/icons/blade-fall.svg",
+  "name": "Tulwar",
+  "type": "weapon",
+  "_stats": {
+    "coreVersion": "12.331",
+    "systemId": "zweihander",
+    "systemVersion": "5.3.2",
+    "createdTime": null,
+    "modifiedTime": 1729892036231,
+    "lastModifiedBy": "rivg6xcMxdlVDM8y",
+    "compendiumSource": null,
+    "duplicateSource": null
+  },
+  "system": {
+    "description": {
+      "@en": "<p>A curved sword like the sabre or falchion, the tulwar is often much longer and much thinner than their cousins. They, too, evoke the feel of the distant East.</p>"
+    },
+    "notes": "",
+    "price": {
+      "bp": 0,
+      "gc": 7,
+      "ss": 0
+    },
+    "encumbrance": 1,
+    "carried": true,
+    "weaponType": "Bladed",
+    "equipped": false,
+    "associatedSkill": "Martial Melee",
+    "load": 0,
+    "handling": "One-handed",
+    "qualities": {
+      "value": "Fast, Finesse",
+      "arrayOfValues": []
+    },
+    "distance": "Engaged",
+    "damage": {
+      "formula": "[AB] + (1+[#])d6x6",
+      "associatedPrimaryAttribute": "Agility"
+    }
+  },
+  "folder": null,
+  "sort": 0,
+  "ownership": {
+    "default": 0
+  },
+  "flags": {},
+  "_key": "!items!SKDA5boz8fgZgjqt"
+}

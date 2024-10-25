@@ -1,0 +1,50 @@
+{
+  "_id": "tcOsWfX4NwF1ffql",
+  "effects": [],
+  "img": "systems/zweihander/assets/icons/spell-book.svg",
+  "name": "Strike True",
+  "type": "spell",
+  "_stats": {
+    "coreVersion": "12.331",
+    "systemId": null,
+    "systemVersion": null,
+    "createdTime": null,
+    "modifiedTime": null,
+    "lastModifiedBy": null,
+    "compendiumSource": null,
+    "duplicateSource": null
+  },
+  "system": {
+    "description": {
+      "@en": "<p>I&rsquo;ve ensorcelled this bullet never to miss; don&rsquo;t lose it . . .</p>"
+    },
+    "notes": "",
+    "rules": {
+      "effect": {
+        "@en": "<p>After successfully casting, the ammunition you touch is considered to be Magical, and will automatically Critically Succeed to hit a foe once fired. After being fired, the ammunition is destroyed. You begin to Bleed, no matter whether you succeeded or failed at using this Spell. You can cast this Spell upon a number of ammunition equal to the number of Skill Ranks in Incantation you have. Finally, you cannot cast Strike True more than once every twenty-four hours.</p>"
+      },
+      "criticalSuccess": {
+        "@en": "As above, but you can cast Strike True on nine ammunition instead."
+      },
+      "criticalFailure": {
+        "@en": "The ammunition is cursed instead, and disappears into whichever ammunition pack it’s intended for. The Historian may spend a Coin before or after an attack has been made to have the ammunition fail, returning to the attacker to Critically Strike them instead."
+      },
+      "reagents": {
+        "@en": "Drops of your own blood, placed on a single piece of ammunition"
+      }
+    },
+    "tradition": "Common",
+    "principle": "Basic Tier",
+    "distance": "By Touch",
+    "duration": "Until fired",
+    "castingTime": "1 Hour",
+    "castingCost": null
+  },
+  "folder": null,
+  "sort": 0,
+  "ownership": {
+    "default": 0
+  },
+  "flags": {},
+  "_key": "!items!tcOsWfX4NwF1ffql"
+}

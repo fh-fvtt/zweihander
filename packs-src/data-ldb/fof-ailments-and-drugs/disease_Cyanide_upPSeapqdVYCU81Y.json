@@ -1,0 +1,41 @@
+{
+  "_id": "upPSeapqdVYCU81Y",
+  "effects": [],
+  "img": "systems/zweihander/assets/icons/vial.svg",
+  "name": "Cyanide",
+  "type": "disease",
+  "_stats": {
+    "coreVersion": "12.331",
+    "systemId": null,
+    "systemVersion": null,
+    "createdTime": null,
+    "modifiedTime": null,
+    "lastModifiedBy": null,
+    "compendiumSource": null,
+    "duplicateSource": null
+  },
+  "system": {
+    "description": {
+      "@en": "<p>Bitter almonds, cherry blossoms and a bit of ammonia, the fumes are dangerous, yes . . . but it is the most powerful drug.</p>"
+    },
+    "notes": "",
+    "rules": {
+      "effect": {
+        "@en": "<p><strong>Effect:</strong> You immediately suffer a -9 to all Primary Attribute Bonuses (to a minimum of 1) and 3D10+3 Peril. If you are Incapacitated! due to it, you&rsquo;re Slain!. Your Primary Attribute Bonuses recover +1 a day until fully restored.</p>\n<p><strong>Critical Success:</strong> You are now permanently immune to Cyanide.</p>\n<p><strong>Critical Failure:</strong> You are Slain!.</p>\n<p><strong>Other Considerations:</strong> Before being drugged by Cyanide, you can attempt an (Arduous -30%) Awareness Test to discover that you&rsquo;re being drugged. Use of an Antidote allows you to immediately recover all Primary Attribute Bonuses.</p>"
+      },
+      "treatment": {
+        "@en": ""
+      }
+    },
+    "resist": "(Arduous -30%) Toughness",
+    "duration": "Instantaneous",
+    "active": false
+  },
+  "folder": null,
+  "sort": 0,
+  "ownership": {
+    "default": 0
+  },
+  "flags": {},
+  "_key": "!items!upPSeapqdVYCU81Y"
+}

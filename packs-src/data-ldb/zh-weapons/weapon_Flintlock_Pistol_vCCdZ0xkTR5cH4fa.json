@@ -1,0 +1,50 @@
+{
+  "_id": "vCCdZ0xkTR5cH4fa",
+  "effects": [],
+  "img": "systems/zweihander/assets/icons/gunshot.svg",
+  "name": "Flintlock Pistol",
+  "type": "weapon",
+  "_stats": {
+    "coreVersion": "12.331",
+    "systemId": null,
+    "systemVersion": null,
+    "createdTime": null,
+    "modifiedTime": null,
+    "lastModifiedBy": null,
+    "compendiumSource": null,
+    "duplicateSource": null
+  },
+  "system": {
+    "description": {
+      "@en": "Much like the arquebus, these pistols are inefficient when firing in bad weather. However, it is the mainstay weapon of choice for highwaymen and soldiers of fortune."
+    },
+    "notes": "",
+    "price": {
+      "bp": "0",
+      "gc": "20",
+      "ss": "0"
+    },
+    "encumbrance": 2,
+    "carried": true,
+    "weaponType": "Gunpowder",
+    "equipped": false,
+    "associatedSkill": "Martial Ranged",
+    "load": 3,
+    "handling": "One-handed",
+    "qualities": {
+      "value": "Gunpowder, Volatile",
+      "arrayOfValues": []
+    },
+    "distance": "3 + [PB] yards",
+    "damage": {
+      "formula": "[CB] + (1+[#])d6x1&6"
+    }
+  },
+  "folder": null,
+  "sort": 0,
+  "ownership": {
+    "default": 0
+  },
+  "flags": {},
+  "_key": "!items!vCCdZ0xkTR5cH4fa"
+}

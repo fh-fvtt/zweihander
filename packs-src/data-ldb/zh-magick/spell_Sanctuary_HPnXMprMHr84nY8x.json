@@ -1,0 +1,50 @@
+{
+  "_id": "HPnXMprMHr84nY8x",
+  "effects": [],
+  "img": "systems/zweihander/assets/icons/wizard-staff.svg",
+  "name": "Sanctuary",
+  "type": "spell",
+  "_stats": {
+    "coreVersion": "12.331",
+    "systemId": null,
+    "systemVersion": null,
+    "createdTime": null,
+    "modifiedTime": null,
+    "lastModifiedBy": null,
+    "compendiumSource": null,
+    "duplicateSource": null
+  },
+  "system": {
+    "description": {
+      "@en": "This simple Magick wards away those who’d do you harm."
+    },
+    "notes": "",
+    "rules": {
+      "effect": {
+        "@en": "After successfully casting this spell, foes who are classified as Humanoids who attempt to attack you must immediately succeed at a Resolve Test or choose to ignore you for the spell’s Duration. This Magick is broken if you attempt to bring harm upon any whom have been made victim to this Magick."
+      },
+      "criticalSuccess": {
+        "@en": "As above, but triple the Duration."
+      },
+      "criticalFailure": {
+        "@en": "Suddenly, you provoke all foes to immediately target you. They make you the object of their ire for the spell’s Duration, attempting to end your life!"
+      },
+      "reagents": {
+        "@en": "The bone of a saint or revered priest"
+      }
+    },
+    "tradition": "Generalist",
+    "principle": "Generalist",
+    "distance": "Yourself",
+    "duration": "[WB]+3 minutes",
+    "castingTime": "1 min",
+    "castingCost": 0
+  },
+  "folder": null,
+  "sort": 0,
+  "ownership": {
+    "default": 0
+  },
+  "flags": {},
+  "_key": "!items!HPnXMprMHr84nY8x"
+}

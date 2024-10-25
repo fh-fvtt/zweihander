@@ -1,0 +1,50 @@
+{
+  "_id": "zdrDRO9gF1YoMYpl",
+  "effects": [],
+  "img": "systems/zweihander/assets/icons/disintegrate.svg",
+  "name": "Banish Undead",
+  "type": "spell",
+  "_stats": {
+    "coreVersion": "12.331",
+    "systemId": null,
+    "systemVersion": null,
+    "createdTime": null,
+    "modifiedTime": null,
+    "lastModifiedBy": null,
+    "compendiumSource": null,
+    "duplicateSource": null
+  },
+  "system": {
+    "description": {
+      "@en": "Suddenly, those that are not natural to the Material Realm are whipped back and forth in a terrible, cutting Wind."
+    },
+    "notes": "",
+    "rules": {
+      "effect": {
+        "@en": "After successfully casting this spell, all creatures caught within an Explosion Template who are classified as being Supernatural suffer [[/roll 3D10]]+[WB] in Damage and are knocked Prone."
+      },
+      "criticalSuccess": {
+        "@en": "As above, but they are automatically Slain! instead of suffering Damage."
+      },
+      "criticalFailure": {
+        "@en": "Your Magick doesn’t harm the dead. In fact, it only invigorates them, urging them to commit acts of wanton destruction. All creatures classified as being Supernatural who are caught within the Explosion Template are immediately healed to Unharmed and they are instantly cured of any negative Effects from any Magick or Perilous Stunts they are suffering from."
+      },
+      "reagents": {
+        "@en": "The breath of a holy person other than yourself, contained in a bottle (expended)"
+      }
+    },
+    "tradition": "Arcane (Morticism)",
+    "principle": "Greater",
+    "distance": "Any one place you can see",
+    "duration": "Instantaneous",
+    "castingTime": "1 min",
+    "castingCost": 0
+  },
+  "folder": null,
+  "sort": 0,
+  "ownership": {
+    "default": 0
+  },
+  "flags": {},
+  "_key": "!items!zdrDRO9gF1YoMYpl"
+}

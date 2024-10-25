@@ -1,0 +1,50 @@
+{
+  "_id": "H0UobyPkuPra4jdr",
+  "effects": [],
+  "img": "systems/zweihander/assets/icons/bow-arrow.svg",
+  "name": "Selfbow",
+  "type": "weapon",
+  "_stats": {
+    "coreVersion": "12.331",
+    "systemId": null,
+    "systemVersion": null,
+    "createdTime": null,
+    "modifiedTime": null,
+    "lastModifiedBy": null,
+    "compendiumSource": null,
+    "duplicateSource": null
+  },
+  "system": {
+    "description": {
+      "@en": "<p>Carved from a single piece of wood and with a draw range of 2 feet, a selfbow is capable of taking down a buffalo with multiple shots, or a rabbit with one shot.</p>"
+    },
+    "notes": "",
+    "price": {
+      "bp": "7",
+      "gc": "0",
+      "ss": "5"
+    },
+    "encumbrance": 2,
+    "carried": true,
+    "weaponType": "Ranged",
+    "equipped": false,
+    "associatedSkill": "Martial Ranged",
+    "load": 1,
+    "handling": "Two-handed",
+    "qualities": {
+      "value": "Fast, Silent",
+      "arrayOfValues": []
+    },
+    "distance": "9 + [PB] yards",
+    "damage": {
+      "formula": "[AB] + (1+[#])d6x6"
+    }
+  },
+  "folder": null,
+  "sort": 0,
+  "ownership": {
+    "default": 0
+  },
+  "flags": {},
+  "_key": "!items!H0UobyPkuPra4jdr"
+}

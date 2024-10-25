@@ -1,0 +1,51 @@
+{
+  "_id": "Op6tldF10hWGshem",
+  "effects": [],
+  "img": "systems/zweihander/assets/icons/torch.svg",
+  "name": "Torch",
+  "type": "weapon",
+  "_stats": {
+    "coreVersion": "12.331",
+    "systemId": null,
+    "systemVersion": null,
+    "createdTime": null,
+    "modifiedTime": null,
+    "lastModifiedBy": null,
+    "compendiumSource": null,
+    "duplicateSource": null
+  },
+  "system": {
+    "description": {
+      "@en": "<p>Swabbed in oil and cloth, torches are used to light the path and sometimes repurposed as cruel weapons against the wronged.</p>"
+    },
+    "notes": "",
+    "price": {
+      "bp": "1",
+      "gc": "0",
+      "ss": "0"
+    },
+    "encumbrance": 1,
+    "carried": true,
+    "weaponType": "Melee",
+    "equipped": false,
+    "associatedSkill": "Simple Melee",
+    "load": 1,
+    "handling": "One-handed",
+    "qualities": {
+      "value": "Break, Immolate, Pummeling",
+      "arrayOfValues": []
+    },
+    "distance": "Engaged",
+    "damage": {
+      "formula": "[BB] + (1+[#])d6x6",
+      "associatedPrimaryAttribute": "Agility"
+    }
+  },
+  "folder": null,
+  "sort": 0,
+  "ownership": {
+    "default": 0
+  },
+  "flags": {},
+  "_key": "!items!Op6tldF10hWGshem"
+}

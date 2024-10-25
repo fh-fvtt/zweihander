@@ -1,0 +1,50 @@
+{
+  "_id": "Xh3zXdoKUgaiKSm5",
+  "effects": [],
+  "img": "systems/zweihander/assets/icons/wizard-staff.svg",
+  "name": "Brush With Death",
+  "type": "spell",
+  "_stats": {
+    "coreVersion": "12.331",
+    "systemId": null,
+    "systemVersion": null,
+    "createdTime": null,
+    "modifiedTime": null,
+    "lastModifiedBy": null,
+    "compendiumSource": null,
+    "duplicateSource": null
+  },
+  "system": {
+    "description": {
+      "@en": "Your cold hand causes the foe to recoil from intense pain, enervating their life energy."
+    },
+    "notes": "",
+    "rules": {
+      "effect": {
+        "@en": "After successfully casting this spell, the person you touch must Resist with a successful Coordination Test or suffer [[/roll 2D10]]+[WB] in Damage and be knocked Prone."
+      },
+      "criticalSuccess": {
+        "@en": "As above, but the foe cannot Resist this Magick."
+      },
+      "criticalFailure": {
+        "@en": "The hand begins to wriggle inside the bag. No one notices, save you. At some point during the night, the hand will crawl about and attempt to choke someone. The GM will choose one of your allies – which can include yourself – for its fearful grasp. The victim of the hand’s grasp, either an ally or yourself, wakes up Incapacitated! for the next 6 days. On the last day, the hand crawls away and disappears."
+      },
+      "reagents": {
+        "@en": "A hand of a murderer, held in a bag"
+      }
+    },
+    "tradition": "Arcane (Necromancy)",
+    "principle": "Lesser",
+    "distance": "Any one person you can touch",
+    "duration": "Instantaneous",
+    "castingTime": "1 min",
+    "castingCost": 0
+  },
+  "folder": null,
+  "sort": 0,
+  "ownership": {
+    "default": 0
+  },
+  "flags": {},
+  "_key": "!items!Xh3zXdoKUgaiKSm5"
+}

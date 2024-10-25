@@ -1,0 +1,35 @@
+{
+  "_id": "AiRWhAP1Lslqe4ZE",
+  "effects": [],
+  "img": "systems/zweihander/assets/icons/spiked-halo.svg",
+  "name": "Bad Luck",
+  "type": "drawback",
+  "_stats": {
+    "coreVersion": "12.331",
+    "systemId": null,
+    "systemVersion": null,
+    "createdTime": null,
+    "modifiedTime": null,
+    "lastModifiedBy": null,
+    "compendiumSource": null,
+    "duplicateSource": null
+  },
+  "system": {
+    "description": {
+      "@en": "<p><em>If life has taught me one thing, it&rsquo;s that there is no such thing </em><em>as good luck.</em></p>"
+    },
+    "notes": "<p>Whenever you acquire a Trait, it is paired with a Quirk which comes at no additional RP cost. The Quirk immediately follows the Profession&rsquo;s Trait effects.&nbsp;</p>\n<p>After you&rsquo;ve bought all Profession Abilities from your Profession, you are ready to move onto the next Tier. As a reward, you can remove your Tier Profession&rsquo;s Quirk, as your character has overcome its adverse effects throughout the story.</p>",
+    "rules": {
+      "effect": {
+        "@en": "<p>Whenever you generate a Critical Success, roll 1D6 Chaos Die. If it lands on a face &lsquo;6,&rsquo; it is instead treated as a Critical Failure.</p>"
+      }
+    }
+  },
+  "folder": null,
+  "sort": 0,
+  "ownership": {
+    "default": 0
+  },
+  "flags": {},
+  "_key": "!items!AiRWhAP1Lslqe4ZE"
+}

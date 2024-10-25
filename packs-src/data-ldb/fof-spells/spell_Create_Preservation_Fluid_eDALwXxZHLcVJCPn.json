@@ -1,0 +1,50 @@
+{
+  "_id": "eDALwXxZHLcVJCPn",
+  "effects": [],
+  "img": "systems/zweihander/assets/icons/magic-swirl.svg",
+  "name": "Create Preservation Fluid",
+  "type": "spell",
+  "_stats": {
+    "coreVersion": "12.331",
+    "systemId": null,
+    "systemVersion": null,
+    "createdTime": null,
+    "modifiedTime": null,
+    "lastModifiedBy": null,
+    "compendiumSource": null,
+    "duplicateSource": null
+  },
+  "system": {
+    "description": {
+      "@en": "<p>This will halt decomposition but for a short while, until we can revivify the subject.</p>"
+    },
+    "notes": "",
+    "rules": {
+      "effect": {
+        "@en": "<p><span style=\"text-decoration: underline;\"><strong>Create Preservation Fluid:</strong></span> Depending on where you&rsquo;re at on the Damage Condition Track, the Difficulty Rating eases or worsens:</p>\n<p><strong>Unharmed:</strong> (Easy +20%) Alchemy</p>\n<p><strong>Hurt:</strong> (Routine +10%) Alchemy</p>\n<p><strong>Moderately Wounded:</strong> (Standard +/-0%) Alchemy</p>\n<p><strong>Seriously Wounded:</strong> (Challenging -10%) Alchemy</p>\n<p><strong>Grievously Wounded:</strong> (Hard -20%) Alchemy</p>\n<p><span style=\"text-decoration: underline;\"><strong>Effect:</strong></span> If successful, you create a number of vials for every 6 points of your [IB]. If failed, nothing happens.</p>\n<p><strong>[IB] 1 to 6:</strong> One vial</p>\n<p><strong>[IB] 7 to 12: </strong>Two vials</p>\n<p><strong>[IB] 13+:</strong> Three vials</p>"
+      },
+      "criticalSuccess": {
+        "@en": "You create Three vials of Preservation Fluid."
+      },
+      "criticalFailure": {
+        "@en": "You suffer [[/roll 2D10+2]] Damage from fire."
+      },
+      "reagents": {
+        "@en": "You must have access to an alchemical laboratory and hemlock. Once a vial of Preservation Fluid is poured onto a corpse or plant, it completely halts decay for one week.to an alchemical laboratory, arsenic and one of the following: opium (for Laudanum or Tincture) or salt (for Smelling salts). You must also have opium to create Laudanum, salt to create Smelling salts or quicksilver to create Tincture."
+      }
+    },
+    "tradition": "Alchemical Arts",
+    "principle": "Intermediate Tier",
+    "distance": "By Touch",
+    "duration": "Permanent",
+    "castingTime": "24 Hours",
+    "castingCost": null
+  },
+  "folder": null,
+  "sort": 0,
+  "ownership": {
+    "default": 0
+  },
+  "flags": {},
+  "_key": "!items!eDALwXxZHLcVJCPn"
+}

@@ -1,0 +1,50 @@
+{
+  "_id": "PccVJD0xM8LEY2Sj",
+  "effects": [],
+  "img": "systems/zweihander/assets/icons/wizard-staff.svg",
+  "name": "Dearly Departed",
+  "type": "spell",
+  "_stats": {
+    "coreVersion": "12.331",
+    "systemId": null,
+    "systemVersion": null,
+    "createdTime": null,
+    "modifiedTime": null,
+    "lastModifiedBy": null,
+    "compendiumSource": null,
+    "duplicateSource": null
+  },
+  "system": {
+    "description": {
+      "@en": "Placing your hands out in contrition, you begin to speak with the spirit of the recently deceased."
+    },
+    "notes": "",
+    "rules": {
+      "effect": {
+        "@en": "After successfully casting this spell, you can speak with a Restless Spirit where they haunt, before their grave or in the presence of a blood relative of the deceased individual. You can only ask a number of questions equal to your [WB]. The spirit can only answer yes/no questions, with either a ‘yes’ (indicated by one audible knocking sound) or a ‘no’ (indicating by two audible knocking sounds) given in answer. They will always answer truthfully."
+      },
+      "criticalSuccess": {
+        "@en": "As above, but triple the number of questions you can ask."
+      },
+      "criticalFailure": {
+        "@en": "Haunted voices can be heard all around! The spirit board instantly splinters, ruined forever. Everyone participating in the séance is immediately subjected to Fear."
+      },
+      "reagents": {
+        "@en": "A spirit board, two people and the True Name of the Restless Spirit you wish to speak with"
+      }
+    },
+    "tradition": "Arcane (Morticism)",
+    "principle": "Lesser",
+    "distance": "Special",
+    "duration": "Special",
+    "castingTime": "1 min",
+    "castingCost": 0
+  },
+  "folder": null,
+  "sort": 0,
+  "ownership": {
+    "default": 0
+  },
+  "flags": {},
+  "_key": "!items!PccVJD0xM8LEY2Sj"
+}

@@ -1,0 +1,50 @@
+{
+  "_id": "ytIZoGFJdTbMKHSo",
+  "effects": [],
+  "img": "systems/zweihander/assets/icons/wizard-staff.svg",
+  "name": "Plea to the Prince",
+  "type": "spell",
+  "_stats": {
+    "coreVersion": "12.331",
+    "systemId": null,
+    "systemVersion": null,
+    "createdTime": null,
+    "modifiedTime": null,
+    "lastModifiedBy": null,
+    "compendiumSource": null,
+    "duplicateSource": null
+  },
+  "system": {
+    "description": {
+      "@en": "The Prince of Change is the lord of all Magick, and is willing to grant access to nearly any manifestation imaginable – at times."
+    },
+    "notes": "",
+    "rules": {
+      "effect": {
+        "@en": "After successfully casting this spell, roll [[/roll 1D6]] Chaos Die. If the die lands on face ‘1-5’, you temporarily gain access to any one Greater Magick spell outside your Arcana, Covenant or Prayer type. If the die lands on face ‘6’, you instead gain 9 Corruption. The newly learned spells are available to cast for up to your [WB] in days and are cast as normal."
+      },
+      "criticalSuccess": {
+        "@en": "As above, but you gain two spells instead."
+      },
+      "criticalFailure": {
+        "@en": "Your plea to the Prince of Change goes unanswered. Instead, it is returned by the renegade Daemon known as the Outsider. He temporarily grants you access to any single Greater Magick spell, which you can automatically cast with a Critical Success as many times as you like for a number of days equal to your [WB]. Each time it is cast, you gain one permanent Chaos Rank."
+      },
+      "reagents": {
+        "@en": "The fingerbone of an Archmage or High Lector, affixed onto an iron rod"
+      }
+    },
+    "tradition": "Covenant",
+    "principle": "Greater",
+    "distance": "Yourself",
+    "duration": "Special",
+    "castingTime": "1 min",
+    "castingCost": 0
+  },
+  "folder": null,
+  "sort": 0,
+  "ownership": {
+    "default": 0
+  },
+  "flags": {},
+  "_key": "!items!ytIZoGFJdTbMKHSo"
+}

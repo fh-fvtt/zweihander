@@ -1,0 +1,50 @@
+{
+  "_id": "Md4Rl2WfDdEAKfIY",
+  "effects": [],
+  "img": "systems/zweihander/assets/icons/seagull.svg",
+  "name": "Blessed Albatross",
+  "type": "spell",
+  "_stats": {
+    "coreVersion": "12.331",
+    "systemId": null,
+    "systemVersion": null,
+    "createdTime": null,
+    "modifiedTime": null,
+    "lastModifiedBy": null,
+    "compendiumSource": null,
+    "duplicateSource": null
+  },
+  "system": {
+    "description": {
+      "@en": "Releasing sacred albatross, they forever hover above the ship’s mast to bless its journey"
+    },
+    "notes": "",
+    "rules": {
+      "effect": {
+        "@en": "After successfully casting this spell, a boat you touch (providing it is a river or sea-going vessel) will never sink, should the albatrosses all remain alive as they hover above the mast."
+      },
+      "criticalSuccess": {
+        "@en": "As above, but it will also protect anyone aboard the boat from falling, being blown, knocked or swept overboard."
+      },
+      "criticalFailure": {
+        "@en": "The albatross bring not fortune, but a terrible curse. You, along with passengers and crew areunaware that you’ve irrevocably cursed the boat. At a time appointed by the GM, the boat will flounder and eventually sink. This will always be precipitated by the blackened husks of albatross being struck by lightning, one by one, day over day, for three days. As each is struck, those in the boat suffer [[/roll 3D10+3]] mental Perilg"
+      },
+      "reagents": {
+        "@en": "Three albatross, released from a cage (expended)"
+      }
+    },
+    "tradition": "Divine (Leviathan)",
+    "principle": "Greater",
+    "distance": "Any one boat you can touch",
+    "duration": "Forever",
+    "castingTime": "1 min",
+    "castingCost": 0
+  },
+  "folder": null,
+  "sort": 0,
+  "ownership": {
+    "default": 0
+  },
+  "flags": {},
+  "_key": "!items!Md4Rl2WfDdEAKfIY"
+}

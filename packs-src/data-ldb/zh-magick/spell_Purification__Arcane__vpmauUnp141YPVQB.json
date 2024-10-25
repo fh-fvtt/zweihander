@@ -1,0 +1,50 @@
+{
+  "_id": "vpmauUnp141YPVQB",
+  "effects": [],
+  "img": "systems/zweihander/assets/icons/wizard-staff.svg",
+  "name": "Purification (Arcane)",
+  "system": {
+    "description": {
+      "@en": "A white light washes over the wounded, purifying them of their ills."
+    },
+    "notes": "",
+    "rules": {
+      "effect": {
+        "@en": "After successfully casting this spell, the person you touch immediately removes the ill-Effects of Poison and Intoxication. In addition, if they are suffering from a Disease, it forestalls any negative Effects of the Disease for that day. A Character may only gain the benefit of this Magick once per day."
+      },
+      "criticalSuccess": {
+        "@en": "As above, but the afflicted forestalls any negative Effects from the Disease for six days."
+      },
+      "criticalFailure": {
+        "@en": "The Magick goes horribly awry, as the person immediately suffers [[/roll 2D10+2]] physical Peril."
+      },
+      "reagents": {
+        "@en": "A poultice made from aloe (expended)"
+      }
+    },
+    "tradition": "Arcane (Luminescence)",
+    "principle": "Lesser",
+    "distance": "Any one person you can touch",
+    "duration": "Instantaneous",
+    "castingTime": "1 min",
+    "castingCost": 0
+  },
+  "type": "spell",
+  "_stats": {
+    "coreVersion": "12.331",
+    "systemId": null,
+    "systemVersion": null,
+    "createdTime": null,
+    "modifiedTime": null,
+    "lastModifiedBy": null,
+    "compendiumSource": null,
+    "duplicateSource": null
+  },
+  "folder": null,
+  "sort": 0,
+  "ownership": {
+    "default": 0
+  },
+  "flags": {},
+  "_key": "!items!vpmauUnp141YPVQB"
+}

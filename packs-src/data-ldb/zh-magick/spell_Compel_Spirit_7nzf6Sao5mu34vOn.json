@@ -1,0 +1,50 @@
+{
+  "_id": "7nzf6Sao5mu34vOn",
+  "effects": [],
+  "img": "systems/zweihander/assets/icons/wizard-staff.svg",
+  "name": "Compel Spirit",
+  "type": "spell",
+  "_stats": {
+    "coreVersion": "12.331",
+    "systemId": null,
+    "systemVersion": null,
+    "createdTime": null,
+    "modifiedTime": null,
+    "lastModifiedBy": null,
+    "compendiumSource": null,
+    "duplicateSource": null
+  },
+  "system": {
+    "description": {
+      "@en": "You command the spirit to do your bidding; its response is fear and obedience."
+    },
+    "notes": "",
+    "rules": {
+      "effect": {
+        "@en": "After successfully casting this spell, you gain the ability to touch a single spirit of your choice within touching range. The spirit you touch must Resist with a successful Coordination Test. If it fails, the spirit is yours to command for exactly two minutes. Note that if you attack the spirit or cause it further harm, the spell ends immediately. This only affects creatures classified as an Ætheric Spirit or Restless Spirit."
+      },
+      "criticalSuccess": {
+        "@en": "As above, but triple the Duration."
+      },
+      "criticalFailure": {
+        "@en": "Your words only serve to antagonize the spirit. With a haunted moan, it has a new-found passion – to swallow your soul! The spirit can add a 1D6 Fury Die to Total Damage whenever it strikes you for the next six minutes."
+      },
+      "reagents": {
+        "@en": "A memento of a dead relative (expended)"
+      }
+    },
+    "tradition": "Covenant",
+    "principle": "Lesser",
+    "distance": "Any one spirit you can touch",
+    "duration": "Special",
+    "castingTime": "1 min",
+    "castingCost": 0
+  },
+  "folder": null,
+  "sort": 0,
+  "ownership": {
+    "default": 0
+  },
+  "flags": {},
+  "_key": "!items!7nzf6Sao5mu34vOn"
+}

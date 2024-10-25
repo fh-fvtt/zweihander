@@ -1,0 +1,50 @@
+{
+  "_id": "1VDdyXH3GjTajAU5",
+  "effects": [],
+  "img": "systems/zweihander/assets/icons/stone-tower.svg",
+  "name": "Unassailable Bulwark",
+  "type": "spell",
+  "_stats": {
+    "coreVersion": "12.331",
+    "systemId": null,
+    "systemVersion": null,
+    "createdTime": null,
+    "modifiedTime": null,
+    "lastModifiedBy": null,
+    "compendiumSource": null,
+    "duplicateSource": null
+  },
+  "system": {
+    "description": {
+      "@en": "A pale white nimbus of light surrounds you, protecting you from harm."
+    },
+    "notes": "",
+    "rules": {
+      "effect": {
+        "@en": "After successfully casting this spell, both Grievous and Serious Injuries inflicted upon you are treated as Moderate Injuries instead for the Duration of the spell."
+      },
+      "criticalSuccess": {
+        "@en": "As above and you are immune to Damage inflicted by melee weapons."
+      },
+      "criticalFailure": {
+        "@en": "Your Magick goes terribly awry, as the Wind is knocked out of you. You suffer [[/roll 1D10+1]] physical Peril and are left Defenseless for the spell’s Duration."
+      },
+      "reagents": {
+        "@en": "An iron ring, forged in purifying flames"
+      }
+    },
+    "tradition": "Divine (God-Emperor)",
+    "principle": "Petty",
+    "distance": "Yourself",
+    "duration": "[WB]+3 minutes",
+    "castingTime": "1 min",
+    "castingCost": 0
+  },
+  "folder": null,
+  "sort": 0,
+  "ownership": {
+    "default": 0
+  },
+  "flags": {},
+  "_key": "!items!1VDdyXH3GjTajAU5"
+}

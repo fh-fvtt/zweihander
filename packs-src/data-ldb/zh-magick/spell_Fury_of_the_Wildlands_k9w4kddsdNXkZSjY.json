@@ -1,0 +1,50 @@
+{
+  "_id": "k9w4kddsdNXkZSjY",
+  "effects": [],
+  "img": "systems/zweihander/assets/icons/evil-tree.svg",
+  "name": "Fury of the Wildlands",
+  "type": "spell",
+  "_stats": {
+    "coreVersion": "12.331",
+    "systemId": null,
+    "systemVersion": null,
+    "createdTime": null,
+    "modifiedTime": null,
+    "lastModifiedBy": null,
+    "compendiumSource": null,
+    "duplicateSource": null
+  },
+  "system": {
+    "description": {
+      "@en": "You call forth the most destructive of forces to rage over your foe, whether it be a lightning strike, trees lashing about, an open maw in the earth, a pounding ice storm, a rising tide of acidic water or a fiery tornado."
+    },
+    "notes": "",
+    "rules": {
+      "effect": {
+        "@en": "After successfully casting this spell, one foe immediately suffers [[/roll 3D10]]+[WB] in Damage now and every Turn thereafter until they are Slain! from it."
+      },
+      "criticalSuccess": {
+        "@en": "As above, but the foe also suffers [[/roll 3D10]]+[WB] in physical Peril now and every Turn thereafter until they are Incapacitated! from it."
+      },
+      "criticalFailure": {
+        "@en": "The call of the wild goes unanswered. You are petrified into a soft stone and left Helpless for 72 hours."
+      },
+      "reagents": {
+        "@en": "The petrified penis of a Troll, held aloft"
+      }
+    },
+    "tradition": "Divine (Demiurge)",
+    "principle": "Greater",
+    "distance": "Any one person you can see",
+    "duration": "Instantaneous",
+    "castingTime": "1 min",
+    "castingCost": 0
+  },
+  "folder": null,
+  "sort": 0,
+  "ownership": {
+    "default": 0
+  },
+  "flags": {},
+  "_key": "!items!k9w4kddsdNXkZSjY"
+}

@@ -11,7 +11,7 @@ for (const pack of packs) {
 
   console.log('Unpacking ' + pack);
 
-  const directory = `./packs/${pack}`;
+  const directory = `./packs-src/data-ldb/${pack}`;
 
   try {
     for (const file of await fs.readdir(directory)) {
@@ -21,7 +21,8 @@ for (const pack of packs) {
     if (error.code === 'ENOENT') console.log('No files inside of ' + pack);
     else console.log(error);
   }
-  await extractPack(`${SYSTEM_ID}/packs/${pack}`, `${SYSTEM_ID}/packs-src/data/${pack}`, {
+
+  await extractPack(`${SYSTEM_ID}/packs/${pack}`, `${SYSTEM_ID}/packs-src/data-ldb/${pack}`, {
     yaml: false,
     transformName: transformName,
   });

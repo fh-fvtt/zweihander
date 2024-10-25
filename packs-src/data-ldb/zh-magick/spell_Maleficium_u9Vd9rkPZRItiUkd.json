@@ -1,0 +1,50 @@
+{
+  "_id": "u9Vd9rkPZRItiUkd",
+  "effects": [],
+  "img": "systems/zweihander/assets/icons/wizard-staff.svg",
+  "name": "Maleficium",
+  "type": "spell",
+  "_stats": {
+    "coreVersion": "12.331",
+    "systemId": null,
+    "systemVersion": null,
+    "createdTime": null,
+    "modifiedTime": null,
+    "lastModifiedBy": null,
+    "compendiumSource": null,
+    "duplicateSource": null
+  },
+  "system": {
+    "description": {
+      "@en": "Incanting terrible words over an object in-hand, you can call forth a terrible hex to befall the object’s keeper."
+    },
+    "notes": "",
+    "rules": {
+      "effect": {
+        "@en": "After successfully casting this spell, the object you touch is cursed. Whenever another carries this object, they suffer a gruesome curse. As a consequence, the cursed must flip the results to fail all Skill Tests. In addition, they permanently move down an Age Group (growing older) at each new moon, until eventually they die of premature old age. They inspire intense hatred whenever confronting creatures classified as Animals. A foe cannot be made subject to the Effects of more than one curse at a time, which last until the cursed object remains in their possession."
+      },
+      "criticalSuccess": {
+        "@en": "As above, but the cursed also temporarily reduces every Primary Attribute Bonus by -1 at each new moon."
+      },
+      "criticalFailure": {
+        "@en": "Your Magick backfires in the worst way imaginable! An object on your person is cursed instead, as you suffer the Effects so long as you possess the object. Unfortunately, you do not know which object has been bewitched without use of further Magick!"
+      },
+      "reagents": {
+        "@en": "An inanimate object belonging to a person you wish to curse"
+      }
+    },
+    "tradition": "Covenant",
+    "principle": "Greater",
+    "distance": "Any one object you can touch",
+    "duration": "Forever",
+    "castingTime": "1 min",
+    "castingCost": 0
+  },
+  "folder": null,
+  "sort": 0,
+  "ownership": {
+    "default": 0
+  },
+  "flags": {},
+  "_key": "!items!u9Vd9rkPZRItiUkd"
+}

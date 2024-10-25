@@ -1,0 +1,50 @@
+{
+  "_id": "S0Pqha8hZsmC8moF",
+  "effects": [],
+  "img": "systems/zweihander/assets/icons/wizard-staff.svg",
+  "name": "Medicament of the Mind",
+  "type": "spell",
+  "_stats": {
+    "coreVersion": "12.331",
+    "systemId": null,
+    "systemVersion": null,
+    "createdTime": null,
+    "modifiedTime": null,
+    "lastModifiedBy": null,
+    "compendiumSource": null,
+    "duplicateSource": null
+  },
+  "system": {
+    "description": {
+      "@en": "A glowing light mends broken hearts and cures exhaustion."
+    },
+    "notes": "",
+    "rules": {
+      "effect": {
+        "@en": "After successfully casting this spell, the person you touch may move two steps up the Peril Condition Track positively. A Character may only gain the benefit of this Magick once per day."
+      },
+      "criticalSuccess": {
+        "@en": "As above, but instead move three steps up the Peril Condition Track positively."
+      },
+      "criticalFailure": {
+        "@en": "A nebulous, purple light emits from your hands as you touch the intended. They immediately suffer [[/roll 2D10+2]] physical Peril."
+      },
+      "reagents": {
+        "@en": "A clear bead of glass (expended)"
+      }
+    },
+    "tradition": "Arcane (Luminescence)",
+    "principle": "Lesser",
+    "distance": "Any one person you can touch",
+    "duration": "Instantaneous",
+    "castingTime": "1 min",
+    "castingCost": 0
+  },
+  "folder": null,
+  "sort": 0,
+  "ownership": {
+    "default": 0
+  },
+  "flags": {},
+  "_key": "!items!S0Pqha8hZsmC8moF"
+}

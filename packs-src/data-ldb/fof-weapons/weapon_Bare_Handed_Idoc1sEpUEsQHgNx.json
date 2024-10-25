@@ -1,0 +1,51 @@
+{
+  "_id": "Idoc1sEpUEsQHgNx",
+  "effects": [],
+  "img": "systems/zweihander/assets/icons/fist.svg",
+  "name": "Bare-Handed",
+  "type": "weapon",
+  "_stats": {
+    "coreVersion": "12.331",
+    "systemId": null,
+    "systemVersion": null,
+    "createdTime": null,
+    "modifiedTime": null,
+    "lastModifiedBy": null,
+    "compendiumSource": null,
+    "duplicateSource": null
+  },
+  "system": {
+    "description": {
+      "@en": "<p>Underground pugilist clubs sponsored by the aristocracy, the tried-and-true pugilist bouts and sanctioned boxing matches are part and parcel of life in 1776. Real weapons are far more effective, but a cross to the jaw, roundhouse kick to the kidney or knee to the groin sometimes speaks louder than words alone.</p>"
+    },
+    "notes": "",
+    "price": {
+      "bp": "0",
+      "gc": "0",
+      "ss": "0"
+    },
+    "encumbrance": 0,
+    "carried": true,
+    "weaponType": "Melee",
+    "equipped": false,
+    "associatedSkill": "Simple Melee",
+    "load": 0,
+    "handling": "One or Two-handed",
+    "qualities": {
+      "value": "Pummeling, Slow",
+      "arrayOfValues": []
+    },
+    "distance": "Engaged",
+    "damage": {
+      "formula": "[BB] + (1+[#])d6x6",
+      "associatedPrimaryAttribute": "Agility"
+    }
+  },
+  "folder": null,
+  "sort": 0,
+  "ownership": {
+    "default": 0
+  },
+  "flags": {},
+  "_key": "!items!Idoc1sEpUEsQHgNx"
+}

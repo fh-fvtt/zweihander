@@ -1,0 +1,50 @@
+{
+  "_id": "MioZKK6Cnm4VdvqC",
+  "effects": [],
+  "img": "systems/zweihander/assets/icons/wizard-staff.svg",
+  "name": "Celestine Judgement",
+  "type": "spell",
+  "_stats": {
+    "coreVersion": "12.331",
+    "systemId": null,
+    "systemVersion": null,
+    "createdTime": null,
+    "modifiedTime": null,
+    "lastModifiedBy": null,
+    "compendiumSource": null,
+    "duplicateSource": null
+  },
+  "system": {
+    "description": {
+      "@en": "You hurl a twin-tailed comet of righteousness towards a single enemy who aligns themselves with chaos."
+    },
+    "notes": "",
+    "rules": {
+      "effect": {
+        "@en": "After successfully casting this spell, one foe suffers [[/roll 3D10]]+[WB] in Damage. In addition, they are knocked Prone for three Turns."
+      },
+      "criticalSuccess": {
+        "@en": "As above, but the foe also cannot Counterspell, Dodge or Parry for three Turns."
+      },
+      "criticalFailure": {
+        "@en": "As you throw the comet of justice towards your foe, you realize within your heart of hearts that it was solely intended for you. You suffer [[/roll 3D10]]+[WB] in Damage and are knocked Prone and cannot Counterspell, Dodge or Parry for three Turns."
+      },
+      "reagents": {
+        "@en": "An arrowhead fashioned from gold (expended)"
+      }
+    },
+    "tradition": "Divine (God-Emperor)",
+    "principle": "Greater",
+    "distance": "Any one person you can see",
+    "duration": "Instantaneous",
+    "castingTime": "1 min",
+    "castingCost": 0
+  },
+  "folder": null,
+  "sort": 0,
+  "ownership": {
+    "default": 0
+  },
+  "flags": {},
+  "_key": "!items!MioZKK6Cnm4VdvqC"
+}

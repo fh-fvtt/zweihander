@@ -1,0 +1,51 @@
+{
+  "_id": "XSImFzqR7SsfQLKC",
+  "effects": [],
+  "img": "systems/zweihander/assets/icons/tomahawk.svg",
+  "name": "Tomahawk",
+  "type": "weapon",
+  "_stats": {
+    "coreVersion": "12.331",
+    "systemId": null,
+    "systemVersion": null,
+    "createdTime": null,
+    "modifiedTime": null,
+    "lastModifiedBy": null,
+    "compendiumSource": null,
+    "duplicateSource": null
+  },
+  "system": {
+    "description": {
+      "@en": "<p>Traditionally made of hickory with a stone or metal blade, the tomahawk is used as a weapon and sometimes a ceremonial tool.</p>"
+    },
+    "notes": "",
+    "price": {
+      "bp": "0",
+      "gc": "0",
+      "ss": "10"
+    },
+    "encumbrance": 1,
+    "carried": true,
+    "weaponType": "Melee or Ranged",
+    "equipped": false,
+    "associatedSkill": "Martial Melee",
+    "load": 1,
+    "handling": "One-handed",
+    "qualities": {
+      "value": "Throwing",
+      "arrayOfValues": []
+    },
+    "distance": "Engaged or 1 + [PB] yards",
+    "damage": {
+      "formula": "[CB] + (1+[#])d6x6",
+      "associatedPrimaryAttribute": "Agility"
+    }
+  },
+  "folder": null,
+  "sort": 0,
+  "ownership": {
+    "default": 0
+  },
+  "flags": {},
+  "_key": "!items!XSImFzqR7SsfQLKC"
+}

@@ -1,0 +1,50 @@
+{
+  "_id": "7331O4g0DTjj98Vn",
+  "effects": [],
+  "img": "systems/zweihander/assets/icons/spell-book.svg",
+  "name": "Petrify Other",
+  "type": "spell",
+  "_stats": {
+    "coreVersion": "12.331",
+    "systemId": null,
+    "systemVersion": null,
+    "createdTime": null,
+    "modifiedTime": null,
+    "lastModifiedBy": null,
+    "compendiumSource": null,
+    "duplicateSource": null
+  },
+  "system": {
+    "description": {
+      "@en": "<p>Hark! Know that I command the spirits of the earth, and you shall know their wrath . . .</p>"
+    },
+    "notes": "",
+    "rules": {
+      "effect": {
+        "@en": "<p>After successfully casting (and one foe cannot or fails to Resist using Toughness), your target is Petrified. While Petrified, the person cannot talk or move, cannot be made to bleed, and cannot suffer Damage (by normal means) or Injuries due to it.</p>"
+      },
+      "criticalSuccess": {
+        "@en": "The person cannot Resist this Spell."
+      },
+      "criticalFailure": {
+        "@en": "You are Petrified, unable to Resist the Spell."
+      },
+      "reagents": {
+        "@en": "A preserved cat’s eye, held in hand"
+      }
+    },
+    "tradition": "Common",
+    "principle": "Advanced Tier",
+    "distance": "Any person who can see you clearly",
+    "duration": "9+[WB] hours",
+    "castingTime": "1 Minute",
+    "castingCost": 3
+  },
+  "folder": null,
+  "sort": 0,
+  "ownership": {
+    "default": 0
+  },
+  "flags": {},
+  "_key": "!items!7331O4g0DTjj98Vn"
+}

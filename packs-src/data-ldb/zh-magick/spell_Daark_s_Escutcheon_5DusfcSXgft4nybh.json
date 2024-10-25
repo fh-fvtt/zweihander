@@ -1,0 +1,50 @@
+{
+  "_id": "5DusfcSXgft4nybh",
+  "effects": [],
+  "img": "systems/zweihander/assets/icons/wizard-staff.svg",
+  "name": "Daark’s Escutcheon",
+  "type": "spell",
+  "_stats": {
+    "coreVersion": "12.331",
+    "systemId": null,
+    "systemVersion": null,
+    "createdTime": null,
+    "modifiedTime": null,
+    "lastModifiedBy": null,
+    "compendiumSource": null,
+    "duplicateSource": null
+  },
+  "system": {
+    "description": {
+      "@en": "An invisible, ghastly shield of white and black patterns – one which only you can see – hover before you."
+    },
+    "notes": "",
+    "rules": {
+      "effect": {
+        "@en": "After successfully casting this spell, compare your Aspect Ranks and Chaos Ranks. If your Aspect Ranks are higher, add 3 to your Peril Threshold. If your Chaos Ranks are higher, add 3 to all Damage you inflict. If both your Aspect and Chaos Ranks are equal, you may choose which of the above Effects you wish to gain, but suffer 3 Corruption in return."
+      },
+      "criticalSuccess": {
+        "@en": "As above, but you gain both Effects without suffering Corruption."
+      },
+      "criticalFailure": {
+        "@en": "Within sight, the shield manifests upon the arm of a foe! Unwittingly, they gain both the Effects for the Duration."
+      },
+      "reagents": {
+        "@en": "A pendulum, emblazoned with a skull split by white and black colors"
+      }
+    },
+    "tradition": "Covenant",
+    "principle": "Petty",
+    "distance": "Yourself",
+    "duration": "3+[WB] minutes",
+    "castingTime": "1 min",
+    "castingCost": 0
+  },
+  "folder": null,
+  "sort": 0,
+  "ownership": {
+    "default": 0
+  },
+  "flags": {},
+  "_key": "!items!5DusfcSXgft4nybh"
+}

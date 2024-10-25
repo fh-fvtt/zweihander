@@ -1,0 +1,50 @@
+{
+  "_id": "bpSnKfzRZmc1RfKv",
+  "effects": [],
+  "img": "systems/zweihander/assets/icons/tombstone.svg",
+  "name": "Grave Ward",
+  "type": "spell",
+  "_stats": {
+    "coreVersion": "12.331",
+    "systemId": null,
+    "systemVersion": null,
+    "createdTime": null,
+    "modifiedTime": null,
+    "lastModifiedBy": null,
+    "compendiumSource": null,
+    "duplicateSource": null
+  },
+  "system": {
+    "description": {
+      "@en": "By consecrating a grave with holy water, you protect a grave against trespass or theft."
+    },
+    "notes": "",
+    "rules": {
+      "effect": {
+        "@en": "After successfully casting this spell, a grave you touch imbues a terrible curse upon those who attempt to rob or desecrate it. Anyone who attempts either suffers a -20 Base Chance to all Brawn, Agility and Perception-related Skills, until they return any items which were stolen and the grave is restored to the condition before they despoiled it."
+      },
+      "criticalSuccess": {
+        "@en": "As above, but the robbers suffer a -30 Base Chance instead."
+      },
+      "criticalFailure": {
+        "@en": "Invoking the wrong name of the deceased, you awaken them from their slumber – but only in your mind’s eye. Their voices haunt your dreams and you must succeed at a Resolve Test now and every morning for six days or be subjected to Fear."
+      },
+      "reagents": {
+        "@en": "A vial of holy water, sprinkled on a burial site (expended)"
+      }
+    },
+    "tradition": "Arcane (Morticism)",
+    "principle": "Lesser",
+    "distance": "Any one grave you can touch",
+    "duration": "Forever",
+    "castingTime": "1 min",
+    "castingCost": 0
+  },
+  "folder": null,
+  "sort": 0,
+  "ownership": {
+    "default": 0
+  },
+  "flags": {},
+  "_key": "!items!bpSnKfzRZmc1RfKv"
+}

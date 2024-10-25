@@ -1,0 +1,51 @@
+{
+  "_id": "g1NDPEOtPnK8nQDC",
+  "effects": [],
+  "img": "systems/zweihander/assets/icons/sword-hilt.svg",
+  "name": "Foil",
+  "type": "weapon",
+  "_stats": {
+    "coreVersion": "12.331",
+    "systemId": "zweihander",
+    "systemVersion": "5.3.2",
+    "createdTime": null,
+    "modifiedTime": 1729890307332,
+    "lastModifiedBy": "rivg6xcMxdlVDM8y",
+    "compendiumSource": null,
+    "duplicateSource": null
+  },
+  "system": {
+    "description": {
+      "@en": "<p>A thin and flexible blade, the foil &ndash; along with the rapier and court sword &ndash; are considered the three most popular blades for fencers and duelists alike.</p>"
+    },
+    "notes": "",
+    "price": {
+      "bp": 0,
+      "gc": 3,
+      "ss": 0
+    },
+    "encumbrance": 1,
+    "carried": true,
+    "weaponType": "Bladed",
+    "equipped": false,
+    "associatedSkill": "Alchemy",
+    "load": 0,
+    "handling": "One-handed",
+    "qualities": {
+      "value": "Binding, Finesse, Slow, Weak",
+      "arrayOfValues": []
+    },
+    "distance": "Engaged",
+    "damage": {
+      "formula": "[AB] + (1+[#])d6x6",
+      "associatedPrimaryAttribute": "Agility"
+    }
+  },
+  "folder": null,
+  "sort": 0,
+  "ownership": {
+    "default": 0
+  },
+  "flags": {},
+  "_key": "!items!g1NDPEOtPnK8nQDC"
+}

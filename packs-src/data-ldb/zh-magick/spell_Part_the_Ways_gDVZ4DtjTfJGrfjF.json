@@ -1,0 +1,50 @@
+{
+  "_id": "gDVZ4DtjTfJGrfjF",
+  "effects": [],
+  "img": "systems/zweihander/assets/icons/splashy-stream.svg",
+  "name": "Part the Ways",
+  "type": "spell",
+  "_stats": {
+    "coreVersion": "12.331",
+    "systemId": null,
+    "systemVersion": null,
+    "createdTime": null,
+    "modifiedTime": null,
+    "lastModifiedBy": null,
+    "compendiumSource": null,
+    "duplicateSource": null
+  },
+  "system": {
+    "description": {
+      "@en": "The river cradles you in the water, buoyant like a fish (and as fast, too)."
+    },
+    "notes": "",
+    "rules": {
+      "effect": {
+        "@en": "After successfully casting this spell, you may flip the result to succeed Athletics Test while swimming. In addition, you are not weighed down by any trappings or equipment you wear. Finally, you can add an additional 6 yards to your Combat Movement while swimming."
+      },
+      "criticalSuccess": {
+        "@en": "As above, but triple the Duration."
+      },
+      "criticalFailure": {
+        "@en": "Your stomach fills with Ætherically summoned water. You immediately suffer [[/roll 2D10+2]] physical Peril and are knocked over, where you remain Prone on the ground, throwing up water for the spell’s Duration."
+      },
+      "reagents": {
+        "@en": "A small minnow, swallowed (expended)"
+      }
+    },
+    "tradition": "Divine (Demiurge)",
+    "principle": "Lesser",
+    "distance": "Yourself",
+    "duration": "[WB]+6 minutes",
+    "castingTime": "1 min",
+    "castingCost": 0
+  },
+  "folder": null,
+  "sort": 0,
+  "ownership": {
+    "default": 0
+  },
+  "flags": {},
+  "_key": "!items!gDVZ4DtjTfJGrfjF"
+}

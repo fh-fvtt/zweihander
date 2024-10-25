@@ -1,0 +1,50 @@
+{
+  "_id": "RZXS0ns6oZwBAZTg",
+  "effects": [],
+  "img": "systems/zweihander/assets/icons/wizard-staff.svg",
+  "name": "Bubonic Whorl",
+  "type": "spell",
+  "_stats": {
+    "coreVersion": "12.331",
+    "systemId": null,
+    "systemVersion": null,
+    "createdTime": null,
+    "modifiedTime": null,
+    "lastModifiedBy": null,
+    "compendiumSource": null,
+    "duplicateSource": null
+  },
+  "system": {
+    "description": {
+      "@en": "A whirlwind of Abyssal decay, dried dung and hot piss whorls about, carrying with it a pestilence that claims its victims quickly."
+    },
+    "notes": "",
+    "rules": {
+      "effect": {
+        "@en": "After successfully casting this spell, all creatures caught within an Burst Template contract Grey Plague. However, the Disease spreads rapidly, as every Turn they spend in the Burst Template they immediately (and permanently) lose 9% Agility as if three weeks had passed. In addition, those in the Whorl cannot use ranged weapons (or by struck by them). Foes cannot be infected with Bubonic Whorl again until at least a day has passed. You are immune to the spell’s Effects."
+      },
+      "criticalSuccess": {
+        "@en": "As above, but foes also lose 9% Brawn."
+      },
+      "criticalFailure": {
+        "@en": "As the glass shatters at your feet, a glowing geomantic shape immediately sears into the ground below you. You are ‘stuck’ in a triangle of containment (as if you had been summoned), unable to cause others harm or leave it for an hour. While this occurs, a Lower Demon of the same type from the bottle is summoned, before your feet, who does as they please until dispatched."
+      },
+      "reagents": {
+        "@en": "The dried ashes of a Lower Demon contained in a bottle, shattered (expended)"
+      }
+    },
+    "tradition": "Covenant",
+    "principle": "Greater",
+    "distance": "Any place you can see",
+    "duration": "9+[WB] minutes",
+    "castingTime": "1 min",
+    "castingCost": 0
+  },
+  "folder": null,
+  "sort": 0,
+  "ownership": {
+    "default": 0
+  },
+  "flags": {},
+  "_key": "!items!RZXS0ns6oZwBAZTg"
+}

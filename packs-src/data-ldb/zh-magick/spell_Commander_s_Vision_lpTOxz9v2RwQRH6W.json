@@ -1,0 +1,50 @@
+{
+  "_id": "lpTOxz9v2RwQRH6W",
+  "effects": [],
+  "img": "systems/zweihander/assets/icons/wizard-staff.svg",
+  "name": "Commander's Vision",
+  "type": "spell",
+  "_stats": {
+    "coreVersion": "12.331",
+    "systemId": null,
+    "systemVersion": null,
+    "createdTime": null,
+    "modifiedTime": null,
+    "lastModifiedBy": null,
+    "compendiumSource": null,
+    "duplicateSource": null
+  },
+  "system": {
+    "description": {
+      "@en": "You are granted a vision from the gods, as you peer over the battlefield, surveying all before you."
+    },
+    "notes": "",
+    "rules": {
+      "effect": {
+        "@en": "After successfully casting this spell, you can survey any place you can think of from the sky, as if you were there yourself. This place must be within a number of miles no greater than your [WB], it must be a place you’ve visited before and it must be open to the sky (meaning you cannot view inside buildings or caverns). This provides total line of sight, so that you can cast Magick upon the battlefield as if you were above it. In addition, it grants a +20 Base Chance to any Warfare Tests you wish to make for the Duration of the spell. This Magick requires Concentration."
+      },
+      "criticalSuccess": {
+        "@en": "As above, but triple the Duration."
+      },
+      "criticalFailure": {
+        "@en": "The monocle shatters, temporarily blinding you. You automatically fail any Skill Tests based on vision for the next 48 hours."
+      },
+      "reagents": {
+        "@en": "A gold-rimmed monocle, worn over your eye"
+      }
+    },
+    "tradition": "Divine (Steward)",
+    "principle": "Lesser",
+    "distance": "Yourself",
+    "duration": "[WB]+6 minutes",
+    "castingTime": "1 min",
+    "castingCost": 0
+  },
+  "folder": null,
+  "sort": 0,
+  "ownership": {
+    "default": 0
+  },
+  "flags": {},
+  "_key": "!items!lpTOxz9v2RwQRH6W"
+}

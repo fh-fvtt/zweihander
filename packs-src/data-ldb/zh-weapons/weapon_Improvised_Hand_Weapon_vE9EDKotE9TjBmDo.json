@@ -1,0 +1,50 @@
+{
+  "_id": "vE9EDKotE9TjBmDo",
+  "effects": [],
+  "img": "systems/zweihander/assets/icons/half-log.svg",
+  "name": "Improvised Hand Weapon",
+  "type": "weapon",
+  "_stats": {
+    "coreVersion": "12.331",
+    "systemId": "zweihander",
+    "systemVersion": "5.3.2",
+    "createdTime": null,
+    "modifiedTime": 1729890846615,
+    "lastModifiedBy": "rivg6xcMxdlVDM8y",
+    "compendiumSource": null,
+    "duplicateSource": null
+  },
+  "system": {
+    "description": {
+      "@en": "<p>These are weapons that shouldn&rsquo;t really be weapons. It could be an ale stein, a stool, pots and pans, a fire poker, a salted leg of pork; the list goes on. They are generally useful in bar scuffles and emergencies, laughable otherwise.</p>"
+    },
+    "notes": "",
+    "price": {
+      "bp": 0,
+      "gc": 0,
+      "ss": 0
+    },
+    "encumbrance": 1,
+    "carried": true,
+    "weaponType": "Varies",
+    "equipped": false,
+    "associatedSkill": "Simple Melee",
+    "load": 0,
+    "handling": "One-handed",
+    "qualities": {
+      "value": "Pummeling",
+      "arrayOfValues": []
+    },
+    "distance": "Engaged",
+    "damage": {
+      "formula": "[BB] + (1+[#])d6x6"
+    }
+  },
+  "folder": null,
+  "sort": 0,
+  "ownership": {
+    "default": 0
+  },
+  "flags": {},
+  "_key": "!items!vE9EDKotE9TjBmDo"
+}

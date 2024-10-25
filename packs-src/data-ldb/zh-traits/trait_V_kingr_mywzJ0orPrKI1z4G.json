@@ -1,0 +1,35 @@
+{
+  "_id": "mywzJ0orPrKI1z4G",
+  "effects": [],
+  "img": "systems/zweihander/assets/icons/avoidance.svg",
+  "name": "Víkingr",
+  "type": "trait",
+  "_stats": {
+    "coreVersion": "12.331",
+    "systemId": null,
+    "systemVersion": null,
+    "createdTime": null,
+    "modifiedTime": null,
+    "lastModifiedBy": null,
+    "compendiumSource": null,
+    "duplicateSource": null
+  },
+  "system": {
+    "description": {
+      "@en": "Born on foot or by horse, you quickly leap out of the way from danger... providing you can see the danger coming."
+    },
+    "notes": "",
+    "rules": {
+      "effect": {
+        "@en": "When you or your steed are struck by a ranged weapon, roll a 1D6 Chaos Die. If it lands on face ‘6’, you ignore it as you automatically Dodge it for 0 AP. Otherwise, you can attempt to Dodge as usual. You must be unarmored, or wearing fur or hide to take advantage of this Trait."
+      }
+    }
+  },
+  "folder": null,
+  "sort": 0,
+  "ownership": {
+    "default": 0
+  },
+  "flags": {},
+  "_key": "!items!mywzJ0orPrKI1z4G"
+}

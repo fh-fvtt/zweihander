@@ -1,0 +1,50 @@
+{
+  "_id": "IxihBZsrZ84YVQgR",
+  "effects": [],
+  "img": "systems/zweihander/assets/icons/wizard-staff.svg",
+  "name": "Grave Descend",
+  "type": "spell",
+  "_stats": {
+    "coreVersion": "12.331",
+    "systemId": null,
+    "systemVersion": null,
+    "createdTime": null,
+    "modifiedTime": null,
+    "lastModifiedBy": null,
+    "compendiumSource": null,
+    "duplicateSource": null
+  },
+  "system": {
+    "description": {
+      "@en": "<p>Rest in peace until you rise again . . .</p>"
+    },
+    "notes": "",
+    "rules": {
+      "effect": {
+        "@en": "<p>After successfully casting, a willing person sinks into the soil, falling asleep. They are able to avoid environmental effects of cold, heat, Starvation and Suffocation during this time.</p>"
+      },
+      "criticalSuccess": {
+        "@en": "Triple the duration."
+      },
+      "criticalFailure": {
+        "@en": "The grave or soil swallows them whole, putting them in a Chokehold. Whenever they reach Incapacitated!, they are Slain!."
+      },
+      "reagents": {
+        "@en": "A grave or the roots of a tree, which you sink into"
+      }
+    },
+    "tradition": "Witchcraft",
+    "principle": "Advanced Tier",
+    "distance": "By Touch",
+    "duration": "6+[WB] days",
+    "castingTime": "1 Minutes",
+    "castingCost": 2
+  },
+  "folder": null,
+  "sort": 0,
+  "ownership": {
+    "default": 0
+  },
+  "flags": {},
+  "_key": "!items!IxihBZsrZ84YVQgR"
+}

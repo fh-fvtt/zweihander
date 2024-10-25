@@ -1,0 +1,50 @@
+{
+  "_id": "b8qX0N7I08EMtBjt",
+  "effects": [],
+  "img": "systems/zweihander/assets/icons/radial-balance.svg",
+  "name": "Chaos Overturned",
+  "type": "spell",
+  "_stats": {
+    "coreVersion": "12.331",
+    "systemId": null,
+    "systemVersion": null,
+    "createdTime": null,
+    "modifiedTime": null,
+    "lastModifiedBy": null,
+    "compendiumSource": null,
+    "duplicateSource": null
+  },
+  "system": {
+    "description": {
+      "@en": "Summoning the powers of order, you instill within yourself a sense of righteous hope."
+    },
+    "notes": "",
+    "rules": {
+      "effect": {
+        "@en": "After successfully casting this spell, you gain 1 additional AP at the start of your Turns in combat, to use as you see fit. This also means that you can make an additional Attack Action or Perilous Stunt, despite the normal limitations presented in Combat."
+      },
+      "criticalSuccess": {
+        "@en": "As above, but you also gain a +20 Base Chance to Combat-based Skill Tests for the spell’s Duration."
+      },
+      "criticalFailure": {
+        "@en": "As you raise the hammer above your head, it splits along the hilt, breaking in two. You lose 1 additional AP at the start of your Turns and suffer a -20 Base Chance to all Combat-based Skill Tests for the Duration of the spell."
+      },
+      "reagents": {
+        "@en": "A bronze hammer held aloft"
+      }
+    },
+    "tradition": "Divine (God-Emperor)",
+    "principle": "Lesser",
+    "distance": "Yourself",
+    "duration": "[WB]+6 minutes",
+    "castingTime": "1 min",
+    "castingCost": 0
+  },
+  "folder": null,
+  "sort": 0,
+  "ownership": {
+    "default": 0
+  },
+  "flags": {},
+  "_key": "!items!b8qX0N7I08EMtBjt"
+}

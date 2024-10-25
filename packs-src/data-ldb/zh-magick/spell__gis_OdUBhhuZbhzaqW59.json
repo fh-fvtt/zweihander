@@ -1,0 +1,50 @@
+{
+  "_id": "OdUBhhuZbhzaqW59",
+  "effects": [],
+  "img": "systems/zweihander/assets/icons/aegis.svg",
+  "name": "Ægis",
+  "type": "spell",
+  "_stats": {
+    "coreVersion": "12.331",
+    "systemId": null,
+    "systemVersion": null,
+    "createdTime": null,
+    "modifiedTime": null,
+    "lastModifiedBy": null,
+    "compendiumSource": null,
+    "duplicateSource": null
+  },
+  "system": {
+    "description": {
+      "@en": "A mystical halo of wind buffets you from all sides, offering you protection from attacks."
+    },
+    "notes": "",
+    "rules": {
+      "effect": {
+        "@en": "After successfully casting this spell, add 3 to your Damage Threshold and you cannot Bleed. If you are currently Bleeding, you are Bleeding no more."
+      },
+      "criticalSuccess": {
+        "@en": "As above and you are immune to Damage inflicted by ranged weapons."
+      },
+      "criticalFailure": {
+        "@en": "Your Magick goes terribly awry, as the wind is knocked out of you. You immediately suffer [[/roll 1D10+1]] physical Peril and are left Defenseless for the Duration of the spell."
+      },
+      "reagents": {
+        "@en": "A splinter of a wooden shield kept in your pocket"
+      }
+    },
+    "tradition": "Generalist",
+    "principle": "Generalist",
+    "distance": "Yourself",
+    "duration": "[WB]+3 minutes",
+    "castingTime": "1 min",
+    "castingCost": 0
+  },
+  "folder": null,
+  "sort": 0,
+  "ownership": {
+    "default": 0
+  },
+  "flags": {},
+  "_key": "!items!OdUBhhuZbhzaqW59"
+}
