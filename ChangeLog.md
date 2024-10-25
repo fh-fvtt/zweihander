@@ -5,6 +5,18 @@ All notable changes to this project will be documented in this file.
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## [5.3.4] - 2024-10-25
+
+Compatible Foundry version: 12.331
+
+### Added
+
+- New workflow for extracting / compiling Compendium packs that uses LevelDB (does not impact users, merely technical)
+
+### Fixed
+
+- Fix Exploding Dice not working correctly. This update does not go through a world's Actors, so any PCs and NPCs that wield firearms will need to be manually updated (change `xd1,6` to `xd1&6` in the weapon damage formulas).
+
 ## [5.3.2] - 2024-09-12
 
 Compatible Foundry version: 12

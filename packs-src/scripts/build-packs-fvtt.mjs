@@ -4,6 +4,8 @@ import { promises as fs } from 'fs';
 
 const SYSTEM_ID = process.cwd();
 
+console.log(SYSTEM_ID);
+
 const packs = await fs.readdir('./packs-src/data-ldb/');
 
 for (const pack of packs) {

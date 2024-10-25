@@ -22,9 +22,9 @@ jobs:
       # create a zip file with all files required by the module to add to the release
       - name: Zip Files
         working-directory: ./
-        run: zip -r ./system.zip ./assets ./fonts ./lang ./packs/*.db ./src ./tinymce index.js index.js.map style.css system.json template.json LICENSE.txt ChangeLog.md
+        run: zip -r ./system.zip ./assets ./fonts ./lang ./packs/**/* ./src ./tinymce index.js index.js.map style.css system.json template.json LICENSE.txt ChangeLog.md
 
-      # Get the version 
+      # Get the version
       - name: Get Version
         shell: bash
         id: get-version
