@@ -42,7 +42,7 @@ body.game.vtt.system-zweihander .zweihander.sheet.character {
       font-weight: 400;
       height: 14px;
       line-height: 16px;
-      margin: 4px 8px 2px;
+      margin: 4px 8px 4px;
       text-align: center;
       text-transform: uppercase;
       white-space: nowrap;
@@ -80,6 +80,7 @@ body.game.vtt.system-zweihander .zweihander.sheet.character {
         border-top: 2px groove var(--zh-clr-bg2);
         flex: 0 0 32px;
         padding: 0 calc(50% - 150px);
+        padding-top: 6px;
         label {
           color: var(--zh-clr-fg3);
           line-height: 28px;

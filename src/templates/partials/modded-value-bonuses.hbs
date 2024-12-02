@@ -1,0 +1,16 @@
+{{!--@todo: merge this partial with modded-value-pa--}}
+{{#zhIsDtmModified bonus baseBonus dtm}}
+  <span class='modded-value'>
+    <div class='modded-value-indicator bonus {{#zhIsModifierPositive bonus baseBonus}}{{else}}negative{{/zhIsModifierPositive}}'>
+      <i class='fa-solid {{#zhIsModifierPositive bonus baseBonus}}fa-up{{else}}fa-down{{/zhIsModifierPositive}}'></i>
+      <ol class='modded-value-tooltip'>
+        <li><span class='modded-value-label'>{{localize 'ZWEI.othermenues.basevalue'}}:</span> {{baseBonus}}</li>
+        {{#each mods}}
+          <li><span class='modded-value-label'>{{source}}:</span> {{type}} {{argument}}</li>
+        {{/each}}
+        <li><span class='modded-value-label'>{{localize 'ZWEI.othermenues.effectivevalue'}}:</span> {{bonus}}</li>
+      </ol>
+    </div>
+  </span>
+{{else}}
+{{/zhIsDtmModified}}

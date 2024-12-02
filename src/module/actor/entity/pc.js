@@ -3,14 +3,106 @@ import * as ZweihanderUtils from '../../utils';
 import ZweihanderActorConfig from '../../apps/actor-config';
 
 export default class ZweihanderPC extends ZweihanderBaseActor {
-  // changed by re4xn from 'prepareDerivedData' on 19-05-2022
-  prepareBaseData(actor) {
+  // parry, dodge & magick depend on Item preparation being finished
+  prepareEmbeddedDocuments(actor) {
+    const noWarn = CONFIG.ZWEI.NO_WARN || actor._id === null;
     const configOptions = ZweihanderActorConfig.getConfig(actor);
+    const systemData = actor.system;
+
+    const alternativePerilSystem = game.settings.get('zweihander', 'alternativePerilSystem');
+
+    // get peril malus
+    const basePerilCurrent = systemData.stats.secondaryAttributes.perilCurrent.value;
+    const effectivePerilCurrent = this.getEffectivePerilLadderValue(
+      basePerilCurrent,
+      configOptions.isIgnoredPerilLadderValue
+    );
+    systemData.stats.secondaryAttributes.perilCurrent.effectiveValue = effectivePerilCurrent;
+    const perilMalus = this.getPerilMalus(effectivePerilCurrent, alternativePerilSystem);
+
+    // calculate special actions underlying values
+    const calcSecondayAttributeSpecialActionValue = (secAttr, name) => {
+      const skill = actor.items.find((item) => item.type === 'skill' && item.name === secAttr.associatedSkill);
+      if (skill) {
+        const primAttr = skill.system.associatedPrimaryAttribute.toLowerCase();
+        const perilMalusFinal = alternativePerilSystem
+          ? skill.system.bonus + perilMalus
+          : Math.max(0, skill.system.bonus - perilMalus);
+        secAttr.value = Math.max(0, systemData.stats.primaryAttributes[primAttr].value + perilMalusFinal);
+      } else {
+        noWarn ||
+          ui?.notifications?.warn(
+            game.i18n.format('ZWEI.othermessages.noassociated', {
+              associated: secAttr.associatedSkill,
+              secondary: name,
+            })
+          );
+      }
+    };
+    //calculate parry
+    calcSecondayAttributeSpecialActionValue(systemData.stats.secondaryAttributes.parry, 'Parry');
+    //calculate dodge
+    calcSecondayAttributeSpecialActionValue(systemData.stats.secondaryAttributes.dodge, 'Dodge');
+    //calculate magick
+    calcSecondayAttributeSpecialActionValue(systemData.stats.secondaryAttributes.magick, 'Magick');
+  }
+
+  applyActiveEffects(actor, preparationStage) {
+    const overrides = {};
+    actor.statuses.clear();
+
+    const paKeys = CONFIG.ZWEI.primaryAttributeKeys;
+    const pabKeys = CONFIG.ZWEI.primaryAttributeBonusKeys;
+    const saKeys = CONFIG.ZWEI.secondaryAttributeKeys;
+
+    // Organize non-disabled effects by their application priority
+    const changes = [];
+    for (const effect of actor.allApplicableEffects()) {
+      if (!effect.active) continue;
+
+      changes.push(
+        ...effect.changes.flatMap((change) => {
+          if (
+            (preparationStage === 'initial' && (saKeys.includes(change.key) || pabKeys.includes(change.key))) ||
+            (preparationStage === 'intermediate' && (saKeys.includes(change.key) || paKeys.includes(change.key))) ||
+            (preparationStage === 'final' && (paKeys.includes(change.key) || pabKeys.includes(change.key)))
+          )
+            return [];
+
+          const c = foundry.utils.deepClone(change);
+          c.effect = effect;
+          c.priority = c.priority ?? c.mode * 10;
+          return [c];
+        })
+      );
+      for (const statusId of effect.statuses) actor.statuses.add(statusId);
+    }
+
+    changes.sort((a, b) => a.priority - b.priority);
+
+    // console.log(`CHANGES @ stage ${preparationStage}:`, changes);
+
+    // Apply all changes
+    for (let change of changes) {
+      if (!change.key) continue;
+      const changes = change.effect.apply(actor, change);
+      Object.assign(overrides, changes);
+    }
+
+    // Expand the set of final overrides
+    actor.overrides = foundry.utils.expandObject(overrides);
+  }
+
+  prepareDerivedData(actor) {
+    const configOptions = ZweihanderActorConfig.getConfig(actor);
+
     // set up utility variables
     const systemData = actor.system;
     systemData.tier = CONFIG.ZWEI.tiers[actor.items.filter((i) => i.type === 'profession').length];
+
     // calculate primary attribute bonuses (first digit)
     Object.values(systemData.stats.primaryAttributes).forEach((a) => (a.bonus = Math.floor(a.value / 10)));
+
     // add ancestral modifiers to the primary attribute bonuses
     const ancestry = actor.items.find((i) => i.type === 'ancestry');
     const applyBonusModifiers = (list, mod, source) =>
@@ -19,12 +111,13 @@ export default class ZweihanderPC extends ZweihanderBaseActor {
         //TODO should be safe to remove this after migration of existing data
         if (!attr) {
           ui?.notifications?.warn(
-            game.i18n.format("ZWEI.othermessages.novalidprimary", { primary: a.trim(), source: source })
-            );
+            game.i18n.format('ZWEI.othermessages.novalidprimary', { primary: a.trim(), source: source })
+          );
           return;
         }
         systemData.stats.primaryAttributes[attr].bonus += mod;
       });
+
     // ancestral bonus advances
     if (ancestry) {
       applyBonusModifiers(
@@ -38,6 +131,7 @@ export default class ZweihanderPC extends ZweihanderBaseActor {
         `ancestry ${ancestry.name} of actor ${actor.name}`
       );
     }
+
     // professional bonus advances
     actor.items
       .filter((i) => i.type === 'profession')
@@ -45,11 +139,20 @@ export default class ZweihanderPC extends ZweihanderBaseActor {
         const advancesList = p.system.bonusAdvances?.filter?.((a) => a.purchased)?.map?.((a) => a.name) ?? [];
         applyBonusModifiers(advancesList, +1, `profession ${p.name} of actor ${actor.name}`);
       });
+
+    // calculate primary attribute base bonus values (prior to Active Effects being applied)
+    Object.values(systemData.stats.primaryAttributes).forEach((a) => (a.baseBonus = a.bonus));
+
+    this.applyActiveEffects(actor, 'intermediate');
+
     // assign inital peril & damage
     const sa = systemData.stats.secondaryAttributes;
     sa.perilThreshold = {};
     sa.damageThreshold = {};
-    sa.perilThreshold.value = systemData.stats.primaryAttributes[configOptions.pthAttribute].bonus + 3;
+
+    sa.perilThreshold.baseValue = systemData.stats.primaryAttributes[configOptions.pthAttribute].bonus + 3; // for Active Effect purposes
+    sa.perilThreshold.value = sa.perilThreshold.baseValue;
+
     // get equipped armor
     const equippedArmor = actor.items.filter((a) => a.type === 'armor' && a.system.equipped);
     // calculate total damage threshold modifier from armor
@@ -60,15 +163,8 @@ export default class ZweihanderPC extends ZweihanderBaseActor {
     const damageModifier = maxEquippedArmor?.system?.damageThresholdModifier ?? 0;
     sa.damageThreshold.value = systemData.stats.primaryAttributes[configOptions.dthAttribute].bonus + damageModifier;
     // active effects tracking Proof of Concept
-    sa.damageThreshold.base = systemData.stats.primaryAttributes[configOptions.dthAttribute].bonus;
-    sa.damageThreshold.mods = [];
-    if (maxEquippedArmor && damageModifier > 0) {
-      sa.damageThreshold.mods.push({
-        source: `${maxEquippedArmor.name} DTM`,
-        type: 'add',
-        argument: damageModifier,
-      });
-    }
+    sa.damageThreshold.baseValue = systemData.stats.primaryAttributes[configOptions.dthAttribute].bonus;
+    sa.damageThreshold.dtm = damageModifier;
 
     // encumbrance calculations...
     // assign encumbrance from equipped trappings
@@ -92,59 +188,34 @@ export default class ZweihanderPC extends ZweihanderBaseActor {
     const currencyEnc = Math.floor(Object.values(systemData.currency).reduce((a, b) => a + b, 0) / 1000);
     const enc = (systemData.stats.secondaryAttributes.encumbrance = {});
     // assign initial encumbrance threshold
-    enc.value = systemData.stats.primaryAttributes.brawn.bonus + 3 + configOptions.encumbranceModifier;
+    enc.baseValue = systemData.stats.primaryAttributes.brawn.bonus + 3 + configOptions.encumbranceModifier;
+    enc.value = enc.baseValue;
     // assign current encumbrance
     enc.current = smallTrappingsEnc + normalTrappingsEnc + currencyEnc;
-    // assign overage
-    enc.overage = Math.max(0, enc.current - enc.value);
+
     // calculate initiative
     const ini = (systemData.stats.secondaryAttributes.initiative = {});
-    ini.value =
+    ini.baseValue =
       systemData.stats.primaryAttributes[configOptions.intAttribute].bonus + 3 + configOptions.initiativeModifier;
-    ini.overage = enc.overage;
-    ini.current = Math.max(0, ini.value - ini.overage);
+    ini.value = ini.baseValue;
+
     // calculate movement
     const mov = (systemData.stats.secondaryAttributes.movement = {});
-    mov.value =
+    mov.baseValue =
       systemData.stats.primaryAttributes[configOptions.movAttribute].bonus + 3 + configOptions.movementModifier;
+    mov.value = mov.baseValue;
+
+    // apply Active Effects to derived values here
+    this.applyActiveEffects(actor, 'final');
+
+    // these have to come after Active Effects, since they depend on derived values that can be affected by Active Effects
+    enc.overage = Math.max(0, enc.current - enc.value);
+
+    ini.overage = enc.overage;
+    ini.current = Math.max(0, ini.value - ini.overage);
+
     mov.overage = enc.overage;
     mov.current = Math.max(0, mov.value - mov.overage);
-  }
-
-  // parry, dodge & magick depend on Item preparation being finished
-  prepareEmbeddedDocuments(actor) {
-    const noWarn = CONFIG.ZWEI.NO_WARN || actor._id === null;
-    const configOptions = ZweihanderActorConfig.getConfig(actor);
-    const systemData = actor.system;
-
-    // get peril malus
-    const basePerilCurrent = systemData.stats.secondaryAttributes.perilCurrent.value;
-    const effectivePerilCurrent = this.getEffectivePerilLadderValue(
-      basePerilCurrent,
-      configOptions.isIgnoredPerilLadderValue
-    );
-    systemData.stats.secondaryAttributes.perilCurrent.effectiveValue = effectivePerilCurrent;
-    const perilMalus = this.getPerilMalus(effectivePerilCurrent);
-    // calculate special actions underlying values
-    const calcSecondayAttributeSpecialActionValue = (secAttr, name) => {
-      const skill = actor.items.find((item) => item.type === 'skill' && item.name === secAttr.associatedSkill);
-      if (skill) {
-        const primAttr = skill.system.associatedPrimaryAttribute.toLowerCase();
-        secAttr.value =
-          systemData.stats.primaryAttributes[primAttr].value + Math.max(0, skill.system.bonus - perilMalus);
-      } else {
-        noWarn ||
-          ui?.notifications?.warn(
-            game.i18n.format("ZWEI.othermessages.noassociated", { associated: secAttr.associatedSkill, secondary: name })
-          );
-      }
-    };
-    //calculate parry
-    calcSecondayAttributeSpecialActionValue(systemData.stats.secondaryAttributes.parry, 'Parry');
-    //calculate dodge
-    calcSecondayAttributeSpecialActionValue(systemData.stats.secondaryAttributes.dodge, 'Dodge');
-    //calculate magick
-    calcSecondayAttributeSpecialActionValue(systemData.stats.secondaryAttributes.magick, 'Magick');
   }
 
   async _preCreate(actor, options, user, that) {
@@ -178,9 +249,9 @@ export default class ZweihanderPC extends ZweihanderBaseActor {
       let injuryToRoll = newDamage == 3 ? 'moderate' : newDamage == 2 ? 'serious' : 'grievous';
 
       await Dialog.confirm({
-        title: `${actor.name}: ` + game.i18n.localize("ZWEI.othermessages.injuryconfig"),
-        content: game.i18n.format("ZWEI.othermessages.rollinjury", { 
-          injury: game.i18n.localize("ZWEI.actor.conditions." + injuryToRoll.toLowerCase() + "ly")
+        title: `${actor.name}: ` + game.i18n.localize('ZWEI.othermessages.injuryconfig'),
+        content: game.i18n.format('ZWEI.othermessages.rollinjury', {
+          injury: game.i18n.localize('ZWEI.actor.conditions.' + injuryToRoll.toLowerCase() + 'ly'),
         }),
         yes: () => this._rollInjury(injuryToRoll, actor),
         defaultYes: false,
@@ -199,7 +270,7 @@ export default class ZweihanderPC extends ZweihanderBaseActor {
     await rollResult.toMessage({
       speaker: ChatMessage.getSpeaker({ actor: actor }),
       content: injuryChaosRoll.total,
-      flavor: game.i18n.localize("ZWEI.chatskill.avoidinjury"),
+      flavor: game.i18n.localize('ZWEI.chatskill.avoidinjury'),
     });
 
     const injurySustained = rollResult.terms[0].results.some((die) => die.result === 6);
@@ -231,13 +302,9 @@ export default class ZweihanderPC extends ZweihanderBaseActor {
           const allTiersAssigned = numberOfProfessionsAttached == 3;
           const dragDroppedOwnProfession = actorProfessions.some((p) => p._id === item._id);
           if (allTiersAssigned && !dragDroppedOwnProfession) {
-            ui.notifications.error(
-              game.i18n.localize("ZWEI.othermessages.errorprofessions")
-              );
+            ui.notifications.error(game.i18n.localize('ZWEI.othermessages.errorprofessions'));
           } else if (!previousTiersCompleted && !dragDroppedOwnProfession) {
-            ui.notifications.error(
-              game.i18n.localize("ZWEI.othermessages.errortier")
-              );
+            ui.notifications.error(game.i18n.localize('ZWEI.othermessages.errortier'));
           }
           if (!allTiersAssigned && previousTiersCompleted) {
             filteredData.push(item);
@@ -245,9 +312,7 @@ export default class ZweihanderPC extends ZweihanderBaseActor {
           }
         } else if (item.type === 'ancestry') {
           if (ancestryAttached) {
-            ui.notifications.error(
-              game.i18n.localize("ZWEI.othermessages.errorancestry")
-              );
+            ui.notifications.error(game.i18n.localize('ZWEI.othermessages.errorancestry'));
           } else {
             filteredData.push(item);
             ancestryAttached = true;

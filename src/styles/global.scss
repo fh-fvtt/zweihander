@@ -44,15 +44,15 @@
 }
 
 .zweihander-theme-gruvbox-light {
-  --zh-clr-fg0: var(--zh-clr-dark0);
-  --zh-clr-fg1: var(--zh-clr-dark1);
-  --zh-clr-fg2: var(--zh-clr-dark2);
-  --zh-clr-fg3: var(--zh-clr-dark3);
-  --zh-clr-fg4: var(--zh-clr-dark4);
+  --zh-clr-fg0: rgb(100, 100, 100);
+  --zh-clr-fg1: gray;
+  --zh-clr-fg2: dimgray;
+  --zh-clr-fg3: darkgray;
+  --zh-clr-fg4: darkgray;
 
-  --zh-clr-bg0: var(--zh-clr-bright0);
-  --zh-clr-bg1: var(--zh-clr-bright1);
-  --zh-clr-bg2: var(--zh-clr-bright2);
+  --zh-clr-bg0: white;
+  --zh-clr-bg1: lightgray;
+  --zh-clr-bg2: whitesmoke;
   --zh-clr-bg3: var(--zh-clr-bright3);
   --zh-clr-bg4: var(--zh-clr-bright4);
 
@@ -61,7 +61,7 @@
   --zh-clr-yellow: var(--zh-clr-yellow-faded);
   --zh-clr-blue: var(--zh-clr-blue-faded);
   --zh-clr-purple: var(--zh-clr-purple-faded);
-  --zh-clr-aqua: var(--zh-clr-aqua-faded);
+  --zh-clr-aqua: darkgray;
   --zh-clr-orange: var(--zh-clr-orange-faded);
 
   --zh-clr-red-alt: var(--zh-clr-red-neutral);
@@ -69,10 +69,11 @@
   --zh-clr-yellow-alt: var(--zh-clr-yellow-neutral);
   --zh-clr-blue-alt: var(--zh-clr-blue-neutral);
   --zh-clr-purple-alt: var(--zh-clr-purple-neutral);
-  --zh-clr-aqua-alt: var(--zh-clr-aqua-neutral);
+  --zh-clr-aqua-alt: darkgray;
   --zh-clr-orange-alt: var(--zh-clr-orange-neutral);
 
-  --zh-clr-bg0-rgb: 251, 241, 199;
+  --zh-clr-bg0-rgb: 225, 225, 225;
+  --zh-clr-bg1-rgb: 225, 225, 225;
   --zh-clr-accent-rgb: 121, 116, 14;
 }
 
@@ -225,8 +226,14 @@ body.game.vtt.system-zweihander {
     visibility: hidden;
   }
 
+  .window-app .window-header {
+    border-radius: 5px 5px 0 0;
+    background: var(--zh-clr-dark0);
+  }
+
   .window-app .window-content {
     background: var(--zh-clr-bg0);
+    border-top: 2px groove var(--zh-clr-bg2);
   }
 
   .window-app .journal-entry-content {
@@ -271,6 +278,9 @@ body.game.vtt.system-zweihander {
 
   .editor {
     height: 100%;
+    &.prosemirror {
+      height: 135px;
+    }
   }
 
   div.editor .CodeMirror-vscrollbar {

@@ -71,6 +71,49 @@ ZWEI.tiersInversed = {
 
 ZWEI.primaryAttributes = ['combat', 'brawn', 'agility', 'perception', 'intelligence', 'willpower', 'fellowship'];
 
+// @todo: uncomment when Active Effects can affect Skill Tests
+ZWEI.secondaryAttributes = [
+  'damageThreshold',
+  'perilThreshold',
+  //'dodge',
+  //'parry',
+  //'magick',
+  'encumbrance',
+  'initiative',
+  'movement',
+];
+
+ZWEI.primaryAttributeKeys = [
+  'system.stats.primaryAttributes.combat.value',
+  'system.stats.primaryAttributes.brawn.value',
+  'system.stats.primaryAttributes.agility.value',
+  'system.stats.primaryAttributes.perception.value',
+  'system.stats.primaryAttributes.intelligence.value',
+  'system.stats.primaryAttributes.willpower.value',
+  'system.stats.primaryAttributes.fellowship.value',
+];
+
+ZWEI.primaryAttributeBonusKeys = [
+  'system.stats.primaryAttributes.combat.bonus',
+  'system.stats.primaryAttributes.brawn.bonus',
+  'system.stats.primaryAttributes.agility.bonus',
+  'system.stats.primaryAttributes.perception.bonus',
+  'system.stats.primaryAttributes.intelligence.bonus',
+  'system.stats.primaryAttributes.willpower.bonus',
+  'system.stats.primaryAttributes.fellowship.bonus',
+];
+
+ZWEI.secondaryAttributeKeys = [
+  'system.stats.secondaryAttributes.damageThreshold.value',
+  'system.stats.secondaryAttributes.perilThreshold.value',
+  //'system.stats.secondaryAttributes.dodge.value',
+  //'system.stats.secondaryAttributes.parry.value',
+  //'system.stats.secondaryAttributes.magick.value',
+  'system.stats.secondaryAttributes.encumbrance.value',
+  'system.stats.secondaryAttributes.initiative.value',
+  'system.stats.secondaryAttributes.movement.value',
+];
+
 ZWEI.primaryAttributeIcons = {
   combat: 'ra ra-croc-sword',
   brawn: 'ra ra-muscle-up',

@@ -195,32 +195,61 @@ body.game.vtt.system-zweihander {
     }
     .modded-value {
       position: relative;
+      flex: 0;
       .modded-value-indicator {
         cursor: help;
         position: absolute;
-        top: 0px;
-        left: 100%;
+        bottom: 0px;
+        left: -10px;
         width: 16px;
         height: 16px;
         font-size: 11px;
         text-align: center;
         line-height: 1.7;
-        color: var(--zh-clr-bg0);
+        color: var(--zh-clr-green-alt);
         border-radius: 50%;
-        background-color: var(--zh-clr-yellow-alt);
         &:hover {
-          background-color: var(--zh-clr-yellow);
+          color: var(--zh-clr-green-bright);
         }
+        &.negative {
+          color: var(--zh-clr-red-alt);
+          &:hover {
+            color: var(--zh-clr-red-bright);
+          }
+        }
+        &.dtm {
+          left: unset;
+          bottom: unset;
+          right: -1px;
+          top: 1px;
+        }
+        &.bonus {
+          bottom: unset;
+          left: 0px;
+          top: -3px;
+        }
+
         .modded-value-tooltip {
           display: none;
         }
       }
     }
   }
+
+  .zweihander.sheet.active-effect-sheet {
+    .window-content {
+      padding: 8px;
+    }
+
+    select {
+      width: 100%;
+    }
+  }
+
   .zh-modded-value-tooltip-instance {
     position: absolute;
     display: block;
-    width: 200px;
+    width: 110px;
     // height: 200px;
     background-color: rgba(var(--zh-clr-bg1-rgb), 1);
     list-style: none;

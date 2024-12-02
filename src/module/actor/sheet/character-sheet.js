@@ -34,12 +34,21 @@ export default class ZweihanderCharacterSheet extends ZweihanderBaseActorSheet {
 
   async getData(options) {
     const sheetData = await super.getData();
+
     // get actor config
     sheetData.actorConfig = ZweihanderActorConfig.getConfig(this.actor);
+
     // bind currency
     sheetData.settings.currencies = game.settings.get('zweihander', 'currencySettings');
+
     // calculate reward points automatically
     sheetData.settings.trackRewardPoints = game.settings.get('zweihander', 'trackRewardPoints');
+
+    // source (unmodified) values required to know fields by Active Effects
+    for (let pa of CONFIG.ZWEI.primaryAttributes)
+      sheetData.system.stats.primaryAttributes[`${pa}`].baseValue =
+        this.actor._source.system.stats.primaryAttributes[`${pa}`].value;
+
     if (sheetData.settings.trackRewardPoints) {
       const tierMultiplier = {
         Basic: 100,
@@ -204,6 +213,13 @@ export default class ZweihanderCharacterSheet extends ZweihanderBaseActorSheet {
     sheetData.professions = sheetData.professions.sort(
       (a, b) => CONFIG.ZWEI.tiersInversed[a.system.tier] - CONFIG.ZWEI.tiersInversed[b.system.tier]
     );
+
+    const effectGroups = this.prepareActiveEffectGroups();
+
+    sheetData.effectsTemporary = effectGroups.effectsTemporary;
+    sheetData.effectsPassive = effectGroups.effectsPassive;
+    sheetData.effectsInactive = effectGroups.effectsInactive;
+
     // add source information from flags
     const addSource = (items) =>
       items.map((i) => ({
@@ -232,6 +248,26 @@ export default class ZweihanderCharacterSheet extends ZweihanderBaseActorSheet {
       skill.system.focuses = focuses;
     });
     return sheetData;
+  }
+
+  prepareActiveEffectGroups() {
+    const groups = {
+      effectsTemporary: [],
+      effectsPassive: [],
+      effectsInactive: [],
+    };
+
+    for (const e of this.actor.allApplicableEffects()) {
+      if (!e.system.isActive) groups.effectsInactive.push(e);
+      else if (e.isTemporary) groups.effectsTemporary.push(e);
+      else groups.effectsPassive.push(e);
+    }
+
+    for (const g of Object.values(groups)) {
+      g.sort((a, b) => (a.sort || 0) - (b.sort || 0));
+    }
+
+    return groups;
   }
 
   _getItemGroups(data) {

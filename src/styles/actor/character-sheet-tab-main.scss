@@ -22,13 +22,16 @@
       position: relative;
       text-align: center;
       width: 100%;
-      input {
+      .pa-wrapper {
+        display: flex;
+        flex-direction: row;
+      }
+      input.pa-value {
         font-size: 28px;
         height: 30px;
         line-height: 32px;
-        margin: 0 auto;
         text-align: center;
-        width: 36px;
+        width: 38px;
       }
       &:last-of-type {
         border: none;
@@ -50,12 +53,16 @@
       margin: 0 20px;
       .pa-icon {
         color: var(--zh-clr-fg4);
-        flex: 0 0 10px;
         font-size: 16px;
         padding-top: 4px;
       }
       .pa-bonus {
         font-size: 18px;
+      }
+      .pa-value {
+        &.modded-value {
+          color: var(--zh-clr-yellow-alt);
+        }
       }
     }
   }
@@ -263,7 +270,7 @@
       margin: 5px 0 5px 0;
     }
     h4.block-title {
-      flex: 0 1 1.8em;
+      flex: 0 1 1.5em;
     }
   }
 }

@@ -101,8 +101,10 @@ export default class ZweihanderActor extends Actor {
   }
 
   applyActiveEffects() {
-    super.applyActiveEffects();
-    this.dispatch('applyActiveEffects');
+    // super.applyActiveEffects();
+    this.dispatch('applyActiveEffects', {
+      args: [this, 'initial'], // when Foundry first calls applyActiveEffects(), we want to defer certain applications to later
+    });
   }
 
   prepareDerivedData() {
@@ -167,50 +169,50 @@ export default class ZweihanderActor extends Actor {
 
   /* -------------------------------------------- */
 
-  _preCreateEmbeddedDocuments(embeddedName, result, options, userId) {
-    super._preCreateEmbeddedDocuments(embeddedName, result, options, userId);
+  _preCreateDescendantDocuments(embeddedName, result, options, userId) {
+    super._preCreateDescendantDocuments(embeddedName, result, options, userId);
     if (userId === game.user.id)
-      this.dispatch('_preCreateEmbeddedDocuments', {
+      this.dispatch('_preCreateDescendantDocuments', {
         args: [embeddedName, result, options, userId],
       });
   }
 
-  _onCreateEmbeddedDocuments(embeddedName, documents, result, options, userId) {
-    super._onCreateEmbeddedDocuments(embeddedName, documents, result, options, userId);
+  _onCreateDescendantDocuments(embeddedName, documents, result, options, userId) {
+    super._onCreateDescendantDocuments(embeddedName, documents, result, options, userId);
     if (userId === game.user.id)
-      this.dispatch('_onCreateEmbeddedDocuments', {
+      this.dispatch('_onCreateDescendantDocuments', {
         args: [embeddedName, documents, result, options, userId],
       });
   }
 
-  _preUpdateEmbeddedDocuments(embeddedName, result, options, userId) {
-    super._preUpdateEmbeddedDocuments(embeddedName, result, options, userId);
+  _preUpdateDescendantDocuments(embeddedName, result, options, userId) {
+    super._preUpdateDescendantDocuments(embeddedName, result, options, userId);
     if (userId === game.user.id)
-      this.dispatch('_preUpdateEmbeddedDocuments', {
+      this.dispatch('_preUpdateDescendantDocuments', {
         args: [embeddedName, result, options, userId],
       });
   }
 
-  _onUpdateEmbeddedDocuments(embeddedName, documents, result, options, userId) {
-    super._onUpdateEmbeddedDocuments(embeddedName, documents, result, options, userId);
+  _onUpdateDescendantDocuments(embeddedName, documents, result, options, userId) {
+    super._onUpdateDescendantDocuments(embeddedName, documents, result, options, userId);
     if (userId === game.user.id)
-      this.dispatch('_onUpdateEmbeddedDocuments', {
+      this.dispatch('_onUpdateDescendantDocuments', {
         args: [embeddedName, documents, result, options, userId],
       });
   }
 
-  _preDeleteEmbeddedDocuments(embeddedName, result, options, userId) {
-    super._preDeleteEmbeddedDocuments(embeddedName, result, options, userId);
+  _preDeleteDescendantDocuments(embeddedName, result, options, userId) {
+    super._preDeleteDescendantDocuments(embeddedName, result, options, userId);
     if (userId === game.user.id)
-      this.dispatch('_preDeleteEmbeddedDocuments', {
+      this.dispatch('_preDeleteDescendantDocuments', {
         args: [embeddedName, result, options, userId],
       });
   }
 
-  _onDeleteEmbeddedDocuments(embeddedName, documents, result, options, userId) {
-    super._onDeleteEmbeddedDocuments(embeddedName, documents, result, options, userId);
+  _onDeleteDescendantDocuments(embeddedName, documents, result, options, userId) {
+    super._onDeleteDescendantDocuments(embeddedName, documents, result, options, userId);
     if (userId === game.user.id)
-      this.dispatch('_onDeleteEmbeddedDocuments', {
+      this.dispatch('_onDeleteDescendantDocuments', {
         args: [embeddedName, documents, result, options, userId],
       });
   }

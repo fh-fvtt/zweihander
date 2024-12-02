@@ -61,6 +61,9 @@ export default class ZweihanderBaseActorSheet extends ActorSheet {
     // Prepare owned items
     await this._prepareItems(sheetData);
 
+    // Effects
+    sheetData.effects = actorData.effects; // comes *after* Owned Items, as Active Effects are their own thing
+
     const itemGroups = this._processItemGroups(this._getItemGroups(sheetData));
     sheetData.itemGroups = ZweihanderUtils.assignPacks(this.actor.type, itemGroups);
 
@@ -240,7 +243,7 @@ export default class ZweihanderBaseActorSheet extends ActorSheet {
         const tooltip = $(event.currentTarget).find('.modded-value-tooltip').clone();
         const offset = $(event.currentTarget).offset();
         offset.top += 25;
-        offset.left -= 200 / 2 - 8;
+        offset.left -= 110 / 2 - 8;
         tooltip.addClass('zh-modded-value-tooltip-instance');
         tooltip.offset(offset);
         $('body').append(tooltip);
@@ -404,10 +407,13 @@ export default class ZweihanderBaseActorSheet extends ActorSheet {
             label: 'New Effect',
             icon: 'systems/zweihander/assets/icons/dice-fire.svg',
             origin: 'Actor.' + this.actor.id,
-            details: {
-              source: `${this.actor.name} (Manual)`,
-              category: '???',
-              isActive: true,
+            // @todo: refactor after transition to DataModel
+            system: {
+              details: {
+                source: 'Manual',
+                category: '',
+                isActive: false,
+              },
             },
           },
         ]);

@@ -3,7 +3,7 @@ body.game.vtt.system-zweihander {
     background: var(--zh-clr-bg0);
     #sidebar-tabs {
       box-shadow: none;
-      border: none;
+      border-bottom: 2px groove var(--color-border-highlight);
       a {
         border-color: transparent;
         color: var(--zh-clr-fg0);

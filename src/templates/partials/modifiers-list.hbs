@@ -1,0 +1,103 @@
+<ol class="items-list">
+  <li class="items-header flexrow">
+    <h3 class="item-name sortable filterable" data-detail="-1" data-item-group="{{itemGroup.id}}">
+      <span class="detail-title">
+        Modifiers
+        <!--{{#if itemGroup.sortName}}
+        <div class="sort-indicator">
+          <i class="fa fa-sort-{{#if (eq itemGroup.sortName 1)}}up{{else}}down{{/if}}"></i>
+          <span class="sort-order sort-order-{{itemGroup.sortName}}">{{itemGroup.sortNameOrder}}</span>
+        </div>
+        {{else}}
+        <div class="sort-indicator">
+          <i class="fa fa-sort"></i>
+        </div>
+        {{/if}}
+        <div class="filter-indicator{{#if itemGroup.filterName}} filter-active{{/if}} show-filter"><i class="fa fa-search"></i></div>-->
+      </span>
+      <!--<div class="filter-input{{#if itemGroup.filterNameActive}} filter-input-active{{/if}}">
+        <i class="fa fa-search hide-filter {{#if itemGroup.filterName}}filter-active{{/if}}"></i>
+        <input type="text" name="{{itemGroup.id}}-1" value="{{itemGroup.filterName}}">
+      </div>-->
+    </h3>
+    <!--{{#each itemGroup.details as |detail index| }}
+    <div class="item-detail sortable {{#if detail.filterable}}filterable{{/if}}" style="width:{{detail.size}}px" data-detail="{{index}}" data-item-group="{{itemGroup.id}}">
+      <span class="detail-title secondary">
+        {{localize (zhConcat "ZWEI.actor.items." detail.title)}}
+        {{#if detail.sort}}
+        <div class="sort-indicator">
+          <i class="fa fa-sort-{{#if (eq detail.sort 1)}}up{{else}}down{{/if}}"></i>
+          <span class="sort-order sort-order-{{detail.sort}}">{{detail.sortOrder}}</span>
+        </div>
+        {{else}}
+        <div class="sort-indicator">
+          <i class="fa fa-sort"></i>
+        </div>
+        {{/if}}
+        {{#if detail.filterable}}
+        <div class="filter-indicator{{#if detail.filter}} filter-active{{/if}} show-filter"><i class="fa fa-search"></i></div>
+        {{/if}}
+        <div class="padder"></div>
+      </span>
+      {{#if detail.filterable}}
+      <div class="filter-input{{#if detail.filterActive}} filter-input-active{{/if}}">
+        <i class="fa fa-search hide-filter{{#if detail.filter}} filter-active{{/if}}"></i>
+        <input type="text" name="{{itemGroup.id}}-{{index}}" value="{{detail.filter}}">
+      </div>
+      {{/if}}
+    </div>
+    {{/each}}-->
+    <div class="item-controls"><a class="add-new" data-item-type="" data-tooltip="Add New " data-tooltip-direction="UP"><i
+          class="fa fa-plus"></i> {{localize "ZWEI.actor.items.add"}}</a>
+    </div>
+  </li>
+  <!--<ol class="item-list">
+    {{#each itemGroup.items as |item| }}
+    <li class="item flexrow" data-item-id="{{item._id}}">
+      <div class="item-name fetch-{{#if ../isEffect}}effect{{else}}item{{/if}} flexrow js-show-item-description {{#if itemGroup.rollType}}rollable{{/if}}">
+        <div class="{{#if ../isEffect}}{{zhItemImageClass item.icon}}{{else}}{{zhItemImageClass item.img}}{{/if}} {{itemGroup.rollType}}" tabindex="0" role="button"
+          aria-label="{{item.name}}" style="{{#if ../isEffect}}{{zhItemImageStyle item.icon}}{{else}}{{zhItemImageStyle item.img}}{{/if}}"
+          data-label="{{#if itemGroup.rollLabelKey}}{{zhLookup item itemGroup.rollLabelKey}}{{else}}{{itemGroup.rollLabel}}{{/if}}">
+        </div>
+        <h4 class="flexrow" data-testid="{{#if ../isEffect}}{{item.label}}{{else}}{{item.name}}{{/if}}">
+          {{#if ../isEffect}}{{item.label}}{{else}}{{item.name}}{{/if}}
+          {{#zhProfessionWarn item}}
+          {{else}}
+          <div class="profession-warn"><i class="fa fa-exclamation-triangle" data-tooltip="Profession is missing a Talent, has a misspelled Talent, or has a duplicate one. Please add to/change Talent list." data-tooltip-direction="UP"></i></div>
+          {{/zhProfessionWarn}}
+        </h4>
+      </div>
+      {{#each itemGroup.details as |detail| }} 
+      <div class="item-detail {{detail.class}}" style="width:{{detail.size}}px">
+        {{#if detail.isCheckbox}}
+        <input class="zweihander-checkbox {{#unless detail.classes}}link{{#if ../../isEffect}}-effect{{/if}}-checkbox{{else}}{{detail.classes}}{{/unless}}"
+          id="{{item._id}}.{{detail.key}}" data-item-id="{{item._id}}" data-key="{{detail.key}}" type="checkbox"
+          {{checked (zhLookup item detail.key)}} />
+        <label for="{{item._id}}.{{detail.key}}"></label>
+        {{else if detail.isNumerable}}
+        <div class="numerable-field flexrow">
+          <button type="button" class="numerable-field-subtract {{#if (zhLookup item detail.key)}}{{else}}hide{{/if}}"
+            data-numerable-path="{{detail.key}}">-</button>
+          <span class="numerable-field-counter">{{zhLookup item detail.key}}{{detail.unit}}</span>
+          <button type="button" class="numerable-field-add" data-numerable-path="{{detail.key}}">+</button>
+        </div>
+        {{else if detail.key}}
+        {{zhLookup item detail.key}}
+        {{else}}
+        {{#with item}} {{zhCapitalize (detail.value)}} {{/with}}
+        {{/if}}
+      </div>
+      {{/each}}
+      <div class="item-controls flexrow" data-tooltip-direction="UP">
+        <a class="item-control {{#if ../isEffect}}effect{{else}}item{{/if}}-post" data-tooltip="Post {{#if ../isEffect}}Effect{{else}}Item{{/if}} to Chat"><i class="fas fa-comment fa-fw fa-xs"></i></a>
+        <a class="item-control {{#if ../isEffect}}effect{{else}}item{{/if}}-edit" data-tooltip="Edit {{#if ../isEffect}}Effect{{else}}Item{{/if}}"><i class="fas fa-pencil-alt fa-fw fa-xs"></i></a>
+        <a class="item-control {{#if itemGroup.managed}}{{#if item.isManualSource}}item-no-delete{{else}}{{#if ../isEffect}}effect{{else}}item{{/if}}-delete{{/if}}{{else}}{{#if ../isEffect}}effect{{else}}item{{/if}}-delete{{/if}}"
+          data-tooltip="Delete {{#if ../isEffect}}Effect{{else}}Item{{/if}}"><i class="fas fa-trash-alt fa-fw fa-xs"></i></a>
+      </div>
+      <div class="item-summary individual-description save-toggle item-summary-longform">
+        {{> ($$ itemGroup.summaryTemplate) item.system item=item}}
+      </div>
+    </li>
+    {{/each}}
+  </ol>
+</ol>-->

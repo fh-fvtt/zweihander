@@ -8,8 +8,17 @@ export default class ZweihanderBaseActor {
     return isIgnoredPerilLadderValue[Math.max(0, 3 - baseLadderValue)] ? 5 : baseLadderValue;
   }
 
-  getPerilMalus(ladderValue) {
-    return Math.max(0, 4 - ladderValue) * 10;
+  getPerilMalus(ladderValue, alternativePerilSystem) {
+    const alternativePerilTable = {
+      5: 0,
+      4: 0,
+      3: -5,
+      2: -10,
+      1: -20,
+      0: -20,
+    };
+
+    return alternativePerilSystem ? alternativePerilTable[ladderValue] : Math.max(0, 4 - ladderValue) * 10;
   }
 
   async _preCreate(actor, options, user, that) {

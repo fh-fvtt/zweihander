@@ -26,7 +26,7 @@ export const registerHandlebarHelpers = async function () {
     if (typeof word !== 'string') return '';
     return word.slice(0, 1).toUpperCase() + word.slice(1).toLowerCase();
   });
-  
+
   $$('zhLowerCase', function (word) {
     if (typeof word !== 'string') return '';
     return word.toLowerCase();
@@ -92,7 +92,14 @@ export const registerHandlebarHelpers = async function () {
     let html = '';
 
     effect.changes.forEach((e) => {
-      html += `<label>` + game.i18n.localize("ZWEI.othermessages.modifiedattribute") + `:</label> ${e.key}<br /><label>` + game.i18n.localize("ZWEI.othermessages.mode") + `:</label> ${e.mode}<br /><label>` + game.i18n.localize("ZWEI.othermessages.value") + `:</label> ${e.value}<br />`;
+      html +=
+        `<label>` +
+        game.i18n.localize('ZWEI.othermessages.modifiedattribute') +
+        `:</label> ${e.key}<br /><label>` +
+        game.i18n.localize('ZWEI.othermessages.mode') +
+        `:</label> ${e.mode}<br /><label>` +
+        game.i18n.localize('ZWEI.othermessages.value') +
+        `:</label> ${e.value}<br />`;
     });
 
     return new Handlebars.SafeString(html);
@@ -169,9 +176,9 @@ export const registerHandlebarHelpers = async function () {
       currencies
         .map(
           (c) =>
-            `<i class="fas fa-coins currency" style="color: ${c.color}"></i> ${price[c.abbreviation] ?? 0} ${
-              game.i18n.localize("ZWEI.coinage." + c.abbreviation)
-            }`
+            `<i class="fas fa-coins currency" style="color: ${c.color}"></i> ${
+              price[c.abbreviation] ?? 0
+            } ${game.i18n.localize('ZWEI.coinage.' + c.abbreviation)}`
         )
         .join(' ')
     );
@@ -187,7 +194,9 @@ export const registerHandlebarHelpers = async function () {
     `
       )
       .join('');
-    return new Handlebars.SafeString(`<div class="form-group"><label>` + game.i18n.localize('ZWEI.actor.items.price') + `</label>${inputs}</div>`);
+    return new Handlebars.SafeString(
+      `<div class="form-group"><label>` + game.i18n.localize('ZWEI.actor.items.price') + `</label>${inputs}</div>`
+    );
   });
 
   $$('zhProfessionWarn', (item, options) => {
@@ -207,49 +216,125 @@ export const registerHandlebarHelpers = async function () {
   $$('zhLocalize', localize);
 
   $$('zhLocalizePath', localizePath);
-	
-  $$('zhGetPerilSystem', function() {
-    return game.settings.get('zweihander', 'alternativePerilSystem') ? ZWEI.altPerilOptions : ZWEI.perilOptions;
-  })
 
-  $$("zhConditionLadderLoc", function(name, choices, options) {
-    const checked = options.hash["checked"] ?? 5;
-    let html = "";
+  $$('zhGetPerilSystem', function () {
+    return game.settings.get('zweihander', 'alternativePerilSystem') ? ZWEI.altPerilOptions : ZWEI.perilOptions;
+  });
+
+  $$('zhConditionLadderLoc', function (name, choices, options) {
+    const checked = options.hash['checked'] ?? 5;
+    let html = '';
     let uuid = uuidv4();
     for (let i = choices.length - 1; i >= 0; i--) {
       const isChecked = checked == i;
-      html += `
+      html +=
+        `
         <div class="radio-and-status">
           <input type="radio" class="radio-rank"
             id="${uuid}.${i}" name="${name}"
-            value="${i}" data-dtype="Number" ${isChecked ? "checked" : ""}>
+            value="${i}" data-dtype="Number" ${isChecked ? 'checked' : ''}>
           <label for="${uuid}.${i}" class="status">
-            <span><span>` + game.i18n.localize('ZWEI.actor.conditions.' + choices[i]) + `</span></span>
+            <span><span>` +
+        game.i18n.localize('ZWEI.actor.conditions.' + choices[i]) +
+        `</span></span>
           </label>
         </div>`;
     }
     return new Handlebars.SafeString(html);
   });
-	
-  $$("zhConcat", (...strs) =>
-    strs.filter((s) => typeof s !== "object").join("")
-  );
-	
-	$$("zhSkillRankAbbreviationLoc", function(rank) {
-    return ["-", game.i18n.localize('ZWEI.actor.skills.rankabbreviation.apprentice'), 
-		game.i18n.localize('ZWEI.actor.skills.rankabbreviation.journeyman'), 
-		game.i18n.localize('ZWEI.actor.skills.rankabbreviation.master')][rank];
+
+  $$('zhConcat', (...strs) => strs.filter((s) => typeof s !== 'object').join(''));
+
+  $$('zhSkillRankAbbreviationLoc', function (rank) {
+    return [
+      '-',
+      game.i18n.localize('ZWEI.actor.skills.rankabbreviation.apprentice'),
+      game.i18n.localize('ZWEI.actor.skills.rankabbreviation.journeyman'),
+      game.i18n.localize('ZWEI.actor.skills.rankabbreviation.master'),
+    ][rank];
   });
 
-  $$("zhLocalizeConditional", function (keypath, keyvalue) {
-    if (typeof keyvalue !== "string") return "";
-    const keyvalueLS = keyvalue.toLowerCase().replace(/\s+/g, "");
-    const keyvaluesList = ["alchemy", "athletics", "awareness", "bargain", "charm", "coordination", "counterfeit", "disguise", "drive", "eavesdrop", "education", "folklore", "gamble", "guile", "handleanimal", "heal", "incantation", "interrogation", "intimidate", "leadership", "martialmelee", "martialranged", "navigation", "pilot", "resolve", "ride", "rumor", "scrutinize", "simplemelee", "simpleranged", "skulduggery", "stealth", "survival", "toughness", "tradecraft", "warfare","gc","goldcoins","ss","silvershilling","bp","brasspennies","nc","newcurrency"];
+  $$('zhLocalizeConditional', function (keypath, keyvalue) {
+    if (typeof keyvalue !== 'string') return '';
+    const keyvalueLS = keyvalue.toLowerCase().replace(/\s+/g, '');
+    const keyvaluesList = [
+      'alchemy',
+      'athletics',
+      'awareness',
+      'bargain',
+      'charm',
+      'coordination',
+      'counterfeit',
+      'disguise',
+      'drive',
+      'eavesdrop',
+      'education',
+      'folklore',
+      'gamble',
+      'guile',
+      'handleanimal',
+      'heal',
+      'incantation',
+      'interrogation',
+      'intimidate',
+      'leadership',
+      'martialmelee',
+      'martialranged',
+      'navigation',
+      'pilot',
+      'resolve',
+      'ride',
+      'rumor',
+      'scrutinize',
+      'simplemelee',
+      'simpleranged',
+      'skulduggery',
+      'stealth',
+      'survival',
+      'toughness',
+      'tradecraft',
+      'warfare',
+      'gc',
+      'goldcoins',
+      'ss',
+      'silvershilling',
+      'bp',
+      'brasspennies',
+      'nc',
+      'newcurrency',
+    ];
     if (keyvaluesList.includes(keyvalueLS)) {
-      return game.i18n.localize(keypath + keyvalueLS)
+      return game.i18n.localize(keypath + keyvalueLS);
     } else {
       return keyvalue;
     }
   });
 
+  $$('zhModIndicator', function (mod) {
+    return mod === 'dtm' ? 'dtm' : '';
+  });
+
+  $$('zhIsValueModified', function (value, baseValue, options) {
+    return value != baseValue ? options.fn(this) : options.inverse(this);
+  });
+
+  $$('zhIsDtmModified', function (value, baseValue, dtm, options) {
+    return value - (dtm || 0) != baseValue ? options.fn(this) : options.inverse(this);
+  });
+
+  $$('zhIsModifierPositive', function (value, baseValue, options) {
+    return baseValue - value < 0 ? options.fn(this) : options.inverse(this);
+  });
+
+  $$('zhModifiedEncumbrance', function (encumbrance) {
+    const modifier = encumbrance.value - encumbrance.baseValue;
+
+    if (modifier === 0) return '';
+
+    const mode = modifier < 0 ? '-' : '+';
+
+    return new Handlebars.SafeString(
+      `<span class="modifier-display">(${encumbrance.baseValue} ${mode} ${Math.abs(modifier)})</span>`
+    );
+  });
 };

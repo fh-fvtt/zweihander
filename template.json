@@ -253,6 +253,9 @@
             "@en": ""
           }
         }
+      },
+      "modifier": {
+        "modifierType": ""
       }
     },
     "quality": {
@@ -366,7 +369,7 @@
       "associatedFocusSkill": ""
     },
     "disease": {
-      "templates": ["flavor", "effect"],
+      "templates": ["flavor", "effect", "modifier"],
       "resist": "",
       "duration": "",
       "rules": {

@@ -11,6 +11,7 @@ body.game.vtt.system-zweihander #fortuneTrackerApp {
     color: var(--zh-clr-fg0);
   }
   .window-content {
+    border: none;
     background-image: none;
     background-color: rgba(var(--zh-clr-bg0-rgb), 0.15);
     position: relative;

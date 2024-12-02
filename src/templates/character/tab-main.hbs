@@ -4,11 +4,15 @@
     <li class="pa pa-{{key}}">
       <h4 class="block-title">{{localize (zhConcat "ZWEI.actor.primary." key)}}</h4 class="block-title">
       <div class="pa-display flexrow">
-        <input class="pa-value" type="number" name="system.stats.primaryAttributes.{{key}}.value"
-          value="{{attr.value}}">
+        {{> ($$ "partials/modded-value-pa" attr)}}
+        <div class="pa-wrapper">
+          <input class="pa-value" type="number" name="system.stats.primaryAttributes.{{key}}.value"
+            value="{{attr.value}}" {{#zhIsValueModified attr.value attr.baseValue}}disabled{{else}}{{/zhIsValueModified}}/>
+        </div>
+        
         <div class="pa-icon"><span class="{{lookup ../config.primaryAttributeIcons key}}"></span></div>
         <div class="flexcol">
-          <span class="pa-bonus">{{attr.bonus}}</span>
+          <span class="pa-bonus">{{attr.bonus}}{{> ($$ 'partials/modded-value-bonuses') attr}}</span>
           <span class="pa-bonus-title">{{localize (zhConcat "ZWEI.actor.bonuses." (zhLowerCase key))}}</span>
         </div>
       </div>
@@ -20,11 +24,11 @@
   </div>
   <div class="combat-container flexcol">
     <div class="combat-stats flexrow">
-      <div class="movement">
+      <div class="movement flexcol">
         <h4 class="block-title">{{localize "ZWEI.actor.secondary.movement"}}</h4 class="block-title">
         <div class="values flexrow">
           <div>
-            <span class="value" data-testid="movement">{{system.stats.secondaryAttributes.movement.value}}</span>
+            <span class="value" data-testid="movement">{{> ($$ 'partials/modded-value') system.stats.secondaryAttributes.movement}}{{system.stats.secondaryAttributes.movement.value}}</span>
             <span class="formula">[{{localize (zhConcat "ZWEI.actor.bonuses." (zhLowerCase actorConfig.movAttribute))}}]+3</span>
           </div>
           <div>
@@ -37,11 +41,11 @@
           </div>
         </div>
       </div>
-      <div class="initiative">
+      <div class="initiative flexcol">
         <h4 class="block-title">{{localize "ZWEI.actor.secondary.initiative"}}</h4 class="block-title">
         <div class="values flexrow">
           <div>
-            <span class="value" data-testid="initiative">{{system.stats.secondaryAttributes.initiative.value}}</span>
+            <span class="value" data-testid="initiative">{{> ($$ 'partials/modded-value') system.stats.secondaryAttributes.initiative}}{{system.stats.secondaryAttributes.initiative.value}}</span>
             <span class="formula">[{{localize (zhConcat "ZWEI.actor.bonuses." (zhLowerCase actorConfig.intAttribute))}}]+3</span>
           </div>
           <div>
@@ -66,8 +70,9 @@
           <span class="value" data-testid="dodge">{{system.stats.secondaryAttributes.dodge.value}}</span>
         </div>
         <select class="skill-dropdown" name="system.stats.secondaryAttributes.dodge.associatedSkill">
-          {{!-- In case the system.stats.secondaryAttributes.parry.associatedSkill is not in the dodge skill list --}}
+          {{!-- In case the system.stats.secondaryAttributes.parry.associatedSkill is not in the dodge skill list
           <option value="{{system.stats.secondaryAttributes.dodge.associatedSkill}}">{{zhLocalizeConditional "ZWEI.actor.skills." system.stats.secondaryAttributes.dodge.associatedSkill}}</option>
+           --}}
           {{#select system.stats.secondaryAttributes.dodge.associatedSkill}}
           {{#each actorConfig.dodgeSkills as | skill idx | }}
           <option value="{{skill}}">{{zhLocalizeConditional "ZWEI.actor.skills." skill}}</option>
@@ -84,8 +89,9 @@
           <span class="value" data-testid="parry">{{system.stats.secondaryAttributes.parry.value}}</span>
         </div>
         <select class="skill-dropdown" name="system.stats.secondaryAttributes.parry.associatedSkill">
-          {{!-- In case the system.stats.secondaryAttributes.parry.associatedSkill is not in the parry skill list --}}
+          {{!-- In case the system.stats.secondaryAttributes.parry.associatedSkill is not in the parry skill list
           <option value="{{system.stats.secondaryAttributes.parry.associatedSkill}}">{{zhLocalizeConditional "ZWEI.actor.skills." system.stats.secondaryAttributes.parry.associatedSkill}}</option>
+           --}}
           {{#select system.stats.secondaryAttributes.parry.associatedSkill}}
           {{#each actorConfig.parrySkills as | skill idx | }}
           <option value="{{skill}}">{{zhLocalizeConditional "ZWEI.actor.skills." skill}}</option>
@@ -118,7 +124,7 @@
         <h4 class="block-title">{{localize "ZWEI.actor.secondary.perilthreshold"}}</h4 class="block-title">
         <div class="values flexrow">
           <div class="threshold-value flexcol">
-            <span class="value" data-testid="peril">{{system.stats.secondaryAttributes.perilThreshold.value}}</span>
+            <span class="value" data-testid="peril">{{> ($$ 'partials/modded-value') system.stats.secondaryAttributes.perilThreshold}}{{system.stats.secondaryAttributes.perilThreshold.value}}</span>
             <span class="formula">[{{localize (zhConcat "ZWEI.actor.bonuses." (zhLowerCase actorConfig.pthAttribute))}}]+3</span>
           </div>
           <span class="values-derived-bracket">{</span>
@@ -140,8 +146,8 @@
         <h4 class="block-title">{{localize "ZWEI.actor.secondary.damagethreshold"}}</h4 class="block-title">
         <div class="values flexrow">
           <div class="threshold-value flexcol">
-            <span class="value" data-testid="damage">{{> ($$ 'partials/modded-value') system.stats.secondaryAttributes.damageThreshold}}</span>
-            <span class="formula">[{{localize (zhConcat "ZWEI.actor.bonuses." (zhLowerCase actorConfig.dthAttribute))}}]+{{localize "ZWEI.actor.secondary.damagethresholdmodifier"}}</span>
+            <span class="value" data-testid="damage">{{> ($$ 'partials/modded-value') system.stats.secondaryAttributes.damageThreshold}}{{system.stats.secondaryAttributes.damageThreshold.value}}</span>
+            <span class="formula">[{{localize (zhConcat "ZWEI.actor.bonuses." (zhLowerCase actorConfig.dthAttribute))}}]+{{system.stats.secondaryAttributes.damageThreshold.dtm}}</span>
           </div>
           <span class="values-derived-bracket">{</span>
           <div class="flexcol values-derived">

@@ -156,7 +156,7 @@ export function getItemGroups(groupsData) {
       items: groupsData.rituals,
     },
     conditions: {
-      title: 'passiveconditions',
+      title: 'otherconditions',
       type: 'condition',
       summaryTemplate: 'item-summary/condition',
       details: [
@@ -174,8 +174,8 @@ export function getItemGroups(groupsData) {
       ],
       items: groupsData.conditions,
     },
-    effects: {
-      title: 'temporaryconditions',
+    effectsTemporary: {
+      title: 'temporaryeffects',
       type: 'effect',
       isEffect: true,
       summaryTemplate: 'item-summary/effect',
@@ -183,21 +183,71 @@ export function getItemGroups(groupsData) {
         {
           title: 'source',
           size: 140,
-          key: localizePath('details.source'),
+          key: 'system.details.source',
         },
         {
           title: 'category',
           size: 140,
-          key: localizePath('details.category'),
+          key: 'system.details.category',
         },
         {
-          title: 'ineffect', // @todo: change this in ZweihanderActiveEffect implementation to be more intuitive
+          title: 'ineffect',
           size: 150,
-          key: 'disabled',
+          key: 'system.isActive',
           isCheckbox: true,
         },
       ],
-      items: groupsData.effects,
+      items: groupsData.effectsTemporary,
+    },
+    effectsPassive: {
+      title: 'passiveeffects',
+      type: 'effect',
+      isEffect: true,
+      summaryTemplate: 'item-summary/effect',
+      details: [
+        {
+          title: 'source',
+          size: 140,
+          key: 'system.details.source',
+        },
+        {
+          title: 'category',
+          size: 140,
+          key: 'system.details.category',
+        },
+        {
+          title: 'ineffect',
+          size: 150,
+          key: 'system.isActive',
+          isCheckbox: true,
+        },
+      ],
+      items: groupsData.effectsPassive,
+    },
+    effectsInactive: {
+      title: 'inactiveeffects',
+      type: 'effect',
+      isEffect: true,
+      summaryTemplate: 'item-summary/effect',
+      details: [
+        {
+          title: 'source',
+          size: 140,
+          key: 'system.details.source',
+        },
+        {
+          title: 'category',
+          size: 140,
+          key: 'system.details.category',
+        },
+        {
+          title: 'ineffect',
+          size: 150,
+          key: 'system.isActive',
+          isCheckbox: true,
+        },
+      ],
+      items: groupsData.effectsInactive,
     },
     disorders: {
       title: 'disorders',
@@ -387,7 +437,15 @@ export function attachTabDefinitions(tabData) {
       itemGroups: ['spells', 'rituals'].map($$),
     },
     afflictions: {
-      itemGroups: [/*'effects', */ 'conditions', 'disorders', 'diseases', 'injuries' /*, 'taints'*/].map($$),
+      itemGroups: [
+        'effectsTemporary',
+        'effectsPassive',
+        'effectsInactive',
+        'disorders',
+        'diseases',
+        'injuries',
+        'conditions',
+      ].map($$),
     },
     tiers: {
       itemGroups: ['professions', 'traits', 'drawbacks', 'talents', 'uniqueAdvances'].map($$),

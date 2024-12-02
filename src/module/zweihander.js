@@ -74,7 +74,6 @@ Hooks.once('ready', function () {
     game.settings.set('zweihander', 'currencySettings', currencySettings);
   }
   // patch die class
-  console.log('TEST 111');
   patchDie();
   console.log(`systems/zweihander/assets/${game.settings.get('zweihander', 'gameSystem')}-logo.webp`);
   $('#ui-left #logo')
@@ -164,9 +163,11 @@ Hooks.once('init', async function () {
   CONFIG.Actor.documentClass = ZweihanderActor;
   CONFIG.Item.documentClass = ZweihanderItem;
   CONFIG.ActiveEffect.documentClass = ZweihanderActiveEffect;
+  CONFIG.ActiveEffect.legacyTransferral = false;
   // CONFIG.Combat.documentClass = ZweihanderCombat;
   // CONFIG.Combatant.documentClass = ZweihanderCombatant;
   // CONFIG.ui.combat = ZweihanderCombatTracker;
+
   // Register sheet application classes
   Actors.unregisterSheet('core', ActorSheet);
   Actors.registerSheet('zweihander', ZweihanderCharacterSheet, {

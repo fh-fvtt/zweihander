@@ -1,7 +1,6 @@
-{{!--@todo: merge this partial with modded-value-pa--}}
-{{#zhIsDtmModified value baseValue dtm}}
+{{#zhIsValueModified value baseValue}}
   <span class='modded-value'>
-    <div class='modded-value-indicator dtm {{#zhIsModifierPositive value baseValue}}{{else}}negative{{/zhIsModifierPositive}}'>
+    <div class='modded-value-indicator {{#zhIsModifierPositive value baseValue}}{{else}}negative{{/zhIsModifierPositive}}'>
       <i class='fa-solid {{#zhIsModifierPositive value baseValue}}fa-up{{else}}fa-down{{/zhIsModifierPositive}}'></i>
       <ol class='modded-value-tooltip'>
         <li><span class='modded-value-label'>{{localize 'ZWEI.othermenues.basevalue'}}:</span> {{baseValue}}</li>
@@ -13,4 +12,4 @@
     </div>
   </span>
 {{else}}
-{{/zhIsDtmModified}}
+{{/zhIsValueModified}}
