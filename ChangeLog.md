@@ -5,6 +5,21 @@ All notable changes to this project will be documented in this file.
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## [5.4.0] - 2024-12-02
+
+Compatible Foundry version: 12.331
+
+### Added
+
+- Added basic support for Active Effects. Active Effects can currently target Primary Attributes, Primary Attribute Bonuses, Damage and Peril Thresholds, and Secondary Attributes (with the exception of Dodge and Parry).
+- DTM value is now displayed under Damage Threshold on a Character sheet's Attributes tab.
+
+### Fixed
+
+- Adjusted many inconsistent CSS styles.
+- Fixed incorrect Dodge and Parry values being displayed when using the alternate Peril system.
+- Fixed global item search when using Flames of Freedom option
+
 ## [5.3.5] - 2024-10-25
 
 Compatible Foundry version: 12.331

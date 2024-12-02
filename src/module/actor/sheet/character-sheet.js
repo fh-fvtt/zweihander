@@ -44,6 +44,7 @@ export default class ZweihanderCharacterSheet extends ZweihanderBaseActorSheet {
     // calculate reward points automatically
     sheetData.settings.trackRewardPoints = game.settings.get('zweihander', 'trackRewardPoints');
 
+    // @todo: see if can be expanded to bonuses and SAs
     // source (unmodified) values required to know fields by Active Effects
     for (let pa of CONFIG.ZWEI.primaryAttributes)
       sheetData.system.stats.primaryAttributes[`${pa}`].baseValue =

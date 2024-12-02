@@ -347,13 +347,21 @@ export async function findItemsByType(
           const packLang =
             lang == 'de' ? '-de' : lang == 'es' ? '-es' : lang == 'fr' ? '-fr' : lang == 'ru' ? '-ru' : '';
 
-          if (
-            title === `zh-talents${packLang}` ||
-            title === `zh-traits${packLang}` ||
-            title === `zh-drawbacks${packLang}` ||
-            title === `zh-ancestral-traits${packLang}` ||
-            title === `zh-qualities${packLang}`
-          ) {
+          const gameSystem = game.settings.get('zweihander', 'gameSystem');
+
+          const isRelevantPack =
+            gameSystem === 'zweihander'
+              ? title === `zh-talents${packLang}` ||
+                title === `zh-traits${packLang}` ||
+                title === `zh-drawbacks${packLang}` ||
+                title === `zh-ancestral-traits${packLang}` ||
+                title === `zh-qualities${packLang}`
+              : title === `fof-talents${packLang}` ||
+                title === `fof-traits${packLang}` ||
+                title === `fof-quirks${packLang}` ||
+                title === `fof-qualities${packLang}`;
+
+          if (isRelevantPack) {
             return pack;
           }
         })
