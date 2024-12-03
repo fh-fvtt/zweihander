@@ -42,7 +42,8 @@
     "StatusStunned": "Stunned",
     "StatusSurprised": "Surprised",
     "StatusBurning": "Burning",
-    "StatusBleeding": "Bleeding"
+    "StatusBleeding": "Bleeding",
+    "IsActive": "Effect is Active"
   },
   "ZWEI": {
     "Difficulty": {
@@ -82,7 +83,10 @@
         "background": "Background",
         "manualmode": "Manual Mode",
         "skills": "Skills",
-        "description": "Description"
+        "description": "Description",
+        "primary": "Primary Attributes",
+        "primarybonuses": "Primary Attribute Bonuses",
+        "secondary": "Secondary Attributes"
       },
       "primary": {
         "combat": "Combat",
@@ -92,6 +96,15 @@
         "intelligence": "Intelligence",
         "willpower": "Willpower",
         "fellowship": "Fellowship"
+      },
+      "primarybonuses": {
+        "combat": "Combat Bonus",
+        "brawn": "Brawn Bonus",
+        "agility": "Agility Bonus",
+        "perception": "Perception Bonus",
+        "intelligence": "Intelligence Bonus",
+        "willpower": "Willpower Bonus",
+        "fellowship": "Fellowship Bonus"
       },
       "secondary": {
         "movement": "Movement",
@@ -117,7 +130,8 @@
         "vth": "VTh",
         "sizeModifier": "Vehicle Size Modifier",
         "horsepower": "Horsepower",
-        "encumbranceLimit": "Encumbrance Limit"
+        "encumbranceLimit": "Encumbrance Limit",
+        "encumbrance": "Encumbrance"
       },
       "background": {
         "biography": "Biography",

@@ -41,7 +41,8 @@
         "StatusStunned": "Aturdido",
         "StatusSurprised": "Sorprendido",
         "StatusBurning": "En llamas",
-        "StatusBleeding": "Desangrarse"
+        "StatusBleeding": "Desangrarse",
+        "IsActive": "Efecto activo"
     },
     "ZWEI": {
         "Difficulty": {
@@ -81,7 +82,10 @@
                 "background": "Trasfondo",
                 "manualmode": "Modo manual",
                 "skills": "Habilidades",
-                "description": "Descripción"
+                "description": "Descripción",
+                "primary": "Atributos primarios",
+                "primarybonuses": "Atributos primarios (bonificaciones)",
+                "secondary": "Atributos secundarios"
             },
             "primary": {
                 "combat": "Combate",
@@ -91,6 +95,15 @@
                 "intelligence": "Inteligencia",
                 "willpower": "Voluntad",
                 "fellowship": "Empatía"
+            },
+            "primarybonuses": {
+              "combat": "Bono de combate",
+              "brawn": "Bono de físico",
+              "agility": "Bono de agilidad",
+              "perception": "Bono de percepción",
+              "intelligence": "Bono de inteligencia",
+              "willpower": "Bono de voluntad",
+              "fellowship": "Bono de empatía"
             },
             "secondary": {
                 "initiative": "Iniciativa",
@@ -112,7 +125,8 @@
                 "dtm": "MUD",
                 "movefly": "Movim./Vuelo",
                 "dth": "U. Daño",
-                "pth": "U. Estrés"
+                "pth": "U. Estrés",
+                "encumbrance": "Carga"
             },
             "background": {
                 "biography": "Biografía",

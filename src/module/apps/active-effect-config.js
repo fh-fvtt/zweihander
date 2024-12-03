@@ -25,16 +25,15 @@ export default class ZweihanderActiveEffectConfig extends ActiveEffectConfig {
     };
 
     for (let pa of CONFIG.ZWEI.primaryAttributes) {
-      data.selectableKeys.pa[`system.stats.primaryAttributes.${pa}.value`] = ZweihanderUtils.capitalizeFirstLetter(pa);
-      data.selectableKeys.pab[`system.stats.primaryAttributes.${pa}.bonus`] =
-        ZweihanderUtils.capitalizeFirstLetter(pa) + ' Bonus';
+      data.selectableKeys.pa[`system.stats.primaryAttributes.${pa}.value`] = game.i18n.localize('ZWEI.actor.primary.' + pa);
+      data.selectableKeys.pab[`system.stats.primaryAttributes.${pa}.bonus`] = game.i18n.localize('ZWEI.actor.primarybonuses.' + pa);
     }
 
     for (let sa of CONFIG.ZWEI.secondaryAttributes) {
-      data.selectableKeys.sa[`system.stats.secondaryAttributes.${sa}.value`] = sa
+      data.selectableKeys.sa[`system.stats.secondaryAttributes.${sa}.value`] = game.i18n.localize('ZWEI.actor.secondary.' + sa
         .split(/(?=[A-Z])/)
-        .map((w) => ZweihanderUtils.capitalizeFirstLetter(w))
-        .join(' ');
+        .map((w) => w.toLowerCase())
+        .join(''));
     }
 
     return data;
