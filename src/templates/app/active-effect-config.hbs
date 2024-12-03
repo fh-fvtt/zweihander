@@ -29,7 +29,7 @@
         </div>
 
         <div class="form-group">
-            <label>Effect is Active</label>
+            <label>{{ localize "EFFECT.IsActive" }}</label>
             <input type="checkbox" name="system.isActive" {{ checked data.system.isActive }}/>
         </div>
 
@@ -43,7 +43,7 @@
         {{/if}}
 
         <div class="form-group">
-            <label>Category</label>
+            <label>{{ localize "ZWEI.actor.items.category" }}</label>
             <div class="form-fields">
                 <input type="text" name="system.details.category" value="{{ data.system.details.category }}"/>
             </div>
@@ -60,7 +60,7 @@
         {{/if}}
 
         <div class="form-group">
-            <label>Status Conditions</label>
+            <label>{{ localize "ZWEI.actor.items.conditions" }}</label>
             <div class="form-fields">
                 <multi-select name="statuses">
                     {{#each statuses as |status|}}
@@ -128,13 +128,13 @@
             <li class="effect-change flexrow" data-index="{{i}}">
                 <div class="key">
                     <select name="changes.{{i}}.key">
-                        <optgroup label="Primary Attributes">
+                        <optgroup label='{{ localize "ZWEI.actor.navigation.primary" }}'>
                         {{selectOptions ../selectableKeys.pa selected=change.key}}
                         </optgroup>
-                        <optgroup label="Primary Attribute Bonuses">
+                        <optgroup label='{{ localize "ZWEI.actor.navigation.primarybonuses" }}'>
                         {{selectOptions ../selectableKeys.pab selected=change.key}}
                         </optgroup>
-                        <optgroup label="Secondary Attributes">
+                        <optgroup label='{{ localize "ZWEI.actor.navigation.secondary" }}'>
                         {{selectOptions ../selectableKeys.sa selected=change.key}}
                         </optgroup>
                     </select>
