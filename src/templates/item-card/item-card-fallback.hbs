@@ -1,5 +1,5 @@
 <section class="item-card">
-  <h2 class="item-card-title">{{zhCapitalize type}}: {{name}}</h2>
+  <h2 class="item-card-title">{{localize (zhConcat "ITEM.Type" (zhCapitalizeStrict type))}}: {{name}}</h2>
   {{!--
   {{#if system.flavor.description}}
   <div class="item-card-description">

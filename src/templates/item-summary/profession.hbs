@@ -19,7 +19,7 @@
     data-purchase-index="{{i}}"
     class="purchase-link {{#if skillData.purchased}} purchased {{else}} not-purchased {{/if}}"
   >
-    {{skillData.name}} </a
+    {{zhLocalizeConditional "ZWEI.actor.skills." skillData.name}} </a
   >{{#unless @last}}<span>,</span>{{/unless}} {{/each}}
 </div>
 <div data-testid="advances{{tier}}">
@@ -29,7 +29,7 @@
     data-purchase-type="bonusAdvances"
     data-purchase-index="{{i}}"
     class="purchase-link {{#if advancesData.purchased}} purchased {{else}} not-purchased {{/if}}"
-    >{{advancesData.name}}</a
+    >[{{localize (zhConcat "ZWEI.actor.bonusesabbr." (zhLowerCaseBrackets advancesData.name))}}]</a
   >
   {{#unless @last}}<span>,</span>{{/unless}} {{/each}}
 </div>
