@@ -211,6 +211,7 @@
         "add": "Add",
         "edit": "Edit",
         "delete": "Delete",
+        "remove": "Remove",				
         "source": "Source",
         "type": "Type",
         "rpcost": "RP Cost",
@@ -271,7 +272,12 @@
         "ritualeffects": "Ritual Effects",
         "positivebonus": "Positive Bonus Modifiers",
         "negativebonus": "Negative Bonus Modifiers",
-        "quantity": "Quantity"
+        "quantity": "Quantity",
+        "demote": "Demote to Passenger",
+        "promote": "Promote to Driver",
+        "item": "Item",
+        "post": "Post",
+        "tochat": "to Chat"
       },
       "conditions": {
         "incapacitated": "INCAPACITATED!",
@@ -673,7 +679,8 @@
       "showdocs": "Show System Documentation",
       "modifiedattribute": "Modified Attribute",
       "mode": "Mode",
-      "value": "Value"
+      "value": "Value",
+      "professionmissing": "Profession is missing a Talent, has a misspelled Talent, or has a duplicate one. Please add to/change Talent list."
     },
     "coinage": {
       "gc": "gc",
