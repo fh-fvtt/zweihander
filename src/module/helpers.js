@@ -386,4 +386,23 @@ export const registerHandlebarHelpers = async function () {
       `<span class="modifier-display">(${encumbrance.baseValue} ${mode} ${Math.abs(modifier)})</span>`
     );
   });
+
+  $$('stringcompare', function (variableOne, comparator, variableTwo) {
+    if (eval('"' + variableOne + '"' + comparator + '"' + variableTwo + '"')) {
+      return true
+    } else {
+      return false
+    }
+  });
+
+  $$('betweenparentheses', function (txt) {
+    const parentheses = txt.match(/\(([^)]+)\)/);
+    return parentheses ? parentheses[1] : ''
+  });
+
+  $$('beforeparentheses', function (txt) {
+    const firstpar = txt.indexOf('(');
+    return firstpar>=0 ? txt.substring(0,firstpar).trim() : txt
+  });
+  
 };
