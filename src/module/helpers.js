@@ -127,7 +127,7 @@ export const registerHandlebarHelpers = async function () {
         locdiv = `<div class="form-group">
         <label>${label}</label>
         <div class="array-input flexrow" data-array-input-target="${target}" data-array-input-max="${max}">
-          <input name="proxy.${target}" type="text" placeholder="Enter values here">
+          <input name="proxy.${target}" type="text" placeholder="${game.i18n.localize('ZWEI.othermessages.entervalue')}">
           <button class="array-input-plus" type="button" tabindex="-1"><i class="fas fa-plus"></i></button>
           <div class="array-input-pills">
             ${array.map(
@@ -145,7 +145,7 @@ export const registerHandlebarHelpers = async function () {
         locdiv = `<div class="form-group">
         <label>${label}</label>
         <div class="array-input flexrow" data-array-input-target="${target}" data-array-input-max="${max}">
-          <input name="proxy.${target}" type="text" placeholder="Enter values here">
+          <input name="proxy.${target}" type="text" placeholder="${game.i18n.localize('ZWEI.othermessages.entervalue')}">
           <button class="array-input-plus" type="button" tabindex="-1"><i class="fas fa-plus"></i></button>
           <div class="array-input-pills">
             ${array.map(
@@ -163,7 +163,7 @@ export const registerHandlebarHelpers = async function () {
         locdiv = `<div class="form-group">
         <label>${label}</label>
         <div class="array-input flexrow" data-array-input-target="${target}" data-array-input-max="${max}">
-          <input name="proxy.${target}" type="text" placeholder="Enter values here">
+          <input name="proxy.${target}" type="text" placeholder="${game.i18n.localize('ZWEI.othermessages.entervalue')}">
           <button class="array-input-plus" type="button" tabindex="-1"><i class="fas fa-plus"></i></button>
           <div class="array-input-pills">
             ${array.map(
