@@ -22,7 +22,8 @@
         "TypeTrait": "Rasgo",
         "TypeTrapping": "Enseres",
         "TypeUniqueadvance": "Avance único",
-        "TypeWeapon": "Arma"
+        "TypeWeapon": "Arma",
+        "TypeManual": "Manual"
     },
     "ACTIVEEFFECT": {
         "TypeBase": "Efecto activo"
@@ -202,6 +203,7 @@
                 "add": "Añadir",
                 "edit": "Editar",
                 "delete": "Borrar",
+                "remove": "Quitar",				
                 "source": "Fuente",
                 "type": "Tipo",
                 "rpcost": "Coste PR",
@@ -262,7 +264,12 @@
                 "ritualeffects": "Efectos del ritual",
                 "positivebonus": "Modif. positivos de bono",
                 "negativebonus": "Modif. negativos de bono",
-                "quantity": "Unidades"
+                "quantity": "Unidades",
+                "demote": "Degradar a pasajero",
+                "promote": "Promover a conductor",
+                "item": "Objeto",
+                "post": "Enviar",
+                "tochat": "al chat"
             },
             "conditions": {
                 "incapacitated": "¡INCAPACITADO!",
@@ -287,6 +294,15 @@
                 "willpower": "BV",
                 "fellowship": "BE"
             },
+      "bonusesabbr": {
+        "cb": "BC",
+        "bb": "BF",
+        "ab": "BA",
+        "pb": "BP",
+        "ib": "BI",
+        "wb": "BV",
+        "fb": "BE"
+      },
             "details": {
                 "prefixes": {
                     "agegroup": "Es",
@@ -637,7 +653,9 @@
             "showdocs": "Mostrar documentación del sistema",
             "modifiedattribute": "Atributo modificado",
             "mode": "Modo",
-            "value": "Valor"
+            "value": "Valor",
+            "professionmissing": "Falta un talento en la profesión, está mal escrito o duplicado. Por favor, corrija la lista de talentos.",
+            "entervalue": "Nuevo (habilidades y bonos en inglés)"
         },
         "coinage": {
             "gc": "co",
