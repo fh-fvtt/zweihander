@@ -1,0 +1,112 @@
+{
+  "name": "Shopkeeper",
+  "type": "profession",
+  "img": "systems/zweihander/assets/icons/price-tag.svg",
+  "system": {
+    "description": {
+      "@en": "<p>Artisans, merchants and traders all create and peddle their own wares, but not every store front holds exotic goods or forged steel. Running the inns, bordellos, rathskellers, coaching houses and grocers are the Shopkeepers. These under-the-counter, blunderbuss-wielding purveyors of fine goods either peddle services or sell and buy local goods. An innkeeper, a brothel owner or a chef would be considered a Shopkeeper, spending their days opening their storefronts and their nights balancing their books. Shopkeepers often wear a variety of hats in their business, but all strive to be effective leaders that can be both charismatic to their employees and their customers. Some stay small and humble with but a single shop, while the more visionary-minded work to spread their business among multiple venues and ventures.</p><p>Shopkeepers rarely leave their business for any extended period of time – most who do are either looking for new locations to move their business to or have grown tired of the life of a clerk. They have few survival skills, but they know a great deal about logistics and getting the most out of a little bit. Unfortunately, eking the most out of very little and being able to balance the books is often their biggest downfall – some Shopkeepers become so absorbed in their work that it becomes all they care about. They become dismissive and angry towards their workers and customers, first driving everyone away with words and ill manners and then by word of mouth as their poor reputation spreads. Soon they will not be able to make enough money to support their storefront and will lose their entire livelihood. Many of these Shopkeepers end up at the end of a rope or the barrel of their own blunderbuss, having undone all of their success by their own hand.</p>"
+    },
+    "notes": "",
+    "expert": {
+      "value": true,
+      "requirements": "You must possess at least one Skill Rank in Bargain in order to enter this Expert Profession."
+    },
+    "archetype": "Expert Profession",
+    "bonusAdvances": [
+      {
+        "name": "[FB]"
+      },
+      {
+        "name": "[FB]"
+      },
+      {
+        "name": "[IB]"
+      },
+      {
+        "name": "[IB]"
+      },
+      {
+        "name": "[PB]"
+      },
+      {
+        "name": "[PB]"
+      },
+      {
+        "name": "[WB]"
+      }
+    ],
+    "skillRanks": [
+      {
+        "name": "Awareness"
+      },
+      {
+        "name": "Bargain"
+      },
+      {
+        "name": "Eavesdrop"
+      },
+      {
+        "name": "Education"
+      },
+      {
+        "name": "Folklore"
+      },
+      {
+        "name": "Gamble"
+      },
+      {
+        "name": "Handle Animal"
+      },
+      {
+        "name": "Resolve"
+      },
+      {
+        "name": "Rumor"
+      },
+      {
+        "name": "Simple Ranged"
+      }
+    ],
+    "talents": [
+      {
+        "name": "Incredible Numeration"
+      },
+      {
+        "name": "Meeting of the Minds"
+      },
+      {
+        "name": "Multilingual"
+      }
+    ],
+    "professionalTrait": {
+      "name": "No Mere NPC"
+    },
+    "specialTrait": {
+      "name": ""
+    },
+    "drawback": {
+      "name": "The Customer is Always Right"
+    },
+    "tier": ""
+  },
+  "effects": [],
+  "folder": null,
+  "ownership": {
+    "default": 0,
+    "rivg6xcMxdlVDM8y": 3
+  },
+  "flags": {},
+  "_stats": {
+    "compendiumSource": null,
+    "duplicateSource": null,
+    "coreVersion": "12.331",
+    "systemId": "zweihander",
+    "systemVersion": "5.4.1",
+    "createdTime": 1733922491432,
+    "modifiedTime": 1733922491432,
+    "lastModifiedBy": "rivg6xcMxdlVDM8y"
+  },
+  "_id": "TMkLe3YcjnZpOCZu",
+  "sort": 0,
+  "_key": "!items!TMkLe3YcjnZpOCZu"
+}

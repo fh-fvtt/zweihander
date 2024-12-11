@@ -119,19 +119,20 @@ export const registerHandlebarHelpers = async function () {
   });
 
   $$('arrayInputGroup', function (label, target, array, max = Number.MAX_SAFE_INTEGER, pillDisplayProperty) {
-    let locdiv;
+    let locdiv = `<div class="form-group">
+        <label>${label}</label>
+        <div class="array-input flexrow" data-array-input-target="${target}" data-array-input-max="${max}">
+          <input name="proxy.${target}" type="text" placeholder="${game.i18n.localize(
+      'ZWEI.othermessages.entervalue'
+    )}">
+          <button class="array-input-plus" type="button" tabindex="-1"><i class="fas fa-plus"></i></button>
+          <div class="array-input-pills">`;
+
     switch (label) {
       case game.i18n.localize('ZWEI.actor.items.bonusadvances'):
       case game.i18n.localize('ZWEI.actor.items.positivebonus'):
       case game.i18n.localize('ZWEI.actor.items.negativebonus'):
-        locdiv = `<div class="form-group">
-        <label>${label}</label>
-        <div class="array-input flexrow" data-array-input-target="${target}" data-array-input-max="${max}">
-          <input name="proxy.${target}" type="text" placeholder="${game.i18n.localize(
-          'ZWEI.othermessages.entervalue'
-        )}">
-          <button class="array-input-plus" type="button" tabindex="-1"><i class="fas fa-plus"></i></button>
-          <div class="array-input-pills">
+        locdiv += `
             ${array.map(
               (v, i) => `
               <span class="array-input-pill" data-array-input-index="${i}">[${game.i18n.localize(
@@ -139,19 +140,10 @@ export const registerHandlebarHelpers = async function () {
               )}]</span>
             `
             )}
-          </div>
-        </div>
-      </div>`;
+          `;
         break;
       case game.i18n.localize('ZWEI.actor.items.skillranks'):
-        locdiv = `<div class="form-group">
-        <label>${label}</label>
-        <div class="array-input flexrow" data-array-input-target="${target}" data-array-input-max="${max}">
-          <input name="proxy.${target}" type="text" placeholder="${game.i18n.localize(
-          'ZWEI.othermessages.entervalue'
-        )}">
-          <button class="array-input-plus" type="button" tabindex="-1"><i class="fas fa-plus"></i></button>
-          <div class="array-input-pills">
+        locdiv += `
             ${array.map(
               (v, i) => `
               <span class="array-input-pill" data-array-input-index="${i}">${game.i18n.localize(
@@ -159,29 +151,23 @@ export const registerHandlebarHelpers = async function () {
               )}</span>
             `
             )}
-          </div>
-        </div>
-      </div>`;
+          `;
         break;
       default:
-        locdiv = `<div class="form-group">
-        <label>${label}</label>
-        <div class="array-input flexrow" data-array-input-target="${target}" data-array-input-max="${max}">
-          <input name="proxy.${target}" type="text" placeholder="${game.i18n.localize(
-          'ZWEI.othermessages.entervalue'
-        )}">
-          <button class="array-input-plus" type="button" tabindex="-1"><i class="fas fa-plus"></i></button>
-          <div class="array-input-pills">
+        locdiv += `
             ${array.map(
               (v, i) => `
               <span class="array-input-pill" data-array-input-index="${i}">${v[pillDisplayProperty] ?? v}</span>
             `
             )}
-          </div>
-        </div>
-      </div>`;
+          `;
         break;
     }
+
+    locdiv += `</div>
+        </div>
+      </div>`;
+
     return locdiv;
   });
 

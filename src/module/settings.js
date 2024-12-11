@@ -67,11 +67,20 @@ export const registerSystemSettings = function () {
     config: true,
   });
 
+  game.settings.register('zweihander', 'injuryList', {
+    name: 'ZWEI.settings.injurylist',
+    hint: 'ZWEI.settings.injurylisthint',
+    scope: 'world',
+    type: String,
+    default: 'zweihander.zh-gm-tables',
+    config: true,
+  });
+
   game.settings.register('zweihander', 'alternativePerilSystem', {
     scope: 'world',
     config: 'true',
-    name: 'Use Alternative Peril System',
-    hint: 'This Peril system applies a flat penalty to Base Chance instead of ignoring Skill Ranks.',
+    name: 'ZWEI.settings.alternativeperil',
+    hint: 'ZWEI.settings.alternativeperilhint',
     type: Boolean,
     default: false,
     onChange: debouncedReload,
@@ -80,8 +89,8 @@ export const registerSystemSettings = function () {
   game.settings.register('zweihander', 'immersivePause', {
     scope: 'world',
     config: 'true',
-    name: 'Show Immersive Pause Messages',
-    hint: 'If enabled, will show a randomly selected dooming when the game is paused.',
+    name: 'ZWEI.settings.immersivepause',
+    hint: 'ZWEI.settings.immersivepausehint',
     type: Boolean,
     default: true,
   });
