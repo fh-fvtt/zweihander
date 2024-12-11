@@ -35,9 +35,9 @@ async function renderConfigurationDialog(testType, label, testConfiguration = {}
   };
   const toPercentileLabel = (i) => (i === 0 ? '+-0%' : i > 0 ? `+${i}%` : `${i}%`);
   templateData.fortuneOptions = [
-    { value: 'dontuse', label: game.i18n.localize("ZWEI.rolls.dontuse") },
-    { value: 'usefortune', label: game.i18n.localize("ZWEI.rolls.usefortune") },
-    { value: 'usemisfortune', label: game.i18n.localize("ZWEI.rolls.usemisfortune") },
+    { value: 'dontuse', label: game.i18n.localize('ZWEI.rolls.dontuse') },
+    { value: 'fortune', label: game.i18n.localize('ZWEI.rolls.fortune') },
+    { value: 'misfortune', label: game.i18n.localize('ZWEI.rolls.misfortune') },
   ].map((option) => ({
     selected: (testConfiguration.useFortune ?? 'dontuse') === option.value ? 'selected' : '',
     ...option,
@@ -53,9 +53,9 @@ async function renderConfigurationDialog(testType, label, testConfiguration = {}
     return { value, label: getDifficultyRatingLabel(value), selected };
   });
   templateData.flipOptions = [
-    { value: 'noflip', label: game.i18n.localize("ZWEI.rolls.noflip") },
-    { value: 'flipfail', label: game.i18n.localize("ZWEI.rolls.flipfail")},
-    { value: 'flipsucceed', label: game.i18n.localize("ZWEI.rolls.flipsucceed") },
+    { value: 'noflip', label: game.i18n.localize('ZWEI.rolls.noflip') },
+    { value: 'flipfail', label: game.i18n.localize('ZWEI.rolls.flipfail') },
+    { value: 'flipsucceed', label: game.i18n.localize('ZWEI.rolls.flipsucceed') },
   ].map((option) => ({
     selected: (testConfiguration.flip ?? 'noflip') === option.value ? 'selected' : '',
     ...option,
@@ -68,10 +68,10 @@ async function renderConfigurationDialog(testType, label, testConfiguration = {}
     }))
   );
   templateData.channelPowerBonuses = [
-    { value: 0, label: "channel0" },
-    { value: 10, label: "channel1" },
-    { value: 20, label: "channel2" },
-    { value: 30, label: "channel3" },
+    { value: 0, label: 'channel0' },
+    { value: 10, label: 'channel1' },
+    { value: 20, label: 'channel2' },
+    { value: 30, label: 'channel3' },
   ].map((option) => ({
     selected: (testConfiguration.channelPowerBonus ?? '0') === option.value ? 'selected' : '',
     ...option,
@@ -107,16 +107,16 @@ function createConfigurationDialog(label, template, templateData, callback) {
   return new Promise((resolve) => {
     renderTemplate(template, templateData).then((content) => {
       const dialog = new Dialog({
-        title: `${label}: ` + game.i18n.localize("ZWEI.rolls.testconfig"),
+        title: `${label}: ` + game.i18n.localize('ZWEI.rolls.testconfig'),
         content,
         buttons: {
           no: {
             icon: '',
-            label: game.i18n.localize("ZWEI.rolls.cancel"),
+            label: game.i18n.localize('ZWEI.rolls.cancel'),
           },
           yes: {
             icon: '',
-            label: game.i18n.localize("ZWEI.rolls.roll"),
+            label: game.i18n.localize('ZWEI.rolls.roll'),
             callback: callback(resolve),
           },
         },

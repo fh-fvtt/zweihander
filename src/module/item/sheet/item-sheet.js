@@ -1,3 +1,4 @@
+import { getEffectsGroups } from './item-sheet-tabs-def';
 import * as ZweihanderUtils from '../../utils';
 /**
  * Extend the basic ItemSheet with some very simple modifications
@@ -50,6 +51,9 @@ export default class ZweihanderItemSheet extends ItemSheet {
   /** @override */
   async getData() {
     const sheetData = super.getData().data;
+
+    const itemData = this.item.toObject(false);
+
     sheetData.owner = this.item.isOwner;
     sheetData.editable = this.isEditable;
     sheetData.rollData = this.item.getRollData.bind(this.item);
@@ -57,8 +61,13 @@ export default class ZweihanderItemSheet extends ItemSheet {
     sheetData.actor = this.item.actor;
     sheetData.choices = {};
 
+    sheetData.effects = itemData.effects;
+
+    const effectGroups = this._getEffectGroups(sheetData);
+    sheetData.effectGroups = effectGroups;
+
     sheetData.html = {
-      rules: await ZweihanderUtils.processRules(sheetData.system)
+      rules: await ZweihanderUtils.processRules(sheetData.system),
     };
 
     if (sheetData.type === 'skill') {
@@ -88,6 +97,104 @@ export default class ZweihanderItemSheet extends ItemSheet {
       sheetData.skills = (await skillPack.getDocuments()).map((x) => x.name).sort((a, b) => a.localeCompare(b));
     }
     return sheetData;
+  }
+
+  _getEffectGroups(data) {
+    return getEffectsGroups(data);
+  }
+
+  _processItemGroups(itemGroups) {
+    const sort = (itemGroup, criteria) =>
+      itemGroup.items.sort((a, b) => {
+        for (let sc of criteria) {
+          let aV, bV;
+          if (sc.detail === -1) {
+            aV = a.name;
+            bV = b.name;
+          } else if (itemGroup.details[sc.detail].key) {
+            aV = getProperty(a, itemGroup.details[sc.detail].key);
+            bV = getProperty(b, itemGroup.details[sc.detail].key);
+          } else {
+            aV = itemGroup.details[sc.detail].value.call(a);
+            bV = itemGroup.details[sc.detail].value.call(b);
+          }
+          if (aV < bV) {
+            return sc.sort;
+          } else if (aV > bV) {
+            return -sc.sort;
+          }
+        }
+        return 0;
+      });
+    const filter = (itemGroup, criteria) =>
+      (itemGroup.items = itemGroup.items.filter((i) => {
+        let filtered = true;
+        for (let fc of criteria) {
+          let v;
+          if (fc.detail === -1) {
+            v = i.name;
+          } else if (itemGroup.details[fc.detail].key) {
+            v = getProperty(i, itemGroup.details[fc.detail].key);
+          } else {
+            v = itemGroup.details[fc.detail].value.call(i);
+          }
+          // only strings supported for now
+          if (typeof v === 'string') {
+            filtered = filtered && v.trim().toLowerCase().indexOf(fc.value.trim().toLowerCase()) >= 0;
+          }
+        }
+        return filtered;
+      }));
+    for (let [k, v] of Object.entries(this.sortCriteria)) {
+      sort(
+        itemGroups[k],
+        v.filter((c) => !!c.sort)
+      );
+      for (let [i, sc] of v.entries()) {
+        if (sc.detail === -1) {
+          itemGroups[k].sortName = sc.sort;
+          itemGroups[k].sortNameOrder = i + 1;
+        } else {
+          itemGroups[k].details[sc.detail].sort = sc.sort;
+          itemGroups[k].details[sc.detail].sortOrder = i + 1;
+        }
+      }
+    }
+    for (let [k, v] of Object.entries(this.filterCriteria)) {
+      filter(
+        itemGroups[k],
+        v.filter((c) => !!c.value)
+      );
+      for (let fc of v) {
+        if (fc.detail === -1) {
+          itemGroups[k].filterName = fc.value;
+          itemGroups[k].filterNameActive = !!fc.active;
+        } else {
+          itemGroups[k].details[fc.detail].filter = fc.value;
+          itemGroups[k].details[fc.detail].filterActive = !!fc.active;
+        }
+      }
+    }
+    Object.entries(itemGroups).forEach(([k, v]) => (v.id = k));
+    return itemGroups;
+  }
+
+  async _prepareItems(sheetData) {
+    sheetData.effects = this.prepareActiveEffectGroups();
+
+    return sheetData;
+  }
+
+  prepareActiveEffectGroups() {
+    const groups = {
+      effects: this.item.effects,
+    };
+
+    for (const g of Object.values(groups)) {
+      g.sort((a, b) => (a.sort || 0) - (b.sort || 0));
+    }
+
+    return groups;
   }
 
   _onEditImage(event) {
@@ -124,6 +231,60 @@ export default class ZweihanderItemSheet extends ItemSheet {
     html.find('.array-input input').focusout(async (event) => this.acceptArrayInput(event));
     html.find('.array-input-plus').click(async (event) => this.acceptArrayInput(event));
     html.find('.array-input-pill').click(async (event) => this.removeArrayInput(event));
+
+    // Add new Active Effect (from within the sheet)
+    html.find('.add-new').click(async (ev) => {
+      let type = ev.currentTarget.dataset.itemType;
+
+      let createdItemArray = [];
+
+      if (type === 'effect') {
+        createdItemArray = await this.item.createEmbeddedDocuments('ActiveEffect', [
+          {
+            label: this.item.name,
+            icon: this.item.img,
+            origin: 'Actor.' + this.item.parent.id + '.Item.' + this.item.id,
+            // @todo: refactor after transition to DataMode
+
+            system: {
+              details: {
+                source: this.item.name + ' (' + ZweihanderUtils.capitalizeFirstLetter(this.item.type) + ')',
+                category: '',
+                isActive: false,
+              },
+            },
+          },
+        ]);
+      }
+
+      console.log(createdItemArray);
+
+      if (createdItemArray.length) createdItemArray[0].sheet.render(true);
+    });
+
+    // Edit Active Effect
+    html.find('.effect-edit').click((ev) => {
+      const i = $(ev.currentTarget).parents('.effect-item');
+      const item = this.item.effects.get(i.data('itemId'));
+      item.sheet.render(true);
+    });
+
+    // Delete Active Effect
+    html.find('.effect-delete').click(async (ev) => {
+      const i = $(ev.currentTarget).parents('.effect-item');
+      const effect = this.item.effects.get(i.data('itemId'));
+      const type = game.i18n.localize(CONFIG.ActiveEffect.typeLabels['base']);
+      await Dialog.confirm({
+        title: game.i18n.format('ZWEI.othermessages.deletetype', { type: type, label: effect.label }),
+        content: game.i18n.format('ZWEI.othermessages.suretype', { type: type }),
+        yes: async () => {
+          await effect.delete();
+          i.slideUp(200, () => this.render(false));
+        },
+        no: () => {},
+        defaultYes: true,
+      });
+    });
   }
 
   async _updateObject(event, formData) {
@@ -135,15 +296,12 @@ export default class ZweihanderItemSheet extends ItemSheet {
         formData['system.ancestralTrait.name'] = item.name;
       }
       if (!item && trait.trim() !== '') {
-        ui?.notifications.warn(
-          game.i18n.format("ZWEI.othermessages.noancestral", { trait: trait }),
-          { permanent: true }
-        );
+        ui?.notifications.warn(game.i18n.format('ZWEI.othermessages.noancestral', { trait: trait }), {
+          permanent: true,
+        });
         //TODO move to actor#prepareDerivedData
         if (this.item.isOwned) {
-          ui?.notifications.error(
-            game.i18n.format("ZWEI.othermessages.validwhat", { what: 'ancestral trait' }), 
-            {
+          ui?.notifications.error(game.i18n.format('ZWEI.othermessages.validwhat', { what: 'ancestral trait' }), {
             permanent: true,
           });
         }
@@ -156,15 +314,12 @@ export default class ZweihanderItemSheet extends ItemSheet {
         formData['system.professionalTrait.name'] = item.name;
       }
       if (!item && profTrait.trim() !== '') {
-        ui?.notifications.warn(
-          game.i18n.format("ZWEI.othermessages.notrait", { trait: profTrait }),
-          { permanent: true }
-        );
+        ui?.notifications.warn(game.i18n.format('ZWEI.othermessages.notrait', { trait: profTrait }), {
+          permanent: true,
+        });
         //TODO move to actor#prepareDerivedData
         if (this.item.isOwned) {
-          ui?.notifications.error(
-            game.i18n.format("ZWEI.othermessages.validwhat", { what: 'professional trait' }), 
-            {
+          ui?.notifications.error(game.i18n.format('ZWEI.othermessages.validwhat', { what: 'professional trait' }), {
             permanent: true,
           });
         }
@@ -175,15 +330,12 @@ export default class ZweihanderItemSheet extends ItemSheet {
         formData['system.specialTrait.name'] = item.name;
       }
       if (!item && specTrait.trim() !== '') {
-        ui?.notifications.warn(
-          game.i18n.format("ZWEI.othermessages.nospecial", { trait: specTrait }),
-          { permanent: true }
-        );
+        ui?.notifications.warn(game.i18n.format('ZWEI.othermessages.nospecial', { trait: specTrait }), {
+          permanent: true,
+        });
         //TODO move to actor#prepareDerivedData
         if (this.item.isOwned) {
-          ui?.notifications.error(
-            game.i18n.format("ZWEI.othermessages.validwhat", { what: 'special trait' }), 
-            {
+          ui?.notifications.error(game.i18n.format('ZWEI.othermessages.validwhat', { what: 'special trait' }), {
             permanent: true,
           });
         }
@@ -194,15 +346,12 @@ export default class ZweihanderItemSheet extends ItemSheet {
         formData['system.drawback.name'] = item.name;
       }
       if (!item && drawback.trim() !== '') {
-        ui?.notifications.warn(
-          game.i18n.format("ZWEI.othermessages.nodrawback", { drawback: drawback }),
-          { permanent: true }
-        );
+        ui?.notifications.warn(game.i18n.format('ZWEI.othermessages.nodrawback', { drawback: drawback }), {
+          permanent: true,
+        });
         //TODO move to actor#prepareDerivedData
         if (this.item.isOwned) {
-          ui?.notifications.error(
-            game.i18n.format("ZWEI.othermessages.validwhat", { what: 'drawback' }), 
-            {
+          ui?.notifications.error(game.i18n.format('ZWEI.othermessages.validwhat', { what: 'drawback' }), {
             permanent: true,
           });
         }
@@ -294,8 +443,8 @@ export default class ZweihanderItemSheet extends ItemSheet {
       return sanitized;
     } else {
       ui?.notifications.warn(
-        game.i18n.format("ZWEI.othermessages.novalidbonus", { sanitized: sanitized, valid: validValues })
-        );
+        game.i18n.format('ZWEI.othermessages.novalidbonus', { sanitized: sanitized, valid: validValues })
+      );
     }
   }
 
@@ -303,7 +452,7 @@ export default class ZweihanderItemSheet extends ItemSheet {
     const item = this.item;
     if (item.system?.talents?.some((t) => ZweihanderUtils.normalizedEquals(t.name, talent))) {
       ui?.notifications.warn(
-        game.i18n.format("ZWEI.othermessages.talentbelongs", { talent: talent, name: item.name, type: item.type })
+        game.i18n.format('ZWEI.othermessages.talentbelongs', { talent: talent, name: item.name, type: item.type })
       );
       return;
     }
@@ -311,16 +460,12 @@ export default class ZweihanderItemSheet extends ItemSheet {
     if (foundItem) {
       return { name: foundItem.name };
     } else {
-      ui?.notifications.warn(
-        game.i18n.format("ZWEI.othermessages.notalent", { talent: talent }), 
-        {
+      ui?.notifications.warn(game.i18n.format('ZWEI.othermessages.notalent', { talent: talent }), {
         permanent: true,
       });
       //TODO move to actor#prepareDerivedData
       if (this.item.isOwned) {
-        ui?.notifications.error(
-          game.i18n.format("ZWEI.othermessages.validwhat", { what: 'talent' }), 
-          {
+        ui?.notifications.error(game.i18n.format('ZWEI.othermessages.validwhat', { what: 'talent' }), {
           permanent: true,
         });
       }
@@ -332,7 +477,7 @@ export default class ZweihanderItemSheet extends ItemSheet {
     const item = this.item;
     if (item.system?.skillRanks?.some((sr) => ZweihanderUtils.normalizedEquals(sr.name, skillRank))) {
       ui?.notifications.warn(
-        game.i18n.format("ZWEI.othermessages.rankbelongs", { rank: skillRank, name: item.name, type: item.type })
+        game.i18n.format('ZWEI.othermessages.rankbelongs', { rank: skillRank, name: item.name, type: item.type })
       );
       return;
     }
@@ -340,15 +485,10 @@ export default class ZweihanderItemSheet extends ItemSheet {
     if (foundItem) {
       return { name: foundItem.name };
     } else {
-      ui?.notifications.warn(
-        game.i18n.format("ZWEI.othermessages.norank", { rank: skillRank }),
-        { permanent: true }
-      );
+      ui?.notifications.warn(game.i18n.format('ZWEI.othermessages.norank', { rank: skillRank }), { permanent: true });
       //TODO move to actor#prepareDerivedData
       if (this.item.isOwned) {
-        ui?.notifications.error(
-          game.i18n.format("ZWEI.othermessages.validwhat", { what: 'skill' }), 
-          {
+        ui?.notifications.error(game.i18n.format('ZWEI.othermessages.validwhat', { what: 'skill' }), {
           permanent: true,
         });
       }

@@ -30,7 +30,7 @@
 
         <div class="form-group">
             <label>{{ localize "EFFECT.IsActive" }}</label>
-            <input type="checkbox" name="system.isActive" {{ checked data.system.isActive }}/>
+            <input type="checkbox" name="system.isActive" {{ checked data.system.isActive }} {{#zhIsCarried document.parent.system}}disabled data-tooltip="Parent Item is currently unequipped or not being carried" data-tooltip-direction="UP"{{else}}{{/zhIsCarried}}/>
         </div>
 
         {{#if isActorEffect}}

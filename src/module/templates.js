@@ -77,7 +77,7 @@ const templatesToLoad = [
   $$('partials/details-list-npc.hbs'),
   $$('partials/focuses-list.hbs'),
   $$('partials/items-list.hbs'),
-  $$('partials/modifiers-list.hbs'),
+  $$('partials/item-effects-list.hbs'),
   $$('partials/actors-list.hbs'),
   $$('partials/modded-value-pa.hbs'),
   $$('partials/modded-value-bonuses.hbs'),

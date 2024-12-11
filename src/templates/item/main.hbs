@@ -14,24 +14,22 @@
   </header>
   <nav class="sheet-navigation tabs" data-group="primary">
     <a class="item" data-tab="details">{{localize "ZWEI.actor.items.details"}}</a>
-    <!--<a class="item" data-tab="modifiers">Modifiers</a>-->
     <a class="item" data-tab="description">{{localize "ZWEI.actor.items.description"}}</a>
+    <a class="item" data-tab="effects">Effects</a>
     <a class="item" data-tab="notes">{{localize "ZWEI.actor.items.notes"}}</a>
   </nav>
   <section class="sheet-body">
     <div class="tab tab-details flexcol" data-group="primary" data-tab="details">
       {{> ($$ (concat 'item/' type))}}
     </div>
-    {{!--
-    <div class="tab tab-modifiers flexcol" data-group="primary" data-tab="modifiers">
-      {{> ($$ "partials/modifiers-list" )}}
-    </div>
-    --}}
     <div class="tab tab-description flexcol" data-group="primary" data-tab="description">
-      {{editor (zhLocalize system.description) target=(zhLocalizePath "system.description") button=true owner=owner editable=editable}}
+      {{editor (zhLocalize system.description) target=(zhLocalizePath "system.description") engine="prosemirror" button=true owner=owner editable=editable}}
+    </div>
+      <div class="tab tab-effects flexcol" data-group="primary" data-tab="effects">
+      {{> ($$ "partials/item-effects-list") effectGroups}}
     </div>
     <div class="tab tab-notes flexcol" data-group="primary" data-tab="notes">
-      {{editor system.notes target="system.notes" button=true owner=owner editable=editable}}
+      {{editor system.notes target="system.notes" button=true owner=owner engine="prosemirror" editable=editable}}
     </div>
   </section>
 </form>

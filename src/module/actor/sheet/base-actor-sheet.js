@@ -361,20 +361,26 @@ export default class ZweihanderBaseActorSheet extends ActorSheet {
     // Edit Active Effect
     html.find('.effect-edit').click((ev) => {
       const i = $(ev.currentTarget).parents('.item');
-      const item = this.actor.effects.get(i.data('itemId'));
-      item.sheet.render(true);
+      const itemId = i.data('itemId');
+      const parentId = i.data('parentId');
+      const effect = this._getEmbeddedEffect(parentId, itemId);
+
+      effect.sheet.render(true);
     });
 
     // Delete Active Effect
     html.find('.effect-delete').click(async (ev) => {
       const i = $(ev.currentTarget).parents('.item');
-      const effect = this.actor.effects.get(i.data('itemId'));
+      const itemId = i.data('itemId');
+      const parentId = i.data('parentId');
+      const effect = this._getEmbeddedEffect(parentId, itemId);
       const type = game.i18n.localize(CONFIG.ActiveEffect.typeLabels['base']);
+
       await Dialog.confirm({
         title: game.i18n.format('ZWEI.othermessages.deletetype', { type: type, label: effect.label }),
         content: game.i18n.format('ZWEI.othermessages.suretype', { type: type }),
         yes: async () => {
-          await this.actor.deleteEmbeddedDocuments('ActiveEffect', [effect.id]);
+          await effect.delete();
           i.slideUp(200, () => this.render(false));
         },
         no: () => {},
@@ -468,9 +474,14 @@ export default class ZweihanderBaseActorSheet extends ActorSheet {
     html.find('.link-effect-checkbox').click(async (event) => {
       event.preventDefault();
       const checkbox = $(event.currentTarget);
-      const item = this.actor.effects.get(checkbox.data('itemId'));
+      const effectId = checkbox.data('itemId');
+      const parentId = checkbox.data('parentId');
+      const effect = this._getEmbeddedEffect(parentId, effectId);
       const key = checkbox.data('key');
-      await item.update({ [key]: checkbox.prop('checked') });
+
+      // @todo: prevent update if item is not carried
+
+      await effect.update({ [key]: checkbox.prop('checked') });
     });
     html.find('.profession-checkbox').click(async (event) => {
       event.preventDefault();
@@ -501,8 +512,18 @@ export default class ZweihanderBaseActorSheet extends ActorSheet {
     // Show effect sheet on right click
     html.find('.fetch-effect').contextmenu((event) => {
       const itemId = $(event.currentTarget).parent('.item').data('itemId') ?? $(event.currentTarget).data('itemId');
-      const effect = this.actor.effects.get(itemId);
+      const parentId =
+        $(event.currentTarget).parent('.item').data('parentId') ?? $(event.currentTarget).data('parentId');
+      const effect = this._getEmbeddedEffect(parentId, itemId);
+
       effect.sheet.render(true);
+    });
+
+    // Show item sheet on right click
+    html.find('.fetch-skill').contextmenu((event) => {
+      const itemId = $(event.currentTarget).parent('.skill').data('itemId') ?? $(event.currentTarget).data('itemId');
+      const item = this.actor.items.get(itemId);
+      item.sheet.render(true);
     });
 
     html.find('.item-post').click(async (event) => {
@@ -584,6 +605,16 @@ export default class ZweihanderBaseActorSheet extends ActorSheet {
 
     html.find('.numerable-field-subtract').click(updateNumerable(-1));
     html.find('.numerable-field-add').click(updateNumerable(1));
+  }
+
+  _getEmbeddedEffect(parentId, itemId) {
+    // If IDs match, Actor is the parent
+    if (parentId === this.actor._id) {
+      return this.actor.effects.get(itemId);
+    } else {
+      const parent = this.actor.items.get(parentId);
+      return parent.effects.get(itemId);
+    }
   }
 
   _damageSheet(html) {

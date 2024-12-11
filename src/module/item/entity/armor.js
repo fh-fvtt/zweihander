@@ -8,6 +8,14 @@ export default class ZweihanderArmor extends ZweihanderBaseItem {
     if (changed.system['carried'] !== undefined) {
       changed.system.equipped = item.system.equipped && changed.system.carried;
     }
+
+    const currentlyActiveEffects = item.effects.filter((e) => e.system.isActive);
+
+    // If Item is unequipped, disable all currently active Active Effects associated with it
+    if (!changed.system.carried && currentlyActiveEffects.length) {
+      for (let effect of currentlyActiveEffects) await effect.update({ ['system.isActive']: false });
+    }
+
     await super._preUpdate(changed, options, user, item);
   }
 

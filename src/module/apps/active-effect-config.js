@@ -10,6 +10,7 @@ export default class ZweihanderActiveEffectConfig extends ActiveEffectConfig {
       submitOnClose: true,
       closeOnSubmit: false,
       width: 585,
+      height: 'auto',
       classes,
     });
   }
@@ -25,15 +26,22 @@ export default class ZweihanderActiveEffectConfig extends ActiveEffectConfig {
     };
 
     for (let pa of CONFIG.ZWEI.primaryAttributes) {
-      data.selectableKeys.pa[`system.stats.primaryAttributes.${pa}.value`] = game.i18n.localize('ZWEI.actor.primary.' + pa);
-      data.selectableKeys.pab[`system.stats.primaryAttributes.${pa}.bonus`] = game.i18n.localize('ZWEI.actor.primarybonuses.' + pa);
+      data.selectableKeys.pa[`system.stats.primaryAttributes.${pa}.value`] = game.i18n.localize(
+        'ZWEI.actor.primary.' + pa
+      );
+      data.selectableKeys.pab[`system.stats.primaryAttributes.${pa}.bonus`] = game.i18n.localize(
+        'ZWEI.actor.primarybonuses.' + pa
+      );
     }
 
     for (let sa of CONFIG.ZWEI.secondaryAttributes) {
-      data.selectableKeys.sa[`system.stats.secondaryAttributes.${sa}.value`] = game.i18n.localize('ZWEI.actor.secondary.' + sa
-        .split(/(?=[A-Z])/)
-        .map((w) => w.toLowerCase())
-        .join(''));
+      data.selectableKeys.sa[`system.stats.secondaryAttributes.${sa}.value`] = game.i18n.localize(
+        'ZWEI.actor.secondary.' +
+          sa
+            .split(/(?=[A-Z])/)
+            .map((w) => w.toLowerCase())
+            .join('')
+      );
     }
 
     return data;

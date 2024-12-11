@@ -224,7 +224,7 @@
         "recuperationtime": "Recuperation Time",
         "resist": "Resist",
         "severity": "Severity",
-        "ineffect": "Currently in Effect",
+        "ineffect": "Currently Active",
         "attackprofiles": "Attack Profiles",
         "taintschaos": "Taints",
         "conditions": "Conditions",
@@ -254,6 +254,7 @@
         "ancestraltrait": "Ancestral Trait",
         "damagethresholdmodifier": "Damage Threshold Modifier",
         "status": "Status",
+        "bonusperrank": "Base Chance Increase per Rank",
         "effect": "Effect",
         "treatment": "Treatment",
         "details": "Details",
@@ -394,7 +395,7 @@
       "flip": "Flip",
       "testmode": "Skill Test Mode",
       "fortune": "Fortune",
-      "misfortune": "Fortune",
+      "misfortune": "Misfortune",
       "furydice": "Additional Fury Dice",
       "furydie": "Fury Die",
       "chaosdice": "Additional Chaos Dice",
@@ -546,6 +547,9 @@
         "name": "Language Name",
         "literate": "Literate",
         "add": "Add Language"
+      },
+      "othersettings": {
+        "underlyingmagickskill": "Underlying Magick Skill"
       }
     },
     "chatskill": {

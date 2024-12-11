@@ -1,5 +1,4 @@
 import ZweihanderBaseItem from './base-item';
-import * as ZweihanderUtils from '../../utils';
 
 export default class ZweihanderSkill extends ZweihanderBaseItem {
   prepareBaseData(item) {
@@ -13,7 +12,7 @@ export default class ZweihanderSkill extends ZweihanderBaseItem {
     } else {
       item.system.rank = actor.system.skillRanks?.[item.name] ?? 0;
     }
-    item.system.bonusPerRank = 10;
+
     item.system.bonus = item.system.rank * item.system.bonusPerRank;
     item.system.isFlipToFail = item.system.requiresTraining && item.system.rank === 0;
   }

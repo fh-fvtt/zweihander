@@ -3,7 +3,7 @@
   <div class="skill skill-roll flexrow" data-item-id="{{skill._id}}"
     data-associated-pa="{{skill.system.associatedPrimaryAttribute}}"
     data-rank="{{skill.system.rank}}" data-label="{{skill.name}}">
-    <span class="skill-name">
+    <span class="skill-name fetch-skill">
       <span data-tooltip-direction="UP" data-tooltip="{{zhLocalizeConditional "ZWEI.actor.skills." skill.name}} ({{zhGetFirstLetter (localize (zhConcat "ZWEI.actor.primary." (zhLowerCase skill.system.associatedPrimaryAttribute)))}}) {{#if skill.system.requiresTraining}}*{{/if}}">
         {{zhLocalizeConditional "ZWEI.actor.skills." skill.name}}
         ({{zhGetFirstLetter (localize (zhConcat "ZWEI.actor.primary." (zhLowerCase skill.system.associatedPrimaryAttribute)))}})

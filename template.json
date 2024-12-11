@@ -354,7 +354,8 @@
     "skill": {
       "templates": ["flavor"],
       "requiresTraining": false,
-      "associatedPrimaryAttribute": "Combat"
+      "associatedPrimaryAttribute": "Combat",
+      "bonusPerRank": 10
     },
     "talent": {
       "templates": ["flavor", "effect"]

@@ -337,4 +337,9 @@ export const registerHandlebarHelpers = async function () {
       `<span class="modifier-display">(${encumbrance.baseValue} ${mode} ${Math.abs(modifier)})</span>`
     );
   });
+
+  $$('zhIsCarried', function (system, options) {
+    console.log('AAAAAAAAAAAAAAA---', system);
+    return system?.carried ? options.inverse(this) : options.fn(this);
+  });
 };

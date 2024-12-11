@@ -167,7 +167,7 @@ export function getItemGroups(groupsData) {
         },
         {
           title: 'ineffect',
-          size: 150,
+          size: 140,
           key: 'system.active',
           isCheckbox: true,
         },
@@ -182,17 +182,12 @@ export function getItemGroups(groupsData) {
       details: [
         {
           title: 'source',
-          size: 140,
+          size: 210,
           key: 'system.details.source',
         },
         {
-          title: 'category',
-          size: 140,
-          key: 'system.details.category',
-        },
-        {
           title: 'ineffect',
-          size: 150,
+          size: 140,
           key: 'system.isActive',
           isCheckbox: true,
         },
@@ -207,17 +202,12 @@ export function getItemGroups(groupsData) {
       details: [
         {
           title: 'source',
-          size: 140,
+          size: 210,
           key: 'system.details.source',
         },
         {
-          title: 'category',
-          size: 140,
-          key: 'system.details.category',
-        },
-        {
           title: 'ineffect',
-          size: 150,
+          size: 140,
           key: 'system.isActive',
           isCheckbox: true,
         },
@@ -232,17 +222,12 @@ export function getItemGroups(groupsData) {
       details: [
         {
           title: 'source',
-          size: 140,
+          size: 210,
           key: 'system.details.source',
         },
         {
-          title: 'category',
-          size: 140,
-          key: 'system.details.category',
-        },
-        {
           title: 'ineffect',
-          size: 150,
+          size: 140,
           key: 'system.isActive',
           isCheckbox: true,
         },
@@ -261,7 +246,7 @@ export function getItemGroups(groupsData) {
         },
         {
           title: 'ineffect',
-          size: 150,
+          size: 140,
           key: 'system.active',
           isCheckbox: true,
         },
@@ -285,7 +270,7 @@ export function getItemGroups(groupsData) {
         },
         {
           title: 'ineffect',
-          size: 150,
+          size: 140,
           key: 'system.active',
           isCheckbox: true,
         },
@@ -313,7 +298,7 @@ export function getItemGroups(groupsData) {
         },
         {
           title: 'ineffect',
-          size: 150,
+          size: 140,
           key: 'system.active',
           isCheckbox: true,
         },

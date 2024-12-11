@@ -1,22 +1,32 @@
-<div class="form-group">
-  <label>{{localize "ZWEI.actor.items.type"}}</label>
-  <input name="{{zhLocalizePath 'system.details.category'}}" type="text" value="{{zhLocalize system.details.category}}">
+<div class='form-group'>
+  <label>{{localize 'ZWEI.actor.items.type'}}</label>
+  <input
+    name='{{zhLocalizePath "system.details.category"}}'
+    type='text'
+    value='{{zhLocalize system.details.category}}'
+  />
 </div>
 
-<div class="form-group">
-  <label>{{localize "ZWEI.actor.items.quantity"}}</label>
-  <input name="system.quantity" type="number" value="{{system.quantity}}">
+<div class='form-group'>
+  <label>{{localize 'ZWEI.actor.items.quantity'}}</label>
+  <input name='system.quantity' type='number' value='{{system.quantity}}' />
 </div>
 
-<div class="form-group">
-  <label>{{localize "ZWEI.actor.items.encumbrance"}}</label>
-  <input name="system.encumbrance" type="number" value="{{system.encumbrance}}">
+<div class='form-group'>
+  <label>{{localize 'ZWEI.actor.items.encumbrance'}}</label>
+  <input name='system.encumbrance' type='number' value='{{system.encumbrance}}' />
 </div>
 
-<div class="form-group stacked">
-  <label><a class="open-editor">{{localize "ZWEI.actor.items.effect"}} <i class="fa fa-edit"></i></a></label>
-    <div class="zh-editor-preview open">{{{html.rules.effect}}}</div>
-  {{editor html.rules.effect target=(zhLocalizePath "system.rules.effect") button=true owner=owner editable=editable}}
+<div class='form-group stacked'>
+  <label>{{localize 'ZWEI.actor.items.effect'}}</label>
+  {{editor
+    html.rules.effect
+    target=(zhLocalizePath 'system.rules.effect')
+    engine='prosemirror'
+    button=true
+    owner=owner
+    editable=editable
+  }}
 </div>
 
 {{zhPriceInputs system.price}}

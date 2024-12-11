@@ -1,18 +1,21 @@
-<div class="form-group stacked">
-  <label>{{localize "ZWEI.actor.items.associatedpa"}}</label>
-  <select name="system.associatedPrimaryAttribute">
-  {{#each choices.associatedPrimaryAttribute}}
-  <option value="{{value}}" {{selected}}>{{localize (zhConcat "ZWEI.actor.primary." (zhLowerCase label))}}</option>
-  {{/each}}
-</select>
+<div class='form-group stacked'>
+  <label>{{localize 'ZWEI.actor.items.associatedpa'}}</label>
+  <select name='system.associatedPrimaryAttribute'>
+    {{#each choices.associatedPrimaryAttribute}}
+      <option value='{{value}}' {{selected}}>{{localize (zhConcat 'ZWEI.actor.primary.' (zhLowerCase label))}}</option>
+    {{/each}}
+  </select>
 </div>
 
+<div class='form-group stacked'>
+  <label>{{localize 'ZWEI.actor.items.bonusperrank'}}</label>
+  <input name='system.bonusPerRank' type='number' value='{{system.bonusPerRank}}' />
+</div>
 
-
-<div class="form-group stacked">
-  <label>{{localize "ZWEI.actor.items.status"}}</label>
-  <label class="checkbox">
-    <input name="system.requiresTraining" type="checkbox" class="link-checkbox" {{checked system.requiresTraining}} />
-    {{localize "ZWEI.actor.items.requirestraining"}}
+<div class='form-group stacked'>
+  <label>{{localize 'ZWEI.actor.items.status'}}</label>
+  <label class='checkbox'>
+    <input name='system.requiresTraining' type='checkbox' class='link-checkbox' {{checked system.requiresTraining}} />
+    {{localize 'ZWEI.actor.items.requirestraining'}}
   </label>
 </div>

@@ -1,18 +1,28 @@
-<div class="form-group">
-  <label>{{localize "ZWEI.actor.items.category"}}</label>
-  <input name="{{zhLocalizePath 'system.details.category'}}" type="text" value="{{zhLocalize system.details.category}}">
+<div class='form-group'>
+  <label>{{localize 'ZWEI.actor.items.category'}}</label>
+  <input
+    name='{{zhLocalizePath "system.details.category"}}'
+    type='text'
+    value='{{zhLocalize system.details.category}}'
+  />
 </div>
 
-<div class="form-group stacked">
-  <label><a class="open-editor">{{localize "ZWEI.actor.items.effect"}} <i class="fa fa-edit"></i></a></label>
-  <div class="zh-editor-preview open">{{{html.rules.effect}}}</div>
-  {{editor html.rules.effect target=(zhLocalizePath "system.rules.effect") button=true owner=owner editable=editable}}
+<div class='form-group stacked'>
+  <label>{{localize 'ZWEI.actor.items.effect'}}</label>
+  {{editor
+    html.rules.effect
+    target=(zhLocalizePath 'system.rules.effect')
+    engine='prosemirror'
+    button=true
+    owner=owner
+    editable=editable
+  }}
 </div>
 
-<div class="form-group stacked">
-  <label>{{localize "ZWEI.actor.items.status"}}</label>
-  <label class="checkbox">
-    <input name="system.active" type="checkbox" class="link-checkbox" {{checked system.active}} />
-    {{localize "ZWEI.actor.items.ineffect"}}
+<div class='form-group stacked'>
+  <label>{{localize 'ZWEI.actor.items.status'}}</label>
+  <label class='checkbox'>
+    <input name='system.active' type='checkbox' class='link-checkbox' {{checked system.active}} />
+    {{localize 'ZWEI.actor.items.ineffect'}}
   </label>
 </div>

@@ -1,8 +1,9 @@
 <ol class="items-list">
+  {{#each this as |itemGroup| }}
   <li class="items-header flexrow">
     <h3 class="item-name sortable filterable" data-detail="-1" data-item-group="{{itemGroup.id}}">
       <span class="detail-title">
-        Modifiers
+        Effects
         <!--{{#if itemGroup.sortName}}
         <div class="sort-indicator">
           <i class="fa fa-sort-{{#if (eq itemGroup.sortName 1)}}up{{else}}down{{/if}}"></i>
@@ -20,7 +21,7 @@
         <input type="text" name="{{itemGroup.id}}-1" value="{{itemGroup.filterName}}">
       </div>-->
     </h3>
-    <!--{{#each itemGroup.details as |detail index| }}
+    {{#each itemGroup.details as |detail index| }}
     <div class="item-detail sortable {{#if detail.filterable}}filterable{{/if}}" style="width:{{detail.size}}px" data-detail="{{index}}" data-item-group="{{itemGroup.id}}">
       <span class="detail-title secondary">
         {{localize (zhConcat "ZWEI.actor.items." detail.title)}}
@@ -46,14 +47,13 @@
       </div>
       {{/if}}
     </div>
-    {{/each}}-->
-    <div class="item-controls"><a class="add-new" data-item-type="" data-tooltip="Add New " data-tooltip-direction="UP"><i
+    {{/each}}
+    <div class="item-controls"><a class="add-new" data-item-type="{{itemGroup.type}}" data-tooltip="Add New " data-tooltip-direction="UP"><i
           class="fa fa-plus"></i> {{localize "ZWEI.actor.items.add"}}</a>
     </div>
   </li>
-  <!--<ol class="item-list">
     {{#each itemGroup.items as |item| }}
-    <li class="item flexrow" data-item-id="{{item._id}}">
+    <li class="item flexrow effect-item" data-item-id="{{item._id}}">
       <div class="item-name fetch-{{#if ../isEffect}}effect{{else}}item{{/if}} flexrow js-show-item-description {{#if itemGroup.rollType}}rollable{{/if}}">
         <div class="{{#if ../isEffect}}{{zhItemImageClass item.icon}}{{else}}{{zhItemImageClass item.img}}{{/if}} {{itemGroup.rollType}}" tabindex="0" role="button"
           aria-label="{{item.name}}" style="{{#if ../isEffect}}{{zhItemImageStyle item.icon}}{{else}}{{zhItemImageStyle item.img}}{{/if}}"
@@ -100,4 +100,5 @@
     </li>
     {{/each}}
   </ol>
-</ol>-->
+  {{/each}}
+</ol>
