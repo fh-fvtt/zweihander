@@ -37,6 +37,11 @@ export const registerHandlebarHelpers = async function () {
     return word.toLowerCase().replace(/\s+/g, '');
   });
 
+  $$('zhLowerCaseBrackets', function (word) {
+    if (typeof word !== 'string') return '';
+    return word.toLowerCase().replace(/\[|\]/g, '');
+  });
+
   $$('zhAlignmentRanks', function (name, alignmentRanks, permanentRanks, options) {
     const alignment = name.split('.')[2];
     const icon = alignment === 'chaos' ? 'ra-cancel' : 'ra-horseshoe';
@@ -114,20 +119,70 @@ export const registerHandlebarHelpers = async function () {
   });
 
   $$('arrayInputGroup', function (label, target, array, max = Number.MAX_SAFE_INTEGER, pillDisplayProperty) {
-    return `<div class="form-group">
-    <label>${label}</label>
-    <div class="array-input flexrow" data-array-input-target="${target}" data-array-input-max="${max}">
-      <input name="proxy.${target}" type="text" placeholder="Enter values here">
-      <button class="array-input-plus" type="button" tabindex="-1"><i class="fas fa-plus"></i></button>
-      <div class="array-input-pills">
-        ${array.map(
-          (v, i) => `
-          <span class="array-input-pill" data-array-input-index="${i}">${v[pillDisplayProperty] ?? v}</span>
-        `
-        )}
-      </div>
-    </div>
-  </div>`;
+    let locdiv;
+    switch (label) {
+      case game.i18n.localize('ZWEI.actor.items.bonusadvances'):
+      case game.i18n.localize('ZWEI.actor.items.positivebonus'):
+      case game.i18n.localize('ZWEI.actor.items.negativebonus'):
+        locdiv = `<div class="form-group">
+        <label>${label}</label>
+        <div class="array-input flexrow" data-array-input-target="${target}" data-array-input-max="${max}">
+          <input name="proxy.${target}" type="text" placeholder="${game.i18n.localize(
+          'ZWEI.othermessages.entervalue'
+        )}">
+          <button class="array-input-plus" type="button" tabindex="-1"><i class="fas fa-plus"></i></button>
+          <div class="array-input-pills">
+            ${array.map(
+              (v, i) => `
+              <span class="array-input-pill" data-array-input-index="${i}">[${game.i18n.localize(
+                'ZWEI.actor.bonusesabbr.' + (v[pillDisplayProperty] ?? v).toLowerCase().replace(/\[|\]/g, '')
+              )}]</span>
+            `
+            )}
+          </div>
+        </div>
+      </div>`;
+        break;
+      case game.i18n.localize('ZWEI.actor.items.skillranks'):
+        locdiv = `<div class="form-group">
+        <label>${label}</label>
+        <div class="array-input flexrow" data-array-input-target="${target}" data-array-input-max="${max}">
+          <input name="proxy.${target}" type="text" placeholder="${game.i18n.localize(
+          'ZWEI.othermessages.entervalue'
+        )}">
+          <button class="array-input-plus" type="button" tabindex="-1"><i class="fas fa-plus"></i></button>
+          <div class="array-input-pills">
+            ${array.map(
+              (v, i) => `
+              <span class="array-input-pill" data-array-input-index="${i}">${game.i18n.localize(
+                'ZWEI.actor.skills.' + (v[pillDisplayProperty] ?? v).toLowerCase().replace(/\s+/g, '')
+              )}</span>
+            `
+            )}
+          </div>
+        </div>
+      </div>`;
+        break;
+      default:
+        locdiv = `<div class="form-group">
+        <label>${label}</label>
+        <div class="array-input flexrow" data-array-input-target="${target}" data-array-input-max="${max}">
+          <input name="proxy.${target}" type="text" placeholder="${game.i18n.localize(
+          'ZWEI.othermessages.entervalue'
+        )}">
+          <button class="array-input-plus" type="button" tabindex="-1"><i class="fas fa-plus"></i></button>
+          <div class="array-input-pills">
+            ${array.map(
+              (v, i) => `
+              <span class="array-input-pill" data-array-input-index="${i}">${v[pillDisplayProperty] ?? v}</span>
+            `
+            )}
+          </div>
+        </div>
+      </div>`;
+        break;
+    }
+    return locdiv;
   });
 
   $$('zhSkillBonus', function (bonus) {
@@ -341,5 +396,23 @@ export const registerHandlebarHelpers = async function () {
   $$('zhIsCarried', function (system, options) {
     console.log('AAAAAAAAAAAAAAA---', system);
     return system?.carried ? options.inverse(this) : options.fn(this);
+  });
+
+  $$('stringcompare', function (variableOne, comparator, variableTwo) {
+    if (eval('"' + variableOne + '"' + comparator + '"' + variableTwo + '"')) {
+      return true;
+    } else {
+      return false;
+    }
+  });
+
+  $$('betweenparentheses', function (txt) {
+    const parentheses = txt.match(/\(([^)]+)\)/);
+    return parentheses ? parentheses[1] : '';
+  });
+
+  $$('beforeparentheses', function (txt) {
+    const firstpar = txt.indexOf('(');
+    return firstpar >= 0 ? txt.substring(0, firstpar).trim() : txt;
   });
 };

@@ -276,11 +276,18 @@ export default class ZweihanderPC extends ZweihanderBaseActor {
     const injurySustained = rollResult.terms[0].results.some((die) => die.result === 6);
 
     if (!injurySustained) return;
+    const lang = game.i18n.lang;
+    const packLang = lang == 'de' ? '-de' : lang == 'es' ? '-es' : lang == 'fr' ? '-fr' : lang == 'ru' ? '-ru' : '';
+    const compendiumpacks = Array.from(game.packs.keys()).filter((x) => x.includes(packLang) && x.includes('gm-tables'));
+    const tablesPackName = compendiumpacks[0] ? compendiumpacks[0] : 'zweihander.zh-gm-tables';
+    const injuryToRollLoc = compendiumpacks[0]
+      ? game.i18n.localize('ZWEI.actor.items.injuryseverity.' + injuryToRoll.toLowerCase())
+      : injuryToRoll;
 
-    const tablesPack = game.packs.get('zweihander.zh-gm-tables');
+    const tablesPack = game.packs.get(tablesPackName);
     const tablesIndex = await tablesPack.getIndex();
 
-    const injuryTableEntry = tablesIndex.find((table) => ZweihanderUtils.normalizedIncludes(table.name, injuryToRoll));
+    const injuryTableEntry = tablesIndex.find((table) => ZweihanderUtils.normalizedIncludes(table.name, injuryToRollLoc));
 
     const injuryTable = await tablesPack.getDocument(injuryTableEntry._id);
 
