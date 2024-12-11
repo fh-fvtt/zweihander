@@ -23,7 +23,8 @@
     "TypeTrait": "Trait",
     "TypeTrapping": "Trapping",
     "TypeUniqueadvance": "Unique Advance",
-    "TypeWeapon": "Weapon"
+    "TypeWeapon": "Weapon",
+    "TypeManual": "Manual"
   },
   "ACTIVEEFFECT": {
     "TypeBase": "Active Effect"
@@ -211,6 +212,7 @@
         "add": "Add",
         "edit": "Edit",
         "delete": "Delete",
+        "remove": "Remove",				
         "source": "Source",
         "type": "Type",
         "rpcost": "RP Cost",
@@ -271,7 +273,12 @@
         "ritualeffects": "Ritual Effects",
         "positivebonus": "Positive Bonus Modifiers",
         "negativebonus": "Negative Bonus Modifiers",
-        "quantity": "Quantity"
+        "quantity": "Quantity",
+        "demote": "Demote to Passenger",
+        "promote": "Promote to Driver",
+        "item": "Item",
+        "post": "Post",
+        "tochat": "to Chat"
       },
       "conditions": {
         "incapacitated": "INCAPACITATED!",
@@ -304,6 +311,15 @@
         "intelligence": "IB",
         "willpower": "WB",
         "fellowship": "FB"
+      },
+      "bonusesabbr": {
+        "cb": "CB",
+        "bb": "BB",
+        "ab": "AB",
+        "pb": "PB",
+        "ib": "IB",
+        "wb": "WB",
+        "fb": "FB"
       },
       "details": {
         "prefixes": {
@@ -664,7 +680,9 @@
       "showdocs": "Show System Documentation",
       "modifiedattribute": "Modified Attribute",
       "mode": "Mode",
-      "value": "Value"
+      "value": "Value",
+      "professionmissing": "Profession is missing a Talent, has a misspelled Talent, or has a duplicate one. Please add to/change Talent list.",
+      "entervalue": "Enter values here"
     },
     "coinage": {
       "gc": "gc",

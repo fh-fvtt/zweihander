@@ -1,5 +1,5 @@
 <section class="item-card">
-  <h2 class="item-card-title">{{zhCapitalize type}}: {{name}}</h2>
+  <h2 class="item-card-title">{{localize (zhConcat "ITEM.Type" (zhCapitalizeStrict type))}}: {{name}}</h2>
   {{!--
   {{#if system.flavor.description}}
   <div class="item-card-description">
@@ -13,7 +13,7 @@
   </div>
   <dl class="zh-expandable" data-expand-title="{{localize "ZWEI.chatskill.itemdetails"}}">
       <dt>{{localize "ZWEI.actor.items.archetype"}}</dt>
-      <dd>{{system.archetype}}</dd>
+      <dd>{{localize (zhConcat "ZWEI.actor.details.labels." (zhLowerCase system.archetype))}}</dd>
       <dt>{{localize "ZWEI.actor.items.professionaltrait"}}</dt>
       <dd>{{system.professionalTrait.name}}</dd>
       {{#if system.specialTrait.name}}
@@ -29,9 +29,9 @@
       <dd>{{system.expert.requirements}}</dd>
       {{/if}}
       <dt>{{localize "ZWEI.actor.items.skillranks"}}</dt>
-      <dd>{{#each system.skillRanks}}{{name}}{{#unless @last}}, {{/unless}}{{/each}}</dd>
+      <dd>{{#each system.skillRanks}}{{zhLocalizeConditional "ZWEI.actor.skills." name}}{{#unless @last}}, {{/unless}}{{/each}}</dd>
       <dt>{{localize "ZWEI.actor.items.bonusadvances"}}</dt>
-      <dd>{{#each system.bonusAdvances}}{{name}}{{#unless @last}}, {{/unless}}{{/each}}</dd>
+      <dd>{{#each system.bonusAdvances}}[{{localize (zhConcat "ZWEI.actor.bonusesabbr." (zhLowerCaseBrackets name))}}]{{#unless @last}}, {{/unless}}{{/each}}</dd>
       <dt>{{localize "ZWEI.actor.items.talents"}}</dt>
       <dd>{{#each system.talents}}{{name}}{{#unless @last}}, {{/unless}}{{/each}}</dd>
     </dl>
