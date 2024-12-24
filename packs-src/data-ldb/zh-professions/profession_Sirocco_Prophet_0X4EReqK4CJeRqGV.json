@@ -6,10 +6,10 @@
   "type": "profession",
   "_stats": {
     "coreVersion": "12.331",
-    "systemId": null,
-    "systemVersion": null,
+    "systemId": "zweihander",
+    "systemVersion": "5.4.1",
     "createdTime": null,
-    "modifiedTime": 1733922277614,
+    "modifiedTime": 1734990833996,
     "lastModifiedBy": "rivg6xcMxdlVDM8y",
     "compendiumSource": null,
     "duplicateSource": null
@@ -21,88 +21,114 @@
     "notes": "",
     "expert": {
       "value": true,
-      "requirements": "You must possess at least one Skill Rank in Incantation in order to enter this Expert Profession. In addition, you must have the Special Trait of either Arcane or Divine Magick."
+      "requirements": {
+        "skillRanks": [],
+        "additional": ""
+      }
     },
     "archetype": "Expert Profession",
     "bonusAdvances": [
       {
-        "name": "[BB]"
+        "name": "[BB]",
+        "purchased": false
       },
       {
-        "name": "[CB]"
+        "name": "[CB]",
+        "purchased": false
       },
       {
-        "name": "[IB]"
+        "name": "[IB]",
+        "purchased": false
       },
       {
-        "name": "[IB]"
+        "name": "[IB]",
+        "purchased": false
       },
       {
-        "name": "[PB]"
+        "name": "[PB]",
+        "purchased": false
       },
       {
-        "name": "[WB]"
+        "name": "[WB]",
+        "purchased": false
       },
       {
-        "name": "[WB]"
+        "name": "[WB]",
+        "purchased": false
       }
     ],
     "skillRanks": [
       {
-        "name": "Alchemy"
+        "name": "Alchemy",
+        "purchased": false
       },
       {
-        "name": "Folklore"
+        "name": "Folklore",
+        "purchased": false
       },
       {
-        "name": "Incantation"
+        "name": "Incantation",
+        "purchased": false
       },
       {
-        "name": "Martial Melee"
+        "name": "Martial Melee",
+        "purchased": false
       },
       {
-        "name": "Navigation"
+        "name": "Navigation",
+        "purchased": false
       },
       {
-        "name": "Rumor"
+        "name": "Rumor",
+        "purchased": false
       },
       {
-        "name": "Scrutinize"
+        "name": "Scrutinize",
+        "purchased": false
       },
       {
-        "name": "Simple Melee"
+        "name": "Simple Melee",
+        "purchased": false
       },
       {
-        "name": "Survival"
+        "name": "Survival",
+        "purchased": false
       },
       {
-        "name": "Tradecraft"
+        "name": "Tradecraft",
+        "purchased": false
       }
     ],
     "talents": [
       {
-        "linkedId": null,
-        "name": "Instincts"
+        "linkedId": "Iiu9G1OsUFo0Tiw6",
+        "name": "Instincts",
+        "uuid": "Compendium.zweihander.zh-talents.Item.Iiu9G1OsUFo0Tiw6"
       },
       {
-        "linkedId": null,
-        "name": "Left-handed Path"
+        "linkedId": "sVFqLRKgBdMFvBOh",
+        "name": "Left-handed Path",
+        "uuid": "Compendium.zweihander.zh-talents.Item.sVFqLRKgBdMFvBOh"
       },
       {
-        "linkedId": null,
-        "name": "Mine Craft"
+        "linkedId": "HAAEmf4RBgOXbE4W",
+        "name": "Mine Craft",
+        "uuid": "Compendium.zweihander.zh-talents.Item.HAAEmf4RBgOXbE4W"
       }
     ],
     "professionalTrait": {
       "name": "Hellfurnace's Gift",
+      "uuid": "Compendium.zweihander.zh-traits.Item.T8qXC5eGZybZC1tJ",
       "linkedId": null
     },
     "specialTrait": {
       "name": "Covenant Magick",
+      "uuid": "Compendium.zweihander.zh-traits.Item.7xtxO5xA5ouHjMWs",
       "linkedId": null
     },
     "drawback": {
       "name": "Ruinous Power",
+      "uuid": "Compendium.zweihander.zh-drawbacks.Item.000ebdYiQnk7rwbt",
       "linkedId": null
     },
     "tier": ""

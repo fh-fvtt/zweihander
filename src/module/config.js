@@ -70,6 +70,7 @@ ZWEI.tiersInversed = {
 };
 
 ZWEI.primaryAttributes = ['combat', 'brawn', 'agility', 'perception', 'intelligence', 'willpower', 'fellowship'];
+ZWEI.primaryAttributeBonuses = ['CB', 'BB', 'AB', 'PB', 'IB', 'WB', 'FB'];
 
 // @todo: uncomment when Active Effects can affect Skill Tests
 ZWEI.secondaryAttributes = [
@@ -213,7 +214,7 @@ ZWEI.packSets = {
   },
 };
 
-ZWEI.archetypes = ['Academic', 'Commoner', 'Knave', 'Ranger', 'Socialite', 'Warrior', 'Expert Profession'];
+ZWEI.archetypes = ['Academic', 'Commoner', 'Knave', 'Ranger', 'Socialite', 'Warrior'];
 
 ZWEI.injurySeverities = [
   { value: 0, label: 'moderate' },

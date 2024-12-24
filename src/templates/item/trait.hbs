@@ -1,11 +1,28 @@
-<div class='form-group stacked'>
-  <label>{{localize 'ZWEI.actor.items.effect'}}</label>
-  {{editor
-    html.rules.effect
-    target=(zhLocalizePath 'system.rules.effect')
-    engine='prosemirror'
-    button=true
-    owner=owner
-    editable=editable
-  }}
-</div>
+<fieldset>
+  <legend>Innate Ability</legend>
+  <div class="form-group stacked">
+    <label>{{localize "ZWEI.actor.items.effect"}}</label>
+    {{editor
+      html.rules.effect
+      target=(zhLocalizePath "system.rules.effect")
+      engine="prosemirror"
+      button=true
+      owner=owner
+      editable=editable
+    }}
+  </div>
+</fieldset>
+
+<fieldset>
+  <legend>Misc.</legend>
+  <div class="form-group stacked">
+    <label>Trait Category</label>
+    <select name="system.category">
+      {{#select system.category}}
+        <option value="professional">Professional</option>
+        <option value="special">Special</option>
+        <option value="ancestral">Ancestral</option>
+      {{/select}}
+    </select>
+  </div>
+</fieldset>

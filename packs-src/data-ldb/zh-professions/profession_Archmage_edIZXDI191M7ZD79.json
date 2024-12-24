@@ -6,10 +6,10 @@
   "type": "profession",
   "_stats": {
     "coreVersion": "12.331",
-    "systemId": null,
-    "systemVersion": null,
+    "systemId": "zweihander",
+    "systemVersion": "5.4.1",
     "createdTime": null,
-    "modifiedTime": 1733922277614,
+    "modifiedTime": 1734990834133,
     "lastModifiedBy": "rivg6xcMxdlVDM8y",
     "compendiumSource": null,
     "duplicateSource": null
@@ -21,88 +21,114 @@
     "notes": "",
     "expert": {
       "value": true,
-      "requirements": "You must possess at least two Skill Ranks in Incantation in order to enter this Expert Profession. In addition, you must have the Special Trait of Arcane Magick. Finally, you must sacrifice one Fate Point upon entering this Profession."
+      "requirements": {
+        "skillRanks": [],
+        "additional": ""
+      }
     },
     "archetype": "Expert Profession",
     "bonusAdvances": [
       {
-        "name": "[AB]"
+        "name": "[AB]",
+        "purchased": false
       },
       {
-        "name": "[FB]"
+        "name": "[FB]",
+        "purchased": false
       },
       {
-        "name": "[IB]"
+        "name": "[IB]",
+        "purchased": false
       },
       {
-        "name": "[IB]"
+        "name": "[IB]",
+        "purchased": false
       },
       {
-        "name": "[PB]"
+        "name": "[PB]",
+        "purchased": false
       },
       {
-        "name": "[WB]"
+        "name": "[WB]",
+        "purchased": false
       },
       {
-        "name": "[WB]"
+        "name": "[WB]",
+        "purchased": false
       }
     ],
     "skillRanks": [
       {
-        "name": "Alchemy"
+        "name": "Alchemy",
+        "purchased": false
       },
       {
-        "name": "Awareness"
+        "name": "Awareness",
+        "purchased": false
       },
       {
-        "name": "Coordination"
+        "name": "Coordination",
+        "purchased": false
       },
       {
-        "name": "Education"
+        "name": "Education",
+        "purchased": false
       },
       {
-        "name": "Folklore"
+        "name": "Folklore",
+        "purchased": false
       },
       {
-        "name": "Incantation"
+        "name": "Incantation",
+        "purchased": false
       },
       {
-        "name": "Resolve"
+        "name": "Resolve",
+        "purchased": false
       },
       {
-        "name": "Rumor"
+        "name": "Rumor",
+        "purchased": false
       },
       {
-        "name": "Simple Melee"
+        "name": "Simple Melee",
+        "purchased": false
       },
       {
-        "name": "Scrutinize"
+        "name": "Scrutinize",
+        "purchased": false
       }
     ],
     "talents": [
       {
-        "linkedId": null,
-        "name": "Battle Magick"
+        "linkedId": "ApvdCU96TYOe2FEs",
+        "name": "Battle Magick",
+        "uuid": "Compendium.zweihander.zh-talents.Item.ApvdCU96TYOe2FEs"
       },
       {
-        "linkedId": null,
-        "name": "Higher Mysteries"
+        "linkedId": "Fe3d2Oyig1kPYHTb",
+        "name": "Higher Mysteries",
+        "uuid": "Compendium.zweihander.zh-talents.Item.Fe3d2Oyig1kPYHTb"
       },
       {
-        "linkedId": null,
-        "name": "Winds of Change"
+        "linkedId": "9IpcTnvgfB1kVV8A",
+        "name": "Winds of Change",
+        "uuid": "Compendium.zweihander.zh-talents.Item.9IpcTnvgfB1kVV8A"
       }
     ],
     "professionalTrait": {
       "name": "Mastery of the High Arts",
+      "uuid": "Compendium.zweihander.zh-traits.Item.oMaZl3vctQB6qWo7",
       "linkedId": null
     },
     "specialTrait": {
       "name": "Arcane Mastery",
+      "uuid": "Compendium.zweihander.zh-traits.Item.XGS6f7jTsiYjf7SQ",
       "linkedId": null
     },
     "drawback": {
       "name": "Warp Dissonance",
+      "uuid": "Compendium.zweihander.zh-drawbacks.Item.nCENNgYKNL3hTVRS",
       "linkedId": null
     },
     "tier": ""

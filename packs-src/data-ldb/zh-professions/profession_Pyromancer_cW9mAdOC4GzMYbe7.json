@@ -6,10 +6,10 @@
   "type": "profession",
   "_stats": {
     "coreVersion": "12.331",
-    "systemId": null,
-    "systemVersion": null,
+    "systemId": "zweihander",
+    "systemVersion": "5.4.1",
     "createdTime": null,
-    "modifiedTime": 1733922277614,
+    "modifiedTime": 1734990834128,
     "lastModifiedBy": "rivg6xcMxdlVDM8y",
     "compendiumSource": null,
     "duplicateSource": null
@@ -21,88 +21,114 @@
     "notes": "",
     "expert": {
       "value": true,
-      "requirements": "You must possess at least one Skill Rank in Incantation in order to enter this Expert Profession. In addition, you must have the Special Trait of Arcane Magick."
+      "requirements": {
+        "skillRanks": [],
+        "additional": ""
+      }
     },
     "archetype": "Expert Profession",
     "bonusAdvances": [
       {
-        "name": "[AB]"
+        "name": "[AB]",
+        "purchased": false
       },
       {
-        "name": "[BB]"
+        "name": "[BB]",
+        "purchased": false
       },
       {
-        "name": "[CB]"
+        "name": "[CB]",
+        "purchased": false
       },
       {
-        "name": "[IB]"
+        "name": "[IB]",
+        "purchased": false
       },
       {
-        "name": "[IB]"
+        "name": "[IB]",
+        "purchased": false
       },
       {
-        "name": "[WB]"
+        "name": "[WB]",
+        "purchased": false
       },
       {
-        "name": "[WB]"
+        "name": "[WB]",
+        "purchased": false
       }
     ],
     "skillRanks": [
       {
-        "name": "Alchemy"
+        "name": "Alchemy",
+        "purchased": false
       },
       {
-        "name": "Folklore"
+        "name": "Folklore",
+        "purchased": false
       },
       {
-        "name": "Incantation"
+        "name": "Incantation",
+        "purchased": false
       },
       {
-        "name": "Intimidate"
+        "name": "Intimidate",
+        "purchased": false
       },
       {
-        "name": "Martial Melee"
+        "name": "Martial Melee",
+        "purchased": false
       },
       {
-        "name": "Resolve"
+        "name": "Resolve",
+        "purchased": false
       },
       {
-        "name": "Ride"
+        "name": "Ride",
+        "purchased": false
       },
       {
-        "name": "Simple Melee"
+        "name": "Simple Melee",
+        "purchased": false
       },
       {
-        "name": "Toughness"
+        "name": "Toughness",
+        "purchased": false
       },
       {
-        "name": "Rumor"
+        "name": "Rumor",
+        "purchased": false
       }
     ],
     "talents": [
       {
-        "linkedId": null,
-        "name": "Battle Magick"
+        "linkedId": "ApvdCU96TYOe2FEs",
+        "name": "Battle Magick",
+        "uuid": "Compendium.zweihander.zh-talents.Item.ApvdCU96TYOe2FEs"
       },
       {
-        "linkedId": null,
-        "name": "Indifference"
+        "linkedId": "cIaEhW4y3xK76XWt",
+        "name": "Indifference",
+        "uuid": "Compendium.zweihander.zh-talents.Item.cIaEhW4y3xK76XWt"
       },
       {
-        "linkedId": null,
-        "name": "Menacing Demeanor"
+        "linkedId": "iox3y41c5QOhZn0Y",
+        "name": "Menacing Demeanor",
+        "uuid": "Compendium.zweihander.zh-talents.Item.iox3y41c5QOhZn0Y"
       }
     ],
     "professionalTrait": {
       "name": "The Fiery Heart",
+      "uuid": "Compendium.zweihander.zh-traits.Item.8yOZkICa1v72voAK",
       "linkedId": null
     },
     "specialTrait": {
       "name": "Arcana of Pyromancy",
+      "uuid": "Compendium.zweihander.zh-traits.Item.zuvYCBbVrhn3yhhA",
       "linkedId": null
     },
     "drawback": {
       "name": "Red Temperament",
+      "uuid": "Compendium.zweihander.zh-drawbacks.Item.WoXVcGFyxL6wK7uJ",
       "linkedId": null
     },
     "tier": ""

@@ -6,10 +6,10 @@
   "type": "profession",
   "_stats": {
     "coreVersion": "12.331",
-    "systemId": null,
-    "systemVersion": null,
+    "systemId": "zweihander",
+    "systemVersion": "5.4.1",
     "createdTime": null,
-    "modifiedTime": 1733922277614,
+    "modifiedTime": 1734990834096,
     "lastModifiedBy": "rivg6xcMxdlVDM8y",
     "compendiumSource": null,
     "duplicateSource": null
@@ -21,88 +21,114 @@
     "notes": "",
     "expert": {
       "value": true,
-      "requirements": "You must possess at least one Skill Rank in both Coordination and Martial Ranged in order to enter this Expert Profession."
+      "requirements": {
+        "skillRanks": [],
+        "additional": ""
+      }
     },
     "archetype": "Expert Profession",
     "bonusAdvances": [
       {
-        "name": "[AB]"
+        "name": "[AB]",
+        "purchased": false
       },
       {
-        "name": "[AB]"
+        "name": "[AB]",
+        "purchased": false
       },
       {
-        "name": "[CB]"
+        "name": "[CB]",
+        "purchased": false
       },
       {
-        "name": "[CB]"
+        "name": "[CB]",
+        "purchased": false
       },
       {
-        "name": "[IB]"
+        "name": "[IB]",
+        "purchased": false
       },
       {
-        "name": "[WB]"
+        "name": "[WB]",
+        "purchased": false
       },
       {
-        "name": "[WB]"
+        "name": "[WB]",
+        "purchased": false
       }
     ],
     "skillRanks": [
       {
-        "name": "Athletics"
+        "name": "Athletics",
+        "purchased": false
       },
       {
-        "name": "Coordination"
+        "name": "Coordination",
+        "purchased": false
       },
       {
-        "name": "Guile"
+        "name": "Guile",
+        "purchased": false
       },
       {
-        "name": "Martial Melee"
+        "name": "Martial Melee",
+        "purchased": false
       },
       {
-        "name": "Martial Ranged"
+        "name": "Martial Ranged",
+        "purchased": false
       },
       {
-        "name": "Resolve"
+        "name": "Resolve",
+        "purchased": false
       },
       {
-        "name": "Rumor"
+        "name": "Rumor",
+        "purchased": false
       },
       {
-        "name": "Simple Melee"
+        "name": "Simple Melee",
+        "purchased": false
       },
       {
-        "name": "Simple Ranged"
+        "name": "Simple Ranged",
+        "purchased": false
       },
       {
-        "name": "Warfare"
+        "name": "Warfare",
+        "purchased": false
       }
     ],
     "talents": [
       {
-        "linkedId": null,
-        "name": "Gangster Grip"
+        "linkedId": "S2wqzahFwdc8uslR",
+        "name": "Gangster Grip",
+        "uuid": "Compendium.zweihander.zh-talents.Item.S2wqzahFwdc8uslR"
       },
       {
-        "linkedId": null,
-        "name": "Gruesome Shot"
+        "linkedId": "3Bvirk4uric3aNZN",
+        "name": "Gruesome Shot",
+        "uuid": "Compendium.zweihander.zh-talents.Item.3Bvirk4uric3aNZN"
       },
       {
-        "linkedId": null,
-        "name": "Shoot From The Hip"
+        "linkedId": "kSv9Lg9f2fkJs9nN",
+        "name": "Shoot From The Hip",
+        "uuid": "Compendium.zweihander.zh-talents.Item.kSv9Lg9f2fkJs9nN"
       }
     ],
     "professionalTrait": {
       "name": "Gunslinger",
+      "uuid": "Compendium.zweihander.zh-traits.Item.O4QkTD79DUgcFo3H",
       "linkedId": null
     },
     "specialTrait": {
       "name": "",
+      "uuid": "",
       "linkedId": null
     },
     "drawback": {
       "name": "Black Hat",
+      "uuid": "Compendium.zweihander.zh-drawbacks.Item.7vbLaAm6qUGb1kpB",
       "linkedId": null
     },
     "tier": ""

@@ -6,10 +6,10 @@
   "type": "profession",
   "_stats": {
     "coreVersion": "12.331",
-    "systemId": null,
-    "systemVersion": null,
+    "systemId": "zweihander",
+    "systemVersion": "5.4.1",
     "createdTime": null,
-    "modifiedTime": 1733922277614,
+    "modifiedTime": 1734990834149,
     "lastModifiedBy": "rivg6xcMxdlVDM8y",
     "compendiumSource": null,
     "duplicateSource": null
@@ -21,88 +21,114 @@
     "notes": "",
     "expert": {
       "value": false,
-      "requirements": ""
+      "requirements": {
+        "skillRanks": [],
+        "additional": ""
+      }
     },
     "archetype": "Socialite",
     "bonusAdvances": [
       {
-        "name": "[BB]"
+        "name": "[BB]",
+        "purchased": false
       },
       {
-        "name": "[BB]"
+        "name": "[BB]",
+        "purchased": false
       },
       {
-        "name": "[FB]"
+        "name": "[FB]",
+        "purchased": false
       },
       {
-        "name": "[FB]"
+        "name": "[FB]",
+        "purchased": false
       },
       {
-        "name": "[IB]"
+        "name": "[IB]",
+        "purchased": false
       },
       {
-        "name": "[IB]"
+        "name": "[IB]",
+        "purchased": false
       },
       {
-        "name": "[PB]"
+        "name": "[PB]",
+        "purchased": false
       }
     ],
     "skillRanks": [
       {
-        "name": "Athletics"
+        "name": "Athletics",
+        "purchased": false
       },
       {
-        "name": "Bargain"
+        "name": "Bargain",
+        "purchased": false
       },
       {
-        "name": "Education"
+        "name": "Education",
+        "purchased": false
       },
       {
-        "name": "Folklore"
+        "name": "Folklore",
+        "purchased": false
       },
       {
-        "name": "Gamble"
+        "name": "Gamble",
+        "purchased": false
       },
       {
-        "name": "Guile"
+        "name": "Guile",
+        "purchased": false
       },
       {
-        "name": "Rumor"
+        "name": "Rumor",
+        "purchased": false
       },
       {
-        "name": "Scrutinize"
+        "name": "Scrutinize",
+        "purchased": false
       },
       {
-        "name": "Simple Melee"
+        "name": "Simple Melee",
+        "purchased": false
       },
       {
-        "name": "Toughness"
+        "name": "Toughness",
+        "purchased": false
       }
     ],
     "talents": [
       {
-        "linkedId": null,
-        "name": "Carousing"
+        "linkedId": "v6tIVgfHMuYK0Smy",
+        "name": "Carousing",
+        "uuid": "Compendium.zweihander.zh-talents.Item.v6tIVgfHMuYK0Smy"
       },
       {
-        "linkedId": null,
-        "name": "Forked Tongue"
+        "linkedId": "AHui6a3KaaMWrKp1",
+        "name": "Forked Tongue",
+        "uuid": "Compendium.zweihander.zh-talents.Item.AHui6a3KaaMWrKp1"
       },
       {
-        "linkedId": null,
-        "name": "Lightning Reaction"
+        "linkedId": "Ga2VnAZ0nlJGZNnF",
+        "name": "Lightning Reaction",
+        "uuid": "Compendium.zweihander.zh-talents.Item.Ga2VnAZ0nlJGZNnF"
       }
     ],
     "professionalTrait": {
       "name": "Magnificent Bastard",
+      "uuid": "Compendium.zweihander.zh-traits.Item.pWvFJ24n3BotVG1V",
       "linkedId": null
     },
     "specialTrait": {
       "name": "",
+      "uuid": "",
       "linkedId": null
     },
     "drawback": {
       "name": "Washed Up",
+      "uuid": "Compendium.zweihander.zh-drawbacks.Item.K3yZCW81Li0LtGQ8",
       "linkedId": null
     },
     "tier": ""

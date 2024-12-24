@@ -6,10 +6,10 @@
   "type": "profession",
   "_stats": {
     "coreVersion": "12.331",
-    "systemId": null,
-    "systemVersion": null,
+    "systemId": "zweihander",
+    "systemVersion": "5.4.1",
     "createdTime": null,
-    "modifiedTime": 1733922277614,
+    "modifiedTime": 1734990834103,
     "lastModifiedBy": "rivg6xcMxdlVDM8y",
     "compendiumSource": null,
     "duplicateSource": null
@@ -21,88 +21,114 @@
     "notes": "",
     "expert": {
       "value": true,
-      "requirements": "You must possess at least two Skill Ranks in Bargain in order to enter this Expert Profession."
+      "requirements": {
+        "skillRanks": [],
+        "additional": ""
+      }
     },
     "archetype": "Expert Profession",
     "bonusAdvances": [
       {
-        "name": "[AB]"
+        "name": "[AB]",
+        "purchased": false
       },
       {
-        "name": "[FB]"
+        "name": "[FB]",
+        "purchased": false
       },
       {
-        "name": "[FB]"
+        "name": "[FB]",
+        "purchased": false
       },
       {
-        "name": "[PB]"
+        "name": "[PB]",
+        "purchased": false
       },
       {
-        "name": "[PB]"
+        "name": "[PB]",
+        "purchased": false
       },
       {
-        "name": "[WB]"
+        "name": "[WB]",
+        "purchased": false
       },
       {
-        "name": "[WB]"
+        "name": "[WB]",
+        "purchased": false
       }
     ],
     "skillRanks": [
       {
-        "name": "Bargain"
+        "name": "Bargain",
+        "purchased": false
       },
       {
-        "name": "Coordination"
+        "name": "Coordination",
+        "purchased": false
       },
       {
-        "name": "Folklore"
+        "name": "Folklore",
+        "purchased": false
       },
       {
-        "name": "Intimidate"
+        "name": "Intimidate",
+        "purchased": false
       },
       {
-        "name": "Leadership"
+        "name": "Leadership",
+        "purchased": false
       },
       {
-        "name": "Resolve"
+        "name": "Resolve",
+        "purchased": false
       },
       {
-        "name": "Rumor"
+        "name": "Rumor",
+        "purchased": false
       },
       {
-        "name": "Scrutinize"
+        "name": "Scrutinize",
+        "purchased": false
       },
       {
-        "name": "Simple Ranged"
+        "name": "Simple Ranged",
+        "purchased": false
       },
       {
-        "name": "Tradecraft"
+        "name": "Tradecraft",
+        "purchased": false
       }
     ],
     "talents": [
       {
-        "linkedId": null,
-        "name": "Appalling Mien"
+        "linkedId": "i9qfMytftadGhnm3",
+        "name": "Appalling Mien",
+        "uuid": "Compendium.zweihander.zh-talents.Item.i9qfMytftadGhnm3"
       },
       {
-        "linkedId": null,
-        "name": "Impervious Mind"
+        "linkedId": "WsD0GRMRKX8Ov0mT",
+        "name": "Impervious Mind",
+        "uuid": "Compendium.zweihander.zh-talents.Item.WsD0GRMRKX8Ov0mT"
       },
       {
-        "linkedId": null,
-        "name": "Indifference"
+        "linkedId": "cIaEhW4y3xK76XWt",
+        "name": "Indifference",
+        "uuid": "Compendium.zweihander.zh-talents.Item.cIaEhW4y3xK76XWt"
       }
     ],
     "professionalTrait": {
       "name": "What’s Yours is Mine",
+      "uuid": "Compendium.zweihander.zh-traits.Item.82gxzQJjRacdkBWB",
       "linkedId": null
     },
     "specialTrait": {
       "name": "",
+      "uuid": "",
       "linkedId": null
     },
     "drawback": {
       "name": "The World is Mine",
+      "uuid": "Compendium.zweihander.zh-drawbacks.Item.Av8txBAacRzcdXWx",
       "linkedId": null
     },
     "tier": ""

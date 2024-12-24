@@ -6,10 +6,10 @@
   "type": "profession",
   "_stats": {
     "coreVersion": "12.331",
-    "systemId": null,
-    "systemVersion": null,
+    "systemId": "zweihander",
+    "systemVersion": "5.4.1",
     "createdTime": null,
-    "modifiedTime": 1733922277614,
+    "modifiedTime": 1734990834115,
     "lastModifiedBy": "rivg6xcMxdlVDM8y",
     "compendiumSource": null,
     "duplicateSource": null
@@ -21,88 +21,114 @@
     "notes": "",
     "expert": {
       "value": false,
-      "requirements": ""
+      "requirements": {
+        "skillRanks": [],
+        "additional": ""
+      }
     },
     "archetype": "Academic",
     "bonusAdvances": [
       {
-        "name": "[AB]"
+        "name": "[AB]",
+        "purchased": false
       },
       {
-        "name": "[FB]"
+        "name": "[FB]",
+        "purchased": false
       },
       {
-        "name": "[FB]"
+        "name": "[FB]",
+        "purchased": false
       },
       {
-        "name": "[IB]"
+        "name": "[IB]",
+        "purchased": false
       },
       {
-        "name": "[IB]"
+        "name": "[IB]",
+        "purchased": false
       },
       {
-        "name": "[PB]"
+        "name": "[PB]",
+        "purchased": false
       },
       {
-        "name": "[WB]"
+        "name": "[WB]",
+        "purchased": false
       }
     ],
     "skillRanks": [
       {
-        "name": "Bargain"
+        "name": "Bargain",
+        "purchased": false
       },
       {
-        "name": "Counterfeit"
+        "name": "Counterfeit",
+        "purchased": false
       },
       {
-        "name": "Disguise"
+        "name": "Disguise",
+        "purchased": false
       },
       {
-        "name": "Eavesdrop"
+        "name": "Eavesdrop",
+        "purchased": false
       },
       {
-        "name": "Education"
+        "name": "Education",
+        "purchased": false
       },
       {
-        "name": "Folklore"
+        "name": "Folklore",
+        "purchased": false
       },
       {
-        "name": "Rumor"
+        "name": "Rumor",
+        "purchased": false
       },
       {
-        "name": "Scrutinize"
+        "name": "Scrutinize",
+        "purchased": false
       },
       {
-        "name": "Simple Melee"
+        "name": "Simple Melee",
+        "purchased": false
       },
       {
-        "name": "Stealth"
+        "name": "Stealth",
+        "purchased": false
       }
     ],
     "talents": [
       {
-        "linkedId": null,
-        "name": "Larceny"
+        "linkedId": "wRTdadnNJpHE32RU",
+        "name": "Larceny",
+        "uuid": "Compendium.zweihander.zh-talents.Item.wRTdadnNJpHE32RU"
       },
       {
-        "linkedId": null,
-        "name": "Secret Signs"
+        "linkedId": "sr0nQ2JrQV4DnTeU",
+        "name": "Secret Signs",
+        "uuid": "Compendium.zweihander.zh-talents.Item.sr0nQ2JrQV4DnTeU"
       },
       {
-        "linkedId": null,
-        "name": "Streetwise"
+        "linkedId": "nmeKtDNOuY6FGU8n",
+        "name": "Streetwise",
+        "uuid": "Compendium.zweihander.zh-talents.Item.nmeKtDNOuY6FGU8n"
       }
     ],
     "professionalTrait": {
       "name": "Shadow Broker",
+      "uuid": "Compendium.zweihander.zh-traits.Item.RbGV7B07mcMeVG5u",
       "linkedId": null
     },
     "specialTrait": {
       "name": "",
+      "uuid": "",
       "linkedId": null
     },
     "drawback": {
       "name": "",
+      "uuid": "",
       "linkedId": null
     },
     "tier": ""

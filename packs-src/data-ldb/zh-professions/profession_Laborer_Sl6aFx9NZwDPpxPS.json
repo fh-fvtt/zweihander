@@ -6,10 +6,10 @@
   "type": "profession",
   "_stats": {
     "coreVersion": "12.331",
-    "systemId": null,
-    "systemVersion": null,
+    "systemId": "zweihander",
+    "systemVersion": "5.4.1",
     "createdTime": null,
-    "modifiedTime": 1733922277614,
+    "modifiedTime": 1734990834117,
     "lastModifiedBy": "rivg6xcMxdlVDM8y",
     "compendiumSource": null,
     "duplicateSource": null
@@ -21,88 +21,114 @@
     "notes": "",
     "expert": {
       "value": false,
-      "requirements": ""
+      "requirements": {
+        "skillRanks": [],
+        "additional": ""
+      }
     },
     "archetype": "Commoner",
     "bonusAdvances": [
       {
-        "name": "[AB]"
+        "name": "[AB]",
+        "purchased": false
       },
       {
-        "name": "[BB]"
+        "name": "[BB]",
+        "purchased": false
       },
       {
-        "name": "[BB]"
+        "name": "[BB]",
+        "purchased": false
       },
       {
-        "name": "Fellowship+1"
+        "name": "Fellowship+1",
+        "purchased": false
       },
       {
-        "name": "[IB]"
+        "name": "[IB]",
+        "purchased": false
       },
       {
-        "name": "[WB]"
+        "name": "[WB]",
+        "purchased": false
       },
       {
-        "name": "[WB]"
+        "name": "[WB]",
+        "purchased": false
       }
     ],
     "skillRanks": [
       {
-        "name": "Athletics"
+        "name": "Athletics",
+        "purchased": false
       },
       {
-        "name": "Drive"
+        "name": "Drive",
+        "purchased": false
       },
       {
-        "name": "Folklore"
+        "name": "Folklore",
+        "purchased": false
       },
       {
-        "name": "Gamble"
+        "name": "Gamble",
+        "purchased": false
       },
       {
-        "name": "Handle Animal"
+        "name": "Handle Animal",
+        "purchased": false
       },
       {
-        "name": "Resolve"
+        "name": "Resolve",
+        "purchased": false
       },
       {
-        "name": "Rumor"
+        "name": "Rumor",
+        "purchased": false
       },
       {
-        "name": "Pilot"
+        "name": "Pilot",
+        "purchased": false
       },
       {
-        "name": "Simple Melee"
+        "name": "Simple Melee",
+        "purchased": false
       },
       {
-        "name": "Toughness"
+        "name": "Toughness",
+        "purchased": false
       }
     ],
     "talents": [
       {
-        "linkedId": null,
-        "name": "Carousing"
+        "linkedId": "v6tIVgfHMuYK0Smy",
+        "name": "Carousing",
+        "uuid": "Compendium.zweihander.zh-talents.Item.v6tIVgfHMuYK0Smy"
       },
       {
-        "linkedId": null,
-        "name": "Nerves of Steel"
+        "linkedId": "2BQgCknFDwpvM47Q",
+        "name": "Nerves of Steel",
+        "uuid": "Compendium.zweihander.zh-talents.Item.2BQgCknFDwpvM47Q"
       },
       {
-        "linkedId": null,
-        "name": "Strong Jaw"
+        "linkedId": "rovDufjlTx9AgJIP",
+        "name": "Strong Jaw",
+        "uuid": "Compendium.zweihander.zh-talents.Item.rovDufjlTx9AgJIP"
       }
     ],
     "professionalTrait": {
       "name": "Backbreaking Labor",
+      "uuid": "Compendium.zweihander.zh-traits.Item.xEahzzuZEme5AEpW",
       "linkedId": null
     },
     "specialTrait": {
       "name": "",
+      "uuid": "",
       "linkedId": null
     },
     "drawback": {
       "name": "",
+      "uuid": "",
       "linkedId": null
     },
     "tier": ""

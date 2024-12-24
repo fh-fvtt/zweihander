@@ -1,3 +1,5 @@
+import { normalizeName } from '../../utils';
+
 export default class ZweihanderBaseActor {
   getRollData(rollData) {
     //TODO: make attributes more accessible here
@@ -24,7 +26,16 @@ export default class ZweihanderBaseActor {
   async _preCreate(actor, options, user, that) {
     // add default set of skills
     const skillPack = game.packs.get(game.settings.get('zweihander', 'skillPack'));
-    const skillsFromPack = (await skillPack.getDocuments()).map((i) => i.toObject());
+    const skillsFromPack = (await skillPack.getDocuments())
+      .sort((a, b) => {
+        const normalizedA = normalizeName(a.name);
+        const normalizedB = normalizeName(b.name);
+
+        if (normalizedA < normalizedB) return -1;
+        if (normalizedA > normalizedB) return 1;
+        return 0;
+      })
+      .map((i) => i.toObject());
     await that.updateSource({ items: skillsFromPack }, { keepId: true, keepEmbeddedIds: true });
   }
 }

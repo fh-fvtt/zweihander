@@ -6,10 +6,10 @@
   "type": "profession",
   "_stats": {
     "coreVersion": "12.331",
-    "systemId": null,
-    "systemVersion": null,
+    "systemId": "zweihander",
+    "systemVersion": "5.4.1",
     "createdTime": null,
-    "modifiedTime": 1733922277614,
+    "modifiedTime": 1734990834111,
     "lastModifiedBy": "rivg6xcMxdlVDM8y",
     "compendiumSource": null,
     "duplicateSource": null
@@ -21,88 +21,114 @@
     "notes": "",
     "expert": {
       "value": false,
-      "requirements": ""
+      "requirements": {
+        "skillRanks": [],
+        "additional": ""
+      }
     },
     "archetype": "Knave",
     "bonusAdvances": [
       {
-        "name": "[AB]"
+        "name": "[AB]",
+        "purchased": false
       },
       {
-        "name": "[AB]"
+        "name": "[AB]",
+        "purchased": false
       },
       {
-        "name": "[FB]"
+        "name": "[FB]",
+        "purchased": false
       },
       {
-        "name": "[FB]"
+        "name": "[FB]",
+        "purchased": false
       },
       {
-        "name": "[IB]"
+        "name": "[IB]",
+        "purchased": false
       },
       {
-        "name": "[PB]"
+        "name": "[PB]",
+        "purchased": false
       },
       {
-        "name": "[PB]"
+        "name": "[PB]",
+        "purchased": false
       }
     ],
     "skillRanks": [
       {
-        "name": "Counterfeit"
+        "name": "Counterfeit",
+        "purchased": false
       },
       {
-        "name": "Disguise"
+        "name": "Disguise",
+        "purchased": false
       },
       {
-        "name": "Eavesdrop"
+        "name": "Eavesdrop",
+        "purchased": false
       },
       {
-        "name": "Folklore"
+        "name": "Folklore",
+        "purchased": false
       },
       {
-        "name": "Guile"
+        "name": "Guile",
+        "purchased": false
       },
       {
-        "name": "Rumor"
+        "name": "Rumor",
+        "purchased": false
       },
       {
-        "name": "Simple Ranged"
+        "name": "Simple Ranged",
+        "purchased": false
       },
       {
-        "name": "Skulduggery"
+        "name": "Skulduggery",
+        "purchased": false
       },
       {
-        "name": "Stealth"
+        "name": "Stealth",
+        "purchased": false
       },
       {
-        "name": "Survival"
+        "name": "Survival",
+        "purchased": false
       }
     ],
     "talents": [
       {
-        "linkedId": null,
-        "name": "Handspring"
+        "linkedId": "FxA0nCUxs1Sc5yat",
+        "name": "Handspring",
+        "uuid": "Compendium.zweihander.zh-talents.Item.FxA0nCUxs1Sc5yat"
       },
       {
-        "linkedId": null,
-        "name": "Sprint"
+        "linkedId": "bKpzxZZUiQVE0l1j",
+        "name": "Sprint",
+        "uuid": "Compendium.zweihander.zh-talents.Item.bKpzxZZUiQVE0l1j"
       },
       {
-        "linkedId": null,
-        "name": "Streetwise"
+        "linkedId": "nmeKtDNOuY6FGU8n",
+        "name": "Streetwise",
+        "uuid": "Compendium.zweihander.zh-talents.Item.nmeKtDNOuY6FGU8n"
       }
     ],
     "professionalTrait": {
       "name": "Artful Dodger",
+      "uuid": "Compendium.zweihander.zh-traits.Item.49IHcA5UZzBagbG7",
       "linkedId": null
     },
     "specialTrait": {
       "name": "",
+      "uuid": "",
       "linkedId": null
     },
     "drawback": {
       "name": "",
+      "uuid": "",
       "linkedId": null
     },
     "tier": ""

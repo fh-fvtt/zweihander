@@ -6,10 +6,10 @@
   "type": "profession",
   "_stats": {
     "coreVersion": "12.331",
-    "systemId": null,
-    "systemVersion": null,
+    "systemId": "zweihander",
+    "systemVersion": "5.4.1",
     "createdTime": null,
-    "modifiedTime": 1733922277614,
+    "modifiedTime": 1734990834012,
     "lastModifiedBy": "rivg6xcMxdlVDM8y",
     "compendiumSource": null,
     "duplicateSource": null
@@ -21,88 +21,114 @@
     "notes": "",
     "expert": {
       "value": true,
-      "requirements": "You must possess at least one Skill Rank in Incantation in order to enter this Expert Profession. In addition, you must have the Special Trait of Divine Magick."
+      "requirements": {
+        "skillRanks": [],
+        "additional": ""
+      }
     },
     "archetype": "Expert Profession",
     "bonusAdvances": [
       {
-        "name": "[FB]"
+        "name": "[FB]",
+        "purchased": false
       },
       {
-        "name": "[IB]"
+        "name": "[IB]",
+        "purchased": false
       },
       {
-        "name": "[IB]"
+        "name": "[IB]",
+        "purchased": false
       },
       {
-        "name": "[PB]"
+        "name": "[PB]",
+        "purchased": false
       },
       {
-        "name": "[PB]"
+        "name": "[PB]",
+        "purchased": false
       },
       {
-        "name": "[WB]"
+        "name": "[WB]",
+        "purchased": false
       },
       {
-        "name": "[WB]"
+        "name": "[WB]",
+        "purchased": false
       }
     ],
     "skillRanks": [
       {
-        "name": "Awareness"
+        "name": "Awareness",
+        "purchased": false
       },
       {
-        "name": "Coordination"
+        "name": "Coordination",
+        "purchased": false
       },
       {
-        "name": "Counterfeit"
+        "name": "Counterfeit",
+        "purchased": false
       },
       {
-        "name": "Education"
+        "name": "Education",
+        "purchased": false
       },
       {
-        "name": "Folklore"
+        "name": "Folklore",
+        "purchased": false
       },
       {
-        "name": "Incantation"
+        "name": "Incantation",
+        "purchased": false
       },
       {
-        "name": "Resolve"
+        "name": "Resolve",
+        "purchased": false
       },
       {
-        "name": "Rumor"
+        "name": "Rumor",
+        "purchased": false
       },
       {
-        "name": "Scrutinize"
+        "name": "Scrutinize",
+        "purchased": false
       },
       {
-        "name": "Simple Melee"
+        "name": "Simple Melee",
+        "purchased": false
       }
     ],
     "talents": [
       {
-        "linkedId": null,
-        "name": "Æthereal Alignment"
+        "linkedId": "xoKzA76ZzPQmOejt",
+        "name": "Æthereal Alignment",
+        "uuid": "Compendium.zweihander.zh-talents.Item.xoKzA76ZzPQmOejt"
       },
       {
-        "linkedId": null,
-        "name": "Incredible Numeration"
+        "linkedId": "sD4Et1dOsSjT3fPt",
+        "name": "Incredible Numeration",
+        "uuid": "Compendium.zweihander.zh-talents.Item.sD4Et1dOsSjT3fPt"
       },
       {
-        "linkedId": null,
-        "name": "Meeting of the Minds"
+        "linkedId": "LLp6kwPTz9wJLpvG",
+        "name": "Meeting of the Minds",
+        "uuid": "Compendium.zweihander.zh-talents.Item.LLp6kwPTz9wJLpvG"
       }
     ],
     "professionalTrait": {
       "name": "Ogham of Truth",
+      "uuid": "Compendium.zweihander.zh-traits.Item.Hea13JnmQNvyagtK",
       "linkedId": null
     },
     "specialTrait": {
       "name": "Prayers of the Learner",
+      "uuid": "Compendium.zweihander.zh-traits.Item.npgxNFSipBtTZ78K",
       "linkedId": null
     },
     "drawback": {
       "name": "The Learner’s Commandments",
+      "uuid": "Compendium.zweihander.zh-drawbacks.Item.B7rtNBBpyAAtmHTU",
       "linkedId": null
     },
     "tier": ""

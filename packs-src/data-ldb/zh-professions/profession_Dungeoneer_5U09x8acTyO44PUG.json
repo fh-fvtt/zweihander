@@ -6,10 +6,10 @@
   "type": "profession",
   "_stats": {
     "coreVersion": "12.331",
-    "systemId": null,
-    "systemVersion": null,
+    "systemId": "zweihander",
+    "systemVersion": "5.4.1",
     "createdTime": null,
-    "modifiedTime": 1733922277614,
+    "modifiedTime": 1734990834079,
     "lastModifiedBy": "rivg6xcMxdlVDM8y",
     "compendiumSource": null,
     "duplicateSource": null
@@ -21,88 +21,114 @@
     "notes": "",
     "expert": {
       "value": true,
-      "requirements": "You must possess at least one Skill Rank in Folklore in order to enter this Expert Profession."
+      "requirements": {
+        "skillRanks": [],
+        "additional": ""
+      }
     },
     "archetype": "Expert Profession",
     "bonusAdvances": [
       {
-        "name": "[AB]"
+        "name": "[AB]",
+        "purchased": false
       },
       {
-        "name": "[BB]"
+        "name": "[BB]",
+        "purchased": false
       },
       {
-        "name": "[CB]"
+        "name": "[CB]",
+        "purchased": false
       },
       {
-        "name": "[FB]"
+        "name": "[FB]",
+        "purchased": false
       },
       {
-        "name": "[IB]"
+        "name": "[IB]",
+        "purchased": false
       },
       {
-        "name": "[PB]"
+        "name": "[PB]",
+        "purchased": false
       },
       {
-        "name": "[WB]"
+        "name": "[WB]",
+        "purchased": false
       }
     ],
     "skillRanks": [
       {
-        "name": "Athletics"
+        "name": "Athletics",
+        "purchased": false
       },
       {
-        "name": "Coordination"
+        "name": "Coordination",
+        "purchased": false
       },
       {
-        "name": "Folklore"
+        "name": "Folklore",
+        "purchased": false
       },
       {
-        "name": "Martial Melee"
+        "name": "Martial Melee",
+        "purchased": false
       },
       {
-        "name": "Martial Ranged"
+        "name": "Martial Ranged",
+        "purchased": false
       },
       {
-        "name": "Navigation"
+        "name": "Navigation",
+        "purchased": false
       },
       {
-        "name": "Resolve"
+        "name": "Resolve",
+        "purchased": false
       },
       {
-        "name": "Rumor"
+        "name": "Rumor",
+        "purchased": false
       },
       {
-        "name": "Skulduggery"
+        "name": "Skulduggery",
+        "purchased": false
       },
       {
-        "name": "Simple Melee"
+        "name": "Simple Melee",
+        "purchased": false
       }
     ],
     "talents": [
       {
-        "linkedId": null,
-        "name": "Mine Craft"
+        "linkedId": "HAAEmf4RBgOXbE4W",
+        "name": "Mine Craft",
+        "uuid": "Compendium.zweihander.zh-talents.Item.HAAEmf4RBgOXbE4W"
       },
       {
-        "linkedId": null,
-        "name": "Secret Signs"
+        "linkedId": "sr0nQ2JrQV4DnTeU",
+        "name": "Secret Signs",
+        "uuid": "Compendium.zweihander.zh-talents.Item.sr0nQ2JrQV4DnTeU"
       },
       {
-        "linkedId": null,
-        "name": "Supernatural Paranoia"
+        "linkedId": "mbtJHdgWqR6fct7f",
+        "name": "Supernatural Paranoia",
+        "uuid": "Compendium.zweihander.zh-talents.Item.mbtJHdgWqR6fct7f"
       }
     ],
     "professionalTrait": {
       "name": "Gygaxian Naturalism",
+      "uuid": "Compendium.zweihander.zh-traits.Item.hUWKnLUe7gIcMwHM",
       "linkedId": null
     },
     "specialTrait": {
       "name": "",
+      "uuid": "",
       "linkedId": null
     },
     "drawback": {
       "name": "Foolhardy",
+      "uuid": "Compendium.zweihander.zh-drawbacks.Item.jd7dLJrGmeWcjRNW",
       "linkedId": null
     },
     "tier": ""

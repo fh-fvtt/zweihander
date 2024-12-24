@@ -6,10 +6,10 @@
   "type": "profession",
   "_stats": {
     "coreVersion": "12.331",
-    "systemId": null,
-    "systemVersion": null,
+    "systemId": "zweihander",
+    "systemVersion": "5.4.1",
     "createdTime": null,
-    "modifiedTime": 1733922277614,
+    "modifiedTime": 1734990834077,
     "lastModifiedBy": "rivg6xcMxdlVDM8y",
     "compendiumSource": null,
     "duplicateSource": null
@@ -21,88 +21,114 @@
     "notes": "",
     "expert": {
       "value": false,
-      "requirements": ""
+      "requirements": {
+        "skillRanks": [],
+        "additional": ""
+      }
     },
     "archetype": "Ranger",
     "bonusAdvances": [
       {
-        "name": "[FB]"
+        "name": "[FB]",
+        "purchased": false
       },
       {
-        "name": "[FB]"
+        "name": "[FB]",
+        "purchased": false
       },
       {
-        "name": "[IB]"
+        "name": "[IB]",
+        "purchased": false
       },
       {
-        "name": "[IB]"
+        "name": "[IB]",
+        "purchased": false
       },
       {
-        "name": "[PB]"
+        "name": "[PB]",
+        "purchased": false
       },
       {
-        "name": "[WB]"
+        "name": "[WB]",
+        "purchased": false
       },
       {
-        "name": "[WB]"
+        "name": "[WB]",
+        "purchased": false
       }
     ],
     "skillRanks": [
       {
-        "name": "Education"
+        "name": "Education",
+        "purchased": false
       },
       {
-        "name": "Folklore"
+        "name": "Folklore",
+        "purchased": false
       },
       {
-        "name": "Gamble"
+        "name": "Gamble",
+        "purchased": false
       },
       {
-        "name": "Guile"
+        "name": "Guile",
+        "purchased": false
       },
       {
-        "name": "Handle Animal"
+        "name": "Handle Animal",
+        "purchased": false
       },
       {
-        "name": "Rumor"
+        "name": "Rumor",
+        "purchased": false
       },
       {
-        "name": "Scrutinize"
+        "name": "Scrutinize",
+        "purchased": false
       },
       {
-        "name": "Simple Melee"
+        "name": "Simple Melee",
+        "purchased": false
       },
       {
-        "name": "Survival"
+        "name": "Survival",
+        "purchased": false
       },
       {
-        "name": "Tradecraft"
+        "name": "Tradecraft",
+        "purchased": false
       }
     ],
     "talents": [
       {
-        "linkedId": null,
-        "name": "Doppelganger"
+        "linkedId": "VTJ2gonJGSCCGwov",
+        "name": "Doppelganger",
+        "uuid": "Compendium.zweihander.zh-talents.Item.VTJ2gonJGSCCGwov"
       },
       {
-        "linkedId": null,
-        "name": "Forked Tongue"
+        "linkedId": "AHui6a3KaaMWrKp1",
+        "name": "Forked Tongue",
+        "uuid": "Compendium.zweihander.zh-talents.Item.AHui6a3KaaMWrKp1"
       },
       {
-        "linkedId": null,
-        "name": "Gallows Humor"
+        "linkedId": "gTfkADOvPRHZK5P4",
+        "name": "Gallows Humor",
+        "uuid": "Compendium.zweihander.zh-talents.Item.gTfkADOvPRHZK5P4"
       }
     ],
     "professionalTrait": {
       "name": "Snake Oil",
+      "uuid": "Compendium.zweihander.zh-traits.Item.UEnfP0hI4hGfWcRV",
       "linkedId": null
     },
     "specialTrait": {
       "name": "",
+      "uuid": "",
       "linkedId": null
     },
     "drawback": {
       "name": "Quackery",
+      "uuid": "Compendium.zweihander.zh-drawbacks.Item.MQyymDZxL7F9uerP",
       "linkedId": null
     },
     "tier": ""

@@ -6,10 +6,10 @@
   "type": "profession",
   "_stats": {
     "coreVersion": "12.331",
-    "systemId": null,
-    "systemVersion": null,
+    "systemId": "zweihander",
+    "systemVersion": "5.4.1",
     "createdTime": null,
-    "modifiedTime": 1733922277614,
+    "modifiedTime": 1734990834132,
     "lastModifiedBy": "rivg6xcMxdlVDM8y",
     "compendiumSource": null,
     "duplicateSource": null
@@ -21,88 +21,114 @@
     "notes": "",
     "expert": {
       "value": true,
-      "requirements": "You must possess at least one Skill Rank in Incantation in order to enter this Expert Profession. In addition, you must have the Special Trait of Arcane Magick."
+      "requirements": {
+        "skillRanks": [],
+        "additional": ""
+      }
     },
     "archetype": "Expert Profession",
     "bonusAdvances": [
       {
-        "name": "[FB]"
+        "name": "[FB]",
+        "purchased": false
       },
       {
-        "name": "[IB]"
+        "name": "[IB]",
+        "purchased": false
       },
       {
-        "name": "[IB]"
+        "name": "[IB]",
+        "purchased": false
       },
       {
-        "name": "[PB]"
+        "name": "[PB]",
+        "purchased": false
       },
       {
-        "name": "[PB]"
+        "name": "[PB]",
+        "purchased": false
       },
       {
-        "name": "[WB]"
+        "name": "[WB]",
+        "purchased": false
       },
       {
-        "name": "[WB]"
+        "name": "[WB]",
+        "purchased": false
       }
     ],
     "skillRanks": [
       {
-        "name": "Alchemy"
+        "name": "Alchemy",
+        "purchased": false
       },
       {
-        "name": "Awareness"
+        "name": "Awareness",
+        "purchased": false
       },
       {
-        "name": "Folklore"
+        "name": "Folklore",
+        "purchased": false
       },
       {
-        "name": "Handle Animal"
+        "name": "Handle Animal",
+        "purchased": false
       },
       {
-        "name": "Incantation"
+        "name": "Incantation",
+        "purchased": false
       },
       {
-        "name": "Navigation"
+        "name": "Navigation",
+        "purchased": false
       },
       {
-        "name": "Resolve"
+        "name": "Resolve",
+        "purchased": false
       },
       {
-        "name": "Rumor"
+        "name": "Rumor",
+        "purchased": false
       },
       {
-        "name": "Simple Ranged"
+        "name": "Simple Ranged",
+        "purchased": false
       },
       {
-        "name": "Survival"
+        "name": "Survival",
+        "purchased": false
       }
     ],
     "talents": [
       {
-        "linkedId": null,
-        "name": "Impervious Mind"
+        "linkedId": "WsD0GRMRKX8Ov0mT",
+        "name": "Impervious Mind",
+        "uuid": "Compendium.zweihander.zh-talents.Item.WsD0GRMRKX8Ov0mT"
       },
       {
-        "linkedId": null,
-        "name": "Left-handed Path"
+        "linkedId": "sVFqLRKgBdMFvBOh",
+        "name": "Left-handed Path",
+        "uuid": "Compendium.zweihander.zh-talents.Item.sVFqLRKgBdMFvBOh"
       },
       {
-        "linkedId": null,
-        "name": "Light Sleeper"
+        "linkedId": "0l5T7zT8MMm0Fhp8",
+        "name": "Light Sleeper",
+        "uuid": "Compendium.zweihander.zh-talents.Item.0l5T7zT8MMm0Fhp8"
       }
     ],
     "professionalTrait": {
       "name": "Seasons to Pass",
+      "uuid": "Compendium.zweihander.zh-traits.Item.jdq348IkHkHnhUGD",
       "linkedId": null
     },
     "specialTrait": {
       "name": "Arcana of Elementalism",
+      "uuid": "Compendium.zweihander.zh-traits.Item.4CcdhIe51WnLuOAd",
       "linkedId": null
     },
     "drawback": {
       "name": "Green Temperament",
+      "uuid": "Compendium.zweihander.zh-drawbacks.Item.92ndBXiHV0a7boJq",
       "linkedId": null
     },
     "tier": ""

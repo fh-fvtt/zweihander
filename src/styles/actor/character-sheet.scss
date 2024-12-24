@@ -55,11 +55,12 @@ body.game.vtt.system-zweihander .zweihander.sheet.character {
     }
 
     .tab.background {
+      padding: 10px 10px 5px 10px;
       & > div {
         border: 2px groove var(--zh-clr-bg2);
         flex: 1 0 auto;
         height: calc(50% - 2ch - 8px);
-        margin-bottom: 4px;
+        margin-bottom: 5px;
         padding: 2ch 5px;
         display: flex;
         flex-flow: column nowrap;

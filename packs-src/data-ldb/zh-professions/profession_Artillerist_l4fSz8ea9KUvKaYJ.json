@@ -6,10 +6,10 @@
   "type": "profession",
   "_stats": {
     "coreVersion": "12.331",
-    "systemId": null,
-    "systemVersion": null,
+    "systemId": "zweihander",
+    "systemVersion": "5.4.1",
     "createdTime": null,
-    "modifiedTime": 1733922277614,
+    "modifiedTime": 1734990834140,
     "lastModifiedBy": "rivg6xcMxdlVDM8y",
     "compendiumSource": null,
     "duplicateSource": null
@@ -21,85 +21,114 @@
     "notes": "",
     "expert": {
       "value": true,
-      "requirements": "You must possess at least one Skill Rank in Warfare in order to enter this Expert Profession."
+      "requirements": {
+        "skillRanks": [],
+        "additional": ""
+      }
     },
     "archetype": "Expert Profession",
     "bonusAdvances": [
       {
-        "name": "[AB]"
+        "name": "[AB]",
+        "purchased": false
       },
       {
-        "name": "[AB]"
+        "name": "[AB]",
+        "purchased": false
       },
       {
-        "name": "[BB]"
+        "name": "[BB]",
+        "purchased": false
       },
       {
-        "name": "[IB]"
+        "name": "[IB]",
+        "purchased": false
       },
       {
-        "name": "[IB]"
+        "name": "[IB]",
+        "purchased": false
       },
       {
-        "name": "[PB]"
+        "name": "[PB]",
+        "purchased": false
       },
       {
-        "name": "[PB]"
+        "name": "[PB]",
+        "purchased": false
       }
     ],
     "skillRanks": [
       {
-        "name": "Athletics"
+        "name": "Athletics",
+        "purchased": false
       },
       {
-        "name": "Coordination"
+        "name": "Coordination",
+        "purchased": false
       },
       {
-        "name": "Drive"
+        "name": "Drive",
+        "purchased": false
       },
       {
-        "name": "Folklore"
+        "name": "Folklore",
+        "purchased": false
       },
       {
-        "name": "Martial Ranged"
+        "name": "Martial Ranged",
+        "purchased": false
       },
       {
-        "name": "Navigation"
+        "name": "Navigation",
+        "purchased": false
       },
       {
-        "name": "Ride"
+        "name": "Ride",
+        "purchased": false
       },
       {
-        "name": "Rumor"
+        "name": "Rumor",
+        "purchased": false
       },
       {
-        "name": "Simple Ranged"
+        "name": "Simple Ranged",
+        "purchased": false
       },
       {
-        "name": "Warfare"
+        "name": "Warfare",
+        "purchased": false
       }
     ],
     "talents": [
       {
-        "name": "Eagle Eyes"
+        "name": "Eagle Eyes",
+        "uuid": "Compendium.zweihander.zh-talents.Item.9Ht9tfqaR4ceJk6X",
+        "linkedId": "9Ht9tfqaR4ceJk6X"
       },
       {
-        "name": "Siegecraft"
+        "name": "Siegecraft",
+        "uuid": "Compendium.zweihander.zh-talents.Item.UkKaKxOrVeJt9sj7",
+        "linkedId": "UkKaKxOrVeJt9sj7"
       },
       {
-        "name": "Instincts"
+        "name": "Instincts",
+        "uuid": "Compendium.zweihander.zh-talents.Item.Iiu9G1OsUFo0Tiw6",
+        "linkedId": "Iiu9G1OsUFo0Tiw6"
       }
     ],
     "professionalTrait": {
       "name": "Bombs Away!",
+      "uuid": "Compendium.zweihander.zh-traits.Item.kdZPjbBVvAXX8XqA",
       "linkedId": null
     },
     "specialTrait": {
       "name": "",
+      "uuid": "",
       "linkedId": null
     },
     "drawback": {
       "name": "Hard of Hearing",
+      "uuid": "Compendium.zweihander.zh-drawbacks.Item.2BD9F6Ki8zTVPhXH",
       "linkedId": null
     },
     "tier": ""

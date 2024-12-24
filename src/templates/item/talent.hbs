@@ -1,12 +1,14 @@
-<div class='form-group stacked'>
-  <label><a class='open-editor'>{{localize 'ZWEI.actor.items.effect'}} <i class='fa fa-edit'></i></a></label>
-  <div class='zh-editor-preview open'>{{{html.rules.effect}}}</div>
-  {{editor
-    html.rules.effect
-    target=(zhLocalizePath 'system.rules.effect')
-    engine='prosemirror'
-    button=true
-    owner=owner
-    editable=editable
-  }}
-</div>
+<fieldset>
+  <legend>Innate Ability</legend>
+  <div class="form-group">
+    <label>{{localize "ZWEI.actor.items.effect"}}</label>
+    {{editor
+      html.rules.effect
+      target=(zhLocalizePath "system.rules.effect")
+      engine="prosemirror"
+      button=true
+      owner=owner
+      editable=editable
+    }}
+  </div>
+</fieldset>

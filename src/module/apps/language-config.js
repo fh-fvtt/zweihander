@@ -18,7 +18,7 @@ export default class ZweihanderLanguageConfig extends FormApplication {
 
   /** @override */
   get title() {
-    return `${this.object.name}: ` + game.i18n.localize("ZWEI.settings.lasettings.title");
+    return `${this.object.name}: ` + game.i18n.localize('ZWEI.settings.lasettings.title');
   }
 
   /** @override */
@@ -36,17 +36,17 @@ export default class ZweihanderLanguageConfig extends FormApplication {
 
   activateListeners(html) {
     super.activateListeners(html);
-    html.find('.add-language').click(() => {
+    html.find('.add-language').click(async () => {
       const l = this.object.system.languages;
       l.push({ name: 'New Language', isLiterate: false });
-      this.object.update({ 'system.languages': l });
+      await this.object.update({ 'system.languages': l });
       this.render();
     });
-    html.find('.del-language').click((event) => {
+    html.find('.del-language').click(async (event) => {
       const l = this.object.system.languages;
       const i = $(event.currentTarget).data('index');
       l.splice(i, 1);
-      this.object.update({ 'system.languages': l });
+      await this.object.update({ 'system.languages': l });
       this.render();
     });
   }

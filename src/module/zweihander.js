@@ -34,11 +34,20 @@ import ZweihanderActiveEffect from './effects/active-effect';
 import ZweihanderActiveEffectConfig from './apps/active-effect-config';
 import { performWorldMigrations, migrations } from './migration';
 
+import { HTMLZweihanderTagsElement } from './misc/zweihander-tags';
+import { HTMLZweihanderMultiSelectElement } from './misc/zweihander-multiselect';
+
 /* -------------------------------------------- */
 /*  Foundry VTT Initialization                  */
 /* -------------------------------------------- */
 
 CONFIG.compatibility.mode = CONST.COMPATIBILITY_MODES.SILENT;
+
+window.customElements.define(HTMLZweihanderTagsElement.tagName, HTMLZweihanderTagsElement);
+window.customElements.define(HTMLZweihanderMultiSelectElement.tagName, HTMLZweihanderMultiSelectElement);
+
+globalThis.findItemWorldWide = (type, name) => ZweihanderUtils.findItemWorldWide(type, name);
+globalThis.findItemsWorldWide = (type, names) => ZweihanderUtils.findItemsWorldWide(type, names);
 
 const socket = new Promise((resolve) => {
   Hooks.once('socketlib.ready', () => {
@@ -56,8 +65,8 @@ Hooks.once('ready', function () {
     game.zweihander.socket = socket;
     FortuneTracker.INSTANCE = new FortuneTracker(socket);
     FortuneTracker.INSTANCE?.syncState();
-    socket.register('updateChatMessage', (messageId, diffData) => {
-      game.messages.get(messageId).update(diffData);
+    socket.register('updateChatMessage', async (messageId, diffData) => {
+      await game.messages.get(messageId).update(diffData);
     });
   });
   // game.actors.getName('Demon Archer')?.sheet?.render?.(true);

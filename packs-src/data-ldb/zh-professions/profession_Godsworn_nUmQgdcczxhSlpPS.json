@@ -6,10 +6,10 @@
   "type": "profession",
   "_stats": {
     "coreVersion": "12.331",
-    "systemId": null,
-    "systemVersion": null,
+    "systemId": "zweihander",
+    "systemVersion": "5.4.1",
     "createdTime": null,
-    "modifiedTime": 1733922277614,
+    "modifiedTime": 1734990834144,
     "lastModifiedBy": "rivg6xcMxdlVDM8y",
     "compendiumSource": null,
     "duplicateSource": null
@@ -21,88 +21,114 @@
     "notes": "",
     "expert": {
       "value": true,
-      "requirements": "You must possess at least one Skill Rank in Incantation in order to enter this Expert Profession. In addition, you must have the Special Trait of Divine Magick."
+      "requirements": {
+        "skillRanks": [],
+        "additional": ""
+      }
     },
     "archetype": "Expert Profession",
     "bonusAdvances": [
       {
-        "name": "[AB]"
+        "name": "[AB]",
+        "purchased": false
       },
       {
-        "name": "[BB]"
+        "name": "[BB]",
+        "purchased": false
       },
       {
-        "name": "[BB]"
+        "name": "[BB]",
+        "purchased": false
       },
       {
-        "name": "[CB]"
+        "name": "[CB]",
+        "purchased": false
       },
       {
-        "name": "[FB]"
+        "name": "[FB]",
+        "purchased": false
       },
       {
-        "name": "[WB]"
+        "name": "[WB]",
+        "purchased": false
       },
       {
-        "name": "[WB]"
+        "name": "[WB]",
+        "purchased": false
       }
     ],
     "skillRanks": [
       {
-        "name": "Folklore"
+        "name": "Folklore",
+        "purchased": false
       },
       {
-        "name": "Incantation"
+        "name": "Incantation",
+        "purchased": false
       },
       {
-        "name": "Intimidate"
+        "name": "Intimidate",
+        "purchased": false
       },
       {
-        "name": "Martial Melee"
+        "name": "Martial Melee",
+        "purchased": false
       },
       {
-        "name": "Resolve"
+        "name": "Resolve",
+        "purchased": false
       },
       {
-        "name": "Ride"
+        "name": "Ride",
+        "purchased": false
       },
       {
-        "name": "Rumor"
+        "name": "Rumor",
+        "purchased": false
       },
       {
-        "name": "Simple Melee"
+        "name": "Simple Melee",
+        "purchased": false
       },
       {
-        "name": "Toughness"
+        "name": "Toughness",
+        "purchased": false
       },
       {
-        "name": "Warfare"
+        "name": "Warfare",
+        "purchased": false
       }
     ],
     "talents": [
       {
-        "linkedId": null,
-        "name": "Impervious Mind"
+        "linkedId": "WsD0GRMRKX8Ov0mT",
+        "name": "Impervious Mind",
+        "uuid": "Compendium.zweihander.zh-talents.Item.WsD0GRMRKX8Ov0mT"
       },
       {
-        "linkedId": null,
-        "name": "Mounted Defense"
+        "linkedId": "b2btBHV6e3en2XFy",
+        "name": "Mounted Defense",
+        "uuid": "Compendium.zweihander.zh-talents.Item.b2btBHV6e3en2XFy"
       },
       {
-        "linkedId": null,
-        "name": "Supernatural Paranoia"
+        "linkedId": "mbtJHdgWqR6fct7f",
+        "name": "Supernatural Paranoia",
+        "uuid": "Compendium.zweihander.zh-talents.Item.mbtJHdgWqR6fct7f"
       }
     ],
     "professionalTrait": {
       "name": "Armor of God",
+      "uuid": "Compendium.zweihander.zh-traits.Item.jQVWa42KhgkTgC4I",
       "linkedId": null
     },
     "specialTrait": {
       "name": "Prayers of the God-Emperor",
+      "uuid": "Compendium.zweihander.zh-traits.Item.KiC8am8KnxhU9VeE",
       "linkedId": null
     },
     "drawback": {
       "name": "The God-Emperor’s Commandments",
+      "uuid": "Compendium.zweihander.zh-drawbacks.Item.K9Rskdir34lAKyXI",
       "linkedId": null
     },
     "tier": ""

@@ -10,9 +10,9 @@ export default class ZweihanderItemSheet extends ItemSheet {
     return mergeObject(super.defaultOptions, {
       classes: ['zweihander', 'sheet', 'item'],
       template: 'systems/zweihander/src/templates/item/main.hbs',
-      width: 470,
-      height: 550,
-      resizable: true,
+      width: 600,
+      height: 'auto',
+      resizable: false,
       tabs: [
         {
           navSelector: '.sheet-navigation',
@@ -20,10 +20,12 @@ export default class ZweihanderItemSheet extends ItemSheet {
           initial: 'details',
         },
       ],
-      dragDrop: [{ dragSelector: '.item-sheet-draggable', dropSelector: null }],
+      dragDrop: [{ dragSelector: null, dropSelector: null }],
       scrollY: ['.sheet-body'],
     });
   }
+
+  static _customElements = super._customElements.concat(['zweihander-tags', 'zweihander-multi-select']);
 
   _canDragStart(selector) {
     return true;
@@ -46,6 +48,83 @@ export default class ZweihanderItemSheet extends ItemSheet {
     };
     // Set data transfer
     event.dataTransfer.setData('text/plain', JSON.stringify(dragData));
+  }
+
+  async _onDrop(event) {
+    const data = TextEditor.getDragEventData(event);
+
+    const droppedItemUuid = data.uuid;
+    const droppedItem = await fromUuid(droppedItemUuid);
+
+    const item = this.item;
+
+    // @todo: validate allowed Items based on this Item's type, e.g. Ancestry accepts Traits only
+    switch (item.type) {
+      case 'ancestry':
+        if (droppedItem.type !== 'trait') {
+          ui.notifications.error(`Item of type '${droppedItem.type}' cannot be added to an Ancestry Item.`);
+          break;
+        }
+
+        await item.update({
+          //'system.ancestralTrait.name': droppedItem.name,
+          ['system.ancestralTrait.uuid']: droppedItem.uuid,
+        });
+
+        break;
+
+      case 'profession':
+        if (!['talent', 'trait', 'drawback'].includes(droppedItem.type)) {
+          ui.notifications.error(`Item of type '${droppedItem.type}' cannot be added to a Profession Item.`);
+          break;
+        }
+
+        if (droppedItem.type === 'trait') {
+          const category = droppedItem.system.category;
+
+          if (!['professional', 'special'].includes(category)) {
+            ui.notifications.error(`${category.capitalize()} Traits cannot be added to a Profession Item.`);
+            break;
+          }
+
+          await item.update({
+            [`system.${category}Trait.uuid`]: droppedItem.uuid,
+          });
+
+          break;
+        } else if (droppedItem.type === 'drawback') {
+          await item.update({
+            ['system.drawback.uuid']: droppedItem.uuid,
+          });
+        } else if (droppedItem.type === 'talent') {
+          const talentList = Array.from({ length: 3 }, Object).map((o, i) => {
+            o.uuid = '';
+            return item.system.talents[i] ?? o;
+          });
+
+          if (talentList.filter((t) => t.uuid !== '').length >= 3) {
+            ui.notifications.error(
+              'A Profession can have a maximum of 3 Talents. Please delete one of the existing Talents before attempting to add a new one.'
+            );
+            break;
+          }
+
+          for (let i = 0; i < talentList.length; i++) {
+            let talent = talentList[i];
+
+            if (talent && talent?.uuid !== '') continue;
+
+            talentList.splice(i, 1, { uuid: droppedItem.uuid });
+            break;
+          }
+
+          await item.update({ ['system.talents']: talentList });
+        }
+
+        break;
+      default:
+        break;
+    }
   }
 
   /** @override */
@@ -77,7 +156,21 @@ export default class ZweihanderItemSheet extends ItemSheet {
         label: option.capitalize(),
       }));
     }
+
     if (sheetData.type === 'profession') {
+      const skillPack = game.packs.get(game.settings.get('zweihander', 'skillPack'));
+      sheetData.skills = (await skillPack.getIndex())
+        .map((x) => ({
+          key: x.name.toLowerCase(),
+          label: x.name,
+        }))
+        .sort((a, b) => a.key.localeCompare(b.key));
+
+      sheetData.skillsMultiSelect = sheetData.skills.map((skill) => ({
+        ...skill,
+        selected: this._getSelected(sheetData.system.skillRanks, skill),
+      }));
+
       sheetData.choices.archetypes = ZweihanderUtils.selectedChoice(
         sheetData.system.archetype ?? CONFIG.ZWEI.archetypes[0],
         CONFIG.ZWEI.archetypes.map((option) => ({
@@ -85,18 +178,119 @@ export default class ZweihanderItemSheet extends ItemSheet {
           label: option,
         }))
       );
+
+      const linkedItemDataList = [
+        {
+          property: 'professionalTrait',
+          label: 'Professional Trait',
+          type: 'trait',
+          pack: 'zweihander.zh-traits', // @todo: add support for FoF
+        },
+        {
+          property: 'specialTrait',
+          label: 'Special Trait',
+          type: 'trait',
+          pack: 'zweihander.zh-traits',
+        },
+        {
+          property: 'drawback',
+          label: 'Drawback',
+          type: 'drawback',
+          pack: 'zweihander.zh-drawbacks',
+        },
+      ];
+
+      this._prepareLinkedItemWrapperData(linkedItemDataList, sheetData);
+
+      const talentList = Array.from({ length: 3 }, Object).map((o, i) => sheetData.system.talents[i] ?? o);
+
+      this._prepareLinkedItemsWrapperData(talentList, sheetData, 'talent');
     }
+
     if (sheetData.type === 'injury') {
       sheetData.choices.severities = ZweihanderUtils.selectedChoice(
         sheetData.system.severity ?? 0,
         CONFIG.ZWEI.injurySeverities
       );
     }
+
     if (sheetData.type === 'weapon') {
       const skillPack = game.packs.get(game.settings.get('zweihander', 'skillPack'));
-      sheetData.skills = (await skillPack.getDocuments()).map((x) => x.name).sort((a, b) => a.localeCompare(b));
+      sheetData.skills = (await skillPack.getIndex()).map((x) => x.name).sort((a, b) => a.localeCompare(b));
     }
+
+    if (sheetData.type === 'ancestry') {
+      const linkedItemDataList = [
+        {
+          property: 'ancestralTrait',
+          label: 'Ancestral Trait',
+          type: 'trait',
+          pack: 'zweihander.zh-ancestral-traits', // @todo: add support for FoF
+        },
+      ];
+
+      this._prepareLinkedItemWrapperData(linkedItemDataList, sheetData);
+    }
+
+    // console.log(sheetData);
+
     return sheetData;
+  }
+
+  _getSelected(skillRankData, skill) {
+    return skillRankData.some((sr) => sr.name.trim().toLowerCase() === skill.key.trim().toLowerCase())
+      ? 'selected'
+      : '';
+  }
+
+  _prepareLinkedItemWrapperData(linkedItemDataList, sheetData) {
+    for (let linkedItemData of linkedItemDataList) {
+      const linkedItemUuid = sheetData.system[linkedItemData.property].uuid;
+      const linkedItem = linkedItemUuid !== '' ? fromUuidSync(linkedItemUuid) : '';
+
+      sheetData[`${linkedItemData.property}WrapperData`] = this._getWrapperData({
+        name: linkedItem?.name,
+        _id: linkedItem?._id,
+        uuid: linkedItem?.uuid,
+        ...linkedItemData,
+      });
+    }
+  }
+
+  // @todo: refactor to accept Qualities
+  _prepareLinkedItemsWrapperData(linkedItemsDataList, sheetData, type) {
+    sheetData[`${type}WrapperDataList`] = [];
+
+    for (let linkedItemData of linkedItemsDataList) {
+      const idx = linkedItemsDataList.indexOf(linkedItemData);
+      const linkedItem = linkedItemData.uuid !== '' ? fromUuidSync(linkedItemData.uuid) : '';
+
+      const toFetch = {
+        _id: linkedItem?._id,
+        label: type.capitalize(),
+        type: type,
+        pack: 'zweihander.zh-talents',
+        property: `${type}.${idx}`,
+        ...linkedItemData,
+      };
+
+      sheetData[`${type}WrapperDataList`].push(this._getWrapperData(toFetch));
+    }
+  }
+
+  _getWrapperData(details) {
+    return {
+      value: details.name ?? '',
+      id: details._id ?? '',
+      placeholder: details.label,
+      placeholderInput: '',
+      type: details.type,
+      packs: details.pack,
+      isInItem: true,
+      isParentCharacter: this.item.parent?.type ?? '' === 'character',
+      uuid: details.uuid ?? '',
+      uuidProperty: `system.${details.property}.uuid`,
+    };
   }
 
   _getEffectGroups(data) {
@@ -248,19 +442,84 @@ export default class ZweihanderItemSheet extends ItemSheet {
 
             system: {
               details: {
-                source: this.item.name + ' (' + ZweihanderUtils.capitalizeFirstLetter(this.item.type) + ')',
+                source: this.item.name + ' (' + this.item.type.capitalize() + ')',
                 category: '',
                 isActive: false,
               },
             },
           },
         ]);
+      } else {
+        const packIds = ev.currentTarget.dataset.openPacks?.split?.(',')?.filter?.((x) => x);
+        if (!packIds) {
+          ui.notifications.notify(game.i18n.localize('ZWEI.othermessages.errortype'));
+          return;
+        }
+        const packs = packIds.map((x) => game.packs.get(x.trim()));
+        if (packs.every((x) => x?.apps?.[0]?.rendered)) {
+          packs.forEach((x) => x.apps[0].close());
+        }
+        packs.forEach((x, i) =>
+          x.render(true, {
+            top: this.item.sheet.position.top,
+            left: this.item.sheet.position.left + (i % 2 == 0 ? -350 : this.item.sheet.position.width),
+          })
+        );
       }
-
-      console.log(createdItemArray);
 
       if (createdItemArray.length) createdItemArray[0].sheet.render(true);
     });
+
+    const onDeleteCallback = (itemType, uuidProperty) =>
+      ['talent', 'quality'].includes(itemType)
+        ? onDeleteArrayItemCallback(uuidProperty)
+        : onDeleteItemCallback(uuidProperty);
+
+    const onDeleteItemCallback = (uuidProperty) => async () => {
+      await this.item.update({ [`${uuidProperty}`]: '' });
+      this.render(false);
+    };
+
+    const onDeleteArrayItemCallback = (uuidProperty) => async () => {
+      const [type, idx] = uuidProperty.split('.').slice(1, -1);
+      const property = type === 'talent' ? 'system.talents' : 'system.qualities';
+      const updatedArray = [...getProperty(this.item, property)];
+
+      updatedArray.splice(idx, 1, { uuid: '' });
+
+      await this.item.update({ [property]: updatedArray });
+      this.render(false);
+    };
+
+    html.find('.item-delete').click(async (ev) => {
+      const itemTarget = $(ev.currentTarget).parents('.item');
+      const itemType = itemTarget.data('itemType');
+      const uuidProperty = itemTarget.data('property');
+      const itemName = itemTarget.children('.auto-size').val();
+
+      const type = game.i18n.localize(CONFIG.Item.typeLabels[itemType]);
+      await Dialog.confirm({
+        title: game.i18n.format('ZWEI.othermessages.deleteembedded', { type: type, name: itemName }),
+        content: game.i18n.format('ZWEI.othermessages.suretype', { type: type }),
+        yes: onDeleteCallback(itemType, uuidProperty),
+        no: () => {},
+        defaultYes: true,
+      });
+    });
+
+    html.find('.item-edit').click((ev) => {
+      const i = $(ev.currentTarget).parents('.item');
+      const item = this.item.parent.items.get(i.data('itemId'));
+      item.sheet.render(true);
+    });
+
+    html.find('.item-view').click(async (ev) => {
+      const i = $(ev.currentTarget).parents('.item');
+      const item = await fromUuid(i.data('itemUuid'));
+      item.sheet.render(true);
+    });
+
+    html.find('.randomize-trait').click(this._randomizeAncestralTrait.bind(this));
 
     // Edit Active Effect
     html.find('.effect-edit').click((ev) => {
@@ -285,18 +544,114 @@ export default class ZweihanderItemSheet extends ItemSheet {
         defaultYes: true,
       });
     });
+
+    html.find('.requirements-control').click(this._onRequirementsControl.bind(this));
+  }
+
+  async _randomizeAncestralTrait() {
+    const item = this.item;
+
+    if (item.type !== 'ancestry') return;
+
+    const worldTable = game.tables.find((table) => table.name.includes(item.name));
+    const isWorldTableUndefined = typeof worldTable === 'undefined';
+
+    // If Roll Table doesn't exist in World, use Compendium as fallback. Only works for default Ancestries.
+    let compendiumTable;
+
+    if (isWorldTableUndefined) {
+      const characterCreationPack = game.packs.get('zweihander.zh-charactercreation-tables');
+      const characterCreationPackIndex = await characterCreationPack.getIndex();
+      const compendiumTableEntry = characterCreationPackIndex.find((table) => {
+        return ZweihanderUtils.normalizedIncludes(table.name, item.name);
+      });
+
+      compendiumTable = await characterCreationPack.getDocument(compendiumTableEntry?._id);
+    }
+
+    const isCompendiumTableUndefined = typeof compendiumTable === 'undefined';
+
+    if (isWorldTableUndefined && isCompendiumTableUndefined) {
+      ui.notifications.error(`No Roll Table found in World or Compendium for following Ancestry: ${item.name}`);
+      return;
+    }
+
+    const ancestralTraitsTable = isWorldTableUndefined ? compendiumTable : worldTable;
+    const diceRoll = await ancestralTraitsTable.roll();
+    const ancestralTraitsTableResult = await ancestralTraitsTable.draw({ roll: diceRoll });
+
+    const ancestralTrait = ancestralTraitsTableResult.results[0];
+    const documentCollection = ancestralTrait.documentCollection;
+    const documentId = ancestralTrait.documentId;
+    const pack = ancestralTrait.type === 'pack';
+
+    let ancestralTraitUuid = '';
+    ancestralTraitUuid += pack ? 'Compendium.' : '';
+    ancestralTraitUuid += `${documentCollection}.`;
+    ancestralTraitUuid += pack ? `Item.${documentId}` : documentId;
+
+    await item.update({ ['system.ancestralTrait.uuid']: ancestralTraitUuid });
+  }
+
+  _onRequirementsControl(event) {
+    event.preventDefault();
+    const button = event.currentTarget;
+    switch (button.dataset.action) {
+      case 'add':
+        return this._addRequirementsChange();
+      case 'delete':
+        button.closest('.requirements-change').remove();
+        return this.submit({ preventClose: true }).then(() => this.render());
+    }
+  }
+
+  async _addRequirementsChange() {
+    const idx = this.document.system.expert.requirements.skillRanks.length;
+    return this.submit({
+      preventClose: true,
+      updateData: {
+        [`system.expert.requirements.skillRanks.${idx}`]: { key: '', value: '' },
+      },
+    });
+  }
+
+  _getSubmitData(updateData = {}) {
+    let data;
+
+    if (this.item.type === 'profession') {
+      const fd = new FormDataExtended(this.form, { editors: this.editors });
+      data = foundry.utils.expandObject(fd.object);
+
+      if (updateData) foundry.utils.mergeObject(data, updateData);
+
+      typeof data.system['expert'] === 'undefined' ? (data.system.expert = {}) : data.system.expert;
+      typeof data.system.expert['requirements'] === 'undefined'
+        ? (data.system.expert.requirements = {})
+        : data.system.expert.requirements;
+      typeof data.system.expert.requirements.skillRanks === 'undefined'
+        ? (data.system.expert.requirements.skillRanks = [])
+        : data.system.expert.requirements.skillRanks;
+
+      data.system.expert.requirements.skillRanks = Array.from(
+        Object.values(data.system.expert.requirements.skillRanks || {})
+      );
+    } else {
+      data = super._getSubmitData(updateData);
+    }
+
+    return data;
   }
 
   async _updateObject(event, formData) {
-    //@todo move to ZweihanderAncestry#update
+    //@todo PROBABLY CAN BE REMOVED; test
     if (this.item.type === 'ancestry') {
-      const trait = formData['system.ancestralTrait.name'];
-      const item = await ZweihanderUtils.findItemWorldWide('trait', trait);
+      const traitUuid = formData['system.ancestralTrait.uuid'];
+      const item = await fromUuid(traitUuid);
       if (item) {
         formData['system.ancestralTrait.name'] = item.name;
       }
-      if (!item && trait.trim() !== '') {
-        ui?.notifications.warn(game.i18n.format('ZWEI.othermessages.noancestral', { trait: trait }), {
+      if (!item && traitUuid !== undefined) {
+        ui?.notifications.warn(game.i18n.format('ZWEI.othermessages.noancestral', { trait: traitUuid }), {
           permanent: true,
         });
         //TODO move to actor#prepareDerivedData
@@ -307,9 +662,11 @@ export default class ZweihanderItemSheet extends ItemSheet {
         }
       }
     } else if (this.item.type === 'profession') {
+      /*
       const profTrait = formData['system.professionalTrait.name'];
       let item;
-      item = await ZweihanderUtils.findItemWorldWide('trait', profTrait);
+      // @todo tansition to uuid
+      // item = await ZweihanderUtils.findItemWorldWide('trait', profTrait);
       if (item) {
         formData['system.professionalTrait.name'] = item.name;
       }
@@ -325,7 +682,8 @@ export default class ZweihanderItemSheet extends ItemSheet {
         }
       }
       const specTrait = formData['system.specialTrait.name'];
-      item = await ZweihanderUtils.findItemWorldWide('trait', specTrait);
+      // @todo tansition to uuid
+      // item = await ZweihanderUtils.findItemWorldWide('trait', specTrait);
       if (item) {
         formData['system.specialTrait.name'] = item.name;
       }
@@ -341,7 +699,8 @@ export default class ZweihanderItemSheet extends ItemSheet {
         }
       }
       const drawback = formData['system.drawback.name'];
-      item = await ZweihanderUtils.findItemWorldWide('drawback', drawback);
+      // @todo tansition to uuid
+      // item = await ZweihanderUtils.findItemWorldWide('drawback', drawback);
       if (item) {
         formData['system.drawback.name'] = item.name;
       }
@@ -356,9 +715,12 @@ export default class ZweihanderItemSheet extends ItemSheet {
           });
         }
       }
+        */
     }
     super._updateObject(event, formData);
   }
+
+  /*
 
   async acceptArrayInput(event, prevent = true) {
     if (prevent) event.preventDefault();
@@ -431,6 +793,8 @@ export default class ZweihanderItemSheet extends ItemSheet {
     array.splice(i, 1);
     this.item.update({ [target]: array }).then(() => this.render(false));
   }
+
+  */
 
   async validateBonusAbbr(bonusAbbr) {
     //TODO: move to const?

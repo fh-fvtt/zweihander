@@ -9,83 +9,112 @@
     "notes": "",
     "expert": {
       "value": true,
-      "requirements": "You must possess at least one Skill Rank in Bargain in order to enter this Expert Profession."
+      "requirements": {
+        "skillRanks": [],
+        "additional": ""
+      }
     },
     "archetype": "Expert Profession",
     "bonusAdvances": [
       {
-        "name": "[FB]"
+        "name": "[FB]",
+        "purchased": false
       },
       {
-        "name": "[FB]"
+        "name": "[FB]",
+        "purchased": false
       },
       {
-        "name": "[IB]"
+        "name": "[IB]",
+        "purchased": false
       },
       {
-        "name": "[IB]"
+        "name": "[IB]",
+        "purchased": false
       },
       {
-        "name": "[PB]"
+        "name": "[PB]",
+        "purchased": false
       },
       {
-        "name": "[PB]"
+        "name": "[PB]",
+        "purchased": false
       },
       {
-        "name": "[WB]"
+        "name": "[WB]",
+        "purchased": false
       }
     ],
     "skillRanks": [
       {
-        "name": "Awareness"
+        "name": "Awareness",
+        "purchased": false
       },
       {
-        "name": "Bargain"
+        "name": "Bargain",
+        "purchased": false
       },
       {
-        "name": "Eavesdrop"
+        "name": "Eavesdrop",
+        "purchased": false
       },
       {
-        "name": "Education"
+        "name": "Education",
+        "purchased": false
       },
       {
-        "name": "Folklore"
+        "name": "Folklore",
+        "purchased": false
       },
       {
-        "name": "Gamble"
+        "name": "Gamble",
+        "purchased": false
       },
       {
-        "name": "Handle Animal"
+        "name": "Handle Animal",
+        "purchased": false
       },
       {
-        "name": "Resolve"
+        "name": "Resolve",
+        "purchased": false
       },
       {
-        "name": "Rumor"
+        "name": "Rumor",
+        "purchased": false
       },
       {
-        "name": "Simple Ranged"
+        "name": "Simple Ranged",
+        "purchased": false
       }
     ],
     "talents": [
       {
-        "name": "Incredible Numeration"
+        "name": "Incredible Numeration",
+        "uuid": "Compendium.zweihander.zh-talents.Item.sD4Et1dOsSjT3fPt",
+        "linkedId": "sD4Et1dOsSjT3fPt"
       },
       {
-        "name": "Meeting of the Minds"
+        "name": "Meeting of the Minds",
+        "uuid": "Compendium.zweihander.zh-talents.Item.LLp6kwPTz9wJLpvG",
+        "linkedId": "LLp6kwPTz9wJLpvG"
       },
       {
-        "name": "Multilingual"
+        "name": "Multilingual",
+        "uuid": "Compendium.zweihander.zh-talents.Item.5TzEbf1VOmPfpolL",
+        "linkedId": "5TzEbf1VOmPfpolL"
       }
     ],
     "professionalTrait": {
-      "name": "No Mere NPC"
+      "name": "No Mere NPC",
+      "uuid": "Compendium.zweihander.zh-traits.Item.ZxICcQdwsi7Y6MWr"
     },
     "specialTrait": {
-      "name": ""
+      "name": "",
+      "uuid": ""
     },
     "drawback": {
-      "name": "The Customer is Always Right"
+      "name": "The Customer is Always Right",
+      "uuid": "Compendium.zweihander.zh-drawbacks.Item.8sDgkq8Lwm1CNldW"
     },
     "tier": ""
   },
@@ -103,7 +132,7 @@
     "systemId": "zweihander",
     "systemVersion": "5.4.1",
     "createdTime": 1733922491432,
-    "modifiedTime": 1733922491432,
+    "modifiedTime": 1734990834117,
     "lastModifiedBy": "rivg6xcMxdlVDM8y"
   },
   "_id": "TMkLe3YcjnZpOCZu",

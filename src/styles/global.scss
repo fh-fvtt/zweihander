@@ -243,6 +243,59 @@ body.game.vtt.system-zweihander {
     border-left: 2px groove var(--zh-clr-bg1);
   }
 
+  fieldset {
+    display: flex;
+    flex-direction: column;
+    gap: 0.25rem;
+    border: 2px groove var(--zh-clr-dark2);
+  }
+
+  zweihander-multi-select {
+    display: flex;
+    flex-direction: column;
+    gap: 0.25rem;
+
+    select {
+      width: 100%;
+    }
+  }
+
+  zweihander-tags {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: 0.25rem;
+    margin: 0;
+
+    & > input {
+      flex: 1;
+    }
+
+    & > button {
+      margin: -2px 0;
+      padding: 0;
+    }
+  }
+
+  .tag {
+    background-color: var(--zh-clr-aqua-neutral);
+    color: var(--zh-clr-bg0);
+    border: 1px solid transparent;
+
+    &:hover {
+      background-color: var(--zh-clr-red);
+      cursor: pointer;
+      a {
+        color: var(--zh-clr-yellow);
+        line-height: normal;
+      }
+    }
+  }
+
+  .tags.input-element-tags {
+    order: 1;
+  }
+
   select,
   button {
     background-color: var(--zh-clr-bg1);
@@ -277,9 +330,9 @@ body.game.vtt.system-zweihander {
   }
 
   .editor {
-    height: 100%;
+    min-height: 35px;
     &.prosemirror {
-      height: 175px;
+      min-height: 200px;
     }
   }
 

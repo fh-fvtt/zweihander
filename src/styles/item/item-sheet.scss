@@ -4,7 +4,7 @@ body.game.vtt.system-zweihander .zweihander.sheet.item {
   max-width: 1190px;
 
   // sheet dimensions
-  min-height: 550px;
+  //min-height: 550px;
   min-width: 400px;
 
   .sheet-header {
@@ -513,17 +513,114 @@ body.game.vtt.system-zweihander .zweihander.sheet.item {
   .sheet-body {
     overflow-y: auto;
     padding: 10px;
-    .tab-description,
-    .tab-notes {
-      height: 100%;
-    }
-    .tab-description {
-      // height: 100%;
+
+    .tab-details {
+      gap: 0.55rem;
+
       .editor-content {
-        color: var(--zh-clr-fg2);
-        font-size: 14px;
-        font-style: italic;
         text-align: justify;
+      }
+      .requirements-list {
+        list-style: none;
+        margin: 0;
+        padding: 0;
+      }
+      .requirements-header {
+        height: 28px;
+        background: rgba(0, 0, 0, 0.1);
+        border: 1px solid var(--color-border-light-tertiary);
+        font-weight: bold;
+        align-items: center;
+        padding: 3px 1px;
+        .key {
+          padding-left: 4px;
+        }
+        .value {
+          padding: 0 2px;
+          text-align: center;
+        }
+      }
+      .requirements-controls {
+        flex: 0 0 24px;
+        text-align: center;
+      }
+      .requirements-change {
+        align-items: center;
+        padding: 3px 1px;
+        gap: 0.25rem;
+
+        select {
+          width: 100%;
+        }
+      }
+      .other-requirements {
+        margin-top: 1px;
+      }
+      input {
+        background-color: var(--zh-clr-bg1);
+        border-radius: 3px;
+        height: 27px;
+        padding: 3px;
+        text-align: center;
+        padding-inline: 0;
+
+        &[type='checkbox'] {
+          margin: 0 1px;
+          flex: 0 0 21px;
+        }
+      }
+      button {
+        flex: 0 0 23px;
+        height: 23px;
+        font-size: 12px;
+      }
+      .item-wrapper {
+        flex: 2;
+        position: relative;
+
+        .item-wrapper-edit {
+          display: none;
+          top: 2px;
+          left: 2px;
+          color: var(--zh-clr-aqua);
+          font-size: 16px;
+          padding-top: 2px;
+          height: calc(100% - 4px);
+          width: calc(100% - 4px);
+          position: absolute;
+          background-color: rgba(var(--zh-clr-bg0-rgb), 0.5);
+          backdrop-filter: blur(0.8px);
+          a {
+            flex: 1;
+            text-align: center;
+          }
+        }
+
+        &:hover .item-wrapper-edit {
+          display: flex;
+        }
+
+        &:hover input {
+          background-color: var(--zh-clr-bg1);
+          background-color: rgba(var(--zh-clr-bg1-rgb), 0.9);
+          border-color: var(--zh-clr-aqua);
+          box-shadow: 0 0 6px var(--zh-clr-bg2);
+        }
+      }
+    }
+    .tab-notes,
+    .tab-description {
+      min-height: 200px;
+      background-color: var(--zh-clr-dark1);
+
+      .editor-content {
+        // color: var(--zh-clr-fg2);
+        font-size: 14px;
+        // font-style: italic;
+        text-align: justify;
+        //background-color: var(--zh-clr-dark1);
+        padding: 0px 10px;
+        //border-radius: 3px;
       }
     }
 
@@ -533,17 +630,50 @@ body.game.vtt.system-zweihander .zweihander.sheet.item {
     // }
 
     .form-group {
-      border-bottom: 1px solid var(--zh-clr-bg2);
-      margin-left: -10px;
-      margin-right: -10px;
-      margin-top: 0;
-      margin-bottom: 0;
-      padding: 5px 15px 5px 15px;
+      // border-bottom: 1px solid var(--zh-clr-bg2);
+      // margin-left: -10px;
+      // margin-right: -10px;
+      // margin-top: 0;
+      // margin-bottom: 0;
+      // padding: 5px 15px 5px 15px;
+      align-items: flex-start;
+
+      p {
+        margin: 0.4em 0;
+      }
+
+      & > * {
+        flex: 2;
+      }
+
+      .archetypes {
+        text-align: center;
+      }
+
+      .ancestral-trait {
+        display: flex;
+        flex-wrap: wrap;
+        align-items: center;
+        gap: 0.25rem;
+        margin: 0;
+
+        & > input {
+          flex: 1;
+        }
+
+        & > button {
+          margin: -2px 0;
+          padding: 0;
+          padding-top: 1px;
+        }
+      }
+
       .currency {
         flex: 0;
       }
 
       & > label {
+        flex: 1;
         color: var(--zh-clr-fg2);
       }
       .zh-editor-preview {
@@ -607,8 +737,8 @@ body.game.vtt.system-zweihander .zweihander.sheet.item {
         }
       }
     }
-    .form-group:nth-child(even) {
-      background-color: var(--zh-clr-bg1);
-    }
+    //.form-group:nth-child(even) {
+    //background-color: var(--zh-clr-bg1);
+    //}
   }
 }

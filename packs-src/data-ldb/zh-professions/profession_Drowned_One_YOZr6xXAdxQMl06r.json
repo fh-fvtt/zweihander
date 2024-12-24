@@ -6,10 +6,10 @@
   "type": "profession",
   "_stats": {
     "coreVersion": "12.331",
-    "systemId": null,
-    "systemVersion": null,
+    "systemId": "zweihander",
+    "systemVersion": "5.4.1",
     "createdTime": null,
-    "modifiedTime": 1733922277614,
+    "modifiedTime": 1734990834123,
     "lastModifiedBy": "rivg6xcMxdlVDM8y",
     "compendiumSource": null,
     "duplicateSource": null
@@ -21,88 +21,114 @@
     "notes": "",
     "expert": {
       "value": true,
-      "requirements": "You must possess at least one Skill Rank in Incantation in order to enter this Expert Profession. In addition, you must have the Special Trait of Divine Magick."
+      "requirements": {
+        "skillRanks": [],
+        "additional": ""
+      }
     },
     "archetype": "Expert Profession",
     "bonusAdvances": [
       {
-        "name": "[AB]"
+        "name": "[AB]",
+        "purchased": false
       },
       {
-        "name": "[AB]"
+        "name": "[AB]",
+        "purchased": false
       },
       {
-        "name": "[BB]"
+        "name": "[BB]",
+        "purchased": false
       },
       {
-        "name": "[BB]"
+        "name": "[BB]",
+        "purchased": false
       },
       {
-        "name": "[FB]"
+        "name": "[FB]",
+        "purchased": false
       },
       {
-        "name": "[IB]"
+        "name": "[IB]",
+        "purchased": false
       },
       {
-        "name": "[WB]"
+        "name": "[WB]",
+        "purchased": false
       }
     ],
     "skillRanks": [
       {
-        "name": "Athletics"
+        "name": "Athletics",
+        "purchased": false
       },
       {
-        "name": "Bargain"
+        "name": "Bargain",
+        "purchased": false
       },
       {
-        "name": "Coordination"
+        "name": "Coordination",
+        "purchased": false
       },
       {
-        "name": "Folklore"
+        "name": "Folklore",
+        "purchased": false
       },
       {
-        "name": "Incantation"
+        "name": "Incantation",
+        "purchased": false
       },
       {
-        "name": "Navigation"
+        "name": "Navigation",
+        "purchased": false
       },
       {
-        "name": "Pilot"
+        "name": "Pilot",
+        "purchased": false
       },
       {
-        "name": "Resolve"
+        "name": "Resolve",
+        "purchased": false
       },
       {
-        "name": "Rumor"
+        "name": "Rumor",
+        "purchased": false
       },
       {
-        "name": "Simple Melee"
+        "name": "Simple Melee",
+        "purchased": false
       }
     ],
     "talents": [
       {
-        "linkedId": null,
-        "name": "Azimuth"
+        "linkedId": "tLtCUfaidoxc4bAr",
+        "name": "Azimuth",
+        "uuid": "Compendium.zweihander.zh-talents.Item.tLtCUfaidoxc4bAr"
       },
       {
-        "linkedId": null,
-        "name": "Higher Mysteries"
+        "linkedId": "Fe3d2Oyig1kPYHTb",
+        "name": "Higher Mysteries",
+        "uuid": "Compendium.zweihander.zh-talents.Item.Fe3d2Oyig1kPYHTb"
       },
       {
-        "linkedId": null,
-        "name": "Mariner"
+        "linkedId": "lW9HrxmHL79bHl5v",
+        "name": "Mariner",
+        "uuid": "Compendium.zweihander.zh-talents.Item.lW9HrxmHL79bHl5v"
       }
     ],
     "professionalTrait": {
       "name": "Thrice-drowned",
+      "uuid": "Compendium.zweihander.zh-traits.Item.K4qyZGzqXYdPMZmH",
       "linkedId": null
     },
     "specialTrait": {
       "name": "Prayers of the Leviathan",
+      "uuid": "Compendium.zweihander.zh-traits.Item.5mxt6r9NuWMh2lu8",
       "linkedId": null
     },
     "drawback": {
       "name": "The Leviathan’s Commandments",
+      "uuid": "Compendium.zweihander.zh-drawbacks.Item.UVWaCzwXCbUzgP14",
       "linkedId": null
     },
     "tier": ""

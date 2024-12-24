@@ -86,7 +86,7 @@
         {{else if (stringcompare detail.key '===' 'system.tier')}}
         {{localize (zhConcat "ZWEI.actor.riskfactors." (zhLowerCase (zhLookup item detail.key)))}}
         {{else if (stringcompare detail.key '===' 'system.archetype')}}
-        {{localize (zhConcat "ZWEI.actor.details.labels." (zhLowerCase (zhLookup item detail.key)))}}
+        {{localize (zhConcat "ZWEI.actor.details.labels." (zhLowerCaseSpaces (zhLookup item detail.key)))}}
         {{else if (stringcompare detail.key '===' 'source')}}
         {{#if (stringcompare (betweenparentheses (zhLookup item detail.key)) '!==' '')}}{{beforeparentheses (zhLookup item detail.key)}} ({{localize (zhConcat "ITEM.Type" (zhCapitalizeStrict (betweenparentheses (zhLookup item detail.key))))}}){{else}}{{localize (zhConcat "ITEM.Type" (zhCapitalizeStrict (beforeparentheses (zhLookup item detail.key))))}}{{/if}}
         {{else if detail.key}}

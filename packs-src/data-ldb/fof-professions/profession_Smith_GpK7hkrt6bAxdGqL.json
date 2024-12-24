@@ -6,11 +6,11 @@
   "type": "profession",
   "_stats": {
     "coreVersion": "12.331",
-    "systemId": null,
-    "systemVersion": null,
+    "systemId": "zweihander",
+    "systemVersion": "5.4.1",
     "createdTime": null,
-    "modifiedTime": null,
-    "lastModifiedBy": null,
+    "modifiedTime": 1734972168203,
+    "lastModifiedBy": "rivg6xcMxdlVDM8y",
     "compendiumSource": null,
     "duplicateSource": null
   },
@@ -82,27 +82,36 @@
     "talents": [
       {
         "linkedId": null,
-        "name": "Ambidexterity"
+        "name": "Ambidexterity",
+        "uuid": "Compendium.zweihander.zh-talents.Item.XmrQY5We9Dj3m5Yn"
       },
       {
         "linkedId": null,
-        "name": "Blacksmithing"
+        "name": "Blacksmithing",
+        "uuid": "Compendium.zweihander.fof-talents.Item.9JlMASM4OqhlKn7T"
       },
       {
         "linkedId": null,
-        "name": "Natural Wrestler"
+        "name": "Natural Wrestler",
+        "uuid": "Compendium.zweihander.fof-talents.Item.w9rOjeRFKUp3otjS"
+      },
+      {
+        "uuid": "Compendium.zweihander.fof-talents.Item.5dyoRyWXhQe3DiS8"
       }
     ],
     "professionalTrait": {
       "name": "Technical Mastery",
+      "uuid": "Compendium.zweihander.fof-professional-traits.Item.9AjrbO5WIZxBDQ2w",
       "linkedId": null
     },
     "specialTrait": {
       "name": "",
+      "uuid": "",
       "linkedId": null
     },
     "drawback": {
       "name": "Forge-Scarred",
+      "uuid": "Compendium.zweihander.fof-quirks.Item.oh8huuKOJFJiKS1c",
       "linkedId": null
     },
     "tier": ""

@@ -36,14 +36,5 @@
 
 <div data-testid="talents{{tier}}">
   <label>{{localize "ZWEI.actor.items.talents"}}:</label>
-  {{#each talents as | talentsData i |}}
-  <a
-    data-purchase-type="talents"
-    data-purchase-index="{{i}}"
-    data-item-id="{{talentsData.linkedId}}"
-    class="purchase-link fetch-item {{#if talentsData.linkedId}}{{#if talentsData.purchased}} purchased {{else}} not-purchased {{/if}} {{else}}duplicate{{/if}}"
-    >{{talentsData.name}}
-    
-  </a>
-  {{#unless @last}}<span>,</span>{{/unless}} {{/each}}
+  {{zhTalentList talents}}
 </div>

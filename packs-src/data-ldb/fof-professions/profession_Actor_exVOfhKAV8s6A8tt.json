@@ -6,11 +6,11 @@
   "type": "profession",
   "_stats": {
     "coreVersion": "12.331",
-    "systemId": null,
-    "systemVersion": null,
+    "systemId": "zweihander",
+    "systemVersion": "5.4.1",
     "createdTime": null,
-    "modifiedTime": null,
-    "lastModifiedBy": null,
+    "modifiedTime": 1734972185181,
+    "lastModifiedBy": "rivg6xcMxdlVDM8y",
     "compendiumSource": null,
     "duplicateSource": null
   },
@@ -21,9 +21,11 @@
     "notes": "",
     "expert": {
       "value": false,
-      "requirements": ""
+      "requirements": {
+        "skillRanks": []
+      }
     },
-    "archetype": "Urbane Profession",
+    "archetype": "Academic",
     "bonusAdvances": [
       {
         "name": "[AB]"
@@ -82,27 +84,33 @@
     "talents": [
       {
         "linkedId": null,
-        "name": "Charismatic"
+        "name": "Charismatic",
+        "uuid": "Compendium.zweihander.fof-talents.Item.wbRXSLMAxYi81wSW"
       },
       {
         "linkedId": null,
-        "name": "Costuming"
+        "name": "Costuming",
+        "uuid": "Compendium.zweihander.fof-talents.Item.KdkFuQP9VOz1euKl"
       },
       {
         "linkedId": null,
-        "name": "Simon Pure"
+        "name": "Simon Pure",
+        "uuid": "Compendium.zweihander.fof-talents.Item.1kvDsd1E8fVagk7r"
       }
     ],
     "professionalTrait": {
       "name": "Persona, Come Forth",
+      "uuid": "Compendium.zweihander.fof-professional-traits.Item.AuvcmbZAZPtIVwuu",
       "linkedId": null
     },
     "specialTrait": {
       "name": "",
+      "uuid": "",
       "linkedId": null
     },
     "drawback": {
       "name": "Method Actor",
+      "uuid": "Compendium.zweihander.fof-quirks.Item.aRtTnrX7caG4kQtF",
       "linkedId": null
     },
     "tier": ""

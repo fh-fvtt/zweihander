@@ -6,10 +6,10 @@
   "type": "profession",
   "_stats": {
     "coreVersion": "12.331",
-    "systemId": null,
-    "systemVersion": null,
+    "systemId": "zweihander",
+    "systemVersion": "5.4.1",
     "createdTime": null,
-    "modifiedTime": 1733922277614,
+    "modifiedTime": 1734990834134,
     "lastModifiedBy": "rivg6xcMxdlVDM8y",
     "compendiumSource": null,
     "duplicateSource": null
@@ -21,88 +21,114 @@
     "notes": "",
     "expert": {
       "value": true,
-      "requirements": "You must possess at least two Skill Ranks in Incantation in order to enter this Expert Profession. In addition, you must have the Special Trait of Covenant Magick and Drawback of Ruinous Power."
+      "requirements": {
+        "skillRanks": [],
+        "additional": ""
+      }
     },
     "archetype": "Expert Profession",
     "bonusAdvances": [
       {
-        "name": "[FB]"
+        "name": "[FB]",
+        "purchased": false
       },
       {
-        "name": "[IB]"
+        "name": "[IB]",
+        "purchased": false
       },
       {
-        "name": "[IB]"
+        "name": "[IB]",
+        "purchased": false
       },
       {
-        "name": "[PB]"
+        "name": "[PB]",
+        "purchased": false
       },
       {
-        "name": "[PB]"
+        "name": "[PB]",
+        "purchased": false
       },
       {
-        "name": "[WB]"
+        "name": "[WB]",
+        "purchased": false
       },
       {
-        "name": "[WB]"
+        "name": "[WB]",
+        "purchased": false
       }
     ],
     "skillRanks": [
       {
-        "name": "Education"
+        "name": "Education",
+        "purchased": false
       },
       {
-        "name": "Folklore"
+        "name": "Folklore",
+        "purchased": false
       },
       {
-        "name": "Guile"
+        "name": "Guile",
+        "purchased": false
       },
       {
-        "name": "Incantation"
+        "name": "Incantation",
+        "purchased": false
       },
       {
-        "name": "Intimidate"
+        "name": "Intimidate",
+        "purchased": false
       },
       {
-        "name": "Leadership"
+        "name": "Leadership",
+        "purchased": false
       },
       {
-        "name": "Resolve"
+        "name": "Resolve",
+        "purchased": false
       },
       {
-        "name": "Rumor"
+        "name": "Rumor",
+        "purchased": false
       },
       {
-        "name": "Scrutinize"
+        "name": "Scrutinize",
+        "purchased": false
       },
       {
-        "name": "Simple Melee"
+        "name": "Simple Melee",
+        "purchased": false
       }
     ],
     "talents": [
       {
-        "linkedId": null,
-        "name": "Æthereal Alignment"
+        "linkedId": "xoKzA76ZzPQmOejt",
+        "name": "Æthereal Alignment",
+        "uuid": "Compendium.zweihander.zh-talents.Item.xoKzA76ZzPQmOejt"
       },
       {
-        "linkedId": null,
-        "name": "Appalling Mien"
+        "linkedId": "i9qfMytftadGhnm3",
+        "name": "Appalling Mien",
+        "uuid": "Compendium.zweihander.zh-talents.Item.i9qfMytftadGhnm3"
       },
       {
-        "linkedId": null,
-        "name": "Winds of Change"
+        "linkedId": "9IpcTnvgfB1kVV8A",
+        "name": "Winds of Change",
+        "uuid": "Compendium.zweihander.zh-talents.Item.9IpcTnvgfB1kVV8A"
       }
     ],
     "professionalTrait": {
       "name": "Final Benediction",
+      "uuid": "Compendium.zweihander.zh-traits.Item.DWEC9Xm1f06rUPuw",
       "linkedId": null
     },
     "specialTrait": {
       "name": "Covenant Mastery",
+      "uuid": "Compendium.zweihander.zh-traits.Item.jhVthW86uE6ZWStH",
       "linkedId": null
     },
     "drawback": {
       "name": "Ambition Denied",
+      "uuid": "Compendium.zweihander.zh-drawbacks.Item.qHnoJ4r8wLc9ZCDr",
       "linkedId": null
     },
     "tier": ""

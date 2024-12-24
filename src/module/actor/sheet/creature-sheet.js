@@ -239,18 +239,18 @@ export default class ZweihanderCreatureSheet extends ZweihanderBaseActorSheet {
     // Everything below here is only needed if the sheet is editable
     if (!this.options.editable) return;
     // level skills
-    html.find('.skills .skill').contextmenu((event) => {
+    html.find('.skills .skill').contextmenu(async (event) => {
       const skillId = event.currentTarget.dataset.itemId;
       const skillName = this.actor.items.get(skillId).name;
       const ranks = this.actor.system.skillRanks;
       ranks[skillName] = ((ranks[skillName] ?? 0) + 1) % 4;
-      this.actor.update({ 'system.skillRanks': ranks });
+      await this.actor.update({ 'system.skillRanks': ranks });
     });
     // level bonus advances
-    const updateBonusAdvances = (i) => (event) => {
+    const updateBonusAdvances = (i) => async (event) => {
       const pa = event.currentTarget.dataset.primaryAttribute;
       const bonusAdvances = this.actor.system.stats.primaryAttributes[pa]?.bonusAdvances + i;
-      this.actor.update({
+      await this.actor.update({
         [`system.stats.primaryAttributes.${pa}.bonusAdvances`]: bonusAdvances,
       });
     };
@@ -259,16 +259,16 @@ export default class ZweihanderCreatureSheet extends ZweihanderBaseActorSheet {
     // manual mode
     html
       .find('.manual-mode-button')
-      .click(() => {
-        this.actor.update({
+      .click(async () => {
+        await this.actor.update({
           'system.stats.manualMode': !this.actor.system.stats.manualMode,
         });
       })
-      .contextmenu(() => {
+      .contextmenu(async () => {
         if (!this.actor.system.stats.manualMode) {
           const sa = this.actor.system.stats.secondaryAttributes;
           const x = 'system.stats.secondaryAttributes';
-          this.actor.update({
+          await this.actor.update({
             [`${x}.movement.value`]: sa.movement.value,
             [`${x}.movement.fly`]: sa.movement.fly,
             [`${x}.initiative.value`]: sa.initiative.value,
@@ -279,7 +279,7 @@ export default class ZweihanderCreatureSheet extends ZweihanderBaseActorSheet {
           });
         }
       });
-    html.find('.primary-attributes .pa').contextmenu((event) => {
+    html.find('.primary-attributes .pa').contextmenu(async (event) => {
       const key = event.currentTarget.dataset.primaryAttribute;
       const paValue = this.actor.system.stats.primaryAttributes[key].value;
       const rf = this.actor.system.details.riskFactor.value;
@@ -289,7 +289,7 @@ export default class ZweihanderCreatureSheet extends ZweihanderBaseActorSheet {
         return ((n % m) + m) % m;
       }
       const i = mod(paArray.indexOf(paValue) + (event.shiftKey ? -1 : 1), paArray.length);
-      this.actor.update({
+      await this.actor.update({
         [`system.stats.primaryAttributes.${key}.value`]: paArray[i],
       });
     });

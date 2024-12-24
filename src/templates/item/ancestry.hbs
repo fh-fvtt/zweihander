@@ -1,8 +1,31 @@
-{{{arrayInputGroup (localize "ZWEI.actor.items.positivebonus") 'system.ancestralModifiers.positive' system.ancestralModifiers.positive 3}}}
-{{{arrayInputGroup (localize "ZWEI.actor.items.negativebonus") 'system.ancestralModifiers.negative' system.ancestralModifiers.negative 3}}}
-<div class="form-group">
-  <label>{{localize "ZWEI.actor.items.ancestraltrait"}}</label>
-  <input name="system.ancestralTrait.name" type="text" value="{{system.ancestralTrait.name}}">
-</div>
-{{!-- {{system.ancestralTrait.linkedId}} --}}
-{{!-- TODO: implement "roll ancestral trait" button --}}
+<fieldset>
+  <legend>Ancestral Modifiers</legend>
+  <div class="form-group">
+    <label>Positive</label>
+    <zweihander-tags type="bonus-advances-ancestry" name="system.ancestralModifiers.positive">{{
+      system.ancestralModifiers.positive
+    }}</zweihander-tags>
+  </div>
+
+  <div class="form-group">
+    <label>Negative</label>
+    <zweihander-tags type="bonus-advances-ancestry" name="system.ancestralModifiers.negative">{{
+      system.ancestralModifiers.negative
+    }}</zweihander-tags>
+  </div>
+</fieldset>
+<fieldset>
+  <legend>Ancestral Trait</legend>
+  <div class="form-group">
+    <label>Trait</label>
+    <div class="ancestral-trait">
+      {{> ($$ 'partials/detail-item-wrapper') ancestralTraitWrapperData}}
+      <button
+        type="button"
+        class="randomize-trait icon fa-solid fa-shuffle"
+        data-tooltip="Randomize {{ name }} Trait"
+        data-tooltip-direction="UP"
+      ></button>
+    </div>
+  </div>
+</fieldset>

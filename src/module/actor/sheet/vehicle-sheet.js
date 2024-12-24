@@ -192,16 +192,16 @@ export default class ZweihanderVehicleSheet extends ZweihanderBaseActorSheet {
     // manual mode
     html
       .find('.manual-mode-button')
-      .click(() => {
-        this.actor.update({
+      .click(async () => {
+        await this.actor.update({
           'system.stats.manualMode': !this.actor.system.stats.manualMode,
         });
       })
-      .contextmenu(() => {
+      .contextmenu(async () => {
         if (!this.actor.system.stats.manualMode) {
           const sa = this.actor.system.stats.secondaryAttributes;
           const x = 'system.stats.secondaryAttributes';
-          this.actor.update({
+          await this.actor.update({
             [`${x}.movement.value`]: sa.movement.value,
             [`${x}.movement.fly`]: sa.movement.fly,
             [`${x}.initiative.value`]: sa.initiative.value,

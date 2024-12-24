@@ -39,30 +39,41 @@ export default class ZweihanderProfession extends ZweihanderBaseItem {
     if (tier > 3) return;
     item.updateSource({
       'system.tier': CONFIG.ZWEI.tiers[tier],
-      'system.skillRanks': item.system.skillRanks.map((sr) => ({
-        ...sr,
-        purchased: false,
-      })),
-      'system.bonusAdvances': item.system.bonusAdvances.map((ba) => ({
-        ...ba,
-        purchased: false,
-      })),
     });
     await super._preCreate(data, options, user, item);
   }
 
   async _preUpdate(changed, options, user, item) {
+    console.log('PRE_UPDATE', changed);
+    if (typeof changed.system['expert']?.['value'] !== 'undefined' && changed.system['expert']?.['value']) {
+      changed.system['archetype'] = 'expert profession';
+    } else if (
+      typeof changed.system['expert']?.['value'] !== 'undefined' &&
+      !changed.system['expert']?.['value'] &&
+      typeof changed.system['archetype'] === 'undefined'
+    ) {
+      // reset to default value upon unchecking the 'Expert Profession' checkbox
+      changed.system.archetype = 'Academic';
+
+      // reset the requirement entries upon unchecking the 'Expert Profession' checkbox
+      if (typeof changed.system.expert['requirements'] !== 'undefined')
+        changed.system.expert.requirements.skillRanks = [];
+    }
     if (changed.system['skillRanks'] !== undefined) {
-      changed.system.skillRanks = changed.system.skillRanks.map((sr) => ({
-        ...sr,
-        purchased: sr.purchased ?? false,
-      }));
+      changed.system.skillRanks = changed.system.skillRanks.map((sr) => {
+        const skillRanks = typeof sr === 'object' ? sr : { name: sr };
+        return {
+          ...skillRanks,
+          purchased: sr.purchased ?? false,
+        };
+      });
     }
     if (changed.system['bonusAdvances'] !== undefined) {
       changed.system.bonusAdvances = changed.system.bonusAdvances.map((ba) => ({
         ...ba,
         purchased: ba.purchased ?? false,
       }));
+      console.log('_preUpdate Changed Profession', changed);
     }
     await super._preUpdate(changed, options, user, item);
   }

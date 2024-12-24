@@ -6,10 +6,10 @@
   "type": "profession",
   "_stats": {
     "coreVersion": "12.331",
-    "systemId": null,
-    "systemVersion": null,
+    "systemId": "zweihander",
+    "systemVersion": "5.4.1",
     "createdTime": null,
-    "modifiedTime": 1733922277614,
+    "modifiedTime": 1734990834153,
     "lastModifiedBy": "rivg6xcMxdlVDM8y",
     "compendiumSource": null,
     "duplicateSource": null
@@ -21,88 +21,114 @@
     "notes": "",
     "expert": {
       "value": true,
-      "requirements": "You must possess at least two Skill Ranks in Martial Melee in order to enter this Expert Profession."
+      "requirements": {
+        "skillRanks": [],
+        "additional": ""
+      }
     },
     "archetype": "Expert Profession",
     "bonusAdvances": [
       {
-        "name": "[AB]"
+        "name": "[AB]",
+        "purchased": false
       },
       {
-        "name": "[BB]"
+        "name": "[BB]",
+        "purchased": false
       },
       {
-        "name": "[CB]"
+        "name": "[CB]",
+        "purchased": false
       },
       {
-        "name": "[CB]"
+        "name": "[CB]",
+        "purchased": false
       },
       {
-        "name": "[FB]"
+        "name": "[FB]",
+        "purchased": false
       },
       {
-        "name": "[PB]"
+        "name": "[PB]",
+        "purchased": false
       },
       {
-        "name": "[WB]"
+        "name": "[WB]",
+        "purchased": false
       }
     ],
     "skillRanks": [
       {
-        "name": "Awareness"
+        "name": "Awareness",
+        "purchased": false
       },
       {
-        "name": "Charm"
+        "name": "Charm",
+        "purchased": false
       },
       {
-        "name": "Coordination"
+        "name": "Coordination",
+        "purchased": false
       },
       {
-        "name": "Folklore"
+        "name": "Folklore",
+        "purchased": false
       },
       {
-        "name": "Martial Melee"
+        "name": "Martial Melee",
+        "purchased": false
       },
       {
-        "name": "Resolve"
+        "name": "Resolve",
+        "purchased": false
       },
       {
-        "name": "Rumor"
+        "name": "Rumor",
+        "purchased": false
       },
       {
-        "name": "Scrutinize"
+        "name": "Scrutinize",
+        "purchased": false
       },
       {
-        "name": "Simple Melee"
+        "name": "Simple Melee",
+        "purchased": false
       },
       {
-        "name": "Warfare"
+        "name": "Warfare",
+        "purchased": false
       }
     ],
     "talents": [
       {
-        "linkedId": null,
-        "name": "Handspring"
+        "linkedId": "FxA0nCUxs1Sc5yat",
+        "name": "Handspring",
+        "uuid": "Compendium.zweihander.zh-talents.Item.FxA0nCUxs1Sc5yat"
       },
       {
-        "linkedId": null,
-        "name": "Lightning Reaction"
+        "linkedId": "Ga2VnAZ0nlJGZNnF",
+        "name": "Lightning Reaction",
+        "uuid": "Compendium.zweihander.zh-talents.Item.Ga2VnAZ0nlJGZNnF"
       },
       {
-        "linkedId": null,
-        "name": "Overwhelming Force"
+        "linkedId": "xd6CN8oUwGiMHY0Q",
+        "name": "Overwhelming Force",
+        "uuid": "Compendium.zweihander.zh-talents.Item.xd6CN8oUwGiMHY0Q"
       }
     ],
     "professionalTrait": {
       "name": "Leaf on the Wind (Bladedancer)",
+      "uuid": "Compendium.zweihander.zh-traits.Item.YsDLZo6bAojr8AOL",
       "linkedId": null
     },
     "specialTrait": {
       "name": "",
+      "uuid": "",
       "linkedId": null
     },
     "drawback": {
       "name": "Nirvana",
+      "uuid": "Compendium.zweihander.zh-drawbacks.Item.Xu2B23HG3vQoskvN",
       "linkedId": null
     },
     "tier": ""

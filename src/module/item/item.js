@@ -88,7 +88,7 @@ export default class ZweihanderItem extends Item {
 
   async _onCreate(data, options, user) {
     await super._onCreate(data, options, user);
-    // TODO: user is an incorrect parameter and will be fixed in future versions
+
     if (user !== game.user.id) return;
     await this.dispatch('_onCreate', { args: [data, options, user] });
   }

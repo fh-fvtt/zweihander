@@ -1,36 +1,111 @@
-<div class="form-group">
-  <label>{{localize "ZWEI.actor.items.archetype"}}</label>
-  <select name="system.archetype">
-    {{#each choices.archetypes}}
-    <option value="{{value}}" {{selected}}>{{localize (zhConcat "ZWEI.actor.details.labels." (zhLowerCaseSpaces label))}}</option>
-    {{/each}}
-  </select>
-</div>
+<fieldset>
+  <legend>
+    Traits & Drawback
+  </legend>
+  <div class='form-group'>
+    <label>{{localize 'ZWEI.actor.items.professionaltrait'}}</label>
+    {{> ($$ 'partials/detail-item-wrapper') professionalTraitWrapperData}}
+  </div>
 
-{{{arrayInputGroup (localize "ZWEI.actor.items.bonusadvances") 'system.bonusAdvances' system.bonusAdvances 7 'name'}}}
-{{{arrayInputGroup (localize "ZWEI.actor.items.skillranks") 'system.skillRanks' system.skillRanks 10 'name'}}}
-{{{arrayInputGroup (localize "ZWEI.actor.items.talents") 'system.talents' system.talents 3 'name'}}}
+  <div class='form-group'>
+    <label>{{localize 'ZWEI.actor.items.specialtrait'}}</label>
+    {{> ($$ 'partials/detail-item-wrapper') specialTraitWrapperData}}
+  </div>
 
-<div class="form-group">
-  <label>{{localize "ZWEI.actor.items.professionaltrait"}}</label>
-  <input name="system.professionalTrait.name" type="text" value="{{system.professionalTrait.name}}">
-</div>
+  <div class='form-group'>
+    <label>{{localize 'ZWEI.actor.items.drawback'}}</label>
+    {{> ($$ 'partials/detail-item-wrapper') drawbackWrapperData}}
+  </div>
+</fieldset>
+<fieldset>
+  <legend>
+    Character Advances
+  </legend>
+  <div class='form-group'>
+    <label>{{localize 'ZWEI.actor.items.skillranks'}}</label>
+    <zweihander-multi-select name='system.skillRanks' data-skill-ranks="{{zhStringifyObject system.skillRanks}}">
+      {{selectOptions skillsMultiSelect valueAttr="key" labelAttr="label" selected=selected}}
+    </zweihander-multi-select>
+  </div>
 
-<div class="form-group">
-  <label>{{localize "ZWEI.actor.items.specialtrait"}}</label>
-  <input name="system.specialTrait.name" type="text" value="{{system.specialTrait.name}}">
-</div>
+  <div class='form-group'>
+    <label>{{localize 'ZWEI.actor.items.bonusadvances'}}</label>
+    <zweihander-tags
+      type='bonus-advances-profession'
+      name='system.bonusAdvances'
+      data-advances='{{zhStringifyObject system.bonusAdvances}}'
+    ></zweihander-tags>
+  </div>
 
-<div class="form-group">
-  <label>{{localize "ZWEI.actor.items.drawback"}}</label>
-  <input name="system.drawback.name" type="text" value="{{system.drawback.name}}">
-</div>
+  <div class='form-group talents'>
+    <label>Talents</label>
+    {{> ($$ 'partials/detail-item-wrapper') talentWrapperDataList.[0]}}
+  </div>
 
-<div class="form-group stacked">
-  <label class="checkbox">
-    <input name="system.expert.value" type="checkbox" class="link-checkbox" {{checked system.expert.value}} />
-    {{localize "ZWEI.actor.items.expertprofession"}}
-  </label>
-  <label>{{localize "ZWEI.actor.items.requirements"}}</label>
-  <input name="system.expert.requirements" type="text" value="{{system.expert.requirements}}">
-</div>
+  <div class='form-group talents'>
+    <label></label>
+    {{> ($$ 'partials/detail-item-wrapper') talentWrapperDataList.[1]}}
+  </div>
+
+  <div class='form-group talents'>
+    <label></label>
+    {{> ($$ 'partials/detail-item-wrapper') talentWrapperDataList.[2]}}
+  </div>
+
+</fieldset>
+<fieldset>
+  <legend>Misc.</legend>
+  <div class='form-group'>
+    <label>Expert Profession</label>
+    <input name='system.expert.value' type='checkbox' class='link-checkbox' {{checked system.expert.value}} />
+  </div>
+
+  {{#unless system.expert.value}}
+    <div class='form-group'>
+      <label>{{localize 'ZWEI.actor.items.archetype'}}</label>
+      <select class='archetypes' name='system.archetype'>
+        {{selectOptions choices.archetypes selected='system.archetype'}}
+      </select>
+    </div>
+  {{/unless}}
+
+  {{#if system.expert.value}}
+    <header class='requirements-change requirements-header flexrow'>
+      <div class='key'>Skill</div>
+      <div class='value'>Ranks Required</div>
+      <div class='requirements-controls'>
+        <a class='requirements-control' data-action='add'><i class='far fa-plus-square'></i></a>
+      </div>
+    </header>
+    <ol class='requirements-list'>
+      {{#each system.expert.requirements.skillRanks as |requirement i|}}
+        <li class='requirements-change flexrow' data-index='{{i}}'>
+          <div class='key'>
+            <select name="system.expert.requirements.skillRanks.{{i}}.key">
+              {{selectOptions ../skills valueAttr="key" labelAttr="label" selected=requirement.key}}
+            </select>
+          </div>
+          <div class='value'>
+            <input type='number' name="system.expert.requirements.skillRanks.{{i}}.value" value='{{requirement.value}}' />
+          </div>
+          <div class='requirements-controls'>
+            <a class='requirements-control' data-action='delete'><i class='fas fa-trash'></i></a>
+          </div>
+        </li>
+      {{/each}}
+    </ol>
+
+    <div class='form-group'>
+      <label class='other-requirements'>Additional Requirements</label>
+      {{editor
+        system.expert.requirements.additional
+        target='system.expert.requirements.additional'
+        engine='prosemirror'
+        button=true
+        owner=owner
+        editable=editable
+      }}
+    </div>
+  {{else}}
+  {{/if}}
+</fieldset>

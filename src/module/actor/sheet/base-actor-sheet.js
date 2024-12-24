@@ -252,6 +252,7 @@ export default class ZweihanderBaseActorSheet extends ActorSheet {
         $('.zh-modded-value-tooltip-instance').remove();
       }
     );
+
     // auto size the details inputs once
     const autoSizeInput = (el) => el.attr('size', Math.max(el.attr('placeholder').length, el.val().length));
     const inputsToAutoSize = html.find('input.auto-size');

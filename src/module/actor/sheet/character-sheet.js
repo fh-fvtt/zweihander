@@ -20,7 +20,7 @@ export default class ZweihanderCharacterSheet extends ZweihanderBaseActorSheet {
       classes: super.defaultOptions.classes.concat(['character']),
       template: 'systems/zweihander/src/templates/character/main.hbs',
       width: 780,
-      height: 915,
+      height: 920,
       tabs: [
         {
           navSelector: '.sheet-navigation',
@@ -84,6 +84,7 @@ export default class ZweihanderCharacterSheet extends ZweihanderBaseActorSheet {
         template: 'partials/detail-item-wrapper',
         packs: getPacks('character', 'ancestry'),
         type: 'ancestry',
+        isParentCharacter: true,
         id: sheetData.ancestry?.[0]?._id ?? '',
       },
       {
@@ -310,8 +311,8 @@ export default class ZweihanderCharacterSheet extends ZweihanderBaseActorSheet {
     };
     html.find('.purchase-link').click(updatePurchased);
 
-    html.find('.reset-ranks').click(() => {
-      this.actor.update({
+    html.find('.reset-ranks').click(async () => {
+      await this.actor.update({
         'system.alignment.corruption': 0,
       });
     });
@@ -320,8 +321,8 @@ export default class ZweihanderCharacterSheet extends ZweihanderBaseActorSheet {
       Dialog.confirm({
         title: `${this.actor.name}: ` + game.i18n.localize('ZWEI.othermessages.resetranks'),
         content: game.i18n.localize('ZWEI.othermessages.sureranks'),
-        yes: () =>
-          this.actor.update({
+        yes: async () =>
+          await this.actor.update({
             'system.alignment.chaos.rank': 0,
             'system.alignment.order.rank': 0,
           }),
@@ -378,16 +379,16 @@ export default class ZweihanderCharacterSheet extends ZweihanderBaseActorSheet {
     );
 
     // currency exchange
-    html.find('.exchange-currency').click((event) => {
+    html.find('.exchange-currency').click(async (event) => {
       const biggerIndex = Number(event.currentTarget.dataset.biggerIndex);
       const smallerIndex = biggerIndex + 1;
-      this._exchangeCurrency(biggerIndex, smallerIndex);
+      await this._exchangeCurrency(biggerIndex, smallerIndex);
     });
     html.find('.exchange-currency').contextmenu(async (event) => {
       event.preventDefault();
       const biggerIndex = Number(event.currentTarget.dataset.biggerIndex);
       const smallerIndex = biggerIndex + 1;
-      this._exchangeCurrency(smallerIndex, biggerIndex);
+      await this._exchangeCurrency(smallerIndex, biggerIndex);
     });
   }
 
@@ -419,7 +420,7 @@ export default class ZweihanderCharacterSheet extends ZweihanderBaseActorSheet {
     await super._render(force, options);
   }
 
-  _exchangeCurrency(sourceCurrencyIndex, targetCurrencyIndex) {
+  async _exchangeCurrency(sourceCurrencyIndex, targetCurrencyIndex) {
     const currencies = game.settings.get('zweihander', 'currencySettings');
     const actorMoney = this.actor.system.currency;
     const source = currencies[sourceCurrencyIndex];
@@ -437,7 +438,7 @@ export default class ZweihanderCharacterSheet extends ZweihanderBaseActorSheet {
     }
     const newSourceAmount = actorMoney[source.abbreviation] - conversion.sourceDebit;
     if (newSourceAmount >= 0) {
-      this.actor.update({
+      await this.actor.update({
         [`system.currency.${source.abbreviation}`]: newSourceAmount,
         [`system.currency.${target.abbreviation}`]: actorMoney[target.abbreviation] + conversion.targetCredit,
       });

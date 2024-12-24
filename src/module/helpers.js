@@ -118,6 +118,10 @@ export const registerHandlebarHelpers = async function () {
     return img?.endsWith('.svg') ? `-webkit-mask-image: url('${img}')` : `background-image: url('${img}')`;
   });
 
+  $$('zhStringifyObject', function (obj) {
+    return btoa(JSON.stringify(obj));
+  });
+
   $$('arrayInputGroup', function (label, target, array, max = Number.MAX_SAFE_INTEGER, pillDisplayProperty) {
     let locdiv = `<div class="form-group">
         <label>${label}</label>
@@ -201,7 +205,7 @@ export const registerHandlebarHelpers = async function () {
 
   $$('zhDisplayLanguages', (languages) => {
     if (!languages.length) return '';
-    const displayLanguage = (l) => `${l.name}${l.isLiterate ? ' (Literate)' : ''}`;
+    const displayLanguage = (l) => `${l.name}${l.isLiterate ? ' ᴸ ' : ''}`;
     return languages.slice(1).reduce((str, l) => `${str}, ${displayLanguage(l)}`, displayLanguage(languages[0]));
   });
 
@@ -382,6 +386,26 @@ export const registerHandlebarHelpers = async function () {
   $$('zhIsCarried', function (system, options) {
     console.log('AAAAAAAAAAAAAAA---', system);
     return system?.carried ? options.inverse(this) : options.fn(this);
+  });
+
+  $$('zhTalentList', function (talents, index) {
+    let talentListHtml = [];
+
+    for (let i = 0; i < talents.length; i++) {
+      const talentData = talents[i];
+
+      if (talentData.name === '') continue;
+
+      talentListHtml.push(
+        `<a data-purchase-type="talents" data-purchase-index="${i}" data-item-id="${
+          talentData.linkedId
+        }" class="purchase-link fetch-item ${
+          talentData.linkedId ? (talentData.purchased ? 'purchased' : 'not-purchased') : 'duplicate'
+        }">${talentData.name ?? ''}</a>`
+      );
+    }
+
+    return new Handlebars.SafeString(talentListHtml.join('<span> , </span>'));
   });
 
   $$('stringcompare', function (variableOne, comparator, variableTwo) {

@@ -6,11 +6,11 @@
   "type": "profession",
   "_stats": {
     "coreVersion": "12.331",
-    "systemId": null,
-    "systemVersion": null,
+    "systemId": "zweihander",
+    "systemVersion": "5.4.1",
     "createdTime": null,
-    "modifiedTime": null,
-    "lastModifiedBy": null,
+    "modifiedTime": 1734972168207,
+    "lastModifiedBy": "rivg6xcMxdlVDM8y",
     "compendiumSource": null,
     "duplicateSource": null
   },
@@ -82,27 +82,36 @@
     "talents": [
       {
         "linkedId": null,
-        "name": "Ambidexterity"
+        "name": "Ambidexterity",
+        "uuid": "Compendium.zweihander.zh-talents.Item.XmrQY5We9Dj3m5Yn"
       },
       {
         "linkedId": null,
-        "name": "Militaristic"
+        "name": "Militaristic",
+        "uuid": "Compendium.zweihander.fof-talents.Item.9JlMASM4OqhlKn7T"
       },
       {
         "linkedId": null,
-        "name": "Nimble Fingers"
+        "name": "Nimble Fingers",
+        "uuid": "Compendium.zweihander.fof-talents.Item.4sLcuIL7MIymGEaU"
+      },
+      {
+        "uuid": "Compendium.zweihander.fof-talents.Item.Ghk04LKapabZUPG4"
       }
     ],
     "professionalTrait": {
       "name": "Ambush Tactics",
+      "uuid": "Compendium.zweihander.zh-creature-traits.Item.sK1VHps3Q8Cfool2",
       "linkedId": null
     },
     "specialTrait": {
       "name": "",
+      "uuid": "",
       "linkedId": null
     },
     "drawback": {
       "name": "Loner",
+      "uuid": "Compendium.zweihander.fof-quirks.Item.wigDH9q4zM8YOkbx",
       "linkedId": null
     },
     "tier": ""

@@ -6,10 +6,10 @@
   "type": "profession",
   "_stats": {
     "coreVersion": "12.331",
-    "systemId": null,
-    "systemVersion": null,
+    "systemId": "zweihander",
+    "systemVersion": "5.4.1",
     "createdTime": null,
-    "modifiedTime": 1733922277614,
+    "modifiedTime": 1734990834175,
     "lastModifiedBy": "rivg6xcMxdlVDM8y",
     "compendiumSource": null,
     "duplicateSource": null
@@ -21,88 +21,114 @@
     "notes": "",
     "expert": {
       "value": true,
-      "requirements": "You must possess at least one Skill Rank in Incantation in order to enter this Expert Profession. In addition, you must have the Special Trait of Divine Magick."
+      "requirements": {
+        "skillRanks": [],
+        "additional": ""
+      }
     },
     "archetype": "Expert Profession",
     "bonusAdvances": [
       {
-        "name": "[AB]"
+        "name": "[AB]",
+        "purchased": false
       },
       {
-        "name": "[BB]"
+        "name": "[BB]",
+        "purchased": false
       },
       {
-        "name": "[CB]"
+        "name": "[CB]",
+        "purchased": false
       },
       {
-        "name": "[CB]"
+        "name": "[CB]",
+        "purchased": false
       },
       {
-        "name": "[FB]"
+        "name": "[FB]",
+        "purchased": false
       },
       {
-        "name": "[PB]"
+        "name": "[PB]",
+        "purchased": false
       },
       {
-        "name": "[WB]"
+        "name": "[WB]",
+        "purchased": false
       }
     ],
     "skillRanks": [
       {
-        "name": "Eavesdrop"
+        "name": "Eavesdrop",
+        "purchased": false
       },
       {
-        "name": "Folklore"
+        "name": "Folklore",
+        "purchased": false
       },
       {
-        "name": "Guile"
+        "name": "Guile",
+        "purchased": false
       },
       {
-        "name": "Incantation"
+        "name": "Incantation",
+        "purchased": false
       },
       {
-        "name": "Intimidate"
+        "name": "Intimidate",
+        "purchased": false
       },
       {
-        "name": "Resolve"
+        "name": "Resolve",
+        "purchased": false
       },
       {
-        "name": "Rumor"
+        "name": "Rumor",
+        "purchased": false
       },
       {
-        "name": "Simple Melee"
+        "name": "Simple Melee",
+        "purchased": false
       },
       {
-        "name": "Stealth"
+        "name": "Stealth",
+        "purchased": false
       },
       {
-        "name": "Toughness"
+        "name": "Toughness",
+        "purchased": false
       }
     ],
     "talents": [
       {
-        "linkedId": null,
-        "name": "Blood Magick"
+        "linkedId": "cmpM3lJrRrftzSaX",
+        "name": "Blood Magick",
+        "uuid": "Compendium.zweihander.zh-talents.Item.cmpM3lJrRrftzSaX"
       },
       {
-        "linkedId": null,
-        "name": "Die Hard"
+        "linkedId": "fe7vdZghpPmVpFPn",
+        "name": "Die Hard",
+        "uuid": "Compendium.zweihander.zh-talents.Item.fe7vdZghpPmVpFPn"
       },
       {
-        "linkedId": null,
-        "name": "There Will Be Blood"
+        "linkedId": "m3t1x4fYjo44sORv",
+        "name": "There Will Be Blood",
+        "uuid": "Compendium.zweihander.zh-talents.Item.m3t1x4fYjo44sORv"
       }
     ],
     "professionalTrait": {
       "name": "Exsanguinator",
+      "uuid": "Compendium.zweihander.zh-traits.Item.VOdFxkrNvN5BNbzh",
       "linkedId": null
     },
     "specialTrait": {
       "name": "Prayers of the Crouching One",
+      "uuid": "Compendium.zweihander.zh-traits.Item.pduaqDaVaDD7OJLV",
       "linkedId": null
     },
     "drawback": {
       "name": "The Crouching One’s Commandments",
+      "uuid": "Compendium.zweihander.zh-drawbacks.Item.dM7cKhlzP48gmBc8",
       "linkedId": null
     },
     "tier": ""

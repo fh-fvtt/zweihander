@@ -20,7 +20,7 @@
           <option value="fellowship">{{localize "ZWEI.actor.primary.fellowship"}}</option>
           {{/select}}
         </select>
-        <p class="notes">{{localize "ZWEI.settings.acsettings.primarydthint"}}</p>
+        <p class="hint">{{localize "ZWEI.settings.acsettings.primarydthint"}}</p>
       </div>
 
       <div class="form-group">
@@ -36,7 +36,7 @@
           <option value="fellowship">{{localize "ZWEI.actor.primary.fellowship"}}</option>
           {{/select}}
         </select>
-        <p class="notes">{{localize "ZWEI.settings.acsettings.primarypthint"}}</p>
+        <p class="hint">{{localize "ZWEI.settings.acsettings.primarypthint"}}</p>
       </div>
 
       <div class="form-group">
@@ -52,7 +52,7 @@
           <option value="fellowship">{{localize "ZWEI.actor.primary.fellowship"}}</option>
           {{/select}}
         </select>
-        <p class="notes">{{localize "ZWEI.settings.acsettings.primaryinhint"}}</p>
+        <p class="hint">{{localize "ZWEI.settings.acsettings.primaryinhint"}}</p>
       </div>
 
       <div class="form-group">
@@ -68,31 +68,31 @@
           <option value="fellowship">{{localize "ZWEI.actor.primary.fellowship"}}</option>
           {{/select}}
         </select>
-        <p class="notes">{{localize "ZWEI.settings.acsettings.primarymohint"}}</p>
+        <p class="hint">{{localize "ZWEI.settings.acsettings.primarymohint"}}</p>
       </div>
 
       <hr>
 
       <h3>{{localize "ZWEI.settings.acsettings.globaltitle"}}</h3>
 
-      <p class="notes">{{localize "ZWEI.settings.acsettings.globalnotes"}}</p>
+      <p class="hint">{{localize "ZWEI.settings.acsettings.globalnotes"}}</p>
 
       <div class="form-group">
         <label>{{localize "ZWEI.settings.acsettings.globalencumbrance"}}</label>
         <input type="number" name="flags.encumbranceModifier" value="{{flags.encumbranceModifier}}" />
-        <p class="notes">{{localize "ZWEI.settings.acsettings.globalencumbrancehint"}}</p>
+        <p class="hint">{{localize "ZWEI.settings.acsettings.globalencumbrancehint"}}</p>
       </div>
 
       <div class="form-group">
         <label>{{localize "ZWEI.settings.acsettings.globalinitiative"}}</label>
         <input type="number" name="flags.initiativeModifier" value="{{flags.initiativeModifier}}" />
-        <p class="notes">{{localize "ZWEI.settings.acsettings.globalinitiativehint"}}</p>
+        <p class="hint">{{localize "ZWEI.settings.acsettings.globalinitiativehint"}}</p>
       </div>
 
       <div class="form-group">
         <label>{{localize "ZWEI.settings.acsettings.globalmovement"}}</label>
         <input type="number" name="flags.movementModifier" value="{{flags.movementModifier}}" />
-        <p class="notes">{{localize "ZWEI.settings.acsettings.globalmovementhint"}}</p>
+        <p class="hint">{{localize "ZWEI.settings.acsettings.globalmovementhint"}}</p>
       </div>
 
       <hr>
@@ -102,13 +102,13 @@
       <div class="form-group">
         <label>{{localize "ZWEI.settings.acsettings.skillsparry"}}</label>
         <input type="text" name="flags.parrySkills" value="{{parrySkills}}" />
-        <p class="notes">{{localize "ZWEI.settings.acsettings.skillsparryhint"}}</p>
+        <p class="hint">{{localize "ZWEI.settings.acsettings.skillsparryhint"}}</p>
       </div>
 
       <div class="form-group">
         <label>{{localize "ZWEI.settings.acsettings.skillsdodge"}}</label>
         <input type="text" name="flags.dodgeSkills" value="{{dodgeSkills}}" />
-        <p class="notes">{{localize "ZWEI.settings.acsettings.skillsdodgehint"}}</p>
+        <p class="hint">{{localize "ZWEI.settings.acsettings.skillsdodgehint"}}</p>
       </div>
 
       <hr>
@@ -119,27 +119,27 @@
         <label>{{localize "ZWEI.settings.acsettings.peril1"}}</label>
         <input type="checkbox" name="flags.isIgnoredPerilLadderValue.[0]" {{checked
           flags.isIgnoredPerilLadderValue.[0]}} />
-        <p class="notes">{{localize "ZWEI.settings.acsettings.peril1hint"}}</p>
+        <p class="hint">{{localize "ZWEI.settings.acsettings.peril1hint"}}</p>
       </div>
 
       <div class="form-group">
         <label>{{localize "ZWEI.settings.acsettings.peril2"}}</label>
         <input type="checkbox" name="flags.isIgnoredPerilLadderValue.[1]" {{checked
           flags.isIgnoredPerilLadderValue.[1]}} />
-        <p class="notes">{{localize "ZWEI.settings.acsettings.peril2hint"}}</p>
+        <p class="hint">{{localize "ZWEI.settings.acsettings.peril2hint"}}</p>
       </div>
 
       <div class="form-group">
         <label>{{localize "ZWEI.settings.acsettings.peril3"}}</label>
         <input type="checkbox" name="flags.isIgnoredPerilLadderValue.[2]" {{checked
           flags.isIgnoredPerilLadderValue.[2]}} />
-        <p class="notes">{{localize "ZWEI.settings.acsettings.peril3hint"}}</p>
+        <p class="hint">{{localize "ZWEI.settings.acsettings.peril3hint"}}</p>
       </div>
 
       <div class="form-group">
         <label>{{localize "ZWEI.settings.acsettings.peril4"}}</label>
         <input type="checkbox" name="avoidAllPeril" {{checked avoidAllPeril}} />
-        <p class="notes">{{localize "ZWEI.settings.acsettings.peril4hint"}}</p>
+        <p class="hint">{{localize "ZWEI.settings.acsettings.peril4hint"}}</p>
       </div>
 
       <hr>
@@ -149,13 +149,13 @@
       <div class="form-group">
         <label>{{localize "ZWEI.settings.acsettings.magickuser"}}</label>
         <input type="checkbox" name="flags.isMagickUser" {{checked flags.isMagickUser}} />
-        <p class="notes">{{localize "ZWEI.settings.acsettings.magickuserhint"}}</p>
+        <p class="hint">{{localize "ZWEI.settings.acsettings.magickuserhint"}}</p>
       </div>
 
       <div class="form-group">
         <label>{{localize "ZWEI.settings.acsettings.magickskill"}}</label>
         <input type="text" name="flags.magickSkills" value="{{magickSkills}}" />
-        <p class="notes">{{localize "ZWEI.settings.acsettings.magickskillhint"}}</p>
+        <p class="hint">{{localize "ZWEI.settings.acsettings.magickskillhint"}}</p>
       </div>
 
       <hr>
@@ -164,13 +164,13 @@
       <div class="form-group">
         <label>{{localize "ZWEI.settings.acsettings.occhaosrank"}}</label>
         <input type="number" name="flags.permanentChaosRanks" value="{{flags.permanentChaosRanks}}" />
-        <p class="notes">{{localize "ZWEI.settings.acsettings.occhaosrankhint"}}</p>
+        <p class="hint">{{localize "ZWEI.settings.acsettings.occhaosrankhint"}}</p>
       </div>
 
       <div class="form-group">
         <label>{{localize "ZWEI.settings.acsettings.ocorderrank"}}</label>
         <input type="number" name="flags.permanentOrderRanks" value="{{flags.permanentOrderRanks}}" />
-        <p class="notes">{{localize "ZWEI.settings.acsettings.ocorderrankhint"}}</p>
+        <p class="hint">{{localize "ZWEI.settings.acsettings.ocorderrankhint"}}</p>
       </div>
 
       <hr>
@@ -200,7 +200,7 @@
       <div class="form-group">
         <label>{{localize "ZWEI.settings.acsettings.soundplaygrunt"}}</label>
         <input type="checkbox" name="flags.playGruntSound" {{checked flags.playGruntSound}} />
-        <p class="notes">{{localize "ZWEI.settings.acsettings.soundplaygrunthint"}}</p>
+        <p class="hint">{{localize "ZWEI.settings.acsettings.soundplaygrunthint"}}</p>
       </div>
     </section>
   </form>

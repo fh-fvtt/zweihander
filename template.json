@@ -266,14 +266,16 @@
       },
       "ancestralTrait": {
         "name": "",
-        "linkedId": null
+        "linkedId": null,
+        "uuid": ""
       }
     },
     "drawback": {
       "templates": ["flavor", "effect"]
     },
     "trait": {
-      "templates": ["flavor", "effect"]
+      "templates": ["flavor", "effect"],
+      "category": ""
     },
     "weapon": {
       "templates": ["flavor", "trapping"],
@@ -309,20 +311,26 @@
       "templates": ["flavor"],
       "expert": {
         "value": false,
-        "requirements": ""
+        "requirements": {
+          "skillRanks": [],
+          "additional": ""
+        }
       },
       "archetype": "",
       "bonusAdvances": [],
       "skillRanks": [],
       "talents": [],
       "professionalTrait": {
-        "name": ""
+        "name": "",
+        "uuid": ""
       },
       "specialTrait": {
-        "name": ""
+        "name": "",
+        "uuid": ""
       },
       "drawback": {
-        "name": ""
+        "name": "",
+        "uuid": ""
       },
       "tier": ""
     },
