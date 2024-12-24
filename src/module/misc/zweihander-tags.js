@@ -142,6 +142,7 @@ export class HTMLZweihanderTagsElement extends AbstractFormInputElement {
   /** @override */
   _refresh() {
     // console.log('_VALUE: ', this._value, ' | VALUE: ', this.value);
+    console.log('EDITABLE: ', this.editable);
     const tags = this.value.map((tag, i) => this.constructor.renderTag(tag, i, this.editable));
     this.#tags.replaceChildren(...tags);
   }
@@ -157,10 +158,10 @@ export class HTMLZweihanderTagsElement extends AbstractFormInputElement {
    */
   static renderTag(tag, el, editable = true) {
     const div = document.createElement('div');
-    div.className = 'tag remove';
+    div.className = `tag ${editable ? 'remove' : ''}`;
     div.dataset.key = el;
     const span = document.createElement('span');
-    span.className = 'remove';
+    span.className = `${editable ? 'remove' : ''}`;
     span.textContent = tag?.name ?? tag;
     div.append(span);
     if (editable) {

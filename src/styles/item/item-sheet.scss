@@ -608,16 +608,12 @@ body.game.vtt.system-zweihander .zweihander.sheet.item {
     .tab-notes,
     .tab-description {
       min-height: 200px;
-      background-color: var(--zh-clr-dark1);
 
       .editor-content {
-        // color: var(--zh-clr-fg2);
+        color: var(--zh-clr-fg2);
         font-size: 14px;
         // font-style: italic;
         text-align: justify;
-        //background-color: var(--zh-clr-dark1);
-        padding: 0px 10px;
-        //border-radius: 3px;
       }
     }
 

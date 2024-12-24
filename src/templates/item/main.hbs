@@ -23,7 +23,10 @@
       {{> ($$ (concat 'item/' type))}}
     </div>
     <div class="tab tab-description flexcol" data-group="primary" data-tab="description">
-      {{editor (zhLocalize system.description) target=(zhLocalizePath "system.description") engine="prosemirror" button=true owner=owner editable=editable}}
+      <fieldset>
+        <legend>Lore</legend>
+        {{editor (zhLocalize system.description) target=(zhLocalizePath "system.description") engine="prosemirror" button=true owner=owner editable=editable}}
+      </fieldset>
     </div>
       <div class="tab tab-effects flexcol" data-group="primary" data-tab="effects">
       {{> ($$ "partials/item-effects-list") effectGroups}}
