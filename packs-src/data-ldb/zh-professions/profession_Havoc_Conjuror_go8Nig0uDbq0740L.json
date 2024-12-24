@@ -9,7 +9,7 @@
     "systemId": "zweihander",
     "systemVersion": "5.4.1",
     "createdTime": null,
-    "modifiedTime": 1734990834134,
+    "modifiedTime": 1735051614293,
     "lastModifiedBy": "rivg6xcMxdlVDM8y",
     "compendiumSource": null,
     "duplicateSource": null
@@ -22,8 +22,13 @@
     "expert": {
       "value": true,
       "requirements": {
-        "skillRanks": [],
-        "additional": ""
+        "skillRanks": [
+          {
+            "key": "incantation",
+            "value": 2
+          }
+        ],
+        "additional": "<p>You must have the Special Trait of Covenant Magick and Drawback of Ruinous Power.</p>"
       }
     },
     "archetype": "Expert Profession",

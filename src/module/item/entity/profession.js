@@ -1,3 +1,4 @@
+import { normalizedEquals } from '../../utils';
 import ZweihanderBaseItem from './base-item';
 
 export default class ZweihanderProfession extends ZweihanderBaseItem {
@@ -36,10 +37,33 @@ export default class ZweihanderProfession extends ZweihanderBaseItem {
 
   async _preCreate(data, options, user, item) {
     const tier = item.parent.items.filter((i) => i.type === 'profession').length + 1;
+
+    const isExpert = item.system.expert.value;
+    const expertReqs = item.system.expert.requirements.skillRanks;
+
+    if (isExpert && expertReqs.length) {
+      const skills = item.parent.items.filter((i) => i.type === 'skill');
+
+      for (let requirement of expertReqs) {
+        const requiredSkill = skills.find((skill) => normalizedEquals(skill.name, requirement.key));
+
+        console.log('REQUIRED: ', requiredSkill, requirement);
+
+        if (requiredSkill.system.rank < requirement.value) {
+          ui.notifications.error(
+            `Character does not meet Expert Profession (${item.name}) requirements: "You must possess at least ${requirement.value} Skill Rank(s) in ${requiredSkill.name}"`
+          );
+          return false;
+        }
+      }
+    }
+
     if (tier > 3) return;
+
     item.updateSource({
       'system.tier': CONFIG.ZWEI.tiers[tier],
     });
+
     await super._preCreate(data, options, user, item);
   }
 

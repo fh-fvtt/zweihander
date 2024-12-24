@@ -9,7 +9,7 @@
     "systemId": "zweihander",
     "systemVersion": "5.4.1",
     "createdTime": null,
-    "modifiedTime": 1734990834119,
+    "modifiedTime": 1735047458082,
     "lastModifiedBy": "rivg6xcMxdlVDM8y",
     "compendiumSource": null,
     "duplicateSource": null
@@ -22,8 +22,17 @@
     "expert": {
       "value": true,
       "requirements": {
-        "skillRanks": [],
-        "additional": ""
+        "skillRanks": [
+          {
+            "key": "bargain",
+            "value": 1
+          },
+          {
+            "key": "guile",
+            "value": 1
+          }
+        ],
+        "additional": "<p>-</p>"
       }
     },
     "archetype": "Expert Profession",
@@ -83,6 +92,10 @@
         "purchased": false
       },
       {
+        "name": "Resolve",
+        "purchased": false
+      },
+      {
         "name": "Rumor",
         "purchased": false
       },
@@ -92,10 +105,6 @@
       },
       {
         "name": "Simple Melee",
-        "purchased": false
-      },
-      {
-        "name": "Resolve",
         "purchased": false
       }
     ],

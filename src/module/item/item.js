@@ -82,8 +82,8 @@ export default class ZweihanderItem extends Item {
       const img = ZWEI.defaultItemIcons[this.type] ?? ZWEI.defaultItemIcons._default;
       await this.updateSource({ img });
     }
-    if (this.parent === null) return;
-    await this.dispatch('_preCreate', { args: [data, options, user] });
+    if (this.parent === null) return false;
+    return await this.dispatch('_preCreate', { args: [data, options, user] });
   }
 
   async _onCreate(data, options, user) {
@@ -95,8 +95,8 @@ export default class ZweihanderItem extends Item {
 
   async _preDelete(options, user) {
     await super._preDelete(options, user);
-    if (this.parent === null) return;
-    await this.dispatch('_preDelete', { args: [options, user] });
+    if (this.parent === null) return false;
+    return await this.dispatch('_preDelete', { args: [options, user] });
   }
 
   async _onDelete(options, user) {
@@ -107,10 +107,10 @@ export default class ZweihanderItem extends Item {
   }
 
   async _preUpdate(changed, options, user) {
-    if (this.parent && changed.system) {
-      await this.dispatch('_preUpdate', { args: [changed, options, user] });
-    }
     await super._preUpdate(changed, options, user);
+    if (this.parent && changed.system) {
+      return await this.dispatch('_preUpdate', { args: [changed, options, user] });
+    }
   }
 
   async _onUpdate(changed, options, user) {

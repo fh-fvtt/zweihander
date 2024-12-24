@@ -9,7 +9,7 @@
     "systemId": "zweihander",
     "systemVersion": "5.4.1",
     "createdTime": null,
-    "modifiedTime": 1734990834101,
+    "modifiedTime": 1735050026906,
     "lastModifiedBy": "rivg6xcMxdlVDM8y",
     "compendiumSource": null,
     "duplicateSource": null
@@ -22,8 +22,17 @@
     "expert": {
       "value": true,
       "requirements": {
-        "skillRanks": [],
-        "additional": ""
+        "skillRanks": [
+          {
+            "key": "athletics",
+            "value": 1
+          },
+          {
+            "key": "toughness",
+            "value": 1
+          }
+        ],
+        "additional": "<p>-</p>"
       }
     },
     "archetype": "Expert Profession",

@@ -10,8 +10,13 @@
     "expert": {
       "value": true,
       "requirements": {
-        "skillRanks": [],
-        "additional": ""
+        "skillRanks": [
+          {
+            "key": "bargain",
+            "value": 1
+          }
+        ],
+        "additional": "<p>-</p>"
       }
     },
     "archetype": "Expert Profession",
@@ -132,7 +137,7 @@
     "systemId": "zweihander",
     "systemVersion": "5.4.1",
     "createdTime": 1733922491432,
-    "modifiedTime": 1734990834117,
+    "modifiedTime": 1735052736790,
     "lastModifiedBy": "rivg6xcMxdlVDM8y"
   },
   "_id": "TMkLe3YcjnZpOCZu",

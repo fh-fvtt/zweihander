@@ -9,7 +9,7 @@
     "systemId": "zweihander",
     "systemVersion": "5.4.1",
     "createdTime": null,
-    "modifiedTime": 1734990833987,
+    "modifiedTime": 1735052280641,
     "lastModifiedBy": "rivg6xcMxdlVDM8y",
     "compendiumSource": null,
     "duplicateSource": null
@@ -22,8 +22,13 @@
     "expert": {
       "value": true,
       "requirements": {
-        "skillRanks": [],
-        "additional": ""
+        "skillRanks": [
+          {
+            "key": "folklore",
+            "value": 1
+          }
+        ],
+        "additional": "<p>-</p>"
       }
     },
     "archetype": "Expert Profession",

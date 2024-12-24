@@ -9,7 +9,7 @@
     "systemId": "zweihander",
     "systemVersion": "5.4.1",
     "createdTime": null,
-    "modifiedTime": 1734990834139,
+    "modifiedTime": 1735047958679,
     "lastModifiedBy": "rivg6xcMxdlVDM8y",
     "compendiumSource": null,
     "duplicateSource": null
@@ -22,8 +22,13 @@
     "expert": {
       "value": true,
       "requirements": {
-        "skillRanks": [],
-        "additional": ""
+        "skillRanks": [
+          {
+            "key": "incantation",
+            "value": 1
+          }
+        ],
+        "additional": "<p>You must have the Special Trait of Arcane Magick.</p>"
       }
     },
     "archetype": "Expert Profession",
@@ -91,11 +96,11 @@
         "purchased": false
       },
       {
-        "name": "Toughness",
+        "name": "Simple Melee",
         "purchased": false
       },
       {
-        "name": "Simple Melee",
+        "name": "Toughness",
         "purchased": false
       }
     ],

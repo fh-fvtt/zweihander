@@ -308,6 +308,7 @@ export default class ZweihanderPC extends ZweihanderBaseActor {
     }
   }
 
+  // @todo: refactor this into _preCreate methods in their respective classes
   async createEmbeddedDocuments(embeddedName, data, context, actor) {
     if (embeddedName === 'Item') {
       const filteredData = [];

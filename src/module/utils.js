@@ -466,6 +466,7 @@ export async function updateActorSkillsFromPack(skillPackId) {
   for (let actor of game.actors) {
     const actorSkillItems = actor.items.filter((i) => i.type === 'skill').map((i) => i.id);
     CONFIG.ZWEI.NO_WARN = true;
+    // refactor to Item.delete / Item.create
     await actor.deleteEmbeddedDocuments('Item', actorSkillItems);
     await actor.createEmbeddedDocuments('Item', skillsFromPack, {
       keepId: true,

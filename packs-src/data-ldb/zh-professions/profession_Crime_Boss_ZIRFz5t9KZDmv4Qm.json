@@ -9,7 +9,7 @@
     "systemId": "zweihander",
     "systemVersion": "5.4.1",
     "createdTime": null,
-    "modifiedTime": 1734990834124,
+    "modifiedTime": 1735047628500,
     "lastModifiedBy": "rivg6xcMxdlVDM8y",
     "compendiumSource": null,
     "duplicateSource": null
@@ -22,8 +22,13 @@
     "expert": {
       "value": true,
       "requirements": {
-        "skillRanks": [],
-        "additional": ""
+        "skillRanks": [
+          {
+            "key": "skulduggery",
+            "value": 2
+          }
+        ],
+        "additional": "<p>-</p>"
       }
     },
     "archetype": "Expert Profession",
@@ -83,19 +88,19 @@
         "purchased": false
       },
       {
-        "name": "Skulduggery",
-        "purchased": false
-      },
-      {
-        "name": "Toughness",
-        "purchased": false
-      },
-      {
         "name": "Simple Melee",
         "purchased": false
       },
       {
         "name": "Simple Ranged",
+        "purchased": false
+      },
+      {
+        "name": "Skulduggery",
+        "purchased": false
+      },
+      {
+        "name": "Toughness",
         "purchased": false
       }
     ],

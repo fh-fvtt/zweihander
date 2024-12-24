@@ -1,7 +1,7 @@
 {
   "_id": "cW9mAdOC4GzMYbe7",
   "effects": [],
-  "img": "systems/zweihander/assets/icons/pyromancer.svg",
+  "img": "systems/zweihander/assets/icons/fire-iris.svg",
   "name": "Pyromancer",
   "type": "profession",
   "_stats": {
@@ -9,7 +9,7 @@
     "systemId": "zweihander",
     "systemVersion": "5.4.1",
     "createdTime": null,
-    "modifiedTime": 1734990834128,
+    "modifiedTime": 1735050219099,
     "lastModifiedBy": "rivg6xcMxdlVDM8y",
     "compendiumSource": null,
     "duplicateSource": null
@@ -22,8 +22,13 @@
     "expert": {
       "value": true,
       "requirements": {
-        "skillRanks": [],
-        "additional": ""
+        "skillRanks": [
+          {
+            "key": "incantation",
+            "value": 1
+          }
+        ],
+        "additional": "<p>You must have the Special Trait of Arcane Magick.</p>"
       }
     },
     "archetype": "Expert Profession",
@@ -87,15 +92,15 @@
         "purchased": false
       },
       {
+        "name": "Rumor",
+        "purchased": false
+      },
+      {
         "name": "Simple Melee",
         "purchased": false
       },
       {
         "name": "Toughness",
-        "purchased": false
-      },
-      {
-        "name": "Rumor",
         "purchased": false
       }
     ],

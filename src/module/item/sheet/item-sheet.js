@@ -433,6 +433,7 @@ export default class ZweihanderItemSheet extends ItemSheet {
       let createdItemArray = [];
 
       if (type === 'effect') {
+        // @todo: refactor to use ActiveEffect.create
         createdItemArray = await this.item.createEmbeddedDocuments('ActiveEffect', [
           {
             label: this.item.name,

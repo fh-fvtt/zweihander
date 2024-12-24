@@ -125,12 +125,12 @@ export default class ZweihanderActor extends Actor {
       const img = ZWEI.defaultActorIcons[this.type] ?? ZWEI.defaultActorIcons._default;
       await this.updateSource({ img });
     }
-    await this.dispatch('_preCreate', { args: [this, options, user] });
+    return await this.dispatch('_preCreate', { args: [this, options, user] });
   }
 
   async _preUpdate(changed, options, user) {
     await super._preUpdate(changed, options, user);
-    await this.dispatch('_preUpdate', { args: [changed, options, user, this] });
+    return await this.dispatch('_preUpdate', { args: [changed, options, user, this] });
   }
 
   async _onCreate(data, options, user) {
