@@ -4,7 +4,7 @@
 {{else if weaponTest}}
   {{> ($$ "item-card/item-card-weapon") weapon }}
 {{else}}
-  <h2 class="skill-test-title">{{zhLocalizeConditional "ZWEI.actor.skills." skill}}</h2>
+  <h2 class="skill-test-title">{{skill}}</h2>
 {{/if}}
 <dl class="compact-details compact-details-centered zh-collapsed zh-expandable" data-expand-title="{{localize "ZWEI.chatskill.rolldetails"}}">
   <dt>{{localize (zhConcat "ZWEI.actor.primary." (zhLowerCase primaryAttribute))}}</dt><dd> {{zhExplicitSign primaryAttributeValue}}%</dd>
@@ -26,7 +26,7 @@
     {{#if usedFortune}}<span class="pill pill-fortune">{{localize "ZWEI.rolls.usefortune"}}</span>{{/if}}
     {{#if usedMisfortune}}<span class="pill pill-misfortune">{{localize "ZWEI.rolls.usemisfortune"}}</span>{{/if}}
     {{#if isReroll}}<span class="pill pill-reroll">{{localize "ZWEI.rolls.reroll"}}</span>{{/if}}
-    {{#if (or spellTest weaponTest)}}<span class="pill">{{localize "ZWEI.rolls.test"}}: {{zhLocalizeConditional "ZWEI.actor.skills." skill}}</span>{{/if}}
+    {{#if (or spellTest weaponTest)}}<span class="pill">{{localize "ZWEI.rolls.test"}}: {{skill}}</span>{{/if}}
 </div>
 <div class="dice-roll">
     <div class="dice-result">

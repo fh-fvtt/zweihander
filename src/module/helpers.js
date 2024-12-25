@@ -150,9 +150,7 @@ export const registerHandlebarHelpers = async function () {
         locdiv += `
             ${array.map(
               (v, i) => `
-              <span class="array-input-pill" data-array-input-index="${i}">${game.i18n.localize(
-                'ZWEI.actor.skills.' + (v[pillDisplayProperty] ?? v).toLowerCase().replace(/\s+/g, '')
-              )}</span>
+              <span class="array-input-pill" data-array-input-index="${i}">${(v[pillDisplayProperty] ?? v)}</span>
             `
             )}
           `;
@@ -293,9 +291,9 @@ export const registerHandlebarHelpers = async function () {
   $$('zhSkillRankAbbreviationLoc', function (rank) {
     return [
       '-',
-      game.i18n.localize('ZWEI.actor.skills.rankabbreviation.apprentice'),
-      game.i18n.localize('ZWEI.actor.skills.rankabbreviation.journeyman'),
-      game.i18n.localize('ZWEI.actor.skills.rankabbreviation.master'),
+      game.i18n.localize('ZWEI.actor.items.skillranksabbr.apprentice'),
+      game.i18n.localize('ZWEI.actor.items.skillranksabbr.journeyman'),
+      game.i18n.localize('ZWEI.actor.items.skillranksabbr.master'),
     ][rank];
   });
 
