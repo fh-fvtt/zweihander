@@ -82,7 +82,7 @@ export default class ZweihanderItem extends Item {
       const img = ZWEI.defaultItemIcons[this.type] ?? ZWEI.defaultItemIcons._default;
       await this.updateSource({ img });
     }
-    if (this.parent === null) return false;
+    if (this.parent === null) return;
     return await this.dispatch('_preCreate', { args: [data, options, user] });
   }
 
@@ -95,7 +95,7 @@ export default class ZweihanderItem extends Item {
 
   async _preDelete(options, user) {
     await super._preDelete(options, user);
-    if (this.parent === null) return false;
+    if (this.parent === null) return;
     return await this.dispatch('_preDelete', { args: [options, user] });
   }
 
