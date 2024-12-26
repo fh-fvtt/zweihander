@@ -203,7 +203,7 @@ export const registerHandlebarHelpers = async function () {
 
   $$('zhDisplayLanguages', (languages) => {
     if (!languages.length) return '';
-    const displayLanguage = (l) => `${l.name}${l.isLiterate ? ' ᴸ ' : ''}`;
+    const displayLanguage = (l) => `${l.name}` + (l.isLiterate ? ` ${game.i18n.localize('ZWEI.settings.lasettings.literatesymbol')} ` : '');
     return languages.slice(1).reduce((str, l) => `${str}, ${displayLanguage(l)}`, displayLanguage(languages[0]));
   });
 
