@@ -207,6 +207,7 @@
                 "damage": "Daño",
                 "qualities": "Cualidades",
                 "ancestraltrait": "Rasgo ancestral",
+        "ancestralmodifiers": "Modificadores de ancestro",
                 "damagethresholdmodifier": "Modificador umbral daño",
                 "status": "Condición",
                 "effect": "Efecto",
@@ -246,7 +247,10 @@
 				"innateability": "Habilidad innata",
 				"charadvances": "Avances de PJ",
 				"traitsdrawback": "Rasgos y desventajas",
-				"lore": "Historia"
+				"lore": "Detalles",
+        "positive": "Positivos",
+        "negative": "Negativos",
+        "randomtrait": "Rasgo al azar"
             },
             "conditions": {
                 "incapacitated": "¡INCAPACITADO!",
@@ -633,7 +637,8 @@
             "mode": "Modo",
             "value": "Valor",
             "professionmissing": "Falta un talento en la profesión, está mal escrito o duplicado. Por favor, corrija la lista de talentos.",
-            "entervalue": "Nuevo (habilidades y bonos en inglés)"
+            "entervalue": "Nuevo (habilidades y bonos en inglés)",
+	  "noancestrytable": "No se ha encontrado ninguna tabla para el ancestro"
         },
         "coinage": {
             "gc": "co",

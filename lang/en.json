@@ -217,6 +217,7 @@
         "damage": "Damage",
         "qualities": "Qualities",
         "ancestraltrait": "Ancestral Trait",
+        "ancestralmodifiers": "Ancestral Modifiers",
         "damagethresholdmodifier": "Damage Threshold Modifier",
         "status": "Status",
         "bonusperrank": "Base Chance Increase per Rank",
@@ -257,7 +258,10 @@
         "innateability": "Innate Ability",
         "charadvances": "Character Advances",
         "traitsdrawback": "Traits & Drawback",
-        "lore": "Lore"
+        "lore": "Lore",
+        "positive": "Positive",
+        "negative": "Negative",
+        "randomtrait": "Randomize Trait"
       },
       "conditions": {
         "incapacitated": "INCAPACITATED!",
@@ -673,7 +677,8 @@
       "professionmissing": "Profession is missing a Talent, has a misspelled Talent, or has a duplicate one. Please add to/change Talent list.",
       "entervalue": "Enter values here",
       "injurytablemismatch": "{severity} Injuries table not found in Compendium Pack\"{pack}\". Please adjust the Injury List in Game Settings.",
-      "injurytableerror": "Compendium \"{pack}\" not found. Please adjust the Injury List in Game Settings."
+      "injurytableerror": "Compendium \"{pack}\" not found. Please adjust the Injury List in Game Settings.",
+	  "noancestrytable": "No Roll Table found in World or Compendium for following Ancestry"
     },
     "coinage": {
       "gc": "gc",

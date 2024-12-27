@@ -1,29 +1,29 @@
 <fieldset>
-  <legend>Ancestral Modifiers</legend>
+  <legend>{{localize "ZWEI.actor.items.ancestralmodifiers"}}</legend>
   <div class="form-group">
-    <label>Positive</label>
+    <label>{{localize "ZWEI.actor.items.positive"}}</label>
     <zweihander-tags type="bonus-advances-ancestry" name="system.ancestralModifiers.positive">{{
       system.ancestralModifiers.positive
     }}</zweihander-tags>
   </div>
 
   <div class="form-group">
-    <label>Negative</label>
+    <label>{{localize "ZWEI.actor.items.negative"}}</label>
     <zweihander-tags type="bonus-advances-ancestry" name="system.ancestralModifiers.negative">{{
       system.ancestralModifiers.negative
     }}</zweihander-tags>
   </div>
 </fieldset>
 <fieldset>
-  <legend>Ancestral Trait</legend>
+  <legend>{{localize "ZWEI.actor.items.ancestraltrait"}}</legend>
   <div class="form-group">
-    <label>Trait</label>
+    <label>{{localize "ITEM.TypeTrait"}}</label>
     <div class="ancestral-trait">
       {{> ($$ 'partials/detail-item-wrapper') ancestralTraitWrapperData}}
       <button
         type="button"
         class="randomize-trait icon fa-solid fa-shuffle"
-        data-tooltip="Randomize {{ name }} Trait"
+        data-tooltip="{{localize "ZWEI.actor.items.randomtrait"}} ({{ name }})"
         data-tooltip-direction="UP"
       ></button>
     </div>
