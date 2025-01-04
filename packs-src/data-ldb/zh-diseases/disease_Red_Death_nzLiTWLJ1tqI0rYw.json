@@ -1,34 +1,42 @@
 {
   "_id": "nzLiTWLJ1tqI0rYw",
   "effects": [],
-  "img": "systems/zweihander/assets/icons/half-dead.svg",
+  "img": "systems/zweihander/assets/icons/bleeding-eye.svg",
   "name": "Red Death",
   "type": "disease",
   "_stats": {
     "coreVersion": "12.331",
-    "systemId": null,
-    "systemVersion": null,
+    "systemId": "zweihander",
+    "systemVersion": "5.4.1",
     "createdTime": null,
-    "modifiedTime": null,
-    "lastModifiedBy": null,
+    "modifiedTime": 1735997995452,
+    "lastModifiedBy": "rivg6xcMxdlVDM8y",
     "compendiumSource": null,
     "duplicateSource": null
   },
   "system": {
     "description": {
-      "@en": "The Red Death propagates indiscriminately, a violent disease that sickens – and kills – all it infects. Unlike other maladies, it is more insidious and soul-corrupting than any other. It devours both the flesh and the mind, driving even the most level-headed insane with visions in their sleep. Nightmares eventually give way to physical symptoms. Over the course of a few short weeks, hemorrhaging erupts beneath the armpits, around the neck and below the eyes. The eyes and other open sores begin to ‘weep’ blood. Victims of the Red Death tend to take their own lives at this point,  given the grotesquery they have become. Finally, the afflicted loses the ability to breath, with death a certainty afterwards."
+      "@en": "<p>The Red Death propagates indiscriminately, a violent disease that sickens – and kills – all it infects. Unlike other maladies, it is more insidious and soul-corrupting than any other. It devours both the flesh and the mind, driving even the most level-headed insane with visions in their sleep. Nightmares eventually give way to physical symptoms. Over the course of a few short weeks, hemorrhaging erupts beneath the armpits, around the neck and below the eyes. The eyes and other open sores begin to ‘weep’ blood. Victims of the Red Death tend to take their own lives at this point, given the grotesquery they have become. Finally, the afflicted loses the ability to breathe, with death a certainty afterwards.</p>"
     },
     "notes": "",
     "rules": {
       "effect": {
-        "@en": "Over the course of the duration, you permanently gain 1 Chaos Rank each week. If you suffer a Disorder during this time, you are instead Slain! and arise upon the new moon as a Reanimated Corpse."
+        "@en": "<p>Over the course of the duration, you permanently gain 1 Chaos Rank each week. If you suffer a Disorder during this time, you are instead Slain! and arise upon the new moon as a Reanimated Corpse.</p>"
       },
       "treatment": {
-        "@en": "In order to treat a patient suffering from Red Death, a caregiver must have a Skill Rank in Heal, have access to surgical tools, a crystal of cinnabar and a Bandage (both of which are expended as part of the treatment) and be left uninterrupted for at least 1 hour. If they succeed at a (Hard -20%) Heal Test, you do not suffer the effects for the following week. You may only be treated in this manner once every 24 hours, no matter whether it is successful or not."
+        "@en": "<p>In order to treat a patient suffering from Red Death, a caregiver must have a Skill Rank in Heal, have access to surgical tools, a crystal of cinnabar and a Bandage (both of which are expended as part of the treatment) and be left uninterrupted for at least 1 hour. If they succeed at a (Hard -20%) Heal Test, you do not suffer the effects for the following week. You may only be treated in this manner once every 24 hours, no matter whether it is successful or not.</p>"
       }
     },
-    "resist": "(Hard -20%) Toughness Test",
-    "duration": "Until cured",
+    "resist": "-20",
+    "duration": {
+      "value": 0,
+      "formula": {
+        "number": 0,
+        "die": "",
+        "bonus": 0
+      },
+      "lastsUntilCured": true
+    },
     "active": true
   },
   "folder": null,

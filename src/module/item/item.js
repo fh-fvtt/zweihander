@@ -6,6 +6,7 @@ import ZweihanderArmor from './entity/armor';
 import ZweihanderQuality from './entity/quality';
 import ZweihanderInjury from './entity/injury';
 import ZweihanderSpell from './entity/spell';
+import ZweihanderDisease from './entity/disease';
 
 import { ZWEI } from '../config';
 import ZweihanderTrapping from './entity/trapping';
@@ -18,6 +19,7 @@ export default class ZweihanderItem extends Item {
     skill: new ZweihanderSkill(),
     ancestry: new ZweihanderAncestry(),
     injury: new ZweihanderInjury(),
+    disease: new ZweihanderDisease(),
     quality: new ZweihanderQuality(),
     trapping: new ZweihanderTrapping(),
     spell: new ZweihanderSpell(),
@@ -107,6 +109,7 @@ export default class ZweihanderItem extends Item {
   }
 
   async _preUpdate(changed, options, user) {
+    console.log('PRE_UPDATE (item.js): ', changed);
     await super._preUpdate(changed, options, user);
     if (this.parent && changed.system) {
       return await this.dispatch('_preUpdate', { args: [changed, options, user] });

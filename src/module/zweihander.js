@@ -160,7 +160,7 @@ Hooks.once('init', async function () {
    * @type {String}
    */
   CONFIG.Combat.initiative = {
-    formula: '1d10 + @stats.secondaryAttributes.initiative.value',
+    formula: '1d10 + @stats.secondaryAttributes.initiative.current',
     decimals: 2,
   };
   CONFIG.TinyMCE.skin_url = 'systems/zweihander/tinymce/skins/ui/zweihander';
@@ -200,7 +200,7 @@ Hooks.once('init', async function () {
   Items.registerSheet('zweihander', ZweihanderItemSheet, { makeDefault: true });
 
   DocumentSheetConfig.unregisterSheet(ActiveEffect, 'core', ActiveEffectConfig);
-  DocumentSheetConfig.registerSheet(ActiveEffect, 'zweihader', ZweihanderActiveEffectConfig, {
+  DocumentSheetConfig.registerSheet(ActiveEffect, 'zweihander', ZweihanderActiveEffectConfig, {
     makeDefault: true,
   });
   // Register settings

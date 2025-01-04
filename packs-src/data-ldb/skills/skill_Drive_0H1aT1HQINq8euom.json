@@ -1,26 +1,27 @@
 {
   "_id": "0H1aT1HQINq8euom",
   "effects": [],
-  "img": "systems/zweihander/assets/icons/skills.svg",
+  "img": "systems/zweihander/assets/icons/cartwheel.svg",
   "name": "Drive",
   "type": "skill",
   "_stats": {
     "coreVersion": "12.331",
-    "systemId": null,
-    "systemVersion": null,
+    "systemId": "zweihander",
+    "systemVersion": "5.4.1",
     "createdTime": null,
-    "modifiedTime": null,
-    "lastModifiedBy": null,
+    "modifiedTime": 1735745832358,
+    "lastModifiedBy": "rivg6xcMxdlVDM8y",
     "compendiumSource": null,
     "duplicateSource": null
   },
   "system": {
     "description": {
-      "@en": ""
+      "@en": "<p>Drive represents the ability to control common vehicles, such as simple carts, overland carriages, dog-drawn sleds, four-wheeled wagons and even war chariots. The Skill is also used to maneuver vehicles round tight corners, race across the countryside, plow through a hedge and even roll over others should they stand in your way.</p><p>Unless you’re doing something out of the ordinary, a Test is not required to Drive a vehicle. However, Drive Tests are required if you want to attempt a difficult maneuver or race against others. Depending on the severity and inherent challenge of the maneuver, you may be required to roll multiple Drive Tests to successfully evade debris or navigate tight corners.</p><p></p><p style=\"text-align: center;\"><strong>SAMPLE DIFFICULTY RATINGS</strong></p><p></p><ul><li><p><strong>(Trivial +30%):</strong> Travel overland by any vehicle during fair weather.</p></li><li><p><strong>(Easy +20%):</strong> Break through a low barrier or over a hedge in a vehicle.</p></li><li><p><strong>(Routine +10%):</strong> Trek overland by vehicle during inclement weather.</p></li><li><p><strong>(Standard +/-0%):</strong> Race by cart and horse.</p></li><li><p><strong>(Challenging -10%):</strong> Take a vehicle off-road and across country.</p></li><li><p><strong>(Hard -20%):</strong> Jump a vehicle from one road to another.</p></li><li><p><strong>(Arduous -30%):</strong> Ford a deep river with a vehicle.</p></li></ul>"
     },
     "notes": "",
     "requiresTraining": true,
-    "associatedPrimaryAttribute": "Brawn"
+    "associatedPrimaryAttribute": "brawn",
+    "bonusPerRank": 10
   },
   "folder": null,
   "sort": 0,

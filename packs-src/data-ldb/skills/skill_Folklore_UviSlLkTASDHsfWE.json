@@ -1,26 +1,27 @@
 {
   "_id": "UviSlLkTASDHsfWE",
   "effects": [],
-  "img": "systems/zweihander/assets/icons/skills.svg",
+  "img": "systems/zweihander/assets/icons/conversation.svg",
   "name": "Folklore",
   "type": "skill",
   "_stats": {
     "coreVersion": "12.331",
-    "systemId": null,
-    "systemVersion": null,
+    "systemId": "zweihander",
+    "systemVersion": "5.4.1",
     "createdTime": null,
-    "modifiedTime": null,
-    "lastModifiedBy": null,
+    "modifiedTime": 1735746460899,
+    "lastModifiedBy": "rivg6xcMxdlVDM8y",
     "compendiumSource": null,
     "duplicateSource": null
   },
   "system": {
     "description": {
-      "@en": ""
+      "@en": "<p>Folklore represents a general, broad knowledge of the world around you. Unlike academic learning (such as per the Education Skill), it represents both second-hand and first person knowledge of the histories, traditions, faith and notable figures of a particular region. Drawn from the stories and oral traditions you’ve heard from merchants, troubadours and family, it indicates an understanding of cultures other than your own. Its knowledge can also include the socially- accepted norms of both behavior and belief amongst the different social classes, including the courtesies to adopt and the proper forms of address to use.</p><p>Besides being used to gain knowledge about the law, local history and institutions of your own culture, it can also be used to represent knowledge about geography, taboos, famous personalities, faith and even customs of people other than your own. You may be able to identify landmarks, secret signs left behind by other travelers, work out the movements and migrations of people and seek to understand the basic religious practices of your own region and others outside of it. You may also know what grows in the area, which parts are possibly dangerous and what the expected weather conditions will be.</p><p></p><p style=\"text-align: center\"><strong>SAMPLE DIFFICULTY RATINGS</strong></p><p></p><ul><li><p><strong>(Trivial +30%):</strong> Interpret the funerary practices of locals, such as burying or burning the dead.</p></li><li><p><strong>(Easy +20%):</strong> Use the proper courtesies of a higher Social Class.</p></li><li><p><strong>(Routine +10%):</strong> Identify a local landmark and its importance.</p></li><li><p><strong>(Standard +/-0%):</strong> Recant legends from history.</p></li><li><p><strong>(Challenging -10%):</strong> Know about local flora and fauna, and how to identify them.</p></li><li><p><strong>(Hard -20%):</strong> Identify a famous person from their burial marker or tomb.</p></li><li><p><strong>(Arduous -30%):</strong> Forecast the weather based on historic patterns.</p></li></ul>"
     },
     "notes": "",
     "requiresTraining": false,
-    "associatedPrimaryAttribute": "Intelligence"
+    "associatedPrimaryAttribute": "intelligence",
+    "bonusPerRank": 10
   },
   "folder": null,
   "sort": 0,

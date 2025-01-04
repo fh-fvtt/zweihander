@@ -1,26 +1,27 @@
 {
   "_id": "tUlGNzZEfpfrh1wN",
   "effects": [],
-  "img": "systems/zweihander/assets/icons/skills.svg",
+  "img": "systems/zweihander/assets/icons/fingers-crossed.svg",
   "name": "Guile",
   "type": "skill",
   "_stats": {
     "coreVersion": "12.331",
-    "systemId": null,
-    "systemVersion": null,
+    "systemId": "zweihander",
+    "systemVersion": "5.4.1",
     "createdTime": null,
-    "modifiedTime": null,
-    "lastModifiedBy": null,
+    "modifiedTime": 1735749394872,
+    "lastModifiedBy": "rivg6xcMxdlVDM8y",
     "compendiumSource": null,
     "duplicateSource": null
   },
   "system": {
     "description": {
-      "@en": ""
+      "@en": "<p>The Guile Skill represents general underhandedness in conversation, using trickery and lies to get what you want. It is often times used to subtly manipulate others’ feelings and emotions by sewing the seeds of doubt within their mind. With this Skill, you can play word games or use irony to confuse others and engage in political mind games with kingmakers and run verbal circles around demagogues. You can fool others in order to cover up your true intentions with this Skill. Blather, innuendo, deception and bluffing – these are the watchwords of those who use Guile to get what they want.</p><p></p><p><strong>SAMPLE DIFFICULTY RATINGS</strong></p><p></p><ul><li><p><strong>(Trivial +30%):</strong> Bluster and blather your way out of responsibility.</p></li><li><p><strong>(Easy +20%):</strong> Use innuendo to imply one thing while saying another.</p></li><li><p><strong>(Routine +10%):</strong> Engage in wordplay with another to appear smarter.</p></li><li><p><strong>(Standard +/-0%):</strong> Blend into the crowd to look innocuous and harmless.</p></li><li><p><strong>(Challenging -10%):</strong> Bluff your way into a garden party hosted by the elite.</p></li><li><p><strong>(Hard -20%):</strong> Understand Thieves’ Cant without a Skill Rank.</p></li><li><p><strong>(Arduous -30%):</strong> Appear innocent in front of a witch hunter or inquisitor.</p></li></ul>"
     },
     "notes": "",
     "requiresTraining": false,
-    "associatedPrimaryAttribute": "Fellowship"
+    "associatedPrimaryAttribute": "fellowship",
+    "bonusPerRank": 10
   },
   "folder": null,
   "sort": 0,

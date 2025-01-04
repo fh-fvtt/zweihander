@@ -1,26 +1,27 @@
 {
   "_id": "dZJl4nmYtNjaeXgy",
   "effects": [],
-  "img": "systems/zweihander/assets/icons/skills.svg",
+  "img": "systems/zweihander/assets/icons/charm.svg",
   "name": "Charm",
   "type": "skill",
   "_stats": {
     "coreVersion": "12.331",
-    "systemId": null,
-    "systemVersion": null,
+    "systemId": "zweihander",
+    "systemVersion": "5.4.1",
     "createdTime": null,
-    "modifiedTime": null,
-    "lastModifiedBy": null,
+    "modifiedTime": 1735744738671,
+    "lastModifiedBy": "rivg6xcMxdlVDM8y",
     "compendiumSource": null,
     "duplicateSource": null
   },
   "system": {
     "description": {
-      "@en": ""
+      "@en": "<p>Charm is used to please others with flattery and pleasing words. A kind word, a soft smile, a pleasant handshake or hug may be used to illustrate your personal charms and enchant others. This Skill can modify the mood of others, persuading them towards your favor or causing them to change their opinions about things they may not necessarily support. It can be used to impress others with your affable nature or seduce those who may find you attractive. </p><p>This Skill doesn’t allow you to produce lies, false accounts or con games – refer to the Guile Skill in those cases. </p><p></p><p style=\"text-align: center;\"><strong>SAMPLE DIFFICULTY RATINGS</strong></p><p></p><ul><li><p><strong>(Trivial +30%):</strong> Whistle or sing a popular song in-tune.</p></li><li><p><strong>(Easy +20%):</strong> Remember and retell a funny joke.</p></li><li><p><strong>(Routine +10%):</strong> Recant a famous story before an audience.</p></li><li><p><strong>(Standard +/-0%):</strong> Read poetry with a straight face in front of a lover.</p></li><li><p><strong>(Challenging -10%):</strong> Seduce someone outside of your Social Class.</p></li><li><p><strong>(Hard -20%):</strong> Pick up an instrument you’ve never played and learn a song.</p></li><li><p><strong>(Arduous -30%):</strong> Seduce someone who does not share your sexual values.</p></li></ul>"
     },
     "notes": "",
     "requiresTraining": false,
-    "associatedPrimaryAttribute": "Fellowship"
+    "associatedPrimaryAttribute": "fellowship",
+    "bonusPerRank": 10
   },
   "folder": null,
   "sort": 0,

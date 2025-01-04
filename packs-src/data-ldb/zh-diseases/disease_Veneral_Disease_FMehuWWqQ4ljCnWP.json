@@ -1,34 +1,42 @@
 {
   "_id": "FMehuWWqQ4ljCnWP",
   "effects": [],
-  "img": "systems/zweihander/assets/icons/half-dead.svg",
+  "img": "systems/zweihander/assets/icons/splashy-stream.svg",
   "name": "Veneral Disease",
   "type": "disease",
   "_stats": {
     "coreVersion": "12.331",
-    "systemId": null,
-    "systemVersion": null,
+    "systemId": "zweihander",
+    "systemVersion": "5.4.1",
     "createdTime": null,
-    "modifiedTime": null,
-    "lastModifiedBy": null,
+    "modifiedTime": 1735997995448,
+    "lastModifiedBy": "rivg6xcMxdlVDM8y",
     "compendiumSource": null,
     "duplicateSource": null
   },
   "system": {
     "description": {
-      "@en": "There are many names for these sort of illnesses – the clap, sailor’s pain, the drip, great pox or hot piss – all evocative in their own way, but the resulting discomfort is generally the same. Its treatment sometimes involves using an iron catheter to insert mites and lice into the genitalia. Terribly embarrassing and potentially fatal, Venereal Disease can persist over a lifetime."
+      "@en": "<p>There are many names for these sort of illnesses – the clap, sailor’s pain, the drip, great pox or hot piss – all evocative in their own way, but the resulting discomfort is generally the same. Its treatment sometimes involves using an iron catheter to insert mites and lice into the genitalia. Terribly embarrassing and potentially fatal, Venereal Disease can persist over a lifetime.</p>"
     },
     "notes": "",
     "rules": {
       "effect": {
-        "@en": "Over the course of the duration, you permanently lose 3% from Brawn every week."
+        "@en": "<p>Over the course of the duration, you permanently lose 3% from Brawn every week.</p>"
       },
       "treatment": {
-        "@en": "In order to treat a patient suffering from Venereal Disease, a caregiver must have a Skill Rank in Heal, have access to surgical tools, an ampule of Quicksilver and a Bandage (both of which are expended as part of the treatment) and be left uninterrupted for at least 1 hour. If they succeed at a (Standard +/-0%) Heal Test, you do not suffer the effects for the following week. You may only be treated in this manner once every 24 hours, no matter whether it is successful or not."
+        "@en": "<p>In order to treat a patient suffering from Venereal Disease, a caregiver must have a Skill Rank in Heal, have access to surgical tools, an ampule of Quicksilver and a Bandage (both of which are expended as part of the treatment) and be left uninterrupted for at least 1 hour. If they succeed at a (Standard +/-0%) Heal Test, you do not suffer the effects for the following week. You may only be treated in this manner once every 24 hours, no matter whether it is successful or not.</p>"
       }
     },
-    "resist": "(Standard +/-0%) Toughness Test",
-    "duration": "Until cured",
+    "resist": "0",
+    "duration": {
+      "value": 0,
+      "formula": {
+        "number": 0,
+        "die": "",
+        "bonus": 0
+      },
+      "lastsUntilCured": true
+    },
     "active": true
   },
   "folder": null,

@@ -1,0 +1,48 @@
+{
+  "name": "Awaken the Dead",
+  "type": "ritual",
+  "_id": "8PKTA5HkBl2n1KTG",
+  "img": "systems/zweihander/assets/icons/raise-zombie.svg",
+  "system": {
+    "description": {
+      "@en": "<p>The only greater blasphemy than the summation of the Abyss is perhaps the reincarnation of the restless dead. The unliving are ripped from the Well of Souls, unceremoniously tossed back into decrepit bodies and ordered to serve at a moment’s notice. The ritual involves first obtaining the corpses that you wish to revive or possibly multiple pieces of several corpses if full ones cannot be found. The corpses are placed in a circle of salt, with six black candles surrounding them. The candles are snuffed by purple Winds, as screaming spirits tear through the Æthereal Veil, swirling around in pain and torment before being thrust back into their old bodies in the Material Realm. These awakened dead become mindless thralls, at the beck and call of whoever brought them back to unlife. There is a common conjecture that only Necromancers who study the Magick of the undead can summon these wretches. However, this is not true. As long as a conjuror wields a Wytchstone scepter, even the most inexperienced of farmhands could soon have their steads overrun with the mindless, walking dead.</p>"
+    },
+    "notes": "",
+    "rules": {
+      "effect": {
+        "@en": "<p>After successfully casting this Ritual, you can give unlife to a number of Mindless Undead, equal to your [WB]. You can only command a number of Mindless Undead equal your [WB] at once, but may replace those which have been Slain! through continued casting of this Ritual. The type of Mindless Undead is determined by how many Skill Ranks you possess in Incantation:</p><ul><li><p><strong>1 SKILL RANK (Routine +10%): </strong>You give unlife to corpses, turning them into creatures called Crypt Skeletons or Reanimated Corpses. These supernaturally-arisen beings can be controlled by you, understanding simple yet distinct orders (such as follow, till, dig, break, kill, die). They must remain within sight of you or else they collapse into a heap of useless bones and decrepit skin, Slain!.</p></li><li><p><strong>2 SKILL RANKS (Standard +/-0%): </strong>You give unlife to corpses, turning them into creatures called Draugr. You do not have to remain within sight of Draugr in order to control them. They can obey more complex commands (yowl when you see others, kill anyone who trespasses, guard the burial chamber). However, Draugr cannot leave the confines of the tombs they were originally interred within, otherwise they turn into a fine dust, Slain!.</p></li><li><p><strong>3 SKILL RANKS (Challenging -10%):</strong> You give unlife to corpses, turning them into creatures called Tenebrae. You do not have to remain within sight of Tenebrae to control them. They can obey extremely complex commands, possessing a predatory intelligence, but always serve to your best interests. Tenebrae can only operate at night; when exposed to daylight, they turn into ash upon the wind, Slain!.</p></li></ul>"
+      },
+      "consequences": {
+        "@en": "<p>You suffer 9 Corruption every time you conduct this Ritual.</p>"
+      },
+      "condition": {
+        "@en": "<p>The corpses you wish to awaken must be placed inside a circle of epsom salt with burning candles.</p>"
+      },
+      "reagents": {
+        "@en": "<p>A shard of Wytchstone affixed into a staff or rod, epsom salt (expended) and nine candles (expended).</p>"
+      }
+    },
+    "difficulty": "Special",
+    "channelAs": "Lesser Magic",
+    "castingTime": "1 hour"
+  },
+  "effects": [],
+  "folder": null,
+  "sort": 0,
+  "ownership": {
+    "default": 0,
+    "rivg6xcMxdlVDM8y": 3
+  },
+  "flags": {},
+  "_stats": {
+    "compendiumSource": null,
+    "duplicateSource": null,
+    "coreVersion": "12.331",
+    "systemId": "zweihander",
+    "systemVersion": "5.4.1",
+    "createdTime": 1735252403902,
+    "modifiedTime": 1735253397429,
+    "lastModifiedBy": "rivg6xcMxdlVDM8y"
+  },
+  "_key": "!items!8PKTA5HkBl2n1KTG"
+}

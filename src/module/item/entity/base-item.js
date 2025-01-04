@@ -112,7 +112,6 @@ export default class ZweihanderBaseItem {
   static async getLinkedItemEntry(actor, itemUuid, itemType, sourceName, sourceType) {
     const itemToCreate = (await fromUuid(itemUuid))?.toObject?.();
 
-    // @todo: localize source information here
     const existingItemWithSameName = actor.items.find((t) => t.type === itemType && t.name === itemToCreate?.name);
     const notFoundValue = { linkedId: null, name: itemToCreate?.name ?? '', uuid: '' };
 
@@ -120,7 +119,7 @@ export default class ZweihanderBaseItem {
 
     const flag = {
       name: sourceType,
-      label: `${sourceName} (${sourceType.capitalize()})`,
+      label: `${sourceName} (${game.i18n.localize(CONFIG.Item.typeLabels[sourceType])})`,
     };
 
     if (existingItemWithSameName) {
@@ -145,7 +144,7 @@ export default class ZweihanderBaseItem {
       return {
         linkedId: existingItemWithSameName.id,
         name: existingItemWithSameName.name,
-        uuid: existingItemWithSameName.uuid,
+        uuid: itemUuid,
       };
     } else {
       setProperty(itemToCreate, 'flags.zweihander.source', flag);

@@ -1,26 +1,27 @@
 {
   "_id": "Mxz4jZ5qVxfTt21c",
   "effects": [],
-  "img": "systems/zweihander/assets/icons/skills.svg",
+  "img": "systems/zweihander/assets/icons/diploma.svg",
   "name": "Counterfeit",
   "type": "skill",
   "_stats": {
     "coreVersion": "12.331",
-    "systemId": null,
-    "systemVersion": null,
+    "systemId": "zweihander",
+    "systemVersion": "5.4.1",
     "createdTime": null,
-    "modifiedTime": null,
-    "lastModifiedBy": null,
+    "modifiedTime": 1735745142563,
+    "lastModifiedBy": "rivg6xcMxdlVDM8y",
     "compendiumSource": null,
     "duplicateSource": null
   },
   "system": {
     "description": {
-      "@en": ""
+      "@en": "<p>Counterfeit represents a pool of abilities utilized to falsify documents, making them appear official. This Skill is oftentimes used to duplicate signatures, handwriting styles and author other records. It’s also related to your ability to reproduce near-replicas of objets d’art, cobbling together a facsimile of a painting, statue, item of jewelry and a host of other items. In addition, Counterfeit can be used to forge currency and shave coins to dupe merchants and other pedlars from their wares and to embezzle money from others, providing you have made and established a bond of trust with your mark. </p><p>In the case of most forged documents, you should already know how to read and write (as per the Education Skill). To reproduce other works, you must be able to craft the objects in question (as per the Tradecraft Skill). If you cannot read and write or craft, having the document or object you intend to reproduce will suffice (although your chances to succeed will likely suffer). Most importantly, you will never outright know whether the reproduction was successfully created or not. The only time you’d know whether the copy was successful or not is during the transaction with a Secret Test. </p><p>Whenever you attempt to resell forged objects or pass them off as official or original, you may be required to employ use of Guile to spin a tale or give credence to the legitimacy of the Counterfeit.</p><p></p><p style=\"text-align: center;\"><strong>SAMPLE DIFFICULTY RATINGS</strong></p><p></p><ul><li><p><strong>(Trivial +30%):</strong> Create a simple reproduction of a ring or other item of finery.</p></li><li><p><strong>(Easy +20%):</strong> Craft a false estimate of work to collect pay.</p></li><li><p><strong>(Routine +10%):</strong> Clipping and shaving coins, producing 1 new one out of 9 others.</p></li><li><p><strong>(Standard +/-0%):</strong> Pass off a painted wooden token as a gold piece.</p></li><li><p><strong>(Challenging -10%):</strong> Forge a signature.</p></li><li><p><strong>(Hard -20%):</strong> Reproduce an intricate artwork without the skills necessary.</p></li><li><p><strong>(Arduous -30%):</strong> Perfectly reproduce the writing style of another.</p></li></ul>"
     },
     "notes": "",
     "requiresTraining": true,
-    "associatedPrimaryAttribute": "Intelligence"
+    "associatedPrimaryAttribute": "intelligence",
+    "bonusPerRank": 10
   },
   "folder": null,
   "sort": 0,

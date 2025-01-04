@@ -1,41 +1,93 @@
-<div class='form-group'>
-  <label>{{localize 'ZWEI.actor.items.resist'}}</label>
-  <input name='system.resist' type='text' value='{{system.resist}}' />
-</div>
+<fieldset>
+  <legend>Incapacity</legend>
+  <div class="form-group stacked">
+    <label>{{localize "ZWEI.actor.items.effect"}}</label>
+    {{editor
+      html.rules.effect
+      target=(zhLocalizePath "system.rules.effect")
+      engine="prosemirror"
+      button=true
+      owner=owner
+      editable=editable
+    }}
+  </div>
 
-<div class='form-group'>
-  <label>{{localize 'ZWEI.actor.items.duration'}}</label>
-  <input name='system.duration' type='text' value='{{system.duration}}' />
-</div>
+  <div class="form-group">
+    <label>Lasts Until Cured</label>
+    <input
+      name="system.duration.lastsUntilCured"
+      type="checkbox"
+      class="link-checkbox"
+      {{checked system.duration.lastsUntilCured}}
+    />
+  </div>
 
-<div class='form-group stacked'>
-  <label>{{localize 'ZWEI.actor.items.effect'}}</label>
-  {{editor
-    html.rules.effect
-    target=(zhLocalizePath 'system.rules.effect')
-    engine='prosemirror'
-    button=true
-    owner=owner
-    editable=editable
-  }}
-</div>
+  {{#unless system.duration.lastsUntilCured}}
+    {{#unless actor}}
+      <div class="form-group">
+        <label class="formula-label">{{localize "ZWEI.actor.items.duration"}} in Days</label>
+        <div class="formula-inputs">
+          <div class="form-group label-top">
+            <label>NUMBER</label>
+            <input type="number" name="system.duration.formula.number" value="{{system.duration.formula.number}}" />
+          </div>
+          <div class="form-group label-top">
+            <label>DIE</label>
+            <select name="system.duration.formula.die">
+              {{selectOptions dice valueAttr="value" labelAttr="label" selected=selected}}
+            </select>
+          </div>
+          <div class="form-group label-top">
+            <label>BONUS</label>
+            <input type="number" name="system.duration.formula.bonus" value="{{system.duration.formula.bonus}}" />
+          </div>
+        </div>
+      </div>
+    {{/unless}}
+    {{#if actor}}
+      <div class="form-group">
+        <label>Duration in Days</label>
+        <input name="system.duration.value" type="number" value="{{system.duration.value}}" />
+      </div>
+    {{/if}}
+  {{/unless}}
 
-<div class='form-group stacked'>
-  <label>{{localize 'ZWEI.actor.items.treatment'}}</label>
-  {{editor
-    html.rules.treatment
-    target=(zhLocalizePath 'system.rules.treatment')
-    engine='prosemirror'
-    button=true
-    owner=owner
-    editable=editable
-  }}
-</div>
+  {{#if actor}}
+    <div class="form-group stacked">
+      <label>{{localize "ZWEI.actor.items.ineffect"}}</label>
+      <input name="system.active" type="checkbox" class="link-checkbox" {{checked system.active}} />
+    </div>
+  {{/if}}
+</fieldset>
 
-<div class='form-group stacked'>
-  <label>{{localize 'ZWEI.actor.items.status'}}</label>
-  <label class='checkbox'>
-    <input name='system.active' type='checkbox' class='link-checkbox' {{checked system.active}} />
-    {{localize 'ZWEI.actor.items.ineffect'}}
-  </label>
-</div>
+<fieldset>
+  <legend>Disease Management</legend>
+  <div class="form-group">
+    <label>{{localize "ZWEI.actor.items.resist"}} Difficulty</label>
+    <div class="roll-container">
+      <select name="system.resist">
+        {{selectOptions difficultyRatings valueAttr="value" labelAttr="label" selected=selected}}
+      </select>
+      {{#if actor}}
+        <button
+          type="button"
+          class="resist-disease icon fa-solid fa-dice-d20"
+          data-tooltip="Roll Toughness Test"
+          data-tooltip-direction="UP"
+        ></button>
+      {{/if}}
+    </div>
+  </div>
+
+  <div class="form-group stacked">
+    <label>{{localize "ZWEI.actor.items.treatment"}}</label>
+    {{editor
+      html.rules.treatment
+      target=(zhLocalizePath "system.rules.treatment")
+      engine="prosemirror"
+      button=true
+      owner=owner
+      editable=editable
+    }}
+  </div>
+</fieldset>

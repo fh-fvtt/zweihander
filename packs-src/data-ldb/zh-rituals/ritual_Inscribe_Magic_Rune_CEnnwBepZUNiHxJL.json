@@ -10,16 +10,16 @@
     "notes": "",
     "rules": {
       "effect": {
-        "@en": "After successfully casting this Ritual, you inscribe any single Rune on a suit of armor, shield or weapon. Each Rune grants different abilities to the person that wields the item. However, no item can bear more than three Apprentice Runes, two Journeyman Runes or one Master Rune, nor can an item ever have more than three Runes upon it. Please see Main Gauche page 345 for rune types."
+        "@en": "<p>After successfully casting this Ritual, you inscribe any single Rune on a suit of armor, shield or weapon. Each Rune grants different abilities to the person that wields the item. However, no item can bear more than three Apprentice Runes, two Journeyman Runes or one Master Rune, nor can an item ever have more than three Runes upon it.</p><p></p><p><strong>APPRENTICE RUNE</strong></p><p><strong>Inscribe Time: </strong>One minute for temporary, one hour for permanent.</p><p><strong>Empowerment Cycle: </strong>(Routine +10%) Incantation Test</p><p><strong>Binding Time: </strong>1d10+1 hours</p><p><strong>Effect: </strong>These Runes are simple and only contain basic lines, making them ideal for beginners. They only provide small changes to abilities, but three of them can be placed on any singular item. They glow a cool blue when activated.</p><p></p><table><tbody><tr><td data-colwidth=\"174\"><p><strong>APPRENTICE RUNES</strong></p></td><td><p><strong>EFFECT</strong></p></td></tr><tr><td data-colwidth=\"174\"><p>Rune of Ansuz</p></td><td><p>Weapons inscribed with this rune allows its bearer to roll twice when making attacks with melee weapons, selecting the better of the two results.</p></td></tr><tr><td data-colwidth=\"174\"><p>Rune of Fehu</p></td><td><p>Weapons inscribed with this rune allows its bearer to roll twice when making attacks with ranged weapons, selecting the better of the two results.</p></td></tr><tr><td data-colwidth=\"174\"><p>Rune of Gyfu</p></td><td><p>Weapons inscribed with this rune allows its bearer to roll Fury Dice twice, selecting the better of the two results.</p></td></tr><tr><td data-colwidth=\"174\"><p>Rune of Kaunan</p></td><td><p>Armor inscribed with this rune adds +1 to Damage Threshold.</p></td></tr><tr><td data-colwidth=\"174\"><p>Rune of Raido</p></td><td><p>Shields inscribed with this rune allows its bearer to Parry weapons with the Gunpowder Quality.</p></td></tr><tr><td data-colwidth=\"174\"><p>Rune of Thurisaz</p></td><td><p>Shields inscribed with this rune allows its bearer to roll twice when Parrying, selecting the better of the two results.</p></td></tr><tr><td data-colwidth=\"174\"><p>Rune of Ur</p></td><td><p>Weapons inscribed with this rune add +1 Damage.</p></td></tr><tr><td data-colwidth=\"174\"><p>Rune of Wynn</p></td><td><p>Shields inscribed with this rune allows its bearer to ignore an enemy’s [CB] after being struck with a melee or ranged weapon.</p></td></tr></tbody></table>"
       },
       "consequences": {
-        "@en": "Temporary Runes last for a number of days equal to your [WB]. Permanent Runes last forever."
+        "@en": "<p>Temporary Runes last for a number of days equal to your [WB]. Permanent Runes last forever.</p>"
       },
       "condition": {
-        "@en": "You must have the Skill Focus (Runesmith)"
+        "@en": "<p>You must have the Skill Focus (Runesmith).</p>"
       },
       "reagents": {
-        "@en": "Permanent runes require one powder of Wytchstone Essence for Apprentice Runes, two for Journeyman Runes or three for Master Runes (all are expended). Temporary runes forgo the need for Wytchstone Essence. You must also have a suit of armor, shield or weapon (crafted by you) and a writing kit."
+        "@en": "<p>Permanent runes require one powder of Wytchstone Essence for Apprentice Runes, two for Journeyman Runes or three for Master Runes (all are expended). Temporary runes forgo the need for Wytchstone Essence. You must also have a suit of armor, shield or weapon (crafted by you) and a writing kit.</p>"
       }
     },
     "difficulty": "Varies",
@@ -29,11 +29,11 @@
   "type": "ritual",
   "_stats": {
     "coreVersion": "12.331",
-    "systemId": null,
-    "systemVersion": null,
+    "systemId": "zweihander",
+    "systemVersion": "5.4.1",
     "createdTime": null,
-    "modifiedTime": null,
-    "lastModifiedBy": null,
+    "modifiedTime": 1735586102816,
+    "lastModifiedBy": "rivg6xcMxdlVDM8y",
     "compendiumSource": null,
     "duplicateSource": null
   },

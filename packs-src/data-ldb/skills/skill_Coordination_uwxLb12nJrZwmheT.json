@@ -1,26 +1,27 @@
 {
   "_id": "uwxLb12nJrZwmheT",
   "effects": [],
-  "img": "systems/zweihander/assets/icons/skills.svg",
+  "img": "systems/zweihander/assets/icons/contortionist.svg",
   "name": "Coordination",
   "type": "skill",
   "_stats": {
     "coreVersion": "12.331",
-    "systemId": null,
-    "systemVersion": null,
+    "systemId": "zweihander",
+    "systemVersion": "5.4.1",
     "createdTime": null,
-    "modifiedTime": null,
-    "lastModifiedBy": null,
+    "modifiedTime": 1735744884443,
+    "lastModifiedBy": "rivg6xcMxdlVDM8y",
     "compendiumSource": null,
     "duplicateSource": null
   },
   "system": {
     "description": {
-      "@en": ""
+      "@en": "<p>Coordination represents dexterity, flexibility, balance and grace in movement. You can use this Skill to perform acrobatic feats, slip out of bonds, avoid falling debris, manipulate objects with delicacy and avoid oncoming attacks by leaping out of the way. You generally use Coordination as a reaction to something else. Its most common application is to evade traps, avoid being pushed off your feet and weaseling out of bonds and shackles.</p><p></p><p style=\"text-align: center;\"><strong>SAMPLE DIFFICULTY RATINGS</strong></p><p></p><ul><li><p><strong>(Trivial +30%):</strong> Catch a small object in-hand as it falls.</p></li><li><p><strong>(Easy +20%):</strong> Walk across a wet tree log over a river.</p></li><li><p><strong>(Routine +10%):</strong> Juggle otherwise innocuous objects.</p></li><li><p><strong>(Standard +/-0%):</strong> Avoid Moderately Dangerous flames.</p></li><li><p><strong>(Challenging -10%):</strong> Perform an intricate dance among higher social circles.</p></li><li><p><strong>(Hard -20%):</strong> Twist your body to fit into a very small space.</p></li><li><p><strong>(Arduous -30%):</strong> Contort your wrists to escape bonds or manacles.</p></li></ul>"
     },
     "notes": "",
     "requiresTraining": false,
-    "associatedPrimaryAttribute": "Agility"
+    "associatedPrimaryAttribute": "agility",
+    "bonusPerRank": 10
   },
   "folder": null,
   "sort": 0,

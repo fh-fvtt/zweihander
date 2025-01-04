@@ -1,26 +1,27 @@
 {
   "_id": "013qebwwR0UsPJW3",
   "effects": [],
-  "img": "systems/zweihander/assets/icons/skills.svg",
+  "img": "systems/zweihander/assets/icons/drink-me.svg",
   "name": "Alchemy",
   "type": "skill",
   "_stats": {
     "coreVersion": "12.331",
     "systemId": "zweihander",
-    "systemVersion": "5.3.5",
+    "systemVersion": "5.4.1",
     "createdTime": null,
-    "modifiedTime": 1732230664474,
+    "modifiedTime": 1735743574580,
     "lastModifiedBy": "rivg6xcMxdlVDM8y",
     "compendiumSource": null,
     "duplicateSource": null
   },
   "system": {
     "description": {
-      "@en": ""
+      "@en": "<p>Alchemy’s practitioners spend years divining the hidden secrets of true transmutation, although its everyday use tends to consist of concocting serums, pain relievers, abortifacients and other medicines. Although Alchemy is essentially a form of science, it borders on being a more mundane form of Magick, practiced by both the wise and the insane. Alchemical compounds are created through various processes of heating and cooling substances. Drugs, poisons and other substances useful to adventurers can be crafted using this Skill. An alchemist’s laboratory tends to be a strange amalgam of scientific notes, erudite symbols of Magick, smells and boiling baubles. Rules for using alchemy are covered in <strong>Chapter 9: Hazards & Healing</strong>.</p><p></p><p style=\"text-align: center\"><strong>SAMPLE DIFFICULTY RATINGS</strong></p><p></p><ul><li><p><strong>(Trivial +30%):</strong> Identify an unknown alchemical substance.</p></li><li><p><strong>(Easy +20%):</strong> Assemble an alchemical laboratory.</p></li><li><p><strong>(Routine +10%):</strong> Create one dose of Deliriant, draught of Laudanum or shot of Gunpowder.</p></li><li><p><strong>(Standard +/-0%)</strong>: Create two doses of Deliriants, draughts of Laudanum or shots of Gunpowder.</p></li><li><p><strong>(Challenging -10%):</strong> Create three doses of Deliriants, draughts of Laudanum or shots of Gunpowder.</p></li><li><p><strong>(Hard -20%):</strong> Brew a quintessence of Royal Water.</p></li><li><p><strong>(Arduous -30%):</strong> Brew a quintessence of Panacea.</p></li></ul>"
     },
     "notes": "",
     "requiresTraining": true,
-    "associatedPrimaryAttribute": "intelligence"
+    "associatedPrimaryAttribute": "intelligence",
+    "bonusPerRank": 10
   },
   "folder": null,
   "sort": 0,

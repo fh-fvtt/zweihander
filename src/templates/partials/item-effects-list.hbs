@@ -1,7 +1,7 @@
 <ol class="items-list">
   {{#each this as |itemGroup| }}
   <li class="items-header flexrow">
-    <h3 class="item-name sortable filterable" data-detail="-1" data-item-group="{{itemGroup.id}}">
+    <h3 class="item-name" data-detail="-1" data-item-group="{{itemGroup.id}}">
       <span class="detail-title">
         Effects
         <!--{{#if itemGroup.sortName}}
@@ -22,9 +22,10 @@
       </div>-->
     </h3>
     {{#each itemGroup.details as |detail index| }}
-    <div class="item-detail sortable {{#if detail.filterable}}filterable{{/if}}" style="width:{{detail.size}}px" data-detail="{{index}}" data-item-group="{{itemGroup.id}}">
+    <div class="item-detail" style="width:{{detail.size}}px" data-detail="{{index}}" data-item-group="{{itemGroup.id}}">
       <span class="detail-title secondary">
         {{localize (zhConcat "ZWEI.actor.items." detail.title)}}
+        {{!--
         {{#if detail.sort}}
         <div class="sort-indicator">
           <i class="fa fa-sort-{{#if (eq detail.sort 1)}}up{{else}}down{{/if}}"></i>
@@ -39,6 +40,7 @@
         <div class="filter-indicator{{#if detail.filter}} filter-active{{/if}} show-filter"><i class="fa fa-search"></i></div>
         {{/if}}
         <div class="padder"></div>
+        --}}
       </span>
       {{#if detail.filterable}}
       <div class="filter-input{{#if detail.filterActive}} filter-input-active{{/if}}">

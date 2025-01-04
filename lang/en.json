@@ -257,7 +257,7 @@
         "ancestraltrait": "Ancestral Trait",
         "damagethresholdmodifier": "Damage Threshold Modifier",
         "status": "Status",
-        "bonusperrank": "Base Chance Increase per Rank",
+        "bonusperrank": "Base Chance per Skill Rank",
         "effect": "Effect",
         "treatment": "Treatment",
         "details": "Details",
@@ -289,7 +289,7 @@
         "ignore1": "Ignore 1 Skill Rank",
         "penalty5": "-5% to Skill Tests",
         "penalty10": "-10% to Skill Tests",
-        "penalty20": "-20% to Skill Tests",
+        "penalty20": "-15% to Skill Tests",
         "imperiled": "Imperiled",
         "unhindered": "Unhindered",
         "slain": "SLAIN!",
@@ -517,7 +517,7 @@
       },
       "acsettings": {
         "subtitle": "Configure and fine-tune this Actor's behavior and underlying mechanics.",
-        "primarytitle": "Underlying Primary Attributes",
+        "primarytitle": "Governing Primary Attributes",
         "primarydt": "Damage Threshold Primary Attribute",
         "primarydthint": "Select the Primary Attribute off of which the Damage Threshold is calculated.",
         "primarypt": "Peril Threshold Primary Attribute",
@@ -534,7 +534,7 @@
         "globalinitiativehint": "Set a global Initiative modifier.",
         "globalmovement": "Movement Modifier",
         "globalmovementhint": "Set a global Movement modifier.",
-        "skillstitle": "Underlying Skills",
+        "skillstitle": "Governing Skills",
         "skillsparry": "Parry Skills",
         "skillsparryhint": "Set the skills that can be used when rolling Parry.",
         "skillsdodge": "Dodge Skills",
@@ -551,7 +551,7 @@
         "magicktitle": "Magick",
         "magickuser": "Magick User",
         "magickuserhint": "Check this box to set this Actor as a Magick user. Opens a new tab on the Actor sheet.",
-        "magickskill": "Underlying Magick Skills",
+        "magickskill": "Governing Magick Skills",
         "magickskillhint": "Set the skills that can be used when rolling Dodge.",
         "octitle": "Order & Chaos",
         "occhaosrank": "Permanent Chaos Ranks",
@@ -572,7 +572,7 @@
         "add": "Add Language"
       },
       "othersettings": {
-        "underlyingmagickskill": "Underlying Magick Skill"
+        "governingmagickskill": "Governing Magick Skill"
       }
     },
     "chatskill": {

@@ -1,26 +1,27 @@
 {
   "_id": "aG2PyFqhpBm2yfuN",
   "effects": [],
-  "img": "systems/zweihander/assets/icons/skills.svg",
+  "img": "systems/zweihander/assets/icons/shaking-hands.svg",
   "name": "Bargain",
   "type": "skill",
   "_stats": {
     "coreVersion": "12.331",
-    "systemId": null,
-    "systemVersion": null,
+    "systemId": "zweihander",
+    "systemVersion": "5.4.1",
     "createdTime": null,
-    "modifiedTime": null,
-    "lastModifiedBy": null,
+    "modifiedTime": 1735744461435,
+    "lastModifiedBy": "rivg6xcMxdlVDM8y",
     "compendiumSource": null,
     "duplicateSource": null
   },
   "system": {
     "description": {
-      "@en": ""
+      "@en": "<p>Bargain allows you to interpret the underlying factors of a commercial transaction, barter with trade goods, haggle over prices, find a common ground with another party, grease the wheels of commerce through use of bribery, appraise the worth of objects d’art and even procure illegal contraband.</p><p>You can use this Skill in many different ways, but its most common use is to haggle over the price of goods. You may also use the Bargain Skill to appraise the worth of jewels, trade goods and even priceless relics of an age long past. Your Difficulty Rating may be improved if you have Skill Ranks in other Skills that may be related to the object you’re attempting to evaluate (such as having the Tradecraft Skill with a Focus in Tailoring to determine the value of a bolt of silk). Your GM will always let you know when there may be an existing synergy between two such Skills.</p><p></p><p style=\"text-align: center\"><strong>SAMPLE DIFFICULTY RATINGS</strong></p><p></p><ul><li><p><strong>(Trivial +30%):</strong> Evaluate the worth of a gem or finery you procured.</p></li><li><p><strong>(Easy +20%):</strong> Broker a trade deal between two merchants.</p></li><li><p><strong>(Routine +10%):</strong> Interpret the profit and loss of a major financial deal.</p></li><li><p><strong>(Standard +/-0%):</strong> Procure black-market goods from a fence.</p></li><li><p><strong>(Challenging -10%):</strong> Find common ground between two people of different Social Classes.</p></li><li><p><strong>(Hard -20%):</strong> Convince an innkeep to not report criminal mischief on your part.</p></li><li><p><strong>(Arduous -30%):</strong> Bribe a guard to walk away from the scene of a crime.</p></li></ul>"
     },
     "notes": "",
     "requiresTraining": false,
-    "associatedPrimaryAttribute": "Fellowship"
+    "associatedPrimaryAttribute": "fellowship",
+    "bonusPerRank": 10
   },
   "folder": null,
   "sort": 0,

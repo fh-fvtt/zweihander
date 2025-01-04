@@ -1,26 +1,27 @@
 {
   "_id": "jqobIe82ZBGOZmYi",
   "effects": [],
-  "img": "systems/zweihander/assets/icons/skills.svg",
+  "img": "systems/zweihander/assets/icons/mute.svg",
   "name": "Eavesdrop",
   "type": "skill",
   "_stats": {
     "coreVersion": "12.331",
-    "systemId": null,
-    "systemVersion": null,
+    "systemId": "zweihander",
+    "systemVersion": "5.4.1",
     "createdTime": null,
-    "modifiedTime": null,
-    "lastModifiedBy": null,
+    "modifiedTime": 1735746035368,
+    "lastModifiedBy": "rivg6xcMxdlVDM8y",
     "compendiumSource": null,
     "duplicateSource": null
   },
   "system": {
     "description": {
-      "@en": ""
+      "@en": "<p>Eavesdrop allows you to listen to and perceive low sounds, usually conversations between two or more people. By listening to them or watching the movement of their lips, you can make out distinct sounds and determine the differences between mumbling and actual words. With a clear view of the people speaking, you can even pick up slight intonations and body language, giving further indication as to what is being said. You can also use it to hide the movement of your own lips to prevent Eavesdrop attempts on your conversations.</p><p>Succeeding at an Eavesdrop Test doesn’t give you all of the details of the conversation. Instead, you gain a general impression of what was said. For example, you see two courtiers in conversation, but do not hear exactly what they are saying, though certain words suggest that they are plotting an assassination attempt against a rival aristocrat.</p><p></p><p><strong>SAMPLE DIFFICULTY RATINGS</strong></p><p></p><ul><li><p><strong>(Trivial +30%):</strong> Reproduce animal sounds with your mouth.</p></li><li><p><strong>(Easy +20%):</strong> Hide your lips from being read by others.</p></li><li><p><strong>(Routine +10%):</strong> Use hand signals to indicate simple thoughts to another.</p></li><li><p><strong>(Standard +/-0%):</strong> Read a person’s lips from across a well-lit room.</p></li><li><p><strong>(Challenging -10%):</strong> Listen to a conversation through a wooden door.</p></li><li><p><strong>(Hard -20%):</strong> Read a person’s lips in dim light.</p></li><li><p><strong>(Arduous -30%):</strong> Listen in to a conversation through a metal door.</p></li></ul>"
     },
     "notes": "",
     "requiresTraining": false,
-    "associatedPrimaryAttribute": "Perception"
+    "associatedPrimaryAttribute": "perception",
+    "bonusPerRank": 10
   },
   "folder": null,
   "sort": 0,

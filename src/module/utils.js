@@ -335,32 +335,7 @@ export async function findItemsByType(
   const packItems = (
     await Promise.all(
       game.packs
-        .filter((pack) => {
-          const title = pack.metadata.name;
-
-          // @todo: quick-and-dirty performance optimization; refactor later
-          const lang = game.i18n.lang;
-          const packLang =
-            lang == 'de' ? '-de' : lang == 'es' ? '-es' : lang == 'fr' ? '-fr' : lang == 'ru' ? '-ru' : '';
-
-          const gameSystem = game.settings.get('zweihander', 'gameSystem');
-
-          const isRelevantPack =
-            gameSystem === 'zweihander'
-              ? title === `zh-talents${packLang}` ||
-                title === `zh-traits${packLang}` ||
-                title === `zh-drawbacks${packLang}` ||
-                title === `zh-ancestral-traits${packLang}` ||
-                title === `zh-qualities${packLang}`
-              : title === `fof-talents${packLang}` ||
-                title === `fof-traits${packLang}` ||
-                title === `fof-quirks${packLang}` ||
-                title === `fof-qualities${packLang}`;
-
-          if (isRelevantPack) {
-            return pack;
-          }
-        })
+        .filter((pack) => pack.documentClass.documentName === 'Item')
         .map((pack) => pack.getDocuments(filterExpression))
     )
   ).flatMap((x) => x);
@@ -425,12 +400,11 @@ export function zhExplicitSign(number) {
 }
 
 export function getDifficultyRatingLabel(difficultyRating) {
-  //const number = zhExplicitSign(difficultyRating);
-  //const label = game.i18n.localize(`ZWEI.Difficulty.${number}`);
-  // I localize when rendering the test dialog
-  const number = (difficultyRating + 30) / 10;
-  const label = `difficulty`;
-  return `${label}${number}`;
+  const number = zhExplicitSign(difficultyRating);
+  const label = game.i18n.localize(`ZWEI.Difficulty.${number}`);
+  //const number = (difficultyRating + 30) / 10;
+  //const label = `difficulty`;
+  return `${label} ${number}%`;
 }
 
 export function determineCurrentActorId(interactive = false) {

@@ -1,26 +1,27 @@
 {
   "_id": "PeqUxOLue5z66RkH",
   "effects": [],
-  "img": "systems/zweihander/assets/icons/skills.svg",
+  "img": "systems/zweihander/assets/icons/strong-man.svg",
   "name": "Athletics",
   "type": "skill",
   "_stats": {
     "coreVersion": "12.331",
-    "systemId": null,
-    "systemVersion": null,
+    "systemId": "zweihander",
+    "systemVersion": "5.4.1",
     "createdTime": null,
-    "modifiedTime": null,
-    "lastModifiedBy": null,
+    "modifiedTime": 1735743792079,
+    "lastModifiedBy": "rivg6xcMxdlVDM8y",
     "compendiumSource": null,
     "duplicateSource": null
   },
   "system": {
     "description": {
-      "@en": ""
+      "@en": "<p>Athletics measures physical prowess. It reflects your ability to scale up surfaces and ropes, tread and swim water without tiring, propel vessels while rowing, overpower others in contests of strength and push heavy objects. It also aids you when lifting heavy objects or great feats of stamina, such as sprinting and vaulting.</p><p></p><p style=\"text-align: center;\"><strong>SAMPLE DIFFICULTY RATES</strong></p><p></p><ul><li><p><strong>(Trivial +30%):</strong> Climb up a tree with many limbs.</p></li><li><p><strong>(Easy +20%):</strong> Swim while wearing quilted armor.</p></li><li><p><strong>(Routine +10%):</strong> Jump over a pit while wearing leather armor.</p></li><li><p><strong>(Standard +/-0%):</strong> Row a boat through rapid water.</p></li><li><p><strong>(Challenging -10%):</strong> Push an object three times your weight.</p></li><li><p><strong>(Hard -20%):</strong> Pull a coach stuck in the mud out with the aid of draft animals.</p></li><li><p><strong>(Arduous -30%):</strong> Climb the sheer face of a tower.</p></li></ul>"
     },
     "notes": "",
     "requiresTraining": false,
-    "associatedPrimaryAttribute": "Brawn"
+    "associatedPrimaryAttribute": "brawn",
+    "bonusPerRank": 10
   },
   "folder": null,
   "sort": 0,

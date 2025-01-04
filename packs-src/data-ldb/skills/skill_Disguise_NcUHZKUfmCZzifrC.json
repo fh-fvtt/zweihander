@@ -1,26 +1,27 @@
 {
   "_id": "NcUHZKUfmCZzifrC",
   "effects": [],
-  "img": "systems/zweihander/assets/icons/skills.svg",
+  "img": "systems/zweihander/assets/icons/spectacles.svg",
   "name": "Disguise",
   "type": "skill",
   "_stats": {
     "coreVersion": "12.331",
-    "systemId": null,
-    "systemVersion": null,
+    "systemId": "zweihander",
+    "systemVersion": "5.4.1",
     "createdTime": null,
-    "modifiedTime": null,
-    "lastModifiedBy": null,
+    "modifiedTime": 1735745604744,
+    "lastModifiedBy": "rivg6xcMxdlVDM8y",
     "compendiumSource": null,
     "duplicateSource": null
   },
   "system": {
     "description": {
-      "@en": ""
+      "@en": "<p>The Disguise Skill represents the ability to masquerade as someone else, hide your own identity in public or conceal your true feelings from others. Theatrics and imitation are the foundation of any good disguise. The more you know about the people (or person) you’re trying to hide or mimic, the more effective your disguise.</p><p>You can use this Skill in its most traditional way by employing tools of the trade to change your appearance – heavy cosmetics, appropriate clothing, different posture, regional accent and different behavioral traits or personality tics.</p><p>Changing your appearance to look like that of another group of people or race will be easier if you have the appropriate clothes or know enough about their culture. Dressing as the opposite sex can be tough. However, disguises to imitate specific people can be much more difficult, particularly if you intend to traffic among people they know.</p><p></p><p style=\"text-align: center;\"><strong>SAMPLE DIFFICULTY RATINGS</strong></p><p></p><ul><li><p><strong>(Trivial +30%):</strong> Convincingly act as another in a cheap play.</p></li><li><p><strong>(Easy +20%):</strong> Pretend to be someone of a higher or lower Social Class.</p></li><li><p><strong>(Routine +10%):</strong> Create a false identity and live behind it.</p></li><li><p><strong>(Standard +/-0%):</strong> Impersonate someone from a foreign land.</p></li><li><p><strong>(Challenging -10%):</strong> Convincingly act as another in a well-known playhouse.</p></li><li><p><strong>(Hard -20%):</strong> Impersonate another’s personal appearance.</p></li><li><p><strong>(Arduous -30%):</strong> Perfectly impersonate another person in looks and voice.</p></li></ul>"
     },
     "notes": "",
     "requiresTraining": true,
-    "associatedPrimaryAttribute": "Fellowship"
+    "associatedPrimaryAttribute": "fellowship",
+    "bonusPerRank": 10
   },
   "folder": null,
   "sort": 0,

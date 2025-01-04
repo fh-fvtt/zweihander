@@ -1,21 +1,25 @@
 import { ZWEI } from './config';
-import { zhDebug } from './utils';
+import { zhDebug, findItemWorldWide } from './utils';
 
 export const migrateWorld = async (forceSystemPacks = false) => {
-  ui.notifications.info(
-    game.i18n.format("ZWEI.othermessages.migrationsystem", { version: game.system.version }),
-    { permanent: true }
-  );
+  ui.notifications.info(game.i18n.format('ZWEI.othermessages.migrationsystem', { version: game.system.version }), {
+    permanent: true,
+  });
   // Migrate World Actors
   for (let a of game.actors) {
+    if (a.name.includes('skip')) {
+      console.log('MIGRATION | Skipping Actor: ', a.name);
+      continue;
+    }
+
     try {
       const updateData = await migrateActorData(a);
-      if (!foundry.utils.isObjectEmpty(updateData)) {
+      if (!foundry.utils.isEmpty(updateData)) {
         console.log(`Migrating Actor document ${a.name}`);
         await a.update(updateData, { enforceTypes: false });
       }
     } catch (err) {
-      err.message = game.i18n.format("ZWEI.othermessages.migrationactor", { name: a.name, message: err.message });
+      err.message = game.i18n.format('ZWEI.othermessages.migrationactor', { name: a.name, message: err.message });
       console.error(err);
     }
   }
@@ -24,12 +28,12 @@ export const migrateWorld = async (forceSystemPacks = false) => {
   for (let i of game.items) {
     try {
       const updateData = await migrateItemData(i);
-      if (!foundry.utils.isObjectEmpty(updateData)) {
+      if (!foundry.utils.isEmpty(updateData)) {
         console.log(`Migrating Item document ${i.name}`);
         await i.update(updateData, { enforceTypes: false });
       }
     } catch (err) {
-      err.message = game.i18n.format("ZWEI.othermessages.migrationitem", { name: i.name, message: err.message });
+      err.message = game.i18n.format('ZWEI.othermessages.migrationitem', { name: i.name, message: err.message });
       console.error(err);
     }
   }
@@ -37,7 +41,7 @@ export const migrateWorld = async (forceSystemPacks = false) => {
   for (let s of game.scenes) {
     try {
       const updateData = await migrateSceneData(s);
-      if (!foundry.utils.isObjectEmpty(updateData)) {
+      if (!foundry.utils.isEmpty(updateData)) {
         console.log(`Migrating Scene document ${s.name}`);
         await s.update(updateData, { enforceTypes: false });
         // If we do not do this, then synthetic token actors remain in cache
@@ -45,7 +49,7 @@ export const migrateWorld = async (forceSystemPacks = false) => {
         s.tokens.forEach((t) => (t._actor = null));
       }
     } catch (err) {
-      err.message = game.i18n.format("ZWEI.othermessages.migrationscene", { name: s.name, message: err.message });
+      err.message = game.i18n.format('ZWEI.othermessages.migrationscene', { name: s.name, message: err.message });
       console.error(err);
     }
   }
@@ -59,9 +63,7 @@ export const migrateWorld = async (forceSystemPacks = false) => {
 
   // Set the migration as complete
   game.settings.set('zweihander', 'systemMigrationVersion', game.system.version);
-  ui.notifications.info(
-    game.i18n.format("ZWEI.othermessages.migrationversion", { version: game.system.version }), 
-    {
+  ui.notifications.info(game.i18n.format('ZWEI.othermessages.migrationversion', { version: game.system.version }), {
     permanent: true,
   });
 };
@@ -91,12 +93,16 @@ const migrateCompendium = async (pack) => {
       }
 
       // Save the entry, if data was changed
-      if (foundry.utils.isObjectEmpty(updateData)) continue;
+      if (foundry.utils.isEmpty(updateData)) continue;
       await doc.update(updateData);
       console.log(`Migrated ${entity} entity ${doc.name} in Compendium ${pack.collection}`);
     } catch (err) {
       // Handle migration failures
-      err.message = game.i18n.format("ZWEI.othermessages.migrationfailed", { name: doc.name, pack: pack.collection, message: err.message });
+      err.message = game.i18n.format('ZWEI.othermessages.migrationfailed', {
+        name: doc.name,
+        pack: pack.collection,
+        message: err.message,
+      });
       console.error(err);
     }
   }
@@ -171,6 +177,30 @@ const migrateFieldFactory =
     }
   };
 
+const migrateFieldFactoryAsync =
+  (documentDataObject, update) =>
+  async (oldKey, newKey, del = false, transform = false) => {
+    oldKey = `system.${oldKey}`;
+    newKey = `system.${newKey}`;
+    let hasOldKey;
+    try {
+      hasOldKey = hasProperty(documentDataObject, oldKey);
+    } catch (e) {
+      hasOldKey = false;
+    }
+    if (hasOldKey) {
+      const updateVal = getProperty(documentDataObject, oldKey);
+      update[newKey] = transform ? await transform(updateVal, documentDataObject) : updateVal;
+      if (del) {
+        const oldKeyDel = oldKey
+          .split('.')
+          .map((x, i, arr) => (i === arr.length - 1 ? `-=${x}` : x))
+          .join('.');
+        update[typeof del == 'string' ? `system.-=${del}` : `${oldKeyDel}`] = null;
+      }
+    }
+  };
+
 const migrateActorData = async (actor) => {
   const update = {};
   // Actor Data Updates
@@ -178,59 +208,8 @@ const migrateActorData = async (actor) => {
     // future migrations might need this
     const actorData = typeof actor.toObject === 'function' ? actor.toObject() : actor;
     const migrateField = migrateFieldFactory(actorData, update);
-    // currency
-    migrateField('coinage.gold', 'currency.gc');
-    migrateField('coinage.silver', 'currency.ss');
-    migrateField('coinage.brass', 'currency.bp', 'coinage');
-    // details
-    migrateField('details.socialClass.value', 'details.socialClass', 'details.socialClass');
-    migrateField('socialClass.value', 'details.socialClass', 'socialClass');
-    migrateField('seasonOfBirth.value', 'details.seasonOfBirth', 'seasonOfBirth');
-    migrateField('dooming.value', 'details.dooming', 'dooming');
-    migrateField('physical.distinguishingMarks.value', 'details.distinguishingMarks');
-    migrateField('details.distinguishingMarks.value', 'details.distinguishingMarks', 'details.distinguishingMarks');
-    migrateField('upbringing.value', 'details.upbringing', 'upbringing');
-    migrateField('orderAlignment.value', 'alignment.order.name', 'orderAlignment');
-    migrateField('chaosAlignment.value', 'alignment.chaos.name', 'chaosAlignment');
-    migrateField('orderRanks.value', 'alignment.order.rank', 'orderRanks');
-    migrateField('chaosRanks.value', 'alignment.chaos.rank', 'chaosRanks');
-    migrateField('corruption.value', 'alignment.corruption', 'corruption');
-    migrateField('physical.age.value', 'details.age');
-    migrateField('physical.sex.value', 'details.sex');
-    migrateField('physical.height.value', 'details.height');
-    migrateField('physical.weight.value', 'details.weight');
-    migrateField('physical.hairColor.value', 'details.hairColor');
-    migrateField('physical.eyeColor.value', 'details.eyeColor');
-    migrateField('physical.complexion.value', 'details.complexion');
-    migrateField('physical.buildType.value', 'details.buildType', 'physical');
-    migrateField('fate.value', 'stats.fate', 'fate');
-    migrateField('reputation.value', 'stats.reputation', 'reputation');
-    migrateField('rewardPoints', 'stats.rewardPoints', 'rewardPoints');
-    migrateField('details.classification.value', 'details.classification', 'details.classification');
-    migrateField('details.size.value', 'details.size', 'details.size');
-    migrateField('details.role.value', 'details.role', 'details.role');
-    migrateField('details.influences.value', 'details.influences', 'details.influences');
-    migrateField('details.ancestry.value', 'details.ancestry', 'details.ancestry');
-    migrateField('details.archetype.value', 'details.archetype', 'details.archetype');
-    migrateField('details.age.value', 'details.age', 'details.age');
-    migrateField('details.sex.value', 'details.sex', 'details.sex');
-    migrateField('details.height.value', 'details.height', 'details.height');
-    migrateField('details.build.value', 'details.build', 'details.build');
-    migrateField('details.complexion.value', 'details.complexion', 'details.complexion');
-    migrateField('details.persona.value', 'details.persona', 'details.persona');
-    migrateField('details.motivation.value', 'details.motivation', 'details.motivation');
-    migrateField('details.alignment.value', 'details.alignment', 'details.alignment');
-    migrateField('details.mannerOfDress.value', 'details.mannerOfDress', 'details.mannerOfDress');
-    // languages
-    migrateField('languages.value', 'languages', true, (x) =>
-      x.split(',').map((y) => ({
-        name: y.split('(')[0].trim(),
-        isLiterate: y.match(/\(\s*literate\s*\)/i) !== null,
-      }))
-    );
-    // flavor
-    migrateField('flavor.description', 'description.@en');
-    migrateField('flavor.notes', 'notes', 'flavor');
+
+    // ...actor migrations here...
   }
   // Migrate Owned Items
   if (!actor.items) return update;
@@ -239,7 +218,7 @@ const migrateActorData = async (actor) => {
     // Migrate the Owned Item
     let itemUpdate = await migrateItemData(i);
     // Update the Owned Item
-    if (!isObjectEmpty(itemUpdate)) {
+    if (!isEmpty(itemUpdate)) {
       itemUpdate._id = i.id ?? i._id;
       items.push(expandObject(itemUpdate));
     }
@@ -256,94 +235,86 @@ const migrateItemData = async (item) => {
   const update = {};
   const itemData = typeof item.toObject === 'function' ? item.toObject() : item;
   const migrateField = migrateFieldFactory(itemData, update);
-  // all effects
-  migrateField('effect.criticalSuccess.value', 'rules.criticalSuccess.@en');
-  migrateField('effect.criticalSuccess', 'rules.criticalSuccess.@en');
-  migrateField('effect.criticalFailure.value', 'rules.criticalFailure.@en');
-  migrateField('effect.criticalFailure', 'rules.criticalFailure.@en');
-  migrateField('effect.value', 'rules.effect.@en', 'effect');
-
-  // all flavors
-  migrateField('flavor.description', 'description.@en');
-  migrateField('flavor.notes', 'notes', 'flavor');
-
-  // other long text rules
-  migrateField('treatment.value', 'rules.treatment.@en', 'treatment');
-  migrateField('consequences.value', 'rules.consequences.@en', 'consequences');
-  migrateField('condition.value', 'rules.condition.@en', 'condition');
-  migrateField('reagents.value', 'rules.reagents.@en', 'reagents');
-
-  //details (short localized text)
-  migrateField('category.value', 'details.category.@en', 'category');
-
-  //other
-  migrateField('archetype.value', 'archetype');
-  migrateField('associatedFocusSkill.value', 'associatedFocusSkill');
-  migrateField('associatedSkill.value', 'associatedSkill');
-  migrateField('distance.value', 'distance');
-  migrateField('load.value', 'load');
-  migrateField('duration.value', 'duration');
-  migrateField('castingTime.value', 'castingTime');
-  migrateField('castingTime.ap', 'castingCost');
-  migrateField('principle.value', 'principle');
-  migrateField('tradition.value', 'tradition');
-  migrateField('difficulty.value', 'difficulty');
-  migrateField('channelAs.value', 'channelAs');
-  migrateField('resist.value', 'resist');
-  migrateField('tier.value', 'tier');
-  migrateField('advanceType.value', 'advanceType');
-  migrateField('associatedPrimaryAttribute.value', 'associatedPrimaryAttribute');
-  migrateField('rewardPointCost.value', 'rewardPointCost');
-  migrateField('encumbrance.value', 'encumbrance');
-  migrateField('damageThresholdModifier.value', 'damageThresholdModifier');
-  migrateField('quantity.value', 'quantity');
+  const migrateFieldAsync = migrateFieldFactoryAsync(itemData, update);
 
   // type specific
   if (item.type === 'ancestry') {
-    migrateField('ancestralTrait.value', 'ancestralTrait.name', 1);
+    if (itemData.system.ancestralTrait.name !== '') {
+      await migrateFieldAsync('ancestralTrait', 'ancestralTrait', 0, async (x) => {
+        const ancestralTraitItem = await findItemWorldWide('trait', x.name);
+
+        return { ...x, uuid: ancestralTraitItem?.uuid ?? '' };
+      });
+    }
   } else if (item.type === 'profession') {
-    migrateField('drawback.value', 'drawback.name', 1);
-    migrateField('specialTrait.value', 'specialTrait.name', 1);
-    migrateField('professionalTrait.value', 'professionalTrait.name', 1);
-    if (itemData.system.bonusAdvances.length && itemData.system.bonusAdvances[0].value) {
+    if (itemData.system.bonusAdvances.length) {
       migrateField('bonusAdvances', 'bonusAdvances', 0, (x) =>
         x.map((y) => {
-          y.name = y.value;
-          delete y.value;
+          y.purchased = y?.purchased ?? false;
           return y;
         })
       );
     }
-    if (itemData.system.talents.length && itemData.system.talents[0].value) {
-      migrateField('talents', 'talents', 0, (x) =>
-        x.map((y) => {
-          y.name = y.value;
-          delete y.value;
-          return y;
-        })
-      );
+    if (itemData.system.professionalTrait.name !== '') {
+      await migrateFieldAsync('professionalTrait', 'professionalTrait', 0, async (x) => {
+        const professionalTraitItem = await findItemWorldWide('trait', x.name);
+
+        return { ...x, uuid: professionalTraitItem?.uuid ?? '' };
+      });
     }
-    if (itemData.system.skillRanks.length && itemData.system.skillRanks[0].value) {
+    if (itemData.system.specialTrait.name !== '') {
+      await migrateFieldAsync('specialTrait', 'specialTrait', 0, async (x) => {
+        const specialTraitItem = await findItemWorldWide('trait', x.name);
+
+        return { ...x, uuid: specialTraitItem?.uuid ?? '' };
+      });
+    }
+    if (itemData.system.drawback.name !== '') {
+      await migrateFieldAsync('drawback', 'drawback', 0, async (x) => {
+        const drawbackItem = await findItemWorldWide('drawback', x.name);
+
+        return { ...x, uuid: drawbackItem?.uuid ?? '' };
+      });
+    }
+    if (itemData.system.talents.length) {
+      await migrateFieldAsync('talents', 'talents', 0, async (x) => {
+        const talentResults = x.map(async (y) => {
+          const talentItem = await findItemWorldWide('talent', y.name);
+          y.uuid = talentItem.uuid;
+          return y;
+        });
+
+        return await Promise.all(talentResults);
+      });
+    }
+    if (itemData.system.skillRanks.length) {
       migrateField('skillRanks', 'skillRanks', 0, (x) =>
         x.map((y) => {
-          y.name = y.value;
-          delete y.value;
+          y.purchased = y?.purchased ?? false;
           return y;
         })
       );
     }
-  } else if (item.type === 'weapon') {
-    migrateField('type.value', 'weaponType', 'type');
-  } else if (item.type === 'injury') {
-    migrateField('severity.value', 'severity', 0, (x) => {
-      const choices = CONFIG.ZWEI.injurySeverities.map((s) => s.label);
-      return Math.max(0, choices.indexOf(x));
-    });
+    if (itemData.system.expert.value) {
+      const profession = await findItemWorldWide('profession', itemData.name);
+      const additionalReqs = profession.system.expert.requirements?.additional;
+      const srReqs = profession.system.expert.requirements?.skillRanks;
+
+      migrateField('expert.requirements', 'expert.requirements', 0, () => ({
+        additional: additionalReqs ?? '',
+        skillRanks: srReqs.length ? [...srReqs] : [],
+      }));
+    } else {
+      migrateField('expert.requirements', 'expert.requirements', 0, () => ({ additional: '', skillRanks: [] }));
+    }
+  } else if (item.type === 'disease') {
+    migrateField('duration', 'duration', 0, () => ({ value: '', lastsUntilCured: false }));
   }
   const updatedImg = migrateIcons(item);
   if (updatedImg) {
     update.img = updatedImg;
   }
+
   return update;
 };
 
@@ -356,17 +327,25 @@ export const migrateWorldSafe = async () => {
 
   if (!game.user.isGM) return;
   const currentVersion = game.settings.get('zweihander', 'systemMigrationVersion');
-  const NEEDS_MIGRATION_VERSION = '4.2.3-beta2f';
-  const COMPATIBLE_MIGRATION_VERSION = '4.2.0';
+  const NEEDS_MIGRATION_VERSION = '5.4.1'; // @todo: change for release
+  const COMPATIBLE_MIGRATION_VERSION = '5.4.1';
   const totalDocuments = game.actors.size + game.scenes.size + game.items.size;
   if (!currentVersion && totalDocuments === 0)
     return game.settings.set('zweihander', 'systemMigrationVersion', game.system.version);
   const needsMigration = !currentVersion || isNewerVersion(NEEDS_MIGRATION_VERSION, currentVersion);
+
+  console.log(
+    'MIGRATION | Current V:',
+    currentVersion,
+    ' | isNewerVersion: ',
+    isNewerVersion(NEEDS_MIGRATION_VERSION, currentVersion)
+  );
+
   if (!needsMigration) return;
 
   // Perform the migration
   if (currentVersion && isNewerVersion(COMPATIBLE_MIGRATION_VERSION, currentVersion)) {
-    const warning = game.i18n.localize("ZWEI.othermessages.systemold");
+    const warning = game.i18n.localize('ZWEI.othermessages.systemold');
     ui.notifications.error(warning, { permanent: true });
   }
   await migrateWorld();
@@ -374,97 +353,17 @@ export const migrateWorldSafe = async () => {
 
 const MIGRATION_REGISTRY = 'migrationsRegistry';
 
-/**
-    Foundry 11 migration: move existing token.actorData for unlinked actors to
-    token.delta.
-
-    Initiate migration registry, if first run on v11 run token migrations.
-
-    Based on: https://github.com/foundryvtt/dnd5e/blob/master/module/migration.mjs
- */
-export const migrateToFoundryV11 = async () => {
-  const systemVersionIntroducingMigration = '5.2.0';
-  const registry = game.settings.get('zweihander', MIGRATION_REGISTRY);
-
-  const isFvttV11 = game.release.generation == 11;
-  let migrationRun = false;
-  
-  if (!registry.systemMigration) {
-    // initialize migration registry
-    registry.systemMigration = systemVersionIntroducingMigration;
-    console.log('zweihander | initialize migration registry');
-  }
-
-  if (isFvttV11 && !registry.fvtt11) {
-    registry.fvtt11 = systemVersionIntroducingMigration;
-    console.log('zweihander | running world migration to Foundry 11');
-
-    ui.notifications.info(
-      game.i18n.format("ZWEI.othermessages.migrationsystem", { version: systemVersionIntroducingMigration }),
-      { permanent: true }
-    );
-    migrationRun = true;
-
-    for (let s of game.scenes) {
-      try {
-        console.log(`zweihander | migrating contents of scene ${s.name}`);
-        const updateData = convertTokenActorsToV11(s);
-        zhDebug({updateData});
-        if (!foundry.utils.isEmpty(updateData)) {
-          await s.update(updateData, {enforceTypes: false});
-          s.tokens.forEach(t => t._actor = null);
-        }
-      }
-      catch (err) {
-        err.message = game.i18n.format("ZWEI.othermessages.migrationscene", { name: s.name, message: err.message });
-        console.error(err);
-      }
-    }
-  }
-
-  if (migrationRun) {
-    ui.notifications.info(
-      game.i18n.format("ZWEI.othermessages.migrationversion", { version: systemVersionIntroducingMigration }), 
-      { permanent: true }
-    );
-  }
-  return game.settings.set('zweihander', MIGRATION_REGISTRY, registry);
-};
-
-function convertTokenActorsToV11(s) {
-  const tokens = s.tokens.map((token) => {
-    console.log(`zweihander | migrating token ${token.name}`);
-    const t = token instanceof foundry.abstract.DataModel ? token.toObject() : token;
-    const update = {};
-    if (!game.actors.has(t.actorId))
-      t.actorId = null;
-    if (!t.actorId || t.actorLink) {
-      t.actorData = {};
-    } else {
-      const actorData = token.delta?.toObject() ?? foundry.utils.deepClone(t.actorData);
-      actorData.type = token.actor?.type;
-      t.delta = actorData;
-      // t.actorData = null;
-    }
-    return t;
-  });
-  return {tokens};
-}
-
 export const performWorldMigrations = async () => {
   if (!game.user.isGM) return;
 
   zhDebug('performing world migrations');
 
   await migrateWorldSafe();
-  await migrateToFoundryV11();
 
   const registry = game.settings.get('zweihander', MIGRATION_REGISTRY);
-  game.settings.set('zweihander', MIGRATION_REGISTRY, {...registry, lastSystemVersion: game.system.version});
+  game.settings.set('zweihander', MIGRATION_REGISTRY, { ...registry, lastSystemVersion: game.system.version });
 };
 
 export const migrations = {
   performWorldMigrations,
-  migrateToFoundryV11
 };
-

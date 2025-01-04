@@ -1,82 +1,87 @@
-<div class='form-group'>
-  <label>{{localize 'ZWEI.actor.items.distance'}}</label>
-  <input name='system.distance' type='text' value='{{system.distance}}' />
-</div>
-
-<div class='form-group'>
-  <label>{{localize 'ZWEI.actor.items.tradition'}}</label>
-  <input name='system.tradition' type='text' value='{{system.tradition}}' />
-</div>
-
-<div class='form-group'>
-  <label>{{localize 'ZWEI.actor.items.principle'}}</label>
-  <input name='system.principle' type='text' value='{{system.principle}}' />
-</div>
-
-<div class='form-group stacked'>
-  <label>{{localize 'ZWEI.actor.items.reagents'}}</label>
-  {{!--<div class='zh-editor-preview open'>{{{html.rules.reagents}}}</div>--}}
-  {{editor
-    html.rules.reagents
-    target=(zhLocalizePath 'system.rules.reagents')
-    engine='prosemirror'
-    button=true
-    owner=owner
-    editable=editable
-  }}
-</div>
-
-<div class='form-group'>
-  <label>{{localize 'ZWEI.actor.items.duration'}}</label>
-  <input name='system.duration' type='text' value='{{system.duration}}' />
-</div>
-
-{{#if (eq settings.gameSystem 'fof')}}
-  <div class='form-group'>
-    <label>{{localize 'ZWEI.actor.items.castingtime'}}</label>
-    <input name='system.castingTime' type='text' value='{{system.castingTime}}' />
+<fieldset>
+  <legend>Tradition & Principle</legend>
+  <div class="form-group">
+    <label>{{localize "ZWEI.actor.items.tradition"}}</label>
+    <input name="system.tradition" type="text" value="{{system.tradition}}" />
   </div>
-  <div class='form-group'>
-    <label>{{localize 'ZWEI.actor.items.apcost'}}</label>
-    <input name='system.castingCost' type='number' value='{{system.castingCost}}' />
+
+  <div class="form-group">
+    <label>{{localize "ZWEI.actor.items.principle"}}</label>
+    <input name="system.principle" type="text" value="{{system.principle}}" />
   </div>
-{{/if}}
+</fieldset>
 
-<div class='form-group stacked'>
-  <label>{{localize 'ZWEI.actor.items.effect'}}</label>
-  {{!--<div class='zh-editor-preview open'>{{{html.rules.effect}}}</div>--}}
-  {{editor
-    html.rules.effect
-    target=(zhLocalizePath 'system.rules.effect')
-    engine='prosemirror'
-    button=true
-    owner=owner
-    editable=editable
-  }}
-</div>
+<fieldset>
+  <legend>Constraints</legend>
+  <div class="form-group">
+    <label>{{localize "ZWEI.actor.items.distance"}}</label>
+    <input name="system.distance" type="text" value="{{system.distance}}" />
+  </div>
 
-<div class='form-group stacked'>
-  <label>{{localize 'ZWEI.chatskill.criticalsuccess'}}</label>
-  {{!--<div class='zh-editor-preview open'>{{{html.rules.criticalSuccess}}}</div>--}}
-  {{editor
-    html.rules.criticalSuccess
-    target=(zhLocalizePath 'system.rules.criticalSuccess')
-    engine='prosemirror'
-    button=true
-    owner=owner
-    editable=editable
-  }}
-</div>
+  <div class="form-group">
+    <label>{{localize "ZWEI.actor.items.duration"}}</label>
+    <input name="system.duration" type="text" value="{{system.duration}}" />
+  </div>
 
-<div class='form-group stacked'>
-  <label>{{localize 'ZWEI.chatskill.criticalfailure'}}</label>
-  {{!--<div class='zh-editor-preview open'>{{{html.rules.criticalFailure}}}</div>--}}
-  {{editor
-    html.rules.criticalFailure
-    target=(zhLocalizePath 'system.rules.criticalFailure')
-    engine='prosemirror'
-    button=true
-    owner=owner
-    editable=editable
-  }}
-</div>
+  <div class="form-group stacked">
+    <label>{{localize "ZWEI.actor.items.reagents"}}</label>
+    {{editor
+      html.rules.reagents
+      target=(zhLocalizePath "system.rules.reagents")
+      engine="prosemirror"
+      button=true
+      owner=owner
+      editable=editable
+    }}
+  </div>
+
+  {{#if (eq settings.gameSystem "fof")}}
+    <div class="form-group">
+      <label>{{localize "ZWEI.actor.items.castingtime"}}</label>
+      <input name="system.castingTime" type="text" value="{{system.castingTime}}" />
+    </div>
+    <div class="form-group">
+      <label>{{localize "ZWEI.actor.items.apcost"}}</label>
+      <input name="system.castingCost" type="number" value="{{system.castingCost}}" />
+    </div>
+  {{/if}}
+</fieldset>
+
+<fieldset>
+  <legend>Consequences</legend>
+  <div class="form-group stacked">
+    <label>{{localize "ZWEI.actor.items.effect"}}</label>
+    {{editor
+      html.rules.effect
+      target=(zhLocalizePath "system.rules.effect")
+      engine="prosemirror"
+      button=true
+      owner=owner
+      editable=editable
+    }}
+  </div>
+
+  <div class="form-group stacked">
+    <label>{{localize "ZWEI.chatskill.criticalsuccess"}}</label>
+    {{editor
+      html.rules.criticalSuccess
+      target=(zhLocalizePath "system.rules.criticalSuccess")
+      engine="prosemirror"
+      button=true
+      owner=owner
+      editable=editable
+    }}
+  </div>
+
+  <div class="form-group stacked">
+    <label>{{localize "ZWEI.chatskill.criticalfailure"}}</label>
+    {{editor
+      html.rules.criticalFailure
+      target=(zhLocalizePath "system.rules.criticalFailure")
+      engine="prosemirror"
+      button=true
+      owner=owner
+      editable=editable
+    }}
+  </div>
+</fieldset>

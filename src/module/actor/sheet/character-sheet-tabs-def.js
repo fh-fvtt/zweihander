@@ -261,12 +261,17 @@ export function getItemGroups(groupsData) {
         {
           title: 'duration',
           size: 140,
-          key: 'system.duration',
+          key: 'system.duration.value',
+          isNumerable: true,
+          unit: ' days',
+          conditionalKey: 'system.duration.lastsUntilCured',
+          conditionalKeyLabel: 'Until cured',
         },
         {
           title: 'resist',
           size: 140,
           key: 'system.resist',
+          class: 'inject-data-disease',
         },
         {
           title: 'ineffect',

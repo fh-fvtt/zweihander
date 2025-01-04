@@ -1,34 +1,42 @@
 {
   "_id": "okFxFeQ1fgMn4Uyj",
   "effects": [],
-  "img": "systems/zweihander/assets/icons/half-dead.svg",
+  "img": "systems/zweihander/assets/icons/tumulus.svg",
   "name": "Tomb Rot",
   "type": "disease",
   "_stats": {
     "coreVersion": "12.331",
-    "systemId": null,
-    "systemVersion": null,
+    "systemId": "zweihander",
+    "systemVersion": "5.4.1",
     "createdTime": null,
-    "modifiedTime": null,
-    "lastModifiedBy": null,
+    "modifiedTime": 1735997995453,
+    "lastModifiedBy": "rivg6xcMxdlVDM8y",
     "compendiumSource": null,
     "duplicateSource": null
   },
   "system": {
     "description": {
-      "@en": "Only the foolhardy contract this illness. It is particularly found and spread by would-be adventurers and inexperienced grave robbers. Infection is a tell-tale sign to healers that their patient is likely a criminal who is guilty of at least attempting to rob the dead of their jewels and belongings. Worse still, Tomb Rot is also passed by the corruptive touch of Supernatural creatures and lycanthropes, their filthy claws and nails harboring this Disease. It serves as a reminder that death’s touch curses all and that no one can escape Her scythe."
+      "@en": "<p>Only the foolhardy contract this illness. It is particularly found and spread by would-be adventurers and inexperienced grave robbers. Infection is a tell-tale sign to healers that their patient is likely a criminal who is guilty of at least attempting to rob the dead of their jewels and belongings. Worse still, Tomb Rot is also passed by the corruptive touch of Supernatural creatures and lycanthropes, their filthy claws and nails harboring this Disease. It serves as a reminder that death’s touch curses all and that no one can escape Her scythe.</p>"
     },
     "notes": "",
     "rules": {
       "effect": {
-        "@en": "Over the course of the duration, you cannot recover steps on your Damage Condition Track whatsoever."
+        "@en": "<p>Over the course of the duration, you cannot recover steps on your Damage Condition Track whatsoever.</p>"
       },
       "treatment": {
-        "@en": "In order to treat a patient suffering from Tomb Rot, a caregiver must have a Skill Rank in Heal, a sprig of wolfsbane and a Bandage (both of which are expended as part of the treatment) and be left uninterrupted for at least 1 hour. If they succeed at an (Easy +20%) Heal Test, you do not suffer the effects for the following day. You may only be treated in this manner once every 24 hours, no matter whether it is successful or not."
+        "@en": "<p>In order to treat a patient suffering from Tomb Rot, a caregiver must have a Skill Rank in Heal, a sprig of wolfsbane and a Bandage (both of which are expended as part of the treatment) and be left uninterrupted for at least 1 hour. If they succeed at an (Easy +20%) Heal Test, you do not suffer the effects for the following day. You may only be treated in this manner once every 24 hours, no matter whether it is successful or not.</p>"
       }
     },
-    "resist": "(Easy +20%) Toughness Test",
-    "duration": "1D10+1 days",
+    "resist": "20",
+    "duration": {
+      "value": 0,
+      "formula": {
+        "number": 1,
+        "die": "d10",
+        "bonus": 1
+      },
+      "lastsUntilCured": false
+    },
     "active": true
   },
   "folder": null,

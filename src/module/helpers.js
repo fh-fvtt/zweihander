@@ -195,6 +195,7 @@ export const registerHandlebarHelpers = async function () {
   $$('zhExplicitSign', zhExplicitSign);
 
   $$('zhLookup', function (obj, key) {
+    if (!key) return;
     const keys = key.toString().split('.');
     let val = obj;
     for (let key of keys) {
@@ -384,8 +385,15 @@ export const registerHandlebarHelpers = async function () {
   });
 
   $$('zhIsCarried', function (system, options) {
-    console.log('AAAAAAAAAAAAAAA---', system);
-    return system?.carried ? options.inverse(this) : options.fn(this);
+    const isCarriedItem = typeof system?.carried !== 'undefined';
+
+    if (isCarriedItem) return system?.carried ? options.inverse(this) : options.fn(this);
+    else return options.inverse(this);
+  });
+
+  $$('zhIsValueZero', function (hideOnZero, options) {
+    console.log('HELLLLLOO::::', hideOnZero);
+    return !!hideOnZero ? options.fn(this) : options.inverse(this);
   });
 
   $$('zhTalentList', function (talents, index) {

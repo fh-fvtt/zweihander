@@ -1,28 +1,30 @@
-<div class='form-group'>
-  <label>{{localize 'ZWEI.actor.items.category'}}</label>
-  <input
-    name='{{zhLocalizePath "system.details.category"}}'
-    type='text'
-    value='{{zhLocalize system.details.category}}'
-  />
-</div>
+<fieldset>
+  <legend>Trauma</legend>
+  <div class="form-group stacked">
+    <label>{{localize "ZWEI.actor.items.effect"}}</label>
+    {{editor
+      html.rules.effect
+      target=(zhLocalizePath "system.rules.effect")
+      engine="prosemirror"
+      button=true
+      owner=owner
+      editable=editable
+    }}
+  </div>
+  <div class="form-group stacked">
+    <label>{{localize "ZWEI.actor.items.ineffect"}}</label>
+    <input name="system.active" type="checkbox" class="link-checkbox" {{checked system.active}} />
+  </div>
+</fieldset>
 
-<div class='form-group stacked'>
-  <label>{{localize 'ZWEI.actor.items.effect'}}</label>
-  {{editor
-    html.rules.effect
-    target=(zhLocalizePath 'system.rules.effect')
-    engine='prosemirror'
-    button=true
-    owner=owner
-    editable=editable
-  }}
-</div>
-
-<div class='form-group stacked'>
-  <label>{{localize 'ZWEI.actor.items.status'}}</label>
-  <label class='checkbox'>
-    <input name='system.active' type='checkbox' class='link-checkbox' {{checked system.active}} />
-    {{localize 'ZWEI.actor.items.ineffect'}}
-  </label>
-</div>
+<fieldset>
+  <legend>Misc.</legend>
+  <div class="form-group">
+    <label>Disorder {{localize "ZWEI.actor.items.category"}}</label>
+    <input
+      name="{{zhLocalizePath 'system.details.category'}}"
+      type="text"
+      value="{{zhLocalize system.details.category}}"
+    />
+  </div>
+</fieldset>

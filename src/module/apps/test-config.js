@@ -4,10 +4,16 @@ import { getDifficultyRatingLabel, selectedChoice, normalizedEquals } from '../u
 export const getItemRollConfiguration = (item) => {
   const actor = item.actor;
 
-  const associatedSkill =
-    item.type === 'weapon'
-      ? item.system.associatedSkill
-      : actor.system.stats.secondaryAttributes.magick.associatedSkill;
+  let associatedSkill;
+
+  if (item.type === 'weapon') {
+    associatedSkill = item.system.associatedSkill;
+  } else if (item.type === 'disease') {
+    associatedSkill = 'toughness'; //@todo: system option to set the relevant skill
+  } else {
+    associatedSkill = actor.system.stats.secondaryAttributes.magick.associatedSkill;
+  }
+
   const skillItem = actor.items.find((item) => item.type === 'skill' && normalizedEquals(item.name, associatedSkill));
 
   const additionalConfiguration = {};

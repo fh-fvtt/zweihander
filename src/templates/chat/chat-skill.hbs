@@ -20,7 +20,7 @@
 </dl>
 <div class="pill-container">
     <span class="pill pill-roll-mode">{{localize (zhConcat "ZWEI.rolls." testModeLabel)}} ({{diceFormula}})</span>
-    <span class="pill pill-difficulty-{{difficultyRating.total}}">{{localize (zhConcat "ZWEI.rolls." difficultyRating.label)}}</span>
+    <span class="pill pill-difficulty-{{difficultyRating.total}}">{{difficultyRating.label}}</span>
     {{#if flipToFail}}<span class="pill pill-flip-fail">{{localize "ZWEI.rolls.flipfail"}}</span>{{/if}}
     {{#if flipToSucceed}}<span class="pill pill-flip-succeed">{{localize "ZWEI.rolls.flipsucceed"}}</span>{{/if}}
     {{#if usedFortune}}<span class="pill pill-fortune">{{localize "ZWEI.rolls.usefortune"}}</span>{{/if}}

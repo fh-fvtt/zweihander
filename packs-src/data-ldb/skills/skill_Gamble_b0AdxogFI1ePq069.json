@@ -1,26 +1,27 @@
 {
   "_id": "b0AdxogFI1ePq069",
   "effects": [],
-  "img": "systems/zweihander/assets/icons/skills.svg",
+  "img": "systems/zweihander/assets/icons/rolling-dices.svg",
   "name": "Gamble",
   "type": "skill",
   "_stats": {
     "coreVersion": "12.331",
-    "systemId": null,
-    "systemVersion": null,
+    "systemId": "zweihander",
+    "systemVersion": "5.4.1",
     "createdTime": null,
-    "modifiedTime": null,
-    "lastModifiedBy": null,
+    "modifiedTime": 1735749254074,
+    "lastModifiedBy": "rivg6xcMxdlVDM8y",
     "compendiumSource": null,
     "duplicateSource": null
   },
   "system": {
     "description": {
-      "@en": ""
+      "@en": "<p>Gambling represents a general know-how for common games of chance with cards, dice and darts. Although anyone can make wagers and play games, some are more adept at spotting common mistakes and playing upon the weaknesses of their opponents. Although this Skill does not allow you to cheat, it does provide some insight as to the outcome of the game. </p><p>Some GMs may simply prefer Players to roll dice contests in order to resolve high stakes gambling. Others may require you and the other Players around the table to play out an actual game of cards or dice amongst each other. This can be an exciting change of pace, presenting a colorful distraction from your normal gaming schedule. You should feel encouraged to continue staying in-Character during these sort of side games.</p><p></p><p style=\"text-align: center;\"><strong>SAMPLE DIFFICULTY RATINGS</strong></p><p></p><ul><li><p><strong>(Trivial +30%):</strong> Play and win a game of cards against the uninitiated.</p></li><li><p><strong>(Easy +20%):</strong> Fix a cockfight in your favor.</p></li><li><p><strong>(Routine +10%):</strong> Play and win a standard game of chess against someone with one Skill Rank.</p></li><li><p><strong>(Standard +/-0%):</strong> Guess the number of stones in a large jar.</p></li><li><p><strong>(Challenging -10%):</strong> Fix a fistfight in your favor.</p></li><li><p><strong>(Hard -20%):</strong> Play and win a game of dice against someone with three Skill Ranks.</p></li><li><p><strong>(Arduous -30%):</strong> Guess the next card that will be lain down.</p></li></ul>"
     },
     "notes": "",
     "requiresTraining": false,
-    "associatedPrimaryAttribute": "Intelligence"
+    "associatedPrimaryAttribute": "intelligence",
+    "bonusPerRank": 10
   },
   "folder": null,
   "sort": 0,

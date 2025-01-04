@@ -109,6 +109,11 @@ export default class ZweihanderItemSheet extends ItemSheet {
             break;
           }
 
+          if (talentList.filter((t) => t.uuid === droppedItem.uuid).length > 0) {
+            ui.notifications.error(`Profession (${this.item.name}) already has following Talent: ${droppedItem.name}`);
+            break;
+          }
+
           for (let i = 0; i < talentList.length; i++) {
             let talent = talentList[i];
 
@@ -130,6 +135,8 @@ export default class ZweihanderItemSheet extends ItemSheet {
   /** @override */
   async getData() {
     const sheetData = super.getData().data;
+
+    console.log('GET DATA');
 
     const itemData = this.item.toObject(false);
 
@@ -214,6 +221,22 @@ export default class ZweihanderItemSheet extends ItemSheet {
       );
     }
 
+    if (sheetData.type === 'disease') {
+      sheetData.difficultyRatings = [...Array(7).keys()].map((i) => {
+        const value = i * 10 - 30;
+        const selected = (Number(sheetData.system.resist) ?? 0) === value ? 'selected' : '';
+        return { value, label: ZweihanderUtils.getDifficultyRatingLabel(value), selected };
+      });
+
+      const diceTypes = ['d4', 'd6', 'd8', 'd10', 'd12', 'd20', 'd100'];
+
+      sheetData.dice = diceTypes.map((d) => ({
+        value: d,
+        label: d,
+        selected: sheetData.system.duration.formula.die === d ? 'selected' : '',
+      }));
+    }
+
     if (sheetData.type === 'weapon') {
       const skillPack = game.packs.get(game.settings.get('zweihander', 'skillPack'));
       sheetData.skills = (await skillPack.getIndex()).map((x) => x.name).sort((a, b) => a.localeCompare(b));
@@ -232,7 +255,7 @@ export default class ZweihanderItemSheet extends ItemSheet {
       this._prepareLinkedItemWrapperData(linkedItemDataList, sheetData);
     }
 
-    // console.log(sheetData);
+    console.log(sheetData);
 
     return sheetData;
   }
@@ -266,6 +289,7 @@ export default class ZweihanderItemSheet extends ItemSheet {
       const linkedItem = linkedItemData.uuid !== '' ? fromUuidSync(linkedItemData.uuid) : '';
 
       const toFetch = {
+        name: linkedItem?.name,
         _id: linkedItem?._id,
         label: type.capitalize(),
         type: type,
@@ -438,12 +462,12 @@ export default class ZweihanderItemSheet extends ItemSheet {
           {
             label: this.item.name,
             icon: this.item.img,
-            origin: 'Actor.' + this.item.parent.id + '.Item.' + this.item.id,
-            // @todo: refactor after transition to DataMode
+            origin: (this.item.parent ? `Actor.${this.item.parent.id}` : '') + '.Item.' + this.item.id,
 
+            // @todo: refactor after transition to DataMode
             system: {
               details: {
-                source: this.item.name + ' (' + this.item.type.capitalize() + ')',
+                source: this.item.name + ' (' + game.i18n.localize(CONFIG.Item.typeLabels[this.item.type]) + ')',
                 category: '',
                 isActive: false,
               },
@@ -522,6 +546,8 @@ export default class ZweihanderItemSheet extends ItemSheet {
 
     html.find('.randomize-trait').click(this._randomizeAncestralTrait.bind(this));
 
+    html.find('.resist-disease').click(this._resistDisease.bind(this));
+
     // Edit Active Effect
     html.find('.effect-edit').click((ev) => {
       const i = $(ev.currentTarget).parents('.effect-item');
@@ -547,6 +573,10 @@ export default class ZweihanderItemSheet extends ItemSheet {
     });
 
     html.find('.requirements-control').click(this._onRequirementsControl.bind(this));
+  }
+
+  async _resistDisease() {
+    await this.item.roll();
   }
 
   async _randomizeAncestralTrait() {
@@ -644,220 +674,6 @@ export default class ZweihanderItemSheet extends ItemSheet {
   }
 
   async _updateObject(event, formData) {
-    //@todo PROBABLY CAN BE REMOVED; test
-    if (this.item.type === 'ancestry') {
-      const traitUuid = formData['system.ancestralTrait.uuid'];
-      const item = await fromUuid(traitUuid);
-      if (item) {
-        formData['system.ancestralTrait.name'] = item.name;
-      }
-      if (!item && traitUuid !== undefined) {
-        ui?.notifications.warn(game.i18n.format('ZWEI.othermessages.noancestral', { trait: traitUuid }), {
-          permanent: true,
-        });
-        //TODO move to actor#prepareDerivedData
-        if (this.item.isOwned) {
-          ui?.notifications.error(game.i18n.format('ZWEI.othermessages.validwhat', { what: 'ancestral trait' }), {
-            permanent: true,
-          });
-        }
-      }
-    } else if (this.item.type === 'profession') {
-      /*
-      const profTrait = formData['system.professionalTrait.name'];
-      let item;
-      // @todo tansition to uuid
-      // item = await ZweihanderUtils.findItemWorldWide('trait', profTrait);
-      if (item) {
-        formData['system.professionalTrait.name'] = item.name;
-      }
-      if (!item && profTrait.trim() !== '') {
-        ui?.notifications.warn(game.i18n.format('ZWEI.othermessages.notrait', { trait: profTrait }), {
-          permanent: true,
-        });
-        //TODO move to actor#prepareDerivedData
-        if (this.item.isOwned) {
-          ui?.notifications.error(game.i18n.format('ZWEI.othermessages.validwhat', { what: 'professional trait' }), {
-            permanent: true,
-          });
-        }
-      }
-      const specTrait = formData['system.specialTrait.name'];
-      // @todo tansition to uuid
-      // item = await ZweihanderUtils.findItemWorldWide('trait', specTrait);
-      if (item) {
-        formData['system.specialTrait.name'] = item.name;
-      }
-      if (!item && specTrait.trim() !== '') {
-        ui?.notifications.warn(game.i18n.format('ZWEI.othermessages.nospecial', { trait: specTrait }), {
-          permanent: true,
-        });
-        //TODO move to actor#prepareDerivedData
-        if (this.item.isOwned) {
-          ui?.notifications.error(game.i18n.format('ZWEI.othermessages.validwhat', { what: 'special trait' }), {
-            permanent: true,
-          });
-        }
-      }
-      const drawback = formData['system.drawback.name'];
-      // @todo tansition to uuid
-      // item = await ZweihanderUtils.findItemWorldWide('drawback', drawback);
-      if (item) {
-        formData['system.drawback.name'] = item.name;
-      }
-      if (!item && drawback.trim() !== '') {
-        ui?.notifications.warn(game.i18n.format('ZWEI.othermessages.nodrawback', { drawback: drawback }), {
-          permanent: true,
-        });
-        //TODO move to actor#prepareDerivedData
-        if (this.item.isOwned) {
-          ui?.notifications.error(game.i18n.format('ZWEI.othermessages.validwhat', { what: 'drawback' }), {
-            permanent: true,
-          });
-        }
-      }
-        */
-    }
     super._updateObject(event, formData);
-  }
-
-  /*
-
-  async acceptArrayInput(event, prevent = true) {
-    if (prevent) event.preventDefault();
-    const html = event.currentTarget;
-    const arrayInput = $(html).parent('.array-input');
-    const target = arrayInput.data('arrayInputTarget');
-    const input = arrayInput.find('input').val();
-    let array = getProperty(this.item.toObject(false), target);
-    const max = arrayInput.data('arrayInputMax') ?? Number.MAX_SAFE_INTEGER;
-    if (!input?.trim()) return;
-    const inputs = input
-      .split(',')
-      .map((v) => v.trim())
-      .filter((v) => v !== '');
-    if (array.length + inputs.length > max) {
-      const caption = arrayInput.parents('.form-group').find('label').text();
-      ui?.notifications.warn(`You can't add more than ${max} entries in "${caption}"!`);
-      const toAdd = max - array.length;
-      inputs.splice(toAdd, inputs.length - toAdd);
-      if (inputs.length === 0) return;
-    }
-    switch (target) {
-      case 'system.ancestralModifiers.negative':
-      case 'system.ancestralModifiers.positive':
-        array = array.concat(await this.addInputToArray(inputs, async (x) => this.validateBonusAbbr(x), false));
-        break;
-      case 'system.bonusAdvances':
-        array = array.concat(
-          await this.addInputToArray(
-            inputs,
-            async (x) => {
-              const vx = await this.validateBonusAbbr(x);
-              return vx ? { name: vx } : vx;
-            },
-            false
-          )
-        );
-        break;
-      case 'system.talents':
-        array = array.concat(await this.addInputToArray(inputs, async (x) => await this.validateTalent(x)));
-        break;
-      case 'system.skillRanks':
-        array = array.concat(await this.addInputToArray(inputs, async (x) => await this.validateSkillRank(x)));
-        break;
-    }
-    await this.item.update({ [target]: array }).then(() => this.render(false));
-  }
-
-  async addInputToArray(inputs, validationFn, unique = true) {
-    if (unique) {
-      inputs = [...new Set(inputs)];
-    }
-    const array = [];
-    for (let input of inputs) {
-      const validatedInput = await validationFn(input);
-      if (validatedInput) {
-        array.push(validatedInput);
-      }
-    }
-    return array;
-  }
-
-  async removeArrayInput(event) {
-    event.preventDefault();
-    const html = event.currentTarget;
-    const arrayInput = $(html).parents('.array-input');
-    const target = arrayInput.data('arrayInputTarget');
-    const array = getProperty(this.item.toObject(false), target);
-    const i = $(html).data('arrayInputIndex');
-    array.splice(i, 1);
-    this.item.update({ [target]: array }).then(() => this.render(false));
-  }
-
-  */
-
-  async validateBonusAbbr(bonusAbbr) {
-    //TODO: move to const?
-    const validValues = ['[CB]', '[BB]', '[AB]', '[PB]', '[IB]', '[WB]', '[FB]'];
-    const sanitized = `[${bonusAbbr
-      .trim()
-      .replaceAll(/[^a-zA-Z]/g, '')
-      .toUpperCase()}]`;
-    if (validValues.includes(sanitized)) {
-      return sanitized;
-    } else {
-      ui?.notifications.warn(
-        game.i18n.format('ZWEI.othermessages.novalidbonus', { sanitized: sanitized, valid: validValues })
-      );
-    }
-  }
-
-  async validateTalent(talent) {
-    const item = this.item;
-    if (item.system?.talents?.some((t) => ZweihanderUtils.normalizedEquals(t.name, talent))) {
-      ui?.notifications.warn(
-        game.i18n.format('ZWEI.othermessages.talentbelongs', { talent: talent, name: item.name, type: item.type })
-      );
-      return;
-    }
-    const foundItem = await ZweihanderUtils.findItemWorldWide('talent', talent);
-    if (foundItem) {
-      return { name: foundItem.name };
-    } else {
-      ui?.notifications.warn(game.i18n.format('ZWEI.othermessages.notalent', { talent: talent }), {
-        permanent: true,
-      });
-      //TODO move to actor#prepareDerivedData
-      if (this.item.isOwned) {
-        ui?.notifications.error(game.i18n.format('ZWEI.othermessages.validwhat', { what: 'talent' }), {
-          permanent: true,
-        });
-      }
-      return { name: talent };
-    }
-  }
-
-  async validateSkillRank(skillRank) {
-    const item = this.item;
-    if (item.system?.skillRanks?.some((sr) => ZweihanderUtils.normalizedEquals(sr.name, skillRank))) {
-      ui?.notifications.warn(
-        game.i18n.format('ZWEI.othermessages.rankbelongs', { rank: skillRank, name: item.name, type: item.type })
-      );
-      return;
-    }
-    const foundItem = await ZweihanderUtils.findItemWorldWide('skill', skillRank);
-    if (foundItem) {
-      return { name: foundItem.name };
-    } else {
-      ui?.notifications.warn(game.i18n.format('ZWEI.othermessages.norank', { rank: skillRank }), { permanent: true });
-      //TODO move to actor#prepareDerivedData
-      if (this.item.isOwned) {
-        ui?.notifications.error(game.i18n.format('ZWEI.othermessages.validwhat', { what: 'skill' }), {
-          permanent: true,
-        });
-      }
-      return { name: skillRank };
-    }
   }
 }

@@ -1,22 +1,22 @@
 {
   "_id": "u6SJAYzgOIAq2h6N",
   "effects": [],
-  "img": "systems/zweihander/assets/icons/half-dead.svg",
+  "img": "systems/zweihander/assets/icons/thermometer-hot.svg",
   "name": "Filth Fever",
   "type": "disease",
   "_stats": {
     "coreVersion": "12.331",
-    "systemId": null,
-    "systemVersion": null,
+    "systemId": "zweihander",
+    "systemVersion": "5.4.1",
     "createdTime": null,
-    "modifiedTime": null,
-    "lastModifiedBy": null,
+    "modifiedTime": 1735998572099,
+    "lastModifiedBy": "rivg6xcMxdlVDM8y",
     "compendiumSource": null,
     "duplicateSource": null
   },
   "system": {
     "description": {
-      "@en": "A terribly disgusting disease, it quickly debilitates those who are exposed to it. Wading through a midden or traipsing through bogs and sewers can expose would-be adventurers to Filth Fever. It inhibits the body’s ability to recover appropriately and causes mental fortitude to grow more severe."
+      "@en": "<p>A terribly disgusting disease, it quickly debilitates those who are exposed to it. Wading through a midden or traipsing through bogs and sewers can expose would-be adventurers to Filth Fever. It inhibits the body’s ability to recover appropriately and causes mental fortitude to grow more severe.</p>"
     },
     "notes": "",
     "rules": {
@@ -27,8 +27,16 @@
         "@en": "In order to treat a patient suffering from Filth Fever, a caregiver must have a Skill Rank in Heal, a dose of Mandrake Root and a Bandage (both of which are expended as part of the treatment) and be left uninterrupted for at least 1 hour. If they succeed at a (Routine +10%) Heal Test, you do not suffer the effects for the following day. You may only be treated in this manner once every 24 hours, no matter whether it is successful or not."
       }
     },
-    "resist": "(Routine +10%) Toughness Test",
-    "duration": "1D10+1 days",
+    "resist": "10",
+    "duration": {
+      "value": 0,
+      "formula": {
+        "number": 1,
+        "die": "d10",
+        "bonus": 1
+      },
+      "lastsUntilCured": false
+    },
     "active": true
   },
   "folder": null,

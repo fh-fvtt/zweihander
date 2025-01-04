@@ -25,7 +25,11 @@ export default class ZweihanderProfession extends ZweihanderBaseItem {
   ];
 
   prepareDerivedData(item) {
+    if (item.system.expert.value && item.system.archetype !== 'expert profession')
+      item.system.archetype = 'expert profession';
+
     if (!item.isOwned) return;
+
     const advancesPurchased =
       1 +
       (item.system.bonusAdvances?.reduce?.((a, b) => a + Number(b.purchased), 0) ?? 0) +
@@ -85,6 +89,7 @@ export default class ZweihanderProfession extends ZweihanderBaseItem {
     }
     if (changed.system['skillRanks'] !== undefined) {
       changed.system.skillRanks = changed.system.skillRanks.map((sr) => {
+        // @todo: revert to old logic, see below
         const skillRanks = typeof sr === 'object' ? sr : { name: sr };
         return {
           ...skillRanks,

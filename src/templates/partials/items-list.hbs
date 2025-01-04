@@ -77,12 +77,17 @@
           {{checked (zhLookup item detail.key)}} />
         <label for="{{item._id}}.{{detail.key}}"></label>
         {{else if detail.isNumerable}}
-        <div class="numerable-field flexrow">
-          <button type="button" class="numerable-field-subtract {{#if (zhLookup item detail.key)}}{{else}}hide{{/if}}"
-            data-numerable-path="{{detail.key}}">-</button>
-          <span class="numerable-field-counter">{{zhLookup item detail.key}}{{detail.unit}}</span>
-          <button type="button" class="numerable-field-add" data-numerable-path="{{detail.key}}">+</button>
-        </div>
+          {{#if (zhLookup item detail.conditionalKey)}}
+          <span>{{detail.conditionalKeyLabel}}</span>
+          {{else}}
+          <div class="numerable-field flexrow">
+            <button type="button" class="numerable-field-subtract {{#if (zhLookup item detail.key)}}{{else}}hide{{/if}}"
+              data-numerable-path="{{detail.key}}">-</button>
+            <span class="numerable-field-counter">{{zhLookup item detail.key}}{{detail.unit}}</span>
+            <button type="button" class="numerable-field-add" data-numerable-path="{{detail.key}}">+</button>
+          </div>
+          {{/if}}
+        {{!--@todo: refactor this localization step to be done before rendering--}}
         {{else if (stringcompare detail.key '===' 'system.tier')}}
         {{localize (zhConcat "ZWEI.actor.riskfactors." (zhLowerCase (zhLookup item detail.key)))}}
         {{else if (stringcompare detail.key '===' 'system.archetype')}}

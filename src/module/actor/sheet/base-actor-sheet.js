@@ -452,6 +452,10 @@ export default class ZweihanderBaseActorSheet extends ActorSheet {
       $(this).text(await ZweihanderUtils.parseDataPaths($(this).text().trim(), actor));
     });
 
+    html.find('.inject-data-disease').each(function () {
+      $(this).text(ZweihanderUtils.getDifficultyRatingLabel($(this).text().trim()));
+    });
+
     html.find('.inline-roll').each(async function () {
       const formula = $(this).text().trim().split('+');
       const diceRoll = formula[0];

@@ -1,5 +1,15 @@
 <div class="currency-container flexrow">
   {{#each settings.currencies as | currency i | }}
+    <span style="color:{{currency.color}}"><i class="fas fa-coins"></i></span>
+    <input class="coin-input" style="color:{{currency.color}}" type="number"
+      name="system.currency.{{currency.abbreviation}}" value="{{lookup ../system.currency currency.abbreviation}}"
+      placeholder="0" />
+  {{/each}}
+</div>
+
+
+{{!--<div class="currency-container flexrow">
+  {{#each settings.currencies as | currency i | }}
   <div class="currency flexcol">
     <input class="coin-input" style="color:{{currency.color}}" type="number"
       name="system.currency.{{currency.abbreviation}}" value="{{lookup ../system.currency currency.abbreviation}}"
@@ -29,5 +39,4 @@
   </div>
   {{/unless}}
   {{/each}}
-  {{!-- <button class="currency-converter" type="button"><i class="fa fa-exchange-alt"></i> Exchange</button> --}}
-</div>
+</div>--}}

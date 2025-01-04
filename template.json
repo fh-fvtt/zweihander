@@ -376,8 +376,16 @@
     },
     "disease": {
       "templates": ["flavor", "effect"],
-      "resist": "",
-      "duration": "",
+      "resist": 0,
+      "duration": {
+        "value": 0,
+        "formula": {
+          "number": 0,
+          "die": "",
+          "bonus": 0
+        },
+        "lastsUntilCured": false
+      },
       "rules": {
         "treatment": {
           "@en": ""

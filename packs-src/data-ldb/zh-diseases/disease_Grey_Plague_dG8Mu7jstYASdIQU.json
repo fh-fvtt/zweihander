@@ -1,34 +1,42 @@
 {
   "_id": "dG8Mu7jstYASdIQU",
   "effects": [],
-  "img": "systems/zweihander/assets/icons/half-dead.svg",
+  "img": "systems/zweihander/assets/icons/mineral-heart.svg",
   "name": "Grey Plague",
   "type": "disease",
   "_stats": {
     "coreVersion": "12.331",
-    "systemId": null,
-    "systemVersion": null,
+    "systemId": "zweihander",
+    "systemVersion": "5.4.1",
     "createdTime": null,
-    "modifiedTime": null,
-    "lastModifiedBy": null,
+    "modifiedTime": 1735997995451,
+    "lastModifiedBy": "rivg6xcMxdlVDM8y",
     "compendiumSource": null,
     "duplicateSource": null
   },
   "system": {
     "description": {
-      "@en": "Sometimes also referred to as ‘greyscale’, the Grey Plague is a relentless disease. It tends to take hold over those who live in damp conditions, affecting the very young or very old. The afflicted exhibit oddities upon their flesh, hardening their skin like thin scales – thus its namesake. It leaves limbs dead and atrophied, causes feverish episodes periodically and even moments of epilepsy before the offending limbs must be removed. For all of its victims, it is a death sentence – albeit a slow, painful one. Cowbells and personal clappers are often forced upon its victims, to warn others of their dire illness as they go about their suffering."
+      "@en": "<p>Sometimes also referred to as ‘greyscale’, the Grey Plague is a relentless disease. It tends to take hold over those who live in damp conditions, affecting the very young or very old. The afflicted exhibit oddities upon their flesh, hardening their skin like thin scales – thus its namesake. It leaves limbs dead and atrophied, causes feverish episodes periodically and even moments of epilepsy before the offending limbs must be removed. For all of its victims, it is a death sentence – albeit a slow, painful one. Cowbells and personal clappers are often forced upon its victims, to warn others of their dire illness as they go about their suffering.</p>"
     },
     "notes": "",
     "rules": {
       "effect": {
-        "@en": "Over the course of the duration, you permanently lose 3% Agility each week."
+        "@en": "<p>Over the course of the duration, you permanently lose 3% Agility each week.</p>"
       },
       "treatment": {
-        "@en": "In order to treat a patient suffering from the Grey Plague, a caregiver must have a Skill Rank in Heal, have access to surgical tools, a vial of holy water and a Bandage (both of which are expended as part of the treatment) and be left uninterrupted for at least 1 hour. If they succeed at a (Challenging -10%) Heal Test, you do not suffer the effects for the following week. You may only be treated in this manner once every 24 hours, no matter whether it is successful or not."
+        "@en": "<p>In order to treat a patient suffering from the Grey Plague, a caregiver must have a Skill Rank in Heal, have access to surgical tools, a vial of holy water and a Bandage (both of which are expended as part of the treatment) and be left uninterrupted for at least 1 hour. If they succeed at a (Challenging -10%) Heal Test, you do not suffer the effects for the following week. You may only be treated in this manner once every 24 hours, no matter whether it is successful or not.</p>"
       }
     },
-    "resist": "(Challenging -10%) Toughness Test",
-    "duration": "Until cured",
+    "resist": "-10",
+    "duration": {
+      "value": 0,
+      "formula": {
+        "number": 0,
+        "die": "",
+        "bonus": 0
+      },
+      "lastsUntilCured": true
+    },
     "active": true
   },
   "folder": null,

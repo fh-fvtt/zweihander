@@ -1,34 +1,42 @@
 {
   "_id": "P3siCug3FY0C2GVI",
   "effects": [],
-  "img": "systems/zweihander/assets/icons/half-dead.svg",
+  "img": "systems/zweihander/assets/icons/carrion.svg",
   "name": "Bloody Flux",
   "type": "disease",
   "_stats": {
     "coreVersion": "12.331",
-    "systemId": null,
-    "systemVersion": null,
+    "systemId": "zweihander",
+    "systemVersion": "5.4.1",
     "createdTime": null,
-    "modifiedTime": null,
-    "lastModifiedBy": null,
+    "modifiedTime": 1735997995449,
+    "lastModifiedBy": "rivg6xcMxdlVDM8y",
     "compendiumSource": null,
     "duplicateSource": null
   },
   "system": {
     "description": {
-      "@en": "Blood in your feces, dehydration, general weakness and inability to focus are symptomatic of the Bloody Flux. Your stools become watery, causing your bowels to cramp in a most uncomfortable manner. The squalor found among the cities and soldiers’ camps makes this uncomfortable Disease easier to spread from person to person. Blood sausages, spicy foods and eel pies are oftentimes prescribed to ward away its effects, along with a makeshift diaper to catch the sudden flows of excrescence that are the most obvious and noxious symptoms of the Bloody Flux."
+      "@en": "<p>Blood in your feces, dehydration, general weakness and inability to focus are symptomatic of the Bloody Flux. Your stools become watery, causing your bowels to cramp in a most uncomfortable manner. The squalor found among the cities and soldiers’ camps makes this uncomfortable Disease easier to spread from person to person. Blood sausages, spicy foods and eel pies are oftentimes prescribed to ward away its effects, along with a makeshift diaper to catch the sudden flows of excrescence that are the most obvious and noxious symptoms of the Bloody Flux.</p>"
     },
     "notes": "",
     "rules": {
       "effect": {
-        "@en": "Over the course of the duration, you awaken each day suffering 2D10+2 physical Peril."
+        "@en": "<p>Over the course of the duration, you awaken each day suffering 2D10+2 physical Peril.</p>"
       },
       "treatment": {
-        "@en": "Unlike many other diseases, someone suffering from Bloody Flux can treat themselves. You must use a bottle of rotgut and a Bandage (both of which are expended as part of the treatment) and be left uninterrupted for at least 1 hour. If you succeed at a (Trivial +30%) Toughness Test, you do not suffer its effects the following day. You may only be treated in this manner once every 24 hours, no matter whether it is successful or not."
+        "@en": "<p>Unlike many other diseases, someone suffering from Bloody Flux can treat themselves. You must use a bottle of rotgut and a Bandage (both of which are expended as part of the treatment) and be left uninterrupted for at least 1 hour. If you succeed at a (Trivial +30%) Toughness Test, you do not suffer its effects the following day. You may only be treated in this manner once every 24 hours, no matter whether it is successful or not.</p>"
       }
     },
-    "resist": "(Trivial +30%) Toughness Test",
-    "duration": "1D10+1 days",
+    "resist": "30",
+    "duration": {
+      "value": 0,
+      "formula": {
+        "number": 1,
+        "die": "d10",
+        "bonus": 1
+      },
+      "lastsUntilCured": false
+    },
     "active": true
   },
   "folder": null,

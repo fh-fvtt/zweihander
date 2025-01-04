@@ -1,26 +1,27 @@
 {
   "_id": "cOXHjdhyXZFIOrPR",
   "effects": [],
-  "img": "systems/zweihander/assets/icons/skills.svg",
+  "img": "systems/zweihander/assets/icons/look-at.svg",
   "name": "Awareness",
   "type": "skill",
   "_stats": {
     "coreVersion": "12.331",
-    "systemId": null,
-    "systemVersion": null,
+    "systemId": "zweihander",
+    "systemVersion": "5.4.1",
     "createdTime": null,
-    "modifiedTime": null,
-    "lastModifiedBy": null,
+    "modifiedTime": 1735744021664,
+    "lastModifiedBy": "rivg6xcMxdlVDM8y",
     "compendiumSource": null,
     "duplicateSource": null
   },
   "system": {
     "description": {
-      "@en": ""
+      "@en": "<p>Awareness represents the ability to visually notice minute details and sounds, scents within the air, watch for ambushes, find hidden objects and spot contrivances designed to trap or kill. You’ll use Awareness not only to visually see, also to sense using smell, taste and touch. You may also use Awareness to estimate numbers and distances.</p><p>This Skill doesn’t allow you to see through lies, sense motives or innuendo – refer to the Scrutinize Skill in those cases. If you wish to listen in on a conversation or distinctly make something out you heard, refer to the Eavesdrop Skill instead.</p><p></p><p style=\"text-align: center\"><strong>SAMPLE DIFFICULTY RATINGS</strong></p><p></p><ul><li><p><strong>(Trivial +30%):</strong> Listen for sounds through a thin door.</p></li><li><p><strong>(Easy +20%):</strong> Smell a distinct spice in a dish.</p></li><li><p><strong>(Routine +10%):</strong> Spot an obvious snare.</p></li><li><p><strong>(Standard +/-0%):</strong> Standing watch at a campfire on a clear night.</p></li><li><p><strong>(Challenging -10%):</strong> Find someone obscured by mist or darkness.</p></li><li><p><strong>(Hard -20%):</strong> Count a mound of treasure in under a minute.</p></li><li><p><strong>(Arduous -30%):</strong> Spot a trap melded almost perfectly into the flagstones.</p></li></ul>"
     },
     "notes": "",
     "requiresTraining": false,
-    "associatedPrimaryAttribute": "Perception"
+    "associatedPrimaryAttribute": "perception",
+    "bonusPerRank": 10
   },
   "folder": null,
   "sort": 0,

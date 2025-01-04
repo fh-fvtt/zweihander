@@ -643,7 +643,7 @@ body.game.vtt.system-zweihander .zweihander.sheet.item {
         text-align: center;
       }
 
-      .ancestral-trait {
+      .roll-container {
         display: flex;
         flex-wrap: wrap;
         align-items: center;
@@ -659,6 +659,10 @@ body.game.vtt.system-zweihander .zweihander.sheet.item {
           padding: 0;
           padding-top: 1px;
         }
+
+        & > select {
+          flex: 2;
+        }
       }
 
       .currency {
@@ -669,6 +673,43 @@ body.game.vtt.system-zweihander .zweihander.sheet.item {
         flex: 1;
         color: var(--zh-clr-fg2);
       }
+
+      .pad-content {
+        visibility: hidden;
+        flex: 0 0 15px;
+      }
+
+      .formula-label {
+        margin-top: 12px;
+      }
+
+      .formula-inputs {
+        display: flex;
+        flex-direction: row;
+        gap: 0.45rem;
+      }
+
+      .label-top {
+        flex: 1;
+        display: flex;
+        flex-direction: column;
+        margin: 0;
+
+        & > label {
+          line-height: unset;
+          font-size: 10px;
+        }
+
+        & > input {
+          flex: 0 0 27px;
+        }
+
+        & > select {
+          width: 100%;
+          border: 1px solid transparent;
+        }
+      }
+
       .zh-editor-preview {
         display: none;
         &.open {

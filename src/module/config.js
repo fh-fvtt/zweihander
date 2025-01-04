@@ -69,6 +69,15 @@ ZWEI.tiersInversed = {
   Advanced: 3,
 };
 
+ZWEI.alternativePerilTable = {
+  5: 0,
+  4: 0,
+  3: -5,
+  2: -10,
+  1: -15,
+  0: -20,
+};
+
 ZWEI.primaryAttributes = ['combat', 'brawn', 'agility', 'perception', 'intelligence', 'willpower', 'fellowship'];
 ZWEI.primaryAttributeBonuses = ['CB', 'BB', 'AB', 'PB', 'IB', 'WB', 'FB'];
 

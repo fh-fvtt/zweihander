@@ -1,26 +1,27 @@
 {
   "_id": "WrVlpX7sExHC3Vhz",
   "effects": [],
-  "img": "systems/zweihander/assets/icons/skills.svg",
+  "img": "systems/zweihander/assets/icons/scroll-quill.svg",
   "name": "Education",
   "type": "skill",
   "_stats": {
     "coreVersion": "12.331",
-    "systemId": null,
-    "systemVersion": null,
+    "systemId": "zweihander",
+    "systemVersion": "5.4.1",
     "createdTime": null,
-    "modifiedTime": null,
-    "lastModifiedBy": null,
+    "modifiedTime": 1735746176399,
+    "lastModifiedBy": "rivg6xcMxdlVDM8y",
     "compendiumSource": null,
     "duplicateSource": null
   },
   "system": {
     "description": {
-      "@en": ""
+      "@en": "<p>Education represents both literacy and schooling, but it extends far beyond merely being able to read and write. This Skill lends significant insight into the histories and practices of the world you live within. Education covers many different fields of study, each representing the study of a body of lore, possible academic research or ’rogue scholar’ pursuits. Although anyone with a Skill Rank in Education will have a basic understanding of various scholastic subjects, Focuses give them a specific specialization in an area of knowledge. While the Focuses above are the most commonly studied by the educated in a grim & perilous world, you can work with your GM to develop new ones.</p><p></p><p style=\"text-align: center;\"><strong>SAMPLE DIFFICULTY RATINGS</strong></p><p></p><ul><li><p><strong>(Trivial +30%):</strong> Understand local laws and how they may impede your own criminal wrongdoing.</p></li><li><p><strong>(Easy +20%):</strong> Identify specific constellations in the night sky.</p></li><li><p><strong>(Routine +10%):</strong> Know a specific prince, count, earl or duke and the name of their province.</p></li><li><p><strong>(Standard +/-0%):</strong> Understand the relationships between the gods from holy canon.</p></li><li><p><strong>(Challenging -10%):</strong> Identify the standard or banner of a house, region or faction</p></li><li><p><strong>(Hard -20%):</strong> Translate ancient writings into the common tongue.</p></li><li><p><strong>(Arduous -30%):</strong> Understand the difference between a Demon and a Daemon.</p></li></ul>"
     },
     "notes": "",
     "requiresTraining": true,
-    "associatedPrimaryAttribute": "Intelligence"
+    "associatedPrimaryAttribute": "intelligence",
+    "bonusPerRank": 10
   },
   "folder": null,
   "sort": 0,

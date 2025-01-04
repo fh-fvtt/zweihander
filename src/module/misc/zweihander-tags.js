@@ -44,6 +44,15 @@ export class HTMLZweihanderTagsElement extends AbstractFormInputElement {
    */
   #tags;
 
+  connectedCallback() {
+    const elements = this._buildElements();
+    this.replaceChildren(...elements);
+    this._toggleDisabled(!this.editable);
+    this._refresh();
+    this.addEventListener('click', this._onClick.bind(this));
+    this._activateListeners();
+  }
+
   /* -------------------------------------------- */
 
   /**
@@ -109,6 +118,12 @@ export class HTMLZweihanderTagsElement extends AbstractFormInputElement {
    */
   _validateTag(tag) {
     if (!tag) throw new Error(game.i18n.localize('ELEMENTS.TAGS.ErrorBlank'));
+
+    const advances = ['[CB]', '[BB]', '[AB]', '[PB]', '[IB]', '[WB]', '[FB]'];
+    const tagName = tag?.name ?? tag;
+
+    if (!advances.includes(tagName))
+      throw new Error(`'${tagName}' is not a valid ${tag?.name ? 'Bonus Advance' : 'Ancestral Modifier'}.`);
   }
 
   /* -------------------------------------------- */
@@ -283,6 +298,7 @@ export class HTMLZweihanderTagsElement extends AbstractFormInputElement {
   _toggleDisabled(disabled) {
     this.#input.toggleAttribute('disabled', disabled);
     this.#button.toggleAttribute('disabled', disabled);
+    this.toggleAttribute('disabled', disabled);
   }
 
   /* -------------------------------------------- */

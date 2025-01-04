@@ -1,26 +1,27 @@
 {
   "_id": "6clcPZpa4nmW37WE",
   "effects": [],
-  "img": "systems/zweihander/assets/icons/skills.svg",
+  "img": "systems/zweihander/assets/icons/sitting-dog.svg",
   "name": "Handle Animal",
   "type": "skill",
   "_stats": {
     "coreVersion": "12.331",
-    "systemId": null,
-    "systemVersion": null,
+    "systemId": "zweihander",
+    "systemVersion": "5.4.1",
     "createdTime": null,
-    "modifiedTime": null,
-    "lastModifiedBy": null,
+    "modifiedTime": 1735749650884,
+    "lastModifiedBy": "rivg6xcMxdlVDM8y",
     "compendiumSource": null,
     "duplicateSource": null
   },
   "system": {
     "description": {
-      "@en": ""
+      "@en": "<p>The Handle Animal Skill represents the ability to subdue, command and train creatures classified as Animals. Although this Skill doesn’t allow those who use it to domesticate animals that are not meant to be domesticated, it does allow one to tame creatures. This Skill also teaches the proper way to care for and groom an animal, establishing a bond of trust and submission. Use of this Skill allows for the domestication of animals for food or work as livestock.</p><p>You can use this Skill to coerce or tame those creatures classified as Animals. Chickens, dogs, horses, falcons, pigs and other farm creatures can easily be trained to obey you. However, should you wish to teach one of these animals more complex tricks you must teach it over nine consecutive days. If successful, you are master of the animal and it will learn one simple trick. You can never impart more than a number of tricks to a single animal in excess of your [FB], however.</p><p></p><p style=\"text-align: center;\"><strong>SAMPLE DIFFICULTY RATINGS</strong></p><p></p><ul><li><p><strong>(Trivial +30%):</strong> Shoe a horse or groom a domestic animal.</p></li><li><p><strong>(Easy +20%):</strong> Teach a simple trick to an animal, like fetch, sit or lay down.</p></li><li><p><strong>(Routine +10%):</strong> Rustle up a flock of sheep without a sheepdog.</p></li><li><p><strong>(Standard +/-0%):</strong> Calm a frightened horse.</p></li><li><p><strong>(Challenging -10%):</strong> Break a young horse for riding.</p></li><li><p><strong>(Hard -20%):</strong> Calm a frightened stampede of wild cattle.</p></li><li><p><strong>(Arduous -30%):</strong> Break a wild horse for riding.</p></li></ul>"
     },
     "notes": "",
     "requiresTraining": true,
-    "associatedPrimaryAttribute": "Fellowship"
+    "associatedPrimaryAttribute": "fellowship",
+    "bonusPerRank": 10
   },
   "folder": null,
   "sort": 0,

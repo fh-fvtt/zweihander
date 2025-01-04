@@ -44,7 +44,7 @@ export async function rollPeril(perilType, actor) {
   if (!isSuccess(outcome)) {
     const roll = new Roll(`${perilType.x}d10+${perilType.x}`);
     const speaker = ChatMessage.getSpeaker({ actor: actor });
-    roll.toMessage({
+    await roll.toMessage({
       flavor: game.i18n.format('ZWEI.rolls.rollingperil', {
         peril: game.i18n.localize('ZWEI.actor.secondary.peril'),
         periltype: game.i18n.localize('ZWEI.actor.secondary.' + perilType.title),
@@ -80,6 +80,7 @@ export async function rollTest(
   const actor = skillItem.actor;
   const weapon = testType === 'weapon' ? actor.items.get(testConfiguration.weaponId) : undefined;
   const spell = testType === 'spell' ? actor.items.get(testConfiguration.spellId) : undefined;
+  const disease = testType === 'disease' ? actor.items.get(testConfiguration.diseaseId) : undefined;
   if (weapon && !isReroll && actor.type === 'creature') {
     testConfiguration.additionalFuryDice = actor.system.details.size - 1;
   }
@@ -89,6 +90,7 @@ export async function rollTest(
     testConfiguration.useFortune = 'misfortune';
   }
   const principle = spell?.system?.principle?.trim?.()?.toLowerCase?.();
+  const toughnessDifficulty = disease?.system?.resist ? Number(disease.system.resist) : undefined;
   const defaultSpellDifficulty = {
     petty: 10,
     generalist: 10,
@@ -96,7 +98,8 @@ export async function rollTest(
     greater: -10,
   }[principle];
   if (showDialog) {
-    testConfiguration.difficultyRating = testConfiguration.difficultyRating ?? defaultSpellDifficulty ?? 0;
+    testConfiguration.difficultyRating =
+      testConfiguration.difficultyRating ?? toughnessDifficulty ?? defaultSpellDifficulty ?? 0;
     testConfiguration = await getTestConfiguration(skillItem, testType, testConfiguration);
   }
   try {
@@ -106,25 +109,8 @@ export async function rollTest(
       await FortuneTracker.INSTANCE.useMisfortune();
     }
   } catch (e) {
-    // @todo: I believe it is the responsibility of the Fortune Tracker to throw an error if there are no points left,
-    // otherwise, 2 error messages will be shown, which is annoying
-    /*
-    ui.notifications.warn(game.i18n.format("ZWEI.othermessages.noreroll", {
-      usefortune: testConfiguration.useFortune
-    }));*/
     return;
   }
-
-  const alternativePerilSystem = game.settings.get('zweihander', 'alternativePerilSystem');
-
-  const alternativePerilTable = {
-    5: 0,
-    4: 0,
-    3: -5,
-    2: -10,
-    1: -20,
-    0: -20,
-  };
 
   const primaryAttribute = skillItem.system.associatedPrimaryAttribute;
   const primaryAttributeValue = actor.system.stats.primaryAttributes[primaryAttribute.toLowerCase()].value;
@@ -135,7 +121,8 @@ export async function rollTest(
 
   const currentPeril = Number(actor.system.stats.secondaryAttributes.perilCurrent.effectiveValue);
 
-  const alternativePerilPenalty = alternativePerilTable[currentPeril];
+  const alternativePerilSystem = game.settings.get('zweihander', 'alternativePerilSystem');
+  const alternativePerilPenalty = CONFIG.ZWEI.alternativePerilTable[currentPeril];
 
   const ranksPurchasedAfterPeril = Math.max(0, rank - Math.max(0, 4 - currentPeril));
   const ranksIgnoredByPeril = rank - ranksPurchasedAfterPeril;

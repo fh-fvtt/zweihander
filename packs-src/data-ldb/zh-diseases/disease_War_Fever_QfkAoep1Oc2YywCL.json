@@ -1,34 +1,42 @@
 {
   "_id": "QfkAoep1Oc2YywCL",
   "effects": [],
-  "img": "systems/zweihander/assets/icons/half-dead.svg",
+  "img": "systems/zweihander/assets/icons/medieval-pavilion.svg",
   "name": "War Fever",
   "type": "disease",
   "_stats": {
     "coreVersion": "12.331",
-    "systemId": null,
-    "systemVersion": null,
+    "systemId": "zweihander",
+    "systemVersion": "5.4.1",
     "createdTime": null,
-    "modifiedTime": null,
-    "lastModifiedBy": null,
+    "modifiedTime": 1735997995450,
+    "lastModifiedBy": "rivg6xcMxdlVDM8y",
     "compendiumSource": null,
     "duplicateSource": null
   },
   "system": {
     "description": {
-      "@en": "Borne from epidemics such as wartime, natural disasters and Ætheric Phenomena, this sickness spreads rapidly amongst crowded communities. Soldiers and prisoners, lacking proper medical support or foreknowledge of how to keep at bay this rapacious sickness, are its victims. Generally, it is thought that War Fever is a curse of Corruption, but the truth of the matter is that it is primarily spread by overcrowding and poor hygiene. Marked prostration, malaise and stupor are the symptoms of War Fever – all of which eventually lead to sickness and death. Pyres of burning clothes and bedding are the only way to stave off its spread."
+      "@en": "<p>Borne from epidemics such as wartime, natural disasters and Ætheric Phenomena, this sickness spreads rapidly amongst crowded communities. Soldiers and prisoners, lacking proper medical support or foreknowledge of how to keep at bay this rapacious sickness, are its victims. Generally, it is thought that War Fever is a curse of Corruption, but the truth of the matter is that it is primarily spread by overcrowding and poor hygiene. Marked prostration, malaise and stupor are the symptoms of War Fever – all of which eventually lead to sickness and death. Pyres of burning clothes and bedding are the only way to stave off its spread.</p>"
     },
     "notes": "",
     "rules": {
       "effect": {
-        "@en": "Over the course of the duration, you suffer from Starvation, thereby suffering 2D10+2 physical Peril each day. Should you continue not eating for a number of days greater than your [BB], you are Slain!."
+        "@en": "<p>Over the course of the duration, you suffer from Starvation, thereby suffering 2D10+2 physical Peril each day. Should you continue not eating for a number of days greater than your [BB], you are Slain!.</p>"
       },
       "treatment": {
-        "@en": "In order to treat a patient suffering from War Fever, a caregiver must have a Skill Rank in Heal, have access to surgical tools, an ampule of Quicksilver, a Bandage, a hot bath (all of which are expended as part of the treatment) and be left uninterrupted for at least one hour. If they succeed at a (Routine +10%) Heal Test, you do not suffer the effects for the following day. You may only be treated in this manner once every 24 hours, no matter whether it is successful or not."
+        "@en": "<p>In order to treat a patient suffering from War Fever, a caregiver must have a Skill Rank in Heal, have access to surgical tools, an ampule of Quicksilver, a Bandage, a hot bath (all of which are expended as part of the treatment) and be left uninterrupted for at least one hour. If they succeed at a (Routine +10%) Heal Test, you do not suffer the effects for the following day. You may only be treated in this manner once every 24 hours, no matter whether it is successful or not.</p>"
       }
     },
-    "resist": "(Routine +10%) Toughness Test",
-    "duration": "1D10+1 days",
+    "resist": "10",
+    "duration": {
+      "value": 0,
+      "formula": {
+        "number": 1,
+        "die": "d10",
+        "bonus": 1
+      },
+      "lastsUntilCured": false
+    },
     "active": true
   },
   "folder": null,

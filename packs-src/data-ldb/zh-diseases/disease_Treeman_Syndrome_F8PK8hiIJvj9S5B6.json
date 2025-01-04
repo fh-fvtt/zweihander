@@ -1,34 +1,42 @@
 {
   "_id": "F8PK8hiIJvj9S5B6",
   "effects": [],
-  "img": "systems/zweihander/assets/icons/half-dead.svg",
+  "img": "systems/zweihander/assets/icons/root-tip.svg",
   "name": "Treeman Syndrome",
   "type": "disease",
   "_stats": {
     "coreVersion": "12.331",
-    "systemId": null,
-    "systemVersion": null,
+    "systemId": "zweihander",
+    "systemVersion": "5.4.1",
     "createdTime": null,
-    "modifiedTime": null,
-    "lastModifiedBy": null,
+    "modifiedTime": 1735997995447,
+    "lastModifiedBy": "rivg6xcMxdlVDM8y",
     "compendiumSource": null,
     "duplicateSource": null
   },
   "system": {
     "description": {
-      "@en": "A rapacious disease that seethes forth from the corruptive Black Lodge, this cancerous illness afflicts those who dare trespass into Fey sanctuaries. As the skin disease takes hold over its victim, horn-like, warty lesions develop upon a person’s limbs, strangely resembling tree bark. It viciously petrifies a victim’s hands and feet, until they become immobile like an ossified tree... until finally becoming one with the Black Lodge. Transformation into ‘the other’ is complete!"
+      "@en": "<p>A rapacious disease that seethes forth from the corruptive Black Lodge, this cancerous illness afflicts those who dare trespass into Fey sanctuaries. As the skin disease takes hold over its victim, horn-like, warty lesions develop upon a person’s limbs, strangely resembling tree bark. It viciously petrifies a victim’s hands and feet, until they become immobile like an ossified tree... until finally becoming one with the Black Lodge. Transformation into ‘the other’ is complete!</p>"
     },
     "notes": "",
     "rules": {
       "effect": {
-        "@en": "Over the course of the duration, you permanently reduce 1 from your [PB] value each week. Should you ever lose all of your [PB], your Character is Slain!"
+        "@en": "<p>Over the course of the duration, you permanently reduce 1 from your [PB] value each week. Should you ever lose all of your [PB], your Character is Slain!</p>"
       },
       "treatment": {
-        "@en": "In order to treat a patient suffering from Treeman Syndrome, a caregiver must have a Skill Rank in Heal, have access to surgical tools, a vial of Void Salt, a Bandage (both of which are expended as part of the treatment) and be left uninterrupted for at least one hour. If they succeed at a (Hard -20%) Heal Test, you do not suffer the effects for the following week. You may only be treated in this manner once every 24 hours, no matter whether it is successful or not."
+        "@en": "<p>In order to treat a patient suffering from Treeman Syndrome, a caregiver must have a Skill Rank in Heal, have access to surgical tools, a vial of Void Salt, a Bandage (both of which are expended as part of the treatment) and be left uninterrupted for at least one hour. If they succeed at a (Hard -20%) Heal Test, you do not suffer the effects for the following week. You may only be treated in this manner once every 24 hours, no matter whether it is successful or not.</p>"
       }
     },
-    "resist": "(Hard -20%) Toughness Test",
-    "duration": "Until cured",
+    "resist": "-20",
+    "duration": {
+      "value": 0,
+      "formula": {
+        "number": 0,
+        "die": "",
+        "bonus": 0
+      },
+      "lastsUntilCured": true
+    },
     "active": true
   },
   "folder": null,
