@@ -495,26 +495,10 @@ export function argMax(array) {
 }
 
 const _getPacks = (gameSystem, actorType) => (itemType) => {
-  const lang = game.i18n.lang;
-  const packLang = lang == 'de' ? '-de' : lang == 'es' ? '-es' : lang == 'fr' ? '-fr' : lang == 'ru' ? '-ru' : '';
   const packSets = ZWEI.packSets[gameSystem];
-  let basePacks = packSets?.base?.[itemType];
-  if (typeof basePacks != 'undefined') {
-    const basePacksName = basePacks.split('.').pop();
-    const basePacksCompendiums = Array.from(game.packs.keys()).filter(
-      (x) => x.includes(packLang) && x.includes(basePacksName)
-    );
-    basePacks = basePacksCompendiums[0] ? basePacksCompendiums[0] : basePacks;
-  }
-  let actorPacks = packSets?.[actorType]?.[itemType];
-  if (typeof actorPacks != 'undefined') {
-    const actorPacksName = actorPacks.split('.').pop();
-    const actorPacksCompendiums = Array.from(game.packs.keys()).filter(
-      (x) => x.includes(packLang) && x.includes(actorPacksName)
-    );
-    actorPacks = actorPacksCompendiums[0] ? actorPacksCompendiums[0] : actorPacks;
-  }
-  const delim = basePacks && actorPacks ? ',' : '';  
+  const basePacks = packSets?.base?.[itemType];
+  const actorPacks = packSets?.[actorType]?.[itemType];
+  const delim = basePacks && actorPacks ? ',' : '';
   return `${basePacks ?? ''}${delim}${actorPacks ?? ''}`;
 };
 
