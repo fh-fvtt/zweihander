@@ -561,15 +561,10 @@ export default class ZweihanderItemSheet extends ItemSheet {
     let compendiumTable;
 
     if (isWorldTableUndefined) {
-      const lang = game.i18n.lang;
-      const packLang = lang == 'de' ? '-de' : lang == 'es' ? '-es' : lang == 'fr' ? '-fr' : lang == 'ru' ? '-ru' : '';
-      const packName = game.i18n.localize('ITEM.TypeTrait').toLowerCase();
-      const compendiumpacks = Array.from(game.packs.keys()).filter((x) => x.includes(packLang) && x.includes('zh-charactercreation-tables'));
-      const tablesPackName = compendiumpacks[0] ? compendiumpacks[0] : 'zweihander.zh-charactercreation-tables';
-      const characterCreationPack = game.packs.get(tablesPackName);
+      const characterCreationPack = game.packs.get('zweihander.zh-charactercreation-tables');
       const characterCreationPackIndex = await characterCreationPack.getIndex();
       const compendiumTableEntry = characterCreationPackIndex.find((table) => {
-        return ZweihanderUtils.normalizedIncludes(table.name, item.name) && ZweihanderUtils.normalizedIncludes(table.name, packName); 
+        return ZweihanderUtils.normalizedIncludes(table.name, item.name);
       });
 
       compendiumTable = await characterCreationPack.getDocument(compendiumTableEntry?._id);
