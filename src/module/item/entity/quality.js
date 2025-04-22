@@ -2,13 +2,15 @@ import ZweihanderBaseItem from './base-item';
 import * as ZweihanderUtils from '../../utils';
 
 export default class ZweihanderQuality extends ZweihanderBaseItem {
-  static async getQualities(names) {
+  static async getQualities(uuids) {
     return await Promise.all(
-      names.split(',').map(async (q) => {
-        const name = q.trim();
-        const item = await ZweihanderUtils.findItemWorldWide('quality', name);
+      uuids.map(async (uuid) => {
+        const item = await fromUuid(uuid);
+
+        console.log('QUALITY: ', item);
+
         return {
-          name,
+          name: item.name,
           found: item !== undefined,
           effect: ZweihanderUtils.localize(item?.system?.rules?.effect),
         };
@@ -16,8 +18,8 @@ export default class ZweihanderQuality extends ZweihanderBaseItem {
     );
   }
 
-  static async openQuality(name) {
-    const item = await ZweihanderUtils.findItemWorldWide('quality', name);
+  static async openQuality(uuid) {
+    const item = await fromUuid(uuid);
     return item.sheet.render(true);
   }
 }

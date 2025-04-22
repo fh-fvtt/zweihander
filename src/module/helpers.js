@@ -122,59 +122,6 @@ export const registerHandlebarHelpers = async function () {
     return btoa(JSON.stringify(obj));
   });
 
-  $$('arrayInputGroup', function (label, target, array, max = Number.MAX_SAFE_INTEGER, pillDisplayProperty) {
-    let locdiv = `<div class="form-group">
-        <label>${label}</label>
-        <div class="array-input flexrow" data-array-input-target="${target}" data-array-input-max="${max}">
-          <input name="proxy.${target}" type="text" placeholder="${game.i18n.localize(
-      'ZWEI.othermessages.entervalue'
-    )}">
-          <button class="array-input-plus" type="button" tabindex="-1"><i class="fas fa-plus"></i></button>
-          <div class="array-input-pills">`;
-
-    switch (label) {
-      case game.i18n.localize('ZWEI.actor.items.bonusadvances'):
-      case game.i18n.localize('ZWEI.actor.items.positivebonus'):
-      case game.i18n.localize('ZWEI.actor.items.negativebonus'):
-        locdiv += `
-            ${array.map(
-              (v, i) => `
-              <span class="array-input-pill" data-array-input-index="${i}">[${game.i18n.localize(
-                'ZWEI.actor.bonusesabbr.' + (v[pillDisplayProperty] ?? v).toLowerCase().replace(/\[|\]/g, '')
-              )}]</span>
-            `
-            )}
-          `;
-        break;
-      case game.i18n.localize('ZWEI.actor.items.skillranks'):
-        locdiv += `
-            ${array.map(
-              (v, i) => `
-              <span class="array-input-pill" data-array-input-index="${i}">${game.i18n.localize(
-                'ZWEI.actor.skills.' + (v[pillDisplayProperty] ?? v).toLowerCase().replace(/\s+/g, '')
-              )}</span>
-            `
-            )}
-          `;
-        break;
-      default:
-        locdiv += `
-            ${array.map(
-              (v, i) => `
-              <span class="array-input-pill" data-array-input-index="${i}">${v[pillDisplayProperty] ?? v}</span>
-            `
-            )}
-          `;
-        break;
-    }
-
-    locdiv += `</div>
-        </div>
-      </div>`;
-
-    return locdiv;
-  });
-
   $$('zhSkillBonus', function (bonus) {
     return bonus ? `+${bonus}` : '';
   });
@@ -222,9 +169,9 @@ export const registerHandlebarHelpers = async function () {
       currencies
         .map(
           (c) =>
-            `<i class="fas fa-coins currency" style="color: ${c.color}"></i> ${
-              price[c.abbreviation] ?? 0
-            } ${game.i18n.localize('ZWEI.coinage.' + c.abbreviation)}`
+            `<i class="fas fa-coins currency" style="color: ${c.color}"></i> ${price[c.abbreviation] ?? 0} ${
+              c.abbreviation
+            }`
         )
         .join(' ')
     );
@@ -384,6 +331,11 @@ export const registerHandlebarHelpers = async function () {
     );
   });
 
+  $$('zhFetchByUuidSync', function (uuid) {
+    const item = fromUuidSync(uuid);
+    return item.name;
+  });
+
   $$('zhIsCarried', function (system, options) {
     const isCarriedItem = typeof system?.carried !== 'undefined';
 
@@ -414,6 +366,14 @@ export const registerHandlebarHelpers = async function () {
     }
 
     return new Handlebars.SafeString(talentListHtml.join('<span> , </span>'));
+  });
+
+  $$('zhDamageFormula', function (damage) {
+    return damage.formula.override
+      ? damage.formula.value
+      : `${damage.attributeBonus} + 1${damage.die}${damage.fury.value ? 'x' + damage.fury.explodesOn.join('&') : ''}${
+          damage.bonus ? ' + ' + damage.bonus : ''
+        }`;
   });
 
   $$('stringcompare', function (variableOne, comparator, variableTwo) {

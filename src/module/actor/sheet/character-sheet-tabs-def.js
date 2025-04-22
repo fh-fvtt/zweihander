@@ -12,13 +12,13 @@ export function getItemGroups(groupsData) {
         {
           title: 'distance',
           size: 100,
-          key: 'system.distance',
+          key: 'system.distance.value',
           class: 'inject-data',
         },
         {
           title: 'load',
           size: 80,
-          key: 'system.load',
+          key: 'system.ranged.load',
         },
         {
           title: 'enc',
@@ -125,7 +125,7 @@ export function getItemGroups(groupsData) {
         {
           title: 'duration',
           size: 100,
-          key: 'system.duration',
+          key: 'system.duration.value',
           class: 'inject-data',
         },
       ],

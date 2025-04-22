@@ -50,6 +50,10 @@ export default class ZweihanderItemSheet extends ItemSheet {
     event.dataTransfer.setData('text/plain', JSON.stringify(dragData));
   }
 
+  _canDragDrop(selector) {
+    return this.isEditable;
+  }
+
   async _onDrop(event) {
     const data = TextEditor.getDragEventData(event);
 
@@ -237,9 +241,72 @@ export default class ZweihanderItemSheet extends ItemSheet {
       }));
     }
 
+    if (sheetData.type === 'spell') {
+      sheetData.spellDurations = ['instantaneous', 'forever', 'special', 'custom'].map((d) => ({
+        label: game.i18n.localize(`ZWEI.actor.items.durationList.${d}`),
+        value: d,
+        selected: sheetData.system.duration.setting === d,
+      }));
+
+      sheetData.governingDurationAttribute = this._prepareGoverningAttributeData(
+        sheetData,
+        CONFIG.ZWEI.primaryAttributes,
+        CONFIG.ZWEI.primaryAttributeBonuses,
+        'system.duration.base'
+      );
+    }
+
+    if (sheetData.type === 'trapping') {
+      sheetData.settings.currencies = game.settings.get('zweihander', 'currencySettings');
+    }
+
+    if (sheetData.type === 'armor') {
+      sheetData.settings.currencies = game.settings.get('zweihander', 'currencySettings');
+
+      const qualities = this._prepareQualities(sheetData);
+
+      sheetData.qualitiesCompendium = qualities.compendium;
+      sheetData.qualitiesWorld = qualities.world;
+    }
+
     if (sheetData.type === 'weapon') {
+      sheetData.settings.currencies = game.settings.get('zweihander', 'currencySettings');
+
+      const diceTypes = ['d4', 'd6', 'd8', 'd10', 'd12', 'd20', 'd100'];
+
+      sheetData.dice = diceTypes.map((d) => ({
+        value: d,
+        label: d,
+        selected: sheetData.system.damage?.die === d ? 'selected' : '',
+      }));
+
       const skillPack = game.packs.get(game.settings.get('zweihander', 'skillPack'));
-      sheetData.skills = (await skillPack.getIndex()).map((x) => x.name).sort((a, b) => a.localeCompare(b));
+      sheetData.skills = (await skillPack.getIndex())
+        .map((x) => ({
+          value: x.name,
+          label: x.name,
+          selected: sheetData.system.associatedSkill === x.name ? 'selected' : '',
+        }))
+        .sort((a, b) => a.label.localeCompare(b.label));
+
+      const qualities = this._prepareQualities(sheetData);
+
+      sheetData.qualitiesCompendium = qualities.compendium;
+      sheetData.qualitiesWorld = qualities.world;
+
+      sheetData.governingDamageAttribute = this._prepareGoverningAttributeData(
+        sheetData,
+        CONFIG.ZWEI.primaryAttributes,
+        CONFIG.ZWEI.primaryAttributeBonuses,
+        'system.damage.attributeBonus'
+      );
+
+      sheetData.governingDistanceAttribute = this._prepareGoverningAttributeData(
+        sheetData,
+        CONFIG.ZWEI.primaryAttributes,
+        CONFIG.ZWEI.primaryAttributeBonuses,
+        'system.distance.base'
+      );
     }
 
     if (sheetData.type === 'ancestry') {
@@ -258,6 +325,46 @@ export default class ZweihanderItemSheet extends ItemSheet {
     console.log(sheetData);
 
     return sheetData;
+  }
+
+  _prepareQualities(sheetData) {
+    const qualities = {};
+    // @todo: localize
+    const qualitiesPack = game.packs.get('zweihander.zh-qualities');
+
+    qualities.compendium = Array.from(qualitiesPack.index)
+      .map((q) => ({
+        value: q.uuid,
+        label: q.name,
+        selected: sheetData.system.qualities.includes(q.uuid) ? 'selected' : '',
+      }))
+      .sort((a, b) => a.label.localeCompare(b.label));
+
+    qualities.world = game.items
+      .filter((i) => i.type === 'quality')
+      .map((q) => ({
+        value: q.uuid,
+        label: q.name,
+        selected: sheetData.system.qualities.includes(q.uuid) ? 'selected' : '',
+      }))
+      .sort((a, b) => a.label.localeCompare(b.label));
+
+    return qualities;
+  }
+
+  _prepareGoverningAttributeData(sheetData, primaryAttributes, primaryAttributeBonuses, key) {
+    return primaryAttributes.reduce((acc, val, idx) => {
+      const attributeBonus = '[' + primaryAttributeBonuses[idx] + ']';
+      const attributeBonusLabel = val.capitalize() + ' Bonus';
+
+      return acc.concat([
+        {
+          label: attributeBonusLabel,
+          value: attributeBonus,
+          selected: getProperty(sheetData, key) === attributeBonus ? 'selected' : '',
+        },
+      ]);
+    }, []);
   }
 
   _getSelected(skillRankData, skill) {
@@ -431,24 +538,20 @@ export default class ZweihanderItemSheet extends ItemSheet {
 
   activateListeners(html) {
     super.activateListeners(html);
-    html.find('.open-editor').click(async (event) => {
-      event.preventDefault();
+
+    // @todo: figure out a less hacky way to handle this
+    html.find('.editor-edit').click((event) => {
       const toggler = $(event.currentTarget);
-      const group = toggler.parents('.form-group');
-      const editor = group.find('.editor');
-      const preview = group.find('.zh-editor-preview');
-      $(preview).toggleClass('open');
-      $(editor).toggleClass('open');
+      const sheet = toggler.parents('.zweihander.sheet.item');
+
+      const currentTabHeight = html.find('.tab.active').height();
+
+      $(sheet).height(currentTabHeight + 169.67);
     });
 
     html.find('.profile').click(async (event) => {
       this._onEditImage(event);
     });
-
-    html.find('.array-input input').keypress(async (event) => (event.which === 13 ? this.acceptArrayInput(event) : 0));
-    html.find('.array-input input').focusout(async (event) => this.acceptArrayInput(event));
-    html.find('.array-input-plus').click(async (event) => this.acceptArrayInput(event));
-    html.find('.array-input-pill').click(async (event) => this.removeArrayInput(event));
 
     // Add new Active Effect (from within the sheet)
     html.find('.add-new').click(async (ev) => {
@@ -462,7 +565,7 @@ export default class ZweihanderItemSheet extends ItemSheet {
           {
             label: this.item.name,
             icon: this.item.img,
-            origin: (this.item.parent ? `Actor.${this.item.parent.id}` : '') + '.Item.' + this.item.id,
+            origin: (this.item.parent ? `Actor.${this.item.parent.id}.` : '') + 'Item.' + this.item.id,
 
             // @todo: refactor after transition to DataMode
             system: {
@@ -505,6 +608,7 @@ export default class ZweihanderItemSheet extends ItemSheet {
       this.render(false);
     };
 
+    // @todo: no need for qualities to be here; remove
     const onDeleteArrayItemCallback = (uuidProperty) => async () => {
       const [type, idx] = uuidProperty.split('.').slice(1, -1);
       const property = type === 'talent' ? 'system.talents' : 'system.qualities';

@@ -6,11 +6,11 @@
   "type": "weapon",
   "_stats": {
     "coreVersion": "12.331",
-    "systemId": null,
-    "systemVersion": null,
+    "systemId": "zweihander",
+    "systemVersion": "5.4.1",
     "createdTime": null,
-    "modifiedTime": null,
-    "lastModifiedBy": null,
+    "modifiedTime": 1745261863591,
+    "lastModifiedBy": "rivg6xcMxdlVDM8y",
     "compendiumSource": null,
     "duplicateSource": null
   },
@@ -20,26 +20,49 @@
     },
     "notes": "",
     "price": {
-      "bp": "0",
-      "gc": "0",
-      "ss": "0"
+      "bp": 0,
+      "gc": 0,
+      "ss": 0,
+      "ad": null
     },
     "encumbrance": 3,
     "carried": true,
     "weaponType": "Missile",
     "equipped": false,
     "associatedSkill": "Martial Ranged",
-    "load": 4,
-    "handling": "One-handed",
-    "qualities": {
-      "value": "Fast, Punishing, Repeating",
-      "arrayOfValues": []
+    "ranged": {
+      "load": 4,
+      "value": true
     },
-    "distance": "[PB]+6 yards",
+    "handling": "One-handed",
+    "qualities": [
+      "Compendium.zweihander.zh-qualities.Item.vu1fnMVplISEga8I",
+      "Compendium.zweihander.zh-qualities.Item.a0KJwwHCoJIwG1ck",
+      "Compendium.zweihander.zh-qualities.Item.Ubt0PwKhjHyPJduM"
+    ],
+    "distance": {
+      "value": "[PB]+6 ",
+      "base": "[PB]",
+      "bonus": 6
+    },
     "damage": {
-      "formula": "[CB] + (1+[#])d6x6+2",
+      "formula": {
+        "override": false,
+        "value": "[CB] + (1+[#])d6x6+2"
+      },
+      "attributeBonus": "[CB]",
+      "number": 1,
+      "die": "d6",
+      "bonus": 2,
+      "fury": {
+        "value": true,
+        "explodesOn": [
+          "6"
+        ]
+      },
       "associatedPrimaryAttribute": "Combat"
-    }
+    },
+    "load": 4
   },
   "folder": null,
   "sort": 0,

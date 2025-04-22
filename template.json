@@ -282,22 +282,36 @@
       "weaponType": "",
       "equipped": false,
       "associatedSkill": "Simple Melee",
-      "load": 0,
-      "handling": "One-handed",
-      "qualities": {
-        "value": ""
+      "ranged": {
+        "load": 0,
+        "value": false
       },
-      "distance": "",
+      "handling": "One-Handed",
+      "qualities": [],
+      "distance": {
+        "value": "",
+        "base": "[PB]",
+        "bonus": 0
+      },
       "damage": {
-        "formula": "[CB] + 0 + (1+[#])d6x6"
+        "formula": {
+          "override": false,
+          "value": "[CB] + 0 + (1+[#])d6x6"
+        },
+        "attributeBonus": "[CB]",
+        "number": 1,
+        "die": "d6",
+        "bonus": 0,
+        "fury": {
+          "value": false,
+          "explodesOn": []
+        }
       }
     },
     "armor": {
       "templates": ["flavor", "trapping"],
       "equipped": true,
-      "qualities": {
-        "value": ""
-      },
+      "qualities": [],
       "damageThresholdModifier": 0
     },
     "trapping": {
@@ -339,7 +353,13 @@
       "tradition": "",
       "principle": "",
       "distance": "",
-      "duration": "",
+      "duration": {
+        "setting": "instantaneous",
+        "value": "",
+        "base": "[WB]",
+        "bonus": 0,
+        "unit": "minutes"
+      },
       "castingTime": "1 min",
       "castingCost": 0,
       "rules": {

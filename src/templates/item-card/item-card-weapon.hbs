@@ -1,30 +1,33 @@
 <section class="item-card">
-    <h2 class="item-card-title">{{name}}</h2>
-    <div class="item-card-description">
-      {{{zhLocalize system.description}}}
-    </div>
-    <dl class="compact-details zh-collapsed zh-expandable" data-expand-title="{{localize "ZWEI.chatskill.itemdetails"}}">
-      <dt>{{localize "ZWEI.actor.items.associatedskill"}}</dt>
-      <dd>{{zhLocalizeConditional "ZWEI.actor.skills." system.associatedSkill}}</dd>
-      <dt>{{localize "ZWEI.actor.items.load"}}</dt>
-      <dd>{{system.load}}</dd>
-      <dt>{{localize "ZWEI.actor.items.handling"}}</dt>
-      <dd>{{system.handling}}</dd>
-      <dt>{{localize "ZWEI.actor.items.distance"}}</dt>
-      <dd>{{system.distance}}</dd>
-      <dt>{{localize "ZWEI.actor.items.type"}}</dt>
-      <dd>{{system.weaponType}}</dd>
-      <dt>{{localize "ZWEI.actor.items.encumbrance"}}</dt>
-      <dd>{{system.encumbrance}}</dd>
-      <dt>{{localize "ZWEI.actor.items.price"}}</dt>
-      <dd>
-        {{zhPrice system.price}}
-      </dd>
-    </dl>
-    <dl class="item-card-qualities zh-expandable zh-collapsed" data-expand-title="{{localize "ZWEI.chatskill.showqualities"}}">
-      {{#each system.qualities}}
+  <h2 class="item-card-title">{{name}}</h2>
+  <div class="item-card-description">
+    {{{zhLocalize system.description}}}
+  </div>
+  <dl class="compact-details zh-collapsed zh-expandable" data-expand-title="{{localize 'ZWEI.chatskill.itemdetails'}}">
+    <dt>{{localize "ZWEI.actor.items.associatedskill"}}</dt>
+    <dd>{{zhLocalizeConditional "ZWEI.actor.skills." system.associatedSkill}}</dd>
+    <dt>{{localize "ZWEI.actor.items.load"}}</dt>
+    <dd>{{system.load}}</dd>
+    <dt>{{localize "ZWEI.actor.items.handling"}}</dt>
+    <dd>{{system.handling}}</dd>
+    <dt>{{localize "ZWEI.actor.items.distance"}}</dt>
+    <dd>{{system.distance.value}}</dd>
+    <dt>{{localize "ZWEI.actor.items.type"}}</dt>
+    <dd>{{system.weaponType}}</dd>
+    <dt>{{localize "ZWEI.actor.items.encumbrance"}}</dt>
+    <dd>{{system.encumbrance}}</dd>
+    <dt>{{localize "ZWEI.actor.items.price"}}</dt>
+    <dd>
+      {{zhPrice system.price}}
+    </dd>
+  </dl>
+  <dl
+    class="item-card-qualities zh-expandable zh-collapsed"
+    data-expand-title="{{localize 'ZWEI.chatskill.showqualities'}}"
+  >
+    {{#each system.qualities}}
       <dt>{{name}}</dt>
       <dd>{{{effect}}}</dd>
-      {{/each}}
-    </dl>
-  </section>
+    {{/each}}
+  </dl>
+</section>

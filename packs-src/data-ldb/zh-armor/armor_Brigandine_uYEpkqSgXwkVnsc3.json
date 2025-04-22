@@ -1,16 +1,16 @@
 {
   "_id": "uYEpkqSgXwkVnsc3",
   "effects": [],
-  "img": "systems/zweihander/assets/icons/chest-armor.svg",
+  "img": "systems/zweihander/assets/icons/armor-vest.svg",
   "name": "Brigandine",
   "type": "armor",
   "_stats": {
     "coreVersion": "12.331",
-    "systemId": null,
-    "systemVersion": null,
+    "systemId": "zweihander",
+    "systemVersion": "5.4.1",
     "createdTime": null,
-    "modifiedTime": null,
-    "lastModifiedBy": null,
+    "modifiedTime": 1745250796776,
+    "lastModifiedBy": "rivg6xcMxdlVDM8y",
     "compendiumSource": null,
     "duplicateSource": null
   },
@@ -20,17 +20,15 @@
     },
     "notes": "",
     "price": {
-      "bp": "0",
-      "gc": "33",
-      "ss": "0"
+      "bp": 0,
+      "gc": 33,
+      "ss": 0,
+      "ad": null
     },
     "encumbrance": 4,
     "carried": true,
     "equipped": false,
-    "qualities": {
-      "value": "",
-      "arrayOfValues": []
-    },
+    "qualities": [],
     "damageThresholdModifier": 3
   },
   "folder": null,

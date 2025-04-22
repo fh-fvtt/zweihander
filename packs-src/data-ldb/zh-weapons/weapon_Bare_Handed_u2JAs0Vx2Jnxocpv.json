@@ -7,9 +7,9 @@
   "_stats": {
     "coreVersion": "12.331",
     "systemId": "zweihander",
-    "systemVersion": "5.3.2",
+    "systemVersion": "5.4.1",
     "createdTime": null,
-    "modifiedTime": 1729875537943,
+    "modifiedTime": 1745254817897,
     "lastModifiedBy": "rivg6xcMxdlVDM8y",
     "compendiumSource": null,
     "duplicateSource": null
@@ -22,23 +22,45 @@
     "price": {
       "bp": 0,
       "gc": 0,
-      "ss": 0
+      "ss": 0,
+      "ad": null
     },
     "encumbrance": 0,
     "carried": true,
     "weaponType": "Brawling",
     "equipped": false,
     "associatedSkill": "Simple Melee",
-    "load": 0,
-    "handling": "One-handed",
-    "qualities": {
-      "value": "Pummeling, Slow",
-      "arrayOfValues": []
+    "ranged": {
+      "load": 0,
+      "value": false
     },
-    "distance": "Engaged",
+    "handling": "One-handed",
+    "qualities": [
+      "Compendium.zweihander.zh-qualities.Item.XX3z9Md3skZ2CqTh",
+      "Compendium.zweihander.zh-qualities.Item.HcvWfBAXe1vOmNK7"
+    ],
+    "distance": {
+      "value": "Engaged",
+      "base": "[PB]",
+      "bonus": 0
+    },
     "damage": {
-      "formula": "[BB] + (1+[#])d6x6"
-    }
+      "formula": {
+        "override": false,
+        "value": "[BB] + (1+[#])d6x6"
+      },
+      "attributeBonus": "[BB]",
+      "number": 1,
+      "die": "d6",
+      "bonus": 0,
+      "fury": {
+        "value": true,
+        "explodesOn": [
+          "6"
+        ]
+      }
+    },
+    "load": 0
   },
   "folder": null,
   "sort": 0,

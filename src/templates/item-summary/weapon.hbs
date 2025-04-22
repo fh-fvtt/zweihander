@@ -1,12 +1,16 @@
-<label>{{localize "ZWEI.actor.items.damage"}}:</label> <span class="inject-data">{{damage.formula}}</span><br />
-<label>{{localize "ZWEI.actor.items.associatedskill"}}:</label> {{zhLocalizeConditional "ZWEI.actor.skills." associatedSkill}}<br />
-<label>{{localize "ZWEI.actor.items.type"}}:</label> {{weaponType}}<br />
+<label>{{localize "ZWEI.actor.items.damage"}}:</label>
+<span class="inject-data">{{zhDamageFormula damage}}</span><br />
+<label>{{localize "ZWEI.actor.items.associatedskill"}}:</label>
+{{zhLocalizeConditional "ZWEI.actor.skills." associatedSkill}}<br />
+<label>{{localize "ZWEI.actor.items.type"}}:</label>
+{{weaponType}}<br />
 <label>{{localize "ZWEI.actor.items.qualities"}}: </label>
-{{#if qualities.arrayOfValues}}
-{{#each qualities.arrayOfValues as | qualityData idx |}}
-<a class="js-display-quality">{{qualityData}}</a>{{#unless @last}}<span>, </span>{{/unless}}
-{{/each}}
+{{#if qualities}}
+  {{#each qualities as |qualityUuid idx|}}
+    <a class="js-display-quality">{{zhFetchByUuidSync qualityUuid}}</a>{{#unless @last}}<span>, </span>{{/unless}}
+  {{/each}}
 {{else}}
-<span> - </span>
-{{/if}} <br />
+  <span> - </span>
+{{/if}}
+<br />
 {{zhPrice price}}

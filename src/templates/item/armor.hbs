@@ -1,4 +1,4 @@
-<div class="form-group">
+{{!-- <div class="form-group">
   <label>{{localize "ZWEI.actor.items.encumbrance"}}</label>
   <input  name="system.encumbrance" type="number" value="{{system.encumbrance}}">
 </div>
@@ -21,4 +21,27 @@
     <input name="system.equipped" type="checkbox" class="link-checkbox" {{checked system.equipped}} />
     {{localize "ZWEI.actor.items.equipped"}}
   </label>
-</div>
+</div> --}}
+
+<fieldset>
+  <legend>Characteristics</legend>
+
+  <div class="form-group">
+    <label>{{localize "ZWEI.actor.items.damagethresholdmodifier"}}</label>
+    <input name="system.damageThresholdModifier" type="number" value="{{system.damageThresholdModifier}}" />
+  </div>
+
+  <div class="form-group">
+    <label>{{localize "ZWEI.actor.items.qualities"}}</label>
+    <multi-select name="system.qualities">
+      <optgroup label="Compendium Qualities">
+        {{selectOptions qualitiesCompendium valueAttr="value" labelAttr="label" selected=selected}}
+      </optgroup>
+      <optgroup label="World Qualities">
+        {{selectOptions qualitiesWorld valueAttr="value" labelAttr="label" selected=selected}}
+      </optgroup>
+    </multi-select>
+  </div>
+</fieldset>
+
+{{> ($$ 'partials/item-price-weight')}}

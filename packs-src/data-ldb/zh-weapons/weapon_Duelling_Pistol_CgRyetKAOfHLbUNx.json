@@ -7,9 +7,9 @@
   "_stats": {
     "coreVersion": "12.331",
     "systemId": "zweihander",
-    "systemVersion": "5.3.2",
+    "systemVersion": "5.4.1",
     "createdTime": null,
-    "modifiedTime": 1729889985559,
+    "modifiedTime": 1745255373622,
     "lastModifiedBy": "rivg6xcMxdlVDM8y",
     "compendiumSource": null,
     "duplicateSource": null
@@ -22,23 +22,45 @@
     "price": {
       "bp": 0,
       "gc": 50,
-      "ss": 0
+      "ss": 0,
+      "ad": null
     },
     "encumbrance": 2,
     "carried": true,
     "weaponType": "Gunpowder",
     "equipped": false,
     "associatedSkill": "Martial Ranged",
-    "load": 3,
-    "handling": "One-handed",
-    "qualities": {
-      "value": "Gunpowder",
-      "arrayOfValues": []
+    "ranged": {
+      "load": 3,
+      "value": true
     },
-    "distance": "3 + [PB] yards",
+    "handling": "One-handed",
+    "qualities": [
+      "Compendium.zweihander.zh-qualities.Item.0L1YXMkZ0dXhGb0R"
+    ],
+    "distance": {
+      "value": "3 + [PB] ",
+      "base": "[PB]",
+      "bonus": 3
+    },
     "damage": {
-      "formula": "[CB] + (1+[#])d6x1&6"
-    }
+      "formula": {
+        "override": false,
+        "value": "[CB] + (1+[#])d6x1&6"
+      },
+      "attributeBonus": "[CB]",
+      "number": 1,
+      "die": "d6",
+      "bonus": 0,
+      "fury": {
+        "value": true,
+        "explodesOn": [
+          "1",
+          "6"
+        ]
+      }
+    },
+    "load": 3
   },
   "folder": null,
   "sort": 0,

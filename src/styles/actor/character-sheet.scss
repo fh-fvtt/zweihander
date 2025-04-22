@@ -97,14 +97,42 @@ body.game.vtt.system-zweihander .zweihander.sheet.character {
 
     .tab.trappings {
       .currency-container {
-        /*color: var(--zh-clr-fg3);
-        flex: 0 0 32px;
-        margin-bottom: 10px;
-        justify-content: center;*/
         flex: 0;
+        align-items: center;
+        justify-content: center;
+        margin: 4px 0 10px 0;
+
+        .icon-and-input {
+          flex: 0;
+          margin: 0 10px;
+          position: relative;
+
+          & > input {
+            width: 80px;
+            background-color: rgba(var(--zh-clr-bg0-rgb), 0.5);
+            border: 2px groove var(--zh-clr-bg2);
+            border-radius: 3px;
+            color: var(--zh-clr-fg2);
+            padding: 3px;
+            text-align: center;
+            flex: 0;
+
+            &:hover {
+              background-color: rgba(var(--zh-clr-bg1-rgb), 0.5);
+              border-color: var(--zh-clr-aqua);
+              box-shadow: 0 0 6px var(--zh-clr-bg2);
+            }
+          }
+        }
+
+        .coins-icon {
+          position: absolute;
+          top: -4px;
+          left: -3px;
+        }
 
         .currency {
-          margin: 0 10px;
+          margin: 0 5px;
           flex: 0 0 content;
           align-items: center;
         }

@@ -308,7 +308,85 @@ const migrateItemData = async (item) => {
       migrateField('expert.requirements', 'expert.requirements', 0, () => ({ additional: '', skillRanks: [] }));
     }
   } else if (item.type === 'disease') {
-    migrateField('duration', 'duration', 0, () => ({ value: '', lastsUntilCured: false }));
+    migrateField('duration', 'duration', 0, () => ({
+      value: 0,
+      formula: { number: 1, die: 'd10', bonus: 1 },
+      lastsUntilCured: false,
+    }));
+  } else if (item.type === 'armor') {
+    const qualities = itemData.system.qualities.value;
+    const arrayOfQualities = qualities ? qualities.split(',').map((q) => q.trim()) : [];
+
+    for (let i = 0; i < arrayOfQualities.length; i++) {
+      arrayOfQualities[i] = (await globalThis.findItemWorldWide('quality', arrayOfQualities[i])).uuid;
+    }
+
+    migrateField('qualities', 'qualities', 0, () => arrayOfQualities);
+  } else if (item.type === 'spell') {
+    const durationValue = itemData.system.duration.replaceAll(/(minutes)|(hours)|(days)|(weeks)|(years)/g, '');
+    const durationBonuses = durationValue.match(/\d+/g);
+
+    let durationBonus = 0;
+
+    const isDurationDerived = durationBonuses !== null;
+
+    if (isDurationDerived) durationBonus = durationBonuses.map((s) => parseInt(s)).reduce((acc, val) => acc + val, 0);
+
+    migrateField('distance', 'distance', 0, () => ({
+      setting: isDurationDerived ? 'custom' : durationValue.toLowerCase(),
+      value: durationValue ?? '',
+      base: '[WB]',
+      bonus: durationBonus,
+    }));
+  } else if (item.type === 'weapon') {
+    const qualities = itemData.system.qualities.value;
+    const arrayOfQualities = qualities ? qualities.split(',').map((q) => q.trim()) : [];
+
+    for (let i = 0; i < arrayOfQualities.length; i++) {
+      arrayOfQualities[i] = (await globalThis.findItemWorldWide('quality', arrayOfQualities[i])).uuid;
+    }
+
+    migrateField('qualities', 'qualities', 0, () => arrayOfQualities);
+
+    const overrideFormula = itemData.system.damage.formula;
+
+    migrateField('damage.formula', 'damage.formula', 0, () => ({
+      override: false,
+      value: overrideFormula ?? '',
+    }));
+
+    for (let pab of CONFIG.ZWEI.primaryAttributeBonuses) {
+      const fullPab = '[' + pab + ']';
+      if (overrideFormula.startsWith(fullPab)) {
+        update['system.damage.attributeBonus'] = fullPab;
+        break;
+      }
+    }
+
+    const distanceValue = itemData.system.distance.replaceAll(/(yards)|(yard)|(yds\.?)|(yd\.?)/g, '');
+    const distanceBonuses = distanceValue.match(/\d+/g);
+
+    let distanceBonus = 0;
+
+    if (distanceBonuses !== null)
+      distanceBonus = distanceBonuses.map((s) => parseInt(s)).reduce((acc, val) => acc + val, 0);
+
+    migrateField('distance', 'distance', 0, () => ({
+      value: distanceValue ?? '',
+      base: '[PB]',
+      bonus: distanceBonus,
+    }));
+
+    const load = itemData.system.load;
+
+    migrateField('load', 'ranged.load', 0);
+
+    if (load != 0) update['system.ranged.value'] = true;
+
+    update['system.damage.fury'] = {
+      value: true,
+      explodesOn: itemData.system.weaponType.includes('Gunpowder') ? ['1', '6'] : ['6'],
+    };
   }
   const updatedImg = migrateIcons(item);
   if (updatedImg) {

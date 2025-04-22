@@ -1,48 +1,157 @@
-<div class="form-group">
-  <label>{{localize "ZWEI.actor.items.associatedskill"}}</label>
-  <select name="system.associatedSkill">
-    {{!-- In case the system.associatedSkill is not in the skill list --}}
-    <option value="{{system.associatedSkill}}">{{zhLocalizeConditional "ZWEI.actor.skills." system.associatedSkill}}</option>
-    {{#select system.associatedSkill}}
-    {{#each skills as | skill idx | }}
-      <option value="{{skill}}">{{zhLocalizeConditional "ZWEI.actor.skills." skill}}</option>
-    {{/each}}
-    {{/select}}
-  </select>
-</div>
-<div class="form-group">
-  <label>{{localize "ZWEI.actor.items.load"}}</label>
-  <input  name="system.load" type="number" value="{{system.load}}">
-</div>
-<div class="form-group">
-  <label>{{localize "ZWEI.actor.items.handling"}}</label>
-  <input  name="system.handling" type="text" value="{{system.handling}}">
-</div>
-<div class="form-group">
-  <label>{{localize "ZWEI.actor.items.distance"}}</label>
-  <input  name="system.distance" type="text" value="{{system.distance}}">
-</div>
-<div class="form-group">
-  <label>{{localize "ZWEI.actor.items.qualities"}}</label>
-  <input name="system.qualities.value" type="text" value="{{system.qualities.value}}">
-</div>
-<div class="form-group">
-  <label>{{localize "ZWEI.actor.items.type"}}</label>
-  <input  name="system.weaponType" type="text" value="{{system.weaponType}}">
-</div>
-<div class="form-group">
-  <label>{{localize "ZWEI.actor.items.damageformula"}}</label>
-  <input  name="system.damage.formula" type="text" value="{{system.damage.formula}}">
-</div>
-<div class="form-group">
-  <label>{{localize "ZWEI.actor.items.encumbrance"}}</label>
-  <input  name="system.encumbrance" type="number" value="{{system.encumbrance}}">
-</div>
-{{zhPriceInputs system.price}}
-{{!-- <div class="form-group stacked">
-  <label>{{localize "ZWEI.actor.items.status"}}</label>
-  <label class="checkbox">
-    <input name="system.equipped" type="checkbox" class="link-checkbox" {{checked system.equipped}} />
-    {{localize "ZWEI.actor.items.equipped"}}
-  </label>
-</div> --}}
+<fieldset>
+  <legend>Governing Skill</legend>
+
+  <div class="form-group">
+    <label>Skill</label>
+    <select name="system.associatedSkill">
+      {{selectOptions skills valueAttr="value" labelAttr="label" selected=selected}}
+    </select>
+  </div>
+</fieldset>
+
+<fieldset>
+  <legend>Characteristics</legend>
+
+  <div class="form-group">
+    <label>{{localize "ZWEI.actor.items.handling"}}</label>
+    <input name="system.handling" type="text" value="{{system.handling}}" />
+  </div>
+
+  <div class="form-group">
+    <label>{{localize "ZWEI.actor.items.type"}}</label>
+    <input name="system.weaponType" type="text" value="{{system.weaponType}}" />
+  </div>
+
+  <div class="form-group">
+    <label>{{localize "ZWEI.actor.items.qualities"}}</label>
+    <multi-select name="system.qualities">
+      <optgroup label="Compendium Qualities">
+        {{selectOptions qualitiesCompendium valueAttr="value" labelAttr="label" selected=selected}}
+      </optgroup>
+      <optgroup label="World Qualities">
+        {{selectOptions qualitiesWorld valueAttr="value" labelAttr="label" selected=selected}}
+      </optgroup>
+    </multi-select>
+  </div>
+
+  <div class="form-group">
+    <label>Ranged</label>
+    <input name="system.ranged.value" type="checkbox" class="link-checkbox" {{checked system.ranged.value}} />
+  </div>
+
+  {{#if system.ranged.value}}
+    <div class="form-group">
+      <label>{{localize "ZWEI.actor.items.load"}}</label>
+      <input name="system.ranged.load" type="number" value="{{system.ranged.load}}" />
+    </div>
+  {{/if}}
+
+  <div class="form-group">
+    <label class="formula-label">{{localize "ZWEI.actor.items.distance"}}</label>
+    <div class="distance-inputs flexrow">
+      {{#if system.ranged.value}}
+        <div class="form-group label-top">
+          <label>BASE</label>
+          <select name="system.distance.base">
+            {{selectOptions governingDistanceAttribute valueAttr="value" labelAttr="label" selected=selected}}
+          </select>
+        </div>
+      {{else}}
+        <input class="engaged" type="text" value="Engaged" disabled />
+        <span class="separator">or</span>
+      {{/if}}
+      <div class="form-group label-top">
+        <label>{{#if system.ranged.value}}BONUS{{else}}REACH{{/if}}</label>
+        <input type="number" name="system.distance.bonus" value="{{system.distance.bonus}}" />
+      </div>
+    </div>
+  </div>
+
+  {{!<div class="form-group">
+    <label class="formula-label">Distance Increments</label>
+    <div class="distance-inputs flexrow">
+      <div class="form-group label-top">
+        <label>SHORT</label>
+        <input type="text" />
+      </div>
+      <div class="form-group label-top">
+        <label>MEDIUM</label>
+        <input type="text" />
+      </div>
+      <div class="form-group label-top">
+        <label>LONG</label>
+        <input type="text" />
+      </div>
+    </div>
+  </div>}}
+
+</fieldset>
+
+<fieldset>
+  <legend>Damage</legend>
+  <div class="form-group">
+    <label>Formula</label>
+    <input
+      name="system.damage.formula.override"
+      type="checkbox"
+      class="link-checkbox"
+      {{checked system.damage.formula.override}}
+    />
+  </div>
+
+  {{#if system.damage.formula.override}}
+    <div class="form-group">
+      <label></label>
+      <input name="system.damage.formula.value" type="text" value="{{system.damage.formula.value}}" />
+    </div>
+  {{else}}
+    <div class="form-group">
+      <label>Governing Attribute Bonus</label>
+      <select name="system.damage.attributeBonus">
+        {{selectOptions governingDamageAttribute valueAttr="value" labelAttr="label" selected=selected}}
+      </select>
+    </div>
+
+    <div class="form-group">
+      <label class="formula-label">Damage</label>
+      <div class="damage-inputs flexrow">
+        <div class="form-group label-top">
+          <label>NUMBER</label>
+          <input type="number" name="system.damage.number" value="{{system.damage.number}}"/>
+        </div>
+        <div class="form-group label-top">
+          <label>DIE</label>
+          <select name="system.damage.die">
+            {{selectOptions dice valueAttr="value" labelAttr="label" selected=selected}}
+          </select>
+        </div>
+        <div class="form-group label-top">
+          <label>BONUS</label>
+          <input type="number" name="system.damage.bonus" value="{{system.damage.bonus}}"/>
+        </div>
+      </div>
+    </div>
+
+    <div class="form-group">
+      <label>Exploding Die</label>
+      <input
+        name="system.damage.fury.value"
+        type="checkbox"
+        class="link-checkbox"
+        {{checked system.damage.fury.value}}
+      />
+    </div>
+
+    {{#if system.damage.fury.value}}
+      <div class="form-group">
+        <label></label>
+        <zweihander-tags
+          type="exploding-dice"
+          name="system.damage.fury.explodesOn"
+        >{{system.damage.fury.explodesOn}}</zweihander-tags>
+      </div>
+    {{/if}}
+  {{/if}}
+</fieldset>
+
+{{> ($$ 'partials/item-price-weight')}}

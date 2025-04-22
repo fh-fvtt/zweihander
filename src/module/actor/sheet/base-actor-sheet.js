@@ -535,7 +535,8 @@ export default class ZweihanderBaseActorSheet extends ActorSheet {
       const li = $(event.currentTarget).parents('.item');
       const item = this.actor.items.get(li.data('itemId')).toObject(false);
       if (item.type === 'weapon' || item.type === 'armor') {
-        item.system.qualities = await ZweihanderQuality.getQualities(item.system.qualities.value);
+        // @todo: qualities refactor
+        item.system.qualities = await ZweihanderQuality.getQualities(item.system.qualities);
       }
       // console.log('zweihander | base actor sheet#activateListeners item-post', item);
       let html;

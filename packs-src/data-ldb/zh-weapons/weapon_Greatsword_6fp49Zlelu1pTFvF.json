@@ -7,9 +7,9 @@
   "_stats": {
     "coreVersion": "12.331",
     "systemId": "zweihander",
-    "systemVersion": "5.3.2",
+    "systemVersion": "5.4.1",
     "createdTime": null,
-    "modifiedTime": 1729890656883,
+    "modifiedTime": 1745255458068,
     "lastModifiedBy": "rivg6xcMxdlVDM8y",
     "compendiumSource": null,
     "duplicateSource": null
@@ -22,24 +22,47 @@
     "price": {
       "bp": 0,
       "gc": 12,
-      "ss": 0
+      "ss": 0,
+      "ad": null
     },
     "encumbrance": 3,
     "carried": true,
     "weaponType": "Bladed",
     "equipped": false,
     "associatedSkill": "Martial Melee",
-    "load": 0,
-    "handling": "Two-handed",
-    "qualities": {
-      "value": "Finesse, Reach, Slow",
-      "arrayOfValues": []
+    "ranged": {
+      "load": 0,
+      "value": false
     },
-    "distance": "Engaged or 1 yard",
+    "handling": "Two-handed",
+    "qualities": [
+      "Compendium.zweihander.zh-qualities.Item.rw8fWjIxFkW2ReNj",
+      "Compendium.zweihander.zh-qualities.Item.HZVu7VfwJDkoCO1U",
+      "Compendium.zweihander.zh-qualities.Item.HcvWfBAXe1vOmNK7"
+    ],
+    "distance": {
+      "value": "Engaged or 1 ",
+      "base": "[PB]",
+      "bonus": 1
+    },
     "damage": {
-      "formula": "[AB] + (1+[#])d6x6",
+      "formula": {
+        "override": false,
+        "value": "[AB] + (1+[#])d6x6"
+      },
+      "attributeBonus": "[AB]",
+      "number": 1,
+      "die": "d6",
+      "bonus": 0,
+      "fury": {
+        "value": true,
+        "explodesOn": [
+          "6"
+        ]
+      },
       "associatedPrimaryAttribute": "Agility"
-    }
+    },
+    "load": 0
   },
   "folder": null,
   "sort": 0,

@@ -83,6 +83,7 @@ const templatesToLoad = [
   $$('partials/modded-value-bonuses.hbs'),
   $$('partials/modded-value.hbs'),
   $$('partials/skills-list.hbs'),
+  $$('partials/item-price-weight.hbs'),
 ];
 
 export const preloadHandlebarsTemplates = async function () {

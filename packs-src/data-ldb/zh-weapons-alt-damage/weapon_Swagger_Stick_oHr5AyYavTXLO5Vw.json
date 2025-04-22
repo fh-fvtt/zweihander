@@ -6,11 +6,11 @@
   "type": "weapon",
   "_stats": {
     "coreVersion": "12.331",
-    "systemId": null,
-    "systemVersion": null,
+    "systemId": "zweihander",
+    "systemVersion": "5.4.1",
     "createdTime": null,
-    "modifiedTime": null,
-    "lastModifiedBy": null,
+    "modifiedTime": 1745261941773,
+    "lastModifiedBy": "rivg6xcMxdlVDM8y",
     "compendiumSource": null,
     "duplicateSource": null
   },
@@ -20,26 +20,49 @@
     },
     "notes": "",
     "price": {
-      "bp": "0",
-      "gc": "1",
-      "ss": "0"
+      "bp": 0,
+      "gc": 1,
+      "ss": 0,
+      "ad": null
     },
     "encumbrance": 1,
     "carried": true,
     "weaponType": "Crushing",
     "equipped": false,
     "associatedSkill": "Martial Melee",
-    "load": 0,
-    "handling": "One-handed",
-    "qualities": {
-      "value": "Powerful, Pummeling, Slow",
-      "arrayOfValues": []
+    "ranged": {
+      "load": 0,
+      "value": false
     },
-    "distance": "Engaged",
+    "handling": "One-handed",
+    "qualities": [
+      "Compendium.zweihander.zh-qualities.Item.Rg7ayPFAQ8iYSTDz",
+      "Compendium.zweihander.zh-qualities.Item.XX3z9Md3skZ2CqTh",
+      "Compendium.zweihander.zh-qualities.Item.HcvWfBAXe1vOmNK7"
+    ],
+    "distance": {
+      "value": "Engaged",
+      "base": "[PB]",
+      "bonus": 0
+    },
     "damage": {
-      "formula": "[BB] + (1+[#])d6x6",
+      "formula": {
+        "override": false,
+        "value": "[BB] + (1+[#])d6x6"
+      },
+      "attributeBonus": "[BB]",
+      "number": 1,
+      "die": "d6",
+      "bonus": 0,
+      "fury": {
+        "value": true,
+        "explodesOn": [
+          "6"
+        ]
+      },
       "associatedPrimaryAttribute": "Brawn"
-    }
+    },
+    "load": 0
   },
   "folder": null,
   "sort": 0,

@@ -1,42 +1,17 @@
 <div class="currency-container flexrow">
   {{#each settings.currencies as | currency i | }}
-    <span style="color:{{currency.color}}"><i class="fas fa-coins"></i></span>
+  <div class="icon-and-input flexcol">
+    <span class="coins-icon" style="color:{{currency.color}}"><i class="fas fa-coins"></i></span>
     <input class="coin-input" style="color:{{currency.color}}" type="number"
       name="system.currency.{{currency.abbreviation}}" value="{{lookup ../system.currency currency.abbreviation}}"
       placeholder="0" />
-  {{/each}}
-</div>
-
-
-{{!--<div class="currency-container flexrow">
-  {{#each settings.currencies as | currency i | }}
-  <div class="currency flexcol">
-    <input class="coin-input" style="color:{{currency.color}}" type="number"
-      name="system.currency.{{currency.abbreviation}}" value="{{lookup ../system.currency currency.abbreviation}}"
-      placeholder="0" />
-    <span style="color:{{currency.color}}"><i class="fas fa-coins"></i>
-    {{zhLocalizeConditional "ZWEI.coinage." name}}
-    </span>
-    <span>
-      {{#unless @last}}
-      <span style="color:{{currency.color}}">
-        1
-        {{zhLocalizeConditional "ZWEI.coinage." (zhLookup../settings.currencies (concat i '.abbreviation'))}}
-      </span>
-      =
-      <span style="color:{{zhLookup../settings.currencies (concat (zhAdd i '1') '.color') }}">
-        {{zhLookup../settings.currencies (concat i '.equivalentOfLower') }}
-        {{zhLocalizeConditional "ZWEI.coinage." (zhLookup../settings.currencies (concat (zhAdd i '1') '.abbreviation'))}}
-      </span>
-      {{/unless}}
-    </span>
   </div>
   {{#unless @last}}
   <div class="currency flexcol">
     <a class="exchange-currency" data-bigger-index="{{i}}">
-      <i class="fa fa-right-left"></i>
+      <i class="fa fa-arrow-right-arrow-left"></i>
     </a>
   </div>
   {{/unless}}
   {{/each}}
-</div>--}}
+</div>

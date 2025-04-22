@@ -7,9 +7,9 @@
   "_stats": {
     "coreVersion": "12.331",
     "systemId": "zweihander",
-    "systemVersion": "5.3.2",
+    "systemVersion": "5.4.1",
     "createdTime": null,
-    "modifiedTime": 1729891874160,
+    "modifiedTime": 1745254734734,
     "lastModifiedBy": "rivg6xcMxdlVDM8y",
     "compendiumSource": null,
     "duplicateSource": null
@@ -29,17 +29,38 @@
     "weaponType": "Bladed, Crushing",
     "equipped": false,
     "associatedSkill": "Simple Melee",
-    "load": 0,
-    "handling": "One-handed",
-    "qualities": {
-      "value": "Finesse, Weak",
-      "arrayOfValues": []
+    "ranged": {
+      "load": 0,
+      "value": false
     },
-    "distance": "Engaged",
+    "handling": "One-handed",
+    "qualities": [
+      "Compendium.zweihander.zh-qualities.Item.rw8fWjIxFkW2ReNj",
+      "Compendium.zweihander.zh-qualities.Item.FvNQGHmIZpHF4pay"
+    ],
+    "distance": {
+      "value": "Engaged",
+      "base": "[PB]",
+      "bonus": 0
+    },
     "damage": {
-      "formula": "[AB] + (1+[#])d6x6",
+      "formula": {
+        "override": false,
+        "value": "[AB] + (1+[#])d6x6"
+      },
+      "attributeBonus": "[AB]",
+      "number": 1,
+      "die": "d6",
+      "bonus": 0,
+      "fury": {
+        "value": true,
+        "explodesOn": [
+          "6"
+        ]
+      },
       "associatedPrimaryAttribute": "Agility"
-    }
+    },
+    "load": 0
   },
   "folder": null,
   "sort": 0,

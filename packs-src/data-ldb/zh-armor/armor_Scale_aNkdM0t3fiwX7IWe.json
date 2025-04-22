@@ -1,16 +1,16 @@
 {
   "_id": "aNkdM0t3fiwX7IWe",
   "effects": [],
-  "img": "systems/zweihander/assets/icons/fish-scales.svg",
+  "img": "systems/zweihander/assets/icons/scale-mail.svg",
   "name": "Scale",
   "type": "armor",
   "_stats": {
     "coreVersion": "12.331",
-    "systemId": null,
-    "systemVersion": null,
+    "systemId": "zweihander",
+    "systemVersion": "5.4.1",
     "createdTime": null,
-    "modifiedTime": null,
-    "lastModifiedBy": null,
+    "modifiedTime": 1745250441379,
+    "lastModifiedBy": "rivg6xcMxdlVDM8y",
     "compendiumSource": null,
     "duplicateSource": null
   },
@@ -20,17 +20,17 @@
     },
     "notes": "",
     "price": {
-      "bp": "0",
-      "gc": "77",
-      "ss": "0"
+      "bp": 0,
+      "gc": 77,
+      "ss": 0,
+      "ad": null
     },
     "encumbrance": 7,
     "carried": true,
     "equipped": false,
-    "qualities": {
-      "value": "Heavy",
-      "arrayOfValues": []
-    },
+    "qualities": [
+      "Compendium.zweihander.zh-qualities.Item.kkftpWRfSb4qazzJ"
+    ],
     "damageThresholdModifier": 5
   },
   "folder": null,

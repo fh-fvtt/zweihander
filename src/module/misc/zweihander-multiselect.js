@@ -19,15 +19,6 @@ export class HTMLZweihanderMultiSelectElement extends AbstractMultiSelectElement
    */
   #tags;
 
-  connectedCallback() {
-    const elements = this._buildElements();
-    this.replaceChildren(...elements);
-    this._toggleDisabled(!this.editable);
-    this._refresh();
-    this.addEventListener('click', this._onClick.bind(this));
-    this._activateListeners();
-  }
-
   /**
    * Preserve existing <option> and <optgroup> elements which are defined in the original HTML.
    * @protected
@@ -35,6 +26,7 @@ export class HTMLZweihanderMultiSelectElement extends AbstractMultiSelectElement
   _initialize() {
     this._options = [...this.children];
 
+    // @todo: refactor atob
     const initial = JSON.parse(atob(this.dataset['skillRanks']));
 
     for (const option of this.querySelectorAll('option')) {

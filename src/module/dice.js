@@ -195,7 +195,7 @@ export async function rollTest(
   };
   if (weapon) {
     templateData.weapon = weapon.toObject(false);
-    templateData.weapon.system.qualities = await ZweihanderQuality.getQualities(weapon.system.qualities.value);
+    templateData.weapon.system.qualities = await ZweihanderQuality.getQualities(weapon.system.qualities);
   }
   if (spell) {
     templateData.itemId = spell.id;
@@ -265,10 +265,35 @@ export async function rollWeaponDamage(actorId, testConfiguration) {
   const { weaponId, additionalFuryDice } = testConfiguration;
   const actor = game.actors.get(actorId);
   const weapon = actor.items.get(weaponId).toObject(false);
-  const formula = ZweihanderUtils.abbreviations2DataPath(
-    weapon.system.damage.formula.replace('[#]', additionalFuryDice || 0)
-  );
-  const damageRoll = await new Roll(formula, actor.system).evaluate();
+
+  const damageData = weapon.system.damage;
+  const furyData = damageData.fury;
+
+  let rawFormula = '';
+
+  const isFormulaManual = damageData.formula.override;
+
+  if (isFormulaManual) {
+    // e.g. [CB] + (1 + [#])d6x6 + 1
+    rawFormula = damageData.formula.value.replace('[#]', additionalFuryDice || 0);
+  } else {
+    const attributeBonus = `${damageData.attributeBonus}`;
+    const dice = `${1 + (additionalFuryDice || 0)}${damageData.die}`;
+    const explodes = furyData.value;
+    const explodesOn = `${explodes ? 'x' + furyData.explodesOn.join('&') : ''}`;
+    const hasBonus = weapon.system.damage.bonus != 0;
+    const bonus = `${hasBonus ? ' + ' + weapon.system.damage.bonus : ''}`;
+
+    rawFormula = `${attributeBonus} + ${dice}${explodesOn}${bonus}`;
+  }
+
+  console.log(rawFormula, ', RAWWWW');
+
+  const parsedFormula = ZweihanderUtils.abbreviations2DataPath(rawFormula);
+
+  console.log(parsedFormula, ', PARSEDDDD');
+
+  const damageRoll = await new Roll(parsedFormula, actor.system).evaluate();
   const speaker = ChatMessage.getSpeaker({ actor });
   //const flavor = `Determines ${weapon.name}'s Damage`;
   const flavor = game.i18n.format('ZWEI.rolls.weapondamage', {
@@ -288,7 +313,7 @@ export async function rollWeaponDamage(actorId, testConfiguration) {
 }
 
 async function getWeaponDamageContent(weapon, roll, exploded = false, explodedCount = 0) {
-  weapon.system.qualities = await ZweihanderQuality.getQualities(weapon.system.qualities.value);
+  weapon.system.qualities = await ZweihanderQuality.getQualities(weapon.system.qualities);
   const rollContent = await roll.render({ flavor: game.i18n.localize('ZWEI.rolls.furydie') });
   const cardContent = await renderTemplate('systems/zweihander/src/templates/item-card/item-card-weapon.hbs', weapon);
   return await renderTemplate(CONFIG.ZWEI.templates.weapon, {

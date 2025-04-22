@@ -1,21 +1,5 @@
-<div class='form-group'>
-  <label>{{localize 'ZWEI.actor.items.type'}}</label>
-  <input
-    name='{{zhLocalizePath "system.details.category"}}'
-    type='text'
-    value='{{zhLocalize system.details.category}}'
-  />
-</div>
-
-<div class='form-group'>
-  <label>{{localize 'ZWEI.actor.items.quantity'}}</label>
-  <input name='system.quantity' type='number' value='{{system.quantity}}' />
-</div>
-
-<div class='form-group'>
-  <label>{{localize 'ZWEI.actor.items.encumbrance'}}</label>
-  <input name='system.encumbrance' type='number' value='{{system.encumbrance}}' />
-</div>
+<fieldset>
+  <legend>Characteristics</legend>
 
 <div class='form-group stacked'>
   <label>{{localize 'ZWEI.actor.items.effect'}}</label>
@@ -28,13 +12,19 @@
     editable=editable
   }}
 </div>
+</fieldset>
 
-{{zhPriceInputs system.price}}
+<fieldset>
+  <legend>Misc.</legend>
 
-{{!-- <div class="form-group stacked">
-  <label>{{localize "ZWEI.actor.items.status"}}</label>
-  <label class="checkbox">
-    <input name="system.carried" type="checkbox" class="link-checkbox" {{checked system.carried}} />
-    {{localize "ZWEI.actor.items.carried"}}
-  </label>
-</div> --}}
+  <div class='form-group'>
+    <label>Trapping Category</label>
+    <input
+      name='{{zhLocalizePath "system.details.category"}}'
+      type='text'
+      value='{{zhLocalize system.details.category}}'
+    />
+  </div>
+</fieldset>
+
+{{> ($$ 'partials/item-price-weight')}}

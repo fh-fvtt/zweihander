@@ -517,6 +517,114 @@ body.game.vtt.system-zweihander .zweihander.sheet.item {
     .tab-details {
       gap: 0.55rem;
 
+      .encumbrance-and-currency-container {
+        display: flex;
+        flex-direction: row;
+        justify-content: flex-end;
+        margin-top: 7px;
+
+        .separator {
+          border-right: 2px groove var(--zh-clr-bg2);
+        }
+
+        .encumbrance-container {
+          display: flex;
+          flex-direction: row;
+          justify-content: flex-end;
+          flex: auto;
+          gap: 1.3rem;
+
+          .icon-and-input {
+            flex: 0;
+            position: relative;
+
+            .encumbrance-icon {
+              position: absolute;
+              top: -3px;
+              left: -6px;
+              color: var(--zh-clr-gray);
+            }
+
+            .quantity-icon {
+              position: absolute;
+              top: -3px;
+              left: -3px;
+              color: var(--zh-clr-gray);
+            }
+
+            input {
+              width: 60px;
+              background-color: rgba(var(--zh-clr-bg0-rgb), 0.5);
+              border: 2px groove var(--zh-clr-bg2);
+              border-radius: 3px;
+              color: var(--zh-clr-fg2);
+              padding: 3px;
+              text-align: center;
+
+              &:hover {
+                background-color: rgba(var(--zh-clr-bg1-rgb), 0.5);
+                border-color: var(--zh-clr-aqua);
+                box-shadow: 0 0 6px var(--zh-clr-bg2);
+              }
+            }
+          }
+        }
+
+        .currency-container {
+          flex: auto;
+          align-items: center;
+          gap: 1.3rem;
+          justify-content: flex-start;
+
+          .icon-and-input {
+            flex: 0;
+            position: relative;
+
+            & > input {
+              width: 80px;
+              background-color: rgba(var(--zh-clr-bg0-rgb), 0.5);
+              border: 2px groove var(--zh-clr-bg2);
+              border-radius: 3px;
+              color: var(--zh-clr-fg2);
+              padding: 3px;
+              text-align: center;
+              flex: 0;
+
+              &:hover {
+                background-color: rgba(var(--zh-clr-bg1-rgb), 0.5);
+                border-color: var(--zh-clr-aqua);
+                box-shadow: 0 0 6px var(--zh-clr-bg2);
+              }
+            }
+          }
+
+          .coins-icon {
+            position: absolute;
+            top: -4px;
+            right: -7px;
+          }
+
+          .currency {
+            margin: 0 5px;
+            flex: 0 0 content;
+            align-items: center;
+          }
+          input {
+            text-align: center;
+            width: 60px;
+          }
+          button {
+            flex: 0 0 content;
+            width: auto;
+            font-size: 12px;
+            padding: 5px 10px;
+            line-height: 12px;
+            margin: 0 10px;
+            align-self: center;
+          }
+        }
+      }
+
       .editor-content {
         text-align: justify;
       }
@@ -679,14 +787,30 @@ body.game.vtt.system-zweihander .zweihander.sheet.item {
         flex: 0 0 15px;
       }
 
+      .distance-inputs,
+      .damage-inputs {
+        gap: 0.5rem;
+      }
+
+      .engaged {
+        margin-top: auto;
+      }
+
+      .separator {
+        flex: 0;
+        margin-top: auto;
+        margin-bottom: 6px;
+        color: var(--zh-clr-fg2);
+      }
+
       .formula-label {
-        margin-top: 12px;
+        margin-top: auto; // 12px;
       }
 
       .formula-inputs {
         display: flex;
         flex-direction: row;
-        gap: 0.45rem;
+        gap: 0.5rem;
       }
 
       .label-top {
@@ -694,6 +818,10 @@ body.game.vtt.system-zweihander .zweihander.sheet.item {
         display: flex;
         flex-direction: column;
         margin: 0;
+
+        &.wide {
+          flex: 2;
+        }
 
         & > label {
           line-height: unset;
@@ -707,6 +835,7 @@ body.game.vtt.system-zweihander .zweihander.sheet.item {
         & > select {
           width: 100%;
           border: 1px solid transparent;
+          margin-left: -1px; // @todo: figure why this happens
         }
       }
 
@@ -722,52 +851,6 @@ body.game.vtt.system-zweihander .zweihander.sheet.item {
         &.open {
           display: flex;
           flex-direction: column;
-        }
-      }
-      .array-input {
-        input {
-          border-radius: 1ch 0 0 1ch;
-        }
-        div.array-input-pills {
-          flex: 0 0 100%;
-          //height: 16px;
-          padding: 0 3px;
-          span {
-            background-color: var(--zh-clr-aqua);
-            border: 1px solid transparent;
-            border-radius: 1ch;
-            color: var(--zh-clr-bg0);
-            font-size: 10px;
-            padding: 1px 2px;
-            cursor: pointer;
-            &:hover {
-              background-color: var(--zh-clr-red);
-            }
-          }
-        }
-        button.array-input-plus {
-          background-color: var(--zh-clr-aqua-alt);
-          border: 1px solid var(--zh-clr-aqua);
-          border-radius: 0 1ch 1ch 0;
-          color: var(--zh-clr-bg0);
-          cursor: pointer;
-          display: block;
-          flex: 0 0 auto;
-          height: 20px;
-          line-height: 20px;
-          margin: 0px;
-          padding: 0px;
-          text-align: center;
-          width: 20px;
-          &:hover,
-          &:focus {
-            background-color: var(--zh-clr-yellow-alt);
-            border-color: var(--zh-clr-yellow);
-            box-shadow: none;
-          }
-          i.fas {
-            margin: 0;
-          }
         }
       }
     }

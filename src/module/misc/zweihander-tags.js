@@ -44,15 +44,6 @@ export class HTMLZweihanderTagsElement extends AbstractFormInputElement {
    */
   #tags;
 
-  connectedCallback() {
-    const elements = this._buildElements();
-    this.replaceChildren(...elements);
-    this._toggleDisabled(!this.editable);
-    this._refresh();
-    this.addEventListener('click', this._onClick.bind(this));
-    this._activateListeners();
-  }
-
   /* -------------------------------------------- */
 
   /**
@@ -63,7 +54,7 @@ export class HTMLZweihanderTagsElement extends AbstractFormInputElement {
   _initializeTags() {
     const type = this.getAttribute('type');
 
-    if (type === 'bonus-advances-ancestry') this._initializeStrings();
+    if (type === 'bonus-advances-ancestry' || type === 'exploding-dice') this._initializeStrings();
     else if (type === 'bonus-advances-profession') this._initializeObjects();
 
     this.innerText = '';
@@ -91,6 +82,7 @@ export class HTMLZweihanderTagsElement extends AbstractFormInputElement {
   }
 
   _initializeObjects() {
+    // @todo: replace atob
     const initial = JSON.parse(atob(this.dataset['advances'])) || '';
     const tags = initial ? initial : [];
 
@@ -119,11 +111,25 @@ export class HTMLZweihanderTagsElement extends AbstractFormInputElement {
   _validateTag(tag) {
     if (!tag) throw new Error(game.i18n.localize('ELEMENTS.TAGS.ErrorBlank'));
 
+    const type = this.getAttribute('type');
+
+    if (type === 'exploding-dice') this._validateNumbers(tag);
+    else this._validateAdvances(tag);
+  }
+
+  _validateAdvances(tag) {
+    // @todo: localize
     const advances = ['[CB]', '[BB]', '[AB]', '[PB]', '[IB]', '[WB]', '[FB]'];
     const tagName = tag?.name ?? tag;
 
     if (!advances.includes(tagName))
       throw new Error(`'${tagName}' is not a valid ${tag?.name ? 'Bonus Advance' : 'Ancestral Modifier'}.`);
+  }
+
+  _validateNumbers(tag) {
+    // validate that the given string tag is a whole number
+    if (!/^\d+$/.test(tag)) throw new Error(`'${tag}' is not a valid die result.`);
+    if (this._value.includes(tag)) throw new Error(`Die result '${tag}' is a duplicate.`);
   }
 
   /* -------------------------------------------- */
@@ -236,6 +242,8 @@ export class HTMLZweihanderTagsElement extends AbstractFormInputElement {
       case 'bonus-advances-profession':
         const advance = `[${tag.replaceAll(/\[|\]/g, '').toUpperCase().trim()}]`;
         return { name: advance, purchased: false };
+      case 'exploding-dice':
+        return tag;
       default:
         break;
     }

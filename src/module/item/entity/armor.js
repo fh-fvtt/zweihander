@@ -21,6 +21,6 @@ export default class ZweihanderArmor extends ZweihanderBaseItem {
 
   prepareDerivedData(item) {
     item.system.equipped = item.system.equipped && item.system.carried;
-    item.system.qualities.arrayOfValues = item.system.qualities.value.split(', ').filter((x) => !!x.trim());
+    // item.system.qualities.arrayOfValues = item.system.qualities.value.split(', ').filter((x) => !!x.trim());
   }
 }

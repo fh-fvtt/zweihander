@@ -24,7 +24,20 @@ export default class ZweihanderWeapon extends ZweihanderBaseItem {
 
   prepareDerivedData(item) {
     item.system.equipped = item.system.equipped && item.system.carried;
-    item.system.qualities.arrayOfValues = item.system.qualities.value.split(', ').filter((x) => !!x.trim());
+
+    let distanceFormula = '';
+
+    if (item.system.ranged.value) {
+      const governingDistanceAttribute =
+        typeof item.system.distance?.base !== 'undefined' ? item.system.distance.base : '[PB]'; // @todo: localize
+
+      distanceFormula = `${governingDistanceAttribute} + ${item.system.distance.bonus} yd.`;
+    } else {
+      distanceFormula = `Engaged${item.system.distance.bonus ? ' or ' + item.system.distance.bonus + ' yd.' : ''}`;
+    }
+
+    // @todo: remove in future version, this IF is here just to avoid errors when migrating from 5.4.1 -> 5.5.x
+    if (item.system.distance?.value !== undefined) item.system.distance.value = distanceFormula;
   }
 
   async roll(item) {

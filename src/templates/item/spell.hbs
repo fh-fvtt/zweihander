@@ -18,10 +18,10 @@
     <input name="system.distance" type="text" value="{{system.distance}}" />
   </div>
 
-  <div class="form-group">
+  {{!--<div class="form-group">
     <label>{{localize "ZWEI.actor.items.duration"}}</label>
     <input name="system.duration" type="text" value="{{system.duration}}" />
-  </div>
+  </div>--}}
 
   <div class="form-group stacked">
     <label>{{localize "ZWEI.actor.items.reagents"}}</label>
@@ -34,6 +34,35 @@
       editable=editable
     }}
   </div>
+
+  <div class="form-group">
+    <label>{{localize "ZWEI.actor.items.duration"}}</label>
+    <select name="system.duration.setting">
+      {{selectOptions spellDurations valueAttr="value" labelAttr="label" selected=selected}}
+    </select>
+  </div>
+
+  {{#if (eq system.duration.setting "custom")}}
+    <div class="form-group">
+      <label class="formula-label"></label>
+      <div class="damage-inputs flexrow">
+        <div class="form-group label-top wide">
+          <label>BASE</label>
+          <select name="system.duration.base">
+            {{selectOptions governingDurationAttribute valueAttr="value" labelAttr="label" selected=selected}}
+          </select>
+        </div>
+        <div class="form-group label-top">
+          <label>BONUS</label>
+          <input type="number" name="system.duration.bonus" value="{{system.duration.bonus}}" />
+        </div>
+        <div class="form-group label-top">
+          <label>UNIT</label>
+          <input type="text" name="system.duration.unit" value="{{system.duration.unit}}" />
+        </div>
+      </div>
+    </div>
+  {{/if}}
 
   {{#if (eq settings.gameSystem "fof")}}
     <div class="form-group">

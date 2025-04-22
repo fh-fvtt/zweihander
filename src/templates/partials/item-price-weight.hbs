@@ -1,0 +1,25 @@
+<div class="encumbrance-and-currency-container">
+  <div class="currency-container flexrow">
+    {{#each settings.currencies as | currency i | }}
+      <div class="icon-and-input flexcol">
+        <span class="coins-icon" style="color:{{currency.color}}"><i class="fas fa-coins"></i></span>
+        <input class="coin-input" style="color:{{currency.color}}" type="number"
+          name="system.price.{{currency.abbreviation}}" value="{{lookup ../system.price currency.abbreviation}}"
+          placeholder="0" />
+      </div>
+    {{/each}}
+  </div>
+  <span class="separator"></span>
+  <div class="encumbrance-container">
+    <div class="icon-and-input flexcol">
+      <span class="encumbrance-icon"><i class="fas fa-solid fa-scale-unbalanced"></i></span>
+      <input type="number" name="system.encumbrance" value="{{system.encumbrance}}" />
+    </div>
+    {{#if system.quantity}}
+      <div class="icon-and-input flexcol">
+        <span class="quantity-icon"><i class="fas fa-solid fa-hashtag"></i></span>
+        <input type="number" name="system.quantity" value="{{system.quantity}}" />
+      </div>
+    {{/if}}
+  </div>
+</div>
