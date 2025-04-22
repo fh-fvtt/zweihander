@@ -6,11 +6,11 @@
   "type": "spell",
   "_stats": {
     "coreVersion": "12.331",
-    "systemId": null,
-    "systemVersion": null,
+    "systemId": "zweihander",
+    "systemVersion": "5.4.1",
     "createdTime": null,
-    "modifiedTime": null,
-    "lastModifiedBy": null,
+    "modifiedTime": 1745339578510,
+    "lastModifiedBy": "rivg6xcMxdlVDM8y",
     "compendiumSource": null,
     "duplicateSource": null
   },
@@ -36,7 +36,13 @@
     "tradition": "Arcane (Sorcery)",
     "principle": "Lesser",
     "distance": "Any one object or person you can touch",
-    "duration": "Instantaneous",
+    "duration": {
+      "setting": "instantaneous",
+      "value": "Instantaneous",
+      "base": "[WB]",
+      "bonus": 0,
+      "unit": "Instantaneous"
+    },
     "castingTime": "1 min",
     "castingCost": 0
   },
