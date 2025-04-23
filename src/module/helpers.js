@@ -177,6 +177,74 @@ export const registerHandlebarHelpers = async function () {
     );
   });
 
+  $$('zhRitualCastingInputs', (ritualData, castingTimeOptions) => {
+    const triggerSelected = ritualData.castingTime.setting === 'formula';
+
+    let inputs = `<div class="form-group"><label class="formula-label">${game.i18n.localize(
+      'ZWEI.actor.items.castingtime'
+    )}</label>${
+      triggerSelected ? `<div class="damage-inputs flexrow"><div class="form-group label-top wide"><label></label>` : ''
+    }
+            <select name="system.castingTime.setting">${HandlebarsHelpers.selectOptions(castingTimeOptions, {
+              hash: {
+                valueAttr: 'value',
+                labelAttr: 'label',
+              },
+            })}</select>
+          ${
+            triggerSelected
+              ? `</div><div class="form-group label-top"><label>NUMBER</label><input type="number" name="system.castingTime.number" value="${ritualData.castingTime.number}" /></div><div class="form-group label-top"><label>UNITS</label><input type="text" name="system.castingTime.unit" value="${ritualData.castingTime.unit}" /></div></div>`
+              : ''
+          }
+      </div>
+    `;
+
+    return new Handlebars.SafeString(inputs);
+  });
+
+  $$('zhRitualDifficultyInputs', (ritualData, ritualDifficultiesSpecific, ritualDifficultiesGeneric, skillList) => {
+    const triggerSelected = ritualDifficultiesSpecific.some((d) => d.value === Number(ritualData.difficulty.rating));
+
+    console.log(ritualDifficultiesSpecific, ritualData.difficulty.rating, triggerSelected);
+
+    const triggerRoll = false;
+
+    let inputs = `<div class="form-group"><label class="formula-label">${game.i18n.localize(
+      'ZWEI.actor.items.difficulty'
+    )}</label>${
+      triggerSelected ? `<div class="damage-inputs flexrow"><div class="form-group label-top"><label></label>` : ''
+    }
+            <select name="system.difficulty.rating"><optgroup label="Generic Ratings">${HandlebarsHelpers.selectOptions(
+              ritualDifficultiesGeneric,
+              {
+                hash: {
+                  valueAttr: 'value',
+                  labelAttr: 'label',
+                },
+              }
+            )}</optgroup><optgroup label="Specific Ratings">${HandlebarsHelpers.selectOptions(
+      ritualDifficultiesSpecific,
+      {
+        hash: {
+          valueAttr: 'value',
+          labelAttr: 'label',
+        },
+      }
+    )}</optgroup></select>
+          ${
+            triggerSelected
+              ? `</div><div class="form-group label-top"><label>SKILL TEST</label><select name="system.difficulty.associatedSkill">${HandlebarsHelpers.selectOptions(
+                  skillList,
+                  { hash: { valueAttr: 'value', labelAttr: 'label' } }
+                )}</select></div></div>`
+              : ''
+          }
+      </div>
+    `;
+
+    return new Handlebars.SafeString(inputs);
+  });
+
   $$('zhPriceInputs', (price) => {
     const currencies = game.settings.get('zweihander', 'currencySettings');
     const inputs = currencies

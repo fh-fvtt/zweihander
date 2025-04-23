@@ -10,7 +10,7 @@
     "notes": "",
     "rules": {
       "effect": {
-        "@en": "<p>First, determine the Difficulty Rating, based on whether the knight-candidate is pledging themselves to the Peerage of Dominion or the Peerage of Sovereignty. The number of Chaos Ranks possessed by the knight-candidate will determine the Difficulty Rating of the Incantation Test:</p>\n<h4><strong>PEERAGE OF DOMINION DIFFICULTY RATING:</strong></h4>\n<p>&bull; <strong>0 to 1 Chaos Ranks:</strong> (Trivial +30%) Incantation Test<br>&bull; <strong>2 Chaos Ranks: </strong>(Easy +20%) Incantation Test<br>&bull; <strong>3 Chaos Ranks:</strong> (Routine +10%) Incantation Test<br>&bull; <strong>4 Chaos Ranks:</strong> (Standard +/-0%) Incantation Test<br>&bull;<strong> 5 Chaos Ranks: </strong>(Challenging -10%) Incantation Test<br>&bull; <strong>6 Chaos Ranks:</strong> (Hard -20%) Incantation Test<br>&bull; <strong>7 to 9 Chaos Ranks:</strong> (Arduous -30%) Incantation Test</p>\n<p>&nbsp;</p>\n<h4><strong>PEERAGE OF SOVEREIGNTY DIFFICULTY RATING:</strong></h4>\n<p>&bull; <strong>0 to 1 Chaos Ranks:</strong> (Arduous -30%) Incantation Test<br>&bull; <strong>2 Chaos Ranks: </strong>(Hard -20%) Incantation Test<br>&bull; <strong>3 Chaos Ranks: </strong>(Challenging -10%) Incantation Test<br>&bull; <strong>4 Chaos Ranks: </strong>(Standard +/-0%) Incantation Test<br>&bull; <strong>5 Chaos Ranks:</strong> (Routine +10%) Incantation Test<br>&bull; <strong>6 Chaos Ranks: </strong>(Easy +20%) Incantation Test<br>&bull; <strong>7 to 9 Chaos Ranks:</strong> (Trivial +30%) Incantation Test</p>\n<p>After succeeding at the Incantation Test, the knight-candidate is now a formal pledge to the Peerage. As a pledge, they can now &lsquo;tap&rsquo; into their Alignment by spending a Fortune Point. Pledges of Dominion may tap into their Order or Aspect Alignment, whereas pledges of Sovereignty may tap into their Chaos Alignment.</p>\n<p>By &lsquo;tapping&rsquo; into their Alignment, they may automatically succeed at the next, immediate Skill Test they make by spending a Fortune Point. However, the Skill Test must be appropriate to the situation. For example, a Character may have the Chaos Alignment of Mayhem. They are engaged in a back-and-forth with a merchant aggressively haggling over the price of an item they wish to purchase (an Intimidate Test). A player cannot simply state, &ldquo;I tap into my character&rsquo;s Alignment of Mayhem to get an advantage.&rdquo; Instead, they should justify from a role-playing perspective how Mayhem comes into play in-game. Perhaps they describe that their Character begins flipping over tables, scattering the merchant&rsquo;s goods, effectively intimidating the merchant until he capitulates to their demands. Another way would be to draw their sword, and act erratically to convince the merchant to acquiesce, if only to save the merchant&rsquo;s own hide. The GM has the final say, however. You can find additional clarification under Alignment in the Character Creation chapter of <strong>ZWEIH&Auml;NDER</strong>.</p>"
+        "@en": "<p>First, determine the Difficulty Rating, based on whether the knight-candidate is pledging themselves to the Peerage of Dominion or the Peerage of Sovereignty. The number of Chaos Ranks possessed by the knight-candidate will determine the Difficulty Rating of the Incantation Test:</p><h4><strong>PEERAGE OF DOMINION DIFFICULTY RATING:</strong></h4><ul><li><p><strong>0 to 1 Chaos Ranks:</strong> (Trivial +30%) Incantation Test</p></li><li><p><strong>2 Chaos Ranks: </strong>(Easy +20%) Incantation Test</p></li><li><p><strong>3 Chaos Ranks:</strong> (Routine +10%) Incantation Test</p></li><li><p><strong>4 Chaos Ranks:</strong> (Standard +/-0%) Incantation Test</p></li><li><p><strong>5 Chaos Ranks: </strong>(Challenging -10%) Incantation Test</p></li><li><p><strong>6 Chaos Ranks:</strong> (Hard -20%) Incantation Test</p></li><li><p><strong>7 to 9 Chaos Ranks:</strong> (Arduous -30%) Incantation Test</p></li></ul><p> </p><h4><strong>PEERAGE OF SOVEREIGNTY DIFFICULTY RATING:</strong></h4><ul><li><p><strong>0 to 1 Chaos Ranks:</strong> (Arduous -30%) Incantation Test</p></li><li><p><strong>2 Chaos Ranks: </strong>(Hard -20%) Incantation Test</p></li><li><p><strong>3 Chaos Ranks: </strong>(Challenging -10%) Incantation Test</p></li><li><p><strong>4 Chaos Ranks: </strong>(Standard +/-0%) Incantation Test</p></li><li><p><strong>5 Chaos Ranks:</strong> (Routine +10%) Incantation Test</p></li><li><p><strong>6 Chaos Ranks: </strong>(Easy +20%) Incantation Test</p></li><li><p><strong>7 to 9 Chaos Ranks:</strong> (Trivial +30%) Incantation Test</p></li></ul><p>After succeeding at the Incantation Test, the knight-candidate is now a formal pledge to the Peerage. As a pledge, they can now ‘tap’ into their Alignment by spending a Fortune Point. Pledges of Dominion may tap into their Order or Aspect Alignment, whereas pledges of Sovereignty may tap into their Chaos Alignment.</p><p>By ‘tapping’ into their Alignment, they may automatically succeed at the next, immediate Skill Test they make by spending a Fortune Point. However, the Skill Test must be appropriate to the situation. For example, a Character may have the Chaos Alignment of Mayhem. They are engaged in a back-and-forth with a merchant aggressively haggling over the price of an item they wish to purchase (an Intimidate Test). A player cannot simply state, “I tap into my character’s Alignment of Mayhem to get an advantage.” Instead, they should justify from a role-playing perspective how Mayhem comes into play in-game. Perhaps they describe that their Character begins flipping over tables, scattering the merchant’s goods, effectively intimidating the merchant until he capitulates to their demands. Another way would be to draw their sword, and act erratically to convince the merchant to acquiesce, if only to save the merchant’s own hide. The GM has the final say, however. You can find additional clarification under Alignment in the Character Creation chapter of <strong>ZWEIHÄNDER</strong>.</p>"
       },
       "consequences": {
         "@en": "<p>A knight-candidate pledges themselves to a single Peerage for a lifetime. Should they change Peerages, the knight-candidate gains one permanent Chaos Rank.</p>"
@@ -22,18 +22,26 @@
         "@en": "<p>A banner to either the Peerage of Dominion or Sovereignty, a knight-candidate intends to make an oath to the Peerage, a pinprick of the knight-candidate&rsquo;s blood and a sponsoring knight.</p>"
       }
     },
-    "difficulty": "Special",
+    "difficulty": {
+      "rating": "special",
+      "associatedSkill": "Incantation"
+    },
     "channelAs": "NONE",
-    "castingTime": "One hour"
+    "castingTime": {
+      "setting": "formula",
+      "value": "varies",
+      "number": 1,
+      "unit": "hour"
+    }
   },
   "type": "ritual",
   "_stats": {
     "coreVersion": "12.331",
-    "systemId": null,
-    "systemVersion": null,
+    "systemId": "zweihander",
+    "systemVersion": "5.4.1",
     "createdTime": null,
-    "modifiedTime": null,
-    "lastModifiedBy": null,
+    "modifiedTime": 1745427348232,
+    "lastModifiedBy": "rivg6xcMxdlVDM8y",
     "compendiumSource": null,
     "duplicateSource": null
   },

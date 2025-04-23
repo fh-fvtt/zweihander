@@ -9,7 +9,7 @@
     "systemId": "zweihander",
     "systemVersion": "5.4.1",
     "createdTime": null,
-    "modifiedTime": 1745339578542,
+    "modifiedTime": 1745410666705,
     "lastModifiedBy": "rivg6xcMxdlVDM8y",
     "compendiumSource": null,
     "duplicateSource": null
@@ -37,8 +37,11 @@
     "principle": "Lesser",
     "distance": "Any one grave you can touch",
     "duration": {
-      "setting": "forever",
-      "value": "Forever",
+      "value": "forever",
+      "label": "Instantaneous",
+      "formula": {
+        "override": false
+      },
       "base": "[WB]",
       "bonus": 0,
       "unit": "Forever"

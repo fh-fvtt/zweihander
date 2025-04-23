@@ -7,8 +7,6 @@ export default class ZweihanderQuality extends ZweihanderBaseItem {
       uuids.map(async (uuid) => {
         const item = await fromUuid(uuid);
 
-        console.log('QUALITY: ', item);
-
         return {
           name: item.name,
           found: item !== undefined,

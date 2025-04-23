@@ -10,30 +10,38 @@
     "notes": "",
     "rules": {
       "effect": {
-        "@en": "After successfully casting this Ritual, you gain the loyal service of a liaison to the Abyss called an Imp. You share an empathic link to the Imp, up to one mile away. In addition, you can use the Imp as an Æthereal conduit, using it as an extension of yourself for sight, hearing and touch when it comes to casting Magick (providing it remains within your line of vision). Fortunately, the Imp can see perfectly in the dark – much to your advantage. The Imp always miraculously avoids harm by others, turning Æthereal at will. It possesses extremely high intelligence and you can\n  commune with it at any time. Finally, you can project your voice through the Imp.\n  Once per day, you can call upon an Imp’s true infernal power. The powers they grant are always at random and sometimes not to your benefit. The GM will refer to these powers (called Impish Delights) under the entry for a Butler Demon. Invoking their powers requires\n  you to be standing within 3 yards of the Imp.\n  Whenever your Order Ranks exceed your Chaos Ranks, the Imp may disobey your commands, rebelling against actions at odds with their chaotic nature. When giving it commands under these circumstances, you will make a Secret Test using your Bargain Skill. The Difficulty Rating will be determined by the GM, but will be based upon the current status of the relationship between you and the Imp. If you succeed, the Imp will kowtow to your request. If you Critically Succeed, the Imp will do precisely as you ask and owe you a favor (which you can cash in the next time this same Secret Test is required). If you fail, the Imp will simply refuse and chide you for being a “little goody two-shoes”. If you Critically Fail, the Imp will not agree to any demand again – until you feed it your own blood or the blood of a freshly-slain Large Animal. If you choose to make this sacrifice yourself, drop one step down the Damage Condition Track negatively. You do not suffer an Injury for this. If you feed a Large Animal to the Imp, you\n  suffer 3 Corruption."
+        "@en": "<p>After successfully casting this Ritual, you gain the loyal service of a liaison to the Abyss called an Imp. You share an empathic link to the Imp, up to one mile away. In addition, you can use the Imp as an Æthereal conduit, using it as an extension of yourself for sight, hearing and touch when it comes to casting Magick (providing it remains within your line of vision). Fortunately, the Imp can see perfectly in the dark – much to your advantage. The Imp always miraculously avoids harm by others, turning Æthereal at will. It possesses extremely high intelligence and you can commune with it at any time. Finally, you can project your voice through the Imp.</p><p>Once per day, you can call upon an Imp’s true infernal power. The powers they grant are always at random and sometimes not to your benefit. The GM will refer to these powers (called <em>Impish Delights</em>) under the entry for a Butler Demon. Invoking their powers requires you to be standing within 3 yards of the Imp.</p><p>Whenever your Order Ranks exceed your Chaos Ranks, the Imp may disobey your commands, rebelling against actions at odds with their chaotic nature. When giving it commands under these circumstances, you will make a Secret Test using your Bargain Skill. The Difficulty Rating will be determined by the GM, but will be based upon the current status of the relationship between you and the Imp. If you succeed, the Imp will kowtow to your request. If you Critically Succeed, the Imp will do precisely as you ask and owe you a favor (which you can cash in the next time this same Secret Test is required). If you fail, the Imp will simply refuse and chide you for being a “little goody two-shoes.” If you Critically Fail, the Imp will not agree to any demand again – until you feed it your own blood or the blood of a freshly-slain Large Animal. If you choose to make this sacrifice yourself, drop one step down the Damage Condition Track negatively. You do not suffer an Injury for this. If you feed a Large Animal to the Imp, you suffer 3 Corruption.</p>"
       },
       "consequences": {
-        "@en": "You can only call one familiar into your service at a time, but you gain 1 permanent Chaos Rank upon conducting this Ritual. This Rank can never be erased from your Character sheet."
+        "@en": "<p>You can only call one familiar into your service at a time, but you gain 1 permanent Chaos Rank upon conducting this Ritual. This Rank can never be erased from your Character sheet.</p>"
       },
       "condition": {
-        "@en": "You must know the True Name of a Butler Demon, which is spoken aloud."
+        "@en": "<p>You must know the True Name of a Butler Demon, which is spoken aloud.</p>"
       },
       "reagents": {
-        "@en": "One powder of Wytchstone Essence pulverized (expended) into a bronze censer. You must also handcraft an effigy made from mud, clay, dung and the innards of a small Humanoid creature (expended)."
+        "@en": "<p>One powder of Wytchstone Essence pulverized (expended) into a bronze censer. You must also handcraft an effigy made from mud, clay, dung and the innards of a small Humanoid creature (expended).</p>"
       }
     },
-    "difficulty": "(Challenging -10%) Incantation Test",
+    "difficulty": {
+      "rating": "-10",
+      "associatedSkill": "Incantation"
+    },
     "channelAs": "Lesser Magick",
-    "castingTime": "One hour"
+    "castingTime": {
+      "setting": "formula",
+      "value": "varies",
+      "number": 1,
+      "unit": "hour"
+    }
   },
   "type": "ritual",
   "_stats": {
     "coreVersion": "12.331",
-    "systemId": null,
-    "systemVersion": null,
+    "systemId": "zweihander",
+    "systemVersion": "5.4.1",
     "createdTime": null,
-    "modifiedTime": null,
-    "lastModifiedBy": null,
+    "modifiedTime": 1745426789552,
+    "lastModifiedBy": "rivg6xcMxdlVDM8y",
     "compendiumSource": null,
     "duplicateSource": null
   },

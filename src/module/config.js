@@ -78,6 +78,8 @@ ZWEI.alternativePerilTable = {
   0: -20,
 };
 
+ZWEI.ritualDifficultyGeneric = ['varies', 'special'];
+
 ZWEI.primaryAttributes = ['combat', 'brawn', 'agility', 'perception', 'intelligence', 'willpower', 'fellowship'];
 ZWEI.primaryAttributeBonuses = ['CB', 'BB', 'AB', 'PB', 'IB', 'WB', 'FB'];
 

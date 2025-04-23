@@ -9,7 +9,7 @@
     "systemId": "zweihander",
     "systemVersion": "5.4.1",
     "createdTime": null,
-    "modifiedTime": 1745339578611,
+    "modifiedTime": 1745410666733,
     "lastModifiedBy": "rivg6xcMxdlVDM8y",
     "compendiumSource": null,
     "duplicateSource": null
@@ -37,8 +37,11 @@
     "principle": "Greater",
     "distance": "Any one place you can see",
     "duration": {
-      "setting": "instantaneous",
-      "value": "Instantaneous",
+      "value": "instantaneous",
+      "label": "Instantaneous",
+      "formula": {
+        "override": false
+      },
       "base": "[WB]",
       "bonus": 0,
       "unit": "Instantaneous"

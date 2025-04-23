@@ -1,62 +1,85 @@
-<div class='form-group'>
-  <label>{{localize 'ZWEI.actor.items.castingtime'}}</label>
-  <input name='system.castingTime' type='text' value='{{system.castingTime}}' />
-</div>
+<fieldset>
+  <legend>Constraints</legend>
 
-<div class='form-group stacked'>
-  <label>{{localize 'ZWEI.actor.items.reagents'}}</label>
-  {{editor
-    html.rules.reagents
-    target=(zhLocalizePath 'system.rules.reagents')
-    engine='prosemirror'
-    button=true
-    owner=owner
-    editable=editable
-  }}
-</div>
+  {{!--<div class="form-group">
+    <label>{{localize "ZWEI.actor.items.castingtime"}}</label>
+    <input name="system.castingTime" type="text" value="{{system.castingTime}}" />
+  </div>--}}
 
-<div class='form-group stacked'>
-  <label>{{localize 'ZWEI.actor.items.condition'}}</label>
-  {{editor
-    html.rules.condition
-    target=(zhLocalizePath 'system.rules.condition')
-    engine='prosemirror'
-    button=true
-    owner=owner
-    editable=editable
-  }}
-</div>
+  {{!--<div class="form-group">
+    <label>{{localize "ZWEI.actor.items.castingtime"}}</label>
+    <select>
+      <option>Formula</option>
+    </select>
+  </div>--}}
 
-<div class='form-group'>
-  <label>{{localize 'ZWEI.actor.items.channelpoweras'}}</label>
-  <input name='system.channelAs' type='text' value='{{system.channelAs}}' />
-</div>
+  {{zhRitualCastingInputs system ritualCastingTimes}}
 
-<div class='form-group'>
-  <label>{{localize 'ZWEI.actor.items.difficulty'}}</label>
-  <input name='system.difficulty' type='text' value='{{system.difficulty}}' />
-</div>
+  <div class="form-group stacked">
+    <label>{{localize "ZWEI.actor.items.reagents"}}</label>
+    {{editor
+      html.rules.reagents
+      target=(zhLocalizePath "system.rules.reagents")
+      engine="prosemirror"
+      button=true
+      owner=owner
+      editable=editable
+    }}
+  </div>
 
-<div class='form-group stacked'>
-  <label>{{localize 'ZWEI.actor.items.consequences'}}</label>
-  {{editor
-    html.rules.consequences
-    target=(zhLocalizePath 'system.rules.consequences')
-    engine='prosemirror'
-    button=true
-    owner=owner
-    editable=editable
-  }}
-</div>
+  <div class="form-group stacked">
+    <label>{{localize "ZWEI.actor.items.condition"}}</label>
+    {{editor
+      html.rules.condition
+      target=(zhLocalizePath "system.rules.condition")
+      engine="prosemirror"
+      button=true
+      owner=owner
+      editable=editable
+    }}
+  </div>
 
-<div class='form-group stacked'>
-  <label>{{localize 'ZWEI.actor.items.effect'}}</label>
-  {{editor
-    html.rules.effect
-    target=(zhLocalizePath 'system.rules.effect')
-    engine='prosemirror'
-    button=true
-    owner=owner
-    editable=editable
-  }}
-</div>
+  {{zhRitualDifficultyInputs system ritualDifficultiesSpecific ritualDifficultiesGeneric skills}}
+
+  {{!--<div class="form-group">
+    <label>{{localize "ZWEI.actor.items.difficulty"}}</label>
+    <input name="system.difficulty" type="text" value="{{system.difficulty}}" />
+  </div>--}}
+</fieldset>
+
+<fieldset>
+  <legend>Chaos Manifestations</legend>
+
+  <div class="form-group">
+    <label>{{localize "ZWEI.actor.items.channelpoweras"}}</label>
+    <input name="system.channelAs" type="text" value="{{system.channelAs}}" />
+  </div>
+</fieldset>
+
+<fieldset>
+  <legend>Ritual Results</legend>
+
+  <div class="form-group stacked">
+    <label>{{localize "ZWEI.actor.items.consequences"}}</label>
+    {{editor
+      html.rules.consequences
+      target=(zhLocalizePath "system.rules.consequences")
+      engine="prosemirror"
+      button=true
+      owner=owner
+      editable=editable
+    }}
+  </div>
+
+  <div class="form-group stacked">
+    <label>{{localize "ZWEI.actor.items.effect"}}</label>
+    {{editor
+      html.rules.effect
+      target=(zhLocalizePath "system.rules.effect")
+      engine="prosemirror"
+      button=true
+      owner=owner
+      editable=editable
+    }}
+  </div>
+</fieldset>

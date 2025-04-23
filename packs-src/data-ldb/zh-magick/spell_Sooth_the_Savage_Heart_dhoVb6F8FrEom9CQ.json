@@ -9,7 +9,7 @@
     "systemId": "zweihander",
     "systemVersion": "5.4.1",
     "createdTime": null,
-    "modifiedTime": 1745339578551,
+    "modifiedTime": 1745410540879,
     "lastModifiedBy": "rivg6xcMxdlVDM8y",
     "compendiumSource": null,
     "duplicateSource": null
@@ -37,8 +37,11 @@
     "principle": "Petty",
     "distance": "Any one creature you can touch",
     "duration": {
-      "setting": "custom",
-      "value": "[WB]+3 ",
+      "value": "instantaneous",
+      "label": "[WB] + 3 hours",
+      "formula": {
+        "override": true
+      },
       "base": "[WB]",
       "bonus": 3,
       "unit": "hours"

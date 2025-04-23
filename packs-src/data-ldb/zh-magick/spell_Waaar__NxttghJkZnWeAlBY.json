@@ -9,7 +9,7 @@
     "systemId": "zweihander",
     "systemVersion": "5.4.1",
     "createdTime": null,
-    "modifiedTime": 1745339578501,
+    "modifiedTime": 1745410540851,
     "lastModifiedBy": "rivg6xcMxdlVDM8y",
     "compendiumSource": null,
     "duplicateSource": null
@@ -37,8 +37,11 @@
     "principle": "Greater",
     "distance": "Any persons you can see",
     "duration": {
-      "setting": "custom",
-      "value": "9+[WB] ",
+      "value": "instantaneous",
+      "label": "[WB] + 9 minutes",
+      "formula": {
+        "override": true
+      },
       "base": "[WB]",
       "bonus": 9,
       "unit": "minutes"

@@ -9,7 +9,7 @@
     "systemId": "zweihander",
     "systemVersion": "5.4.1",
     "createdTime": null,
-    "modifiedTime": 1745339578509,
+    "modifiedTime": 1745410666690,
     "lastModifiedBy": "rivg6xcMxdlVDM8y",
     "compendiumSource": null,
     "duplicateSource": null
@@ -35,10 +35,13 @@
     },
     "tradition": "Divine (Crouching One)",
     "principle": "Lesser",
-    "distance": "Distance:Any one person you can touch",
+    "distance": "Any one person you can touch",
     "duration": {
-      "setting": "duration:forever",
-      "value": "Duration:Forever",
+      "value": "forever",
+      "label": "Instantaneous",
+      "formula": {
+        "override": false
+      },
       "base": "[WB]",
       "bonus": 0,
       "unit": "Duration:Forever"

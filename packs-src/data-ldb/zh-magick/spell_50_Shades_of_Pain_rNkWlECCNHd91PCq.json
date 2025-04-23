@@ -9,7 +9,7 @@
     "systemId": "zweihander",
     "systemVersion": "5.4.1",
     "createdTime": null,
-    "modifiedTime": 1745339578588,
+    "modifiedTime": 1745410540904,
     "lastModifiedBy": "rivg6xcMxdlVDM8y",
     "compendiumSource": null,
     "duplicateSource": null
@@ -21,24 +21,27 @@
     "notes": "",
     "rules": {
       "effect": {
-        "@en": "After successfully casting this spell, a person who can see and hear you is Aroused. While Aroused, if the person suffers Damage in between their Turns, they temporarily gain a +20 Base Chance to their next Skill Test and increases their [BB] by 1. If the person does not suffer Damage in between Turns, they temporarily suffer a -20 Base Chance to their next Skill Test and decrease their [BB] by 1. The Effects of this spell do not ‘stack’. However, a person can take advantage of this Magick for its entire Duration. If used on a foe, they may attempt to Resist the spell’s Effects with a successful Toughness Test."
+        "@en": "<p>After successfully casting this spell, a person who can see and hear you is Aroused. While Aroused, if the person suffers Damage in between their Turns, they temporarily gain a +20 Base Chance to their next Skill Test and increases their [BB] by 1. If the person does not suffer Damage in between Turns, they temporarily suffer a -20 Base Chance to their next Skill Test and decrease their [BB] by 1. The Effects of this spell do not ‘stack’. However, a person can take advantage of this Magick for its entire Duration. If used on a foe, they may attempt to Resist the spell’s Effects with a successful Toughness Test.</p>"
       },
       "criticalSuccess": {
-        "@en": "As above, but triple the Duration."
+        "@en": "<p>As above, but triple the Duration.</p>"
       },
       "criticalFailure": {
-        "@en": "The Prince of Pleasure demands that you become submissive for His own delight for the Duration of the spell. You suffer [[/roll 2D10]]+[WB] at the start of any Turn if you did not suffer Damage from your previous Turn. If you did suffer Damage on the previous Turn, you gain 3 Corruption."
+        "@en": "<p>The Prince of Pleasure demands that you become submissive for His own delight for the Duration of the spell. You suffer [[/roll 2D10]]+[WB] at the start of any Turn if you did not suffer Damage from your previous Turn. If you did suffer Damage on the previous Turn, you gain 3 Corruption.</p>"
       },
       "reagents": {
-        "@en": "A drop of your own blood, swallowed (expended)"
+        "@en": "<p>A drop of your own blood, swallowed (expended)</p>"
       }
     },
     "tradition": "Covenant",
     "principle": "Lesser",
     "distance": "Any one person you can see",
     "duration": {
-      "setting": "custom",
-      "value": "6+[WB] ",
+      "value": "instantaneous",
+      "label": "[WB] + 6 minutes",
+      "formula": {
+        "override": true
+      },
       "base": "[WB]",
       "bonus": 6,
       "unit": "minutes"

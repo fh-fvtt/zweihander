@@ -12,7 +12,7 @@
 </fieldset>
 
 <fieldset>
-  <legend>Constraints</legend>
+  <legend>Requirements</legend>
   <div class="form-group">
     <label>{{localize "ZWEI.actor.items.distance"}}</label>
     <input name="system.distance" type="text" value="{{system.distance}}" />
@@ -34,7 +34,7 @@
       editable=editable
     }}
   </div>
-
+  {{!--
   <div class="form-group">
     <label>{{localize "ZWEI.actor.items.duration"}}</label>
     <select name="system.duration.setting">
@@ -42,7 +42,7 @@
     </select>
   </div>
 
-  {{#if (eq system.duration.setting "custom")}}
+  {{#if (eq system.duration.setting "formula")}}
     <div class="form-group">
       <label class="formula-label"></label>
       <div class="damage-inputs flexrow">
@@ -57,12 +57,13 @@
           <input type="number" name="system.duration.bonus" value="{{system.duration.bonus}}" />
         </div>
         <div class="form-group label-top">
-          <label>UNIT</label>
+          <label>UNITS</label>
           <input type="text" name="system.duration.unit" value="{{system.duration.unit}}" />
         </div>
       </div>
     </div>
   {{/if}}
+  --}}
 
   {{#if (eq settings.gameSystem "fof")}}
     <div class="form-group">
@@ -72,6 +73,48 @@
     <div class="form-group">
       <label>{{localize "ZWEI.actor.items.apcost"}}</label>
       <input name="system.castingCost" type="number" value="{{system.castingCost}}" />
+    </div>
+  {{/if}}
+</fieldset>
+
+<fieldset>
+  <legend>{{localize "ZWEI.actor.items.duration"}}</legend>
+  <div class="form-group">
+    <label>Formula</label>
+    <input
+      name="system.duration.formula.override"
+      type="checkbox"
+      class="link-checkbox"
+      {{checked system.duration.formula.override}}
+    />
+  </div>
+
+  {{#if system.duration.formula.override}}
+    <div class="form-group">
+      <label class="formula-label"></label>
+      <div class="damage-inputs flexrow">
+        <div class="form-group label-top wide">
+          <label>BASE</label>
+          <select name="system.duration.base">
+            {{selectOptions governingDurationAttribute valueAttr="value" labelAttr="label" selected=selected}}
+          </select>
+        </div>
+        <div class="form-group label-top">
+          <label>BONUS</label>
+          <input type="number" name="system.duration.bonus" value="{{system.duration.bonus}}" />
+        </div>
+        <div class="form-group label-top">
+          <label>UNITS</label>
+          <input type="text" name="system.duration.unit" value="{{system.duration.unit}}" />
+        </div>
+      </div>
+    </div>
+  {{else}}
+    <div class="form-group">
+      <label>{{localize "ZWEI.actor.items.duration"}}</label>
+      <select name="system.duration.value">
+        {{selectOptions spellDurations valueAttr="value" labelAttr="label" selected=selected}}
+      </select>
     </div>
   {{/if}}
 </fieldset>

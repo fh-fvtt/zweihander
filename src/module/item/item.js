@@ -7,9 +7,10 @@ import ZweihanderQuality from './entity/quality';
 import ZweihanderInjury from './entity/injury';
 import ZweihanderSpell from './entity/spell';
 import ZweihanderDisease from './entity/disease';
+import ZweihanderTrapping from './entity/trapping';
+import ZweihanderRitual from './entity/ritual';
 
 import { ZWEI } from '../config';
-import ZweihanderTrapping from './entity/trapping';
 
 export default class ZweihanderItem extends Item {
   static types = {
@@ -23,6 +24,7 @@ export default class ZweihanderItem extends Item {
     quality: new ZweihanderQuality(),
     trapping: new ZweihanderTrapping(),
     spell: new ZweihanderSpell(),
+    ritual: new ZweihanderRitual(),
   };
 
   constructor(...args) {

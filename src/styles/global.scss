@@ -111,6 +111,39 @@
   --zh-clr-accent-rgb: 184, 187, 38;
 }
 
+.theme-light {
+  .application {
+    --background: var(--zh-clr-bg0);
+    --color-text-primary: var(--zh-clr-fg0);
+    --color-header-background: var(--zh-clr-bg0);
+    --color-fieldset-border: var(--zh-clr-bg2);
+    --color-form-label: var(--zh-clr-fg0);
+    --color-form-label-hover: var(--zh-clr-fg0);
+    --color-form-hint: var(--color-text-dark-secondary);
+    --color-form-hint-hover: var(--color-text-dark-secondary);
+    --color-select-option-bg: var(--zh-clr-bg1);
+
+    h1 {
+      color: var(--color-text-light-highlight);
+    }
+  }
+
+  input,
+  select {
+    --input-background-color: rgba(var(--zh-clr-bg0-rgb), 0.5);
+    --input-border-color: transparent;
+    --input-text-color: var(--zh-clr-fg2);
+    --input-placeholder-color: var(--zh-clr-fg4);
+    --input-focus-outline-color: var(--zh-clr-aqua);
+
+    &:disabled {
+      --input-background-color: rgba(var(--zh-clr-bg0-rgb), 0.5);
+      --input-border-color: transparent;
+      --input-text-color: var(--zh-clr-fg2);
+    }
+  }
+}
+
 body.game.vtt.system-zweihander {
   --color-text-light-highlight: var(--zh-clr-fg0);
   --color-text-light-heading: var(--zh-clr-fg0);
@@ -226,6 +259,10 @@ body.game.vtt.system-zweihander {
     visibility: hidden;
   }
 
+  .application.sheet .window-content {
+    border-top: 2px groove var(--zh-clr-bg2);
+  }
+
   .window-app .window-header {
     border-radius: 5px 5px 0 0;
     background: var(--zh-clr-dark0);
@@ -328,6 +365,31 @@ body.game.vtt.system-zweihander {
   input[type='date'],
   input[type='time'] {
     background-color: var(--zh-clr-bg1);
+  }
+
+  .prosemirror {
+    &.menu-dialog form {
+      background: var(--zh-clr-bg1);
+
+      label {
+        color: var(--zh-clr-fg0);
+      }
+    }
+  }
+
+  #prosemirror-dropdown {
+    li:hover {
+      background: var(--zh-clr-dark2);
+    }
+    ul {
+      background: var(--zh-clr-bg1);
+      color: var(--zh-clr-fg0);
+      border-color: var(--zh-clr-bg3);
+
+      li.divider {
+        border-color: var(--zh-clr-bg3);
+      }
+    }
   }
 
   .editor {

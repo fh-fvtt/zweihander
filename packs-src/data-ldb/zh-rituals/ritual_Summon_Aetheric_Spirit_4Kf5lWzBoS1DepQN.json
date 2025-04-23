@@ -10,30 +10,38 @@
     "notes": "",
     "rules": {
       "effect": {
-        "@en": "After successfully casting this Ritual, you summon forth an elemental spirit: either an Air Sylph, an Earthen Gnome, a Fire Salamander or a Water\n  Undine within three yards from you.\n  Once an Ætheric Spirit is summoned, you must attempt to exert mental control over its elemental\n  brain.YouwillmakeaSecretTestusingyourResolve Skill. The Difficulty Rating will be determined by the GM, taking into consideration any dangers around you. Naturally, this Difficulty Rating will be substantially easier if you are under no duress of any kind. If you succeed, the Ætheric Spirit will obey your every command. If you Critically Succeed, the Ætheric Spirit will obey your every command and may ignore its Trait of Physical Instability. If you fail, the Ætheric Spirit will simply refuse to obey you, although you can attempt to exert control a minute later. If you Critically Fail however, the Ætheric Spirit will break its bonds and takes random actions, but disappears at the end of an hour until summoned again. Your GM may require you to exert control again whenever you suffer Damage while controlling the Ætheric Spirit. During this time, roll [[/roll 1D100]] to determine what happens at\n  the beginning of each of its Turns:\n\nÆTHERIC SPIRIT RAGE\n1 to 20\nThe Ætheric Spirit attacks the nearest ally of the summoner.\n21 to 40 \nThe Ætheric Spirit attacks the nearest foe of the summoner.\n41 to 60\nThe Ætheric Spirit attacks the summoner\n61 to 80\nThe Ætheric Spirit does nothing.\n81 to 100\nThe Ætheric Spirit immediately disappears until summoned once more."
+        "@en": "<p>After successfully casting this Ritual, you summon forth an elemental spirit: either an <em>Air Sylph</em>, an <em>Earthen Gnome</em>, a <em>Fire Salamander</em> or a <em>Water Undine</em> within three yards from you.</p><p>Once an Ætheric Spirit is summoned, you must attempt to exert mental control over its elemental brain. You will make a Secret Test using your Resolve Skill. The Difficulty Rating will be determined by the GM, taking into consideration any dangers around you. Naturally, this Difficulty Rating will be substantially easier if you are under no duress of any kind. If you succeed, the Ætheric Spirit will obey your every command. If you Critically Succeed, the Ætheric Spirit will obey your every command and may ignore its Trait of Physical Instability. If you fail, the Ætheric Spirit will simply refuse to obey you, although you can attempt to exert control a minute later. If you Critically Fail however, the Ætheric Spirit will break its bonds and takes random actions, but disappears at the end of an hour until summoned again. Your GM may require you to exert control again whenever you suffer Damage while controlling the Ætheric Spirit. During this time, roll [[/roll 1D100]] to determine what happens at the beginning of each of its Turns:</p><p></p><table style=\"width: 100%;\" border=\"1\"><colgroup><col style=\"width: 25.2843%;\"><col style=\"width: 74.7157%;\"></colgroup><tbody><tr><td><p><strong>D100</strong></p></td><td><p><strong>Ætheric Spirit Rage</strong></p></td></tr><tr><td><p>1 to 20</p></td><td><p>The Ætheric Spirit attacks the nearest ally of the summoner.</p></td></tr><tr><td><p>21 to 40</p></td><td><p>The Ætheric Spirit attacks the nearest foe of the summoner.</p></td></tr><tr><td><p>41 to 60</p></td><td><p>The Ætheric Spirit attacks the summoner.</p></td></tr><tr><td><p>61 to 80</p></td><td><p>The Ætheric Spirit does nothing.</p></td></tr><tr><td><p>81 to 100</p></td><td><p>The Ætheric Spirit immediately disappears until summoned once more.</p></td></tr></tbody></table>"
       },
       "consequences": {
-        "@en": "Providing you are not Incapacitated!, are awake and can see it, an\n  Ætheric Spirit will remain under your control\n  for an hour, guaranteeing you are able to\n  exert control over it. You can control an\n  Ætheric Spirit beyond this, but you\n  must Unfetter the Ritual. You can have\n  but one Ætheric Spirit summoned and\n  under your control at a time."
+        "@en": "<p>Providing you are not Incapacitated!, are awake and can see it, an Ætheric Spirit will remain under your control for an hour, guaranteeing you are able to exert control over it. You can control an Ætheric Spirit beyond this, but you must Unfetter the Ritual. You can have but one Ætheric Spirit summoned and under your control at a time.</p>"
       },
       "condition": {
-        "@en": "Each Ætheric Spirit has a natural habitat and weaknesses. Air Sylphs cannot be summoned underground or on top of water. Earthen Gnomes cannot be summoned unless standing on natural ground. Fire Salamanders cannot be summoned over a body of water and Water Undines can only be summoned while standing in shallow or deep water."
+        "@en": "<p>Each Ætheric Spirit has a natural habitat and weaknesses. Air Sylphs cannot be summoned underground or on top of water. Earthen Gnomes cannot be summoned unless standing on natural ground. Fire Salamanders cannot be summoned over a body of water and Water Undines can only be summoned while standing in shallow or deep water.</p>"
       },
       "reagents": {
-        "@en": "Each summoned spirit requires a specific set of reagents, all of which are expended at the end of the ceremony. A Gryphon’s egg cracked into a marble bowl is required to summon an Air Sylph. A Basilisk’s eye buried beneath a heavy rock is required to summon an Earthen Gnome. A Chimaera’s heart burnt within a bronze censer is required to summon a Fire Salamander. A Shimmering Mimic’s brain drowned in a bucket of urine is required to summon a Water Undine. Also, you will need a shard of Wytchstone affixed into a staff or a rod, held aloft while exerting mental control over the Ætheric Spirit."
+        "@en": "<p>Each summoned spirit requires a specific set of reagents, all of which are expended at the end of the ceremony. A Gryphon’s egg cracked into a marble bowl is required to summon an Air Sylph. A Basilisk’s eye buried beneath a heavy rock is required to summon an Earthen Gnome. A Chimaera’s heart burnt within a bronze censer is required to summon a Fire Salamander. A Shimmering Mimic’s brain drowned in a bucket of urine is required to summon a Water Undine. Also, you will need a shard of Wytchstone affixed into a staff or a rod, held aloft while exerting mental control over the Ætheric Spirit.</p>"
       }
     },
-    "difficulty": "(Hard -20%) Incantation Test",
-    "channelAs": "As Greater Magick",
-    "castingTime": "One hour"
+    "difficulty": {
+      "rating": "-20",
+      "associatedSkill": "Incantation"
+    },
+    "channelAs": "Greater Magick",
+    "castingTime": {
+      "setting": "formula",
+      "value": "varies",
+      "number": 1,
+      "unit": "hour"
+    }
   },
   "type": "ritual",
   "_stats": {
     "coreVersion": "12.331",
-    "systemId": null,
-    "systemVersion": null,
+    "systemId": "zweihander",
+    "systemVersion": "5.4.1",
     "createdTime": null,
-    "modifiedTime": null,
-    "lastModifiedBy": null,
+    "modifiedTime": 1745427362425,
+    "lastModifiedBy": "rivg6xcMxdlVDM8y",
     "compendiumSource": null,
     "duplicateSource": null
   },

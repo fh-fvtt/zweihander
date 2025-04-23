@@ -836,6 +836,7 @@ body.game.vtt.system-zweihander .zweihander.sheet.item {
           width: 100%;
           border: 1px solid transparent;
           margin-left: -1px; // @todo: figure why this happens
+          flex: 0 0 27px;
         }
       }
 

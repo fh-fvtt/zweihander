@@ -9,7 +9,7 @@
     "systemId": "zweihander",
     "systemVersion": "5.4.1",
     "createdTime": null,
-    "modifiedTime": 1745339578597,
+    "modifiedTime": 1745410540908,
     "lastModifiedBy": "rivg6xcMxdlVDM8y",
     "compendiumSource": null,
     "duplicateSource": null
@@ -21,13 +21,13 @@
     "notes": "",
     "rules": {
       "effect": {
-        "@en": "After successfully casting this spell, a weapon you touch gains the ability to strike enemies that may be normally unharmed by non-Magickal weapons."
+        "@en": "<p>After successfully casting this spell, a weapon you touch gains the ability to strike enemies that may be normally unharmed by non-Magickal weapons.</p>"
       },
       "criticalSuccess": {
-        "@en": "As above, but you can anoint up to three weapons instead."
+        "@en": "<p>As above, but you can anoint up to three weapons instead.</p>"
       },
       "criticalFailure": {
-        "@en": "Your call to bless a weapon has angered gods unknown, as you now suffer from a terrible curse. For the next 24 hours, you must add an additional [[/roll 1D6]] Chaos Die to all Magicks you cast."
+        "@en": "<p>Your call to bless a weapon has angered gods unknown, as you now suffer from a terrible curse. For the next 24 hours, you must add an additional [[/roll 1D6]] Chaos Die to all Magicks you cast.</p>"
       },
       "reagents": {
         "@en": "Three drops of holy water dabbed upon the weapon (expended)"
@@ -37,8 +37,11 @@
     "principle": "Generalist",
     "distance": "Any one weapon you can touch",
     "duration": {
-      "setting": "custom",
-      "value": "[WB]+3 ",
+      "value": "instantaneous",
+      "label": "Instantaneous",
+      "formula": {
+        "override": true
+      },
       "base": "[WB]",
       "bonus": 3,
       "unit": "hours"

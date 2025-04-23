@@ -9,7 +9,7 @@
     "systemId": "zweihander",
     "systemVersion": "5.4.1",
     "createdTime": null,
-    "modifiedTime": 1745339578575,
+    "modifiedTime": 1745410540896,
     "lastModifiedBy": "rivg6xcMxdlVDM8y",
     "compendiumSource": null,
     "duplicateSource": null
@@ -37,8 +37,11 @@
     "principle": "Lesser",
     "distance": "Any persons you can see",
     "duration": {
-      "setting": "custom",
-      "value": "6+[WB] in ",
+      "value": "instantaneous",
+      "label": "[WB] + 6 days",
+      "formula": {
+        "override": true
+      },
       "base": "[WB]",
       "bonus": 6,
       "unit": "days"

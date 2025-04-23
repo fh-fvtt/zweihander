@@ -10,10 +10,10 @@
     "notes": "",
     "rules": {
       "effect": {
-        "@en": "After successfully casting this Ritual, the Magick Circle allows you to re-roll any Chaos Dice that may land on face ‘6’ whenever Channeling Power. This means that if you had rolled 3D6 Chaos Dice and it came up with two face ‘6’s, you may re-roll both those dice to generate a more favorable result. If the circle is broken; meaning, you step outside of it or others step into it, the circle is ruined and no longer protects you. A permanent Magick Circle can be broken, but its power returns after an hour has passed."
+        "@en": "<p>First, determine the Casting Time to cast this Ritual based on the power of the Magick Circle:</p><ul><li><p><strong>Temporary Circle:</strong> 1 minute.</p></li><li><p><strong>Permanent Circle: </strong>1 day.</p></li></ul><p>After successfully casting this Ritual, the Magick Circle allows you to re-roll any Chaos Dice that may land on face ‘6’ whenever Channeling Power. This means that if you had rolled 3D6 Chaos Dice and it came up with two face ‘6’s, you may re-roll both those dice to generate a more favorable result. If the circle is broken; meaning, you step outside of it or others step into it, the circle is ruined and no longer protects you. A permanent Magick Circle can be broken, but its power returns after an hour has passed.</p>"
       },
       "consequences": {
-        "@en": "A temporary Magick Circle will last for a number of hours equal to your [WB]. If you substitute one powder of Wytchstone Essence, it instead lasts a number of days equal to your [WB]. If you substitute three powders of Wytchstone Essence and three quintessence of Royal Water, the Magick Circle is permanent, lasting until destroyed."
+        "@en": "<p>A temporary Magick Circle will last for a number of hours equal to your [WB]. If you substitute one powder of Wytchstone Essence, it instead lasts a number of days equal to your [WB]. If you substitute three powders of Wytchstone Essence and three quintessence of Royal Water, the Magick Circle is permanent, lasting until destroyed.</p>"
       },
       "condition": {
         "@en": "You must stand inside the Magick Circle to take advantage of its benefits."
@@ -22,18 +22,26 @@
         "@en": "Epsom salt (expended) or one powder of Wytchstone Essence (expended), poured onto the ground around you in the shape of a circle. Permanent circles require three powders of Wytchstone Essence and three quintessence of Royal Water (all of which are expended), etched into a stone floor with a chisel and hammer."
       }
     },
-    "difficulty": "(Easy +20%) Incantation Test",
+    "difficulty": {
+      "rating": "20",
+      "associatedSkill": "Incantation"
+    },
     "channelAs": "Petty Magick",
-    "castingTime": "One minute for temporary circle, one day for permanent circle"
+    "castingTime": {
+      "setting": "varies",
+      "value": "varies",
+      "number": 0,
+      "unit": "minutes"
+    }
   },
   "type": "ritual",
   "_stats": {
     "coreVersion": "12.331",
-    "systemId": null,
-    "systemVersion": null,
+    "systemId": "zweihander",
+    "systemVersion": "5.4.1",
     "createdTime": null,
-    "modifiedTime": null,
-    "lastModifiedBy": null,
+    "modifiedTime": 1745427312262,
+    "lastModifiedBy": "rivg6xcMxdlVDM8y",
     "compendiumSource": null,
     "duplicateSource": null
   },

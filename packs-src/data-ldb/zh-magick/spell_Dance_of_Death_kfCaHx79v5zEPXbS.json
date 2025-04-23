@@ -9,7 +9,7 @@
     "systemId": "zweihander",
     "systemVersion": "5.4.1",
     "createdTime": null,
-    "modifiedTime": 1745339578572,
+    "modifiedTime": 1745410666716,
     "lastModifiedBy": "rivg6xcMxdlVDM8y",
     "compendiumSource": null,
     "duplicateSource": null
@@ -30,15 +30,18 @@
         "@en": "Critical Failure:Your words send you into an endless dance, unable to do anything else and inflicting harm upon yourself in the process. You begin to dance and must do so for 72 hours; throughout, you are rendered Helpless. At the end of the dance, you suffer one Moderate, Serious and Grievous Injury."
       },
       "reagents": {
-        "@en": "Reagents:A vial of blood from an honest priest (expended)"
+        "@en": "<p>A vial of blood from an honest priest (expended)</p>"
       }
     },
     "tradition": "Divine (Crouching One)",
     "principle": "Greater",
-    "distance": "Distance:Any persons you can see",
+    "distance": "Any persons you can see",
     "duration": {
-      "setting": "duration:instantaneous",
-      "value": "Duration:Instantaneous",
+      "value": "instantaneous",
+      "label": "Instantaneous",
+      "formula": {
+        "override": false
+      },
       "base": "[WB]",
       "bonus": 0,
       "unit": "Duration:Instantaneous"

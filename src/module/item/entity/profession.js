@@ -72,7 +72,6 @@ export default class ZweihanderProfession extends ZweihanderBaseItem {
   }
 
   async _preUpdate(changed, options, user, item) {
-    console.log('PRE_UPDATE', changed);
     if (typeof changed.system['expert']?.['value'] !== 'undefined' && changed.system['expert']?.['value']) {
       changed.system['archetype'] = 'expert profession';
     } else if (
@@ -102,7 +101,6 @@ export default class ZweihanderProfession extends ZweihanderBaseItem {
         ...ba,
         purchased: ba.purchased ?? false,
       }));
-      console.log('_preUpdate Changed Profession', changed);
     }
     await super._preUpdate(changed, options, user, item);
   }

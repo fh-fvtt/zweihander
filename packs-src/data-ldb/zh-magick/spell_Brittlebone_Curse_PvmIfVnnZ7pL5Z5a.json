@@ -9,7 +9,7 @@
     "systemId": "zweihander",
     "systemVersion": "5.4.1",
     "createdTime": null,
-    "modifiedTime": 1745339578508,
+    "modifiedTime": 1745410540854,
     "lastModifiedBy": "rivg6xcMxdlVDM8y",
     "compendiumSource": null,
     "duplicateSource": null
@@ -37,8 +37,11 @@
     "principle": "Lesser",
     "distance": "Any one place you can see",
     "duration": {
-      "setting": "custom",
-      "value": "6+[WB] ",
+      "value": "instantaneous",
+      "label": "[WB] + 6 minutes",
+      "formula": {
+        "override": true
+      },
       "base": "[WB]",
       "bonus": 6,
       "unit": "minutes"

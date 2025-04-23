@@ -322,22 +322,45 @@ const migrateItemData = async (item) => {
     }
 
     migrateField('qualities', 'qualities', 0, () => arrayOfQualities);
-  } else if (item.type === 'spell') {
-    const durationValue = itemData.system.duration.replaceAll(/(minutes)|(hours)|(days)|(weeks)|(years)/g, '');
-    const durationBonuses = durationValue.match(/\d+/g);
-
-    let durationBonus = 0;
-
-    const isDurationDerived = durationBonuses !== null;
-
-    if (isDurationDerived) durationBonus = durationBonuses.map((s) => parseInt(s)).reduce((acc, val) => acc + val, 0);
-
-    migrateField('distance', 'distance', 0, () => ({
-      setting: isDurationDerived ? 'custom' : durationValue.toLowerCase(),
-      value: durationValue ?? '',
-      base: '[WB]',
-      bonus: durationBonus,
+  } else if (item.type === 'ritual') {
+    migrateField('castingTime', 'castingTime', 0, () => ({
+      setting: 'varies',
+      value: 'varies',
+      number: 0,
+      unit: 'minutes',
     }));
+
+    migrateField('difficulty', 'difficulty', 0, () => ({
+      rating: 0,
+      associatedSkill: 'Incantation',
+    }));
+  } else if (item.type === 'spell') {
+    if (typeof itemData.system.duration !== 'object') {
+      // [WB]+3 minutes
+
+      const durationSteps = itemData.system.duration.split(' ');
+      const unit = durationSteps[durationSteps.length - 1];
+
+      const durationValue = itemData.system.duration;
+      const durationBonuses = durationValue.match(/\d+/g);
+
+      let durationBonus = 0;
+
+      const isDurationDerived = durationBonuses !== null;
+
+      if (isDurationDerived) durationBonus = durationBonuses.map((s) => parseInt(s)).reduce((acc, val) => acc + val, 0);
+
+      migrateField('duration', 'duration', 0, () => ({
+        value: isDurationDerived ? 'instantaneous' : durationValue.toLowerCase(),
+        label: durationValue ?? '',
+        formula: {
+          override: isDurationDerived,
+        },
+        base: '[WB]',
+        bonus: durationBonus,
+        unit: unit,
+      }));
+    }
   } else if (item.type === 'weapon') {
     const qualities = itemData.system.qualities.value;
     const arrayOfQualities = qualities ? qualities.split(',').map((q) => q.trim()) : [];
@@ -348,34 +371,38 @@ const migrateItemData = async (item) => {
 
     migrateField('qualities', 'qualities', 0, () => arrayOfQualities);
 
-    const overrideFormula = itemData.system.damage.formula;
+    const overrideFormula = itemData.system.damage.formula ?? '';
 
-    migrateField('damage.formula', 'damage.formula', 0, () => ({
-      override: false,
-      value: overrideFormula ?? '',
-    }));
+    if (typeof overrideFormula !== 'object') {
+      migrateField('damage.formula', 'damage.formula', 0, () => ({
+        override: false,
+        value: overrideFormula ?? '',
+      }));
 
-    for (let pab of CONFIG.ZWEI.primaryAttributeBonuses) {
-      const fullPab = '[' + pab + ']';
-      if (overrideFormula.startsWith(fullPab)) {
-        update['system.damage.attributeBonus'] = fullPab;
-        break;
+      for (let pab of CONFIG.ZWEI.primaryAttributeBonuses) {
+        const fullPab = '[' + pab + ']';
+        if (overrideFormula.startsWith(fullPab)) {
+          update['system.damage.attributeBonus'] = fullPab;
+          break;
+        }
       }
     }
 
-    const distanceValue = itemData.system.distance.replaceAll(/(yards)|(yard)|(yds\.?)|(yd\.?)/g, '');
-    const distanceBonuses = distanceValue.match(/\d+/g);
+    if (typeof itemData.system.distance !== 'object') {
+      const distanceValue = itemData.system.distance.replaceAll(/(yards)|(yard)|(yds\.?)|(yd\.?)/g, '');
+      const distanceBonuses = distanceValue.match(/\d+/g);
 
-    let distanceBonus = 0;
+      let distanceBonus = 0;
 
-    if (distanceBonuses !== null)
-      distanceBonus = distanceBonuses.map((s) => parseInt(s)).reduce((acc, val) => acc + val, 0);
+      if (distanceBonuses !== null)
+        distanceBonus = distanceBonuses.map((s) => parseInt(s)).reduce((acc, val) => acc + val, 0);
 
-    migrateField('distance', 'distance', 0, () => ({
-      value: distanceValue ?? '',
-      base: '[PB]',
-      bonus: distanceBonus,
-    }));
+      migrateField('distance', 'distance', 0, () => ({
+        value: distanceValue ?? '',
+        base: '[PB]',
+        bonus: distanceBonus,
+      }));
+    }
 
     const load = itemData.system.load;
 

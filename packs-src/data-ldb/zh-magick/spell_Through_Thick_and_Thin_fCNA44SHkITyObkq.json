@@ -9,7 +9,7 @@
     "systemId": "zweihander",
     "systemVersion": "5.4.1",
     "createdTime": null,
-    "modifiedTime": 1745339578557,
+    "modifiedTime": 1745410540884,
     "lastModifiedBy": "rivg6xcMxdlVDM8y",
     "compendiumSource": null,
     "duplicateSource": null
@@ -37,8 +37,11 @@
     "principle": "Petty",
     "distance": "Any one person you can touch",
     "duration": {
-      "setting": "custom",
-      "value": "[WB]+3 ",
+      "value": "instantaneous",
+      "label": "[WB] + 3 days",
+      "formula": {
+        "override": true
+      },
       "base": "[WB]",
       "bonus": 3,
       "unit": "days"

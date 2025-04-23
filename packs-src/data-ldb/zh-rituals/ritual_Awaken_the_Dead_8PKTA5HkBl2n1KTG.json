@@ -22,9 +22,17 @@
         "@en": "<p>A shard of Wytchstone affixed into a staff or rod, epsom salt (expended) and nine candles (expended).</p>"
       }
     },
-    "difficulty": "Special",
+    "difficulty": {
+      "rating": "special",
+      "associatedSkill": "Incantation"
+    },
     "channelAs": "Lesser Magic",
-    "castingTime": "1 hour"
+    "castingTime": {
+      "setting": "formula",
+      "value": "varies",
+      "number": 1,
+      "unit": "hour"
+    }
   },
   "effects": [],
   "folder": null,
@@ -41,7 +49,7 @@
     "systemId": "zweihander",
     "systemVersion": "5.4.1",
     "createdTime": 1735252403902,
-    "modifiedTime": 1735253397429,
+    "modifiedTime": 1745426763230,
     "lastModifiedBy": "rivg6xcMxdlVDM8y"
   },
   "_key": "!items!8PKTA5HkBl2n1KTG"

@@ -22,9 +22,17 @@
         "@en": "<p>First, you must declare whether you intend to construct a Petty, Lesser or Greater Golem. In addition, you must have a medium to work from. Golems can be constructed from bone, leather, flesh, metal, stone, wood or any other solid material. In addition, you must have one ampulla of &AElig;theric Fluid for a Petty Golem, while Lesser Golems require two ampullas of &AElig;theric Fluid and Greater Golems require three ampullas of &AElig;theric Fluid (all of which are expended in the process). You or another must summon a spirit to bind inside the Golem by use of one of the following Rituals: Awaken the Dead, Call Demonic Servant or Summon &AElig;theric Spirit. Finally, the symbol of the god the spirit worshipped or Daemon it was devoted to must be carved onto the Golem to complete the Reagent process.</p>"
       }
     },
-    "difficulty": "Special",
+    "difficulty": {
+      "rating": "special",
+      "associatedSkill": "Incantation"
+    },
     "channelAs": "Lesser Magick",
-    "castingTime": "One hour"
+    "castingTime": {
+      "setting": "formula",
+      "value": "varies",
+      "number": 1,
+      "unit": "hour"
+    }
   },
   "type": "ritual",
   "_stats": {
@@ -32,7 +40,7 @@
     "systemId": "zweihander",
     "systemVersion": "5.4.1",
     "createdTime": null,
-    "modifiedTime": 1735586426874,
+    "modifiedTime": 1745427189312,
     "lastModifiedBy": "rivg6xcMxdlVDM8y",
     "compendiumSource": null,
     "duplicateSource": null

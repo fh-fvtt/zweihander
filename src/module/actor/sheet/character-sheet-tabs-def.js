@@ -125,7 +125,7 @@ export function getItemGroups(groupsData) {
         {
           title: 'duration',
           size: 100,
-          key: 'system.duration.value',
+          key: 'system.duration.label',
           class: 'inject-data',
         },
       ],
@@ -144,12 +144,12 @@ export function getItemGroups(groupsData) {
         {
           title: 'difficulty',
           size: 200,
-          key: 'system.difficulty',
+          key: 'system.difficulty.value',
         },
         {
           title: 'castingtime',
           size: 100,
-          key: 'system.castingTime',
+          key: 'system.castingTime.value',
           class: 'inject-data',
         },
       ],

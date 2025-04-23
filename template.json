@@ -354,8 +354,11 @@
       "principle": "",
       "distance": "",
       "duration": {
-        "setting": "instantaneous",
-        "value": "",
+        "value": "instantaneous",
+        "label": "Instantaneous",
+        "formula": {
+          "override": false
+        },
         "base": "[WB]",
         "bonus": 0,
         "unit": "minutes"
@@ -370,9 +373,17 @@
     },
     "ritual": {
       "templates": ["flavor", "effect"],
-      "difficulty": "",
+      "difficulty": {
+        "rating": 0,
+        "associatedSkill": "Incantation"
+      },
       "channelAs": "",
-      "castingTime": "",
+      "castingTime": {
+        "setting": "formula",
+        "value": "",
+        "number": 0,
+        "unit": "minutes"
+      },
       "rules": {
         "consequences": { "@en": "" },
         "condition": { "@en": "" },

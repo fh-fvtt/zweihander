@@ -241,11 +241,40 @@ export default class ZweihanderItemSheet extends ItemSheet {
       }));
     }
 
+    if (sheetData.type === 'ritual') {
+      sheetData.ritualCastingTimes = ['varies', 'special', 'formula'].map((ct) => ({
+        label: game.i18n.localize(`ZWEI.actor.items.castingtimeList.${ct}`),
+        value: ct,
+        selected: sheetData.system.castingTime.setting === ct,
+      }));
+
+      sheetData.ritualDifficultiesSpecific = [...Array(7).keys()].map((i) => {
+        const value = i * 10 - 30;
+        const selected = (Number(sheetData.system.difficulty.rating) ?? 0) === value ? 'selected' : '';
+        return { value, label: ZweihanderUtils.getDifficultyRatingLabel(value), selected };
+      });
+
+      sheetData.ritualDifficultiesGeneric = ['varies', 'special'].map((d) => ({
+        label: game.i18n.localize(`ZWEI.actor.items.difficultyList.${d}`),
+        value: d,
+        selected: sheetData.system.difficulty.rating === d,
+      }));
+
+      const skillPack = game.packs.get(game.settings.get('zweihander', 'skillPack'));
+      sheetData.skills = (await skillPack.getIndex())
+        .map((x) => ({
+          value: x.name,
+          label: x.name,
+          selected: sheetData.system.difficulty.associatedSkill === x.name ? 'selected' : '',
+        }))
+        .sort((a, b) => a.label.localeCompare(b.label));
+    }
+
     if (sheetData.type === 'spell') {
-      sheetData.spellDurations = ['instantaneous', 'forever', 'special', 'custom'].map((d) => ({
+      sheetData.spellDurations = ['instantaneous', 'forever', 'special'].map((d) => ({
         label: game.i18n.localize(`ZWEI.actor.items.durationList.${d}`),
         value: d,
-        selected: sheetData.system.duration.setting === d,
+        selected: sheetData.system.duration.value === d,
       }));
 
       sheetData.governingDurationAttribute = this._prepareGoverningAttributeData(
