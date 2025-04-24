@@ -401,7 +401,7 @@ export const registerHandlebarHelpers = async function () {
 
   $$('zhFetchByUuidSync', function (uuid) {
     const item = fromUuidSync(uuid);
-    return item.name;
+    return item ? item.name : '';
   });
 
   $$('zhIsCarried', function (system, options) {

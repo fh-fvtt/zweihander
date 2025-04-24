@@ -40,15 +40,37 @@
         "weaponType": "",
         "equipped": false,
         "associatedSkill": "Simple Melee",
-        "load": 0,
-        "handling": "One-handed",
-        "qualities": {
-          "value": "fast, vicious"
+        "ranged": {
+          "load": 0,
+          "value": false
         },
-        "distance": "melee engaged",
+        "handling": "One-handed",
+        "qualities": [
+          "Compendium.zweihander.zh-qualities.Item.vu1fnMVplISEga8I",
+          "Compendium.zweihander.zh-qualities.Item.X2xAsrK45rfNL591"
+        ],
+        "distance": {
+          "value": "melee engaged",
+          "base": "[PB]",
+          "bonus": 0
+        },
         "damage": {
-          "formula": "[CB] + 0 + (1+[#])d6x6"
-        }
+          "formula": {
+            "override": false,
+            "value": "[CB] + 0 + (1+[#])d6x6"
+          },
+          "attributeBonus": "[CB]",
+          "number": 1,
+          "die": "d6",
+          "bonus": 0,
+          "fury": {
+            "value": true,
+            "explodesOn": [
+              "6"
+            ]
+          }
+        },
+        "load": 0
       },
       "type": "weapon",
       "_key": "!actors.items!fxhT01jHwGXMJXNo.NGBjKl1S7FBT9QGW"
@@ -116,16 +138,17 @@
           "effect": {
             "@en": "These creatures cannot Bleed."
           }
-        }
+        },
+        "category": "creature"
       },
       "type": "trait",
       "_stats": {
         "coreVersion": "12.331",
-        "systemId": null,
-        "systemVersion": null,
+        "systemId": "zweihander",
+        "systemVersion": "5.4.1",
         "createdTime": null,
-        "modifiedTime": null,
-        "lastModifiedBy": null,
+        "modifiedTime": 1745449020957,
+        "lastModifiedBy": "rivg6xcMxdlVDM8y",
         "compendiumSource": null,
         "duplicateSource": null
       },
@@ -151,16 +174,17 @@
           "effect": {
             "@en": "These creatures can use Bolt of Flame from the Arcana of Pyromancy. If at least three of these creatures are standing within sight of one another, they can use Withering Touch from the Arcana of Sorcery. If at least nine of these creatures are standing within sight of one another, they can use Death’s Embrace from the Arcana of Morticism. Should a foe be Slain! by use of any of these Magicks, they are immediately turned into a Lemurian Host. Reagents are unnecessary to cast this Magick."
           }
-        }
+        },
+        "category": "creature"
       },
       "type": "trait",
       "_stats": {
         "coreVersion": "12.331",
-        "systemId": null,
-        "systemVersion": null,
+        "systemId": "zweihander",
+        "systemVersion": "5.4.1",
         "createdTime": null,
-        "modifiedTime": null,
-        "lastModifiedBy": null,
+        "modifiedTime": 1745449020972,
+        "lastModifiedBy": "rivg6xcMxdlVDM8y",
         "compendiumSource": null,
         "duplicateSource": null
       },
@@ -186,16 +210,17 @@
           "effect": {
             "@en": "When they wield 2 one-handed melee weapons and fail a Combat-based Skill Test, they may re-roll to generate a better result, but must accept the outcome."
           }
-        }
+        },
+        "category": "creature"
       },
       "type": "trait",
       "_stats": {
         "coreVersion": "12.331",
-        "systemId": null,
-        "systemVersion": null,
+        "systemId": "zweihander",
+        "systemVersion": "5.4.1",
         "createdTime": null,
-        "modifiedTime": null,
-        "lastModifiedBy": null,
+        "modifiedTime": 1745449020977,
+        "lastModifiedBy": "rivg6xcMxdlVDM8y",
         "compendiumSource": null,
         "duplicateSource": null
       },
@@ -221,16 +246,17 @@
           "effect": {
             "@en": "These creatures can see in the dark."
           }
-        }
+        },
+        "category": "creature"
       },
       "type": "trait",
       "_stats": {
         "coreVersion": "12.331",
-        "systemId": null,
-        "systemVersion": null,
+        "systemId": "zweihander",
+        "systemVersion": "5.4.1",
         "createdTime": null,
-        "modifiedTime": null,
-        "lastModifiedBy": null,
+        "modifiedTime": 1745449020981,
+        "lastModifiedBy": "rivg6xcMxdlVDM8y",
         "compendiumSource": null,
         "duplicateSource": null
       },
@@ -256,16 +282,17 @@
           "effect": {
             "@en": "When this creature suffers Damage and is unable to deal Damage by the end of its next Turn, roll 3D6. If all three dice show face ‘6’, the creature is banished back to the Abyss, until summoned once again."
           }
-        }
+        },
+        "category": "creature"
       },
       "type": "trait",
       "_stats": {
         "coreVersion": "12.331",
-        "systemId": null,
-        "systemVersion": null,
+        "systemId": "zweihander",
+        "systemVersion": "5.4.1",
         "createdTime": null,
-        "modifiedTime": null,
-        "lastModifiedBy": null,
+        "modifiedTime": 1745449020986,
+        "lastModifiedBy": "rivg6xcMxdlVDM8y",
         "compendiumSource": null,
         "duplicateSource": null
       },
@@ -291,16 +318,17 @@
           "effect": {
             "@en": "When these creatures are Slain!, roll 1D6 Chaos Die. If the result is face ‘1-3’, they instantaneously split into two minor Adversary Demons (albeit unable to cast Magick, use the Underling rules later in this chapter and can now be permanently Slain!). If the result is face ‘4-6’, it bursts into a cloud of mutating energy. Those caught in a Burst Template area of effect must succeed at a Resolve Test or gain a Taint of Chaos."
           }
-        }
+        },
+        "category": "creature"
       },
       "type": "trait",
       "_stats": {
         "coreVersion": "12.331",
-        "systemId": null,
-        "systemVersion": null,
+        "systemId": "zweihander",
+        "systemVersion": "5.4.1",
         "createdTime": null,
-        "modifiedTime": null,
-        "lastModifiedBy": null,
+        "modifiedTime": 1745449020990,
+        "lastModifiedBy": "rivg6xcMxdlVDM8y",
         "compendiumSource": null,
         "duplicateSource": null
       },
@@ -326,16 +354,17 @@
           "effect": {
             "@en": "When these creatures are encountered, roll 1D6 Chaos Dice if of Basic Risk Factor; 2D6 Chaos Dice if of Intermediate Risk Factor; 3D6 if of Advanced Risk Factor; 4D6 if of Elite Risk Factor. For every face ‘6’, add one Taint of Chaos to the creature."
           }
-        }
+        },
+        "category": "creature"
       },
       "type": "trait",
       "_stats": {
         "coreVersion": "12.331",
-        "systemId": null,
-        "systemVersion": null,
+        "systemId": "zweihander",
+        "systemVersion": "5.4.1",
         "createdTime": null,
-        "modifiedTime": null,
-        "lastModifiedBy": null,
+        "modifiedTime": 1745449020994,
+        "lastModifiedBy": "rivg6xcMxdlVDM8y",
         "compendiumSource": null,
         "duplicateSource": null
       },
@@ -361,16 +390,17 @@
           "effect": {
             "@en": "These creatures do not need to breathe and are immune to Chokehold. In addition, PCs whose Order Ranks exceed their Chaos Ranks reduce their Damage by -3 when striking these creatures."
           }
-        }
+        },
+        "category": "creature"
       },
       "type": "trait",
       "_stats": {
         "coreVersion": "12.331",
-        "systemId": null,
-        "systemVersion": null,
+        "systemId": "zweihander",
+        "systemVersion": "5.4.1",
         "createdTime": null,
-        "modifiedTime": null,
-        "lastModifiedBy": null,
+        "modifiedTime": 1745449020998,
+        "lastModifiedBy": "rivg6xcMxdlVDM8y",
         "compendiumSource": null,
         "duplicateSource": null
       },
@@ -396,16 +426,17 @@
           "effect": {
             "@en": "When these creatures use Magick, they must roll 3D6 Chaos Dice. If all land on face ‘6’, they are instantaneously Slain!."
           }
-        }
+        },
+        "category": "creature"
       },
       "type": "trait",
       "_stats": {
         "coreVersion": "12.331",
-        "systemId": null,
-        "systemVersion": null,
+        "systemId": "zweihander",
+        "systemVersion": "5.4.1",
         "createdTime": null,
-        "modifiedTime": null,
-        "lastModifiedBy": null,
+        "modifiedTime": 1745449021002,
+        "lastModifiedBy": "rivg6xcMxdlVDM8y",
         "compendiumSource": null,
         "duplicateSource": null
       },
@@ -439,7 +470,8 @@
         },
         "notes": "",
         "requiresTraining": true,
-        "associatedPrimaryAttribute": "Intelligence"
+        "associatedPrimaryAttribute": "Intelligence",
+        "bonusPerRank": 10
       },
       "folder": null,
       "sort": 0,
@@ -471,7 +503,8 @@
         },
         "notes": "",
         "requiresTraining": true,
-        "associatedPrimaryAttribute": "Fellowship"
+        "associatedPrimaryAttribute": "Fellowship",
+        "bonusPerRank": 10
       },
       "folder": null,
       "sort": 0,
@@ -503,7 +536,8 @@
         },
         "notes": "",
         "requiresTraining": true,
-        "associatedPrimaryAttribute": "Brawn"
+        "associatedPrimaryAttribute": "Brawn",
+        "bonusPerRank": 10
       },
       "folder": null,
       "sort": 0,
@@ -535,7 +569,8 @@
         },
         "notes": "",
         "requiresTraining": true,
-        "associatedPrimaryAttribute": "Willpower"
+        "associatedPrimaryAttribute": "Willpower",
+        "bonusPerRank": 10
       },
       "folder": null,
       "sort": 0,
@@ -567,7 +602,8 @@
         },
         "notes": "",
         "requiresTraining": true,
-        "associatedPrimaryAttribute": "Agility"
+        "associatedPrimaryAttribute": "Agility",
+        "bonusPerRank": 10
       },
       "folder": null,
       "sort": 0,
@@ -599,7 +635,8 @@
         },
         "notes": "",
         "requiresTraining": true,
-        "associatedPrimaryAttribute": "Intelligence"
+        "associatedPrimaryAttribute": "Intelligence",
+        "bonusPerRank": 10
       },
       "folder": null,
       "sort": 0,
@@ -631,7 +668,8 @@
         },
         "notes": "",
         "requiresTraining": true,
-        "associatedPrimaryAttribute": "Fellowship"
+        "associatedPrimaryAttribute": "Fellowship",
+        "bonusPerRank": 10
       },
       "folder": null,
       "sort": 0,
@@ -663,7 +701,8 @@
         },
         "notes": "",
         "requiresTraining": false,
-        "associatedPrimaryAttribute": "Brawn"
+        "associatedPrimaryAttribute": "Brawn",
+        "bonusPerRank": 10
       },
       "folder": null,
       "sort": 0,
@@ -695,7 +734,8 @@
         },
         "notes": "",
         "requiresTraining": true,
-        "associatedPrimaryAttribute": "Intelligence"
+        "associatedPrimaryAttribute": "Intelligence",
+        "bonusPerRank": 10
       },
       "folder": null,
       "sort": 0,
@@ -727,7 +767,8 @@
         },
         "notes": "",
         "requiresTraining": true,
-        "associatedPrimaryAttribute": "Intelligence"
+        "associatedPrimaryAttribute": "Intelligence",
+        "bonusPerRank": 10
       },
       "folder": null,
       "sort": 0,
@@ -759,7 +800,8 @@
         },
         "notes": "",
         "requiresTraining": false,
-        "associatedPrimaryAttribute": "Combat"
+        "associatedPrimaryAttribute": "Combat",
+        "bonusPerRank": 10
       },
       "folder": null,
       "sort": 0,
@@ -791,7 +833,8 @@
         },
         "notes": "",
         "requiresTraining": true,
-        "associatedPrimaryAttribute": "Intelligence"
+        "associatedPrimaryAttribute": "Intelligence",
+        "bonusPerRank": 10
       },
       "folder": null,
       "sort": 0,
@@ -823,7 +866,8 @@
         },
         "notes": "",
         "requiresTraining": true,
-        "associatedPrimaryAttribute": "Fellowship"
+        "associatedPrimaryAttribute": "Fellowship",
+        "bonusPerRank": 10
       },
       "folder": null,
       "sort": 0,
@@ -855,7 +899,8 @@
         },
         "notes": "",
         "requiresTraining": false,
-        "associatedPrimaryAttribute": "Willpower"
+        "associatedPrimaryAttribute": "Willpower",
+        "bonusPerRank": 10
       },
       "folder": null,
       "sort": 0,
@@ -887,7 +932,8 @@
         },
         "notes": "",
         "requiresTraining": false,
-        "associatedPrimaryAttribute": "Brawn"
+        "associatedPrimaryAttribute": "Brawn",
+        "bonusPerRank": 10
       },
       "folder": null,
       "sort": 0,
@@ -919,7 +965,8 @@
         },
         "notes": "",
         "requiresTraining": true,
-        "associatedPrimaryAttribute": "Agility"
+        "associatedPrimaryAttribute": "Agility",
+        "bonusPerRank": 10
       },
       "folder": null,
       "sort": 0,
@@ -951,7 +998,8 @@
         },
         "notes": "",
         "requiresTraining": false,
-        "associatedPrimaryAttribute": "Perception"
+        "associatedPrimaryAttribute": "Perception",
+        "bonusPerRank": 10
       },
       "folder": null,
       "sort": 0,
@@ -983,7 +1031,8 @@
         },
         "notes": "",
         "requiresTraining": false,
-        "associatedPrimaryAttribute": "Intelligence"
+        "associatedPrimaryAttribute": "Intelligence",
+        "bonusPerRank": 10
       },
       "folder": null,
       "sort": 0,
@@ -1015,7 +1064,8 @@
         },
         "notes": "",
         "requiresTraining": true,
-        "associatedPrimaryAttribute": "Agility"
+        "associatedPrimaryAttribute": "Agility",
+        "bonusPerRank": 10
       },
       "folder": null,
       "sort": 0,
@@ -1047,7 +1097,8 @@
         },
         "notes": "",
         "requiresTraining": true,
-        "associatedPrimaryAttribute": "Intelligence"
+        "associatedPrimaryAttribute": "Intelligence",
+        "bonusPerRank": 10
       },
       "folder": null,
       "sort": 0,
@@ -1079,7 +1130,8 @@
         },
         "notes": "",
         "requiresTraining": true,
-        "associatedPrimaryAttribute": "Combat"
+        "associatedPrimaryAttribute": "Combat",
+        "bonusPerRank": 10
       },
       "folder": null,
       "sort": 0,
@@ -1111,7 +1163,8 @@
         },
         "notes": "",
         "requiresTraining": false,
-        "associatedPrimaryAttribute": "Fellowship"
+        "associatedPrimaryAttribute": "Fellowship",
+        "bonusPerRank": 10
       },
       "folder": null,
       "sort": 0,
@@ -1143,7 +1196,8 @@
         },
         "notes": "",
         "requiresTraining": false,
-        "associatedPrimaryAttribute": "Intelligence"
+        "associatedPrimaryAttribute": "Intelligence",
+        "bonusPerRank": 10
       },
       "folder": null,
       "sort": 0,
@@ -1175,7 +1229,8 @@
         },
         "notes": "",
         "requiresTraining": false,
-        "associatedPrimaryAttribute": "Perception"
+        "associatedPrimaryAttribute": "Perception",
+        "bonusPerRank": 10
       },
       "folder": null,
       "sort": 0,
@@ -1207,7 +1262,8 @@
         },
         "notes": "",
         "requiresTraining": true,
-        "associatedPrimaryAttribute": "Willpower"
+        "associatedPrimaryAttribute": "Willpower",
+        "bonusPerRank": 10
       },
       "folder": null,
       "sort": 0,
@@ -1239,7 +1295,8 @@
         },
         "notes": "",
         "requiresTraining": false,
-        "associatedPrimaryAttribute": "Fellowship"
+        "associatedPrimaryAttribute": "Fellowship",
+        "bonusPerRank": 10
       },
       "folder": null,
       "sort": 0,
@@ -1271,7 +1328,8 @@
         },
         "notes": "",
         "requiresTraining": false,
-        "associatedPrimaryAttribute": "Perception"
+        "associatedPrimaryAttribute": "Perception",
+        "bonusPerRank": 10
       },
       "folder": null,
       "sort": 0,
@@ -1303,7 +1361,8 @@
         },
         "notes": "",
         "requiresTraining": true,
-        "associatedPrimaryAttribute": "Combat"
+        "associatedPrimaryAttribute": "Combat",
+        "bonusPerRank": 10
       },
       "folder": null,
       "sort": 0,
@@ -1335,7 +1394,8 @@
         },
         "notes": "",
         "requiresTraining": false,
-        "associatedPrimaryAttribute": "Perception"
+        "associatedPrimaryAttribute": "Perception",
+        "bonusPerRank": 10
       },
       "folder": null,
       "sort": 0,
@@ -1367,7 +1427,8 @@
         },
         "notes": "",
         "requiresTraining": false,
-        "associatedPrimaryAttribute": "Agility"
+        "associatedPrimaryAttribute": "Agility",
+        "bonusPerRank": 10
       },
       "folder": null,
       "sort": 0,
@@ -1399,7 +1460,8 @@
         },
         "notes": "",
         "requiresTraining": false,
-        "associatedPrimaryAttribute": "Fellowship"
+        "associatedPrimaryAttribute": "Fellowship",
+        "bonusPerRank": 10
       },
       "folder": null,
       "sort": 0,
@@ -1431,7 +1493,8 @@
         },
         "notes": "",
         "requiresTraining": false,
-        "associatedPrimaryAttribute": "Brawn"
+        "associatedPrimaryAttribute": "Brawn",
+        "bonusPerRank": 10
       },
       "folder": null,
       "sort": 0,
@@ -1463,7 +1526,8 @@
         },
         "notes": "",
         "requiresTraining": false,
-        "associatedPrimaryAttribute": "Fellowship"
+        "associatedPrimaryAttribute": "Fellowship",
+        "bonusPerRank": 10
       },
       "folder": null,
       "sort": 0,
@@ -1495,7 +1559,8 @@
         },
         "notes": "",
         "requiresTraining": false,
-        "associatedPrimaryAttribute": "Agility"
+        "associatedPrimaryAttribute": "Agility",
+        "bonusPerRank": 10
       },
       "folder": null,
       "sort": 0,
@@ -1527,7 +1592,8 @@
         },
         "notes": "",
         "requiresTraining": true,
-        "associatedPrimaryAttribute": "Willpower"
+        "associatedPrimaryAttribute": "Willpower",
+        "bonusPerRank": 10
       },
       "folder": null,
       "sort": 0,
@@ -1559,7 +1625,8 @@
         },
         "notes": "",
         "requiresTraining": false,
-        "associatedPrimaryAttribute": "Combat"
+        "associatedPrimaryAttribute": "Combat",
+        "bonusPerRank": 10
       },
       "folder": null,
       "sort": 0,
@@ -1762,11 +1829,11 @@
   "type": "creature",
   "_stats": {
     "coreVersion": "12.331",
-    "systemId": null,
-    "systemVersion": null,
-    "createdTime": null,
-    "modifiedTime": null,
-    "lastModifiedBy": null,
+    "systemId": "zweihander",
+    "systemVersion": "5.4.1",
+    "createdTime": 1745447134711,
+    "modifiedTime": 1745447315753,
+    "lastModifiedBy": "rivg6xcMxdlVDM8y",
     "compendiumSource": null,
     "duplicateSource": null
   },

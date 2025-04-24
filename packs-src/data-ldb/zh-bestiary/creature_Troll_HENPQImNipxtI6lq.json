@@ -44,15 +44,38 @@
         "weaponType": "",
         "equipped": false,
         "associatedSkill": "Simple Melee",
-        "load": 0,
-        "handling": "One-handed",
-        "qualities": {
-          "value": "Light, Powerful, Weak"
+        "ranged": {
+          "load": 0,
+          "value": false
         },
-        "distance": "Melee Engaged",
+        "handling": "One-handed",
+        "qualities": [
+          "Compendium.zweihander.zh-qualities.Item.vOutwhK95uttj9j8",
+          "Compendium.zweihander.zh-qualities.Item.Rg7ayPFAQ8iYSTDz",
+          "Compendium.zweihander.zh-qualities.Item.FvNQGHmIZpHF4pay"
+        ],
+        "distance": {
+          "value": "Melee Engaged",
+          "base": "[PB]",
+          "bonus": 0
+        },
         "damage": {
-          "formula": "6"
-        }
+          "formula": {
+            "override": false,
+            "value": "6"
+          },
+          "attributeBonus": "[CB]",
+          "number": 1,
+          "die": "d6",
+          "bonus": 0,
+          "fury": {
+            "value": true,
+            "explodesOn": [
+              "6"
+            ]
+          }
+        },
+        "load": 0
       },
       "type": "weapon",
       "_key": "!actors.items!HENPQImNipxtI6lq.TEibODZOON4Qth3w"
@@ -71,16 +94,17 @@
           "effect": {
             "@en": "These creatures can use their breath as a ranged weapon. This allows them to strike a single foe within 1+[PB], causing the foe to suffer 1D10+1 Damage from acid. However, Acidic Spittle ignores a foe’s Damage Threshold Modifier from armor. A foe can attempt to Dodge Acidic Spittle or Parry it with a shield. Acidic Spittle can be used while Engaged with foes."
           }
-        }
+        },
+        "category": "creature"
       },
       "type": "trait",
       "_stats": {
         "coreVersion": "12.331",
-        "systemId": null,
-        "systemVersion": null,
+        "systemId": "zweihander",
+        "systemVersion": "5.4.1",
         "createdTime": null,
-        "modifiedTime": null,
-        "lastModifiedBy": null,
+        "modifiedTime": 1745449018442,
+        "lastModifiedBy": "rivg6xcMxdlVDM8y",
         "compendiumSource": null,
         "duplicateSource": null
       },
@@ -106,16 +130,17 @@
           "effect": {
             "@en": "These creatures can use two-handed weapons in one hand and take advantage of the Adaptable Quality."
           }
-        }
+        },
+        "category": "creature"
       },
       "type": "trait",
       "_stats": {
         "coreVersion": "12.331",
-        "systemId": null,
-        "systemVersion": null,
+        "systemId": "zweihander",
+        "systemVersion": "5.4.1",
         "createdTime": null,
-        "modifiedTime": null,
-        "lastModifiedBy": null,
+        "modifiedTime": 1745449018459,
+        "lastModifiedBy": "rivg6xcMxdlVDM8y",
         "compendiumSource": null,
         "duplicateSource": null
       },
@@ -141,16 +166,17 @@
           "effect": {
             "@en": "These creatures can see in the dark."
           }
-        }
+        },
+        "category": "creature"
       },
       "type": "trait",
       "_stats": {
         "coreVersion": "12.331",
-        "systemId": null,
-        "systemVersion": null,
+        "systemId": "zweihander",
+        "systemVersion": "5.4.1",
         "createdTime": null,
-        "modifiedTime": null,
-        "lastModifiedBy": null,
+        "modifiedTime": 1745449018464,
+        "lastModifiedBy": "rivg6xcMxdlVDM8y",
         "compendiumSource": null,
         "duplicateSource": null
       },
@@ -176,16 +202,17 @@
           "effect": {
             "@en": "When these creatures inflict an Injury, their foe’s wounds are also Infected."
           }
-        }
+        },
+        "category": "creature"
       },
       "type": "trait",
       "_stats": {
         "coreVersion": "12.331",
-        "systemId": null,
-        "systemVersion": null,
+        "systemId": "zweihander",
+        "systemVersion": "5.4.1",
         "createdTime": null,
-        "modifiedTime": null,
-        "lastModifiedBy": null,
+        "modifiedTime": 1745449018468,
+        "lastModifiedBy": "rivg6xcMxdlVDM8y",
         "compendiumSource": null,
         "duplicateSource": null
       },
@@ -211,16 +238,17 @@
           "effect": {
             "@en": "When exposed to flames, these creatures suffer an additional 1D10+1 Damage from fire."
           }
-        }
+        },
+        "category": "creature"
       },
       "type": "trait",
       "_stats": {
         "coreVersion": "12.331",
-        "systemId": null,
-        "systemVersion": null,
+        "systemId": "zweihander",
+        "systemVersion": "5.4.1",
         "createdTime": null,
-        "modifiedTime": null,
-        "lastModifiedBy": null,
+        "modifiedTime": 1745449018473,
+        "lastModifiedBy": "rivg6xcMxdlVDM8y",
         "compendiumSource": null,
         "duplicateSource": null
       },
@@ -246,16 +274,17 @@
           "effect": {
             "@en": "When these creatures are encountered, roll 1D6 Chaos Dice if of Basic Risk Factor; 2D6 Chaos Dice if of Intermediate Risk Factor; 3D6 if of Advanced Risk Factor; 4D6 if of Elite Risk Factor. For every face ‘6’, add one Taint of Chaos to the creature."
           }
-        }
+        },
+        "category": "creature"
       },
       "type": "trait",
       "_stats": {
         "coreVersion": "12.331",
-        "systemId": null,
-        "systemVersion": null,
+        "systemId": "zweihander",
+        "systemVersion": "5.4.1",
         "createdTime": null,
-        "modifiedTime": null,
-        "lastModifiedBy": null,
+        "modifiedTime": 1745449018478,
+        "lastModifiedBy": "rivg6xcMxdlVDM8y",
         "compendiumSource": null,
         "duplicateSource": null
       },
@@ -281,16 +310,17 @@
           "effect": {
             "@en": "When these creatures deal Damage, a foe must Resist with Coordination. If they fail, the foe’s armor, weapon or shield is Ruined!."
           }
-        }
+        },
+        "category": "creature"
       },
       "type": "trait",
       "_stats": {
         "coreVersion": "12.331",
-        "systemId": null,
-        "systemVersion": null,
+        "systemId": "zweihander",
+        "systemVersion": "5.4.1",
         "createdTime": null,
-        "modifiedTime": null,
-        "lastModifiedBy": null,
+        "modifiedTime": 1745449018482,
+        "lastModifiedBy": "rivg6xcMxdlVDM8y",
         "compendiumSource": null,
         "duplicateSource": null
       },
@@ -316,16 +346,17 @@
           "effect": {
             "@en": "These creatures are easily distracted. When their Turn starts, they must succeed a Resolve Test or else lose 1 AP."
           }
-        }
+        },
+        "category": "creature"
       },
       "type": "trait",
       "_stats": {
         "coreVersion": "12.331",
-        "systemId": null,
-        "systemVersion": null,
+        "systemId": "zweihander",
+        "systemVersion": "5.4.1",
         "createdTime": null,
-        "modifiedTime": null,
-        "lastModifiedBy": null,
+        "modifiedTime": 1745449018487,
+        "lastModifiedBy": "rivg6xcMxdlVDM8y",
         "compendiumSource": null,
         "duplicateSource": null
       },
@@ -351,16 +382,17 @@
           "effect": {
             "@en": "Only after these creature’s remains are set On Fire are they forever Slain!."
           }
-        }
+        },
+        "category": "creature"
       },
       "type": "trait",
       "_stats": {
         "coreVersion": "12.331",
-        "systemId": null,
-        "systemVersion": null,
+        "systemId": "zweihander",
+        "systemVersion": "5.4.1",
         "createdTime": null,
-        "modifiedTime": null,
-        "lastModifiedBy": null,
+        "modifiedTime": 1745449018492,
+        "lastModifiedBy": "rivg6xcMxdlVDM8y",
         "compendiumSource": null,
         "duplicateSource": null
       },
@@ -386,16 +418,17 @@
           "effect": {
             "@en": "When these creatures Injure a foe with a melee weapon, they inflict two Injuries instead of one."
           }
-        }
+        },
+        "category": "creature"
       },
       "type": "trait",
       "_stats": {
         "coreVersion": "12.331",
-        "systemId": null,
-        "systemVersion": null,
+        "systemId": "zweihander",
+        "systemVersion": "5.4.1",
         "createdTime": null,
-        "modifiedTime": null,
-        "lastModifiedBy": null,
+        "modifiedTime": 1745449018497,
+        "lastModifiedBy": "rivg6xcMxdlVDM8y",
         "compendiumSource": null,
         "duplicateSource": null
       },
@@ -421,16 +454,17 @@
           "effect": {
             "@en": "Foes must flip the results to fail attacks made with ranged weapons to strike these creatures."
           }
-        }
+        },
+        "category": "creature"
       },
       "type": "trait",
       "_stats": {
         "coreVersion": "12.331",
-        "systemId": null,
-        "systemVersion": null,
+        "systemId": "zweihander",
+        "systemVersion": "5.4.1",
         "createdTime": null,
-        "modifiedTime": null,
-        "lastModifiedBy": null,
+        "modifiedTime": 1745449018501,
+        "lastModifiedBy": "rivg6xcMxdlVDM8y",
         "compendiumSource": null,
         "duplicateSource": null
       },
@@ -456,16 +490,17 @@
           "effect": {
             "@en": "When this creature’s Turn begins, they move one step up the Damage Condition Track positively. Other Traits cover how these creatures are permanently Slain!."
           }
-        }
+        },
+        "category": "creature"
       },
       "type": "trait",
       "_stats": {
         "coreVersion": "12.331",
-        "systemId": null,
-        "systemVersion": null,
+        "systemId": "zweihander",
+        "systemVersion": "5.4.1",
         "createdTime": null,
-        "modifiedTime": null,
-        "lastModifiedBy": null,
+        "modifiedTime": 1745449018506,
+        "lastModifiedBy": "rivg6xcMxdlVDM8y",
         "compendiumSource": null,
         "duplicateSource": null
       },
@@ -491,16 +526,17 @@
           "effect": {
             "@en": "When first encountered, these creatures provoke one of the three brands of Madness; if of Basic Risk Factor, they provoke Stress; if of Intermediate Risk Factor, they provoke Fear; if of Advanced or Elite Risk Factor, they provoke Horror."
           }
-        }
+        },
+        "category": "creature"
       },
       "type": "trait",
       "_stats": {
         "coreVersion": "12.331",
-        "systemId": null,
-        "systemVersion": null,
+        "systemId": "zweihander",
+        "systemVersion": "5.4.1",
         "createdTime": null,
-        "modifiedTime": null,
-        "lastModifiedBy": null,
+        "modifiedTime": 1745449018511,
+        "lastModifiedBy": "rivg6xcMxdlVDM8y",
         "compendiumSource": null,
         "duplicateSource": null
       },
@@ -526,16 +562,17 @@
           "effect": {
             "@en": "When these creatures use the Stealth or Survival Skill, they flip the results to succeed at their Test."
           }
-        }
+        },
+        "category": "creature"
       },
       "type": "trait",
       "_stats": {
         "coreVersion": "12.331",
-        "systemId": null,
-        "systemVersion": null,
+        "systemId": "zweihander",
+        "systemVersion": "5.4.1",
         "createdTime": null,
-        "modifiedTime": null,
-        "lastModifiedBy": null,
+        "modifiedTime": 1745449018516,
+        "lastModifiedBy": "rivg6xcMxdlVDM8y",
         "compendiumSource": null,
         "duplicateSource": null
       },
@@ -561,16 +598,17 @@
           "effect": {
             "@en": "When these creatures deal Damage, they can automatically knock their foe Prone. In addition, they ignore the effects of Hard Terrain."
           }
-        }
+        },
+        "category": "creature"
       },
       "type": "trait",
       "_stats": {
         "coreVersion": "12.331",
-        "systemId": null,
-        "systemVersion": null,
+        "systemId": "zweihander",
+        "systemVersion": "5.4.1",
         "createdTime": null,
-        "modifiedTime": null,
-        "lastModifiedBy": null,
+        "modifiedTime": 1745449018520,
+        "lastModifiedBy": "rivg6xcMxdlVDM8y",
         "compendiumSource": null,
         "duplicateSource": null
       },
@@ -613,15 +651,37 @@
         "weaponType": "Bladed",
         "equipped": true,
         "associatedSkill": "Simple Melee",
-        "load": 0,
-        "handling": "One-handed",
-        "qualities": {
-          "value": "Pummeling, Slow"
+        "ranged": {
+          "load": 0,
+          "value": false
         },
-        "distance": "Engaged",
+        "handling": "One-handed",
+        "qualities": [
+          "Compendium.zweihander.zh-qualities.Item.XX3z9Md3skZ2CqTh",
+          "Compendium.zweihander.zh-qualities.Item.HcvWfBAXe1vOmNK7"
+        ],
+        "distance": {
+          "value": "Engaged",
+          "base": "[PB]",
+          "bonus": 0
+        },
         "damage": {
-          "formula": "[BB] + (1+[#])d6x6"
-        }
+          "formula": {
+            "override": false,
+            "value": "[BB] + (1+[#])d6x6"
+          },
+          "attributeBonus": "[BB]",
+          "number": 1,
+          "die": "d6",
+          "bonus": 0,
+          "fury": {
+            "value": true,
+            "explodesOn": [
+              "6"
+            ]
+          }
+        },
+        "load": 0
       },
       "folder": null,
       "sort": 0,
@@ -662,15 +722,34 @@
         "weaponType": "Bladed",
         "equipped": true,
         "associatedSkill": "Simple Melee",
-        "load": 1,
-        "handling": "One-handed",
-        "qualities": {
-          "value": ""
+        "ranged": {
+          "load": 1,
+          "value": true
         },
-        "distance": "1+[PB] yards",
+        "handling": "One-handed",
+        "qualities": [],
+        "distance": {
+          "value": "1+[PB] ",
+          "base": "[PB]",
+          "bonus": 1
+        },
         "damage": {
-          "formula": "0"
-        }
+          "formula": {
+            "override": false,
+            "value": "0"
+          },
+          "attributeBonus": "[CB]",
+          "number": 1,
+          "die": "d6",
+          "bonus": 0,
+          "fury": {
+            "value": true,
+            "explodesOn": [
+              "6"
+            ]
+          }
+        },
+        "load": 1
       },
       "folder": null,
       "sort": 0,
@@ -702,7 +781,8 @@
         },
         "notes": "",
         "requiresTraining": true,
-        "associatedPrimaryAttribute": "Intelligence"
+        "associatedPrimaryAttribute": "Intelligence",
+        "bonusPerRank": 10
       },
       "folder": null,
       "sort": 0,
@@ -734,7 +814,8 @@
         },
         "notes": "",
         "requiresTraining": true,
-        "associatedPrimaryAttribute": "Fellowship"
+        "associatedPrimaryAttribute": "Fellowship",
+        "bonusPerRank": 10
       },
       "folder": null,
       "sort": 0,
@@ -766,7 +847,8 @@
         },
         "notes": "",
         "requiresTraining": true,
-        "associatedPrimaryAttribute": "Brawn"
+        "associatedPrimaryAttribute": "Brawn",
+        "bonusPerRank": 10
       },
       "folder": null,
       "sort": 0,
@@ -798,7 +880,8 @@
         },
         "notes": "",
         "requiresTraining": true,
-        "associatedPrimaryAttribute": "Willpower"
+        "associatedPrimaryAttribute": "Willpower",
+        "bonusPerRank": 10
       },
       "folder": null,
       "sort": 0,
@@ -830,7 +913,8 @@
         },
         "notes": "",
         "requiresTraining": true,
-        "associatedPrimaryAttribute": "Agility"
+        "associatedPrimaryAttribute": "Agility",
+        "bonusPerRank": 10
       },
       "folder": null,
       "sort": 0,
@@ -862,7 +946,8 @@
         },
         "notes": "",
         "requiresTraining": true,
-        "associatedPrimaryAttribute": "Intelligence"
+        "associatedPrimaryAttribute": "Intelligence",
+        "bonusPerRank": 10
       },
       "folder": null,
       "sort": 0,
@@ -894,7 +979,8 @@
         },
         "notes": "",
         "requiresTraining": true,
-        "associatedPrimaryAttribute": "Fellowship"
+        "associatedPrimaryAttribute": "Fellowship",
+        "bonusPerRank": 10
       },
       "folder": null,
       "sort": 0,
@@ -926,7 +1012,8 @@
         },
         "notes": "",
         "requiresTraining": false,
-        "associatedPrimaryAttribute": "Brawn"
+        "associatedPrimaryAttribute": "Brawn",
+        "bonusPerRank": 10
       },
       "folder": null,
       "sort": 0,
@@ -958,7 +1045,8 @@
         },
         "notes": "",
         "requiresTraining": true,
-        "associatedPrimaryAttribute": "Intelligence"
+        "associatedPrimaryAttribute": "Intelligence",
+        "bonusPerRank": 10
       },
       "folder": null,
       "sort": 0,
@@ -990,7 +1078,8 @@
         },
         "notes": "",
         "requiresTraining": true,
-        "associatedPrimaryAttribute": "Intelligence"
+        "associatedPrimaryAttribute": "Intelligence",
+        "bonusPerRank": 10
       },
       "folder": null,
       "sort": 0,
@@ -1022,7 +1111,8 @@
         },
         "notes": "",
         "requiresTraining": false,
-        "associatedPrimaryAttribute": "Combat"
+        "associatedPrimaryAttribute": "Combat",
+        "bonusPerRank": 10
       },
       "folder": null,
       "sort": 0,
@@ -1054,7 +1144,8 @@
         },
         "notes": "",
         "requiresTraining": true,
-        "associatedPrimaryAttribute": "Intelligence"
+        "associatedPrimaryAttribute": "Intelligence",
+        "bonusPerRank": 10
       },
       "folder": null,
       "sort": 0,
@@ -1086,7 +1177,8 @@
         },
         "notes": "",
         "requiresTraining": true,
-        "associatedPrimaryAttribute": "Fellowship"
+        "associatedPrimaryAttribute": "Fellowship",
+        "bonusPerRank": 10
       },
       "folder": null,
       "sort": 0,
@@ -1118,7 +1210,8 @@
         },
         "notes": "",
         "requiresTraining": false,
-        "associatedPrimaryAttribute": "Willpower"
+        "associatedPrimaryAttribute": "Willpower",
+        "bonusPerRank": 10
       },
       "folder": null,
       "sort": 0,
@@ -1150,7 +1243,8 @@
         },
         "notes": "",
         "requiresTraining": false,
-        "associatedPrimaryAttribute": "Brawn"
+        "associatedPrimaryAttribute": "Brawn",
+        "bonusPerRank": 10
       },
       "folder": null,
       "sort": 0,
@@ -1182,7 +1276,8 @@
         },
         "notes": "",
         "requiresTraining": true,
-        "associatedPrimaryAttribute": "Agility"
+        "associatedPrimaryAttribute": "Agility",
+        "bonusPerRank": 10
       },
       "folder": null,
       "sort": 0,
@@ -1214,7 +1309,8 @@
         },
         "notes": "",
         "requiresTraining": false,
-        "associatedPrimaryAttribute": "Perception"
+        "associatedPrimaryAttribute": "Perception",
+        "bonusPerRank": 10
       },
       "folder": null,
       "sort": 0,
@@ -1246,7 +1342,8 @@
         },
         "notes": "",
         "requiresTraining": false,
-        "associatedPrimaryAttribute": "Intelligence"
+        "associatedPrimaryAttribute": "Intelligence",
+        "bonusPerRank": 10
       },
       "folder": null,
       "sort": 0,
@@ -1278,7 +1375,8 @@
         },
         "notes": "",
         "requiresTraining": true,
-        "associatedPrimaryAttribute": "Agility"
+        "associatedPrimaryAttribute": "Agility",
+        "bonusPerRank": 10
       },
       "folder": null,
       "sort": 0,
@@ -1310,7 +1408,8 @@
         },
         "notes": "",
         "requiresTraining": true,
-        "associatedPrimaryAttribute": "Intelligence"
+        "associatedPrimaryAttribute": "Intelligence",
+        "bonusPerRank": 10
       },
       "folder": null,
       "sort": 0,
@@ -1342,7 +1441,8 @@
         },
         "notes": "",
         "requiresTraining": true,
-        "associatedPrimaryAttribute": "Combat"
+        "associatedPrimaryAttribute": "Combat",
+        "bonusPerRank": 10
       },
       "folder": null,
       "sort": 0,
@@ -1374,7 +1474,8 @@
         },
         "notes": "",
         "requiresTraining": false,
-        "associatedPrimaryAttribute": "Fellowship"
+        "associatedPrimaryAttribute": "Fellowship",
+        "bonusPerRank": 10
       },
       "folder": null,
       "sort": 0,
@@ -1406,7 +1507,8 @@
         },
         "notes": "",
         "requiresTraining": false,
-        "associatedPrimaryAttribute": "Intelligence"
+        "associatedPrimaryAttribute": "Intelligence",
+        "bonusPerRank": 10
       },
       "folder": null,
       "sort": 0,
@@ -1438,7 +1540,8 @@
         },
         "notes": "",
         "requiresTraining": false,
-        "associatedPrimaryAttribute": "Perception"
+        "associatedPrimaryAttribute": "Perception",
+        "bonusPerRank": 10
       },
       "folder": null,
       "sort": 0,
@@ -1470,7 +1573,8 @@
         },
         "notes": "",
         "requiresTraining": true,
-        "associatedPrimaryAttribute": "Willpower"
+        "associatedPrimaryAttribute": "Willpower",
+        "bonusPerRank": 10
       },
       "folder": null,
       "sort": 0,
@@ -1502,7 +1606,8 @@
         },
         "notes": "",
         "requiresTraining": false,
-        "associatedPrimaryAttribute": "Fellowship"
+        "associatedPrimaryAttribute": "Fellowship",
+        "bonusPerRank": 10
       },
       "folder": null,
       "sort": 0,
@@ -1534,7 +1639,8 @@
         },
         "notes": "",
         "requiresTraining": false,
-        "associatedPrimaryAttribute": "Perception"
+        "associatedPrimaryAttribute": "Perception",
+        "bonusPerRank": 10
       },
       "folder": null,
       "sort": 0,
@@ -1566,7 +1672,8 @@
         },
         "notes": "",
         "requiresTraining": true,
-        "associatedPrimaryAttribute": "Combat"
+        "associatedPrimaryAttribute": "Combat",
+        "bonusPerRank": 10
       },
       "folder": null,
       "sort": 0,
@@ -1598,7 +1705,8 @@
         },
         "notes": "",
         "requiresTraining": false,
-        "associatedPrimaryAttribute": "Perception"
+        "associatedPrimaryAttribute": "Perception",
+        "bonusPerRank": 10
       },
       "folder": null,
       "sort": 0,
@@ -1630,7 +1738,8 @@
         },
         "notes": "",
         "requiresTraining": false,
-        "associatedPrimaryAttribute": "Agility"
+        "associatedPrimaryAttribute": "Agility",
+        "bonusPerRank": 10
       },
       "folder": null,
       "sort": 0,
@@ -1662,7 +1771,8 @@
         },
         "notes": "",
         "requiresTraining": false,
-        "associatedPrimaryAttribute": "Fellowship"
+        "associatedPrimaryAttribute": "Fellowship",
+        "bonusPerRank": 10
       },
       "folder": null,
       "sort": 0,
@@ -1694,7 +1804,8 @@
         },
         "notes": "",
         "requiresTraining": false,
-        "associatedPrimaryAttribute": "Brawn"
+        "associatedPrimaryAttribute": "Brawn",
+        "bonusPerRank": 10
       },
       "folder": null,
       "sort": 0,
@@ -1726,7 +1837,8 @@
         },
         "notes": "",
         "requiresTraining": false,
-        "associatedPrimaryAttribute": "Fellowship"
+        "associatedPrimaryAttribute": "Fellowship",
+        "bonusPerRank": 10
       },
       "folder": null,
       "sort": 0,
@@ -1758,7 +1870,8 @@
         },
         "notes": "",
         "requiresTraining": false,
-        "associatedPrimaryAttribute": "Agility"
+        "associatedPrimaryAttribute": "Agility",
+        "bonusPerRank": 10
       },
       "folder": null,
       "sort": 0,
@@ -1790,7 +1903,8 @@
         },
         "notes": "",
         "requiresTraining": true,
-        "associatedPrimaryAttribute": "Willpower"
+        "associatedPrimaryAttribute": "Willpower",
+        "bonusPerRank": 10
       },
       "folder": null,
       "sort": 0,
@@ -1822,7 +1936,8 @@
         },
         "notes": "",
         "requiresTraining": false,
-        "associatedPrimaryAttribute": "Combat"
+        "associatedPrimaryAttribute": "Combat",
+        "bonusPerRank": 10
       },
       "folder": null,
       "sort": 0,
@@ -2025,11 +2140,11 @@
   "type": "creature",
   "_stats": {
     "coreVersion": "12.331",
-    "systemId": null,
-    "systemVersion": null,
-    "createdTime": null,
-    "modifiedTime": null,
-    "lastModifiedBy": null,
+    "systemId": "zweihander",
+    "systemVersion": "5.4.1",
+    "createdTime": 1745447134660,
+    "modifiedTime": 1745447315709,
+    "lastModifiedBy": "rivg6xcMxdlVDM8y",
     "compendiumSource": null,
     "duplicateSource": null
   },

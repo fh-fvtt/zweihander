@@ -17,16 +17,17 @@
           "effect": {
             "@en": "When these creatures Charge, they may flip the results to succeed at their next Attack Action or Perilous Stunt on the same Turn."
           }
-        }
+        },
+        "category": "creature"
       },
       "type": "trait",
       "_stats": {
         "coreVersion": "12.331",
-        "systemId": null,
-        "systemVersion": null,
+        "systemId": "zweihander",
+        "systemVersion": "5.4.1",
         "createdTime": null,
-        "modifiedTime": null,
-        "lastModifiedBy": null,
+        "modifiedTime": 1745449018335,
+        "lastModifiedBy": "rivg6xcMxdlVDM8y",
         "compendiumSource": null,
         "duplicateSource": null
       },
@@ -52,16 +53,17 @@
           "effect": {
             "@en": "These creatures cannot Bleed."
           }
-        }
+        },
+        "category": "creature"
       },
       "type": "trait",
       "_stats": {
         "coreVersion": "12.331",
-        "systemId": null,
-        "systemVersion": null,
+        "systemId": "zweihander",
+        "systemVersion": "5.4.1",
         "createdTime": null,
-        "modifiedTime": null,
-        "lastModifiedBy": null,
+        "modifiedTime": 1745449018349,
+        "lastModifiedBy": "rivg6xcMxdlVDM8y",
         "compendiumSource": null,
         "duplicateSource": null
       },
@@ -87,16 +89,17 @@
           "effect": {
             "@en": "When these creatures successfully strike with a ranged weapon possessing the Gunpowder Quality, they automatically Load their weapon for 0 APs."
           }
-        }
+        },
+        "category": "creature"
       },
       "type": "trait",
       "_stats": {
         "coreVersion": "12.331",
-        "systemId": null,
-        "systemVersion": null,
+        "systemId": "zweihander",
+        "systemVersion": "5.4.1",
         "createdTime": null,
-        "modifiedTime": null,
-        "lastModifiedBy": null,
+        "modifiedTime": 1745449018353,
+        "lastModifiedBy": "rivg6xcMxdlVDM8y",
         "compendiumSource": null,
         "duplicateSource": null
       },
@@ -122,16 +125,17 @@
           "effect": {
             "@en": "When these creatures are Seriously or Grievously Wounded, add an additional 1D6 Fury Die to Damage they inflict with melee weapon attacks."
           }
-        }
+        },
+        "category": "creature"
       },
       "type": "trait",
       "_stats": {
         "coreVersion": "12.331",
-        "systemId": null,
-        "systemVersion": null,
+        "systemId": "zweihander",
+        "systemVersion": "5.4.1",
         "createdTime": null,
-        "modifiedTime": null,
-        "lastModifiedBy": null,
+        "modifiedTime": 1745449018359,
+        "lastModifiedBy": "rivg6xcMxdlVDM8y",
         "compendiumSource": null,
         "duplicateSource": null
       },
@@ -174,16 +178,36 @@
         "weaponType": "Bladed",
         "equipped": false,
         "associatedSkill": "Martial Melee",
-        "load": 0,
-        "handling": "One-handed",
-        "qualities": {
-          "value": "Defensive",
-          "arrayOfValues": []
+        "ranged": {
+          "load": 0,
+          "value": false
         },
-        "distance": "Engaged",
+        "handling": "One-handed",
+        "qualities": [
+          "Compendium.zweihander.zh-qualities.Item.8FWfohgwFCFmsfFR"
+        ],
+        "distance": {
+          "value": "Engaged",
+          "base": "[PB]",
+          "bonus": 0
+        },
         "damage": {
-          "formula": "[CB] + 1 + (1+[#])d6x6"
-        }
+          "formula": {
+            "override": false,
+            "value": "[CB] + 1 + (1+[#])d6x6"
+          },
+          "attributeBonus": "[CB]",
+          "number": 1,
+          "die": "d6",
+          "bonus": 0,
+          "fury": {
+            "value": true,
+            "explodesOn": [
+              "6"
+            ]
+          }
+        },
+        "load": 0
       },
       "folder": null,
       "sort": 0,
@@ -224,16 +248,38 @@
         "weaponType": "Gunpowder",
         "equipped": false,
         "associatedSkill": "Martial Ranged",
-        "load": 3,
-        "handling": "One-handed",
-        "qualities": {
-          "value": "Gunpowder, Volatile",
-          "arrayOfValues": []
+        "ranged": {
+          "load": 3,
+          "value": true
         },
-        "distance": "3 + [PB] yards",
+        "handling": "One-handed",
+        "qualities": [
+          "Compendium.zweihander.zh-qualities.Item.0L1YXMkZ0dXhGb0R",
+          "Compendium.zweihander.zh-qualities.Item.AzjY6oWyIGOukSqQ"
+        ],
+        "distance": {
+          "value": "3 + [PB] ",
+          "base": "[PB]",
+          "bonus": 3
+        },
         "damage": {
-          "formula": "[CB] + 1 + (1+[#])d6x1&6"
-        }
+          "formula": {
+            "override": false,
+            "value": "[CB] + 1 + (1+[#])d6x1&6"
+          },
+          "attributeBonus": "[CB]",
+          "number": 1,
+          "die": "d6",
+          "bonus": 0,
+          "fury": {
+            "value": true,
+            "explodesOn": [
+              "1",
+              "6"
+            ]
+          }
+        },
+        "load": 3
       },
       "folder": null,
       "sort": 0,
@@ -265,7 +311,8 @@
         },
         "notes": "",
         "requiresTraining": true,
-        "associatedPrimaryAttribute": "Intelligence"
+        "associatedPrimaryAttribute": "Intelligence",
+        "bonusPerRank": 10
       },
       "folder": null,
       "sort": 0,
@@ -297,7 +344,8 @@
         },
         "notes": "",
         "requiresTraining": true,
-        "associatedPrimaryAttribute": "Fellowship"
+        "associatedPrimaryAttribute": "Fellowship",
+        "bonusPerRank": 10
       },
       "folder": null,
       "sort": 0,
@@ -329,7 +377,8 @@
         },
         "notes": "",
         "requiresTraining": true,
-        "associatedPrimaryAttribute": "Brawn"
+        "associatedPrimaryAttribute": "Brawn",
+        "bonusPerRank": 10
       },
       "folder": null,
       "sort": 0,
@@ -361,7 +410,8 @@
         },
         "notes": "",
         "requiresTraining": true,
-        "associatedPrimaryAttribute": "Willpower"
+        "associatedPrimaryAttribute": "Willpower",
+        "bonusPerRank": 10
       },
       "folder": null,
       "sort": 0,
@@ -393,7 +443,8 @@
         },
         "notes": "",
         "requiresTraining": true,
-        "associatedPrimaryAttribute": "Agility"
+        "associatedPrimaryAttribute": "Agility",
+        "bonusPerRank": 10
       },
       "folder": null,
       "sort": 0,
@@ -425,7 +476,8 @@
         },
         "notes": "",
         "requiresTraining": true,
-        "associatedPrimaryAttribute": "Intelligence"
+        "associatedPrimaryAttribute": "Intelligence",
+        "bonusPerRank": 10
       },
       "folder": null,
       "sort": 0,
@@ -457,7 +509,8 @@
         },
         "notes": "",
         "requiresTraining": true,
-        "associatedPrimaryAttribute": "Fellowship"
+        "associatedPrimaryAttribute": "Fellowship",
+        "bonusPerRank": 10
       },
       "folder": null,
       "sort": 0,
@@ -489,7 +542,8 @@
         },
         "notes": "",
         "requiresTraining": false,
-        "associatedPrimaryAttribute": "Brawn"
+        "associatedPrimaryAttribute": "Brawn",
+        "bonusPerRank": 10
       },
       "folder": null,
       "sort": 0,
@@ -521,7 +575,8 @@
         },
         "notes": "",
         "requiresTraining": true,
-        "associatedPrimaryAttribute": "Intelligence"
+        "associatedPrimaryAttribute": "Intelligence",
+        "bonusPerRank": 10
       },
       "folder": null,
       "sort": 0,
@@ -553,7 +608,8 @@
         },
         "notes": "",
         "requiresTraining": true,
-        "associatedPrimaryAttribute": "Intelligence"
+        "associatedPrimaryAttribute": "Intelligence",
+        "bonusPerRank": 10
       },
       "folder": null,
       "sort": 0,
@@ -585,7 +641,8 @@
         },
         "notes": "",
         "requiresTraining": false,
-        "associatedPrimaryAttribute": "Combat"
+        "associatedPrimaryAttribute": "Combat",
+        "bonusPerRank": 10
       },
       "folder": null,
       "sort": 0,
@@ -617,7 +674,8 @@
         },
         "notes": "",
         "requiresTraining": true,
-        "associatedPrimaryAttribute": "Intelligence"
+        "associatedPrimaryAttribute": "Intelligence",
+        "bonusPerRank": 10
       },
       "folder": null,
       "sort": 0,
@@ -649,7 +707,8 @@
         },
         "notes": "",
         "requiresTraining": true,
-        "associatedPrimaryAttribute": "Fellowship"
+        "associatedPrimaryAttribute": "Fellowship",
+        "bonusPerRank": 10
       },
       "folder": null,
       "sort": 0,
@@ -681,7 +740,8 @@
         },
         "notes": "",
         "requiresTraining": false,
-        "associatedPrimaryAttribute": "Willpower"
+        "associatedPrimaryAttribute": "Willpower",
+        "bonusPerRank": 10
       },
       "folder": null,
       "sort": 0,
@@ -713,7 +773,8 @@
         },
         "notes": "",
         "requiresTraining": false,
-        "associatedPrimaryAttribute": "Brawn"
+        "associatedPrimaryAttribute": "Brawn",
+        "bonusPerRank": 10
       },
       "folder": null,
       "sort": 0,
@@ -745,7 +806,8 @@
         },
         "notes": "",
         "requiresTraining": true,
-        "associatedPrimaryAttribute": "Agility"
+        "associatedPrimaryAttribute": "Agility",
+        "bonusPerRank": 10
       },
       "folder": null,
       "sort": 0,
@@ -777,7 +839,8 @@
         },
         "notes": "",
         "requiresTraining": false,
-        "associatedPrimaryAttribute": "Perception"
+        "associatedPrimaryAttribute": "Perception",
+        "bonusPerRank": 10
       },
       "folder": null,
       "sort": 0,
@@ -809,7 +872,8 @@
         },
         "notes": "",
         "requiresTraining": false,
-        "associatedPrimaryAttribute": "Intelligence"
+        "associatedPrimaryAttribute": "Intelligence",
+        "bonusPerRank": 10
       },
       "folder": null,
       "sort": 0,
@@ -841,7 +905,8 @@
         },
         "notes": "",
         "requiresTraining": true,
-        "associatedPrimaryAttribute": "Agility"
+        "associatedPrimaryAttribute": "Agility",
+        "bonusPerRank": 10
       },
       "folder": null,
       "sort": 0,
@@ -873,7 +938,8 @@
         },
         "notes": "",
         "requiresTraining": true,
-        "associatedPrimaryAttribute": "Intelligence"
+        "associatedPrimaryAttribute": "Intelligence",
+        "bonusPerRank": 10
       },
       "folder": null,
       "sort": 0,
@@ -905,7 +971,8 @@
         },
         "notes": "",
         "requiresTraining": true,
-        "associatedPrimaryAttribute": "Combat"
+        "associatedPrimaryAttribute": "Combat",
+        "bonusPerRank": 10
       },
       "folder": null,
       "sort": 0,
@@ -937,7 +1004,8 @@
         },
         "notes": "",
         "requiresTraining": false,
-        "associatedPrimaryAttribute": "Fellowship"
+        "associatedPrimaryAttribute": "Fellowship",
+        "bonusPerRank": 10
       },
       "folder": null,
       "sort": 0,
@@ -969,7 +1037,8 @@
         },
         "notes": "",
         "requiresTraining": false,
-        "associatedPrimaryAttribute": "Intelligence"
+        "associatedPrimaryAttribute": "Intelligence",
+        "bonusPerRank": 10
       },
       "folder": null,
       "sort": 0,
@@ -1001,7 +1070,8 @@
         },
         "notes": "",
         "requiresTraining": false,
-        "associatedPrimaryAttribute": "Perception"
+        "associatedPrimaryAttribute": "Perception",
+        "bonusPerRank": 10
       },
       "folder": null,
       "sort": 0,
@@ -1033,7 +1103,8 @@
         },
         "notes": "",
         "requiresTraining": true,
-        "associatedPrimaryAttribute": "Willpower"
+        "associatedPrimaryAttribute": "Willpower",
+        "bonusPerRank": 10
       },
       "folder": null,
       "sort": 0,
@@ -1065,7 +1136,8 @@
         },
         "notes": "",
         "requiresTraining": false,
-        "associatedPrimaryAttribute": "Fellowship"
+        "associatedPrimaryAttribute": "Fellowship",
+        "bonusPerRank": 10
       },
       "folder": null,
       "sort": 0,
@@ -1097,7 +1169,8 @@
         },
         "notes": "",
         "requiresTraining": false,
-        "associatedPrimaryAttribute": "Perception"
+        "associatedPrimaryAttribute": "Perception",
+        "bonusPerRank": 10
       },
       "folder": null,
       "sort": 0,
@@ -1129,7 +1202,8 @@
         },
         "notes": "",
         "requiresTraining": true,
-        "associatedPrimaryAttribute": "Combat"
+        "associatedPrimaryAttribute": "Combat",
+        "bonusPerRank": 10
       },
       "folder": null,
       "sort": 0,
@@ -1161,7 +1235,8 @@
         },
         "notes": "",
         "requiresTraining": false,
-        "associatedPrimaryAttribute": "Perception"
+        "associatedPrimaryAttribute": "Perception",
+        "bonusPerRank": 10
       },
       "folder": null,
       "sort": 0,
@@ -1193,7 +1268,8 @@
         },
         "notes": "",
         "requiresTraining": false,
-        "associatedPrimaryAttribute": "Agility"
+        "associatedPrimaryAttribute": "Agility",
+        "bonusPerRank": 10
       },
       "folder": null,
       "sort": 0,
@@ -1225,7 +1301,8 @@
         },
         "notes": "",
         "requiresTraining": false,
-        "associatedPrimaryAttribute": "Fellowship"
+        "associatedPrimaryAttribute": "Fellowship",
+        "bonusPerRank": 10
       },
       "folder": null,
       "sort": 0,
@@ -1257,7 +1334,8 @@
         },
         "notes": "",
         "requiresTraining": false,
-        "associatedPrimaryAttribute": "Brawn"
+        "associatedPrimaryAttribute": "Brawn",
+        "bonusPerRank": 10
       },
       "folder": null,
       "sort": 0,
@@ -1289,7 +1367,8 @@
         },
         "notes": "",
         "requiresTraining": false,
-        "associatedPrimaryAttribute": "Fellowship"
+        "associatedPrimaryAttribute": "Fellowship",
+        "bonusPerRank": 10
       },
       "folder": null,
       "sort": 0,
@@ -1321,7 +1400,8 @@
         },
         "notes": "",
         "requiresTraining": false,
-        "associatedPrimaryAttribute": "Agility"
+        "associatedPrimaryAttribute": "Agility",
+        "bonusPerRank": 10
       },
       "folder": null,
       "sort": 0,
@@ -1353,7 +1433,8 @@
         },
         "notes": "",
         "requiresTraining": true,
-        "associatedPrimaryAttribute": "Willpower"
+        "associatedPrimaryAttribute": "Willpower",
+        "bonusPerRank": 10
       },
       "folder": null,
       "sort": 0,
@@ -1385,7 +1466,8 @@
         },
         "notes": "",
         "requiresTraining": false,
-        "associatedPrimaryAttribute": "Combat"
+        "associatedPrimaryAttribute": "Combat",
+        "bonusPerRank": 10
       },
       "folder": null,
       "sort": 0,
@@ -1585,11 +1667,11 @@
   "type": "creature",
   "_stats": {
     "coreVersion": "12.331",
-    "systemId": null,
-    "systemVersion": null,
-    "createdTime": null,
-    "modifiedTime": null,
-    "lastModifiedBy": null,
+    "systemId": "zweihander",
+    "systemVersion": "5.4.1",
+    "createdTime": 1745447134657,
+    "modifiedTime": 1745447315706,
+    "lastModifiedBy": "rivg6xcMxdlVDM8y",
     "compendiumSource": null,
     "duplicateSource": null
   },

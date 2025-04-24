@@ -6,11 +6,11 @@
   "type": "weapon",
   "_stats": {
     "coreVersion": "12.331",
-    "systemId": null,
-    "systemVersion": null,
-    "createdTime": null,
-    "modifiedTime": null,
-    "lastModifiedBy": null,
+    "systemId": "zweihander",
+    "systemVersion": "5.4.1",
+    "createdTime": 1745446374378,
+    "modifiedTime": 1745447097161,
+    "lastModifiedBy": "rivg6xcMxdlVDM8y",
     "compendiumSource": null,
     "duplicateSource": null
   },
@@ -29,15 +29,38 @@
     "weaponType": "Bladed",
     "equipped": true,
     "associatedSkill": "Simple Melee",
-    "load": 0,
-    "handling": "One-handed",
-    "qualities": {
-      "value": "Slow, Vicious, Weak"
+    "ranged": {
+      "load": 0,
+      "value": false
     },
-    "distance": "Engaged",
+    "handling": "One-handed",
+    "qualities": [
+      "Compendium.zweihander.zh-qualities.Item.HcvWfBAXe1vOmNK7",
+      "Compendium.zweihander.zh-qualities.Item.X2xAsrK45rfNL591",
+      "Compendium.zweihander.zh-qualities.Item.FvNQGHmIZpHF4pay"
+    ],
+    "distance": {
+      "value": "Engaged",
+      "base": "[PB]",
+      "bonus": 0
+    },
     "damage": {
-      "formula": "[CB] + (1+[#])d6x6"
-    }
+      "formula": {
+        "override": false,
+        "value": "[CB] + (1+[#])d6x6"
+      },
+      "attributeBonus": "[CB]",
+      "number": 1,
+      "die": "d6",
+      "bonus": 0,
+      "fury": {
+        "value": true,
+        "explodesOn": [
+          "6"
+        ]
+      }
+    },
+    "load": 0
   },
   "folder": null,
   "sort": 0,

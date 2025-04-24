@@ -163,7 +163,7 @@ export default class ZweihanderCreatureSheet extends ZweihanderBaseActorSheet {
           {
             title: 'distance',
             size: 120,
-            key: 'system.distance',
+            key: 'system.distance.value',
             class: 'inject-data',
           },
           {
@@ -174,7 +174,7 @@ export default class ZweihanderCreatureSheet extends ZweihanderBaseActorSheet {
           {
             title: 'load',
             size: 55,
-            key: 'system.load',
+            key: 'system.ranged.load',
           },
         ],
         items: sheetData.weapons,

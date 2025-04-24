@@ -1,6 +1,6 @@
 <div class='item-wrapper item' data-item-id='{{id}}' data-item-uuid="{{uuid}}" data-item-type='{{type}}' data-property='{{uuidProperty}}'>
-  <input class='auto-size' type='text' value='{{value}}' placeholder='{{#if isInItem}}{{placeholderInput}}{{else}}{{placeholder}}{{/if}}' disabled='disabled' />
-  <div class='item-wrapper-edit' data-tooltip-direction='UP'>
+  <input class='auto-size {{#if (not (or value editable))}}not-{{/if}}editable' type='text' value='{{value}}' placeholder='{{#if isInItem}}{{placeholderInput}}{{else}}{{placeholder}}{{/if}}' disabled='disabled' />
+  <div class='item-wrapper-edit {{#if (not (or value editable))}}not-{{/if}}editable' data-tooltip-direction='UP'>
     {{#if value}}
       {{#if isParentCharacter}}
         <a class='item-edit' data-tooltip='{{localize "ZWEI.actor.items.edit"}} {{placeholder}}'><i
@@ -11,16 +11,20 @@
               class='fas fa-eye fa-sm'
             ></i></a>
       {{/if}}
-        <a class='item-delete' data-tooltip='{{localize "ZWEI.actor.items.delete"}} {{placeholder}}'><i
-            class='fas fa-trash-alt fa-sm'
-          ></i></a>
+        {{#if editable}}
+          <a class='item-delete' data-tooltip='{{localize "ZWEI.actor.items.delete"}} {{placeholder}}'><i
+              class='fas fa-trash-alt fa-sm'
+            ></i></a>
+        {{/if}}
     {{else}}
-      <a
-        class='add-new'
-        data-item-type='{{type}}'
-        data-open-packs='{{packs}}'
-        data-tooltip='{{#if isInItem}}Open {{placeholder}} Compendium{{else}}{{localize "ZWEI.actor.items.add"}} {{placeholder}}{{/if}}'
-      ><i class='{{#if isInItem}}fa-solid fa-up-right-from-square fa-xs{{else}}fas fa-plus fa-xs{{/if}}'></i></a>
+      {{#if editable}}
+        <a
+          class='add-new'
+          data-item-type='{{type}}'
+          data-open-packs='{{packs}}'
+          data-tooltip='{{#if isInItem}}Open {{placeholder}} Compendium{{else}}{{localize "ZWEI.actor.items.add"}} {{placeholder}}{{/if}}'
+        ><i class='{{#if isInItem}}fa-solid fa-up-right-from-square fa-xs{{else}}fas fa-plus fa-xs{{/if}}'></i></a>
+      {{/if}}
     {{/if}}
   </div>
 </div>

@@ -6,11 +6,11 @@
   "type": "weapon",
   "_stats": {
     "coreVersion": "12.331",
-    "systemId": null,
-    "systemVersion": null,
-    "createdTime": null,
-    "modifiedTime": null,
-    "lastModifiedBy": null,
+    "systemId": "zweihander",
+    "systemVersion": "5.4.1",
+    "createdTime": 1745429307090,
+    "modifiedTime": 1745429307090,
+    "lastModifiedBy": "rivg6xcMxdlVDM8y",
     "compendiumSource": null,
     "duplicateSource": null
   },
@@ -29,17 +29,38 @@
     "weaponType": "Melee",
     "equipped": false,
     "associatedSkill": "Simple Melee",
-    "load": 1,
-    "handling": "One-handed",
-    "qualities": {
-      "value": "Strangling, Sweeping",
-      "arrayOfValues": []
+    "ranged": {
+      "load": 1,
+      "value": true
     },
-    "distance": "Engaged or 1 yard",
+    "handling": "One-handed",
+    "qualities": [
+      "Compendium.zweihander.fof-qualities.Item.7z9fehWLYoVCzFFh",
+      "Compendium.zweihander.fof-qualities.Item.nBhUWbEyZaII5yI5"
+    ],
+    "distance": {
+      "value": "Engaged or 1 ",
+      "base": "[PB]",
+      "bonus": 1
+    },
     "damage": {
-      "formula": "0",
+      "formula": {
+        "override": false,
+        "value": "0"
+      },
+      "attributeBonus": "[CB]",
+      "number": 1,
+      "die": "d6",
+      "bonus": 0,
+      "fury": {
+        "value": true,
+        "explodesOn": [
+          "6"
+        ]
+      },
       "associatedPrimaryAttribute": "Combat"
-    }
+    },
+    "load": 1
   },
   "folder": null,
   "sort": 0,

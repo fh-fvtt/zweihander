@@ -6,11 +6,11 @@
   "type": "weapon",
   "_stats": {
     "coreVersion": "12.331",
-    "systemId": null,
-    "systemVersion": null,
-    "createdTime": null,
-    "modifiedTime": null,
-    "lastModifiedBy": null,
+    "systemId": "zweihander",
+    "systemVersion": "5.4.1",
+    "createdTime": 1745429307088,
+    "modifiedTime": 1745429307088,
+    "lastModifiedBy": "rivg6xcMxdlVDM8y",
     "compendiumSource": null,
     "duplicateSource": null
   },
@@ -29,7 +29,10 @@
     "weaponType": "Ranged",
     "equipped": false,
     "associatedSkill": "Simple Ranged",
-    "load": 3,
+    "ranged": {
+      "load": 0,
+      "value": false
+    },
     "handling": "Two-handed",
     "qualities": {
       "value": "Blackpowder, Inaccurate, Weak",
@@ -37,8 +40,17 @@
     },
     "distance": "9 + [PB] yards",
     "damage": {
-      "formula": "[CB] + (1+[#])d6x1,6"
-    }
+      "formula": "[CB] + (1+[#])d6x1,6",
+      "attributeBonus": "[CB]",
+      "number": 1,
+      "die": "d6",
+      "bonus": 0,
+      "fury": {
+        "value": false,
+        "explodesOn": []
+      }
+    },
+    "load": 3
   },
   "folder": null,
   "sort": 0,

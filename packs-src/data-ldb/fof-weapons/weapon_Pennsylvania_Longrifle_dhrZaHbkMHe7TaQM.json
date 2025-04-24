@@ -6,11 +6,11 @@
   "type": "weapon",
   "_stats": {
     "coreVersion": "12.331",
-    "systemId": null,
-    "systemVersion": null,
-    "createdTime": null,
-    "modifiedTime": null,
-    "lastModifiedBy": null,
+    "systemId": "zweihander",
+    "systemVersion": "5.4.1",
+    "createdTime": 1745429307093,
+    "modifiedTime": 1745429307093,
+    "lastModifiedBy": "rivg6xcMxdlVDM8y",
     "compendiumSource": null,
     "duplicateSource": null
   },
@@ -29,16 +29,38 @@
     "weaponType": "Ranged",
     "equipped": false,
     "associatedSkill": "Martial Ranged",
-    "load": 4,
-    "handling": "Two-handed",
-    "qualities": {
-      "value": "Accurate, Blackpowder, Punishing",
-      "arrayOfValues": []
+    "ranged": {
+      "load": 4,
+      "value": true
     },
-    "distance": "12 + [PB] yards",
+    "handling": "Two-handed",
+    "qualities": [
+      "Compendium.zweihander.fof-qualities.Item.YX4VmVVSfzQaqZoD",
+      "Compendium.zweihander.fof-qualities.Item.ppIvvHocfKBJKcUg",
+      "Compendium.zweihander.zh-qualities.Item.a0KJwwHCoJIwG1ck"
+    ],
+    "distance": {
+      "value": "12 + [PB] ",
+      "base": "[PB]",
+      "bonus": 12
+    },
     "damage": {
-      "formula": "[CB] + (1+[#])d6x1,6"
-    }
+      "formula": {
+        "override": false,
+        "value": "[CB] + (1+[#])d6x1,6"
+      },
+      "attributeBonus": "[CB]",
+      "number": 1,
+      "die": "d6",
+      "bonus": 0,
+      "fury": {
+        "value": true,
+        "explodesOn": [
+          "6"
+        ]
+      }
+    },
+    "load": 4
   },
   "folder": null,
   "sort": 0,

@@ -6,11 +6,11 @@
   "type": "disease",
   "_stats": {
     "coreVersion": "12.331",
-    "systemId": null,
-    "systemVersion": null,
+    "systemId": "zweihander",
+    "systemVersion": "5.4.1",
     "createdTime": null,
-    "modifiedTime": null,
-    "lastModifiedBy": null,
+    "modifiedTime": 1745428356911,
+    "lastModifiedBy": "rivg6xcMxdlVDM8y",
     "compendiumSource": null,
     "duplicateSource": null
   },
@@ -28,7 +28,15 @@
       }
     },
     "resist": "For every hour you drink, make a Toughness Test. Depending on how many hours you’ve been drinking, the Difficulty Rating eases or worsens: 1 hour: (Trivial +30%) Toughness, 2 hours: (Easy +20%) Toughness, 3 hours: (Routine +10%) Toughness, 4 hours: (Standard +/-0%) Toughness, 5 hours: (Challenging -10%) Toughness, 6 hours: (Hard -20%) Toughness, 7 hours or more: (Arduous -30%) Toughness",
-    "duration": "Six hours",
+    "duration": {
+      "value": 0,
+      "formula": {
+        "number": 1,
+        "die": "d10",
+        "bonus": 1
+      },
+      "lastsUntilCured": false
+    },
     "active": false
   },
   "folder": null,

@@ -582,6 +582,17 @@ export default class ZweihanderItemSheet extends ItemSheet {
       this._onEditImage(event);
     });
 
+    // Show item sheet on right click
+    html.find('div[class="tag"]').contextmenu(async (event) => {
+      const itemUuid = $(event.currentTarget).data('key');
+
+      if (/^\d+$/.test(itemUuid)) return;
+
+      const item = await fromUuid(itemUuid);
+
+      if (item !== null) item.sheet.render(true);
+    });
+
     // Add new Active Effect (from within the sheet)
     html.find('.add-new').click(async (ev) => {
       let type = ev.currentTarget.dataset.itemType;
@@ -724,7 +735,8 @@ export default class ZweihanderItemSheet extends ItemSheet {
     let compendiumTable;
 
     if (isWorldTableUndefined) {
-      const characterCreationPack = game.packs.get('zweihander.zh-charactercreation-tables');
+      const characterCreationPackName = game.settings.get('zweihander', 'characterCreationList');
+      const characterCreationPack = game.packs.get(characterCreationPackName);
       const characterCreationPackIndex = await characterCreationPack.getIndex();
       const compendiumTableEntry = characterCreationPackIndex.find((table) => {
         return ZweihanderUtils.normalizedIncludes(table.name, item.name);

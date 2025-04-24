@@ -4,17 +4,17 @@
   </legend>
   <div class='form-group'>
     <label>{{localize 'ZWEI.actor.items.professionaltrait'}}</label>
-    {{> ($$ 'partials/detail-item-wrapper') professionalTraitWrapperData}}
+    {{> ($$ 'partials/detail-item-wrapper') professionalTraitWrapperData editable=editable}}
   </div>
 
   <div class='form-group'>
     <label>{{localize 'ZWEI.actor.items.specialtrait'}}</label>
-    {{> ($$ 'partials/detail-item-wrapper') specialTraitWrapperData}}
+    {{> ($$ 'partials/detail-item-wrapper') specialTraitWrapperData editable=editable}}
   </div>
 
   <div class='form-group'>
     <label>{{localize 'ZWEI.actor.items.drawback'}}</label>
-    {{> ($$ 'partials/detail-item-wrapper') drawbackWrapperData}}
+    {{> ($$ 'partials/detail-item-wrapper') drawbackWrapperData editable=editable}}
   </div>
 </fieldset>
 <fieldset>
@@ -39,17 +39,17 @@
 
   <div class='form-group talents'>
     <label>Talents</label>
-    {{> ($$ 'partials/detail-item-wrapper') talentWrapperDataList.[0]}}
+    {{> ($$ 'partials/detail-item-wrapper') talentWrapperDataList.[0] editable=editable}}
   </div>
 
   <div class='form-group talents'>
     <label></label>
-    {{> ($$ 'partials/detail-item-wrapper') talentWrapperDataList.[1]}}
+    {{> ($$ 'partials/detail-item-wrapper') talentWrapperDataList.[1] editable=editable}}
   </div>
 
   <div class='form-group talents'>
     <label></label>
-    {{> ($$ 'partials/detail-item-wrapper') talentWrapperDataList.[2]}}
+    {{> ($$ 'partials/detail-item-wrapper') talentWrapperDataList.[2] editable=editable}}
   </div>
 
 </fieldset>

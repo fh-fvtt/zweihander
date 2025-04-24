@@ -6,11 +6,11 @@
   "type": "spell",
   "_stats": {
     "coreVersion": "12.331",
-    "systemId": null,
-    "systemVersion": null,
-    "createdTime": null,
-    "modifiedTime": null,
-    "lastModifiedBy": null,
+    "systemId": "zweihander",
+    "systemVersion": "5.4.1",
+    "createdTime": 1745429303229,
+    "modifiedTime": 1745429303229,
+    "lastModifiedBy": "rivg6xcMxdlVDM8y",
     "compendiumSource": null,
     "duplicateSource": null
   },
@@ -36,7 +36,16 @@
     "tradition": "Common",
     "principle": "Advanced Tier",
     "distance": "Any person who can see you clearly",
-    "duration": "9+[WB] hours",
+    "duration": {
+      "value": "instantaneous",
+      "label": "9+[WB] hours",
+      "formula": {
+        "override": true
+      },
+      "base": "[WB]",
+      "bonus": 9,
+      "unit": "hours"
+    },
     "castingTime": "1 Minute",
     "castingCost": 3
   },

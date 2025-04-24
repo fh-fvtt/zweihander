@@ -6,11 +6,11 @@
   "type": "weapon",
   "_stats": {
     "coreVersion": "12.331",
-    "systemId": null,
-    "systemVersion": null,
-    "createdTime": null,
-    "modifiedTime": null,
-    "lastModifiedBy": null,
+    "systemId": "zweihander",
+    "systemVersion": "5.4.1",
+    "createdTime": 1745429307088,
+    "modifiedTime": 1745429307088,
+    "lastModifiedBy": "rivg6xcMxdlVDM8y",
     "compendiumSource": null,
     "duplicateSource": null
   },
@@ -29,16 +29,37 @@
     "weaponType": "Ranged",
     "equipped": false,
     "associatedSkill": "Martial Ranged",
-    "load": 1,
-    "handling": "Two-handed",
-    "qualities": {
-      "value": "Fast, Silent",
-      "arrayOfValues": []
+    "ranged": {
+      "load": 1,
+      "value": true
     },
-    "distance": "9 + [PB] yards",
+    "handling": "Two-handed",
+    "qualities": [
+      "Compendium.zweihander.zh-qualities.Item.vu1fnMVplISEga8I",
+      "Compendium.zweihander.fof-qualities.Item.ZM0IprHywROv0fkx"
+    ],
+    "distance": {
+      "value": "9 + [PB] ",
+      "base": "[PB]",
+      "bonus": 9
+    },
     "damage": {
-      "formula": "[AB] + (1+[#])d6x6"
-    }
+      "formula": {
+        "override": false,
+        "value": "[AB] + (1+[#])d6x6"
+      },
+      "attributeBonus": "[AB]",
+      "number": 1,
+      "die": "d6",
+      "bonus": 0,
+      "fury": {
+        "value": true,
+        "explodesOn": [
+          "6"
+        ]
+      }
+    },
+    "load": 1
   },
   "folder": null,
   "sort": 0,

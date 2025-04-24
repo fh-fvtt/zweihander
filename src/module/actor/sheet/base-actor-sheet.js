@@ -229,7 +229,9 @@ export default class ZweihanderBaseActorSheet extends ActorSheet {
       let lists = $(html.find('.items-list'));
 
       for (let i = 0; i < lists.length; i++) {
-        $(lists[i]).scrollTop(this.scrollStates[i]);
+        // timeout apparently necessary to avoid incorrect scroll position resets in certain situations, e.g. DevTools open on Chrome
+        // https://stackoverflow.com/a/21040122
+        setTimeout(() => $(lists[i]).scrollTop(this.scrollStates[i]), 0);
       }
     }
   }

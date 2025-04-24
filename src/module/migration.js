@@ -84,9 +84,9 @@ const migrateCompendium = async (pack) => {
     let updateData = {};
     try {
       switch (entity) {
-        // case "Actor":
-        //   updateData = migrateActorData(doc.toObject());
-        //   break;
+        /* case 'Actor':
+          updateData = await migrateActorData(doc.toObject());
+          break; */
         case 'Item':
           updateData = await migrateItemData(doc);
           break;
@@ -314,14 +314,16 @@ const migrateItemData = async (item) => {
       lastsUntilCured: false,
     }));
   } else if (item.type === 'armor') {
-    const qualities = itemData.system.qualities.value;
-    const arrayOfQualities = qualities ? qualities.split(',').map((q) => q.trim()) : [];
+    if (!(itemData.system.qualities instanceof Array)) {
+      const qualities = itemData.system.qualities.value;
+      const arrayOfQualities = qualities ? qualities.split(',').map((q) => q.trim()) : [];
 
-    for (let i = 0; i < arrayOfQualities.length; i++) {
-      arrayOfQualities[i] = (await globalThis.findItemWorldWide('quality', arrayOfQualities[i])).uuid;
+      for (let i = 0; i < arrayOfQualities.length; i++) {
+        arrayOfQualities[i] = (await globalThis.findItemWorldWide('quality', arrayOfQualities[i])).uuid;
+      }
+
+      migrateField('qualities', 'qualities', 0, () => arrayOfQualities);
     }
-
-    migrateField('qualities', 'qualities', 0, () => arrayOfQualities);
   } else if (item.type === 'ritual') {
     migrateField('castingTime', 'castingTime', 0, () => ({
       setting: 'varies',
@@ -362,14 +364,16 @@ const migrateItemData = async (item) => {
       }));
     }
   } else if (item.type === 'weapon') {
-    const qualities = itemData.system.qualities.value;
-    const arrayOfQualities = qualities ? qualities.split(',').map((q) => q.trim()) : [];
+    if (!(itemData.system.qualities instanceof Array)) {
+      const qualities = itemData.system.qualities.value;
+      const arrayOfQualities = qualities ? qualities.split(',').map((q) => q.trim()) : [];
 
-    for (let i = 0; i < arrayOfQualities.length; i++) {
-      arrayOfQualities[i] = (await globalThis.findItemWorldWide('quality', arrayOfQualities[i])).uuid;
+      for (let i = 0; i < arrayOfQualities.length; i++) {
+        arrayOfQualities[i] = (await globalThis.findItemWorldWide('quality', arrayOfQualities[i])).uuid;
+      }
+
+      migrateField('qualities', 'qualities', 0, () => arrayOfQualities);
     }
-
-    migrateField('qualities', 'qualities', 0, () => arrayOfQualities);
 
     const overrideFormula = itemData.system.damage.formula ?? '';
 

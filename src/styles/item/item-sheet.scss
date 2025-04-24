@@ -701,11 +701,11 @@ body.game.vtt.system-zweihander .zweihander.sheet.item {
           }
         }
 
-        &:hover .item-wrapper-edit {
+        &:hover .item-wrapper-edit.editable {
           display: flex;
         }
 
-        &:hover input {
+        &:hover input.editable {
           background-color: var(--zh-clr-bg1);
           background-color: rgba(var(--zh-clr-bg1-rgb), 0.9);
           border-color: var(--zh-clr-aqua);

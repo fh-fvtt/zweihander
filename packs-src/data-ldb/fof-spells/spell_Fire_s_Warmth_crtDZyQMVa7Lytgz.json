@@ -6,11 +6,11 @@
   "type": "spell",
   "_stats": {
     "coreVersion": "12.331",
-    "systemId": null,
-    "systemVersion": null,
-    "createdTime": null,
-    "modifiedTime": null,
-    "lastModifiedBy": null,
+    "systemId": "zweihander",
+    "systemVersion": "5.4.1",
+    "createdTime": 1745429303233,
+    "modifiedTime": 1745429303233,
+    "lastModifiedBy": "rivg6xcMxdlVDM8y",
     "compendiumSource": null,
     "duplicateSource": null
   },
@@ -36,7 +36,16 @@
     "tradition": "Common",
     "principle": "Intermediate Tier",
     "distance": "By Touch",
-    "duration": "6+[WB] hours",
+    "duration": {
+      "value": "instantaneous",
+      "label": "6+[WB] hours",
+      "formula": {
+        "override": true
+      },
+      "base": "[WB]",
+      "bonus": 6,
+      "unit": "hours"
+    },
     "castingTime": "9 Minutes",
     "castingCost": null
   },

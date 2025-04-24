@@ -6,11 +6,11 @@
   "type": "spell",
   "_stats": {
     "coreVersion": "12.331",
-    "systemId": null,
-    "systemVersion": null,
-    "createdTime": null,
-    "modifiedTime": null,
-    "lastModifiedBy": null,
+    "systemId": "zweihander",
+    "systemVersion": "5.4.1",
+    "createdTime": 1745429303231,
+    "modifiedTime": 1745429303231,
+    "lastModifiedBy": "rivg6xcMxdlVDM8y",
     "compendiumSource": null,
     "duplicateSource": null
   },
@@ -36,7 +36,16 @@
     "tradition": "Witchcraft",
     "principle": "Intermediate Tier",
     "distance": "Self",
-    "duration": "Thirteen days",
+    "duration": {
+      "value": "thirteen days",
+      "label": "Thirteen days",
+      "formula": {
+        "override": false
+      },
+      "base": "[WB]",
+      "bonus": 0,
+      "unit": "days"
+    },
     "castingTime": "1 Minute",
     "castingCost": 2
   },
