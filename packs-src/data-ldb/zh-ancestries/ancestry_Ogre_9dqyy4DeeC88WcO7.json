@@ -6,11 +6,11 @@
   "type": "ancestry",
   "_stats": {
     "coreVersion": "12.331",
-    "systemId": null,
-    "systemVersion": null,
-    "createdTime": null,
-    "modifiedTime": null,
-    "lastModifiedBy": null,
+    "systemId": "zweihander",
+    "systemVersion": "5.5.0",
+    "createdTime": 1745709616049,
+    "modifiedTime": 1745709616049,
+    "lastModifiedBy": "rivg6xcMxdlVDM8y",
     "compendiumSource": null,
     "duplicateSource": null
   },
@@ -20,6 +20,24 @@
     },
     "notes": "",
     "ancestralModifiers": {
+      "value": [
+        {
+          "key": "[BB]",
+          "value": 2
+        },
+        {
+          "key": "[CB]",
+          "value": 1
+        },
+        {
+          "key": "[AB]",
+          "value": -2
+        },
+        {
+          "key": "[PB]",
+          "value": -1
+        }
+      ],
       "positive": [
         "[BB]",
         "[BB]",
@@ -33,7 +51,8 @@
     },
     "ancestralTrait": {
       "name": "",
-      "linkedId": null
+      "linkedId": null,
+      "uuid": ""
     }
   },
   "folder": null,
