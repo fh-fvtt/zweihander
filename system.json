@@ -2,14 +2,12 @@
   "id": "zweihander",
   "title": "Zweihänder Grim & Perilous RPG",
   "description": "An implementation of the Zweihänder system for FoundryVTT.",
-  "version": "5.4.1",
+  "version": "5.5.0",
   "minimumCoreVersion": "12",
   "compatibility": {
     "minimum": 12,
     "verified": 12
   },
-  "templateVersion": 2,
-  "manifestPlusVersion": "1.2.0",
   "authors": [
     {
       "name": "Re4XN",
@@ -54,9 +52,9 @@
   "socket": true,
   "url": "https://github.com/fh-fvtt/zweihander",
   "manifest": "https://raw.githubusercontent.com/fh-fvtt/zweihander/main/system.json",
-  "download": "https://github.com/fh-fvtt/zweihander/releases/download/v5.4.1/system.zip",
+  "download": "https://github.com/fh-fvtt/zweihander/releases/download/v5.5.0/system.zip",
   "bugs": "https://github.com/fh-fvtt/zweihander/issues",
-  "changelog": "https://github.com/fh-fvtt/zweihander/releases/tag/v5.4.1",
+  "changelog": "https://github.com/fh-fvtt/zweihander/releases/tag/v5.5.0",
   "license": "LICENCE.txt",
   "primaryTokenAttribute": "stats.secondaryAttributes.damageCurrent",
   "secondaryTokenAttribute": "stats.secondaryAttributes.perilCurrent",
@@ -73,12 +71,12 @@
     {
       "name": "Flames of Freedom",
       "sorting": "a",
-      "color": "#788c73",
+      "color": "#707070",
       "folders": [
         {
           "name": "Characters",
           "sorting": "a",
-          "color": "#4f4a40",
+          "color": "#707070",
           "packs": [
             "fof-afflictions",
             "fof-professional-traits",
@@ -91,19 +89,19 @@
         {
           "name": "Equipment",
           "sorting": "a",
-          "color": "#788c73",
+          "color": "#707070",
           "packs": ["fof-ailments-and-drugs", "fof-qualities", "fof-weapons"]
         },
         {
           "name": "Magick",
           "sorting": "a",
-          "color": "#4f4a40",
+          "color": "#707070",
           "packs": ["fof-spells"]
         },
         {
           "name": "Rules",
           "sorting": "a",
-          "color": "#788c73",
+          "color": "#707070",
           "packs": ["fof-injuries"]
         }
       ]
@@ -111,18 +109,18 @@
     {
       "name": "Zweihänder",
       "sorting": "a",
-      "color": "#788c73",
+      "color": "#555353",
       "folders": [
         {
           "name": "Bestiary",
           "sorting": "a",
-          "color": "#4f4a40",
+          "color": "#707070",
           "packs": ["zh-attack-profiles", "zh-bestiary", "zh-creature-traits", "zh-taints"]
         },
         {
           "name": "Characters",
           "sorting": "a",
-          "color": "#788c73",
+          "color": "#707070",
           "packs": [
             "skills",
             "zh-ancestral-traits",
@@ -139,25 +137,25 @@
         {
           "name": "Equipment",
           "sorting": "a",
-          "color": "#4f4a40",
+          "color": "#707070",
           "packs": ["zh-armor", "zh-qualities", "zh-trappings", "zh-weapons", "zh-weapons-alt-damage"]
         },
         {
           "name": "Macros",
           "sorting": "a",
-          "color": "#788c73",
+          "color": "#707070",
           "packs": ["zh-macros"]
         },
         {
           "name": "Magick",
           "sorting": "a",
-          "color": "#4f4a40",
+          "color": "#707070",
           "packs": ["zh-magick", "zh-rituals"]
         },
         {
           "name": "Rules",
           "sorting": "a",
-          "color": "#788c73",
+          "color": "#707070",
           "packs": ["zh-gm-tables", "zh-injuries"]
         }
       ]
