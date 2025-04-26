@@ -20,8 +20,6 @@ export default class ZweihanderSpell extends ZweihanderBaseItem {
   }
 
   async _preUpdate(changed, options, user, item) {
-    console.log(changed);
-
     await super._preUpdate(changed, options, user, item);
   }
 

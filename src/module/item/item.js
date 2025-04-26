@@ -111,7 +111,7 @@ export default class ZweihanderItem extends Item {
   }
 
   async _preUpdate(changed, options, user) {
-    console.log('PRE_UPDATE (item.js): ', changed);
+    // console.log('PRE_UPDATE (item.js): ', changed);
     await super._preUpdate(changed, options, user);
     if (this.parent && changed.system) {
       return await this.dispatch('_preUpdate', { args: [changed, options, user] });

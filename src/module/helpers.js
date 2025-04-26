@@ -228,8 +228,6 @@ export const registerHandlebarHelpers = async function () {
   $$('zhRitualDifficultyInputs', (ritualData, ritualDifficultiesSpecific, ritualDifficultiesGeneric, skillList) => {
     const triggerSelected = ritualDifficultiesSpecific.some((d) => d.value === Number(ritualData.difficulty.rating));
 
-    console.log(ritualDifficultiesSpecific, ritualData.difficulty.rating, triggerSelected);
-
     const triggerRoll = false; // @todo: implement
 
     let inputs = `<div class="form-group"><label class="formula-label">${game.i18n.localize(
@@ -435,7 +433,6 @@ export const registerHandlebarHelpers = async function () {
   });
 
   $$('zhIsValueZero', function (hideOnZero, options) {
-    console.log('HELLLLLOO::::', hideOnZero);
     return !!hideOnZero ? options.fn(this) : options.inverse(this);
   });
 

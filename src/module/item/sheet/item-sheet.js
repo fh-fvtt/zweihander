@@ -159,7 +159,7 @@ export default class ZweihanderItemSheet extends ItemSheet {
   async getData() {
     const sheetData = super.getData().data;
 
-    console.log('GET DATA');
+    // console.log('GET DATA');
 
     const itemData = this.item.toObject(false);
 
@@ -379,7 +379,7 @@ export default class ZweihanderItemSheet extends ItemSheet {
       this._prepareLinkedItemWrapperData(linkedItemDataList, sheetData);
     }
 
-    console.log(sheetData);
+    // console.log(sheetData);
 
     return sheetData;
   }

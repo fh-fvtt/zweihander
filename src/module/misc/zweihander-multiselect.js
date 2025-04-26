@@ -38,7 +38,7 @@ export class HTMLZweihanderMultiSelectElement extends AbstractMultiSelectElement
       }
     }
 
-    console.log('_CHOICES: ', this._choices, ' | _VALUE: ', this._value);
+    // console.log('_CHOICES: ', this._choices, ' | _VALUE: ', this._value);
   }
 
   /* -------------------------------------------- */
@@ -120,7 +120,6 @@ export class HTMLZweihanderMultiSelectElement extends AbstractMultiSelectElement
    * @param {string} value      The value to delete from the chosen set
    */
   unselect(value) {
-    console.log(this._value, value);
     // const exists = this._value.has(value);
 
     const exists = this._some(this._value, (el) => el.name.trim().toLowerCase() === value.trim().toLowerCase());

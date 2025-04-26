@@ -253,8 +253,6 @@ const migrateItemData = async (item) => {
         const positiveModifiers = itemData.system.ancestralModifiers.positive;
         const negativeModifiers = itemData.system.ancestralModifiers.negative;
 
-        console.log(positiveModifiers, negativeModifiers);
-
         let countMap = {};
 
         for (let i = 0; i < positiveModifiers.length; i++) {

@@ -51,8 +51,6 @@ export default class ZweihanderProfession extends ZweihanderBaseItem {
       for (let requirement of expertReqs) {
         const requiredSkill = skills.find((skill) => normalizedEquals(skill.name, requirement.key));
 
-        console.log('REQUIRED: ', requiredSkill, requirement);
-
         if (requiredSkill.system.rank < requirement.value) {
           ui.notifications.error(
             `Character does not meet Expert Profession (${item.name}) requirements: "You must possess at least ${requirement.value} Skill Rank(s) in ${requiredSkill.name}"`

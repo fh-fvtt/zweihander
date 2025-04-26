@@ -289,11 +289,7 @@ export async function rollWeaponDamage(actorId, testConfiguration) {
     rawFormula = `${attributeBonus} + ${dice}${explodesOn}${bonus}`;
   }
 
-  console.log(rawFormula, ', RAWWWW');
-
   const parsedFormula = ZweihanderUtils.abbreviations2DataPath(rawFormula);
-
-  console.log(parsedFormula, ', PARSEDDDD');
 
   const damageRoll = await new Roll(parsedFormula, actor.system).evaluate();
   const speaker = ChatMessage.getSpeaker({ actor });
