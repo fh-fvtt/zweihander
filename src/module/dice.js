@@ -200,12 +200,14 @@ export async function rollTest(
   if (spell) {
     templateData.itemId = spell.id;
     templateData.spell = spell.toObject(false);
+
     templateData.spell.system.distance = await ZweihanderUtils.parseDataPaths(
       templateData.spell.system.distance,
       actor
     );
-    templateData.spell.system.duration = await ZweihanderUtils.parseDataPaths(
-      templateData.spell.system.duration,
+
+    templateData.spell.system.duration.label = await ZweihanderUtils.parseDataPaths(
+      templateData.spell.system.duration.label,
       actor
     );
     const totalChaosDie = testConfiguration.additionalChaosDice + testConfiguration.channelPowerBonus / 10;

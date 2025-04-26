@@ -28,13 +28,20 @@
     </zweihander-multi-select>
   </div>
 
-  <div class='form-group'>
-    <label>{{localize 'ZWEI.actor.items.bonusadvances'}}</label>
-    <zweihander-tags
-      type='bonus-advances-profession'
-      name='system.bonusAdvances'
-      data-advances='{{zhStringifyObject system.bonusAdvances}}'
-    ></zweihander-tags>
+  <div class="form-group">
+    <label class="formula-label">Bonus Advances</label>
+    <div class="numerable-inputs flexrow">
+      {{#each bonusAdvancesOptions as |bonusAdvance|}}
+        <div class="form-group label-top">
+          <label>{{localize (zhConcat 'ZWEI.actor.bonusesabbr.' (zhLowerCase bonusAdvance))}}</label>
+          <div class="numerable-field flexrow" data-advance-name="{{bonusAdvance}}">
+            <button type="button" class="numerable-field-subtract advance">-</button>
+            <span class="numerable-field-counter">{{zhCalculateBonusAdvanceAmount ../system.bonusAdvances bonusAdvance}}</span>
+            <button type="button" class="numerable-field-add advance">+</button>
+          </div>
+        </div>
+      {{/each}}
+    </div>
   </div>
 
   <div class='form-group talents'>
@@ -82,7 +89,7 @@
         <li class='requirements-change flexrow' data-index='{{i}}'>
           <div class='key'>
             <select name="system.expert.requirements.skillRanks.{{i}}.key">
-              {{selectOptions ../skills valueAttr="key" labelAttr="label" selected=requirement.key}}
+              {{selectOptions ../skills valueAttr="key" labelAttr="label" selected=requirement.key blank=''}}
             </select>
           </div>
           <div class='value'>

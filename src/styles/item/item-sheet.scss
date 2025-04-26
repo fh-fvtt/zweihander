@@ -628,12 +628,14 @@ body.game.vtt.system-zweihander .zweihander.sheet.item {
       .editor-content {
         text-align: justify;
       }
-      .requirements-list {
+      .requirements-list,
+      .ancestral-modifiers-list {
         list-style: none;
         margin: 0;
         padding: 0;
       }
-      .requirements-header {
+      .requirements-header,
+      .ancestral-modifiers-header {
         height: 28px;
         background: rgba(0, 0, 0, 0.1);
         border: 1px solid var(--color-border-light-tertiary);
@@ -644,15 +646,16 @@ body.game.vtt.system-zweihander .zweihander.sheet.item {
           padding-left: 4px;
         }
         .value {
-          padding: 0 2px;
           text-align: center;
         }
       }
-      .requirements-controls {
+      .requirements-controls,
+      .ancestral-modifiers-controls {
         flex: 0 0 24px;
         text-align: center;
       }
-      .requirements-change {
+      .requirements-change,
+      .ancestral-modifiers-change {
         align-items: center;
         padding: 3px 1px;
         gap: 0.25rem;
@@ -662,6 +665,7 @@ body.game.vtt.system-zweihander .zweihander.sheet.item {
         }
       }
       input {
+        width: 100%;
         background-color: var(--zh-clr-bg1);
         border-radius: 3px;
         height: 27px;
@@ -670,7 +674,7 @@ body.game.vtt.system-zweihander .zweihander.sheet.item {
         padding-inline: 0;
 
         &[type='checkbox'] {
-          margin: 0 1px;
+          margin: 0 0;
           flex: 0 0 21px;
         }
       }
@@ -710,6 +714,50 @@ body.game.vtt.system-zweihander .zweihander.sheet.item {
           background-color: rgba(var(--zh-clr-bg1-rgb), 0.9);
           border-color: var(--zh-clr-aqua);
           box-shadow: 0 0 6px var(--zh-clr-bg2);
+        }
+      }
+
+      .numerable-inputs {
+        justify-content: space-between;
+
+        .label-top {
+          flex: 0 0 45px;
+        }
+
+        .numerable-field {
+          display: flex;
+          flex-direction: row;
+          width: 100%;
+          justify-content: space-between;
+          align-items: center;
+          flex: 0 0 27px;
+          border-radius: 3px;
+          background: var(--zh-clr-bg1);
+
+          .numerable-field-add,
+          .numerable-field-subtract {
+            visibility: hidden;
+            height: 14px;
+            flex: 0 0 14px;
+            padding: 0;
+            text-align: center;
+            line-height: 1.1;
+          }
+
+          .numerable-field-counter {
+            flex: 0 0 content;
+            padding: 0 3px;
+            color: var(--zh-clr-fg2);
+          }
+
+          &:hover {
+            background: none;
+          }
+
+          &:hover .numerable-field-add,
+          &:hover .numerable-field-subtract {
+            visibility: visible;
+          }
         }
       }
     }

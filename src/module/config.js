@@ -174,57 +174,6 @@ ZWEI.defaultActorIcons = {
   npc: `${d}/cowled.svg`,
 };
 
-ZWEI.packSets = {
-  zweihander: {
-    base: {
-      ancestry: 'zweihander.zh-ancestries',
-      armor: 'zweihander.zh-armor',
-      condition: 'zweihander.zh-conditions',
-      disease: 'zweihander.zh-diseases',
-      disorder: 'zweihander.zh-disorders',
-      drawback: 'zweihander.zh-drawbacks',
-      injury: 'zweihander.zh-injuries',
-      profession: 'zweihander.zh-professions',
-      ritual: 'zweihander.zh-rituals',
-      spell: 'zweihander.zh-magick',
-      taint: 'zweihander.zh-taints',
-      talent: 'zweihander.zh-talents',
-      trait: 'zweihander.zh-traits',
-      trapping: 'zweihander.zh-trappings',
-      quality: 'zweihander.zh-qualities',
-      weapon: 'zweihander.zh-weapons, zweihander.zh-weapons-alt-damage',
-    },
-    creature: {
-      trait: 'zweihander.zh-creature-traits',
-    },
-    npc: {
-      trait: 'zweihander.zh-creature-traits, zweihander.zh-ancestral-traits',
-    },
-    character: {
-      trait: 'zweihander.zh-ancestral-traits',
-    },
-  },
-  fof: {
-    base: {
-      disease: 'zweihander.fof-ailments-and-drugs',
-      disorder: 'zweihander.fof-afflictions',
-      drawback: 'zweihander.fof-quirks',
-      injury: 'zweihander.fof-injuries',
-      profession: 'zweihander.fof-professions',
-      spell: 'zweihander.fof-spells',
-      talent: 'zweihander.fof-talents',
-      trait: 'zweihander.fof-traits, zweihander.fof-professional-traits',
-      weapon: 'zweihander.fof-weapons',
-    },
-    creature: {
-      trait: 'zweihander.zh-creature-traits',
-    },
-    npc: {
-      trait: 'zweihander.zh-creature-traits',
-    },
-  },
-};
-
 ZWEI.archetypes = ['Academic', 'Commoner', 'Knave', 'Ranger', 'Socialite', 'Warrior'];
 
 ZWEI.injurySeverities = [

@@ -11,7 +11,7 @@
         <span class="prefix">{{detail.prefix}}</span>
         {{/if}}
         {{#if detail.template}}
-        {{> ($$ detail.template) detail}}
+        {{> ($$ detail.template) detail editable=../editable}}
         {{else if detail.choices}}
         <select name="system.{{detail.key}}">
           {{#each detail.choices}}

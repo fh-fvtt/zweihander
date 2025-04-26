@@ -469,7 +469,63 @@ export function argMax(array) {
 }
 
 const _getPacks = (gameSystem, actorType) => (itemType) => {
-  const packSets = ZWEI.packSets[gameSystem];
+  const getPackSetting = (name) => {
+    return game.settings.get('zweihander', name + 'Pack');
+  };
+
+  const packSetsInitial = {
+    zweihander: {
+      base: {
+        ancestry: getPackSetting('ancestry'),
+        armor: getPackSetting('armor'),
+        condition: '',
+        disease: getPackSetting('disease'),
+        disorder: getPackSetting('disorder'),
+        drawback: getPackSetting('drawback'),
+        injury: getPackSetting('injury'),
+        profession: getPackSetting('profession'),
+        ritual: getPackSetting('ritual'),
+        spell: getPackSetting('spell'),
+        taint: getPackSetting('taint'),
+        talent: getPackSetting('talent'),
+        trait: getPackSetting('trait'),
+        trapping: getPackSetting('trapping'),
+        quality: getPackSetting('quality'),
+        weapon: getPackSetting('weapon') + ', ' + getPackSetting('weaponAlt'),
+      },
+      creature: {
+        trait: getPackSetting('creatureTrait'),
+      },
+      npc: {
+        trait: getPackSetting('creatureTrait') + ', ' + getPackSetting('ancestralTrait'),
+      },
+      character: {
+        trait: getPackSetting('ancestralTrait'),
+      },
+    },
+    fof: {
+      base: {
+        disease: 'zweihander.fof-ailments-and-drugs',
+        disorder: 'zweihander.fof-afflictions',
+        drawback: 'zweihander.fof-quirks',
+        injury: 'zweihander.fof-injuries',
+        profession: 'zweihander.fof-professions',
+        spell: 'zweihander.fof-spells',
+        talent: 'zweihander.fof-talents',
+        trait: 'zweihander.fof-traits, zweihander.fof-professional-traits',
+        weapon: 'zweihander.fof-weapons',
+      },
+      creature: {
+        trait: 'zweihander.zh-creature-traits',
+      },
+      npc: {
+        trait: 'zweihander.zh-creature-traits',
+      },
+    },
+  };
+
+  const packSets = packSetsInitial[gameSystem];
+
   const basePacks = packSets?.base?.[itemType];
   const actorPacks = packSets?.[actorType]?.[itemType];
   const delim = basePacks && actorPacks ? ',' : '';

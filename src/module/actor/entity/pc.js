@@ -232,9 +232,9 @@ export default class ZweihanderPC extends ZweihanderBaseActor {
       }
     }
 
-    if (!update.token) update.token = {};
+    if (!update.token) update.prototypeToken = {};
 
-    update.token.actorLink = true;
+    update.prototypeToken.actorLink = true;
 
     await that.updateSource(update);
   }

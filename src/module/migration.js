@@ -246,6 +246,36 @@ const migrateItemData = async (item) => {
         return { ...x, uuid: ancestralTraitItem?.uuid ?? '' };
       });
     }
+    if (itemData.system.ancestralModifiers.value) {
+      const updatedModifiers = [...itemData.system.ancestralModifiers.value];
+
+      if (!updatedModifiers.length) {
+        const positiveModifiers = itemData.system.ancestralModifiers.positive;
+        const negativeModifiers = itemData.system.ancestralModifiers.negative;
+
+        console.log(positiveModifiers, negativeModifiers);
+
+        let countMap = {};
+
+        for (let i = 0; i < positiveModifiers.length; i++) {
+          if (!countMap[positiveModifiers[i]]) countMap[positiveModifiers[i]] = 1;
+          else countMap[positiveModifiers[i]] += 1;
+        }
+
+        for (let i = 0; i < negativeModifiers.length; i++) {
+          if (!countMap[negativeModifiers[i]]) countMap[negativeModifiers[i]] = -1;
+          else countMap[negativeModifiers[i]] -= 1;
+        }
+
+        const toAdd = [];
+
+        for (const [k, v] of Object.entries(countMap)) {
+          toAdd.push({ key: k, value: v });
+        }
+
+        update['system.ancestralModifiers.value'] = toAdd;
+      }
+    }
   } else if (item.type === 'profession') {
     if (itemData.system.bonusAdvances.length) {
       migrateField('bonusAdvances', 'bonusAdvances', 0, (x) =>
@@ -436,7 +466,7 @@ export const migrateWorldSafe = async () => {
 
   if (!game.user.isGM) return;
   const currentVersion = game.settings.get('zweihander', 'systemMigrationVersion');
-  const NEEDS_MIGRATION_VERSION = '5.4.1'; // @todo: change for release
+  const NEEDS_MIGRATION_VERSION = '5.5.0'; // @todo: change for release
   const COMPATIBLE_MIGRATION_VERSION = '5.4.1';
   const totalDocuments = game.actors.size + game.scenes.size + game.items.size;
   if (!currentVersion && totalDocuments === 0)

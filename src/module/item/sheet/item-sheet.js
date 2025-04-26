@@ -62,12 +62,11 @@ export default class ZweihanderItemSheet extends ItemSheet {
 
     const item = this.item;
 
-    // @todo: validate allowed Items based on this Item's type, e.g. Ancestry accepts Traits only
     switch (item.type) {
       case 'ancestry':
         if (droppedItem.type !== 'trait') {
           ui.notifications.error(`Item of type '${droppedItem.type}' cannot be added to an Ancestry Item.`);
-          break;
+          return;
         }
 
         await item.update({
@@ -75,12 +74,12 @@ export default class ZweihanderItemSheet extends ItemSheet {
           ['system.ancestralTrait.uuid']: droppedItem.uuid,
         });
 
-        break;
+        return;
 
       case 'profession':
         if (!['talent', 'trait', 'drawback'].includes(droppedItem.type)) {
           ui.notifications.error(`Item of type '${droppedItem.type}' cannot be added to a Profession Item.`);
-          break;
+          return;
         }
 
         if (droppedItem.type === 'trait') {
@@ -88,19 +87,39 @@ export default class ZweihanderItemSheet extends ItemSheet {
 
           if (!['professional', 'special'].includes(category)) {
             ui.notifications.error(`${category.capitalize()} Traits cannot be added to a Profession Item.`);
-            break;
+            return;
           }
 
           await item.update({
             [`system.${category}Trait.uuid`]: droppedItem.uuid,
           });
 
-          break;
+          return;
         } else if (droppedItem.type === 'drawback') {
           await item.update({
             ['system.drawback.uuid']: droppedItem.uuid,
           });
         } else if (droppedItem.type === 'talent') {
+          const actor = item.parent;
+
+          if (actor) {
+            const professionTalentsMap = actor.items
+              .filter((i) => i.type === 'profession')
+              .flatMap((p) => ({
+                profession: p.name,
+                talents: p.system.talents.flatMap((t) => t.name).filter((n) => n !== ''),
+              }));
+
+            for (const p of professionTalentsMap) {
+              if (p.talents.includes(droppedItem.name)) {
+                ui.notifications.error(
+                  `Profession (${p.profession}) already has following Talent: ${droppedItem.name}`
+                );
+                return;
+              }
+            }
+          }
+
           const talentList = Array.from({ length: 3 }, Object).map((o, i) => {
             o.uuid = '';
             return item.system.talents[i] ?? o;
@@ -110,12 +129,12 @@ export default class ZweihanderItemSheet extends ItemSheet {
             ui.notifications.error(
               'A Profession can have a maximum of 3 Talents. Please delete one of the existing Talents before attempting to add a new one.'
             );
-            break;
+            return;
           }
 
           if (talentList.filter((t) => t.uuid === droppedItem.uuid).length > 0) {
             ui.notifications.error(`Profession (${this.item.name}) already has following Talent: ${droppedItem.name}`);
-            break;
+            return;
           }
 
           for (let i = 0; i < talentList.length; i++) {
@@ -124,15 +143,15 @@ export default class ZweihanderItemSheet extends ItemSheet {
             if (talent && talent?.uuid !== '') continue;
 
             talentList.splice(i, 1, { uuid: droppedItem.uuid });
-            break;
+            return;
           }
 
           await item.update({ ['system.talents']: talentList });
         }
 
-        break;
+        return;
       default:
-        break;
+        return;
     }
   }
 
@@ -169,6 +188,8 @@ export default class ZweihanderItemSheet extends ItemSheet {
     }
 
     if (sheetData.type === 'profession') {
+      sheetData.bonusAdvancesOptions = CONFIG.ZWEI.primaryAttributeBonuses;
+
       const skillPack = game.packs.get(game.settings.get('zweihander', 'skillPack'));
       sheetData.skills = (await skillPack.getIndex())
         .map((x) => ({
@@ -339,6 +360,13 @@ export default class ZweihanderItemSheet extends ItemSheet {
     }
 
     if (sheetData.type === 'ancestry') {
+      sheetData.ancestralModiferOptions = CONFIG.ZWEI.primaryAttributeBonuses.map((pab) => ({
+        key: '[' + pab + ']',
+        label: game.i18n.localize(
+          'ZWEI.actor.primarybonuses.' + ZweihanderUtils.primaryAttributeMapping[pab.slice(0, 1)]
+        ),
+      }));
+
       const linkedItemDataList = [
         {
           property: 'ancestralTrait',
@@ -593,6 +621,52 @@ export default class ZweihanderItemSheet extends ItemSheet {
       if (item !== null) item.sheet.render(true);
     });
 
+    html.find('.numerable-field-add.advance').click(async (event) => {
+      const targetAdvance = '[' + $(event.currentTarget).parent().data('advanceName') + ']';
+      const item = this.object;
+
+      const advances = [...item.system.bonusAdvances];
+      advances.push({ name: targetAdvance, purchased: false });
+
+      const advancesUpdated = advances.sort((a, b) => a.name.localeCompare(b.name));
+
+      if (advancesUpdated.length <= 7) await item.update({ ['system.bonusAdvances']: advancesUpdated });
+      else ui.notifications.error('A Profession cannot have more than 7 Bonus Advances.');
+    });
+
+    html.find('.numerable-field-subtract.advance').click(async (event) => {
+      const targetAdvance = '[' + $(event.currentTarget).parent().data('advanceName') + ']';
+      const targetPosition = Number($(event.currentTarget).siblings('.numerable-field-counter').text());
+
+      if (targetPosition != 0) {
+        const item = this.object;
+
+        const advances = [...item.system.bonusAdvances];
+
+        let count = 0;
+        let idx;
+
+        for (let i = 0; i < advances.length; i++) {
+          const match = advances[i].name === targetAdvance;
+
+          if (match) count++;
+
+          if (targetPosition == count) {
+            idx = i;
+            break;
+          }
+        }
+
+        advances.splice(idx, 1);
+
+        const advancesUpdated = advances.sort((a, b) => a.name.localeCompare(b.name));
+
+        if (advancesUpdated.length >= 0) await item.update({ ['system.bonusAdvances']: advancesUpdated });
+      } else {
+        ui.notifications.error('A Bonus Advance cannot be negative.');
+      }
+    });
+
     // Add new Active Effect (from within the sheet)
     html.find('.add-new').click(async (ev) => {
       let type = ev.currentTarget.dataset.itemType;
@@ -717,6 +791,7 @@ export default class ZweihanderItemSheet extends ItemSheet {
     });
 
     html.find('.requirements-control').click(this._onRequirementsControl.bind(this));
+    html.find('.ancestral-modifiers-control').click(this._onAncestralModifiersControl.bind(this));
   }
 
   async _resistDisease() {
@@ -786,7 +861,29 @@ export default class ZweihanderItemSheet extends ItemSheet {
     return this.submit({
       preventClose: true,
       updateData: {
-        [`system.expert.requirements.skillRanks.${idx}`]: { key: '', value: '' },
+        [`system.expert.requirements.skillRanks.${idx}`]: { key: '', value: 0 },
+      },
+    });
+  }
+
+  _onAncestralModifiersControl(event) {
+    event.preventDefault();
+    const button = event.currentTarget;
+    switch (button.dataset.action) {
+      case 'add':
+        return this._addAncestralModifiersChange();
+      case 'delete':
+        button.closest('.ancestral-modifiers-change').remove();
+        return this.submit({ preventClose: true }).then(() => this.render());
+    }
+  }
+
+  async _addAncestralModifiersChange() {
+    const idx = this.document.system.ancestralModifiers.value.length;
+    return this.submit({
+      preventClose: true,
+      updateData: {
+        [`system.ancestralModifiers.value.${idx}`]: { key: '', value: 0 },
       },
     });
   }
@@ -800,6 +897,7 @@ export default class ZweihanderItemSheet extends ItemSheet {
 
       if (updateData) foundry.utils.mergeObject(data, updateData);
 
+      typeof data['system'] === 'undefined' ? (data.system = {}) : data.system;
       typeof data.system['expert'] === 'undefined' ? (data.system.expert = {}) : data.system.expert;
       typeof data.system.expert['requirements'] === 'undefined'
         ? (data.system.expert.requirements = {})
@@ -811,6 +909,21 @@ export default class ZweihanderItemSheet extends ItemSheet {
       data.system.expert.requirements.skillRanks = Array.from(
         Object.values(data.system.expert.requirements.skillRanks || {})
       );
+    } else if (this.item.type === 'ancestry') {
+      const fd = new FormDataExtended(this.form, { editors: this.editors });
+      data = foundry.utils.expandObject(fd.object);
+
+      if (updateData) foundry.utils.mergeObject(data, updateData);
+
+      typeof data['system'] === 'undefined' ? (data.system = {}) : data.system;
+      typeof data.system['ancestralModifiers'] === 'undefined'
+        ? (data.system.ancestralModifiers = {})
+        : data.system.ancestralModifiers;
+      typeof data.system.ancestralModifiers['value'] === 'undefined'
+        ? (data.system.ancestralModifiers.value = [])
+        : data.system.ancestralModifiers.value;
+
+      data.system.ancestralModifiers.value = Array.from(Object.values(data.system.ancestralModifiers.value || {}));
     } else {
       data = super._getSubmitData(updateData);
     }

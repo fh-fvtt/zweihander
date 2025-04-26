@@ -17,7 +17,7 @@ import * as ZweihanderUtils from './utils';
 import * as ZweihanderChat from './chat';
 import { registerChatCommands } from './misc/chat-commands';
 
-import { registerSystemSettings, setCssTheme } from './settings';
+import { registerSystemSettings, registerCompendiumSettings, setCssTheme } from './settings';
 import { preloadHandlebarsTemplates } from './templates';
 import { registerHandlebarHelpers } from './helpers';
 // import { migrateWorldSafe, migrateWorld } from './migration';
@@ -56,6 +56,9 @@ const socket = new Promise((resolve) => {
 });
 
 Hooks.once('ready', function () {
+  // register compendium settings
+  registerCompendiumSettings();
+
   // this is necessary to apply the theme settings
   let sheetStyles = game.settings.get('zweihander', 'theme');
   setCssTheme(sheetStyles);
@@ -147,6 +150,9 @@ Hooks.once('init', async function () {
   // CONFIG.debug.hooks = true;
   console.log(ZWEI.debugTitle);
 
+  // Register settings
+  registerSystemSettings();
+
   game.zweihander = {
     ZweihanderActor,
     ZweihanderItem,
@@ -155,12 +161,15 @@ Hooks.once('init', async function () {
     rollItemMacro,
   };
   CONFIG.ChatMessage.template = 'systems/zweihander/src/templates/chat/chat-message.hbs';
+
+  const initiativeFormula = game.settings.get('zweihander', 'initiativeFormula');
+
   /**
    * Set an initiative formula for the system
    * @type {String}
    */
   CONFIG.Combat.initiative = {
-    formula: '1d10 + @stats.secondaryAttributes.initiative.current',
+    formula: initiativeFormula,
     decimals: 2,
   };
   CONFIG.TinyMCE.skin_url = 'systems/zweihander/tinymce/skins/ui/zweihander';
@@ -203,8 +212,7 @@ Hooks.once('init', async function () {
   DocumentSheetConfig.registerSheet(ActiveEffect, 'zweihander', ZweihanderActiveEffectConfig, {
     makeDefault: true,
   });
-  // Register settings
-  registerSystemSettings();
+
   // Register Helpers
   await registerHandlebarHelpers();
   // Register Templates

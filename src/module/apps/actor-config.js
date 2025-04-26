@@ -1,38 +1,50 @@
 export default class ZweihanderActorConfig extends FormApplication {
-  static defaultConfiguration = {
-    dthAttribute: 'brawn',
-    pthAttribute: 'willpower',
-    intAttribute: 'perception',
-    movAttribute: 'agility',
-    isIgnoredPerilLadderValue: [false, false, false],
-    //   "avoidStepOne": false,
-    //   "avoidStepTwo": false,
-    //   "avoidStepThree": false,
-    //   "avoidAll": false
-    // },
-    encumbranceModifier: 0,
-    initiativeModifier: 0,
-    movementModifier: 0,
-    parrySkills: ['Simple Melee', 'Martial Melee', 'Guile', 'Charm', 'Incantation'],
-    dodgeSkills: ['Coordination', 'Guile', 'Drive', 'Ride'],
-    magickSkills: ['Incantation', 'Folklore'],
-    isMagickUser: false,
-    permanentChaosRanks: 0,
-    permanentOrderRanks: 0,
-    dodgeSound: 'systems/zweihander/assets/sounds/dodge.mp3',
-    parrySound: 'systems/zweihander/assets/sounds/parry.mp3',
-    gruntSound: 'systems/zweihander/assets/sounds/grunt_m.mp3',
-    playGruntSound: true,
+  static getDefaultConfiguration = (key) => {
+    const getDefaultSkills = (packName) =>
+      game.settings
+        .get('zweihander', packName)
+        .split(',')
+        .map((s) => s.trim());
+
+    const defaultConfiguration = {
+      dthAttribute: 'brawn',
+      pthAttribute: 'willpower',
+      intAttribute: 'perception',
+      movAttribute: 'agility',
+      isIgnoredPerilLadderValue: [false, false, false],
+      //   "avoidStepOne": false,
+      //   "avoidStepTwo": false,
+      //   "avoidStepThree": false,
+      //   "avoidAll": false
+      // },
+      encumbranceModifier: 0,
+      initiativeModifier: 0,
+      movementModifier: 0,
+      parrySkills: getDefaultSkills('defaultParrySkills'),
+      dodgeSkills: getDefaultSkills('defaultDodgeSkills'),
+      magickSkills: getDefaultSkills('defaultMagickSkills'),
+      isMagickUser: false,
+      permanentChaosRanks: 0,
+      permanentOrderRanks: 0,
+      dodgeSound: 'systems/zweihander/assets/sounds/dodge.mp3',
+      parrySound: 'systems/zweihander/assets/sounds/parry.mp3',
+      gruntSound: 'systems/zweihander/assets/sounds/grunt_m.mp3',
+      playGruntSound: true,
+    };
+
+    return key ? defaultConfiguration[key] : defaultConfiguration;
   };
 
   static getValue(actorData, key) {
     const value = getProperty(actorData.flags, `zweihander.actorConfig.${key}`);
-    return value ?? this.defaultConfiguration[key];
+    return value ?? this.getDefaultConfiguration(key);
   }
 
   static getConfig(actorData) {
     const cfg = {};
-    for (let key in this.defaultConfiguration) {
+    const defaultConfiguration = this.getDefaultConfiguration();
+
+    for (let key in defaultConfiguration) {
       cfg[key] = this.getValue(actorData, key);
     }
     return cfg;

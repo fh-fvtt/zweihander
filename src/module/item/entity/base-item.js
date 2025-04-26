@@ -100,10 +100,20 @@ export default class ZweihanderBaseItem {
         );
         const itemsToCreate = addedEntries.map((x) => x.itemToCreate).filter((x) => x !== undefined);
 
-        // update names & linkedIds
-        const lookUp = addedEntries.reduce((a, b) => ({ ...a, [b.uuid]: entryPostProcessor(b) }), {});
+        const getIdentifier = (i) => {
+          return i.linkedId == null && i.name && !i.uuid ? i.name : i.uuid;
+        };
 
-        changed.system[property] = changed.system[property].map((t) => (lookUp[t.uuid] ? lookUp[t.uuid] : t));
+        // update names & linkedIds
+        const lookUp = addedEntries.reduce((a, b) => {
+          const key = getIdentifier(b);
+          return { ...a, [key]: entryPostProcessor(b) };
+        }, {});
+
+        changed.system[property] = changed.system[property].map((t) => {
+          const key = getIdentifier(t);
+          return lookUp[key] ? lookUp[key] : t;
+        });
 
         return { idsToDelete, itemsToCreate };
       }
@@ -113,7 +123,8 @@ export default class ZweihanderBaseItem {
     const itemToCreate = (await fromUuid(itemUuid))?.toObject?.();
 
     const existingItemWithSameName = actor.items.find((t) => t.type === itemType && t.name === itemToCreate?.name);
-    const notFoundValue = { linkedId: null, name: itemToCreate?.name ?? '', uuid: '' };
+    const identifier = itemToCreate?.name ? itemToCreate.name : itemUuid ? itemUuid : '';
+    const notFoundValue = { linkedId: null, name: identifier, uuid: '' };
 
     if (!itemToCreate && !existingItemWithSameName) return notFoundValue;
 
@@ -180,8 +191,10 @@ export default class ZweihanderBaseItem {
     const arrayMinusByName = (a, b) =>
       a.filter((x) => !b.some((y) => x.uuid !== '' && y.uuid !== '' && x.uuid === y.uuid));
     return {
-      uuidsToAdd: arrayMinusByName(newArray, oldArray).map((e) => e.uuid),
-      idsToDelete: arrayMinusByName(oldArray, newArray).map((e) => e.linkedId),
+      uuidsToAdd: arrayMinusByName(newArray, oldArray).map((e) => (e.uuid ? e.uuid : e.name)),
+      idsToDelete: arrayMinusByName(oldArray, newArray)
+        .filter((e) => e.linkedId !== null)
+        .map((e) => e.linkedId),
     };
   }
 

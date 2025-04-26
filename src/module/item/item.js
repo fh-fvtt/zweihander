@@ -104,7 +104,7 @@ export default class ZweihanderItem extends Item {
   }
 
   async _onDelete(options, user) {
-    await super._preDelete(options, user);
+    await super._onDelete(options, user);
     if (user !== game.user.id) return;
     if (this.parent === null) return;
     await this.dispatch('_onDelete', { args: [options, user] });

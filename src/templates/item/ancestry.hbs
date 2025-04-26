@@ -1,25 +1,36 @@
 <fieldset>
   <legend>Ancestral Modifiers</legend>
-  <div class="form-group">
-    <label>Positive</label>
-    <zweihander-tags type="bonus-advances-ancestry" name="system.ancestralModifiers.positive">{{
-      system.ancestralModifiers.positive
-    }}</zweihander-tags>
-  </div>
-
-  <div class="form-group">
-    <label>Negative</label>
-    <zweihander-tags type="bonus-advances-ancestry" name="system.ancestralModifiers.negative">{{
-      system.ancestralModifiers.negative
-    }}</zweihander-tags>
-  </div>
+  <header class='ancestral-modifiers-change ancestral-modifiers-header flexrow'>
+    <div class='key'>Modifier</div>
+    <div class='value'>Value</div>
+    <div class='ancestral-modifiers-controls'>
+      <a class='ancestral-modifiers-control' data-action='add'><i class='far fa-plus-square'></i></a>
+    </div>
+  </header>
+  <ol class='ancestral-modifiers-list'>
+    {{#each system.ancestralModifiers.value as |modifier i|}}
+      <li class='ancestral-modifiers-change flexrow' data-index='{{i}}'>
+        <div class='key'>
+          <select name="system.ancestralModifiers.value.{{i}}.key">
+            {{selectOptions ../ancestralModiferOptions valueAttr="key" labelAttr="label" selected=modifier.key blank=''}}
+          </select>
+        </div>
+        <div class='value'>
+          <input type='number' name="system.ancestralModifiers.value.{{i}}.value" value='{{modifier.value}}' />
+        </div>
+        <div class='ancestral-modifiers-controls'>
+          <a class='ancestral-modifiers-control' data-action='delete'><i class='fas fa-trash-alt'></i></a>
+        </div>
+      </li>
+    {{/each}}
+  </ol>
 </fieldset>
 <fieldset>
   <legend>Ancestral Trait</legend>
   <div class="form-group">
     <label>Trait</label>
     <div class="roll-container">
-      {{> ($$ 'partials/detail-item-wrapper') ancestralTraitWrapperData}}
+      {{> ($$ 'partials/detail-item-wrapper') ancestralTraitWrapperData editable=editable}}
       <button
         type="button"
         class="randomize-trait icon fa-solid fa-shuffle"

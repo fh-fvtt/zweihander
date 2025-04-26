@@ -3,6 +3,8 @@ import { updateActorSkillsFromPack } from './utils';
 import FortuneTrackerSettings from './apps/fortune-tracker-settings';
 import CurrencySettings from './apps/currency-settings';
 
+const { DialogV2 } = foundry.applications.api;
+
 export const debouncedReload = foundry.utils.debounce(() => window.location.reload(), 500);
 
 export const registerSystemSettings = function () {
@@ -18,7 +20,7 @@ export const registerSystemSettings = function () {
     default: 'zweihander',
     choices: ZWEI.supportedGameSystems,
     config: true,
-    onChange: debouncedReload,
+    requiresReload: true,
   });
 
   game.settings.register('zweihander', 'systemMigrationVersion', {
@@ -67,98 +69,6 @@ export const registerSystemSettings = function () {
     config: true,
   });
 
-  game.settings.register('zweihander', 'injuryList', {
-    name: 'ZWEI.settings.injurytables',
-    hint: 'ZWEI.settings.injurytableshint',
-    scope: 'world',
-    type: String,
-    default: 'zweihander.zh-gm-tables',
-    config: true,
-  });
-
-  game.settings.register('zweihander', 'skillPack', {
-    name: 'ZWEI.settings.skilllist',
-    hint: 'ZWEI.settings.skilllisthint',
-    scope: 'world',
-    type: String,
-    default: 'zweihander.skills',
-    config: true,
-    onChange: updateActorSkillsFromPack,
-  });
-
-  [
-    {
-      value: 'talent',
-      compendium: 'talents',
-    },
-    {
-      value: 'quality',
-      compendium: 'qualities',
-    },
-    {
-      value: 'profession',
-      compendium: 'professions',
-    },
-    {
-      value: 'trait',
-      compendium: 'traits',
-    },
-    {
-      value: 'drawback',
-      compendium: 'drawbacks',
-    },
-    {
-      value: 'spell',
-      compendium: 'magick',
-    },
-    {
-      value: 'ritual',
-      compendium: 'rituals',
-    },
-    {
-      value: 'disease',
-      compendium: 'diseases',
-    },
-    {
-      value: 'disorder',
-      compendium: 'disorders',
-    },
-    {
-      value: 'injury',
-      compendium: 'injuries',
-    },
-    {
-      value: 'ancestry',
-      compendium: 'ancestries',
-    },
-    {
-      value: 'ancestralTrait',
-      compendium: 'ancestraltrait',
-    },
-    {
-      value: 'creatureTrait',
-      compendium: 'creatureTrait',
-    },
-  ].forEach((entry) => {
-    game.settings.register('zweihander', `${entry.value}Pack`, {
-      name: `ZWEI.settings.${entry.value.toLowerCase()}list`,
-      hint: `ZWEI.settings.${entry.value.toLowerCase()}listhint`,
-      scope: 'world',
-      type: String,
-      default: `zweihander.zh-${entry.compendium}`,
-      config: true,
-    });
-  });
-
-  game.settings.register('zweihander', 'characterCreationList', {
-    name: 'ZWEI.settings.charactercreationlist',
-    hint: 'ZWEI.settings.charactercreationlisthint',
-    scope: 'world',
-    type: String,
-    default: 'zweihander.zh-charactercreation-tables',
-    config: true,
-  });
-
   game.settings.register('zweihander', 'alternativePerilSystem', {
     scope: 'world',
     config: 'true',
@@ -176,6 +86,16 @@ export const registerSystemSettings = function () {
     hint: 'ZWEI.settings.immersivepausehint',
     type: Boolean,
     default: true,
+  });
+
+  game.settings.register('zweihander', 'initiativeFormula', {
+    scope: 'world',
+    config: 'true',
+    name: 'ZWEI.settings.initiativeformula',
+    hint: 'ZWEI.settings.initiativeformulahint',
+    type: String,
+    default: '1d10 + @stats.secondaryAttributes.initiative.current',
+    requiresReload: true,
   });
 
   game.settings.register('zweihander', 'unlimitedFortuneExplodes', {
@@ -203,6 +123,22 @@ export const registerSystemSettings = function () {
     default: '',
     config: false,
   });
+
+  const defaultSkills = {
+    defaultParrySkills: ['Simple Melee', 'Martial Melee', 'Guile', 'Charm', 'Incantation'],
+    defaultDodgeSkills: ['Coordination', 'Guile', 'Drive', 'Ride'],
+    defaultMagickSkills: ['Incantation', 'Folklore'],
+  };
+
+  for (let [k, v] of Object.entries(defaultSkills))
+    game.settings.register('zweihander', k, {
+      name: `ZWEI.settings.${k.toLowerCase()}`,
+      hint: `ZWEI.settings.${k.toLowerCase()}hint`,
+      scope: 'world',
+      type: String,
+      default: `${v.join(', ')}`,
+      config: true,
+    });
 
   game.settings.register('zweihander', 'theme', {
     name: 'ZWEI.settings.zweitheme',
@@ -280,6 +216,131 @@ export const registerSystemSettings = function () {
     icon: 'fas fa-coins', // A Font Awesome icon used in the submenu button
     type: CurrencySettings, // A FormApplication subclass
     restricted: true, // Restrict this submenu to gamemaster only?
+  });
+};
+
+export const registerCompendiumSettings = function () {
+  const compendiumPacksArray = game.packs.map((p) => p.collection);
+
+  const compendiumPacks = {};
+
+  for (let packName of compendiumPacksArray) {
+    compendiumPacks[packName] = packName;
+  }
+
+  game.settings.register('zweihander', 'injuryList', {
+    name: 'ZWEI.settings.injurytables',
+    hint: 'ZWEI.settings.injurytableshint',
+    scope: 'world',
+    type: String,
+    default: 'zweihander.zh-gm-tables',
+    choices: compendiumPacks,
+    config: true,
+  });
+
+  game.settings.register('zweihander', 'skillPack', {
+    name: 'ZWEI.settings.skilllist',
+    hint: 'ZWEI.settings.skilllisthint',
+    scope: 'world',
+    type: String,
+    default: 'zweihander.skills',
+    choices: compendiumPacks,
+    config: true,
+    onChange: updateActorSkillsFromPack,
+  });
+
+  [
+    {
+      value: 'profession',
+      compendium: 'professions',
+    },
+    {
+      value: 'trait',
+      compendium: 'traits',
+    },
+    {
+      value: 'drawback',
+      compendium: 'drawbacks',
+    },
+    {
+      value: 'talent',
+      compendium: 'talents',
+    },
+    {
+      value: 'weapon',
+      compendium: 'weapons',
+    },
+    {
+      value: 'weaponAlt',
+      compendium: 'weapons-alt-damage',
+    },
+    {
+      value: 'armor',
+      compendium: 'armor',
+    },
+    {
+      value: 'trapping',
+      compendium: 'trapping',
+    },
+    {
+      value: 'quality',
+      compendium: 'qualities',
+    },
+    {
+      value: 'spell',
+      compendium: 'magick',
+    },
+    {
+      value: 'ritual',
+      compendium: 'rituals',
+    },
+    {
+      value: 'disease',
+      compendium: 'diseases',
+    },
+    {
+      value: 'disorder',
+      compendium: 'disorders',
+    },
+    {
+      value: 'injury',
+      compendium: 'injuries',
+    },
+    {
+      value: 'creatureTrait',
+      compendium: 'creature-traits',
+    },
+    {
+      value: 'taint',
+      compendium: 'taints',
+    },
+    {
+      value: 'ancestry',
+      compendium: 'ancestries',
+    },
+    {
+      value: 'ancestralTrait',
+      compendium: 'ancestral-traits',
+    },
+  ].forEach((entry) => {
+    game.settings.register('zweihander', `${entry.value}Pack`, {
+      name: `ZWEI.settings.${entry.value.toLowerCase()}list`,
+      hint: `ZWEI.settings.${entry.value.toLowerCase()}listhint`,
+      scope: 'world',
+      type: String,
+      default: `zweihander.zh-${entry.compendium}`,
+      choices: compendiumPacks,
+      config: true,
+    });
+  });
+
+  game.settings.register('zweihander', 'characterCreationList', {
+    name: 'ZWEI.settings.charactercreationlist',
+    hint: 'ZWEI.settings.charactercreationlisthint',
+    scope: 'world',
+    type: String,
+    default: 'zweihander.zh-charactercreation-tables',
+    config: true,
   });
 };
 

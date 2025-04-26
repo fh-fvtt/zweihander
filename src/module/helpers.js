@@ -42,6 +42,11 @@ export const registerHandlebarHelpers = async function () {
     return word.toLowerCase().replace(/\[|\]/g, '');
   });
 
+  $$('zhUpperCase', function (word) {
+    if (typeof word !== 'string') return '';
+    return word.toUpperCase();
+  });
+
   $$('zhAlignmentRanks', function (name, alignmentRanks, permanentRanks, options) {
     const alignment = name.split('.')[2];
     const icon = alignment === 'chaos' ? 'ra-cancel' : 'ra-horseshoe';
@@ -177,6 +182,24 @@ export const registerHandlebarHelpers = async function () {
     );
   });
 
+  $$('zhCalculateAncestralModifierAmount', (ancestralModifiersData, ancestralModifier) => {
+    const positiveModifiers = ancestralModifiersData.positive;
+    const negativeModifiers = ancestralModifiersData.negative;
+
+    const modifier = '[' + ancestralModifier + ']';
+
+    const positiveCount = positiveModifiers.reduce((acc, val) => (val === modifier ? acc + 1 : acc), 0);
+    const negativeCount = negativeModifiers.reduce((acc, val) => (val === modifier ? acc - 1 : acc), 0);
+
+    return positiveCount ? positiveCount : negativeCount;
+  });
+
+  $$('zhCalculateBonusAdvanceAmount', (bonusAdvancesData, bonusAdvance) => {
+    const advance = '[' + bonusAdvance + ']';
+
+    return bonusAdvancesData.reduce((acc, val) => (val.name === advance ? acc + 1 : acc), 0);
+  });
+
   $$('zhRitualCastingInputs', (ritualData, castingTimeOptions) => {
     const triggerSelected = ritualData.castingTime.setting === 'formula';
 
@@ -207,7 +230,7 @@ export const registerHandlebarHelpers = async function () {
 
     console.log(ritualDifficultiesSpecific, ritualData.difficulty.rating, triggerSelected);
 
-    const triggerRoll = false;
+    const triggerRoll = false; // @todo: implement
 
     let inputs = `<div class="form-group"><label class="formula-label">${game.i18n.localize(
       'ZWEI.actor.items.difficulty'

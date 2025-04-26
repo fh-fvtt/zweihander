@@ -528,6 +528,9 @@ export default class ZweihanderBaseActorSheet extends ActorSheet {
 
     // Show item sheet on right click
     html.find('.fetch-skill').contextmenu((event) => {
+      const actor = this.object;
+      if (actor.type !== 'character') return;
+
       const itemId = $(event.currentTarget).parent('.skill').data('itemId') ?? $(event.currentTarget).data('itemId');
       const item = this.actor.items.get(itemId);
       item.sheet.render(true);

@@ -2,7 +2,7 @@
   <div class="currency-container flexrow">
     {{#each settings.currencies as | currency i | }}
       <div class="icon-and-input flexcol">
-        <span class="coins-icon" style="color:{{currency.color}}"><i class="fas fa-coins"></i></span>
+        <span class="coins-icon" style="color:{{currency.color}}" data-tooltip="{{zhUpperCase currency.abbreviation}}" data-tooltip-direction="UP"><i class="fas fa-coins"></i></span>
         <input class="coin-input" style="color:{{currency.color}}" type="number"
           name="system.price.{{currency.abbreviation}}" value="{{lookup ../system.price currency.abbreviation}}"
           placeholder="0" />
@@ -12,12 +12,12 @@
   <span class="separator"></span>
   <div class="encumbrance-container">
     <div class="icon-and-input flexcol">
-      <span class="encumbrance-icon"><i class="fas fa-solid fa-scale-unbalanced"></i></span>
+      <span class="encumbrance-icon"><i class="fas fa-solid fa-scale-unbalanced" data-tooltip="{{localize "ZWEI.actor.secondary.encumbrance"}}" data-tooltip-direction="UP"></i></span>
       <input type="number" name="system.encumbrance" value="{{system.encumbrance}}" />
     </div>
     {{#if system.quantity}}
       <div class="icon-and-input flexcol">
-        <span class="quantity-icon"><i class="fas fa-solid fa-hashtag"></i></span>
+        <span class="quantity-icon"><i class="fas fa-solid fa-hashtag" data-tooltip="{{localize "ZWEI.actor.items.quantity"}}" data-tooltip-direction="UP"></i></span>
         <input type="number" name="system.quantity" value="{{system.quantity}}" />
       </div>
     {{/if}}
