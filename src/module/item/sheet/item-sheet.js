@@ -216,19 +216,19 @@ export default class ZweihanderItemSheet extends ItemSheet {
           property: 'professionalTrait',
           label: 'Professional Trait',
           type: 'trait',
-          pack: 'zweihander.zh-traits', // @todo: add support for FoF
+          pack: game.settings.get("zweihander","traitPack"), // @todo: add support for FoF
         },
         {
           property: 'specialTrait',
           label: 'Special Trait',
           type: 'trait',
-          pack: 'zweihander.zh-traits',
+          pack: game.settings.get("zweihander","traitPack"),
         },
         {
           property: 'drawback',
           label: 'Drawback',
           type: 'drawback',
-          pack: 'zweihander.zh-drawbacks',
+          pack: game.settings.get("zweihander","drawbackPack"),
         },
       ];
 
@@ -372,7 +372,7 @@ export default class ZweihanderItemSheet extends ItemSheet {
           property: 'ancestralTrait',
           label: 'Ancestral Trait',
           type: 'trait',
-          pack: 'zweihander.zh-ancestral-traits', // @todo: add support for FoF
+          pack: game.settings.get("zweihander","ancestralTraitPack"), // @todo: add support for FoF
         },
       ];
 
@@ -413,8 +413,7 @@ export default class ZweihanderItemSheet extends ItemSheet {
   _prepareGoverningAttributeData(sheetData, primaryAttributes, primaryAttributeBonuses, key) {
     return primaryAttributes.reduce((acc, val, idx) => {
       const attributeBonus = '[' + primaryAttributeBonuses[idx] + ']';
-      const attributeBonusLabel = val.capitalize() + ' Bonus';
-
+      const attributeBonusLabel = game.i18n.localize('ZWEI.actor.primarybonuses.' + val.toLowerCase());
       return acc.concat([
         {
           label: attributeBonusLabel,
