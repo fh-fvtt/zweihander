@@ -386,8 +386,9 @@ export default class ZweihanderItemSheet extends ItemSheet {
 
   _prepareQualities(sheetData) {
     const qualities = {};
-    // @todo: localize
-    const qualitiesPack = game.packs.get('zweihander.zh-qualities');
+
+    const qualitiesSetting = game.settings.get('zweihander', 'qualityPack');
+    const qualitiesPack = game.packs.get(qualitiesSetting);
 
     qualities.compendium = Array.from(qualitiesPack.index)
       .map((q) => ({
