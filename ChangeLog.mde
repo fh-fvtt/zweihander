@@ -5,6 +5,36 @@ All notable changes to this project will be documented in this file.
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).´
 
+## [5.5.0] - 2025-04-26
+
+Compatible Foundry version: 12.331
+
+### Added
+
+- Added new designs for the following Item sheets: Ancestry, Profession, Talent, Trait, Trapping, Weapon, Armor, Trapping, Skill, Disease, Disorder, Drawback, Injury, Quality, Ritual, and Spell.
+- Added drag-and-drop support for Ancestry and Profession Item sheets.
+- Added a new design for Currency on the Character sheet.
+- Added additional Active Effects support. Items can now hold Active Effects.
+- Added an option for Players to open a Skill Item's sheet by right-clicking, allowing them to change the Base Chance gain per Rank (relevant for Professions such as the Prostitute).
+- Added missing Ruinous Powers Drawbacks for all Covenant Professions.
+- Added a new system setting for rolling Initiative.
+- Added new system settings that allow users to specify which Compendium packs to use as default.
+- Added new system settings that allow users to specify which Skills to use as default for Parry, Dodge, and Magick Tests. These can still be adjusted on a per-Actor basis in the Actor Configuration menu.
+- Added descriptions and icons to some Skills (Alchemy - Handle Animal).
+- Added icons to all Diseases.
+- Added the ability to roll a Toughness Test to resist a Disease from a Disease Item's sheet, provided it is owned by an Actor.
+- Added the ability to increase or decrease a Disease's duration, if it has one, from the Character sheet.
+- Added Expert Profession validation, preventing a Character that does not meet the requirements from entering the Expert Profession.
+
+### Fixed
+
+- Fixed the Alternative Peril System's ladder to be in line with the latest Reforged rules.
+- Fixed open sheets not closing when the associated Item was deleted.
+- Fixed default Initiative calculation not adding a character's current Initiative bonus.
+- Fixed Armiger's Bonus Advances.
+- Fixed an issue that would break Creature / NPC sheets when a Weapon was added and a custom Skill Compendium was in use in the World.
+- Fixed a massive performance issue when adding new Professions to a Character (most noticeable for Forge users).
+
 ## [5.4.1] - 2024-12-03
 
 Compatible Foundry version: 12.331

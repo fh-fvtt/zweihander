@@ -143,7 +143,7 @@ export default class ZweihanderItemSheet extends ItemSheet {
             if (talent && talent?.uuid !== '') continue;
 
             talentList.splice(i, 1, { uuid: droppedItem.uuid });
-            return;
+            break;
           }
 
           await item.update({ ['system.talents']: talentList });
@@ -457,7 +457,7 @@ export default class ZweihanderItemSheet extends ItemSheet {
         _id: linkedItem?._id,
         label: type.capitalize(),
         type: type,
-        pack: 'zweihander.zh-talents',
+        pack: game.settings.get('zweihander', 'talentPack'),
         property: `${type}.${idx}`,
         ...linkedItemData,
       };
