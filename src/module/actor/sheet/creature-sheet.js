@@ -128,8 +128,8 @@ export default class ZweihanderCreatureSheet extends ZweihanderBaseActorSheet {
       .forEach((i) => sheetData[pluralize(i.type)].push(i));
     // sort skills alphabetically
     sheetData.skills = sheetData.skills.sort((a, b) => {
-      const aloc = game.i18n.localize('ZWEI.actor.skills.' + a.name.toLowerCase().replace(/\s+/g, ''));
-      const bloc = game.i18n.localize('ZWEI.actor.skills.' + b.name.toLowerCase().replace(/\s+/g, ''));
+      const aloc = a.name;
+      const bloc = b.name;
       return aloc.localeCompare(bloc);
     });
     // add base chance to weapon data

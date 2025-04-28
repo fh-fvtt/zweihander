@@ -138,49 +138,6 @@
         "biography": "Biografía",
         "characternotes": "Notas"
       },
-      "skills": {
-        "alchemy": "Alquimia",
-        "athletics": "Atletismo",
-        "awareness": "Perspicacia",
-        "bargain": "Negociar",
-        "charm": "Carisma",
-        "coordination": "Coordinación",
-        "counterfeit": "Falsificación",
-        "disguise": "Disfraz",
-        "drive": "Conducción",
-        "eavesdrop": "Escuchar",
-        "education": "Erudición",
-        "folklore": "Folclore",
-        "gamble": "Juego",
-        "guile": "Ardides",
-        "handleanimal": "Adiestramiento",
-        "heal": "Sanación",
-        "incantation": "Encantamiento",
-        "interrogation": "Interrogatorio",
-        "intimidate": "Intimidación",
-        "leadership": "Liderazgo",
-        "martialmelee": "A. marciales c/c",
-        "martialranged": "A. marciales dist.",
-        "navigation": "Orientación",
-        "pilot": "Marinería",
-        "resolve": "Disciplina",
-        "ride": "Equitación",
-        "rumor": "Cotilleo",
-        "scrutinize": "Escrutinio",
-        "simplemelee": "A. simples c/c",
-        "simpleranged": "A. simples dist.",
-        "skulduggery": "Subterfugio",
-        "stealth": "Sigilo",
-        "survival": "Supervivencia",
-        "toughness": "Resistencia",
-        "tradecraft": "Artesanía",
-        "warfare": "Artes militares",
-        "rankabbreviation": {
-          "apprentice": "Apr.",
-          "journeyman": "Exp.",
-          "master": "Mae."
-        }
-      },
       "items": {
         "drivers": "Conductores",
         "passengers": "Pasajeros",
@@ -225,7 +182,7 @@
         "qty": "Ud.",
         "load": "Recarga",
         "recuperationtime": "Tiempo de recuperación",
-        "resist": "Resistencia",
+        "resist": "Dificultad resistencia",
         "severity": "Gravedad",
         "ineffect": "Activo",
         "attackprofiles": "Perfiles de ataque",
@@ -239,6 +196,7 @@
         "reagents": "Componentes",
         "distance": "Distancia",
         "duration": "Duración",
+        "durationdays": "días",
         "durationList": {
           "instantaneous": "Instantáneo",
           "forever": "Perpetuo",
@@ -262,6 +220,11 @@
         "drawback": "Desventaja",
         "expertreq": "Requerimientos profesión avanzada",
         "skillranks": "Niveles de habilidad",
+        "skillranksabbr": {
+          "apprentice": "Apr.",
+          "journeyman": "Exp.",
+          "master": "Mae."
+        },
         "bonusadvances": "Bonos de avances",
         "associatedskill": "Habilidad directiva",
         "handling": "Manejo",
@@ -300,7 +263,7 @@
         "modifier": "Modificador",
         "value": "Valor",
         "effects": "Efectos",
-        "lore": "Historia",
+        "lore": "Detalles",
         "characteristics": "Características",
         "misc": "Miscelánea",
         "ranged": "A distancia",
@@ -311,7 +274,24 @@
         "die": "Dado",
         "or": "o",
         "govattrbonus": "Bono de atributo directivo",
-        "explodingdie": "El dado explota"
+        "explodingdie": "El dado explota",
+        "innateability": "Habilidad innata",
+        "traitscategories": {
+          "professional": "Profesional",
+          "special": "Especial",
+          "ancestral": "Ancestral",
+          "creature": "Criatura"
+        },
+        "traitsdrawback": "Rasgos y desventajas",
+        "charadvances": "Avances del personaje",
+        "ranksrequired": "Niveles necesarios",
+        "additionalreq": "Requerimientos adicionales",
+        "innateflaw": "Desventaja innata",
+        "engaged": "Trabado",
+        "uniquebenefit": "Ventaja única",
+        "incapacity": "Incapacidad",
+        "lastsuntilcured": "Persiste hasta que sea curada",
+        "diseasemanagement": "Tratamiento de la enfermedad"
       },
       "conditions": {
         "incapacitated": "¡INCAPACITADO!",
@@ -646,6 +626,7 @@
         "title": "Idiomas",
         "name": "Nombre",
         "literate": "Escrito",
+        "literatesymbol": "ᴱ",
         "add": "Añadir idioma"
       },
       "othersettings": {
@@ -770,9 +751,10 @@
       "mode": "Modo",
       "value": "Valor",
       "professionmissing": "Falta un talento en la profesión, está mal escrito o duplicado. Por favor, corrija la lista de talentos.",
-      "entervalue": "Nuevo (bonos en inglés)",
+      "entervalue": "Nuevo",
       "injurytablemismatch": "No se ha encontrado la tabla de heridas {severity} en el compendio \"{pack}\". Por favor, corrija el listado de tablas de heridas en los ajustes del sistema.",
-      "injurytableerror": "No se ha encontrado el compendio \"{pack}\". Por favor, corrija el listado de tablas de heridas en los ajustes del sistema."
+      "injurytableerror": "No se ha encontrado el compendio \"{pack}\". Por favor, corrija el listado de tablas de heridas en los ajustes del sistema.",
+	  "noancestrytable": "No se ha encontrado ninguna tabla aleatoria en el mundo o el compendio para el ancestro \"{ancestry}\""
     },
     "coinage": {
       "gc": "co",

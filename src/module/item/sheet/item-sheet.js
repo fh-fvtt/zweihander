@@ -207,7 +207,7 @@ export default class ZweihanderItemSheet extends ItemSheet {
         sheetData.system.archetype ?? CONFIG.ZWEI.archetypes[0],
         CONFIG.ZWEI.archetypes.map((option) => ({
           value: option,
-          label: option,
+          label: game.i18n.localize('ZWEI.actor.details.labels.' + option.toLowerCase()),
         }))
       );
 
@@ -823,7 +823,7 @@ export default class ZweihanderItemSheet extends ItemSheet {
     const isCompendiumTableUndefined = typeof compendiumTable === 'undefined';
 
     if (isWorldTableUndefined && isCompendiumTableUndefined) {
-      ui.notifications.error(`No Roll Table found in World or Compendium for following Ancestry: ${item.name}`);
+	  ui.notifications.error(game.i18n.format('ZWEI.othermessages.noancestrytable', { ancestry: item.name }));
       return;
     }
 

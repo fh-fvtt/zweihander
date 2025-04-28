@@ -158,7 +158,7 @@ export const registerHandlebarHelpers = async function () {
 
   $$('zhDisplayLanguages', (languages) => {
     if (!languages.length) return '';
-    const displayLanguage = (l) => `${l.name}${l.isLiterate ? ' ᴸ ' : ''}`;
+    const displayLanguage = (l) => `${l.name}` + (l.isLiterate ? ` ${game.i18n.localize('ZWEI.settings.lasettings.literatesymbol')} ` : '');
     return languages.slice(1).reduce((str, l) => `${str}, ${displayLanguage(l)}`, displayLanguage(languages[0]));
   });
 
@@ -330,9 +330,9 @@ export const registerHandlebarHelpers = async function () {
   $$('zhSkillRankAbbreviationLoc', function (rank) {
     return [
       '-',
-      game.i18n.localize('ZWEI.actor.skills.rankabbreviation.apprentice'),
-      game.i18n.localize('ZWEI.actor.skills.rankabbreviation.journeyman'),
-      game.i18n.localize('ZWEI.actor.skills.rankabbreviation.master'),
+      game.i18n.localize('ZWEI.actor.items.skillranksabbr.apprentice'),
+      game.i18n.localize('ZWEI.actor.items.skillranksabbr.journeyman'),
+      game.i18n.localize('ZWEI.actor.items.skillranksabbr.master'),
     ][rank];
   });
 

@@ -138,49 +138,6 @@
         "biography": "Biography",
         "characternotes": "Character Notes"
       },
-      "skills": {
-        "alchemy": "Alchemy",
-        "athletics": "Athletics",
-        "awareness": "Awareness",
-        "bargain": "Bargain",
-        "charm": "Charm",
-        "coordination": "Coordination",
-        "counterfeit": "Counterfeit",
-        "disguise": "Disguise",
-        "drive": "Drive",
-        "eavesdrop": "Eavesdrop",
-        "education": "Education",
-        "folklore": "Folklore",
-        "gamble": "Gamble",
-        "guile": "Guile",
-        "handleanimal": "Handle Animal",
-        "heal": "Heal",
-        "incantation": "Incantation",
-        "interrogation": "Interrogation",
-        "intimidate": "Intimidate",
-        "leadership": "Leadership",
-        "martialmelee": "Martial Melee",
-        "martialranged": "Martial Ranged",
-        "navigation": "Navigation",
-        "pilot": "Pilot",
-        "resolve": "Resolve",
-        "ride": "Ride",
-        "rumor": "Rumor",
-        "scrutinize": "Scrutinize",
-        "simplemelee": "Simple Melee",
-        "simpleranged": "Simple Ranged",
-        "skulduggery": "Skulduggery",
-        "stealth": "Stealth",
-        "survival": "Survival",
-        "toughness": "Toughness",
-        "tradecraft": "Tradecraft",
-        "warfare": "Warfare",
-        "rankabbreviation": {
-          "apprentice": "Appr.",
-          "journeyman": "Jour.",
-          "master": "Mstr."
-        }
-      },
       "items": {
         "drivers": "Drivers",
         "passengers": "Passengers",
@@ -225,7 +182,7 @@
         "qty": "Qty.",
         "load": "Load",
         "recuperationtime": "Recuperation Time",
-        "resist": "Resist",
+        "resist": "Resist Difficulty",
         "severity": "Severity",
         "ineffect": "Currently Active",
         "attackprofiles": "Attack Profiles",
@@ -239,6 +196,7 @@
         "reagents": "Reagents",
         "distance": "Distance",
         "duration": "Duration",
+        "durationdays": "days",
         "durationList": {
           "instantaneous": "Instantaneous",
           "forever": "Forever",
@@ -262,6 +220,11 @@
         "drawback": "Drawback",
         "expertreq": "Expert Profession Requirements",
         "skillranks": "Skill Ranks",
+        "skillranksabbr": {
+          "apprentice": "Appr.",
+          "journeyman": "Jour.",
+          "master": "Mstr."
+        },
         "bonusadvances": "Bonus Advances",
         "associatedskill": "Governing Skill",
         "handling": "Handling",
@@ -311,7 +274,24 @@
         "die": "DIE",
         "or": "or",
         "govattrbonus": "Governing Attribute Bonus",
-        "explodingdie": "Exploding Die"
+        "explodingdie": "Exploding Die",
+        "innateability": "Innate Ability",
+        "traitscategories": {
+          "professional": "Professional",
+          "special": "Special",
+          "ancestral": "Ancestral",
+          "creature": "Creature"
+        },
+        "traitsdrawback": "Traits & Drawback",
+        "charadvances": "Character Advances",
+        "ranksrequired": "Ranks Required",
+        "additionalreq": "Additional Requirements",
+        "innateflaw": "Innate Flaw",
+        "engaged": "Engaged",
+        "uniquebenefit": "Unique Benefit",
+        "incapacity": "Incapacity",
+        "lastsuntilcured": "Lasts Until Cured",
+        "diseasemanagement": "Disease Management"
       },
       "conditions": {
         "incapacitated": "INCAPACITATED!",
@@ -646,6 +626,7 @@
         "title": "Languages",
         "name": "Language Name",
         "literate": "Literate",
+        "literatesymbol": "ᴸ",
         "add": "Add Language"
       },
       "othersettings": {
@@ -771,8 +752,9 @@
       "value": "Value",
       "professionmissing": "Profession is missing a Talent, has a misspelled Talent, or has a duplicate one. Please add to/change Talent list.",
       "entervalue": "Enter values here",
-      "injurytablemismatch": "{severity} Injuries table not found in Compendium Pack\"{pack}\". Please adjust the Injury List in Game Settings.",
-      "injurytableerror": "Compendium \"{pack}\" not found. Please adjust the Injury List in Game Settings."
+      "injurytablemismatch": "{severity} Injuries table not found in Compendium Pack \"{pack}\". Please adjust the Injury List in Game Settings.",
+      "injurytableerror": "Compendium \"{pack}\" not found. Please adjust the Injury List in Game Settings.",
+	  "noancestrytable": "No Roll Table found in World or Compendium for Ancestry \"{ancestry}\""
     },
     "coinage": {
       "gc": "gc",
