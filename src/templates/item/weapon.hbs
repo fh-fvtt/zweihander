@@ -25,10 +25,10 @@
   <div class="form-group">
     <label>{{localize "ZWEI.actor.items.qualities"}}</label>
     <multi-select name="system.qualities">
-      <optgroup label="Compendium Qualities">
+      <optgroup label="{{localize 'ZWEI.actor.items.compendiumqualities'}}">
         {{selectOptions qualitiesCompendium valueAttr="value" labelAttr="label" selected=selected}}
       </optgroup>
-      <optgroup label="World Qualities">
+      <optgroup label="{{localize 'ZWEI.actor.items.worldqualities'}}">
         {{selectOptions qualitiesWorld valueAttr="value" labelAttr="label" selected=selected}}
       </optgroup>
     </multi-select>

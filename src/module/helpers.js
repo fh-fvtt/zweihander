@@ -235,7 +235,7 @@ export const registerHandlebarHelpers = async function () {
     )}</label>${
       triggerSelected ? `<div class="damage-inputs flexrow"><div class="form-group label-top"><label></label>` : ''
     }
-            <select name="system.difficulty.rating"><optgroup label="Generic Ratings">${HandlebarsHelpers.selectOptions(
+            <select name="system.difficulty.rating"><optgroup label="${game.i18n.localize('ZWEI.actor.items.genericratings')}">${HandlebarsHelpers.selectOptions(
               ritualDifficultiesGeneric,
               {
                 hash: {
@@ -243,7 +243,7 @@ export const registerHandlebarHelpers = async function () {
                   labelAttr: 'label',
                 },
               }
-            )}</optgroup><optgroup label="Specific Ratings">${HandlebarsHelpers.selectOptions(
+            )}</optgroup><optgroup label="${game.i18n.localize('ZWEI.actor.items.specificratings')}">${HandlebarsHelpers.selectOptions(
       ritualDifficultiesSpecific,
       {
         hash: {
@@ -254,7 +254,7 @@ export const registerHandlebarHelpers = async function () {
     )}</optgroup></select>
           ${
             triggerSelected
-              ? `</div><div class="form-group label-top"><label>SKILL TEST</label><select name="system.difficulty.associatedSkill">${HandlebarsHelpers.selectOptions(
+              ? `</div><div class="form-group label-top"><label>${game.i18n.localize('ZWEI.actor.items.skilltest')}</label><select name="system.difficulty.associatedSkill">${HandlebarsHelpers.selectOptions(
                   skillList,
                   { hash: { valueAttr: 'value', labelAttr: 'label' } }
                 )}</select></div></div>`

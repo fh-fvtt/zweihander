@@ -183,7 +183,7 @@
         "load": "Recarga",
         "recuperationtime": "Tiempo de recuperación",
         "resist": "Dificultad resistencia",
-        "severity": "Gravedad",
+        "severity": "Gravedad de la herida",
         "ineffect": "Activo",
         "attackprofiles": "Perfiles de ataque",
         "taintschaos": "Manchas",
@@ -206,10 +206,10 @@
         "channelpoweras": "Canalizar poder como",
         "difficulty": "Dificultad",
         "difficultyList": {
-          "varies": "Varies",
+          "varies": "Variable",
           "special": "Especial"
         },
-        "castingtime": "Tiempo lanz.",
+        "castingtime": "Tiempo de lanzamiento",
         "castingtimeList": {
           "varies": "Variable",
           "special": "Especial",
@@ -226,7 +226,7 @@
           "master": "Mae."
         },
         "bonusadvances": "Bonos de avances",
-        "associatedskill": "Habilidad directiva",
+        "associatedskill": "Habilidad asociada",
         "handling": "Manejo",
         "encumbrance": "Peso",
         "price": "Precio",
@@ -268,12 +268,14 @@
         "misc": "Miscelánea",
         "ranged": "A distancia",
         "base": "BASE",
-        "bonus": "BONO",
+        "bonus": "MOD",
         "reach": "ALCANCE",
         "number": "NÚMERO",
-        "die": "Dado",
+        "die": "DADO",
+        "units": "UNIDADES",
+        "skilltest": "PRUEBA HABILIDAD",
         "or": "o",
-        "govattrbonus": "Bono de atributo directivo",
+        "govattrbonus": "Bono de atributo asociado",
         "explodingdie": "El dado explota",
         "innateability": "Habilidad innata",
         "traitscategories": {
@@ -291,7 +293,16 @@
         "uniquebenefit": "Ventaja única",
         "incapacity": "Incapacidad",
         "lastsuntilcured": "Persiste hasta que sea curada",
-        "diseasemanagement": "Tratamiento de la enfermedad"
+        "diseasemanagement": "Tratamiento de la enfermedad",
+        "specialskill": "Habilidad especial",
+        "governingattribute": "Atributo asociado",
+        "primaryattribute": "Atributo primario",
+        "chaosmanifestations": "Manifestaciones del Caos",
+        "ritualresults": "Resultados del ritual",
+        "genericratings": "Grados genéricos",
+        "specificratings": "Grados específicos",
+        "compendiumqualities": "Cualidades del compendio",
+        "worldqualities": "Cualidades del mundo"
       },
       "conditions": {
         "incapacitated": "¡INCAPACITADO!",
@@ -574,7 +585,7 @@
       },
       "acsettings": {
         "subtitle": "Configure comportamiento y mecánicas de este actor",
-        "primarytitle": "Atributos primarios directivos",
+        "primarytitle": "Atributos primarios asociados",
         "primarydt": "Atributo primario del umbral de daño",
         "primarydthint": "Seleccione el atributo primario para el cálculo del umbral de daño",
         "primarypt": "Atributo primario del umbral de estrés",
@@ -591,7 +602,7 @@
         "globalinitiativehint": "Establece un modificador global a la iniciativa",
         "globalmovement": "Modificador al movimiento",
         "globalmovementhint": "Establece un modificador global al movimiento",
-        "skillstitle": "Habilidades directivas",
+        "skillstitle": "Habilidades asociadas",
         "skillsparry": "Habilidades de parada",
         "skillsparryhint": "Configura qué habilidades se pueden usar para parar",
         "skillsdodge": "Habilidades de esquiva",
@@ -608,7 +619,7 @@
         "magicktitle": "Magia",
         "magickuser": "Usuario de magia",
         "magickuserhint": "Marca el actor como usuario de magia. Se mostrará una nueva pestaña en la hoja de personaje",
-        "magickskill": "Habilidades de magia directivas",
+        "magickskill": "Habilidades de magia asociadas",
         "magickskillhint": "Configura qué habilidades se pueden usar para lanzar magia",
         "octitle": "Orden & Caos",
         "occhaosrank": "Niveles de Caos permanentes",
@@ -630,7 +641,7 @@
         "add": "Añadir idioma"
       },
       "othersettings": {
-        "governingmagickskill": "Habilidad directiva de magia"
+        "governingmagickskill": "Habilidad asociada de magia"
       }
     },
     "chatskill": {

@@ -1,5 +1,5 @@
 <fieldset>
-  <legend>Tradition & Principle</legend>
+  <legend>{{localize "ZWEI.actor.items.tradition"}} & {{localize "ZWEI.actor.items.principle"}}</legend>
   <div class="form-group">
     <label>{{localize "ZWEI.actor.items.tradition"}}</label>
     <input name="system.tradition" type="text" value="{{system.tradition}}" />
@@ -12,7 +12,7 @@
 </fieldset>
 
 <fieldset>
-  <legend>Requirements</legend>
+  <legend>{{localize "ZWEI.actor.items.requirements"}}</legend>
   <div class="form-group">
     <label>{{localize "ZWEI.actor.items.distance"}}</label>
     <input name="system.distance" type="text" value="{{system.distance}}" />
@@ -80,7 +80,7 @@
 <fieldset>
   <legend>{{localize "ZWEI.actor.items.duration"}}</legend>
   <div class="form-group">
-    <label>Formula</label>
+    <label>{{localize "ZWEI.actor.items.durationList.formula"}}</label>
     <input
       name="system.duration.formula.override"
       type="checkbox"
@@ -94,17 +94,17 @@
       <label class="formula-label"></label>
       <div class="damage-inputs flexrow">
         <div class="form-group label-top wide">
-          <label>BASE</label>
+          <label>{{localize "ZWEI.actor.items.base"}}</label>
           <select name="system.duration.base">
             {{selectOptions governingDurationAttribute valueAttr="value" labelAttr="label" selected=selected}}
           </select>
         </div>
         <div class="form-group label-top">
-          <label>BONUS</label>
+          <label>{{localize "ZWEI.actor.items.bonus"}}</label>
           <input type="number" name="system.duration.bonus" value="{{system.duration.bonus}}" />
         </div>
         <div class="form-group label-top">
-          <label>UNITS</label>
+          <label>{{localize "ZWEI.actor.items.units"}}</label>
           <input type="text" name="system.duration.unit" value="{{system.duration.unit}}" />
         </div>
       </div>
@@ -120,7 +120,7 @@
 </fieldset>
 
 <fieldset>
-  <legend>Consequences</legend>
+  <legend>{{localize "ZWEI.actor.items.consequences"}}</legend>
   <div class="form-group stacked">
     <label>{{localize "ZWEI.actor.items.effect"}}</label>
     {{editor
