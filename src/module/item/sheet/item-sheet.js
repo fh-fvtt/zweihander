@@ -803,7 +803,7 @@ export default class ZweihanderItemSheet extends ItemSheet {
 
     if (item.type !== 'ancestry') return;
 
-    const worldTable = game.tables.find((table) => table.name.includes(item.name));
+    const worldTable = game.tables.find((table) => table.name.includes(item.name) && table.name.includes(game.i18n.localize('ITEM.TypeTrait')));
     const isWorldTableUndefined = typeof worldTable === 'undefined';
 
     // If Roll Table doesn't exist in World, use Compendium as fallback. Only works for default Ancestries.
@@ -814,7 +814,7 @@ export default class ZweihanderItemSheet extends ItemSheet {
       const characterCreationPack = game.packs.get(characterCreationPackName);
       const characterCreationPackIndex = await characterCreationPack.getIndex();
       const compendiumTableEntry = characterCreationPackIndex.find((table) => {
-        return ZweihanderUtils.normalizedIncludes(table.name, item.name);
+        return ZweihanderUtils.normalizedIncludes(table.name, item.name) && ZweihanderUtils.normalizedIncludes(table.name, game.i18n.localize('ITEM.TypeTrait'));
       });
 
       compendiumTable = await characterCreationPack.getDocument(compendiumTableEntry?._id);

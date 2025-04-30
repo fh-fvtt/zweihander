@@ -336,62 +336,6 @@ export const registerHandlebarHelpers = async function () {
     ][rank];
   });
 
-  $$('zhLocalizeConditional', function (keypath, keyvalue) {
-    if (typeof keyvalue !== 'string') return '';
-    const keyvalueLS = keyvalue.toLowerCase().replace(/\s+/g, '');
-    const keyvaluesList = [
-      'alchemy',
-      'athletics',
-      'awareness',
-      'bargain',
-      'charm',
-      'coordination',
-      'counterfeit',
-      'disguise',
-      'drive',
-      'eavesdrop',
-      'education',
-      'folklore',
-      'gamble',
-      'guile',
-      'handleanimal',
-      'heal',
-      'incantation',
-      'interrogation',
-      'intimidate',
-      'leadership',
-      'martialmelee',
-      'martialranged',
-      'navigation',
-      'pilot',
-      'resolve',
-      'ride',
-      'rumor',
-      'scrutinize',
-      'simplemelee',
-      'simpleranged',
-      'skulduggery',
-      'stealth',
-      'survival',
-      'toughness',
-      'tradecraft',
-      'warfare',
-      'gc',
-      'goldcoins',
-      'ss',
-      'silvershilling',
-      'bp',
-      'brasspennies',
-      'nc',
-      'newcurrency',
-    ];
-    if (keyvaluesList.includes(keyvalueLS)) {
-      return game.i18n.localize(keypath + keyvalueLS);
-    } else {
-      return keyvalue;
-    }
-  });
-
   $$('zhModIndicator', function (mod) {
     return mod === 'dtm' ? 'dtm' : '';
   });
@@ -472,13 +416,13 @@ export const registerHandlebarHelpers = async function () {
     }
   });
 
-  $$('betweenparentheses', function (txt) {
+  /* $$('betweenparentheses', function (txt) {
     const parentheses = txt.match(/\(([^)]+)\)/);
     return parentheses ? parentheses[1] : '';
-  });
+  }); */
 
-  $$('beforeparentheses', function (txt) {
+  /* $$('beforeparentheses', function (txt) {
     const firstpar = txt.indexOf('(');
     return firstpar >= 0 ? txt.substring(0, firstpar).trim() : txt;
-  });
+  }); */
 };

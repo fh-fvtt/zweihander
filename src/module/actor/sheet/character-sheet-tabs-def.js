@@ -263,9 +263,9 @@ export function getItemGroups(groupsData) {
           size: 140,
           key: 'system.duration.value',
           isNumerable: true,
-          unit: ' days',
+          unit: ' ' + game.i18n.localize('ZWEI.actor.items.durationdays'),
           conditionalKey: 'system.duration.lastsUntilCured',
-          conditionalKeyLabel: 'Until cured',
+          conditionalKeyLabel: game.i18n.localize('ZWEI.actor.items.untilcured'),
         },
         {
           title: 'resist',
@@ -292,7 +292,7 @@ export function getItemGroups(groupsData) {
           size: 140,
           key: 'system.recuperationTime',
           isNumerable: true,
-          unit: ' days',
+          unit: ' ' + game.i18n.localize('ZWEI.actor.items.durationdays'),
         },
         {
           title: 'severity',
