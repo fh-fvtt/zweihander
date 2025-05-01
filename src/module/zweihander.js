@@ -175,6 +175,9 @@ Hooks.once('init', async function () {
   CONFIG.TinyMCE.skin_url = 'systems/zweihander/tinymce/skins/ui/zweihander';
   CONFIG.TinyMCE.skin = 'zweihander';
   CONFIG.TinyMCE.content_css = ['/css/mce.css', 'systems/zweihander/tinymce/skins/content/zweihander/content.css'];
+
+  // CONFIG.debug.hooks = true;
+
   CONFIG.statusEffects = ZWEI.statusEffects;
   CONFIG.ZWEI = ZWEI;
   // Define custom Document classes
