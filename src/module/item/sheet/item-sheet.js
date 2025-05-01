@@ -66,7 +66,8 @@ export default class ZweihanderItemSheet extends ItemSheet {
       case 'ancestry':
         if (droppedItem.type !== 'trait') {
           ui.notifications.error(
-            game.i18n.format("ZWEI.othermessages.notypeancestry", { type: droppedItem.type, item: "Ancestry" }));
+            game.i18n.format('ZWEI.othermessages.notypeancestry', { type: droppedItem.type, item: 'Ancestry' })
+          );
           return;
         }
 
@@ -80,7 +81,8 @@ export default class ZweihanderItemSheet extends ItemSheet {
       case 'profession':
         if (!['talent', 'trait', 'drawback'].includes(droppedItem.type)) {
           ui.notifications.error(
-            game.i18n.format("ZWEI.othermessages.notypeancestry", { type: parameters, item: "Profession" }));
+            game.i18n.format('ZWEI.othermessages.notypeancestry', { type: parameters, item: 'Profession' })
+          );
           return;
         }
 
@@ -89,7 +91,8 @@ export default class ZweihanderItemSheet extends ItemSheet {
 
           if (!['professional', 'special'].includes(category)) {
             ui.notifications.error(
-              game.i18n.format("ZWEI.othermessages.traitsprofession", { category: category.capitalize() }));
+              game.i18n.format('ZWEI.othermessages.traitsprofession', { category: category.capitalize() })
+            );
             return;
           }
 
@@ -115,7 +118,12 @@ export default class ZweihanderItemSheet extends ItemSheet {
 
             for (const p of professionTalentsMap) {
               if (p.talents.includes(droppedItem.name)) {
-                ui.notifications.error(game.i18n.format("ZWEI.othermessages.professiontalent", { profession: p.profession, talent: droppedItem.name}));
+                ui.notifications.error(
+                  game.i18n.format('ZWEI.othermessages.professiontalent', {
+                    profession: p.profession,
+                    talent: droppedItem.name,
+                  })
+                );
                 return;
               }
             }
@@ -132,7 +140,12 @@ export default class ZweihanderItemSheet extends ItemSheet {
           }
 
           if (talentList.filter((t) => t.uuid === droppedItem.uuid).length > 0) {
-            ui.notifications.error(game.i18n.format("ZWEI.othermessages.professiontalent", { profession: this.item.name, talent: droppedItem.name}));
+            ui.notifications.error(
+              game.i18n.format('ZWEI.othermessages.professiontalent', {
+                profession: this.item.name,
+                talent: droppedItem.name,
+              })
+            );
             return;
           }
 
@@ -204,10 +217,13 @@ export default class ZweihanderItemSheet extends ItemSheet {
 
       sheetData.choices.archetypes = ZweihanderUtils.selectedChoice(
         sheetData.system.archetype ?? CONFIG.ZWEI.archetypes[0],
-        CONFIG.ZWEI.archetypes.map((option) => ({
-          value: option,
-          label: game.i18n.localize('ZWEI.actor.details.labels.' + option.toLowerCase()),
-        }))
+        CONFIG.ZWEI.archetypes.map((option) => {
+          const localizedArchetype = game.i18n.localize('ZWEI.actor.details.labels.' + option.toLowerCase());
+          return {
+            value: localizedArchetype,
+            label: localizedArchetype,
+          };
+        })
       );
 
       const linkedItemDataList = [
@@ -215,19 +231,19 @@ export default class ZweihanderItemSheet extends ItemSheet {
           property: 'professionalTrait',
           label: 'Professional Trait',
           type: 'trait',
-          pack: game.settings.get("zweihander","traitPack"), // @todo: add support for FoF
+          pack: game.settings.get('zweihander', 'traitPack'), // @todo: add support for FoF
         },
         {
           property: 'specialTrait',
           label: 'Special Trait',
           type: 'trait',
-          pack: game.settings.get("zweihander","traitPack"),
+          pack: game.settings.get('zweihander', 'traitPack'),
         },
         {
           property: 'drawback',
           label: 'Drawback',
           type: 'drawback',
-          pack: game.settings.get("zweihander","drawbackPack"),
+          pack: game.settings.get('zweihander', 'drawbackPack'),
         },
       ];
 
@@ -371,7 +387,7 @@ export default class ZweihanderItemSheet extends ItemSheet {
           property: 'ancestralTrait',
           label: 'Ancestral Trait',
           type: 'trait',
-          pack: game.settings.get("zweihander","ancestralTraitPack"), // @todo: add support for FoF
+          pack: game.settings.get('zweihander', 'ancestralTraitPack'), // @todo: add support for FoF
         },
       ];
 
@@ -802,7 +818,9 @@ export default class ZweihanderItemSheet extends ItemSheet {
 
     if (item.type !== 'ancestry') return;
 
-    const worldTable = game.tables.find((table) => table.name.includes(item.name) && table.name.includes(game.i18n.localize('ITEM.TypeTrait')));
+    const worldTable = game.tables.find(
+      (table) => table.name.includes(item.name) && table.name.includes(game.i18n.localize('ITEM.TypeTrait'))
+    );
     const isWorldTableUndefined = typeof worldTable === 'undefined';
 
     // If Roll Table doesn't exist in World, use Compendium as fallback. Only works for default Ancestries.
@@ -813,7 +831,10 @@ export default class ZweihanderItemSheet extends ItemSheet {
       const characterCreationPack = game.packs.get(characterCreationPackName);
       const characterCreationPackIndex = await characterCreationPack.getIndex();
       const compendiumTableEntry = characterCreationPackIndex.find((table) => {
-        return ZweihanderUtils.normalizedIncludes(table.name, item.name) && ZweihanderUtils.normalizedIncludes(table.name, game.i18n.localize('ITEM.TypeTrait'));
+        return (
+          ZweihanderUtils.normalizedIncludes(table.name, item.name) &&
+          ZweihanderUtils.normalizedIncludes(table.name, game.i18n.localize('ITEM.TypeTrait'))
+        );
       });
 
       compendiumTable = await characterCreationPack.getDocument(compendiumTableEntry?._id);
@@ -822,7 +843,7 @@ export default class ZweihanderItemSheet extends ItemSheet {
     const isCompendiumTableUndefined = typeof compendiumTable === 'undefined';
 
     if (isWorldTableUndefined && isCompendiumTableUndefined) {
-	  ui.notifications.error(game.i18n.format('ZWEI.othermessages.noancestrytable', { ancestry: item.name }));
+      ui.notifications.error(game.i18n.format('ZWEI.othermessages.noancestrytable', { ancestry: item.name }));
       return;
     }
 

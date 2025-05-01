@@ -98,7 +98,13 @@ export default class ZweihanderPC extends ZweihanderBaseActor {
 
     // set up utility variables
     const systemData = actor.system;
-    systemData.tier = CONFIG.ZWEI.tiers[actor.items.filter((i) => i.type === 'profession').length];
+    const tierKey = CONFIG.ZWEI.tiers[actor.items.filter((i) => i.type === 'profession').length];
+
+    if (typeof tierKey === 'undefined') systemData.tier = '';
+    else
+      systemData.tier = game.i18n.localize(
+        'ZWEI.actor.tiers.' + CONFIG.ZWEI.tiers[actor.items.filter((i) => i.type === 'profession').length]
+      );
 
     // calculate primary attribute bonuses (first digit)
     Object.values(systemData.stats.primaryAttributes).forEach((a) => (a.bonus = Math.floor(a.value / 10)));

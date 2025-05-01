@@ -25,8 +25,13 @@ export default class ZweihanderProfession extends ZweihanderBaseItem {
   ];
 
   prepareDerivedData(item) {
-    if (item.system.expert.value && item.system.archetype !== 'expert profession')
-      item.system.archetype = 'expert profession';
+    const localizedExpertProfessionValue = game.i18n.localize('ZWEI.actor.details.labels.expertprofession');
+
+    if (
+      item.system.expert.value &&
+      item.system.archetype.toLowerCase().replaceAll(/\s+/g, '') !== localizedExpertProfessionValue
+    )
+      item.system.archetype = localizedExpertProfessionValue;
 
     if (!item.isOwned) return;
 
@@ -53,7 +58,11 @@ export default class ZweihanderProfession extends ZweihanderBaseItem {
 
         if (requiredSkill.system.rank < requirement.value) {
           ui.notifications.error(
-            game.i18n.format("ZWEI.othermessages.charnotmeetep", { profession: item.name, value: requirement.value, skill: requiredSkill.name})
+            game.i18n.format('ZWEI.othermessages.charnotmeetep', {
+              profession: item.name,
+              value: requirement.value,
+              skill: requiredSkill.name,
+            })
           );
           return false;
         }
@@ -63,7 +72,7 @@ export default class ZweihanderProfession extends ZweihanderBaseItem {
     if (tier > 3) return;
 
     item.updateSource({
-      'system.tier': CONFIG.ZWEI.tiers[tier],
+      'system.tier': game.i18n.localize('ZWEI.actor.tiers.' + CONFIG.ZWEI.tiers[tier]),
     });
 
     await super._preCreate(data, options, user, item);
@@ -78,7 +87,7 @@ export default class ZweihanderProfession extends ZweihanderBaseItem {
       typeof changed.system['archetype'] === 'undefined'
     ) {
       // reset to default value upon unchecking the 'Expert Profession' checkbox
-      changed.system.archetype = 'Academic';
+      changed.system.archetype = game.i18n.localize('ZWEI.actor.details.labels.academic');
 
       // reset the requirement entries upon unchecking the 'Expert Profession' checkbox
       if (typeof changed.system.expert['requirements'] !== 'undefined')

@@ -1,6 +1,7 @@
 import ZweihanderActorConfig from '../../apps/actor-config';
 import ZweihanderBaseActorSheet from './base-actor-sheet';
 import * as ZweihanderDice from '../../dice';
+import * as ZweihanderUtils from '../../utils';
 import { attachTabDefinitions, getItemGroups } from './character-sheet-tabs-def';
 import { getPacks } from '../../utils';
 
@@ -51,11 +52,8 @@ export default class ZweihanderCharacterSheet extends ZweihanderBaseActorSheet {
         this.actor._source.system.stats.primaryAttributes[`${pa}`].value;
 
     if (sheetData.settings.trackRewardPoints) {
-      const tierMultiplier = {
-        Basic: 100,
-        Intermediate: 200,
-        Advanced: 300,
-      };
+      const tierMultiplier = ZweihanderUtils.getLocalizedRewardPointMapping();
+
       sheetData.system.stats.rewardPoints.spent = sheetData.professions
         .map((profession) => tierMultiplier[profession.system.tier] * profession.system.advancesPurchased)
         .concat(sheetData.uniqueAdvances.map((advance) => advance.system.rewardPointCost))
@@ -90,7 +88,7 @@ export default class ZweihanderCharacterSheet extends ZweihanderBaseActorSheet {
       {
         value:
           [...sheetData.professions]?.sort((professionA, professionB) => {
-            const tiers = { Basic: 1, Intermediate: 2, Advanced: 3 };
+            const tiers = ZweihanderUtils.getLocalizedTierMapping();
             return tiers[professionA.system.tier] - tiers[professionB.system.tier];
           })[sheetData.professions.length - 1]?.name ?? '?',
         hidden,
@@ -205,6 +203,9 @@ export default class ZweihanderCharacterSheet extends ZweihanderBaseActorSheet {
       .filter((i) => indexedTypes.includes(i.type))
       .sort((a, b) => (a.sort || 0) - (b.sort || 0))
       .forEach((i) => sheetData[pluralize(i.type)].push(i));
+
+    // @todo: figure out order of Traits / Drawbacks
+
     // sort skills alphabetically
     sheetData.skills = sheetData.skills.sort((a, b) => {
       const aloc = a.name;
@@ -212,9 +213,10 @@ export default class ZweihanderCharacterSheet extends ZweihanderBaseActorSheet {
       return aloc.localeCompare(bloc);
     });
     // sort professions by tier
-    sheetData.professions = sheetData.professions.sort(
-      (a, b) => CONFIG.ZWEI.tiersInversed[a.system.tier] - CONFIG.ZWEI.tiersInversed[b.system.tier]
-    );
+    sheetData.professions = sheetData.professions.sort((a, b) => {
+      const tiersInversed = ZweihanderUtils.getLocalizedTierMapping();
+      tiersInversed[a.system.tier] - tiersInversed[b.system.tier];
+    });
 
     const effectGroups = this.prepareActiveEffectGroups();
 
@@ -303,7 +305,9 @@ export default class ZweihanderCharacterSheet extends ZweihanderBaseActorSheet {
       const professionItem = this.actor.items.get($(professionElement).data('itemId'));
       const locked = professionItem.system.completed && this.actor.system.tier !== professionItem.system.tier;
       if (locked) {
-        ui.notifications.error(game.i18n.format("ZWEI.othermessages.cannotperformtier", { tier: professionItem.system.tier}));
+        ui.notifications.error(
+          game.i18n.format('ZWEI.othermessages.cannotperformtier', { tier: professionItem.system.tier })
+        );
         return;
       }
       const updated = professionItem.system[field].map((x, i) => (i === index ? { ...x, purchased: !x.purchased } : x));

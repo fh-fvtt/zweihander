@@ -19,6 +19,18 @@ export function getSymmetricDifference(a, b) {
   return [...a.filter((item) => !b.includes(item)), ...b.filter((item) => !a.includes(item))];
 }
 
+export function getLocalizedTierMapping(isRewardPointMapping = false) {
+  const multiplier = isRewardPointMapping ? 100 : 1;
+  return Object.values(CONFIG.ZWEI.tiers).reduce(
+    (acc, val, idx) => ({ ...acc, [game.i18n.localize(`ZWEI.actor.tiers.${val}`)]: (idx + 1) * multiplier }),
+    {}
+  );
+}
+
+export function getLocalizedRewardPointMapping() {
+  return getLocalizedTierMapping(true);
+}
+
 export const primaryAttributeMapping = {
   C: 'combat',
   B: 'brawn',

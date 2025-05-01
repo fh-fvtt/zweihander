@@ -59,14 +59,9 @@ ZWEI.altPerilOptions = ['incapacitated', 'penalty20', 'penalty10', 'penalty5', '
 ZWEI.damageOptions = ['slain', 'grievously', 'seriously', 'moderately', 'lightly', 'unharmed'];
 ZWEI.vehicleDamageOptions = ['wrecked', 'gSmashed', 'sSmashed', 'mSmashed', 'lSmashed', 'fixed'];
 ZWEI.tiers = {
-  1: 'Basic',
-  2: 'Intermediate',
-  3: 'Advanced',
-};
-ZWEI.tiersInversed = {
-  Basic: 1,
-  Intermediate: 2,
-  Advanced: 3,
+  1: 'basic',
+  2: 'intermediate',
+  3: 'advanced',
 };
 
 ZWEI.alternativePerilTable = {
