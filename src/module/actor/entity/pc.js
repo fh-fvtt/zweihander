@@ -240,6 +240,12 @@ export default class ZweihanderPC extends ZweihanderBaseActor {
       }
     }
 
+    const actorConfig = ZweihanderActorConfig.getConfig(actor);
+    const selectableTests = ['parry', 'dodge', 'magick'];
+
+    for (const test of selectableTests)
+      update[`system.stats.secondaryAttributes.${test}.associatedSkill`] = actorConfig[`${test}Skills`][0];
+
     if (!update.token) update.prototypeToken = {};
 
     update.prototypeToken.actorLink = true;
