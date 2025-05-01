@@ -65,7 +65,8 @@ export default class ZweihanderItemSheet extends ItemSheet {
     switch (item.type) {
       case 'ancestry':
         if (droppedItem.type !== 'trait') {
-          ui.notifications.error(`Item of type '${droppedItem.type}' cannot be added to an Ancestry Item.`);
+          ui.notifications.error(
+            game.i18n.format("ZWEI.othermessages.notypeancestry", { type: droppedItem.type, item: "Ancestry" }));
           return;
         }
 
@@ -78,7 +79,8 @@ export default class ZweihanderItemSheet extends ItemSheet {
 
       case 'profession':
         if (!['talent', 'trait', 'drawback'].includes(droppedItem.type)) {
-          ui.notifications.error(`Item of type '${droppedItem.type}' cannot be added to a Profession Item.`);
+          ui.notifications.error(
+            game.i18n.format("ZWEI.othermessages.notypeancestry", { type: parameters, item: "Profession" }));
           return;
         }
 
@@ -86,7 +88,8 @@ export default class ZweihanderItemSheet extends ItemSheet {
           const category = droppedItem.system.category;
 
           if (!['professional', 'special'].includes(category)) {
-            ui.notifications.error(`${category.capitalize()} Traits cannot be added to a Profession Item.`);
+            ui.notifications.error(
+              game.i18n.format("ZWEI.othermessages.traitsprofession", { category: category.capitalize() }));
             return;
           }
 
@@ -112,9 +115,7 @@ export default class ZweihanderItemSheet extends ItemSheet {
 
             for (const p of professionTalentsMap) {
               if (p.talents.includes(droppedItem.name)) {
-                ui.notifications.error(
-                  `Profession (${p.profession}) already has following Talent: ${droppedItem.name}`
-                );
+                ui.notifications.error(game.i18n.format("ZWEI.othermessages.professiontalent", { profession: p.profession, talent: droppedItem.name}));
                 return;
               }
             }
@@ -126,14 +127,12 @@ export default class ZweihanderItemSheet extends ItemSheet {
           });
 
           if (talentList.filter((t) => t.uuid !== '').length >= 3) {
-            ui.notifications.error(
-              'A Profession can have a maximum of 3 Talents. Please delete one of the existing Talents before attempting to add a new one.'
-            );
+            ui.notifications.error(game.i18n.localize('ZWEI.othermessages.nomoretalents'));
             return;
           }
 
           if (talentList.filter((t) => t.uuid === droppedItem.uuid).length > 0) {
-            ui.notifications.error(`Profession (${this.item.name}) already has following Talent: ${droppedItem.name}`);
+            ui.notifications.error(game.i18n.format("ZWEI.othermessages.professiontalent", { profession: this.item.name, talent: droppedItem.name}));
             return;
           }
 
@@ -207,7 +206,7 @@ export default class ZweihanderItemSheet extends ItemSheet {
         sheetData.system.archetype ?? CONFIG.ZWEI.archetypes[0],
         CONFIG.ZWEI.archetypes.map((option) => ({
           value: option,
-          label: option,
+          label: game.i18n.localize('ZWEI.actor.details.labels.' + option.toLowerCase()),
         }))
       );
 
@@ -216,19 +215,19 @@ export default class ZweihanderItemSheet extends ItemSheet {
           property: 'professionalTrait',
           label: 'Professional Trait',
           type: 'trait',
-          pack: 'zweihander.zh-traits', // @todo: add support for FoF
+          pack: game.settings.get("zweihander","traitPack"), // @todo: add support for FoF
         },
         {
           property: 'specialTrait',
           label: 'Special Trait',
           type: 'trait',
-          pack: 'zweihander.zh-traits',
+          pack: game.settings.get("zweihander","traitPack"),
         },
         {
           property: 'drawback',
           label: 'Drawback',
           type: 'drawback',
-          pack: 'zweihander.zh-drawbacks',
+          pack: game.settings.get("zweihander","drawbackPack"),
         },
       ];
 
@@ -372,7 +371,7 @@ export default class ZweihanderItemSheet extends ItemSheet {
           property: 'ancestralTrait',
           label: 'Ancestral Trait',
           type: 'trait',
-          pack: 'zweihander.zh-ancestral-traits', // @todo: add support for FoF
+          pack: game.settings.get("zweihander","ancestralTraitPack"), // @todo: add support for FoF
         },
       ];
 
@@ -413,8 +412,7 @@ export default class ZweihanderItemSheet extends ItemSheet {
   _prepareGoverningAttributeData(sheetData, primaryAttributes, primaryAttributeBonuses, key) {
     return primaryAttributes.reduce((acc, val, idx) => {
       const attributeBonus = '[' + primaryAttributeBonuses[idx] + ']';
-      const attributeBonusLabel = val.capitalize() + ' Bonus';
-
+      const attributeBonusLabel = game.i18n.localize('ZWEI.actor.primarybonuses.' + val.toLowerCase());
       return acc.concat([
         {
           label: attributeBonusLabel,
@@ -632,7 +630,7 @@ export default class ZweihanderItemSheet extends ItemSheet {
       const advancesUpdated = advances.sort((a, b) => a.name.localeCompare(b.name));
 
       if (advancesUpdated.length <= 7) await item.update({ ['system.bonusAdvances']: advancesUpdated });
-      else ui.notifications.error('A Profession cannot have more than 7 Bonus Advances.');
+      else ui.notifications.error(game.i18n.localize('ZWEI.othermessages.nomoreba'));
     });
 
     html.find('.numerable-field-subtract.advance').click(async (event) => {
@@ -664,7 +662,7 @@ export default class ZweihanderItemSheet extends ItemSheet {
 
         if (advancesUpdated.length >= 0) await item.update({ ['system.bonusAdvances']: advancesUpdated });
       } else {
-        ui.notifications.error('A Bonus Advance cannot be negative.');
+        ui.notifications.error(game.i18n.localize('ZWEI.othermessages.nonegativeba'));
       }
     });
 
@@ -804,7 +802,7 @@ export default class ZweihanderItemSheet extends ItemSheet {
 
     if (item.type !== 'ancestry') return;
 
-    const worldTable = game.tables.find((table) => table.name.includes(item.name));
+    const worldTable = game.tables.find((table) => table.name.includes(item.name) && table.name.includes(game.i18n.localize('ITEM.TypeTrait')));
     const isWorldTableUndefined = typeof worldTable === 'undefined';
 
     // If Roll Table doesn't exist in World, use Compendium as fallback. Only works for default Ancestries.
@@ -815,7 +813,7 @@ export default class ZweihanderItemSheet extends ItemSheet {
       const characterCreationPack = game.packs.get(characterCreationPackName);
       const characterCreationPackIndex = await characterCreationPack.getIndex();
       const compendiumTableEntry = characterCreationPackIndex.find((table) => {
-        return ZweihanderUtils.normalizedIncludes(table.name, item.name);
+        return ZweihanderUtils.normalizedIncludes(table.name, item.name) && ZweihanderUtils.normalizedIncludes(table.name, game.i18n.localize('ITEM.TypeTrait'));
       });
 
       compendiumTable = await characterCreationPack.getDocument(compendiumTableEntry?._id);
@@ -824,7 +822,7 @@ export default class ZweihanderItemSheet extends ItemSheet {
     const isCompendiumTableUndefined = typeof compendiumTable === 'undefined';
 
     if (isWorldTableUndefined && isCompendiumTableUndefined) {
-      ui.notifications.error(`No Roll Table found in World or Compendium for following Ancestry: ${item.name}`);
+	  ui.notifications.error(game.i18n.format('ZWEI.othermessages.noancestrytable', { ancestry: item.name }));
       return;
     }
 

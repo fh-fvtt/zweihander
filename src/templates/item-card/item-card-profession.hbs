@@ -29,7 +29,7 @@
       <dd>{{system.expert.requirements}}</dd>
       {{/if}}
       <dt>{{localize "ZWEI.actor.items.skillranks"}}</dt>
-      <dd>{{#each system.skillRanks}}{{zhLocalizeConditional "ZWEI.actor.skills." name}}{{#unless @last}}, {{/unless}}{{/each}}</dd>
+      <dd>{{#each system.skillRanks}}{{name}}{{#unless @last}}, {{/unless}}{{/each}}</dd>
       <dt>{{localize "ZWEI.actor.items.bonusadvances"}}</dt>
       <dd>{{#each system.bonusAdvances}}[{{localize (zhConcat "ZWEI.actor.bonusesabbr." (zhLowerCaseBrackets name))}}]{{#unless @last}}, {{/unless}}{{/each}}</dd>
       <dt>{{localize "ZWEI.actor.items.talents"}}</dt>

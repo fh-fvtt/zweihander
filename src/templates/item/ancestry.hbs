@@ -1,8 +1,8 @@
 <fieldset>
-  <legend>Ancestral Modifiers</legend>
+  <legend>{{localize "ZWEI.actor.items.ancestralmodifiers"}}</legend>
   <header class='ancestral-modifiers-change ancestral-modifiers-header flexrow'>
-    <div class='key'>Modifier</div>
-    <div class='value'>Value</div>
+    <div class='key'>{{localize "ZWEI.actor.items.modifier"}}</div>
+    <div class='value'>{{localize "ZWEI.actor.items.value"}}</div>
     <div class='ancestral-modifiers-controls'>
       <a class='ancestral-modifiers-control' data-action='add'><i class='far fa-plus-square'></i></a>
     </div>
@@ -26,15 +26,15 @@
   </ol>
 </fieldset>
 <fieldset>
-  <legend>Ancestral Trait</legend>
+  <legend>{{localize "ZWEI.actor.items.ancestraltrait"}}</legend>
   <div class="form-group">
-    <label>Trait</label>
+    <label>{{localize "ITEM.TypeTrait"}}</label>
     <div class="roll-container">
       {{> ($$ 'partials/detail-item-wrapper') ancestralTraitWrapperData editable=editable}}
       <button
         type="button"
         class="randomize-trait icon fa-solid fa-shuffle"
-        data-tooltip="Randomize {{ name }} Trait"
+        data-tooltip="{{localize 'ZWEI.actor.items.randomize'}} {{localize 'ITEM.TypeTrait'}}: {{ name }}"
         data-tooltip-direction="UP"
       ></button>
     </div>

@@ -1,7 +1,7 @@
 <fieldset>
-  <legend>Governing Attribute</legend>
+  <legend>{{localize "ZWEI.actor.items.governingattribute"}}</legend>
   <div class="form-group stacked">
-    <label>Primary Attribute</label>
+    <label>{{localize "ZWEI.actor.items.primaryattribute"}}</label>
     <select name="system.associatedPrimaryAttribute">
       {{#each choices.associatedPrimaryAttribute}}
         <option value="{{value}}" {{selected}}>{{localize
@@ -13,9 +13,9 @@
 </fieldset>
 
 <fieldset>
-  <legend>Misc.</legend>
+  <legend>{{localize "ZWEI.actor.items.misc"}}</legend>
   <div class="form-group stacked">
-    <label>Special Skill</label>
+    <label>{{localize "ZWEI.actor.items.specialskill"}}</label>
     <input name="system.requiresTraining" type="checkbox" class="link-checkbox" {{checked system.requiresTraining}} />
   </div>
   <div class="form-group stacked">

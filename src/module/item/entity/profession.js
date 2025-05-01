@@ -53,7 +53,7 @@ export default class ZweihanderProfession extends ZweihanderBaseItem {
 
         if (requiredSkill.system.rank < requirement.value) {
           ui.notifications.error(
-            `Character does not meet Expert Profession (${item.name}) requirements: "You must possess at least ${requirement.value} Skill Rank(s) in ${requiredSkill.name}"`
+            game.i18n.format("ZWEI.othermessages.charnotmeetep", { profession: item.name, value: requirement.value, skill: requiredSkill.name})
           );
           return false;
         }

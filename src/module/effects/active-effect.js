@@ -16,7 +16,7 @@ export default class ZweihanderActiveEffect extends ActiveEffect {
       if (changed.system['isActive'] !== undefined && !carried) {
         changed.system.isActive = false;
         ui.notifications.warn(
-          `Cannot enable Active Effect: Item '${parent.name}' is currently unequipped or not being carried.`
+          game.i18n.format("ZWEI.othermessages.cannotenableae", { item: parent.name})
         );
       }
     }

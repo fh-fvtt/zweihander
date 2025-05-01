@@ -1,5 +1,5 @@
 <fieldset>
-  <legend>Incapacity</legend>
+  <legend>{{localize "ZWEI.actor.items.incapacity"}}</legend>
   <div class="form-group stacked">
     <label>{{localize "ZWEI.actor.items.effect"}}</label>
     {{editor
@@ -13,7 +13,7 @@
   </div>
   {{#if actor}}
     <div class="form-group">
-      <label>{{localize "ZWEI.actor.items.recuperationtime"}} in Days</label>
+      <label>{{localize "ZWEI.actor.items.recuperationtime"}} ({{localize "ZWEI.actor.items.durationdays"}})</label>
       <input name="system.recuperationTime" type="number" value="{{system.recuperationTime}}" />
     </div>
 
@@ -25,9 +25,9 @@
 </fieldset>
 
 <fieldset>
-  <legend>Misc.</legend>
+  <legend>{{localize "ZWEI.actor.items.misc"}}</legend>
   <div class="form-group">
-    <label>Injury {{localize "ZWEI.actor.items.severity"}}</label>
+    <label>{{localize "ZWEI.actor.items.severity"}}</label>
     <select name="system.severity">
       {{#each choices.severities}}
         <option value="{{value}}" {{selected}}>{{localize (zhConcat "ZWEI.actor.items.injuryseverity." label)}}</option>

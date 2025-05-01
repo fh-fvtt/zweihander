@@ -1,6 +1,6 @@
 <fieldset>
   <legend>
-    Traits & Drawback
+    {{localize 'ZWEI.actor.items.traitsdrawback'}}
   </legend>
   <div class='form-group'>
     <label>{{localize 'ZWEI.actor.items.professionaltrait'}}</label>
@@ -19,7 +19,7 @@
 </fieldset>
 <fieldset>
   <legend>
-    Character Advances
+    {{localize 'ZWEI.actor.items.charadvances'}}
   </legend>
   <div class='form-group'>
     <label>{{localize 'ZWEI.actor.items.skillranks'}}</label>
@@ -29,7 +29,7 @@
   </div>
 
   <div class="form-group">
-    <label class="formula-label">Bonus Advances</label>
+    <label class="formula-label">{{localize 'ZWEI.actor.items.bonusadvances'}}</label>
     <div class="numerable-inputs flexrow">
       {{#each bonusAdvancesOptions as |bonusAdvance|}}
         <div class="form-group label-top">
@@ -45,7 +45,7 @@
   </div>
 
   <div class='form-group talents'>
-    <label>Talents</label>
+    <label>{{localize 'ZWEI.actor.items.talents'}}</label>
     {{> ($$ 'partials/detail-item-wrapper') talentWrapperDataList.[0] editable=editable}}
   </div>
 
@@ -61,9 +61,9 @@
 
 </fieldset>
 <fieldset>
-  <legend>Misc.</legend>
+  <legend>{{localize 'ZWEI.actor.items.misc'}}</legend>
   <div class='form-group'>
-    <label>Expert Profession</label>
+    <label>{{localize 'ZWEI.actor.items.expertprofession'}}</label>
     <input name='system.expert.value' type='checkbox' class='link-checkbox' {{checked system.expert.value}} />
   </div>
 
@@ -78,8 +78,8 @@
 
   {{#if system.expert.value}}
     <header class='requirements-change requirements-header flexrow'>
-      <div class='key'>Skill</div>
-      <div class='value'>Ranks Required</div>
+      <div class='key'>{{localize 'ITEM.TypeSkill'}}</div>
+      <div class='value'>{{localize 'ZWEI.actor.items.ranksrequired'}}</div>
       <div class='requirements-controls'>
         <a class='requirements-control' data-action='add'><i class='far fa-plus-square'></i></a>
       </div>
@@ -103,7 +103,7 @@
     </ol>
 
     <div class='form-group'>
-      <label class='other-requirements'>Additional Requirements</label>
+      <label class='other-requirements'>{{localize 'ZWEI.actor.items.additionalreq'}}</label>
       {{editor
         system.expert.requirements.additional
         target='system.expert.requirements.additional'

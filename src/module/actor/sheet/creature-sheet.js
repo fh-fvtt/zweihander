@@ -128,8 +128,8 @@ export default class ZweihanderCreatureSheet extends ZweihanderBaseActorSheet {
       .forEach((i) => sheetData[pluralize(i.type)].push(i));
     // sort skills alphabetically
     sheetData.skills = sheetData.skills.sort((a, b) => {
-      const aloc = game.i18n.localize('ZWEI.actor.skills.' + a.name.toLowerCase().replace(/\s+/g, ''));
-      const bloc = game.i18n.localize('ZWEI.actor.skills.' + b.name.toLowerCase().replace(/\s+/g, ''));
+      const aloc = a.name;
+      const bloc = b.name;
       return aloc.localeCompare(bloc);
     });
     // add base chance to weapon data
@@ -137,7 +137,7 @@ export default class ZweihanderCreatureSheet extends ZweihanderBaseActorSheet {
       const skill = sheetData.skills.find((s) => s.name === w.system.associatedSkill);
       if (!skill) {
         ui.notifications.warn(
-          `Associated Skill '${w.system.associatedSkill}' in Weapon '${w.name}' is not a valid Skill. Please change the associated Skill for Weapon '${w.name}.'`,
+          game.i18n.format("ZWEI.othermessages.noskillweapon", { skill: w.system.associatedSkill, weapon: w.name }),
           { permanent: true }
         );
         return w;

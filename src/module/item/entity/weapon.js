@@ -31,9 +31,9 @@ export default class ZweihanderWeapon extends ZweihanderBaseItem {
       const governingDistanceAttribute =
         typeof item.system.distance?.base !== 'undefined' ? item.system.distance.base : '[PB]'; // @todo: localize
 
-      distanceFormula = `${governingDistanceAttribute} + ${item.system.distance.bonus} yd.`;
+      distanceFormula = `${governingDistanceAttribute} + ${item.system.distance.bonus} ` + game.i18n.localize("ZWEI.actor.details.labels.yardabbr");
     } else {
-      distanceFormula = `Engaged${item.system.distance.bonus ? ' or ' + item.system.distance.bonus + ' yd.' : ''}`;
+      distanceFormula = game.i18n.localize("ZWEI.actor.items.engaged") + `${item.system.distance.bonus ? ' ' + game.i18n.localize("ZWEI.actor.items.or") + ' ' + item.system.distance.bonus + ' ' + game.i18n.localize("ZWEI.actor.details.labels.yardabbr") : ''}`;
     }
 
     // @todo: remove in future version, this IF is here just to avoid errors when migrating from 5.4.1 -> 5.5.x

@@ -207,8 +207,8 @@ export default class ZweihanderCharacterSheet extends ZweihanderBaseActorSheet {
       .forEach((i) => sheetData[pluralize(i.type)].push(i));
     // sort skills alphabetically
     sheetData.skills = sheetData.skills.sort((a, b) => {
-      const aloc = game.i18n.localize('ZWEI.actor.skills.' + a.name.toLowerCase().replace(/\s+/g, ''));
-      const bloc = game.i18n.localize('ZWEI.actor.skills.' + b.name.toLowerCase().replace(/\s+/g, ''));
+      const aloc = a.name;
+      const bloc = b.name;
       return aloc.localeCompare(bloc);
     });
     // sort professions by tier
@@ -303,7 +303,7 @@ export default class ZweihanderCharacterSheet extends ZweihanderBaseActorSheet {
       const professionItem = this.actor.items.get($(professionElement).data('itemId'));
       const locked = professionItem.system.completed && this.actor.system.tier !== professionItem.system.tier;
       if (locked) {
-        ui.notifications.error(`Cannot perform operation: ${professionItem.system.tier} Tier locked.`);
+        ui.notifications.error(game.i18n.format("ZWEI.othermessages.cannotperformtier", { tier: professionItem.system.tier}));
         return;
       }
       const updated = professionItem.system[field].map((x, i) => (i === index ? { ...x, purchased: !x.purchased } : x));
