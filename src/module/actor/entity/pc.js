@@ -2,6 +2,8 @@ import ZweihanderBaseActor from './base-actor';
 import * as ZweihanderUtils from '../../utils';
 import ZweihanderActorConfig from '../../apps/actor-config';
 
+const { DialogV2 } = foundry.applications.api;
+
 export default class ZweihanderPC extends ZweihanderBaseActor {
   // parry, dodge & magick depend on Item preparation being finished
   prepareEmbeddedDocuments(actor) {
@@ -254,13 +256,14 @@ export default class ZweihanderPC extends ZweihanderBaseActor {
     if (injurySettingEnabled && newDamage !== undefined && newDamage < oldDamage && newDamage > 0 && newDamage <= 3) {
       let injuryToRoll = newDamage == 3 ? 'moderate' : newDamage == 2 ? 'serious' : 'grievous';
 
-      await Dialog.confirm({
-        title: `${actor.name}: ` + game.i18n.localize('ZWEI.othermessages.injuryconfig'),
+      await DialogV2.confirm({
+        window: { title: `${actor.name}: ` + game.i18n.localize('ZWEI.othermessages.injuryconfig') },
         content: game.i18n.format('ZWEI.othermessages.rollinjury', {
           injury: game.i18n.localize('ZWEI.actor.conditions.' + injuryToRoll.toLowerCase() + 'ly'),
         }),
-        yes: () => this._rollInjury(injuryToRoll, actor),
+        yes: { callback: () => this._rollInjury(injuryToRoll, actor) },
         defaultYes: false,
+        rejectClose: true,
       });
     }
   }
