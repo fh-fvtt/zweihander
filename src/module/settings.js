@@ -236,6 +236,7 @@ export const registerCompendiumSettings = function () {
     default: 'zweihander.zh-gm-tables',
     choices: compendiumPacks,
     config: true,
+    requiresReload: true,
   });
 
   game.settings.register('zweihander', 'skillPack', {
@@ -247,6 +248,7 @@ export const registerCompendiumSettings = function () {
     choices: compendiumPacks,
     config: true,
     onChange: updateActorSkillsFromPack,
+    requiresReload: true,
   });
 
   [
@@ -331,6 +333,7 @@ export const registerCompendiumSettings = function () {
       default: `zweihander.zh-${entry.compendium}`,
       choices: compendiumPacks,
       config: true,
+      requiresReload: true,
     });
   });
 
@@ -341,6 +344,7 @@ export const registerCompendiumSettings = function () {
     type: String,
     default: 'zweihander.zh-charactercreation-tables',
     config: true,
+    requiresReload: true,
   });
 };
 

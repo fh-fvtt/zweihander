@@ -14,6 +14,10 @@ body.game.vtt.system-zweihander .zweihander.sheet.actor {
       min-width: 125px;
       max-width: 185px;
       border-right: 2px groove var(--zh-clr-bg2);
+
+      .profile-image {
+        border: none;
+      }
     }
   }
 
