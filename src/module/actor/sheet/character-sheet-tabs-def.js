@@ -298,7 +298,7 @@ export function getItemGroups(groupsData) {
           title: 'severity',
           size: 140,
           value: function () {
-            return CONFIG.ZWEI.injurySeverities[this.system.severity].label;
+            return game.i18n.localize('ZWEI.actor.items.injuryseverity.' + CONFIG.ZWEI.injurySeverities[this.system.severity].label.toLowerCase());
           },
         },
         {
