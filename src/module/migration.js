@@ -84,9 +84,9 @@ const migrateCompendium = async (pack) => {
     let updateData = {};
     try {
       switch (entity) {
-        case 'Actor':
+        /* case 'Actor':
           updateData = await migrateActorData(doc.toObject());
-          break;
+          break; */
         case 'Item':
           updateData = await migrateItemData(doc);
           break;
