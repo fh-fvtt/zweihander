@@ -408,13 +408,13 @@ export const registerHandlebarHelpers = async function () {
         }`;
   });
 
-  $$('stringcompare', function (variableOne, comparator, variableTwo) {
+  /* $$('stringcompare', function (variableOne, comparator, variableTwo) {
     if (eval('"' + variableOne + '"' + comparator + '"' + variableTwo + '"')) {
       return true;
     } else {
       return false;
     }
-  });
+  }); */
 
   /* $$('betweenparentheses', function (txt) {
     const parentheses = txt.match(/\(([^)]+)\)/);
