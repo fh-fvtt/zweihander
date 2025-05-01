@@ -770,7 +770,18 @@
       "entervalue": "Enter values here",
       "injurytablemismatch": "{severity} Injuries table not found in Compendium Pack \"{pack}\". Please adjust the Injury List in Game Settings.",
       "injurytableerror": "Compendium \"{pack}\" not found. Please adjust the Injury List in Game Settings.",
-	  "noancestrytable": "No Roll Table found in World or Compendium for Ancestry \"{ancestry}\""
+      "noancestrytable": "No Roll Table found in World or Compendium for Ancestry \"{ancestry}\"",
+      "nonegativeba": "A Bonus Advance cannot be negative.",
+      "nomoreba": "A Profession cannot have more than 7 Bonus Advances.",
+      "nomoretalents": "A Profession can have a maximum of 3 Talents. Please delete one of the existing Talents before attempting to add a new one.",
+      "professiontalent": "Profession {profession} already has following Talent: {talent}",
+      "traitsprofession": "{category} Traits cannot be added to a Profession Item.",
+      "notypeancestry": "Item of type {type} cannot be added to an {item} Item.",
+      "charnotmeetep": "Character does not meet Expert Profession ({profession}) requirements: \"You must possess at least {value} Skill Rank(s) in {skill}\"",
+      "cannotenableae": "Cannot enable Active Effect: Item \"{item}\" is currently unequipped or not being carried.",
+      "actoralready": "Actor \"{actor}\" is already an occupant of this vehicle.",
+      "noskillweapon": "Associated Skill \"{skill}\" in Weapon \"{weapon}\" is not a valid Skill. Please change the associated Skill for Weapon \"{weapon}.\"",
+      "cannotperformtier": "Cannot perform operation: {tier} Tier locked."
     },
     "coinage": {
       "gc": "gc",

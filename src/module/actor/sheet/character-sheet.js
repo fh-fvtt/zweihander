@@ -303,7 +303,7 @@ export default class ZweihanderCharacterSheet extends ZweihanderBaseActorSheet {
       const professionItem = this.actor.items.get($(professionElement).data('itemId'));
       const locked = professionItem.system.completed && this.actor.system.tier !== professionItem.system.tier;
       if (locked) {
-        ui.notifications.error(`Cannot perform operation: ${professionItem.system.tier} Tier locked.`);
+        ui.notifications.error(game.i18n.format("ZWEI.othermessages.cannotperformtier", { tier: professionItem.system.tier}));
         return;
       }
       const updated = professionItem.system[field].map((x, i) => (i === index ? { ...x, purchased: !x.purchased } : x));

@@ -65,7 +65,8 @@ export default class ZweihanderItemSheet extends ItemSheet {
     switch (item.type) {
       case 'ancestry':
         if (droppedItem.type !== 'trait') {
-          ui.notifications.error(`Item of type '${droppedItem.type}' cannot be added to an Ancestry Item.`);
+          ui.notifications.error(
+            game.i18n.format("ZWEI.othermessages.notypeancestry", { type: droppedItem.type, item: "Ancestry" }));
           return;
         }
 
@@ -78,7 +79,8 @@ export default class ZweihanderItemSheet extends ItemSheet {
 
       case 'profession':
         if (!['talent', 'trait', 'drawback'].includes(droppedItem.type)) {
-          ui.notifications.error(`Item of type '${droppedItem.type}' cannot be added to a Profession Item.`);
+          ui.notifications.error(
+            game.i18n.format("ZWEI.othermessages.notypeancestry", { type: parameters, item: "Profession" }));
           return;
         }
 
@@ -86,7 +88,8 @@ export default class ZweihanderItemSheet extends ItemSheet {
           const category = droppedItem.system.category;
 
           if (!['professional', 'special'].includes(category)) {
-            ui.notifications.error(`${category.capitalize()} Traits cannot be added to a Profession Item.`);
+            ui.notifications.error(
+              game.i18n.format("ZWEI.othermessages.traitsprofession", { category: category.capitalize() }));
             return;
           }
 
@@ -112,9 +115,7 @@ export default class ZweihanderItemSheet extends ItemSheet {
 
             for (const p of professionTalentsMap) {
               if (p.talents.includes(droppedItem.name)) {
-                ui.notifications.error(
-                  `Profession (${p.profession}) already has following Talent: ${droppedItem.name}`
-                );
+                ui.notifications.error(game.i18n.format("ZWEI.othermessages.professiontalent", { profession: p.profession, talent: droppedItem.name}));
                 return;
               }
             }
@@ -126,14 +127,12 @@ export default class ZweihanderItemSheet extends ItemSheet {
           });
 
           if (talentList.filter((t) => t.uuid !== '').length >= 3) {
-            ui.notifications.error(
-              'A Profession can have a maximum of 3 Talents. Please delete one of the existing Talents before attempting to add a new one.'
-            );
+            ui.notifications.error(game.i18n.localize('ZWEI.othermessages.nomoretalents'));
             return;
           }
 
           if (talentList.filter((t) => t.uuid === droppedItem.uuid).length > 0) {
-            ui.notifications.error(`Profession (${this.item.name}) already has following Talent: ${droppedItem.name}`);
+            ui.notifications.error(game.i18n.format("ZWEI.othermessages.professiontalent", { profession: this.item.name, talent: droppedItem.name}));
             return;
           }
 
@@ -631,7 +630,7 @@ export default class ZweihanderItemSheet extends ItemSheet {
       const advancesUpdated = advances.sort((a, b) => a.name.localeCompare(b.name));
 
       if (advancesUpdated.length <= 7) await item.update({ ['system.bonusAdvances']: advancesUpdated });
-      else ui.notifications.error('A Profession cannot have more than 7 Bonus Advances.');
+      else ui.notifications.error(game.i18n.localize('ZWEI.othermessages.nomoreba'));
     });
 
     html.find('.numerable-field-subtract.advance').click(async (event) => {
@@ -663,7 +662,7 @@ export default class ZweihanderItemSheet extends ItemSheet {
 
         if (advancesUpdated.length >= 0) await item.update({ ['system.bonusAdvances']: advancesUpdated });
       } else {
-        ui.notifications.error('A Bonus Advance cannot be negative.');
+        ui.notifications.error(game.i18n.localize('ZWEI.othermessages.nonegativeba'));
       }
     });
 

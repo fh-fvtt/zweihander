@@ -770,7 +770,18 @@
       "entervalue": "Nuevo",
       "injurytablemismatch": "No se ha encontrado la tabla de heridas {severity} en el compendio \"{pack}\". Por favor, corrija el listado de tablas de heridas en los ajustes del sistema.",
       "injurytableerror": "No se ha encontrado el compendio \"{pack}\". Por favor, corrija el listado de tablas de heridas en los ajustes del sistema.",
-	  "noancestrytable": "No se ha encontrado ninguna tabla aleatoria en el mundo o el compendio para el ancestro \"{ancestry}\""
+      "noancestrytable": "No se ha encontrado ninguna tabla aleatoria en el mundo o el compendio para el ancestro \"{ancestry}\"",
+      "nonegativeba": "Los bonos de avance no pueden ser negativos.",
+      "nomoreba": "Una profesión no puede tener más de 7 avances.",
+      "nomoretalents": "Una profesión tiene un máximo de 3 talentos. Por favor, elimine uno de los talentos actuales antes de añadir uno nuevo.",
+      "professiontalent": "La profesión {profession} ya tiene el talento: {talent}",
+      "traitsprofession": "Los rasgos {category} no se pueden añadir a un objeto de tipo profesión.",
+      "notypeancestry": "Un objeto de tipo {type} no se puede añadir a un objeto {item}.",
+      "charnotmeetep": "El personaje no cumple los requerimientos de la profesión avanzada ({profession}): \"Dete tener al menos {value} nivel(es) en {skill}\"",
+      "cannotenableae": "No se puede activa el Efecto Activo: El objeto \"{item}\" no está equipado ni portado.",
+      "actoralready": "El actor \"{actor}\" ya es un ocupante de este vehículo.",
+      "noskillweapon": "La habilidad asociada \"{skill}\" del arma \"{weapon}\" no es válida. Por favor, cambie la habilidad asociada del arma",
+      "cannotperformtier": "No se puede realizar la operación: el nivel {tier} está bloqueado."
     },
     "coinage": {
       "gc": "co",

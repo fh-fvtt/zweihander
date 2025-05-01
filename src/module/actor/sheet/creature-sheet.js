@@ -137,7 +137,7 @@ export default class ZweihanderCreatureSheet extends ZweihanderBaseActorSheet {
       const skill = sheetData.skills.find((s) => s.name === w.system.associatedSkill);
       if (!skill) {
         ui.notifications.warn(
-          `Associated Skill '${w.system.associatedSkill}' in Weapon '${w.name}' is not a valid Skill. Please change the associated Skill for Weapon '${w.name}.'`,
+          game.i18n.format("ZWEI.othermessages.noskillweapon", { skill: w.system.associatedSkill, weapon: w.name }),
           { permanent: true }
         );
         return w;
