@@ -1,5 +1,5 @@
 <fieldset>
-  <legend>Incapacity</legend>
+  <legend>{{localize "ZWEI.actor.items.incapacity"}}</legend>
   <div class="form-group stacked">
     <label>{{localize "ZWEI.actor.items.effect"}}</label>
     {{editor
@@ -13,7 +13,7 @@
   </div>
 
   <div class="form-group">
-    <label>Lasts Until Cured</label>
+    <label>{{localize "ZWEI.actor.items.lastsuntilcured"}}</label>
     <input
       name="system.duration.lastsUntilCured"
       type="checkbox"
@@ -25,20 +25,20 @@
   {{#unless system.duration.lastsUntilCured}}
     {{#unless actor}}
       <div class="form-group">
-        <label class="formula-label">{{localize "ZWEI.actor.items.duration"}} in Days</label>
+        <label class="formula-label">{{localize "ZWEI.actor.items.duration"}} ({{localize "ZWEI.actor.items.durationdays"}})</label>
         <div class="formula-inputs">
           <div class="form-group label-top">
-            <label>NUMBER</label>
+            <label>{{localize "ZWEI.actor.items.number"}}</label>
             <input type="number" name="system.duration.formula.number" value="{{system.duration.formula.number}}" />
           </div>
           <div class="form-group label-top">
-            <label>DIE</label>
+            <label>{{localize "ZWEI.actor.items.die"}}</label>
             <select name="system.duration.formula.die">
               {{selectOptions dice valueAttr="value" labelAttr="label" selected=selected}}
             </select>
           </div>
           <div class="form-group label-top">
-            <label>BONUS</label>
+            <label>{{localize "ZWEI.actor.items.bonus"}}</label>
             <input type="number" name="system.duration.formula.bonus" value="{{system.duration.formula.bonus}}" />
           </div>
         </div>
@@ -46,7 +46,7 @@
     {{/unless}}
     {{#if actor}}
       <div class="form-group">
-        <label>Duration in Days</label>
+        <label>{{localize "ZWEI.actor.items.duration"}} ({{localize "ZWEI.actor.items.durationdays"}})</label>
         <input name="system.duration.value" type="number" value="{{system.duration.value}}" />
       </div>
     {{/if}}
@@ -61,9 +61,9 @@
 </fieldset>
 
 <fieldset>
-  <legend>Disease Management</legend>
+  <legend>{{localize "ZWEI.actor.items.diseasemanagement"}}</legend>
   <div class="form-group">
-    <label>{{localize "ZWEI.actor.items.resist"}} Difficulty</label>
+    <label>{{localize "ZWEI.actor.items.resist"}}</label>
     <div class="roll-container">
       <select name="system.resist">
         {{selectOptions difficultyRatings valueAttr="value" labelAttr="label" selected=selected}}

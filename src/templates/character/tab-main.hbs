@@ -71,11 +71,11 @@
         </div>
         <select class="skill-dropdown" name="system.stats.secondaryAttributes.dodge.associatedSkill">
           {{!-- In case the system.stats.secondaryAttributes.parry.associatedSkill is not in the dodge skill list
-          <option value="{{system.stats.secondaryAttributes.dodge.associatedSkill}}">{{zhLocalizeConditional "ZWEI.actor.skills." system.stats.secondaryAttributes.dodge.associatedSkill}}</option>
+          <option value="{{system.stats.secondaryAttributes.dodge.associatedSkill}}">{{system.stats.secondaryAttributes.dodge.associatedSkill}}</option>
            --}}
           {{#select system.stats.secondaryAttributes.dodge.associatedSkill}}
           {{#each actorConfig.dodgeSkills as | skill idx | }}
-          <option value="{{skill}}">{{zhLocalizeConditional "ZWEI.actor.skills." skill}}</option>
+          <option value="{{skill}}">{{skill}}</option>
           {{/each}}
           {{/select}}
         </select>
@@ -90,11 +90,11 @@
         </div>
         <select class="skill-dropdown" name="system.stats.secondaryAttributes.parry.associatedSkill">
           {{!-- In case the system.stats.secondaryAttributes.parry.associatedSkill is not in the parry skill list
-          <option value="{{system.stats.secondaryAttributes.parry.associatedSkill}}">{{zhLocalizeConditional "ZWEI.actor.skills." system.stats.secondaryAttributes.parry.associatedSkill}}</option>
+          <option value="{{system.stats.secondaryAttributes.parry.associatedSkill}}">{{system.stats.secondaryAttributes.parry.associatedSkill}}</option>
            --}}
           {{#select system.stats.secondaryAttributes.parry.associatedSkill}}
           {{#each actorConfig.parrySkills as | skill idx | }}
-          <option value="{{skill}}">{{zhLocalizeConditional "ZWEI.actor.skills." skill}}</option>
+          <option value="{{skill}}">{{skill}}</option>
           {{/each}}
           {{/select}}
         </select>

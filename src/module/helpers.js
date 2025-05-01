@@ -158,7 +158,7 @@ export const registerHandlebarHelpers = async function () {
 
   $$('zhDisplayLanguages', (languages) => {
     if (!languages.length) return '';
-    const displayLanguage = (l) => `${l.name}${l.isLiterate ? ' ᴸ ' : ''}`;
+    const displayLanguage = (l) => `${l.name}` + (l.isLiterate ? ` ${game.i18n.localize('ZWEI.settings.lasettings.literatesymbol')} ` : '');
     return languages.slice(1).reduce((str, l) => `${str}, ${displayLanguage(l)}`, displayLanguage(languages[0]));
   });
 
@@ -235,7 +235,7 @@ export const registerHandlebarHelpers = async function () {
     )}</label>${
       triggerSelected ? `<div class="damage-inputs flexrow"><div class="form-group label-top"><label></label>` : ''
     }
-            <select name="system.difficulty.rating"><optgroup label="Generic Ratings">${HandlebarsHelpers.selectOptions(
+            <select name="system.difficulty.rating"><optgroup label="${game.i18n.localize('ZWEI.actor.items.genericratings')}">${HandlebarsHelpers.selectOptions(
               ritualDifficultiesGeneric,
               {
                 hash: {
@@ -243,7 +243,7 @@ export const registerHandlebarHelpers = async function () {
                   labelAttr: 'label',
                 },
               }
-            )}</optgroup><optgroup label="Specific Ratings">${HandlebarsHelpers.selectOptions(
+            )}</optgroup><optgroup label="${game.i18n.localize('ZWEI.actor.items.specificratings')}">${HandlebarsHelpers.selectOptions(
       ritualDifficultiesSpecific,
       {
         hash: {
@@ -254,7 +254,7 @@ export const registerHandlebarHelpers = async function () {
     )}</optgroup></select>
           ${
             triggerSelected
-              ? `</div><div class="form-group label-top"><label>SKILL TEST</label><select name="system.difficulty.associatedSkill">${HandlebarsHelpers.selectOptions(
+              ? `</div><div class="form-group label-top"><label>${game.i18n.localize('ZWEI.actor.items.skilltest')}</label><select name="system.difficulty.associatedSkill">${HandlebarsHelpers.selectOptions(
                   skillList,
                   { hash: { valueAttr: 'value', labelAttr: 'label' } }
                 )}</select></div></div>`
@@ -330,66 +330,10 @@ export const registerHandlebarHelpers = async function () {
   $$('zhSkillRankAbbreviationLoc', function (rank) {
     return [
       '-',
-      game.i18n.localize('ZWEI.actor.skills.rankabbreviation.apprentice'),
-      game.i18n.localize('ZWEI.actor.skills.rankabbreviation.journeyman'),
-      game.i18n.localize('ZWEI.actor.skills.rankabbreviation.master'),
+      game.i18n.localize('ZWEI.actor.items.skillranksabbr.apprentice'),
+      game.i18n.localize('ZWEI.actor.items.skillranksabbr.journeyman'),
+      game.i18n.localize('ZWEI.actor.items.skillranksabbr.master'),
     ][rank];
-  });
-
-  $$('zhLocalizeConditional', function (keypath, keyvalue) {
-    if (typeof keyvalue !== 'string') return '';
-    const keyvalueLS = keyvalue.toLowerCase().replace(/\s+/g, '');
-    const keyvaluesList = [
-      'alchemy',
-      'athletics',
-      'awareness',
-      'bargain',
-      'charm',
-      'coordination',
-      'counterfeit',
-      'disguise',
-      'drive',
-      'eavesdrop',
-      'education',
-      'folklore',
-      'gamble',
-      'guile',
-      'handleanimal',
-      'heal',
-      'incantation',
-      'interrogation',
-      'intimidate',
-      'leadership',
-      'martialmelee',
-      'martialranged',
-      'navigation',
-      'pilot',
-      'resolve',
-      'ride',
-      'rumor',
-      'scrutinize',
-      'simplemelee',
-      'simpleranged',
-      'skulduggery',
-      'stealth',
-      'survival',
-      'toughness',
-      'tradecraft',
-      'warfare',
-      'gc',
-      'goldcoins',
-      'ss',
-      'silvershilling',
-      'bp',
-      'brasspennies',
-      'nc',
-      'newcurrency',
-    ];
-    if (keyvaluesList.includes(keyvalueLS)) {
-      return game.i18n.localize(keypath + keyvalueLS);
-    } else {
-      return keyvalue;
-    }
   });
 
   $$('zhModIndicator', function (mod) {
@@ -472,13 +416,13 @@ export const registerHandlebarHelpers = async function () {
     }
   });
 
-  $$('betweenparentheses', function (txt) {
+  /* $$('betweenparentheses', function (txt) {
     const parentheses = txt.match(/\(([^)]+)\)/);
     return parentheses ? parentheses[1] : '';
-  });
+  }); */
 
-  $$('beforeparentheses', function (txt) {
+  /* $$('beforeparentheses', function (txt) {
     const firstpar = txt.indexOf('(');
     return firstpar >= 0 ? txt.substring(0, firstpar).trim() : txt;
-  });
+  }); */
 };

@@ -1,5 +1,5 @@
 <fieldset>
-  <legend>Innate Ability</legend>
+  <legend>{{localize 'ZWEI.actor.items.innateability'}}</legend>
   <div class="form-group stacked">
     <label>{{localize "ZWEI.actor.items.effect"}}</label>
     {{editor
@@ -14,15 +14,15 @@
 </fieldset>
 
 <fieldset>
-  <legend>Misc.</legend>
+  <legend>{{localize 'ZWEI.actor.items.misc'}}</legend>
   <div class="form-group stacked">
-    <label>Trait Category</label>
+    <label>{{localize 'ZWEI.actor.items.category'}}</label>
     <select name="system.category">
       {{#select system.category}}
-        <option value="professional">Professional</option>
-        <option value="special">Special</option>
-        <option value="ancestral">Ancestral</option>
-        <option value="creature">Creature</option>
+        <option value="professional">{{localize 'ZWEI.actor.items.traitscategories.professional'}}</option>
+        <option value="special">{{localize 'ZWEI.actor.items.traitscategories.special'}}</option>
+        <option value="ancestral">{{localize 'ZWEI.actor.items.traitscategories.ancestral'}}</option>
+        <option value="creature">{{localize 'ZWEI.actor.items.traitscategories.creature'}}</option>
       {{/select}}
     </select>
   </div>

@@ -319,7 +319,9 @@ export default class ZweihanderVehicleSheet extends ZweihanderBaseActorSheet {
         isDriver: false,
       });
     } else {
-      ui.notifications.warn(`Actor '${actor.name}' is already an occupant of this vehicle.`);
+      ui.notifications.warn(
+        game.i18n.format("ZWEI.othermessages.actoralready", { actor: actor.name})
+        );
     }
 
     await vehicle.setFlag('zweihander', 'vehicleOccupants', {

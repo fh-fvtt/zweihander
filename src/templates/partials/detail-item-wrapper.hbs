@@ -22,7 +22,7 @@
           class='add-new'
           data-item-type='{{type}}'
           data-open-packs='{{packs}}'
-          data-tooltip='{{#if isInItem}}Open {{placeholder}} Compendium{{else}}{{localize "ZWEI.actor.items.add"}} {{placeholder}}{{/if}}'
+          data-tooltip='{{#if isInItem}}{{localize "ZWEI.actor.items.opencompendium"}}: {{placeholder}}{{else}}{{localize "ZWEI.actor.items.add"}} {{placeholder}}{{/if}}'
         ><i class='{{#if isInItem}}fa-solid fa-up-right-from-square fa-xs{{else}}fas fa-plus fa-xs{{/if}}'></i></a>
       {{/if}}
     {{/if}}
