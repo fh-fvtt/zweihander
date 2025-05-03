@@ -3,8 +3,6 @@ import { updateActorSkillsFromPack } from './utils';
 import FortuneTrackerSettings from './apps/fortune-tracker-settings';
 import CurrencySettings from './apps/currency-settings';
 
-const { DialogV2 } = foundry.applications.api;
-
 export const debouncedReload = foundry.utils.debounce(() => window.location.reload(), 500);
 
 export const registerSystemSettings = function () {

@@ -5,6 +5,8 @@ import * as ZweihanderUtils from '../../utils';
 import { attachTabDefinitions, getItemGroups } from './character-sheet-tabs-def';
 import { getPacks } from '../../utils';
 
+const { DialogV2 } = foundry.applications.api;
+
 /**
  * The Zweihänder actor sheet class for characters.
  * @extends {ActorSheet}
@@ -321,15 +323,19 @@ export default class ZweihanderCharacterSheet extends ZweihanderBaseActorSheet {
       });
     });
     // Reset Order and Chaos Ranks
-    html.find('.reset-ranks').contextmenu(() => {
-      Dialog.confirm({
-        title: `${this.actor.name}: ` + game.i18n.localize('ZWEI.othermessages.resetranks'),
+    html.find('.reset-ranks').contextmenu(async () => {
+      await DialogV2.confirm({
+        window: { title: `${this.actor.name}: ` + game.i18n.localize('ZWEI.othermessages.resetranks') },
         content: game.i18n.localize('ZWEI.othermessages.sureranks'),
-        yes: async () =>
-          await this.actor.update({
-            'system.alignment.chaos.rank': 0,
-            'system.alignment.order.rank': 0,
-          }),
+        yes: {
+          callback: async () =>
+            await this.actor.update({
+              'system.alignment.chaos.rank': 0,
+              'system.alignment.order.rank': 0,
+            }),
+        },
+        position: { width: 455 },
+        rejectClose: false,
         defaultYes: false,
       });
     });

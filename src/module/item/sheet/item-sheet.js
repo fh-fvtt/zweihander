@@ -1,5 +1,8 @@
 import { getEffectsGroups } from './item-sheet-tabs-def';
 import * as ZweihanderUtils from '../../utils';
+
+const { DialogV2 } = foundry.applications.api;
+
 /**
  * Extend the basic ItemSheet with some very simple modifications
  * @extends {ItemSheet}
@@ -190,6 +193,8 @@ export default class ZweihanderItemSheet extends ItemSheet {
     sheetData.html = {
       rules: await ZweihanderUtils.processRules(sheetData.system),
     };
+
+    console.log('HTML:::', sheetData.html);
 
     if (sheetData.type === 'skill') {
       sheetData.choices.associatedPrimaryAttribute = CONFIG.ZWEI.primaryAttributes.map((option) => ({
@@ -756,11 +761,13 @@ export default class ZweihanderItemSheet extends ItemSheet {
       const itemName = itemTarget.children('.auto-size').val();
 
       const type = game.i18n.localize(CONFIG.Item.typeLabels[itemType]);
-      await Dialog.confirm({
-        title: game.i18n.format('ZWEI.othermessages.deleteembedded', { type: type, name: itemName }),
+      await DialogV2.confirm({
+        window: { title: game.i18n.format('ZWEI.othermessages.deleteembedded', { type: type, name: itemName }) },
         content: game.i18n.format('ZWEI.othermessages.suretype', { type: type }),
-        yes: onDeleteCallback(itemType, uuidProperty),
-        no: () => {},
+        yes: { callback: onDeleteCallback(itemType, uuidProperty) },
+        no: { callback: () => {} },
+        position: { width: 455 },
+        rejectClose: false,
         defaultYes: true,
       });
     });
@@ -793,14 +800,18 @@ export default class ZweihanderItemSheet extends ItemSheet {
       const i = $(ev.currentTarget).parents('.effect-item');
       const effect = this.item.effects.get(i.data('itemId'));
       const type = game.i18n.localize(CONFIG.ActiveEffect.typeLabels['base']);
-      await Dialog.confirm({
-        title: game.i18n.format('ZWEI.othermessages.deletetype', { type: type, label: effect.label }),
+      await DialogV2.confirm({
+        window: { title: game.i18n.format('ZWEI.othermessages.deletetype', { type: type, label: effect.label }) },
         content: game.i18n.format('ZWEI.othermessages.suretype', { type: type }),
-        yes: async () => {
-          await effect.delete();
-          i.slideUp(200, () => this.render(false));
+        yes: {
+          callback: async () => {
+            await effect.delete();
+            i.slideUp(200, () => this.render(false));
+          },
         },
-        no: () => {},
+        no: { callback: () => {} },
+        position: { width: 455 },
+        rejectClose: false,
         defaultYes: true,
       });
     });

@@ -268,8 +268,9 @@ export default class ZweihanderPC extends ZweihanderBaseActor {
           injury: game.i18n.localize('ZWEI.actor.conditions.' + injuryToRoll.toLowerCase() + 'ly'),
         }),
         yes: { callback: () => this._rollInjury(injuryToRoll, actor) },
+        position: { width: 455 },
         defaultYes: false,
-        rejectClose: true,
+        rejectClose: false,
       });
     }
   }
