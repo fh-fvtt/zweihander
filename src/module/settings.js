@@ -346,6 +346,36 @@ export const registerCompendiumSettings = function () {
   });
 };
 
+export const registerDefaultSkillSettings = function () {
+  const rolls = [{ peril: 'Resolve' }, { disease: 'Toughness' }];
+
+  rolls.forEach((r) => {
+    const [k, v] = Object.entries(r).flat();
+
+    game.settings.register('zweihander', `default${k.capitalize()}Skill`, {
+      name: `ZWEI.settings.default${k}skill`,
+      hint: `ZWEI.settings.default${k}skillhint`,
+      scope: 'world',
+      type: new foundry.data.fields.StringField({
+        choices: () => {
+          const skillPackName = game.settings.get('zweihander', 'skillPack');
+          const skills = game.packs
+            .get(skillPackName)
+            .index.map((s) => s.name)
+            .reduce((acc, val) => ({ ...acc, [val]: val }), {});
+
+          return skills;
+        },
+        blank: false,
+        required: true,
+      }),
+      default: v,
+      config: true,
+      requiresReload: true,
+    });
+  });
+};
+
 export const setCssTheme = (theme) => {
   console.log(`zweihander | setting theme ${theme}`);
   $('body.system-zweihander').addClass('zweihander-theme-' + theme);

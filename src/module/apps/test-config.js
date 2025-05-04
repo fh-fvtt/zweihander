@@ -9,7 +9,8 @@ export const getItemRollConfiguration = (item) => {
   if (item.type === 'weapon') {
     associatedSkill = item.system.associatedSkill;
   } else if (item.type === 'disease') {
-    associatedSkill = 'toughness'; //@todo: system option to set the relevant skill
+    const resistSkillName = game.settings.get('zweihander', 'defaultDiseaseSkill');
+    associatedSkill = resistSkillName.toLowerCase();
   } else {
     associatedSkill = actor.system.stats.secondaryAttributes.magick.associatedSkill;
   }

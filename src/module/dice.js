@@ -28,7 +28,8 @@ export async function reRollTest(actorId, skillItemId, testType, testConfigurati
 }
 
 export async function rollPeril(perilType, actor) {
-  const resolveSkill = actor.items.find((i) => i.type === 'skill' && i.name === 'Resolve');
+  const perilSkillName = game.settings.get('zweihander', 'defaultPerilSkill');
+  const resolveSkill = actor.items.find((i) => i.type === 'skill' && i.name === perilSkillName);
   const { outcome } = await rollTest(
     resolveSkill,
     'skill',

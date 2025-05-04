@@ -25,8 +25,7 @@
   {{#unless system.duration.lastsUntilCured}}
     {{#unless actor}}
       <div class="form-group">
-        <label class="formula-label">{{localize "ZWEI.actor.items.duration"}}
-          ({{localize "ZWEI.actor.items.durationdays"}})</label>
+        <label class="formula-label">{{localize "ZWEI.actor.items.durationindays"}}</label>
         <div class="formula-inputs">
           <div class="form-group label-top">
             <label>{{localize "ZWEI.actor.items.number"}}</label>
@@ -47,7 +46,7 @@
     {{/unless}}
     {{#if actor}}
       <div class="form-group">
-        <label>{{localize "ZWEI.actor.items.duration"}} ({{localize "ZWEI.actor.items.durationdays"}})</label>
+        <label>{{localize "ZWEI.actor.items.durationindays"}}</label>
         <input name="system.duration.value" type="number" value="{{system.duration.value}}" />
       </div>
     {{/if}}

@@ -182,6 +182,7 @@
         "qty": "Qty.",
         "load": "Load",
         "recuperationtime": "Recuperation Time",
+        "recuperationtimeindays": "Recuperation Time in Days",
         "resist": "Resist Difficulty",
         "severity": "Injury Severity",
         "ineffect": "Currently Active",
@@ -197,6 +198,7 @@
         "distance": "Distance",
         "duration": "Duration",
         "durationdays": "days",
+        "durationindays": "Duration in Days",
         "durationList": {
           "instantaneous": "Instantaneous",
           "forever": "Forever",
@@ -494,6 +496,10 @@
       }
     },
     "settings": {
+      "defaultperilskill": "Default Peril Skill",
+      "defaultperilskillhint": "The default skill that will be used for Stress, Fear, and Horror rolls.",
+      "defaultdiseaseskill": "Default Resist Disease Skill",
+      "defaultdiseaseskillhint": "The default skill that will be used for Resist Disease rolls.",
       "initiativeformula": "Initiative Formula",
       "initiativeformulahint": "The formula to be used when rolling Initiative.",
       "defaultparryskills": "Default Parry Skills",
