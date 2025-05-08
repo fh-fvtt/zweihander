@@ -127,6 +127,7 @@ export const registerSystemSettings = function () {
     defaultDodgeSkills: ['Coordination', 'Guile', 'Drive', 'Ride'],
     defaultMagickSkills: ['Incantation', 'Folklore'],
     defaultCreatureDodgeSkill: ['Coordination'],
+    defaultCreatureMagickSkill: ['Incantation'],
     defaultPerilSkill: ['Resolve'],
     defaultDiseaseSkill: ['Toughness'],
   };

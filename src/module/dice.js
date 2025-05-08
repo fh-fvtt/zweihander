@@ -113,8 +113,10 @@ export async function rollTest(
     return;
   }
 
+  const isManualDodgeParryTest = _isManualDodgeParryTest(actor, testType);
+
   const primaryAttribute = skillItem.system.associatedPrimaryAttribute;
-  const basePercentage = _getBasePercentage(actor, primaryAttribute, testType);
+  const basePercentage = _getBasePercentage(actor, primaryAttribute, testType, isManualDodgeParryTest);
 
   const rank = skillItem.system.rank;
   const bonusPerRank = skillItem.system.bonusPerRank;
@@ -122,16 +124,15 @@ export async function rollTest(
 
   const currentPeril = Number(actor.system.stats.secondaryAttributes.perilCurrent.effectiveValue);
 
-  const alternativePerilSystem = game.settings.get('zweihander', 'alternativePerilSystem');
-  const alternativePerilPenalty = CONFIG.ZWEI.alternativePerilTable[currentPeril];
-
-  const ranksPurchasedAfterPeril = Math.max(0, rank - Math.max(0, 4 - currentPeril));
-  const ranksIgnoredByPeril = rank - ranksPurchasedAfterPeril;
-  const rankBonusAfterPeril = ranksPurchasedAfterPeril * bonusPerRank;
+  const { alternativePerilSystem, alternativePerilPenalty, ranksIgnoredByPeril, finalRankBonus } = _getPerilData(
+    currentPeril,
+    rank,
+    rankBonus,
+    bonusPerRank,
+    isManualDodgeParryTest
+  );
 
   const specialBaseChanceModifier = Number(testConfiguration.baseChanceModifier);
-
-  const finalRankBonus = alternativePerilSystem ? rankBonus + alternativePerilPenalty : rankBonusAfterPeril;
 
   const baseChance = basePercentage + Math.max(-30, Math.min(30, finalRankBonus + specialBaseChanceModifier));
 
@@ -165,7 +166,9 @@ export async function rollTest(
     testModeLabel,
     degreesOfSuccess: ['opposed', 'secretopposed'].includes(testConfiguration.testMode) ? crbDegreesOfSuccess : false,
     skill: skillItem.name,
-    primaryAttribute,
+    primaryAttribute: isManualDodgeParryTest
+      ? game.i18n.localize('ZWEI.chatskill.go' + testType)
+      : game.i18n.localize('ZWEI.actor.primary.' + primaryAttribute.toLowerCase()),
     basePercentage,
     rankBonus,
     specialBaseChanceModifier,
@@ -311,14 +314,39 @@ export async function rollWeaponDamage(actorId, testConfiguration) {
   return damageRoll.toMessage({ speaker, flavor, content, flags }, { rollMode: CONST.DICE_ROLL_MODES.PUBLIC });
 }
 
-function _getBasePercentage(actor, primaryAttribute, testType) {
+function _isManualDodgeParryTest(actor, testType) {
   const isActorCreatureOrNpc = actor.type === 'creature' || actor.type === 'npc';
-  const isDodgeOrParryTest = ['dodge', 'parry'].includes(testType);
+  const isActorInManualMode = isActorCreatureOrNpc ? actor.system.stats.manualMode : false;
+  const isDodgeOrParryTest = testType === 'dodge' || testType === 'parry';
 
-  if (!isActorCreatureOrNpc || !isDodgeOrParryTest)
-    return actor.system.stats.primaryAttributes[primaryAttribute.toLowerCase()].value;
+  return isActorInManualMode && isDodgeOrParryTest;
+}
 
-  return actor.system.stats.secondaryAttributes[testType].value;
+function _getBasePercentage(actor, primaryAttribute, testType, isManualDodgeParryTest) {
+  if (isManualDodgeParryTest) return actor.system.stats.secondaryAttributes[testType].value;
+  return actor.system.stats.primaryAttributes[primaryAttribute.toLowerCase()].value;
+}
+
+function _getPerilData(currentPeril, rank, rankBonus, bonusPerRank, isManualDodgeParryTest) {
+  const alternativePerilSystem = game.settings.get('zweihander', 'alternativePerilSystem');
+  const alternativePerilPenalty = CONFIG.ZWEI.alternativePerilTable[currentPeril];
+
+  const ranksPurchasedAfterPeril = Math.max(0, rank - Math.max(0, 4 - currentPeril));
+  const ranksIgnoredByPeril = rank - ranksPurchasedAfterPeril;
+
+  const getFinalRankBonus = () => {
+    if (isManualDodgeParryTest)
+      return alternativePerilSystem ? alternativePerilPenalty : -ranksIgnoredByPeril * bonusPerRank;
+
+    return alternativePerilSystem ? rankBonus + alternativePerilPenalty : ranksPurchasedAfterPeril * bonusPerRank;
+  };
+
+  return {
+    alternativePerilSystem,
+    alternativePerilPenalty,
+    ranksIgnoredByPeril,
+    finalRankBonus: getFinalRankBonus(),
+  };
 }
 
 async function getWeaponDamageContent(weapon, roll, exploded = false, explodedCount = 0) {

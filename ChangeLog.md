@@ -12,6 +12,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - Added a system setting to specify default skills to use for Peril and Resist Disease tests.
 - Added a system setting to specify default skill to use for Dodge tests for Creatures and NPCs.
 - Converted all confirmation dialogs to DialogV2.
+- Added French localization.
 
 ### Fixed
 

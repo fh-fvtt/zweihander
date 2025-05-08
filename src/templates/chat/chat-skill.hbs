@@ -7,7 +7,7 @@
   <h2 class="skill-test-title">{{skill}}</h2>
 {{/if}}
 <dl class="compact-details compact-details-centered zh-collapsed zh-expandable" data-expand-title="{{localize "ZWEI.chatskill.rolldetails"}}">
-  <dt>{{localize (zhConcat "ZWEI.actor.primary." (zhLowerCase primaryAttribute))}}</dt><dd> {{zhExplicitSign basePercentage}}%</dd>
+  <dt>{{primaryAttribute}}</dt><dd> {{zhExplicitSign basePercentage}}%</dd>
   <dt>{{localize "ZWEI.chatskill.skillrank"}}</dt><dd> {{zhExplicitSign rankBonus}}%</dd>
   <dt>{{localize "ZWEI.chatskill.penaltyperil"}}</dt><dd> {{zhExplicitSign perilPenalty}}%</dd>
   <dt>{{localize "ZWEI.chatskill.specialmod"}}</dt><dd> {{zhExplicitSign specialBaseChanceModifier}}%</dd>
