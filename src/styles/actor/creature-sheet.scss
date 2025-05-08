@@ -235,14 +235,15 @@ body.game.vtt.system-zweihander .zweihander.sheet.creature {
           font-size: 12px;
           text-transform: none;
           font-weight: bold;
-          display: block;
+          display: flex;
+          flex-direction: row;
           position: absolute;
           right: 0;
           top: 0;
           bottom: 0;
-          height: 100%;
           width: 100px;
-          text-align: right;
+          align-items: center;
+          justify-content: space-around;
           padding-right: 5px;
         }
       }

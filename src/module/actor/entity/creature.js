@@ -24,15 +24,16 @@ export default class ZweihanderCreature extends ZweihanderBaseActor {
         chance: cs.system.bonus + combatBaseChance,
       }));
 
-    const bestCombatSkill = combatSkills.reduce((previous, current) =>
-      previous && previous.chance > current.chance ? previous : current
+    const bestCombatSkill = combatSkills.reduce(
+      (previous, current) => (previous && previous.chance > current.chance ? previous : current),
+      null
     );
 
-    sa.parry.associatedSkill = bestCombatSkill.name;
+    sa.parry.associatedSkill = bestCombatSkill?.name ?? '';
 
     if (!actor.system.stats.manualMode) {
       // main gauche p. 239 "Parry (abbreviated to Par in the Bestiary) is equal to the highest Combat-based Skill the creature has"
-      sa.parry.value = bestCombatSkill.chance;
+      sa.parry.value = bestCombatSkill?.chance ?? 0;
 
       // dodge is equal to its coordination (or custom skill) value
       const dodgeValue = this.getSkillChance(actor, this.getItem(actor, 'skill', dodgeSkillName));

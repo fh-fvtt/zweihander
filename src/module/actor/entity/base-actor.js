@@ -14,7 +14,7 @@ export default class ZweihanderBaseActor {
     return alternativePerilSystem ? CONFIG.ZWEI.alternativePerilTable[ladderValue] : Math.max(0, 4 - ladderValue) * 10;
   }
 
-  async _preCreate(actor, options, user, that) {
+  async _preCreate(data, options, user, that) {
     // add default set of skills
     const skillPack = game.packs.get(game.settings.get('zweihander', 'skillPack'));
     const skillsFromPack = (await skillPack.getDocuments())
