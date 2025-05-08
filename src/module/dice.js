@@ -114,7 +114,7 @@ export async function rollTest(
   }
 
   const primaryAttribute = skillItem.system.associatedPrimaryAttribute;
-  const primaryAttributeValue = actor.system.stats.primaryAttributes[primaryAttribute.toLowerCase()].value;
+  const basePercentage = _getBasePercentage(actor, primaryAttribute, testType);
 
   const rank = skillItem.system.rank;
   const bonusPerRank = skillItem.system.bonusPerRank;
@@ -133,7 +133,7 @@ export async function rollTest(
 
   const finalRankBonus = alternativePerilSystem ? rankBonus + alternativePerilPenalty : rankBonusAfterPeril;
 
-  const baseChance = primaryAttributeValue + Math.max(-30, Math.min(30, finalRankBonus + specialBaseChanceModifier));
+  const baseChance = basePercentage + Math.max(-30, Math.min(30, finalRankBonus + specialBaseChanceModifier));
 
   const rawDifficultyRating = Number(testConfiguration.difficultyRating);
 
@@ -166,7 +166,7 @@ export async function rollTest(
     degreesOfSuccess: ['opposed', 'secretopposed'].includes(testConfiguration.testMode) ? crbDegreesOfSuccess : false,
     skill: skillItem.name,
     primaryAttribute,
-    primaryAttributeValue,
+    basePercentage,
     rankBonus,
     specialBaseChanceModifier,
     baseChance,
@@ -309,6 +309,16 @@ export async function rollWeaponDamage(actorId, testConfiguration) {
     },
   };
   return damageRoll.toMessage({ speaker, flavor, content, flags }, { rollMode: CONST.DICE_ROLL_MODES.PUBLIC });
+}
+
+function _getBasePercentage(actor, primaryAttribute, testType) {
+  const isActorCreatureOrNpc = actor.type === 'creature' || actor.type === 'npc';
+  const isDodgeOrParryTest = ['dodge', 'parry'].includes(testType);
+
+  if (!isActorCreatureOrNpc || !isDodgeOrParryTest)
+    return actor.system.stats.primaryAttributes[primaryAttribute.toLowerCase()].value;
+
+  return actor.system.stats.secondaryAttributes[testType].value;
 }
 
 async function getWeaponDamageContent(weapon, roll, exploded = false, explodedCount = 0) {

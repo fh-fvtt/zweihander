@@ -126,6 +126,9 @@ export const registerSystemSettings = function () {
     defaultParrySkills: ['Simple Melee', 'Martial Melee', 'Guile', 'Charm', 'Incantation'],
     defaultDodgeSkills: ['Coordination', 'Guile', 'Drive', 'Ride'],
     defaultMagickSkills: ['Incantation', 'Folklore'],
+    defaultCreatureDodgeSkill: ['Coordination'],
+    defaultPerilSkill: ['Resolve'],
+    defaultDiseaseSkill: ['Toughness'],
   };
 
   for (let [k, v] of Object.entries(defaultSkills))
@@ -136,6 +139,7 @@ export const registerSystemSettings = function () {
       type: String,
       default: `${v.join(', ')}`,
       config: true,
+      requiresReload: true,
     });
 
   game.settings.register('zweihander', 'theme', {
@@ -162,6 +166,7 @@ export const registerSystemSettings = function () {
       removed: 0,
     },
   });
+
   game.settings.register('zweihander', 'fortuneTrackerSettings', {
     scope: 'world',
     config: false,
@@ -174,6 +179,7 @@ export const registerSystemSettings = function () {
       misfortunePath: '/systems/zweihander/assets/fortune-death.webp',
     },
   });
+
   game.settings.registerMenu('zweihander', 'fortuneTrackerSettingsMenu', {
     name: 'ZWEI.settings.fortunetracker',
     label: 'ZWEI.settings.fortunetracker', // The text label used in the button
@@ -182,6 +188,7 @@ export const registerSystemSettings = function () {
     type: FortuneTrackerSettings, // A FormApplication subclass
     restricted: true, // Restrict this submenu to gamemaster only?
   });
+
   game.settings.register('zweihander', 'currencySettings', {
     scope: 'world',
     config: false,
@@ -207,6 +214,7 @@ export const registerSystemSettings = function () {
       },
     ],
   });
+
   game.settings.registerMenu('zweihander', 'currencySettingsMenu', {
     name: 'ZWEI.settings.currency',
     label: 'ZWEI.settings.currency', // The text label used in the button
@@ -218,21 +226,27 @@ export const registerSystemSettings = function () {
 };
 
 export const registerCompendiumSettings = function () {
-  const compendiumPacksArray = game.packs.map((p) => p.collection);
+  const getCompendiumPacksList = () => {
+    const compendiumPacksArray = game.packs.map((p) => p.collection);
+    const compendiumPacks = {};
 
-  const compendiumPacks = {};
+    for (let packName of compendiumPacksArray) {
+      compendiumPacks[packName] = packName;
+    }
 
-  for (let packName of compendiumPacksArray) {
-    compendiumPacks[packName] = packName;
-  }
+    return compendiumPacks;
+  };
 
   game.settings.register('zweihander', 'injuryList', {
     name: 'ZWEI.settings.injurytables',
     hint: 'ZWEI.settings.injurytableshint',
     scope: 'world',
-    type: String,
+    type: new foundry.data.fields.StringField({
+      choices: getCompendiumPacksList(),
+      blank: false,
+      required: true,
+    }),
     default: 'zweihander.zh-gm-tables',
-    choices: compendiumPacks,
     config: true,
     requiresReload: true,
   });
@@ -241,9 +255,12 @@ export const registerCompendiumSettings = function () {
     name: 'ZWEI.settings.skilllist',
     hint: 'ZWEI.settings.skilllisthint',
     scope: 'world',
-    type: String,
+    type: new foundry.data.fields.StringField({
+      choices: getCompendiumPacksList(),
+      blank: false,
+      required: true,
+    }),
     default: 'zweihander.skills',
-    choices: compendiumPacks,
     config: true,
     onChange: updateActorSkillsFromPack,
     requiresReload: true,
@@ -327,9 +344,12 @@ export const registerCompendiumSettings = function () {
       name: `ZWEI.settings.${entry.value.toLowerCase()}list`,
       hint: `ZWEI.settings.${entry.value.toLowerCase()}listhint`,
       scope: 'world',
-      type: String,
+      type: new foundry.data.fields.StringField({
+        choices: getCompendiumPacksList(),
+        blank: false,
+        required: true,
+      }),
       default: `zweihander.zh-${entry.compendium}`,
-      choices: compendiumPacks,
       config: true,
       requiresReload: true,
     });
@@ -343,36 +363,6 @@ export const registerCompendiumSettings = function () {
     default: 'zweihander.zh-charactercreation-tables',
     config: true,
     requiresReload: true,
-  });
-};
-
-export const registerDefaultSkillSettings = function () {
-  const rolls = [{ peril: 'Resolve' }, { disease: 'Toughness' }];
-
-  rolls.forEach((r) => {
-    const [k, v] = Object.entries(r).flat();
-
-    game.settings.register('zweihander', `default${k.capitalize()}Skill`, {
-      name: `ZWEI.settings.default${k}skill`,
-      hint: `ZWEI.settings.default${k}skillhint`,
-      scope: 'world',
-      type: new foundry.data.fields.StringField({
-        choices: () => {
-          const skillPackName = game.settings.get('zweihander', 'skillPack');
-          const skills = game.packs
-            .get(skillPackName)
-            .index.map((s) => s.name)
-            .reduce((acc, val) => ({ ...acc, [val]: val }), {});
-
-          return skills;
-        },
-        blank: false,
-        required: true,
-      }),
-      default: v,
-      config: true,
-      requiresReload: true,
-    });
   });
 };
 

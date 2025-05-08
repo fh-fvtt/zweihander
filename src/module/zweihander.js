@@ -17,12 +17,7 @@ import * as ZweihanderUtils from './utils';
 import * as ZweihanderChat from './chat';
 import { registerChatCommands } from './misc/chat-commands';
 
-import {
-  registerSystemSettings,
-  registerCompendiumSettings,
-  registerDefaultSkillSettings,
-  setCssTheme,
-} from './settings';
+import { registerSystemSettings, registerCompendiumSettings, setCssTheme } from './settings';
 import { preloadHandlebarsTemplates } from './templates';
 import { registerHandlebarHelpers } from './helpers';
 // import { migrateWorldSafe, migrateWorld } from './migration';
@@ -63,9 +58,6 @@ const socket = new Promise((resolve) => {
 Hooks.once('ready', function () {
   // register compendium settings
   registerCompendiumSettings();
-
-  // register default skill settings
-  registerDefaultSkillSettings();
 
   // this is necessary to apply the theme settings
   let sheetStyles = game.settings.get('zweihander', 'theme');

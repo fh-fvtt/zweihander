@@ -10,7 +10,7 @@
     <section class="actor-resources">
       <section class="peril-ladder">
         <h1>{{localize "ZWEI.actor.secondary.peril"}}</h1>
-        {{zhConditionLadderLoc "system.stats.secondaryAttributes.perilCurrent.value" config.perilOptions
+        {{zhConditionLadderLoc "system.stats.secondaryAttributes.perilCurrent.value" (zhGetPerilSystem)
         checked=system.stats.secondaryAttributes.perilCurrent.value}}
       </section>
       <section class="damage-ladder">

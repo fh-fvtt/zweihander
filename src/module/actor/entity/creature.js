@@ -2,6 +2,13 @@ import ZweihanderBaseActor from './base-actor';
 import * as ZweihanderUtils from '../../utils';
 
 export default class ZweihanderCreature extends ZweihanderBaseActor {
+  prepareBaseData(actor) {
+    actor.system.stats.secondaryAttributes.dodge.associatedSkill = game.settings.get(
+      'zweihander',
+      'defaultCreatureDodgeSkill'
+    );
+  }
+
   prepareDerivedData(actor) {
     Object.values(actor.system.stats.primaryAttributes).forEach(
       (a) => (a.bonus = a.bonusAdvances + Math.floor(a.value / 10))
@@ -13,12 +20,16 @@ export default class ZweihanderCreature extends ZweihanderBaseActor {
       // main gauche p. 239 "Parry (abbreviated to Par in the Bestiary) is equal to the highest Combat-based Skill the creature has"
       const combatBaseChance = pa.combat.value;
       const combatSkills = actor.items.filter(
-        (i) => i.type === 'skill' && i.system.associatedPrimaryAttribute.toLowerCase() === 'combat'
+        (i) =>
+          i.type === 'skill' &&
+          i.system.associatedPrimaryAttribute.toLowerCase() ===
+            game.i18n.localize('ZWEI.actor.primary.combat').toLowerCase()
       );
       sa.parry.value = Math.max(...combatSkills.map((s) => s.system.bonus + combatBaseChance));
-      // dodge is equal to its coordination value
-      const coordinationValue = this.getSkillChance(actor, this.getItem(actor, 'skill', 'coordination'));
-      sa.dodge.value = coordinationValue;
+      // dodge is equal to its coordination (or custom skill) value
+      const dodgeSkillName = game.settings.get('zweihander', 'defaultCreatureDodgeSkill').toLowerCase();
+      const dodgeValue = this.getSkillChance(actor, this.getItem(actor, 'skill', dodgeSkillName));
+      sa.dodge.value = dodgeValue;
       sa.initiative.value = 3 + pa.perception.bonus;
       sa.movement.value = 3 + pa.agility.bonus;
       sa.movement.fly = 3 + sa.movement.value;

@@ -5,6 +5,21 @@ All notable changes to this project will be documented in this file.
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).´
 
+## [5.5.4] - 2025-05-08
+
+### Added
+
+- Added a system setting to specify default skills to use for Peril and Resist Disease tests.
+- Added a system setting to specify default skill to use for Dodge tests for Creatures and NPCs.
+- Converted all confirmation dialogs to DialogV2.
+
+### Fixed
+
+- Fixed a bug that caused the system to use incorrect base percentages when rolling a Dodge or Parry test from a Creature or NPC sheet with manually input Dodge or Parry values.
+- Fixed incorrect Peril labels on Creature and NPC sheets when using the Alternative Peril System.
+- Fixed Peril and Resist Disease tests not working in worlds with a custom Skills list.
+- Fixed Quality's 'Effect' field not enriching HTML content.
+
 ## [5.5.3] - 2025-05-01
 
 ### Added
