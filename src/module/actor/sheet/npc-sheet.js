@@ -89,6 +89,7 @@ export default class ZweihanderNpcSheet extends ZweihanderCreatureSheet {
       rules: [
         'traits',
         'talents',
+        'drawbacks',
         'spells',
         'rituals',
         'taints',
@@ -109,6 +110,13 @@ export default class ZweihanderNpcSheet extends ZweihanderCreatureSheet {
       summaryTemplate: 'item-summary/talent',
       details: [],
       items: groupsData.talents,
+    };
+    itemGroups.drawbacks = {
+      title: 'drawbacks',
+      type: 'drawback',
+      summaryTemplate: 'item-summary/drawback',
+      details: [],
+      items: groupsData.drawbacks,
     };
     itemGroups.rituals = {
       title: 'rituals',
