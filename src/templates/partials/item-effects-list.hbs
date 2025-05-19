@@ -61,8 +61,8 @@
           aria-label="{{item.name}}" style="{{#if ../isEffect}}{{zhItemImageStyle item.icon}}{{else}}{{zhItemImageStyle item.img}}{{/if}}"
           data-label="{{#if itemGroup.rollLabelKey}}{{zhLookup item itemGroup.rollLabelKey}}{{else}}{{itemGroup.rollLabel}}{{/if}}">
         </div>
-        <h4 class="flexrow" data-testid="{{#if ../isEffect}}{{item.label}}{{else}}{{item.name}}{{/if}}">
-          {{#if ../isEffect}}{{item.label}}{{else}}{{item.name}}{{/if}}
+        <h4 class="flexrow" data-testid="{{item.name}}">
+          {{item.name}}
           {{#zhProfessionWarn item}}
           {{else}}
           <div class="profession-warn"><i class="fa fa-exclamation-triangle" data-tooltip="Profession is missing a Talent, has a misspelled Talent, or has a duplicate one. Please add to/change Talent list." data-tooltip-direction="UP"></i></div>

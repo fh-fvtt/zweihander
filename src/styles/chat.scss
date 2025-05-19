@@ -62,6 +62,10 @@ body.game.vtt.system-zweihander {
         right: 0;
         top: 18px;
         font-size: var(--font-size-12);
+        border: none;
+        background: none;
+        color: var(--zh-clr-fg3);
+        padding: 0;
       }
       img.chat-profile-image {
         flex: 0 0 50px;

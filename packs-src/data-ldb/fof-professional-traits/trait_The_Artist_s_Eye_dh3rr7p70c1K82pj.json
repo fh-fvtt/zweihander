@@ -5,14 +5,15 @@
   "name": "The Artist's Eye",
   "type": "trait",
   "_stats": {
-    "coreVersion": "12.331",
+    "coreVersion": "13.342",
     "systemId": null,
     "systemVersion": null,
     "createdTime": null,
     "modifiedTime": null,
     "lastModifiedBy": null,
     "compendiumSource": null,
-    "duplicateSource": null
+    "duplicateSource": null,
+    "exportSource": null
   },
   "system": {
     "description": {
@@ -23,7 +24,8 @@
       "effect": {
         "@en": "<p>You gain a muse, which may be an object, person or place. When in the presence of your muse, you ignore Peril Condition penalties when creating works of art. You&rsquo;ll gain new muses at each Tier.</p>"
       }
-    }
+    },
+    "category": ""
   },
   "folder": null,
   "sort": 0,

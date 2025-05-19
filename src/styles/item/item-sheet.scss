@@ -367,12 +367,14 @@ body.game.vtt.system-zweihander .zweihander.sheet.item {
         & .numerable-field-subtract,
         .numerable-field-add {
           visibility: hidden;
+          min-height: unset;
           height: 16px;
           flex: 0 0 16px;
           padding: 0;
           text-align: center;
           line-height: 1;
           font-size: 14px;
+          transition: none;
         }
         &:hover .numerable-field-subtract,
         &:hover .numerable-field-add {
@@ -727,6 +729,7 @@ body.game.vtt.system-zweihander .zweihander.sheet.item {
         .numerable-field {
           display: flex;
           flex-direction: row;
+          flex-wrap: nowrap;
           width: 100%;
           justify-content: space-between;
           align-items: center;
@@ -737,11 +740,13 @@ body.game.vtt.system-zweihander .zweihander.sheet.item {
           .numerable-field-add,
           .numerable-field-subtract {
             visibility: hidden;
+            min-height: unset;
             height: 14px;
             flex: 0 0 14px;
             padding: 0;
             text-align: center;
             line-height: 1.1;
+            transition: none;
           }
 
           .numerable-field-counter {
@@ -813,7 +818,7 @@ body.game.vtt.system-zweihander .zweihander.sheet.item {
         & > button {
           margin: -2px 0;
           padding: 0;
-          padding-top: 1px;
+          line-height: normal;
         }
 
         & > select {

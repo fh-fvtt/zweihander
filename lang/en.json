@@ -1,50 +1,52 @@
 {
-  "ACTOR": {
-    "TypeCharacter": "Player Character",
-    "TypeNpc": "Non-Player Character",
-    "TypeCreature": "Creature",
-    "TypeVehicle": "Vehicle"
-  },
-  "ITEM": {
-    "TypeAncestry": "Ancestry",
-    "TypeArmor": "Armor",
-    "TypeCondition": "Condition",
-    "TypeDisease": "Disease",
-    "TypeDisorder": "Disorder",
-    "TypeDrawback": "Drawback",
-    "TypeInjury": "Injury",
-    "TypeProfession": "Profession",
-    "TypeQuality": "Quality",
-    "TypeRitual": "Ritual",
-    "TypeSkill": "Skill",
-    "TypeSpell": "Spell",
-    "TypeTalent": "Talent",
-    "TypeTaint": "Taint of Chaos",
-    "TypeTrait": "Trait",
-    "TypeTrapping": "Trapping",
-    "TypeUniqueadvance": "Unique Advance",
-    "TypeWeapon": "Weapon",
-    "TypeManual": "Manual"
-  },
-  "ACTIVEEFFECT": {
-    "TypeBase": "Active Effect"
+  "TYPES": {
+    "Actor": {
+      "character": "Player Character",
+      "npc": "Non-Player Character",
+      "creature": "Creature",
+      "vehicle": "Vehicle"
+    },
+    "Item": {
+      "ancestry": "Ancestry",
+      "armor": "Armor",
+      "condition": "Condition",
+      "disease": "Disease",
+      "disorder": "Disorder",
+      "drawback": "Drawback",
+      "injury": "Injury",
+      "profession": "Profession",
+      "quality": "Quality",
+      "ritual": "Ritual",
+      "skill": "Skill",
+      "spell": "Spell",
+      "talent": "Talent",
+      "taint": "Taint of Chaos",
+      "trait": "Trait",
+      "trapping": "Trapping",
+      "uniqueAdvance": "Unique Advance",
+      "weapon": "Weapon",
+      "manual": "Manual"
+    },
+    "ActiveEffect": {
+      "base": "Active Effect"
+    }
   },
   "EFFECT": {
-    "StatusDead": "Slain!",
-    "StatusBlind": "Blind",
-    "StatusChoked": "Choked",
-    "StatusDefenseless": "Defenseless",
-    "StatusDisarmed": "Disarmed",
-    "StatusHelpless": "Helpless",
-    "StatusInspired": "Inspired",
-    "StatusIntimidated": "Intimidated",
-    "StatusKnockedOut": "Knocked Out",
-    "StatusProne": "Prone",
-    "StatusStunned": "Stunned",
-    "StatusSurprised": "Surprised",
-    "StatusBurning": "Burning",
-    "StatusBleeding": "Bleeding",
-    "IsActive": "Effect is Active"
+    "dead": "Slain!",
+    "blind": "Blind",
+    "choked": "Choked",
+    "defenseless": "Defenseless",
+    "disarmed": "Disarmed",
+    "helpless": "Helpless",
+    "inspired": "Inspired",
+    "intimidated": "Intimidated",
+    "knockedOut": "Knocked Out",
+    "prone": "Prone",
+    "stunned": "Stunned",
+    "surprised": "Surprised",
+    "burning": "Burning",
+    "bleeding": "Bleeding",
+    "isActive": "Effect is Active"
   },
   "ZWEI": {
     "Difficulty": {
@@ -697,9 +699,9 @@
       "avoidinjury": "Attempts to avoid Injury..."
     },
     "othermenues": {
-      "currentfortune": "Current fortune points",
-      "currentmisfortune": "Current misfortune points",
-      "gmconnect": "Waiting for a GM to connect",
+      "currentfortune": "Fortune Points",
+      "currentmisfortune": "Misfortune Points",
+      "gmconnect": "Waiting for a GM to connect...",
       "rollautomations": "Roll Automations",
       "skilltests": "Skill Tests",
       "weapontests": "Weapon Tests",
@@ -712,7 +714,7 @@
     "othermessages": {
       "nofortune": "Can't use Fortune!",
       "nomisfortune": "Can't use Misfortune!",
-      "setfortune": "Set total Fortune Points to the number of connected Players plus one.",
+      "setfortune": "Reset Fortune Points (Connected Players + 1)",
       "changefortune": "You do not have permission to change the total amount of Fortune in the game!",
       "spendmisfortune1": "You do not have permission to spend Misfortune! Know your place peasant, or be smited!",
       "spendmisfortune2": "You do not have permission to spend Misfortune! Know your place, peasant!",

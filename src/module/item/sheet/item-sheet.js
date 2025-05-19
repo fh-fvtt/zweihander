@@ -695,7 +695,7 @@ export default class ZweihanderItemSheet extends ItemSheet {
         // @todo: refactor to use ActiveEffect.create
         createdItemArray = await this.item.createEmbeddedDocuments('ActiveEffect', [
           {
-            label: this.item.name,
+            name: this.item.name,
             icon: this.item.img,
             origin: (this.item.parent ? `Actor.${this.item.parent.id}.` : '') + 'Item.' + this.item.id,
 
@@ -828,7 +828,7 @@ export default class ZweihanderItemSheet extends ItemSheet {
     if (item.type !== 'ancestry') return;
 
     const worldTable = game.tables.find(
-      (table) => table.name.includes(item.name) && table.name.includes(game.i18n.localize('ITEM.TypeTrait'))
+      (table) => table.name.includes(item.name) && table.name.includes(game.i18n.localize('TYPES.Item.trait'))
     );
     const isWorldTableUndefined = typeof worldTable === 'undefined';
 
@@ -842,7 +842,7 @@ export default class ZweihanderItemSheet extends ItemSheet {
       const compendiumTableEntry = characterCreationPackIndex.find((table) => {
         return (
           ZweihanderUtils.normalizedIncludes(table.name, item.name) &&
-          ZweihanderUtils.normalizedIncludes(table.name, game.i18n.localize('ITEM.TypeTrait'))
+          ZweihanderUtils.normalizedIncludes(table.name, game.i18n.localize('TYPES.Item.trait'))
         );
       });
 
@@ -917,6 +917,7 @@ export default class ZweihanderItemSheet extends ItemSheet {
     });
   }
 
+  // @todo: maybe figure out a better way to make the checks
   _getSubmitData(updateData = {}) {
     let data;
 

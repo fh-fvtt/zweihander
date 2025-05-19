@@ -3,12 +3,16 @@ import * as ZweihanderDice from './dice';
 import * as ZweihanderUtils from './utils';
 
 export function addGlobalChatListeners(html) {
+  html = html instanceof jQuery ? html : $(html); // @todo: jQuery refactor
+
   html.on('click', '.zh-expandable', (event) => {
     event.currentTarget.classList.toggle('zh-collapsed');
   });
 }
 
 export function addLocalChatListeners(message, html, data) {
+  html = html instanceof jQuery ? html : $(html); // @todo: jQuery refactor
+
   const flags = message?.flags?.zweihander;
   if (flags) {
     enableChatButtons(html, flags, message, data);

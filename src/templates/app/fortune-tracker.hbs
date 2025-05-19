@@ -7,14 +7,14 @@
     <div class="fortunetracker-token-container">
       {{#each fortune.positions}}
       <a class="fortune-tracker-fortune-trigger">
-        <div class="fortunetracker-life" title="{{localize "ZWEI.othermenues.currentfortune"}}: {{../fortune.value}}" style="background-image: url('{{../fortune.path}}'); height: {{../params.tokenSize}}px; width: {{../params.tokenSize}}px; top: {{this.t}}px; left: {{this.l}}px"></div>
+        <div class="fortunetracker-life" data-tooltip="{{localize "ZWEI.othermenues.currentfortune"}}: {{../fortune.value}}" data-tooltip-direction="LEFT" style="background-image: url('{{../fortune.path}}'); height: {{../params.tokenSize}}px; width: {{../params.tokenSize}}px; top: {{this.t}}px; left: {{this.l}}px"></div>
       </a>
       {{/each}}
     </div>
     <div class="fortunetracker-token-container">
       {{#each misfortune.positions}}
       <a class="fortune-tracker-misfortune-trigger">
-        <div class="fortunetracker-death" title="{{localize "ZWEI.othermenues.currentmisfortune"}}: {{../misfortune.value}}" style="background-image: url('{{../misfortune.path}}'); height: {{../params.tokenSize}}px; width: {{../params.tokenSize}}px; top: {{this.t}}px; left: {{this.l}}px"></div>
+        <div class="fortunetracker-death" data-tooltip="{{localize "ZWEI.othermenues.currentmisfortune"}}: {{../misfortune.value}}" data-tooltip-direction="RIGHT" style="background-image: url('{{../misfortune.path}}'); height: {{../params.tokenSize}}px; width: {{../params.tokenSize}}px; top: {{this.t}}px; left: {{this.l}}px"></div>
       </a>
       {{/each}}
     </div>

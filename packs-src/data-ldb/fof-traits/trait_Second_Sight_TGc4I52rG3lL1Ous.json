@@ -5,14 +5,15 @@
   "name": "Second Sight",
   "type": "trait",
   "_stats": {
-    "coreVersion": "12.331",
+    "coreVersion": "13.342",
     "systemId": null,
     "systemVersion": null,
     "createdTime": null,
     "modifiedTime": null,
     "lastModifiedBy": null,
     "compendiumSource": null,
-    "duplicateSource": null
+    "duplicateSource": null,
+    "exportSource": null
   },
   "system": {
     "description": {
@@ -23,7 +24,8 @@
       "effect": {
         "@en": "<p>With a successful Scrutinize Test, you can detect the presence of supernatural phenomena nearby. If you Critically Succeed this Skill Test, you can accurately track where the phenomena is (as if you were tracking someone using Survival).</p>"
       }
-    }
+    },
+    "category": ""
   },
   "folder": null,
   "sort": 0,

@@ -5,14 +5,15 @@
   "name": "Blood & Thunder",
   "type": "trait",
   "_stats": {
-    "coreVersion": "12.331",
+    "coreVersion": "13.342",
     "systemId": null,
     "systemVersion": null,
     "createdTime": null,
     "modifiedTime": null,
     "lastModifiedBy": null,
     "compendiumSource": null,
-    "duplicateSource": null
+    "duplicateSource": null,
+    "exportSource": null
   },
   "system": {
     "description": {
@@ -23,7 +24,8 @@
       "effect": {
         "@en": "<p>Threats who are Large Sized or Huge Sized only reference 1D6 Fury Die due to their Size to deal Damage to you (as opposed to their normal number of Fury Dice).</p>"
       }
-    }
+    },
+    "category": ""
   },
   "folder": null,
   "sort": 0,

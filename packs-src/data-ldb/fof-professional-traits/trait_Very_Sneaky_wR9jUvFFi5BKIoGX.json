@@ -5,14 +5,15 @@
   "name": "Very Sneaky",
   "type": "trait",
   "_stats": {
-    "coreVersion": "12.331",
+    "coreVersion": "13.342",
     "systemId": null,
     "systemVersion": null,
     "createdTime": null,
     "modifiedTime": null,
     "lastModifiedBy": null,
     "compendiumSource": null,
-    "duplicateSource": null
+    "duplicateSource": null,
+    "exportSource": null
   },
   "system": {
     "description": {
@@ -23,7 +24,8 @@
       "effect": {
         "@en": "<p>In Perfect Light, add an Assist Die to Stealth Tests. In Fleeing Shadows, you may flip the results to succeed Stealth Tests. In Total Darkness, you automatically Critically Succeed Stealth Tests.</p>"
       }
-    }
+    },
+    "category": ""
   },
   "folder": null,
   "sort": 0,

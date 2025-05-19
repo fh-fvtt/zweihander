@@ -6,7 +6,7 @@
   .primary-attributes {
     border: 2px groove var(--zh-clr-bg2);
     border-radius: 3px;
-    flex: 0 0 50px;
+    flex: 0 0 content; // 50px;
     font-size: 14px;
     // height: 100%;
     list-style: none;
@@ -31,7 +31,7 @@
         height: 30px;
         line-height: 32px;
         text-align: center;
-        width: 38px;
+        width: 40px;
       }
       &:last-of-type {
         border: none;
@@ -50,7 +50,7 @@
     }
     .pa-display {
       align-items: center;
-      margin: 0 20px;
+      margin: 0 18px;
       .pa-icon {
         color: var(--zh-clr-fg4);
         font-size: 16px;
@@ -217,7 +217,7 @@
             content: ' ';
             display: block;
             height: 12px;
-            line-height: 12px;
+            line-height: 10px;
             position: absolute;
             right: -23px;
             top: 0px;

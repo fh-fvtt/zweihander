@@ -1,4 +1,6 @@
-export default class FortuneTracker extends Application {
+const { ApplicationV2, HandlebarsApplicationMixin } = foundry.applications.api;
+
+export default class FortuneTracker extends HandlebarsApplicationMixin(ApplicationV2) {
   static INSTANCE = undefined;
 
   static get PARAMS() {
@@ -31,7 +33,6 @@ export default class FortuneTracker extends Application {
         };
     }
   }
-  // business logic
 
   #waiting = false;
 
@@ -45,21 +46,24 @@ export default class FortuneTracker extends Application {
 
   #positions = [];
 
-  static get defaultOptions() {
-    return foundry.utils.mergeObject(super.defaultOptions, {
-      template: 'systems/zweihander/src/templates/app/fortune-tracker.hbs',
-      popOut: true,
+  static DEFAULT_OPTIONS = {
+    ...super.DEFAULT_OPTIONS,
+    id: 'fortuneTrackerApp',
+    classes: ['zweihander'],
+    window: {
       minimizable: false,
       resizable: false,
-      title: 'ZWEI.settings.ftsettings.title',
-      id: 'fortuneTrackerApp',
-      classes: ['zweihander'],
-      width: FortuneTracker.PARAMS.areaSize * 2,
-      height: FortuneTracker.PARAMS.areaSize + 40,
+      icon: 'ra ra-clover',
+    },
+    position: {
       top: 150,
       left: 125,
-    });
-  }
+    },
+  };
+
+  static PARTS = {
+    tracker: { template: 'systems/zweihander/src/templates/app/fortune-tracker.hbs' },
+  };
 
   constructor(socket) {
     super();
@@ -95,6 +99,39 @@ export default class FortuneTracker extends Application {
     this.generateRandomPositionValues();
   }
 
+  generateRandomPositionValues(keepFortune = 0, keepMisfortune = 0) {
+    function getRandomIntInclusive(min, max) {
+      min = Math.ceil(min);
+      max = Math.floor(max);
+      return Math.floor(Math.random() * (max - min + 1) + min); //The maximum is inclusive and the minimum is inclusive
+    }
+
+    const n = keepFortune > 100 ? 200 : (keepFortune * 2) % 201;
+    const m = keepMisfortune > 100 ? 400 : 200 + ((keepMisfortune * 2) % 201);
+
+    for (let i = n; i < 400; i++) {
+      if (i < 200 || (i >= m && i < 400)) {
+        this.#positions[i] = getRandomIntInclusive(
+          FortuneTracker.PARAMS.padding,
+          FortuneTracker.PARAMS.areaSize - FortuneTracker.PARAMS.tokenSize - FortuneTracker.PARAMS.padding
+        );
+      }
+    }
+  }
+
+  get title() {
+    return game.i18n.localize('ZWEI.settings.ftsettings.title');
+  }
+
+  _initializeApplicationOptions(options) {
+    const initialized = super._initializeApplicationOptions(options);
+
+    initialized.position.width = FortuneTracker.PARAMS.areaSize * 2;
+    initialized.position.height = FortuneTracker.PARAMS.areaSize + 40;
+
+    return initialized;
+  }
+
   get resetRule() {
     return game.i18n.localize('ZWEI.othermessages.setfortune');
   }
@@ -120,7 +157,7 @@ export default class FortuneTracker extends Application {
     if (game.users.get(game.userId).isGM) {
       game.settings.set('zweihander', 'fortuneTrackerPersistedState', updatedState);
     }
-    this.render(!this.closable);
+    this.render({ force: !this.closable });
   }
 
   get total() {
@@ -267,7 +304,7 @@ export default class FortuneTracker extends Application {
   }
 
   // Foundry methods
-  getData() {
+  async _prepareContext(options) {
     this.generateRandomPositionValues(this.fortune, this.misfortune);
     let fortunePositions = [];
     for (let i = 0; i < this.fortune; i++) {
@@ -306,7 +343,7 @@ export default class FortuneTracker extends Application {
     } else {
       this.#state = await this.requestSync();
     }
-    this.render(!this.closable);
+    await this.render({ force: !this.closable });
   }
 
   resetState() {
@@ -335,7 +372,7 @@ export default class FortuneTracker extends Application {
         console.error(e);
       }
       this.#waiting = true;
-      this.render(!this.closable);
+      await this.render({ force: !this.closable });
       ui.notifications.warn(game.i18n.localize('ZWEI.othermessages.ftwaiting'));
       if (rethrow) {
         throw e;
@@ -356,39 +393,65 @@ export default class FortuneTracker extends Application {
     if (canvas.ready) canvas.fog.save();
   }
 
-  activateListeners(html) {
-    const app = html.parents('#fortuneTrackerApp');
-    let totalTrigger;
-    if (!app.find('#fortuneTrackerAppTotal').length) {
-      app.find('a.header-button.close').before(`
-        <a id="fortuneTrackerAppTotal" class="waiting-${this.#waiting}">
-          Total: ${this.total}
-        </a>
-        <a class="fortune-tracker-reset" title="${this.resetRule}">
-          <i class="fas fa-sync-alt"></i>
-        </a>
-      `);
-      let resetTrigger = app.find('.fortune-tracker-reset');
-      resetTrigger.click((event) => {
-        event.preventDefault();
-        this.resetState();
-      });
-      totalTrigger = app.find('#fortuneTrackerAppTotal');
-      app.find('a.header-button.close').remove();
+  _onRender(context, options) {
+    // @todo: refactor jQuery
+    const app = $(this.element);
+    const html = $(this.element);
+
+    //const app = html.parents('#fortuneTrackerApp');
+
+    let plusTrigger;
+    let minusTrigger;
+
+    const isUserGM = game.users.get(game.userId).isGM;
+
+    if (!app.find('#b1').length) {
+      let btn = app.find('*[data-action="close"]');
+
+      if (isUserGM) {
+        btn.before(`
+          <button id="a1" class=" header-control icon fa-solid fa-minus waiting-${this.#waiting}"></button>
+          <button id="b1" class=" header-control icon fa-solid fa-plus waiting-${this.#waiting}"></button>
+          <button class="fortune-tracker-reset header-control icon fas fa-sync-alt" data-tooltip="${
+            this.resetRule
+          }" data-tooltip-direction="UP"></button>
+        `);
+        let resetTrigger = app.find('.fortune-tracker-reset');
+        resetTrigger.click((event) => {
+          event.preventDefault();
+          this.resetState();
+        });
+        plusTrigger = app.find('#b1');
+        minusTrigger = app.find('#a1');
+      }
+
+      app.find('*[data-action="close"]').remove();
     } else {
-      app
-        .find('#fortuneTrackerAppTotal')
-        .replaceWith(`<a id="fortuneTrackerAppTotal" class="waiting-${this.#waiting}">Total: ${this.total}</a>`);
-      totalTrigger = app.find('#fortuneTrackerAppTotal');
+      if (isUserGM) {
+        app
+          .find('#b1')
+          .replaceWith(
+            `<button id="b1" class="header-control icon fa-solid fa-plus waiting-${this.#waiting}"></button>`
+          );
+        app
+          .find('#a1')
+          .replaceWith(
+            `<button id="a1" class="header-control icon fa-solid fa-minus waiting-${this.#waiting}"></button>`
+          );
+        plusTrigger = app.find('#b1');
+        minusTrigger = app.find('#a1');
+      }
     }
-    totalTrigger.click((event) => {
-      event.preventDefault();
-      this.requestSync(this.increaseTotal());
-    });
-    totalTrigger.contextmenu((event) => {
-      event.preventDefault();
-      this.requestSync(this.decreaseTotal());
-    });
+    if (isUserGM) {
+      plusTrigger.click((event) => {
+        event.preventDefault();
+        this.requestSync(this.increaseTotal());
+      });
+      minusTrigger.click((event) => {
+        event.preventDefault();
+        this.requestSync(this.decreaseTotal());
+      });
+    }
 
     let fortuneTrigger = html.find('.fortune-tracker-fortune-trigger');
     fortuneTrigger.click((event) => {

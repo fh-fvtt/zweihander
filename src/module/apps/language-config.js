@@ -1,53 +1,66 @@
 import { formDataToArray } from '../utils';
 
-export default class ZweihanderLanguageConfig extends FormApplication {
-  static get defaultOptions() {
-    return foundry.utils.mergeObject(super.defaultOptions, {
-      template: 'systems/zweihander/src/templates/app/language-config.hbs',
-      popOut: true,
-      minimizable: false,
-      resizable: false,
-      classes: ['zweihander', 'language-config'],
-      width: 400,
-      height: 'auto',
+const { ApplicationV2, HandlebarsApplicationMixin } = foundry.applications.api;
+
+export default class ZweihanderLanguageConfig extends HandlebarsApplicationMixin(ApplicationV2) {
+  static DEFAULT_OPTIONS = {
+    ...super.DEFAULT_OPTIONS,
+    classes: ['zweihander', 'language-config'],
+    tag: 'form',
+    form: {
+      handler: ZweihanderLanguageConfig.#onSubmit,
       submitOnChange: true,
       submitOnClose: true,
-      closeOnSubmit: false,
-    });
+    },
+    window: {
+      icon: 'fa-solid fa-feather-pointed',
+      contentClasses: ['languages-container'],
+    },
+    position: {
+      width: 500,
+    },
+    actions: {
+      addLanguage: ZweihanderLanguageConfig.#addLanguage,
+      deleteLanguage: ZweihanderLanguageConfig.#deleteLanguage,
+    },
+  };
+
+  static PARTS = {
+    header: { template: 'systems/zweihander/src/templates/app/language-config/header.hbs' },
+    list: { template: 'systems/zweihander/src/templates/app/language-config/list.hbs' },
+  };
+
+  static async #onSubmit(event, form, formData) {
+    const actor = this.options.document;
+    const languages = formDataToArray(formData.object, 'languages');
+    await actor.update({ 'system.languages': languages });
+    await this.render();
   }
 
-  /** @override */
+  static async #addLanguage() {
+    const actor = this.options.document;
+    const l = actor.system.languages;
+    l.push({ name: 'New Language', isLiterate: false });
+    await actor.update({ 'system.languages': l });
+    await this.render();
+  }
+
+  static async #deleteLanguage(event, target) {
+    const actor = this.options.document;
+    const l = actor.system.languages;
+    const i = target.dataset['index'];
+    l.splice(i, 1);
+    await actor.update({ 'system.languages': l });
+    await this.render();
+  }
+
+  async _prepareContext(options) {
+    const actor = this.options.document;
+    const context = { languages: actor.system.languages };
+    return context;
+  }
+
   get title() {
-    return `${this.object.name}: ` + game.i18n.localize('ZWEI.settings.lasettings.title');
-  }
-
-  /** @override */
-  getData() {
-    const data = { languages: this.object.system.languages };
-    return data;
-  }
-
-  /** @override */
-  async _updateObject(event, formData) {
-    const languages = formDataToArray(formData, 'languages');
-    await this.object.update({ 'system.languages': languages });
-    this.render();
-  }
-
-  activateListeners(html) {
-    super.activateListeners(html);
-    html.find('.add-language').click(async () => {
-      const l = this.object.system.languages;
-      l.push({ name: 'New Language', isLiterate: false });
-      await this.object.update({ 'system.languages': l });
-      this.render();
-    });
-    html.find('.del-language').click(async (event) => {
-      const l = this.object.system.languages;
-      const i = $(event.currentTarget).data('index');
-      l.splice(i, 1);
-      await this.object.update({ 'system.languages': l });
-      this.render();
-    });
+    return `Language Configuration: ${this.options.document.name}`;
   }
 }

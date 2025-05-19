@@ -32,6 +32,7 @@ body.game.vtt.system-zweihander .zweihander.sheet.actor {
       flex-flow: row wrap;
       justify-content: space-between;
       justify-items: center;
+      align-items: center;
       list-style: none;
       margin: 0;
       padding: 0;
@@ -415,12 +416,14 @@ body.game.vtt.system-zweihander .zweihander.sheet.actor {
         & .numerable-field-subtract,
         .numerable-field-add {
           visibility: hidden;
+          min-height: unset;
           height: 16px;
           flex: 0 0 16px;
           padding: 0;
           text-align: center;
           line-height: 1;
           font-size: 14px;
+          transition: none;
         }
         &:hover .numerable-field-subtract,
         &:hover .numerable-field-add {

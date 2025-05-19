@@ -5,14 +5,15 @@
   "name": "Knows Your Name",
   "type": "trait",
   "_stats": {
-    "coreVersion": "12.331",
+    "coreVersion": "13.342",
     "systemId": null,
     "systemVersion": null,
     "createdTime": null,
     "modifiedTime": null,
     "lastModifiedBy": null,
     "compendiumSource": null,
-    "duplicateSource": null
+    "duplicateSource": null,
+    "exportSource": null
   },
   "system": {
     "description": {
@@ -23,7 +24,8 @@
       "effect": {
         "@en": "<p>You always gain free room and board in any settlement you&rsquo;re in. In addition, you always succeed at Skill Tests to recall a name, place or piece of information you&rsquo;ve been told before.</p>"
       }
-    }
+    },
+    "category": ""
   },
   "folder": null,
   "sort": 0,

@@ -5,14 +5,15 @@
   "name": "Interrogation",
   "type": "skill",
   "_stats": {
-    "coreVersion": "12.331",
+    "coreVersion": "13.342",
     "systemId": null,
     "systemVersion": null,
     "createdTime": null,
     "modifiedTime": null,
     "lastModifiedBy": null,
     "compendiumSource": null,
-    "duplicateSource": null
+    "duplicateSource": null,
+    "exportSource": null
   },
   "system": {
     "description": {
@@ -20,7 +21,8 @@
     },
     "notes": "",
     "requiresTraining": true,
-    "associatedPrimaryAttribute": "Willpower"
+    "associatedPrimaryAttribute": "Willpower",
+    "bonusPerRank": 10
   },
   "folder": null,
   "sort": 0,

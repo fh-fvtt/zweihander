@@ -1,0 +1,63 @@
+.application.zweihander.language-config {
+  .languages-container {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+  }
+
+  .requirements-list {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    gap: 1rem;
+    overflow: auto;
+
+    li {
+      border-radius: 6px;
+
+      /*&:nth-child(odd) {
+        background: rgba(28, 28, 28, 0.75);
+      }
+
+      &:nth-child(even) {
+        background: rgba(0, 0, 0, 0.12);
+      }*/
+    }
+  }
+  .requirements-header {
+    height: 42px;
+    background: rgba(0, 0, 0, 0.1);
+    border: 1px solid var(--color-border-light-tertiary);
+    font-weight: bold;
+    align-items: center;
+    padding: 3px 1px;
+
+    .key {
+      padding-left: 4px;
+    }
+    .value {
+      text-align: center;
+    }
+  }
+  .requirements-controls {
+    flex: 0 0 24px;
+    text-align: center;
+  }
+
+  .requirements-change {
+    align-items: center;
+    padding: 0px 8px;
+    margin: 0;
+    gap: 0.25rem;
+
+    .value {
+      display: flex;
+      flex-direction: row;
+      justify-content: center;
+    }
+
+    select {
+      width: 100%;
+    }
+  }
+}

@@ -5,14 +5,15 @@
   "name": "Fortune is Pleased",
   "type": "trait",
   "_stats": {
-    "coreVersion": "12.331",
+    "coreVersion": "13.342",
     "systemId": null,
     "systemVersion": null,
     "createdTime": null,
     "modifiedTime": null,
     "lastModifiedBy": null,
     "compendiumSource": null,
-    "duplicateSource": null
+    "duplicateSource": null,
+    "exportSource": null
   },
   "system": {
     "description": {
@@ -23,7 +24,8 @@
       "effect": {
         "@en": "<p>Whenever you spend a Coin to re-roll a failed Skill Test, you don&rsquo;t need to roll, as you Critically Succeed instead.</p>"
       }
-    }
+    },
+    "category": ""
   },
   "folder": null,
   "sort": 0,

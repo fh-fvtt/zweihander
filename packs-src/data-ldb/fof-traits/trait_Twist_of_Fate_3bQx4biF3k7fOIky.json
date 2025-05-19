@@ -5,14 +5,15 @@
   "name": "Twist of Fate",
   "type": "trait",
   "_stats": {
-    "coreVersion": "12.331",
+    "coreVersion": "13.342",
     "systemId": null,
     "systemVersion": null,
     "createdTime": null,
     "modifiedTime": null,
     "lastModifiedBy": null,
     "compendiumSource": null,
-    "duplicateSource": null
+    "duplicateSource": null,
+    "exportSource": null
   },
   "system": {
     "description": {
@@ -23,7 +24,8 @@
       "effect": {
         "@en": "<p>Whenever you spend a Coin, roll a 1D6 Chaos Die. If the result is face &lsquo;6,&rsquo; the Coin doesn&rsquo;t convert to the other pool.</p>"
       }
-    }
+    },
+    "category": ""
   },
   "folder": null,
   "sort": 0,

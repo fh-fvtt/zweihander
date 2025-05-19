@@ -5,14 +5,15 @@
   "name": "At Ease, My Friend",
   "type": "trait",
   "_stats": {
-    "coreVersion": "12.331",
+    "coreVersion": "13.342",
     "systemId": null,
     "systemVersion": null,
     "createdTime": null,
     "modifiedTime": null,
     "lastModifiedBy": null,
     "compendiumSource": null,
-    "duplicateSource": null
+    "duplicateSource": null,
+    "exportSource": null
   },
   "system": {
     "description": {
@@ -23,7 +24,8 @@
       "effect": {
         "@en": "<p>You ignore Peril Condition penalties associated with Skill Tests to heal people. In addition, your medicinal practices never result in a patient suffering from Sepsis. Finally, add an Assist Die when using any Healing Practice (as indicated in <strong>Article 8: Healing, Hazards &amp; Horror</strong>).</p>"
       }
-    }
+    },
+    "category": ""
   },
   "folder": null,
   "sort": 0,

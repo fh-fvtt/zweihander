@@ -5,14 +5,15 @@
   "name": "Born in the Saddle",
   "type": "trait",
   "_stats": {
-    "coreVersion": "12.331",
+    "coreVersion": "13.342",
     "systemId": null,
     "systemVersion": null,
     "createdTime": null,
     "modifiedTime": null,
     "lastModifiedBy": null,
     "compendiumSource": null,
-    "duplicateSource": null
+    "duplicateSource": null,
+    "exportSource": null
   },
   "system": {
     "description": {
@@ -23,7 +24,8 @@
       "effect": {
         "@en": "<p>When you fail a Handle Animal or Ride Test, you may re-roll to generate a better result, but must accept the outcome. In addition, when using the Movement subtype of Riding, you do not have to add the additional 1 Action Point cost.</p>"
       }
-    }
+    },
+    "category": ""
   },
   "folder": null,
   "sort": 0,

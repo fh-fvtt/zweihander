@@ -5,7 +5,7 @@
       <div>
         <time class="message-timestamp">{{timeSince message.timestamp}}</time>
         {{#if user.isGM}}
-        <a class="button message-delete"><i class="fas fa-trash-alt"></i></a>
+        <a class="button message-delete" data-action="deleteMessage"><i class="fas fa-trash-alt"></i></a>
         {{/if}}
         <h4 class="message-sender">{{alias}}</h4>
         <span class="message-metadata">

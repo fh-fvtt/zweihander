@@ -51,6 +51,7 @@ globalThis.findItemsWorldWide = (type, names) => ZweihanderUtils.findItemsWorldW
 
 const socket = new Promise((resolve) => {
   Hooks.once('socketlib.ready', () => {
+    console.log();
     resolve(socketlib.registerSystem('zweihander'));
   });
 });
@@ -258,7 +259,9 @@ Hooks.once('devModeReady', ({ registerPackageDebugFlag }) => {
   registerPackageDebugFlag('zweihander');
 });
 
-Hooks.on('renderPause', (app, html) => {
+Hooks.on('renderGamePause', (app, html) => {
+  html = html instanceof jQuery ? html : $(html); // @todo: jQuery refactor
+
   if (game.data.paused) {
     const doomingIndex = Math.floor(Math.random() * 100);
 

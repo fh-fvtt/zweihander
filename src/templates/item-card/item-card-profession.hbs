@@ -1,5 +1,5 @@
 <section class="item-card">
-  <h2 class="item-card-title">{{localize (zhConcat "ITEM.Type" (zhCapitalizeStrict type))}}: {{name}}</h2>
+  <h2 class="item-card-title">{{localize (zhConcat "TYPES.Item." type)}}: {{name}}</h2>
   {{!--
   {{#if system.flavor.description}}
   <div class="item-card-description">
@@ -11,28 +11,30 @@
   <div class="item-card-description">
     {{{zhLocalize system.description}}}
   </div>
-  <dl class="zh-expandable" data-expand-title="{{localize "ZWEI.chatskill.itemdetails"}}">
-      <dt>{{localize "ZWEI.actor.items.archetype"}}</dt>
-      <dd>{{localize (zhConcat "ZWEI.actor.details.labels." (zhLowerCase system.archetype))}}</dd>
-      <dt>{{localize "ZWEI.actor.items.professionaltrait"}}</dt>
-      <dd>{{system.professionalTrait.name}}</dd>
-      {{#if system.specialTrait.name}}
+  <dl class="zh-expandable" data-expand-title="{{localize 'ZWEI.chatskill.itemdetails'}}">
+    <dt>{{localize "ZWEI.actor.items.archetype"}}</dt>
+    <dd>{{localize (zhConcat "ZWEI.actor.details.labels." (zhLowerCase system.archetype))}}</dd>
+    <dt>{{localize "ZWEI.actor.items.professionaltrait"}}</dt>
+    <dd>{{system.professionalTrait.name}}</dd>
+    {{#if system.specialTrait.name}}
       <dt>{{localize "ZWEI.actor.items.specialtrait"}}</dt>
       <dd>{{system.specialTrait.name}}</dd>
-      {{/if}}
-      {{#if system.drawback.name}}
+    {{/if}}
+    {{#if system.drawback.name}}
       <dt>{{localize "ZWEI.actor.items.drawback"}}</dt>
       <dd>{{system.drawback.name}}</dd>
-      {{/if}}
-      {{#if system.expert.name}}
+    {{/if}}
+    {{#if system.expert.name}}
       <dt>{{localize "ZWEI.actor.items.expertreq"}}</dt>
       <dd>{{system.expert.requirements}}</dd>
-      {{/if}}
-      <dt>{{localize "ZWEI.actor.items.skillranks"}}</dt>
-      <dd>{{#each system.skillRanks}}{{name}}{{#unless @last}}, {{/unless}}{{/each}}</dd>
-      <dt>{{localize "ZWEI.actor.items.bonusadvances"}}</dt>
-      <dd>{{#each system.bonusAdvances}}[{{localize (zhConcat "ZWEI.actor.bonusesabbr." (zhLowerCaseBrackets name))}}]{{#unless @last}}, {{/unless}}{{/each}}</dd>
-      <dt>{{localize "ZWEI.actor.items.talents"}}</dt>
-      <dd>{{#each system.talents}}{{name}}{{#unless @last}}, {{/unless}}{{/each}}</dd>
-    </dl>
+    {{/if}}
+    <dt>{{localize "ZWEI.actor.items.skillranks"}}</dt>
+    <dd>{{#each system.skillRanks}}{{name}}{{#unless @last}}, {{/unless}}{{/each}}</dd>
+    <dt>{{localize "ZWEI.actor.items.bonusadvances"}}</dt>
+    <dd>{{#each system.bonusAdvances}}[{{localize
+          (zhConcat "ZWEI.actor.bonusesabbr." (zhLowerCaseBrackets name))
+        }}]{{#unless @last}}, {{/unless}}{{/each}}</dd>
+    <dt>{{localize "ZWEI.actor.items.talents"}}</dt>
+    <dd>{{#each system.talents}}{{name}}{{#unless @last}}, {{/unless}}{{/each}}</dd>
+  </dl>
 </section>

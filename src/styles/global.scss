@@ -111,7 +111,63 @@
   --zh-clr-accent-rgb: 184, 187, 38;
 }
 
-.theme-light {
+// @todo: refactor into light theme
+.theme-light,
+.theme-dark {
+  --color-border-light-tertiary: var(--zh-clr-fg4);
+  --color-cool-5: var(--zh-clr-bg0);
+  --color-cool-4: var(--zh-clr-bg4);
+  --color-light-2: var(--zh-clr-fg0);
+  --color-light-5: var(--zh-clr-fg4);
+  --color-warm-1: var(--zh-clr-aqua);
+  --content-link-text-color: var(--zh-clr-fg0);
+
+  .sidebar-tab {
+    --sidebar-background: var(--zh-clr-bg0);
+  }
+
+  li.ui-control {
+    --control-bg-color: rgba(28, 28, 28, 0.75);
+  }
+
+  .prosemirror {
+    --menu-background: rgba(0, 0, 0, 0.1);
+  }
+
+  code-mirror {
+    --input-focus-outline-color: var(--zh-clr-aqua);
+    .cm-editor {
+      background: var(--zh-clr-bg1);
+    }
+  }
+
+  #menu {
+    --color-light-1: var(--zh-clr-fg0);
+    --color-text-emphatic: var(--zh-clr-fg0);
+    background: rgba(28, 28, 28, 0.75);
+  }
+
+  #context-menu li.context-item {
+    &:hover {
+      --hover-entry-background: var(--zh-clr-bg1);
+      --hover-text-color: var(--zh-clr-fg0);
+
+      border: 1px solid transparent;
+    }
+  }
+
+  #players {
+    --background-color: var(--zh-clr-bg0);
+
+    color: var(--zh-clr-fg1);
+  }
+
+  #hotbar {
+    --slot-color: var(--zh-clr-bg0);
+    --key-bg-color-empty: var(--zh-clr-bg1);
+    --key-bg-color-full: var(--zh-clr-bg1);
+  }
+
   .application {
     --background: var(--zh-clr-bg0);
     --color-text-primary: var(--zh-clr-fg0);
@@ -123,7 +179,9 @@
     --color-form-hint-hover: var(--color-text-dark-secondary);
     --color-select-option-bg: var(--zh-clr-bg1);
 
-    h1 {
+    border: none;
+
+    .window-title {
       color: var(--color-text-light-highlight);
     }
   }
@@ -135,6 +193,10 @@
     --input-text-color: var(--zh-clr-fg2);
     --input-placeholder-color: var(--zh-clr-fg4);
     --input-focus-outline-color: var(--zh-clr-aqua);
+
+    &[type='range'] {
+      --input-background-color: var(--zh-clr-bg1);
+    }
 
     &:disabled {
       --input-background-color: rgba(var(--zh-clr-bg0-rgb), 0.5);
@@ -235,24 +297,35 @@ body.game.vtt.system-zweihander {
   }
 
   #pause {
-    font-size: 12px;
-    font-style: italic;
-    bottom: 13%;
     background: none;
-  }
+    top: calc(100vh - 365px);
 
-  #pause > img {
-    top: -80px;
-    left: calc(50% - 128px);
-    height: 256px;
-    width: 256px;
-    --fa-animation-duration: 15s;
-    opacity: 0.75;
-    filter: drop-shadow(0px 0px 8px var(--zh-clr-fg3));
-  }
+    &.paused {
+      animation-duration: 5s;
+    }
 
-  #pause > figcaption {
-    text-shadow: 1px 1px 10px var(--color-shadow-dark);
+    > img {
+      top: -80px;
+      left: calc(50% - 128px);
+      height: 256px;
+      width: 256px;
+      --fa-animation-duration: 15s;
+      opacity: 0.75;
+      filter: drop-shadow(0px 0px 8px var(--zh-clr-fg3));
+    }
+
+    > figcaption {
+      position: absolute;
+      text-transform: unset;
+      font-style: unset;
+      color: var(--zh-clr-fg0);
+      font-weight: normal;
+      font-family: var(--font-primary);
+      font-style: italic;
+      letter-spacing: 0.05em;
+      // font-family: var(--zh-font-title);
+      text-shadow: 1px 1px 10px var(--color-shadow-dark);
+    }
   }
 
   .dimension-change-listener {
@@ -272,6 +345,14 @@ body.game.vtt.system-zweihander {
     input[type='checkbox'] {
       --checkbox-checked-color: var(--zh-clr-aqua);
     }
+
+    .window-header {
+      border-bottom: none;
+    }
+
+    .window-icon {
+      color: var(--zh-clr-fg0);
+    }
   }
 
   .application section.window-content {
@@ -282,6 +363,7 @@ body.game.vtt.system-zweihander {
     border-radius: 5px 5px 0 0;
     border-bottom: none;
     background: var(--zh-clr-dark0);
+    color: var(--zh-clr-fg0);
   }
 
   .window-app .window-content {

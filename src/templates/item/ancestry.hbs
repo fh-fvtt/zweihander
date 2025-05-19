@@ -28,13 +28,13 @@
 <fieldset>
   <legend>{{localize "ZWEI.actor.items.ancestraltrait"}}</legend>
   <div class="form-group">
-    <label>{{localize "ITEM.TypeTrait"}}</label>
+    <label>{{localize "TYPES.Item.trait"}}</label>
     <div class="roll-container">
       {{> ($$ 'partials/detail-item-wrapper') ancestralTraitWrapperData editable=editable}}
       <button
         type="button"
         class="randomize-trait icon fa-solid fa-shuffle"
-        data-tooltip="{{localize 'ZWEI.actor.items.randomize'}} {{localize 'ITEM.TypeTrait'}}: {{ name }}"
+        data-tooltip="{{localize 'ZWEI.actor.items.randomize'}} {{localize 'TYPES.Item.trait'}}: {{ name }}"
         data-tooltip-direction="UP"
       ></button>
     </div>

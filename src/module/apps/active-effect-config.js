@@ -1,55 +1,65 @@
-import * as ZweihanderUtils from '../utils';
+const { ActiveEffectConfig } = foundry.applications.sheets;
 
 export default class ZweihanderActiveEffectConfig extends ActiveEffectConfig {
-  static get defaultOptions() {
-    const classes = ['zweihander', 'sheet', 'active-effect-sheet'];
+  static DEFAULT_OPTIONS = {
+    ...super.DEFAULT_OPTIONS,
+    classes: ['sheet', 'active-effect-sheet'],
+    position: { width: 585 },
+    form: { closeOnSubmit: false, submitOnClose: true, submitOnChange: true },
+  };
 
-    return foundry.utils.mergeObject(super.defaultOptions, {
-      template: 'systems/zweihander/src/templates/app/active-effect-config.hbs',
-      submitOnChange: true,
-      submitOnClose: true,
-      closeOnSubmit: false,
-      width: 585,
-      height: 'auto',
-      classes,
-    });
-  }
+  static PARTS = {
+    ...super.PARTS,
+    details: { template: 'systems/zweihander/src/templates/app/active-effect/details.hbs', scrollable: [''] },
+    changes: {
+      template: 'systems/zweihander/src/templates/app/active-effect/changes.hbs',
+      scrollable: ['ol[data-changes]'],
+    },
+  };
 
-  /**@override */
-  async getData() {
-    const data = await super.getData();
+  async _prepareContext(options) {
+    const context = await super._prepareContext(options);
 
-    data.selectableKeys = {
-      pa: {},
-      pab: {},
-      sa: {},
-    };
+    const pa = CONFIG.ZWEI.primaryAttributes.map((pa) => ({
+      value: `system.stats.primaryAttributes.${pa}.value`,
+      label: game.i18n.localize('ZWEI.actor.primary.' + pa),
+      group: game.i18n.localize('ZWEI.actor.navigation.primary'),
+    }));
 
-    for (let pa of CONFIG.ZWEI.primaryAttributes) {
-      data.selectableKeys.pa[`system.stats.primaryAttributes.${pa}.value`] = game.i18n.localize(
-        'ZWEI.actor.primary.' + pa
-      );
-      data.selectableKeys.pab[`system.stats.primaryAttributes.${pa}.bonus`] = game.i18n.localize(
-        'ZWEI.actor.primarybonuses.' + pa
-      );
-    }
+    const pab = CONFIG.ZWEI.primaryAttributes.map((pab) => ({
+      value: `system.stats.primaryAttributes.${pab}.bonus`,
+      label: game.i18n.localize('ZWEI.actor.primarybonuses.' + pab),
+      group: game.i18n.localize('ZWEI.actor.navigation.primarybonuses'),
+    }));
 
-    for (let sa of CONFIG.ZWEI.secondaryAttributes) {
-      data.selectableKeys.sa[`system.stats.secondaryAttributes.${sa}.value`] = game.i18n.localize(
+    const sa = CONFIG.ZWEI.secondaryAttributes.map((sa) => ({
+      value: `system.stats.secondaryAttributes.${sa}.value`,
+      label: game.i18n.localize(
         'ZWEI.actor.secondary.' +
           sa
             .split(/(?=[A-Z])/)
             .map((w) => w.toLowerCase())
             .join('')
-      );
-    }
+      ),
+      group: game.i18n.localize('ZWEI.actor.navigation.secondary'),
+    }));
 
-    return data;
+    context.selectableKeys = [...pa, ...pab, ...sa];
+
+    console.log(context);
+
+    return context;
   }
 
-  async _render(force, options) {
-    await super._render(force, options);
-    this.element.css('height', 'auto');
-    // this.element.css('top', 'calc(50% - 222px)'); // stop sheet from gluing to top
+  async _preparePartContext(partId, context) {
+    return await super._preparePartContext(partId, context);
+  }
+
+  _configureRenderParts(options) {
+    const parts = super._configureRenderParts(options);
+
+    delete parts.footer;
+
+    return parts;
   }
 }

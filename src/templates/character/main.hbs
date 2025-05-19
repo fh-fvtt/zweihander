@@ -1,24 +1,13 @@
-<form class="editable flexcol" autocomplete="off">
-  {{> ($$ "character/header") }}
-  {{#unless limited}}
-  <nav class="sheet-navigation tabs" data-group="primary">
-    <a class="item" data-tab="main">{{localize "ZWEI.actor.navigation.attributes"}}</a>
-    <a class="item" data-tab="tiers">{{localize "ZWEI.actor.navigation.tiers"}}</a>
-    <a class="item" data-tab="trappings">{{localize "ZWEI.actor.navigation.trappings"}}</a>
-    {{#if actorConfig.isMagickUser}}
-    <a class="item" data-tab="magick">{{localize "ZWEI.actor.navigation.magick"}}</a>
-    {{/if}}
-    <a class="item" data-tab="afflictions">{{localize "ZWEI.actor.navigation.afflictions"}}</a>
-    <a class="item" data-tab="details">{{localize "ZWEI.actor.navigation.background"}}</a>
-  </nav>
+
+{{#unless limited}}
   <section class="sheet-body">
     {{> ($$ "character/tab-main") }}
     {{#each tabs}}
-    <div class="tab {{@key}} flexcol" data-group="primary" data-tab="{{@key}}">
-      {{#if headerTemplate}}{{> ($$ headerTemplate) ../.}}{{/if}}
-      {{> ($$ "partials/items-list") itemGroups}}
-      {{#if footerTemplate}}{{> ($$ footerTemplate) ../.}}{{/if}}
-    </div>
+      <div class="tab {{@key}} flexcol" data-group="primary" data-tab="{{@key}}">
+        {{#if headerTemplate}}{{> ($$ headerTemplate) ../.}}{{/if}}
+        {{> ($$ "partials/items-list") itemGroups}}
+        {{#if footerTemplate}}{{> ($$ footerTemplate) ../.}}{{/if}}
+      </div>
     {{/each}}
     <div class="tab background flexcol" data-group="primary" data-tab="details">
       <div>
@@ -33,5 +22,4 @@
       </div>
     </div>
   </section>
-  {{/unless}}
-</form>
+{{/unless}}

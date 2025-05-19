@@ -146,6 +146,7 @@
       color: var(--zh-clr-fg3);
       text-align: center;
       font-size: 10px;
+      font-family: var(--zh-font-title);
       border: none;
       margin: 0;
       padding: 0 5px 0 17px;
@@ -234,9 +235,9 @@
             content: '';
             display: block;
             height: 15px;
-            left: calc(50% - 9px);
+            left: calc(50% - 7px);
             position: absolute;
-            top: calc(50% - 9fpx);
+            bottom: calc(50% - 7px);
             width: 15px;
             z-index: -1;
           }

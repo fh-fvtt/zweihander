@@ -13,11 +13,9 @@ export default class ZweihanderActiveEffect extends ActiveEffect {
     if (parent.documentName === 'Item' && ['weapon', 'trapping', 'armor'].includes(parent.type)) {
       const carried = parent.system.carried;
 
-      if (changed.system['isActive'] !== undefined && !carried) {
+      if (changed?.system?.['isActive'] !== undefined && !carried) {
         changed.system.isActive = false;
-        ui.notifications.warn(
-          game.i18n.format("ZWEI.othermessages.cannotenableae", { item: parent.name})
-        );
+        ui.notifications.warn(game.i18n.format('ZWEI.othermessages.cannotenableae', { item: parent.name }));
       }
     }
 

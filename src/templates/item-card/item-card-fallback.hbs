@@ -1,5 +1,5 @@
 <section class="item-card">
-  <h2 class="item-card-title">{{localize (zhConcat "ITEM.Type" (zhCapitalizeStrict type))}}: {{name}}</h2>
+  <h2 class="item-card-title">{{localize (zhConcat "TYPES.Item." type)}}: {{name}}</h2>
   {{!--
   {{#if system.flavor.description}}
   <div class="item-card-description">
@@ -11,8 +11,8 @@
   <div class="item-card-description">
     {{{zhLocalize system.description}}}
   </div>
-  <br/>
-  <div class="item-card-effect" data-effect-label="{{localize "ZWEI.actor.items.effect"}}">
+  <br />
+  <div class="item-card-effect" data-effect-label="{{localize 'ZWEI.actor.items.effect'}}">
     {{{zhLocalize system.rules.effect}}}
   </div>
 </section>

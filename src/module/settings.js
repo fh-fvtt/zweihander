@@ -298,7 +298,7 @@ export const registerCompendiumSettings = function () {
     },
     {
       value: 'trapping',
-      compendium: 'trapping',
+      compendium: 'trappings',
     },
     {
       value: 'quality',

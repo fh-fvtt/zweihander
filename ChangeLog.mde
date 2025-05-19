@@ -5,6 +5,13 @@ All notable changes to this project will be documented in this file.
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).´
 
+## [5.5.5] - 2025-05-12
+
+### Added
+
+- Added auto-calculation of Damage Threshold for NPCs when sheet is **not** set to Manual Mode.
+- Added Drawback list to NPC sheet.
+
 ## [5.5.4] - 2025-05-08
 
 ### Added

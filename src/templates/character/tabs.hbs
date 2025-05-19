@@ -1,0 +1,12 @@
+{{#unless limited}}
+  <nav class="sheet-navigation tabs" data-group="primary">
+    <a class="item" data-tab="main">{{localize "ZWEI.actor.navigation.attributes"}}</a>
+    <a class="item" data-tab="tiers">{{localize "ZWEI.actor.navigation.tiers"}}</a>
+    <a class="item" data-tab="trappings">{{localize "ZWEI.actor.navigation.trappings"}}</a>
+    {{#if actorConfig.isMagickUser}}
+      <a class="item" data-tab="magick">{{localize "ZWEI.actor.navigation.magick"}}</a>
+    {{/if}}
+    <a class="item" data-tab="afflictions">{{localize "ZWEI.actor.navigation.afflictions"}}</a>
+    <a class="item" data-tab="details">{{localize "ZWEI.actor.navigation.background"}}</a>
+  </nav>
+{{/unless}}

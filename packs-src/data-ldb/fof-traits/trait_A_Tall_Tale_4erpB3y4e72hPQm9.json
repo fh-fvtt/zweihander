@@ -5,14 +5,15 @@
   "name": "A Tall Tale",
   "type": "trait",
   "_stats": {
-    "coreVersion": "12.331",
+    "coreVersion": "13.342",
     "systemId": null,
     "systemVersion": null,
     "createdTime": null,
     "modifiedTime": null,
     "lastModifiedBy": null,
     "compendiumSource": null,
-    "duplicateSource": null
+    "duplicateSource": null,
+    "exportSource": null
   },
   "system": {
     "description": {
@@ -23,7 +24,8 @@
       "effect": {
         "@en": "<p>Are you abnormally short or extraordinarily tall? Choose one. If Tall, you automatically inflict Moderate Injuries when fighting bare-handed in combat, but permanently reduce your Initiative by -1. If Slight, permanently add +1 to your Damage Threshold, but you cannot use two-handed melee weapons. When you come to determining stature, select the aforementioned size.</p>"
       }
-    }
+    },
+    "category": ""
   },
   "folder": null,
   "sort": 0,
