@@ -173,11 +173,15 @@ body.game.vtt.system-zweihander {
       font-size: 13px;
       font-family: var(--zh-font-title);
       text-transform: uppercase;
+      border: none;
+      gap: unset;
+
       .item {
         height: 30px;
         line-height: 32px;
         margin: 0 23px;
         border-bottom: 3px solid var(--zh-clr-fg3);
+
         &.active {
           border-bottom-color: var(--zh-clr-aqua);
           text-shadow: 0 0 2px var(--zh-clr-aqua-alt);

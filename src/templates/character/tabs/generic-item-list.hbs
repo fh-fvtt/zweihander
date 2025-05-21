@@ -1,0 +1,7 @@
+{{#unless limited}}
+  <div class="tab {{tab.id}} {{tab.cssClass}} flexcol" data-group="{{tab.group}}" data-tab="{{tab.id}}">
+    {{#if tab.headerTemplate}}{{> ($$ tab.headerTemplate) .}}{{/if}}
+    {{> ($$ "partials/items-list") tab.itemGroups}}
+    {{#if tab.footerTemplate}}{{> ($$ tab.footerTemplate) .}}{{/if}}
+  </div>
+{{/unless}}

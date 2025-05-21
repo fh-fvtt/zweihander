@@ -12,7 +12,15 @@ export default class ZweihanderBaseActorSheet extends HandlebarsApplicationMixin
   static DEFAULT_OPTIONS = {
     classes: ['zweihander', 'sheet', 'actor', 'damage-tracker'],
     window: {
-      resizeable: true,
+      resizable: true,
+    },
+    form: {
+      submitOnChange: true,
+      submitOnClose: true,
+    },
+    actions: {
+      toggleCompactMode: ZweihanderBaseActorSheet.#toggleCompactMode,
+      renderLanguageApplication: ZweihanderBaseActorSheet.#renderLanguageApplication,
     },
   };
 
@@ -28,9 +36,11 @@ export default class ZweihanderBaseActorSheet extends HandlebarsApplicationMixin
   }
 
   async _prepareContext(options) {
+    const sheetData = await super._prepareContext(options);
+
     // Basic data
     let isOwner = this.actor.isOwner;
-    const sheetData = {
+    const zweihanderContext = {
       owner: isOwner,
       limited: this.actor.limited,
       options: this.options,
@@ -45,6 +55,8 @@ export default class ZweihanderBaseActorSheet extends HandlebarsApplicationMixin
       effects: [],
       settings: {},
     };
+
+    foundry.utils.mergeObject(sheetData, zweihanderContext);
 
     // The Actor's data
     const actorData = this.actor.toObject(false);
@@ -235,13 +247,52 @@ export default class ZweihanderBaseActorSheet extends HandlebarsApplicationMixin
     }
   }
 
+  async _renderFrame(options) {
+    const frame = await super._renderFrame(options);
+    const defaultToCompact = game.settings.get('zweihander', 'openInCompactMode');
+
+    const buttons = [
+      ZweihanderUtils.constructHTMLButton({
+        label: '',
+        classes: ['header-control', 'icon', 'fa-solid', `fa-${defaultToCompact ? 'expand' : 'compress'}`],
+        dataset: { action: 'toggleCompactMode', tooltip: 'Toggle Compact Mode' },
+      }),
+    ];
+
+    this.window.controls.after(...buttons);
+
+    return frame;
+  }
+
+  static #toggleCompactMode(event, target) {
+    const sheet = target.closest('.sheet');
+    sheet.classList.toggle('zweihander-compact-sheet');
+
+    target.classList.toggle('fa-compress');
+    target.classList.toggle('fa-expand');
+
+    this.render();
+
+    // @todo: persist toggled state for a given Actor
+  }
+
+  /**
+   * @this {ZweihanderBaseActorSheet}
+   * @param {Event} event
+   * @param {HTMLElement} target
+   */
+  static #renderLanguageApplication(event, target) {
+    this.#languageConfig.render(true);
+  }
+
   async _onRender(context, options) {
-    super._onRender(context, options);
+    await super._onRender(context, options);
 
     const html = $(this.element); // @todo: refactor jQuery
 
     this._damageSheet(html);
     this._perilSheet(html);
+
     html.find('.modded-value-indicator').hover(
       (event) => {
         const tooltip = $(event.currentTarget).find('.modded-value-tooltip').clone();
@@ -603,7 +654,10 @@ export default class ZweihanderBaseActorSheet extends HandlebarsApplicationMixin
       quality.sheet.render(true);
     });
 
-    html.find('.open-language-config').click(() => this.#languageConfig.render(true));
+    html.find('.open-language-config').click(() => {
+      console.log(this);
+      this.#languageConfig.render(true);
+    });
 
     // Modify numerable value by clicking '+' and '-' buttons on sheet, e.g. quantity, encumbrance
     const updateNumerable = (i) => async (event) => {
@@ -726,7 +780,9 @@ export default class ZweihanderBaseActorSheet extends HandlebarsApplicationMixin
 
   _getHeaderControls() {
     const buttons = super._getHeaderControls();
+
     if (game.user.isGM || !this.actor.limited) {
+      /*
       const compactMode = game.settings.get('zweihander', 'openInCompactMode');
       buttons.splice(0, 0, {
         label: ' Compact Mode',
@@ -741,15 +797,20 @@ export default class ZweihanderBaseActorSheet extends HandlebarsApplicationMixin
             .toggleClass('fa-toggle-off');
         },
       });
+      */
     }
-    if (this.options.editable && (game.user.isGM || this.actor.isOwner)) {
-      buttons.splice(1, 0, {
-        label: 'Actor',
-        class: 'configure-actor',
+    if (this.isEditable && (game.user.isGM || this.actor.isOwner)) {
+      buttons.splice(0, 0, {
+        label: 'Configure Actor',
+        //class: 'configure-actor',
         icon: 'fas fa-user-cog',
-        onclick: () => this.#actorConfig.render(true),
+        visible: true,
+        onClick: () => this.#actorConfig.render(true),
       });
     }
+
+    console.log('BOTTONS', buttons);
+
     return buttons;
   }
 }

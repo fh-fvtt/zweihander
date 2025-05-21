@@ -26,6 +26,7 @@ export default class ZweihanderActorConfig extends FormApplication {
       isMagickUser: false,
       permanentChaosRanks: 0,
       permanentOrderRanks: 0,
+      headerBackground: 'systems/zweihander/assets/default-header-bg.webp',
       dodgeSound: 'systems/zweihander/assets/sounds/dodge.mp3',
       parrySound: 'systems/zweihander/assets/sounds/parry.mp3',
       gruntSound: 'systems/zweihander/assets/sounds/grunt_m.mp3',

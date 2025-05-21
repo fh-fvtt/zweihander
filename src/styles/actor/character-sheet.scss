@@ -4,6 +4,10 @@ body.game.vtt.system-zweihander .zweihander.sheet.character {
   // sheet dimensions
   min-height: 500px;
   min-width: 775px;
+  &.fancy {
+    background-repeat: no-repeat;
+    background-size: 100%;
+  }
   &.limited {
     min-height: 235px;
     max-height: 235px;
@@ -13,6 +17,21 @@ body.game.vtt.system-zweihander .zweihander.sheet.character {
       flex: 1;
       overflow-y: scroll;
       border-bottom: none;
+    }
+  }
+
+  > .window-header.fancy {
+    background: none;
+    .window-icon,
+    .window-title {
+      visibility: hidden;
+    }
+    button {
+      background-color: rgba(28, 28, 28, 0.75);
+      &:not(:hover) {
+        border: 1px solid var(--zh-clr-bg3);
+        color: var(--zh-clr-fg3);
+      }
     }
   }
 
@@ -28,10 +47,17 @@ body.game.vtt.system-zweihander .zweihander.sheet.character {
     overflow: hidden;
     display: flex;
     flex-direction: column;
+
+    &.fancy {
+      border: none;
+      background: none;
+      backdrop-filter: none;
+    }
+
     .tab {
       flex: 1 0 0;
       overflow: hidden;
-      padding: 10px 5px 5px 5px;
+      margin: 10px 0 0.5rem 0;
     }
 
     h4.block-title {
@@ -51,11 +77,12 @@ body.game.vtt.system-zweihander .zweihander.sheet.character {
     @import 'character-sheet-tab-main.scss';
 
     .items-list {
-      padding: 0 5px;
+      flex: 1;
+      padding: 0 0.5rem;
     }
 
     .tab.background {
-      padding: 10px 10px 5px 10px;
+      padding: 0 0.5rem;
       & > div {
         border: 2px groove var(--zh-clr-bg2);
         flex: 1 0 auto;
@@ -64,6 +91,12 @@ body.game.vtt.system-zweihander .zweihander.sheet.character {
         padding: 2ch 5px;
         display: flex;
         flex-flow: column nowrap;
+        &:last-of-type {
+          padding-bottom: 0;
+          margin-bottom: 0;
+          border-bottom-left-radius: 6px;
+          border-bottom-right-radius: 6px;
+        }
       }
       .editor {
         height: unset;
@@ -80,7 +113,7 @@ body.game.vtt.system-zweihander .zweihander.sheet.character {
       .magick-skill-selector {
         border-top: 2px groove var(--zh-clr-bg2);
         flex: 0 0 32px;
-        padding-top: 6px;
+        padding-top: 0.5rem;
         justify-content: center;
         label {
           flex: 0 0 content;
@@ -91,6 +124,7 @@ body.game.vtt.system-zweihander .zweihander.sheet.character {
         }
         select {
           flex: 0 0 150px;
+          height: 27px;
         }
       }
     }
@@ -156,7 +190,7 @@ body.game.vtt.system-zweihander .zweihander.sheet.character {
         border-radius: 1ch;
         color: var(--zh-clr-bg0);
         flex: 0 0 18px;
-        margin: 1px 15px 0 1px;
+        margin: 1px 0.5rem 0 0.5rem;
         overflow: hidden;
         position: relative;
         .encumbrance-label {

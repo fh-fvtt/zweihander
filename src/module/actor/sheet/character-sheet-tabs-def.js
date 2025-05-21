@@ -298,7 +298,10 @@ export function getItemGroups(groupsData) {
           title: 'severity',
           size: 140,
           value: function () {
-            return game.i18n.localize('ZWEI.actor.items.injuryseverity.' + CONFIG.ZWEI.injurySeverities[this.system.severity].label.toLowerCase());
+            return game.i18n.localize(
+              'ZWEI.actor.items.injuryseverity.' +
+                CONFIG.ZWEI.injurySeverities[this.system.severity].label.toLowerCase()
+            );
           },
         },
         {
@@ -414,9 +417,9 @@ export function getItemGroups(groupsData) {
   };
 }
 
-export function attachTabDefinitions(tabData) {
-  const $$ = (x) => tabData.itemGroups[x];
-  tabData.tabs = {
+export function attachTabDefinitions(context) {
+  const $$ = (x) => context.itemGroups[x];
+  const tabDefinitions = {
     trappings: {
       headerTemplate: 'character/currency',
       footerTemplate: 'character/encumbrance-meter',
@@ -441,4 +444,6 @@ export function attachTabDefinitions(tabData) {
       itemGroups: ['professions', 'traits', 'drawbacks', 'talents', 'uniqueAdvances'].map($$),
     },
   };
+
+  foundry.utils.mergeObject(context.tabs, tabDefinitions, { overwrite: false });
 }

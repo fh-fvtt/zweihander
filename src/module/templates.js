@@ -13,8 +13,9 @@ const templatesToLoad = [
   $$('character/encumbrance-meter.hbs'),
   $$('character/header.hbs'),
   $$('character/magick-skill-selector.hbs'),
-  $$('character/main.hbs'),
-  $$('character/tab-main.hbs'),
+  $$('character/tabs/attributes.hbs'),
+  $$('character/tabs/background.hbs'),
+  $$('character/tabs/generic-item-list.hbs'),
 
   $$('chat/chat-message.hbs'),
   $$('chat/chat-skill.hbs'),

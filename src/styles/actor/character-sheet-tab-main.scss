@@ -1,11 +1,20 @@
 .tab.main {
+  &.flexrow > * {
+    height: 100%;
+  }
+
+  .flexcol > * {
+    flex: 1;
+  }
+
   overflow-y: auto;
   // scrollbar-gutter: stable both-edges;
-  margin: 10px 0 10px;
-  padding: 0px 10px; // 0px 5px;
+  margin: 10px 0 0.5rem;
+  padding: 0px 0.5rem; //10px;
   .primary-attributes {
+    min-height: 540px;
     border: 2px groove var(--zh-clr-bg2);
-    border-radius: 3px;
+    border-radius: 3px 3px 3px 6px;
     flex: 0 0 content; // 50px;
     font-size: 14px;
     // height: 100%;
@@ -22,6 +31,7 @@
       position: relative;
       text-align: center;
       width: 100%;
+      margin-bottom: 0;
       .pa-wrapper {
         display: flex;
         flex-direction: row;
@@ -32,6 +42,7 @@
         line-height: 32px;
         text-align: center;
         width: 40px;
+        padding: 0;
       }
       &:last-of-type {
         border: none;
@@ -68,6 +79,7 @@
   }
 
   .skills-container {
+    min-height: 540px;
     flex: 1 0 212px;
     border: 2px groove var(--zh-clr-bg2);
     margin: 0 5px;
@@ -75,8 +87,9 @@
   }
 
   .combat-container {
+    min-height: 540px;
     border: 2px groove var(--zh-clr-bg2);
-    border-radius: 3px;
+    border-radius: 3px 3px 6px 3px;
     flex: 0 0 375px;
     & > * {
       flex: 1 0 content;
@@ -89,6 +102,7 @@
     .combat-reactions {
       border-bottom: 2px groove var(--zh-clr-bg2);
       padding-top: 5px;
+      padding-bottom: 5px;
     }
     .peril-rolls {
       flex: 2 0 content;
@@ -141,6 +155,7 @@
     .condition-thresholds {
       border-bottom: 2px groove var(--zh-clr-bg2);
       padding-top: 5px;
+      padding-bottom: 5px;
       .peril,
       .damage {
         margin: 0 5px;
@@ -157,17 +172,24 @@
       }
       .values-derived {
         height: 72px;
+
+        > div {
+          display: flex;
+          flex-direction: row;
+          align-items: center;
+          justify-content: flex-start;
+        }
       }
       .threshold-value {
-        height: 60px;
+        height: 50px;
         left: 12px;
         position: relative;
-        top: 14px;
+        top: 10px; //14px;
       }
       .inline-formula {
         color: var(--zh-clr-fg3);
         display: inline-block;
-        margin-right: 0.5ex;
+        margin-right: 1.5ex;
         text-align: right;
         width: 3.25ex;
       }
@@ -176,12 +198,15 @@
       flex: 2 0 content;
       align-items: stretch;
       padding-top: 5px;
+      padding-bottom: 5px;
       .condition-tracker-list {
         &.damage-list {
           .radio-and-status {
             margin-left: 55px;
             margin-right: 0;
             text-align: left;
+            align-items: center;
+            justify-content: flex-start;
           }
           input[type='radio'] + label::before {
             left: -23px;
@@ -189,14 +214,18 @@
         }
       }
       .radio-and-status {
-        flex: 1 0 18px;
+        flex: 1; //0 18px;
         margin-right: 55px;
         text-align: right;
+        align-items: center;
+        justify-content: flex-end;
+        padding: 2px 0;
       }
       input[type='radio'] {
         appearance: none;
         display: none;
         & + label {
+          flex: 0 0 content;
           cursor: pointer;
           display: inline-block;
           font-size: 12px;
@@ -208,7 +237,7 @@
             &::before {
               border-color: var(--zh-clr-yellow);
               color: var(--zh-clr-yellow);
-              content: 'x';
+              content: '🗶';
             }
           }
           &::before {
@@ -216,12 +245,13 @@
             border-radius: 50%;
             content: ' ';
             display: block;
-            height: 12px;
-            line-height: 10px;
+            height: 14px;
+            line-height: 13px;
+            font-size: 14px;
             position: absolute;
             right: -23px;
             top: 0px;
-            width: 12px;
+            width: 14px;
             z-index: -1;
           }
         }
@@ -231,7 +261,7 @@
             background: var(--zh-clr-aqua);
             border: 1px solid var(--zh-clr-aqua-alt);
             color: var(--zh-clr-bg0);
-            content: 'x';
+            content: '🗶';
           }
         }
       }
@@ -244,8 +274,15 @@
         line-height: 24px;
         margin-top: 5px;
         text-align: center;
+
         &.color-overage:not([data-overage='0']) {
           color: var(--zh-clr-red);
+        }
+
+        &.damage,
+        &.peril {
+          flex: 0 0 26px;
+          margin: 0;
         }
       }
       .formula {
@@ -267,7 +304,8 @@
       }
     }
     .skill-dropdown {
-      margin: 5px 0 5px 0;
+      margin: 10px 0 0px 0;
+      flex: 0 0 27px;
     }
     h4.block-title {
       flex: 0 1 1.5em;

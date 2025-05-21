@@ -15,9 +15,9 @@
             value="{{system.stats.rewardPoints.total}}" />
         </div>
         <div class="rp-other-pts flexrow">
-          <span class="sep">{{localize "ZWEI.actor.header.fate"}} </span>
+          <span class="sep fate-rep">{{localize "ZWEI.actor.header.fate"}} </span>
           <input class="rp-fate" type="number" name="system.stats.fate" value="{{system.stats.fate}}" />
-          <span class="sep">{{localize "ZWEI.actor.header.reputationabbr"}} </span>
+          <span class="sep fate-rep">{{localize "ZWEI.actor.header.reputationabbr"}} </span>
           <input class="rp-rep" type="number" name="system.stats.reputation" value="{{system.stats.reputation}}" />
         </div>
       </aside>
@@ -31,7 +31,7 @@
     <section class="alignment-header">
       <input class="order-title" name="system.alignment.order.name" type="text" value="{{system.alignment.order.name}}"
         placeholder='{{localize "ZWEI.actor.header.orderalignment"}}' />
-      <h1>{{localize "ZWEI.actor.header.corruption"}}
+      <h1 class="flexrow">{{localize "ZWEI.actor.header.corruption"}}
         <a class="reset-ranks"><i class="fas fa-sync-alt"></i></a>
       </h1>
       <input class="chaos-title" name="system.alignment.chaos.name" type="text" value="{{system.alignment.chaos.name}}"

@@ -339,6 +339,19 @@ function partitionByNames(names) {
   };
 }
 
+export function constructHTMLButton({ label, dataset = {}, classes = [], icon = '' }) {
+  const button = document.createElement('button');
+
+  for (const [key, value] of Object.entries(dataset)) {
+    button.dataset[key] = value;
+  }
+  button.classList.add(...classes);
+  if (icon) icon = `<i class="${icon}"></i> `;
+  button.innerHTML = `${icon}${label}`;
+
+  return button;
+}
+
 export async function findItemsByType(
   type,
   { takeOne = false, filterFn, sortFn = sortByItemSpecificity(), partitionFn = partitionByNames() } = {}

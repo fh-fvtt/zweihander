@@ -175,6 +175,17 @@
 
       <hr>
       {{/if}}
+      <h3>Default Header Background</h3>
+      <div class="form-group">
+        <label>Stuff here</label>
+        <div class="flexrow">
+          <input type="text" name="flags.headerBackground" value="{{flags.headerBackground}}" />
+          {{filePicker target="flags.headerBackground" type="image"}}
+        </div>
+      </div>
+
+      <hr>
+
       <h3>{{localize "ZWEI.settings.acsettings.soundtitle"}}</h3>
       <div class="form-group">
         <label>{{localize "ZWEI.settings.acsettings.sounddodge"}}</label>

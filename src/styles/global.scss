@@ -298,7 +298,7 @@ body.game.vtt.system-zweihander {
 
   #pause {
     background: none;
-    top: calc(100vh - 365px);
+    top: calc(100vh - 400px);
 
     &.paused {
       animation-duration: 5s;
@@ -320,9 +320,9 @@ body.game.vtt.system-zweihander {
       font-style: unset;
       color: var(--zh-clr-fg0);
       font-weight: normal;
-      font-family: var(--font-primary);
-      font-style: italic;
-      letter-spacing: 0.05em;
+      font-family: var(--zh-font-title);
+      //font-style: italic;
+      letter-spacing: 0.025em;
       // font-family: var(--zh-font-title);
       text-shadow: 1px 1px 10px var(--color-shadow-dark);
     }

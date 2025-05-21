@@ -1,5 +1,6 @@
 body.game.vtt.system-zweihander .zweihander.sheet.actor {
   .aside-and-figure {
+    padding-left: 0.5rem;
     display: flex;
     flex-direction: row;
     align-items: center;
@@ -17,6 +18,7 @@ body.game.vtt.system-zweihander .zweihander.sheet.actor {
 
       .profile-image {
         border: none;
+        box-shadow: none;
       }
     }
   }
@@ -333,6 +335,7 @@ body.game.vtt.system-zweihander .zweihander.sheet.actor {
       h3.item-name {
         font-family: var(--zh-font-title);
         font-size: 12px;
+        font-weight: normal;
         padding-left: 5px;
         padding-right: 5px;
         text-align: left;
@@ -368,8 +371,13 @@ body.game.vtt.system-zweihander .zweihander.sheet.actor {
       h3,
       h4 {
         margin: 0;
-        overflow-x: hidden;
+        overflow: hidden;
         white-space: nowrap;
+        font-family: var(--font-primary);
+        font-size: 13px;
+        overflow: hidden;
+        align-items: center;
+        font-weight: normal;
       }
       &.rollable {
         &:hover {
@@ -572,7 +580,7 @@ body.game.vtt.system-zweihander .zweihander.sheet.actor {
       flex: 1 0 0;
       // flex: 1 0 480px;
       // max-height: 100%;
-      grid-auto-rows: minmax(24px, 1fr);
+      grid-auto-rows: minmax(27px, 1fr);
       grid-template-columns: repeat(auto-fill, minmax(max(135px, calc(100% / 2)), 1fr));
       list-style: none;
       overflow-y: auto;
@@ -636,15 +644,15 @@ body.game.vtt.system-zweihander .zweihander.sheet.actor {
   }
 
   &.damage-tracker {
-    > section.window-content > form {
+    > section.window-content {
       position: relative;
     }
 
     > section.window-content::before,
     > section.window-content::after,
-    > section.window-content > form::before,
-    > section.window-content > form::after {
-      content: ' ';
+    > section.window-content > div::before,
+    > section.window-content > div::after {
+      content: ' '; // @todo: restore blood (V13)
       position: absolute;
       display: block;
       width: 100%;
@@ -657,9 +665,9 @@ body.game.vtt.system-zweihander .zweihander.sheet.actor {
 
     > section.window-content::before,
     > section.window-content::after {
-      height: calc(100% - 30px);
-      top: 30px;
-      z-index: 0;
+      /*height: calc(100% - 30px);
+      top: 30px;*/
+      z-index: -1;
     }
 
     > section.window-content::before {
@@ -672,7 +680,7 @@ body.game.vtt.system-zweihander .zweihander.sheet.actor {
       opacity: 0.35;
     }
 
-    & > section.window-content > form::before {
+    & > section.window-content > div::before {
       height: 500px;
       width: 500px;
       left: -130px;
@@ -681,11 +689,11 @@ body.game.vtt.system-zweihander .zweihander.sheet.actor {
       background-size: 500px 500px;
       transform: rotate(93deg) scale(0.5);
     }
-    &.character > section.window-content > form::before {
+    &.character > section.window-content > div::before {
       left: -20px;
       top: -10px;
     }
-    &.damage-tracker-3 > section.window-content > form::before {
+    &.damage-tracker-3 > section.window-content > div::before {
       opacity: 0.5;
     }
 
@@ -697,7 +705,7 @@ body.game.vtt.system-zweihander .zweihander.sheet.actor {
       opacity: 0.4;
     }
 
-    & > section.window-content > form::after {
+    & > section.window-content > div::after {
       height: 500px;
       width: 500px;
       background-image: url('/systems/zweihander/assets/bloodstains.webp');
@@ -706,7 +714,7 @@ body.game.vtt.system-zweihander .zweihander.sheet.actor {
       bottom: calc(50% - 350px);
       right: -230px;
     }
-    &.damage-tracker-1 > section.window-content > form::after {
+    &.damage-tracker-1 > section.window-content > div::after {
       opacity: 0.4;
     }
 
@@ -720,6 +728,7 @@ body.game.vtt.system-zweihander .zweihander.sheet.actor {
       opacity: 0.48;
     }
   }
+
   .zweihander-theme-gruvbox-light {
     .damage-tracker::before,
     .damage-tracker::after,

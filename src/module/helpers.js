@@ -86,7 +86,7 @@ export const registerHandlebarHelpers = async function () {
     for (let i = choices.length - 1; i >= 0; i--) {
       const isChecked = checked == i;
       html += `
-        <div class="radio-and-status">
+        <div class="radio-and-status flexrow">
           <input type="radio" class="radio-rank"
             id="${uuid}.${i}" name="${name}"
             value="${i}" data-dtype="Number" ${isChecked ? 'checked' : ''}>
@@ -158,7 +158,8 @@ export const registerHandlebarHelpers = async function () {
 
   $$('zhDisplayLanguages', (languages) => {
     if (!languages.length) return '';
-    const displayLanguage = (l) => `${l.name}` + (l.isLiterate ? ` ${game.i18n.localize('ZWEI.settings.lasettings.literatesymbol')} ` : '');
+    const displayLanguage = (l) =>
+      `${l.name}` + (l.isLiterate ? ` ${game.i18n.localize('ZWEI.settings.lasettings.literatesymbol')} ` : '');
     return languages.slice(1).reduce((str, l) => `${str}, ${displayLanguage(l)}`, displayLanguage(languages[0]));
   });
 
@@ -235,26 +236,26 @@ export const registerHandlebarHelpers = async function () {
     )}</label>${
       triggerSelected ? `<div class="damage-inputs flexrow"><div class="form-group label-top"><label></label>` : ''
     }
-            <select name="system.difficulty.rating"><optgroup label="${game.i18n.localize('ZWEI.actor.items.genericratings')}">${HandlebarsHelpers.selectOptions(
-              ritualDifficultiesGeneric,
-              {
-                hash: {
-                  valueAttr: 'value',
-                  labelAttr: 'label',
-                },
-              }
-            )}</optgroup><optgroup label="${game.i18n.localize('ZWEI.actor.items.specificratings')}">${HandlebarsHelpers.selectOptions(
-      ritualDifficultiesSpecific,
-      {
-        hash: {
-          valueAttr: 'value',
-          labelAttr: 'label',
-        },
-      }
-    )}</optgroup></select>
+            <select name="system.difficulty.rating"><optgroup label="${game.i18n.localize(
+              'ZWEI.actor.items.genericratings'
+            )}">${HandlebarsHelpers.selectOptions(ritualDifficultiesGeneric, {
+      hash: {
+        valueAttr: 'value',
+        labelAttr: 'label',
+      },
+    })}</optgroup><optgroup label="${game.i18n.localize(
+      'ZWEI.actor.items.specificratings'
+    )}">${HandlebarsHelpers.selectOptions(ritualDifficultiesSpecific, {
+      hash: {
+        valueAttr: 'value',
+        labelAttr: 'label',
+      },
+    })}</optgroup></select>
           ${
             triggerSelected
-              ? `</div><div class="form-group label-top"><label>${game.i18n.localize('ZWEI.actor.items.skilltest')}</label><select name="system.difficulty.associatedSkill">${HandlebarsHelpers.selectOptions(
+              ? `</div><div class="form-group label-top"><label>${game.i18n.localize(
+                  'ZWEI.actor.items.skilltest'
+                )}</label><select name="system.difficulty.associatedSkill">${HandlebarsHelpers.selectOptions(
                   skillList,
                   { hash: { valueAttr: 'value', labelAttr: 'label' } }
                 )}</select></div></div>`
@@ -311,7 +312,7 @@ export const registerHandlebarHelpers = async function () {
       const isChecked = checked == i;
       html +=
         `
-        <div class="radio-and-status">
+        <div class="radio-and-status flexrow">
           <input type="radio" class="radio-rank"
             id="${uuid}.${i}" name="${name}"
             value="${i}" data-dtype="Number" ${isChecked ? 'checked' : ''}>

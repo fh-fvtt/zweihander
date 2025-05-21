@@ -36,25 +36,37 @@
     flex: 1;
     display: flex;
     flex-flow: column nowrap;
+
+    &.fancy {
+      > header,
+      figure {
+        border: none;
+      }
+    }
+
     > header {
       flex: 0 0 content;
       display: flex;
       flex-flow: row nowrap;
-      height: 60px;
+      align-items: center;
       border-bottom: 2px groove var(--zh-clr-bg2);
+      padding: 0 0.5rem;
       > h1 {
         flex: 1;
-        height: 60px;
+        height: 72px;
         margin: 0;
-        padding: 10px 5px;
+        padding: 0.5rem 0.5rem 0.5rem 0;
         border: none;
+        font-weight: normal;
         input {
+          height: 100%;
           display: block;
           font-family: var(--zh-font-title);
-          font-size: 28px;
-          height: 40px;
-          line-height: 48px;
+          font-size: 40px;
+          //line-height: 48px;
           text-shadow: 2px 2px 2px var(--zh-clr-fg4);
+          padding: 0;
+          border-radius: 14px;
         }
       }
     }
@@ -62,9 +74,7 @@
     aside.character-rp {
       flex: 0 0 140px;
       height: 60px;
-      margin-right: 5px;
       text-align: right;
-      padding-top: 2px;
 
       .rp-title {
         color: var(--zh-clr-aqua);
@@ -83,13 +93,20 @@
         align-items: center;
         font-size: 16px;
         justify-content: flex-end;
-        .rp-gained,
+        .rp-gained {
+          flex: 0 0 55px;
+          padding: 0;
+          text-align: right;
+        }
         .rp-spent {
           flex: 0 0 55px;
+          padding: 0;
         }
         .rp-fate,
         .rp-rep {
           flex: 0 0 3.5ch;
+          padding: 0;
+          text-align: right;
         }
         .rp-fate {
           margin-right: 1ex;
@@ -104,6 +121,11 @@
           margin: 0 1px;
           position: relative;
           text-transform: uppercase;
+
+          &.fate-rep {
+            height: 100%;
+            line-height: 20px;
+          }
         }
       }
       .rp-other-pts .sep {
@@ -142,16 +164,21 @@
     text-transform: uppercase;
     padding: 1px 3px;
     > h1 {
-      flex: 0 0 content;
+      position: relative;
+      flex: 0 0 115px;
+      align-items: center;
+      justify-content: center;
       color: var(--zh-clr-fg3);
-      text-align: center;
       font-size: 10px;
       font-family: var(--zh-font-title);
+      font-weight: normal;
       border: none;
       margin: 0;
-      padding: 0 5px 0 17px;
+      padding-bottom: 1px;
       a {
         color: var(--zh-clr-aqua);
+        position: absolute;
+        right: 5px;
         &:hover,
         &:focus {
           color: var(--zh-clr-yellow);
@@ -161,6 +188,7 @@
     input {
       color: var(--zh-clr-fg1);
       text-transform: uppercase;
+      padding: 0;
       &.chaos-title {
         text-align: right;
       }
@@ -257,6 +285,6 @@
   }
 
   aside.details {
-    padding-bottom: 5px;
+    padding: 0.5rem;
   }
 }
