@@ -1,34 +1,124 @@
 body.game.vtt.system-zweihander .zweihander.sheet.creature {
   --zh-structural-border: 2px groove var(--zh-clr-bg2);
+  --input-height: normal;
 
   max-height: 1200px;
   max-width: 1280px;
-  min-height: 669px;
-  min-width: 625px;
+
+  &:not(.minimized, .minimizing, .maximizing) {
+    min-height: 705px;
+    min-width: 625px;
+  }
+
+  // @todo: figure out a way to merge this with the default character sheet
+  &.damage-tracker.creature {
+    & > section.window-content::before,
+    & > section.window-content::after,
+    > section.window-content > .decal-target::before,
+    > section.window-content > .decal-target::after {
+      content: ' ';
+      position: absolute;
+      display: block;
+      width: 100%;
+      height: 100%;
+      opacity: 0;
+      transition: opacity 1s ease-in-out;
+      background-repeat: no-repeat;
+      z-index: -1;
+    }
+
+    & > section.window-content::before,
+    & > section.window-content::after {
+      /*height: calc(100% - 30px);
+      top: 30px;*/
+      z-index: -1;
+    }
+
+    > section.window-content::before {
+      background-image: url('/systems/zweihander/assets/bloodstains2.webp');
+      background-size: 700px 700px;
+      background-position: bottom -420px right -320px;
+    }
+
+    &.damage-tracker-4 > section.window-content::before {
+      opacity: 0.35;
+    }
+
+    & > section.window-content > .decal-target::before {
+      height: 500px;
+      width: 500px;
+      left: -130px;
+      top: -140px;
+      background-image: url('/systems/zweihander/assets/bloodstains.webp');
+      background-size: 500px 500px;
+      transform: rotate(93deg) scale(0.5);
+    }
+    &.character > section.window-content > .decal-target::before {
+      left: -20px;
+      top: -10px;
+    }
+    &.damage-tracker-3 > section.window-content > .decal-target::before {
+      opacity: 0.5;
+    }
+
+    &.damage-tracker-2 > section.window-content::before {
+      background-image: url('/systems/zweihander/assets/bloodstains2.webp'),
+        url('/systems/zweihander/assets/bloodstains2.webp');
+      background-size: 700px 700px, 700px 700px;
+      background-position: bottom -420px right -320px, bottom -320px left -320px;
+      opacity: 0.4;
+    }
+
+    & > section.window-content > .decal-target::after {
+      height: 500px;
+      width: 500px;
+      background-image: url('/systems/zweihander/assets/bloodstains.webp');
+      background-size: 500px 500px;
+      transform: rotate(-123deg);
+      bottom: calc(50% - 350px);
+      right: -230px;
+    }
+
+    &.damage-tracker-1 > section.window-content > .decal-target::after {
+      opacity: 0.4;
+    }
+
+    > section.window-content::after {
+      background-image: url('/systems/zweihander/assets/bloodstains.webp');
+      background-size: 500px 500px;
+      background-position: top -150px right -90px;
+    }
+
+    &.damage-tracker-0 > section.window-content::after {
+      opacity: 0.48;
+    }
+  }
 
   &.limited {
-    min-height: 150px;
-    min-width: 300px;
+    &:not(.minimized, .minimizing, .maximizing) {
+      min-height: 150px;
+      min-width: 300px;
+    }
   }
 
   .window-content {
     background-color: var(--zh-clr-bg0);
-    background-image: url('/systems/zweihander/assets/creature-sheet-backdrop.webp');
+    background-image: url('/systems/zweihander/assets/default-creature-backdrop-2.webp');
     background-size: contain;
     background-repeat: no-repeat;
-    background-position: bottom center;
+    background-position: center calc(100% - 35px);
     background-blend-mode: multiply;
   }
 
-  form > header {
+  .window-content > header {
     border-bottom: var(--zh-structural-border);
     display: flex;
     flex: 0 0 content;
     figure.actor-image {
       border-right: var(--zh-structural-border);
-      flex: 0 0 50px;
+      flex: 0 0 72px;
       margin: 0;
-      height: 48px;
+      height: 72px;
       padding: 0;
       display: flex;
       img {
@@ -41,18 +131,20 @@ body.game.vtt.system-zweihander .zweihander.sheet.creature {
     h1.actor-name {
       border: none;
       flex: 1;
-      height: 37px;
-      margin: 5px;
-      padding: 0;
+      height: 72px;
+      margin: 0;
+      padding: 0.5rem;
       input {
+        display: block;
+        padding-inline: 0;
         font-family: var(--zh-font-title);
-        font-size: 24px;
+        font-size: 32px;
+        font-weight: normal;
         color: var(--zh-clr-yellow);
-        height: auto;
+        height: 100%;
         line-height: 1;
         margin: 0;
         text-shadow: 2px 2px 1px var(--zh-clr-bg3);
-        width: 100%;
       }
     }
     section.actor-resources {
@@ -60,17 +152,21 @@ body.game.vtt.system-zweihander .zweihander.sheet.creature {
       padding: 0px;
       display: flex;
       flex-direction: column;
-      justify-content: space-around;
+      justify-content: center;
+      gap: 0.35rem;
       section.peril-ladder,
       section.damage-ladder {
         display: flex;
         font-size: 12px;
-        justify-content: space-around;
+        justify-content: flex-end;
+        gap: 0.35rem;
+        margin-right: 0.5rem;
         h1 {
           text-transform: uppercase;
           color: var(--zh-clr-aqua);
           font-family: var(--zh-font-title);
           font-size: 10px;
+          font-weight: normal;
           line-height: 1.5;
           padding: 3px;
           text-align: right;
@@ -83,11 +179,10 @@ body.game.vtt.system-zweihander .zweihander.sheet.creature {
         }
       }
       .radio-and-status {
-        flex: 0 0 20px;
+        flex: 0 0 14px;
         height: 20px;
         position: relative;
         text-align: right;
-        width: 20px;
         input[type='radio'] {
           display: none;
           & + label {
@@ -101,10 +196,10 @@ body.game.vtt.system-zweihander .zweihander.sheet.creature {
               border-radius: 50%;
               content: ' ';
               display: block;
-              height: 12px;
+              height: 14px;
               line-height: 1;
-              margin: 3px;
-              width: 12px;
+              width: 14px;
+              font-size: 14px;
             }
             > span {
               bottom: 0;
@@ -157,8 +252,10 @@ body.game.vtt.system-zweihander .zweihander.sheet.creature {
     grid-auto-flow: dense;
     grid-auto-rows: minmax(50px, 1fr);
     grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-    overflow-y: hidden;
-    scrollbar-gutter: stable both-edges;
+    overflow-y: auto;
+    // scrollbar-gutter: stable both-edges;
+    padding: 0 0.25rem;
+    margin-bottom: 0.25rem;
     &:hover {
       overflow-y: auto;
     }
@@ -187,7 +284,7 @@ body.game.vtt.system-zweihander .zweihander.sheet.creature {
       border: 2px groove var(--zh-clr-bg2);
       border-radius: 3px;
       grid-row: span 6;
-      margin: 5px;
+      margin: 0.25rem;
       overflow: auto;
       display: flex;
       flex-direction: column;
@@ -291,6 +388,7 @@ body.game.vtt.system-zweihander .zweihander.sheet.creature {
           padding: 2px 15% 0 15%;
           .pa-bonus-advance-substract,
           .pa-bonus-advance-add {
+            min-height: unset;
             height: 16px;
             flex: 3 0 12px;
             padding: 0;
@@ -320,7 +418,8 @@ body.game.vtt.system-zweihander .zweihander.sheet.creature {
           display: flex;
           justify-content: center;
           flex-direction: column;
-          width: 100%;
+          height: 100%;
+          margin-bottom: unset;
           &:last-of-type {
             border-right: none;
           }
@@ -357,7 +456,7 @@ body.game.vtt.system-zweihander .zweihander.sheet.creature {
               font-size: 13px;
               input {
                 color: var(--zh-clr-fg3);
-                text-align: left;
+                text-align: center;
               }
             }
             .sa-ladder {
@@ -374,13 +473,16 @@ body.game.vtt.system-zweihander .zweihander.sheet.creature {
         overflow: initial;
         flex: 1 0 0;
         font-size: 13px;
-        grid-auto-rows: minmax(18px, 1fr);
+        grid-auto-rows: minmax(20px, 1fr);
         grid-template-columns: repeat(auto-fill, minmax(max(130px, calc(100% / 2)), 1fr));
         .skill {
           margin: 0;
-          height: 18px;
+          height: 20px;
           line-height: 1;
           flex-wrap: nowrap;
+          .skill-name {
+            line-height: 14px;
+          }
           .skill-roll {
             flex: 0 1 content;
           }
@@ -388,6 +490,8 @@ body.game.vtt.system-zweihander .zweihander.sheet.creature {
             content: attr(data-rank);
             display: inline-block;
             width: 14px;
+            font-size: 13px;
+            font-weight: 600;
             text-align: center;
           }
           &[data-rank='0']::before {
@@ -447,20 +551,22 @@ body.game.vtt.system-zweihander .zweihander.sheet.creature {
   }
   &.zweihander-compact-sheet,
   &.gm-screen-grid-cell-content {
-    min-height: 400px;
-    min-width: 440px;
+    &:not(.minimized, .minimizing, .maximizing) {
+      min-width: 450px;
+      min-height: 435px;
+    }
     // max-height: 580px !important;
     // max-width: 530px !important;
-    form > header {
+    .window-content > header {
       figure.actor-image {
         display: none;
       }
       h1.actor-name {
         margin: 0;
-        padding: 0;
-        height: 32px;
+        padding: 0.5rem;
+        height: 100%;
         input {
-          font-size: 18px;
+          font-size: 20px;
         }
       }
       section.peril-ladder::before,
@@ -469,6 +575,7 @@ body.game.vtt.system-zweihander .zweihander.sheet.creature {
       }
       section.actor-resources {
         flex: 0 0 160px;
+        margin: 0.5rem 0;
       }
       section.actor-resources .radio-and-status {
         height: 16px;
@@ -483,7 +590,7 @@ body.game.vtt.system-zweihander .zweihander.sheet.creature {
       grid-auto-rows: minmax(100px, 1fr) !important;
       grid-gap: 2px !important;
       grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)) !important;
-      margin-top: 2px;
+      margin: 0;
       padding: 0px !important;
       & > * {
         margin: 0 !important;

@@ -235,7 +235,7 @@ export default class ZweihanderPC extends ZweihanderBaseActor {
 
     if (CONFIG.ZWEI.primaryAttributes.every((pa) => pas[pa].value === 0)) {
       for (let pa of CONFIG.ZWEI.primaryAttributes) {
-        const roll = await new Roll('2d10+35').evaluate();
+        const roll = await new Roll('3d10+25').evaluate();
         update[`system.stats.primaryAttributes.${pa}.value`] = roll.total;
       }
     }

@@ -2,8 +2,11 @@ body.game.vtt.system-zweihander .zweihander.sheet.character {
   max-height: 1200px;
   max-width: 1200px;
   // sheet dimensions
-  min-height: 500px;
-  min-width: 775px;
+  &:not(.minimized, .minimizing, .maximizing) {
+    min-height: 500px;
+    min-width: 775px;
+  }
+
   &.fancy {
     background-repeat: no-repeat;
     background-size: 100%;
@@ -31,6 +34,21 @@ body.game.vtt.system-zweihander .zweihander.sheet.character {
       &:not(:hover) {
         border: 1px solid var(--zh-clr-bg3);
         color: var(--zh-clr-fg3);
+      }
+    }
+  }
+
+  &.fancy.minimized {
+    background-image: none !important;
+    .window-icon,
+    .window-title {
+      visibility: visible;
+    }
+    .window-header button {
+      background-color: var(--zh-clr-bg1);
+      &:not(:hover) {
+        color: unset;
+        border-color: var(--zh-clr-bg4);
       }
     }
   }

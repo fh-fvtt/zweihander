@@ -339,8 +339,9 @@ function partitionByNames(names) {
   };
 }
 
-export function constructHTMLButton({ label, dataset = {}, classes = [], icon = '' }) {
+export function constructHTMLButton({ label, dataset = {}, classes = [], icon = '', type = 'button' }) {
   const button = document.createElement('button');
+  button.type = type;
 
   for (const [key, value] of Object.entries(dataset)) {
     button.dataset[key] = value;
@@ -647,7 +648,7 @@ export const enrichLocalized = async (entry) => {
   if (hasZhLocalization) {
     text = localize(entry);
   }
-  return TextEditor.enrichHTML(text, { async: true });
+  return await TextEditor.enrichHTML(text);
 };
 
 export const processRules = async (data) => {

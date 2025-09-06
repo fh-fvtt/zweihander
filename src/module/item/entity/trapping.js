@@ -14,10 +14,19 @@ export default class ZweihanderTrapping extends ZweihanderBaseItem {
 
     // If Item is unequipped, disable all currently active Active Effects associated with it
     if (!changed.system.carried && currentlyActiveEffects.length) {
-      for (let effect of currentlyActiveEffects) await effect.update({ ['system.isActive']: false });
+      for (let effect of currentlyActiveEffects) await effect.update({ ['system.isActive']: false }, { render: true });
     }
 
     await super._preUpdate(changed, options, user, item);
+  }
+
+  async _onUpdate(changed, options, userId, item) {
+    await super._onUpdate(changed, options, userId);
+
+    if (changed.system['carried'] !== undefined) {
+      const currentlyRenderedEffects = item.effects.filter((e) => e.sheet.rendered);
+      currentlyRenderedEffects.forEach(async (e) => await e.sheet.render(true));
+    }
   }
 
   prepareDerivedData(item) {

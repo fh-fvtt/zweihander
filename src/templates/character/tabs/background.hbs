@@ -1,28 +1,20 @@
 {{#unless limited}}
-  <div class="tab {{tab.id}} {{tab.cssClass}} flexcol" data-group="{{tab.group}}" data-tab="{{tab.id}}">
+  <div class="tab {{tab.id}} {{tab.cssClass}} decal-target flexcol" data-group="{{tab.group}}" data-tab="{{tab.id}}">
     <div>
       <h4 class="block-title">{{localize "ZWEI.actor.background.biography"}}</h4>
-      {{editor
-        (zhLocalize system.description)
-        target=(zhLocalizePath "system.description")
-        engine="prosemirror"
-        button=true
-        owner=owner
-        editable=editable
-        rollData=rollData
-      }}
+      <prose-mirror
+        name="{{zhLocalizePath 'system.description'}}"
+        value="{{zhLocalize system.description}}"
+        toggled="true"
+      >
+        {{zhLocalize html.description}}
+      </prose-mirror>
     </div>
     <div>
       <h4 class="block-title">{{localize "ZWEI.actor.background.characternotes"}}</h4>
-      {{editor
-        system.notes
-        target="system.notes"
-        button=true
-        owner=owner
-        engine="prosemirror"
-        editable=editable
-        rollData=rollData
-      }}
+      <prose-mirror name="{{zhLocalizePath 'system.notes'}}" toggled="true">
+        {{zhLocalize html.notes}}
+      </prose-mirror>
     </div>
   </div>
 {{/unless}}

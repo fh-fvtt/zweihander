@@ -19,6 +19,6 @@ export default class ZweihanderActiveEffect extends ActiveEffect {
       }
     }
 
-    super._preUpdate(changed, options, user);
+    await super._preUpdate(changed, options, user);
   }
 }

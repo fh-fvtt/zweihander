@@ -1,14 +1,13 @@
 <fieldset>
-  <legend>{{localize 'ZWEI.actor.items.innateflaw'}}</legend>
+  <legend>{{localize "ZWEI.actor.items.innateflaw"}}</legend>
   <div class="form-group stacked">
     <label>{{localize "ZWEI.actor.items.effect"}}</label>
-    {{editor
-      html.rules.effect
-      target=(zhLocalizePath "system.rules.effect")
-      engine="prosemirror"
-      button=true
-      owner=owner
-      editable=editable
-    }}
+    <prose-mirror
+      name="{{zhLocalizePath 'system.rules.effect'}}"
+      value="{{zhLocalize system.rules.effect}}"
+      toggled="true"
+    >
+      {{{html.rules.effect}}}
+    </prose-mirror>
   </div>
 </fieldset>

@@ -208,6 +208,7 @@
       font-size: 18px;
       height: 20px;
       text-align: center;
+      padding: 0;
     }
     .order-track,
     .chaos-track {
@@ -223,7 +224,10 @@
         appearance: none;
         display: none;
         & + label {
-          display: inline-block;
+          display: flex;
+          flex-direction: row;
+          justify-content: center;
+          align-items: center;
           position: relative;
           text-align: center;
           z-index: 2;
@@ -241,9 +245,9 @@
             }
           }
           &.permanent-rank {
+            height: 18px;
             cursor: default;
-            font-size: 14px;
-            margin-top: 1px;
+            font-size: 13px;
             &.chaos {
               color: var(--zh-clr-red-alt);
             }
@@ -286,5 +290,6 @@
 
   aside.details {
     padding: 0.5rem;
+    max-width: calc(100% - 185px);
   }
 }

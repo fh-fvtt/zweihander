@@ -1,87 +1,66 @@
-<form class="editable sheet-grid flexcol" autocomplete="off">
-  <header>
-    <figure class="actor-image">
-      <img src="{{actor.img}}" title="{{actor.name}}" data-edit="img" />
-    </figure>
-    <h1 class="actor-name">
-      <input name="name" type="text" value="{{actor.name}}" placeholder="{{localize "ZWEI.actor.header.npcname"}}">
-    </h1>
-    {{#unless limited}}
-    <section class="actor-resources">
-      <section class="damage-ladder">
-        <h1>{{localize "ZWEI.actor.secondary.damage"}}</h1>
-        {{zhConditionLadderLoc "system.stats.secondaryAttributes.damageCurrent.value" config.vehicleDamageOptions
-        checked=system.stats.secondaryAttributes.damageCurrent.value}}
-      </section>
-    </section>
-    {{/unless}}
-  </header>
-  {{> ($$ 'partials/details-list-npc') }}
-  {{#unless limited}}
-  <section class="sheet-body">
-    <section class="stats flexcol">
-      <h1>{{localize "ZWEI.actor.navigation.attributes"}} <a class="manual-mode-button" data-tooltip-direction="UP"><i
-            class="fas fa-toggle-{{#if system.stats.manualMode}}on{{else}}off{{/if}}"></i> {{localize "ZWEI.actor.navigation.manualmode"}}</a></h1>
-      <ul class="secondary-attributes flexrow">
-        <li class="sa-int">
-          <span class="sa-title">{{localize "ZWEI.actor.secondary.sizeModifier"}}</span>
-          <span class="sa-value">
-            <input class="sa-solo-value" size="2" type="number" name="system.stats.secondaryAttributes.sizeModifier.value"
-              value="{{system.stats.secondaryAttributes.sizeModifier.value}}">
-          </span>
-        </li>
-        <li class="sa-mov">
-          <span class="sa-title">{{localize "ZWEI.actor.secondary.movement"}}</span>
-          <span class="sa-value movement">
-            <input size="2" type="number" name="system.stats.secondaryAttributes.movement.value"
-              value="{{system.stats.secondaryAttributes.movement.value}}">
-            
-            <span class="sa-value-current">
-              <span>/</span>
-              <input size="2" type="number" name="system.stats.secondaryAttributes.movement.current"
-                value="{{system.stats.secondaryAttributes.movement.current}}" {{#unless
-                system.stats.manualMode}}readonly{{/unless}}>
-            </span>
-          </span>
-          {{!-- <span class="sa-value">
-            <input class="sa-solo-value" size="2" type="number" name="system.stats.secondaryAttributes.movement.value"
-              value="{{system.stats.secondaryAttributes.movement.value}}" {{#unless
+{{#unless limited}}
+<section class="sheet-body">
+  <section class="stats flexcol">
+    <h1>{{localize "ZWEI.actor.navigation.attributes"}} <a class="manual-mode-button" data-tooltip-direction="UP"><i
+          class="fas fa-toggle-{{#if system.stats.manualMode}}on{{else}}off{{/if}}"></i> {{localize "ZWEI.actor.navigation.manualmode"}}</a></h1>
+    <ul class="secondary-attributes flexrow">
+      <li class="sa-int">
+        <span class="sa-title">{{localize "ZWEI.actor.secondary.sizeModifier"}}</span>
+        <span class="sa-value">
+          <input class="sa-solo-value" size="2" type="number" name="system.stats.secondaryAttributes.sizeModifier.value"
+            value="{{system.stats.secondaryAttributes.sizeModifier.value}}">
+        </span>
+      </li>
+      <li class="sa-mov">
+        <span class="sa-title">{{localize "ZWEI.actor.secondary.movement"}}</span>
+        <span class="sa-value movement">
+          <input size="2" type="number" name="system.stats.secondaryAttributes.movement.value"
+            value="{{system.stats.secondaryAttributes.movement.value}}">
+          
+          <span class="sa-value-current">
+            <span>/</span>
+            <input size="2" type="number" name="system.stats.secondaryAttributes.movement.current"
+              value="{{system.stats.secondaryAttributes.movement.current}}" {{#unless
               system.stats.manualMode}}readonly{{/unless}}>
-          </span> --}}
-        </li>
-        <li class="sa-dth">
-          <span class="sa-title">{{localize "ZWEI.actor.secondary.vth"}}</span>
-          <span class="sa-value">
-            <input size="2" type="number" name="system.stats.secondaryAttributes.damageThreshold.value"
-              value="{{system.stats.secondaryAttributes.damageThreshold.value}}" {{#unless
-              system.stats.manualMode}}readonly{{/unless}}>
-            <span
-              class="sa-ladder">({{zhAdd system.stats.secondaryAttributes.damageThreshold.value '6'}}/{{zhAdd system.stats.secondaryAttributes.damageThreshold.value '12'}}/{{zhAdd system.stats.secondaryAttributes.damageThreshold.value '18'}})</span></span>
-        </li>
-        <li class="sa-int">
-          <span class="sa-title">{{localize "ZWEI.actor.secondary.encumbranceLimit"}}</span>
-          <span class="sa-value">
-            <input class="sa-solo-value" size="2" type="number" name="system.stats.secondaryAttributes.encumbranceLimit.value"
-              value="{{system.stats.secondaryAttributes.encumbranceLimit.value}}">
           </span>
-        </li>
-      </ul>
-    </section>
-    <section class="rules">
-      {{> ($$ "partials/actors-list") actorLists.vehicleOccupants}}
-    </section>
-    <section class="qualities">
-      {{> ($$ "partials/items-list") itemLists.qualities}}
-    </section>
-    <section class="loot">
-      {{> ($$ "partials/items-list") itemLists.loot}}
-    </section>
-    {{!-- <aside class="description">
-      <h1>{{localize "ZWEI.actor.navigation.description"}}</h1>
-      <textarea spellcheck="false" name="{{zhLocalizePath "system.description"}}"
-        placeholder="Put a nice description of your creature here...">{{zhLocalize system.description}}</textarea>
-    </aside> --}}
+        </span>
+        {{!-- <span class="sa-value">
+          <input class="sa-solo-value" size="2" type="number" name="system.stats.secondaryAttributes.movement.value"
+            value="{{system.stats.secondaryAttributes.movement.value}}" {{#unless
+            system.stats.manualMode}}readonly{{/unless}}>
+        </span> --}}
+      </li>
+      <li class="sa-dth">
+        <span class="sa-title">{{localize "ZWEI.actor.secondary.vth"}}</span>
+        <span class="sa-value">
+          <input size="2" type="number" name="system.stats.secondaryAttributes.damageThreshold.value"
+            value="{{system.stats.secondaryAttributes.damageThreshold.value}}" {{#unless
+            system.stats.manualMode}}readonly{{/unless}}>
+          <span
+            class="sa-ladder">({{zhAdd system.stats.secondaryAttributes.damageThreshold.value '6'}}/{{zhAdd system.stats.secondaryAttributes.damageThreshold.value '12'}}/{{zhAdd system.stats.secondaryAttributes.damageThreshold.value '18'}})</span></span>
+      </li>
+      <li class="sa-int">
+        <span class="sa-title">{{localize "ZWEI.actor.secondary.encumbranceLimit"}}</span>
+        <span class="sa-value">
+          <input class="sa-solo-value" size="2" type="number" name="system.stats.secondaryAttributes.encumbranceLimit.value"
+            value="{{system.stats.secondaryAttributes.encumbranceLimit.value}}">
+        </span>
+      </li>
+    </ul>
   </section>
-  {{> ($$ "vehicle/vehicle-encumbrance-meter") }}
-  {{/unless}}
-</form>
+  <section class="rules">
+    {{> ($$ "partials/actors-list") actorLists.vehicleOccupants}}
+  </section>
+  <section class="qualities">
+    {{> ($$ "partials/items-list") listItems=itemLists.qualities}}
+  </section>
+  <section class="loot">
+    {{> ($$ "partials/items-list") listItems=itemLists.loot}}
+  </section>
+  {{!-- <aside class="description">
+    <h1>{{localize "ZWEI.actor.navigation.description"}}</h1>
+    <textarea spellcheck="false" name="{{zhLocalizePath "system.description"}}"
+      placeholder="Put a nice description of your creature here...">{{zhLocalize system.description}}</textarea>
+  </aside> --}}
+</section>
+{{/unless}}

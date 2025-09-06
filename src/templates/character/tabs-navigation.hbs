@@ -1,0 +1,9 @@
+{{#unless limited}}
+  <nav class="sheet-navigation tabs">
+    {{#each tabs as |tab|}}
+      <a class="item {{#if tab.cssClass}}{{tab.cssClass}}{{/if}}" data-group="{{tab.group}}" data-tab="{{tab.id}}" data-action="tab">
+        {{localize tab.label}}
+      </a>
+    {{/each}}
+  </nav>
+{{/unless}}

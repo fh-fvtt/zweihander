@@ -16,24 +16,39 @@ export default class ZweihanderVehicleSheet extends ZweihanderBaseActorSheet {
     'weapon',
   ]);
 
-  static get defaultOptions() {
-    const compactMode = game.settings.get('zweihander', 'openInCompactMode');
-    return foundry.utils.mergeObject(super.defaultOptions, {
-      classes: super.defaultOptions.classes.concat(['vehicle']),
+  static DEFAULT_OPTIONS = {
+    ...super.DEFAULT_OPTIONS,
+    classes: ['vehicle'],
+  };
+
+  static PARTS = {
+    header: { template: 'systems/zweihander/src/templates/vehicle/header.hbs' },
+    details: { template: 'systems/zweihander/src/templates/partials/details-list-npc.hbs' },
+    main: {
       template: 'systems/zweihander/src/templates/vehicle/main.hbs',
-      width: compactMode ? 540 : 625,
-      height: compactMode ? 540 : 669,
-      scrollY: ['.save-scroll', '.sheet-body'],
-    });
+      scrollable: ['', '.save-scroll', '.sheet-body'],
+    },
+    encumbrance: { template: 'systems/zweihander/src/templates/vehicle/vehicle-encumbrance-meter.hbs' },
+  };
+
+  _initializeApplicationOptions(options) {
+    const initialized = super._initializeApplicationOptions(options);
+
+    const compactMode = game.settings.get('zweihander', 'openInCompactMode');
+
+    initialized.position.width = compactMode ? 540 : 625;
+    initialized.position.height = compactMode ? 560 : 705;
+
+    return initialized;
   }
 
-  async getData(options) {
-    const sheetData = await super.getData();
+  async _prepareContext(options) {
+    const context = await super._prepareContext(options);
 
-    sheetData.choices = {};
+    context.choices = {};
 
-    const associatedPrimaryAttribute = sheetData.system.details.associatedPrimaryAttribute;
-    sheetData.choices.associatedPrimaryAttribute = selectedChoice(associatedPrimaryAttribute, [
+    const associatedPrimaryAttribute = context.system.details.associatedPrimaryAttribute;
+    context.choices.associatedPrimaryAttribute = selectedChoice(associatedPrimaryAttribute, [
       { value: 'combat', label: 'combat' },
       { value: 'brawn', label: 'brawn' },
       { value: 'agility', label: 'agility' },
@@ -44,10 +59,10 @@ export default class ZweihanderVehicleSheet extends ZweihanderBaseActorSheet {
     ]);
 
     const hidden = this.actor.limited;
-    sheetData.details = [
+    context.details = [
       {
         key: 'details.associatedPrimaryAttribute',
-        choices: sheetData.choices.associatedPrimaryAttribute,
+        choices: context.choices.associatedPrimaryAttribute,
       },
       {
         key: 'details.operateSkill',
@@ -60,24 +75,24 @@ export default class ZweihanderVehicleSheet extends ZweihanderBaseActorSheet {
         hidden,
       },
     ];
-    const $$ = (x) => sheetData.itemGroups[x];
-    sheetData.itemLists = {
+    const $$ = (x) => context.itemGroups[x];
+    context.itemLists = {
       loot: ['trappings'].map($$),
       qualities: ['qualities'].map($$),
     };
 
-    const actorMap = (x) => sheetData.actorGroups[x];
-    sheetData.actorLists = {
+    const actorMap = (x) => context.actorGroups[x];
+    context.actorLists = {
       vehicleOccupants: ['drivers', 'passengers'].map(actorMap),
     };
 
-    // console.log(sheetData.actorLists);
+    // console.log(context.actorLists);
 
-    return sheetData;
+    return context;
   }
 
-  async _prepareItems(sheetData) {
-    await super._prepareItems(sheetData);
+  async _prepareItems(context) {
+    await super._prepareItems(context);
     // set up collections for all item types
     const indexedTypes = [
       'trapping',
@@ -105,22 +120,22 @@ export default class ZweihanderVehicleSheet extends ZweihanderBaseActorSheet {
         armor: 'armor',
         quality: 'qualities',
       }[t] ?? t + 's');
-    indexedTypes.forEach((t) => (sheetData[pluralize(t)] = []));
-    sheetData.items
+    indexedTypes.forEach((t) => (context[pluralize(t)] = []));
+    context.items
       .filter((i) => indexedTypes.includes(i.type))
       .sort((a, b) => (a.sort || 0) - (b.sort || 0))
-      .forEach((i) => sheetData[pluralize(i.type)].push(i));
+      .forEach((i) => context[pluralize(i.type)].push(i));
 
-    return sheetData;
+    return context;
   }
 
-  _getActorGroups(sheetData) {
+  _getActorGroups(context) {
     return {
       drivers: {
         title: 'drivers',
         summaryTemplate: 'item-summary/vehicleOccupant',
         details: [],
-        actors: sheetData.drivers,
+        actors: context.drivers,
         rollType: 'skill-roll',
         rollLabelKey: 'system.details.operateSkill',
       },
@@ -128,12 +143,12 @@ export default class ZweihanderVehicleSheet extends ZweihanderBaseActorSheet {
         title: 'passengers',
         summaryTemplate: 'item-summary/vehicleOccupant',
         details: [],
-        actors: sheetData.passengers,
+        actors: context.passengers,
       },
     };
   }
 
-  _getItemGroups(sheetData) {
+  _getItemGroups(context) {
     return {
       trappings: {
         title: 'trappings',
@@ -159,20 +174,23 @@ export default class ZweihanderVehicleSheet extends ZweihanderBaseActorSheet {
             isNumerable: true,
           },
         ],
-        items: sheetData.trappings,
+        items: context.trappings,
       },
       qualities: {
         title: 'qualities',
         type: 'quality',
         summaryTemplate: 'item-summary/quality',
         details: [],
-        items: sheetData.qualities,
+        items: context.qualities,
       },
     };
   }
 
-  activateListeners(html) {
-    super.activateListeners(html);
+  async _onRender(options) {
+    await super._onRender(options);
+
+    const html = $(this.element); // @todo: refactor jQuery
+
     // register width listener for skills container
     this._registerDimensionChangeListener(
       html.find('.skills-container'),
@@ -183,8 +201,9 @@ export default class ZweihanderVehicleSheet extends ZweihanderBaseActorSheet {
         },
       ])
     );
+
     // Everything below here is only needed if the sheet is editable
-    if (!this.options.editable) return;
+    if (!this.isEditable) return;
 
     // Update the encumbrance meter
     this._updateEncumbranceMeter(html);
@@ -224,7 +243,7 @@ export default class ZweihanderVehicleSheet extends ZweihanderBaseActorSheet {
 
     html.find('.actor-promote').click(async (ev) => {
       const a = $(ev.currentTarget).parents('.item');
-      const vehicle = this.object;
+      const vehicle = this.actor;
 
       const vehicleOccupants = vehicle.getFlag('zweihander', 'vehicleOccupants');
       const drivers = vehicleOccupants.drivers;
@@ -244,7 +263,7 @@ export default class ZweihanderVehicleSheet extends ZweihanderBaseActorSheet {
 
     html.find('.actor-demote').click(async (ev) => {
       const a = $(ev.currentTarget).parents('.item');
-      const vehicle = this.object;
+      const vehicle = this.actor;
 
       const vehicleOccupants = vehicle.getFlag('zweihander', 'vehicleOccupants');
       const drivers = vehicleOccupants.drivers;
@@ -264,7 +283,7 @@ export default class ZweihanderVehicleSheet extends ZweihanderBaseActorSheet {
 
     html.find('.actor-delete').click(async (ev) => {
       const a = $(ev.currentTarget).parents('.item');
-      const vehicle = this.object;
+      const vehicle = this.actor;
 
       const vehicleOccupants = vehicle.getFlag('zweihander', 'vehicleOccupants');
       const drivers = vehicleOccupants.drivers;
@@ -301,7 +320,7 @@ export default class ZweihanderVehicleSheet extends ZweihanderBaseActorSheet {
   }
 
   async _onDropActor(event, data) {
-    const vehicle = this.object;
+    const vehicle = this.actor;
     const uuid = data.uuid;
 
     const vehicleOccupants = await vehicle.getFlag('zweihander', 'vehicleOccupants');
@@ -311,6 +330,11 @@ export default class ZweihanderVehicleSheet extends ZweihanderBaseActorSheet {
       const actor = await fromUuid(uuid);
       const actorData = actor.toObject(false);
 
+      if (actor.type === 'vehicle') {
+        ui.notifications.error("An Actor of type 'vehicle' cannot be a passenger in a vehicle.");
+        return;
+      }
+
       vehicleOccupants.passengers.push({
         name: actorData.name,
         img: actorData.img,
@@ -319,9 +343,7 @@ export default class ZweihanderVehicleSheet extends ZweihanderBaseActorSheet {
         isDriver: false,
       });
     } else {
-      ui.notifications.warn(
-        game.i18n.format("ZWEI.othermessages.actoralready", { actor: actor.name})
-        );
+      ui.notifications.warn(game.i18n.format('ZWEI.othermessages.actoralready', { actor: actor.name }));
     }
 
     await vehicle.setFlag('zweihander', 'vehicleOccupants', {
@@ -332,6 +354,8 @@ export default class ZweihanderVehicleSheet extends ZweihanderBaseActorSheet {
     await super._onDropActor(event, data);
   }
 
+  // @todo: fix later
+  /*
   async _render(force, options) {
     if (this.actor.limited) {
       options.classes = [
@@ -345,4 +369,5 @@ export default class ZweihanderVehicleSheet extends ZweihanderBaseActorSheet {
     }
     await super._render(force, options);
   }
+    */
 }

@@ -1,5 +1,5 @@
-<ol class="items-list">
-  {{#each this as |itemGroup| }}
+<ol class="items-list {{#if listClass}}{{listClass}}{{/if}}">
+  {{#each listItems as |itemGroup| }}
   <li class="items-header flexrow">
     <h3 class="item-name sortable filterable" data-detail="-1" data-item-group="{{itemGroup.id}}">
       <span class="detail-title">
@@ -55,7 +55,7 @@
   </li>
   <ol class="item-list">
     {{#each itemGroup.items as |item| }}
-    <li class="item flexrow" data-item-id="{{item._id}}" data-parent-id="{{item.parent._id}}">
+    <li class="item flexrow draggable" data-item-id="{{item._id}}" {{#if ../isEffect}}data-parent-id="{{item.parent._id}}"{{/if}}>
       <div class="item-name fetch-{{#if ../isEffect}}effect{{else}}item{{/if}} flexrow js-show-item-description {{#if itemGroup.rollType}}rollable{{/if}}">
         <div class="{{#if ../isEffect}}{{zhItemImageClass item.icon}}{{else}}{{zhItemImageClass item.img}}{{/if}} {{itemGroup.rollType}}" tabindex="0" role="button"
           aria-label="{{item.name}}" style="{{#if ../isEffect}}{{zhItemImageStyle item.icon}}{{else}}{{zhItemImageStyle item.img}}{{/if}}"
@@ -73,7 +73,7 @@
       <div class="item-detail {{detail.class}}" style="width:{{detail.size}}px">
         {{#if detail.isCheckbox}}
         <input class="zweihander-checkbox {{#unless detail.classes}}link{{#if ../../isEffect}}-effect{{/if}}-checkbox{{else}}{{detail.classes}}{{/unless}}"
-          id="{{item._id}}.{{detail.key}}" data-item-id="{{item._id}}" data-parent-id="{{item.parent._id}}" data-key="{{detail.key}}" type="checkbox"
+          id="{{item._id}}.{{detail.key}}" data-item-id="{{item._id}}" {{#if ../../isEffect}}data-parent-id="{{item.parent._id}}"{{/if}} data-key="{{detail.key}}" type="checkbox"
           {{checked (zhLookup item detail.key)}} />
         <label for="{{item._id}}.{{detail.key}}"></label>
         {{else if detail.isNumerable}}

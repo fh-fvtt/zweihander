@@ -26,8 +26,16 @@ body.game.vtt.system-zweihander .zweihander.sheet.actor {
   aside.details {
     &.npc {
       flex: 0 0 content;
+      padding: 0.5rem 0.5rem 0.25rem 0.5rem;
+
+      ul {
+        gap: 0.1275rem;
+        li {
+          margin: 0;
+        }
+      }
     }
-    padding: 5px 8px 0px 8px;
+    //padding: 5px 8px 0px 8px;
     height: 100%;
     ul {
       display: flex;
@@ -95,13 +103,13 @@ body.game.vtt.system-zweihander .zweihander.sheet.actor {
           width: auto;
           flex: 1 0 content;
           .risk-factor-value {
-            flex: 1 0 0;
+            flex: inherit;
             border-right-style: none;
             border-top-right-radius: 0;
             border-bottom-right-radius: 0;
           }
           .risk-factor-notch {
-            flex: 1 0 0;
+            flex: inherit;
             border-left-style: none;
             border-top-left-radius: 0;
             border-bottom-left-radius: 0;
@@ -336,6 +344,7 @@ body.game.vtt.system-zweihander .zweihander.sheet.actor {
         font-family: var(--zh-font-title);
         font-size: 12px;
         font-weight: normal;
+        line-height: normal;
         padding-left: 5px;
         padding-right: 5px;
         text-align: left;
@@ -495,6 +504,9 @@ body.game.vtt.system-zweihander .zweihander.sheet.actor {
       &:last-of-type {
         border-bottom: none;
       }
+      &.draggable {
+        cursor: unset;
+      }
       .item-name {
         cursor: pointer;
         &:hover {
@@ -587,7 +599,7 @@ body.game.vtt.system-zweihander .zweihander.sheet.actor {
       padding: 0px 0 0px;
       // background: repeating-linear-gradient(var(--zh-clr-bg1) 0 24px,transparent 24px 48px);
       .skill {
-        line-height: 1.7;
+        //line-height: 1.7;
         overflow: hidden;
         padding: 3px;
         .skill-name {
@@ -602,6 +614,8 @@ body.game.vtt.system-zweihander .zweihander.sheet.actor {
             text-overflow: ellipsis;
             white-space: nowrap;
             overflow: hidden;
+            height: 100%;
+            //line-height: 1.7;
           }
         }
         .skill-info {
@@ -643,16 +657,12 @@ body.game.vtt.system-zweihander .zweihander.sheet.actor {
     }
   }
 
-  &.damage-tracker {
-    > section.window-content {
-      position: relative;
-    }
-
-    > section.window-content::before,
-    > section.window-content::after,
-    > section.window-content > div::before,
-    > section.window-content > div::after {
-      content: ' '; // @todo: restore blood (V13)
+  &.damage-tracker.character {
+    &::before,
+    &::after,
+    > section.window-content > .decal-target::before,
+    > section.window-content > .decal-target::after {
+      content: ' ';
       position: absolute;
       display: block;
       width: 100%;
@@ -663,24 +673,24 @@ body.game.vtt.system-zweihander .zweihander.sheet.actor {
       z-index: -1;
     }
 
-    > section.window-content::before,
-    > section.window-content::after {
+    &::before,
+    &::after {
       /*height: calc(100% - 30px);
       top: 30px;*/
       z-index: -1;
     }
 
-    > section.window-content::before {
+    &::before {
       background-image: url('/systems/zweihander/assets/bloodstains2.webp');
       background-size: 700px 700px;
       background-position: bottom -420px right -320px;
     }
 
-    &.damage-tracker-4 > section.window-content::before {
+    &.damage-tracker-4::before {
       opacity: 0.35;
     }
 
-    & > section.window-content > div::before {
+    & > section.window-content > .decal-target::before {
       height: 500px;
       width: 500px;
       left: -130px;
@@ -689,15 +699,15 @@ body.game.vtt.system-zweihander .zweihander.sheet.actor {
       background-size: 500px 500px;
       transform: rotate(93deg) scale(0.5);
     }
-    &.character > section.window-content > div::before {
+    &.character > section.window-content > .decal-target::before {
       left: -20px;
       top: -10px;
     }
-    &.damage-tracker-3 > section.window-content > div::before {
+    &.damage-tracker-3 > section.window-content > .decal-target::before {
       opacity: 0.5;
     }
 
-    &.damage-tracker-2 > section.window-content::before {
+    &.damage-tracker-2::before {
       background-image: url('/systems/zweihander/assets/bloodstains2.webp'),
         url('/systems/zweihander/assets/bloodstains2.webp');
       background-size: 700px 700px, 700px 700px;
@@ -705,7 +715,7 @@ body.game.vtt.system-zweihander .zweihander.sheet.actor {
       opacity: 0.4;
     }
 
-    & > section.window-content > div::after {
+    & > section.window-content > .decal-target::after {
       height: 500px;
       width: 500px;
       background-image: url('/systems/zweihander/assets/bloodstains.webp');
@@ -714,17 +724,17 @@ body.game.vtt.system-zweihander .zweihander.sheet.actor {
       bottom: calc(50% - 350px);
       right: -230px;
     }
-    &.damage-tracker-1 > section.window-content > div::after {
+    &.damage-tracker-1 > section.window-content > .decal-target::after {
       opacity: 0.4;
     }
 
-    > section.window-content::after {
+    &::after {
       background-image: url('/systems/zweihander/assets/bloodstains.webp');
       background-size: 500px 500px;
       background-position: top -150px right -90px;
     }
 
-    &.damage-tracker-0 > section.window-content::after {
+    &.damage-tracker-0::after {
       opacity: 0.48;
     }
   }

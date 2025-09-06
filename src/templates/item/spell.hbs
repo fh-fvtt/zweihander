@@ -18,52 +18,16 @@
     <input name="system.distance" type="text" value="{{system.distance}}" />
   </div>
 
-  {{!--<div class="form-group">
-    <label>{{localize "ZWEI.actor.items.duration"}}</label>
-    <input name="system.duration" type="text" value="{{system.duration}}" />
-  </div>--}}
-
   <div class="form-group stacked">
     <label>{{localize "ZWEI.actor.items.reagents"}}</label>
-    {{editor
-      html.rules.reagents
-      target=(zhLocalizePath "system.rules.reagents")
-      engine="prosemirror"
-      button=true
-      owner=owner
-      editable=editable
-    }}
+    <prose-mirror
+      name="{{zhLocalizePath 'system.rules.reagents'}}"
+      value="{{zhLocalize system.rules.reagents}}"
+      toggled="true"
+    >
+      {{{html.rules.reagents}}}
+    </prose-mirror>
   </div>
-  {{!--
-  <div class="form-group">
-    <label>{{localize "ZWEI.actor.items.duration"}}</label>
-    <select name="system.duration.setting">
-      {{selectOptions spellDurations valueAttr="value" labelAttr="label" selected=selected}}
-    </select>
-  </div>
-
-  {{#if (eq system.duration.setting "formula")}}
-    <div class="form-group">
-      <label class="formula-label"></label>
-      <div class="damage-inputs flexrow">
-        <div class="form-group label-top wide">
-          <label>BASE</label>
-          <select name="system.duration.base">
-            {{selectOptions governingDurationAttribute valueAttr="value" labelAttr="label" selected=selected}}
-          </select>
-        </div>
-        <div class="form-group label-top">
-          <label>BONUS</label>
-          <input type="number" name="system.duration.bonus" value="{{system.duration.bonus}}" />
-        </div>
-        <div class="form-group label-top">
-          <label>UNITS</label>
-          <input type="text" name="system.duration.unit" value="{{system.duration.unit}}" />
-        </div>
-      </div>
-    </div>
-  {{/if}}
-  --}}
 
   {{#if (eq settings.gameSystem "fof")}}
     <div class="form-group">
@@ -123,37 +87,34 @@
   <legend>{{localize "ZWEI.actor.items.consequences"}}</legend>
   <div class="form-group stacked">
     <label>{{localize "ZWEI.actor.items.effect"}}</label>
-    {{editor
-      html.rules.effect
-      target=(zhLocalizePath "system.rules.effect")
-      engine="prosemirror"
-      button=true
-      owner=owner
-      editable=editable
-    }}
+    <prose-mirror
+      name="{{zhLocalizePath 'system.rules.effect'}}"
+      value="{{zhLocalize system.rules.effect}}"
+      toggled="true"
+    >
+      {{{html.rules.effect}}}
+    </prose-mirror>
   </div>
 
   <div class="form-group stacked">
     <label>{{localize "ZWEI.chatskill.criticalsuccess"}}</label>
-    {{editor
-      html.rules.criticalSuccess
-      target=(zhLocalizePath "system.rules.criticalSuccess")
-      engine="prosemirror"
-      button=true
-      owner=owner
-      editable=editable
-    }}
+    <prose-mirror
+      name="{{zhLocalizePath 'system.rules.criticalSuccess'}}"
+      value="{{zhLocalize system.rules.criticalSuccess}}"
+      toggled="true"
+    >
+      {{{html.rules.criticalSuccess}}}
+    </prose-mirror>
   </div>
 
   <div class="form-group stacked">
     <label>{{localize "ZWEI.chatskill.criticalfailure"}}</label>
-    {{editor
-      html.rules.criticalFailure
-      target=(zhLocalizePath "system.rules.criticalFailure")
-      engine="prosemirror"
-      button=true
-      owner=owner
-      editable=editable
-    }}
+    <prose-mirror
+      name="{{zhLocalizePath 'system.rules.criticalFailure'}}"
+      value="{{zhLocalize system.rules.criticalFailure}}"
+      toggled="true"
+    >
+      {{{html.rules.criticalFailure}}}
+    </prose-mirror>
   </div>
 </fieldset>

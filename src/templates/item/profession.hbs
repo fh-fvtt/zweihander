@@ -29,19 +29,10 @@
   </div>
 
   <div class="form-group">
-    <label class="formula-label">{{localize 'ZWEI.actor.items.bonusadvances'}}</label>
-    <div class="numerable-inputs flexrow">
-      {{#each bonusAdvancesOptions as |bonusAdvance|}}
-        <div class="form-group label-top">
-          <label>{{localize (zhConcat 'ZWEI.actor.bonusesabbr.' (zhLowerCase bonusAdvance))}}</label>
-          <div class="numerable-field flexrow" data-advance-name="{{bonusAdvance}}">
-            <button type="button" class="numerable-field-subtract advance">-</button>
-            <span class="numerable-field-counter">{{zhCalculateBonusAdvanceAmount ../system.bonusAdvances bonusAdvance}}</span>
-            <button type="button" class="numerable-field-add advance">+</button>
-          </div>
-        </div>
-      {{/each}}
-    </div>
+    <label class="formula">{{localize 'ZWEI.actor.items.bonusadvances'}}</label>
+    <zweihander-repeat-multi-select name="system.bonusAdvances" data-bonus-advances="{{zhStringifyObject system.bonusAdvances}}">
+      {{selectOptions bonusAdvancesMultiSelect valueAttr="key" labelAttr="label"}}
+    </zweihander-repeat-multi-select>
   </div>
 
   <div class='form-group talents'>
@@ -104,14 +95,9 @@
 
     <div class='form-group'>
       <label class='other-requirements'>{{localize 'ZWEI.actor.items.additionalreq'}}</label>
-      {{editor
-        system.expert.requirements.additional
-        target='system.expert.requirements.additional'
-        engine='prosemirror'
-        button=true
-        owner=owner
-        editable=editable
-      }}
+      <prose-mirror name="system.expert.requirements.additional" value="{{system.expert.requirements.additional}}" toggled="true">
+        {{{html.expertRequirements}}}
+      </prose-mirror>
     </div>
   {{else}}
   {{/if}}

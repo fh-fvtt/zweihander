@@ -1,10 +1,14 @@
 body.game.vtt.system-zweihander .zweihander.sheet.vehicle {
   --zh-structural-border: 2px groove var(--zh-clr-bg2);
+  --input-height: normal;
 
   max-height: 1200px;
   max-width: 1280px;
-  min-height: 669px;
-  min-width: 625px;
+
+  &:not(.minimized, .minimizing, .maximizing) {
+    min-height: 705px;
+    min-width: 625px;
+  }
 
   .actor-demote:hover {
     color: var(--zh-clr-red-alt);
@@ -14,8 +18,10 @@ body.game.vtt.system-zweihander .zweihander.sheet.vehicle {
   }
 
   &.limited {
-    min-height: 150px;
-    min-width: 300px;
+    &:not(.minimized, .minimizing, .maximizing) {
+      min-height: 150px;
+      min-width: 300px;
+    }
   }
 
   .window-content {
@@ -27,15 +33,15 @@ body.game.vtt.system-zweihander .zweihander.sheet.vehicle {
     background-blend-mode: multiply;
   }
 
-  form > header {
+  .window-content > header {
     border-bottom: var(--zh-structural-border);
     display: flex;
-    flex: 0 0 content;
+    flex: 0 0 72px;
     figure.actor-image {
       border-right: var(--zh-structural-border);
-      flex: 0 0 50px;
+      flex: 0 0 72px;
       margin: 0;
-      height: 48px;
+      height: 72px;
       padding: 0;
       display: flex;
       img {
@@ -48,18 +54,20 @@ body.game.vtt.system-zweihander .zweihander.sheet.vehicle {
     h1.actor-name {
       border: none;
       flex: 1;
-      height: 37px;
-      margin: 5px;
-      padding: 0;
+      height: 72px;
+      margin: 0;
+      padding: 0.5rem;
       input {
+        display: block;
+        padding-inline: 0;
         font-family: var(--zh-font-title);
-        font-size: 24px;
+        font-size: 32px;
+        font-weight: normal;
         color: var(--zh-clr-yellow);
-        height: auto;
+        height: 100%;
         line-height: 1;
         margin: 0;
         text-shadow: 2px 2px 1px var(--zh-clr-bg3);
-        width: 100%;
       }
     }
     section.actor-resources {
@@ -67,17 +75,21 @@ body.game.vtt.system-zweihander .zweihander.sheet.vehicle {
       padding: 0px;
       display: flex;
       flex-direction: column;
-      justify-content: space-around;
+      justify-content: center;
+      gap: 0.35rem;
       section.peril-ladder,
       section.damage-ladder {
         display: flex;
         font-size: 12px;
-        justify-content: space-around;
+        justify-content: flex-end;
+        gap: 0.35rem;
+        margin-right: 0.5rem;
         h1 {
           text-transform: uppercase;
           color: var(--zh-clr-aqua);
           font-family: var(--zh-font-title);
           font-size: 10px;
+          font-weight: normal;
           line-height: 1.5;
           padding: 3px;
           text-align: right;
@@ -90,11 +102,10 @@ body.game.vtt.system-zweihander .zweihander.sheet.vehicle {
         }
       }
       .radio-and-status {
-        flex: 0 0 20px;
+        flex: 0 0 14px;
         height: 20px;
         position: relative;
         text-align: right;
-        width: 20px;
         input[type='radio'] {
           display: none;
           & + label {
@@ -108,10 +119,10 @@ body.game.vtt.system-zweihander .zweihander.sheet.vehicle {
               border-radius: 50%;
               content: ' ';
               display: block;
-              height: 12px;
+              height: 14px;
               line-height: 1;
-              margin: 3px;
-              width: 12px;
+              width: 14px;
+              font-size: 14px;
             }
             > span {
               bottom: 0;
@@ -159,13 +170,13 @@ body.game.vtt.system-zweihander .zweihander.sheet.vehicle {
     }
   }
 
-  form > .encumbrance-bar-container {
+  .window-content > .encumbrance-bar-container {
     background: var(--zh-clr-fg2);
     border: 1px solid var(--zh-clr-bg1);
     border-radius: 1ch;
     color: var(--zh-clr-bg0);
     flex: 0 0 18px;
-    margin: 5px 20px 5px 8px;
+    margin: 0 0.5rem 0.5rem 0.5rem;
     overflow: hidden;
     position: relative;
     .encumbrance-label {
@@ -213,8 +224,10 @@ body.game.vtt.system-zweihander .zweihander.sheet.vehicle {
     grid-auto-flow: dense;
     grid-auto-rows: minmax(50px, 1fr);
     grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-    overflow-y: hidden;
-    scrollbar-gutter: stable both-edges;
+    overflow-y: auto;
+    // scrollbar-gutter: stable both-edges;
+    padding: 0 0.25rem;
+    margin-bottom: 0.25rem;
     &:hover {
       overflow-y: auto;
     }
@@ -253,7 +266,7 @@ body.game.vtt.system-zweihander .zweihander.sheet.vehicle {
       border: 2px groove var(--zh-clr-bg2);
       border-radius: 3px;
       grid-row: span 4;
-      margin: 5px;
+      margin: 0.25rem;
       overflow: auto;
       display: flex;
       flex-direction: column;
@@ -387,6 +400,8 @@ body.game.vtt.system-zweihander .zweihander.sheet.vehicle {
           justify-content: center;
           flex-direction: column;
           width: 100%;
+          height: 100%;
+          margin-bottom: unset;
           &:last-of-type {
             border-right: none;
           }
@@ -516,20 +531,21 @@ body.game.vtt.system-zweihander .zweihander.sheet.vehicle {
   }
   &.zweihander-compact-sheet,
   &.gm-screen-grid-cell-content {
-    min-height: 400px;
-    min-width: 440px;
-    // max-height: 580px !important;
-    // max-width: 530px !important;
-    form > header {
+    &:not(.minimized, .minimizing, .maximizing) {
+      min-width: 450px;
+      min-height: 435px;
+    }
+
+    .window-content > header {
       figure.actor-image {
         display: none;
       }
       h1.actor-name {
         margin: 0;
         padding: 0;
-        height: 32px;
+        height: 100%;
         input {
-          font-size: 18px;
+          font-size: 20px;
         }
       }
       section.peril-ladder::before,
@@ -538,6 +554,7 @@ body.game.vtt.system-zweihander .zweihander.sheet.vehicle {
       }
       section.actor-resources {
         flex: 0 0 160px;
+        margin: 0.5rem 0;
       }
       section.actor-resources .radio-and-status {
         height: 16px;
@@ -552,7 +569,7 @@ body.game.vtt.system-zweihander .zweihander.sheet.vehicle {
       grid-auto-rows: minmax(75px, 1fr) !important;
       grid-gap: 2px !important;
       grid-template-columns: repeat(auto-fit, minmax(245px, 1fr)) !important;
-      margin-top: 2px;
+      margin: 0;
       padding: 0px !important;
       & > * {
         margin: 0 !important;

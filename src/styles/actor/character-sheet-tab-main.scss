@@ -84,6 +84,7 @@
     border: 2px groove var(--zh-clr-bg2);
     margin: 0 5px;
     border-radius: 3px;
+    line-height: 1.7;
   }
 
   .combat-container {
@@ -219,7 +220,7 @@
         text-align: right;
         align-items: center;
         justify-content: flex-end;
-        padding: 2px 0;
+        padding-top: 2px;
       }
       input[type='radio'] {
         appearance: none;

@@ -1,29 +1,5 @@
-<form class="editable sheet-grid flexcol" autocomplete="off">
-  <header>
-    <figure class="actor-image">
-      <img class="peril-tracker" src="{{actor.img}}" title="{{actor.name}}" data-edit="img" />
-    </figure>
-    <h1 class="actor-name">
-      <input name="name" type="text" value="{{actor.name}}" placeholder="{{localize "ZWEI.actor.header.npcname"}}">
-    </h1>
-    {{#unless limited}}
-    <section class="actor-resources">
-      <section class="peril-ladder">
-        <h1>{{localize "ZWEI.actor.secondary.peril"}}</h1>
-        {{zhConditionLadderLoc "system.stats.secondaryAttributes.perilCurrent.value" (zhGetPerilSystem)
-        checked=system.stats.secondaryAttributes.perilCurrent.value}}
-      </section>
-      <section class="damage-ladder">
-        <h1>{{localize "ZWEI.actor.secondary.damage"}}</h1>
-        {{zhConditionLadderLoc "system.stats.secondaryAttributes.damageCurrent.value" config.damageOptions
-        checked=system.stats.secondaryAttributes.damageCurrent.value}}
-      </section>
-    </section>
-    {{/unless}}
-  </header>
-  {{> ($$ 'partials/details-list-npc') }}
-  {{#unless limited}}
-  <section class="sheet-body">
+{{#unless limited}}
+  <section class="sheet-body decal-target">
     <section class="stats flexcol">
       <h1>{{localize "ZWEI.actor.navigation.attributes"}} <a class="manual-mode-button" data-tooltip-direction="UP"><i
             class="fas fa-toggle-{{#if system.stats.manualMode}}on{{else}}off{{/if}}"></i> {{localize "ZWEI.actor.navigation.manualmode"}}</a></h1>
@@ -109,17 +85,17 @@
       </ul>
     </section>
     <section class="attack-profiles">
-      {{> ($$ "partials/items-list") itemLists.attackProfiles}}
+      {{> ($$ "partials/items-list") listItems=itemLists.attackProfiles listClass="weapons-list"}}
     </section>
     <section class="skills skills-container flexcol save-scroll">
       <h1>{{localize "ZWEI.actor.navigation.skills"}}</h1>
       {{> ($$ "partials/skills-list" )}}
     </section>
     <section class="rules">
-      {{> ($$ "partials/items-list") itemLists.rules}}
+      {{> ($$ "partials/items-list") listItems=itemLists.rules listClass="stacked-list"}}
     </section>
     <section class="loot">
-      {{> ($$ "partials/items-list") itemLists.loot}}
+      {{> ($$ "partials/items-list") listItems=itemLists.loot listClass="loot-list"}}
     </section>
     <aside class="description">
       <h1>{{localize "ZWEI.actor.navigation.description"}}</h1>
@@ -127,5 +103,4 @@
         placeholder="Put a nice description of your creature here...">{{zhLocalize system.description}}</textarea>
     </aside>
   </section>
-  {{/unless}}
-</form>
+{{/unless}}

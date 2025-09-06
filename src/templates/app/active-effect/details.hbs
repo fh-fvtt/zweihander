@@ -3,8 +3,7 @@
     {{formGroup fields.description value=source.description rootId=rootId}}
     <div class="form-group">
         <label>{{ localize "EFFECT.isActive" }}</label>
-        {{log this}}
-        <input type="checkbox" name="system.isActive" {{ checked document.system.isActive }} {{#zhIsCarried document.parent.system}}disabled data-tooltip="Parent Item is currently unequipped or not being carried" data-tooltip-direction="UP"{{else}}{{/zhIsCarried}} />
+        <input type="checkbox" name="system.isActive" {{ checked document.system.isActive }} {{#if isParentCarried}}{{else}}disabled data-tooltip="Parent Item is currently unequipped or not being carried" data-tooltip-direction="UP"{{/if}} />
     </div>
 
     {{#if isActorEffect}}

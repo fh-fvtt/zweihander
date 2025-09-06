@@ -1,5 +1,6 @@
 import ZweihanderBaseActorSheet from './base-actor-sheet';
 import { selectedChoice } from '../../utils';
+
 export default class ZweihanderCreatureSheet extends ZweihanderBaseActorSheet {
   static unsupportedItemTypes = new Set([
     'ancestry',
@@ -14,51 +15,76 @@ export default class ZweihanderCreatureSheet extends ZweihanderBaseActorSheet {
     'disease',
   ]);
 
-  static get defaultOptions() {
-    const compactMode = game.settings.get('zweihander', 'openInCompactMode');
-    return foundry.utils.mergeObject(super.defaultOptions, {
-      classes: super.defaultOptions.classes.concat(['creature']),
+  static DEFAULT_OPTIONS = {
+    ...super.DEFAULT_OPTIONS,
+    classes: ['creature'],
+    window: {
+      icon: 'fa-solid fa-bugs',
+    },
+  };
+
+  static PARTS = {
+    header: { template: 'systems/zweihander/src/templates/creature/header.hbs' },
+    details: { template: 'systems/zweihander/src/templates/partials/details-list-npc.hbs' },
+    main: {
       template: 'systems/zweihander/src/templates/creature/main.hbs',
-      width: compactMode ? 540 : 625,
-      height: compactMode ? 540 : 669,
-      scrollY: ['.save-scroll', '.sheet-body'],
-    });
+      scrollable: ['', '.weapons-list', '.skills', '.stacked-list', '.loot-list', '.description'],
+    },
+  };
+
+  _initializeApplicationOptions(options) {
+    const initialized = super._initializeApplicationOptions(options);
+
+    const compactMode = game.settings.get('zweihander', 'openInCompactMode');
+
+    initialized.position.width = compactMode ? 540 : 625;
+    initialized.position.height = compactMode ? 560 : 705;
+
+    return initialized;
   }
 
-  async getData(options) {
-    const sheetData = await super.getData();
-    sheetData.choices = {};
-    const size = sheetData.system.details.size ?? 1;
-    sheetData.choices.sizes = selectedChoice(size, [
+  async _prepareContext(options) {
+    const context = await super._prepareContext(options);
+
+    const actor = context.document;
+
+    context.choices = {};
+
+    const size = actor.system.details.size ?? 1;
+    context.choices.sizes = selectedChoice(size, [
       { value: 0, label: 'small' },
       { value: 1, label: 'normal' },
       { value: 2, label: 'large' },
       { value: 3, label: 'huge' },
     ]);
-    const rf = sheetData.system.details.riskFactor?.value ?? 0;
-    sheetData.choices.riskFactors = selectedChoice(rf, [
+
+    const rf = actor.system.details.riskFactor?.value ?? 0;
+    context.choices.riskFactors = selectedChoice(rf, [
       { value: 0, label: 'basic' },
       { value: 1, label: 'intermediate' },
       { value: 2, label: 'advanced' },
       { value: 3, label: 'elite' },
     ]);
-    const notch = sheetData.system.details.riskFactor?.notch ?? 1;
-    sheetData.choices.notches = selectedChoice(notch, [
+
+    const notch = actor.system.details.riskFactor?.notch ?? 1;
+    context.choices.notches = selectedChoice(notch, [
       { value: 0, label: 'low' },
       { value: 1, label: 'medium' },
       { value: 2, label: 'high' },
       { value: 3, label: 'unique' },
     ]);
+
     const hidden = this.actor.limited;
-    sheetData.details = [
+
+    context.details = [
       {
-        choices: sheetData.choices,
+        choices: context.choices,
         template: 'partials/detail-risk-factor',
         hidden,
       },
       {
         key: 'details.size',
-        choices: sheetData.choices.sizes,
+        choices: context.choices.sizes,
       },
       {
         key: 'details.classification',
@@ -76,23 +102,25 @@ export default class ZweihanderCreatureSheet extends ZweihanderBaseActorSheet {
         hidden,
       },
       {
-        value: sheetData.system.languages,
+        value: actor.system.languages,
         placeholder: game.i18n.localize('ZWEI.actor.details.placeholders.languages'),
         template: 'partials/detail-languages',
         hidden,
       },
     ];
-    const $$ = (x) => sheetData.itemGroups[x];
-    sheetData.itemLists = {
+
+    const $$ = (x) => context.itemGroups[x];
+    context.itemLists = {
       attackProfiles: ['weapons'].map($$),
       loot: ['trappings'].map($$),
       rules: ['traits', 'spells', 'taints', 'conditions', 'injuries'].map($$),
     };
-    return sheetData;
+
+    return context;
   }
 
-  async _prepareItems(sheetData) {
-    await super._prepareItems(sheetData);
+  async _prepareItems(context) {
+    await super._prepareItems(context);
     // set up collections for all item types
     const indexedTypes = [
       'trapping',
@@ -114,6 +142,7 @@ export default class ZweihanderCreatureSheet extends ZweihanderBaseActorSheet {
       'uniqueAdvance',
       'taint',
     ].filter((t) => t === 'skill' || !this.constructor.unsupportedItemTypes.has(t));
+
     const pluralize = (t) =>
       ({
         injury: 'injuries',
@@ -121,34 +150,40 @@ export default class ZweihanderCreatureSheet extends ZweihanderBaseActorSheet {
         armor: 'armor',
         quality: 'qualities',
       }[t] ?? t + 's');
-    indexedTypes.forEach((t) => (sheetData[pluralize(t)] = []));
-    sheetData.items
+
+    indexedTypes.forEach((t) => (context[pluralize(t)] = []));
+
+    context.items
       .filter((i) => indexedTypes.includes(i.type))
       .sort((a, b) => (a.sort || 0) - (b.sort || 0))
-      .forEach((i) => sheetData[pluralize(i.type)].push(i));
+      .forEach((i) => context[pluralize(i.type)].push(i));
+
     // sort skills alphabetically
-    sheetData.skills = sheetData.skills.sort((a, b) => {
+    context.skills = context.skills.sort((a, b) => {
       const aloc = a.name;
       const bloc = b.name;
       return aloc.localeCompare(bloc);
     });
+
     // add base chance to weapon data
-    sheetData.weapons = sheetData.weapons.map((w) => {
-      const skill = sheetData.skills.find((s) => s.name === w.system.associatedSkill);
+    context.weapons = context.weapons.map((w) => {
+      const skill = context.skills.find((s) => s.name === w.system.associatedSkill);
       if (!skill) {
         ui.notifications.warn(
-          game.i18n.format("ZWEI.othermessages.noskillweapon", { skill: w.system.associatedSkill, weapon: w.name }),
+          game.i18n.format('ZWEI.othermessages.noskillweapon', { skill: w.system.associatedSkill, weapon: w.name }),
           { permanent: true }
         );
         return w;
       }
 
       const baseChance =
-        sheetData.system.stats.primaryAttributes[skill.system.associatedPrimaryAttribute.toLowerCase()].value;
+        context.document.system.stats.primaryAttributes[skill.system.associatedPrimaryAttribute.toLowerCase()].value;
       w.chance = baseChance + skill.system.bonus;
+
       return w;
     });
-    return sheetData;
+
+    return context;
   }
 
   _getItemGroups(sheetData) {
@@ -232,8 +267,11 @@ export default class ZweihanderCreatureSheet extends ZweihanderBaseActorSheet {
     };
   }
 
-  activateListeners(html) {
-    super.activateListeners(html);
+  async _onRender(options) {
+    await super._onRender(options);
+
+    const html = $(this.element); // @todo: refactor jQuery
+
     // register width listener for skills container
     this._registerDimensionChangeListener(
       html.find('.skills-container'),
@@ -245,7 +283,7 @@ export default class ZweihanderCreatureSheet extends ZweihanderBaseActorSheet {
       ])
     );
     // Everything below here is only needed if the sheet is editable
-    if (!this.options.editable) return;
+    if (!this.isEditable) return;
     // level skills
     html.find('.skills .skill').contextmenu(async (event) => {
       const skillId = event.currentTarget.dataset.itemId;
@@ -302,7 +340,10 @@ export default class ZweihanderCreatureSheet extends ZweihanderBaseActorSheet {
       });
     });
   }
+}
 
+// @todo: fix later
+/*
   async _render(force, options) {
     if (this.actor.limited) {
       options.classes = [
@@ -316,4 +357,4 @@ export default class ZweihanderCreatureSheet extends ZweihanderBaseActorSheet {
     }
     await super._render(force, options);
   }
-}
+*/

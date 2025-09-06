@@ -90,11 +90,11 @@ export default class ZweihanderItem extends Item {
     return await this.dispatch('_preCreate', { args: [data, options, user] });
   }
 
-  async _onCreate(data, options, user) {
-    await super._onCreate(data, options, user);
+  _onCreate(data, options, user) {
+    super._onCreate(data, options, user);
 
     if (user !== game.user.id) return;
-    await this.dispatch('_onCreate', { args: [data, options, user] });
+    this.dispatch('_onCreate', { args: [data, options, user] });
   }
 
   async _preDelete(options, user) {
@@ -103,11 +103,11 @@ export default class ZweihanderItem extends Item {
     return await this.dispatch('_preDelete', { args: [options, user] });
   }
 
-  async _onDelete(options, user) {
-    await super._onDelete(options, user);
+  _onDelete(options, user) {
+    super._onDelete(options, user);
     if (user !== game.user.id) return;
     if (this.parent === null) return;
-    await this.dispatch('_onDelete', { args: [options, user] });
+    this.dispatch('_onDelete', { args: [options, user] });
   }
 
   async _preUpdate(changed, options, user) {
@@ -118,11 +118,11 @@ export default class ZweihanderItem extends Item {
     }
   }
 
-  async _onUpdate(changed, options, user) {
-    await super._onUpdate(changed, options, user);
+  _onUpdate(changed, options, user) {
+    super._onUpdate(changed, options, user);
     if (user !== game.user.id) return;
     if (this.parent === null || !changed.system) return;
-    await this.dispatch('_onUpdate', { args: [changed, options, user] });
+    this.dispatch('_onUpdate', { args: [changed, options, user] });
   }
 
   async roll() {

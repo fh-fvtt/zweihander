@@ -1,10 +1,15 @@
+{{#unless limited}}
   <div class="encumbrance-bar-container">
     <span class="encumbrance-bar"></span>
-    <span class="encumbrance-label">{{localize "ZWEI.actor.items.encumbrance"}}: {{system.stats.secondaryAttributes.encumbranceLimit.current}} /
-      {{system.stats.secondaryAttributes.encumbranceLimit.value}} <span class="overage-display">(Overage:
+    <span class="encumbrance-label">{{localize "ZWEI.actor.items.encumbrance"}}:
+      {{system.stats.secondaryAttributes.encumbranceLimit.current}}
+      /
+      {{system.stats.secondaryAttributes.encumbranceLimit.value}}
+      <span class="overage-display">(Overage:
         {{system.stats.secondaryAttributes.encumbranceLimit.overage}})</span></span>
     <i class="encumbrance-breakpoint encumbrance-33 arrow-up"></i>
     <i class="encumbrance-breakpoint encumbrance-33 arrow-down"></i>
     <i class="encumbrance-breakpoint encumbrance-66 arrow-up"></i>
     <i class="encumbrance-breakpoint encumbrance-66 arrow-down"></i>
   </div>
+{{/unless}}

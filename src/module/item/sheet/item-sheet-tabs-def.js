@@ -17,11 +17,13 @@ export function getEffectsGroups(groupsData) {
   };
 }
 
-export function attachTabDefinitions(tabData) {
-  const $$ = (x) => tabData.itemGroups[x];
-  tabData.tabs = {
+export function attachTabDefinitions(context) {
+  const $$ = (x) => context.itemGroups[x];
+  tabDefinitions = {
     effects: {
       itemGroups: ['effects'].map($$),
     },
   };
+
+  foundry.utils.mergeObject(context.tabs, tabDefinitions, { overwrite: false });
 }

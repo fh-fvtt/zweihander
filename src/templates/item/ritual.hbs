@@ -5,26 +5,24 @@
 
   <div class="form-group stacked">
     <label>{{localize "ZWEI.actor.items.reagents"}}</label>
-    {{editor
-      html.rules.reagents
-      target=(zhLocalizePath "system.rules.reagents")
-      engine="prosemirror"
-      button=true
-      owner=owner
-      editable=editable
-    }}
+    <prose-mirror
+      name="{{zhLocalizePath 'system.rules.reagents'}}"
+      value="{{zhLocalize system.rules.reagents}}"
+      toggled="true"
+    >
+      {{{html.rules.reagents}}}
+    </prose-mirror>
   </div>
 
   <div class="form-group stacked">
     <label>{{localize "ZWEI.actor.items.condition"}}</label>
-    {{editor
-      html.rules.condition
-      target=(zhLocalizePath "system.rules.condition")
-      engine="prosemirror"
-      button=true
-      owner=owner
-      editable=editable
-    }}
+    <prose-mirror
+      name="{{zhLocalizePath 'system.rules.condition'}}"
+      value="{{zhLocalize system.rules.condition}}"
+      toggled="true"
+    >
+      {{{html.rules.condition}}}
+    </prose-mirror>
   </div>
 
   {{zhRitualDifficultyInputs system ritualDifficultiesSpecific ritualDifficultiesGeneric skills}}
@@ -45,25 +43,23 @@
 
   <div class="form-group stacked">
     <label>{{localize "ZWEI.actor.items.consequences"}}</label>
-    {{editor
-      html.rules.consequences
-      target=(zhLocalizePath "system.rules.consequences")
-      engine="prosemirror"
-      button=true
-      owner=owner
-      editable=editable
-    }}
+    <prose-mirror
+      name="{{zhLocalizePath 'system.rules.consequences'}}"
+      value="{{zhLocalize system.rules.consequences}}"
+      toggled="true"
+    >
+      {{{html.rules.consequences}}}
+    </prose-mirror>
   </div>
 
   <div class="form-group stacked">
     <label>{{localize "ZWEI.actor.items.effect"}}</label>
-    {{editor
-      html.rules.effect
-      target=(zhLocalizePath "system.rules.effect")
-      engine="prosemirror"
-      button=true
-      owner=owner
-      editable=editable
-    }}
+    <prose-mirror
+      name="{{zhLocalizePath 'system.rules.effect'}}"
+      value="{{zhLocalize system.rules.effect}}"
+      toggled="true"
+    >
+      {{{html.rules.effect}}}
+    </prose-mirror>
   </div>
 </fieldset>

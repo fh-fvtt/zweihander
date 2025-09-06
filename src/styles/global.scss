@@ -188,7 +188,7 @@
 
   input,
   select {
-    --input-background-color: rgba(var(--zh-clr-bg0-rgb), 0.5);
+    --input-background-color: var(--zh-clr-bg1); //--input-background-color: rgba(var(--zh-clr-bg0-rgb), 0.5);
     --input-border-color: transparent;
     --input-text-color: var(--zh-clr-fg2);
     --input-placeholder-color: var(--zh-clr-fg4);
@@ -298,7 +298,7 @@ body.game.vtt.system-zweihander {
 
   #pause {
     background: none;
-    top: calc(100vh - 400px);
+    top: calc(97vh - 365px);
 
     &.paused {
       animation-duration: 5s;
@@ -317,12 +317,12 @@ body.game.vtt.system-zweihander {
     > figcaption {
       position: absolute;
       text-transform: unset;
-      font-style: unset;
       color: var(--zh-clr-fg0);
       font-weight: normal;
-      font-family: var(--zh-font-title);
-      //font-style: italic;
-      letter-spacing: 0.025em;
+      font-family: var(--font-primary);
+      font-style: italic;
+      font-size: 24px;
+      letter-spacing: 0.05em;
       // font-family: var(--zh-font-title);
       text-shadow: 1px 1px 10px var(--color-shadow-dark);
     }
@@ -344,6 +344,10 @@ body.game.vtt.system-zweihander {
   .application {
     input[type='checkbox'] {
       --checkbox-checked-color: var(--zh-clr-aqua);
+
+      &:disabled {
+        --checkbox-background-color: rgba(128, 128, 128, 0.55);
+      }
     }
 
     .window-header {
@@ -381,12 +385,15 @@ body.game.vtt.system-zweihander {
   fieldset {
     display: flex;
     flex-direction: column;
-    gap: 0.25rem;
+    gap: 0.5rem;
     border: 2px groove var(--zh-clr-dark2);
     margin: 0;
+    padding-inline: 0.5rem;
+    border-radius: 3px;
   }
 
-  zweihander-multi-select {
+  zweihander-multi-select,
+  zweihander-repeat-multi-select {
     display: flex;
     flex-direction: column;
     gap: 0.25rem;
@@ -433,12 +440,14 @@ body.game.vtt.system-zweihander {
   }
 
   select,
-  button {
+  button:not(.inline-control) {
     background-color: var(--zh-clr-bg1);
     color: var(--zh-clr-fg0);
   }
 
-  button {
+  button:not(.inline-control) {
+    --button-focus-outline-color: var(--zh-clr-yellow-faded);
+
     border: 1px solid var(--zh-clr-bg4);
     cursor: pointer;
     &:hover,
@@ -447,6 +456,10 @@ body.game.vtt.system-zweihander {
       color: var(--zh-clr-yellow);
       border-color: var(--zh-clr-yellow);
     }
+  }
+
+  button.inline-control {
+    color: var(--zh-clr-bg0);
   }
 
   .directory .directory-header .header-search input {
@@ -473,6 +486,12 @@ body.game.vtt.system-zweihander {
         color: var(--zh-clr-fg0);
       }
     }
+    button.icon.toggle {
+      transition-property: border-color;
+    }
+    &:not(:hover) > button.icon.toggle {
+      visibility: hidden;
+    }
   }
 
   #prosemirror-dropdown {
@@ -492,7 +511,7 @@ body.game.vtt.system-zweihander {
 
   .editor {
     min-height: 35px;
-    &.prosemirror {
+    &.prosemirror .editor-container {
       min-height: 200px;
     }
   }

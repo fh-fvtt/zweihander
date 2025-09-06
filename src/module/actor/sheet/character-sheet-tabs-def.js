@@ -425,10 +425,6 @@ export function attachTabDefinitions(context) {
       footerTemplate: 'character/encumbrance-meter',
       itemGroups: ['weapons', 'armor', 'trappings'].map($$),
     },
-    magick: {
-      footerTemplate: 'character/magick-skill-selector',
-      itemGroups: ['spells', 'rituals'].map($$),
-    },
     afflictions: {
       itemGroups: [
         'effectsTemporary',
@@ -444,6 +440,14 @@ export function attachTabDefinitions(context) {
       itemGroups: ['professions', 'traits', 'drawbacks', 'talents', 'uniqueAdvances'].map($$),
     },
   };
+
+  // Magick tab is not always present
+  if (context.tabs.magick) {
+    tabDefinitions.magick = {
+      footerTemplate: 'character/magick-skill-selector',
+      itemGroups: ['spells', 'rituals'].map($$),
+    };
+  }
 
   foundry.utils.mergeObject(context.tabs, tabDefinitions, { overwrite: false });
 }

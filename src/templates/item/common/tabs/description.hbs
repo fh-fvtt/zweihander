@@ -1,0 +1,12 @@
+<div class="tab tab-description {{tab.cssClass}} flexcol" data-group="{{tab.group}}" data-tab="{{tab.id}}">
+  <fieldset>
+    <legend>{{localize "ZWEI.actor.items.lore"}}</legend>
+    <prose-mirror
+      name="{{zhLocalizePath 'system.description'}}"
+      value="{{zhLocalize system.description}}"
+      toggled="true"
+    >
+      {{{html.description}}}
+    </prose-mirror>
+  </fieldset>
+</div>

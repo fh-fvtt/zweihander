@@ -9,7 +9,7 @@ const { DialogV2 } = foundry.applications.api;
 
 /**
  * The Zweihänder actor sheet class for characters.
- * @extends {ActorSheet}
+ * @extends {ZweihanderBaseActorSheet}
  */
 export default class ZweihanderCharacterSheet extends ZweihanderBaseActorSheet {
   static unsupportedItemTypes = new Set(['quality', 'skill']);
@@ -18,7 +18,7 @@ export default class ZweihanderCharacterSheet extends ZweihanderBaseActorSheet {
     classes: ['character'],
     position: {
       width: 780,
-      height: 965,
+      height: 970,
     },
     window: {
       contentClasses: ['sheet-body'],
@@ -28,12 +28,27 @@ export default class ZweihanderCharacterSheet extends ZweihanderBaseActorSheet {
 
   static PARTS = {
     header: { template: 'systems/zweihander/src/templates/character/header.hbs' },
-    tabs: { template: 'systems/zweihander/src/templates/character/tabs.hbs' },
-    attributes: { template: 'systems/zweihander/src/templates/character/tabs/attributes.hbs' },
-    tiers: { template: 'systems/zweihander/src/templates/character/tabs/generic-item-list.hbs' },
-    trappings: { template: 'systems/zweihander/src/templates/character/tabs/generic-item-list.hbs' },
-    magick: { template: 'systems/zweihander/src/templates/character/tabs/generic-item-list.hbs' },
-    afflictions: { template: 'systems/zweihander/src/templates/character/tabs/generic-item-list.hbs' },
+    tabs: { template: 'systems/zweihander/src/templates/character/tabs-navigation.hbs' },
+    attributes: {
+      template: 'systems/zweihander/src/templates/character/tabs/attributes.hbs',
+      scrollable: ['.skills-list'],
+    },
+    tiers: {
+      template: 'systems/zweihander/src/templates/character/tabs/generic-item-list.hbs',
+      scrollable: ['.items-list'],
+    },
+    trappings: {
+      template: 'systems/zweihander/src/templates/character/tabs/generic-item-list.hbs',
+      scrollable: ['.items-list'],
+    },
+    magick: {
+      template: 'systems/zweihander/src/templates/character/tabs/generic-item-list.hbs',
+      scrollable: ['.items-list'],
+    },
+    afflictions: {
+      template: 'systems/zweihander/src/templates/character/tabs/generic-item-list.hbs',
+      scrollable: ['.items-list'],
+    },
     background: { template: 'systems/zweihander/src/templates/character/tabs/background.hbs' },
   };
 
@@ -54,6 +69,41 @@ export default class ZweihanderCharacterSheet extends ZweihanderBaseActorSheet {
 
   constructor(...args) {
     super(...args);
+  }
+
+  _configureRenderParts(options) {
+    const parts = super._configureRenderParts(options);
+
+    if (this.document.limited) {
+      return {};
+    }
+
+    const isMagickUser = ZweihanderActorConfig.getValue(this.document, 'isMagickUser');
+
+    if (!isMagickUser) {
+      const { header, tabs, attributes, tiers, trappings, afflictions, background } = parts;
+      return { header, tabs, attributes, tiers, trappings, afflictions, background };
+    }
+
+    return parts;
+  }
+
+  _prepareTabs(group) {
+    const tabs = super._prepareTabs(group);
+
+    if (group === 'primary') {
+      if (this.document.limited) {
+        return {};
+      }
+
+      const isMagickUser = ZweihanderActorConfig.getValue(this.document, 'isMagickUser');
+
+      if (!isMagickUser) {
+        delete tabs.magick;
+      }
+    }
+
+    return tabs;
   }
 
   async _prepareContext(options) {
@@ -240,18 +290,17 @@ export default class ZweihanderCharacterSheet extends ZweihanderBaseActorSheet {
       .sort((a, b) => (a.sort || 0) - (b.sort || 0))
       .forEach((i) => sheetData[pluralize(i.type)].push(i));
 
-    // @todo: figure out order of Traits / Drawbacks
-
     // sort skills alphabetically
     sheetData.skills = sheetData.skills.sort((a, b) => {
       const aloc = a.name;
       const bloc = b.name;
       return aloc.localeCompare(bloc);
     });
+
     // sort professions by tier
     sheetData.professions = sheetData.professions.sort((a, b) => {
       const tiersInversed = ZweihanderUtils.getLocalizedTierMapping();
-      tiersInversed[a.system.tier] - tiersInversed[b.system.tier];
+      return tiersInversed[a.system.tier] - tiersInversed[b.system.tier];
     });
 
     const effectGroups = this.prepareActiveEffectGroups();
@@ -314,31 +363,40 @@ export default class ZweihanderCharacterSheet extends ZweihanderBaseActorSheet {
     return getItemGroups(data);
   }
 
+  _setBackground(sheet, backgroundPath) {
+    const isSheetCompact = sheet.classList.contains('zweihander-compact-sheet');
+
+    const elements = {
+      sheet: sheet,
+      header: sheet.querySelector('.window-header'),
+      body: sheet.querySelector('.sheet-body'),
+      characterInfo: sheet.querySelector('.character-info'),
+    };
+
+    const className = 'fancy';
+
+    if (backgroundPath) {
+      elements.sheet.style.setProperty(
+        'background-image',
+        `linear-gradient(0deg, var(--zh-clr-bg0) ${
+          isSheetCompact ? '87%' : '70%'
+        }, rgba(0, 0, 0, 0.45)), url('${backgroundPath}')`
+      );
+
+      for (const el of Object.values(elements)) el.classList.add(className);
+    } else {
+      for (const el of Object.values(elements)) el.classList.remove(className);
+    }
+  }
+
   async _onRender(context, options) {
     await super._onRender(context, options);
 
     const html = $(this.element); // @todo: refactor jQuery
 
-    if (context.actorConfig.headerBackground) {
-      const sheet = this.element.closest('.zweihander.sheet.character');
-      const isSheetCompact = sheet.classList.contains('zweihander-compact-sheet');
-      sheet.style.setProperty(
-        'background-image',
-        `linear-gradient(0deg, var(--zh-clr-bg0) ${isSheetCompact ? '87%' : '70%'}, rgba(0, 0, 0, 0.45)), url('${
-          context.actorConfig.headerBackground
-        }')`
-      );
-      sheet.classList.add('fancy');
+    const sheet = this.element.closest('.zweihander.sheet.character');
 
-      const header = sheet.querySelector('.window-header');
-      header.classList.add('fancy');
-
-      const body = sheet.querySelector('.sheet-body');
-      body.classList.add('fancy');
-
-      const characterInfo = body.querySelector('.character-info');
-      characterInfo.classList.add('fancy');
-    }
+    this._setBackground(sheet, context.actorConfig.headerBackground);
 
     this._registerDimensionChangeListener(
       html.find('.skills-container'),
@@ -354,7 +412,7 @@ export default class ZweihanderCharacterSheet extends ZweihanderBaseActorSheet {
     this._updateEncumbranceMeter(html);
 
     // Everything below here is only needed if the sheet is editable
-    if (!this.options.editable) return;
+    if (!this.isEditable) return;
 
     const updatePurchased = async (event) => {
       const target = $(event.currentTarget);
@@ -379,6 +437,7 @@ export default class ZweihanderCharacterSheet extends ZweihanderBaseActorSheet {
         'system.alignment.corruption': 0,
       });
     });
+
     // Reset Order and Chaos Ranks
     html.find('.reset-ranks').contextmenu(async () => {
       await DialogV2.confirm({

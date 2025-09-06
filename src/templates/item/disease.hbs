@@ -2,14 +2,13 @@
   <legend>{{localize "ZWEI.actor.items.incapacity"}}</legend>
   <div class="form-group stacked">
     <label>{{localize "ZWEI.actor.items.effect"}}</label>
-    {{editor
-      html.rules.effect
-      target=(zhLocalizePath "system.rules.effect")
-      engine="prosemirror"
-      button=true
-      owner=owner
-      editable=editable
-    }}
+    <prose-mirror
+      name="{{zhLocalizePath 'system.rules.effect'}}"
+      value="{{zhLocalize system.rules.effect}}"
+      toggled="true"
+    >
+      {{{html.rules.effect}}}
+    </prose-mirror>
   </div>
 
   <div class="form-group">
@@ -81,13 +80,12 @@
 
   <div class="form-group stacked">
     <label>{{localize "ZWEI.actor.items.treatment"}}</label>
-    {{editor
-      html.rules.treatment
-      target=(zhLocalizePath "system.rules.treatment")
-      engine="prosemirror"
-      button=true
-      owner=owner
-      editable=editable
-    }}
+    <prose-mirror
+      name="{{zhLocalizePath 'system.rules.treatment'}}"
+      value="{{zhLocalize system.rules.treatment}}"
+      toggled="true"
+    >
+      {{{html.rules.treatment}}}
+    </prose-mirror>
   </div>
 </fieldset>

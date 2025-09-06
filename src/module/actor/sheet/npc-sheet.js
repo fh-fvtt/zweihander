@@ -1,18 +1,29 @@
-import { ZWEI } from '../../config';
-import { assignPacks, selectedChoice } from '../../utils';
+import { selectedChoice } from '../../utils';
 import ZweihanderCreatureSheet from './creature-sheet';
 
 export default class ZweihanderNpcSheet extends ZweihanderCreatureSheet {
   static unsupportedItemTypes = new Set(['ancestry', 'profession', 'quality', 'skill', 'uniqueAdvance']);
 
-  static get defaultOptions() {
-    return foundry.utils.mergeObject(super.defaultOptions, {
-      classes: super.defaultOptions.classes.concat(['npc']),
-    });
+  static DEFAULT_OPTIONS = {
+    ...super.DEFAULT_OPTIONS,
+    classes: ['npc'],
+    window: {
+      icon: 'fa-solid fa-handshake-angle',
+    },
+  };
+
+  _initializeApplicationOptions(options) {
+    const initialized = super._initializeApplicationOptions(options);
+
+    const compactMode = game.settings.get('zweihander', 'openInCompactMode');
+
+    initialized.position.height = compactMode ? 560 : 763;
+
+    return initialized;
   }
 
-  async getData(options) {
-    const sheetData = await super.getData();
+  async _prepareContext(options) {
+    const sheetData = await super._prepareContext(options);
     sheetData.details = [
       {
         choices: sheetData.choices,

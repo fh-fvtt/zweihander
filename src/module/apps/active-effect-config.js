@@ -46,7 +46,9 @@ export default class ZweihanderActiveEffectConfig extends ActiveEffectConfig {
 
     context.selectableKeys = [...pa, ...pab, ...sa];
 
-    console.log(context);
+    context.isParentCarried = context.document.parent.system.carried ?? true;
+
+    console.log('ACTIVE EFFECT CONTEXT:  ', context);
 
     return context;
   }

@@ -49,7 +49,7 @@ export const registerHandlebarHelpers = async function () {
 
   $$('zhAlignmentRanks', function (name, alignmentRanks, permanentRanks, options) {
     const alignment = name.split('.')[2];
-    const icon = alignment === 'chaos' ? 'ra-cancel' : 'ra-horseshoe';
+    const icon = alignment === 'chaos' ? 'ra-cancel' : 'ra-slash-ring';
     const checked = options.hash['checked'] || 0;
     const isChecked = (i) => Number(checked) === i;
     const isPermanentRank = (i) => i <= permanentRanks;
@@ -366,11 +366,20 @@ export const registerHandlebarHelpers = async function () {
   });
 
   $$('zhFetchByUuidSync', function (uuid) {
-    const item = fromUuidSync(uuid);
+    let item;
+
+    // @todo: remove this try / catch in the future, along with broken FoF items
+    try {
+      item = fromUuidSync(uuid);
+    } catch (e) {
+      console.warn('Incorrect UUID value: ', uuid);
+      return '';
+    }
     return item ? item.name : '';
   });
 
   $$('zhIsCarried', function (system, options) {
+    console.log(system);
     const isCarriedItem = typeof system?.carried !== 'undefined';
 
     if (isCarriedItem) return system?.carried ? options.inverse(this) : options.fn(this);

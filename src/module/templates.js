@@ -12,6 +12,7 @@ const templatesToLoad = [
   $$('character/currency.hbs'),
   $$('character/encumbrance-meter.hbs'),
   $$('character/header.hbs'),
+  $$('character/tabs-navigation.hbs'),
   $$('character/magick-skill-selector.hbs'),
   $$('character/tabs/attributes.hbs'),
   $$('character/tabs/background.hbs'),
@@ -28,6 +29,7 @@ const templatesToLoad = [
   $$('vehicle/main.hbs'),
   $$('vehicle/vehicle-encumbrance-meter.hbs'),
 
+  $$('item/common/header.hbs'),
   $$('item/ancestry.hbs'),
   $$('item/armor.hbs'),
   $$('item/condition.hbs'),
@@ -35,7 +37,6 @@ const templatesToLoad = [
   $$('item/disorder.hbs'),
   $$('item/drawback.hbs'),
   $$('item/injury.hbs'),
-  $$('item/main.hbs'),
   $$('item/profession.hbs'),
   $$('item/quality.hbs'),
   $$('item/ritual.hbs'),

@@ -1,151 +1,85 @@
-<div class="save-scroll">
-  <form autocomplete="off">
-    <section class="form-body">
-      <p class="notes">{{localize "ZWEI.settings.acsettings.subtitle"}}</p>
+<div class="actor-config-container">
+  {{#if (eq actorType "character")}}
+    <fieldset>
+      <legend>{{localize "ZWEI.settings.acsettings.primarytitle"}}</legend>
+      <p class="hint">Select the Primary Attributes off of which the following Secondary Attributes are calculated.</p>
 
-      <hr>
-      {{#if (eq object.type "character")}}
-      <h3>{{localize "ZWEI.settings.acsettings.primarytitle"}}</h3>
+      {{#each governingAttributes as |gov|}}
+        <div class="form-group">
+          <label>{{gov.label}}</label>
+          <select name="{{gov.nameAttr}}">
+            {{selectOptions gov.attributes valueAttr="value" labelAttr="label" selected=selected}}
+          </select>
+        </div>
+      {{/each}}
+    </fieldset>
 
-      <div class="form-group">
-        <label>{{localize "ZWEI.settings.acsettings.primarydt"}}</label>
-        <select name="flags.dthAttribute">
-          {{#select flags.dthAttribute}}
-          <option value="combat">{{localize "ZWEI.actor.primary.combat"}}</option>
-          <option value="brawn">{{localize "ZWEI.actor.primary.brawn"}}</option>
-          <option value="agility">{{localize "ZWEI.actor.primary.agility"}}</option>
-          <option value="perception">{{localize "ZWEI.actor.primary.perception"}}</option>
-          <option value="intelligence">{{localize "ZWEI.actor.primary.intelligence"}}</option>
-          <option value="willpower">{{localize "ZWEI.actor.primary.willpower"}}</option>
-          <option value="fellowship">{{localize "ZWEI.actor.primary.fellowship"}}</option>
-          {{/select}}
-        </select>
-        <p class="hint">{{localize "ZWEI.settings.acsettings.primarydthint"}}</p>
-      </div>
+    <fieldset>
+      <legend>{{localize "ZWEI.settings.acsettings.globaltitle"}}</legend>
+      <p class="hint">{{{localize "ZWEI.settings.acsettings.globalnotes"}}}</p>
 
-      <div class="form-group">
-        <label>{{localize "ZWEI.settings.acsettings.primarypt"}}</label>
-        <select name="flags.pthAttribute">
-          {{#select flags.pthAttribute}}
-          <option value="combat">{{localize "ZWEI.actor.primary.combat"}}</option>
-          <option value="brawn">{{localize "ZWEI.actor.primary.brawn"}}</option>
-          <option value="agility">{{localize "ZWEI.actor.primary.agility"}}</option>
-          <option value="perception">{{localize "ZWEI.actor.primary.perception"}}</option>
-          <option value="intelligence">{{localize "ZWEI.actor.primary.intelligence"}}</option>
-          <option value="willpower">{{localize "ZWEI.actor.primary.willpower"}}</option>
-          <option value="fellowship">{{localize "ZWEI.actor.primary.fellowship"}}</option>
-          {{/select}}
-        </select>
-        <p class="hint">{{localize "ZWEI.settings.acsettings.primarypthint"}}</p>
-      </div>
+      {{#each globalModifiers as |mod|}}
+        <div class="form-group">
+          <label>{{mod.label}}</label>
+          <input type="number" name="{{mod.nameAttr}}" value="{{mod.valueAttr}}" />
+        </div>
+      {{/each}}
+    </fieldset>
 
-      <div class="form-group">
-        <label>{{localize "ZWEI.settings.acsettings.primaryin"}}</label>
-        <select name="flags.intAttribute">
-          {{#select flags.intAttribute}}
-          <option value="combat">{{localize "ZWEI.actor.primary.combat"}}</option>
-          <option value="brawn">{{localize "ZWEI.actor.primary.brawn"}}</option>
-          <option value="agility">{{localize "ZWEI.actor.primary.agility"}}</option>
-          <option value="perception">{{localize "ZWEI.actor.primary.perception"}}</option>
-          <option value="intelligence">{{localize "ZWEI.actor.primary.intelligence"}}</option>
-          <option value="willpower">{{localize "ZWEI.actor.primary.willpower"}}</option>
-          <option value="fellowship">{{localize "ZWEI.actor.primary.fellowship"}}</option>
-          {{/select}}
-        </select>
-        <p class="hint">{{localize "ZWEI.settings.acsettings.primaryinhint"}}</p>
-      </div>
-
-      <div class="form-group">
-        <label>{{localize "ZWEI.settings.acsettings.primarymo"}}</label>
-        <select name="flags.movAttribute">
-          {{#select flags.movAttribute}}
-          <option value="combat">{{localize "ZWEI.actor.primary.combat"}}</option>
-          <option value="brawn">{{localize "ZWEI.actor.primary.brawn"}}</option>
-          <option value="agility">{{localize "ZWEI.actor.primary.agility"}}</option>
-          <option value="perception">{{localize "ZWEI.actor.primary.perception"}}</option>
-          <option value="intelligence">{{localize "ZWEI.actor.primary.intelligence"}}</option>
-          <option value="willpower">{{localize "ZWEI.actor.primary.willpower"}}</option>
-          <option value="fellowship">{{localize "ZWEI.actor.primary.fellowship"}}</option>
-          {{/select}}
-        </select>
-        <p class="hint">{{localize "ZWEI.settings.acsettings.primarymohint"}}</p>
-      </div>
-
-      <hr>
-
-      <h3>{{localize "ZWEI.settings.acsettings.globaltitle"}}</h3>
-
-      <p class="hint">{{localize "ZWEI.settings.acsettings.globalnotes"}}</p>
-
-      <div class="form-group">
-        <label>{{localize "ZWEI.settings.acsettings.globalencumbrance"}}</label>
-        <input type="number" name="flags.encumbranceModifier" value="{{flags.encumbranceModifier}}" />
-        <p class="hint">{{localize "ZWEI.settings.acsettings.globalencumbrancehint"}}</p>
-      </div>
-
-      <div class="form-group">
-        <label>{{localize "ZWEI.settings.acsettings.globalinitiative"}}</label>
-        <input type="number" name="flags.initiativeModifier" value="{{flags.initiativeModifier}}" />
-        <p class="hint">{{localize "ZWEI.settings.acsettings.globalinitiativehint"}}</p>
-      </div>
-
-      <div class="form-group">
-        <label>{{localize "ZWEI.settings.acsettings.globalmovement"}}</label>
-        <input type="number" name="flags.movementModifier" value="{{flags.movementModifier}}" />
-        <p class="hint">{{localize "ZWEI.settings.acsettings.globalmovementhint"}}</p>
-      </div>
-
-      <hr>
-
-      <h3>{{localize "ZWEI.settings.acsettings.skillstitle"}}</h3>
-
+    <fieldset>
+      <legend>{{localize "ZWEI.settings.acsettings.skillstitle"}}</legend>
+      <p class="hint">Select the skills that can be used when rolling Parry or Dodge.</p>
       <div class="form-group">
         <label>{{localize "ZWEI.settings.acsettings.skillsparry"}}</label>
         <input type="text" name="flags.parrySkills" value="{{parrySkills}}" />
-        <p class="hint">{{localize "ZWEI.settings.acsettings.skillsparryhint"}}</p>
       </div>
 
       <div class="form-group">
         <label>{{localize "ZWEI.settings.acsettings.skillsdodge"}}</label>
         <input type="text" name="flags.dodgeSkills" value="{{dodgeSkills}}" />
-        <p class="hint">{{localize "ZWEI.settings.acsettings.skillsdodgehint"}}</p>
       </div>
+    </fieldset>
 
-      <hr>
-
-      <h3>{{localize "ZWEI.settings.acsettings.periltitle"}}</h3>
-
+    <fieldset>
+      <legend>{{localize "ZWEI.settings.acsettings.periltitle"}}</legend>
+      <p class="hint">Check the corresponding box if Actor doesn't suffer from the ill-effects of Peril at that step.</p>
       <div class="form-group">
         <label>{{localize "ZWEI.settings.acsettings.peril1"}}</label>
-        <input type="checkbox" name="flags.isIgnoredPerilLadderValue.[0]" {{checked
-          flags.isIgnoredPerilLadderValue.[0]}} />
-        <p class="hint">{{localize "ZWEI.settings.acsettings.peril1hint"}}</p>
+        <input
+          type="checkbox"
+          name="flags.isIgnoredPerilLadderValue.[0]"
+          {{checked flags.isIgnoredPerilLadderValue.[0]}}
+        />
       </div>
 
       <div class="form-group">
         <label>{{localize "ZWEI.settings.acsettings.peril2"}}</label>
-        <input type="checkbox" name="flags.isIgnoredPerilLadderValue.[1]" {{checked
-          flags.isIgnoredPerilLadderValue.[1]}} />
-        <p class="hint">{{localize "ZWEI.settings.acsettings.peril2hint"}}</p>
+        <input
+          type="checkbox"
+          name="flags.isIgnoredPerilLadderValue.[1]"
+          {{checked flags.isIgnoredPerilLadderValue.[1]}}
+        />
       </div>
 
       <div class="form-group">
         <label>{{localize "ZWEI.settings.acsettings.peril3"}}</label>
-        <input type="checkbox" name="flags.isIgnoredPerilLadderValue.[2]" {{checked
-          flags.isIgnoredPerilLadderValue.[2]}} />
-        <p class="hint">{{localize "ZWEI.settings.acsettings.peril3hint"}}</p>
+        <input
+          type="checkbox"
+          name="flags.isIgnoredPerilLadderValue.[2]"
+          {{checked flags.isIgnoredPerilLadderValue.[2]}}
+        />
       </div>
 
-      <div class="form-group">
-        <label>{{localize "ZWEI.settings.acsettings.peril4"}}</label>
-        <input type="checkbox" name="avoidAllPeril" {{checked avoidAllPeril}} />
-        <p class="hint">{{localize "ZWEI.settings.acsettings.peril4hint"}}</p>
-      </div>
+      
+    <div class="form-group">
+      <label>{{localize "ZWEI.settings.acsettings.peril4"}}</label>
+      <input type="checkbox" name="avoidAllPeril" {{checked avoidAllPeril}} />
+      <p class="hint">{{localize "ZWEI.settings.acsettings.peril4hint"}}</p>
+    </div>
+    </fieldset>
 
-      <hr>
-
-      <h3>{{localize "ZWEI.settings.acsettings.magicktitle"}}</h3>
-
+    <fieldset>
+      <legend>{{localize "ZWEI.settings.acsettings.magicktitle"}}</legend>
       <div class="form-group">
         <label>{{localize "ZWEI.settings.acsettings.magickuser"}}</label>
         <input type="checkbox" name="flags.isMagickUser" {{checked flags.isMagickUser}} />
@@ -157,62 +91,53 @@
         <input type="text" name="flags.magickSkills" value="{{magickSkills}}" />
         <p class="hint">{{localize "ZWEI.settings.acsettings.magickskillhint"}}</p>
       </div>
+    </fieldset>
 
-      <hr>
-
-      <h3>{{localize "ZWEI.settings.acsettings.octitle"}}</h3>
+    <fieldset>
+      <legend>{{localize "ZWEI.settings.acsettings.octitle"}}</legend>
+      <p class="hint">Set the number of permanent Order & Chaos Ranks this Actor has.</p>
       <div class="form-group">
         <label>{{localize "ZWEI.settings.acsettings.occhaosrank"}}</label>
         <input type="number" name="flags.permanentChaosRanks" value="{{flags.permanentChaosRanks}}" />
-        <p class="hint">{{localize "ZWEI.settings.acsettings.occhaosrankhint"}}</p>
       </div>
 
       <div class="form-group">
         <label>{{localize "ZWEI.settings.acsettings.ocorderrank"}}</label>
         <input type="number" name="flags.permanentOrderRanks" value="{{flags.permanentOrderRanks}}" />
-        <p class="hint">{{localize "ZWEI.settings.acsettings.ocorderrankhint"}}</p>
       </div>
+    </fieldset>
 
-      <hr>
-      {{/if}}
-      <h3>Default Header Background</h3>
+    <fieldset>
+      <legend>Header Background</legend>
       <div class="form-group">
-        <label>Stuff here</label>
-        <div class="flexrow">
-          <input type="text" name="flags.headerBackground" value="{{flags.headerBackground}}" />
-          {{filePicker target="flags.headerBackground" type="image"}}
-        </div>
+        <label>Background Image Path</label>
+        <file-picker name="flags.headerBackground" type="image">{{flags.headerBackground}}</file-picker>
+        <p class="hint">Set the default header background image for this Actor. Leave value empty for no background.</p>
       </div>
+    </fieldset>
+  {{/if}}
 
-      <hr>
+  <fieldset>
+    <legend>{{localize "ZWEI.settings.acsettings.soundtitle"}}</legend>
+    <div class="form-group">
+      <label>{{localize "ZWEI.settings.acsettings.sounddodge"}}</label>
+      <file-picker name="flags.dodgeSound" type="sound">{{flags.dodgeSound}}</file-picker>
+    </div>
 
-      <h3>{{localize "ZWEI.settings.acsettings.soundtitle"}}</h3>
-      <div class="form-group">
-        <label>{{localize "ZWEI.settings.acsettings.sounddodge"}}</label>
-        <div class="flexrow">
-          <input type="text" name="flags.dodgeSound" value="{{flags.dodgeSound}}" />
-          {{filePicker target="flags.dodgeSound" type="sound"}}
-        </div>
-      </div>
-      <div class="form-group">
-        <label>{{localize "ZWEI.settings.acsettings.soundparry"}}</label>
-        <div class="flexrow">
-          <input type="text" name="flags.parrySound" value="{{flags.parrySound}}" />
-          {{filePicker target="flags.parrySound" type="sound"}}
-        </div>
-      </div>
-      <div class="form-group">
-        <label>{{localize "ZWEI.settings.acsettings.soundgrunt"}}</label>
-        <div class="flexrow">
-          <input type="text" name="flags.gruntSound" value="{{flags.gruntSound}}" />
-          {{filePicker target="flags.gruntSound" type="sound"}}
-        </div>
-      </div>
-      <div class="form-group">
-        <label>{{localize "ZWEI.settings.acsettings.soundplaygrunt"}}</label>
-        <input type="checkbox" name="flags.playGruntSound" {{checked flags.playGruntSound}} />
-        <p class="hint">{{localize "ZWEI.settings.acsettings.soundplaygrunthint"}}</p>
-      </div>
-    </section>
-  </form>
+    <div class="form-group">
+      <label>{{localize "ZWEI.settings.acsettings.soundparry"}}</label>
+      <file-picker name="flags.parrySound" type="sound">{{flags.parrySound}}</file-picker>
+    </div>
+
+    <div class="form-group">
+      <label>{{localize "ZWEI.settings.acsettings.soundgrunt"}}</label>
+      <file-picker name="flags.gruntSound" type="sound">{{flags.gruntSound}}</file-picker>
+    </div>
+
+    <div class="form-group">
+      <label>{{localize "ZWEI.settings.acsettings.soundplaygrunt"}}</label>
+      <input type="checkbox" name="flags.playGruntSound" {{checked flags.playGruntSound}} />
+      <p class="hint">{{localize "ZWEI.settings.acsettings.soundplaygrunthint"}}</p>
+    </div>
+  </fieldset>
 </div>

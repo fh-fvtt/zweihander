@@ -36,6 +36,7 @@ import { performWorldMigrations, migrations } from './migration';
 
 import { HTMLZweihanderTagsElement } from './misc/zweihander-tags';
 import { HTMLZweihanderMultiSelectElement } from './misc/zweihander-multiselect';
+import { HTMLZweihanderRepeatMultiSelectElement } from './misc/zweihander-repeat-multiselect';
 
 /* -------------------------------------------- */
 /*  Foundry VTT Initialization                  */
@@ -45,6 +46,7 @@ CONFIG.compatibility.mode = CONST.COMPATIBILITY_MODES.SILENT;
 
 window.customElements.define(HTMLZweihanderTagsElement.tagName, HTMLZweihanderTagsElement);
 window.customElements.define(HTMLZweihanderMultiSelectElement.tagName, HTMLZweihanderMultiSelectElement);
+window.customElements.define(HTMLZweihanderRepeatMultiSelectElement.tagName, HTMLZweihanderRepeatMultiSelectElement);
 
 globalThis.findItemWorldWide = (type, name) => ZweihanderUtils.findItemWorldWide(type, name);
 globalThis.findItemsWorldWide = (type, names) => ZweihanderUtils.findItemsWorldWide(type, names);

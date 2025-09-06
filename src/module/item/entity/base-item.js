@@ -198,6 +198,10 @@ export default class ZweihanderBaseItem {
     };
   }
 
+  // -----------------
+  //  FOUNDRY METHODS
+  // -----------------
+
   async _preCreate(data, options, user, item) {
     let start = Date.now();
 
@@ -224,6 +228,9 @@ export default class ZweihanderBaseItem {
     )
       .filter((x) => x !== undefined)
       .forEach((x) => itemsToCreate.push(x));
+
+    // required to preserve insertion order for item lists
+    itemsToCreate.forEach((item) => (item.sort = 0));
     options.itemsToCreate = itemsToCreate;
 
     let end = Date.now();
@@ -231,18 +238,18 @@ export default class ZweihanderBaseItem {
     console.log('PRE-CREATE TIME:', end - start);
   }
 
-  async _onCreate(data, options, user, item) {
+  _onCreate(data, options, user, item) {
     if (options.itemsToCreate?.length) {
       let start = Date.now();
 
-      await Item.create(options.itemsToCreate, {
+      Item.create(options.itemsToCreate, {
         parent: item.parent,
         keepId: true,
+      }).then(() => {
+        let end = Date.now();
+
+        console.log('CREATE TIME:', end - start);
       });
-
-      let end = Date.now();
-
-      console.log('CREATE TIME:', end - start);
     }
   }
 
@@ -293,15 +300,15 @@ export default class ZweihanderBaseItem {
     options.idsToDelete = idsToDelete;
   }
 
-  async _onUpdate(changed, options, user, item) {
+  _onUpdate(changed, options, user, item) {
     if (options.itemsToCreate?.length) {
-      await Item.create(options.itemsToCreate, {
+      Item.create(options.itemsToCreate, {
         parent: item.parent,
         keepId: true,
-      });
+      }).catch((reason) => console.error(reason));
     }
     if (options.idsToDelete?.length) {
-      await ZweihanderBaseItem.removeLinkedItems(item.parent, options.idsToDelete);
+      ZweihanderBaseItem.removeLinkedItems(item.parent, options.idsToDelete).catch((reason) => console.error(reason));
     }
   }
 
@@ -318,8 +325,8 @@ export default class ZweihanderBaseItem {
     options.idsToDelete = singleLinkedIdsToDelete.concat(listLinkedIdsToDelete);
   }
 
-  async _onDelete(options, user, item) {
-    await ZweihanderBaseItem.removeLinkedItems(item.parent, options.idsToDelete);
+  _onDelete(options, user, item) {
+    ZweihanderBaseItem.removeLinkedItems(item.parent, options.idsToDelete).catch((reason) => console.error(reason));
   }
 
   getRollData(rollData) {
