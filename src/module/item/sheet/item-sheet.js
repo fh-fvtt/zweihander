@@ -62,6 +62,7 @@ export default class ZweihanderItemSheet extends HandlebarsApplicationMixin(Item
       disease: 'fa-solid fa-head-side-cough',
       disorder: 'fa-solid fa-masks-theater',
       condition: 'fa-solid fa-head-side-virus',
+      quality: 'fa-solid fa-star-half-stroke',
       skill: 'fa-solid fa-award',
     };
 

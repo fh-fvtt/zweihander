@@ -1,0 +1,11 @@
+<div class="dice-roll" data-action="expandRoll">
+  {{#if flavor}}
+    <div class="dice-flavor">{{flavor}}</div>
+  {{/if}}
+  <div class="dice-result">
+    <h4 class="dice-total"><span class="outcome-text">{{total}}</span><br /><span
+        class="vs-chance"
+      >{{formula}}</span></h4>
+    {{{tooltip}}}
+  </div>
+</div>

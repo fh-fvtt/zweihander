@@ -1,18 +1,14 @@
-<section class="item-card">
-  <h2 class="item-card-title">{{localize (zhConcat "TYPES.Item." type)}}: {{name}}</h2>
-  {{!--
-  {{#if system.flavor.description}}
-  <div class="item-card-description">
-    {{{system.flavor.description}}}
-  </div>
-  <br/>
-  {{/if}}
-  --}}
+{{#if (zhLocalize system.description)}}
   <div class="item-card-description">
     {{{zhLocalize system.description}}}
   </div>
-  <br />
+{{/if}}
+<div class="flexcol title-and-subtitle">
+  <div class="title">{{name}}</div>
+  <div class="subtitle">{{localize (zhConcat "TYPES.Item." type)}}</div>
+</div>
+{{#if (zhLocalize system.rules.effect)}}
   <div class="item-card-effect" data-effect-label="{{localize 'ZWEI.actor.items.effect'}}">
-    {{{zhLocalize system.rules.effect}}}
+    <span class="effect-label">Effect: </span>{{{zhLocalize system.rules.effect}}}
   </div>
-</section>
+{{/if}}

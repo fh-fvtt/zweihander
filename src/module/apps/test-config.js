@@ -1,6 +1,9 @@
 import { ZWEI } from '../config';
 import { getDifficultyRatingLabel, selectedChoice, normalizedEquals } from '../utils';
 
+const { DialogV2 } = foundry.applications.api;
+const { renderTemplate } = foundry.applications.handlebars;
+
 export const getItemRollConfiguration = (item) => {
   const actor = item.actor;
 
@@ -87,17 +90,19 @@ async function renderConfigurationDialog(testType, label, testConfiguration = {}
     label,
     'systems/zweihander/src/templates/app/test-config.hbs',
     templateData,
-    (resolve) => (html) => {
-      let additionalFuryDice = Number(html.find('[name="extraFury"]').val()) || 0;
-      let additionalChaosDice = Number(html.find('[name="extraChaos"]').val()) || 0;
-      let difficultyRating = Number(html.find('[name="difficultyRatingSelect"]').val());
-      let channelPowerBonus = Number(html.find('[name="channelSelect"]').val());
-      let flip = html.find('[name="flipSelect"]').val();
-      let baseChanceModifier = Number(html.find('[name="baseChanceModifier"]').val());
-      let testMode = html.find('[name="skillMode"]').val();
-      let useFortune = html.find('[name="useFortune"]').val();
+    (resolve) => (event, button, dialog) => {
+      let html = button.form.elements;
+
+      let additionalFuryDice = Number(html.extraFury?.value) || 0;
+      let additionalChaosDice = Number(html.extraChaos?.value) || 0;
+      let difficultyRating = Number(html.difficultyRatingSelect.value);
+      let channelPowerBonus = Number(html.channelSelect?.value);
+      let flip = html.flipSelect.value;
+      let baseChanceModifier = Number(html.baseChanceModifier.value);
+      let testMode = html.skillMode.value;
+      //let useFortune = html.find('[name="useFortune"]').val();
       resolve({
-        useFortune,
+        //useFortune,
         additionalFuryDice,
         additionalChaosDice,
         difficultyRating,
@@ -113,20 +118,28 @@ async function renderConfigurationDialog(testType, label, testConfiguration = {}
 function createConfigurationDialog(label, template, templateData, callback) {
   return new Promise((resolve) => {
     renderTemplate(template, templateData).then((content) => {
-      const dialog = new Dialog({
-        title: `${label}: ` + game.i18n.localize('ZWEI.rolls.testconfig'),
+      const dialog = new DialogV2({
+        window: {
+          title: `${label}: ` + game.i18n.localize('ZWEI.rolls.testconfig'),
+          icon: 'fa-solid fa-dice-d20',
+        },
+        position: {
+          width: 500,
+        },
         content,
-        buttons: {
-          no: {
-            icon: '',
+        buttons: [
+          {
+            action: 'cancel',
             label: game.i18n.localize('ZWEI.rolls.cancel'),
+            callback: () => {},
           },
-          yes: {
-            icon: '',
+          {
+            action: 'roll',
             label: game.i18n.localize('ZWEI.rolls.roll'),
+            default: true,
             callback: callback(resolve),
           },
-        },
+        ],
       });
       dialog.render(true);
     });

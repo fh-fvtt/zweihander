@@ -3,15 +3,23 @@ import * as ZweihanderDice from './dice';
 import * as ZweihanderUtils from './utils';
 
 export function addGlobalChatListeners(html) {
+  /*
   html = html instanceof jQuery ? html : $(html); // @todo: jQuery refactor
 
   html.on('click', '.zh-expandable', (event) => {
     event.currentTarget.classList.toggle('zh-collapsed');
   });
+  */
 }
 
 export function addLocalChatListeners(message, html, data) {
-  html = html instanceof jQuery ? html : $(html); // @todo: jQuery refactor
+  html.querySelectorAll('.title-and-toggle').forEach((el) => {
+    el.addEventListener('click', (event) => {
+      el.querySelector('.details-toggle').classList.toggle('expanded');
+
+      html.querySelector('.zh-expandable').classList.toggle('zh-collapsed');
+    });
+  });
 
   const flags = message?.flags?.zweihander;
   if (flags) {
@@ -20,6 +28,8 @@ export function addLocalChatListeners(message, html, data) {
 }
 
 function enableChatButtons(html, flags, message, data) {
+  html = html instanceof jQuery ? html : $(html); // @todo: jQuery refactor
+
   if (flags?.analytics && game.settings.get('zweihander', 'systemId') === '') {
     html.find('.analytics-agree').prop('disabled', false);
     html.find('.analytics-decline').prop('disabled', false);

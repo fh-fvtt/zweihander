@@ -1,40 +1,45 @@
-<section class="item-card">
-  <h2 class="item-card-title">{{localize (zhConcat "TYPES.Item." type)}}: {{name}}</h2>
-  {{!--
-  {{#if system.flavor.description}}
-  <div class="item-card-description">
-    {{{system.flavor.description}}}
-  </div>
-  <br/>
-  {{/if}}
-  --}}
+{{#if (zhLocalize system.description)}}
   <div class="item-card-description">
     {{{zhLocalize system.description}}}
   </div>
-  <dl class="zh-expandable" data-expand-title="{{localize 'ZWEI.chatskill.itemdetails'}}">
-    <dt>{{localize "ZWEI.actor.items.archetype"}}</dt>
-    <dd>{{localize (zhConcat "ZWEI.actor.details.labels." (zhLowerCase system.archetype))}}</dd>
-    <dt>{{localize "ZWEI.actor.items.professionaltrait"}}</dt>
-    <dd>{{system.professionalTrait.name}}</dd>
-    {{#if system.specialTrait.name}}
-      <dt>{{localize "ZWEI.actor.items.specialtrait"}}</dt>
-      <dd>{{system.specialTrait.name}}</dd>
-    {{/if}}
-    {{#if system.drawback.name}}
-      <dt>{{localize "ZWEI.actor.items.drawback"}}</dt>
-      <dd>{{system.drawback.name}}</dd>
-    {{/if}}
-    {{#if system.expert.name}}
-      <dt>{{localize "ZWEI.actor.items.expertreq"}}</dt>
-      <dd>{{system.expert.requirements}}</dd>
-    {{/if}}
-    <dt>{{localize "ZWEI.actor.items.skillranks"}}</dt>
-    <dd>{{#each system.skillRanks}}{{name}}{{#unless @last}}, {{/unless}}{{/each}}</dd>
-    <dt>{{localize "ZWEI.actor.items.bonusadvances"}}</dt>
-    <dd>{{#each system.bonusAdvances}}[{{localize
-          (zhConcat "ZWEI.actor.bonusesabbr." (zhLowerCaseBrackets name))
-        }}]{{#unless @last}}, {{/unless}}{{/each}}</dd>
-    <dt>{{localize "ZWEI.actor.items.talents"}}</dt>
-    <dd>{{#each system.talents}}{{name}}{{#unless @last}}, {{/unless}}{{/each}}</dd>
-  </dl>
-</section>
+{{/if}}
+<div class="flexcol title-and-subtitle">
+  <div class="title">{{name}}</div>
+  <div class="subtitle">{{localize (zhConcat "TYPES.Item." type)}}</div>
+</div>
+<div class="pill-container">
+  <span class="pill pill-fortune" data-tooltip-direction="LEFT" data-tooltip="{{system.professionalTrait.name}}">P.
+    Trait:
+    {{system.professionalTrait.name}}</span>
+  {{#if system.specialTrait.name}}<span
+      class="pill pill-fortune"
+      data-tooltip-direction="LEFT"
+      data-tooltip="{{system.specialTrait.name}}"
+    >Sp. Trait:
+      {{system.specialTrait.name}}</span>{{/if}}
+  {{#if system.drawback.name}}<span
+      class="pill pill-misfortune"
+      data-tooltip-direction="LEFT"
+      data-tooltip="{{system.drawback.name}}"
+    >Drawback:
+      {{system.drawback.name}}</span>{{/if}}
+  {{#each system.talents}}<span
+      class="pill pill-quality quality-link"
+      data-tooltip-direction="LEFT"
+      data-tooltip="{{name}}"
+    >Talent: {{name}}</span>{{/each}}
+</div>
+<div class="item-card-effect">
+  <div><span class="effect-label">{{localize "ZWEI.actor.items.archetype"}}: </span>
+    {{system.archetype}}</div>
+  <div class="effect-container"><span class="effect-label">{{localize "ZWEI.actor.items.skillranks"}}: </span>{{#each
+      system.skillRanks
+    }}{{name}}{{#unless @last}}, {{/unless}}{{/each}}</div>
+  <div class="effect-container"><span class="effect-label">{{localize "ZWEI.actor.items.bonusadvances"}}: </span>{{#each
+      system.bonusAdvances
+    }}[{{localize (zhConcat "ZWEI.actor.bonusesabbr." (zhLowerCaseBrackets name))}}]{{#unless @last}},
+      {{/unless}}{{/each}}</div>
+  {{!--@todo: {{#if system.expert.value}}
+    <span class="effect-label">{{localize "ZWEI.actor.items.expertreq"}}: </span>{{system.expert.requirements}}
+  {{/if}}--}}
+</div>

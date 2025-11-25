@@ -20,7 +20,7 @@ If you wish to install the latest development version of the system, use the fol
 - **Homebrew.** Fancy yourself creative? Well, good, because this game system was built from the ground-up thinking about homebrew support! Adding new Professions, Spells, Trappings or whatever else your mind comes up with is super easy!
 - _Much, much more..._
 
-![](https://i.imgur.com/R0gEn8S.png)
+![](https://i.imgur.com/Nv6eXpy.jpeg)
 
 <p align="center"><em>Everything you need to play grim characters in a perilous world!</em></p>
 

@@ -159,16 +159,20 @@ export async function rollTest(
   const crbDegreesOfSuccess =
     effectiveOutcome < 2
       ? 0
-      : `${tensDie} + ${primaryAttributeBonus} [${primaryAttribute[0]}B] = ${tensDie + primaryAttributeBonus}`;
+      : `${tensDie} + ${primaryAttributeBonus} [${primaryAttribute[0].toUpperCase()}B] = ${
+          tensDie + primaryAttributeBonus
+        }`;
   // const starterKitDegreesOfSuccess = effectiveOutcome < 2 ? 0 : 100 - (totalChance - effectiveResult);
   const templateData = {
     itemId: skillItem.id,
     testModeLabel,
     degreesOfSuccess: ['opposed', 'secretopposed'].includes(testConfiguration.testMode) ? crbDegreesOfSuccess : false,
     skill: skillItem.name,
-    primaryAttribute: isManualDodgeParryTest
-      ? game.i18n.localize('ZWEI.chatskill.go' + testType)
-      : game.i18n.localize('ZWEI.actor.primary.' + primaryAttribute.toLowerCase()),
+    requiresTraining: skillItem.system.requiresTraining,
+    primaryAttribute:
+      isManualDodgeParryTest || testType === 'dodge' || testType === 'parry'
+        ? game.i18n.localize('ZWEI.chatskill.go' + testType)
+        : game.i18n.localize('ZWEI.actor.primary.' + primaryAttribute.toLowerCase()),
     basePercentage,
     rankBonus,
     specialBaseChanceModifier,
@@ -195,6 +199,7 @@ export async function rollTest(
     outcomeLabel: outcomeLabel(effectiveOutcome),
     weaponTest: testType === 'weapon',
     spellTest: testType === 'spell',
+    dodgeOrParryTest: testType === 'dodge' || testType === 'parry',
     tooltip: await roll.getTooltip(),
   };
   if (weapon) {
@@ -351,11 +356,16 @@ function _getPerilData(currentPeril, rank, rankBonus, bonusPerRank, isManualDodg
 
 async function getWeaponDamageContent(weapon, roll, exploded = false, explodedCount = 0) {
   weapon.system.qualities = await ZweihanderQuality.getQualities(weapon.system.qualities);
-  const rollContent = await roll.render({ flavor: game.i18n.localize('ZWEI.rolls.furydie') });
-  const cardContent = await renderTemplate('systems/zweihander/src/templates/item-card/item-card-weapon.hbs', weapon);
+  const tooltip = await roll.getTooltip();
+  const total = roll.total;
+  const formula = roll.formula;
+  // Not needed at the moment
+  // const cardContent = await renderTemplate('systems/zweihander/src/templates/item-card/item-card-weapon.hbs', weapon);
   return await renderTemplate(CONFIG.ZWEI.templates.weapon, {
-    cardContent,
-    rollContent,
+    // cardContent,
+    tooltip,
+    total,
+    formula,
     exploded,
     explodedCount,
     weapon,

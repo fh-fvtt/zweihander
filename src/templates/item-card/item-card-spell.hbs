@@ -1,26 +1,30 @@
-<section class="item-card">
-  <h2 class="item-card-title">{{name}}</h2>
+{{#if (zhLocalize system.description)}}
   <div class="item-card-description">
     {{{zhLocalize system.description}}}
   </div>
-  <br />
-  <div class="item-card-effect" data-effect-label="{{localize 'ZWEI.actor.items.effect'}}">
-    {{{zhLocalize system.rules.effect}}}
-  </div>
-  <dl class="zh-collapsed zh-expandable" data-expand-title="{{localize 'ZWEI.chatskill.itemdetails'}}">
-    <dt>{{localize "ZWEI.actor.items.tradition"}}</dt>
-    <dd>{{system.tradition}}</dd>
-    <dt>{{localize "ZWEI.actor.items.principle"}}</dt>
-    <dd>{{system.principle}}</dd>
-    <dt>{{localize "ZWEI.actor.items.reagents"}}</dt>
-    <dd>{{{zhLocalize system.rules.reagents}}}</dd>
-    <dt>{{localize "ZWEI.actor.items.duration"}}</dt>
-    <dd>{{system.duration.label}}</dd>
-    <dt>{{localize "ZWEI.actor.items.distance"}}</dt>
-    <dd>{{system.distance}}</dd>
-    <dt>{{localize "ZWEI.chatskill.criticalsuccess"}}</dt>
-    <dd>{{{zhLocalize system.rules.criticalSuccess}}}</dd>
-    <dt>{{localize "ZWEI.chatskill.criticalfailure"}}</dt>
-    <dd>{{{zhLocalize system.rules.criticalFailure}}}</dd>
-  </dl>
-</section>
+{{/if}}
+<div class="flexcol title-and-subtitle">
+  <div class="title">{{name}}</div>
+  <div class="subtitle">{{#if isRoll}}{{skill}}{{else}}{{localize 'TYPES.Item.spell'}}{{/if}}</div>
+</div>
+{{#unless isRoll}}
+<div class="pill-container">
+  <span class="pill pill-roll-mode">
+    Principle: {{system.principle}}
+  </span>
+  <span class="pill pill-roll-mode">
+    Tradition: {{system.tradition}}
+  </span>
+</div>
+{{/unless}}
+<div class="item-card-effect" data-effect-label="{{localize 'ZWEI.actor.items.effect'}}">
+  {{#unless isRoll}}<div><span class="effect-label">Reagents: </span>{{{zhLocalize system.rules.reagents}}}</div>{{/unless}}
+  <div class="effect-container"><span class="effect-label">Effect: </span>{{{zhLocalize system.rules.effect}}}</div>
+  {{#if (or (not isRoll) (eq effectiveOutcome 3))}}<div class="effect-container"><span class="effect-label">Critical Success: </span>{{{zhLocalize
+      system.rules.criticalSuccess
+    }}}</div>
+  {{/if}}
+  {{#if (or (not isRoll) (eq effectiveOutcome 0))}}
+    <div class="effect-container"><span class="effect-label">Critical Failure: </span>{{{zhLocalize system.rules.criticalFailure}}}
+  {{/if}}</div>
+</div>

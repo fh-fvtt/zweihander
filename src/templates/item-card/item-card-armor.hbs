@@ -1,0 +1,22 @@
+{{#if (zhLocalize system.description)}}
+  <div class="item-card-description">
+    {{{zhLocalize system.description}}}
+  </div>
+{{/if}}
+<div class="flexcol title-and-subtitle">
+  <div class="title">{{name}}</div>
+  <div class="subtitle">{{localize (zhConcat "TYPES.Item." type)}}</div>
+</div>
+<div class="pill-container">
+  <span
+    class="pill pill-fortune"
+    data-tooltip-direction="LEFT"
+    data-tooltip="{{zhExplicitSign system.damageThresholdModifier}}"
+  >DTM:
+    {{zhExplicitSign system.damageThresholdModifier}}</span>
+  {{#each system.qualities}}<span
+      class="pill pill-quality quality-link"
+      data-tooltip-direction="LEFT"
+      data-tooltip="{{effect}}"
+    >{{localize "TYPES.Item.quality"}}: {{name}}</span>{{/each}}
+</div>

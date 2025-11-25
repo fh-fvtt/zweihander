@@ -5,6 +5,25 @@ All notable changes to this project will be documented in this file.
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).´
 
+## [5.6.0] - 2025-11-25
+
+### Added
+
+- Added support for FoundryVTT V13.
+- Added a new optional design for the Player Character sheet header. It now supports custom header backgrounds.
+- Added a new design to display system version alongside links to the project source, the wiki, the issue tracker, and the F&H Discord community.
+- Added a new design for all chat messages.
+- Migrated all `Actor` sheets to the new `ApplicationV2` framework.
+- Migrated all `Item` sheets (except Unique Advances) to the new `ApplicationV2` framework.
+- Migrated Active Effects Configuration sheet to the new `ApplicationV2` framework.
+- Migrated Fortune Tracker application to the new `ApplicationV2` framework.
+- Migrated Language Configuration application to the new `ApplicationV2` framework.
+
+### Fixed
+
+- Fixed custom multi-select element issue. Profession `Item` sheet Bonus Advances can now be picked through a dropdown.
+- Misc. style adjustments that better fit the FoundryVTT V13 aesthetic.
+
 ## [5.5.5] - 2025-05-12
 
 ### Added

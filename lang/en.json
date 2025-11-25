@@ -1,4 +1,7 @@
 {
+  "CHAT": {
+    "From": "From"
+  },
   "TYPES": {
     "Actor": {
       "character": "Player Character",
@@ -665,14 +668,20 @@
       },
       "othersettings": {
         "governingmagickskill": "Governing Magick Skill"
+      },
+      "versionsettings": {
+        "notes": "Notes",
+        "issues": "Issues",
+        "wiki": "Wiki",
+        "discord": "Discord"
       }
     },
     "chatskill": {
       "rolldetails": "Show Roll Details",
       "itemdetails": "Show Item Details",
       "showqualities": "Show Qualities",
-      "skillrank": "Skill rank bonus",
-      "penaltyperil": "Penalty from Peril",
+      "skillrank": "Skill Rank Bonus",
+      "penaltyperil": "Peril Penalty",
       "specialmod": "Special Modifier",
       "cappedchance": "Capped Base Chance",
       "totalchance": "Total Chance",
@@ -680,10 +689,10 @@
       "channelpower": "Channel Power Bonus",
       "totaldifficulty": "Total Difficulty",
       "difficulty": "Difficulty",
-      "resultflipped": "Result has been flipped",
+      "resultflipped": "Flipped Result",
       "yes": "Yes",
       "no": "No",
-      "chaosspawns": "A {principle} Chaos Manifestation spawns!",
+      "chaosspawns": "Chaos Manifestation!",
       "degrees": "Degrees of Success",
       "goreroll": "Reroll",
       "godamage": "Damage",

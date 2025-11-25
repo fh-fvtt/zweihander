@@ -15,8 +15,10 @@ export default class ZweihanderSpell extends ZweihanderBaseItem {
       durationFormula = game.i18n.localize(`ZWEI.actor.items.durationList.${item.system.duration.value}`);
     }
 
-    // @todo: remove in future version, this IF is here just to avoid errors when migrating from 5.4.1 -> 5.5.x
-    if (item.system.duration?.value !== undefined) item.system.duration.label = durationFormula;
+    // @todo: remove IF in future version (not content tho!), this IF is here just to avoid errors when migrating from 5.4.1 -> 5.5.x
+    if (item.system.duration?.value !== undefined) {
+      item.system.duration.label = durationFormula;
+    }
   }
 
   async _preUpdate(changed, options, user, item) {

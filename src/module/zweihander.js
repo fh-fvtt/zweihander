@@ -18,6 +18,7 @@ import * as ZweihanderChat from './chat';
 import { registerChatCommands } from './misc/chat-commands';
 
 import { registerSystemSettings, registerCompendiumSettings, setCssTheme } from './settings';
+import { renderSettings } from './sidebar';
 import { preloadHandlebarsTemplates } from './templates';
 import { registerHandlebarHelpers } from './helpers';
 // import { migrateWorldSafe, migrateWorld } from './migration';
@@ -150,7 +151,7 @@ Hooks.once('dragRuler.ready', (SpeedProvider) => {
 });
 
 Hooks.once('init', async function () {
-  // CONFIG.debug.hooks = true;
+  //CONFIG.debug.hooks = true;
   console.log(ZWEI.debugTitle);
 
   // Register settings
@@ -164,6 +165,7 @@ Hooks.once('init', async function () {
     rollItemMacro,
   };
   CONFIG.ChatMessage.template = 'systems/zweihander/src/templates/chat/chat-message.hbs';
+  Roll.CHAT_TEMPLATE = 'systems/zweihander/src/templates/dice/roll.hbs';
 
   const initiativeFormula = game.settings.get('zweihander', 'initiativeFormula');
 
@@ -225,8 +227,9 @@ Hooks.once('init', async function () {
   return preloadHandlebarsTemplates();
 });
 
-Hooks.on('renderChatMessage', ZweihanderChat.addLocalChatListeners);
+Hooks.on('renderChatMessageHTML', ZweihanderChat.addLocalChatListeners);
 Hooks.on('renderChatLog', (app, html, data) => ZweihanderChat.addGlobalChatListeners(html));
+Hooks.on('renderSettings', (app, html) => renderSettings(html));
 Hooks.on('updateCompendium', async (pack, documents, options, userId) => {
   const skillPackId = game.settings.get('zweihander', 'skillPack');
   if (`${pack.metadata.package}.${pack.metadata.name}` === skillPackId) {

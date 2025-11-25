@@ -19,6 +19,9 @@ export default class ZweihanderVehicleSheet extends ZweihanderBaseActorSheet {
   static DEFAULT_OPTIONS = {
     ...super.DEFAULT_OPTIONS,
     classes: ['vehicle'],
+    window: {
+      icon: 'fa-solid fa-caravan',
+    },
   };
 
   static PARTS = {

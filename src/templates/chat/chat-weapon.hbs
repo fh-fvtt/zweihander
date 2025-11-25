@@ -1,13 +1,39 @@
-<div data-item-id="{{weapon._id}}">
+<div class="flexcol weapon-content" data-item-id="{{weapon._id}}">
+  <div class="item-card-description">
+    {{{zhLocalize weapon.system.description}}}
+  </div>
+  <div class="flexcol title-and-subtitle">
+    <div class="title">{{weapon.name}}</div>
+    <div class="subtitle">Fury Die</div>
+  </div>
   {{{cardContent}}}
   <div class="pill-container">
-    {{#if exploded}}<span class="pill pill-{{exploded}}">{{localize "ZWEI.chatskill.explodedwith"}} {{localize (zhConcat "ZWEI.rolls." exploded)}} {{#if (gte explodedCount 2)}}(x{{explodedCount}}){{/if}}</span>{{/if}}
+    {{#each weapon.system.qualities}}<span
+        class="pill pill-quality quality-link"
+        data-tooltip-direction="LEFT"
+        data-tooltip="{{effect}}"
+      >Quality: {{name}}</span>{{/each}}
+    {{#if exploded}}
+      <span class="pill pill-{{exploded}}">{{localize "ZWEI.chatskill.explodedwith"}}
+        {{localize (zhConcat "ZWEI.rolls." exploded)}}{{#if (gte explodedCount 2)}}(x{{explodedCount}}){{/if}}
+      </span>
+    {{/if}}
+  </div>
+  <div class="dice-roll" data-action="expandRoll">
+    <div class="dice-result">
+      <h4 class="dice-total outcome-damage"><span class="outcome-text">{{total}}</span><br /><span
+          class="vs-chance"
+        >{{formula}}</span></h4>
+      {{{tooltip}}}
+    </div>
   </div>
   {{{rollContent}}}
-  <div class="skill-test-controls">
-    <div class="flexrow">
-      <button type="button" class="damage-roll-explode" disabled><i class="fas fa-sync-alt"></i><br />{{localize "ZWEI.chatskill.explodewithfortune"}}</button>
-      <button type="button" class="damage-roll-explode-misfortune" disabled><i class="fas fa-sync-alt"></i><br />{{localize "ZWEI.chatskill.explodewithmisfortune"}}</button>
-    </div>
+  <div class="skill-test-controls flexrow damage">
+    <button type="button" class="damage-roll-explode" disabled><i class="fas fa-burst"></i>{{localize
+        "ZWEI.chatskill.explodewithfortune"
+      }}</button>
+    <button type="button" class="damage-roll-explode-misfortune" disabled><i class="fas fa-burst"></i>{{localize
+        "ZWEI.chatskill.explodewithmisfortune"
+      }}</button>
   </div>
 </div>

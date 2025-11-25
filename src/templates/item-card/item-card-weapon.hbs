@@ -1,33 +1,30 @@
-<section class="item-card">
-  <h2 class="item-card-title">{{name}}</h2>
+{{#if (zhLocalize system.description)}}
   <div class="item-card-description">
     {{{zhLocalize system.description}}}
   </div>
-  <dl class="compact-details zh-collapsed zh-expandable" data-expand-title="{{localize 'ZWEI.chatskill.itemdetails'}}">
-    <dt>{{localize "ZWEI.actor.items.associatedskill"}}</dt>
-    <dd>{{system.associatedSkill}}</dd>
-    <dt>{{localize "ZWEI.actor.items.load"}}</dt>
-    <dd>{{system.load}}</dd>
-    <dt>{{localize "ZWEI.actor.items.handling"}}</dt>
-    <dd>{{system.handling}}</dd>
-    <dt>{{localize "ZWEI.actor.items.distance"}}</dt>
-    <dd>{{system.distance.value}}</dd>
-    <dt>{{localize "ZWEI.actor.items.type"}}</dt>
-    <dd>{{system.weaponType}}</dd>
-    <dt>{{localize "ZWEI.actor.items.encumbrance"}}</dt>
-    <dd>{{system.encumbrance}}</dd>
-    <dt>{{localize "ZWEI.actor.items.price"}}</dt>
-    <dd>
-      {{zhPrice system.price}}
-    </dd>
-  </dl>
-  <dl
-    class="item-card-qualities zh-expandable zh-collapsed"
-    data-expand-title="{{localize 'ZWEI.chatskill.showqualities'}}"
-  >
-    {{#each system.qualities}}
-      <dt>{{name}}</dt>
-      <dd>{{{effect}}}</dd>
-    {{/each}}
-  </dl>
-</section>
+{{/if}}
+<div class="flexcol title-and-subtitle">
+  <div class="title">{{name}}</div>
+  <div class="subtitle">{{#if isRoll}}{{system.associatedSkill}}{{else}}{{localize "TYPES.Item.weapon"}}{{/if}}</div>
+</div>
+{{#unless isRoll}}
+  <div class="pill-container">
+    <span class="pill pill-difficulty--30">
+      Type:
+      {{system.weaponType}}
+    </span>
+    <span class="pill pill-difficulty--20">
+      Distance:
+      {{system.distance.value}}
+    </span>
+    <span class="pill">
+      {{localize "TYPES.Item.skill"}}:
+      {{system.associatedSkill}}
+    </span>
+    {{#each system.qualities}}<span
+        class="pill pill-quality quality-link"
+        data-tooltip-direction="LEFT"
+        data-tooltip="{{effect}}"
+      >{{localize "TYPES.Item.quality"}}: {{name}}</span>{{/each}}
+  </div>
+{{/unless}}

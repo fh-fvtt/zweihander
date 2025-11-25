@@ -1,5 +1,5 @@
 import { ZWEI } from './config';
-import { uuidv4, zhExplicitSign, localize, localizePath } from './utils';
+import { uuidv4, zhExplicitSign, localize, localizePath, primaryAttributeMapping } from './utils';
 
 /**
  * Define a set of handlebar helpers
@@ -142,6 +142,107 @@ export const registerHandlebarHelpers = async function () {
     const author = game.users.get(message.user);
     if (author && author.avatar) return author.avatar;
     return '';
+  });
+
+  $$('zhSkillTestTooltip', function (data) {
+    let tooltip = `
+        <span class="title">Skill Test Details</span>
+        <table>
+          <tr>
+            <td class="descriptor">${data.primaryAttribute}:</td>
+            <td class="value">${zhExplicitSign(data.basePercentage)}%</td>
+          </tr>
+          <tr>
+            <td class="descriptor">${game.i18n.localize('ZWEI.chatskill.skillrank')}:</td>
+            <td class="value">${zhExplicitSign(data.rankBonus)}%</td>
+          </tr>
+          <tr>
+            <td class="descriptor">${game.i18n.localize('ZWEI.chatskill.penaltyperil')}:</td>
+            <td class="value">${zhExplicitSign(data.perilPenalty)}%</td>
+          </tr>
+          <tr>
+            <td class="descriptor">${game.i18n.localize('ZWEI.chatskill.specialmod')}:</td>
+            <td class="value">${zhExplicitSign(data.specialBaseChanceModifier)}%</td>
+          </tr>
+          <tr>
+            <td class="descriptor">${game.i18n.localize('ZWEI.chatskill.cappedchance')}:</td>
+            <td class="value">${data.baseChance}%</td>
+          </tr>
+          ${
+            data.spellTest
+              ? `<tr>
+              <td class="descriptor">${game.i18n.localize('ZWEI.chatskill.rawdifficulty')}:</td>
+              <td class="value">${zhExplicitSign(data.difficultyRating.raw)}%</td>
+            </tr>
+            <tr>
+              <td class="descriptor">${game.i18n.localize('ZWEI.chatskill.channelpower')}:</td>
+              <td class="value">${zhExplicitSign(data.difficultyRating.channelPowerBonus)}%</td>
+            </tr>`
+              : `<tr>
+              <td class="descriptor">${game.i18n.localize('ZWEI.chatskill.difficulty')}:</td>
+              <td class="value">${zhExplicitSign(data.difficultyRating.total)}%</td>
+            </tr>
+            <tr>
+              <td class="descriptor">${game.i18n.localize('ZWEI.chatskill.resultflipped')}:</td>
+              <td class="value">${
+                data.effectivelyFlipped
+                  ? game.i18n.localize('ZWEI.chatskill.yes')
+                  : game.i18n.localize('ZWEI.chatskill.no')
+              } </td>
+            </tr>`
+          }
+        </table>
+      `;
+
+    if (data.weaponTest)
+      tooltip += `<span class="title">Weapon Details</span>
+          <table>
+            <tr>
+              <td class="descriptor">${game.i18n.localize('ZWEI.actor.items.type')}:</td>
+              <td class="value">${data.weapon.system.weaponType}</td>
+            </tr>
+            <tr>
+              <td class="descriptor">${game.i18n.localize('ZWEI.actor.items.handling')}:</td>
+              <td class="value">${data.weapon.system.handling}</td>
+            </tr>
+            <tr>
+              <td class="descriptor">${game.i18n.localize('ZWEI.actor.items.distance')}:</td>
+              <td class="value">${data.weapon.system.distance.value}</td>
+            </tr>
+            <tr>
+              <td class="descriptor">${game.i18n.localize('ZWEI.actor.items.load')}:</td>
+              <td class="value">${data.weapon.system.ranged.load}</td>
+            </tr>
+          </table>`;
+
+    if (data.spellTest) {
+      console.log('THIS', this);
+      tooltip += `<span class="title">Spell Details</span>
+          <table>
+            <tr>
+              <td class="descriptor">${game.i18n.localize('ZWEI.actor.items.tradition')}:</td>
+              <td class="value">${data.spell.system.tradition}</td>
+            </tr>
+            <tr>
+              <td class="descriptor">${game.i18n.localize('ZWEI.actor.items.principle')}:</td>
+              <td class="value">${data.spell.system.principle}</td>
+            </tr>
+            <tr>
+              <td class="descriptor">${game.i18n.localize('ZWEI.actor.items.reagents')}:</td>
+              <td class="value">${localize(data.spell.system.rules.reagents)}</td>
+            </tr>
+            <tr>
+              <td class="descriptor">${game.i18n.localize('ZWEI.actor.items.duration')}:</td>
+              <td class="value">${data.spell.system.duration.label}</td>
+            </tr>
+            <tr>
+              <td class="descriptor">${game.i18n.localize('ZWEI.actor.items.distance')}:</td>
+              <td class="value">${data.spell.system.distance}</td>
+            </tr>
+          </table>`;
+    }
+
+    return tooltip;
   });
 
   $$('zhExplicitSign', zhExplicitSign);

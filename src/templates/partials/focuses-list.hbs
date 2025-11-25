@@ -1,15 +1,15 @@
 {{#if focuses.length}}
-<span class="focus-container">
-  <span class="focus-indicator">✔</span>
-  <ol class="focus-tooltip">
-    <span class="focus-tooltip-header">Focuses:</span>
-  {{#each focuses as | focus key |}}
-    <li><span class="focus-label">{{focus}}</span></li>
-  {{/each}}
-  </ol>
-</span>
+  <span class="focus-container">
+    <span class="focus-indicator">◉</span>
+    <ol class="focus-tooltip">
+      <span class="focus-tooltip-header">Focuses:</span>
+      {{#each focuses as |focus key|}}
+        <li><span class="focus-label">{{focus}}</span></li>
+      {{/each}}
+    </ol>
+  </span>
 {{else}}
-<span class="focus-container">
-  <span class="focus-missing"> </span>
-</span>
+  <span class="focus-container">
+    <span class="focus-missing"> </span>
+  </span>
 {{/if}}

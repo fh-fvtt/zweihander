@@ -26,6 +26,15 @@ body.game.vtt.system-zweihander {
     }
   }
   .chat-message.zweihander-chat-message {
+    .message-content {
+      display: flex;
+      flex-direction: column;
+      gap: 0.5rem;
+
+      > div.weapon-content {
+        gap: 0.5rem;
+      }
+    }
     .flavor-text {
       line-height: 1.2;
     }
@@ -39,53 +48,101 @@ body.game.vtt.system-zweihander {
     background: var(--zh-clr-bg1);
     border-color: var(--zh-clr-bg2);
     color: var(--zh-clr-fg0);
+    gap: 0.5rem;
+
     header.message-header {
       color: var(--zh-clr-fg2);
       position: relative;
+
+      > div {
+        align-items: center;
+        gap: 0.5rem;
+      }
       .message-metadata {
         position: relative;
         display: block;
         text-align: left;
         width: 100%;
       }
-      .message-timestamp {
+      .time-and-delete {
         position: absolute;
+        top: -6px;
         right: 0;
-        top: 0;
+      }
+      .message-timestamp {
+        flex: 0 0 content;
         font-size: var(--font-size-12);
       }
       a.button.message-delete {
         &:hover {
           color: var(--zh-clr-red);
         }
-        position: absolute;
-        right: 0;
-        top: 18px;
+        flex: 0;
+        margin-left: 0.5rem;
         font-size: var(--font-size-12);
         border: none;
         background: none;
         color: var(--zh-clr-fg3);
         padding: 0;
       }
-      img.chat-profile-image {
-        flex: 0 0 50px;
-        height: 50px;
-        width: 50px;
-        object-fit: cover;
-        object-position: top;
-        margin: 0 5px 5px 0;
-        border: 2px solid var(--zh-clr-bg2);
-        border-radius: 50%;
-      }
       h4.message-sender {
-        padding-top: 15px;
-        font-size: 18px;
+        padding: 0;
         color: var(--zh-clr-fg0);
-        line-height: 18px;
         text-overflow: ellipsis;
         overflow: hidden;
         width: 200px;
-        height: 35px;
+      }
+      h5.message-sender-user,
+      h5.message-sender-user-target {
+        padding: 0;
+        color: var(--zh-clr-gray);
+        text-overflow: ellipsis;
+        overflow: hidden;
+        font-size: 12px;
+        width: 200px;
+        font-weight: normal;
+        font-family: var(--font-sans);
+        margin: 0;
+      }
+    }
+
+    img.chat-profile-image {
+      flex: 0 0 58px;
+      height: 58px;
+      object-fit: cover;
+      object-position: top;
+      border: 2px solid var(--zh-clr-bg2);
+      border-radius: 5px;
+    }
+
+    .title-and-subtitle {
+      gap: 0.125rem;
+
+      .title {
+        color: var(--zh-clr-yellow);
+        font-size: 22px;
+        line-height: 24px;
+        font-weight: 500;
+        text-overflow: ellipsis;
+        white-space: nowrap;
+        overflow: hidden;
+        text-shadow: 0 0 2px var(--zh-clr-yellow-faded);
+      }
+
+      .subtitle {
+        display: flex;
+        flex-direction: row;
+        align-items: center;
+        font-size: 13px;
+        color: var(--zh-clr-fg1);
+
+        &:empty {
+          display: none;
+        }
+
+        .icon-separator {
+          margin: 0 5px;
+        }
       }
     }
 
@@ -113,27 +170,48 @@ body.game.vtt.system-zweihander {
         border: 2px solid var(--zh-clr-bg2);
         box-shadow: none;
         color: var(--zh-clr-fg0);
+        line-height: 10px;
+        padding: 0.5rem;
+        border-radius: 5px;
       }
       .dice-total {
         &.outcome-0 {
           background-color: var(--zh-clr-red-alt);
+          border-color: var(--zh-clr-red);
         }
         &.outcome-1 {
           background-color: var(--zh-clr-orange-alt);
+          border-color: var(--zh-clr-orange);
         }
         &.outcome-2 {
           background-color: var(--zh-clr-aqua-alt);
+          border-color: var(--zh-clr-aqua);
         }
         &.outcome-3 {
           background-color: var(--zh-clr-green-alt);
+          border-color: var(--zh-clr-green);
+        }
+        .outcome-text {
+          line-height: 24px;
+        }
+        .vs-chance {
+          font-weight: 600;
+          font-size: 13px;
+          line-height: 13px;
         }
       }
       .dice-tooltip {
+        .tooltip-part {
+          margin: 0.5rem 2px 0 2px;
+        }
+
         .part-header,
         .part-total {
           border-color: var(--zh-clr-fg2);
         }
         .dice-rolls {
+          margin-bottom: 0;
+
           .roll {
             background: var(--zh-clr-fg1);
             color: var(--zh-clr-bg0);
@@ -162,20 +240,39 @@ body.game.vtt.system-zweihander {
         }
       }
     }
+
+    .skill-test {
+      gap: 0.5rem;
+    }
+
     .skill-test-controls {
-      margin-top: 5px;
       background-color: var(--zh-clr-bg2);
       border: none;
       border-radius: 5px;
+
+      &.skill:has(button.skill-test-reroll:disabled) {
+        display: none;
+      }
+
+      &.damage:has(button.damage-roll-explode:disabled) {
+        display: none;
+      }
+
       button {
         &:disabled {
           display: none;
         }
+        flex: 1 0 120px;
+        display: flex;
+        flex-direction: column;
         line-height: 16px;
         padding: 5px;
         margin: 5px;
         cursor: pointer;
         border: 2px solid transparent;
+        height: 100%;
+        align-items: center;
+        justify-content: center;
         &:hover,
         &:active,
         &:focus {
@@ -197,8 +294,11 @@ body.game.vtt.system-zweihander {
       color: var(--zh-clr-fg2);
     }
     .pill-container {
-      text-align: left;
-      margin: 5px 0;
+      display: flex;
+      flex-direction: row;
+      gap: 0.25rem;
+      align-items: center;
+      flex-wrap: wrap;
       .pill {
         display: inline-block;
         padding: 2px 5px;
@@ -215,7 +315,7 @@ body.game.vtt.system-zweihander {
           font-size: 12px;
         }
         &.quality-link {
-          cursor: pointer;
+          cursor: help;
         }
         &.quality-link:hover {
           background-color: var(--zh-clr-yellow);
@@ -245,40 +345,63 @@ body.game.vtt.system-zweihander {
         &.pill-difficulty-30 {
           background-color: var(--zh-clr-green);
         }
-      }
-    }
-    .item-card {
-      .item-card-title {
-        color: var(--zh-clr-yellow);
-        border-bottom: 2px solid var(--zh-clr-bg2);
-      }
-      .item-card-description {
-        font-style: italic;
-        font-size: 12px;
-        text-align: justify;
-        color: var(--zh-clr-fg1);
-      }
-      .item-card-effect {
-        font-size: 13px;
-        text-align: justify;
-      }
-      .item-card-effect::before {
-        content: attr(data-effect-label) ': ';
-        color: var(--zh-clr-aqua);
-        font-weight: bold;
-      }
-      .item-card-qualities {
-        & dd > p {
-          margin: 0; /*@todo: this might be made more bulletproof, e.g. multi-paragraph qualities, but for now is sufficient*/
+        &.pill-quality {
+          background-color: var(--zh-clr-blue);
         }
       }
     }
+    .item-card-description {
+      font-style: italic;
+      font-size: 12px;
+      // text-align: justify;
+      padding: 0.5rem;
+      border-radius: 5px;
+      color: var(--zh-clr-fg1);
+      background: linear-gradient(90deg, var(--zh-clr-bg2), transparent 90%);
+
+      p {
+        margin: 0;
+      }
+    }
+
+    .item-card-title {
+      color: var(--zh-clr-yellow);
+      border-bottom: 2px solid var(--zh-clr-bg2);
+    }
+
+    .item-card-effect {
+      font-size: 13px;
+      padding: 0.5rem;
+      border-radius: 5px;
+      background: var(--zh-clr-bg2);
+      border: 2px solid var(--zh-clr-bg3);
+      p {
+        display: inline;
+        margin: 0;
+      }
+    }
+    .item-card-effect .effect-container {
+      margin-top: 0.25rem;
+    }
+
+    .item-card-effect .effect-label {
+      color: var(--zh-clr-aqua);
+      font-weight: bold;
+    }
+
+    .item-card-qualities {
+      & dd > p {
+        margin: 0; /*@todo: this might be made more bulletproof, e.g. multi-paragraph qualities, but for now is sufficient*/
+      }
+    }
+
     dl.compact-details {
       display: flex;
       flex-flow: row;
       flex-wrap: wrap;
       width: 100%;
       overflow: visible;
+      margin-top: 0.5rem;
       dt {
         display: block;
         margin: 2px 0;
@@ -300,26 +423,46 @@ body.game.vtt.system-zweihander {
       }
     }
     .zh-expandable {
+      display: block;
       position: relative;
+      margin-top: 0.5rem;
+      background-color: var(--zh-clr-bg0);
+      border-radius: 5px;
+      border: 2px solid var(--zh-clr-bg2);
+      font-size: 13px;
 
-      &:not(.zh-collapsed) {
-        cursor: zoom-out;
-      }
       &.zh-collapsed {
-        cursor: zoom-in;
-      }
-      &.zh-collapsed::before {
-        content: attr(data-expand-title);
-        color: var(--zh-clr-aqua);
-        text-align: center;
-        display: block;
-        width: 100%;
-      }
-      &.zh-collapsed:hover::before {
-        color: var(--zh-clr-yellow);
+        display: none;
       }
       &.zh-collapsed * {
         display: none !important;
+      }
+
+      table {
+        margin: 0;
+
+        td {
+          width: 50%;
+          padding: 0.5rem;
+
+          &.descriptor {
+            padding-right: 0;
+            color: var(--zh-clr-aqua);
+          }
+
+          &.value {
+            text-align: right;
+          }
+        }
+      }
+
+      .qualities-container {
+        padding: 0 0.5rem;
+        border-top: 2px dotted var(--zh-clr-bg3);
+
+        .quality-name {
+          color: var(--zh-clr-aqua);
+        }
       }
     }
     dl {
@@ -340,12 +483,12 @@ body.game.vtt.system-zweihander {
     }
     .additional-outcome-info {
       display: block;
-      padding: 2px;
+      padding: 0.5rem;
       background-color: var(--zh-clr-bg2);
       border-radius: 5px;
       border: 2px solid var(--zh-clr-bg3);
-      margin-top: 5px;
       text-align: center;
+      align-content: center;
       &.chaos-manifestation {
         background-color: var(--zh-clr-red-alt);
         border-color: var(--zh-clr-red);
@@ -354,7 +497,6 @@ body.game.vtt.system-zweihander {
   }
 
   #chat-controls {
-    border-top: 5px solid var(--zh-clr-bg0);
     color: var(--zh-clr-fg0);
     a:hover {
       text-shadow: none;

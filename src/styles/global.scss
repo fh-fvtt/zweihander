@@ -114,6 +114,7 @@
 // @todo: refactor into light theme
 .theme-light,
 .theme-dark {
+  --border-color: var(--zh-clr-bg4);
   --color-border-light-tertiary: var(--zh-clr-fg4);
   --color-cool-5: var(--zh-clr-bg0);
   --color-cool-4: var(--zh-clr-bg4);
@@ -147,12 +148,18 @@
     background: rgba(28, 28, 28, 0.75);
   }
 
-  #context-menu li.context-item {
-    &:hover {
-      --hover-entry-background: var(--zh-clr-bg1);
-      --hover-text-color: var(--zh-clr-fg0);
+  #context-menu {
+    --border-color: var(--zh-clr-bg4);
+    --background-color: var(--zh-clr-bg0);
+    --text-color: var(--zh-clr-fg2);
 
-      border: 1px solid transparent;
+    li.context-item {
+      &:hover {
+        --hover-entry-background: var(--zh-clr-bg1);
+        --hover-text-color: var(--zh-clr-fg0);
+
+        border: 1px solid transparent;
+      }
     }
   }
 
@@ -166,6 +173,20 @@
     --slot-color: var(--zh-clr-bg0);
     --key-bg-color-empty: var(--zh-clr-bg1);
     --key-bg-color-full: var(--zh-clr-bg1);
+  }
+
+  #settings-config {
+    nav {
+      button {
+        --button-focus-outline-color: unset;
+        border: unset;
+        border-bottom: 1px solid var(--zh-clr-bg4);
+        background: none;
+        &[data-tab].active {
+          border-bottom-color: var(--zh-clr-aqua);
+        }
+      }
+    }
   }
 
   .application {
@@ -203,6 +224,13 @@
       --input-border-color: transparent;
       --input-text-color: var(--zh-clr-fg2);
     }
+  }
+}
+
+.themed.theme-dark {
+  button {
+    --button-focus-outline-color: var(--zh-clr-aqua);
+    --button-hover-background-color: var(--zh-clr-aqua);
   }
 }
 
@@ -282,6 +310,52 @@ body.game.vtt.system-zweihander {
   --line-height-16: 1rem;
   --line-height-20: 1.25rem;
   --line-height-30: 1.875rem;
+
+  .zweihander.sidebar-info {
+    .system-badge {
+      align-items: center;
+      margin-top: 0.5rem;
+    }
+
+    .unlist.links {
+      list-style: none;
+      margin: 0.5rem 0 0 0;
+      display: flex;
+      flex-direction: row;
+      padding: 0;
+      align-items: center;
+      justify-content: center;
+      gap: 0.5rem;
+
+      li {
+        margin: 0;
+      }
+    }
+  }
+
+  aside.skill-test-tooltip {
+    background: var(--zh-clr-bg0);
+    padding: 0;
+    margin-right: 0.5rem;
+
+    table {
+      margin: 0;
+
+      td.value {
+        text-align: right;
+      }
+    }
+
+    .title {
+      display: flex;
+      flex-direction: row;
+      justify-content: center;
+      padding: 0.5rem;
+      color: var(--zh-clr-aqua-alt);
+      font-size: 18px;
+      font-weight: 600;
+    }
+  }
 
   #permissions-config header.table-header {
     background: rgba(0, 0, 0, 0.1);
@@ -440,12 +514,14 @@ body.game.vtt.system-zweihander {
   }
 
   select,
-  button:not(.inline-control) {
+  button:not(.inline-control),
+  a.button {
     background-color: var(--zh-clr-bg1);
     color: var(--zh-clr-fg0);
   }
 
-  button:not(.inline-control) {
+  button:not(.inline-control),
+  a.button {
     --button-focus-outline-color: var(--zh-clr-yellow-faded);
 
     border: 1px solid var(--zh-clr-bg4);
@@ -458,9 +534,11 @@ body.game.vtt.system-zweihander {
     }
   }
 
+  /*
   button.inline-control {
     color: var(--zh-clr-bg0);
   }
+  */
 
   .directory .directory-header .header-search input {
     background: var(--zh-clr-bg2);
@@ -511,8 +589,13 @@ body.game.vtt.system-zweihander {
 
   .editor {
     min-height: 35px;
-    &.prosemirror .editor-container {
-      min-height: 200px;
+    &.prosemirror {
+      button.icon.toggle {
+        padding: 0;
+      }
+      .editor-container {
+        min-height: 200px;
+      }
     }
   }
 

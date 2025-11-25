@@ -2,23 +2,20 @@
   <header class="message-header">
     <div class="flexrow">
       <img class="chat-profile-image" src="{{zhSpeakerPic message}}" />
-      <div>
+      <div class="flexcol">
+        <h4 class="message-sender">{{alias}}</h4>
+        <h5 class="message-sender-user">{{!--{{localize 'CHAT.From'}}: --}}{{user.name}}</h5>
+        {{#if isWhisper}}
+        <h5 class="message-sender-user-target">{{localize 'CHAT.To'}}: {{whisperTo}}</h5>
+        {{/if}}
+      </div>
+      <div class="flexrow time-and-delete">
         <time class="message-timestamp">{{timeSince message.timestamp}}</time>
         {{#if user.isGM}}
-        <a class="button message-delete" data-action="deleteMessage"><i class="fas fa-trash-alt"></i></a>
-        {{/if}}
-        <h4 class="message-sender">{{alias}}</h4>
-        <span class="message-metadata">
-          {{#if isWhisper}}
-          <span class="whisper-to">{{localize 'CHAT.To'}}: {{whisperTo}}</span>
-          {{/if}}
-        </span>
-        {{#if message.flavor}}
-        <div class="flavor-text">{{{message.flavor}}}</div>
+        <a class="button message-delete" data-action="deleteMessage"><i class="fas fa-ellipsis-vertical"></i></a>
         {{/if}}
       </div>
     </div>
-    
   </header>
   <div class="message-content">
     {{{message.content}}}
