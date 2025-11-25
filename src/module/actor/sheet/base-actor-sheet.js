@@ -758,7 +758,7 @@ export default class ZweihanderBaseActorSheet extends HandlebarsApplicationMixin
 
     if (this.isEditable && (game.user.isGM || this.actor.isOwner)) {
       buttons.splice(0, 0, {
-        label: 'Configure Actor',
+        label: game.i18n.localize('ZWEI.settings.configactor'),
         icon: 'fas fa-user-cog',
         visible: true,
         onClick: () => this.#actorConfig.render(true),

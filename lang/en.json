@@ -224,7 +224,9 @@
           "formula": "Formula"
         },
         "professionaltrait": "Professional Trait",
+        "professionaltraitabbr": "P. Trait",
         "specialtrait": "Special Trait",
+        "specialtraitabbr": "Sp. Trait",
         "drawback": "Drawback",
         "expertreq": "Expert Profession Requirements",
         "skillranks": "Skill Ranks",
@@ -583,6 +585,7 @@
       "zweitheme": "Zweihander Sheet Theme",
       "zweithemehint": "Choose a theme for your Zweihander sheets",
       "configlanguages": "Configure Languages",
+      "configactor": "Configure Actor",
       "ftsettings": {
         "title": "Fortune Tracker",
         "behavior": "Behavior",
@@ -612,6 +615,7 @@
       "acsettings": {
         "subtitle": "Configure and fine-tune this Actor's behavior and underlying mechanics.",
         "primarytitle": "Governing Primary Attributes",
+        "primarynotes": "Select the Primary Attributes off of which the following Secondary Attributes are calculated.",
         "primarydth": "Damage Threshold",
         "primarydthhint": "Select the Primary Attribute off of which the Damage Threshold is calculated.",
         "primarypth": "Peril Threshold",
@@ -629,11 +633,13 @@
         "globalmovement": "Movement Modifier",
         "globalmovementhint": "Set a global Movement modifier.",
         "skillstitle": "Governing Skills",
+        "skillsnotes": "Select the skills that can be used when rolling Parry or Dodge.",
         "skillsparry": "Parry Skills",
         "skillsparryhint": "Set the skills that can be used when rolling Parry.",
         "skillsdodge": "Dodge Skills",
         "skillsdodgehint": "Set the skills that can be used when rolling Dodge.",
         "periltitle": "Peril Threshold",
+        "perilnotes": "Check the corresponding box if Actor doesn't suffer from the ill-effects of Peril at that step.",
         "peril1": "Ignore 'Ignore 1 Skill Rank'",
         "peril1hint": "Check this box if Actor doesn't suffer from the ill-effects of Peril at this step.",
         "peril2": "Ignore 'Ignore 2 Skill Ranks'",
@@ -648,6 +654,7 @@
         "magickskill": "Governing Magick Skills",
         "magickskillhint": "Set the skills that can be used when rolling Spells.",
         "octitle": "Order & Chaos",
+        "ocnotes": "Set the number of permanent Order & Chaos Ranks this Actor has.",
         "occhaosrank": "Permanent Chaos Ranks",
         "occhaosrankhint": "The number of permanent Chaos Ranks this Actor has.",
         "ocorderrank": "Permanent Order Ranks",
@@ -657,7 +664,10 @@
         "soundparry": "Parry SFX",
         "soundgrunt": "Grunt SFX",
         "soundplaygrunt": "Play Grunt Sound",
-        "soundplaygrunthint": "Check this box to play a grunt SFX when failing to Dodge or Parry an attack."
+        "soundplaygrunthint": "Check this box to play a grunt SFX when failing to Dodge or Parry an attack.",
+		"bgtitle": "Header Background",
+		"bglabel": "Background Image Path",
+		"bgnotes": "Set the default header background image for this Actor. Leave value empty for no background."
       },
       "lasettings": {
         "title": "Languages",
@@ -677,7 +687,7 @@
       }
     },
     "chatskill": {
-      "rolldetails": "Show Roll Details",
+      "rolldetails": "Roll Details",
       "itemdetails": "Show Item Details",
       "showqualities": "Show Qualities",
       "skillrank": "Skill Rank Bonus",

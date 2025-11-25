@@ -146,7 +146,7 @@ export const registerHandlebarHelpers = async function () {
 
   $$('zhSkillTestTooltip', function (data) {
     let tooltip = `
-        <span class="title">Skill Test Details</span>
+        <span class="title">${game.i18n.localize('ZWEI.chatskill.rolldetails')}</span>
         <table>
           <tr>
             <td class="descriptor">${data.primaryAttribute}:</td>

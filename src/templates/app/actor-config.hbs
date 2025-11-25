@@ -2,7 +2,7 @@
   {{#if (eq actorType "character")}}
     <fieldset>
       <legend>{{localize "ZWEI.settings.acsettings.primarytitle"}}</legend>
-      <p class="hint">Select the Primary Attributes off of which the following Secondary Attributes are calculated.</p>
+      <p class="hint">{{localize "ZWEI.settings.acsettings.primarynotes"}}</p>
 
       {{#each governingAttributes as |gov|}}
         <div class="form-group">
@@ -28,7 +28,7 @@
 
     <fieldset>
       <legend>{{localize "ZWEI.settings.acsettings.skillstitle"}}</legend>
-      <p class="hint">Select the skills that can be used when rolling Parry or Dodge.</p>
+      <p class="hint">{{localize "ZWEI.settings.acsettings.skillsnotes"}}</p>
       <div class="form-group">
         <label>{{localize "ZWEI.settings.acsettings.skillsparry"}}</label>
         <input type="text" name="flags.parrySkills" value="{{parrySkills}}" />
@@ -42,7 +42,7 @@
 
     <fieldset>
       <legend>{{localize "ZWEI.settings.acsettings.periltitle"}}</legend>
-      <p class="hint">Check the corresponding box if Actor doesn't suffer from the ill-effects of Peril at that step.</p>
+      <p class="hint">{{localize "ZWEI.settings.acsettings.periltitle"}}</p>
       <div class="form-group">
         <label>{{localize "ZWEI.settings.acsettings.peril1"}}</label>
         <input
@@ -95,7 +95,7 @@
 
     <fieldset>
       <legend>{{localize "ZWEI.settings.acsettings.octitle"}}</legend>
-      <p class="hint">Set the number of permanent Order & Chaos Ranks this Actor has.</p>
+      <p class="hint">{{localize "ZWEI.settings.acsettings.ocnotes"}}</p>
       <div class="form-group">
         <label>{{localize "ZWEI.settings.acsettings.occhaosrank"}}</label>
         <input type="number" name="flags.permanentChaosRanks" value="{{flags.permanentChaosRanks}}" />
@@ -108,11 +108,11 @@
     </fieldset>
 
     <fieldset>
-      <legend>Header Background</legend>
+      <legend>{{localize "ZWEI.settings.acsettings.bgtitle"}}</legend>
       <div class="form-group">
-        <label>Background Image Path</label>
+        <label>{{localize "ZWEI.settings.acsettings.bglabel"}}</label>
         <file-picker name="flags.headerBackground" type="image">{{flags.headerBackground}}</file-picker>
-        <p class="hint">Set the default header background image for this Actor. Leave value empty for no background.</p>
+        <p class="hint">{{localize "ZWEI.settings.acsettings.bgnotes"}}</p>
       </div>
     </fieldset>
   {{/if}}

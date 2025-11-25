@@ -10,21 +10,21 @@
 {{#unless isRoll}}
 <div class="pill-container">
   <span class="pill pill-roll-mode">
-    Principle: {{system.principle}}
+    {{localize 'ZWEI.actor.items.principle'}}: {{system.principle}}
   </span>
   <span class="pill pill-roll-mode">
-    Tradition: {{system.tradition}}
+    {{localize 'ZWEI.actor.items.tradition'}}: {{system.tradition}}
   </span>
 </div>
 {{/unless}}
 <div class="item-card-effect" data-effect-label="{{localize 'ZWEI.actor.items.effect'}}">
-  {{#unless isRoll}}<div><span class="effect-label">Reagents: </span>{{{zhLocalize system.rules.reagents}}}</div>{{/unless}}
-  <div class="effect-container"><span class="effect-label">Effect: </span>{{{zhLocalize system.rules.effect}}}</div>
-  {{#if (or (not isRoll) (eq effectiveOutcome 3))}}<div class="effect-container"><span class="effect-label">Critical Success: </span>{{{zhLocalize
+  {{#unless isRoll}}<div><span class="effect-label">{{localize 'ZWEI.actor.items.reagents'}}: </span>{{{zhLocalize system.rules.reagents}}}</div>{{/unless}}
+  <div class="effect-container"><span class="effect-label">{{localize "ZWEI.actor.items.effect"}}: </span>{{{zhLocalize system.rules.effect}}}</div>
+  {{#if (or (not isRoll) (eq effectiveOutcome 3))}}<div class="effect-container"><span class="effect-label">{{localize 'ZWEI.chatskill.criticalsuccess'}}: </span>{{{zhLocalize
       system.rules.criticalSuccess
     }}}</div>
   {{/if}}
   {{#if (or (not isRoll) (eq effectiveOutcome 0))}}
-    <div class="effect-container"><span class="effect-label">Critical Failure: </span>{{{zhLocalize system.rules.criticalFailure}}}
+    <div class="effect-container"><span class="effect-label">{{localize 'ZWEI.chatskill.criticalfailure'}}: </span>{{{zhLocalize system.rules.criticalFailure}}}
   {{/if}}</div>
 </div>

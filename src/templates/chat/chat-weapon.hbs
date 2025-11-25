@@ -4,7 +4,7 @@
   </div>
   <div class="flexcol title-and-subtitle">
     <div class="title">{{weapon.name}}</div>
-    <div class="subtitle">Fury Die</div>
+    <div class="subtitle">{{localize "ZWEI.rolls.furydie"}}</div>
   </div>
   {{{cardContent}}}
   <div class="pill-container">
@@ -12,7 +12,7 @@
         class="pill pill-quality quality-link"
         data-tooltip-direction="LEFT"
         data-tooltip="{{effect}}"
-      >Quality: {{name}}</span>{{/each}}
+      >{{localize "TYPES.Item.quality"}}: {{name}}</span>{{/each}}
     {{#if exploded}}
       <span class="pill pill-{{exploded}}">{{localize "ZWEI.chatskill.explodedwith"}}
         {{localize (zhConcat "ZWEI.rolls." exploded)}}{{#if (gte explodedCount 2)}}(x{{explodedCount}}){{/if}}

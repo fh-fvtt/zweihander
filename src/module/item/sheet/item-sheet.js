@@ -129,8 +129,7 @@ export default class ZweihanderItemSheet extends HandlebarsApplicationMixin(Item
       sheetData.bonusAdvancesMultiSelect = CONFIG.ZWEI.primaryAttributeBonuses.map((pab) => ({
         key: '[' + pab + ']',
         label:
-          game.i18n.localize(`ZWEI.actor.primary.${ZweihanderUtils.primaryAttributeMapping[pab.slice(0, 1)]}`) +
-          ' Bonus',
+          game.i18n.localize(`ZWEI.actor.primarybonuses.${ZweihanderUtils.primaryAttributeMapping[pab.slice(0, 1)]}`),
       }));
 
       sheetData.choices.archetypes = ZweihanderUtils.selectedChoice(
