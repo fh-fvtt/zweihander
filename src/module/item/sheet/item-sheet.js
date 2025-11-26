@@ -146,19 +146,19 @@ export default class ZweihanderItemSheet extends HandlebarsApplicationMixin(Item
       const linkedItemDataList = [
         {
           property: 'professionalTrait',
-          label: 'Professional Trait',
+          label: game.i18n.localize('ZWEI.actor.items.professionaltrait'),
           type: 'trait',
           pack: game.settings.get('zweihander', 'traitPack'), // @todo: add support for FoF
         },
         {
           property: 'specialTrait',
-          label: 'Special Trait',
+          label: game.i18n.localize('ZWEI.actor.items.specialtrait'),
           type: 'trait',
           pack: game.settings.get('zweihander', 'traitPack'),
         },
         {
           property: 'drawback',
-          label: 'Drawback',
+          label: game.i18n.localize('ZWEI.actor.items.drawback'),
           type: 'drawback',
           pack: game.settings.get('zweihander', 'drawbackPack'),
         },
