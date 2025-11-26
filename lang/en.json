@@ -586,6 +586,7 @@
       "zweithemehint": "Choose a theme for your Zweihander sheets",
       "configlanguages": "Configure Languages",
       "configactor": "Configure Actor",
+	  "togglecompact": "Toggle Compact Mode",
       "ftsettings": {
         "title": "Fortune Tracker",
         "behavior": "Behavior",
@@ -674,7 +675,9 @@
         "name": "Language Name",
         "literate": "Literate",
         "literatesymbol": "ᴸ",
-        "add": "Add Language"
+        "add": "Add Language",
+        "delete": "Delete Language",
+		"readwrite": "Read and Write"
       },
       "othersettings": {
         "governingmagickskill": "Governing Magick Skill"
@@ -687,7 +690,9 @@
       }
     },
     "chatskill": {
-      "rolldetails": "Roll Details",
+      "skilltestdetails": "Skill Test Details",
+      "weapondetails": "Weapon Details",
+      "spelldetails": "Spell Details",
       "itemdetails": "Show Item Details",
       "showqualities": "Show Qualities",
       "skillrank": "Skill Rank Bonus",

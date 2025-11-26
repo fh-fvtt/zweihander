@@ -146,7 +146,7 @@ export const registerHandlebarHelpers = async function () {
 
   $$('zhSkillTestTooltip', function (data) {
     let tooltip = `
-        <span class="title">${game.i18n.localize('ZWEI.chatskill.rolldetails')}</span>
+        <span class="title">${game.i18n.localize('ZWEI.chatskill.skilltestdetails')}</span>
         <table>
           <tr>
             <td class="descriptor">${data.primaryAttribute}:</td>
@@ -195,7 +195,7 @@ export const registerHandlebarHelpers = async function () {
       `;
 
     if (data.weaponTest)
-      tooltip += `<span class="title">Weapon Details</span>
+      tooltip += `<span class="title">${game.i18n.localize('ZWEI.chatskill.weapondetails')}</span>
           <table>
             <tr>
               <td class="descriptor">${game.i18n.localize('ZWEI.actor.items.type')}:</td>
@@ -217,7 +217,7 @@ export const registerHandlebarHelpers = async function () {
 
     if (data.spellTest) {
       console.log('THIS', this);
-      tooltip += `<span class="title">Spell Details</span>
+      tooltip += `<span class="title">${game.i18n.localize('ZWEI.chatskill.spelldetails')}</span>
           <table>
             <tr>
               <td class="descriptor">${game.i18n.localize('ZWEI.actor.items.tradition')}:</td>

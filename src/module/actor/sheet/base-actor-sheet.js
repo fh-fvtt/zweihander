@@ -226,7 +226,7 @@ export default class ZweihanderBaseActorSheet extends HandlebarsApplicationMixin
       ZweihanderUtils.constructHTMLButton({
         label: '',
         classes: ['header-control', 'icon', 'fa-solid', `fa-${defaultToCompact ? 'expand' : 'compress'}`],
-        dataset: { action: 'toggleCompactMode', tooltip: 'Toggle Compact Mode' },
+        dataset: { action: 'toggleCompactMode', tooltip: game.i18n.localize('ZWEI.settings.togglecompact') },
       }),
     ];
 

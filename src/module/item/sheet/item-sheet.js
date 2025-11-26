@@ -396,7 +396,8 @@ export default class ZweihanderItemSheet extends HandlebarsApplicationMixin(Item
       const toFetch = {
         name: linkedItem?.name,
         _id: linkedItem?._id,
-        label: type.capitalize(),
+        // label: type.capitalize(),
+        label: game.i18n.localize('TYPES.Item.' + type),
         type: type,
         pack: game.settings.get('zweihander', 'talentPack'),
         property: `${type}.${idx}`,
