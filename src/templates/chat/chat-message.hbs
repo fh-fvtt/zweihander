@@ -4,7 +4,8 @@
       <img class="chat-profile-image" src="{{zhSpeakerPic message}}" />
       <div class="flexcol">
         <h4 class="message-sender">{{alias}}</h4>
-        <h5 class="message-sender-user">{{!--{{localize 'CHAT.From'}}: --}}{{user.name}}</h5>
+        {{log this}}
+        <h5 class="message-sender-user">{{!--{{localize 'CHAT.From'}}: --}}{{author.name}}</h5>
         {{#if isWhisper}}
         <h5 class="message-sender-user-target">{{localize 'CHAT.To'}}: {{whisperTo}}</h5>
         {{/if}}

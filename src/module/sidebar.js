@@ -36,7 +36,7 @@ export function renderSettings(html) {
     <h4 class="divider">${game.i18n.localize('WORLD.FIELDS.system.label')}</h4>
     <div class="system-badge flexcol">
       <img src="systems/zweihander/assets/zweihander-logo.webp" data-tooltip="Zweihänder" alt="Zweihänder">
-      <span class="system-info">${game.settings.get('zweihander', 'systemMigrationVersion')}</span>
+      <span class="system-info">${game.system.version}</span>
     </div>
   `;
   section.append(_generateLinks());
