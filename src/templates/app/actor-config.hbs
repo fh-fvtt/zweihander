@@ -2,7 +2,7 @@
   {{#if (eq actorType "character")}}
     <fieldset>
       <legend>{{localize "ZWEI.settings.acsettings.primarytitle"}}</legend>
-      <p class="hint">{{localize "ZWEI.settings.acsettings.primarynotes"}}</p>
+      <p class="hint">{{localize "ZWEI.settings.acsettings.primarytitlehint"}}</p>
 
       {{#each governingAttributes as |gov|}}
         <div class="form-group">
@@ -16,7 +16,7 @@
 
     <fieldset>
       <legend>{{localize "ZWEI.settings.acsettings.globaltitle"}}</legend>
-      <p class="hint">{{{localize "ZWEI.settings.acsettings.globalnotes"}}}</p>
+      <p class="hint">{{{localize "ZWEI.settings.acsettings.globaltitlehint"}}}</p>
 
       {{#each globalModifiers as |mod|}}
         <div class="form-group">
@@ -28,7 +28,7 @@
 
     <fieldset>
       <legend>{{localize "ZWEI.settings.acsettings.skillstitle"}}</legend>
-      <p class="hint">{{localize "ZWEI.settings.acsettings.skillsnotes"}}</p>
+      <p class="hint">{{localize "ZWEI.settings.acsettings.skillstitlehint"}}</p>
       <div class="form-group">
         <label>{{localize "ZWEI.settings.acsettings.skillsparry"}}</label>
         <input type="text" name="flags.parrySkills" value="{{parrySkills}}" />
@@ -42,7 +42,7 @@
 
     <fieldset>
       <legend>{{localize "ZWEI.settings.acsettings.periltitle"}}</legend>
-      <p class="hint">{{localize "ZWEI.settings.acsettings.periltitle"}}</p>
+      <p class="hint">{{localize "ZWEI.settings.acsettings.periltitlehint"}}</p>
       <div class="form-group">
         <label>{{localize "ZWEI.settings.acsettings.peril1"}}</label>
         <input
@@ -95,7 +95,7 @@
 
     <fieldset>
       <legend>{{localize "ZWEI.settings.acsettings.octitle"}}</legend>
-      <p class="hint">{{localize "ZWEI.settings.acsettings.ocnotes"}}</p>
+      <p class="hint">{{localize "ZWEI.settings.acsettings.octitlehint"}}</p>
       <div class="form-group">
         <label>{{localize "ZWEI.settings.acsettings.occhaosrank"}}</label>
         <input type="number" name="flags.permanentChaosRanks" value="{{flags.permanentChaosRanks}}" />
@@ -112,7 +112,7 @@
       <div class="form-group">
         <label>{{localize "ZWEI.settings.acsettings.bglabel"}}</label>
         <file-picker name="flags.headerBackground" type="image">{{flags.headerBackground}}</file-picker>
-        <p class="hint">{{localize "ZWEI.settings.acsettings.bgnotes"}}</p>
+        <p class="hint">{{localize "ZWEI.settings.acsettings.bgtitlehint"}}</p>
       </div>
     </fieldset>
   {{/if}}
