@@ -360,7 +360,11 @@ export const registerCompendiumSettings = function () {
     name: 'ZWEI.settings.charactercreationlist',
     hint: 'ZWEI.settings.charactercreationlisthint',
     scope: 'world',
-    type: String,
+    type: new foundry.data.fields.StringField({
+      choices: getCompendiumPacksList(),
+      blank: false,
+      required: true,
+    }),
     default: 'zweihander.zh-charactercreation-tables',
     config: true,
     requiresReload: true,
