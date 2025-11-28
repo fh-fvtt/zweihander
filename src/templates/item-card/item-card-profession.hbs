@@ -8,26 +8,25 @@
   <div class="subtitle">{{localize (zhConcat "TYPES.Item." type)}}</div>
 </div>
 <div class="pill-container">
-  <span class="pill pill-fortune" data-tooltip-direction="LEFT" data-tooltip="{{system.professionalTrait.name}}">P.
-    Trait:
+  <span class="pill pill-fortune" data-tooltip-direction="LEFT" data-tooltip="{{system.professionalTrait.name}}">{{localize "ZWEI.actor.items.professionaltraitabbr"}}:
     {{system.professionalTrait.name}}</span>
   {{#if system.specialTrait.name}}<span
       class="pill pill-fortune"
       data-tooltip-direction="LEFT"
       data-tooltip="{{system.specialTrait.name}}"
-    >Sp. Trait:
+    >{{localize "ZWEI.actor.items.specialtraitabbr"}}:
       {{system.specialTrait.name}}</span>{{/if}}
   {{#if system.drawback.name}}<span
       class="pill pill-misfortune"
       data-tooltip-direction="LEFT"
       data-tooltip="{{system.drawback.name}}"
-    >Drawback:
+    >{{localize "TYPES.Item.drawback"}}:
       {{system.drawback.name}}</span>{{/if}}
   {{#each system.talents}}<span
       class="pill pill-quality quality-link"
       data-tooltip-direction="LEFT"
       data-tooltip="{{name}}"
-    >Talent: {{name}}</span>{{/each}}
+    >{{localize "TYPES.Item.talent"}}: {{name}}</span>{{/each}}
 </div>
 <div class="item-card-effect">
   <div><span class="effect-label">{{localize "ZWEI.actor.items.archetype"}}: </span>

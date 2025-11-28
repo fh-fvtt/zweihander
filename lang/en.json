@@ -224,7 +224,9 @@
           "formula": "Formula"
         },
         "professionaltrait": "Professional Trait",
+        "professionaltraitabbr": "P. Trait",
         "specialtrait": "Special Trait",
+        "specialtraitabbr": "Sp. Trait",
         "drawback": "Drawback",
         "expertreq": "Expert Profession Requirements",
         "skillranks": "Skill Ranks",
@@ -530,7 +532,7 @@
       "trackrewardhint": "Enable or disable the automatic tracking of Reward Point expenditure.",
       "injuryprompt": "Automatic Injury Prompt",
       "injuryprompthint": "Automatically prompt user to roll for Injury when falling on the Damage Condition Track.",
-      "injurytables": "Injury List",
+      "injurytables": "Injury RollTables",
       "injurytableshint": "ID of the compendium pack to use for the list of available Injury tables. Only relevant if Automatic Injury Prompt is enabled.",
       "compactmode": "Open in Compact Mode",
       "compactmodehint": "Creature & NPC Sheets will be opened in Compact Mode by default",
@@ -570,7 +572,7 @@
       "diseaselisthint": "ID of the compendium pack to use for the list of available Diseases.",
       "ancestraltraitlist": "Ancestral Trait List",
       "ancestraltraitlisthint": "ID of the compendium pack to use for the list of available Ancestral Traits.",
-      "charactercreationlist": "Ancestral Trait Randomizer List",
+      "charactercreationlist": "Ancestral Trait RollTables",
       "charactercreationlisthint": "ID of the compendium pack to use for the list of available Ancestral Trait tables. Fallback setting; only relevant if no Ancestral Trait tables exist in the World.",
       "creaturetraitlist": "Creature Trait List",
       "creaturetraitlisthint": "ID of the compendium pack to use for the list of available Creature Traits.",
@@ -583,6 +585,8 @@
       "zweitheme": "Zweihander Sheet Theme",
       "zweithemehint": "Choose a theme for your Zweihander sheets",
       "configlanguages": "Configure Languages",
+      "configactor": "Configure Actor",
+	  "togglecompact": "Toggle Compact Mode",
       "ftsettings": {
         "title": "Fortune Tracker",
         "behavior": "Behavior",
@@ -612,6 +616,7 @@
       "acsettings": {
         "subtitle": "Configure and fine-tune this Actor's behavior and underlying mechanics.",
         "primarytitle": "Governing Primary Attributes",
+        "primarytitlehint": "Select the Primary Attributes off of which the following Secondary Attributes are calculated.",
         "primarydth": "Damage Threshold",
         "primarydthhint": "Select the Primary Attribute off of which the Damage Threshold is calculated.",
         "primarypth": "Peril Threshold",
@@ -621,7 +626,7 @@
         "primarymov": "Movement",
         "primarymovhint": "Select the Primary Attribute off of which Movement is calculated.",
         "globaltitle": "Global Modifiers",
-        "globalnotes": "The below fields <strong>SHOULD NOT</strong> be used for temporary modifiers, such as those gained from Spells or Trappings. The intended use case is for <em>permanent</em> modifiers, such as the Bonepicker's Swagger Wagon Professional Trait.",
+        "globaltitlehint": "The below fields <strong>SHOULD NOT</strong> be used for temporary modifiers, such as those gained from Spells or Trappings. The intended use case is for <em>permanent</em> modifiers, such as the Bonepicker's Swagger Wagon Professional Trait.",
         "globalencumbrance": "Encumbrance Modifier",
         "globalencumbrancehint": "Set a global Encumbrance modifier.",
         "globalinitiative": "Initiative Modifier",
@@ -629,11 +634,13 @@
         "globalmovement": "Movement Modifier",
         "globalmovementhint": "Set a global Movement modifier.",
         "skillstitle": "Governing Skills",
+        "skillstitlehint": "Select the skills that can be used when rolling Parry or Dodge.",
         "skillsparry": "Parry Skills",
         "skillsparryhint": "Set the skills that can be used when rolling Parry.",
         "skillsdodge": "Dodge Skills",
         "skillsdodgehint": "Set the skills that can be used when rolling Dodge.",
         "periltitle": "Peril Threshold",
+        "periltitlehint": "Check the corresponding box if Actor doesn't suffer from the ill-effects of Peril at that step.",
         "peril1": "Ignore 'Ignore 1 Skill Rank'",
         "peril1hint": "Check this box if Actor doesn't suffer from the ill-effects of Peril at this step.",
         "peril2": "Ignore 'Ignore 2 Skill Ranks'",
@@ -648,6 +655,7 @@
         "magickskill": "Governing Magick Skills",
         "magickskillhint": "Set the skills that can be used when rolling Spells.",
         "octitle": "Order & Chaos",
+        "octitlehint": "Set the number of permanent Order & Chaos Ranks this Actor has.",
         "occhaosrank": "Permanent Chaos Ranks",
         "occhaosrankhint": "The number of permanent Chaos Ranks this Actor has.",
         "ocorderrank": "Permanent Order Ranks",
@@ -657,14 +665,19 @@
         "soundparry": "Parry SFX",
         "soundgrunt": "Grunt SFX",
         "soundplaygrunt": "Play Grunt Sound",
-        "soundplaygrunthint": "Check this box to play a grunt SFX when failing to Dodge or Parry an attack."
+        "soundplaygrunthint": "Check this box to play a grunt SFX when failing to Dodge or Parry an attack.",
+		"bgtitle": "Header Background",
+		"bglabel": "Background Image Path",
+		"bgtitlehint": "Set the default header background image for this Actor. Leave value empty for no background."
       },
       "lasettings": {
         "title": "Languages",
         "name": "Language Name",
         "literate": "Literate",
         "literatesymbol": "ᴸ",
-        "add": "Add Language"
+        "add": "Add Language",
+        "delete": "Delete Language",
+		"readwrite": "Read and Write"
       },
       "othersettings": {
         "governingmagickskill": "Governing Magick Skill"
@@ -677,7 +690,9 @@
       }
     },
     "chatskill": {
-      "rolldetails": "Show Roll Details",
+      "skilltestdetails": "Skill Test Details",
+      "weapondetails": "Weapon Details",
+      "spelldetails": "Spell Details",
       "itemdetails": "Show Item Details",
       "showqualities": "Show Qualities",
       "skillrank": "Skill Rank Bonus",

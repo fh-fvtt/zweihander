@@ -48,7 +48,8 @@ export function abbreviations2DataPath(str, includeFlavor = true) {
   for (let key in primaryAttributeMapping) {
     const re = new RegExp(`\\[${key}B\\]\\s?(\\s*)`, 'g');
     const dataPath = `${b(primaryAttributeMapping[key])}`;
-    const flavor = includeFlavor ? `[${c(primaryAttributeMapping[key])} Bonus]` : '';
+    // const flavor = includeFlavor ? `[${c(primaryAttributeMapping[key])} Bonuss]` : '';
+    const flavor = includeFlavor ? `[${game.i18n.localize("ZWEI.actor.primarybonuses." + primaryAttributeMapping[key])}]` : '';
     str = str?.replaceAll(re, `${dataPath}${flavor} $1`);
   }
   return str;

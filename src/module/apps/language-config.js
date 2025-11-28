@@ -40,7 +40,7 @@ export default class ZweihanderLanguageConfig extends HandlebarsApplicationMixin
   static async #addLanguage() {
     const actor = this.options.document;
     const l = actor.system.languages;
-    l.push({ name: 'New Language', isLiterate: false });
+    l.push({ name: game.i18n.localize('ZWEI.settings.lasettings.name'), isLiterate: false });
     await actor.update({ 'system.languages': l });
     await this.render();
   }

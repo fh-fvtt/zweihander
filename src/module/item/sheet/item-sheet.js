@@ -129,8 +129,7 @@ export default class ZweihanderItemSheet extends HandlebarsApplicationMixin(Item
       sheetData.bonusAdvancesMultiSelect = CONFIG.ZWEI.primaryAttributeBonuses.map((pab) => ({
         key: '[' + pab + ']',
         label:
-          game.i18n.localize(`ZWEI.actor.primary.${ZweihanderUtils.primaryAttributeMapping[pab.slice(0, 1)]}`) +
-          ' Bonus',
+          game.i18n.localize(`ZWEI.actor.primarybonuses.${ZweihanderUtils.primaryAttributeMapping[pab.slice(0, 1)]}`),
       }));
 
       sheetData.choices.archetypes = ZweihanderUtils.selectedChoice(
@@ -147,19 +146,19 @@ export default class ZweihanderItemSheet extends HandlebarsApplicationMixin(Item
       const linkedItemDataList = [
         {
           property: 'professionalTrait',
-          label: 'Professional Trait',
+          label: game.i18n.localize('ZWEI.actor.items.professionaltrait'),
           type: 'trait',
           pack: game.settings.get('zweihander', 'traitPack'), // @todo: add support for FoF
         },
         {
           property: 'specialTrait',
-          label: 'Special Trait',
+          label: game.i18n.localize('ZWEI.actor.items.specialtrait'),
           type: 'trait',
           pack: game.settings.get('zweihander', 'traitPack'),
         },
         {
           property: 'drawback',
-          label: 'Drawback',
+          label: game.i18n.localize('ZWEI.actor.items.drawback'),
           type: 'drawback',
           pack: game.settings.get('zweihander', 'drawbackPack'),
         },
@@ -397,7 +396,8 @@ export default class ZweihanderItemSheet extends HandlebarsApplicationMixin(Item
       const toFetch = {
         name: linkedItem?.name,
         _id: linkedItem?._id,
-        label: type.capitalize(),
+        // label: type.capitalize(),
+        label: game.i18n.localize('TYPES.Item.' + type),
         type: type,
         pack: game.settings.get('zweihander', 'talentPack'),
         property: `${type}.${idx}`,

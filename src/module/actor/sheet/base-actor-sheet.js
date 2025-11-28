@@ -226,7 +226,7 @@ export default class ZweihanderBaseActorSheet extends HandlebarsApplicationMixin
       ZweihanderUtils.constructHTMLButton({
         label: '',
         classes: ['header-control', 'icon', 'fa-solid', `fa-${defaultToCompact ? 'expand' : 'compress'}`],
-        dataset: { action: 'toggleCompactMode', tooltip: 'Toggle Compact Mode' },
+        dataset: { action: 'toggleCompactMode', tooltip: game.i18n.localize('ZWEI.settings.togglecompact') },
       }),
     ];
 
@@ -758,7 +758,7 @@ export default class ZweihanderBaseActorSheet extends HandlebarsApplicationMixin
 
     if (this.isEditable && (game.user.isGM || this.actor.isOwner)) {
       buttons.splice(0, 0, {
-        label: 'Configure Actor',
+        label: game.i18n.localize('ZWEI.settings.configactor'),
         icon: 'fas fa-user-cog',
         visible: true,
         onClick: () => this.#actorConfig.render(true),
