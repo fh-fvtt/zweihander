@@ -5,7 +5,6 @@
     {{> ($$ "item-card/item-card-weapon") weapon isRoll=true}}
   {{else}}
   <div class="flexcol title-and-subtitle">
-    {{log this}}
     <div class="title">{{#if dodgeOrParryTest}}{{primaryAttribute}}{{else}}{{skill}}{{/if}}</div>
     <div class="subtitle">{{#if dodgeOrParryTest}}{{skill}}{{else}}{{primaryAttribute}}{{/if}}</div>
   </div>
