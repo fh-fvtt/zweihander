@@ -47,6 +47,8 @@ export default class ZweihanderCreature extends ZweihanderBaseActor {
       sa.perilThreshold.value = 3 + pa.willpower.bonus;
       sa.damageThreshold.value = pa.brawn.bonus;
     }
+
+    sa.initiative.current = sa.initiative.value;
   }
 
   getItem(actor, type, name, strict = false) {

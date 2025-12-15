@@ -513,9 +513,7 @@ body.game.vtt.system-zweihander {
     order: 1;
   }
 
-  select,
-  button:not(.inline-control),
-  a.button {
+  select {
     background-color: var(--zh-clr-bg1);
     color: var(--zh-clr-fg0);
   }
@@ -524,8 +522,21 @@ body.game.vtt.system-zweihander {
   a.button {
     --button-focus-outline-color: var(--zh-clr-yellow-faded);
 
+    background-color: var(--zh-clr-bg1);
+    color: var(--zh-clr-fg0);
     border: 1px solid var(--zh-clr-bg4);
     cursor: pointer;
+
+    &.ui-control[aria-pressed='true'] {
+      //--control-active-bg-color: var(--zh-clr-bg0);
+      //--control-active-icon-color: var(--zh-clr-yellow-alt);
+
+      background-color: var(--zh-clr-bg0);
+      color: var(--zh-clr-yellow-alt);
+
+      border-color: var(--zh-clr-yellow-alt);
+      cursor: default;
+    }
     &:hover,
     &:focus {
       box-shadow: none;

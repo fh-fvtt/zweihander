@@ -21,16 +21,14 @@ ZWEI.testTypes = {
 ZWEI.testModes = {
   standard: {
     label: 'Standard',
-    rollMode: CONST.DICE_ROLL_MODES.PUBLIC,
   },
   assisted: {
     label: 'Assisted',
-    rollMode: CONST.DICE_ROLL_MODES.PUBLIC,
   },
   opposed: {
     label: 'Opposed',
-    rollMode: CONST.DICE_ROLL_MODES.PUBLIC,
   },
+  /*
   private: {
     label: 'Private',
     help: 'Visible for GM & you',
@@ -51,6 +49,7 @@ ZWEI.testModes = {
     help: 'Visible for you',
     rollMode: CONST.DICE_ROLL_MODES.SELF,
   },
+  */
 };
 
 ZWEI.alignmentRanks = 9;

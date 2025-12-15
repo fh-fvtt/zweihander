@@ -31,6 +31,12 @@ body.game.vtt.system-zweihander {
       flex-direction: column;
       gap: 0.5rem;
 
+      &:has(h4.outcome-0) {
+        .skill-test-controls {
+          display: none;
+        }
+      }
+
       > div.weapon-content {
         gap: 0.5rem;
       }
@@ -249,10 +255,6 @@ body.game.vtt.system-zweihander {
       background-color: var(--zh-clr-bg2);
       border: none;
       border-radius: 5px;
-
-      &.skill:has(button.skill-test-reroll:disabled) {
-        display: none;
-      }
 
       &.damage:has(button.damage-roll-explode:disabled) {
         display: none;

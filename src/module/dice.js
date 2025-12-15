@@ -241,7 +241,7 @@ export async function rollTest(
     }[testType] ??
     '';
   const speaker = ChatMessage.getSpeaker({ actor });
-  const rollMode = ZWEI.testModes[testConfiguration.testMode].rollMode;
+  const rollMode = game.settings.get('core', 'rollMode'); //ZWEI.testModes[testConfiguration.testMode].rollMode;
   const flags = {
     zweihander: {
       skillTestData: {

@@ -100,9 +100,8 @@ async function renderConfigurationDialog(testType, label, testConfiguration = {}
       let flip = html.flipSelect.value;
       let baseChanceModifier = Number(html.baseChanceModifier.value);
       let testMode = html.skillMode.value;
-      //let useFortune = html.find('[name="useFortune"]').val();
+      // let useFortune = html.find('[name="useFortune"]').val();
       resolve({
-        //useFortune,
         additionalFuryDice,
         additionalChaosDice,
         difficultyRating,

@@ -128,8 +128,9 @@ export default class ZweihanderItemSheet extends HandlebarsApplicationMixin(Item
 
       sheetData.bonusAdvancesMultiSelect = CONFIG.ZWEI.primaryAttributeBonuses.map((pab) => ({
         key: '[' + pab + ']',
-        label:
-          game.i18n.localize(`ZWEI.actor.primarybonuses.${ZweihanderUtils.primaryAttributeMapping[pab.slice(0, 1)]}`),
+        label: game.i18n.localize(
+          `ZWEI.actor.primarybonuses.${ZweihanderUtils.primaryAttributeMapping[pab.slice(0, 1)]}`
+        ),
       }));
 
       sheetData.choices.archetypes = ZweihanderUtils.selectedChoice(
@@ -931,16 +932,8 @@ export default class ZweihanderItemSheet extends HandlebarsApplicationMixin(Item
     const ancestralTraitsTableResult = await ancestralTraitsTable.draw({ roll: diceRoll });
 
     const ancestralTrait = ancestralTraitsTableResult.results[0];
-    const documentCollection = ancestralTrait.documentCollection;
-    const documentId = ancestralTrait.documentId;
-    const pack = ancestralTrait.type === 'pack';
 
-    let ancestralTraitUuid = '';
-    ancestralTraitUuid += pack ? 'Compendium.' : '';
-    ancestralTraitUuid += `${documentCollection}.`;
-    ancestralTraitUuid += pack ? `Item.${documentId}` : documentId;
-
-    await item.update({ ['system.ancestralTrait.uuid']: ancestralTraitUuid });
+    await item.update({ ['system.ancestralTrait.uuid']: ancestralTrait.documentUuid });
   }
 
   _onRequirementsControl(event) {
@@ -950,19 +943,24 @@ export default class ZweihanderItemSheet extends HandlebarsApplicationMixin(Item
       case 'add':
         return this._addRequirementsChange();
       case 'delete':
-        button.closest('.requirements-change').remove();
-        return this.submit({ preventClose: true }).then(() => this.render());
+        return this._deleteRequirementsChange(event);
     }
   }
 
   async _addRequirementsChange() {
-    const idx = this.document.system.expert.requirements.skillRanks.length;
-    return this.submit({
-      preventClose: true,
-      updateData: {
-        [`system.expert.requirements.skillRanks.${idx}`]: { key: '', value: 0 },
-      },
-    });
+    const submitData = this._processFormData(null, this.form, new FormDataExtended(this.form));
+    const skillRanks = Object.values(submitData.system.expert.requirements.skillRanks ?? {});
+    skillRanks.push({ key: '', value: 0 });
+    return this.submit({ updateData: { ['system.expert.requirements.skillRanks']: skillRanks } });
+  }
+
+  async _deleteRequirementsChange(event) {
+    const submitData = this._processFormData(null, this.form, new FormDataExtended(this.form));
+    const skillRanks = Object.values(submitData.system.expert.requirements.skillRanks);
+    const row = event.target.closest('li');
+    const index = Number(row.dataset.index) || 0;
+    skillRanks.splice(index, 1);
+    return this.submit({ updateData: { ['system.expert.requirements.skillRanks']: skillRanks } });
   }
 
   _onAncestralModifiersControl(event) {
@@ -972,18 +970,23 @@ export default class ZweihanderItemSheet extends HandlebarsApplicationMixin(Item
       case 'add':
         return this._addAncestralModifiersChange();
       case 'delete':
-        button.closest('.ancestral-modifiers-change').remove();
-        return this.submit({ preventClose: true }).then(() => this.render());
+        return this._deleteAncestralModifersChange(event);
     }
   }
 
   async _addAncestralModifiersChange() {
-    const idx = this.document.system.ancestralModifiers.value.length;
-    return this.submit({
-      preventClose: true,
-      updateData: {
-        [`system.ancestralModifiers.value.${idx}`]: { key: '', value: 0 },
-      },
-    });
+    const submitData = this._processFormData(null, this.form, new FormDataExtended(this.form));
+    const ancestralModifiers = Object.values(submitData.system.ancestralModifiers?.value ?? {});
+    ancestralModifiers.push({ key: '', value: 0 });
+    return this.submit({ updateData: { ['system.ancestralModifiers.value']: ancestralModifiers } });
+  }
+
+  async _deleteAncestralModifersChange(event) {
+    const submitData = this._processFormData(null, this.form, new FormDataExtended(this.form));
+    const ancestralModifiers = Object.values(submitData.system.ancestralModifiers.value);
+    const row = event.target.closest('li');
+    const index = Number(row.dataset.index) || 0;
+    ancestralModifiers.splice(index, 1);
+    return this.submit({ updateData: { ['system.ancestralModifiers.value']: ancestralModifiers } });
   }
 }
