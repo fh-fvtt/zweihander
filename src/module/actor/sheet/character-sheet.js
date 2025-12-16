@@ -109,6 +109,11 @@ export default class ZweihanderCharacterSheet extends ZweihanderBaseActorSheet {
   async _prepareContext(options) {
     const sheetData = await super._prepareContext(options);
 
+    sheetData.html = {
+      description: await ZweihanderUtils.enrichLocalized(sheetData.document.system.description),
+      notes: await ZweihanderUtils.enrichLocalized(sheetData.document.system.notes),
+    };
+
     // get actor config
     sheetData.actorConfig = ZweihanderActorConfig.getConfig(this.actor);
 
@@ -240,7 +245,7 @@ export default class ZweihanderCharacterSheet extends ZweihanderBaseActorSheet {
       },
     ];
 
-    console.log('ACTOR CONTEXT:', sheetData);
+    // console.log('ACTOR CONTEXT:', sheetData);
 
     return sheetData;
   }

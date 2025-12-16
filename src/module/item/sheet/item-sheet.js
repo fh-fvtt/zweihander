@@ -989,4 +989,27 @@ export default class ZweihanderItemSheet extends HandlebarsApplicationMixin(Item
     ancestralModifiers.splice(index, 1);
     return this.submit({ updateData: { ['system.ancestralModifiers.value']: ancestralModifiers } });
   }
+
+  // @todo: this can hopefully be deleted after DataModels are implemented
+  _prepareSubmitData(event, form, formData, updateData) {
+    const submitData = super._prepareSubmitData(event, form, formData, updateData);
+
+    const itemType = this.item.type;
+
+    if (itemType === 'ancestry') {
+      if (submitData?.system?.ancestralModifiers?.value !== undefined) {
+        submitData.system.ancestralModifiers.value = Array.from(
+          Object.values(submitData.system.ancestralModifiers.value || {})
+        );
+      }
+    } else if (itemType === 'profession') {
+      if (submitData?.system?.expert?.requirements?.skillRanks !== undefined) {
+        submitData.system.expert.requirements.skillRanks = Array.from(
+          Object.values(submitData.system.expert.requirements.skillRanks || {})
+        );
+      }
+    }
+
+    return submitData;
+  }
 }
