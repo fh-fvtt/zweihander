@@ -378,6 +378,19 @@ export default class ZweihanderBaseActorSheet extends HandlebarsApplicationMixin
       const i = $(ev.currentTarget).parents('.item');
       const item = this.actor.items.get(i.data('itemId'));
       const type = game.i18n.localize(CONFIG.Item.typeLabels[item.type]);
+
+      // prevent deletion of Professions out of order
+      if (item.type === 'profession') {
+        const currentTier = item.parent.items.filter((i) => i.type === 'profession').length;
+        const tiersInversed = ZweihanderUtils.getLocalizedTierMapping();
+        const itemTier = tiersInversed[item.system.tier];
+
+        if (itemTier < currentTier) {
+          ui.notifications.error(game.i18n.format('ZWEI.othermessages.errortierdelete', { name: item.name }));
+          return;
+        }
+      }
+
       await DialogV2.confirm({
         window: { title: game.i18n.format('ZWEI.othermessages.deleteembedded', { type: type, name: item.name }) },
         content: game.i18n.format('ZWEI.othermessages.suretype', { type: type }),

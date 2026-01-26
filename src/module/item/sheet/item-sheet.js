@@ -95,6 +95,7 @@ export default class ZweihanderItemSheet extends HandlebarsApplicationMixin(Item
     sheetData.html = {
       rules: await ZweihanderUtils.processRules(sheetData.document.system),
       description: await ZweihanderUtils.enrichLocalized(sheetData.document.system.description),
+      notes: await ZweihanderUtils.enrichLocalized(sheetData.document.system.notes),
     };
 
     if (sheetData.type === 'skill') {

@@ -289,7 +289,7 @@ export async function rollWeaponDamage(actorId, testConfiguration) {
     rawFormula = damageData.formula.value.replace('[#]', additionalFuryDice || 0);
   } else {
     const attributeBonus = `${damageData.attributeBonus}`;
-    const dice = `${1 + (additionalFuryDice || 0)}${damageData.die}`;
+    const dice = `${damageData.number + (additionalFuryDice || 0)}${damageData.die}`;
     const explodes = furyData.value;
     const explodesOn = `${explodes ? 'x' + furyData.explodesOn.join('&') : ''}`;
     const hasBonus = weapon.system.damage.bonus != 0;
