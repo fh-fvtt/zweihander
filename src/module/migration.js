@@ -468,7 +468,7 @@ export const migrateWorldSafe = async () => {
   const COMPATIBLE_MIGRATION_VERSION = '5.4.1';
   const totalDocuments = game.actors.size + game.scenes.size + game.items.size;
   if (!currentVersion && totalDocuments === 0)
-    return game.settings.set('zweihander', 'systemMigrationVersion', game.system.version);
+    return await game.settings.set('zweihander', 'systemMigrationVersion', game.system.version);
   const needsMigration = !currentVersion || isNewerVersion(NEEDS_MIGRATION_VERSION, currentVersion);
 
   console.log(

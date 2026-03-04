@@ -1,15 +1,8 @@
-import { sendAnalytics } from './analytics';
 import * as ZweihanderDice from './dice';
 import * as ZweihanderUtils from './utils';
 
 export function addGlobalChatListeners(html) {
-  /*
-  html = html instanceof jQuery ? html : $(html); // @todo: jQuery refactor
-
-  html.on('click', '.zh-expandable', (event) => {
-    event.currentTarget.classList.toggle('zh-collapsed');
-  });
-  */
+  // ...
 }
 
 export function addLocalChatListeners(message, html, data) {
@@ -30,40 +23,6 @@ export function addLocalChatListeners(message, html, data) {
 function enableChatButtons(html, flags, message, data) {
   html = html instanceof jQuery ? html : $(html); // @todo: jQuery refactor
 
-  if (flags?.analytics && game.settings.get('zweihander', 'systemId') === '') {
-    html.find('.analytics-agree').prop('disabled', false);
-    html.find('.analytics-decline').prop('disabled', false);
-    $(html).on('click', '.analytics-agree', (event) => {
-      game.settings.set('zweihander', 'systemId', ZweihanderUtils.uuidv4());
-      ChatMessage.create({
-        speaker: ChatMessage.getSpeaker({ alias: 'F&H Development' }),
-        flags: {
-          zweihander: {
-            img: 'systems/zweihander/assets/icons/informer.svg',
-            analytics: {},
-          },
-        },
-        whisper: [game.user.id],
-        content: game.i18n.localize('ZWEI.othermessages.thankyou'),
-      });
-      sendAnalytics();
-    });
-    $(html).on('click', '.analytics-decline', (event) => {
-      game.settings.set('zweihander', 'systemId', 'no-analytics');
-      message.update({ 'flags.zweihander.analytics.answered': true });
-      ChatMessage.create({
-        speaker: ChatMessage.getSpeaker({ alias: 'F&H Development' }),
-        flags: {
-          zweihander: {
-            img: 'systems/zweihander/assets/icons/informer.svg',
-            analytics: {},
-          },
-        },
-        whisper: [game.user.id],
-        content: game.i18n.localize('ZWEI.othermessages.wontask'),
-      });
-    });
-  }
   const skillTestData = flags?.skillTestData;
   if (skillTestData) {
     const { outcome, actorId, skillItemId, testType, testConfiguration } = skillTestData;

@@ -76,19 +76,11 @@ Hooks.once('ready', function () {
       await game.messages.get(messageId).update(diffData);
     });
   });
-  // game.actors.getName('Demon Archer')?.sheet?.render?.(true);
+
   // Monkey-Patch Search Filter
   const cleanQuery = SearchFilter.cleanQuery;
   SearchFilter.cleanQuery = (x) => ZweihanderUtils.removeDiacritics(cleanQuery(x));
-  // disable analytics temporarily until I get the chance to update my SSL certificate
-  // triggerAnalytics();
-  //..
-  const currencySettings = game.settings.get('zweihander', 'currencySettings');
-  // migration, remove this after a while
-  if (currencySettings[0].abbreviation === 'gc' && currencySettings[0].equivalentOfLower === 10) {
-    currencySettings[0].equivalentOfLower = 20;
-    game.settings.set('zweihander', 'currencySettings', currencySettings);
-  }
+
   // patch die class
   patchDie();
   console.log(`systems/zweihander/assets/${game.settings.get('zweihander', 'gameSystem')}-logo.webp`);

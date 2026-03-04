@@ -179,13 +179,14 @@ export const registerSystemSettings = function () {
       fortunePath: '/systems/zweihander/assets/fortune-life.webp',
       misfortunePath: '/systems/zweihander/assets/fortune-death.webp',
     },
+    requiresReload: true,
   });
 
   game.settings.registerMenu('zweihander', 'fortuneTrackerSettingsMenu', {
     name: 'ZWEI.settings.fortunetracker',
-    label: 'ZWEI.settings.fortunetracker', // The text label used in the button
+    label: 'ZWEI.settings.fortunetrackerbutton', // The text label used in the button
     hint: 'ZWEI.settings.fortunetrackerhint',
-    icon: 'ra ra-scroll-unfurled', // A Font Awesome icon used in the submenu button
+    icon: 'ra ra-clover', // A Font Awesome icon used in the submenu button
     type: FortuneTrackerSettings, // A FormApplication subclass
     restricted: true, // Restrict this submenu to gamemaster only?
   });
@@ -218,9 +219,9 @@ export const registerSystemSettings = function () {
 
   game.settings.registerMenu('zweihander', 'currencySettingsMenu', {
     name: 'ZWEI.settings.currency',
-    label: 'ZWEI.settings.currency', // The text label used in the button
+    label: 'ZWEI.settings.currencybutton', // The text label used in the button
     hint: 'ZWEI.settings.currencyhint',
-    icon: 'fas fa-coins', // A Font Awesome icon used in the submenu button
+    icon: 'fa-solid fa-piggy-bank', // A Font Awesome icon used in the submenu button
     type: CurrencySettings, // A FormApplication subclass
     restricted: true, // Restrict this submenu to gamemaster only?
   });

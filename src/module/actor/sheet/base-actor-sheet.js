@@ -113,6 +113,9 @@ export default class ZweihanderBaseActorSheet extends HandlebarsApplicationMixin
         if (item.system.description) {
           item.html.description = await ZweihanderUtils.enrichLocalized(item.system.description);
         }
+        if (item.system.notes) {
+          item.html.notes = await ZweihanderUtils.enrichLocalized(item.system.notes);
+        }
         if (item.system.rules) {
           item.html.rules = await ZweihanderUtils.processRules(item.system);
         }

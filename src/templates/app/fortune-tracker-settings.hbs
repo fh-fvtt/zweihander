@@ -1,42 +1,50 @@
-<form autocomplete="off">
-  <section class="form-body">
-    <h3>{{localize "ZWEI.settings.ftsettings.behavior"}}</h3>
-    <div class="form-group">
-      <label>{{localize "ZWEI.settings.ftsettings.removemisfortune"}}</label>
-      <input type="checkbox" name="removeUsedMisfortune" {{#if removeUsedMisfortune}}checked{{/if}} />
-      <p class="notes">{{localize "ZWEI.settings.ftsettings.removemisfortunehint"}}
-      </p>
-    </div>
-    <div class="form-group">
-      <label>{{localize "ZWEI.settings.ftsettings.alertpoint"}}</label>
-      <select name="notifications">
-        {{#each choices.notifications}}
-        <option value="{{value}}" {{selected}}>{{localize (zhConcat "ZWEI.settings.ftsettings." label)}}</option>
-        {{/each}}
-      </select>
-    </div>
-    <h3>{{localize "ZWEI.settings.ftsettings.appearance"}}</h3>
-    <div class="form-group">
-      <label>{{localize "ZWEI.settings.ftsettings.trackersize"}}</label>
-      <select name="size">
-        {{#each choices.size}}
-        <option value="{{value}}" {{selected}}>{{localize (zhConcat "ZWEI.settings.ftsettings." label)}}</option>
-        {{/each}}
-      </select>
-    </div>
-    <div class="form-group">
-      <label>{{localize "ZWEI.settings.ftsettings.fortuneimage"}}</label>
-      <div class="flexrow">
-        <input type="text" name="fortunePath" value="{{fortunePath}}" />
-        {{filePicker target="fortunePath" type="image"}}
+<div class="settings-menu-container">
+  {{#with fortuneTrackerData}}
+  <fieldset>
+    <legend>{{localize "ZWEI.settings.ftsettings.behavior"}}</legend>
+      <div class="form-group">
+        <label>{{localize "ZWEI.settings.ftsettings.removemisfortune"}}</label>
+        <input type="checkbox" name="removeUsedMisfortune" {{#if removeUsedMisfortune}}checked{{/if}} />
+        <p class="hint">{{localize "ZWEI.settings.ftsettings.removemisfortunehint"}}
+        </p>
       </div>
-    </div>
-    <div class="form-group">
-      <label> Token Image{{localize "ZWEI.settings.ftsettings.misfortuneimage"}}</label>
-      <div class="flexrow">
-        <input type="text" name="misfortunePath" value="{{misfortunePath}}" />
-        {{filePicker target="misfortunePath" type="image"}}
+      <div class="form-group">
+        <label>{{localize "ZWEI.settings.ftsettings.alertpoint"}}</label>
+        <select name="notifications">
+          {{#each choices.notifications}}
+          <option value="{{value}}" {{selected}}>{{localize (zhConcat "ZWEI.settings.ftsettings." label)}}</option>
+          {{/each}}
+        </select>
       </div>
-    </div>
-  </section>
-</form>
+  </fieldset>
+  <fieldset>
+    <legend>{{localize "ZWEI.settings.ftsettings.appearance"}}</legend>
+      <div class="form-group">
+        <label>{{localize "ZWEI.settings.ftsettings.trackersize"}}</label>
+        <select name="size">
+          {{#each choices.size}}
+          <option value="{{value}}" {{selected}}>{{localize (zhConcat "ZWEI.settings.ftsettings." label)}}</option>
+          {{/each}}
+        </select>
+      </div>
+      <div class="form-group">
+        <label>{{localize "ZWEI.settings.ftsettings.fortuneimage"}}</label>
+        <file-picker name="fortunePath" type="image">{{fortunePath}}</file-picker>
+      </div>
+            <div class="form-group">
+        <label>{{localize "ZWEI.settings.ftsettings.misfortuneimage"}}</label>
+        <file-picker name="misfortunePath" type="image">{{misfortunePath}}</file-picker>
+      </div>
+  </fieldset>
+  {{/with}}
+
+  <footer class="form-footer">
+    {{#each buttons as |button|}}
+    <button type="{{button.type}}" {{#if button.name}}name="{{button.name}}"{{/if}} class="{{button.cssClass}}"
+            {{#if button.action}}data-action="{{button.action}}"{{/if}} {{#if button.disabled}}disabled{{/if}}>
+        {{#if button.icon}}<i class="{{button.icon}}" inert></i>{{/if}}
+        {{#if button.label}}<span>{{localize button.label}}</span>{{/if}}
+    </button>
+    {{/each}}
+  </footer> 
+</div>

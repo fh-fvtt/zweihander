@@ -1,2 +1,6 @@
-<label>{{localize "ZWEI.actor.items.notes"}}:</label> {{#if flavor.description}}
-              {{{flavor.description}}} {{else}}-{{/if}}
+<label>{{localize "ZWEI.actor.items.notes"}}:</label>
+{{#if item.html.notes}}
+    {{{item.html.notes}}}
+{{else}}
+    -
+{{/if}}

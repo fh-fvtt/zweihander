@@ -1,46 +1,68 @@
-export default class FortuneTrackerSettings extends FormApplication {
-  static get defaultOptions() {
-    return foundry.utils.mergeObject(super.defaultOptions, {
-      template: 'systems/zweihander/src/templates/app/fortune-tracker-settings.hbs',
-      popOut: true,
+const { ApplicationV2, HandlebarsApplicationMixin } = foundry.applications.api;
+const { SettingsConfig } = foundry.applications.settings;
+
+export default class FortuneTrackerSettings extends HandlebarsApplicationMixin(ApplicationV2) {
+  static DEFAULT_OPTIONS = {
+    ...super.DEFAULT_OPTIONS,
+    tag: 'form',
+    id: 'fortuneTrackerSettings',
+    classes: ['zweihander', 'sheet', 'settings-menu'],
+    window: {
       minimizable: true,
       resizable: false,
-      title: "ZWEI.settings.fortunetracker",
-      id: 'fortuneTrackerSettings',
-      classes: ['zweihander'],
+      icon: 'ra ra-clover',
+    },
+    position: {
       width: 600,
-      height: 275,
-      submitOnChange: true,
-      submitOnClose: true,
-      closeOnSubmit: false,
-    });
+      height: 'auto',
+    },
+    form: {
+      handler: FortuneTrackerSettings.#onSubmit,
+      submitOnChange: false,
+    },
+  };
+
+  static PARTS = {
+    main: { template: 'systems/zweihander/src/templates/app/fortune-tracker-settings.hbs' },
+  };
+
+  get title() {
+    return game.i18n.localize('ZWEI.settings.fortunetracker');
   }
 
-  getData() {
-    const fortuneTrackerData = game.settings.get('zweihander', 'fortuneTrackerSettings');
-    fortuneTrackerData.choices = {};
-    fortuneTrackerData.choices.size = [
-      { value: 'compact', label: "compact" },
-      { value: 'normal', label: "normal" },
-      { value: 'big', label: "big" },
-      { value: 'huge', label: "huge" },
+  async _prepareContext(options) {
+    const context = await super._prepareContext(options);
+
+    context.fortuneTrackerData = game.settings.get('zweihander', 'fortuneTrackerSettings');
+    context.fortuneTrackerData.choices = {};
+    context.fortuneTrackerData.choices.size = [
+      { value: 'compact', label: 'compact' },
+      { value: 'normal', label: 'normal' },
+      { value: 'big', label: 'big' },
+      { value: 'huge', label: 'huge' },
     ].map((option) => ({
-      selected: (fortuneTrackerData.size ?? 'normal') === option.value ? 'selected' : '',
+      selected: (context.fortuneTrackerData.size ?? 'normal') === option.value ? 'selected' : '',
       ...option,
     }));
-    fortuneTrackerData.choices.notifications = [
-      { value: 'none', label: "dontalert" },
-      { value: 'notify', label: "postnotifications" },
-      { value: 'chat', label: "postmessages" },
+    context.fortuneTrackerData.choices.notifications = [
+      { value: 'none', label: 'dontalert' },
+      { value: 'notify', label: 'postnotifications' },
+      { value: 'chat', label: 'postmessages' },
     ].map((option) => ({
-      selected: (fortuneTrackerData.notifications ?? 'notify') === option.value ? 'selected' : '',
+      selected: (context.fortuneTrackerData.notifications ?? 'notify') === option.value ? 'selected' : '',
       ...option,
     }));
-    return fortuneTrackerData;
+
+    context.buttons = [{ type: 'submit', icon: 'fa-solid fa-floppy-disk', label: 'EFFECT.Submit' }];
+
+    return context;
   }
 
-  _updateObject(event, formData) {
-    const data = expandObject(formData);
+  static async #onSubmit(event, form, formData) {
+    const data = foundry.utils.expandObject(formData.object);
+
+    await SettingsConfig.reloadConfirm({ world: true });
+
     game.settings.set('zweihander', 'fortuneTrackerSettings', data);
   }
 }

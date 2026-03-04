@@ -5,6 +5,18 @@ All notable changes to this project will be documented in this file.
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).´
 
+## [5.6.4] - 2026-01-26
+
+### Added
+
+- Added a check preventing deletion of Professions of a lower Tier when Professions of a higher Tier exist.
+
+### Fixed
+
+- Fixed Character Notes not displaying correctly on Character sheets.
+- Fixed `Item` Notes not displaying correctly on `Item` sheets.
+- Fixed a bug where number of Fury Dice was defaulting to 1 for Weapon `Item`s.
+
 ## [5.6.3] - 2025-12-16
 
 ### Fixed

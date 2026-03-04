@@ -11,7 +11,7 @@ export default class FortuneTracker extends HandlebarsApplicationMixin(Applicati
           compact: true,
           tokenSize: 25,
           padding: 0,
-          areaSize: 80,
+          areaSize: 26,
         };
       case 'normal':
         return {
@@ -393,7 +393,7 @@ export default class FortuneTracker extends HandlebarsApplicationMixin(Applicati
     if (canvas.ready) canvas.fog.save();
   }
 
-  _onRender(context, options) {
+  async _onRender(context, options) {
     // @todo: refactor jQuery
     const app = $(this.element);
     const html = $(this.element);
