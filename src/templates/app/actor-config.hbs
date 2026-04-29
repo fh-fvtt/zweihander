@@ -117,7 +117,7 @@
     </fieldset>
   {{/if}}
 
-  {{#if (not (eq actorType "character"))}}
+  {{#if (not (or (eq actorType "character") (eq actorType "vehicle")))}}
   <fieldset>
     <legend>{{localize "ZWEI.settings.acsettings.globaltitle"}}</legend>
     <div class="form-group">

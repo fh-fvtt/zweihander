@@ -5,6 +5,36 @@ All notable changes to this project will be documented in this file.
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).´
 
+## [5.7.0] - 2026-04-29
+
+### Added
+
+- Added damage automation for Damage Rolls.
+  - Select a target with 'T' (or multiple targets with Shift + 'T') before clicking the 'Damage' button.
+  - Users who are the target of the attack (or the GM) will be able to click an 'Apply Damage' button.
+  - Click the target pills on a Damage Roll message to ping the relevant target.
+- Added system option to enable or disable currency encumbrance.
+- Added a new Actor Configuration setting to override number of d10s in base Initiative formula. Configurable on all `Actor`s except Vehicle.
+- Added 100 new Doomings for the immersive pause setting (most from Lowborn #1).
+- Added Encumbrance tracking for NPCs.
+- Added multi-`Actor` support for Reaction Rolls.
+  - Select multiple tokens with Shift + Click before clicking 'Dodge' or 'Parry' button.
+- Changed default Initiative formula to include Perception Bonus as a tie-breaker.
+
+### Fixed
+
+- Fixed Limited view not working properly.
+- Fixed Vehicle Size Modifier not being copied when right-clicking Manual Mode.
+- Fixed 'Close' button displaying on Fortune Tracker for players.
+- Fixed lowercase advances when modifying Profession `Item`s.
+- Fixed unsorted advances when modifying Profession `Item`s.
+- Fixed a bug related to purchase state of Bonus Advances when modifying Profession `Item`s.
+- Fixed Qualities not being right-clickable from an `Actor` sheet.
+
+### Misc.
+
+- Removed jQuery dependency from the system. Animations when expanding / collapsing / deleting `Item`s should be smoother.
+
 ## [5.6.4] - 2026-01-26
 
 ### Added
