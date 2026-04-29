@@ -71,11 +71,30 @@ export default class ZweihanderCharacterSheet extends ZweihanderBaseActorSheet {
     super(...args);
   }
 
+  get actor() {
+    return this.document;
+  }
+
+  _initializeApplicationOptions(options) {
+    const initialized = super._initializeApplicationOptions(options);
+
+    const limited = initialized.document.limited;
+
+    if (limited) {
+      initialized.classes.push('limited');
+      initialized.window.resizable = false;
+      initialized.position.height = 'auto';
+    }
+
+    return initialized;
+  }
+
   _configureRenderParts(options) {
     const parts = super._configureRenderParts(options);
 
     if (this.document.limited) {
-      return {};
+      const { header, background } = parts;
+      return { header, background };
     }
 
     const isMagickUser = ZweihanderActorConfig.getValue(this.document, 'isMagickUser');
@@ -93,7 +112,10 @@ export default class ZweihanderCharacterSheet extends ZweihanderBaseActorSheet {
 
     if (group === 'primary') {
       if (this.document.limited) {
-        return {};
+        tabs.background.active = true;
+        tabs.background.cssClass = 'active';
+
+        return { background: tabs.background };
       }
 
       const isMagickUser = ZweihanderActorConfig.getValue(this.document, 'isMagickUser');
@@ -388,27 +410,26 @@ export default class ZweihanderCharacterSheet extends ZweihanderBaseActorSheet {
         }, rgba(0, 0, 0, 0.45)), url('${backgroundPath}')`
       );
 
-      for (const el of Object.values(elements)) el.classList.add(className);
+      for (const el of Object.values(elements)) el?.classList.add(className);
     } else {
-      for (const el of Object.values(elements)) el.classList.remove(className);
+      for (const el of Object.values(elements)) el?.classList.remove(className);
     }
   }
 
   async _onRender(context, options) {
     await super._onRender(context, options);
 
-    const html = $(this.element); // @todo: refactor jQuery
-
+    const html = this.element;
     const sheet = this.element.closest('.zweihander.sheet.character');
 
     this._setBackground(sheet, context.actorConfig.headerBackground);
 
     this._registerDimensionChangeListener(
-      html.find('.skills-container'),
+      html.querySelector('.skills-container'),
       this._getDimensionBreakpointsCallback('innerWidth', [
         {
           at: 275,
-          callback: (toggle) => html.find('.skills-list').toggleClass('two-rows', toggle),
+          callback: (toggle) => html.querySelector('.skills-list').classList.toggle('two-rows', toggle),
         },
       ])
     );
@@ -420,11 +441,11 @@ export default class ZweihanderCharacterSheet extends ZweihanderBaseActorSheet {
     if (!this.isEditable) return;
 
     const updatePurchased = async (event) => {
-      const target = $(event.currentTarget);
-      const field = target.data('purchaseType');
-      const index = target.data('purchaseIndex');
-      const professionElement = target.closest('.individual-description').parents('.item');
-      const professionItem = this.actor.items.get($(professionElement).data('itemId'));
+      const target = event.currentTarget;
+      const field = target.dataset.purchaseType;
+      const index = Number(target.dataset.purchaseIndex);
+      const professionElement = target.closest('.individual-description').closest('.item');
+      const professionItem = this.actor.items.get(professionElement.dataset.itemId);
       const locked = professionItem.system.completed && this.actor.system.tier !== professionItem.system.tier;
       if (locked) {
         ui.notifications.error(
@@ -435,16 +456,17 @@ export default class ZweihanderCharacterSheet extends ZweihanderBaseActorSheet {
       const updated = professionItem.system[field].map((x, i) => (i === index ? { ...x, purchased: !x.purchased } : x));
       await professionItem.update({ [`system.${field}`]: updated });
     };
-    html.find('.purchase-link').click(updatePurchased);
 
-    html.find('.reset-ranks').click(async () => {
+    html.querySelectorAll('.purchase-link').forEach((el) => el.addEventListener('click', updatePurchased));
+
+    html.querySelector('.reset-ranks').addEventListener('click', async () => {
       await this.actor.update({
         'system.alignment.corruption': 0,
       });
     });
 
     // Reset Order and Chaos Ranks
-    html.find('.reset-ranks').contextmenu(async () => {
+    html.querySelector('.reset-ranks').addEventListener('contextmenu', async () => {
       await DialogV2.confirm({
         window: { title: `${this.actor.name}: ` + game.i18n.localize('ZWEI.othermessages.resetranks') },
         content: game.i18n.localize('ZWEI.othermessages.sureranks'),
@@ -461,10 +483,12 @@ export default class ZweihanderCharacterSheet extends ZweihanderBaseActorSheet {
       });
     });
 
-    html.find('.peril-rolls .image-container').click(async (event) => {
-      const perilType = ZweihanderDice.PERIL_ROLL_TYPES[event.currentTarget.dataset.perilType.toUpperCase()];
-      ZweihanderDice.rollPeril(perilType, this.actor);
-    });
+    html.querySelectorAll('.peril-rolls .image-container').forEach((el) =>
+      el.addEventListener('click', async (event) => {
+        const perilType = ZweihanderDice.PERIL_ROLL_TYPES[event.currentTarget.dataset.perilType.toUpperCase()];
+        ZweihanderDice.rollPeril(perilType, this.actor);
+      })
+    );
 
     // Modify numerable value by clicking '+' and '-' buttons on sheet, e.g. quantity, encumbrance
     // const updateNumerable = (i) => async (event) => {
@@ -492,35 +516,45 @@ export default class ZweihanderCharacterSheet extends ZweihanderBaseActorSheet {
     // html.find('.numerable-field-subtract').click(updateNumerable(-1));
     // html.find('.numerable-field-add').click(updateNumerable(1));
 
-    html.find('.focus-indicator').hover(
-      (event) => {
-        const tooltip = $(event.currentTarget).parents('.skill-roll').find('.focus-tooltip').clone();
-        if (!tooltip.length) return;
+    html.querySelectorAll('.focus-indicator').forEach((el) => {
+      el.addEventListener('mouseenter', (event) => {
+        const tooltipSource = event.currentTarget.closest('.skill-roll').querySelector('.focus-tooltip');
+        if (!tooltipSource) return;
 
-        const offset = $(event.currentTarget).offset();
-        offset.top += 25;
-        offset.left -= 125 / 2 - 7;
-        tooltip.addClass('zh-focuses-tooltip-instance');
-        tooltip.offset(offset);
-        $('body').append(tooltip);
-      },
-      (event) => {
-        $('.zh-focuses-tooltip-instance').remove();
-      }
-    );
+        const tooltip = tooltipSource.cloneNode(true);
+        const rect = event.currentTarget.getBoundingClientRect();
+        const top = rect.top + window.scrollY + 25;
+        const left = rect.left + window.scrollX - 125 / 2 + 7;
+
+        tooltip.classList.add('zh-focuses-tooltip-instance');
+        tooltip.style.position = 'absolute';
+        tooltip.style.top = top + 'px';
+        tooltip.style.left = left + 'px';
+        document.body.appendChild(tooltip);
+      });
+
+      el.addEventListener('mouseleave', () => {
+        document.querySelectorAll('.zh-focuses-tooltip-instance').forEach((el) => el.remove());
+      });
+    });
 
     // currency exchange
-    html.find('.exchange-currency').click(async (event) => {
-      const biggerIndex = Number(event.currentTarget.dataset.biggerIndex);
-      const smallerIndex = biggerIndex + 1;
-      await this._exchangeCurrency(biggerIndex, smallerIndex);
-    });
-    html.find('.exchange-currency').contextmenu(async (event) => {
-      event.preventDefault();
-      const biggerIndex = Number(event.currentTarget.dataset.biggerIndex);
-      const smallerIndex = biggerIndex + 1;
-      await this._exchangeCurrency(smallerIndex, biggerIndex);
-    });
+    html.querySelectorAll('.exchange-currency').forEach((el) =>
+      el.addEventListener('click', async (event) => {
+        const biggerIndex = Number(event.currentTarget.dataset.biggerIndex);
+        const smallerIndex = biggerIndex + 1;
+        await this._exchangeCurrency(biggerIndex, smallerIndex);
+      })
+    );
+
+    html.querySelectorAll('.exchange-currency').forEach((el) =>
+      el.addEventListener('contextmenu', async (event) => {
+        event.preventDefault();
+        const biggerIndex = Number(event.currentTarget.dataset.biggerIndex);
+        const smallerIndex = biggerIndex + 1;
+        await this._exchangeCurrency(smallerIndex, biggerIndex);
+      })
+    );
   }
 
   _updateEncumbranceMeter(html) {
@@ -530,28 +564,10 @@ export default class ZweihanderCharacterSheet extends ZweihanderBaseActorSheet {
     let ratio = (currentEncumbrance / totalEncumbrance) * 100;
     if (ratio > 100) {
       ratio = 100;
-      html.find('.encumbrance-bar-container').addClass('encumbrance-overage');
+      html.querySelector('.encumbrance-bar-container').classList.add('encumbrance-overage');
     }
-    html.find('.encumbrance-bar').css('width', ratio + '%');
+    html.querySelector('.encumbrance-bar').style.width = ratio + '%';
   }
-
-  /*
-  async _render(force, options) {
-    if (this.actor.limited) {
-      const classesWithoutDamageTracker = this.constructor.defaultOptions.classes;
-      classesWithoutDamageTracker.splice(classesWithoutDamageTracker.indexOf('damage-tracker'), 1);
-      options.classes = [
-        'limited',
-        ...classesWithoutDamageTracker,
-        ...(options.classes?.length ? options.classes : []),
-      ];
-      options.height = 235;
-      options.width = 650;
-      options.resizable = false;
-    }
-    await super._render(force, options);
-  }
-    */
 
   async _exchangeCurrency(sourceCurrencyIndex, targetCurrencyIndex) {
     const currencies = game.settings.get('zweihander', 'currencySettings');

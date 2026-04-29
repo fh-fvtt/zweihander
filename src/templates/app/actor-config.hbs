@@ -117,6 +117,17 @@
     </fieldset>
   {{/if}}
 
+  {{#if (not (eq actorType "character"))}}
+  <fieldset>
+    <legend>{{localize "ZWEI.settings.acsettings.globaltitle"}}</legend>
+    <div class="form-group">
+      <label>{{globalModifiers.3.label}}</label>
+      <input type="number" name="{{globalModifiers.3.nameAttr}}" value="{{globalModifiers.3.valueAttr}}" />
+      <p class="hint">{{localize "ZWEI.settings.acsettings.globalinitiativeoverridehint"}}</p>
+    </div>
+  </fieldset>
+  {{/if}}
+
   <fieldset>
     <legend>{{localize "ZWEI.settings.acsettings.soundtitle"}}</legend>
     <div class="form-group">

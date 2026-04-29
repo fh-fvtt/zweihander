@@ -555,8 +555,11 @@ body.game.vtt.system-zweihander .zweihander.sheet.creature {
       min-width: 450px;
       min-height: 435px;
     }
-    // max-height: 580px !important;
-    // max-width: 530px !important;
+
+    .encumbrance-bar-container {
+      display: none;
+    }
+
     .window-content > header {
       figure.actor-image {
         display: none;

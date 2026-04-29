@@ -4,7 +4,7 @@
     <div class='key'>{{localize "ZWEI.actor.items.modifier"}}</div>
     <div class='value'>{{localize "ZWEI.actor.items.value"}}</div>
     <div class='ancestral-modifiers-controls'>
-      <a class='ancestral-modifiers-control' data-action='add'><i class='far fa-plus-square'></i></a>
+      <a class='ancestral-modifiers-control' data-action='addAncestralModifierChange'><i class='far fa-plus-square'></i></a>
     </div>
   </header>
   <ol class='ancestral-modifiers-list'>
@@ -19,7 +19,7 @@
           <input type='number' name="system.ancestralModifiers.value.{{i}}.value" value='{{modifier.value}}' />
         </div>
         <div class='ancestral-modifiers-controls'>
-          <a class='ancestral-modifiers-control' data-action='delete'><i class='fas fa-trash-alt'></i></a>
+          <a class='ancestral-modifiers-control' data-action='deleteAncestralModifierChange'><i class='fas fa-trash-alt'></i></a>
         </div>
       </li>
     {{/each}}
@@ -34,6 +34,7 @@
       <button
         type="button"
         class="randomize-trait icon fa-solid fa-shuffle"
+        data-action="randomizeAncestralTrait"
         data-tooltip="{{localize 'ZWEI.actor.items.randomize'}} {{localize 'TYPES.Item.trait'}}: {{ name }}"
         data-tooltip-direction="UP"
       ></button>

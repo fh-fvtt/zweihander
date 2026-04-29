@@ -5,11 +5,15 @@ export default class ZweihanderNpcSheet extends ZweihanderCreatureSheet {
   static unsupportedItemTypes = new Set(['ancestry', 'profession', 'quality', 'skill', 'uniqueAdvance']);
 
   static DEFAULT_OPTIONS = {
-    ...super.DEFAULT_OPTIONS,
     classes: ['npc'],
     window: {
       icon: 'fa-solid fa-handshake-angle',
     },
+  };
+
+  static PARTS = {
+    ...super.PARTS,
+    encumbrance: { template: 'systems/zweihander/src/templates/creature/creature-encumbrance-meter.hbs' },
   };
 
   _initializeApplicationOptions(options) {
@@ -17,7 +21,8 @@ export default class ZweihanderNpcSheet extends ZweihanderCreatureSheet {
 
     const compactMode = game.settings.get('zweihander', 'openInCompactMode');
 
-    initialized.position.height = compactMode ? 560 : 763;
+    initialized.position.width = compactMode ? 540 : 675;
+    initialized.position.height = compactMode ? 560 : 789;
 
     return initialized;
   }
@@ -158,5 +163,28 @@ export default class ZweihanderNpcSheet extends ZweihanderCreatureSheet {
       items: groupsData.armor,
     };
     return itemGroups;
+  }
+
+  async _onRender(options) {
+    await super._onRender(options);
+
+    const html = this.element;
+
+    if (!this.isEditable) return;
+
+    // Update the encumbrance meter
+    this._updateEncumbranceMeter(html);
+  }
+
+  _updateEncumbranceMeter(html) {
+    const encumbranceData = this.actor.system.stats.secondaryAttributes.encumbrance;
+    const currentEncumbrance = encumbranceData.current;
+    const totalEncumbrance = encumbranceData.value;
+    let ratio = (currentEncumbrance / totalEncumbrance) * 100;
+    if (ratio > 100) {
+      ratio = 100;
+      html.querySelector('.encumbrance-bar-container').classList.add('encumbrance-overage');
+    }
+    html.querySelector('.encumbrance-bar').style.width = ratio + '%';
   }
 }

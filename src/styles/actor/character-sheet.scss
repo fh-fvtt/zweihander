@@ -2,7 +2,7 @@ body.game.vtt.system-zweihander .zweihander.sheet.character {
   max-height: 1200px;
   max-width: 1200px;
   // sheet dimensions
-  &:not(.minimized, .minimizing, .maximizing) {
+  &:not(.minimized, .minimizing, .maximizing, .limited) {
     min-height: 500px;
     min-width: 775px;
   }
@@ -12,13 +12,8 @@ body.game.vtt.system-zweihander .zweihander.sheet.character {
     background-size: 100%;
   }
   &.limited {
-    min-height: 235px;
-    max-height: 235px;
     max-width: 650px;
-    min-width: 650px;
     .actor-sheet-header {
-      flex: 1;
-      overflow-y: scroll;
       border-bottom: none;
     }
   }

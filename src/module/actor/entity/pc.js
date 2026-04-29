@@ -193,7 +193,9 @@ export default class ZweihanderPC extends ZweihanderBaseActor {
       .map((t) => t.system.encumbrance * (t.system.quantity ?? 1))
       .reduce((a, b) => a + b, 0);
     // assign encumbrance from currency
-    const currencyEnc = Math.floor(Object.values(systemData.currency).reduce((a, b) => a + b, 0) / 1000);
+    const currencyEnc = game.settings.get('zweihander', 'currencyEncumbrance')
+      ? Math.floor(Object.values(systemData.currency).reduce((a, b) => a + b, 0) / 1000)
+      : 0;
     const enc = (systemData.stats.secondaryAttributes.encumbrance = {});
     // assign initial encumbrance threshold
     enc.baseValue = systemData.stats.primaryAttributes.brawn.bonus + 3 + configOptions.encumbranceModifier;
@@ -221,6 +223,10 @@ export default class ZweihanderPC extends ZweihanderBaseActor {
 
     ini.overage = enc.overage;
     ini.current = Math.max(0, ini.value - ini.overage);
+
+    systemData.stats.secondaryAttributes.initiative.baseFormula = `${
+      configOptions.initiativeOverride ? configOptions.initiativeOverride : 1
+    }d10`;
 
     mov.overage = enc.overage;
     mov.current = Math.max(0, mov.value - mov.overage);
@@ -263,7 +269,10 @@ export default class ZweihanderPC extends ZweihanderBaseActor {
       let injuryToRoll = newDamage == 3 ? 'moderate' : newDamage == 2 ? 'serious' : 'grievous';
 
       await DialogV2.confirm({
-        window: { title: `${actor.name}: ` + game.i18n.localize('ZWEI.othermessages.injuryconfig') },
+        window: {
+          title: `${actor.name}: ` + game.i18n.localize('ZWEI.othermessages.injuryconfig'),
+          icon: 'fas fa-user-injured',
+        },
         content: game.i18n.format('ZWEI.othermessages.rollinjury', {
           injury: game.i18n.localize('ZWEI.actor.conditions.' + injuryToRoll.toLowerCase() + 'ly'),
         }),

@@ -1,20 +1,20 @@
-{{#unless limited}}
-  <div class="tab {{tab.id}} {{tab.cssClass}} decal-target flexcol" data-group="{{tab.group}}" data-tab="{{tab.id}}">
-    <div>
-      <h4 class="block-title">{{localize "ZWEI.actor.background.biography"}}</h4>
-      <prose-mirror
-        name="{{zhLocalizePath 'system.description'}}"
-        value="{{zhLocalize system.description}}"
-        toggled="true"
-      >
-        {{{html.description}}}
-      </prose-mirror>
-    </div>
-    <div>
-      <h4 class="block-title">{{localize "ZWEI.actor.background.characternotes"}}</h4>
-      <prose-mirror name="{{zhLocalizePath 'system.notes'}}" value="{{zhLocalize system.notes}}" toggled="true">
-        {{{html.notes}}}
-      </prose-mirror>
-    </div>
+<div class="tab {{tab.id}} {{tab.cssClass}} decal-target flexcol" data-group="{{tab.group}}" data-tab="{{tab.id}}">
+  <div>
+    <h4 class="block-title">{{localize "ZWEI.actor.background.biography"}}</h4>
+    <prose-mirror
+      name="{{zhLocalizePath 'system.description'}}"
+      value="{{zhLocalize system.description}}"
+      toggled="true"
+    >
+      {{{html.description}}}
+    </prose-mirror>
   </div>
-{{/unless}}
+  {{#unless limited}}
+  <div>
+    <h4 class="block-title">{{localize "ZWEI.actor.background.characternotes"}}</h4>
+    <prose-mirror name="{{zhLocalizePath 'system.notes'}}" value="{{zhLocalize system.notes}}" toggled="true">
+      {{{html.notes}}}
+    </prose-mirror>
+  </div>
+  {{/unless}}
+</div>

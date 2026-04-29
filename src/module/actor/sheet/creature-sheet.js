@@ -16,7 +16,6 @@ export default class ZweihanderCreatureSheet extends ZweihanderBaseActorSheet {
   ]);
 
   static DEFAULT_OPTIONS = {
-    ...super.DEFAULT_OPTIONS,
     classes: ['creature'],
     window: {
       icon: 'fa-solid fa-bugs',
@@ -37,10 +36,31 @@ export default class ZweihanderCreatureSheet extends ZweihanderBaseActorSheet {
 
     const compactMode = game.settings.get('zweihander', 'openInCompactMode');
 
+    if (compactMode) initialized.classes.push('zweihander-compact-sheet');
+
     initialized.position.width = compactMode ? 540 : 625;
     initialized.position.height = compactMode ? 560 : 705;
 
+    const limited = initialized.document.limited;
+
+    if (limited) {
+      initialized.classes.push('limited');
+      initialized.window.resizable = false;
+      initialized.position.height = 'auto';
+    }
+
     return initialized;
+  }
+
+  _configureRenderParts(options) {
+    const parts = super._configureRenderParts(options);
+
+    if (this.document.limited) {
+      const { header } = parts;
+      return { header };
+    }
+
+    return parts;
   }
 
   async _prepareContext(options) {
@@ -270,28 +290,33 @@ export default class ZweihanderCreatureSheet extends ZweihanderBaseActorSheet {
   async _onRender(options) {
     await super._onRender(options);
 
-    const html = $(this.element); // @todo: refactor jQuery
+    const html = this.element;
 
     // register width listener for skills container
     this._registerDimensionChangeListener(
-      html.find('.skills-container'),
+      html.querySelector('.skills-container'),
       this._getDimensionBreakpointsCallback('innerWidth', [
         {
           at: 260,
-          callback: (toggle) => html.find('.skills-list').toggleClass('two-rows', toggle),
+          callback: (toggle) => html.querySelector('.skills-list').classList.toggle('two-rows', toggle),
         },
       ])
     );
+
     // Everything below here is only needed if the sheet is editable
     if (!this.isEditable) return;
+
     // level skills
-    html.find('.skills .skill').contextmenu(async (event) => {
-      const skillId = event.currentTarget.dataset.itemId;
-      const skillName = this.actor.items.get(skillId).name;
-      const ranks = this.actor.system.skillRanks;
-      ranks[skillName] = ((ranks[skillName] ?? 0) + 1) % 4;
-      await this.actor.update({ 'system.skillRanks': ranks });
-    });
+    html.querySelectorAll('.skills .skill').forEach((el) =>
+      el.addEventListener('contextmenu', async (event) => {
+        const skillId = event.currentTarget.dataset.itemId;
+        const skillName = this.actor.items.get(skillId).name;
+        const ranks = this.actor.system.skillRanks;
+        ranks[skillName] = ((ranks[skillName] ?? 0) + 1) % 4;
+        await this.actor.update({ 'system.skillRanks': ranks });
+      })
+    );
+
     // level bonus advances
     const updateBonusAdvances = (i) => async (event) => {
       const pa = event.currentTarget.dataset.primaryAttribute;
@@ -300,61 +325,54 @@ export default class ZweihanderCreatureSheet extends ZweihanderBaseActorSheet {
         [`system.stats.primaryAttributes.${pa}.bonusAdvances`]: bonusAdvances,
       });
     };
-    html.find('.pa-bonus-advance-substract').click(updateBonusAdvances(-1));
-    html.find('.pa-bonus-advance-add').click(updateBonusAdvances(1));
-    // manual mode
+
     html
-      .find('.manual-mode-button')
-      .click(async () => {
-        await this.actor.update({
-          'system.stats.manualMode': !this.actor.system.stats.manualMode,
-        });
-      })
-      .contextmenu(async () => {
-        if (!this.actor.system.stats.manualMode) {
-          const sa = this.actor.system.stats.secondaryAttributes;
-          const x = 'system.stats.secondaryAttributes';
-          await this.actor.update({
-            [`${x}.movement.value`]: sa.movement.value,
-            [`${x}.movement.fly`]: sa.movement.fly,
-            [`${x}.initiative.value`]: sa.initiative.value,
-            [`${x}.parry.value`]: sa.parry.value,
-            [`${x}.dodge.value`]: sa.dodge.value,
-            [`${x}.damageThreshold.value`]: sa.damageThreshold.value,
-            [`${x}.perilThreshold.value`]: sa.perilThreshold.value,
-          });
-        }
-      });
-    html.find('.primary-attributes .pa').contextmenu(async (event) => {
-      const key = event.currentTarget.dataset.primaryAttribute;
-      const paValue = this.actor.system.stats.primaryAttributes[key].value;
-      const rf = this.actor.system.details.riskFactor.value;
-      const paArray = rf < 3 ? [40, 45, 50, 35] : [50, 55];
-      function mod(n, m) {
-        // fix js mod bug -> maybe move this to utils
-        return ((n % m) + m) % m;
-      }
-      const i = mod(paArray.indexOf(paValue) + (event.shiftKey ? -1 : 1), paArray.length);
+      .querySelectorAll('.pa-bonus-advance-substract')
+      .forEach((el) => el.addEventListener('click', updateBonusAdvances(-1)));
+    html
+      .querySelectorAll('.pa-bonus-advance-add')
+      .forEach((el) => el.addEventListener('click', updateBonusAdvances(1)));
+
+    // manual mode
+    const manualModeElement = html.querySelector('.manual-mode-button');
+
+    manualModeElement.addEventListener('click', async () => {
       await this.actor.update({
-        [`system.stats.primaryAttributes.${key}.value`]: paArray[i],
+        'system.stats.manualMode': !this.actor.system.stats.manualMode,
       });
     });
+
+    manualModeElement.addEventListener('contextmenu', async () => {
+      if (!this.actor.system.stats.manualMode) {
+        const sa = this.actor.system.stats.secondaryAttributes;
+        const x = 'system.stats.secondaryAttributes';
+        await this.actor.update({
+          [`${x}.movement.value`]: sa.movement.value,
+          [`${x}.movement.fly`]: sa.movement.fly,
+          [`${x}.initiative.value`]: sa.initiative.value,
+          [`${x}.parry.value`]: sa.parry.value,
+          [`${x}.dodge.value`]: sa.dodge.value,
+          [`${x}.damageThreshold.value`]: sa.damageThreshold.value,
+          [`${x}.perilThreshold.value`]: sa.perilThreshold.value,
+        });
+      }
+    });
+
+    html.querySelectorAll('.primary-attributes .pa').forEach((el) =>
+      el.addEventListener('contextmenu', async (event) => {
+        const key = event.currentTarget.dataset.primaryAttribute;
+        const paValue = this.actor.system.stats.primaryAttributes[key].value;
+        const rf = this.actor.system.details.riskFactor.value;
+        const paArray = rf < 3 ? [40, 45, 50, 35] : [50, 55];
+        function mod(n, m) {
+          // fix js mod bug -> maybe move this to utils
+          return ((n % m) + m) % m;
+        }
+        const i = mod(paArray.indexOf(paValue) + (event.shiftKey ? -1 : 1), paArray.length);
+        await this.actor.update({
+          [`system.stats.primaryAttributes.${key}.value`]: paArray[i],
+        });
+      })
+    );
   }
 }
-
-// @todo: fix later
-/*
-  async _render(force, options) {
-    if (this.actor.limited) {
-      options.classes = [
-        'limited',
-        ...this.constructor.defaultOptions.classes,
-        ...(options.classes?.length ? options.classes : []),
-      ];
-      options.height = 'auto';
-      options.width = 350;
-      options.resizable = false;
-    }
-    await super._render(force, options);
-  }
-*/

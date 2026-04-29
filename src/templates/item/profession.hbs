@@ -72,7 +72,7 @@
       <div class='key'>{{localize 'TYPES.Item.skill'}}</div>
       <div class='value'>{{localize 'ZWEI.actor.items.ranksrequired'}}</div>
       <div class='requirements-controls'>
-        <a class='requirements-control' data-action='add'><i class='far fa-plus-square'></i></a>
+        <a class='requirements-control' data-action='addExpertRequirementChange'><i class='far fa-plus-square'></i></a>
       </div>
     </header>
     <ol class='requirements-list'>
@@ -80,14 +80,14 @@
         <li class='requirements-change flexrow' data-index='{{i}}'>
           <div class='key'>
             <select name="system.expert.requirements.skillRanks.{{i}}.key">
-              {{selectOptions ../skills valueAttr="key" labelAttr="label" selected=requirement.key blank=''}}
+              {{selectOptions ../skills valueAttr="normalizedKey" labelAttr="label" selected=requirement.key blank=''}}
             </select>
           </div>
           <div class='value'>
             <input type='number' name="system.expert.requirements.skillRanks.{{i}}.value" value='{{requirement.value}}' />
           </div>
           <div class='requirements-controls'>
-            <a class='requirements-control' data-action='delete'><i class='fas fa-trash-alt'></i></a>
+            <a class='requirements-control' data-action='deleteExpertRequirementChange'><i class='fas fa-trash-alt'></i></a>
           </div>
         </li>
       {{/each}}

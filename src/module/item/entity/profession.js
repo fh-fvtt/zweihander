@@ -25,6 +25,18 @@ export default class ZweihanderProfession extends ZweihanderBaseItem {
   ];
 
   prepareDerivedData(item) {
+    const primaryAttributeBonusesKeys = CONFIG.ZWEI.primaryAttributeBonuses.map((pab) => '[' + pab + ']');
+
+    item.system.skillRanks.sort((a, b) => {
+      const aloc = a.name;
+      const bloc = b.name;
+      return aloc.localeCompare(bloc);
+    });
+
+    item.system.bonusAdvances.sort(
+      (a, b) => primaryAttributeBonusesKeys.indexOf(a.name) - primaryAttributeBonusesKeys.indexOf(b.name)
+    );
+
     const localizedExpertProfessionValue = game.i18n.localize('ZWEI.actor.details.labels.expertprofession');
 
     if (
@@ -41,7 +53,7 @@ export default class ZweihanderProfession extends ZweihanderBaseItem {
       (item.system.skillRanks?.reduce?.((a, b) => a + Number(b.purchased), 0) ?? 0) +
       (item.system.talents?.reduce?.((a, b) => a + Number(b.purchased), 0) ?? 0);
     item.system.advancesPurchased = advancesPurchased;
-    item.system.completed = advancesPurchased === 21;
+    item.system.completed = advancesPurchased === 21; // @todo: implement system option to adjust total advances per Profession
   }
 
   async _preCreate(data, options, user, item) {

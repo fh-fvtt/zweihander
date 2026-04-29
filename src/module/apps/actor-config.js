@@ -2,7 +2,6 @@ const { ApplicationV2, HandlebarsApplicationMixin } = foundry.applications.api;
 
 export default class ZweihanderActorConfig extends HandlebarsApplicationMixin(ApplicationV2) {
   static DEFAULT_OPTIONS = {
-    ...super.DEFAULT_OPTIONS,
     classes: ['zweihander', 'sheet', 'actor-config'],
     id: 'zweihander_actor_config',
     tag: 'form',
@@ -50,13 +49,19 @@ export default class ZweihanderActorConfig extends HandlebarsApplicationMixin(Ap
       })),
     }));
 
-    const modifierNames = ['encumbrance', 'initiative', 'movement'];
+    const modifierNames = ['encumbrance', 'movement', 'initiative'];
 
     context.globalModifiers = modifierNames.map((mod) => ({
       label: game.i18n.localize(`ZWEI.settings.acsettings.global${mod}`),
       nameAttr: `flags.${mod}Modifier`,
       valueAttr: context.flags[`${mod}Modifier`],
     }));
+
+    context.globalModifiers.push({
+      label: game.i18n.localize('ZWEI.settings.acsettings.globalinitiativeoverride'),
+      nameAttr: 'flags.initiativeOverride',
+      valueAttr: context.flags.initiativeOverride,
+    });
 
     return context;
   }
@@ -76,6 +81,7 @@ export default class ZweihanderActorConfig extends HandlebarsApplicationMixin(Ap
       isIgnoredPerilLadderValue: [false, false, false],
       encumbranceModifier: 0,
       initiativeModifier: 0,
+      initiativeOverride: 0,
       movementModifier: 0,
       parrySkills: getDefaultSkills('defaultParrySkills'),
       dodgeSkills: getDefaultSkills('defaultDodgeSkills'),

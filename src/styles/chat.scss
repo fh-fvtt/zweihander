@@ -256,7 +256,11 @@ body.game.vtt.system-zweihander {
       border: none;
       border-radius: 5px;
 
-      &.damage:has(button.damage-roll-explode:disabled) {
+      &.skill:has(button.skill-test-reroll:only-child:disabled) {
+        display: none;
+      }
+
+      &.damage:has(button.damage-roll-explode:disabled):has(button.damage-roll-apply:disabled) {
         display: none;
       }
 
@@ -318,6 +322,15 @@ body.game.vtt.system-zweihander {
         }
         &.quality-link {
           cursor: help;
+        }
+
+        &.ping-token.damaged {
+          text-decoration: line-through;
+        }
+
+        &.ping-token:hover {
+          background-color: var(--zh-clr-yellow);
+          cursor: pointer;
         }
         &.quality-link:hover {
           background-color: var(--zh-clr-yellow);

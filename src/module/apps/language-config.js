@@ -4,7 +4,6 @@ const { ApplicationV2, HandlebarsApplicationMixin } = foundry.applications.api;
 
 export default class ZweihanderLanguageConfig extends HandlebarsApplicationMixin(ApplicationV2) {
   static DEFAULT_OPTIONS = {
-    ...super.DEFAULT_OPTIONS,
     classes: ['zweihander', 'language-config'],
     tag: 'form',
     form: {

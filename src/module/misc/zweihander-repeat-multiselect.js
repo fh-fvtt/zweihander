@@ -31,27 +31,19 @@ export class HTMLZweihanderRepeatMultiSelectElement extends AbstractMultiSelectE
     // @todo: refactor atob
     const initial = JSON.parse(atob(this.dataset['bonusAdvances']));
 
-    const occurrences = initial.reduce((acc, val) => {
-      return acc[val.name] ? ++acc[val.name] : (acc[val.name] = 1), acc;
-    }, {});
-
-    const occurencesKeys = Object.keys(occurrences);
-
     for (const option of this.querySelectorAll('option')) {
       if (!option.value) continue; // Skip predefined options which are already blank
       this._choices[option.value] = option.innerText;
 
-      if (occurencesKeys.includes(option.value)) {
-        const flatInitial = initial.map((bao) => bao.name);
-        const indexOfOption = flatInitial.indexOf(option.value);
-        const toAdd = initial.splice(indexOfOption, 1);
+      let idx;
+      let found = false;
 
-        for (let i = 0; i < occurrences[option.value]; i++) {
-          this._value.push(...toAdd);
-        }
-
-        option.selected = false;
+      while ((idx = initial.findIndex((bao) => bao.name === option.value)) !== -1) {
+        this._value.push(...initial.splice(idx, 1));
+        found = true;
       }
+
+      if (found) option.selected = false;
     }
 
     // console.log('_CHOICES: ', this._choices, ' | _VALUE: ', this._value);

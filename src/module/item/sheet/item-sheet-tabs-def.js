@@ -18,6 +18,8 @@ export function getEffectsGroups(groupsData) {
 }
 
 export function attachTabDefinitions(context) {
+  if (context.limited) return;
+
   const $$ = (x) => context.itemGroups[x];
   tabDefinitions = {
     effects: {

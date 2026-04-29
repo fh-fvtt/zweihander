@@ -1,7 +1,7 @@
 <label>{{localize "ZWEI.actor.items.qualities"}}: </label>
 {{#if qualities}}
   {{#each qualities as |qualityUuid idx|}}
-    <a class="js-display-quality">{{zhFetchByUuidSync qualityUuid}}</a>{{#unless @last}}<span>, </span>{{/unless}}
+    <a class="js-display-quality" data-item-id="{{qualityUuid}}">{{zhFetchByUuidSync qualityUuid}}</a>{{#unless @last}}<span>, </span>{{/unless}}
   {{/each}}
 {{else}}
   <span> - </span>

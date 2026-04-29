@@ -47,6 +47,17 @@ export const registerSystemSettings = function () {
     type: Boolean,
     default: true,
     config: true,
+    requiresReload: true,
+  });
+
+  game.settings.register('zweihander', 'currencyEncumbrance', {
+    name: 'ZWEI.settings.currencyencumbrance',
+    hint: 'ZWEI.settings.currencyencumbrancehint',
+    scope: 'world',
+    type: Boolean,
+    default: true,
+    config: true,
+    requiresReload: true,
   });
 
   game.settings.register('zweihander', 'trackRewardPoints', {
@@ -92,7 +103,8 @@ export const registerSystemSettings = function () {
     name: 'ZWEI.settings.initiativeformula',
     hint: 'ZWEI.settings.initiativeformulahint',
     type: String,
-    default: '1d10 + @stats.secondaryAttributes.initiative.current',
+    default:
+      '@stats.secondaryAttributes.initiative.baseFormula + @stats.secondaryAttributes.initiative.current + (@stats.primaryAttributes.perception.bonus[Perception Bonus] / 100)',
     requiresReload: true,
   });
 

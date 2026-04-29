@@ -1,7 +1,7 @@
 export const createItemMacro = async (macroData, slot) => {
   if (!macroData.uuid) return;
 
-  const item = await fromUuid(macroData.uuid);
+  const item = fromUuidSync(macroData.uuid);
 
   if (macroData.type === 'Macro') {
     game.user.assignHotbarMacro(item, slot);

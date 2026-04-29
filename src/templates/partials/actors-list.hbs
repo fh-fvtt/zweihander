@@ -55,7 +55,7 @@
   </li>
     <ol class="item-list">
     {{#each actorGroup.actors as |actor| }}
-    <li class="item flexrow" data-actor-id="{{actor.uuid}}">
+    <li class="item flexrow" data-actor-uuid="{{actor.uuid}}">
       <div class="item-name fetch-actor flexrow js-show-item-description {{#if actorGroup.rollType}}rollable{{/if}}">
         <div class="{{zhItemImageClass actor.img}} {{itemGroup.rollType}} {{#if actorGroup.rollType}}rollable{{/if}}" tabindex="0" role="button"
           aria-label="{{actor.name}}" style="{{zhItemImageStyle actor.img}}"

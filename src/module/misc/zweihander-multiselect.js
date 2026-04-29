@@ -20,6 +20,11 @@ export class HTMLZweihanderMultiSelectElement extends AbstractMultiSelectElement
   #tags;
 
   /**
+   * A normalized lookup map to sidestep case mismatch
+   */
+  choicesLookup = {};
+
+  /**
    * Preserve existing <option> and <optgroup> elements which are defined in the original HTML.
    * @protected
    */
@@ -33,10 +38,12 @@ export class HTMLZweihanderMultiSelectElement extends AbstractMultiSelectElement
       if (!option.value) continue; // Skip predefined options which are already blank
       this._choices[option.value] = option.innerText;
       if (option.selected) {
-        this._value.add(initial.find((i) => i.name.trim().toLowerCase() === option.value));
+        this._value.add(initial.find((i) => i.name.trim().toLowerCase() === option.value.trim().toLowerCase()));
         option.selected = false;
       }
     }
+
+    this.choicesLookup = Object.fromEntries(Object.entries(this._choices).map(([k, v]) => [k.toLowerCase(), v]));
 
     // console.log('_CHOICES: ', this._choices, ' | _VALUE: ', this._value);
   }
@@ -63,7 +70,7 @@ export class HTMLZweihanderMultiSelectElement extends AbstractMultiSelectElement
   _refresh() {
     // Update the displayed tags
     const tags = Array.from(this._value).map((id) => {
-      return HTMLZweihanderTagsElement.renderTag(this._choices[id.name.toLowerCase()], id.name, this.editable);
+      return HTMLZweihanderTagsElement.renderTag(this.choicesLookup[id.name.toLowerCase()], id.name, this.editable);
     });
     this.#tags.replaceChildren(...tags);
 

@@ -38,6 +38,7 @@ import { performWorldMigrations, migrations } from './migration';
 import { HTMLZweihanderTagsElement } from './misc/zweihander-tags';
 import { HTMLZweihanderMultiSelectElement } from './misc/zweihander-multiselect';
 import { HTMLZweihanderRepeatMultiSelectElement } from './misc/zweihander-repeat-multiselect';
+import ZweihanderGamePause from './apps/pause';
 
 /* -------------------------------------------- */
 /*  Foundry VTT Initialization                  */
@@ -156,22 +157,16 @@ Hooks.once('init', async function () {
     migrations,
     rollItemMacro,
   };
+
   CONFIG.ChatMessage.template = 'systems/zweihander/src/templates/chat/chat-message.hbs';
   Roll.CHAT_TEMPLATE = 'systems/zweihander/src/templates/dice/roll.hbs';
 
   const initiativeFormula = game.settings.get('zweihander', 'initiativeFormula');
 
-  /**
-   * Set an initiative formula for the system
-   * @type {String}
-   */
   CONFIG.Combat.initiative = {
     formula: initiativeFormula,
     decimals: 2,
   };
-  CONFIG.TinyMCE.skin_url = 'systems/zweihander/tinymce/skins/ui/zweihander';
-  CONFIG.TinyMCE.skin = 'zweihander';
-  CONFIG.TinyMCE.content_css = ['/css/mce.css', 'systems/zweihander/tinymce/skins/content/zweihander/content.css'];
 
   // CONFIG.debug.hooks = true;
 
@@ -182,6 +177,7 @@ Hooks.once('init', async function () {
   CONFIG.Item.documentClass = ZweihanderItem;
   CONFIG.ActiveEffect.documentClass = ZweihanderActiveEffect;
   CONFIG.ActiveEffect.legacyTransferral = false;
+  CONFIG.ui.pause = ZweihanderGamePause;
   // CONFIG.Combat.documentClass = ZweihanderCombat;
   // CONFIG.Combatant.documentClass = ZweihanderCombatant;
   // CONFIG.ui.combat = ZweihanderCombatTracker;
@@ -228,6 +224,10 @@ Hooks.on('updateCompendium', async (pack, documents, options, userId) => {
     ZweihanderUtils.updateActorSkillsFromPack(skillPackId);
   }
 });
+Hooks.on('getChatMessageContextOptions', (application, menuItems) => {
+  // @todo: add context menu options here
+  // console.log('STUFF:', application, menuItems);
+});
 
 // Chat Commander integartion
 Hooks.on('chatCommandsReady', registerChatCommands);
@@ -254,20 +254,6 @@ Hooks.once('polyglot.init', (LanguageProvider) => {
 
 Hooks.once('devModeReady', ({ registerPackageDebugFlag }) => {
   registerPackageDebugFlag('zweihander');
-});
-
-Hooks.on('renderGamePause', (app, html) => {
-  html = html instanceof jQuery ? html : $(html); // @todo: jQuery refactor
-
-  if (game.data.paused) {
-    const doomingIndex = Math.floor(Math.random() * 100);
-
-    html.find('img').attr('src', '../../systems/zweihander/assets/hexagram.png');
-
-    if (game.settings.get('zweihander', 'immersivePause')) {
-      html.find('figcaption').text(game.i18n.localize(`ZWEI.pauseDoomings.${doomingIndex}`));
-    }
-  }
 });
 
 export let _module = null;

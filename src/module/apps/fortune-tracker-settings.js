@@ -3,7 +3,6 @@ const { SettingsConfig } = foundry.applications.settings;
 
 export default class FortuneTrackerSettings extends HandlebarsApplicationMixin(ApplicationV2) {
   static DEFAULT_OPTIONS = {
-    ...super.DEFAULT_OPTIONS,
     tag: 'form',
     id: 'fortuneTrackerSettings',
     classes: ['zweihander', 'sheet', 'settings-menu'],

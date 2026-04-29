@@ -18,8 +18,8 @@ export const OUTCOME_TYPES = {
   CRITICAL_FAILURE: 0,
 };
 
-export async function reRollTest(actorId, skillItemId, testType, testConfiguration = {}, { showDialog = false } = {}) {
-  const actor = game.actors.get(actorId);
+export function reRollTest(actorUuid, skillItemId, testType, testConfiguration = {}, { showDialog = false } = {}) {
+  const actor = fromUuidSync(actorUuid);
   const skillItem = actor.items.get(skillItemId);
   return rollTest(skillItem, testType, testConfiguration, {
     isReroll: true,
@@ -55,21 +55,71 @@ export async function rollPeril(perilType, actor) {
   }
 }
 
-export async function rollCombatReaction(type, enemyActorId, enemyTestConfiguration) {
-  const actor = game.actors.get(ZweihanderUtils.determineCurrentActorId(true));
-  if (!actor) return;
-  const associatedSkill = actor.system.stats.secondaryAttributes[type].associatedSkill;
-  const skillItem = actor.items.find(
-    (i) => ZweihanderUtils.normalizedEquals(i.name, associatedSkill) && i.type === 'skill'
-  );
-  const originalActorName = game.actors.get(enemyActorId).name;
+export async function rollCombatReaction(type, enemyActorUuid, enemyTestConfiguration) {
+  const actorUuids = ZweihanderUtils.determineCurrentActorUuids(true);
+
+  if (actorUuids.size === 0) return;
+
+  const originalActorName = fromUuidSync(enemyActorUuid).name;
   const updatedTestConfiguration = {
     difficultyRating: -enemyTestConfiguration.difficultyRating,
     flavor: `Trying to ${type} ${originalActorName}'s Attack`,
   };
-  return rollTest(skillItem, type, updatedTestConfiguration, {
-    showDialog: true,
-  });
+
+  for (const uuid of actorUuids) {
+    const actor = fromUuidSync(uuid);
+
+    if (!actor) continue;
+
+    const associatedSkill = actor.system.stats.secondaryAttributes[type].associatedSkill;
+    const skillItem = actor.items.find(
+      (i) => ZweihanderUtils.normalizedEquals(i.name, associatedSkill) && i.type === 'skill'
+    );
+
+    await rollTest(skillItem, type, updatedTestConfiguration, {
+      showDialog: true,
+    });
+  }
+}
+
+export async function applyDamage(message, attackTargets) {
+  const damageTotal = message.rolls[0].total;
+
+  if (attackTargets.length == 0) {
+    ui.notifications.warn('No target was selected for the roll. Please apply damage manually.');
+    return;
+  }
+
+  const actorUuidsToDamage = [];
+
+  for (const attackTarget of attackTargets) {
+    const targetActor = fromUuidSync(attackTarget.uuid);
+
+    if (!targetActor.isOwner || attackTarget.damaged) continue;
+
+    const { damageThreshold, damageCurrent } = targetActor.system.stats.secondaryAttributes;
+
+    let stepsToFall = Math.min(4, Math.max(0, Math.floor((damageTotal - damageThreshold.value) / 6) + 1));
+
+    if (stepsToFall > 0) {
+      const finalSteps = stepsToFall < 4 ? stepsToFall : 5; // character is instantly Slain! if damage exceeds Damage Threshold + 18
+
+      await targetActor.update({
+        'system.stats.secondaryAttributes.damageCurrent.value': Math.max(0, damageCurrent.value - finalSteps),
+      });
+    }
+
+    actorUuidsToDamage.push(attackTarget.uuid);
+  }
+
+  const updatedTargets = attackTargets.map((t) => (actorUuidsToDamage.includes(t.uuid) ? { ...t, damaged: true } : t));
+
+  const diffData = {
+    'flags.zweihander.weaponTestData.targets': updatedTargets,
+    'flags.zweihander.weaponTestData.exploded': 1, // if damage applied, no exploding allowed anymore
+  };
+
+  await game.zweihander.socket.executeAsGM('updateChatMessage', message.id, diffData);
 }
 
 export async function rollTest(
@@ -241,11 +291,11 @@ export async function rollTest(
     }[testType] ??
     '';
   const speaker = ChatMessage.getSpeaker({ actor });
-  const rollMode = game.settings.get('core', 'rollMode'); //ZWEI.testModes[testConfiguration.testMode].rollMode;
+  const rollMode = game.settings.get('core', 'rollMode');
   const flags = {
     zweihander: {
       skillTestData: {
-        actorId: actor.id,
+        actorUuid: actor.uuid,
         skillItemId: skillItem.id,
         testType,
         testConfiguration,
@@ -272,9 +322,9 @@ export async function rollTest(
   };
 }
 
-export async function rollWeaponDamage(actorId, testConfiguration) {
+export async function rollWeaponDamage(actorUuid, testConfiguration) {
   const { weaponId, additionalFuryDice } = testConfiguration;
-  const actor = game.actors.get(actorId);
+  const actor = fromUuidSync(actorUuid);
   const weapon = actor.items.get(weaponId).toObject(false);
 
   const damageData = weapon.system.damage;
@@ -302,17 +352,20 @@ export async function rollWeaponDamage(actorId, testConfiguration) {
 
   const damageRoll = await new Roll(parsedFormula, actor.system).evaluate();
   const speaker = ChatMessage.getSpeaker({ actor });
-  //const flavor = `Determines ${weapon.name}'s Damage`;
+  const targets =
+    game.user.targets.map((a) => ({ uuid: a.actor.uuid, name: a.actor.name, damaged: false })).toObject() ?? [];
   const flavor = game.i18n.format('ZWEI.rolls.weapondamage', {
     weapon: weapon.name,
   });
-  const content = await getWeaponDamageContent(weapon, damageRoll);
+  const content = await getWeaponDamageContent(weapon, damageRoll, { targets });
   const flags = {
     zweihander: {
       weaponTestData: {
-        actorId,
+        actorUuid,
         weaponId,
+        targets,
         exploded: 0,
+        damagedUuids: [],
       },
     },
   };
@@ -354,7 +407,7 @@ function _getPerilData(currentPeril, rank, rankBonus, bonusPerRank, isManualDodg
   };
 }
 
-async function getWeaponDamageContent(weapon, roll, exploded = false, explodedCount = 0) {
+async function getWeaponDamageContent(weapon, roll, { exploded = false, explodedCount = 0, targets = [] } = {}) {
   weapon.system.qualities = await ZweihanderQuality.getQualities(weapon.system.qualities);
   const tooltip = await roll.getTooltip();
   const total = roll.total;
@@ -368,6 +421,7 @@ async function getWeaponDamageContent(weapon, roll, exploded = false, explodedCo
     formula,
     exploded,
     explodedCount,
+    targets,
     weapon,
   });
 }
@@ -389,8 +443,8 @@ export async function explodeWeaponDamage(message, useFortune) {
     */
     return;
   }
-  const { actorId, weaponId, exploded } = message.flags.zweihander.weaponTestData;
-  const actor = game.actors.get(actorId);
+  const { actorUuid, weaponId, exploded, targets } = message.flags.zweihander.weaponTestData;
+  const actor = fromUuidSync(actorUuid);
   const weapon = actor.items.get(weaponId).toObject(false);
   const roll = message.rolls[0];
   const dice = roll.dice.find((d) => d.faces === 6);
@@ -411,7 +465,11 @@ export async function explodeWeaponDamage(message, useFortune) {
     );
     roll._total = updatedTotal;
   }
-  const content = await getWeaponDamageContent(weapon, roll, useFortune, exploded + 1);
+  const content = await getWeaponDamageContent(weapon, roll, {
+    exploded: useFortune,
+    explodedCount: exploded + 1,
+    targets,
+  });
   const diffData = {
     'flags.zweihander.weaponTestData.exploded': exploded + 1,
     content: content,

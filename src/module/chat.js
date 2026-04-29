@@ -14,6 +14,18 @@ export function addLocalChatListeners(message, html, data) {
     });
   });
 
+  html.querySelectorAll('.ping-token').forEach((el) => {
+    el.addEventListener('click', async (event) => {
+      const tokenUuid = el.dataset.tokenUuid;
+      const actor = fromUuidSync(tokenUuid);
+      const [token] = actor?.isToken ? [actor.token?.object] : actor.getActiveTokens(true);
+
+      if (!canvas.ready || !token) return;
+
+      await canvas.ping(token.center);
+    });
+  });
+
   const flags = message?.flags?.zweihander;
   if (flags) {
     enableChatButtons(html, flags, message, data);
@@ -21,86 +33,109 @@ export function addLocalChatListeners(message, html, data) {
 }
 
 function enableChatButtons(html, flags, message, data) {
-  html = html instanceof jQuery ? html : $(html); // @todo: jQuery refactor
+  const currentActorUuids = ZweihanderUtils.determineCurrentActorUuids();
+  const isGM = game.user.isGM;
 
   const skillTestData = flags?.skillTestData;
   if (skillTestData) {
-    const { outcome, actorId, skillItemId, testType, testConfiguration } = skillTestData;
-    const actor = game.actors.get(actorId);
+    const { outcome, actorUuid, skillItemId, testType, testConfiguration } = skillTestData;
+
     // enable re-roll button
-    if (
-      (game.user.isGM || actorId === ZweihanderUtils.determineCurrentActorId()) &&
-      outcome !== ZweihanderDice.OUTCOME_TYPES.CRITICAL_FAILURE
-    ) {
-      html.find('.skill-test-reroll').prop('disabled', false);
-      $(html).on('click', '.skill-test-reroll', (event) => {
-        ZweihanderDice.reRollTest(actorId, skillItemId, testType, testConfiguration, { showDialog: event.shiftKey });
+    if ((isGM || currentActorUuids.has(actorUuid)) && outcome !== ZweihanderDice.OUTCOME_TYPES.CRITICAL_FAILURE) {
+      html.querySelectorAll('.skill-test-reroll').forEach((el) => (el.disabled = false));
+      html.addEventListener('click', (event) => {
+        const target = event.target.closest('.skill-test-reroll');
+        if (!target) return;
+
+        ZweihanderDice.reRollTest(actorUuid, skillItemId, testType, testConfiguration, { showDialog: event.shiftKey });
       });
     }
+
     // enable damage button
-    if (
-      (game.user.isGM || actorId === ZweihanderUtils.determineCurrentActorId()) &&
-      ZweihanderDice.isSuccess(outcome)
-    ) {
-      html.find('.skill-test-damage').prop('disabled', false);
-      $(html).on('click', '.skill-test-damage', (event) => {
-        ZweihanderDice.rollWeaponDamage(actorId, testConfiguration);
+    if ((isGM || currentActorUuids.has(actorUuid)) && ZweihanderDice.isSuccess(outcome)) {
+      html.querySelectorAll('.skill-test-damage').forEach((el) => (el.disabled = false));
+      html.addEventListener('click', (event) => {
+        const target = event.target.closest('.skill-test-damage');
+        if (!target) return;
+
+        ZweihanderDice.rollWeaponDamage(actorUuid, testConfiguration);
       });
     }
     // enable parry button
-    if (
-      (game.user.isGM || actorId !== ZweihanderUtils.determineCurrentActorId()) &&
-      ZweihanderDice.isSuccess(outcome)
-    ) {
-      html.find('.skill-test-parry').prop('disabled', false);
-      $(html).on('click', '.skill-test-parry', (event) => {
-        ZweihanderDice.rollCombatReaction('parry', actorId, testConfiguration);
+    if ((isGM || !currentActorUuids.has(actorUuid)) && ZweihanderDice.isSuccess(outcome)) {
+      html.querySelectorAll('.skill-test-parry').forEach((el) => (el.disabled = false));
+      html.addEventListener('click', (event) => {
+        const target = event.target.closest('.skill-test-parry');
+        if (!target) return;
+
+        ZweihanderDice.rollCombatReaction('parry', actorUuid, testConfiguration);
       });
     }
     // enable dodge button
-    if (
-      (game.user.isGM || actorId !== ZweihanderUtils.determineCurrentActorId()) &&
-      ZweihanderDice.isSuccess(outcome)
-    ) {
-      html.find('.skill-test-dodge').prop('disabled', false);
-      $(html).on('click', '.skill-test-dodge', (event) => {
-        ZweihanderDice.rollCombatReaction('dodge', actorId, testConfiguration);
+    if ((isGM || !currentActorUuids.has(actorUuid)) && ZweihanderDice.isSuccess(outcome)) {
+      html.querySelectorAll('.skill-test-dodge').forEach((el) => (el.disabled = false));
+      html.addEventListener('click', (event) => {
+        const target = event.target.closest('.skill-test-dodge');
+        if (!target) return;
+
+        ZweihanderDice.rollCombatReaction('dodge', actorUuid, testConfiguration);
       });
     }
   }
+
   const weaponTestData = flags?.weaponTestData;
   if (weaponTestData) {
-    const actorId = weaponTestData.actorId;
-    const showExplodingButtons =
-      !weaponTestData.exploded || game.settings.get('zweihander', 'unlimitedFortuneExplodes');
-    if ((game.user.isGM || actorId == ZweihanderUtils.determineCurrentActorId()) && showExplodingButtons) {
-      html.find('.damage-roll-explode').prop('disabled', false);
-      $(html).on('click', '.damage-roll-explode', (event) => {
-        ZweihanderDice.explodeWeaponDamage(message, 'fortune');
+    const { actorUuid, damageApplied, targets, exploded } = weaponTestData;
+
+    html.querySelectorAll('.ping-token').forEach((el) => {
+      const tokenUuid = el.dataset.tokenUuid;
+
+      if (targets.some((t) => t.uuid === tokenUuid && t.damaged)) {
+        el.classList.add('damaged');
+      }
+    });
+
+    const hasUndamagedTargets = targets.some((t) => currentActorUuids.has(t.uuid) && !t.damaged);
+    const hasAnyUndamagedTargets = targets.some((t) => !t.damaged);
+
+    const showExplodingButtons = !exploded || game.settings.get('zweihander', 'unlimitedFortuneExplodes');
+
+    if (hasAnyUndamagedTargets && (isGM || hasUndamagedTargets) && !damageApplied) {
+      html.querySelectorAll('.damage-roll-apply').forEach((el) => (el.disabled = false));
+      html.addEventListener('click', async (event) => {
+        const target = event.target.closest('.damage-roll-apply');
+        if (!target) return;
+
+        await ZweihanderDice.applyDamage(message, targets);
       });
     }
-    if (game.user.isGM && showExplodingButtons) {
-      html.find('.damage-roll-explode-misfortune').prop('disabled', false);
-      $(html).on('click', '.damage-roll-explode-misfortune', (event) => {
-        ZweihanderDice.explodeWeaponDamage(message, 'misfortune');
+    if ((isGM || currentActorUuids.has(actorUuid)) && showExplodingButtons) {
+      html.querySelectorAll('.damage-roll-explode').forEach((el) => (el.disabled = false));
+      html.addEventListener('click', (event) => {
+        const target = event.target.closest('.damage-roll-explode');
+        if (!target) return;
+
+        const mode = event.shiftKey || !game.user.isGM ? 'fortune' : 'misfortune';
+        ZweihanderDice.explodeWeaponDamage(message, mode);
       });
     }
   }
 
   const spellTestData = flags?.skillTestData?.testType === 'spell' && flags?.skillTestData;
   if (spellTestData) {
-    const actorId = spellTestData.actorId;
-    const actor = game.actors.get(actorId);
+    const actorUuid = spellTestData.actorUuid;
 
-    html.find('.inline-roll').each(async function () {
-      const formula = $(this).text().trim().split('+');
+    html.querySelectorAll('.inline-roll').forEach(async (el) => {
+      const actor = fromUuidSync(actorUuid);
+
+      const formula = el.textContent.trim().split('+');
       const diceRoll = formula[0];
       const dataPath = formula[1];
 
       if (dataPath && dataPath.includes('@')) {
         const newFormula = diceRoll + '+' + (await ZweihanderUtils.parseDataPaths(dataPath, actor));
-        this.dataset.formula = newFormula;
-        $(this).html('<i class="fas fa-dice-d20"></i> ' + newFormula);
+        el.dataset.formula = newFormula;
+        el.innerHTML = '<i class="fas fa-dice-d20"></i> ' + newFormula;
       }
     });
   }

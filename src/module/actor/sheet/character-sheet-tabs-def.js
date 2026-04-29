@@ -418,6 +418,8 @@ export function getItemGroups(groupsData) {
 }
 
 export function attachTabDefinitions(context) {
+  if (context.limited) return;
+
   const $$ = (x) => context.itemGroups[x];
   const tabDefinitions = {
     trappings: {

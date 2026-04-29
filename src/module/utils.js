@@ -436,26 +436,22 @@ export function getDifficultyRatingLabel(difficultyRating) {
   return `${label} ${number}%`;
 }
 
-export function determineCurrentActorId(interactive = false) {
+export function determineCurrentActorUuids(interactive = false) {
   const character = game.user.character;
-  const speakerData = ChatMessage.getSpeaker();
-  if (game.user.isGM) {
-    if (character) {
-      return character.id;
-    } else if (speakerData.actor) {
-      return speakerData.actor;
-    } else if (interactive) {
-      ui.notifications.warn(game.i18n.localize('ZWEI.othermessages.selecttoken'));
-    }
-  } else {
-    if (character) {
-      return character.id;
-    } else if (speakerData.actor) {
-      return speakerData.actor;
-    } else if (interactive) {
-      ui.notifications.error(game.i18n.localize('ZWEI.othermessages.nocharacter'));
-    }
+  const controlled = canvas.tokens?.controlled ?? [];
+
+  const uuids = new Set([
+    ...(character && !(game.user.isGM && interactive) ? [character.uuid] : []),
+    ...controlled.map((t) => t.actor.uuid),
+  ]);
+
+  if (uuids.size === 0 && interactive) {
+    game.user.isGM
+      ? ui.notifications.warn(game.i18n.localize('ZWEI.othermessages.selecttoken'))
+      : ui.notifications.error(game.i18n.localize('ZWEI.othermessages.nocharacter'));
   }
+
+  return uuids;
 }
 
 export async function updateActorSkillsFromPack(skillPackId) {
@@ -646,6 +642,8 @@ export const localizePath = (dataPath) => {
 };
 
 export const enrichLocalized = async (entry) => {
+  if (!entry) return;
+
   let text = entry;
   let hasZhLocalization = Object.keys(entry).filter((prop) => prop.startsWith('@')).length > 0;
   if (hasZhLocalization) {
@@ -666,4 +664,138 @@ export const processRules = async (data) => {
     )
   );
   return rules;
+};
+
+export const slideUpOnDelete = async (target, duration = 500) => {
+  const cs = getComputedStyle(target);
+
+  const startHeight = target.getBoundingClientRect().height;
+
+  target.style.overflow = 'hidden';
+
+  const animation = target.animate(
+    [
+      {
+        height: `${startHeight}px`,
+        paddingTop: cs.paddingTop,
+        paddingBottom: cs.paddingBottom,
+        borderTopWidth: cs.borderTopWidth,
+        borderBottomWidth: cs.borderBottomWidth,
+        opacity: 1,
+      },
+      {
+        height: '0px',
+        paddingTop: '0px',
+        paddingBottom: '0px',
+        borderTopWidth: '0px',
+        borderBottomWidth: '0px',
+        opacity: 0.75,
+      },
+    ],
+    {
+      duration,
+      easing: 'ease-in-out',
+      fill: 'forwards',
+    }
+  );
+
+  await animation.finished;
+
+  target.style.display = 'none';
+
+  return target;
+};
+
+export const slideUp = async (target, duration = 500) => {
+  const cs = getComputedStyle(target);
+
+  const startHeight = target.getBoundingClientRect().height;
+
+  target.style.overflow = 'hidden';
+
+  const animation = target.animate(
+    [
+      {
+        height: `${startHeight}px`,
+        paddingTop: cs.paddingTop,
+        paddingBottom: cs.paddingBottom,
+        borderTopWidth: cs.borderTopWidth,
+        opacity: 1,
+      },
+      {
+        height: '0px',
+        paddingTop: '0px',
+        paddingBottom: '0px',
+        borderTopWidth: '0px',
+        opacity: 0.75,
+      },
+    ],
+    {
+      duration,
+      easing: 'ease-in-out',
+    }
+  );
+
+  await animation.finished;
+
+  target.style.overflow = '';
+
+  target.classList.remove('open');
+
+  return target;
+};
+
+export const slideDown = async (target, duration = 500) => {
+  target.classList.add('open');
+
+  const cs = getComputedStyle(target);
+  const endHeight = target.getBoundingClientRect().height;
+
+  target.style.overflow = 'hidden';
+
+  const animation = target.animate(
+    [
+      {
+        height: '0px',
+        paddingTop: '0px',
+        paddingBottom: '0px',
+        borderTopWidth: '0px',
+        opacity: 0.75,
+      },
+      {
+        height: `${endHeight}px`,
+        paddingTop: cs.paddingTop,
+        paddingBottom: cs.paddingBottom,
+        borderTopWidth: cs.borderTopWidth,
+        opacity: 1,
+      },
+    ],
+    {
+      duration,
+      easing: 'ease-in-out',
+    }
+  );
+
+  await animation.finished;
+
+  target.style.overflow = '';
+  target.style.height = '';
+
+  return target;
+};
+
+export const slideToggle = async (target, duration = 500) => {
+  // prevent click spam from interfering with animations
+  if (target.dataset.animating) return;
+  target.dataset.animating = true;
+
+  if (!target.classList.contains('open')) {
+    await slideDown(target, duration);
+  } else {
+    await slideUp(target, duration);
+  }
+
+  delete target.dataset.animating;
+
+  return target;
 };

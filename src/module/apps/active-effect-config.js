@@ -2,7 +2,6 @@ const { ActiveEffectConfig } = foundry.applications.sheets;
 
 export default class ZweihanderActiveEffectConfig extends ActiveEffectConfig {
   static DEFAULT_OPTIONS = {
-    ...super.DEFAULT_OPTIONS,
     classes: ['sheet', 'active-effect-sheet'],
     position: { width: 585 },
     form: { closeOnSubmit: false, submitOnClose: true, submitOnChange: true },

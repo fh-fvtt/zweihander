@@ -47,7 +47,6 @@ export default class FortuneTracker extends HandlebarsApplicationMixin(Applicati
   #positions = [];
 
   static DEFAULT_OPTIONS = {
-    ...super.DEFAULT_OPTIONS,
     id: 'fortuneTrackerApp',
     classes: ['zweihander'],
     window: {
@@ -394,76 +393,76 @@ export default class FortuneTracker extends HandlebarsApplicationMixin(Applicati
   }
 
   async _onRender(context, options) {
-    // @todo: refactor jQuery
-    const app = $(this.element);
-    const html = $(this.element);
+    await super._onRender(context, options);
 
-    //const app = html.parents('#fortuneTrackerApp');
+    const html = this.element;
 
     let plusTrigger;
     let minusTrigger;
 
     const isUserGM = game.users.get(game.userId).isGM;
 
-    if (!app.find('#b1').length) {
-      let btn = app.find('*[data-action="close"]');
+    const closeBtn = html.querySelector('*[data-action="close"]');
 
-      if (isUserGM) {
-        btn.before(`
-          <button id="a1" class=" header-control icon fa-solid fa-minus waiting-${this.#waiting}"></button>
-          <button id="b1" class=" header-control icon fa-solid fa-plus waiting-${this.#waiting}"></button>
-          <button class="fortune-tracker-reset header-control icon fas fa-sync-alt" data-tooltip="${
-            this.resetRule
-          }" data-tooltip-direction="UP"></button>
-        `);
-        let resetTrigger = app.find('.fortune-tracker-reset');
-        resetTrigger.click((event) => {
+    if (isUserGM) {
+      const createButton = (id, extraClass) => {
+        const btn = document.createElement('button');
+        btn.id = id;
+        btn.className = `header-control icon ${extraClass} waiting-${this.#waiting}`;
+        return btn;
+      };
+
+      if (!html.querySelector('#b1')) {
+        closeBtn.insertAdjacentHTML(
+          'beforebegin',
+          `
+      <button id="a1" class="header-control icon fa-solid fa-minus waiting-${this.#waiting}"></button>
+      <button id="b1" class="header-control icon fa-solid fa-plus waiting-${this.#waiting}"></button>
+      <button class="fortune-tracker-reset header-control icon fas fa-sync-alt" data-tooltip="${
+        this.resetRule
+      }" data-tooltip-direction="UP"></button>
+    `
+        );
+        html.querySelector('.fortune-tracker-reset').addEventListener('click', (event) => {
           event.preventDefault();
           this.resetState();
         });
-        plusTrigger = app.find('#b1');
-        minusTrigger = app.find('#a1');
+      } else {
+        html.querySelector('#a1').replaceWith(createButton('a1', 'fa-solid fa-minus'));
+        html.querySelector('#b1').replaceWith(createButton('b1', 'fa-solid fa-plus'));
       }
 
-      app.find('*[data-action="close"]').remove();
-    } else {
-      if (isUserGM) {
-        app
-          .find('#b1')
-          .replaceWith(
-            `<button id="b1" class="header-control icon fa-solid fa-plus waiting-${this.#waiting}"></button>`
-          );
-        app
-          .find('#a1')
-          .replaceWith(
-            `<button id="a1" class="header-control icon fa-solid fa-minus waiting-${this.#waiting}"></button>`
-          );
-        plusTrigger = app.find('#b1');
-        minusTrigger = app.find('#a1');
-      }
-    }
-    if (isUserGM) {
-      plusTrigger.click((event) => {
+      plusTrigger = html.querySelector('#b1');
+      minusTrigger = html.querySelector('#a1');
+
+      plusTrigger.addEventListener('click', (event) => {
         event.preventDefault();
         this.requestSync(this.increaseTotal());
       });
-      minusTrigger.click((event) => {
+
+      minusTrigger.addEventListener('click', (event) => {
         event.preventDefault();
         this.requestSync(this.decreaseTotal());
       });
     }
 
-    let fortuneTrigger = html.find('.fortune-tracker-fortune-trigger');
-    fortuneTrigger.click((event) => {
-      event.preventDefault();
-      this.requestSync(this.spendFortune());
-    });
+    if (closeBtn) closeBtn.remove();
 
-    let misfortuneTrigger = html.find('.fortune-tracker-misfortune-trigger');
-    misfortuneTrigger.click((event) => {
-      event.preventDefault();
-      this.requestSync(this.spendMisfortune());
-    });
+    let fortuneTrigger = html.querySelectorAll('.fortune-tracker-fortune-trigger');
+    fortuneTrigger?.forEach((el) =>
+      el.addEventListener('click', async (event) => {
+        event.preventDefault();
+        await this.requestSync(this.spendFortune());
+      })
+    );
+
+    let misfortuneTrigger = html.querySelectorAll('.fortune-tracker-misfortune-trigger');
+    misfortuneTrigger?.forEach((el) =>
+      el.addEventListener('click', async (event) => {
+        event.preventDefault();
+        await this.requestSync(this.spendMisfortune());
+      })
+    );
   }
 
   async useFortune() {

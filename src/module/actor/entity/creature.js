@@ -1,8 +1,11 @@
 import ZweihanderBaseActor from './base-actor';
+import ZweihanderActorConfig from '../../apps/actor-config';
 import * as ZweihanderUtils from '../../utils';
 
 export default class ZweihanderCreature extends ZweihanderBaseActor {
   prepareDerivedData(actor) {
+    const configOptions = ZweihanderActorConfig.getConfig(actor);
+
     Object.values(actor.system.stats.primaryAttributes).forEach(
       (a) => (a.bonus = a.bonusAdvances + Math.floor(a.value / 10))
     );
@@ -49,6 +52,7 @@ export default class ZweihanderCreature extends ZweihanderBaseActor {
     }
 
     sa.initiative.current = sa.initiative.value;
+    sa.initiative.baseFormula = `${configOptions.initiativeOverride ? configOptions.initiativeOverride : 1}d10`;
   }
 
   getItem(actor, type, name, strict = false) {

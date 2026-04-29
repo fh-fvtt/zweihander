@@ -1,29 +1,30 @@
-<div class='item-wrapper item' data-item-id='{{id}}' data-item-uuid="{{uuid}}" data-item-type='{{type}}' data-property='{{uuidProperty}}'>
-  <input class='auto-size {{#if (not (or value editable))}}not-{{/if}}editable' type='text' value='{{value}}' placeholder='{{#if isInItem}}{{placeholderInput}}{{else}}{{placeholder}}{{/if}}' disabled='disabled' />
-  <div class='item-wrapper-edit {{#if (not (or value editable))}}not-{{/if}}editable' data-tooltip-direction='UP'>
+<div class="item-wrapper item" data-item-id="{{id}}" data-item-uuid="{{uuid}}" data-item-type="{{type}}" data-property="{{uuidProperty}}">
+  <input class="auto-size {{#if (not (or value editable))}}not-{{/if}}editable" type="text" value="{{value}}" placeholder="{{#if isInItem}}{{placeholderInput}}{{else}}{{placeholder}}{{/if}}" disabled="disabled" />
+  <div class="item-wrapper-edit {{#if (not (or value editable))}}not-{{/if}}editable" data-tooltip-direction="UP">
     {{#if value}}
       {{#if isParentCharacter}}
-        <a class='item-edit' data-tooltip='{{localize "ZWEI.actor.items.edit"}} {{placeholder}}'><i
-            class='fas fa-pencil-alt fa-sm'
+        <a class="item-edit" data-action="itemEdit" data-tooltip="{{localize "ZWEI.actor.items.edit"}} {{placeholder}}"><i
+            class="fas fa-pencil-alt fa-sm"
           ></i></a>
       {{else}}
-        <a class='item-view' data-tooltip='{{localize "ZWEI.actor.items.view"}} {{placeholder}}'><i
-              class='fas fa-eye fa-sm'
+        <a class="item-view" data-action="itemView" data-tooltip="{{localize "ZWEI.actor.items.view"}} {{placeholder}}"><i
+              class="fas fa-eye fa-sm"
             ></i></a>
       {{/if}}
         {{#if editable}}
-          <a class='item-delete' data-tooltip='{{localize "ZWEI.actor.items.delete"}} {{placeholder}}'><i
-              class='fas fa-trash-alt fa-sm'
+          <a class="item-delete" data-action="itemDelete" data-tooltip="{{localize "ZWEI.actor.items.delete"}} {{placeholder}}"><i
+              class="fas fa-trash-alt fa-sm"
             ></i></a>
         {{/if}}
     {{else}}
       {{#if editable}}
         <a
-          class='add-new'
-          data-item-type='{{type}}'
-          data-open-packs='{{packs}}'
-          data-tooltip='{{#if isInItem}}{{localize "ZWEI.actor.items.opencompendium"}}: {{placeholder}}{{else}}{{localize "ZWEI.actor.items.add"}} {{placeholder}}{{/if}}'
-        ><i class='{{#if isInItem}}fa-solid fa-up-right-from-square fa-xs{{else}}fas fa-plus fa-xs{{/if}}'></i></a>
+          class="add-new"
+          data-action="addNew"
+          data-item-type="{{type}}"
+          data-open-packs="{{packs}}"
+          data-tooltip="{{#if isInItem}}{{localize "ZWEI.actor.items.opencompendium"}}: {{placeholder}}{{else}}{{localize "ZWEI.actor.items.add"}} {{placeholder}}{{/if}}"
+        ><i class="{{#if isInItem}}fa-solid fa-up-right-from-square fa-xs{{else}}fas fa-plus fa-xs{{/if}}"></i></a>
       {{/if}}
     {{/if}}
   </div>

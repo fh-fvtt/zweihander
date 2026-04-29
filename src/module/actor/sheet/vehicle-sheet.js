@@ -17,7 +17,6 @@ export default class ZweihanderVehicleSheet extends ZweihanderBaseActorSheet {
   ]);
 
   static DEFAULT_OPTIONS = {
-    ...super.DEFAULT_OPTIONS,
     classes: ['vehicle'],
     window: {
       icon: 'fa-solid fa-caravan',
@@ -192,18 +191,7 @@ export default class ZweihanderVehicleSheet extends ZweihanderBaseActorSheet {
   async _onRender(options) {
     await super._onRender(options);
 
-    const html = $(this.element); // @todo: refactor jQuery
-
-    // register width listener for skills container
-    this._registerDimensionChangeListener(
-      html.find('.skills-container'),
-      this._getDimensionBreakpointsCallback('innerWidth', [
-        {
-          at: 260,
-          callback: (toggle) => html.find('.skills-list').toggleClass('two-rows', toggle),
-        },
-      ])
-    );
+    const html = this.element;
 
     // Everything below here is only needed if the sheet is editable
     if (!this.isEditable) return;
@@ -212,101 +200,84 @@ export default class ZweihanderVehicleSheet extends ZweihanderBaseActorSheet {
     this._updateEncumbranceMeter(html);
 
     // manual mode
-    html
-      .find('.manual-mode-button')
-      .click(async () => {
-        await this.actor.update({
-          'system.stats.manualMode': !this.actor.system.stats.manualMode,
-        });
-      })
-      .contextmenu(async () => {
-        if (!this.actor.system.stats.manualMode) {
-          const sa = this.actor.system.stats.secondaryAttributes;
-          const x = 'system.stats.secondaryAttributes';
-          await this.actor.update({
-            [`${x}.movement.value`]: sa.movement.value,
-            [`${x}.movement.fly`]: sa.movement.fly,
-            [`${x}.initiative.value`]: sa.initiative.value,
-            [`${x}.parry.value`]: sa.parry.value,
-            [`${x}.dodge.value`]: sa.dodge.value,
-            [`${x}.damageThreshold.value`]: sa.damageThreshold.value,
-            [`${x}.perilThreshold.value`]: sa.perilThreshold.value,
-          });
-        }
+    const manualModeElement = html.querySelector('.manual-mode-button');
+
+    manualModeElement.addEventListener('click', async () => {
+      await this.actor.update({
+        'system.stats.manualMode': !this.actor.system.stats.manualMode,
       });
+    });
+
+    manualModeElement.addEventListener('contextmenu', async () => {
+      if (!this.actor.system.stats.manualMode) {
+        const sa = this.actor.system.stats.secondaryAttributes;
+        const x = 'system.stats.secondaryAttributes';
+        await this.actor.update({
+          [`${x}.sizeModifier.value`]: sa.sizeModifier.value,
+          [`${x}.movement.value`]: sa.movement.value,
+          [`${x}.movement.fly`]: sa.movement.fly,
+          [`${x}.damageThreshold.value`]: sa.damageThreshold.value,
+        });
+      }
+    });
 
     // Edit Actor
-    html.find('.actor-edit').click((ev) => {
-      const a = $(ev.currentTarget).parents('.item');
+    html.querySelectorAll('.actor-edit').forEach((el) =>
+      el.addEventListener('click', (ev) => {
+        const a = ev.currentTarget.closest('.item');
 
-      const actor = fromUuidSync(a.data('actorId'));
+        const actor = fromUuidSync(a.dataset.actorUuid);
 
-      actor.sheet.render(true);
-    });
+        actor.sheet.render(true);
+      })
+    );
 
-    html.find('.actor-promote').click(async (ev) => {
-      const a = $(ev.currentTarget).parents('.item');
-      const vehicle = this.actor;
-
+    const updateOccupants = async (vehicle, actorUuid, action) => {
       const vehicleOccupants = vehicle.getFlag('zweihander', 'vehicleOccupants');
-      const drivers = vehicleOccupants.drivers;
-      const passengers = vehicleOccupants.passengers;
+      const { drivers, passengers } = vehicleOccupants;
 
-      const toPromote = passengers.find((p) => p.uuid === a.data('actorId'));
-      toPromote.isDriver = true;
+      switch (action) {
+        case 'promote': {
+          const target = passengers.find((p) => p.uuid === actorUuid);
 
-      drivers.push(toPromote);
-      passengers.splice(passengers.indexOf(toPromote), 1);
+          target.isDriver = true;
+          drivers.push(target);
+          passengers.splice(passengers.indexOf(target), 1);
 
-      vehicleOccupants.drivers = drivers;
-      vehicleOccupants.passengers = passengers;
+          break;
+        }
+        case 'demote': {
+          const target = drivers.find((p) => p.uuid === actorUuid);
 
-      await vehicle.setFlag('zweihander', 'vehicleOccupants', vehicleOccupants);
-    });
+          target.isDriver = false;
+          passengers.push(target);
+          drivers.splice(drivers.indexOf(target), 1);
 
-    html.find('.actor-demote').click(async (ev) => {
-      const a = $(ev.currentTarget).parents('.item');
-      const vehicle = this.actor;
+          break;
+        }
+        case 'delete': {
+          const toDeleteDriver = drivers.find((p) => p.uuid === actorUuid);
 
-      const vehicleOccupants = vehicle.getFlag('zweihander', 'vehicleOccupants');
-      const drivers = vehicleOccupants.drivers;
-      const passengers = vehicleOccupants.passengers;
-
-      const toDemote = drivers.find((p) => p.uuid === a.data('actorId'));
-      toDemote.isDriver = false;
-
-      passengers.push(toDemote);
-      drivers.splice(drivers.indexOf(toDemote), 1);
-
-      vehicleOccupants.drivers = drivers;
-      vehicleOccupants.passengers = passengers;
-
-      await vehicle.setFlag('zweihander', 'vehicleOccupants', vehicleOccupants);
-    });
-
-    html.find('.actor-delete').click(async (ev) => {
-      const a = $(ev.currentTarget).parents('.item');
-      const vehicle = this.actor;
-
-      const vehicleOccupants = vehicle.getFlag('zweihander', 'vehicleOccupants');
-      const drivers = vehicleOccupants.drivers;
-      const passengers = vehicleOccupants.passengers;
-
-      let toDeleteFinal;
-
-      const toDeleteDriver = drivers.find((p) => p.uuid === a.data('actorId'));
-
-      if (!toDeleteDriver) {
-        toDeleteFinal = passengers.find((p) => p.uuid === a.data('actorId'));
-        passengers.splice(passengers.indexOf(toDeleteFinal), 1);
-        vehicleOccupants.passengers = passengers;
-      } else {
-        toDeleteFinal = toDeleteDriver;
-        drivers.splice(drivers.indexOf(toDeleteFinal), 1);
-        vehicleOccupants.drivers = drivers;
+          if (toDeleteDriver) {
+            drivers.splice(drivers.indexOf(toDeleteDriver), 1);
+          } else {
+            const toDeletePassanger = passengers.find((p) => p.uuid === actorUuid);
+            passengers.splice(passengers.indexOf(toDeletePassanger), 1);
+          }
+          break;
+        }
       }
 
-      await vehicle.setFlag('zweihander', 'vehicleOccupants', vehicleOccupants);
+      await vehicle.setFlag('zweihander', 'vehicleOccupants', { ...vehicleOccupants, drivers, passengers });
+    };
+
+    ['promote', 'demote', 'delete'].forEach((action) => {
+      html.querySelectorAll(`.actor-${action}`).forEach((el) =>
+        el.addEventListener('click', async (ev) => {
+          const actorUuid = ev.currentTarget.closest('.item').dataset.actorUuid;
+          await updateOccupants(this.actor, actorUuid, action);
+        })
+      );
     });
   }
 
@@ -317,9 +288,9 @@ export default class ZweihanderVehicleSheet extends ZweihanderBaseActorSheet {
     let ratio = (currentEncumbrance / totalEncumbrance) * 100;
     if (ratio > 100) {
       ratio = 100;
-      html.find('.encumbrance-bar-container').addClass('encumbrance-overage');
+      html.querySelector('.encumbrance-bar-container').classList.add('encumbrance-overage');
     }
-    html.find('.encumbrance-bar').css('width', ratio + '%');
+    html.querySelector('.encumbrance-bar').style.width = ratio + '%';
   }
 
   async _onDropActor(event, data) {
@@ -330,7 +301,7 @@ export default class ZweihanderVehicleSheet extends ZweihanderBaseActorSheet {
 
     // add everyone as passenger by default; driver logic handled elsewhere
     if (!vehicleOccupants.passengers.includes(uuid) && !vehicleOccupants.drivers.includes(uuid)) {
-      const actor = await fromUuid(uuid);
+      const actor = fromUuidSync(uuid);
       const actorData = actor.toObject(false);
 
       if (actor.type === 'vehicle') {
@@ -356,21 +327,4 @@ export default class ZweihanderVehicleSheet extends ZweihanderBaseActorSheet {
 
     await super._onDropActor(event, data);
   }
-
-  // @todo: fix later
-  /*
-  async _render(force, options) {
-    if (this.actor.limited) {
-      options.classes = [
-        'limited',
-        ...this.constructor.defaultOptions.classes,
-        ...(options.classes?.length ? options.classes : []),
-      ];
-      options.height = 'auto';
-      options.width = 350;
-      options.resizable = false;
-    }
-    await super._render(force, options);
-  }
-    */
 }

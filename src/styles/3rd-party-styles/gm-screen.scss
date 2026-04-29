@@ -23,6 +23,10 @@
   .gm-screen-grid-cell-content-wrapper {
     box-shadow: none;
     background-color: var(--zh-clr-bg0);
+
+    .gm-screen-grid-cell-content > form > header.window-header {
+      display: none;
+    }
   }
   .gm-screen-grid-cell-content-wrapper {
     overflow-x: auto;

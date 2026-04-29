@@ -2,4 +2,53 @@ body.game.vtt.system-zweihander .zweihander.sheet.creature.npc {
   .window-content {
     background-image: url('/systems/zweihander/assets/npc-sheet-backdrop.webp');
   }
+
+  .window-content > .encumbrance-bar-container {
+    background: var(--zh-clr-fg2);
+    border: 1px solid var(--zh-clr-bg1);
+    border-radius: 1ch;
+    color: var(--zh-clr-bg0);
+    flex: 0 0 18px;
+    margin: 0 0.5rem 0.5rem 0.5rem;
+    overflow: hidden;
+    position: relative;
+    .encumbrance-label {
+      font-size: 12px;
+      height: 10px;
+      line-height: 18px;
+      padding: 0 5px;
+      position: absolute;
+      right: 0;
+      text-align: center;
+      top: 0;
+      width: 100%;
+    }
+    .encumbrance-bar {
+      background: var(--zh-clr-aqua);
+      border: 1px solid var(--zh-clr-aqua);
+      border-radius: 1ch;
+      height: 16px;
+      left: 0px;
+      position: absolute;
+      top: 0px;
+      // transition: width 200ms ease-in-out;
+      width: 50%;
+    }
+    .overage-display {
+      display: none;
+    }
+    &.encumbrance-overage {
+      .encumbrance-bar {
+        background: var(--zh-clr-red-alt);
+        border-color: var(--zh-clr-orange);
+      }
+      .encumbrance-label {
+        color: var(--zh-clr-fg2);
+      }
+      .overage-display {
+        color: var(--zh-clr-fg0);
+        display: inline;
+      }
+    }
+  }
 }

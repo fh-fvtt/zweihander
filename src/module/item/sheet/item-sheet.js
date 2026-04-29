@@ -24,6 +24,21 @@ export default class ZweihanderItemSheet extends HandlebarsApplicationMixin(Item
       width: 585,
       height: 'auto',
     },
+    actions: {
+      addNew: ZweihanderItemSheet.#addNew,
+      addExpertRequirementChange: ZweihanderItemSheet.#addExpertRequirementChange,
+      deleteExpertRequirementChange: ZweihanderItemSheet.#deleteExpertRequirementChange,
+      editImg: ZweihanderItemSheet.#editImg,
+      itemDelete: ZweihanderItemSheet.#itemDelete,
+      itemEdit: ZweihanderItemSheet.#itemEdit,
+      itemView: ZweihanderItemSheet.#itemView,
+      effectDelete: ZweihanderItemSheet.#effectDelete,
+      effectEdit: ZweihanderItemSheet.#effectEdit,
+      addAncestralModifierChange: ZweihanderItemSheet.#addAncestralModifierChange,
+      deleteAncestralModifierChange: ZweihanderItemSheet.#deleteAncestralModifierChange,
+      randomizeAncestralTrait: ZweihanderItemSheet.#randomizeAncestralTrait,
+      resistDisease: ZweihanderItemSheet.#resistDisease,
+    },
   };
 
   static PARTS = {
@@ -105,9 +120,7 @@ export default class ZweihanderItemSheet extends HandlebarsApplicationMixin(Item
         value: option,
         label: option.capitalize(),
       }));
-    }
-
-    if (sheetData.type === 'profession') {
+    } else if (sheetData.type === 'profession') {
       sheetData.bonusAdvancesOptions = CONFIG.ZWEI.primaryAttributeBonuses;
 
       sheetData.html['expertRequirements'] = await ZweihanderUtils.enrichLocalized(
@@ -117,8 +130,9 @@ export default class ZweihanderItemSheet extends HandlebarsApplicationMixin(Item
       const skillPack = game.packs.get(game.settings.get('zweihander', 'skillPack'));
       sheetData.skills = (await skillPack.getIndex())
         .map((x) => ({
-          key: x.name.toLowerCase(),
+          key: x.name,
           label: x.name,
+          normalizedKey: x.name.toLowerCase(),
         }))
         .sort((a, b) => a.key.localeCompare(b.key));
 
@@ -171,16 +185,12 @@ export default class ZweihanderItemSheet extends HandlebarsApplicationMixin(Item
       const talentList = Array.from({ length: 3 }, Object).map((o, i) => sheetData.document.system.talents[i] ?? o);
 
       this._prepareLinkedItemsWrapperData(talentList, sheetData, 'talent');
-    }
-
-    if (sheetData.type === 'injury') {
+    } else if (sheetData.type === 'injury') {
       sheetData.choices.severities = ZweihanderUtils.selectedChoice(
         sheetData.document.system.severity ?? 0,
         CONFIG.ZWEI.injurySeverities
       );
-    }
-
-    if (sheetData.type === 'disease') {
+    } else if (sheetData.type === 'disease') {
       sheetData.difficultyRatings = [...Array(7).keys()].map((i) => {
         const value = i * 10 - 30;
         const selected = (Number(sheetData.document.system.resist) ?? 0) === value ? 'selected' : '';
@@ -194,9 +204,7 @@ export default class ZweihanderItemSheet extends HandlebarsApplicationMixin(Item
         label: d,
         selected: sheetData.document.system.duration.formula.die === d ? 'selected' : '',
       }));
-    }
-
-    if (sheetData.type === 'ritual') {
+    } else if (sheetData.type === 'ritual') {
       sheetData.ritualCastingTimes = ['varies', 'special', 'formula'].map((ct) => ({
         label: game.i18n.localize(`ZWEI.actor.items.castingtimeList.${ct}`),
         value: ct,
@@ -223,9 +231,7 @@ export default class ZweihanderItemSheet extends HandlebarsApplicationMixin(Item
           selected: sheetData.document.system.difficulty.associatedSkill === x.name ? 'selected' : '',
         }))
         .sort((a, b) => a.label.localeCompare(b.label));
-    }
-
-    if (sheetData.type === 'spell') {
+    } else if (sheetData.type === 'spell') {
       sheetData.spellDurations = ['instantaneous', 'forever', 'special'].map((d) => ({
         label: game.i18n.localize(`ZWEI.actor.items.durationList.${d}`),
         value: d,
@@ -238,22 +244,16 @@ export default class ZweihanderItemSheet extends HandlebarsApplicationMixin(Item
         CONFIG.ZWEI.primaryAttributeBonuses,
         'system.duration.base'
       );
-    }
-
-    if (sheetData.type === 'trapping') {
+    } else if (sheetData.type === 'trapping') {
       sheetData.settings.currencies = game.settings.get('zweihander', 'currencySettings');
-    }
-
-    if (sheetData.type === 'armor') {
+    } else if (sheetData.type === 'armor') {
       sheetData.settings.currencies = game.settings.get('zweihander', 'currencySettings');
 
       const qualities = this._prepareQualities(sheetData);
 
       sheetData.qualitiesCompendium = qualities.compendium;
       sheetData.qualitiesWorld = qualities.world;
-    }
-
-    if (sheetData.type === 'weapon') {
+    } else if (sheetData.type === 'weapon') {
       sheetData.settings.currencies = game.settings.get('zweihander', 'currencySettings');
 
       const diceTypes = ['d4', 'd6', 'd8', 'd10', 'd12', 'd20', 'd100'];
@@ -291,9 +291,7 @@ export default class ZweihanderItemSheet extends HandlebarsApplicationMixin(Item
         CONFIG.ZWEI.primaryAttributeBonuses,
         'system.distance.base'
       );
-    }
-
-    if (sheetData.type === 'ancestry') {
+    } else if (sheetData.type === 'ancestry') {
       sheetData.ancestralModiferOptions = CONFIG.ZWEI.primaryAttributeBonuses.map((pab) => ({
         key: '[' + pab + ']',
         label: game.i18n.localize(
@@ -660,6 +658,8 @@ export default class ZweihanderItemSheet extends HandlebarsApplicationMixin(Item
   async _onRender(context, options) {
     await super._onRender(context, options);
 
+    const html = this.element;
+
     // enable drag-and-drop for Item sheets
     new DragDrop.implementation({
       dragSelector: null,
@@ -671,33 +671,20 @@ export default class ZweihanderItemSheet extends HandlebarsApplicationMixin(Item
       },
     }).bind(this.element);
 
-    const html = $(this.element); // @todo: refactor jQuery
-
-    // @todo: figure out a less hacky way to handle this
-    html.find('.editor-edit').click((event) => {
-      const toggler = $(event.currentTarget);
-      const sheet = toggler.parents('.zweihander.sheet.item');
-
-      const currentTabHeight = html.find('.tab.active').height();
-
-      $(sheet).height(currentTabHeight + 169.67);
-    });
-
-    html.find('.profile').click(async (event) => {
-      this._onEditImage(event);
-    });
-
     // Show item sheet on right click
-    html.find('div[class="tag"]').contextmenu(async (event) => {
-      const itemUuid = $(event.currentTarget).data('key');
+    html.querySelectorAll('div[class="tag"]')?.forEach((el) =>
+      el.addEventListener('contextmenu', async (event) => {
+        const itemUuid = event.currentTarget.dataset.key;
 
-      if (/^\d+$/.test(itemUuid)) return;
+        if (/^\d+$/.test(itemUuid)) return;
 
-      const item = await fromUuid(itemUuid);
+        const item = await fromUuid(itemUuid);
 
-      if (item !== null) item.sheet.render(true);
-    });
+        if (item !== null) item.sheet.render(true);
+      })
+    );
 
+    /* @todo: figure out if this will be needed or not
     html.find('.numerable-field-add.advance').click(async (event) => {
       const targetAdvance = '[' + $(event.currentTarget).parent().data('advanceName') + ']';
       const item = this.object;
@@ -743,141 +730,74 @@ export default class ZweihanderItemSheet extends HandlebarsApplicationMixin(Item
         ui.notifications.error(game.i18n.localize('ZWEI.othermessages.nonegativeba'));
       }
     });
-
-    // Add new Active Effect (from within the sheet)
-    html.find('.add-new').click(async (ev) => {
-      let type = ev.currentTarget.dataset.itemType;
-
-      let createdItemArray = [];
-
-      if (type === 'effect') {
-        // @todo: refactor to use ActiveEffect.create
-        createdItemArray = await this.item.createEmbeddedDocuments('ActiveEffect', [
-          {
-            name: this.item.name,
-            icon: this.item.img,
-            origin: (this.item.parent ? `Actor.${this.item.parent.id}.` : '') + 'Item.' + this.item.id,
-
-            // @todo: refactor after transition to DataMode
-            system: {
-              details: {
-                source: this.item.name + ' (' + game.i18n.localize(CONFIG.Item.typeLabels[this.item.type]) + ')',
-                category: '',
-                isActive: false,
-              },
-            },
-          },
-        ]);
-      } else {
-        const packIds = ev.currentTarget.dataset.openPacks?.split?.(',')?.filter?.((x) => x);
-        if (!packIds) {
-          ui.notifications.notify(game.i18n.localize('ZWEI.othermessages.errortype'));
-          return;
-        }
-        const packs = packIds.map((x) => game.packs.get(x.trim()));
-        if (packs.every((x) => x?.apps?.[0]?.rendered)) {
-          packs.forEach((x) => x.apps[0].close());
-        }
-        packs.forEach((x, i) =>
-          x.render(true, {
-            top: this.item.sheet.position.top,
-            left: this.item.sheet.position.left + (i % 2 == 0 ? -350 : this.item.sheet.position.width),
-          })
-        );
-      }
-
-      if (createdItemArray.length) createdItemArray[0].sheet.render(true);
-    });
-
-    const onDeleteCallback = (itemType, uuidProperty) =>
-      ['talent', 'quality'].includes(itemType)
-        ? onDeleteArrayItemCallback(uuidProperty)
-        : onDeleteItemCallback(uuidProperty);
-
-    const onDeleteItemCallback = (uuidProperty) => async () => {
-      await this.item.update({ [`${uuidProperty}`]: '' });
-      this.render(false);
-    };
-
-    // @todo: no need for qualities to be here; remove
-    const onDeleteArrayItemCallback = (uuidProperty) => async () => {
-      const [type, idx] = uuidProperty.split('.').slice(1, -1);
-      const property = type === 'talent' ? 'system.talents' : 'system.qualities';
-      const updatedArray = [...getProperty(this.item, property)];
-
-      updatedArray.splice(idx, 1, { uuid: '' });
-
-      await this.item.update({ [property]: updatedArray });
-      this.render(false);
-    };
-
-    html.find('.item-delete').click(async (ev) => {
-      const itemTarget = $(ev.currentTarget).parents('.item');
-      const itemType = itemTarget.data('itemType');
-      const uuidProperty = itemTarget.data('property');
-      const itemName = itemTarget.children('.auto-size').val();
-
-      const type = game.i18n.localize(CONFIG.Item.typeLabels[itemType]);
-      await DialogV2.confirm({
-        window: { title: game.i18n.format('ZWEI.othermessages.deleteembedded', { type: type, name: itemName }) },
-        content: game.i18n.format('ZWEI.othermessages.suretype', { type: type }),
-        yes: { callback: onDeleteCallback(itemType, uuidProperty) },
-        no: { callback: () => {} },
-        position: { width: 455 },
-        rejectClose: false,
-        defaultYes: true,
-      });
-    });
-
-    html.find('.item-edit').click((ev) => {
-      const i = $(ev.currentTarget).parents('.item');
-      const item = this.item.parent.items.get(i.data('itemId'));
-      item.sheet.render(true);
-    });
-
-    html.find('.item-view').click(async (ev) => {
-      const i = $(ev.currentTarget).parents('.item');
-      const item = await fromUuid(i.data('itemUuid'));
-      item.sheet.render(true);
-    });
-
-    html.find('.randomize-trait').click(this._randomizeAncestralTrait.bind(this));
-
-    html.find('.resist-disease').click(this._resistDisease.bind(this));
-
-    // Edit Active Effect
-    html.find('.effect-edit').click((ev) => {
-      const i = $(ev.currentTarget).parents('.effect-item');
-      const item = this.item.effects.get(i.data('itemId'));
-      item.sheet.render(true);
-    });
-
-    // Delete Active Effect
-    html.find('.effect-delete').click(async (ev) => {
-      const i = $(ev.currentTarget).parents('.effect-item');
-      const effect = this.item.effects.get(i.data('itemId'));
-      const type = game.i18n.localize(CONFIG.ActiveEffect.typeLabels['base']);
-      await DialogV2.confirm({
-        window: { title: game.i18n.format('ZWEI.othermessages.deletetype', { type: type, label: effect.label }) },
-        content: game.i18n.format('ZWEI.othermessages.suretype', { type: type }),
-        yes: {
-          callback: async () => {
-            await effect.delete();
-            i.slideUp(200, () => this.render(false));
-          },
-        },
-        no: { callback: () => {} },
-        position: { width: 455 },
-        rejectClose: false,
-        defaultYes: true,
-      });
-    });
-
-    html.find('.requirements-control').click(this._onRequirementsControl.bind(this));
-    html.find('.ancestral-modifiers-control').click(this._onAncestralModifiersControl.bind(this));
+    */
   }
 
-  _onEditImage(event) {
+  static #addExpertRequirementChange(event, target) {
+    event.preventDefault();
+
+    const submitData = this._processFormData(null, this.form, new FormDataExtended(this.form));
+    const skillRanks = Object.values(submitData.system.expert.requirements.skillRanks ?? {});
+    skillRanks.push({ key: '', value: 0 });
+    return this.submit({ updateData: { ['system.expert.requirements.skillRanks']: skillRanks } });
+  }
+
+  static #deleteExpertRequirementChange(event, target) {
+    event.preventDefault();
+
+    const submitData = this._processFormData(null, this.form, new FormDataExtended(this.form));
+    const skillRanks = Object.values(submitData.system.expert.requirements.skillRanks);
+    const row = target.closest('li');
+    const index = Number(row.dataset.index) || 0;
+    skillRanks.splice(index, 1);
+    return this.submit({ updateData: { ['system.expert.requirements.skillRanks']: skillRanks } });
+  }
+
+  static async #addNew(event, target) {
+    let type = target.dataset.itemType;
+
+    let createdItemArray = [];
+
+    if (type === 'effect') {
+      // @todo: refactor to use ActiveEffect.create
+      createdItemArray = await this.item.createEmbeddedDocuments('ActiveEffect', [
+        {
+          name: this.item.name,
+          icon: this.item.img,
+          origin: (this.item.parent ? `Actor.${this.item.parent.id}.` : '') + 'Item.' + this.item.id,
+
+          // @todo: refactor after transition to DataMode
+          system: {
+            details: {
+              source: this.item.name + ' (' + game.i18n.localize(CONFIG.Item.typeLabels[this.item.type]) + ')',
+              category: '',
+              isActive: false,
+            },
+          },
+        },
+      ]);
+    } else {
+      const packIds = target.dataset.openPacks?.split?.(',')?.filter?.((x) => x);
+      if (!packIds) {
+        ui.notifications.notify(game.i18n.localize('ZWEI.othermessages.errortype'));
+        return;
+      }
+      const packs = packIds.map((x) => game.packs.get(x.trim()));
+      if (packs.every((x) => x?.apps?.[0]?.rendered)) {
+        packs.forEach((x) => x.apps[0].close());
+      }
+      packs.forEach((x, i) =>
+        x.render(true, {
+          top: this.item.sheet.position.top,
+          left: this.item.sheet.position.left + (i % 2 == 0 ? -350 : this.item.sheet.position.width),
+        })
+      );
+    }
+
+    if (createdItemArray.length) createdItemArray[0].sheet.render(true);
+  }
+
+  static #editImg(event, target) {
     const fp = new FilePicker({
       type: 'image',
       current: this.item.img,
@@ -890,11 +810,119 @@ export default class ZweihanderItemSheet extends HandlebarsApplicationMixin(Item
     return fp.browse();
   }
 
-  async _resistDisease() {
-    await this.item.roll();
+  static #itemEdit(event, target) {
+    const i = target.closest('.item');
+    const item = this.item.parent.items.get(i.dataset.itemId);
+    item.sheet.render(true);
   }
 
-  async _randomizeAncestralTrait() {
+  static async #itemView(event, target) {
+    const i = target.closest('.item');
+    const item = await fromUuid(i.dataset.itemUuid);
+    item.sheet.render(true);
+  }
+
+  _onDeleteItemCallback = (uuidProperty) => async () => {
+    await this.item.update({ [`${uuidProperty}`]: '' });
+    this.render(false);
+  };
+
+  _onDeleteArrayItemCallback = (uuidProperty) => async () => {
+    const [type, idx] = uuidProperty.split('.').slice(1, -1);
+
+    if (!type === 'talent') return;
+
+    const property = 'system.talents';
+    const updatedArray = [...getProperty(this.item, property)];
+
+    updatedArray.splice(idx, 1, { uuid: '' });
+
+    await this.item.update({ [property]: updatedArray });
+    this.render(false);
+  };
+
+  static async #itemDelete(event, target) {
+    const itemTarget = target.closest('.item');
+    const itemType = itemTarget.dataset.itemType;
+    const uuidProperty = itemTarget.dataset.property;
+    const itemName = itemTarget.querySelector('.auto-size').value;
+
+    const type = game.i18n.localize(CONFIG.Item.typeLabels[itemType]);
+    await DialogV2.confirm({
+      window: { title: game.i18n.format('ZWEI.othermessages.deleteembedded', { type: type, name: itemName }) },
+      content: game.i18n.format('ZWEI.othermessages.suretype', { type: type }),
+      yes: {
+        callback:
+          // only Talents are relevant here, Qualities are handled through multi-select
+          itemType === 'talent'
+            ? this._onDeleteArrayItemCallback(uuidProperty)
+            : this._onDeleteItemCallback(uuidProperty),
+      },
+      no: { callback: () => {} },
+      position: { width: 455 },
+      rejectClose: false,
+      defaultYes: true,
+    });
+  }
+
+  static #effectEdit(event, target) {
+    const i = target.closest('.effect-item');
+    const item = this.item.effects.get(i.dataset.itemId);
+    item.sheet.render(true);
+  }
+
+  static async #effectDelete(event, target) {
+    const i = target.closest('.effect-item');
+    const effect = this.item.effects.get(i.dataset.itemId);
+    const type = game.i18n.localize(CONFIG.ActiveEffect.typeLabels['base']);
+    await DialogV2.confirm({
+      window: {
+        title: game.i18n.format('ZWEI.othermessages.deletetype', {
+          type: game.i18n.localize(`TYPES.ActiveEffect.${type}`),
+          label: effect.name,
+        }),
+      },
+      content: game.i18n.format('ZWEI.othermessages.suretype', {
+        type: game.i18n.localize(`TYPES.ActiveEffect.${type}`),
+      }),
+      yes: {
+        callback: async () => {
+          await ZweihanderUtils.slideUpOnDelete(i, 200);
+          await effect.delete();
+        },
+      },
+      no: { callback: () => {} },
+      position: { width: 455 },
+      rejectClose: false,
+      defaultYes: true,
+    });
+  }
+
+  static #addAncestralModifierChange(event, target) {
+    const submitData = this._processFormData(null, this.form, new FormDataExtended(this.form));
+    const ancestralModifiers = Object.values(submitData.system.ancestralModifiers?.value ?? {});
+    ancestralModifiers.push({ key: '', value: 0 });
+    return this.submit({ updateData: { ['system.ancestralModifiers.value']: ancestralModifiers } });
+  }
+
+  static #deleteAncestralModifierChange(event, target) {
+    const submitData = this._processFormData(null, this.form, new FormDataExtended(this.form));
+    const ancestralModifiers = Object.values(submitData.system.ancestralModifiers.value);
+    const row = target.closest('li');
+    const index = Number(row.dataset.index) || 0;
+    ancestralModifiers.splice(index, 1);
+    return this.submit({ updateData: { ['system.ancestralModifiers.value']: ancestralModifiers } });
+  }
+
+  static async #resistDisease(event, target) {
+    const item = this.item;
+
+    if (item.type !== 'disease') return;
+
+    await item.roll();
+  }
+
+  static async #randomizeAncestralTrait(event, target) {
     const item = this.item;
 
     if (item.type !== 'ancestry') return;
@@ -935,60 +963,6 @@ export default class ZweihanderItemSheet extends HandlebarsApplicationMixin(Item
     const ancestralTrait = ancestralTraitsTableResult.results[0];
 
     await item.update({ ['system.ancestralTrait.uuid']: ancestralTrait.documentUuid });
-  }
-
-  _onRequirementsControl(event) {
-    event.preventDefault();
-    const button = event.currentTarget;
-    switch (button.dataset.action) {
-      case 'add':
-        return this._addRequirementsChange();
-      case 'delete':
-        return this._deleteRequirementsChange(event);
-    }
-  }
-
-  async _addRequirementsChange() {
-    const submitData = this._processFormData(null, this.form, new FormDataExtended(this.form));
-    const skillRanks = Object.values(submitData.system.expert.requirements.skillRanks ?? {});
-    skillRanks.push({ key: '', value: 0 });
-    return this.submit({ updateData: { ['system.expert.requirements.skillRanks']: skillRanks } });
-  }
-
-  async _deleteRequirementsChange(event) {
-    const submitData = this._processFormData(null, this.form, new FormDataExtended(this.form));
-    const skillRanks = Object.values(submitData.system.expert.requirements.skillRanks);
-    const row = event.target.closest('li');
-    const index = Number(row.dataset.index) || 0;
-    skillRanks.splice(index, 1);
-    return this.submit({ updateData: { ['system.expert.requirements.skillRanks']: skillRanks } });
-  }
-
-  _onAncestralModifiersControl(event) {
-    event.preventDefault();
-    const button = event.currentTarget;
-    switch (button.dataset.action) {
-      case 'add':
-        return this._addAncestralModifiersChange();
-      case 'delete':
-        return this._deleteAncestralModifersChange(event);
-    }
-  }
-
-  async _addAncestralModifiersChange() {
-    const submitData = this._processFormData(null, this.form, new FormDataExtended(this.form));
-    const ancestralModifiers = Object.values(submitData.system.ancestralModifiers?.value ?? {});
-    ancestralModifiers.push({ key: '', value: 0 });
-    return this.submit({ updateData: { ['system.ancestralModifiers.value']: ancestralModifiers } });
-  }
-
-  async _deleteAncestralModifersChange(event) {
-    const submitData = this._processFormData(null, this.form, new FormDataExtended(this.form));
-    const ancestralModifiers = Object.values(submitData.system.ancestralModifiers.value);
-    const row = event.target.closest('li');
-    const index = Number(row.dataset.index) || 0;
-    ancestralModifiers.splice(index, 1);
-    return this.submit({ updateData: { ['system.ancestralModifiers.value']: ancestralModifiers } });
   }
 
   // @todo: this can hopefully be deleted after DataModels are implemented

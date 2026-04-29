@@ -218,7 +218,7 @@ export default class ZweihanderBaseActorSheet extends HandlebarsApplicationMixin
       );
     }
     // Create the owned item as normal
-    return super._onDropItem(event, item);
+    return await super._onDropItem(event, item);
   }
 
   async _renderFrame(options) {
@@ -228,7 +228,12 @@ export default class ZweihanderBaseActorSheet extends HandlebarsApplicationMixin
     const buttons = [
       ZweihanderUtils.constructHTMLButton({
         label: '',
-        classes: ['header-control', 'icon', 'fa-solid', `fa-${defaultToCompact ? 'expand' : 'compress'}`],
+        classes: [
+          'header-control',
+          'icon',
+          'fa-solid',
+          `fa-${defaultToCompact && this.actor.type !== 'character' ? 'expand' : 'compress'}`,
+        ],
         dataset: { action: 'toggleCompactMode', tooltip: game.i18n.localize('ZWEI.settings.togglecompact') },
       }),
     ];
@@ -262,33 +267,39 @@ export default class ZweihanderBaseActorSheet extends HandlebarsApplicationMixin
   async _onRender(context, options) {
     await super._onRender(context, options);
 
-    const sheet = this.element;
+    const html = this.element;
 
-    const html = $(this.element); // @todo: refactor jQuery
+    this._applyDamageDecals(html);
+    this._applyPerilDecals(html);
 
-    this._applyDamageDecals(sheet);
-    this._applyPerilDecals(sheet);
+    html.querySelectorAll('.modded-value-indicator').forEach((el) => {
+      el.addEventListener('mouseenter', (event) => {
+        const source = event.currentTarget.querySelector('.modded-value-tooltip');
+        const tooltip = source.cloneNode(true);
 
-    html.find('.modded-value-indicator').hover(
-      (event) => {
-        const tooltip = $(event.currentTarget).find('.modded-value-tooltip').clone();
-        const offset = $(event.currentTarget).offset();
-        offset.top += 25;
-        offset.left -= 110 / 2 - 8;
-        tooltip.addClass('zh-modded-value-tooltip-instance');
-        tooltip.offset(offset);
-        $('body').append(tooltip);
-      },
-      (event) => {
-        $('.zh-modded-value-tooltip-instance').remove();
-      }
-    );
+        const rect = event.currentTarget.getBoundingClientRect();
+        const top = rect.top + window.scrollY + 25;
+        const left = rect.left + window.scrollX - 110 / 2 + 8;
+
+        tooltip.classList.add('zh-modded-value-tooltip-instance');
+
+        tooltip.style.position = 'absolute';
+        tooltip.style.top = `${top}px`;
+        tooltip.style.left = `${left}px`;
+
+        document.body.appendChild(tooltip);
+      });
+
+      el.addEventListener('mouseleave', () => {
+        document.querySelectorAll('.zh-modded-value-tooltip-instance').forEach((t) => t.remove());
+      });
+    });
 
     // auto size the details inputs once
     const autoSizeInput = (el) =>
       el.setAttribute('size', Math.max(el.getAttribute('placeholder').length, el.value.length));
-    const inputsToAutoSize = Array.from(sheet.querySelectorAll('input.auto-size'));
-    inputsToAutoSize.forEach((el) => autoSizeInput(el));
+    const inputsToAutoSize = Array.from(html.querySelectorAll('input.auto-size'));
+    inputsToAutoSize.forEach(autoSizeInput);
 
     const getItemGroupCriteria = (criteria, itemGroupKey) => {
       if (!criteria[itemGroupKey]) {
@@ -308,58 +319,82 @@ export default class ZweihanderBaseActorSheet extends HandlebarsApplicationMixin
       return existingCriterion;
     };
 
-    html.find('.show-filter').click((event) => {
-      event.stopPropagation();
-      const el = $(event.currentTarget).parents('.filterable');
-      const itemGroup = el.data('itemGroup');
-      const detail = Number.parseInt(el.data('detail'));
-      getCriterion(this.filterCriteria, itemGroup, detail).active = true;
-      el.find('.filter-input').addClass('filter-input-active');
-      el.find('.filter-input input').focus();
+    html.querySelectorAll('.show-filter').forEach((el) => {
+      el.addEventListener('click', (event) => {
+        event.stopPropagation();
+
+        const container = event.currentTarget.closest('.filterable');
+        const { itemGroup, detail: detailStr } = container.dataset;
+        const detail = Number.parseInt(detailStr);
+
+        getCriterion(this.filterCriteria, itemGroup, detail).active = true;
+
+        const filterInput = container.querySelector('.filter-input');
+        filterInput.classList.add('filter-input-active');
+        filterInput.querySelector('input').focus();
+      });
     });
-    html.find('.hide-filter').click((event) => {
-      event.stopPropagation();
-      const el = $(event.currentTarget).parents('.filterable');
-      const itemGroup = el.data('itemGroup');
-      const detail = Number.parseInt(el.data('detail'));
-      $(event.currentTarget).parents('.filter-input').removeClass('filter-input-active');
-      getCriterion(this.filterCriteria, itemGroup, detail).active = false;
-    });
-    html.find('.filter-input input').click((event) => event.stopPropagation());
-    html.find('.filter-input input').keydown((event) => {
-      event.stopPropagation();
-      const el = $(event.currentTarget).parents('.filterable');
-      const itemGroup = el.data('itemGroup');
-      const detail = Number.parseInt(el.data('detail'));
-      if (event.keyCode === 27) {
-        $(event.currentTarget).parent().removeClass('filter-input-active');
+
+    html.querySelectorAll('.hide-filter').forEach((el) => {
+      el.addEventListener('click', (event) => {
+        event.stopPropagation();
+
+        const container = event.currentTarget.closest('.filterable');
+        const { itemGroup, detail: detailStr } = container.dataset;
+        const detail = Number.parseInt(detailStr);
+
+        event.currentTarget.closest('.filter-input').classList.remove('filter-input-active');
         getCriterion(this.filterCriteria, itemGroup, detail).active = false;
-      } else if (event.keyCode === 13) {
-        const criterion = getCriterion(this.filterCriteria, itemGroup, detail);
-        criterion.value = event.currentTarget.value;
-        if (criterion.value.trim() === '') {
-          $(event.currentTarget).parent().removeClass('filter-input-active');
-          criterion.active = false;
-        }
-        this.render();
-      }
+      });
     });
-    html.find('.sortable').click((event) => {
-      event.stopPropagation();
-      const el = $(event.currentTarget);
-      const itemGroup = el.data('itemGroup');
-      const detail = Number.parseInt(el.data('detail'));
-      const criterion = getCriterion(this.sortCriteria, itemGroup, detail);
-      if (!criterion.sort) {
-        criterion.sort = 1;
-      } else if (criterion.sort === 1) {
-        criterion.sort = -1;
-      } else if (criterion.sort === -1) {
-        criterion.sort = 0;
-        const ig = this.sortCriteria[itemGroup];
-        ig.splice(ig.indexOf(criterion), 1);
-      }
-      this.render();
+
+    html
+      .querySelectorAll('.filter-input input')
+      .forEach((el) => el.addEventListener('click', (event) => event.stopPropagation()));
+
+    html.querySelectorAll('.filter-input input').forEach((el) => {
+      el.addEventListener('keydown', async (event) => {
+        event.stopPropagation();
+
+        const container = event.currentTarget.closest('.filterable');
+        const { itemGroup, detail: detailStr } = container.dataset;
+        const detail = Number.parseInt(detailStr);
+
+        if (event.key === 'Escape') {
+          event.currentTarget.parentElement.classList.remove('filter-input-active');
+          getCriterion(this.filterCriteria, itemGroup, detail).active = false;
+        } else if (event.key === 'Enter') {
+          const criterion = getCriterion(this.filterCriteria, itemGroup, detail);
+          criterion.value = event.currentTarget.value;
+          if (criterion.value.trim() === '') {
+            event.currentTarget.parentElement.classList.remove('filter-input-active');
+            criterion.active = false;
+          }
+          await this.render();
+        }
+      });
+    });
+
+    html.querySelectorAll('.sortable').forEach((el) => {
+      el.addEventListener('click', async (event) => {
+        event.stopPropagation();
+
+        const { itemGroup, detail: detailStr } = event.currentTarget.dataset;
+        const detail = Number.parseInt(detailStr);
+        const criterion = getCriterion(this.sortCriteria, itemGroup, detail);
+
+        if (!criterion.sort) {
+          criterion.sort = 1;
+        } else if (criterion.sort === 1) {
+          criterion.sort = -1;
+        } else if (criterion.sort === -1) {
+          criterion.sort = 0;
+          const ig = this.sortCriteria[itemGroup];
+          ig.splice(ig.indexOf(criterion), 1);
+        }
+
+        await this.render();
+      });
     });
 
     // Everything below here is only needed if the sheet is editable
@@ -369,286 +404,336 @@ export default class ZweihanderBaseActorSheet extends HandlebarsApplicationMixin
     inputsToAutoSize.forEach((el) => el.addEventListener('input', (event) => autoSizeInput(event.currentTarget)));
 
     const actor = this.actor;
+
     // Edit Inventory Item
-    html.find('.item-edit').click((ev) => {
-      const i = $(ev.currentTarget).parents('.item');
-      const item = this.actor.items.get(i.data('itemId'));
-      item.sheet.render(true);
+    html.querySelectorAll('.item-edit').forEach((el) => {
+      el.addEventListener('click', async (event) => {
+        const container = event.currentTarget.closest('.item');
+        const item = this.actor.items.get(container.dataset.itemId);
+        await item.sheet.render(true);
+      });
     });
 
     // Delete Inventory Item
-    html.find('.item-delete').click(async (ev) => {
-      const i = $(ev.currentTarget).parents('.item');
-      const item = this.actor.items.get(i.data('itemId'));
-      const type = game.i18n.localize(CONFIG.Item.typeLabels[item.type]);
+    html.querySelectorAll('.item-delete').forEach((el) =>
+      el.addEventListener('click', async (event) => {
+        const container = event.currentTarget.closest('.item');
+        const item = this.actor.items.get(container.dataset.itemId);
+        const type = game.i18n.localize(CONFIG.Item.typeLabels[item.type]);
 
-      // prevent deletion of Professions out of order
-      if (item.type === 'profession') {
-        const currentTier = item.parent.items.filter((i) => i.type === 'profession').length;
-        const tiersInversed = ZweihanderUtils.getLocalizedTierMapping();
-        const itemTier = tiersInversed[item.system.tier];
+        // prevent deletion of Professions out of order
+        if (item.type === 'profession') {
+          const currentTier = item.parent.items.filter((i) => i.type === 'profession').length;
+          const tiersInversed = ZweihanderUtils.getLocalizedTierMapping();
+          const itemTier = tiersInversed[item.system.tier];
 
-        if (itemTier < currentTier) {
-          ui.notifications.error(game.i18n.format('ZWEI.othermessages.errortierdelete', { name: item.name }));
-          return;
+          if (itemTier < currentTier) {
+            ui.notifications.error(game.i18n.format('ZWEI.othermessages.errortierdelete', { name: item.name }));
+            return;
+          }
         }
-      }
 
-      await DialogV2.confirm({
-        window: { title: game.i18n.format('ZWEI.othermessages.deleteembedded', { type: type, name: item.name }) },
-        content: game.i18n.format('ZWEI.othermessages.suretype', { type: type }),
-        yes: {
-          callback: async () => {
-            await this.actor.deleteEmbeddedDocuments('Item', [item.id]);
-            i.slideUp(200, () => this.render(false));
-          },
-        },
-        no: { callback: () => {} },
-        position: { width: 455 },
-        rejectClose: false,
-        defaultYes: true,
-      });
-    });
-
-    // Edit Active Effect
-    html.find('.effect-edit').click((ev) => {
-      const i = $(ev.currentTarget).parents('.item');
-      const itemId = i.data('itemId');
-      const parentId = i.data('parentId');
-      const effect = this._getEmbeddedEffect(parentId, itemId);
-
-      effect.sheet.render(true);
-    });
-
-    // Delete Active Effect
-    html.find('.effect-delete').click(async (ev) => {
-      const i = $(ev.currentTarget).parents('.item');
-      const itemId = i.data('itemId');
-      const parentId = i.data('parentId');
-      const effect = this._getEmbeddedEffect(parentId, itemId);
-      const type = game.i18n.localize(CONFIG.ActiveEffect.typeLabels['base']);
-
-      await DialogV2.confirm({
-        window: { title: game.i18n.format('ZWEI.othermessages.deletetype', { type: type, label: effect.name }) },
-        content: game.i18n.format('ZWEI.othermessages.suretype', { type: type }),
-        yes: {
-          callback: async () => {
-            await effect.delete();
-            i.slideUp(200, () => this.render(false));
-          },
-        },
-        no: { callback: () => {} },
-        position: { width: 455 },
-        rejectClose: false,
-        defaultYes: true,
-      });
-    });
-
-    html.find('.skill').hover(
-      async (ev) => {
-        let target = 'li.pa.pa-' + ev.currentTarget.attributes['data-associated-pa'].value.toLowerCase();
-        $(target).addClass('pa-hover-helper');
-      },
-      async (ev) => {
-        let target = 'li.pa.pa-' + ev.currentTarget.attributes['data-associated-pa'].value.toLowerCase();
-        $(target).removeClass('pa-hover-helper');
-      }
-    );
-
-    // Add new Item (from within the sheet)
-    html.find('.add-new').click(async (ev) => {
-      let type = ev.currentTarget.dataset.itemType;
-
-      let createdItemArray = [];
-
-      if (type !== 'effect') {
-        createdItemArray = await this.actor.createEmbeddedDocuments('Item', [{ type: type, name: type }]);
-      } else {
-        createdItemArray = await this.actor.createEmbeddedDocuments('ActiveEffect', [
-          {
-            name: 'New Effect',
-            icon: 'systems/zweihander/assets/icons/dice-fire.svg',
-            origin: 'Actor.' + this.actor.id,
-            // @todo: refactor after transition to DataModel
-            system: {
-              details: {
-                source: 'Manual',
-                category: '',
-                isActive: false,
-              },
+        await DialogV2.confirm({
+          window: { title: game.i18n.format('ZWEI.othermessages.deleteembedded', { type: type, name: item.name }) },
+          content: game.i18n.format('ZWEI.othermessages.suretype', { type: type }),
+          yes: {
+            callback: async () => {
+              if (item.type !== 'ancestry') await ZweihanderUtils.slideUpOnDelete(container, 200);
+              await item.delete();
             },
           },
-        ]);
-      }
+          no: { callback: () => {} },
+          position: { width: 455 },
+          rejectClose: false,
+          defaultYes: true,
+        });
+      })
+    );
 
-      if (createdItemArray.length) createdItemArray[0].sheet.render(true);
+    // Edit Active Effect
+    html.querySelectorAll('.effect-edit').forEach((el) =>
+      el.addEventListener('click', (event) => {
+        const container = event.currentTarget.closest('.item');
+        const { itemId, parentId } = container.dataset;
+
+        const effect = this._getEmbeddedEffect(parentId, itemId);
+
+        effect.sheet.render(true);
+      })
+    );
+
+    // Delete Active Effect
+    html.querySelectorAll('.effect-delete').forEach((el) =>
+      el.addEventListener('click', async (event) => {
+        const container = event.currentTarget.closest('.item');
+        const { itemId, parentId } = container.dataset;
+
+        const effect = this._getEmbeddedEffect(parentId, itemId);
+        const type = game.i18n.localize(CONFIG.ActiveEffect.typeLabels['base']);
+
+        await DialogV2.confirm({
+          window: { title: game.i18n.format('ZWEI.othermessages.deletetype', { type: type, label: effect.name }) },
+          content: game.i18n.format('ZWEI.othermessages.suretype', { type: type }),
+          yes: {
+            callback: async () => {
+              await ZweihanderUtils.slideUpOnDelete(container, 200);
+              await effect.delete();
+            },
+          },
+          no: { callback: () => {} },
+          position: { width: 455 },
+          rejectClose: false,
+          defaultYes: true,
+        });
+      })
+    );
+
+    html.querySelectorAll('.skill').forEach((el) => {
+      el.addEventListener('mouseenter', async (event) => {
+        const target = 'li.pa.pa-' + event.currentTarget.dataset.associatedPa.toLowerCase();
+        document.querySelectorAll(target).forEach((el) => el.classList.add('pa-hover-helper'));
+      });
+
+      el.addEventListener('mouseleave', async (event) => {
+        const target = 'li.pa.pa-' + event.currentTarget.dataset.associatedPa.toLowerCase();
+        document.querySelectorAll(target).forEach((el) => el.classList.remove('pa-hover-helper'));
+      });
     });
 
-    html.find('.add-new').contextmenu(async (ev) => {
-      const packIds = ev.currentTarget.dataset.openPacks?.split?.(',')?.filter?.((x) => x);
-      if (!packIds) {
-        ui.notifications.notify(game.i18n.localize('ZWEI.othermessages.errortype'));
-        return;
-      }
-      const packs = packIds.map((x) => game.packs.get(x.trim()));
-      if (packs.every((x) => x?.apps?.[0]?.rendered)) {
-        packs.forEach((x) => x.apps[0].close());
-      }
-      packs.forEach((x, i) =>
-        x.render(true, {
-          top: actor.sheet.position.top,
-          left: actor.sheet.position.left + (i % 2 == 0 ? -350 : actor.sheet.position.width),
-        })
-      );
-    });
+    // Add new Item (from within the sheet)
+    html.querySelectorAll('.add-new').forEach((el) =>
+      el.addEventListener('click', async (event) => {
+        let type = event.currentTarget.dataset.itemType;
+
+        let createdItemArray = [];
+
+        if (type !== 'effect') {
+          createdItemArray = await this.actor.createEmbeddedDocuments('Item', [{ type: type, name: type }]);
+        } else {
+          createdItemArray = await this.actor.createEmbeddedDocuments('ActiveEffect', [
+            {
+              name: 'New Effect',
+              icon: 'systems/zweihander/assets/icons/dice-fire.svg',
+              origin: 'Actor.' + this.actor.id,
+              // @todo: refactor after transition to DataModel
+              system: {
+                details: {
+                  source: 'Manual',
+                  category: '',
+                  isActive: false,
+                },
+              },
+            },
+          ]);
+        }
+
+        if (createdItemArray.length) await createdItemArray[0].sheet.render(true);
+      })
+    );
+
+    html.querySelectorAll('.add-new').forEach((el) =>
+      el.addEventListener('contextmenu', async (event) => {
+        const packIds = event.currentTarget.dataset.openPacks?.split?.(',')?.filter?.((x) => x);
+        if (!packIds) {
+          ui.notifications.notify(game.i18n.localize('ZWEI.othermessages.errortype'));
+          return;
+        }
+        const packs = packIds.map((x) => game.packs.get(x.trim()));
+        if (packs.every((x) => x?.apps?.[0]?.rendered)) {
+          packs.forEach((x) => x.apps[0].close());
+        }
+        packs.forEach((x, i) =>
+          x.render(true, {
+            top: actor.sheet.position.top,
+            left: actor.sheet.position.left + (i % 2 == 0 ? -350 : actor.sheet.position.width),
+          })
+        );
+      })
+    );
 
     // Handle formulas for display
-    html.find('.inject-data').each(async function () {
-      $(this).text(await ZweihanderUtils.parseDataPaths($(this).text().trim(), actor));
+    html.querySelectorAll('.inject-data').forEach(async (el) => {
+      el.textContent = await ZweihanderUtils.parseDataPaths(el.textContent.trim(), actor);
     });
 
-    html.find('.inject-data-disease').each(function () {
-      $(this).text(ZweihanderUtils.getDifficultyRatingLabel($(this).text().trim()));
+    html.querySelectorAll('.inject-data-disease').forEach((el) => {
+      el.textContent = ZweihanderUtils.getDifficultyRatingLabel(el.textContent.trim());
     });
 
-    html.find('.inline-roll').each(async function () {
-      const formula = $(this).text().trim().split('+');
+    html.querySelectorAll('.inline-roll').forEach(async (el) => {
+      const formula = el.textContent.trim().split('+');
       const diceRoll = formula[0];
       const dataPath = formula[1];
 
       if (dataPath && dataPath.includes('@'))
-        $(this).html(
-          '<i class="fas fa-dice-d20"></i> ' + diceRoll + '+' + (await ZweihanderUtils.parseDataPaths(dataPath, actor))
-        );
+        el.innerHTML =
+          '<i class="fas fa-dice-d20"></i> ' + diceRoll + '+' + (await ZweihanderUtils.parseDataPaths(dataPath, actor));
     });
 
     // "Link" checkboxes on character sheet and item sheet so both have the same state
-    html.find('.link-checkbox').click(async (event) => {
-      event.preventDefault();
-      const checkbox = $(event.currentTarget);
-      const item = this.actor.items.get(checkbox.data('itemId'));
-      const key = checkbox.data('key');
-      await item.update({ [key]: checkbox.prop('checked') });
-    });
+    html.querySelectorAll('.link-checkbox').forEach((el) =>
+      el.addEventListener('click', async (event) => {
+        event.preventDefault();
+        const checkbox = event.currentTarget;
+        const item = this.actor.items.get(checkbox.dataset.itemId);
+        const key = checkbox.dataset.key;
+
+        await item.update({ [key]: checkbox.checked });
+      })
+    );
+
     // "Link" checkboxes on character sheet and active effect sheet so both have the same state
-    html.find('.link-effect-checkbox').click(async (event) => {
-      event.preventDefault();
-      const checkbox = $(event.currentTarget);
-      const effectId = checkbox.data('itemId');
-      const parentId = checkbox.data('parentId');
-      const effect = this._getEmbeddedEffect(parentId, effectId);
-      const key = checkbox.data('key');
+    html.querySelectorAll('.link-effect-checkbox').forEach((el) =>
+      el.addEventListener('click', async (event) => {
+        event.preventDefault();
+        const checkbox = event.currentTarget;
+        const effectId = checkbox.dataset.itemId;
+        const parentId = checkbox.dataset.parentId;
+        const effect = this._getEmbeddedEffect(parentId, effectId);
+        const key = checkbox.dataset.key;
 
-      // @todo: prevent update if item is not carried
+        await effect.update({ [key]: checkbox.checked });
+      })
+    );
 
-      await effect.update({ [key]: checkbox.prop('checked') });
-    });
-    html.find('.profession-checkbox').click(async (event) => {
-      event.preventDefault();
-      const checkbox = $(event.currentTarget);
-      const item = this.actor.items.get(checkbox.data('itemId'));
-      if (!event.currentTarget.checked && item.system.tier !== item.actor.system.tier) {
-        ui.notifications.error(game.i18n.localize('ZWEI.othermessages.errorreset'));
-        return;
-      }
-      await DialogV2.confirm({
-        window: {
-          title: !event.currentTarget.checked
-            ? game.i18n.format('ZWEI.othermessages.resetprogress', { name: item.name })
-            : game.i18n.format('ZWEI.othermessages.completeprogress', { name: item.name }),
-        },
-        content: !event.currentTarget.checked
-          ? game.i18n.localize('ZWEI.othermessages.reallyresetprogress')
-          : game.i18n.localize('ZWEI.othermessages.purchaseall'),
-        yes: { callback: () => ZweihanderProfession.toggleProfessionPurchases(item, !event.currentTarget.checked) },
-        position: { width: 455 },
-        rejectClose: false,
-        defaultYes: false,
-      });
-    });
+    html.querySelectorAll('.profession-checkbox').forEach((el) =>
+      el.addEventListener('click', async (event) => {
+        event.preventDefault();
+        const checkbox = event.currentTarget;
+        const item = this.actor.items.get(checkbox.dataset.itemId);
+        if (!checkbox.checked && item.system.tier !== item.actor.system.tier) {
+          ui.notifications.error(game.i18n.localize('ZWEI.othermessages.errorreset'));
+          return;
+        }
+        await DialogV2.confirm({
+          window: {
+            title: !checkbox.checked
+              ? game.i18n.format('ZWEI.othermessages.resetprogress', { name: item.name })
+              : game.i18n.format('ZWEI.othermessages.completeprogress', { name: item.name }),
+          },
+          content: !checkbox.checked
+            ? game.i18n.localize('ZWEI.othermessages.reallyresetprogress')
+            : game.i18n.localize('ZWEI.othermessages.purchaseall'),
+          yes: { callback: () => ZweihanderProfession.toggleProfessionPurchases(item, !checkbox.checked) },
+          position: { width: 455 },
+          rejectClose: false,
+          defaultYes: false,
+        });
+      })
+    );
+
     // Show item sheet on right click
-    html.find('.fetch-item').contextmenu((event) => {
-      const itemId = $(event.currentTarget).parent('.item').data('itemId') ?? $(event.currentTarget).data('itemId');
-      const item = this.actor.items.get(itemId);
-      item.sheet.render(true);
-    });
+    html.querySelectorAll('.fetch-item').forEach((el) =>
+      el.addEventListener('contextmenu', async (event) => {
+        const itemId = event.currentTarget.parentElement.dataset.itemId ?? event.currentTarget.dataset.itemId;
+        const item = this.actor.items.get(itemId);
+
+        await item.sheet.render(true);
+      })
+    );
 
     // Show effect sheet on right click
-    html.find('.fetch-effect').contextmenu((event) => {
-      const itemId = $(event.currentTarget).parent('.item').data('itemId') ?? $(event.currentTarget).data('itemId');
-      const parentId =
-        $(event.currentTarget).parent('.item').data('parentId') ?? $(event.currentTarget).data('parentId');
-      const effect = this._getEmbeddedEffect(parentId, itemId);
+    html.querySelectorAll('.fetch-effect').forEach((el) =>
+      el.addEventListener('contextmenu', async (event) => {
+        const itemId = event.currentTarget.parentElement.dataset.itemId ?? event.currentTarget.dataset.itemId;
+        const parentId = event.currentTarget.parentElement.dataset.parentId ?? event.currentTarget.dataset.parentId;
+        const effect = this._getEmbeddedEffect(parentId, itemId);
 
-      effect.sheet.render(true);
-    });
+        await effect.sheet.render(true);
+      })
+    );
 
     // Show item sheet on right click
-    html.find('.fetch-skill').contextmenu((event) => {
-      const actor = this.actor;
-      if (actor.type !== 'character') return;
+    html.querySelectorAll('.fetch-skill').forEach((el) =>
+      el.addEventListener('contextmenu', async (event) => {
+        const actor = this.actor;
 
-      const itemId = $(event.currentTarget).parent('.skill').data('itemId') ?? $(event.currentTarget).data('itemId');
-      const item = this.actor.items.get(itemId);
-      item.sheet.render(true);
-    });
+        if (actor.type !== 'character') return;
 
-    html.find('.item-post').click(async (event) => {
-      const li = $(event.currentTarget).parents('.item');
-      const item = this.actor.items.get(li.data('itemId')).toObject(false);
-      if (item.type === 'weapon' || item.type === 'armor') {
-        // @todo: qualities refactor
-        item.system.qualities = await ZweihanderQuality.getQualities(item.system.qualities);
-      }
-      // console.log('zweihander | base actor sheet#activateListeners item-post', item);
-      let html;
-      try {
-        html = await renderTemplate(`systems/zweihander/src/templates/item-card/item-card-${item.type}.hbs`, item);
-      } catch (e) {
-        html = await renderTemplate(`systems/zweihander/src/templates/item-card/item-card-fallback.hbs`, item);
-      }
-      await ChatMessage.create({ content: html });
-    });
+        const itemId = event.currentTarget.parentElement.dataset.itemId ?? event.currentTarget.dataset.itemId;
+        const item = this.actor.items.get(itemId);
+
+        await item.sheet.render(true);
+      })
+    );
+
+    html.querySelectorAll('.item-post').forEach((el) =>
+      el.addEventListener('click', async (event) => {
+        const container = event.currentTarget.closest('.item');
+        const item = this.actor.items.get(container.dataset.itemId).toObject(false);
+
+        if (item.type === 'weapon' || item.type === 'armor') {
+          item.system.qualities = await ZweihanderQuality.getQualities(item.system.qualities);
+        }
+
+        let htmlContent;
+
+        try {
+          htmlContent = await renderTemplate(
+            `systems/zweihander/src/templates/item-card/item-card-${item.type}.hbs`,
+            item
+          );
+        } catch (e) {
+          htmlContent = await renderTemplate(`systems/zweihander/src/templates/item-card/item-card-fallback.hbs`, item);
+        }
+
+        await ChatMessage.create({ content: htmlContent });
+      })
+    );
 
     // Show extra item information on click
-    html.find('.js-show-item-description').click((event) => this._showItemDescription(event));
+    html
+      .querySelectorAll('.js-show-item-description')
+      .forEach((el) => el.addEventListener('click', (event) => this._showItemDescription(event)));
 
     // Roll Skill
-    html.find('.skill-roll').click((event) => {
-      this._onRollSkill(event, CONFIG.ZWEI.testTypes.skill);
-    });
+    html.querySelectorAll('.skill-roll').forEach((el) =>
+      el.addEventListener('click', (event) => {
+        this._onRollSkill(event, CONFIG.ZWEI.testTypes.skill);
+      })
+    );
 
     // Roll Weapon
-    html.find('.weapon-roll').click((event) => {
-      this._onRollSkill(event, CONFIG.ZWEI.testTypes.weapon);
-    });
+    html.querySelectorAll('.weapon-roll').forEach((el) =>
+      el.addEventListener('click', (event) => {
+        this._onRollSkill(event, CONFIG.ZWEI.testTypes.weapon);
+      })
+    );
 
     // Roll Spell
-    html.find('.spell-roll').click((event) => {
-      this._onRollSkill(event, CONFIG.ZWEI.testTypes.spell);
-    });
+    html.querySelectorAll('.spell-roll').forEach((el) =>
+      el.addEventListener('click', (event) => {
+        this._onRollSkill(event, CONFIG.ZWEI.testTypes.spell);
+      })
+    );
 
     // Roll Dodge
-    html.find('.dodge-roll').click((event) => {
-      this._onRollSkill(event, CONFIG.ZWEI.testTypes.dodge);
-    });
+    html.querySelectorAll('.dodge-roll').forEach((el) =>
+      el.addEventListener('click', (event) => {
+        this._onRollSkill(event, CONFIG.ZWEI.testTypes.dodge);
+      })
+    );
 
     // Roll Parry
-    html.find('.parry-roll').click((event) => {
-      this._onRollSkill(event, CONFIG.ZWEI.testTypes.parry);
-    });
+    html.querySelectorAll('.parry-roll').forEach((el) =>
+      el.addEventListener('click', (event) => {
+        this._onRollSkill(event, CONFIG.ZWEI.testTypes.parry);
+      })
+    );
 
-    html.find('.js-display-quality').contextmenu(async (event) => {
-      event.preventDefault();
-      const target = $(event.currentTarget);
-      const qualityName = target.text();
-      const quality = await ZweihanderUtils.findItemWorldWide('quality', qualityName);
-      quality.sheet.render(true);
-    });
+    html.querySelectorAll('.js-display-quality').forEach((el) =>
+      el.addEventListener('contextmenu', async (event) => {
+        event.preventDefault();
 
-    html.find('.open-language-config').click(() => {
-      console.log(this);
-      this.#languageConfig.render(true);
+        const itemId = event.currentTarget.dataset.itemId;
+        const quality = await fromUuid(itemId);
+
+        await quality.sheet.render(true);
+      })
+    );
+
+    html.querySelector('.open-language-config')?.addEventListener('click', async () => {
+      await this.#languageConfig.render(true);
     });
 
     // Modify numerable value by clicking '+' and '-' buttons on sheet, e.g. quantity, encumbrance
@@ -674,8 +759,10 @@ export default class ZweihanderBaseActorSheet extends HandlebarsApplicationMixin
       });
     };
 
-    html.find('.numerable-field-subtract').click(updateNumerable(-1));
-    html.find('.numerable-field-add').click(updateNumerable(1));
+    html
+      .querySelectorAll('.numerable-field-subtract')
+      .forEach((el) => el.addEventListener('click', updateNumerable(-1)));
+    html.querySelectorAll('.numerable-field-add').forEach((el) => el.addEventListener('click', updateNumerable(1)));
   }
 
   _getEmbeddedEffect(parentId, itemId) {
@@ -710,12 +797,14 @@ export default class ZweihanderBaseActorSheet extends HandlebarsApplicationMixin
   _registerDimensionChangeListener(el, cb) {
     // this magic changes the pattern of the skills list when it resizes beyond the column breakpoint.
     // sadly, this is currently not possible with pure css.
-    el.prepend('<iframe class="dimension-change-listener" tabindex="-1"></iframe>');
-    const listener = el.find(`.dimension-change-listener`);
-    listener.each(function () {
-      $(this.contentWindow).resize(cb);
-      cb.bind(this.contentWindow)();
-    });
+    const iframe = document.createElement('iframe');
+    iframe.classList.add('dimension-change-listener');
+    iframe.setAttribute('tabindex', '-1');
+
+    el.prepend(iframe);
+
+    iframe.contentWindow.addEventListener('resize', cb);
+    cb.bind(iframe.contentWindow)();
   }
 
   _getDimensionBreakpointsCallback(dimension, breakpoints) {
@@ -741,15 +830,17 @@ export default class ZweihanderBaseActorSheet extends HandlebarsApplicationMixin
     event.stopImmediatePropagation();
     event.stopPropagation();
     event.preventDefault();
+
     const element = event.currentTarget;
     const skill = element.dataset.label;
     const skillItem = this.actor.items.find(
       (item) => item.type === 'skill' && ZweihanderUtils.normalizedEquals(item.name, skill)
     );
+
     if (skillItem) {
       const additionalConfiguration = {};
       if (testType === 'weapon' || testType === 'spell') {
-        additionalConfiguration[`${testType}Id`] = $(element).parents('.item').data('itemId');
+        additionalConfiguration[`${testType}Id`] = element.closest('.item').dataset.itemId;
       }
       await ZweihanderDice.rollTest(skillItem, testType, additionalConfiguration, {
         showDialog: true,
@@ -760,13 +851,10 @@ export default class ZweihanderBaseActorSheet extends HandlebarsApplicationMixin
   }
 
   _showItemDescription(event) {
-    const toggler = $(event.currentTarget);
-    const item = toggler.parents('.item');
-    const description = item.find('.item-summary');
+    const container = event.currentTarget.closest('.item');
+    const description = container.querySelector('.item-summary');
 
-    $(description).slideToggle(function () {
-      $(this).toggleClass('open');
-    });
+    ZweihanderUtils.slideToggle(description, 200).then(() => {}); //description.classList.toggle('open'));
   }
 
   _getHeaderControls() {

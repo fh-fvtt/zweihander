@@ -12,7 +12,6 @@ export default class CurrencySettings extends HandlebarsApplicationMixin(Applica
   }
 
   static DEFAULT_OPTIONS = {
-    ...super.DEFAULT_OPTIONS,
     tag: 'form',
     id: 'currency-settings',
     classes: ['zweihander', 'sheet', 'settings-menu'],
@@ -77,28 +76,6 @@ export default class CurrencySettings extends HandlebarsApplicationMixin(Applica
     const i = target.dataset['index'];
     this.#currencies.splice(i, 1);
     await this.render();
-  }
-
-  async _onRender(context, options) {
-    await super._onRender(context, options);
-
-    // @todo: refactor jQuery
-    const html = $(this.element);
-
-    html.find('.add-currency').click(async () => {
-      this.#currencies.push({
-        abbreviation: game.i18n.localize('ZWEI.coinage.nc'),
-        name: game.i18n.localize('ZWEI.coinage.newcurrency'),
-        color: '#000000',
-        equivalentOfLower: 1,
-      });
-      this.render();
-    });
-    html.find('.del-currency').click(async (event) => {
-      const i = $(event.currentTarget).data('index');
-      this.#currencies.splice(i, 1);
-      this.render();
-    });
   }
 
   static async #onSubmit(event, form, formData) {
