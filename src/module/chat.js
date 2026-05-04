@@ -61,6 +61,7 @@ function enableChatButtons(html, flags, message, data) {
         ZweihanderDice.rollWeaponDamage(actorUuid, testConfiguration);
       });
     }
+
     // enable parry button
     if ((isGM || !currentActorUuids.has(actorUuid)) && ZweihanderDice.isSuccess(outcome)) {
       html.querySelectorAll('.skill-test-parry').forEach((el) => (el.disabled = false));
@@ -71,6 +72,7 @@ function enableChatButtons(html, flags, message, data) {
         ZweihanderDice.rollCombatReaction('parry', actorUuid, testConfiguration);
       });
     }
+
     // enable dodge button
     if ((isGM || !currentActorUuids.has(actorUuid)) && ZweihanderDice.isSuccess(outcome)) {
       html.querySelectorAll('.skill-test-dodge').forEach((el) => (el.disabled = false));
@@ -79,6 +81,17 @@ function enableChatButtons(html, flags, message, data) {
         if (!target) return;
 
         ZweihanderDice.rollCombatReaction('dodge', actorUuid, testConfiguration);
+      });
+    }
+
+    // enable peril damage button
+    if ((isGM || currentActorUuids.has(actorUuid)) && !ZweihanderDice.isSuccess(outcome)) {
+      html.querySelectorAll('.skill-test-madness').forEach((el) => (el.disabled = false));
+      html.addEventListener('click', (event) => {
+        const target = event.target.closest('.skill-test-madness');
+        if (!target) return;
+
+        ZweihanderDice.rollPerilDamage(actorUuid, testConfiguration);
       });
     }
   }
@@ -117,6 +130,21 @@ function enableChatButtons(html, flags, message, data) {
 
         const mode = event.shiftKey || !game.user.isGM ? 'fortune' : 'misfortune';
         ZweihanderDice.explodeWeaponDamage(message, mode);
+      });
+    }
+  }
+
+  const madnessTestData = flags?.madnessTestData;
+  if (madnessTestData) {
+    const { target } = madnessTestData;
+
+    if ((isGM || currentActorUuids.has(actorUuid)) && !target.damaged) {
+      html.querySelectorAll('.peril-roll-apply').forEach((el) => (el.disabled = false));
+      html.addEventListener('click', (event) => {
+        const targetEl = event.target.closest('.peril-roll-apply');
+        if (!targetEl) return;
+
+        ZweihanderDice.applyPeril(message, target);
       });
     }
   }

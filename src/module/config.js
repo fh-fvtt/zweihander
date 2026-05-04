@@ -7,6 +7,7 @@ ZWEI.templates = {
   skill: 'systems/zweihander/src/templates/chat/chat-skill.hbs',
   spell: 'systems/zweihander/src/templates/chat/chat-spell.hbs',
   weapon: 'systems/zweihander/src/templates/chat/chat-weapon.hbs',
+  madness: 'systems/zweihander/src/templates/chat/chat-madness.hbs',
   skillConfigurationDialog: 'systems/zweihander/src/templates/dialog/dialog-skill-configuration.hbs',
 };
 
@@ -16,6 +17,7 @@ ZWEI.testTypes = {
   parry: 'parry',
   dodge: 'dodge',
   weapon: 'weapon',
+  madness: 'madness',
 };
 
 ZWEI.testModes = {

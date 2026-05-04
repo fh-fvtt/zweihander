@@ -18,13 +18,23 @@
     </select>
   </div>
 {{/if}}
+{{#if madnessRoll}}
+  <div class="form-group">
+    <label for="madnessSelect">{{localize "ZWEI.rolls.madness"}}</label>
+    <select class="madness-type" name="madnessSelect">
+      {{#each madnessOptions}}
+        <option value="{{value}}" {{selected}}>{{label}}</option>
+      {{/each}}
+    </select>
+  </div>
+{{/if}}
 <div class="form-group">
   <label for="baseChanceModifier">{{localize "ZWEI.rolls.basemod"}}</label>
   <input name="baseChanceModifier" type="number" placeholder="0" />
 </div>
 <div class="form-group">
   <label for="difficultyRatingSelect">{{localize "ZWEI.rolls.difficulty"}}</label>
-  <select name="difficultyRatingSelect">
+  <select class="difficulty-rating" name="difficultyRatingSelect">
     {{#each difficultyRatings}}
       <option value="{{value}}" {{selected}}>{{label}}</option>
     {{/each}}

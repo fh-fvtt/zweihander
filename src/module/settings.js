@@ -137,10 +137,10 @@ export const registerSystemSettings = function () {
   const defaultSkills = {
     defaultParrySkills: ['Simple Melee', 'Martial Melee', 'Guile', 'Charm', 'Incantation'],
     defaultDodgeSkills: ['Coordination', 'Guile', 'Drive', 'Ride'],
+    defaultPerilSkills: ['Resolve', 'Guile', 'Toughness'],
     defaultMagickSkills: ['Incantation', 'Folklore'],
     defaultCreatureDodgeSkill: ['Coordination'],
     defaultCreatureMagickSkill: ['Incantation'],
-    defaultPerilSkill: ['Resolve'],
     defaultDiseaseSkill: ['Toughness'],
   };
 

@@ -17,8 +17,8 @@ export default class ZweihanderCharacterSheet extends ZweihanderBaseActorSheet {
   static DEFAULT_OPTIONS = {
     classes: ['character'],
     position: {
-      width: 780,
-      height: 970,
+      width: 785,
+      height: 950,
     },
     window: {
       contentClasses: ['sheet-body'],

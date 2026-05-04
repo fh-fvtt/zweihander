@@ -91,19 +91,27 @@
     min-height: 540px;
     border: 2px groove var(--zh-clr-bg2);
     border-radius: 3px 3px 6px 3px;
-    flex: 0 0 375px;
+    flex: 0 0 380px;
     & > * {
       flex: 1 0 content;
       align-items: center;
     }
     .combat-stats {
       border-bottom: 2px groove var(--zh-clr-bg2);
-      padding-top: 5px;
+      padding: 0.5rem 0;
     }
     .combat-reactions {
       border-bottom: 2px groove var(--zh-clr-bg2);
-      padding-top: 5px;
-      padding-bottom: 5px;
+      padding: 0.5rem 0;
+      gap: 0.5rem;
+
+      & .dodge {
+        margin-left: 0.5rem;
+      }
+
+      & .madness {
+        margin-right: 0.5rem;
+      }
     }
     .peril-rolls {
       flex: 2 0 content;
@@ -155,11 +163,10 @@
     }
     .condition-thresholds {
       border-bottom: 2px groove var(--zh-clr-bg2);
-      padding-top: 5px;
-      padding-bottom: 5px;
+      padding: 0.5rem 0;
       .peril,
       .damage {
-        margin: 0 5px;
+        margin: 0 0.25rem;
       }
       .values-derived-bracket {
         color: var(--zh-clr-bg1);
@@ -198,8 +205,7 @@
     .condition-tracker {
       flex: 2 0 content;
       align-items: stretch;
-      padding-top: 5px;
-      padding-bottom: 5px;
+      padding: 0.5rem 0;
       .condition-tracker-list {
         &.damage-list {
           .radio-and-status {
@@ -294,8 +300,8 @@
       }
     }
     .dodge,
-    .parry {
-      margin: 0 5ex;
+    .parry,
+    .madness {
       .combat-icon {
         color: var(--zh-clr-aqua);
         &:hover {

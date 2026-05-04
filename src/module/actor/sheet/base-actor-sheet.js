@@ -721,6 +721,13 @@ export default class ZweihanderBaseActorSheet extends HandlebarsApplicationMixin
       })
     );
 
+    // Roll Madness
+    html.querySelectorAll('.madness-roll').forEach((el) =>
+      el.addEventListener('click', (event) => {
+        this._onRollSkill(event, CONFIG.ZWEI.testTypes.madness);
+      })
+    );
+
     html.querySelectorAll('.js-display-quality').forEach((el) =>
       el.addEventListener('contextmenu', async (event) => {
         event.preventDefault();

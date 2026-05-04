@@ -37,7 +37,8 @@ body.game.vtt.system-zweihander {
         }
       }
 
-      > div.weapon-content {
+      > div.weapon-content,
+      > div.madness-content {
         gap: 0.5rem;
       }
     }
@@ -261,6 +262,10 @@ body.game.vtt.system-zweihander {
       }
 
       &.damage:has(button.damage-roll-explode:disabled):has(button.damage-roll-apply:disabled) {
+        display: none;
+      }
+
+      &.madness:has(button.peril-roll-apply:only-child:disabled) {
         display: none;
       }
 

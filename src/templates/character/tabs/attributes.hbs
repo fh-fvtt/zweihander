@@ -68,7 +68,7 @@
             <a class="combat-icon dodge-roll" data-roll="1d100"
               data-label="{{system.stats.secondaryAttributes.dodge.associatedSkill}}"><span
                 class="value ra ra-player-dodge"></span></a>
-            <span class="value" data-testid="dodge">{{system.stats.secondaryAttributes.dodge.value}}</span>
+            <span class="value">{{system.stats.secondaryAttributes.dodge.value}}</span>
           </div>
           <select class="skill-dropdown" name="system.stats.secondaryAttributes.dodge.associatedSkill">
             {{!-- In case the system.stats.secondaryAttributes.parry.associatedSkill is not in the dodge skill list
@@ -87,7 +87,7 @@
             <a class="combat-icon parry-roll" data-roll="1d100"
               data-label="{{system.stats.secondaryAttributes.parry.associatedSkill}}"><span
                 class="value ra ra-round-shield"></span></a>
-            <span class="value" data-testid="parry">{{system.stats.secondaryAttributes.parry.value}}</span>
+            <span class="value">{{system.stats.secondaryAttributes.parry.value}}</span>
           </div>
           <select class="skill-dropdown" name="system.stats.secondaryAttributes.parry.associatedSkill">
             {{!-- In case the system.stats.secondaryAttributes.parry.associatedSkill is not in the parry skill list
@@ -100,7 +100,24 @@
             {{/select}}
           </select>
         </div>
+        <div class="madness flexcol">
+          <h4 class="block-title">{{localize "ZWEI.actor.secondary.madness"}}</h4 class="block-title">
+          <div class="values flexrow">
+            <a class="combat-icon madness-roll" data-roll="1d100"
+              data-label="{{system.stats.secondaryAttributes.madness.associatedSkill}}"><span
+                class="value ra ra-player-despair"></span></a>
+            <span class="value">{{system.stats.secondaryAttributes.madness.value}}</span>
+          </div>
+          <select class="skill-dropdown" name="system.stats.secondaryAttributes.madness.associatedSkill">
+            {{#select system.stats.secondaryAttributes.madness.associatedSkill}}
+            {{#each actorConfig.perilSkills as | skill idx | }}
+            <option value="{{skill}}">{{skill}}</option>
+            {{/each}}
+            {{/select}}
+          </select>
+        </div>
       </div>
+      {{!--
       <div class="flexrow peril-rolls">
         <div class="flexcol stress values">
           <h4 class="block-title">{{localize "ZWEI.actor.secondary.stress"}}</h4>
@@ -120,6 +137,7 @@
           <span class="formula">3d10+3</span>
         </div>
       </div>
+      --}}
       <div class="condition-thresholds flexrow">
         <div class="peril flexcol">
           <h4 class="block-title">{{localize "ZWEI.actor.secondary.perilthreshold"}}</h4 class="block-title">

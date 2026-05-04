@@ -22,6 +22,7 @@ const templatesToLoad = [
   $$('chat/chat-skill.hbs'),
   $$('chat/chat-spell.hbs'),
   $$('chat/chat-weapon.hbs'),
+  $$('chat/chat-madness.hbs'),
 
   $$('combat/combat-tracker.hbs'),
 

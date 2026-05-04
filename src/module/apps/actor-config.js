@@ -34,6 +34,7 @@ export default class ZweihanderActorConfig extends HandlebarsApplicationMixin(Ap
     context.parrySkills = context.flags.parrySkills.join(', ');
     context.dodgeSkills = context.flags.dodgeSkills.join(', ');
     context.magickSkills = context.flags.magickSkills.join(', ');
+    context.perilSkills = context.flags.perilSkills.join(', ');
     context.avoidAllPeril = context.flags.isIgnoredPerilLadderValue.reduce((a, b) => a && b, true);
 
     const attributeNames = ['dth', 'pth', 'int', 'mov'];
@@ -86,6 +87,7 @@ export default class ZweihanderActorConfig extends HandlebarsApplicationMixin(Ap
       parrySkills: getDefaultSkills('defaultParrySkills'),
       dodgeSkills: getDefaultSkills('defaultDodgeSkills'),
       magickSkills: getDefaultSkills('defaultMagickSkills'),
+      perilSkills: getDefaultSkills('defaultPerilSkills'),
       isMagickUser: false,
       permanentChaosRanks: 0,
       permanentOrderRanks: 0,
@@ -140,6 +142,12 @@ export default class ZweihanderActorConfig extends HandlebarsApplicationMixin(Ap
 
       if (!updateData.magickSkills.includes(sa.magick.associatedSkill)) {
         actorUpdate[`${saPath}.magick.associatedSkill`] = updateData.magickSkills[0] ?? '';
+      }
+
+      updateData.perilSkills = updateData.perilSkills.split(',').map((skill) => skill.trim());
+
+      if (!updateData.perilSkills.includes(sa.madness.associatedSkill)) {
+        actorUpdate[`${saPath}.madness.associatedSkill`] = updateData.perilSkills[0] ?? '';
       }
 
       // wtf is this template system haha

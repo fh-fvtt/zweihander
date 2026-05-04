@@ -40,10 +40,10 @@ async function renderConfigurationDialog(testType, label, testConfiguration = {}
   const templateData = {
     weaponRoll: testType === 'weapon',
     spellRoll: testType === 'spell',
+    madnessRoll: testType === 'madness',
     additionalFuryDice: testConfiguration.additionalFuryDice,
     additionalChaosDice: testConfiguration.additionalChaosDice,
   };
-  const toPercentileLabel = (i) => (i === 0 ? '+-0%' : i > 0 ? `+${i}%` : `${i}%`);
   templateData.fortuneOptions = [
     { value: 'dontuse', label: game.i18n.localize('ZWEI.rolls.dontuse') },
     { value: 'fortune', label: game.i18n.localize('ZWEI.rolls.fortune') },
@@ -52,11 +52,11 @@ async function renderConfigurationDialog(testType, label, testConfiguration = {}
     selected: (testConfiguration.useFortune ?? 'dontuse') === option.value ? 'selected' : '',
     ...option,
   }));
-  templateData.baseChanceModifiers = [...Array(41).keys()].map((i) => {
-    const value = i * 5 - 100;
-    const selected = (testConfiguration.baseChanceModifier ?? 0) === value ? 'selected' : '';
-    return { value, label: toPercentileLabel(value), selected };
-  });
+  templateData.madnessOptions = [
+    { value: 'stress', label: game.i18n.localize('ZWEI.actor.secondary.stress') },
+    { value: 'fear', label: game.i18n.localize('ZWEI.actor.secondary.fear') },
+    { value: 'terror', label: game.i18n.localize('ZWEI.actor.secondary.terror') },
+  ];
   templateData.difficultyRatings = [...Array(7).keys()].map((i) => {
     const value = i * 10 - 30;
     const selected = (testConfiguration.difficultyRating ?? 0) === value ? 'selected' : '';
@@ -95,6 +95,7 @@ async function renderConfigurationDialog(testType, label, testConfiguration = {}
 
       let additionalFuryDice = Number(html.extraFury?.value) || 0;
       let additionalChaosDice = Number(html.extraChaos?.value) || 0;
+      let madnessType = html.madnessSelect?.value;
       let difficultyRating = Number(html.difficultyRatingSelect.value);
       let channelPowerBonus = Number(html.channelSelect?.value);
       let flip = html.flipSelect.value;
@@ -104,6 +105,7 @@ async function renderConfigurationDialog(testType, label, testConfiguration = {}
       resolve({
         additionalFuryDice,
         additionalChaosDice,
+        madnessType,
         difficultyRating,
         channelPowerBonus,
         flip,
@@ -114,6 +116,7 @@ async function renderConfigurationDialog(testType, label, testConfiguration = {}
   );
 }
 
+// @todo: refactor to use custom App / factory methods, e.g. DialogV2.input
 function createConfigurationDialog(label, template, templateData, callback) {
   return new Promise((resolve) => {
     renderTemplate(template, templateData).then((content) => {
@@ -139,6 +142,20 @@ function createConfigurationDialog(label, template, templateData, callback) {
             callback: callback(resolve),
           },
         ],
+      });
+      dialog.addEventListener('render', (event) => {
+        const el = event.target.element;
+        const madnessType = el.querySelector('.madness-type');
+        const difficultyRating = el.querySelector('.difficulty-rating');
+
+        if (!madnessType) return;
+
+        const getDefaultDifficulty = (type) => (type === 'terror' ? -20 : type === 'fear' ? 0 : 20);
+        difficultyRating.value = getDefaultDifficulty(madnessType.value);
+
+        madnessType.addEventListener('change', () => {
+          difficultyRating.value = getDefaultDifficulty(madnessType.value);
+        });
       });
       dialog.render(true);
     });

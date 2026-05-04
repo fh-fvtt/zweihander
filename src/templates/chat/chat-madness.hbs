@@ -1,0 +1,19 @@
+<div class="flexcol madness-content">
+  <div class="flexcol title-and-subtitle">
+    <div class="title">{{localize "ZWEI.rolls.withstandmadness"}}</div>
+    <div class="subtitle">{{localize (concat "ZWEI.actor.secondary." madnessType)}}</div>
+  </div>
+  {{{cardContent}}}
+  <div class="dice-roll" data-action="expandRoll">
+    <div class="dice-result">
+      <h4 class="dice-total outcome-damage"><span class="outcome-text">{{total}}</span><br /><span
+          class="vs-chance"
+        >{{formula}}</span></h4>
+      {{{tooltip}}}
+    </div>
+  </div>
+  {{{rollContent}}}
+  <div class="skill-test-controls flexrow madness">
+    <button type="button" class="peril-roll-apply" disabled><i class="fas fa-heart-crack"></i>Apply Peril</button>
+  </div>
+</div>

@@ -2,7 +2,6 @@ import FortuneTracker from './apps/fortune-tracker';
 import ZweihanderQuality from './item/entity/quality';
 import * as ZweihanderUtils from './utils';
 import { getTestConfiguration } from './apps/test-config';
-import { ZWEI } from './config';
 import ZweihanderActorConfig from './apps/actor-config';
 
 export const PERIL_ROLL_TYPES = {
@@ -17,110 +16,6 @@ export const OUTCOME_TYPES = {
   FAILURE: 1,
   CRITICAL_FAILURE: 0,
 };
-
-export function reRollTest(actorUuid, skillItemId, testType, testConfiguration = {}, { showDialog = false } = {}) {
-  const actor = fromUuidSync(actorUuid);
-  const skillItem = actor.items.get(skillItemId);
-  return rollTest(skillItem, testType, testConfiguration, {
-    isReroll: true,
-    showDialog,
-  });
-}
-
-export async function rollPeril(perilType, actor) {
-  const perilSkillName = game.settings.get('zweihander', 'defaultPerilSkill');
-  const resolveSkill = actor.items.find((i) => i.type === 'skill' && i.name === perilSkillName);
-  const { outcome } = await rollTest(
-    resolveSkill,
-    'skill',
-    {
-      difficultyRating: perilType.difficultyRating,
-      flavor: game.i18n.format('ZWEI.rolls.suppressperil', {
-        periltype: game.i18n.localize('ZWEI.actor.secondary.' + perilType.title),
-      }),
-      perilType,
-    },
-    { showDialog: true }
-  );
-  if (!isSuccess(outcome)) {
-    const roll = new Roll(`${perilType.x}d10+${perilType.x}`);
-    const speaker = ChatMessage.getSpeaker({ actor: actor });
-    await roll.toMessage({
-      flavor: game.i18n.format('ZWEI.rolls.rollingperil', {
-        peril: game.i18n.localize('ZWEI.actor.secondary.peril'),
-        periltype: game.i18n.localize('ZWEI.actor.secondary.' + perilType.title),
-      }),
-      speaker,
-    });
-  }
-}
-
-export async function rollCombatReaction(type, enemyActorUuid, enemyTestConfiguration) {
-  const actorUuids = ZweihanderUtils.determineCurrentActorUuids(true);
-
-  if (actorUuids.size === 0) return;
-
-  const originalActorName = fromUuidSync(enemyActorUuid).name;
-  const updatedTestConfiguration = {
-    difficultyRating: -enemyTestConfiguration.difficultyRating,
-    flavor: `Trying to ${type} ${originalActorName}'s Attack`,
-  };
-
-  for (const uuid of actorUuids) {
-    const actor = fromUuidSync(uuid);
-
-    if (!actor) continue;
-
-    const associatedSkill = actor.system.stats.secondaryAttributes[type].associatedSkill;
-    const skillItem = actor.items.find(
-      (i) => ZweihanderUtils.normalizedEquals(i.name, associatedSkill) && i.type === 'skill'
-    );
-
-    await rollTest(skillItem, type, updatedTestConfiguration, {
-      showDialog: true,
-    });
-  }
-}
-
-export async function applyDamage(message, attackTargets) {
-  const damageTotal = message.rolls[0].total;
-
-  if (attackTargets.length == 0) {
-    ui.notifications.warn('No target was selected for the roll. Please apply damage manually.');
-    return;
-  }
-
-  const actorUuidsToDamage = [];
-
-  for (const attackTarget of attackTargets) {
-    const targetActor = fromUuidSync(attackTarget.uuid);
-
-    if (!targetActor.isOwner || attackTarget.damaged) continue;
-
-    const { damageThreshold, damageCurrent } = targetActor.system.stats.secondaryAttributes;
-
-    let stepsToFall = Math.min(4, Math.max(0, Math.floor((damageTotal - damageThreshold.value) / 6) + 1));
-
-    if (stepsToFall > 0) {
-      const finalSteps = stepsToFall < 4 ? stepsToFall : 5; // character is instantly Slain! if damage exceeds Damage Threshold + 18
-
-      await targetActor.update({
-        'system.stats.secondaryAttributes.damageCurrent.value': Math.max(0, damageCurrent.value - finalSteps),
-      });
-    }
-
-    actorUuidsToDamage.push(attackTarget.uuid);
-  }
-
-  const updatedTargets = attackTargets.map((t) => (actorUuidsToDamage.includes(t.uuid) ? { ...t, damaged: true } : t));
-
-  const diffData = {
-    'flags.zweihander.weaponTestData.targets': updatedTargets,
-    'flags.zweihander.weaponTestData.exploded': 1, // if damage applied, no exploding allowed anymore
-  };
-
-  await game.zweihander.socket.executeAsGM('updateChatMessage', message.id, diffData);
-}
 
 export async function rollTest(
   skillItem,
@@ -249,6 +144,7 @@ export async function rollTest(
     outcomeLabel: outcomeLabel(effectiveOutcome),
     weaponTest: testType === 'weapon',
     spellTest: testType === 'spell',
+    madnessTest: testType === 'madness',
     dodgeOrParryTest: testType === 'dodge' || testType === 'parry',
     tooltip: await roll.getTooltip(),
   };
@@ -322,6 +218,65 @@ export async function rollTest(
   };
 }
 
+export function reRollTest(actorUuid, skillItemId, testType, testConfiguration = {}, { showDialog = false } = {}) {
+  const actor = fromUuidSync(actorUuid);
+  const skillItem = actor.items.get(skillItemId);
+  return rollTest(skillItem, testType, testConfiguration, {
+    isReroll: true,
+    showDialog,
+  });
+}
+
+export async function rollCombatReaction(type, enemyActorUuid, enemyTestConfiguration) {
+  const actorUuids = ZweihanderUtils.determineCurrentActorUuids(true);
+
+  if (actorUuids.size === 0) return;
+
+  const originalActorName = fromUuidSync(enemyActorUuid).name;
+  const updatedTestConfiguration = {
+    difficultyRating: -enemyTestConfiguration.difficultyRating,
+    flavor: `Trying to ${type} ${originalActorName}'s Attack`,
+  };
+
+  for (const uuid of actorUuids) {
+    const actor = fromUuidSync(uuid);
+
+    if (!actor) continue;
+
+    const associatedSkill = actor.system.stats.secondaryAttributes[type].associatedSkill;
+    const skillItem = actor.items.find(
+      (i) => ZweihanderUtils.normalizedEquals(i.name, associatedSkill) && i.type === 'skill'
+    );
+
+    await rollTest(skillItem, type, updatedTestConfiguration, {
+      showDialog: true,
+    });
+  }
+}
+
+export async function rollPerilDamage(actorUuid, testConfiguration) {
+  const { madnessType } = testConfiguration;
+  const actor = fromUuidSync(actorUuid);
+
+  const madnessLevel = madnessType === 'terror' ? 3 : madnessType === 'fear' ? 2 : 1;
+  const formula = `${madnessLevel}d10 + ${madnessLevel}`;
+
+  const perilRoll = await new Roll(formula).evaluate();
+  const speaker = ChatMessage.getSpeaker({ actor });
+
+  const targetData = _preCalculateTargetData(actor, perilRoll.total, 'peril');
+
+  const content = await getPerilDamageContent(perilRoll, madnessType);
+  const flags = {
+    zweihander: {
+      madnessTestData: {
+        target: targetData,
+      },
+    },
+  };
+  return perilRoll.toMessage({ speaker, content, flags }, { rollMode: CONST.DICE_ROLL_MODES.PUBLIC });
+}
+
 export async function rollWeaponDamage(actorUuid, testConfiguration) {
   const { weaponId, additionalFuryDice } = testConfiguration;
   const actor = fromUuidSync(actorUuid);
@@ -352,8 +307,7 @@ export async function rollWeaponDamage(actorUuid, testConfiguration) {
 
   const damageRoll = await new Roll(parsedFormula, actor.system).evaluate();
   const speaker = ChatMessage.getSpeaker({ actor });
-  const targets =
-    game.user.targets.map((a) => ({ uuid: a.actor.uuid, name: a.actor.name, damaged: false })).toObject() ?? [];
+  const targets = Array.from(game.user.targets).map((a) => _preCalculateTargetData(a.actor, damageRoll.total));
   const flavor = game.i18n.format('ZWEI.rolls.weapondamage', {
     weapon: weapon.name,
   });
@@ -365,11 +319,150 @@ export async function rollWeaponDamage(actorUuid, testConfiguration) {
         weaponId,
         targets,
         exploded: 0,
-        damagedUuids: [],
       },
     },
   };
   return damageRoll.toMessage({ speaker, flavor, content, flags }, { rollMode: CONST.DICE_ROLL_MODES.PUBLIC });
+}
+
+function _preCalculateTargetData(actor, damage, type = 'damage') {
+  const key = type === 'damage' ? 'damage' : 'peril';
+  const { [`${key}Threshold`]: threshold, [`${key}Current`]: current } = actor.system.stats.secondaryAttributes;
+
+  const targetData = {
+    uuid: actor.uuid,
+    name: actor.name,
+    damaged: false,
+    finalThresholdStep: -1, // no damage to this target, skip
+  };
+
+  let stepsToFall = Math.min(4, Math.max(0, Math.floor((damage - threshold.value) / 6) + 1));
+
+  if (stepsToFall > 0) {
+    const finalSteps = stepsToFall < 4 ? stepsToFall : 5; // character is instantly Slain! if damage exceeds Damage Threshold +
+
+    targetData.finalThresholdStep = Math.max(0, current.value - finalSteps);
+  }
+
+  return targetData;
+}
+
+export async function applyDamage(message, attackTargets) {
+  const actorUuidsToDamage = [];
+
+  for (const attackTarget of attackTargets) {
+    const targetActor = fromUuidSync(attackTarget.uuid);
+
+    if (!targetActor.isOwner || attackTarget.damaged) continue;
+
+    const updatedDamageCurrentValue = attackTarget.finalThresholdStep;
+
+    if (attackTarget.finalThresholdStep !== -1) {
+      await targetActor.update({
+        'system.stats.secondaryAttributes.damageCurrent.value': updatedDamageCurrentValue,
+      });
+    }
+
+    actorUuidsToDamage.push(attackTarget.uuid);
+  }
+
+  const updatedTargets = attackTargets.map((t) => (actorUuidsToDamage.includes(t.uuid) ? { ...t, damaged: true } : t));
+
+  const diffData = {
+    'flags.zweihander.weaponTestData.targets': updatedTargets,
+    'flags.zweihander.weaponTestData.exploded': 1, // if damage applied, no exploding allowed anymore
+  };
+
+  await game.zweihander.socket.executeAsGM('updateChatMessage', message.id, diffData);
+}
+
+export async function applyPeril(message, target) {
+  const targetActor = fromUuidSync(target.uuid);
+
+  if (!targetActor.isOwner || target.damaged) return;
+
+  const updatedPerilCurrentValue = target.finalThresholdStep;
+
+  if (target.finalThresholdStep !== -1) {
+    await targetActor.update({
+      'system.stats.secondaryAttributes.perilCurrent.value': updatedPerilCurrentValue,
+    });
+  }
+
+  const updatedTarget = { ...target, damaged: true };
+
+  const diffData = {
+    'flags.zweihander.madnessTestData.target': updatedTarget,
+  };
+
+  await game.zweihander.socket.executeAsGM('updateChatMessage', message.id, diffData);
+}
+
+export async function explodeWeaponDamage(message, useFortune) {
+  try {
+    if (useFortune === 'fortune') {
+      await FortuneTracker.INSTANCE.useFortune();
+    } else if (useFortune === 'misfortune') {
+      await FortuneTracker.INSTANCE.useMisfortune();
+    }
+  } catch (e) {
+    // @todo: I believe it is the responsibility of the Fortune Tracker to throw an error if there are no points left,
+    // otherwise, 2 error messages will be shown, which is annoying
+    /*
+    ui.notifications.warn(game.i18n.format("ZWEI.othermessages.noreroll", {
+      usefortune: useFortune
+    }));
+    */
+    return;
+  }
+  const { actorUuid, weaponId, exploded, targets } = message.flags.zweihander.weaponTestData;
+  const actor = fromUuidSync(actorUuid);
+  const weapon = actor.items.get(weaponId).toObject(false);
+  const roll = message.rolls[0];
+  const dice = roll.dice.find((d) => d.faces === 6);
+
+  let updatedTargets = [];
+
+  if (dice) {
+    const explodeModifiers = dice.modifiers.filter((m) => m.startsWith('x')).join('');
+    const formula = `1d6${explodeModifiers}`;
+    const explodingRoll = await new Roll(formula).evaluate();
+    setTimeout(() => game?.dice3d?.showForRoll?.(explodingRoll, game.user, true), 1500);
+    const results = dice.results;
+    const minimumResult = Math.min(...results.filter((x) => !x.exploded).map((r) => r.result));
+    const minimumResultIndex = results.findIndex((r) => r.result === minimumResult);
+    const updatedTotal = roll._total - minimumResult + 6 + explodingRoll.total;
+    results.splice(
+      minimumResultIndex,
+      1,
+      { result: 6, active: true, exploded: true },
+      ...explodingRoll.terms[0].results
+    );
+    roll._total = updatedTotal;
+
+    // if there are targets, re-calculate damage
+    if (targets) {
+      updatedTargets = targets.map((t) => {
+        const actor = fromUuidSync(t.uuid);
+        return _preCalculateTargetData(actor, roll._total);
+      });
+    }
+  }
+
+  const content = await getWeaponDamageContent(weapon, roll, {
+    exploded: useFortune,
+    explodedCount: exploded + 1,
+    targets,
+  });
+
+  const diffData = {
+    'flags.zweihander.weaponTestData.exploded': exploded + 1,
+    'flags.zweihander.weaponTestData.targets': updatedTargets,
+    content: content,
+    rolls: [roll.toJSON()],
+  };
+
+  await game.zweihander.socket.executeAsGM('updateChatMessage', message.id, diffData);
 }
 
 function _isManualDodgeParryTest(actor, testType) {
@@ -426,56 +519,17 @@ async function getWeaponDamageContent(weapon, roll, { exploded = false, exploded
   });
 }
 
-export async function explodeWeaponDamage(message, useFortune) {
-  try {
-    if (useFortune === 'fortune') {
-      await FortuneTracker.INSTANCE.useFortune();
-    } else if (useFortune === 'misfortune') {
-      await FortuneTracker.INSTANCE.useMisfortune();
-    }
-  } catch (e) {
-    // @todo: I believe it is the responsibility of the Fortune Tracker to throw an error if there are no points left,
-    // otherwise, 2 error messages will be shown, which is annoying
-    /*
-    ui.notifications.warn(game.i18n.format("ZWEI.othermessages.noreroll", {
-      usefortune: useFortune
-    }));
-    */
-    return;
-  }
-  const { actorUuid, weaponId, exploded, targets } = message.flags.zweihander.weaponTestData;
-  const actor = fromUuidSync(actorUuid);
-  const weapon = actor.items.get(weaponId).toObject(false);
-  const roll = message.rolls[0];
-  const dice = roll.dice.find((d) => d.faces === 6);
-  if (dice) {
-    const explodeModifiers = dice.modifiers.filter((m) => m.startsWith('x')).join('');
-    const formula = `1d6${explodeModifiers}`;
-    const explodingRoll = await new Roll(formula).evaluate();
-    setTimeout(() => game?.dice3d?.showForRoll?.(explodingRoll, game.user, true), 1500);
-    const results = dice.results;
-    const minimumResult = Math.min(...results.filter((x) => !x.exploded).map((r) => r.result));
-    const minimumResultIndex = results.findIndex((r) => r.result === minimumResult);
-    const updatedTotal = roll._total - minimumResult + 6 + explodingRoll.total;
-    results.splice(
-      minimumResultIndex,
-      1,
-      { result: 6, active: true, exploded: true },
-      ...explodingRoll.terms[0].results
-    );
-    roll._total = updatedTotal;
-  }
-  const content = await getWeaponDamageContent(weapon, roll, {
-    exploded: useFortune,
-    explodedCount: exploded + 1,
-    targets,
+async function getPerilDamageContent(roll, madnessType) {
+  const tooltip = await roll.getTooltip();
+  const total = roll.total;
+  const formula = roll.formula;
+
+  return await renderTemplate(CONFIG.ZWEI.templates.madness, {
+    tooltip,
+    total,
+    formula,
+    madnessType: madnessType,
   });
-  const diffData = {
-    'flags.zweihander.weaponTestData.exploded': exploded + 1,
-    content: content,
-    rolls: [roll.toJSON()],
-  };
-  await game.zweihander.socket.executeAsGM('updateChatMessage', message.id, diffData);
 }
 
 export function isSuccess(outcome) {

@@ -41,12 +41,18 @@ export default class ZweihanderPC extends ZweihanderBaseActor {
           );
       }
     };
+
     //calculate parry
     calcSecondayAttributeSpecialActionValue(systemData.stats.secondaryAttributes.parry, 'Parry');
+
     //calculate dodge
     calcSecondayAttributeSpecialActionValue(systemData.stats.secondaryAttributes.dodge, 'Dodge');
+
     //calculate magick
     calcSecondayAttributeSpecialActionValue(systemData.stats.secondaryAttributes.magick, 'Magick');
+
+    //calculate madness / exhaustion
+    calcSecondayAttributeSpecialActionValue(systemData.stats.secondaryAttributes.madness, 'Madness');
   }
 
   applyActiveEffects(actor, preparationStage) {
@@ -247,7 +253,7 @@ export default class ZweihanderPC extends ZweihanderBaseActor {
     }
 
     const actorConfig = ZweihanderActorConfig.getConfig(actor);
-    const selectableTests = ['parry', 'dodge', 'magick'];
+    const selectableTests = ['parry', 'dodge', 'magick', 'peril']; // peril = madness
 
     for (const test of selectableTests)
       update[`system.stats.secondaryAttributes.${test}.associatedSkill`] = actorConfig[`${test}Skills`][0];
