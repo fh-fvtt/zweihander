@@ -5,6 +5,21 @@ All notable changes to this project will be documented in this file.
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).´
 
+## [5.7.1] - 2026-05-04
+
+### Added
+
+- Added peril automation for Withstand Madness rolls.
+- Redesigned Player Character sheet layout slightly to accomodate a more generic Withstand Madness test.
+
+### Fixed
+
+- Fixed a rare edge-case bug that would result in damage being applied twice if both Player and GM clicked Apply Damage button at the same time.
+
+### Misc.
+
+- Misc. CSS adjustments to accomodate new Withstand Madness button on Player Character sheet.
+
 ## [5.7.0] - 2026-04-29
 
 ### Added
