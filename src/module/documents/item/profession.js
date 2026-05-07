@@ -1,0 +1,126 @@
+import { normalizedEquals } from '../../system/utils';
+import ZweihanderBaseItem from '../../documents/item/base-item';
+
+export default class ZweihanderProfession extends ZweihanderBaseItem {
+  static async toggleProfessionPurchases(profession, purchase) {
+    const updateData = {};
+    const updatePurchase = (itemType) =>
+      (updateData[`system.${itemType}`] = profession.system[itemType].map((t) => ({ ...t, purchased: purchase })));
+    ['talents', 'skillRanks', 'bonusAdvances'].forEach(updatePurchase);
+    await profession.update(updateData);
+  }
+
+  static linkedSingleProperties = [
+    { property: 'professionalTrait', itemType: 'trait' },
+    { property: 'specialTrait', itemType: 'trait' },
+    { property: 'drawback', itemType: 'drawback' },
+  ];
+
+  static linkedListProperties = [
+    {
+      property: 'talents',
+      itemType: 'talent',
+      entryPostProcessor: (x) => ZweihanderBaseItem.addPurchaseInfo(ZweihanderBaseItem.cleanLinkedItemEntry(x)),
+    },
+  ];
+
+  prepareDerivedData(item) {
+    const primaryAttributeBonusesKeys = CONFIG.ZWEI.primaryAttributeBonuses.map((pab) => '[' + pab + ']');
+
+    item.system.skillRanks.sort((a, b) => {
+      const aloc = a.name;
+      const bloc = b.name;
+      return aloc.localeCompare(bloc);
+    });
+
+    item.system.bonusAdvances.sort(
+      (a, b) => primaryAttributeBonusesKeys.indexOf(a.name) - primaryAttributeBonusesKeys.indexOf(b.name)
+    );
+
+    const localizedExpertProfessionValue = game.i18n.localize('ZWEI.actor.details.labels.expertprofession');
+
+    if (
+      item.system.expert.value &&
+      item.system.archetype.toLowerCase().replaceAll(/\s+/g, '') !== localizedExpertProfessionValue
+    )
+      item.system.archetype = localizedExpertProfessionValue;
+
+    if (!item.isOwned) return;
+
+    const advancesPurchased =
+      1 +
+      (item.system.bonusAdvances?.reduce?.((a, b) => a + Number(b.purchased), 0) ?? 0) +
+      (item.system.skillRanks?.reduce?.((a, b) => a + Number(b.purchased), 0) ?? 0) +
+      (item.system.talents?.reduce?.((a, b) => a + Number(b.purchased), 0) ?? 0);
+    item.system.advancesPurchased = advancesPurchased;
+    item.system.completed = advancesPurchased === 21; // @todo: implement system option to adjust total advances per Profession
+  }
+
+  async _preCreate(data, options, user, item) {
+    const tier = item.parent.items.filter((i) => i.type === 'profession').length + 1;
+
+    const isExpert = item.system.expert.value;
+    const expertReqs = item.system.expert.requirements.skillRanks;
+
+    if (isExpert && expertReqs.length) {
+      const skills = item.parent.items.filter((i) => i.type === 'skill');
+
+      for (let requirement of expertReqs) {
+        const requiredSkill = skills.find((skill) => normalizedEquals(skill.name, requirement.key));
+
+        if (requiredSkill.system.rank < requirement.value) {
+          ui.notifications.error(
+            game.i18n.format('ZWEI.othermessages.charnotmeetep', {
+              profession: item.name,
+              value: requirement.value,
+              skill: requiredSkill.name,
+            })
+          );
+          return false;
+        }
+      }
+    }
+
+    if (tier > 3) return;
+
+    item.updateSource({
+      'system.tier': game.i18n.localize('ZWEI.actor.tiers.' + CONFIG.ZWEI.tiers[tier]),
+    });
+
+    await super._preCreate(data, options, user, item);
+  }
+
+  async _preUpdate(changed, options, user, item) {
+    if (typeof changed.system['expert']?.['value'] !== 'undefined' && changed.system['expert']?.['value']) {
+      changed.system['archetype'] = 'expert profession';
+    } else if (
+      typeof changed.system['expert']?.['value'] !== 'undefined' &&
+      !changed.system['expert']?.['value'] &&
+      typeof changed.system['archetype'] === 'undefined'
+    ) {
+      // reset to default value upon unchecking the 'Expert Profession' checkbox
+      changed.system.archetype = game.i18n.localize('ZWEI.actor.details.labels.academic');
+
+      // reset the requirement entries upon unchecking the 'Expert Profession' checkbox
+      if (typeof changed.system.expert['requirements'] !== 'undefined')
+        changed.system.expert.requirements.skillRanks = [];
+    }
+    if (changed.system['skillRanks'] !== undefined) {
+      changed.system.skillRanks = changed.system.skillRanks.map((sr) => {
+        // @todo: revert to old logic, see below
+        const skillRanks = typeof sr === 'object' ? sr : { name: sr };
+        return {
+          ...skillRanks,
+          purchased: sr.purchased ?? false,
+        };
+      });
+    }
+    if (changed.system['bonusAdvances'] !== undefined) {
+      changed.system.bonusAdvances = changed.system.bonusAdvances.map((ba) => ({
+        ...ba,
+        purchased: ba.purchased ?? false,
+      }));
+    }
+    await super._preUpdate(changed, options, user, item);
+  }
+}

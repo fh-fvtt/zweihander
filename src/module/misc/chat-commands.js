@@ -2,20 +2,18 @@
   Chat Commander integration.
  */
 
-import * as ZweihanderUtils from "../utils";
-import { getTestConfiguration } from "../apps/test-config";
-import { rollTest } from "../dice";
-import { displayHelpMessage } from "./help";
+import * as ZweihanderUtils from '../system/utils';
+import { getTestConfiguration } from '../system/rolls/test-config';
+import { rollTest } from '../system/rolls/dice';
+import { displayHelpMessage } from './help';
 
 async function invokeSkillTest(chatlog, parameters, chatdata) {
   const actors = game.user.isGM
     ? game.canvas.tokens.controlled.map((t) => t.actor)
-    : [game.actors.get(ZweihanderUtils.determineCurrentActorId(true))];
+    : Array.from(game.actors.get(ZweihanderUtils.determineCurrentActorUuids(true)));
   let testConfiguration;
   if (actors.length === 0) {
-    ui.notifications.warn(
-      game.i18n.localize("ZWEI.othermessages.selecttoken")
-    );
+    ui.notifications.warn(game.i18n.localize('ZWEI.othermessages.selecttoken'));
   }
   for (let actor of actors) {
     const skillItem = actor?.items?.find?.(
@@ -27,9 +25,7 @@ async function invokeSkillTest(chatlog, parameters, chatdata) {
       }
       await rollTest(skillItem, 'skill', testConfiguration);
     } else if (actor) {
-      ui.notifications.warn(
-        game.i18n.format("ZWEI.othermessages.noskill", { message: parameters })
-      );
+      ui.notifications.warn(game.i18n.format('ZWEI.othermessages.noskill', { message: parameters }));
       break;
     }
   }
@@ -47,10 +43,10 @@ async function postNextSession(chatlog, messageText, chatdata) {
     }),
   });
   game.world.updateSource(response);
-  return ({
-    flavor: game.i18n.localize("ZWEI.othermessages.settingdate"),
-    content: game.i18n.format("ZWEI.othermessages.nextsession", { next: nextSession.toLocaleDateString() }),
-  });
+  return {
+    flavor: game.i18n.localize('ZWEI.othermessages.settingdate'),
+    content: game.i18n.format('ZWEI.othermessages.nextsession', { next: nextSession.toLocaleDateString() }),
+  };
 }
 
 export function registerChatCommands(chatCommands) {
@@ -65,18 +61,16 @@ export function registerChatCommands(chatCommands) {
       name: '/nextSession',
       callback: postNextSession,
       icon: '<i class="fas fa-calendar"></i>',
-      requiredRole: "GAMEMASTER",
-      description: game.i18n.localize("ZWEI.othermessages.setdate"),
+      requiredRole: 'GAMEMASTER',
+      description: game.i18n.localize('ZWEI.othermessages.setdate'),
     },
     {
       name: '/help',
       callback: displayHelpMessage,
       icon: '<i class="fas fa-question"></i>',
-      description: game.i18n.localize("ZWEI.othermessages.showdocs"),
-    }
+      description: game.i18n.localize('ZWEI.othermessages.showdocs'),
+    },
   ];
 
-  CHAT_COMMANDS.forEach(command =>
-    chatCommands.register({ ...command, module: 'zweihander' })
-  );
-};
+  CHAT_COMMANDS.forEach((command) => chatCommands.register({ ...command, module: 'zweihander' }));
+}

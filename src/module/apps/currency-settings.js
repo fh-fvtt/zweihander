@@ -1,4 +1,4 @@
-import { formDataToArray } from '../utils';
+import { formDataToArray } from '../system/utils';
 
 const { ApplicationV2, HandlebarsApplicationMixin } = foundry.applications.api;
 const { SettingsConfig } = foundry.applications.settings;

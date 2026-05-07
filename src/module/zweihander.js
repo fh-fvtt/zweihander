@@ -5,39 +5,35 @@
 
 import '../index.scss';
 
-import ZweihanderActor from './actor/actor';
-import ZweihanderCharacterSheet from './actor/sheet/character-sheet';
-import ZweihanderNpcSheet from './actor/sheet/npc-sheet';
-import ZweihanderCreatureSheet from './actor/sheet/creature-sheet';
-import ZweihanderVehicleSheet from './actor/sheet/vehicle-sheet';
-import ZweihanderItem from './item/item';
-import ZweihanderItemSheet from './item/sheet/item-sheet';
+import ZweihanderActor from './documents/actor/actor';
+import ZweihanderCharacterSheet from './sheets/actor/character-sheet';
+import ZweihanderNpcSheet from './sheets/actor/npc-sheet';
+import ZweihanderCreatureSheet from './sheets/actor/creature-sheet';
+import ZweihanderVehicleSheet from './sheets/actor/vehicle-sheet';
+import ZweihanderItem from './documents/item/item';
+import ZweihanderItemSheet from './sheets/item/item-sheet';
 import FortuneTracker from './apps/fortune-tracker';
-import * as ZweihanderUtils from './utils';
-import * as ZweihanderChat from './chat';
+import * as ZweihanderUtils from './system/utils';
+import * as ZweihanderChat from './system/chat';
 import { registerChatCommands } from './misc/chat-commands';
 
-import { registerSystemSettings, registerCompendiumSettings, setCssTheme } from './settings';
-import { renderSettings } from './sidebar';
-import { preloadHandlebarsTemplates } from './templates';
-import { registerHandlebarHelpers } from './helpers';
+import { registerSystemSettings, registerCompendiumSettings, setCssTheme } from './system/settings';
+import { renderSettings } from './system/sidebar';
+import { preloadHandlebarsTemplates } from './misc/templates';
+import { registerHandlebarHelpers } from './misc/helpers';
 // import { migrateWorldSafe, migrateWorld } from './migration';
-import { patchDie } from './dice';
-import { createItemMacro, rollItemMacro } from './macros';
+import { patchDie } from './system/rolls/dice';
+import { createItemMacro, rollItemMacro } from './system/macros';
 
-import { ZWEI } from './config';
+import { ZWEI } from './system/config';
 
-import { triggerAnalytics } from './analytics';
-import ZweihanderCombat from './combat/combat';
-import ZweihanderCombatant from './combat/combatant';
-import ZweihanderCombatTracker from './combat/combat-tracker';
-import ZweihanderActiveEffect from './effects/active-effect';
+import ZweihanderActiveEffect from './documents/effects/active-effect';
 import ZweihanderActiveEffectConfig from './apps/active-effect-config';
-import { performWorldMigrations, migrations } from './migration';
+import { performWorldMigrations, migrations } from './misc/migration';
 
-import { HTMLZweihanderTagsElement } from './misc/zweihander-tags';
-import { HTMLZweihanderMultiSelectElement } from './misc/zweihander-multiselect';
-import { HTMLZweihanderRepeatMultiSelectElement } from './misc/zweihander-repeat-multiselect';
+import { HTMLZweihanderTagsElement } from './components/zweihander-tags';
+import { HTMLZweihanderMultiSelectElement } from './components/zweihander-multiselect';
+import { HTMLZweihanderRepeatMultiSelectElement } from './components/zweihander-repeat-multiselect';
 import ZweihanderGamePause from './apps/pause';
 
 /* -------------------------------------------- */
