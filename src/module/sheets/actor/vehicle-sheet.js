@@ -1,8 +1,12 @@
+import * as ZweihanderUtils from '../../system/utils';
+
 import ZweihanderBaseActorSheet from '../../sheets/actor/base-actor-sheet';
 
 import { selectedChoice, localizePath } from '../../system/utils';
 
 export default class ZweihanderVehicleSheet extends ZweihanderBaseActorSheet {
+  actorSortCriteria = {};
+
   static unsupportedItemTypes = new Set([
     'ancestry',
     'profession',
@@ -46,6 +50,13 @@ export default class ZweihanderVehicleSheet extends ZweihanderBaseActorSheet {
 
   async _prepareContext(options) {
     const context = await super._prepareContext(options);
+
+    const vehicleOccupants = this.actor.getFlag('zweihander', 'vehicleOccupants');
+
+    context.passengers = vehicleOccupants.passengers;
+    context.drivers = vehicleOccupants.drivers;
+
+    context.actorGroups = this._processGroups(this._getActorGroups(context), this.actorSortCriteria);
 
     context.choices = {};
 
@@ -137,7 +148,7 @@ export default class ZweihanderVehicleSheet extends ZweihanderBaseActorSheet {
         title: 'drivers',
         summaryTemplate: 'item-summary/vehicleOccupant',
         details: [],
-        actors: context.drivers,
+        entries: context.drivers,
         rollType: 'skill-roll',
         rollLabelKey: 'system.details.operateSkill',
       },
@@ -145,7 +156,7 @@ export default class ZweihanderVehicleSheet extends ZweihanderBaseActorSheet {
         title: 'passengers',
         summaryTemplate: 'item-summary/vehicleOccupant',
         details: [],
-        actors: context.passengers,
+        entries: context.passengers,
       },
     };
   }
@@ -176,14 +187,14 @@ export default class ZweihanderVehicleSheet extends ZweihanderBaseActorSheet {
             isNumerable: true,
           },
         ],
-        items: context.trappings,
+        entries: context.trappings,
       },
       qualities: {
         title: 'qualities',
         type: 'quality',
         summaryTemplate: 'item-summary/quality',
         details: [],
-        items: context.qualities,
+        entries: context.qualities,
       },
     };
   }
@@ -219,6 +230,28 @@ export default class ZweihanderVehicleSheet extends ZweihanderBaseActorSheet {
           [`${x}.damageThreshold.value`]: sa.damageThreshold.value,
         });
       }
+    });
+
+    html.querySelectorAll('.sortable-actor').forEach((el) => {
+      el.addEventListener('click', async (event) => {
+        event.stopPropagation();
+
+        const { itemGroup, detail: detailStr } = event.currentTarget.dataset;
+        const detail = Number.parseInt(detailStr);
+        const criterion = ZweihanderUtils.getCriterion(this.actorSortCriteria, itemGroup, detail);
+
+        if (!criterion.sort) {
+          criterion.sort = 1;
+        } else if (criterion.sort === 1) {
+          criterion.sort = -1;
+        } else if (criterion.sort === -1) {
+          criterion.sort = 0;
+          const ig = this.actorSortCriteria[itemGroup];
+          ig.splice(ig.indexOf(criterion), 1);
+        }
+
+        await this.render();
+      });
     });
 
     // Edit Actor

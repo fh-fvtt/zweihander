@@ -1,8 +1,11 @@
-import FortuneTracker from '../../apps/fortune-tracker';
-import ZweihanderQuality from '../../documents/item/quality';
 import * as ZweihanderUtils from '../utils';
-import { getTestConfiguration } from './test-config';
+
+import FortuneTracker from '../../apps/fortune-tracker';
 import ZweihanderActorConfig from '../../apps/actor-config';
+
+import { getTestConfiguration } from './test-config';
+
+const { Die, DiceTerm } = foundry.dice.terms;
 
 export const PERIL_ROLL_TYPES = {
   STRESS: { x: 1, title: 'stress', difficultyRating: 20 },
@@ -150,7 +153,7 @@ export async function rollTest(
   };
   if (weapon) {
     templateData.weapon = weapon.toObject(false);
-    templateData.weapon.system.qualities = await ZweihanderQuality.getQualities(weapon.system.qualities);
+    templateData.weapon.system.qualities = await weapon.system.getQualitiesData();
   }
   if (spell) {
     templateData.itemId = spell.id;
@@ -201,10 +204,11 @@ export async function rollTest(
   };
   let sound;
   if (['dodge', 'parry'].includes(testType)) {
+    const configOptions = actor.system.settings;
     if (isSuccess(effectiveOutcome)) {
-      sound = ZweihanderActorConfig.getValue(actor, `${testType}Sound`);
-    } else if (ZweihanderActorConfig.getValue(actor, 'playGruntSound')) {
-      sound = ZweihanderActorConfig.getValue(actor, `gruntSound`);
+      sound = configOptions[`${testType}Sound`];
+    } else if (configOptions.playGruntSound) {
+      sound = configOptions.gruntSound;
     }
   }
   let messageData = await roll.toMessage({ content, flavor, speaker, flags, sound }, { rollMode, create });
@@ -280,7 +284,7 @@ export async function rollPerilDamage(actorUuid, testConfiguration) {
 export async function rollWeaponDamage(actorUuid, testConfiguration) {
   const { weaponId, additionalFuryDice } = testConfiguration;
   const actor = fromUuidSync(actorUuid);
-  const weapon = actor.items.get(weaponId).toObject(false);
+  const weapon = actor.items.get(weaponId); //.toObject(false);
 
   const damageData = weapon.system.damage;
   const furyData = damageData.fury;
@@ -323,6 +327,52 @@ export async function rollWeaponDamage(actorUuid, testConfiguration) {
     },
   };
   return damageRoll.toMessage({ speaker, flavor, content, flags }, { rollMode: CONST.DICE_ROLL_MODES.PUBLIC });
+}
+
+export async function rollInjury(injuryToRoll, actor) {
+  const injuryChaosRoll = new Roll(
+    `${injuryToRoll === 'moderate' ? 1 : injuryToRoll === 'serious' ? 2 : 3}d6`,
+    actor.system
+  );
+  const rollResult = await injuryChaosRoll.evaluate();
+
+  await rollResult.toMessage({
+    speaker: ChatMessage.getSpeaker({ actor: actor }),
+    content: injuryChaosRoll.total,
+    flavor: game.i18n.localize('ZWEI.chatskill.avoidinjury'),
+  });
+
+  const injurySustained = rollResult.terms[0].results.some((die) => die.result === 6);
+
+  if (!injurySustained) return;
+
+  const injuryTablesPackName = game.settings.get('zweihander', 'injuryList');
+
+  const injuryToRollLoc = game.i18n.localize('ZWEI.actor.items.injuryseverity.' + injuryToRoll.toLowerCase());
+
+  const tablesPack = game.packs.get(injuryTablesPackName);
+
+  let tablesIndex;
+
+  try {
+    tablesIndex = await tablesPack.getIndex();
+  } catch (err) {
+    ui.notifications.error(game.i18n.format('ZWEI.othermessages.injurytableerror', { pack: injuryTablesPackName }));
+    return;
+  }
+
+  const injuryTableEntry = tablesIndex.find((table) => ZweihanderUtils.normalizedIncludes(table.name, injuryToRollLoc));
+
+  if (injuryTableEntry) {
+    const injuryTable = await tablesPack.getDocument(injuryTableEntry._id);
+
+    const diceRoll = await injuryTable.roll();
+    const finalResult = await injuryTable.draw({ roll: diceRoll });
+  } else {
+    ui.notifications.error(
+      game.i18n.format('ZWEI.othermessages.injurytablemismatch', { severity: injuryToRollLoc, pack: tablesPack })
+    );
+  }
 }
 
 function _preCalculateTargetData(actor, damage, type = 'damage') {
@@ -417,7 +467,7 @@ export async function explodeWeaponDamage(message, useFortune) {
   }
   const { actorUuid, weaponId, exploded, targets } = message.flags.zweihander.weaponTestData;
   const actor = fromUuidSync(actorUuid);
-  const weapon = actor.items.get(weaponId).toObject(false);
+  const weapon = actor.items.get(weaponId); //.toObject(false);
   const roll = message.rolls[0];
   const dice = roll.dice.find((d) => d.faces === 6);
 
@@ -501,10 +551,12 @@ function _getPerilData(currentPeril, rank, rankBonus, bonusPerRank, isManualDodg
 }
 
 async function getWeaponDamageContent(weapon, roll, { exploded = false, explodedCount = 0, targets = [] } = {}) {
-  weapon.system.qualities = await ZweihanderQuality.getQualities(weapon.system.qualities);
+  weapon.system.qualities = await weapon.system.getQualitiesData();
+
   const tooltip = await roll.getTooltip();
   const total = roll.total;
   const formula = roll.formula;
+
   // Not needed at the moment
   // const cardContent = await renderTemplate('systems/zweihander/src/templates/item-card/item-card-weapon.hbs', weapon);
   return await renderTemplate(CONFIG.ZWEI.templates.weapon, {

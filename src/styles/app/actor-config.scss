@@ -21,7 +21,11 @@ body.game.vtt.system-zweihander .zweihander.sheet.actor-config {
     flex-direction: row;
     flex-wrap: wrap;
     gap: 0.5rem;
-    align-items: center;
+    align-items: flex-start;
+
+    > label {
+      line-height: var(--input-height);
+    }
 
     > * {
       flex: 1;
@@ -29,6 +33,10 @@ body.game.vtt.system-zweihander .zweihander.sheet.actor-config {
 
     > select,
     input,
+    multi-select {
+      flex: 2;
+    }
+
     file-picker {
       flex: 2;
     }

@@ -1,5 +1,7 @@
 import { ZWEI } from './config';
 
+const { getProperty } = foundry.utils;
+
 export function zhDebug(...args) {
   try {
     const isDebugging = game.modules.get('_dev-mode')?.api?.getPackageDebugValue('zweihander');
@@ -25,6 +27,24 @@ export function getLocalizedTierMapping(isRewardPointMapping = false) {
     (acc, val, idx) => ({ ...acc, [game.i18n.localize(`ZWEI.actor.tiers.${val}`)]: (idx + 1) * multiplier }),
     {}
   );
+}
+
+export function getItemGroupCriteria(criteria, itemGroupKey) {
+  if (!criteria[itemGroupKey]) {
+    criteria[itemGroupKey] = [];
+  }
+  return criteria[itemGroupKey];
+}
+
+export function getCriterion(criteria, itemGroupKey, detail, create = true) {
+  const itemGroupCriteria = getItemGroupCriteria(criteria, itemGroupKey);
+  const existingCriterion = itemGroupCriteria.find((c) => c.detail === detail);
+  if (!existingCriterion && create) {
+    const criterion = { detail };
+    itemGroupCriteria.push(criterion);
+    return criterion;
+  }
+  return existingCriterion;
 }
 
 export function getLocalizedRewardPointMapping() {
@@ -410,7 +430,7 @@ export async function parseDataPaths(input, actor) {
     return getProperty(actor, key);
   });
   if (input !== parsed) {
-    const mathExpr = /\-?\d+((?<!x\d+)(\s*[\+\-\*/]\s*\-?\d+)(?!d))*/g;
+    const mathExpr = /\-?\d+((?<!x\d+(&\d+)*)(\s*[\+\-\*/]\s*\-?\d+)(?!d))*/g;
     const matches = parsed.match(mathExpr);
     const promises = matches.map((x) =>
       new Roll(x).evaluate({ async: true }).then((roll) => ({ key: x, value: roll.total }))
@@ -465,9 +485,9 @@ export async function updateActorSkillsFromPack(skillPackId) {
   for (let actor of game.actors) {
     const actorSkillItems = actor.items.filter((i) => i.type === 'skill').map((i) => i.id);
     CONFIG.ZWEI.NO_WARN = true;
-    // refactor to Item.delete / Item.create
-    await actor.deleteEmbeddedDocuments('Item', actorSkillItems);
-    await actor.createEmbeddedDocuments('Item', skillsFromPack, {
+    await Item.deleteDocuments(actorSkillItems, { parent: actor });
+    await Item.create(skillsFromPack, {
+      parent: actor,
       keepId: true,
       keepEmbeddedIds: true,
     });

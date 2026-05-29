@@ -74,6 +74,8 @@ ZWEI.alternativePerilTable = {
   0: -20,
 };
 
+ZWEI.traitCategories = ['professional', 'special', 'ancestral', 'creature'];
+
 ZWEI.ritualDifficultyGeneric = ['varies', 'special'];
 
 ZWEI.primaryAttributes = ['combat', 'brawn', 'agility', 'perception', 'intelligence', 'willpower', 'fellowship'];
@@ -91,36 +93,45 @@ ZWEI.secondaryAttributes = [
   'movement',
 ];
 
-ZWEI.primaryAttributeKeys = [
-  'system.stats.primaryAttributes.combat.value',
-  'system.stats.primaryAttributes.brawn.value',
-  'system.stats.primaryAttributes.agility.value',
-  'system.stats.primaryAttributes.perception.value',
-  'system.stats.primaryAttributes.intelligence.value',
-  'system.stats.primaryAttributes.willpower.value',
-  'system.stats.primaryAttributes.fellowship.value',
-];
+ZWEI.primaryAttributePhases = {
+  'system.stats.primaryAttributes.combat.value': 'initial',
+  'system.stats.primaryAttributes.brawn.value': 'initial',
+  'system.stats.primaryAttributes.agility.value': 'initial',
+  'system.stats.primaryAttributes.perception.value': 'initial',
+  'system.stats.primaryAttributes.intelligence.value': 'initial',
+  'system.stats.primaryAttributes.willpower.value': 'initial',
+  'system.stats.primaryAttributes.fellowship.value': 'initial',
+};
 
-ZWEI.primaryAttributeBonusKeys = [
-  'system.stats.primaryAttributes.combat.bonus',
-  'system.stats.primaryAttributes.brawn.bonus',
-  'system.stats.primaryAttributes.agility.bonus',
-  'system.stats.primaryAttributes.perception.bonus',
-  'system.stats.primaryAttributes.intelligence.bonus',
-  'system.stats.primaryAttributes.willpower.bonus',
-  'system.stats.primaryAttributes.fellowship.bonus',
-];
+ZWEI.primaryAttributeBonusPhases = {
+  'system.stats.primaryAttributes.combat.bonus': 'intermediate',
+  'system.stats.primaryAttributes.brawn.bonus': 'intermediate',
+  'system.stats.primaryAttributes.agility.bonus': 'intermediate',
+  'system.stats.primaryAttributes.perception.bonus': 'intermediate',
+  'system.stats.primaryAttributes.intelligence.bonus': 'intermediate',
+  'system.stats.primaryAttributes.willpower.bonus': 'intermediate',
+  'system.stats.primaryAttributes.fellowship.bonus': 'intermediate',
+};
 
-ZWEI.secondaryAttributeKeys = [
-  'system.stats.secondaryAttributes.damageThreshold.value',
-  'system.stats.secondaryAttributes.perilThreshold.value',
-  //'system.stats.secondaryAttributes.dodge.value',
-  //'system.stats.secondaryAttributes.parry.value',
-  //'system.stats.secondaryAttributes.magick.value',
-  'system.stats.secondaryAttributes.encumbrance.value',
-  'system.stats.secondaryAttributes.initiative.value',
-  'system.stats.secondaryAttributes.movement.value',
-];
+ZWEI.secondaryAttributePhases = {
+  'system.stats.secondaryAttributes.damageThreshold.value': 'advanced',
+  'system.stats.secondaryAttributes.perilThreshold.value': 'advanced',
+  //'system.stats.secondaryAttributes.dodge.value': 'advanced',
+  //'system.stats.secondaryAttributes.parry.value': 'advanced',
+  //'system.stats.secondaryAttributes.magick.value': 'advanced',
+  'system.stats.secondaryAttributes.encumbrance.value': 'advanced',
+  'system.stats.secondaryAttributes.initiative.value': 'advanced',
+  'system.stats.secondaryAttributes.movement.value': 'advanced',
+};
+
+ZWEI.typeOperator = {
+  add: '+',
+  subtract: '-',
+  multiply: '*',
+  override: ':=',
+  upgrade: '↑',
+  downgrade: '↓',
+};
 
 ZWEI.primaryAttributeIcons = {
   combat: 'ra ra-croc-sword',
@@ -178,78 +189,152 @@ ZWEI.injurySeverities = [
   { value: 2, label: 'grievous' },
 ];
 
-ZWEI.statusEffects = [
-  {
-    id: 'dead',
+ZWEI.statusEffects = {
+  dead: {
     name: 'EFFECT.dead',
-    icon: 'systems/zweihander/assets/icons/death-skull.svg',
+    img: 'systems/zweihander/assets/default-icons/death-skull.svg',
   },
-  {
-    id: 'blind',
-    name: 'EFFECT.blind',
-    icon: 'systems/zweihander/assets/icons/sight-disabled.svg',
+  blinded: {
+    name: 'EFFECT.blinded',
+    img: 'systems/zweihander/assets/default-icons/blindfold.svg',
   },
-  {
-    id: 'choke',
+  choked: {
     name: 'EFFECT.choked',
-    icon: 'systems/zweihander/assets/icons/slipknot.svg',
+    img: 'systems/zweihander/assets/default-icons/slipknot.svg',
   },
-  {
-    id: 'defenseless',
+  defenseless: {
     name: 'EFFECT.defenseless',
-    icon: 'systems/zweihander/assets/icons/broken-shield.svg',
+    img: 'systems/zweihander/assets/default-icons/broken-axe.svg',
   },
-  {
-    id: 'disarmed',
+  disarmed: {
     name: 'EFFECT.disarmed',
-    icon: 'systems/zweihander/assets/icons/sword-break.svg',
+    img: 'systems/zweihander/assets/default-icons/drop-weapon.svg',
   },
-  {
-    id: 'helpless',
+  helpless: {
     name: 'EFFECT.helpless',
-    icon: 'systems/zweihander/assets/icons/handcuffed.svg',
+    img: 'systems/zweihander/assets/default-icons/half-body-crawling.svg',
   },
-  {
-    id: 'inspired',
+  inspired: {
     name: 'EFFECT.inspired',
-    icon: 'systems/zweihander/assets/icons/armor-upgrade.svg',
+    img: 'systems/zweihander/assets/default-icons/trumpet-flag.svg',
+    changes: [
+      {
+        key: 'system.stats.secondaryAttributes.damageThreshold.value',
+        phase: 'advanced',
+        priority: null,
+        type: 'add',
+        value: 1,
+      },
+      {
+        key: 'system.stats.secondaryAttributes.perilThreshold.value',
+        phase: 'advanced',
+        priority: null,
+        type: 'add',
+        value: 1,
+      },
+    ],
+    duration: {
+      expiry: 'combatEnd',
+    },
   },
-  {
-    id: 'intimidated',
+  intimidated: {
     name: 'EFFECT.intimidated',
-    icon: 'systems/zweihander/assets/icons/armor-downgrade.svg',
+    img: 'systems/zweihander/assets/default-icons/dark-squad.svg',
+    changes: [
+      {
+        key: 'system.stats.secondaryAttributes.damageThreshold.value',
+        phase: 'advanced',
+        priority: null,
+        type: 'subtract',
+        value: 1,
+      },
+      {
+        key: 'system.stats.secondaryAttributes.perilThreshold.value',
+        phase: 'advanced',
+        priority: null,
+        type: 'subtract',
+        value: 1,
+      },
+    ],
+    duration: {
+      expiry: 'combatEnd',
+    },
   },
-  {
-    id: 'knocked',
-    name: 'EFFECT.knockedOut',
-    icon: 'systems/zweihander/assets/icons/knockout.svg',
+  knockedOut: {
+    name: 'EFFECT.knockedout',
+    img: 'systems/zweihander/assets/default-icons/knockout.svg',
   },
-  {
-    id: 'prone',
+  prone: {
     name: 'EFFECT.prone',
-    icon: 'systems/zweihander/assets/icons/falling.svg',
+    img: 'systems/zweihander/assets/default-icons/back-pain.svg',
   },
-  {
-    id: 'stun',
+  stunned: {
     name: 'EFFECT.stunned',
-    icon: 'systems/zweihander/assets/icons/stoned-skull.svg',
+    img: 'systems/zweihander/assets/default-icons/knocked-out-stars.svg',
   },
-  {
-    id: 'surprised',
+  surprised: {
     name: 'EFFECT.surprised',
-    icon: 'systems/zweihander/assets/icons/surprised.svg',
+    img: 'systems/zweihander/assets/default-icons/surprised.svg',
   },
-  {
-    id: 'burning',
-    name: 'EFFECT.burning',
-    icon: 'systems/zweihander/assets/icons/flame.svg',
+  onFire: {
+    name: 'EFFECT.onfire',
+    img: 'systems/zweihander/assets/default-icons/wildfires.svg',
   },
-  {
-    id: 'bleeding',
+  bleeding: {
     name: 'EFFECT.bleeding',
-    icon: 'systems/zweihander/assets/icons/bleeding-wound.svg',
+    img: 'systems/zweihander/assets/default-icons/ragged-wound.svg',
   },
-];
+  incapacitated: {
+    name: 'EFFECT.incapacitated',
+    img: 'systems/zweihander/assets/default-icons/despair.svg',
+  },
+  intoxicated: {
+    name: 'EFFECT.intoxicated',
+    img: 'systems/zweihander/assets/default-icons/drinking.svg',
+    changes: [
+      {
+        key: 'system.stats.secondaryAttributes.damageThreshold.value',
+        phase: 'advanced',
+        priority: null,
+        type: 'add',
+        value: 3,
+      },
+    ],
+    duration: {
+      value: 6,
+      units: 'hours',
+      expiry: null,
+    },
+  },
+  delirious: {
+    name: 'EFFECT.delirious',
+    img: 'systems/zweihander/assets/default-icons/six-eyes.svg',
+  },
+  poisoned: {
+    name: 'EFFECT.poisoned',
+    img: 'systems/zweihander/assets/default-icons/mushroom.svg',
+  },
+  envenomed: {
+    name: 'EFFECT.envenomed',
+    img: 'systems/zweihander/assets/default-icons/scorpion.svg',
+  },
+  exhausted: {
+    name: 'EFFECT.exhausted',
+    img: 'systems/zweihander/assets/default-icons/tired-eye.svg',
+  },
+  starving: {
+    name: 'EFFECT.starving',
+    img: 'systems/zweihander/assets/default-icons/fish-corpse.svg',
+  },
+  suffocating: {
+    name: 'EFFECT.suffocating',
+    img: 'systems/zweihander/assets/default-icons/drowning.svg',
+  },
+  confused: {
+    name: 'EFFECT.confused',
+    img: 'systems/zweihander/assets/default-icons/misdirection.svg',
+  },
+};
 
 export { ZWEI };
 

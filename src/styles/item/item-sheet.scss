@@ -360,6 +360,7 @@ body.game.vtt.system-zweihander .zweihander.sheet.item {
       padding: 0 2px;
       text-overflow: ellipsis;
       flex: 0 0 auto;
+      height: 15px;
       &:nth-child(2) {
         border-left: 1px solid var(--zh-clr-bg1);
       }
@@ -407,6 +408,7 @@ body.game.vtt.system-zweihander .zweihander.sheet.item {
           }
         }
         text-align: center;
+        margin-top: 1.7px;
       }
     }
     .item-image {
@@ -622,7 +624,7 @@ body.game.vtt.system-zweihander .zweihander.sheet.item {
           .coins-icon {
             position: absolute;
             top: -4px;
-            right: -7px;
+            right: -9px;
           }
 
           .currency {

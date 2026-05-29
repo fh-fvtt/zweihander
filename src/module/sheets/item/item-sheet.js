@@ -3,6 +3,7 @@ import * as ZweihanderUtils from '../../system/utils';
 
 const { DialogV2, HandlebarsApplicationMixin } = foundry.applications.api;
 const { ItemSheetV2 } = foundry.applications.sheets;
+const { getProperty } = foundry.utils;
 
 /**
  * Extend the basic ItemSheetV2
@@ -120,6 +121,14 @@ export default class ZweihanderItemSheet extends HandlebarsApplicationMixin(Item
         value: option,
         label: option.capitalize(),
       }));
+    } else if (sheetData.type === 'trait') {
+      sheetData.choices.traitCategories = ZweihanderUtils.selectedChoice(
+        sheetData.document.system.category ?? CONFIG.ZWEI.traitCategories[0],
+        CONFIG.ZWEI.traitCategories.map((category) => ({
+          value: category,
+          label: game.i18n.localize(`ZWEI.actor.items.traitscategories.${category}`),
+        }))
+      );
     } else if (sheetData.type === 'profession') {
       sheetData.bonusAdvancesOptions = CONFIG.ZWEI.primaryAttributeBonuses;
 
@@ -378,10 +387,10 @@ export default class ZweihanderItemSheet extends HandlebarsApplicationMixin(Item
       const linkedItem = linkedItemUuid !== '' ? fromUuidSync(linkedItemUuid) : '';
 
       sheetData[`${linkedItemData.property}WrapperData`] = this._getWrapperData({
+        ...linkedItemData,
         name: linkedItem?.name,
         _id: linkedItem?._id,
         uuid: linkedItem?.uuid,
-        ...linkedItemData,
       });
     }
   }
@@ -394,6 +403,7 @@ export default class ZweihanderItemSheet extends HandlebarsApplicationMixin(Item
       const linkedItem = linkedItemData.uuid !== '' ? fromUuidSync(linkedItemData.uuid) : '';
 
       const toFetch = {
+        ...linkedItemData,
         name: linkedItem?.name,
         _id: linkedItem?._id,
         // label: type.capitalize(),
@@ -401,7 +411,6 @@ export default class ZweihanderItemSheet extends HandlebarsApplicationMixin(Item
         type: type,
         pack: game.settings.get('zweihander', 'talentPack'),
         property: `${type}.${idx}`,
-        ...linkedItemData,
       };
 
       sheetData[`${type}WrapperDataList`].push(this._getWrapperData(toFetch));
@@ -413,7 +422,7 @@ export default class ZweihanderItemSheet extends HandlebarsApplicationMixin(Item
       value: details.name ?? '',
       id: details._id ?? '',
       placeholder: details.label,
-      placeholderInput: '',
+      placeholderInput: '--',
       type: details.type,
       packs: details.pack,
       isInItem: true,
@@ -759,23 +768,21 @@ export default class ZweihanderItemSheet extends HandlebarsApplicationMixin(Item
     let createdItemArray = [];
 
     if (type === 'effect') {
-      // @todo: refactor to use ActiveEffect.create
-      createdItemArray = await this.item.createEmbeddedDocuments('ActiveEffect', [
+      createdItemArray = await ActiveEffect.create(
         {
           name: this.item.name,
-          icon: this.item.img,
+          img: this.item.img,
           origin: (this.item.parent ? `Actor.${this.item.parent.id}.` : '') + 'Item.' + this.item.id,
 
           // @todo: refactor after transition to DataMode
           system: {
             details: {
               source: this.item.name + ' (' + game.i18n.localize(CONFIG.Item.typeLabels[this.item.type]) + ')',
-              category: '',
-              isActive: false,
             },
           },
         },
-      ]);
+        { parent: this.item }
+      );
     } else {
       const packIds = target.dataset.openPacks?.split?.(',')?.filter?.((x) => x);
       if (!packIds) {
@@ -874,7 +881,7 @@ export default class ZweihanderItemSheet extends HandlebarsApplicationMixin(Item
   static async #effectDelete(event, target) {
     const i = target.closest('.effect-item');
     const effect = this.item.effects.get(i.dataset.itemId);
-    const type = game.i18n.localize(CONFIG.ActiveEffect.typeLabels['base']);
+    const type = game.i18n.localize('TYPES.ActiveEffect.Base');
     await DialogV2.confirm({
       window: {
         title: game.i18n.format('ZWEI.othermessages.deletetype', {

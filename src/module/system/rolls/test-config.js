@@ -3,6 +3,7 @@ import { getDifficultyRatingLabel, selectedChoice, normalizedEquals } from '../u
 
 const { DialogV2 } = foundry.applications.api;
 const { renderTemplate } = foundry.applications.handlebars;
+const { mergeObject } = foundry.utils;
 
 export const getItemRollConfiguration = (item) => {
   const actor = item.actor;

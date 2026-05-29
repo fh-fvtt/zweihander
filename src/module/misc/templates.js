@@ -81,8 +81,6 @@ const templatesToLoad = [
   $$('partials/items-list.hbs'),
   $$('partials/item-effects-list.hbs'),
   $$('partials/actors-list.hbs'),
-  $$('partials/modded-value-pa.hbs'),
-  $$('partials/modded-value-bonuses.hbs'),
   $$('partials/modded-value.hbs'),
   $$('partials/skills-list.hbs'),
   $$('partials/item-price-weight.hbs'),

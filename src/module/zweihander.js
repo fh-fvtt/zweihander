@@ -5,36 +5,56 @@
 
 import '../index.scss';
 
+import * as ZweihanderUtils from './system/utils';
+import * as ZweihanderChat from './system/chat';
+
+import ZweihanderGamePause from './apps/pause';
+import ZweihanderPlayerCharacterModel from './model/actor/pc-model';
+import ZweihanderCreatureModel from './model/actor/creature-model';
+import ZweihanderNpcModel from './model/actor/npc-model';
+import ZweihanderVehicleModel from './model/actor/vehicle-model';
 import ZweihanderActor from './documents/actor/actor';
+import ZweihanderActiveEffect from './documents/effects/active-effect';
+import ZweihanderActiveEffectConfig from './apps/active-effect-config';
 import ZweihanderCharacterSheet from './sheets/actor/character-sheet';
 import ZweihanderNpcSheet from './sheets/actor/npc-sheet';
 import ZweihanderCreatureSheet from './sheets/actor/creature-sheet';
 import ZweihanderVehicleSheet from './sheets/actor/vehicle-sheet';
 import ZweihanderItem from './documents/item/item';
 import ZweihanderItemSheet from './sheets/item/item-sheet';
+import ZweihanderAncestryModel from './model/item/ancestry-model';
+import ZweihanderArmorModel from './model/item/armor-model';
+import ZweihanderConditionModel from './model/item/condition-model';
+import ZweihanderDiseaseModel from './model/item/disease-model';
+import ZweihanderDisorderModel from './model/item/disorder-model';
+import ZweihanderDrawbackModel from './model/item/drawback-model';
+import ZweihanderInjuryModel from './model/item/injury-model';
+import ZweihanderProfessionModel from './model/item/profession-model';
+import ZweihanderQualityModel from './model/item/quality-model';
+import ZweihanderRitualModel from './model/item/ritual-model';
+import ZweihanderSkillModel from './model/item/skill-model';
+import ZweihanderSpellModel from './model/item/spell-model';
+import ZweihanderTaintModel from './model/item/taint-model';
+import ZweihanderTalentModel from './model/item/talent-model';
+import ZweihanderTraitModel from './model/item/trait-model';
+import ZweihanderTrappingModel from './model/item/trapping-model';
+import ZweihanderUniqueAdvanceModel from './model/item/unique-advance-model';
+import ZweihanderWeaponModel from './model/item/weapon-model';
+import ZweihanderActiveEffectModel from './model/effect/active-effect-model';
 import FortuneTracker from './apps/fortune-tracker';
-import * as ZweihanderUtils from './system/utils';
-import * as ZweihanderChat from './system/chat';
-import { registerChatCommands } from './misc/chat-commands';
 
+import { ZWEI } from './system/config';
+import { registerChatCommands } from './misc/chat-commands';
 import { registerSystemSettings, registerCompendiumSettings, setCssTheme } from './system/settings';
 import { renderSettings } from './system/sidebar';
 import { preloadHandlebarsTemplates } from './misc/templates';
 import { registerHandlebarHelpers } from './misc/helpers';
-// import { migrateWorldSafe, migrateWorld } from './migration';
 import { patchDie } from './system/rolls/dice';
 import { createItemMacro, rollItemMacro } from './system/macros';
-
-import { ZWEI } from './system/config';
-
-import ZweihanderActiveEffect from './documents/effects/active-effect';
-import ZweihanderActiveEffectConfig from './apps/active-effect-config';
 import { performWorldMigrations, migrations } from './misc/migration';
-
 import { HTMLZweihanderTagsElement } from './components/zweihander-tags';
 import { HTMLZweihanderMultiSelectElement } from './components/zweihander-multiselect';
 import { HTMLZweihanderRepeatMultiSelectElement } from './components/zweihander-repeat-multiselect';
-import ZweihanderGamePause from './apps/pause';
 
 /* -------------------------------------------- */
 /*  Foundry VTT Initialization                  */
@@ -80,10 +100,6 @@ Hooks.once('ready', function () {
 
   // patch die class
   patchDie();
-  console.log(`systems/zweihander/assets/${game.settings.get('zweihander', 'gameSystem')}-logo.webp`);
-  $('#ui-left #logo')
-    .attr('src', `systems/zweihander/assets/${game.settings.get('zweihander', 'gameSystem')}-logo.webp`)
-    .css('display', 'unset');
 
   // macro bar support
   Hooks.on('hotbarDrop', (bar, data, slot) => {
@@ -102,45 +118,9 @@ Hooks.once('diceSoNiceReady', function () {
   ]);
 });
 
-Hooks.once('dragRuler.ready', (SpeedProvider) => {
-  // Drag Ruler integration
-  class zweihanderSpeedProvider extends SpeedProvider {
-    get colors() {
-      return [
-        { id: 'maneuver', default: 0x1259b6, name: 'ZWEI.speeds.maneuver' },
-        { id: 'hustle', default: 0x00ff00, name: 'ZWEI.speeds.hustle' },
-        { id: 'charge', default: 0xffff00, name: 'ZWEI.speeds.charge' },
-        { id: 'run', default: 0xff8000, name: 'ZWEI.speeds.run' },
-      ];
-    }
-
-    getRanges(token) {
-      // MANEUVER: 1 yd
-      // HUSTLE: MOV
-      // CHARGE: MOV*2
-      // RUN: MOV*3
-      const movement = token.actor.system.stats.secondaryAttributes.movement;
-
-      const minSpeed = 1;
-      const baseSpeed = movement.current ?? movement.value;
-      const chargeSpeed = baseSpeed * 2;
-      const runSpeed = baseSpeed * 3;
-
-      const ranges = [
-        { range: minSpeed, color: 'maneuver' },
-        { range: baseSpeed, color: 'hustle' },
-        { range: chargeSpeed, color: 'charge' },
-        { range: runSpeed, color: 'run' },
-      ];
-
-      return ranges;
-    }
-  }
-  dragRuler.registerSystem('zweihander', zweihanderSpeedProvider);
-});
-
 Hooks.once('init', async function () {
   //CONFIG.debug.hooks = true;
+
   console.log(ZWEI.debugTitle);
 
   // Register settings
@@ -154,6 +134,49 @@ Hooks.once('init', async function () {
     rollItemMacro,
   };
 
+  Object.assign(CONFIG.ActiveEffect.phases, {
+    intermediate: {
+      hint: '',
+      label: 'Intermediate',
+    },
+    advanced: {
+      hint: '',
+      label: 'Advanced',
+    },
+  });
+
+  Object.assign(CONFIG.ActiveEffect.dataModels, {
+    base: ZweihanderActiveEffectModel,
+  });
+
+  Object.assign(CONFIG.Actor.dataModels, {
+    character: ZweihanderPlayerCharacterModel,
+    creature: ZweihanderCreatureModel,
+    npc: ZweihanderNpcModel,
+    vehicle: ZweihanderVehicleModel,
+  });
+
+  Object.assign(CONFIG.Item.dataModels, {
+    ancestry: ZweihanderAncestryModel,
+    armor: ZweihanderArmorModel,
+    condition: ZweihanderConditionModel,
+    disease: ZweihanderDiseaseModel,
+    disorder: ZweihanderDisorderModel,
+    drawback: ZweihanderDrawbackModel,
+    injury: ZweihanderInjuryModel,
+    profession: ZweihanderProfessionModel,
+    quality: ZweihanderQualityModel,
+    ritual: ZweihanderRitualModel,
+    skill: ZweihanderSkillModel,
+    spell: ZweihanderSpellModel,
+    taint: ZweihanderTaintModel,
+    talent: ZweihanderTalentModel,
+    trait: ZweihanderTraitModel,
+    trapping: ZweihanderTrappingModel,
+    uniqueAdvance: ZweihanderUniqueAdvanceModel,
+    weapon: ZweihanderWeaponModel,
+  });
+
   CONFIG.ChatMessage.template = 'systems/zweihander/src/templates/chat/chat-message.hbs';
   Roll.CHAT_TEMPLATE = 'systems/zweihander/src/templates/dice/roll.hbs';
 
@@ -166,7 +189,10 @@ Hooks.once('init', async function () {
 
   // CONFIG.debug.hooks = true;
 
-  CONFIG.statusEffects = ZWEI.statusEffects;
+  for (const status of Object.keys(CONFIG.statusEffects)) delete CONFIG.statusEffects[status];
+
+  for (const [id, value] of Object.entries(ZWEI.statusEffects)) CONFIG.statusEffects[id] = { id, ...value };
+
   CONFIG.ZWEI = ZWEI;
   // Define custom Document classes
   CONFIG.Actor.documentClass = ZweihanderActor;
@@ -179,28 +205,28 @@ Hooks.once('init', async function () {
   // CONFIG.ui.combat = ZweihanderCombatTracker;
 
   // Register sheet application classes
-  Actors.unregisterSheet('core', ActorSheet);
   Actors.registerSheet('zweihander', ZweihanderCharacterSheet, {
     types: ['character'],
     makeDefault: true,
   });
+
   Actors.registerSheet('zweihander', ZweihanderNpcSheet, {
     types: ['npc'],
     makeDefault: true,
   });
+
   Actors.registerSheet('zweihander', ZweihanderCreatureSheet, {
     types: ['creature'],
     makeDefault: true,
   });
+
   Actors.registerSheet('zweihander', ZweihanderVehicleSheet, {
     types: ['vehicle'],
     makeDefault: true,
   });
 
-  Items.unregisterSheet('core', ItemSheet);
   Items.registerSheet('zweihander', ZweihanderItemSheet, { makeDefault: true });
 
-  DocumentSheetConfig.unregisterSheet(ActiveEffect, 'core', ActiveEffectConfig);
   DocumentSheetConfig.registerSheet(ActiveEffect, 'zweihander', ZweihanderActiveEffectConfig, {
     makeDefault: true,
   });

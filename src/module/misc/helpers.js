@@ -139,14 +139,13 @@ export const registerHandlebarHelpers = async function () {
     const actor = ChatMessage.getSpeakerActor(message.speaker);
     if (message.flags?.zweihander?.img) return message.flags.zweihander.img;
     if (actor && actor.img) return actor.img;
-    const author = game.users.get(message.user);
+    const author = game.users.get(message.author);
     if (author && author.avatar) return author.avatar;
     return '';
   });
 
   $$('zhSkillTestTooltip', function (data) {
     let tooltip = `
-        <span class="title">${game.i18n.localize('ZWEI.chatskill.skilltestdetails')}</span>
         <table>
           <tr>
             <td class="descriptor">${data.primaryAttribute}:</td>
@@ -191,56 +190,86 @@ export const registerHandlebarHelpers = async function () {
               } </td>
             </tr>`
           }
-        </table>
       `;
 
     if (data.weaponTest)
-      tooltip += `<span class="title">${game.i18n.localize('ZWEI.chatskill.weapondetails')}</span>
-          <table>
-            <tr>
-              <td class="descriptor">${game.i18n.localize('ZWEI.actor.items.type')}:</td>
-              <td class="value">${data.weapon.system.weaponType}</td>
-            </tr>
-            <tr>
-              <td class="descriptor">${game.i18n.localize('ZWEI.actor.items.handling')}:</td>
-              <td class="value">${data.weapon.system.handling}</td>
-            </tr>
-            <tr>
-              <td class="descriptor">${game.i18n.localize('ZWEI.actor.items.distance')}:</td>
-              <td class="value">${data.weapon.system.distance.value}</td>
-            </tr>
-            <tr>
-              <td class="descriptor">${game.i18n.localize('ZWEI.actor.items.load')}:</td>
-              <td class="value">${data.weapon.system.ranged.load}</td>
-            </tr>
-          </table>`;
+      tooltip += `
+          <tr>
+            <td class="descriptor separator">${game.i18n.localize('ZWEI.actor.items.type')}:</td>
+            <td class="value separator">${data.weapon.system.weaponType}</td>
+          </tr>
+          <tr>
+            <td class="descriptor">${game.i18n.localize('ZWEI.actor.items.handling')}:</td>
+            <td class="value">${data.weapon.system.handling}</td>
+          </tr>
+          <tr>
+            <td class="descriptor">${game.i18n.localize('ZWEI.actor.items.distance')}:</td>
+            <td class="value">${data.weapon.system.distance.value}</td>
+          </tr>
+          <tr>
+            <td class="descriptor">${game.i18n.localize('ZWEI.actor.items.load')}:</td>
+            <td class="value">${data.weapon.system.ranged.load}</td>
+          </tr>`;
 
     if (data.spellTest) {
       console.log('THIS', this);
-      tooltip += `<span class="title">${game.i18n.localize('ZWEI.chatskill.spelldetails')}</span>
-          <table>
-            <tr>
-              <td class="descriptor">${game.i18n.localize('ZWEI.actor.items.tradition')}:</td>
-              <td class="value">${data.spell.system.tradition}</td>
-            </tr>
-            <tr>
-              <td class="descriptor">${game.i18n.localize('ZWEI.actor.items.principle')}:</td>
-              <td class="value">${data.spell.system.principle}</td>
-            </tr>
-            <tr>
-              <td class="descriptor">${game.i18n.localize('ZWEI.actor.items.reagents')}:</td>
-              <td class="value">${localize(data.spell.system.rules.reagents)}</td>
-            </tr>
-            <tr>
-              <td class="descriptor">${game.i18n.localize('ZWEI.actor.items.duration')}:</td>
-              <td class="value">${data.spell.system.duration.label}</td>
-            </tr>
-            <tr>
-              <td class="descriptor">${game.i18n.localize('ZWEI.actor.items.distance')}:</td>
-              <td class="value">${data.spell.system.distance}</td>
-            </tr>
-          </table>`;
+      tooltip += `
+          <tr>
+            <td class="descriptor separator">${game.i18n.localize('ZWEI.actor.items.tradition')}:</td>
+            <td class="value separator">${data.spell.system.tradition}</td>
+          </tr>
+          <tr>
+            <td class="descriptor">${game.i18n.localize('ZWEI.actor.items.principle')}:</td>
+            <td class="value">${data.spell.system.principle}</td>
+          </tr>
+          <tr>
+            <td class="descriptor">${game.i18n.localize('ZWEI.actor.items.reagents')}:</td>
+            <td class="value">${localize(data.spell.system.rules.reagents)}</td>
+          </tr>
+          <tr>
+            <td class="descriptor">${game.i18n.localize('ZWEI.actor.items.duration')}:</td>
+            <td class="value">${data.spell.system.duration.label}</td>
+          </tr>
+          <tr>
+            <td class="descriptor">${game.i18n.localize('ZWEI.actor.items.distance')}:</td>
+            <td class="value">${data.spell.system.distance}</td>
+          </tr>`;
     }
+
+    tooltip += `</table>`;
+
+    return tooltip;
+  });
+
+  $$('zhModifierTooltip', function (data, baseValue, value) {
+    if (!data) return;
+
+    let tooltip = `<table><tr><td class="descriptor title">Base:</td><td class="value">${baseValue}</td></tr>`;
+
+    for (const mod of data) {
+      tooltip += `<tr>
+      <td class="descriptor">+${mod.source}</td>
+      <td class="value">${mod.type}${mod.argument}</td>
+      </tr>`;
+    }
+
+    tooltip += `<tr><td class="descriptor title">Total:</td><td class="value">${value}</td></tr></table>`;
+
+    return tooltip;
+  });
+
+  $$('zhFocusesTooltip', function (focuses) {
+    if (!focuses) return;
+
+    let tooltip = `<table>`;
+
+    for (const focus of focuses) {
+      tooltip += `<tr>
+      <td>${focus}</td>
+      </tr>`;
+    }
+
+    tooltip += `</table>`;
 
     return tooltip;
   });
@@ -438,20 +467,40 @@ export const registerHandlebarHelpers = async function () {
     ][rank];
   });
 
+  $$('zhModifiersLookup', function (modifiersLookup, key, options) {
+    const keyModifiers = modifiersLookup[key];
+    if (!keyModifiers) return;
+
+    const finalKeyModifiers = keyModifiers.map((mod) => ({
+      source: mod.name,
+      type: ZWEI.typeOperator[mod.type] ?? mod.type,
+      argument: mod.value,
+    }));
+
+    const dtm = options.hash.dtm ?? 0;
+    if (dtm) finalKeyModifiers.push({ source: 'DTM', type: '+', argument: dtm });
+
+    return finalKeyModifiers;
+  });
+
   $$('zhModIndicator', function (mod) {
     return mod === 'dtm' ? 'dtm' : '';
   });
 
-  $$('zhIsValueModified', function (value, baseValue, options) {
-    return value != baseValue ? options.fn(this) : options.inverse(this);
+  $$('zhIsValueModified', function (value, baseValue) {
+    return value != baseValue;
   });
 
-  $$('zhIsDtmModified', function (value, baseValue, dtm, options) {
-    return value - (dtm || 0) != baseValue ? options.fn(this) : options.inverse(this);
+  $$('zhIsDtmModified', function (value, baseValue, dtm) {
+    return value - (dtm || 0) != baseValue;
   });
 
-  $$('zhIsModifierPositive', function (value, baseValue, options) {
-    return baseValue - value < 0 ? options.fn(this) : options.inverse(this);
+  $$('zhIsDthModifierPositive', function (value, baseValue, dtm) {
+    return baseValue - (value - dtm) < 0;
+  });
+
+  $$('zhIsModifierPositive', function (value, baseValue) {
+    return baseValue - value < 0;
   });
 
   $$('zhModifiedEncumbrance', function (encumbrance) {
@@ -514,26 +563,8 @@ export const registerHandlebarHelpers = async function () {
   $$('zhDamageFormula', function (damage) {
     return damage.formula.override
       ? damage.formula.value
-      : `${damage.attributeBonus} + 1${damage.die}${damage.fury.value ? 'x' + damage.fury.explodesOn.join('&') : ''}${
-          damage.bonus ? ' + ' + damage.bonus : ''
-        }`;
+      : `${damage.attributeBonus} + ${damage.number}${damage.die}${
+          damage.fury.value ? 'x' + damage.fury.explodesOn.join('&') : ''
+        }${damage.bonus ? ' + ' + damage.bonus : ''}`;
   });
-
-  /* $$('stringcompare', function (variableOne, comparator, variableTwo) {
-    if (eval('"' + variableOne + '"' + comparator + '"' + variableTwo + '"')) {
-      return true;
-    } else {
-      return false;
-    }
-  }); */
-
-  /* $$('betweenparentheses', function (txt) {
-    const parentheses = txt.match(/\(([^)]+)\)/);
-    return parentheses ? parentheses[1] : '';
-  }); */
-
-  /* $$('beforeparentheses', function (txt) {
-    const firstpar = txt.indexOf('(');
-    return firstpar >= 0 ? txt.substring(0, firstpar).trim() : txt;
-  }); */
 };

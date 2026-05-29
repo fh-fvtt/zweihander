@@ -139,9 +139,9 @@ function enableChatButtons(html, flags, message, data) {
     const { target } = madnessTestData;
 
     if ((isGM || currentActorUuids.has(actorUuid)) && !target.damaged) {
-      html.querySelectorAll('.peril-roll-apply').forEach((el) => (el.disabled = false));
+      html.querySelectorAll('.skill-test-peril').forEach((el) => (el.disabled = false));
       html.addEventListener('click', (event) => {
-        const targetEl = event.target.closest('.peril-roll-apply');
+        const targetEl = event.target.closest('.skill-test-peril');
         if (!targetEl) return;
 
         ZweihanderDice.applyPeril(message, target);

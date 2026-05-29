@@ -1,4 +1,5 @@
 const { ApplicationV2, HandlebarsApplicationMixin } = foundry.applications.api;
+const { AudioHelper } = foundry.audio;
 
 export default class FortuneTracker extends HandlebarsApplicationMixin(ApplicationV2) {
   static INSTANCE = undefined;
@@ -403,6 +404,7 @@ export default class FortuneTracker extends HandlebarsApplicationMixin(Applicati
     const isUserGM = game.users.get(game.userId).isGM;
 
     const closeBtn = html.querySelector('*[data-action="close"]');
+    const toggleBtn = html.querySelector('*[data-action="toggleControls"]');
 
     if (isUserGM) {
       const createButton = (id, extraClass) => {
@@ -447,6 +449,7 @@ export default class FortuneTracker extends HandlebarsApplicationMixin(Applicati
     }
 
     if (closeBtn) closeBtn.remove();
+    if (toggleBtn) toggleBtn.remove();
 
     let fortuneTrigger = html.querySelectorAll('.fortune-tracker-fortune-trigger');
     fortuneTrigger?.forEach((el) =>

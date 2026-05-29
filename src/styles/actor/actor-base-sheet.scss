@@ -170,22 +170,9 @@ body.game.vtt.system-zweihander .zweihander.sheet.actor {
       display: block;
       visibility: hidden;
       position: relative;
-      /*
-      position: absolute;
-      left: calc(100% + 2px);
-      top: 0px;
-      font-size: 10px;
-      font-family: var(--font-primary);
-      width: 20px;
-      height: 12px; 
-      flex: 1 0 10px;*/
-      /* position: unset; */
       font-size: 13px;
-      height: 15px;
-      width: 9px;
-      /* left: unset; */
-      margin-left: 3px;
-      /* margin-top: 1px; */
+      height: 14px;
+      width: 13px;
       font-family: var(--font-primary);
       & > .fa-sort-up,
       & > .fa-sort-down {
@@ -204,8 +191,9 @@ body.game.vtt.system-zweihander .zweihander.sheet.actor {
         font-size: 8px;
         color: var(--zh-clr-fg4);
         position: absolute;
-        left: 2px;
         font-weight: lighter;
+        left: 0px;
+        width: 100%;
         top: -3px;
         &.sort-order-1 {
           top: 6px;
@@ -229,7 +217,7 @@ body.game.vtt.system-zweihander .zweihander.sheet.actor {
       /* padding-left: 2px; */
       /* width: 12px; */
       width: 10px;
-      height: 15px;
+      height: 14px;
       cursor: pointer;
       order: -1;
       margin-right: 3px;
@@ -285,6 +273,7 @@ body.game.vtt.system-zweihander .zweihander.sheet.actor {
     }
 
     .sortable,
+    .sortable-actor,
     .filterable {
       &,
       & .detail-title {
@@ -316,7 +305,8 @@ body.game.vtt.system-zweihander .zweihander.sheet.actor {
       }
     }
 
-    .sortable {
+    .sortable,
+    .sortable-actor {
       cursor: pointer;
     }
 
@@ -422,6 +412,7 @@ body.game.vtt.system-zweihander .zweihander.sheet.actor {
       padding: 0 2px;
       text-overflow: ellipsis;
       flex: 0 0 auto;
+      height: 16px;
       &:nth-child(2) {
         border-left: 1px solid var(--zh-clr-bg1);
       }
@@ -469,6 +460,7 @@ body.game.vtt.system-zweihander .zweihander.sheet.actor {
           }
         }
         text-align: center;
+        margin-top: 1.7px;
       }
     }
     .item-image {

@@ -42,7 +42,10 @@ body.game.vtt.system-zweihander .zweihander.sheet.settings-menu {
     }
 
     > select,
-    input,
+    input {
+      flex: 2;
+    }
+
     file-picker {
       flex: 2;
     }

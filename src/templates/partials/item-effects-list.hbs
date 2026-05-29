@@ -6,12 +6,12 @@
         {{localize "ZWEI.actor.items.effects"}}
         <!--{{#if itemGroup.sortName}}
         <div class="sort-indicator">
-          <i class="fa fa-sort-{{#if (eq itemGroup.sortName 1)}}up{{else}}down{{/if}}"></i>
+          <i class="fas fa-xs fa-sort-{{#if (eq itemGroup.sortName 1)}}up{{else}}down{{/if}}"></i>
           <span class="sort-order sort-order-{{itemGroup.sortName}}">{{itemGroup.sortNameOrder}}</span>
         </div>
         {{else}}
         <div class="sort-indicator">
-          <i class="fa fa-sort"></i>
+          <i class="fas fa-xs fa-sort"></i>
         </div>
         {{/if}}
         <div class="filter-indicator{{#if itemGroup.filterName}} filter-active{{/if}} show-filter"><i class="fa fa-search"></i></div>-->
@@ -28,12 +28,12 @@
         {{!--
         {{#if detail.sort}}
         <div class="sort-indicator">
-          <i class="fa fa-sort-{{#if (eq detail.sort 1)}}up{{else}}down{{/if}}"></i>
+          <i class="fas fa-xs fa-sort-{{#if (eq detail.sort 1)}}up{{else}}down{{/if}}"></i>
           <span class="sort-order sort-order-{{detail.sort}}">{{detail.sortOrder}}</span>
         </div>
         {{else}}
         <div class="sort-indicator">
-          <i class="fa fa-sort"></i>
+          <i class="fas fa-xs fa-sort"></i>
         </div>
         {{/if}}
         {{#if detail.filterable}}
@@ -54,11 +54,11 @@
           class="fa fa-plus"></i> {{localize "ZWEI.actor.items.add"}}</a>
     </div>
   </li>
-    {{#each itemGroup.items as |item| }}
+    {{#each itemGroup.entries as |item| }}
     <li class="item flexrow effect-item" data-item-id="{{item._id}}">
       <div class="item-name fetch-{{#if ../isEffect}}effect{{else}}item{{/if}} flexrow js-show-item-description {{#if itemGroup.rollType}}rollable{{/if}}">
-        <div class="{{#if ../isEffect}}{{zhItemImageClass item.icon}}{{else}}{{zhItemImageClass item.img}}{{/if}} {{itemGroup.rollType}}" tabindex="0" role="button"
-          aria-label="{{item.name}}" style="{{#if ../isEffect}}{{zhItemImageStyle item.icon}}{{else}}{{zhItemImageStyle item.img}}{{/if}}"
+        <div class="{{zhItemImageClass item.img}} {{itemGroup.rollType}}" tabindex="0" role="button"
+          aria-label="{{item.name}}" style="{{zhItemImageStyle item.img}}"
           data-label="{{#if itemGroup.rollLabelKey}}{{zhLookup item itemGroup.rollLabelKey}}{{else}}{{itemGroup.rollLabel}}{{/if}}">
         </div>
         <h4 class="flexrow" data-testid="{{item.name}}">

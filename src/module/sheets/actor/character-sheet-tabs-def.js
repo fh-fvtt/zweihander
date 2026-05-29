@@ -1,5 +1,7 @@
 import { localizePath } from '../../system/utils';
 
+const { mergeObject } = foundry.utils;
+
 export function getItemGroups(groupsData) {
   return {
     weapons: {
@@ -39,7 +41,7 @@ export function getItemGroups(groupsData) {
           isCheckbox: true,
         },
       ],
-      items: groupsData.weapons,
+      entries: groupsData.weapons,
     },
     armor: {
       title: 'armor',
@@ -70,7 +72,7 @@ export function getItemGroups(groupsData) {
           isCheckbox: true,
         },
       ],
-      items: groupsData.armor,
+      entries: groupsData.armor,
     },
     trappings: {
       title: 'trappings',
@@ -102,7 +104,7 @@ export function getItemGroups(groupsData) {
           isCheckbox: true,
         },
       ],
-      items: groupsData.trappings,
+      entries: groupsData.trappings,
     },
     spells: {
       title: 'spells',
@@ -129,7 +131,7 @@ export function getItemGroups(groupsData) {
           class: 'inject-data',
         },
       ],
-      items: groupsData.spells,
+      entries: groupsData.spells,
     },
     rituals: {
       title: 'rituals',
@@ -153,7 +155,7 @@ export function getItemGroups(groupsData) {
           class: 'inject-data',
         },
       ],
-      items: groupsData.rituals,
+      entries: groupsData.rituals,
     },
     conditions: {
       title: 'otherconditions',
@@ -172,7 +174,7 @@ export function getItemGroups(groupsData) {
           isCheckbox: true,
         },
       ],
-      items: groupsData.conditions,
+      entries: groupsData.conditions,
     },
     effectsTemporary: {
       title: 'temporaryeffects',
@@ -188,11 +190,11 @@ export function getItemGroups(groupsData) {
         {
           title: 'ineffect',
           size: 140,
-          key: 'system.isActive',
+          key: 'disabled',
           isCheckbox: true,
         },
       ],
-      items: groupsData.effectsTemporary,
+      entries: groupsData.effectsTemporary,
     },
     effectsPassive: {
       title: 'passiveeffects',
@@ -208,11 +210,11 @@ export function getItemGroups(groupsData) {
         {
           title: 'ineffect',
           size: 140,
-          key: 'system.isActive',
+          key: 'disabled',
           isCheckbox: true,
         },
       ],
-      items: groupsData.effectsPassive,
+      entries: groupsData.effectsPassive,
     },
     effectsInactive: {
       title: 'inactiveeffects',
@@ -228,11 +230,11 @@ export function getItemGroups(groupsData) {
         {
           title: 'ineffect',
           size: 140,
-          key: 'system.isActive',
+          key: 'disabled',
           isCheckbox: true,
         },
       ],
-      items: groupsData.effectsInactive,
+      entries: groupsData.effectsInactive,
     },
     disorders: {
       title: 'disorders',
@@ -251,7 +253,7 @@ export function getItemGroups(groupsData) {
           isCheckbox: true,
         },
       ],
-      items: groupsData.disorders,
+      entries: groupsData.disorders,
     },
     diseases: {
       title: 'diseases',
@@ -280,7 +282,7 @@ export function getItemGroups(groupsData) {
           isCheckbox: true,
         },
       ],
-      items: groupsData.diseases,
+      entries: groupsData.diseases,
     },
     injuries: {
       title: 'injuries',
@@ -311,7 +313,7 @@ export function getItemGroups(groupsData) {
           isCheckbox: true,
         },
       ],
-      items: groupsData.injuries,
+      entries: groupsData.injuries,
     },
     taints: {
       title: 'taintschaos',
@@ -330,7 +332,7 @@ export function getItemGroups(groupsData) {
           isCheckbox: true,
         },
       ],
-      items: groupsData.taints,
+      entries: groupsData.taints,
     },
     professions: {
       title: 'professions',
@@ -355,7 +357,7 @@ export function getItemGroups(groupsData) {
           classes: 'profession-checkbox',
         },
       ],
-      items: groupsData.professions,
+      entries: groupsData.professions,
     },
     traits: {
       title: 'traits',
@@ -368,7 +370,7 @@ export function getItemGroups(groupsData) {
           key: 'source',
         },
       ],
-      items: groupsData.traits,
+      entries: groupsData.traits,
     },
     drawbacks: {
       title: 'drawbacks',
@@ -381,7 +383,7 @@ export function getItemGroups(groupsData) {
           key: 'source',
         },
       ],
-      items: groupsData.drawbacks,
+      entries: groupsData.drawbacks,
     },
     talents: {
       title: 'talents',
@@ -394,7 +396,7 @@ export function getItemGroups(groupsData) {
           key: 'source',
         },
       ],
-      items: groupsData.talents,
+      entries: groupsData.talents,
     },
     uniqueAdvances: {
       title: 'uniqueadvances',
@@ -412,7 +414,7 @@ export function getItemGroups(groupsData) {
           key: 'system.rewardPointCost',
         },
       ],
-      items: groupsData.uniqueAdvances,
+      entries: groupsData.uniqueAdvances,
     },
   };
 }
@@ -451,5 +453,5 @@ export function attachTabDefinitions(context) {
     };
   }
 
-  foundry.utils.mergeObject(context.tabs, tabDefinitions, { overwrite: false });
+  mergeObject(context.tabs, tabDefinitions, { overwrite: false });
 }

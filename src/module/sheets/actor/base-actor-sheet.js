@@ -1,12 +1,13 @@
 import * as ZweihanderDice from '../../system/rolls/dice';
 import * as ZweihanderUtils from '../../system/utils';
-import ZweihanderProfession from '../../documents/item/profession';
-import ZweihanderQuality from '../../documents/item/quality';
+
 import ZweihanderLanguageConfig from '../../apps/language-config';
 import ZweihanderActorConfig from '../../apps/actor-config';
+import ZweihanderActiveEffect from '../../documents/effects/active-effect';
 
 const { DialogV2, HandlebarsApplicationMixin } = foundry.applications.api;
 const { ActorSheetV2 } = foundry.applications.sheets;
+const { getProperty, mergeObject } = foundry.utils;
 
 export default class ZweihanderBaseActorSheet extends HandlebarsApplicationMixin(ActorSheetV2) {
   static DEFAULT_OPTIONS = {
@@ -69,34 +70,25 @@ export default class ZweihanderBaseActorSheet extends HandlebarsApplicationMixin
       settings: {},
     };
 
-    foundry.utils.mergeObject(sheetData, zweihanderContext);
+    mergeObject(sheetData, zweihanderContext);
 
     // The Actor's data
-    const actorData = this.actor.toObject(false);
-    sheetData.actor = actorData;
-    sheetData.system = actorData.system;
+    const actor = this.actor; //.toObject(false);
+    sheetData.actor = actor;
+    sheetData.system = this.actor.system;
 
     // Owned Items
-    sheetData.items = actorData.items;
+    sheetData.items = Array.from(actor.items);
     sheetData.items.sort((a, b) => (a.sort || 0) - (b.sort || 0));
 
     // Prepare owned items
     await this._prepareItems(sheetData);
 
     // Effects
-    sheetData.effects = actorData.effects; // comes *after* Owned Items, as Active Effects are their own thing
+    sheetData.effects = actor.effects; // comes *after* Owned Items, as Active Effects are their own thing
 
-    const itemGroups = this._processItemGroups(this._getItemGroups(sheetData));
+    const itemGroups = this._processGroups(this._getItemGroups(sheetData), this.sortCriteria);
     sheetData.itemGroups = ZweihanderUtils.assignPacks(this.actor.type, itemGroups);
-
-    if (this.actor.type === 'vehicle') {
-      const vehicleOccupants = this.actor.getFlag('zweihander', 'vehicleOccupants');
-
-      sheetData.passengers = vehicleOccupants.passengers;
-      sheetData.drivers = vehicleOccupants.drivers;
-
-      sheetData.actorGroups = this._getActorGroups(sheetData);
-    }
 
     // Return data to the sheet
     return sheetData;
@@ -131,9 +123,9 @@ export default class ZweihanderBaseActorSheet extends HandlebarsApplicationMixin
     return {};
   }
 
-  _processItemGroups(itemGroups) {
+  _processGroups(itemGroups, sortCriteria) {
     const sort = (itemGroup, criteria) =>
-      itemGroup.items.sort((a, b) => {
+      itemGroup.entries.sort((a, b) => {
         for (let sc of criteria) {
           let aV, bV;
           if (sc.detail === -1) {
@@ -155,7 +147,7 @@ export default class ZweihanderBaseActorSheet extends HandlebarsApplicationMixin
         return 0;
       });
     const filter = (itemGroup, criteria) =>
-      (itemGroup.items = itemGroup.items.filter((i) => {
+      (itemGroup.entries = itemGroup.entries.filter((i) => {
         let filtered = true;
         for (let fc of criteria) {
           let v;
@@ -173,7 +165,7 @@ export default class ZweihanderBaseActorSheet extends HandlebarsApplicationMixin
         }
         return filtered;
       }));
-    for (let [k, v] of Object.entries(this.sortCriteria)) {
+    for (let [k, v] of Object.entries(sortCriteria)) {
       sort(
         itemGroups[k],
         v.filter((c) => !!c.sort)
@@ -264,6 +256,173 @@ export default class ZweihanderBaseActorSheet extends HandlebarsApplicationMixin
     this.#languageConfig.render(true);
   }
 
+  _getItemListContextOptions() {
+    return [
+      {
+        label: 'Edit Item',
+        icon: 'fas fa-pencil-alt',
+        onClick: async (event, target) => {
+          const container = target.closest('.item');
+          const item = this.actor.items.get(container.dataset.itemId);
+          await item.sheet.render(true);
+        },
+      },
+      {
+        label: 'Duplicate Item',
+        icon: 'fas fa-clone',
+        onClick: async (event, target) => {
+          const actor = this.actor;
+          const container = target.closest('.item');
+          const item = actor.items.get(container.dataset.itemId);
+          const duplicate = await Item.create({ ...item }, { parent: actor });
+          if (duplicate) await duplicate.sheet.render(true);
+        },
+      },
+      {
+        label: 'Post Item to Chat',
+        icon: 'fas fa-message',
+        onClick: async (event, target) => {
+          const container = target.closest('.item');
+          const item = this.actor.items.get(container.dataset.itemId);
+
+          if (item.type === 'weapon' || item.type === 'armor') {
+            item.system.qualities = await item.system.getQualitiesData();
+          }
+
+          let htmlContent;
+
+          try {
+            htmlContent = await renderTemplate(
+              `systems/zweihander/src/templates/item-card/item-card-${item.type}.hbs`,
+              item
+            );
+          } catch (e) {
+            htmlContent = await renderTemplate(
+              `systems/zweihander/src/templates/item-card/item-card-fallback.hbs`,
+              item
+            );
+          }
+
+          await ChatMessage.create({ content: htmlContent });
+        },
+      },
+      {
+        label: 'Delete Item',
+        icon: 'fas fa-trash-alt',
+        onClick: async (event, target) => {
+          const container = target.closest('.item');
+          const item = this.actor.items.get(container.dataset.itemId);
+          const type = game.i18n.localize(CONFIG.Item.typeLabels[item.type]);
+
+          // prevent deletion of Professions out of order
+          if (item.type === 'profession') {
+            const currentTier = item.parent.items.filter((i) => i.type === 'profession').length;
+            const tiersInversed = ZweihanderUtils.getLocalizedTierMapping();
+            const itemTier = tiersInversed[item.system.tier];
+
+            if (itemTier < currentTier) {
+              ui.notifications.error(game.i18n.format('ZWEI.othermessages.errortierdelete', { name: item.name }));
+              return;
+            }
+          }
+
+          await DialogV2.confirm({
+            window: { title: game.i18n.format('ZWEI.othermessages.deleteembedded', { type: type, name: item.name }) },
+            content: game.i18n.format('ZWEI.othermessages.suretype', { type: type }),
+            yes: {
+              callback: async () => {
+                if (item.type !== 'ancestry') await ZweihanderUtils.slideUpOnDelete(container, 200);
+                await item.delete();
+              },
+            },
+            no: { callback: () => {} },
+            position: { width: 455 },
+            rejectClose: false,
+            defaultYes: true,
+          });
+        },
+      },
+    ];
+  }
+
+  _getEffectListContextOptions() {
+    return [
+      {
+        label: 'Edit Effect',
+        icon: 'fas fa-pencil-alt',
+        onClick: async (event, target) => {
+          const container = target.closest('.item');
+          const { itemId, parentId } = container.dataset;
+
+          const effect = this._getEmbeddedEffect(parentId, itemId);
+
+          effect.sheet.render(true);
+        },
+      },
+      {
+        label: 'Clear Expired State',
+        icon: 'fas fa-clock-rotate-left',
+        visible: (target) => {
+          const container = target.closest('.item');
+          const { itemId, parentId } = container.dataset;
+
+          const effect = this._getEmbeddedEffect(parentId, itemId);
+
+          return effect.duration.expired;
+        },
+        onClick: async (event, target) => {
+          const container = target.closest('.item');
+          const { itemId, parentId } = container.dataset;
+
+          const effect = this._getEmbeddedEffect(parentId, itemId);
+
+          await effect.update({
+            start: ZweihanderActiveEffect.getEffectStart(),
+            disabled: false,
+            'duration.expired': false,
+          });
+        },
+      },
+      {
+        label: 'Delete Effect',
+        icon: 'fas fa-trash-alt',
+        onClick: async (event, target) => {
+          const container = target.closest('.item');
+          const { itemId, parentId } = container.dataset;
+
+          const effect = this._getEmbeddedEffect(parentId, itemId);
+          const type = game.i18n.localize('TYPES.ActiveEffect.Base');
+
+          await DialogV2.confirm({
+            window: { title: game.i18n.format('ZWEI.othermessages.deletetype', { type: type, label: effect.name }) },
+            content: game.i18n.format('ZWEI.othermessages.suretype', { type: type }),
+            yes: {
+              callback: async () => {
+                await ZweihanderUtils.slideUpOnDelete(container, 200);
+                await effect.delete();
+              },
+            },
+            no: { callback: () => {} },
+            position: { width: 455 },
+            rejectClose: false,
+            defaultYes: true,
+          });
+        },
+      },
+    ];
+  }
+
+  /** @override */
+  async _onFirstRender(context, options) {
+    await super._onFirstRender(context, options);
+
+    this._createContextMenu(this._getItemListContextOptions, '.item-list .item.item-entry', { fixed: true });
+    this._createContextMenu(this._getItemListContextOptions, '.item-options', { eventName: 'click', fixed: true });
+
+    this._createContextMenu(this._getEffectListContextOptions, '.item-list .item.effect-entry', { fixed: true });
+    this._createContextMenu(this._getEffectListContextOptions, '.effect-options', { eventName: 'click', fixed: true });
+  }
+
   async _onRender(context, options) {
     await super._onRender(context, options);
 
@@ -272,6 +431,7 @@ export default class ZweihanderBaseActorSheet extends HandlebarsApplicationMixin
     this._applyDamageDecals(html);
     this._applyPerilDecals(html);
 
+    /*
     html.querySelectorAll('.modded-value-indicator').forEach((el) => {
       el.addEventListener('mouseenter', (event) => {
         const source = event.currentTarget.querySelector('.modded-value-tooltip');
@@ -294,30 +454,13 @@ export default class ZweihanderBaseActorSheet extends HandlebarsApplicationMixin
         document.querySelectorAll('.zh-modded-value-tooltip-instance').forEach((t) => t.remove());
       });
     });
+    */
 
     // auto size the details inputs once
     const autoSizeInput = (el) =>
       el.setAttribute('size', Math.max(el.getAttribute('placeholder').length, el.value.length));
     const inputsToAutoSize = Array.from(html.querySelectorAll('input.auto-size'));
     inputsToAutoSize.forEach(autoSizeInput);
-
-    const getItemGroupCriteria = (criteria, itemGroupKey) => {
-      if (!criteria[itemGroupKey]) {
-        criteria[itemGroupKey] = [];
-      }
-      return criteria[itemGroupKey];
-    };
-
-    const getCriterion = (criteria, itemGroupKey, detail, create = true) => {
-      const itemGroupCriteria = getItemGroupCriteria(criteria, itemGroupKey);
-      const existingCriterion = itemGroupCriteria.find((c) => c.detail === detail);
-      if (!existingCriterion && create) {
-        const criterion = { detail };
-        itemGroupCriteria.push(criterion);
-        return criterion;
-      }
-      return existingCriterion;
-    };
 
     html.querySelectorAll('.show-filter').forEach((el) => {
       el.addEventListener('click', (event) => {
@@ -327,7 +470,7 @@ export default class ZweihanderBaseActorSheet extends HandlebarsApplicationMixin
         const { itemGroup, detail: detailStr } = container.dataset;
         const detail = Number.parseInt(detailStr);
 
-        getCriterion(this.filterCriteria, itemGroup, detail).active = true;
+        ZweihanderUtils.getCriterion(this.filterCriteria, itemGroup, detail).active = true;
 
         const filterInput = container.querySelector('.filter-input');
         filterInput.classList.add('filter-input-active');
@@ -344,7 +487,7 @@ export default class ZweihanderBaseActorSheet extends HandlebarsApplicationMixin
         const detail = Number.parseInt(detailStr);
 
         event.currentTarget.closest('.filter-input').classList.remove('filter-input-active');
-        getCriterion(this.filterCriteria, itemGroup, detail).active = false;
+        ZweihanderUtils.getCriterion(this.filterCriteria, itemGroup, detail).active = false;
       });
     });
 
@@ -362,9 +505,9 @@ export default class ZweihanderBaseActorSheet extends HandlebarsApplicationMixin
 
         if (event.key === 'Escape') {
           event.currentTarget.parentElement.classList.remove('filter-input-active');
-          getCriterion(this.filterCriteria, itemGroup, detail).active = false;
+          ZweihanderUtils.getCriterion(this.filterCriteria, itemGroup, detail).active = false;
         } else if (event.key === 'Enter') {
-          const criterion = getCriterion(this.filterCriteria, itemGroup, detail);
+          const criterion = ZweihanderUtils.getCriterion(this.filterCriteria, itemGroup, detail);
           criterion.value = event.currentTarget.value;
           if (criterion.value.trim() === '') {
             event.currentTarget.parentElement.classList.remove('filter-input-active');
@@ -381,7 +524,7 @@ export default class ZweihanderBaseActorSheet extends HandlebarsApplicationMixin
 
         const { itemGroup, detail: detailStr } = event.currentTarget.dataset;
         const detail = Number.parseInt(detailStr);
-        const criterion = getCriterion(this.sortCriteria, itemGroup, detail);
+        const criterion = ZweihanderUtils.getCriterion(this.sortCriteria, itemGroup, detail);
 
         if (!criterion.sort) {
           criterion.sort = 1;
@@ -405,89 +548,6 @@ export default class ZweihanderBaseActorSheet extends HandlebarsApplicationMixin
 
     const actor = this.actor;
 
-    // Edit Inventory Item
-    html.querySelectorAll('.item-edit').forEach((el) => {
-      el.addEventListener('click', async (event) => {
-        const container = event.currentTarget.closest('.item');
-        const item = this.actor.items.get(container.dataset.itemId);
-        await item.sheet.render(true);
-      });
-    });
-
-    // Delete Inventory Item
-    html.querySelectorAll('.item-delete').forEach((el) =>
-      el.addEventListener('click', async (event) => {
-        const container = event.currentTarget.closest('.item');
-        const item = this.actor.items.get(container.dataset.itemId);
-        const type = game.i18n.localize(CONFIG.Item.typeLabels[item.type]);
-
-        // prevent deletion of Professions out of order
-        if (item.type === 'profession') {
-          const currentTier = item.parent.items.filter((i) => i.type === 'profession').length;
-          const tiersInversed = ZweihanderUtils.getLocalizedTierMapping();
-          const itemTier = tiersInversed[item.system.tier];
-
-          if (itemTier < currentTier) {
-            ui.notifications.error(game.i18n.format('ZWEI.othermessages.errortierdelete', { name: item.name }));
-            return;
-          }
-        }
-
-        await DialogV2.confirm({
-          window: { title: game.i18n.format('ZWEI.othermessages.deleteembedded', { type: type, name: item.name }) },
-          content: game.i18n.format('ZWEI.othermessages.suretype', { type: type }),
-          yes: {
-            callback: async () => {
-              if (item.type !== 'ancestry') await ZweihanderUtils.slideUpOnDelete(container, 200);
-              await item.delete();
-            },
-          },
-          no: { callback: () => {} },
-          position: { width: 455 },
-          rejectClose: false,
-          defaultYes: true,
-        });
-      })
-    );
-
-    // Edit Active Effect
-    html.querySelectorAll('.effect-edit').forEach((el) =>
-      el.addEventListener('click', (event) => {
-        const container = event.currentTarget.closest('.item');
-        const { itemId, parentId } = container.dataset;
-
-        const effect = this._getEmbeddedEffect(parentId, itemId);
-
-        effect.sheet.render(true);
-      })
-    );
-
-    // Delete Active Effect
-    html.querySelectorAll('.effect-delete').forEach((el) =>
-      el.addEventListener('click', async (event) => {
-        const container = event.currentTarget.closest('.item');
-        const { itemId, parentId } = container.dataset;
-
-        const effect = this._getEmbeddedEffect(parentId, itemId);
-        const type = game.i18n.localize(CONFIG.ActiveEffect.typeLabels['base']);
-
-        await DialogV2.confirm({
-          window: { title: game.i18n.format('ZWEI.othermessages.deletetype', { type: type, label: effect.name }) },
-          content: game.i18n.format('ZWEI.othermessages.suretype', { type: type }),
-          yes: {
-            callback: async () => {
-              await ZweihanderUtils.slideUpOnDelete(container, 200);
-              await effect.delete();
-            },
-          },
-          no: { callback: () => {} },
-          position: { width: 455 },
-          rejectClose: false,
-          defaultYes: true,
-        });
-      })
-    );
-
     html.querySelectorAll('.skill').forEach((el) => {
       el.addEventListener('mouseenter', async (event) => {
         const target = 'li.pa.pa-' + event.currentTarget.dataset.associatedPa.toLowerCase();
@@ -503,31 +563,29 @@ export default class ZweihanderBaseActorSheet extends HandlebarsApplicationMixin
     // Add new Item (from within the sheet)
     html.querySelectorAll('.add-new').forEach((el) =>
       el.addEventListener('click', async (event) => {
-        let type = event.currentTarget.dataset.itemType;
+        const type = event.currentTarget.dataset.itemType;
 
-        let createdItemArray = [];
+        let created;
 
         if (type !== 'effect') {
-          createdItemArray = await this.actor.createEmbeddedDocuments('Item', [{ type: type, name: type }]);
+          created = await Item.create({ type: type, name: type }, { parent: actor });
         } else {
-          createdItemArray = await this.actor.createEmbeddedDocuments('ActiveEffect', [
+          created = await ActiveEffect.create(
             {
               name: 'New Effect',
-              icon: 'systems/zweihander/assets/icons/dice-fire.svg',
+              img: 'systems/zweihander/assets/icons/dice-fire.svg',
               origin: 'Actor.' + this.actor.id,
-              // @todo: refactor after transition to DataModel
               system: {
                 details: {
-                  source: 'Manual',
-                  category: '',
-                  isActive: false,
+                  source: _loc('TYPES.Item.manual'),
                 },
               },
             },
-          ]);
+            { parent: actor }
+          );
         }
 
-        if (createdItemArray.length) await createdItemArray[0].sheet.render(true);
+        if (created) await created.sheet.render(true);
       })
     );
 
@@ -544,8 +602,10 @@ export default class ZweihanderBaseActorSheet extends HandlebarsApplicationMixin
         }
         packs.forEach((x, i) =>
           x.render(true, {
-            top: actor.sheet.position.top,
-            left: actor.sheet.position.left + (i % 2 == 0 ? -350 : actor.sheet.position.width),
+            position: {
+              top: actor.sheet.position.top,
+              left: actor.sheet.position.left + (i % 2 == 0 ? -400 : actor.sheet.position.width + 50),
+            },
           })
         );
       })
@@ -592,7 +652,7 @@ export default class ZweihanderBaseActorSheet extends HandlebarsApplicationMixin
         const effect = this._getEmbeddedEffect(parentId, effectId);
         const key = checkbox.dataset.key;
 
-        await effect.update({ [key]: checkbox.checked });
+        await effect.update({ [key]: !checkbox.checked });
       })
     );
 
@@ -614,7 +674,7 @@ export default class ZweihanderBaseActorSheet extends HandlebarsApplicationMixin
           content: !checkbox.checked
             ? game.i18n.localize('ZWEI.othermessages.reallyresetprogress')
             : game.i18n.localize('ZWEI.othermessages.purchaseall'),
-          yes: { callback: () => ZweihanderProfession.toggleProfessionPurchases(item, !checkbox.checked) },
+          yes: { callback: () => item.system.toggleProfessionPurchases(!checkbox.checked) },
           position: { width: 455 },
           rejectClose: false,
           defaultYes: false,
@@ -623,7 +683,7 @@ export default class ZweihanderBaseActorSheet extends HandlebarsApplicationMixin
     );
 
     // Show item sheet on right click
-    html.querySelectorAll('.fetch-item').forEach((el) =>
+    /*html.querySelectorAll('.fetch-item').forEach((el) =>
       el.addEventListener('contextmenu', async (event) => {
         const itemId = event.currentTarget.parentElement.dataset.itemId ?? event.currentTarget.dataset.itemId;
         const item = this.actor.items.get(itemId);
@@ -641,7 +701,7 @@ export default class ZweihanderBaseActorSheet extends HandlebarsApplicationMixin
 
         await effect.sheet.render(true);
       })
-    );
+    );*/
 
     // Show item sheet on right click
     html.querySelectorAll('.fetch-skill').forEach((el) =>
@@ -654,30 +714,6 @@ export default class ZweihanderBaseActorSheet extends HandlebarsApplicationMixin
         const item = this.actor.items.get(itemId);
 
         await item.sheet.render(true);
-      })
-    );
-
-    html.querySelectorAll('.item-post').forEach((el) =>
-      el.addEventListener('click', async (event) => {
-        const container = event.currentTarget.closest('.item');
-        const item = this.actor.items.get(container.dataset.itemId).toObject(false);
-
-        if (item.type === 'weapon' || item.type === 'armor') {
-          item.system.qualities = await ZweihanderQuality.getQualities(item.system.qualities);
-        }
-
-        let htmlContent;
-
-        try {
-          htmlContent = await renderTemplate(
-            `systems/zweihander/src/templates/item-card/item-card-${item.type}.hbs`,
-            item
-          );
-        } catch (e) {
-          htmlContent = await renderTemplate(`systems/zweihander/src/templates/item-card/item-card-fallback.hbs`, item);
-        }
-
-        await ChatMessage.create({ content: htmlContent });
       })
     );
 
@@ -729,7 +765,7 @@ export default class ZweihanderBaseActorSheet extends HandlebarsApplicationMixin
     );
 
     html.querySelectorAll('.js-display-quality').forEach((el) =>
-      el.addEventListener('contextmenu', async (event) => {
+      el.addEventListener('click', async (event) => {
         event.preventDefault();
 
         const itemId = event.currentTarget.dataset.itemId;
@@ -794,7 +830,11 @@ export default class ZweihanderBaseActorSheet extends HandlebarsApplicationMixin
   }
 
   _applyPerilDecals(sheetElement) {
-    const peril = Number(this.actor.system.stats.secondaryAttributes.perilCurrent.value);
+    const actor = this.actor;
+
+    if (actor.type === 'vehicle') return;
+
+    const peril = Number(actor.system.stats.secondaryAttributes.perilCurrent.value);
     const profileImg = sheetElement.querySelector('.peril-tracker');
     for (let i = peril; i <= 4; i++) {
       profileImg.classList.add(`peril-tracker-${i}`);

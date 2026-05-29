@@ -111,12 +111,13 @@ body.game.vtt.system-zweihander {
       & + label {
         cursor: pointer;
         display: block;
-        font-size: 12px;
+        font-size: 13px;
         position: relative;
         text-align: center;
-        height: 12px;
-        width: 12px;
+        height: 14px;
+        width: 14px;
         margin: 0 auto;
+        margin-top: 1px;
         &:hover {
           color: var(--zh-clr-yellow);
           &::before {
@@ -126,17 +127,17 @@ body.game.vtt.system-zweihander {
           }
         }
         &::before {
-          line-height: 12px;
+          line-height: 14px;
           border: 1px solid var(--zh-clr-bg3);
           // border-radius: 50%;
           content: ' ';
           display: block;
-          height: 12px;
+          height: 14px;
           // left: calc(50% - 10px);
           position: absolute;
           // z-index: -1;
           top: 0px;
-          width: 12px;
+          width: 14px;
         }
       }
       &:checked + label {
@@ -227,16 +228,13 @@ body.game.vtt.system-zweihander {
             color: var(--zh-clr-red-bright);
           }
         }
-        &.dtm {
-          left: unset;
-          bottom: unset;
-          right: -1px;
-          top: 1px;
+        &.combat {
+          left: -15px;
         }
         &.bonus {
           bottom: unset;
-          left: 0px;
-          top: -3px;
+          left: 21px;
+          top: -25px;
         }
 
         .modded-value-tooltip {
@@ -285,6 +283,9 @@ body.game.vtt.system-zweihander {
     box-shadow: 3px 3px 5px 1px rgba(black, 0.75);
     .modded-value-label {
       color: var(--zh-clr-aqua);
+      &.inner {
+        margin-left: 5px;
+      }
     }
   }
   .zh-focuses-tooltip-instance {

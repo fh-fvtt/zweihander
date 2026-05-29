@@ -37,6 +37,10 @@ body.game.vtt.system-zweihander {
         }
       }
 
+      p {
+        margin: 0;
+      }
+
       > div.weapon-content,
       > div.madness-content {
         gap: 0.5rem;
@@ -265,7 +269,7 @@ body.game.vtt.system-zweihander {
         display: none;
       }
 
-      &.madness:has(button.peril-roll-apply:only-child:disabled) {
+      &.madness:has(button.skill-test-peril:only-child:disabled) {
         display: none;
       }
 
@@ -534,18 +538,24 @@ body.game.vtt.system-zweihander {
     }
   }
 
-  #chat-form textarea {
-    &:active,
-    &:focus,
-    &:hover {
-      box-shadow: none;
-      border-color: var(--zh-clr-bg2);
+  #chat-message {
+    flex: 0 0 var(--chat-input-height);
+
+    .menu-container {
+      display: none;
     }
-    font-family: 'JetBrains Mono', var(--font-mono);
-    font-size: 12px;
-    background: var(--zh-clr-bg0);
-    border-color: var(--zh-clr-bg1);
-    border-width: 2px;
-    color: var(--zh-clr-fg0);
+
+    .editor-container {
+      transition: border 0.25s, color 0.25s;
+      border-radius: 3px;
+
+      .editor-content {
+        color: var(--zh-clr-fg0);
+      }
+
+      &:has(.ProseMirror-focused) {
+        border-color: var(--zh-clr-aqua);
+      }
+    }
   }
 }

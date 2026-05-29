@@ -333,27 +333,42 @@ body.game.vtt.system-zweihander {
     }
   }
 
-  aside.skill-test-tooltip {
-    background: var(--zh-clr-bg0);
+  aside.fancy-tooltip {
+    background: var(--zh-clr-bg2);
     padding: 0;
     margin-right: 0.5rem;
+    background-image: linear-gradient(
+        0deg,
+        transparent 0%,
+        var(--zh-clr-bg0) 20%,
+        var(--zh-clr-bg0) 70%,
+        rgba(0, 0, 0, 0.45) 100%
+      ),
+      url('assets/tooltip-top-bg.webp'), url('assets/tooltip-bottom-bg.webp');
+
+    background-position: center, top center, bottom center;
+    background-repeat: no-repeat, no-repeat, no-repeat;
+
+    color: var(--zh-clr-fg1);
 
     table {
       margin: 0;
 
+      tbody tr:nth-child(even) {
+        --table-row-color-even: rgba(200, 200, 200, 0.04);
+      }
+
+      td.descriptor:not(.title) {
+        padding-left: 1.5rem;
+      }
+
       td.value {
         text-align: right;
       }
-    }
 
-    .title {
-      display: flex;
-      flex-direction: row;
-      justify-content: center;
-      padding: 0.5rem;
-      color: var(--zh-clr-aqua-alt);
-      font-size: 18px;
-      font-weight: 600;
+      td.separator {
+        border-top: 2px dotted var(--zh-clr-bg1);
+      }
     }
   }
 
@@ -420,7 +435,7 @@ body.game.vtt.system-zweihander {
       --checkbox-checked-color: var(--zh-clr-aqua);
 
       &:disabled {
-        --checkbox-background-color: rgba(128, 128, 128, 0.55);
+        --checkbox-checked-color: rgba(128, 128, 128, 0.55);
       }
     }
 
@@ -513,30 +528,58 @@ body.game.vtt.system-zweihander {
     order: 1;
   }
 
+  .form-group {
+    file-picker,
+    color-picker {
+      background: none;
+      gap: 0.5rem;
+      border: none;
+      outline: none;
+      outline-offset: 0;
+      box-shadow: none;
+
+      button.icon {
+        --button-size: 27px;
+      }
+    }
+  }
+
   select {
     background-color: var(--zh-clr-bg1);
     color: var(--zh-clr-fg0);
   }
 
-  button:not(.inline-control),
+  button:not(.inline-control):not(.control-icon):not(.combatant-control):not([aria-label='Close Main Menu']),
   a.button {
     --button-focus-outline-color: var(--zh-clr-yellow-faded);
 
     background-color: var(--zh-clr-bg1);
     color: var(--zh-clr-fg0);
-    border: 1px solid var(--zh-clr-bg4);
     cursor: pointer;
 
-    &.ui-control[aria-pressed='true'] {
-      //--control-active-bg-color: var(--zh-clr-bg0);
-      //--control-active-icon-color: var(--zh-clr-yellow-alt);
+    &[class^='skill-test-'] {
+      line-height: normal;
+      & span {
+        line-height: 15px;
+      }
+      & i.fas {
+        font-size: 13px;
+        padding-top: 2px;
+      }
+    }
 
+    &:not([class^='skill-test-']):not([class^='damage-roll-']) {
+      border: 1px solid var(--zh-clr-bg4);
+    }
+
+    &.ui-control[aria-pressed='true'] {
       background-color: var(--zh-clr-bg0);
       color: var(--zh-clr-yellow-alt);
 
       border-color: var(--zh-clr-yellow-alt);
       cursor: default;
     }
+
     &:hover,
     &:focus {
       box-shadow: none;
@@ -544,12 +587,6 @@ body.game.vtt.system-zweihander {
       border-color: var(--zh-clr-yellow);
     }
   }
-
-  /*
-  button.inline-control {
-    color: var(--zh-clr-bg0);
-  }
-  */
 
   .directory .directory-header .header-search input {
     background: var(--zh-clr-bg2);
@@ -598,8 +635,8 @@ body.game.vtt.system-zweihander {
     }
   }
 
-  .editor {
-    min-height: 35px;
+  .editor:not(.chat-input) {
+    min-height: 28px;
     &.prosemirror {
       button.icon.toggle {
         padding: 0;
@@ -624,6 +661,12 @@ body.game.vtt.system-zweihander {
     &:hover {
       text-shadow: none;
       background-color: var(--zh-clr-yellow-alt);
+    }
+  }
+
+  .combat-tracker {
+    .token-initiative {
+      flex: 0 0 32px;
     }
   }
 

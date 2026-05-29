@@ -1,17 +1,17 @@
 <ol class="items-list">
   {{#each this as |actorGroup| }}
   <li class="items-header flexrow">
-    <h3 class="item-name sortable filterable" data-detail="-1" data-item-group="{{actorGroup.id}}">
+    <h3 class="item-name sortable-actor filterable" data-detail="-1" data-item-group="{{actorGroup.id}}">
       <span class="detail-title">
         {{localize (zhConcat "ZWEI.actor.items." actorGroup.title)}}
         {{#if actorGroup.sortName}}
         <div class="sort-indicator">
-          <i class="fa fa-sort-{{#if (eq actorGroup.sortName 1)}}up{{else}}down{{/if}}"></i>
+          <i class="fas fa-xs fa-sort-{{#if (eq actorGroup.sortName 1)}}up{{else}}down{{/if}}"></i>
           <span class="sort-order sort-order-{{actorGroup.sortName}}">{{actorGroup.sortNameOrder}}</span>
         </div>
         {{else}}
         <div class="sort-indicator">
-          <i class="fa fa-sort"></i>
+          <i class="fas fa-xs fa-sort"></i>
         </div>
         {{/if}}
         <div class="filter-indicator{{#if actorGroup.filterName}} filter-active{{/if}} show-filter"><i class="fa fa-search"></i></div>
@@ -22,17 +22,17 @@
       </div>
     </h3>
     {{#each actorGroup.details as |detail index| }}
-    <div class="item-detail sortable {{#if detail.filterable}}filterable{{/if}}" style="width:{{detail.size}}px" data-detail="{{index}}" data-item-group="{{actorGroup.id}}">
+    <div class="item-detail sortable-actor {{#if detail.filterable}}filterable{{/if}}" style="width:{{detail.size}}px" data-detail="{{index}}" data-item-group="{{actorGroup.id}}">
       <span class="detail-title secondary">
         {{localize (zhConcat "ZWEI.actor.items." detail.title)}}
         {{#if detail.sort}}
         <div class="sort-indicator">
-          <i class="fa fa-sort-{{#if (eq detail.sort 1)}}up{{else}}down{{/if}}"></i>
+          <i class="fas fa-xs fa-sort-{{#if (eq detail.sort 1)}}up{{else}}down{{/if}}"></i>
           <span class="sort-order sort-order-{{detail.sort}}">{{detail.sortOrder}}</span>
         </div>
         {{else}}
         <div class="sort-indicator">
-          <i class="fa fa-sort"></i>
+          <i class="fas fa-xs fa-sort"></i>
         </div>
         {{/if}}
         {{#if detail.filterable}}
@@ -54,7 +54,7 @@
     </div> --}}
   </li>
     <ol class="item-list">
-    {{#each actorGroup.actors as |actor| }}
+    {{#each actorGroup.entries as |actor| }}
     <li class="item flexrow" data-actor-uuid="{{actor.uuid}}">
       <div class="item-name fetch-actor flexrow js-show-item-description {{#if actorGroup.rollType}}rollable{{/if}}">
         <div class="{{zhItemImageClass actor.img}} {{itemGroup.rollType}} {{#if actorGroup.rollType}}rollable{{/if}}" tabindex="0" role="button"
@@ -67,12 +67,7 @@
       </div>
       {{#each actorGroup.details as |detail| }} 
       <div class="item-detail {{detail.class}}" style="width:{{detail.size}}px">
-        {{#if detail.isCheckbox}}
-        <input class="zweihander-checkbox {{#unless detail.classes}}link{{#if ../../isEffect}}-effect{{/if}}-checkbox{{else}}{{detail.classes}}{{/unless}}"
-          id="{{item._id}}.{{detail.key}}" data-item-id="{{item._id}}" data-key="{{detail.key}}" type="checkbox"
-          {{checked (zhLookup item detail.key)}} />
-        <label for="{{item._id}}.{{detail.key}}"></label>
-        {{else if detail.isNumerable}}
+        {{#if detail.isNumerable}}
         <div class="numerable-field flexrow">
           <button type="button" class="numerable-field-subtract {{#if (zhLookup item detail.key)}}{{else}}hide{{/if}}"
             data-numerable-path="{{detail.key}}">-</button>

@@ -113,54 +113,6 @@
         margin-right: 0.5rem;
       }
     }
-    .peril-rolls {
-      flex: 2 0 content;
-      border-bottom: 2px groove var(--zh-clr-bg2);
-      font-family: var(--zh-font-title);
-      font-size: 14px;
-      justify-content: space-evenly;
-      & > div {
-        align-items: center;
-        flex: 0;
-        justify-content: center;
-        padding-top: 5px;
-        /* &.fear {
-          border-right: 2px groove var(--zh-clr-bg2);
-          border-left: 2px groove var(--zh-clr-bg2);
-        } */
-        & a.image-container {
-          background-color: var(--zh-clr-aqua);
-          height: 28px;
-          mask-position: center;
-          mask-repeat: no-repeat;
-          mask-size: contain;
-          min-height: 28px;
-          width: 28px;
-          &.stress {
-            mask-image: url('/systems/zweihander/assets/icons/paranoia.svg');
-            &:hover {
-              background-color: var(--zh-clr-yellow);
-            }
-          }
-          &.fear {
-            mask-image: url('/systems/zweihander/assets/icons/surprised.svg');
-            &:hover {
-              background-color: var(--zh-clr-orange);
-            }
-          }
-          &.terror {
-            mask-image: url('/systems/zweihander/assets/icons/screaming.svg');
-            &:hover {
-              background-color: var(--zh-clr-red);
-            }
-          }
-        }
-        & span {
-          font-family: var(--font-primary);
-          margin-top: 2px;
-        }
-      }
-    }
     .condition-thresholds {
       border-bottom: 2px groove var(--zh-clr-bg2);
       padding: 0.5rem 0;
@@ -189,6 +141,7 @@
         }
       }
       .threshold-value {
+        align-items: center;
         height: 50px;
         left: 12px;
         position: relative;
@@ -276,11 +229,13 @@
     .values {
       .value,
       .formula {
-        display: block;
+        display: flex;
+        flex-direction: row;
+        justify-content: center;
+        align-items: center;
         font-size: 28px;
         line-height: 24px;
         margin-top: 5px;
-        text-align: center;
 
         &.color-overage:not([data-overage='0']) {
           color: var(--zh-clr-red);
@@ -290,9 +245,11 @@
         &.peril {
           flex: 0 0 26px;
           margin: 0;
+          width: 50px;
         }
       }
       .formula {
+        flex: 0;
         color: var(--zh-clr-fg3);
         font-size: 12px;
         line-height: 18px;

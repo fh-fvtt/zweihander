@@ -1,4 +1,5 @@
 const { ApplicationV2, HandlebarsApplicationMixin } = foundry.applications.api;
+const { getProperty } = foundry.utils;
 
 export default class ZweihanderActorConfig extends HandlebarsApplicationMixin(ApplicationV2) {
   static DEFAULT_OPTIONS = {
@@ -28,25 +29,33 @@ export default class ZweihanderActorConfig extends HandlebarsApplicationMixin(Ap
     const context = await super._prepareContext(options);
 
     const actor = this.options.document;
+    const configOptions = actor.system.settings;
 
     context.actorType = actor.type;
-    context.flags = ZweihanderActorConfig.getConfig(actor);
-    context.parrySkills = context.flags.parrySkills.join(', ');
-    context.dodgeSkills = context.flags.dodgeSkills.join(', ');
-    context.magickSkills = context.flags.magickSkills.join(', ');
-    context.perilSkills = context.flags.perilSkills.join(', ');
-    context.avoidAllPeril = context.flags.isIgnoredPerilLadderValue.reduce((a, b) => a && b, true);
+
+    const skillPack = game.packs.get(game.settings.get('zweihander', 'skillPack'));
+    const skills = (await skillPack.getIndex()).map((s) => s.name).sort((a, b) => a.localeCompare(b));
+
+    ['parry', 'dodge', 'magick', 'peril'].forEach((key) => {
+      context[`${key}Skills`] = skills.map((s) => ({
+        value: s,
+        label: s,
+        selected: configOptions[`${key}Skills`].includes(s),
+      }));
+    });
+
+    context.avoidAllPeril = configOptions.isIgnoredPerilLadderValue.reduce((a, b) => a && b, true);
 
     const attributeNames = ['dth', 'pth', 'int', 'mov'];
 
     context.governingAttributes = attributeNames.map((attr) => ({
       label: game.i18n.localize(`ZWEI.settings.acsettings.primary${attr}`),
-      nameAttr: `flags.${attr}Attribute`,
+      nameAttr: `${attr}Attribute`,
       hint: game.i18n.localize(`ZWEI.settings.acsettings.primary${attr}hint`),
       attributes: CONFIG.ZWEI.primaryAttributes.map((pa) => ({
         value: pa,
         label: game.i18n.localize(`ZWEI.actor.primary.${pa}`),
-        selected: pa === context.flags[`${attr}Attribute`] ? 'selected' : '',
+        selected: pa === configOptions[`${attr}Attribute`] ? 'selected' : '',
       })),
     }));
 
@@ -54,132 +63,86 @@ export default class ZweihanderActorConfig extends HandlebarsApplicationMixin(Ap
 
     context.globalModifiers = modifierNames.map((mod) => ({
       label: game.i18n.localize(`ZWEI.settings.acsettings.global${mod}`),
-      nameAttr: `flags.${mod}Modifier`,
-      valueAttr: context.flags[`${mod}Modifier`],
+      nameAttr: `${mod}Modifier`,
+      valueAttr: configOptions[`${mod}Modifier`],
     }));
 
     context.globalModifiers.push({
       label: game.i18n.localize('ZWEI.settings.acsettings.globalinitiativeoverride'),
-      nameAttr: 'flags.initiativeOverride',
-      valueAttr: context.flags.initiativeOverride,
+      nameAttr: 'initiativeOverride',
+      valueAttr: configOptions.initiativeOverride,
     });
+
+    context.permanentRanks = {
+      chaos: configOptions.permanentChaosRanks,
+      order: configOptions.permanentOrderRanks,
+    };
+
+    context.isMagickUser = configOptions.isMagickUser;
+    context.filePaths = {
+      dodgeSound: configOptions.dodgeSound,
+      parrySound: configOptions.parrySound,
+      gruntSound: configOptions.gruntSound,
+      headerBackground: configOptions.headerBackground,
+    };
+
+    context.playGruntSound = configOptions.playGruntSound;
+    context.isIgnoredPerilLadderValue = configOptions.isIgnoredPerilLadderValue;
 
     return context;
   }
 
-  static getDefaultConfiguration = (key) => {
-    const getDefaultSkills = (packName) =>
-      game.settings
-        .get('zweihander', packName)
-        .split(',')
-        .map((s) => s.trim());
-
-    const defaultConfiguration = {
-      dthAttribute: 'brawn',
-      pthAttribute: 'willpower',
-      intAttribute: 'perception',
-      movAttribute: 'agility',
-      isIgnoredPerilLadderValue: [false, false, false],
-      encumbranceModifier: 0,
-      initiativeModifier: 0,
-      initiativeOverride: 0,
-      movementModifier: 0,
-      parrySkills: getDefaultSkills('defaultParrySkills'),
-      dodgeSkills: getDefaultSkills('defaultDodgeSkills'),
-      magickSkills: getDefaultSkills('defaultMagickSkills'),
-      perilSkills: getDefaultSkills('defaultPerilSkills'),
-      isMagickUser: false,
-      permanentChaosRanks: 0,
-      permanentOrderRanks: 0,
-      headerBackground: 'systems/zweihander/assets/default-header-bg.webp',
-      dodgeSound: 'systems/zweihander/assets/sounds/dodge.mp3',
-      parrySound: 'systems/zweihander/assets/sounds/parry.mp3',
-      gruntSound: 'systems/zweihander/assets/sounds/grunt_m.mp3',
-      playGruntSound: true,
-    };
-
-    return key ? defaultConfiguration[key] : defaultConfiguration;
-  };
-
-  static getValue(actorData, key) {
-    const value = getProperty(actorData.flags, `zweihander.actorConfig.${key}`);
-    return value ?? this.getDefaultConfiguration(key);
-  }
-
-  static getConfig(actorData) {
-    const cfg = {};
-    const defaultConfiguration = this.getDefaultConfiguration();
-
-    for (let key in defaultConfiguration) {
-      cfg[key] = this.getValue(actorData, key);
-    }
-    return cfg;
+  get title() {
+    return `Actor Configuration: ${this.options.document.name}`;
   }
 
   static async #onSubmit(event, form, formData) {
     const actor = this.options.document;
+    const configOptions = actor.system.settings;
 
-    const updateData = foundry.utils.expandObject(formData.object).flags;
+    const expandedFormData = foundry.utils.expandObject(formData.object);
+    const actorUpdate = {};
 
     if (actor.type === 'character') {
       const sa = actor.system.stats.secondaryAttributes;
       const saPath = 'system.stats.secondaryAttributes';
-      const actorUpdate = {};
 
-      updateData.parrySkills = updateData.parrySkills.split(',').map((skill) => skill.trim());
-
-      if (!updateData.parrySkills.includes(sa.parry.associatedSkill)) {
-        actorUpdate[`${saPath}.parry.associatedSkill`] = updateData.parrySkills[0] ?? '';
-      }
-
-      updateData.dodgeSkills = updateData.dodgeSkills.split(',').map((skill) => skill.trim());
-
-      if (!updateData.dodgeSkills.includes(sa.dodge.associatedSkill)) {
-        actorUpdate[`${saPath}.dodge.associatedSkill`] = updateData.dodgeSkills[0] ?? '';
-      }
-
-      updateData.magickSkills = updateData.magickSkills.split(',').map((skill) => skill.trim());
-
-      if (!updateData.magickSkills.includes(sa.magick.associatedSkill)) {
-        actorUpdate[`${saPath}.magick.associatedSkill`] = updateData.magickSkills[0] ?? '';
-      }
-
-      updateData.perilSkills = updateData.perilSkills.split(',').map((skill) => skill.trim());
-
-      if (!updateData.perilSkills.includes(sa.madness.associatedSkill)) {
-        actorUpdate[`${saPath}.madness.associatedSkill`] = updateData.perilSkills[0] ?? '';
-      }
+      ['parry', 'dodge', 'magick', 'peril'].forEach((key) => {
+        const actorDataKey = key === 'peril' ? 'madness' : key;
+        if (!expandedFormData[`${key}Skills`].includes(sa[actorDataKey].associatedSkill)) {
+          actorUpdate[[`${saPath}.${actorDataKey}.associatedSkill`]] = expandedFormData[`${key}Skills`][0] ?? '';
+        }
+      });
 
       // wtf is this template system haha
-      updateData.isIgnoredPerilLadderValue = [
-        updateData.isIgnoredPerilLadderValue['[0]'],
-        updateData.isIgnoredPerilLadderValue['[1]'],
-        updateData.isIgnoredPerilLadderValue['[2]'],
+      expandedFormData.isIgnoredPerilLadderValue = [
+        expandedFormData.isIgnoredPerilLadderValue['[0]'],
+        expandedFormData.isIgnoredPerilLadderValue['[1]'],
+        expandedFormData.isIgnoredPerilLadderValue['[2]'],
       ];
 
-      const avoidAllUpdate = foundry.utils.expandObject(formData.object).avoidAllPeril;
-      const avoidAllBefore = ZweihanderActorConfig.getConfig(actor).isIgnoredPerilLadderValue.reduce(
-        (a, b) => a && b,
-        true
-      );
+      const avoidAllUpdate = expandedFormData.avoidAllPeril;
+      const avoidAllBefore = configOptions.isIgnoredPerilLadderValue.reduce((a, b) => a && b, true);
 
       if (avoidAllUpdate && !avoidAllBefore) {
-        updateData.isIgnoredPerilLadderValue = [true, true, true];
+        expandedFormData.isIgnoredPerilLadderValue = [true, true, true];
       } else if (!avoidAllUpdate && avoidAllBefore) {
-        updateData.isIgnoredPerilLadderValue = [false, false, false];
+        expandedFormData.isIgnoredPerilLadderValue = [false, false, false];
       }
 
-      if (Object.keys(actorUpdate).length) {
-        await actor.update(actorUpdate);
-      }
+      delete expandedFormData.avoidAllPeril;
     }
 
-    await actor.setFlag('zweihander', 'actorConfig', updateData);
+    const updateData = Object.fromEntries(
+      Object.entries(expandedFormData).map(([key, value]) => [`system.settings.${key}`, value])
+    );
+
+    if (Object.keys(actorUpdate).length) {
+      Object.assign(updateData, actorUpdate);
+    }
+
+    await actor.update(updateData);
 
     this.render();
-  }
-
-  get title() {
-    return `Actor Configuration: ${this.options.document.name}`;
   }
 }

@@ -35,21 +35,30 @@
     }
   },
   "EFFECT": {
+    "statuseffect": "Status Effect",
     "dead": "Slain!",
-    "blind": "Blind",
+    "blinded": "Blinded",
     "choked": "Choked",
     "defenseless": "Defenseless",
     "disarmed": "Disarmed",
     "helpless": "Helpless",
     "inspired": "Inspired",
     "intimidated": "Intimidated",
-    "knockedOut": "Knocked Out",
+    "knockedout": "Knocked Out",
     "prone": "Prone",
     "stunned": "Stunned",
     "surprised": "Surprised",
-    "burning": "Burning",
+    "onfire": "On Fire!",
     "bleeding": "Bleeding",
-    "isActive": "Effect is Active"
+    "incapacitated": "Incapacitated!",
+    "intoxicated": "Intoxicated",
+    "delirious": "Delirious",
+    "confused": "Confused",
+    "starving": "Starving",
+    "suffocating": "Suffocating",
+    "poisoned": "Poisoned",
+    "envenomed": "Envenomed",
+    "exhausted": "Exhausted"
   },
   "ZWEI": {
     "Difficulty": {
@@ -755,6 +764,7 @@
       "effectivevalue": "Effective Value"
     },
     "othermessages": {
+      "expired": "Expired",
       "nofortune": "Can't use Fortune!",
       "nomisfortune": "Can't use Misfortune!",
       "setfortune": "Reset Fortune Points (Connected Players + 1)",

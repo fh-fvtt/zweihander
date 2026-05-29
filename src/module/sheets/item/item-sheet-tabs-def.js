@@ -1,3 +1,5 @@
+const { mergeObject } = foundry.utils;
+
 export function getEffectsGroups(groupsData) {
   return {
     effects: {
@@ -12,7 +14,7 @@ export function getEffectsGroups(groupsData) {
           key: 'system.details.category',
         },
       ],
-      items: groupsData.effects,
+      entries: groupsData.effects,
     },
   };
 }
@@ -27,5 +29,5 @@ export function attachTabDefinitions(context) {
     },
   };
 
-  foundry.utils.mergeObject(context.tabs, tabDefinitions, { overwrite: false });
+  mergeObject(context.tabs, tabDefinitions, { overwrite: false });
 }

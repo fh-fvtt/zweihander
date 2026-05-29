@@ -125,42 +125,42 @@ export default class ZweihanderNpcSheet extends ZweihanderCreatureSheet {
       type: 'talent',
       summaryTemplate: 'item-summary/talent',
       details: [],
-      items: groupsData.talents,
+      entries: groupsData.talents,
     };
     itemGroups.drawbacks = {
       title: 'drawbacks',
       type: 'drawback',
       summaryTemplate: 'item-summary/drawback',
       details: [],
-      items: groupsData.drawbacks,
+      entries: groupsData.drawbacks,
     };
     itemGroups.rituals = {
       title: 'rituals',
       type: 'ritual',
       summaryTemplate: 'item-summary/ritual',
       details: [],
-      items: groupsData.rituals,
+      entries: groupsData.rituals,
     };
     itemGroups.disorders = {
       title: 'disorders',
       type: 'disorder',
       summaryTemplate: 'item-summary/disorder',
       details: [],
-      items: groupsData.disorders,
+      entries: groupsData.disorders,
     };
     itemGroups.diseases = {
       title: 'diseases',
       type: 'disease',
       summaryTemplate: 'item-summary/disease',
       details: [],
-      items: groupsData.diseases,
+      entries: groupsData.diseases,
     };
     itemGroups.armor = {
       title: 'armor',
       type: 'armor',
       summaryTemplate: 'item-summary/armor',
       details: [],
-      items: groupsData.armor,
+      entries: groupsData.armor,
     };
     return itemGroups;
   }

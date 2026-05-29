@@ -1,10 +1,13 @@
-import ZweihanderActorConfig from '../../apps/actor-config';
-import ZweihanderBaseActorSheet from './base-actor-sheet';
 import * as ZweihanderDice from '../../system/rolls/dice';
 import * as ZweihanderUtils from '../../system/utils';
+
+import ZweihanderActorConfig from '../../apps/actor-config';
+import ZweihanderBaseActorSheet from './base-actor-sheet';
+
 import { attachTabDefinitions, getItemGroups } from './character-sheet-tabs-def';
 import { getPacks } from '../../system/utils';
 
+const { getProperty, setProperty } = foundry.utils;
 const { DialogV2 } = foundry.applications.api;
 
 /**
@@ -97,7 +100,7 @@ export default class ZweihanderCharacterSheet extends ZweihanderBaseActorSheet {
       return { header, background };
     }
 
-    const isMagickUser = ZweihanderActorConfig.getValue(this.document, 'isMagickUser');
+    const isMagickUser = this.document.system.settings.isMagickUser;
 
     if (!isMagickUser) {
       const { header, tabs, attributes, tiers, trappings, afflictions, background } = parts;
@@ -118,7 +121,7 @@ export default class ZweihanderCharacterSheet extends ZweihanderBaseActorSheet {
         return { background: tabs.background };
       }
 
-      const isMagickUser = ZweihanderActorConfig.getValue(this.document, 'isMagickUser');
+      const isMagickUser = this.document.system.settings.isMagickUser;
 
       if (!isMagickUser) {
         delete tabs.magick;
@@ -131,13 +134,14 @@ export default class ZweihanderCharacterSheet extends ZweihanderBaseActorSheet {
   async _prepareContext(options) {
     const sheetData = await super._prepareContext(options);
 
+    const actor = this.actor;
+
     sheetData.html = {
       description: await ZweihanderUtils.enrichLocalized(sheetData.document.system.description),
       notes: await ZweihanderUtils.enrichLocalized(sheetData.document.system.notes),
     };
 
-    // get actor config
-    sheetData.actorConfig = ZweihanderActorConfig.getConfig(this.actor);
+    sheetData.actorConfig = actor.system.settings;
 
     // bind currency
     sheetData.settings.currencies = game.settings.get('zweihander', 'currencySettings');
@@ -145,26 +149,47 @@ export default class ZweihanderCharacterSheet extends ZweihanderBaseActorSheet {
     // calculate reward points automatically
     sheetData.settings.trackRewardPoints = game.settings.get('zweihander', 'trackRewardPoints');
 
+    // data for select elements
+    sheetData.choices = {};
+
+    const setAssociatedSkillChoices = (mappings) => {
+      mappings.forEach(({ configKey, attrKey }) => {
+        sheetData.choices[configKey] = ZweihanderUtils.selectedChoice(
+          sheetData.document.system.stats.secondaryAttributes[attrKey].associatedSkill,
+          sheetData.actorConfig[configKey].map((skill) => ({
+            value: skill,
+            label: skill,
+          }))
+        );
+      });
+    };
+
+    setAssociatedSkillChoices([
+      { configKey: 'magickSkills', attrKey: 'magick' },
+      { configKey: 'dodgeSkills', attrKey: 'dodge' },
+      { configKey: 'parrySkills', attrKey: 'parry' },
+      { configKey: 'perilSkills', attrKey: 'madness' },
+    ]);
+
     // @todo: see if can be expanded to bonuses and SAs
     // source (unmodified) values required to know fields by Active Effects
     for (let pa of CONFIG.ZWEI.primaryAttributes)
       sheetData.system.stats.primaryAttributes[`${pa}`].baseValue =
-        this.actor._source.system.stats.primaryAttributes[`${pa}`].value;
+        actor._source.system.stats.primaryAttributes[`${pa}`].value;
 
-    if (sheetData.settings.trackRewardPoints) {
-      const tierMultiplier = ZweihanderUtils.getLocalizedRewardPointMapping();
-
-      sheetData.system.stats.rewardPoints.spent = sheetData.professions
-        .map((profession) => tierMultiplier[profession.system.tier] * profession.system.advancesPurchased)
-        .concat(sheetData.uniqueAdvances.map((advance) => advance.system.rewardPointCost))
-        .reduce((a, b) => a + b, 0);
-      sheetData.system.stats.rewardPoints.current =
-        sheetData.system.stats.rewardPoints.total - sheetData.system.stats.rewardPoints.spent;
-    }
+    sheetData.modifiersLookup = actor
+      .allApplicableEffects()
+      .flatMap((e) =>
+        e.active ? e.system.changes.filter((c) => c.key.startsWith('system')).map((c) => ({ ...c, name: e.name })) : []
+      )
+      .reduce((acc, { key, ...rest }) => {
+        (acc[key] ??= []).push(rest);
+        return acc;
+      }, {});
 
     attachTabDefinitions(sheetData);
 
-    const hidden = this.actor.limited;
+    const hidden = actor.limited;
     const ancestry = sheetData.ancestry?.[0]?.name;
     const pronoun = sheetData.system.details.pronoun || '?';
 
@@ -374,7 +399,7 @@ export default class ZweihanderCharacterSheet extends ZweihanderBaseActorSheet {
     };
 
     for (const e of this.actor.allApplicableEffects()) {
-      if (!e.system.isActive) groups.effectsInactive.push(e);
+      if (!e.active) groups.effectsInactive.push(e);
       else if (e.isTemporary) groups.effectsTemporary.push(e);
       else groups.effectsPassive.push(e);
     }
@@ -459,14 +484,14 @@ export default class ZweihanderCharacterSheet extends ZweihanderBaseActorSheet {
 
     html.querySelectorAll('.purchase-link').forEach((el) => el.addEventListener('click', updatePurchased));
 
-    html.querySelector('.reset-ranks').addEventListener('click', async () => {
+    html.querySelector('.reset-ranks').addEventListener('contextmenu', async () => {
       await this.actor.update({
         'system.alignment.corruption': 0,
       });
     });
 
     // Reset Order and Chaos Ranks
-    html.querySelector('.reset-ranks').addEventListener('contextmenu', async () => {
+    html.querySelector('.reset-ranks').addEventListener('click', async () => {
       await DialogV2.confirm({
         window: { title: `${this.actor.name}: ` + game.i18n.localize('ZWEI.othermessages.resetranks') },
         content: game.i18n.localize('ZWEI.othermessages.sureranks'),
@@ -480,54 +505,6 @@ export default class ZweihanderCharacterSheet extends ZweihanderBaseActorSheet {
         position: { width: 455 },
         rejectClose: false,
         defaultYes: false,
-      });
-    });
-
-    // Modify numerable value by clicking '+' and '-' buttons on sheet, e.g. quantity, encumbrance
-    // const updateNumerable = (i) => async (event) => {
-    //   const lookup = (obj, key) => {
-    //     const keys = key.split('.');
-    //     let val = obj;
-    //     for (let key of keys) {
-    //       val = val?.[key];
-    //     }
-    //     return val;
-    //   };
-
-    //   const numerablePath = event.currentTarget.dataset.numerablePath;
-
-    //   const itemElement = $(event.currentTarget).parents('.item');
-    //   const item = this.actor.items.get($(itemElement).data('itemId'));
-
-    //   const newNumerableValue = lookup(item, numerablePath) + i;
-
-    //   await item.update({
-    //     [`${numerablePath}`]: newNumerableValue >= 0 ? newNumerableValue : 0,
-    //   });
-    // };
-
-    // html.find('.numerable-field-subtract').click(updateNumerable(-1));
-    // html.find('.numerable-field-add').click(updateNumerable(1));
-
-    html.querySelectorAll('.focus-indicator').forEach((el) => {
-      el.addEventListener('mouseenter', (event) => {
-        const tooltipSource = event.currentTarget.closest('.skill-roll').querySelector('.focus-tooltip');
-        if (!tooltipSource) return;
-
-        const tooltip = tooltipSource.cloneNode(true);
-        const rect = event.currentTarget.getBoundingClientRect();
-        const top = rect.top + window.scrollY + 25;
-        const left = rect.left + window.scrollX - 125 / 2 + 7;
-
-        tooltip.classList.add('zh-focuses-tooltip-instance');
-        tooltip.style.position = 'absolute';
-        tooltip.style.top = top + 'px';
-        tooltip.style.left = left + 'px';
-        document.body.appendChild(tooltip);
-      });
-
-      el.addEventListener('mouseleave', () => {
-        document.querySelectorAll('.zh-focuses-tooltip-instance').forEach((el) => el.remove());
       });
     });
 

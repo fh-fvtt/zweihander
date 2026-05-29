@@ -16,9 +16,9 @@ export default class ZweihanderActiveEffectConfig extends ActiveEffectConfig {
     },
   };
 
-  async _prepareContext(options) {
-    const context = await super._prepareContext(options);
+  // ---=== HELPER METHODS ===---
 
+  _getChoicesKeys() {
     const pa = CONFIG.ZWEI.primaryAttributes.map((pa) => ({
       value: `system.stats.primaryAttributes.${pa}.value`,
       label: game.i18n.localize('ZWEI.actor.primary.' + pa),
@@ -43,19 +43,39 @@ export default class ZweihanderActiveEffectConfig extends ActiveEffectConfig {
       group: game.i18n.localize('ZWEI.actor.navigation.secondary'),
     }));
 
-    context.selectableKeys = [...pa, ...pab, ...sa];
+    return [...pa, ...pab, ...sa];
+  }
 
-    context.isParentCarried = context.document.parent.system.carried ?? true;
+  // ---=== FOUNDRY METHODS ===---
 
-    console.log('ACTIVE EFFECT CONTEXT:  ', context);
+  /** @override */
+  async _prepareContext(options) {
+    const context = await super._prepareContext(options);
+
+    context.isParentCarried = context.document.parent?.system?.carried ?? true;
 
     return context;
   }
 
-  async _preparePartContext(partId, context) {
-    return await super._preparePartContext(partId, context);
+  /** @override */
+  async _renderChange(context) {
+    const { change, index } = context;
+    if (typeof change.value !== 'string') change.value = JSON.stringify(change.value);
+    Object.assign(
+      change,
+      ['key', 'type', 'value', 'phase', 'priority'].reduce((paths, fieldName) => {
+        paths[`${fieldName}Path`] = `system.changes.${index}.${fieldName}`;
+        return paths;
+      }, {})
+    );
+    Object.assign(change, { selectableKeys: this._getChoicesKeys() });
+    return (
+      CONFIG.ActiveEffect.changeTypes[change.type]?.render?.(context) ??
+      renderTemplate('systems/zweihander/src/templates/app/active-effect/change.hbs', context)
+    );
   }
 
+  /** @override */
   _configureRenderParts(options) {
     const parts = super._configureRenderParts(options);
 

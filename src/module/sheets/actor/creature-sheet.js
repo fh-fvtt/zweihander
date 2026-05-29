@@ -232,7 +232,7 @@ export default class ZweihanderCreatureSheet extends ZweihanderBaseActorSheet {
             key: 'system.ranged.load',
           },
         ],
-        items: sheetData.weapons,
+        entries: sheetData.weapons,
       },
       trappings: {
         title: 'loot',
@@ -245,14 +245,14 @@ export default class ZweihanderCreatureSheet extends ZweihanderBaseActorSheet {
             key: 'system.quantity',
           },
         ],
-        items: sheetData.trappings,
+        entries: sheetData.trappings,
       },
       traits: {
         title: 'traits',
         type: 'trait',
         summaryTemplate: 'item-summary/trait',
         details: [],
-        items: sheetData.traits,
+        entries: sheetData.traits,
       },
       spells: {
         title: 'spells',
@@ -261,28 +261,28 @@ export default class ZweihanderCreatureSheet extends ZweihanderBaseActorSheet {
         rollType: 'spell-roll',
         rollLabel: sheetData.system.stats.secondaryAttributes.magick.associatedSkill,
         details: [],
-        items: sheetData.spells,
+        entries: sheetData.spells,
       },
       taints: {
         title: 'taintschaos',
         type: 'taint',
         summaryTemplate: 'item-summary/taint',
         details: [],
-        items: sheetData.taints,
+        entries: sheetData.taints,
       },
       conditions: {
         title: 'conditions',
         type: 'condition',
         summaryTemplate: 'item-summary/condition',
         details: [],
-        items: sheetData.conditions,
+        entries: sheetData.conditions,
       },
       injuries: {
         title: 'injuries',
         type: 'injury',
         summaryTemplate: 'item-summary/injury',
         details: [],
-        items: sheetData.injuries,
+        entries: sheetData.injuries,
       },
     };
   }

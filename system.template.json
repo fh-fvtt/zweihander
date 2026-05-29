@@ -3,10 +3,10 @@
   "title": "Zweihänder Grim & Perilous RPG",
   "description": "An implementation of the Zweihänder system for FoundryVTT.",
   "version": "{{RELEASE_VERSION}}",
-  "minimumCoreVersion": "13",
+  "minimumCoreVersion": "14",
   "compatibility": {
-    "minimum": 13,
-    "verified": 13
+    "minimum": 14,
+    "verified": 14
   },
   "authors": [
     {
@@ -58,6 +58,94 @@
   "license": "LICENCE.txt",
   "primaryTokenAttribute": "stats.secondaryAttributes.damageCurrent",
   "secondaryTokenAttribute": "stats.secondaryAttributes.perilCurrent",
+  "documentTypes": {
+    "Actor": {
+      "character": {
+        "htmlFields": ["description.*", "notes.*"],
+        "filePathFields": {
+          "settings.headerBackground": ["IMAGE"],
+          "settings.dodgeSound": ["AUDIO"],
+          "settings.parrySound": ["AUDIO"],
+          "settings.gruntSound": ["AUDIO"]
+        }
+      },
+      "creature": {
+        "htmlFields": ["description.*", "notes.*"],
+        "filePathFields": {
+          "settings.dodgeSound": ["AUDIO"],
+          "settings.parrySound": ["AUDIO"],
+          "settings.gruntSound": ["AUDIO"]
+        }
+      },
+      "npc": {
+        "htmlFields": ["description.*", "notes.*"],
+        "filePathFields": {
+          "settings.dodgeSound": ["AUDIO"],
+          "settings.parrySound": ["AUDIO"],
+          "settings.gruntSound": ["AUDIO"]
+        }
+      },
+      "vehicle": {
+        "htmlFields": ["description.*", "notes.*"]
+      }
+    },
+    "Item": {
+      "ancestry": {
+        "htmlFields": ["description.*", "notes.*"]
+      },
+      "armor": {
+        "htmlFields": ["description.*", "notes.*"]
+      },
+      "condition": {
+        "htmlFields": ["description.*", "notes.*", "rules.effect.*"]
+      },
+      "disease": {
+        "htmlFields": ["description.*", "notes.*", "rules.effect.*", "rules.treatment.*"]
+      },
+      "disorder": {
+        "htmlFields": ["description.*", "notes.*", "rules.effect.*"]
+      },
+      "drawback": {
+        "htmlFields": ["description.*", "notes.*", "rules.effect.*"]
+      },
+      "injury": {
+        "htmlFields": ["description.*", "notes.*", "rules.effect.*"]
+      },
+      "profession": {
+        "htmlFields": ["description.*", "notes.*", "expert.requirements.additional"]
+      },
+      "quality": {
+        "htmlFields": ["description.*", "notes.*", "rules.effect.*"]
+      },
+      "ritual": {
+        "htmlFields": ["description.*", "notes.*", "rules.effect.*", "rules.condition.*","rules.reagents.*", "rules.consequences.*"]
+      },
+      "skill": {
+        "htmlFields": ["description.*", "notes.*"]
+      },
+      "spell": {
+        "htmlFields": ["description.*", "notes.*", "rules.effect.*", "rules.reagents.*", "rules.criticalSuccess.*", "rules.criticalFailure.*"]
+      },
+      "taint": {
+        "htmlFields": ["description.*", "notes.*", "rules.effect.*"]
+      },
+      "talent": {
+        "htmlFields": ["description.*", "notes.*", "rules.effect.*"]
+      },
+      "trait": {
+        "htmlFields": ["description.*", "notes.*", "rules.effect.*"]
+      },
+      "trapping": {
+        "htmlFields": ["description.*", "notes.*", "rules.effect.*"]
+      },
+      "uniqueAdvance": {
+        "htmlFields": ["description.*", "notes.*"]
+      },
+      "weapon": {
+        "htmlFields": ["description.*", "notes.*"]
+      }
+    }
+  },
   "relationships": {
     "requires": [
       {

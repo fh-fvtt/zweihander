@@ -31,17 +31,23 @@
       <p class="hint">{{localize "ZWEI.settings.acsettings.skillstitlehint"}}</p>
       <div class="form-group">
         <label>{{localize "ZWEI.settings.acsettings.skillsparry"}}</label>
-        <input type="text" name="flags.parrySkills" value="{{parrySkills}}" />
+        <multi-select name="parrySkills">
+          {{selectOptions parrySkills valueAttr="value" labelAttr="label" selected=selected}}
+        </multi-select>
       </div>
 
       <div class="form-group">
         <label>{{localize "ZWEI.settings.acsettings.skillsdodge"}}</label>
-        <input type="text" name="flags.dodgeSkills" value="{{dodgeSkills}}" />
+        <multi-select name="dodgeSkills">
+          {{selectOptions dodgeSkills valueAttr="value" labelAttr="label" selected=selected}}
+        </multi-select>
       </div>
 
       <div class="form-group">
         <label>{{localize "ZWEI.settings.acsettings.skillsmadness"}}</label>
-        <input type="text" name="flags.perilSkills" value="{{perilSkills}}" />
+        <multi-select name="perilSkills">
+          {{selectOptions perilSkills valueAttr="value" labelAttr="label" selected=selected}}
+        </multi-select>
       </div>
     </fieldset>
 
@@ -52,8 +58,8 @@
         <label>{{localize "ZWEI.settings.acsettings.peril1"}}</label>
         <input
           type="checkbox"
-          name="flags.isIgnoredPerilLadderValue.[0]"
-          {{checked flags.isIgnoredPerilLadderValue.[0]}}
+          name="isIgnoredPerilLadderValue.[0]"
+          {{checked isIgnoredPerilLadderValue.[0]}}
         />
       </div>
 
@@ -61,8 +67,8 @@
         <label>{{localize "ZWEI.settings.acsettings.peril2"}}</label>
         <input
           type="checkbox"
-          name="flags.isIgnoredPerilLadderValue.[1]"
-          {{checked flags.isIgnoredPerilLadderValue.[1]}}
+          name="isIgnoredPerilLadderValue.[1]"
+          {{checked isIgnoredPerilLadderValue.[1]}}
         />
       </div>
 
@@ -70,12 +76,11 @@
         <label>{{localize "ZWEI.settings.acsettings.peril3"}}</label>
         <input
           type="checkbox"
-          name="flags.isIgnoredPerilLadderValue.[2]"
-          {{checked flags.isIgnoredPerilLadderValue.[2]}}
+          name="isIgnoredPerilLadderValue.[2]"
+          {{checked isIgnoredPerilLadderValue.[2]}}
         />
       </div>
 
-      
     <div class="form-group">
       <label>{{localize "ZWEI.settings.acsettings.peril4"}}</label>
       <input type="checkbox" name="avoidAllPeril" {{checked avoidAllPeril}} />
@@ -87,13 +92,15 @@
       <legend>{{localize "ZWEI.settings.acsettings.magicktitle"}}</legend>
       <div class="form-group">
         <label>{{localize "ZWEI.settings.acsettings.magickuser"}}</label>
-        <input type="checkbox" name="flags.isMagickUser" {{checked flags.isMagickUser}} />
+        <input type="checkbox" name="isMagickUser" {{checked isMagickUser}} />
         <p class="hint">{{localize "ZWEI.settings.acsettings.magickuserhint"}}</p>
       </div>
 
       <div class="form-group">
         <label>{{localize "ZWEI.settings.acsettings.magickskill"}}</label>
-        <input type="text" name="flags.magickSkills" value="{{magickSkills}}" />
+        <multi-select name="magickSkills">
+          {{selectOptions magickSkills valueAttr="value" labelAttr="label" selected=selected}}
+        </multi-select>
         <p class="hint">{{localize "ZWEI.settings.acsettings.magickskillhint"}}</p>
       </div>
     </fieldset>
@@ -103,12 +110,12 @@
       <p class="hint">{{localize "ZWEI.settings.acsettings.octitlehint"}}</p>
       <div class="form-group">
         <label>{{localize "ZWEI.settings.acsettings.occhaosrank"}}</label>
-        <input type="number" name="flags.permanentChaosRanks" value="{{flags.permanentChaosRanks}}" />
+        <input type="number" name="permanentChaosRanks" value="{{permanentRanks.chaos}}" />
       </div>
 
       <div class="form-group">
         <label>{{localize "ZWEI.settings.acsettings.ocorderrank"}}</label>
-        <input type="number" name="flags.permanentOrderRanks" value="{{flags.permanentOrderRanks}}" />
+        <input type="number" name="permanentOrderRanks" value="{{permanentRanks.order}}" />
       </div>
     </fieldset>
 
@@ -116,7 +123,7 @@
       <legend>{{localize "ZWEI.settings.acsettings.bgtitle"}}</legend>
       <div class="form-group">
         <label>{{localize "ZWEI.settings.acsettings.bglabel"}}</label>
-        <file-picker name="flags.headerBackground" type="image">{{flags.headerBackground}}</file-picker>
+        <file-picker name="headerBackground" type="image">{{filePaths.headerBackground}}</file-picker>
         <p class="hint">{{localize "ZWEI.settings.acsettings.bgtitlehint"}}</p>
       </div>
     </fieldset>
@@ -137,22 +144,22 @@
     <legend>{{localize "ZWEI.settings.acsettings.soundtitle"}}</legend>
     <div class="form-group">
       <label>{{localize "ZWEI.settings.acsettings.sounddodge"}}</label>
-      <file-picker name="flags.dodgeSound" type="sound">{{flags.dodgeSound}}</file-picker>
+      <file-picker name="dodgeSound" type="sound">{{filePaths.dodgeSound}}</file-picker>
     </div>
 
     <div class="form-group">
       <label>{{localize "ZWEI.settings.acsettings.soundparry"}}</label>
-      <file-picker name="flags.parrySound" type="sound">{{flags.parrySound}}</file-picker>
+      <file-picker name="parrySound" type="sound">{{filePaths.parrySound}}</file-picker>
     </div>
 
     <div class="form-group">
       <label>{{localize "ZWEI.settings.acsettings.soundgrunt"}}</label>
-      <file-picker name="flags.gruntSound" type="sound">{{flags.gruntSound}}</file-picker>
+      <file-picker name="gruntSound" type="sound">{{filePaths.gruntSound}}</file-picker>
     </div>
 
     <div class="form-group">
       <label>{{localize "ZWEI.settings.acsettings.soundplaygrunt"}}</label>
-      <input type="checkbox" name="flags.playGruntSound" {{checked flags.playGruntSound}} />
+      <input type="checkbox" name="playGruntSound" {{checked playGruntSound}} />
       <p class="hint">{{localize "ZWEI.settings.acsettings.soundplaygrunthint"}}</p>
     </div>
   </fieldset>

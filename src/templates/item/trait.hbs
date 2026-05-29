@@ -17,12 +17,9 @@
   <div class="form-group stacked">
     <label>{{localize 'ZWEI.actor.items.category'}}</label>
     <select name="system.category">
-      {{#select system.category}}
-        <option value="professional">{{localize 'ZWEI.actor.items.traitscategories.professional'}}</option>
-        <option value="special">{{localize 'ZWEI.actor.items.traitscategories.special'}}</option>
-        <option value="ancestral">{{localize 'ZWEI.actor.items.traitscategories.ancestral'}}</option>
-        <option value="creature">{{localize 'ZWEI.actor.items.traitscategories.creature'}}</option>
-      {{/select}}
+      {{#each choices.traitCategories}}
+        <option value="{{value}}" {{selected}}>{{label}}</option>
+      {{/each}}
     </select>
   </div>
 </fieldset>
