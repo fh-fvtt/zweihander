@@ -303,7 +303,7 @@ export const migrateWorldSafe = async () => {
 
   if (!game.user.isGM) return;
   const currentVersion = game.settings.get('zweihander', 'systemMigrationVersion');
-  const NEEDS_MIGRATION_VERSION = '5.7.3'; // @todo: change for release
+  const NEEDS_MIGRATION_VERSION = '5.8.0'; // @todo: change for release
   const COMPATIBLE_MIGRATION_VERSION = '5.7.3';
   const totalDocuments = game.actors.size + game.scenes.size + game.items.size;
   if (!currentVersion && totalDocuments === 0)
