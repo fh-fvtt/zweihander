@@ -132,14 +132,17 @@
   {{#if (not (or (eq actorType "character") (eq actorType "vehicle")))}}
   <fieldset>
     <legend>{{localize "ZWEI.settings.acsettings.globaltitle"}}</legend>
-    <div class="form-group">
-      <label>{{globalModifiers.3.label}}</label>
-      <input type="number" name="{{globalModifiers.3.nameAttr}}" value="{{globalModifiers.3.valueAttr}}" />
+      {{#each globalModifiers as |mod|}}
+      <div class="form-group">
+        <label>{{mod.label}}</label>
+        <input type="number" name="{{mod.nameAttr}}" value="{{mod.valueAttr}}" />
+      </div>
       <p class="hint">{{localize "ZWEI.settings.acsettings.globalinitiativeoverridehint"}}</p>
-    </div>
+      {{/each}}
   </fieldset>
   {{/if}}
 
+  {{#if (not (eq actorType "vehicle"))}}
   <fieldset>
     <legend>{{localize "ZWEI.settings.acsettings.soundtitle"}}</legend>
     <div class="form-group">
@@ -163,4 +166,6 @@
       <p class="hint">{{localize "ZWEI.settings.acsettings.soundplaygrunthint"}}</p>
     </div>
   </fieldset>
+  {{else}}
+  {{/if}}
 </div>

@@ -152,24 +152,15 @@ export default class ZweihanderCharacterSheet extends ZweihanderBaseActorSheet {
     // data for select elements
     sheetData.choices = {};
 
-    const setAssociatedSkillChoices = (mappings) => {
-      mappings.forEach(({ configKey, attrKey }) => {
-        sheetData.choices[configKey] = ZweihanderUtils.selectedChoice(
-          sheetData.document.system.stats.secondaryAttributes[attrKey].associatedSkill,
-          sheetData.actorConfig[configKey].map((skill) => ({
-            value: skill,
-            label: skill,
-          }))
-        );
-      });
-    };
+    ['magick', 'dodge', 'parry', 'peril'].forEach((key) => {
+      const configKey = `${key}Skills`;
+      const attrKey = key === 'peril' ? 'madness' : key;
 
-    setAssociatedSkillChoices([
-      { configKey: 'magickSkills', attrKey: 'magick' },
-      { configKey: 'dodgeSkills', attrKey: 'dodge' },
-      { configKey: 'parrySkills', attrKey: 'parry' },
-      { configKey: 'perilSkills', attrKey: 'madness' },
-    ]);
+      sheetData.choices[configKey] = ZweihanderUtils.selectedChoice(
+        sheetData.document.system.stats.secondaryAttributes[attrKey].associatedSkill,
+        sheetData.actorConfig[configKey].map((skill) => ({ value: skill, label: skill }))
+      );
+    });
 
     // @todo: see if can be expanded to bonuses and SAs
     // source (unmodified) values required to know fields by Active Effects

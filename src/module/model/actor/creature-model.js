@@ -1,7 +1,8 @@
 import ZweihanderBaseActorModel from './base-actor-model';
 import ZweihanderActorConfig from '../../apps/actor-config';
 
-const { NumberField, StringField, BooleanField, SchemaField, ArrayField, TypedObjectField } = foundry.data.fields;
+const { NumberField, StringField, BooleanField, FilePathField, SchemaField, ArrayField, TypedObjectField } =
+  foundry.data.fields;
 
 const SKIP_EXTENSION = ['damageCurrent', 'perilCurrent'];
 
@@ -76,6 +77,25 @@ export default class ZweihanderCreatureModel extends ZweihanderBaseActorModel {
       size: new NumberField({ integer: true, initial: 0, min: 0 }),
       role: new StringField({ initial: '' }),
       influences: new StringField({ initial: '' }),
+    };
+  }
+
+  static get _settingsFields() {
+    return {
+      initiativeOverride: new NumberField({ integer: true, initial: 0 }),
+      dodgeSound: new FilePathField({
+        categories: ['AUDIO'],
+        initial: 'systems/zweihander/assets/sounds/dodge.mp3',
+      }),
+      parrySound: new FilePathField({
+        categories: ['AUDIO'],
+        initial: 'systems/zweihander/assets/sounds/parry.mp3',
+      }),
+      gruntSound: new FilePathField({
+        categories: ['AUDIO'],
+        initial: 'systems/zweihander/assets/sounds/grunt_m.mp3',
+      }),
+      playGruntSound: new BooleanField({ initial: true }),
     };
   }
 

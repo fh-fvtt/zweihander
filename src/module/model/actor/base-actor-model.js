@@ -136,6 +136,7 @@ export default class ZweihanderBaseActorModel extends TypeDataModel {
       headerBackground: new FilePathField({
         categories: ['IMAGE'],
         initial: 'systems/zweihander/assets/default-header-bg.webp',
+        blank: true,
       }),
       dodgeSound: new FilePathField({
         categories: ['AUDIO'],

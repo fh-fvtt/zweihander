@@ -5,6 +5,35 @@ All notable changes to this project will be documented in this file.
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).´
 
+## [5.8.0] - 2026-05-30
+
+**Compatible Foundry Version:** 14.363
+
+### Added
+
+- Added support for Foundry V14.
+- Added new Status Effects based on Zweihänder Revised Core Rulebook effects: Inspired, Intimidated, Confused, Intoxicated, Delirious, Poisoned, Envenomed, Exhausted, Starving, and Suffocating.
+- Added automation for the Inspired and Intimidated Status Effects.
+- Added partial automation for the Intoxicated Status Effect.
+- Added dynamic tooltips to stats affected by Active Effects with a breakdown consisting of: base value, each modifier, total value.
+- Added context menus to most `Item` lists.
+- Added context menu to chat messages.
+- Added flavorful backgrounds to several system tooltips.
+
+### Fixed
+
+- Fixed a bug that prevented opening Vehicle sheets when sorting drivers / passengers list.
+- Fixed a bug where Profession and Ancestry creation checks could be bypassed by using `Item#create`.
+- Fixed a bug where Talent names would not be displayed in Profession `Item`s not attached to an `Actor`.
+- Fixed a bug where Weapon damage formulas would display incorrectly if Fury Dice exploded on multiple values.
+
+### Misc.
+
+- Transitioned system to Data Models and removed `template.json`.
+- Migrated `Actor` Configuration menu data from `flags.zweihander.actorConfig.*` to `system.settings.*`.
+- Re-organized system folder structure.
+- Misc. CSS adjustments.
+
 ## [5.7.3] - 2026-05-06
 
 ### Fixed

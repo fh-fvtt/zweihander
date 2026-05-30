@@ -30,64 +30,72 @@ export default class ZweihanderActorConfig extends HandlebarsApplicationMixin(Ap
 
     const actor = this.options.document;
     const configOptions = actor.system.settings;
+    const actorType = actor.type;
 
-    context.actorType = actor.type;
+    context.actorType = actorType;
 
-    const skillPack = game.packs.get(game.settings.get('zweihander', 'skillPack'));
-    const skills = (await skillPack.getIndex()).map((s) => s.name).sort((a, b) => a.localeCompare(b));
+    context.globalModifiers = [];
 
-    ['parry', 'dodge', 'magick', 'peril'].forEach((key) => {
-      context[`${key}Skills`] = skills.map((s) => ({
-        value: s,
-        label: s,
-        selected: configOptions[`${key}Skills`].includes(s),
+    if (actorType !== 'vehicle') {
+      context.globalModifiers.push({
+        label: game.i18n.localize('ZWEI.settings.acsettings.globalinitiativeoverride'),
+        nameAttr: 'initiativeOverride',
+        valueAttr: configOptions.initiativeOverride,
+      });
+
+      context.filePaths = {
+        dodgeSound: configOptions.dodgeSound,
+        parrySound: configOptions.parrySound,
+        gruntSound: configOptions.gruntSound,
+      };
+
+      context.playGruntSound = configOptions.playGruntSound;
+    }
+
+    if (actorType === 'character') {
+      context.filePaths.headerBackground = configOptions.headerBackground;
+
+      const skillPack = game.packs.get(game.settings.get('zweihander', 'skillPack'));
+      const skills = (await skillPack.getIndex()).map((s) => s.name).sort((a, b) => a.localeCompare(b));
+
+      ['parry', 'dodge', 'magick', 'peril'].forEach((key) => {
+        context[`${key}Skills`] = skills.map((s) => ({
+          value: s,
+          label: s,
+          selected: configOptions[`${key}Skills`].includes(s),
+        }));
+      });
+
+      context.avoidAllPeril = configOptions.isIgnoredPerilLadderValue.reduce((a, b) => a && b, true);
+
+      context.governingAttributes = ['dth', 'pth', 'int', 'mov'].map((attr) => ({
+        label: game.i18n.localize(`ZWEI.settings.acsettings.primary${attr}`),
+        nameAttr: `${attr}Attribute`,
+        hint: game.i18n.localize(`ZWEI.settings.acsettings.primary${attr}hint`),
+        attributes: CONFIG.ZWEI.primaryAttributes.map((pa) => ({
+          value: pa,
+          label: game.i18n.localize(`ZWEI.actor.primary.${pa}`),
+          selected: pa === configOptions[`${attr}Attribute`] ? 'selected' : '',
+        })),
       }));
-    });
 
-    context.avoidAllPeril = configOptions.isIgnoredPerilLadderValue.reduce((a, b) => a && b, true);
+      ['encumbrance', 'movement', 'initiative'].forEach((mod) =>
+        context.globalModifiers.push({
+          label: game.i18n.localize(`ZWEI.settings.acsettings.global${mod}`),
+          nameAttr: `${mod}Modifier`,
+          valueAttr: configOptions[`${mod}Modifier`],
+        })
+      );
 
-    const attributeNames = ['dth', 'pth', 'int', 'mov'];
+      context.isIgnoredPerilLadderValue = configOptions.isIgnoredPerilLadderValue;
 
-    context.governingAttributes = attributeNames.map((attr) => ({
-      label: game.i18n.localize(`ZWEI.settings.acsettings.primary${attr}`),
-      nameAttr: `${attr}Attribute`,
-      hint: game.i18n.localize(`ZWEI.settings.acsettings.primary${attr}hint`),
-      attributes: CONFIG.ZWEI.primaryAttributes.map((pa) => ({
-        value: pa,
-        label: game.i18n.localize(`ZWEI.actor.primary.${pa}`),
-        selected: pa === configOptions[`${attr}Attribute`] ? 'selected' : '',
-      })),
-    }));
+      context.permanentRanks = {
+        chaos: configOptions.permanentChaosRanks,
+        order: configOptions.permanentOrderRanks,
+      };
 
-    const modifierNames = ['encumbrance', 'movement', 'initiative'];
-
-    context.globalModifiers = modifierNames.map((mod) => ({
-      label: game.i18n.localize(`ZWEI.settings.acsettings.global${mod}`),
-      nameAttr: `${mod}Modifier`,
-      valueAttr: configOptions[`${mod}Modifier`],
-    }));
-
-    context.globalModifiers.push({
-      label: game.i18n.localize('ZWEI.settings.acsettings.globalinitiativeoverride'),
-      nameAttr: 'initiativeOverride',
-      valueAttr: configOptions.initiativeOverride,
-    });
-
-    context.permanentRanks = {
-      chaos: configOptions.permanentChaosRanks,
-      order: configOptions.permanentOrderRanks,
-    };
-
-    context.isMagickUser = configOptions.isMagickUser;
-    context.filePaths = {
-      dodgeSound: configOptions.dodgeSound,
-      parrySound: configOptions.parrySound,
-      gruntSound: configOptions.gruntSound,
-      headerBackground: configOptions.headerBackground,
-    };
-
-    context.playGruntSound = configOptions.playGruntSound;
-    context.isIgnoredPerilLadderValue = configOptions.isIgnoredPerilLadderValue;
+      context.isMagickUser = configOptions.isMagickUser;
+    }
 
     return context;
   }

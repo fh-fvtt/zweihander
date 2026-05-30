@@ -57,6 +57,48 @@ export default class ZweihanderVehicleModel extends ZweihanderBaseActorModel {
     };
   }
 
+  /** @override */
+  static get _settingsFields() {
+    // no call to super since we don't want any configurable Actor settings
+    return {};
+  }
+
+  // ---=== HELPER METHODS ===---
+
+  _prepareDriverDerivedData(systemData, drivers) {
+    let driversBestPb = 0,
+      driversBestMovBonus = 0;
+
+    if (drivers) {
+      for (let i = 0; i < drivers.length; i++) {
+        const pb = drivers[i].system.stats.primaryAttributes.perception.bonus;
+
+        if (pb > driversBestPb) {
+          driversBestPb = pb;
+        }
+      }
+
+      const pa = systemData.details.associatedPrimaryAttribute;
+
+      // console.log(pa, drivers);
+
+      for (let i = 0; i < drivers.length; i++) {
+        const mb = drivers[i].system.stats.primaryAttributes[pa].bonus;
+
+        // console.log('MB', mb);
+
+        if (mb > driversBestMovBonus) {
+          driversBestMovBonus = mb;
+        }
+      }
+    }
+
+    return {
+      driversBestPb: driversBestPb,
+      driversBestMovBonus: driversBestMovBonus,
+    };
+  }
+
   // ---=== FOUNDRY METHODS ===---
 
   /** @override */
@@ -108,40 +150,7 @@ export default class ZweihanderVehicleModel extends ZweihanderBaseActorModel {
     mov.current = Math.max(0, mov.value - mov.overage) + driversBestMovBonus;
   }
 
-  _prepareDriverDerivedData(systemData, drivers) {
-    let driversBestPb = 0,
-      driversBestMovBonus = 0;
-
-    if (drivers) {
-      for (let i = 0; i < drivers.length; i++) {
-        const pb = drivers[i].system.stats.primaryAttributes.perception.bonus;
-
-        if (pb > driversBestPb) {
-          driversBestPb = pb;
-        }
-      }
-
-      const pa = systemData.details.associatedPrimaryAttribute;
-
-      // console.log(pa, drivers);
-
-      for (let i = 0; i < drivers.length; i++) {
-        const mb = drivers[i].system.stats.primaryAttributes[pa].bonus;
-
-        // console.log('MB', mb);
-
-        if (mb > driversBestMovBonus) {
-          driversBestMovBonus = mb;
-        }
-      }
-    }
-
-    return {
-      driversBestPb: driversBestPb,
-      driversBestMovBonus: driversBestMovBonus,
-    };
-  }
-
+  /** @override */
   async _preCreate(data, options, user) {
     const allowed = await super._preCreate(data, options, user);
     if (allowed === false) return false;

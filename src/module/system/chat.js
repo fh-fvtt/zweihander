@@ -1,3 +1,4 @@
+import ZweihanderContextMenu from '../apps/context-menu';
 import * as ZweihanderDice from './rolls/dice';
 import * as ZweihanderUtils from './utils';
 
@@ -6,6 +7,12 @@ export function addGlobalChatListeners(html) {
 }
 
 export function addLocalChatListeners(message, html, data) {
+  html.querySelectorAll('.button.message-delete').forEach((el) => {
+    el.addEventListener('click', (event) => {
+      ZweihanderContextMenu.triggerEvent(event);
+    });
+  });
+
   html.querySelectorAll('.title-and-toggle').forEach((el) => {
     el.addEventListener('click', (event) => {
       el.querySelector('.details-toggle').classList.toggle('expanded');
