@@ -2,6 +2,10 @@
   "CHAT": {
     "From": "De"
   },
+  "COMBATANT": {
+    "spendap": "Gastar punto de acción",
+    "refundap": "Devolver punto de acción"
+  },
   "TYPES": {
     "Actor": {
       "character": "Personaje jugador",
@@ -36,7 +40,7 @@
   },
   "EFFECT": {
     "statuseffect": "Efecto de estado",
-    "dead": "¡Mueres!",
+    "dead": "¡Muerto!",
     "blinded": "Cegado",
     "choked": "Estrangulado",
     "defenseless": "Desprotegido",
@@ -48,17 +52,24 @@
     "prone": "Derribado",
     "stunned": "Aturdido",
     "surprised": "Sorprendido",
-    "onfire": "¡En llamas!",
-    "bleeding": "Desangrarse",
+    "onfire": "¡Ardiendo!",
+    "bleeding": "Desangrándote",
     "incapacitated": "¡Incapacitado!",
     "intoxicated": "Ebrio",
     "delirious": "Delirando",
     "confused": "Confundido",
     "starving": "Hambriento",
-    "suffocating": "Asfixiándose",
+    "suffocating": "Asfixiándote",
     "poisoned": "Intoxicado",
     "envenomed": "Envenenado",
-    "exhausted": "Exhausto"
+    "exhausted": "Exhausto",
+    "coverlow": "Cobertura baja",
+    "covermedium": "Cobertura media",
+    "coverhigh": "Cobertura grande",
+    "covertotal": "Cobertura total",
+    "outnumbered": "Superado en número",
+    "hastened": "Acelerado",
+    "infection": "Infectado"
   },
   "ZWEI": {
     "Difficulty": {
@@ -75,6 +86,9 @@
       "2": "Éxito",
       "1": "Fallo",
       "0": "Pifia"
+    },
+    "combat": {
+      "ap": "Puntos de acción"
     },
     "actorwarninginvaliditem": "¡No se puede añadir directamente un {itemType} a {actorType}!",
     "actor": {
@@ -102,7 +116,8 @@
         "description": "Descripción",
         "primary": "Atributos primarios",
         "primarybonuses": "Atributos primarios (bonificaciones)",
-        "secondary": "Atributos secundarios"
+        "secondary": "Atributos secundarios",
+        "combat": "Combate"
       },
       "primary": {
         "combat": "Combate",
@@ -600,6 +615,8 @@
       "immersivepausehint": "Si se habilita, se mostrarán mensajes ominosos aleatorios cuando se pause el juego.",
       "alternativeperil": "Usar sistema de estrés alternativo",
       "alternativeperilhint": "Este sistema de estrés aplica un penalizador simple a la probabilidad base en lugar de ignorar niveles de habilidad.",
+      "alternativeap": "Usar sistema de puntos de acción alternativo",
+      "alternativeaphint": "Este sistema de puntos de acción hace que los contendientes comiencen el combate con todos sus puntos de acción en el Asalto 1, en lugar de en su turno.",
       "fortuneexplodes": "No limitar la explosión de fortuna",
       "fortuneexplodeshint": "Se permitirá que los dados de furia exploten más de una vez por ataque",
       "zweitheme": "Tema de la hoja de Zweihander",
@@ -653,10 +670,12 @@
         "globalinitiativehint": "Establece un modificador global a la iniciativa",
         "globalinitiativeoverride": "Ajustes de initiativa",
         "globalinitiativeoverridehint": "Configura un número personalizado de d10s para la fórmula base de iniciativa.",
+        "globalapmodifier": "Modificador de puntos de acción",
+        "globalapmodifierhint": "Ajusta un modificador global a los puntos de acción.",
         "globalmovement": "Modificador al movimiento",
         "globalmovementhint": "Establece un modificador global al movimiento",
         "skillstitle": "Habilidades asociadas",
-        "skillstitlehint": "Seleccione las habilidades que se pueden usar para parar o esquivar.",
+        "skillstitlehint": "Seleccione las habilidades que se pueden usar para parar, esquivar o resistir la locura.",
         "skillsparry": "Habilidades de parada",
         "skillsparryhint": "Configura qué habilidades se pueden usar para parar",
         "skillsdodge": "Habilidades de esquiva",
