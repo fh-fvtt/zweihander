@@ -283,6 +283,17 @@ export default class ZweihanderCharacterSheet extends ZweihanderBaseActorSheet {
       },
     ];
 
+    sheetData.perilChoices = {
+      5: 'Unhindered',
+      4: 'Imperiled',
+      3: '-5',
+      2: '-10',
+      1: '-15',
+      0: 'Incapacitated',
+    };
+
+    sheetData.chosen = sheetData.system.stats.secondaryAttributes.perilCurrent.value;
+
     // console.log('ACTOR CONTEXT:', sheetData);
 
     return sheetData;

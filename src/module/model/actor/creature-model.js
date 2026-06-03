@@ -83,6 +83,7 @@ export default class ZweihanderCreatureModel extends ZweihanderBaseActorModel {
   static get _settingsFields() {
     return {
       initiativeOverride: new NumberField({ integer: true, initial: 0 }),
+      apModifier: new NumberField({ integer: true, initial: 0 }),
       dodgeSound: new FilePathField({
         categories: ['AUDIO'],
         initial: 'systems/zweihander/assets/sounds/dodge.mp3',

@@ -284,7 +284,7 @@ export async function rollPerilDamage(actorUuid, testConfiguration) {
 export async function rollWeaponDamage(actorUuid, testConfiguration) {
   const { weaponId, additionalFuryDice } = testConfiguration;
   const actor = fromUuidSync(actorUuid);
-  const weapon = actor.items.get(weaponId); //.toObject(false);
+  const weapon = actor.items.get(weaponId);
 
   const damageData = weapon.system.damage;
   const furyData = damageData.fury;
@@ -386,10 +386,11 @@ function _preCalculateTargetData(actor, damage, type = 'damage') {
     finalThresholdStep: -1, // no damage to this target, skip
   };
 
-  let stepsToFall = Math.min(4, Math.max(0, Math.floor((damage - threshold.value) / 6) + 1));
+  const stepsToFall = Math.min(4, Math.max(0, Math.floor((damage - threshold.value) / 6) + 1));
 
   if (stepsToFall > 0) {
-    const finalSteps = stepsToFall < 4 ? stepsToFall : 5; // character is instantly Slain! if damage exceeds Damage Threshold +
+    // character is instantly Slain! / Incapacitated if damage exceeds Damage / Peril Threshold + 18
+    const finalSteps = stepsToFall < 4 ? stepsToFall : 5;
 
     targetData.finalThresholdStep = Math.max(0, current.value - finalSteps);
   }
@@ -467,7 +468,7 @@ export async function explodeWeaponDamage(message, useFortune) {
   }
   const { actorUuid, weaponId, exploded, targets } = message.flags.zweihander.weaponTestData;
   const actor = fromUuidSync(actorUuid);
-  const weapon = actor.items.get(weaponId); //.toObject(false);
+  const weapon = actor.items.get(weaponId);
   const roll = message.rolls[0];
   const dice = roll.dice.find((d) => d.faces === 6);
 

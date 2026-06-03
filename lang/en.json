@@ -2,6 +2,10 @@
   "CHAT": {
     "From": "From"
   },
+  "COMBATANT": {
+    "spendap": "Spend Action Point",
+    "refundap": "Refund Action Point"
+  },
   "TYPES": {
     "Actor": {
       "character": "Player Character",
@@ -58,8 +62,15 @@
     "suffocating": "Suffocating",
     "poisoned": "Poisoned",
     "envenomed": "Envenomed",
-    "exhausted": "Exhausted"
-  },
+    "exhausted": "Exhausted",
+    "coverlow": "Cover (Low)",
+    "covermedium": "Cover (Medium)",
+    "coverhigh": "Cover (High)",
+    "covertotal": "Cover (Total)",
+    "outnumbered": "Outnumbered",
+    "hastened": "Hastened",
+    "infection": "Infection"
+    },
   "ZWEI": {
     "Difficulty": {
       "-30": "Arduous",
@@ -75,6 +86,9 @@
       "2": "Success",
       "1": "Failure",
       "0": "Critical Failure"
+    },
+    "combat": {
+      "ap": "Action Points"
     },
     "actorwarninginvaliditem": "A {itemType} can not be directly added to {actorType}!",
     "actor": {
@@ -102,7 +116,8 @@
         "description": "Description",
         "primary": "Primary Attributes",
         "primarybonuses": "Primary Attribute Bonuses",
-        "secondary": "Secondary Attributes"
+        "secondary": "Secondary Attributes",
+        "combat": "Combat"
       },
       "primary": {
         "combat": "Combat",
@@ -653,10 +668,12 @@
         "globalinitiativehint": "Set a global Initiative modifier.",
         "globalinitiativeoverride": "Initiative Override",
         "globalinitiativeoverridehint": "Set a custom number of d10s for the base Initiative formula.",
+        "globalapmodifier": "Action Points Modifier",
+        "globalapmodifierhint": "Set a global Action Points modifier.",
         "globalmovement": "Movement Modifier",
         "globalmovementhint": "Set a global Movement modifier.",
         "skillstitle": "Governing Skills",
-        "skillstitlehint": "Select the skills that can be used when rolling Parry or Dodge.",
+        "skillstitlehint": "Select the skills that can be used when rolling Parry, Dodge, or Withstand Madness.",
         "skillsparry": "Parry Skills",
         "skillsparryhint": "Set the skills that can be used when rolling Parry.",
         "skillsdodge": "Dodge Skills",

@@ -22,6 +22,7 @@
         <div class="form-group">
           <label>{{mod.label}}</label>
           <input type="number" name="{{mod.nameAttr}}" value="{{mod.valueAttr}}" />
+          {{#if mod.hint}}<p class="hint">{{mod.hint}}</p>{{/if}}
         </div>
       {{/each}}
     </fieldset>
@@ -137,7 +138,7 @@
         <label>{{mod.label}}</label>
         <input type="number" name="{{mod.nameAttr}}" value="{{mod.valueAttr}}" />
       </div>
-      <p class="hint">{{localize "ZWEI.settings.acsettings.globalinitiativeoverridehint"}}</p>
+      {{#if mod.hint}}<p class="hint">{{mod.hint}}</p>{{/if}}
       {{/each}}
   </fieldset>
   {{/if}}

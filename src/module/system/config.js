@@ -80,18 +80,15 @@ ZWEI.ritualDifficultyGeneric = ['varies', 'special'];
 
 ZWEI.primaryAttributes = ['combat', 'brawn', 'agility', 'perception', 'intelligence', 'willpower', 'fellowship'];
 ZWEI.primaryAttributeBonuses = ['CB', 'BB', 'AB', 'PB', 'IB', 'WB', 'FB'];
-
-// @todo: uncomment when Active Effects can affect Skill Tests
 ZWEI.secondaryAttributes = [
   'damageThreshold',
   'perilThreshold',
-  //'dodge',
-  //'parry',
-  //'magick',
   'encumbrance',
   'initiative',
   'movement',
+  // 'dodge', 'parry', 'magick'
 ];
+ZWEI.combatAttributes = { 'system.stats.actionPoints.extra': 'ZWEI.combat.ap' };
 
 ZWEI.primaryAttributePhases = {
   'system.stats.primaryAttributes.combat.value': 'initial',
@@ -122,6 +119,10 @@ ZWEI.secondaryAttributePhases = {
   'system.stats.secondaryAttributes.encumbrance.value': 'advanced',
   'system.stats.secondaryAttributes.initiative.value': 'advanced',
   'system.stats.secondaryAttributes.movement.value': 'advanced',
+};
+
+ZWEI.combatPhases = {
+  'system.stats.actionPoints.extra': 'intermediate',
 };
 
 ZWEI.typeOperator = {
@@ -333,6 +334,65 @@ ZWEI.statusEffects = {
   confused: {
     name: 'EFFECT.confused',
     img: 'systems/zweihander/assets/default-icons/misdirection.svg',
+  },
+  coverLow: {
+    name: 'EFFECT.coverlow',
+    img: 'systems/zweihander/assets/default-icons/stakes-fence.svg',
+    order: 1,
+    changes: [
+      {
+        key: 'system.stats.secondaryAttributes.damageThreshold.value',
+        phase: 'advanced',
+        priority: null,
+        type: 'add',
+        value: 3,
+      },
+    ],
+  },
+  coverMedium: {
+    name: 'EFFECT.covermedium',
+    img: 'systems/zweihander/assets/default-icons/palisade.svg',
+    order: 2,
+    changes: [
+      {
+        key: 'system.stats.secondaryAttributes.damageThreshold.value',
+        phase: 'advanced',
+        priority: null,
+        type: 'add',
+        value: 6,
+      },
+    ],
+  },
+  coverHigh: {
+    name: 'EFFECT.coverhigh',
+    img: 'systems/zweihander/assets/default-icons/broken-wall.svg',
+    order: 3,
+    changes: [
+      {
+        key: 'system.stats.secondaryAttributes.damageThreshold.value',
+        phase: 'advanced',
+        priority: null,
+        type: 'add',
+        value: 9,
+      },
+    ],
+  },
+  coverTotal: {
+    name: 'EFFECT.covertotal',
+    img: 'systems/zweihander/assets/default-icons/brick-wall.svg',
+    order: 4,
+  },
+  infection: {
+    name: 'EFFECT.infection',
+    img: 'systems/zweihander/assets/default-icons/spotted-wound.svg',
+  },
+  hastened: {
+    name: 'EFFECT.hastened',
+    img: 'systems/zweihander/assets/default-icons/swirl-ring.svg',
+  },
+  outnumbered: {
+    name: 'EFFECT.outnumbered',
+    img: 'systems/zweihander/assets/default-icons/uprising.svg',
   },
 };
 

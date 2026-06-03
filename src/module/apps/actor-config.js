@@ -30,17 +30,23 @@ export default class ZweihanderActorConfig extends HandlebarsApplicationMixin(Ap
 
     const actor = this.options.document;
     const configOptions = actor.system.settings;
-    const actorType = actor.type;
 
-    context.actorType = actorType;
-
+    context.actorType = actor.type;
     context.globalModifiers = [];
 
-    if (actorType !== 'vehicle') {
+    if (!actor.isVehicle) {
       context.globalModifiers.push({
-        label: game.i18n.localize('ZWEI.settings.acsettings.globalinitiativeoverride'),
+        label: _loc('ZWEI.settings.acsettings.globalinitiativeoverride'),
         nameAttr: 'initiativeOverride',
         valueAttr: configOptions.initiativeOverride,
+        hint: _loc('ZWEI.settings.acsettings.globalinitiativeoverridehint'),
+      });
+
+      context.globalModifiers.unshift({
+        label: _loc('ZWEI.settings.acsettings.globalapmodifier'),
+        nameAttr: 'apModifier',
+        valueAttr: configOptions.apModifier,
+        hint: _loc('ZWEI.settings.acsettings.globalapmodifierhint'),
       });
 
       context.filePaths = {
@@ -52,7 +58,7 @@ export default class ZweihanderActorConfig extends HandlebarsApplicationMixin(Ap
       context.playGruntSound = configOptions.playGruntSound;
     }
 
-    if (actorType === 'character') {
+    if (actor.isCharacter) {
       context.filePaths.headerBackground = configOptions.headerBackground;
 
       const skillPack = game.packs.get(game.settings.get('zweihander', 'skillPack'));
@@ -69,21 +75,22 @@ export default class ZweihanderActorConfig extends HandlebarsApplicationMixin(Ap
       context.avoidAllPeril = configOptions.isIgnoredPerilLadderValue.reduce((a, b) => a && b, true);
 
       context.governingAttributes = ['dth', 'pth', 'int', 'mov'].map((attr) => ({
-        label: game.i18n.localize(`ZWEI.settings.acsettings.primary${attr}`),
+        label: _loc(`ZWEI.settings.acsettings.primary${attr}`),
         nameAttr: `${attr}Attribute`,
-        hint: game.i18n.localize(`ZWEI.settings.acsettings.primary${attr}hint`),
+        hint: _loc(`ZWEI.settings.acsettings.primary${attr}hint`),
         attributes: CONFIG.ZWEI.primaryAttributes.map((pa) => ({
           value: pa,
-          label: game.i18n.localize(`ZWEI.actor.primary.${pa}`),
+          label: _loc(`ZWEI.actor.primary.${pa}`),
           selected: pa === configOptions[`${attr}Attribute`] ? 'selected' : '',
         })),
       }));
 
-      ['encumbrance', 'movement', 'initiative'].forEach((mod) =>
-        context.globalModifiers.push({
-          label: game.i18n.localize(`ZWEI.settings.acsettings.global${mod}`),
+      ['initiative', 'movement', 'encumbrance'].forEach((mod) =>
+        context.globalModifiers.unshift({
+          label: _loc(`ZWEI.settings.acsettings.global${mod}`),
           nameAttr: `${mod}Modifier`,
           valueAttr: configOptions[`${mod}Modifier`],
+          hint: _loc(`ZWEI.settings.acsettings.global${mod}hint`),
         })
       );
 

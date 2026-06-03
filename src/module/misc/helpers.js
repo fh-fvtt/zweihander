@@ -89,7 +89,7 @@ export const registerHandlebarHelpers = async function () {
         <div class="radio-and-status flexrow">
           <input type="radio" class="radio-rank"
             id="${uuid}.${i}" name="${name}"
-            value="${i}" data-dtype="Number" ${isChecked ? 'checked' : ''}>
+            value="${i}" ${isChecked ? 'checked' : ''}>
           <label for="${uuid}.${i}" class="status">
             <span><span>${choices[i]}</span></span>
           </label>

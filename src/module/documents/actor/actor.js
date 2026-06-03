@@ -4,7 +4,26 @@ export default class ZweihanderActor extends Actor {
   constructor(...args) {
     super(...args);
 
-    if (this.type === 'vehicle') Hooks.on('updateActor', (actor, changed) => this.#updateOccupantsData(actor, changed));
+    if (this.type === 'vehicle')
+      Hooks.on('updateActor', (actor, changed) => {
+        if (this.isOwner) this.#updateOccupantsData(actor, changed);
+      });
+  }
+
+  get isVehicle() {
+    return this.type === 'vehicle';
+  }
+
+  get isNPC() {
+    return this.type === 'npc';
+  }
+
+  get isCreature() {
+    return this.type === 'creature';
+  }
+
+  get isCharacter() {
+    return this.type === 'character';
   }
 
   getRollData() {

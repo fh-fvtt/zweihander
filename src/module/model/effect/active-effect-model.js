@@ -25,6 +25,7 @@ export default class ZweihanderActiveEffectModel extends ActiveEffectTypeDataMod
       ...CONFIG.ZWEI.primaryAttributePhases,
       ...CONFIG.ZWEI.primaryAttributeBonusPhases,
       ...CONFIG.ZWEI.secondaryAttributePhases,
+      ...CONFIG.ZWEI.combatPhases,
     };
 
     for (let change of changes) {

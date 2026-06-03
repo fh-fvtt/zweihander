@@ -204,6 +204,9 @@ export default class ZweihanderPlayerCharacterModel extends ZweihanderBaseActorM
 
     actor.applyActiveEffects('intermediate');
 
+    // calculate maximum action points
+    systemData.stats.actionPoints.max = 3 + systemData.stats.actionPoints.extra + configOptions.apModifier;
+
     // assign inital peril & damage
     const sa = systemData.stats.secondaryAttributes;
     sa.perilThreshold = {};

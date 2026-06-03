@@ -73,7 +73,7 @@ export default class ZweihanderBaseActorSheet extends HandlebarsApplicationMixin
     mergeObject(sheetData, zweihanderContext);
 
     // The Actor's data
-    const actor = this.actor; //.toObject(false);
+    const actor = this.actor;
     sheetData.actor = actor;
     sheetData.system = this.actor.system;
 

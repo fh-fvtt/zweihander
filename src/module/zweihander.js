@@ -9,13 +9,15 @@ import * as ZweihanderUtils from './system/utils';
 import * as ZweihanderChat from './system/chat';
 
 import ZweihanderGamePause from './apps/pause';
+import ZweihanderActiveEffectConfig from './apps/active-effect-config';
 import ZweihanderPlayerCharacterModel from './model/actor/pc-model';
 import ZweihanderCreatureModel from './model/actor/creature-model';
 import ZweihanderNpcModel from './model/actor/npc-model';
 import ZweihanderVehicleModel from './model/actor/vehicle-model';
 import ZweihanderActor from './documents/actor/actor';
 import ZweihanderActiveEffect from './documents/effects/active-effect';
-import ZweihanderActiveEffectConfig from './apps/active-effect-config';
+import ZweihanderCombatant from './documents/combat/combatant';
+import ZweihanderCombat from './documents/combat/combat';
 import ZweihanderCharacterSheet from './sheets/actor/character-sheet';
 import ZweihanderNpcSheet from './sheets/actor/npc-sheet';
 import ZweihanderCreatureSheet from './sheets/actor/creature-sheet';
@@ -41,6 +43,7 @@ import ZweihanderTrappingModel from './model/item/trapping-model';
 import ZweihanderUniqueAdvanceModel from './model/item/unique-advance-model';
 import ZweihanderWeaponModel from './model/item/weapon-model';
 import ZweihanderActiveEffectModel from './model/effect/active-effect-model';
+import ZweihanderCombatTracker from './apps/combat-tracker';
 import FortuneTracker from './apps/fortune-tracker';
 
 import { ZWEI } from './system/config';
@@ -199,10 +202,8 @@ Hooks.once('init', async function () {
   CONFIG.Item.documentClass = ZweihanderItem;
   CONFIG.ActiveEffect.documentClass = ZweihanderActiveEffect;
   CONFIG.ActiveEffect.legacyTransferral = false;
-  CONFIG.ui.pause = ZweihanderGamePause;
-  // CONFIG.Combat.documentClass = ZweihanderCombat;
-  // CONFIG.Combatant.documentClass = ZweihanderCombatant;
-  // CONFIG.ui.combat = ZweihanderCombatTracker;
+  CONFIG.Combat.documentClass = ZweihanderCombat;
+  CONFIG.Combatant.documentClass = ZweihanderCombatant;
 
   // Register sheet application classes
   Actors.registerSheet('zweihander', ZweihanderCharacterSheet, {
@@ -229,6 +230,11 @@ Hooks.once('init', async function () {
 
   DocumentSheetConfig.registerSheet(ActiveEffect, 'zweihander', ZweihanderActiveEffectConfig, {
     makeDefault: true,
+  });
+
+  Object.assign(CONFIG.ui, {
+    combat: ZweihanderCombatTracker,
+    pause: ZweihanderGamePause,
   });
 
   // Register Helpers

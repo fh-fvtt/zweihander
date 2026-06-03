@@ -335,7 +335,6 @@ export default class ZweihanderVehicleSheet extends ZweihanderBaseActorSheet {
     // add everyone as passenger by default; driver logic handled elsewhere
     if (!vehicleOccupants.passengers.includes(uuid) && !vehicleOccupants.drivers.includes(uuid)) {
       const actor = fromUuidSync(uuid);
-      const actorData = actor.toObject(false);
 
       if (actor.type === 'vehicle') {
         ui.notifications.error("An Actor of type 'vehicle' cannot be a passenger in a vehicle.");
@@ -343,10 +342,10 @@ export default class ZweihanderVehicleSheet extends ZweihanderBaseActorSheet {
       }
 
       vehicleOccupants.passengers.push({
-        name: actorData.name,
-        img: actorData.img,
+        name: actor.name,
+        img: actor.img,
         uuid: uuid,
-        system: actorData.system,
+        system: actor.system,
         isDriver: false,
       });
     } else {

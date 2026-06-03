@@ -21,29 +21,35 @@ export default class ZweihanderActiveEffectConfig extends ActiveEffectConfig {
   _getChoicesKeys() {
     const pa = CONFIG.ZWEI.primaryAttributes.map((pa) => ({
       value: `system.stats.primaryAttributes.${pa}.value`,
-      label: game.i18n.localize('ZWEI.actor.primary.' + pa),
-      group: game.i18n.localize('ZWEI.actor.navigation.primary'),
+      label: _loc('ZWEI.actor.primary.' + pa),
+      group: _loc('ZWEI.actor.navigation.primary'),
     }));
 
     const pab = CONFIG.ZWEI.primaryAttributes.map((pab) => ({
       value: `system.stats.primaryAttributes.${pab}.bonus`,
-      label: game.i18n.localize('ZWEI.actor.primarybonuses.' + pab),
-      group: game.i18n.localize('ZWEI.actor.navigation.primarybonuses'),
+      label: _loc('ZWEI.actor.primarybonuses.' + pab),
+      group: _loc('ZWEI.actor.navigation.primarybonuses'),
     }));
 
     const sa = CONFIG.ZWEI.secondaryAttributes.map((sa) => ({
       value: `system.stats.secondaryAttributes.${sa}.value`,
-      label: game.i18n.localize(
+      label: _loc(
         'ZWEI.actor.secondary.' +
           sa
             .split(/(?=[A-Z])/)
             .map((w) => w.toLowerCase())
             .join('')
       ),
-      group: game.i18n.localize('ZWEI.actor.navigation.secondary'),
+      group: _loc('ZWEI.actor.navigation.secondary'),
     }));
 
-    return [...pa, ...pab, ...sa];
+    const cbt = Object.entries(CONFIG.ZWEI.combatAttributes).map(([value, label]) => ({
+      value,
+      label: _loc(label),
+      group: _loc('ZWEI.actor.navigation.combat'),
+    }));
+
+    return [...pa, ...pab, ...sa, ...cbt];
   }
 
   // ---=== FOUNDRY METHODS ===---

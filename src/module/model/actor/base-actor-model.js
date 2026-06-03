@@ -26,6 +26,7 @@ export default class ZweihanderBaseActorModel extends TypeDataModel {
     return {
       primaryAttributes: new SchemaField(this._primaryAttributeFields),
       secondaryAttributes: new SchemaField(this._secondaryAttributeFields),
+      actionPoints: new SchemaField(this._actionPointsFields),
     };
   }
 
@@ -117,6 +118,7 @@ export default class ZweihanderBaseActorModel extends TypeDataModel {
       encumbranceModifier: new NumberField({ integer: true, initial: 0 }),
       initiativeModifier: new NumberField({ integer: true, initial: 0 }),
       initiativeOverride: new NumberField({ integer: true, initial: 0 }),
+      apModifier: new NumberField({ integer: true, initial: 0 }),
       movementModifier: new NumberField({ integer: true, initial: 0 }),
       parrySkills: new ArrayField(new StringField({ initial: null, nullable: true }), {
         initial: getDefaultSkills('defaultParrySkills'),
@@ -154,6 +156,14 @@ export default class ZweihanderBaseActorModel extends TypeDataModel {
     };
   }
 
+  static get _actionPointsFields() {
+    return {
+      value: new NumberField({ integer: true, initial: 3, min: 0 }),
+      max: new NumberField({ integer: true, initial: 3, min: 0 }),
+      extra: new NumberField({ integer: true, initial: 0 }),
+    };
+  }
+
   // ---=== FOUNDRY METHODS ===---
 
   /** @override */
@@ -168,7 +178,7 @@ export default class ZweihanderBaseActorModel extends TypeDataModel {
       await actor.updateSource({ img });
     }
 
-    if (actor.type !== 'vehicle') {
+    if (!actor.isVehicle) {
       // add default set of skills to Characters, Creatures, and NPCs
       const skillPack = game.packs.get(game.settings.get('zweihander', 'skillPack'));
       const skillsFromPack = (await skillPack.getDocuments())

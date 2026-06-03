@@ -509,7 +509,7 @@ body.game.vtt.system-zweihander {
     }
   }
 
-  .tag {
+  .tag:not(.flexrow) {
     background-color: var(--zh-clr-aqua-neutral);
     color: var(--zh-clr-bg0);
     border: 1px solid transparent;
@@ -526,6 +526,11 @@ body.game.vtt.system-zweihander {
 
   .tags.input-element-tags {
     order: 1;
+  }
+
+  .effect-control.active {
+    border: 1px solid var(--zh-clr-aqua);
+    border-radius: 2px;
   }
 
   .form-group {
