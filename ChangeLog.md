@@ -12,12 +12,16 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 ### Added
 
 - Added Action Point tracking to Combat Tracker for Characters, Creatures, and NPCs. Use Combat Tracker's built-in resource tracker and select `stats.actionPoints.value`.
-- Added new Status Effects based on Zweihänder Revised Core Rulebook / Starter Kit effects: Cover (Low), Cover (Medium), Cover (High), Cover (Total), Outnumbered, Hastened.
+- Added new Status Effects based on Zweihänder Revised Core Rulebook / Starter Kit effects: Cover (Low), Cover (Medium), Cover (High), Cover (Total), Infection, Outnumbered, Hastened.
 - Added automation for the Cover (Low), Cover (Medium), Cover (High), Cover (Total), and Surprised status effects.
 - Added partial automation for the Stunned Status Effect.
 - Added new Actor Configuration menu option for permanent Action Points modifiers.
 - Added Action Points support to Active Effects.
 - Added system option for alternative Action Point assignment at start of combat.
+
+### Fixed
+
+- Fixed a bug that was resulting in error message notifications when a driver / passenger `Actor` in a Vehicle was updated.
 
 ## [5.8.0] - 2026-05-30
 
