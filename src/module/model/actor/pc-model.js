@@ -138,6 +138,9 @@ export default class ZweihanderPlayerCharacterModel extends ZweihanderBaseActorM
     for (let r of rollables)
       calcSecondayAttributeSpecialActionValue(systemData.stats.secondaryAttributes[r], r.capitalize());
 
+    // calculate maximum action points
+    systemData.stats.actionPoints.max = 3 + systemData.stats.actionPoints.extra + configOptions.apModifier;
+
     const professions = actor.itemTypes.profession;
     const uniqueAdvances = actor.itemTypes.uniqueAdvance;
 
@@ -203,9 +206,6 @@ export default class ZweihanderPlayerCharacterModel extends ZweihanderBaseActorM
     Object.values(systemData.stats.primaryAttributes).forEach((a) => (a.baseBonus = a.bonus));
 
     actor.applyActiveEffects('intermediate');
-
-    // calculate maximum action points
-    systemData.stats.actionPoints.max = 3 + systemData.stats.actionPoints.extra + configOptions.apModifier;
 
     // assign inital peril & damage
     const sa = systemData.stats.secondaryAttributes;

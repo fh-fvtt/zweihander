@@ -88,6 +88,16 @@ export const registerSystemSettings = function () {
     onChange: debouncedReload,
   });
 
+  game.settings.register('zweihander', 'alternativeActionPointSystem', {
+    scope: 'world',
+    config: 'true',
+    name: 'ZWEI.settings.alternativeap',
+    hint: 'ZWEI.settings.alternativeaphint',
+    type: Boolean,
+    default: false,
+    onChange: debouncedReload,
+  });
+
   game.settings.register('zweihander', 'immersivePause', {
     scope: 'world',
     config: 'true',

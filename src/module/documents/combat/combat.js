@@ -144,8 +144,11 @@ export default class ZweihanderCombat extends Combat {
 
     const { value, max } = actor.system.stats.actionPoints;
 
-    if (value < max) {
-      await actor.update({ 'system.stats.actionPoints.value': max });
+    const useAlternativeActionPointSystem = game.settings.get('zweihander', 'alternativeActionPointSystem');
+    const targetValue = useAlternativeActionPointSystem ? max : 0;
+
+    if (value !== targetValue) {
+      await actor.update({ 'system.stats.actionPoints.value': targetValue });
     }
   }
 }

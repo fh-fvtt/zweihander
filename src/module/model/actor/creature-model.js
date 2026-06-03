@@ -109,12 +109,13 @@ export default class ZweihanderCreatureModel extends ZweihanderBaseActorModel {
     const actor = this.parent;
     const configOptions = actor.system.settings;
 
-    Object.values(actor.system.stats.primaryAttributes).forEach(
-      (a) => (a.bonus = a.bonusAdvances + Math.floor(a.value / 10))
-    );
+    // calculate maximum action points
+    actor.system.stats.actionPoints.max = 3 + actor.system.stats.actionPoints.extra + configOptions.apModifier;
 
     const sa = actor.system.stats.secondaryAttributes;
     const pa = actor.system.stats.primaryAttributes;
+
+    Object.values(pa).forEach((a) => (a.bonus = a.bonusAdvances + Math.floor(a.value / 10)));
 
     sa.perilCurrent.effectiveValue = sa.perilCurrent.value;
 

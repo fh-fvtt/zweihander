@@ -122,7 +122,7 @@ ZWEI.secondaryAttributePhases = {
 };
 
 ZWEI.combatPhases = {
-  'system.stats.actionPoints.extra': 'intermediate',
+  'system.stats.actionPoints.extra': 'initial',
 };
 
 ZWEI.typeOperator = {
