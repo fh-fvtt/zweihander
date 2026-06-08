@@ -62,7 +62,7 @@
   </fieldset>
   {{#if skillEffects.length}}
     <fieldset class="modifiers-container">
-      <legend>Modifiers</legend>
+      <legend>{{localize "ZWEI.rolls.modifiers"}}</legend>
       {{#each skillEffects as |effect idx|}}
         <div class="flexrow modifier" data-tooltip-html="{{{effect.description}}}" data-tooltip-direction="UP" data-tooltip-class="fancy-tooltip padded">
           <input type="checkbox" id="modifier-checkbox-{{idx}}" class="base-chance-modifier" data-modifier-type="{{effect.type}}" data-modifier-value="{{effect.value}}">
