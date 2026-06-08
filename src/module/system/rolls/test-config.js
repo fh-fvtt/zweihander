@@ -1,8 +1,7 @@
-import { ZWEI } from '../config';
-import { getDifficultyRatingLabel, selectedChoice, normalizedEquals } from '../utils';
+import ZweihanderTestDialogFactory from '../../apps/dialog/test-dialog-factory';
 
-const { DialogV2 } = foundry.applications.api;
-const { renderTemplate } = foundry.applications.handlebars;
+import { normalizedEquals } from '../utils';
+
 const { mergeObject } = foundry.utils;
 
 export const getItemRollConfiguration = (item) => {
@@ -30,135 +29,12 @@ export const getItemRollConfiguration = (item) => {
   };
 };
 
+// @todo: move this to dice.js
 export async function getTestConfiguration(skillItem, testType = 'skill', testConfiguration = {}) {
   testConfiguration.flip = testConfiguration.flip ?? (skillItem.system.isFlipToFail ? 'flipfail' : 'noflip');
-  const configurationFromDialog = await renderConfigurationDialog(testType, skillItem.name, testConfiguration);
-  testConfiguration = mergeObject(testConfiguration, configurationFromDialog);
+  const result = await ZweihanderTestDialogFactory.create(skillItem, testType, testConfiguration);
+  if (result.cancelled) return;
+
+  testConfiguration = mergeObject(testConfiguration, result);
   return testConfiguration;
-}
-
-async function renderConfigurationDialog(testType, label, testConfiguration = {}) {
-  const templateData = {
-    weaponRoll: testType === 'weapon',
-    spellRoll: testType === 'spell',
-    madnessRoll: testType === 'madness',
-    additionalFuryDice: testConfiguration.additionalFuryDice,
-    additionalChaosDice: testConfiguration.additionalChaosDice,
-  };
-  templateData.fortuneOptions = [
-    { value: 'dontuse', label: game.i18n.localize('ZWEI.rolls.dontuse') },
-    { value: 'fortune', label: game.i18n.localize('ZWEI.rolls.fortune') },
-    { value: 'misfortune', label: game.i18n.localize('ZWEI.rolls.misfortune') },
-  ].map((option) => ({
-    selected: (testConfiguration.useFortune ?? 'dontuse') === option.value ? 'selected' : '',
-    ...option,
-  }));
-  templateData.madnessOptions = [
-    { value: 'stress', label: game.i18n.localize('ZWEI.actor.secondary.stress') },
-    { value: 'fear', label: game.i18n.localize('ZWEI.actor.secondary.fear') },
-    { value: 'terror', label: game.i18n.localize('ZWEI.actor.secondary.terror') },
-  ];
-  templateData.difficultyRatings = [...Array(7).keys()].map((i) => {
-    const value = i * 10 - 30;
-    const selected = (testConfiguration.difficultyRating ?? 0) === value ? 'selected' : '';
-    return { value, label: getDifficultyRatingLabel(value), selected };
-  });
-  templateData.flipOptions = [
-    { value: 'noflip', label: game.i18n.localize('ZWEI.rolls.noflip') },
-    { value: 'flipfail', label: game.i18n.localize('ZWEI.rolls.flipfail') },
-    { value: 'flipsucceed', label: game.i18n.localize('ZWEI.rolls.flipsucceed') },
-  ].map((option) => ({
-    selected: (testConfiguration.flip ?? 'noflip') === option.value ? 'selected' : '',
-    ...option,
-  }));
-  templateData.skillModes = selectedChoice(
-    testConfiguration.testMode ?? 'standard',
-    Object.entries(ZWEI.testModes).map(([value, { label, help }]) => ({
-      value,
-      label: `${label} ${help ? `(${help})` : ''}`,
-    }))
-  );
-  templateData.channelPowerBonuses = [
-    { value: 0, label: 'channel0' },
-    { value: 10, label: 'channel1' },
-    { value: 20, label: 'channel2' },
-    { value: 30, label: 'channel3' },
-  ].map((option) => ({
-    selected: (testConfiguration.channelPowerBonus ?? '0') === option.value ? 'selected' : '',
-    ...option,
-  }));
-  return createConfigurationDialog(
-    label,
-    'systems/zweihander/src/templates/app/test-config.hbs',
-    templateData,
-    (resolve) => (event, button, dialog) => {
-      let html = button.form.elements;
-
-      let additionalFuryDice = Number(html.extraFury?.value) || 0;
-      let additionalChaosDice = Number(html.extraChaos?.value) || 0;
-      let madnessType = html.madnessSelect?.value;
-      let difficultyRating = Number(html.difficultyRatingSelect.value);
-      let channelPowerBonus = Number(html.channelSelect?.value);
-      let flip = html.flipSelect.value;
-      let baseChanceModifier = Number(html.baseChanceModifier.value);
-      let testMode = html.skillMode.value;
-      // let useFortune = html.find('[name="useFortune"]').val();
-      resolve({
-        additionalFuryDice,
-        additionalChaosDice,
-        madnessType,
-        difficultyRating,
-        channelPowerBonus,
-        flip,
-        baseChanceModifier,
-        testMode,
-      });
-    }
-  );
-}
-
-// @todo: refactor to use custom App / factory methods, e.g. DialogV2.input
-function createConfigurationDialog(label, template, templateData, callback) {
-  return new Promise((resolve) => {
-    renderTemplate(template, templateData).then((content) => {
-      const dialog = new DialogV2({
-        window: {
-          title: `${label}: ` + game.i18n.localize('ZWEI.rolls.testconfig'),
-          icon: 'fa-solid fa-dice-d20',
-        },
-        position: {
-          width: 500,
-        },
-        content,
-        buttons: [
-          {
-            action: 'cancel',
-            label: game.i18n.localize('ZWEI.rolls.cancel'),
-            callback: () => {},
-          },
-          {
-            action: 'roll',
-            label: game.i18n.localize('ZWEI.rolls.roll'),
-            default: true,
-            callback: callback(resolve),
-          },
-        ],
-      });
-      dialog.addEventListener('render', (event) => {
-        const el = event.target.element;
-        const madnessType = el.querySelector('.madness-type');
-        const difficultyRating = el.querySelector('.difficulty-rating');
-
-        if (!madnessType) return;
-
-        const getDefaultDifficulty = (type) => (type === 'terror' ? -20 : type === 'fear' ? 0 : 20);
-        difficultyRating.value = getDefaultDifficulty(madnessType.value);
-
-        madnessType.addEventListener('change', () => {
-          difficultyRating.value = getDefaultDifficulty(madnessType.value);
-        });
-      });
-      dialog.render(true);
-    });
-  });
 }

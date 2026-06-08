@@ -1,0 +1,84 @@
+<div class="flexrow dialog-container">
+  <fieldset class="configurations-container">
+    <legend>Configuration Options</legend>
+    {{#if (eq testType 'weapon')}}
+      <div class="form-group">
+        <label for="extraFury">{{localize "ZWEI.rolls.furydice"}}</label>
+        <input type="number" name="extraFury" placeholder="0" value="{{additionalFuryDice}}" />
+      </div>
+    {{/if}}
+    {{#if (eq testType 'spell')}}
+      <div class="form-group">
+        <label for="extraChaos">{{localize "ZWEI.rolls.chaosdice"}}</label>
+        <input type="number" name="extraChaos" placeholder="0" value="{{additionalChaosDice}}" />
+      </div>
+      <div class="form-group">
+        <label for="channelSelect">{{localize "ZWEI.rolls.channelpower"}}</label>
+        <select name="channelSelect">
+          {{#each channelPowerBonuses}}
+            <option value="{{value}}" {{selected}}>{{localize (zhConcat "ZWEI.rolls." label)}}</option>
+          {{/each}}
+        </select>
+      </div>
+    {{/if}}
+    {{#if (eq testType 'madness')}}
+      <div class="form-group">
+        <label for="madnessSelect">{{localize "ZWEI.rolls.madness"}}</label>
+        <select class="madness-type" name="madnessSelect">
+          {{#each madnessOptions}}
+            <option value="{{value}}" {{selected}}>{{label}}</option>
+          {{/each}}
+        </select>
+      </div>
+    {{/if}}
+    <div class="form-group">
+      <label for="baseChanceModifier">{{localize "ZWEI.rolls.basemod"}}</label>
+      <input name="baseChanceModifier" class="base-chance" type="number" placeholder="0" />
+    </div>
+    <div class="form-group">
+      <label for="difficultyRatingSelect">{{localize "ZWEI.rolls.difficulty"}}</label>
+      <select class="difficulty-rating" name="difficultyRatingSelect">
+        {{#each difficultyRatings}}
+          <option value="{{value}}" {{selected}}>{{label}}</option>
+        {{/each}}
+      </select>
+    </div>
+    <div class="form-group">
+      <label for="flipSelect">{{localize "ZWEI.rolls.flip"}}</label>
+      <select name="flipSelect">
+        {{#each flipOptions}}
+          <option value="{{value}}" {{selected}}>{{localize (zhConcat "ZWEI.rolls." value)}}</option>
+        {{/each}}
+      </select>
+    </div>
+    <div class="form-group">
+      <label for="skillMode">{{localize "ZWEI.rolls.testmode"}}</label>
+      <select name="skillMode">
+        {{#each skillModes}}
+          <option value="{{value}}" {{selected}}>{{localize (zhConcat "ZWEI.rolls." value)}}</option>
+        {{/each}}
+      </select>
+    </div>
+  </fieldset>
+  {{#if skillEffects.length}}
+    <fieldset class="modifiers-container">
+      <legend>Modifiers</legend>
+      {{#each skillEffects as |effect idx|}}
+        <div class="flexrow modifier" data-tooltip-html="{{{effect.description}}}" data-tooltip-direction="UP" data-tooltip-class="fancy-tooltip padded">
+          <input type="checkbox" id="modifier-checkbox-{{idx}}" class="base-chance-modifier" data-modifier-type="{{effect.type}}" data-modifier-value="{{effect.value}}">
+          <label for="modifier-checkbox-{{idx}}">{{effect.effectName}} ({{zhGetOperator effect.type}}{{effect.value}})</label>
+        </div>
+      {{/each}}
+    </fieldset>
+  {{/if}}
+</div>
+{{!--
+<div class="form-group">
+  <label for="useFortune">{{localize "ZWEI.rolls.fortune"}}</label>
+  <select name="useFortune">
+    {{#each fortuneOptions}}
+      <option value="{{value}}" {{selected}}>{{localize (zhConcat "ZWEI.rolls." value)}}</option>
+    {{/each}}
+  </select>
+</div>
+--}}

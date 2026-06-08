@@ -104,11 +104,11 @@ export const registerHandlebarHelpers = async function () {
     effect.changes.forEach((e) => {
       html +=
         `<label>` +
-        game.i18n.localize('ZWEI.othermessages.modifiedattribute') +
+        _loc('ZWEI.othermessages.modifiedattribute') +
         `:</label> ${e.key}<br /><label>` +
-        game.i18n.localize('ZWEI.othermessages.mode') +
+        _loc('ZWEI.othermessages.mode') +
         `:</label> ${e.mode}<br /><label>` +
-        game.i18n.localize('ZWEI.othermessages.value') +
+        _loc('ZWEI.othermessages.value') +
         `:</label> ${e.value}<br />`;
     });
 
@@ -152,41 +152,39 @@ export const registerHandlebarHelpers = async function () {
             <td class="value">${zhExplicitSign(data.basePercentage)}%</td>
           </tr>
           <tr>
-            <td class="descriptor">${game.i18n.localize('ZWEI.chatskill.skillrank')}:</td>
+            <td class="descriptor">${_loc('ZWEI.chatskill.skillrank')}:</td>
             <td class="value">${zhExplicitSign(data.rankBonus)}%</td>
           </tr>
           <tr>
-            <td class="descriptor">${game.i18n.localize('ZWEI.chatskill.penaltyperil')}:</td>
+            <td class="descriptor">${_loc('ZWEI.chatskill.penaltyperil')}:</td>
             <td class="value">${zhExplicitSign(data.perilPenalty)}%</td>
           </tr>
           <tr>
-            <td class="descriptor">${game.i18n.localize('ZWEI.chatskill.specialmod')}:</td>
+            <td class="descriptor">${_loc('ZWEI.chatskill.specialmod')}:</td>
             <td class="value">${zhExplicitSign(data.specialBaseChanceModifier)}%</td>
           </tr>
           <tr>
-            <td class="descriptor">${game.i18n.localize('ZWEI.chatskill.cappedchance')}:</td>
+            <td class="descriptor">${_loc('ZWEI.chatskill.cappedchance')}:</td>
             <td class="value">${data.baseChance}%</td>
           </tr>
           ${
             data.spellTest
               ? `<tr>
-              <td class="descriptor">${game.i18n.localize('ZWEI.chatskill.rawdifficulty')}:</td>
+              <td class="descriptor">${_loc('ZWEI.chatskill.rawdifficulty')}:</td>
               <td class="value">${zhExplicitSign(data.difficultyRating.raw)}%</td>
             </tr>
             <tr>
-              <td class="descriptor">${game.i18n.localize('ZWEI.chatskill.channelpower')}:</td>
+              <td class="descriptor">${_loc('ZWEI.chatskill.channelpower')}:</td>
               <td class="value">${zhExplicitSign(data.difficultyRating.channelPowerBonus)}%</td>
             </tr>`
               : `<tr>
-              <td class="descriptor">${game.i18n.localize('ZWEI.chatskill.difficulty')}:</td>
+              <td class="descriptor">${_loc('ZWEI.chatskill.difficulty')}:</td>
               <td class="value">${zhExplicitSign(data.difficultyRating.total)}%</td>
             </tr>
             <tr>
-              <td class="descriptor">${game.i18n.localize('ZWEI.chatskill.resultflipped')}:</td>
+              <td class="descriptor">${_loc('ZWEI.chatskill.resultflipped')}:</td>
               <td class="value">${
-                data.effectivelyFlipped
-                  ? game.i18n.localize('ZWEI.chatskill.yes')
-                  : game.i18n.localize('ZWEI.chatskill.no')
+                data.effectivelyFlipped ? _loc('ZWEI.chatskill.yes') : _loc('ZWEI.chatskill.no')
               } </td>
             </tr>`
           }
@@ -195,19 +193,19 @@ export const registerHandlebarHelpers = async function () {
     if (data.weaponTest)
       tooltip += `
           <tr>
-            <td class="descriptor separator">${game.i18n.localize('ZWEI.actor.items.type')}:</td>
+            <td class="descriptor separator">${_loc('ZWEI.actor.items.type')}:</td>
             <td class="value separator">${data.weapon.system.weaponType}</td>
           </tr>
           <tr>
-            <td class="descriptor">${game.i18n.localize('ZWEI.actor.items.handling')}:</td>
+            <td class="descriptor">${_loc('ZWEI.actor.items.handling')}:</td>
             <td class="value">${data.weapon.system.handling}</td>
           </tr>
           <tr>
-            <td class="descriptor">${game.i18n.localize('ZWEI.actor.items.distance')}:</td>
+            <td class="descriptor">${_loc('ZWEI.actor.items.distance')}:</td>
             <td class="value">${data.weapon.system.distance.value}</td>
           </tr>
           <tr>
-            <td class="descriptor">${game.i18n.localize('ZWEI.actor.items.load')}:</td>
+            <td class="descriptor">${_loc('ZWEI.actor.items.load')}:</td>
             <td class="value">${data.weapon.system.ranged.load}</td>
           </tr>`;
 
@@ -215,23 +213,23 @@ export const registerHandlebarHelpers = async function () {
       console.log('THIS', this);
       tooltip += `
           <tr>
-            <td class="descriptor separator">${game.i18n.localize('ZWEI.actor.items.tradition')}:</td>
+            <td class="descriptor separator">${_loc('ZWEI.actor.items.tradition')}:</td>
             <td class="value separator">${data.spell.system.tradition}</td>
           </tr>
           <tr>
-            <td class="descriptor">${game.i18n.localize('ZWEI.actor.items.principle')}:</td>
+            <td class="descriptor">${_loc('ZWEI.actor.items.principle')}:</td>
             <td class="value">${data.spell.system.principle}</td>
           </tr>
           <tr>
-            <td class="descriptor">${game.i18n.localize('ZWEI.actor.items.reagents')}:</td>
+            <td class="descriptor">${_loc('ZWEI.actor.items.reagents')}:</td>
             <td class="value">${localize(data.spell.system.rules.reagents)}</td>
           </tr>
           <tr>
-            <td class="descriptor">${game.i18n.localize('ZWEI.actor.items.duration')}:</td>
+            <td class="descriptor">${_loc('ZWEI.actor.items.duration')}:</td>
             <td class="value">${data.spell.system.duration.label}</td>
           </tr>
           <tr>
-            <td class="descriptor">${game.i18n.localize('ZWEI.actor.items.distance')}:</td>
+            <td class="descriptor">${_loc('ZWEI.actor.items.distance')}:</td>
             <td class="value">${data.spell.system.distance}</td>
           </tr>`;
     }
@@ -289,7 +287,7 @@ export const registerHandlebarHelpers = async function () {
   $$('zhDisplayLanguages', (languages) => {
     if (!languages.length) return '';
     const displayLanguage = (l) =>
-      `${l.name}` + (l.isLiterate ? ` ${game.i18n.localize('ZWEI.settings.lasettings.literatesymbol')} ` : '');
+      `${l.name}` + (l.isLiterate ? ` ${_loc('ZWEI.settings.lasettings.literatesymbol')} ` : '');
     return languages.slice(1).reduce((str, l) => `${str}, ${displayLanguage(l)}`, displayLanguage(languages[0]));
   });
 
@@ -334,9 +332,7 @@ export const registerHandlebarHelpers = async function () {
   $$('zhRitualCastingInputs', (ritualData, castingTimeOptions) => {
     const triggerSelected = ritualData.castingTime.setting === 'formula';
 
-    let inputs = `<div class="form-group"><label class="formula-label">${game.i18n.localize(
-      'ZWEI.actor.items.castingtime'
-    )}</label>${
+    let inputs = `<div class="form-group"><label class="formula-label">${_loc('ZWEI.actor.items.castingtime')}</label>${
       triggerSelected ? `<div class="damage-inputs flexrow"><div class="form-group label-top wide"><label></label>` : ''
     }
             <select name="system.castingTime.setting">${HandlebarsHelpers.selectOptions(castingTimeOptions, {
@@ -361,29 +357,28 @@ export const registerHandlebarHelpers = async function () {
 
     const triggerRoll = false; // @todo: implement
 
-    let inputs = `<div class="form-group"><label class="formula-label">${game.i18n.localize(
-      'ZWEI.actor.items.difficulty'
-    )}</label>${
+    let inputs = `<div class="form-group"><label class="formula-label">${_loc('ZWEI.actor.items.difficulty')}</label>${
       triggerSelected ? `<div class="damage-inputs flexrow"><div class="form-group label-top"><label></label>` : ''
     }
-            <select name="system.difficulty.rating"><optgroup label="${game.i18n.localize(
+            <select name="system.difficulty.rating"><optgroup label="${_loc(
               'ZWEI.actor.items.genericratings'
             )}">${HandlebarsHelpers.selectOptions(ritualDifficultiesGeneric, {
       hash: {
         valueAttr: 'value',
         labelAttr: 'label',
       },
-    })}</optgroup><optgroup label="${game.i18n.localize(
-      'ZWEI.actor.items.specificratings'
-    )}">${HandlebarsHelpers.selectOptions(ritualDifficultiesSpecific, {
-      hash: {
-        valueAttr: 'value',
-        labelAttr: 'label',
-      },
-    })}</optgroup></select>
+    })}</optgroup><optgroup label="${_loc('ZWEI.actor.items.specificratings')}">${HandlebarsHelpers.selectOptions(
+      ritualDifficultiesSpecific,
+      {
+        hash: {
+          valueAttr: 'value',
+          labelAttr: 'label',
+        },
+      }
+    )}</optgroup></select>
           ${
             triggerSelected
-              ? `</div><div class="form-group label-top"><label>${game.i18n.localize(
+              ? `</div><div class="form-group label-top"><label>${_loc(
                   'ZWEI.actor.items.skilltest'
                 )}</label><select name="system.difficulty.associatedSkill">${HandlebarsHelpers.selectOptions(
                   skillList,
@@ -408,7 +403,7 @@ export const registerHandlebarHelpers = async function () {
       )
       .join('');
     return new Handlebars.SafeString(
-      `<div class="form-group"><label>` + game.i18n.localize('ZWEI.actor.items.price') + `</label>${inputs}</div>`
+      `<div class="form-group"><label>` + _loc('ZWEI.actor.items.price') + `</label>${inputs}</div>`
     );
   });
 
@@ -448,7 +443,7 @@ export const registerHandlebarHelpers = async function () {
             value="${i}" data-dtype="Number" ${isChecked ? 'checked' : ''}>
           <label for="${uuid}.${i}" class="status">
             <span><span>` +
-        game.i18n.localize('ZWEI.actor.conditions.' + choices[i]) +
+        _loc('ZWEI.actor.conditions.' + choices[i]) +
         `</span></span>
           </label>
         </div>`;
@@ -461,10 +456,14 @@ export const registerHandlebarHelpers = async function () {
   $$('zhSkillRankAbbreviationLoc', function (rank) {
     return [
       '-',
-      game.i18n.localize('ZWEI.actor.items.skillranksabbr.apprentice'),
-      game.i18n.localize('ZWEI.actor.items.skillranksabbr.journeyman'),
-      game.i18n.localize('ZWEI.actor.items.skillranksabbr.master'),
+      _loc('ZWEI.actor.items.skillranksabbr.apprentice'),
+      _loc('ZWEI.actor.items.skillranksabbr.journeyman'),
+      _loc('ZWEI.actor.items.skillranksabbr.master'),
     ][rank];
+  });
+
+  $$('zhGetOperator', function (type) {
+    return ZWEI.typeOperator[type] ?? '?';
   });
 
   $$('zhModifiersLookup', function (modifiersLookup, key, options) {

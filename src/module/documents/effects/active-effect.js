@@ -1,6 +1,15 @@
 export default class ZweihanderActiveEffect extends ActiveEffect {
+  static #ROLL_CATEGORIES = new Set(['skill', 'weapon', 'dodge', 'parry', 'madness', 'spell', 'damage']);
+
   /** @override */
-  prepareBaseData() {}
+  static applyChange(targetDoc, change, { replacementData = {}, modifyTarget = true } = {}) {
+    // we skip applying all Active Effects with special syntax
+    if (ZweihanderActiveEffect.#ROLL_CATEGORIES.has(change.key.split('.')[0])) {
+      return;
+    }
+
+    return super.applyChange(targetDoc, change, { replacementData, modifyTarget });
+  }
 
   /** @override */
   static _applyChangeUnguided(targetDoc, change, changes, options = {}) {

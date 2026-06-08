@@ -1,17 +1,10 @@
 import * as ZweihanderUtils from '../utils';
 
 import FortuneTracker from '../../apps/fortune-tracker';
-import ZweihanderActorConfig from '../../apps/actor-config';
 
 import { getTestConfiguration } from './test-config';
 
 const { Die, DiceTerm } = foundry.dice.terms;
-
-export const PERIL_ROLL_TYPES = {
-  STRESS: { x: 1, title: 'stress', difficultyRating: 20 },
-  FEAR: { x: 2, title: 'fear', difficultyRating: 0 },
-  TERROR: { x: 3, title: 'terror', difficultyRating: -20 },
-};
 
 export const OUTCOME_TYPES = {
   CRITICAL_SUCCESS: 3,
@@ -50,6 +43,8 @@ export async function rollTest(
     testConfiguration.difficultyRating =
       testConfiguration.difficultyRating ?? toughnessDifficulty ?? defaultSpellDifficulty ?? 0;
     testConfiguration = await getTestConfiguration(skillItem, testType, testConfiguration);
+
+    if (!testConfiguration) return;
   }
   try {
     if (testConfiguration.useFortune === 'fortune') {
@@ -269,6 +264,8 @@ export async function rollPerilDamage(actorUuid, testConfiguration) {
   const speaker = ChatMessage.getSpeaker({ actor });
 
   const targetData = _preCalculateTargetData(actor, perilRoll.total, 'peril');
+  targetData.finalCorruptionStep =
+    actor.system.alignment.corruption + (madnessType === 'terror' ? 3 : madnessType === 'fear' ? 2 : 1);
 
   const content = await getPerilDamageContent(perilRoll, madnessType);
   const flags = {
@@ -281,7 +278,7 @@ export async function rollPerilDamage(actorUuid, testConfiguration) {
   return perilRoll.toMessage({ speaker, content, flags }, { rollMode: CONST.DICE_ROLL_MODES.PUBLIC });
 }
 
-export async function rollWeaponDamage(actorUuid, testConfiguration) {
+export async function rollWeaponDamage(actorUuid, testConfiguration, outcome) {
   const { weaponId, additionalFuryDice } = testConfiguration;
   const actor = fromUuidSync(actorUuid);
   const weapon = actor.items.get(weaponId);
@@ -305,6 +302,17 @@ export async function rollWeaponDamage(actorUuid, testConfiguration) {
     const bonus = `${hasBonus ? ' + ' + weapon.system.damage.bonus : ''}`;
 
     rawFormula = `${attributeBonus} + ${dice}${explodesOn}${bonus}`;
+  }
+
+  const addExtraFuryOnCrit =
+    game.settings.get('zweihander', 'extraFuryOnCrit') && outcome === OUTCOME_TYPES.CRITICAL_SUCCESS;
+
+  if (addExtraFuryOnCrit) {
+    const hasFuryDice = /(\d+)(d6x\d(?:[&\d]*)?)/;
+
+    rawFormula = hasFuryDice.test(rawFormula)
+      ? rawFormula.replace(hasFuryDice, (_, value, rest) => `${Number(value) + 1}${rest}`)
+      : `${rawFormula} + 1d6x6`;
   }
 
   const parsedFormula = ZweihanderUtils.abbreviations2DataPath(rawFormula);
@@ -437,6 +445,7 @@ export async function applyPeril(message, target) {
   if (target.finalThresholdStep !== -1) {
     await targetActor.update({
       'system.stats.secondaryAttributes.perilCurrent.value': updatedPerilCurrentValue,
+      'system.alignment.corruption': target.finalCorruptionStep,
     });
   }
 

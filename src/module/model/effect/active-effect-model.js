@@ -8,6 +8,7 @@ export default class ZweihanderActiveEffectModel extends ActiveEffectTypeDataMod
 
     return {
       ...schema,
+      advancedMode: new BooleanField({ initial: false }),
       details: new SchemaField({
         source: new StringField({ initial: '' }),
       }),

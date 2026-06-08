@@ -59,6 +59,7 @@ export default class ZweihanderActiveEffectConfig extends ActiveEffectConfig {
     const context = await super._prepareContext(options);
 
     context.isParentCarried = context.document.parent?.system?.carried ?? true;
+    context.advancedMode = context.document.system.advancedMode;
 
     return context;
   }
@@ -75,6 +76,9 @@ export default class ZweihanderActiveEffectConfig extends ActiveEffectConfig {
       }, {})
     );
     Object.assign(change, { selectableKeys: this._getChoicesKeys() });
+
+    context.advancedMode = this.options.document.system.advancedMode;
+
     return (
       CONFIG.ActiveEffect.changeTypes[change.type]?.render?.(context) ??
       renderTemplate('systems/zweihander/src/templates/app/active-effect/change.hbs', context)

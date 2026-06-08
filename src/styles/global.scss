@@ -351,6 +351,10 @@ body.game.vtt.system-zweihander {
 
     color: var(--zh-clr-fg1);
 
+    &.padded {
+      padding: revert-layer;
+    }
+
     table {
       margin: 0;
 

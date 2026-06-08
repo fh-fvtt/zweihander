@@ -1,6 +1,10 @@
 <li data-index="{{index}}">
     <div class="key">
-        {{formInput fields.key name=change.keyPath value=change.key valueAttr="value" choices=change.selectableKeys}}
+        {{#if advancedMode}}
+            {{formInput fields.key name=change.keyPath value=change.key elementType="input"}}
+        {{else}}
+            {{formInput fields.key name=change.keyPath value=change.key valueAttr="value" choices=change.selectableKeys}}
+        {{/if}}
     </div>
     <div class="type">
         {{formInput fields.type name=change.typePath value=change.type choices=changeTypes}}

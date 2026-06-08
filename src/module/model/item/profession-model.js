@@ -115,13 +115,14 @@ export default class ZweihanderProfessionModel extends ZweihanderBaseItemModel {
 
     if (!item.isOwned) return;
 
+    const advancesRequired = game.settings.get('zweihander', 'advancesTotal');
     const advancesPurchased =
       1 +
       (itemData.bonusAdvances?.reduce?.((a, b) => a + Number(b.purchased), 0) ?? 0) +
       (itemData.skillRanks?.reduce?.((a, b) => a + Number(b.purchased), 0) ?? 0) +
       (itemData.talents?.reduce?.((a, b) => a + Number(b.purchased), 0) ?? 0);
     itemData.advancesPurchased = advancesPurchased;
-    itemData.completed = advancesPurchased === 21; // @todo: implement system option to adjust total advances per Profession
+    itemData.completed = advancesPurchased === advancesRequired;
   }
 
   /** @override */
@@ -130,15 +131,16 @@ export default class ZweihanderProfessionModel extends ZweihanderBaseItemModel {
 
     const professions = actor.itemTypes.profession;
     const tier = professions.length + 1;
+    const addingOwnProfession = professions.some((p) => p._id === item._id);
 
-    if (tier > 3) {
+    if (!addingOwnProfession && tier > 3) {
       ui.notifications.error(game.i18n.localize('ZWEI.othermessages.errorprofessions'));
       return false;
     }
 
     const allTiersCompleted = professions.every((p) => p.system.completed);
 
-    if (!allTiersCompleted) {
+    if (!addingOwnProfession && !allTiersCompleted) {
       ui.notifications.error(game.i18n.localize('ZWEI.othermessages.errortier'));
       return false;
     }

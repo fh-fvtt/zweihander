@@ -7,7 +7,6 @@ const templatesToLoad = [
   $$('app/fortune-tracker.hbs'),
   $$('app/language-config/header.hbs'),
   $$('app/language-config/list.hbs'),
-  $$('app/test-config.hbs'),
 
   $$('character/currency.hbs'),
   $$('character/encumbrance-meter.hbs'),

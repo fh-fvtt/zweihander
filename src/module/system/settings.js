@@ -78,6 +78,15 @@ export const registerSystemSettings = function () {
     config: true,
   });
 
+  game.settings.register('zweihander', 'extraFuryOnCrit', {
+    scope: 'world',
+    config: 'true',
+    name: 'ZWEI.settings.extrafuryoncrit',
+    hint: 'ZWEI.settings.extrafuryoncrithint',
+    type: Boolean,
+    default: false,
+  });
+
   game.settings.register('zweihander', 'alternativePerilSystem', {
     scope: 'world',
     config: 'true',
@@ -85,7 +94,7 @@ export const registerSystemSettings = function () {
     hint: 'ZWEI.settings.alternativeperilhint',
     type: Boolean,
     default: false,
-    onChange: debouncedReload,
+    requiresReload: true,
   });
 
   game.settings.register('zweihander', 'alternativeActionPointSystem', {
@@ -95,7 +104,17 @@ export const registerSystemSettings = function () {
     hint: 'ZWEI.settings.alternativeaphint',
     type: Boolean,
     default: false,
-    onChange: debouncedReload,
+    requiresReload: true,
+  });
+
+  game.settings.register('zweihander', 'advancesTotal', {
+    scope: 'world',
+    config: 'true',
+    name: 'ZWEI.settings.advancestotal',
+    hint: 'ZWEI.settings.advancestotalhint',
+    type: Number,
+    default: 21,
+    requiresReload: true,
   });
 
   game.settings.register('zweihander', 'immersivePause', {

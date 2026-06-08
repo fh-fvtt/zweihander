@@ -1,0 +1,51 @@
+body.game.vtt.system-zweihander .zweihander.skill-test-config {
+  fieldset {
+    padding: 0.5rem;
+  }
+
+  legend {
+    font-size: 13px;
+    font-weight: normal;
+  }
+
+  .dialog-container {
+    gap: 0.5rem;
+    align-items: flex-start;
+  }
+
+  .modifiers-container,
+  .configurations-container {
+    align-self: stretch;
+    max-height: 275px;
+    overflow: auto;
+
+    .modifier {
+      gap: 0.5rem;
+      &:hover {
+        label {
+          color: var(--zh-clr-yellow);
+        }
+      }
+
+      label {
+        cursor: pointer;
+      }
+
+      input[type='checkbox'] {
+        flex: 0;
+        margin: 2px 0 0 0;
+      }
+    }
+  }
+
+  .modifiers-container {
+    flex: 0 0 content;
+    min-width: 150px;
+  }
+
+  .form-group {
+    label {
+      flex: 0 0 150px;
+    }
+  }
+}

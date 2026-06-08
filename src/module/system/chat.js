@@ -65,7 +65,7 @@ function enableChatButtons(html, flags, message, data) {
         const target = event.target.closest('.skill-test-damage');
         if (!target) return;
 
-        ZweihanderDice.rollWeaponDamage(actorUuid, testConfiguration);
+        ZweihanderDice.rollWeaponDamage(actorUuid, testConfiguration, outcome);
       });
     }
 

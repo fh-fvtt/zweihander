@@ -1,5 +1,4 @@
 const { ApplicationV2, HandlebarsApplicationMixin } = foundry.applications.api;
-const { getProperty } = foundry.utils;
 
 export default class ZweihanderActorConfig extends HandlebarsApplicationMixin(ApplicationV2) {
   static DEFAULT_OPTIONS = {
@@ -25,6 +24,9 @@ export default class ZweihanderActorConfig extends HandlebarsApplicationMixin(Ap
     main: { template: 'systems/zweihander/src/templates/app/actor-config.hbs' },
   };
 
+  // ---=== FOUNDRY METHODS ===---
+
+  /** @override */
   async _prepareContext(options) {
     const context = await super._prepareContext(options);
 
@@ -108,8 +110,10 @@ export default class ZweihanderActorConfig extends HandlebarsApplicationMixin(Ap
   }
 
   get title() {
-    return `Actor Configuration: ${this.options.document.name}`;
+    return `${_loc('ZWEI.othermessages.actorconfig')}: ${this.options.document.name}`;
   }
+
+  // ---=== SUBMIT HANDLER ===---
 
   static async #onSubmit(event, form, formData) {
     const actor = this.options.document;

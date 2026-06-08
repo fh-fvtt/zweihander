@@ -22,6 +22,8 @@ export default class ZweihanderBaseActorSheet extends HandlebarsApplicationMixin
     actions: {
       toggleCompactMode: ZweihanderBaseActorSheet.#toggleCompactMode,
       renderLanguageApplication: ZweihanderBaseActorSheet.#renderLanguageApplication,
+      itemEdit: ZweihanderBaseActorSheet.#itemEdit,
+      itemDelete: ZweihanderBaseActorSheet.#itemDelete,
     },
   };
 
@@ -247,10 +249,34 @@ export default class ZweihanderBaseActorSheet extends HandlebarsApplicationMixin
     // @todo: persist toggled state for a given Actor
   }
 
+  static async #itemEdit(event, target) {
+    const container = target.closest('.item');
+    const item = this.actor.items.get(container.dataset.itemId);
+    await item.sheet.render(true);
+  }
+
+  static async #itemDelete(event, target) {
+    const container = target.closest('.item');
+    const item = this.actor.items.get(container.dataset.itemId);
+    const type = game.i18n.localize(CONFIG.Item.typeLabels[item.type]);
+
+    await DialogV2.confirm({
+      window: { title: game.i18n.format('ZWEI.othermessages.deleteembedded', { type: type, name: item.name }) },
+      content: game.i18n.format('ZWEI.othermessages.suretype', { type: type }),
+      yes: {
+        callback: async () => {
+          await item.delete();
+        },
+      },
+      no: { callback: () => {} },
+      position: { width: 455 },
+      rejectClose: false,
+      defaultYes: true,
+    });
+  }
+
   /**
    * @this {ZweihanderBaseActorSheet}
-   * @param {Event} event
-   * @param {HTMLElement} target
    */
   static #renderLanguageApplication(event, target) {
     this.#languageConfig.render(true);
@@ -417,6 +443,7 @@ export default class ZweihanderBaseActorSheet extends HandlebarsApplicationMixin
     await super._onFirstRender(context, options);
 
     this._createContextMenu(this._getItemListContextOptions, '.item-list .item.item-entry', { fixed: true });
+    //this._createContextMenu(this._getItemListContextOptions, '.skills-container .skills-list', { fixed: true });
     this._createContextMenu(this._getItemListContextOptions, '.item-options', { eventName: 'click', fixed: true });
 
     this._createContextMenu(this._getEffectListContextOptions, '.item-list .item.effect-entry', { fixed: true });

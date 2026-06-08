@@ -26,6 +26,42 @@ export default class ZweihanderActor extends Actor {
     return this.type === 'character';
   }
 
+  getSkillEffects(skill, testType = 'skill') {
+    const skillName = skill.name;
+    const hasRanks = skill.system.rank > 0;
+
+    return Array.from(this.allApplicableEffects()).flatMap(
+      (e) =>
+        e.system.changes
+          .filter((c) => {
+            if (c.key.startsWith('system') || c.key.startsWith('token')) return false;
+
+            const [category, target] = c.key.split('.');
+
+            if (category === 'skill') {
+              switch (target) {
+                case 'all':
+                  return true;
+                case 'ranked':
+                  return hasRanks;
+                case 'unranked':
+                  return !hasRanks;
+                default:
+                  return ZweihanderUtils.normalizedEquals(target, skillName);
+              }
+            } else if (category === testType) {
+              switch (target) {
+                case 'all':
+                  return true;
+                default:
+                  return ZweihanderUtils.normalizedEquals(target, skillName);
+              }
+            }
+          })
+          .map((c) => ({ ...c, description: e.description, effectName: e.name })) // @todo: this mapping is probably useless
+    );
+  }
+
   getRollData() {
     const rollData = super.getRollData();
 

@@ -1,4 +1,8 @@
 <section class="tab changes{{#if tab.active}} active{{/if}}" data-group="{{tab.group}}" data-tab="{{tab.id}}">
+    <div class="form-group">
+        <label>{{localize 'ZWEI.othermessages.advancedmode'}}</label><input type="checkbox" name="system.advancedMode" {{checked document.system.advancedMode}}>
+        <p class="hint">{{localize 'ZWEI.othermessages.advancedmodehint'}}</p>
+    </div>
     <header>
         <div class="key">{{localize "EFFECT.FIELDS.changes.element.key.label"}}</div>
         <div class="type">{{localize "EFFECT.FIELDS.changes.element.type.label"}}</div>
