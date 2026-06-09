@@ -285,7 +285,7 @@ export default class ZweihanderBaseActorSheet extends HandlebarsApplicationMixin
   _getItemListContextOptions() {
     return [
       {
-        label: 'Edit Item',
+        label: game.i18n.localize('ZWEI.actor.items.edit'),
         icon: 'fas fa-pencil-alt',
         onClick: async (event, target) => {
           const container = target.closest('.item');
@@ -294,7 +294,7 @@ export default class ZweihanderBaseActorSheet extends HandlebarsApplicationMixin
         },
       },
       {
-        label: 'Duplicate Item',
+        label: game.i18n.localize('ZWEI.actor.items.duplicate'),
         icon: 'fas fa-clone',
         onClick: async (event, target) => {
           const actor = this.actor;
@@ -305,7 +305,7 @@ export default class ZweihanderBaseActorSheet extends HandlebarsApplicationMixin
         },
       },
       {
-        label: 'Post Item to Chat',
+        label: game.i18n.localize('ZWEI.actor.items.postchat'),
         icon: 'fas fa-message',
         onClick: async (event, target) => {
           const container = target.closest('.item');
@@ -333,7 +333,7 @@ export default class ZweihanderBaseActorSheet extends HandlebarsApplicationMixin
         },
       },
       {
-        label: 'Delete Item',
+        label: game.i18n.localize('ZWEI.actor.items.delete'),
         icon: 'fas fa-trash-alt',
         onClick: async (event, target) => {
           const container = target.closest('.item');
@@ -374,7 +374,7 @@ export default class ZweihanderBaseActorSheet extends HandlebarsApplicationMixin
   _getEffectListContextOptions() {
     return [
       {
-        label: 'Edit Effect',
+        label: game.i18n.localize('ZWEI.actor.items.edit'),
         icon: 'fas fa-pencil-alt',
         onClick: async (event, target) => {
           const container = target.closest('.item');
@@ -386,7 +386,7 @@ export default class ZweihanderBaseActorSheet extends HandlebarsApplicationMixin
         },
       },
       {
-        label: 'Clear Expired State',
+        label: game.i18n.localize('ZWEI.actor.items.clearexpired'),
         icon: 'fas fa-clock-rotate-left',
         visible: (target) => {
           const container = target.closest('.item');
@@ -410,7 +410,7 @@ export default class ZweihanderBaseActorSheet extends HandlebarsApplicationMixin
         },
       },
       {
-        label: 'Delete Effect',
+        label: game.i18n.localize('ZWEI.actor.items.delete'),
         icon: 'fas fa-trash-alt',
         onClick: async (event, target) => {
           const container = target.closest('.item');
