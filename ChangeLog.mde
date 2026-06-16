@@ -5,6 +5,31 @@ All notable changes to this project will be documented in this file.
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).´
 
+## [5.8.2] - 2026-06-16
+
+**Compatible Foundry Version:** 14.363
+
+### Fixed
+
+- **[CRITICAL]** Fixed Ancestry data model disallowing negative ancestral modifiers.
+
+## [5.8.2] - 2026-06-09
+
+**Compatible Foundry Version:** 14.363
+
+### Added
+
+- Added special syntax support to Active Effects that allows them to influence the Base Chance of Skill Tests. See system's wiki for details.
+- Added 'Advanced Mode' to Active Effect changes' attribute keys, allowing the targeting of token data.
+- Added system option for Starter Kit Critical Success on Weapon rolls (+1d6 Fury).
+- Added system option for number of Advances to consider a Tier complete (default 21, per Revised Core Rulebook).
+
+### Fixed
+
+- **[CRITICAL]** Fixed inability to edit or delete an Ancestry from a Character after it is added.
+- Fixed Withstand Madness rolls not applying Corruption.
+- Fixed compendiums not rendering correctly when opened from within an `Actor`'s sheet.
+
 ## [5.8.1] - 2026-06-03
 
 **Compatible Foundry Version:** 14.363
