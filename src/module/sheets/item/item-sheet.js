@@ -93,6 +93,7 @@ export default class ZweihanderItemSheet extends HandlebarsApplicationMixin(Item
     // console.log('GET DATA');
 
     const itemData = this.item.toObject(false);
+    const actor = this.item.actor;
 
     sheetData.name = itemData.name;
     sheetData.type = itemData.type;
@@ -101,7 +102,7 @@ export default class ZweihanderItemSheet extends HandlebarsApplicationMixin(Item
     sheetData.editable = this.isEditable;
     sheetData.rollData = this.item.getRollData.bind(this.item);
     sheetData.settings = ZweihanderUtils.getSheetSettings();
-    sheetData.actor = this.item.actor;
+    sheetData.actor = actor;
     sheetData.choices = {};
     sheetData.effects = itemData.effects;
 
@@ -318,6 +319,74 @@ export default class ZweihanderItemSheet extends HandlebarsApplicationMixin(Item
       ];
 
       this._prepareLinkedItemWrapperData(linkedItemDataList, sheetData);
+    } else if (sheetData.type === 'uniqueAdvance') {
+      sheetData.choices.advanceTypes = ZweihanderUtils.selectedChoice(
+        sheetData.document.system.advanceType ?? CONFIG.ZWEI.uniqueAdvanceTypes[0],
+        CONFIG.ZWEI.uniqueAdvanceTypes.map((type) => ({
+          value: type,
+          label: _loc(`ZWEI.actor.items.uniqueadvancecategories.${type.toLowerCase()}`),
+        }))
+      );
+
+      sheetData.isFocus = sheetData.document.system.advanceType === 'focus';
+      sheetData.isSkillRank = sheetData.document.system.advanceType === 'skillRank';
+
+      const skillPack = game.packs.get(game.settings.get('zweihander', 'skillPack'));
+      const skillIndex = await skillPack.getIndex();
+
+      sheetData.choices.focusSkillSelect = skillIndex
+        .map((s) => ({
+          value: s.name,
+          label: s.name,
+          selected: sheetData.document.system.associatedFocusSkill === s.name ? 'selected' : '',
+        }))
+        .sort((a, b) => a.label.localeCompare(b.label));
+
+      sheetData.choices.professionSelect = [];
+      sheetData.choices.originalSkillRankSelect = [];
+
+      const linkedItemDataList = [
+        {
+          property: 'associatedTalent.value',
+          label: 'Talent',
+          type: 'talent',
+          pack: game.settings.get('zweihander', 'talentPack'), // @todo: add support for FoF
+        },
+      ];
+
+      this._prepareLinkedItemWrapperData(linkedItemDataList, sheetData);
+
+      if (actor) {
+        const selectedProfessionUuid = sheetData.document.system.associatedProfession;
+
+        sheetData.choices.professionSelect = actor.itemTypes.profession.map((p) => ({
+          value: p.uuid,
+          label: p.name,
+          selected: selectedProfessionUuid === p.uuid,
+        }));
+
+        const professionSkillRanks = selectedProfessionUuid
+          ? fromUuidSync(selectedProfessionUuid).system.skillRanks
+          : [];
+
+        sheetData.choices.originalSkillRankSelect = professionSkillRanks.map((sr) => ({
+          value: sr.name,
+          label: sr.name,
+          selected: sheetData.document.system.associatedSkillRank.original === sr.name ? 'selected' : '',
+        }));
+
+        const professionSkillRanksLookup = new Set(professionSkillRanks.map((sr) => sr.name));
+
+        sheetData.choices.replacementSkillRankSelect = skillIndex
+          // can't have 2 Skill Ranks for the same Skill
+          .filter((s) => !professionSkillRanksLookup.has(s.name))
+          .map((s) => ({
+            value: s.name,
+            label: s.name,
+            selected: sheetData.document.system.associatedSkillRank.value === s.name ? 'selected' : '',
+          }))
+          .sort((a, b) => a.value.localeCompare(b.value));
+      }
     }
 
     // console.log(sheetData);
@@ -560,11 +629,21 @@ export default class ZweihanderItemSheet extends HandlebarsApplicationMixin(Item
     const item = this.item;
 
     switch (item.type) {
+      case 'uniqueAdvance':
+        if (!['talent', 'trait', 'spell', 'ritual'].includes(droppedItem.type)) {
+          ui.notifications.error(
+            _loc('ZWEI.othermessages.notypeitem', { type: droppedItem.type, item: 'Unique Advance' })
+          );
+          return;
+        }
+
+        await item.update({ [`system.associated${droppedItem.type.capitalize()}.value`]: droppedItem.uuid });
+
+        return;
+
       case 'ancestry':
         if (droppedItem.type !== 'trait') {
-          ui.notifications.error(
-            game.i18n.format('ZWEI.othermessages.notypeancestry', { type: droppedItem.type, item: 'Ancestry' })
-          );
+          ui.notifications.error(_loc('ZWEI.othermessages.notypeitem', { type: droppedItem.type, item: 'Ancestry' }));
           return;
         }
 
@@ -577,9 +656,7 @@ export default class ZweihanderItemSheet extends HandlebarsApplicationMixin(Item
 
       case 'profession':
         if (!['talent', 'trait', 'drawback'].includes(droppedItem.type)) {
-          ui.notifications.error(
-            game.i18n.format('ZWEI.othermessages.notypeancestry', { type: parameters, item: 'Profession' })
-          );
+          ui.notifications.error(_loc('ZWEI.othermessages.notypeitem', { type: parameters, item: 'Profession' }));
           return;
         }
 
@@ -587,9 +664,7 @@ export default class ZweihanderItemSheet extends HandlebarsApplicationMixin(Item
           const category = droppedItem.system.category;
 
           if (!['professional', 'special'].includes(category)) {
-            ui.notifications.error(
-              game.i18n.format('ZWEI.othermessages.traitsprofession', { category: category.capitalize() })
-            );
+            ui.notifications.error(_loc('ZWEI.othermessages.traitsprofession', { category: category.capitalize() }));
             return;
           }
 
@@ -616,7 +691,7 @@ export default class ZweihanderItemSheet extends HandlebarsApplicationMixin(Item
             for (const p of professionTalentsMap) {
               if (p.talents.includes(droppedItem.name)) {
                 ui.notifications.error(
-                  game.i18n.format('ZWEI.othermessages.professiontalent', {
+                  _loc('ZWEI.othermessages.professiontalent', {
                     profession: p.profession,
                     talent: droppedItem.name,
                   })
@@ -638,7 +713,7 @@ export default class ZweihanderItemSheet extends HandlebarsApplicationMixin(Item
 
           if (talentList.filter((t) => t.uuid === droppedItem.uuid).length > 0) {
             ui.notifications.error(
-              game.i18n.format('ZWEI.othermessages.professiontalent', {
+              _loc('ZWEI.othermessages.professiontalent', {
                 profession: this.item.name,
                 talent: droppedItem.name,
               })
@@ -856,8 +931,8 @@ export default class ZweihanderItemSheet extends HandlebarsApplicationMixin(Item
 
     const type = game.i18n.localize(CONFIG.Item.typeLabels[itemType]);
     await DialogV2.confirm({
-      window: { title: game.i18n.format('ZWEI.othermessages.deleteembedded', { type: type, name: itemName }) },
-      content: game.i18n.format('ZWEI.othermessages.suretype', { type: type }),
+      window: { title: _loc('ZWEI.othermessages.deleteembedded', { type: type, name: itemName }) },
+      content: _loc('ZWEI.othermessages.suretype', { type: type }),
       yes: {
         callback:
           // only Talents are relevant here, Qualities are handled through multi-select
@@ -884,12 +959,12 @@ export default class ZweihanderItemSheet extends HandlebarsApplicationMixin(Item
     const type = game.i18n.localize('TYPES.ActiveEffect.Base');
     await DialogV2.confirm({
       window: {
-        title: game.i18n.format('ZWEI.othermessages.deletetype', {
+        title: _loc('ZWEI.othermessages.deletetype', {
           type: game.i18n.localize(`TYPES.ActiveEffect.${type}`),
           label: effect.name,
         }),
       },
-      content: game.i18n.format('ZWEI.othermessages.suretype', {
+      content: _loc('ZWEI.othermessages.suretype', {
         type: game.i18n.localize(`TYPES.ActiveEffect.${type}`),
       }),
       yes: {
@@ -959,7 +1034,7 @@ export default class ZweihanderItemSheet extends HandlebarsApplicationMixin(Item
     const isCompendiumTableUndefined = typeof compendiumTable === 'undefined';
 
     if (isWorldTableUndefined && isCompendiumTableUndefined) {
-      ui.notifications.error(game.i18n.format('ZWEI.othermessages.noancestrytable', { ancestry: item.name }));
+      ui.notifications.error(_loc('ZWEI.othermessages.noancestrytable', { ancestry: item.name }));
       return;
     }
 

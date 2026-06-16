@@ -75,6 +75,7 @@ ZWEI.alternativePerilTable = {
 };
 
 ZWEI.traitCategories = ['professional', 'special', 'ancestral', 'creature'];
+ZWEI.uniqueAdvanceTypes = ['focus', 'skillRank', 'talent', 'trait', 'language', 'other'];
 
 ZWEI.ritualDifficultyGeneric = ['varies', 'special'];
 

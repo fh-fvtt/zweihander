@@ -274,14 +274,15 @@ export const registerHandlebarHelpers = async function () {
 
   $$('zhExplicitSign', zhExplicitSign);
 
-  $$('zhLookup', function (obj, key) {
+  $$('zhLookup', function (obj, key, options) {
     if (!key) return;
     const keys = key.toString().split('.');
     let val = obj;
     for (let key of keys) {
       val = val?.[key];
     }
-    return val;
+    const localizeKey = options.hash.localizeKey ?? false;
+    return localizeKey ? _loc(`${localizeKey}.${val.toLowerCase()}`) : val;
   });
 
   $$('zhDisplayLanguages', (languages) => {

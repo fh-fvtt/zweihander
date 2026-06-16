@@ -407,6 +407,7 @@ export function getItemGroups(groupsData) {
           title: 'type',
           size: 140,
           key: 'system.advanceType',
+          localizeKey: 'ZWEI.actor.items.uniqueadvancecategories',
         },
         {
           title: 'rpcost',

@@ -70,6 +70,55 @@ export default class ZweihanderProfessionModel extends ZweihanderBaseItemModel {
     };
   }
 
+  // ---=== GETTERS ===---
+
+  get effectiveSkillRanks() {
+    const item = this.parent;
+    const actor = item.actor;
+
+    if (!actor) return this.skillRanks;
+
+    const uniqueAdvances = actor.itemTypes.uniqueAdvance.filter(
+      (ua) =>
+        ua.system.advanceType === 'skillRank' && ua.system.isReplacement && ua.system.associatedProfession === item.uuid
+    );
+
+    // shallow copy is enough since we don't mutate Skill Ranks themselves
+    const effectiveSkillRanks = [...this.skillRanks];
+
+    for (const ua of uniqueAdvances) {
+      const originalSkillIndex = this.skillRanks.findIndex((sr) => sr.name === ua.system.associatedSkillRank.original);
+      if (originalSkillIndex !== -1) {
+        effectiveSkillRanks[originalSkillIndex] = {
+          name: ua.system.associatedSkillRank.value,
+          purchased: true,
+          uniqueAdvance: true,
+        };
+      }
+    }
+
+    return effectiveSkillRanks;
+  }
+
+  get advancesPurchased() {
+    const actor = this.parent.actor;
+
+    if (!actor) return 0;
+
+    const advancesPurchased =
+      1 +
+      this.bonusAdvances.reduce((a, b) => a + Number(b.purchased), 0) +
+      this.effectiveSkillRanks.reduce((a, b) => a + Number(b.purchased), 0) +
+      this.talents.reduce((a, b) => a + Number(b.purchased), 0);
+
+    return advancesPurchased;
+  }
+
+  get completed() {
+    const advancesRequired = game.settings.get('zweihander', 'advancesTotal');
+    return this.advancesPurchased === advancesRequired;
+  }
+
   // ---=== HELPER METHODS ===---
 
   async toggleProfessionPurchases(purchase) {
@@ -91,38 +140,27 @@ export default class ZweihanderProfessionModel extends ZweihanderBaseItemModel {
     super.prepareDerivedData();
 
     const item = this.parent;
-    const itemData = item.system;
 
     const primaryAttributeBonusesKeys = CONFIG.ZWEI.primaryAttributeBonuses.map((pab) => '[' + pab + ']');
 
-    itemData.skillRanks.sort((a, b) => {
+    this.skillRanks.sort((a, b) => {
       const aloc = a.name;
       const bloc = b.name;
       return aloc.localeCompare(bloc);
     });
 
-    itemData.bonusAdvances.sort(
+    this.bonusAdvances.sort(
       (a, b) => primaryAttributeBonusesKeys.indexOf(a.name) - primaryAttributeBonusesKeys.indexOf(b.name)
     );
 
     const localizedExpertProfessionValue = game.i18n.localize('ZWEI.actor.details.labels.expertprofession');
 
-    if (
-      itemData.expert.value &&
-      itemData.archetype.toLowerCase().replaceAll(/\s+/g, '') !== localizedExpertProfessionValue
-    )
-      itemData.archetype = localizedExpertProfessionValue;
+    if (this.expert.value && this.archetype.toLowerCase().replaceAll(/\s+/g, '') !== localizedExpertProfessionValue)
+      this.archetype = localizedExpertProfessionValue;
 
     if (!item.isOwned) return;
 
-    const advancesRequired = game.settings.get('zweihander', 'advancesTotal');
-    const advancesPurchased =
-      1 +
-      (itemData.bonusAdvances?.reduce?.((a, b) => a + Number(b.purchased), 0) ?? 0) +
-      (itemData.skillRanks?.reduce?.((a, b) => a + Number(b.purchased), 0) ?? 0) +
-      (itemData.talents?.reduce?.((a, b) => a + Number(b.purchased), 0) ?? 0);
-    itemData.advancesPurchased = advancesPurchased;
-    itemData.completed = advancesPurchased === advancesRequired;
+    // ... only relevant if owned ...
   }
 
   /** @override */

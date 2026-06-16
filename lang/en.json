@@ -320,6 +320,14 @@
           "ancestral": "Ancestral",
           "creature": "Creature"
         },
+        "uniqueadvancecategories": {
+          "focus": "Focus",
+          "skillrank": "Skill Rank",
+          "talent": "Talent",
+          "trait": "Trait",
+          "language": "Language",
+          "other": "Other"
+        },
         "traitsdrawback": "Traits & Drawback",
         "charadvances": "Character Advances",
         "ranksrequired": "Ranks Required",
@@ -874,7 +882,7 @@
       "nomoretalents": "A Profession can have a maximum of 3 Talents. Please delete one of the existing Talents before attempting to add a new one.",
       "professiontalent": "Profession {profession} already has following Talent: {talent}",
       "traitsprofession": "{category} Traits cannot be added to a Profession Item.",
-      "notypeancestry": "Item of type {type} cannot be added to an {item} Item.",
+      "notypeitem": "Item of type \"{type}\" cannot be added to an {item} Item.",
       "charnotmeetep": "Character does not meet Expert Profession ({profession}) requirements: \"You must possess at least {value} Skill Rank(s) in {skill}\"",
       "cannotenableae": "Cannot enable Active Effect: Item \"{item}\" is currently unequipped or not being carried.",
       "actoralready": "Actor \"{actor}\" is already an occupant of this vehicle.",

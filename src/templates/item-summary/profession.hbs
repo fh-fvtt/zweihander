@@ -13,13 +13,14 @@
 </div>
 <div data-testid="skills{{tier}}">
   <label>{{localize "ZWEI.actor.items.skillranks"}}:</label>
-  {{#each skillRanks as | skillData i |}}
+  {{#each item.system.effectiveSkillRanks as | skillData i |}} {{!--@todo: consider using @root and moving this mess to _prepareContext--}}
   <a
     data-purchase-type="skillRanks"
     data-purchase-index="{{i}}"
-    class="purchase-link {{#if skillData.purchased}} purchased {{else}} not-purchased {{/if}}"
+    {{#if skillData.uniqueAdvance}}data-tooltip="This Skill Rank was purchased through a Unique Advance." data-tooltip-direction="UP"{{/if}}
+    class="{{#if skillData.uniqueAdvance}}unique-advance{{else}}purchase-link{{/if}}{{#if skillData.purchased}} purchased {{else}} not-purchased{{/if}}"
   >
-    {{skillData.name}} </a
+    {{skillData.name}}{{#if skillData.uniqueAdvance}}<sup class="unique-advance-marker">UA</sup>{{/if}} </a
   >{{#unless @last}}<span>,</span>{{/unless}} {{/each}}
 </div>
 <div data-testid="advances{{tier}}">

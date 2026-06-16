@@ -489,28 +489,6 @@ body.game.vtt.system-zweihander .zweihander.sheet.item {
       label {
         color: var(--zh-clr-fg3);
       }
-      a.not-purchased {
-        color: var(--zh-clr-red);
-        &:hover {
-          color: var(--zh-clr-purple);
-          text-shadow: none;
-        }
-      }
-      a.purchased {
-        color: var(--zh-clr-aqua);
-        &:hover {
-          color: var(--zh-clr-yellow);
-          text-shadow: none;
-        }
-      }
-      a.duplicate {
-        color: var(--zh-clr-yellow);
-        pointer-events: none;
-        &:hover {
-          color: var(--zh-clr-purple);
-          text-shadow: none;
-        }
-      }
       .item-summary-longform {
         text-align: justify;
         text-indent: 1ch;
@@ -804,8 +782,14 @@ body.game.vtt.system-zweihander .zweihander.sheet.item {
       margin: 0;
       gap: 0.5rem;
 
-      p {
+      p:not(.hint) {
         margin: 0.4em 0;
+      }
+
+      p.hint {
+        margin: 0;
+        flex: 0 0 100%;
+        color: var(--zh-clr-fg3);
       }
 
       & > * {
@@ -854,9 +838,14 @@ body.game.vtt.system-zweihander .zweihander.sheet.item {
       }
 
       .distance-inputs,
-      .damage-inputs {
+      .damage-inputs,
+      .replacement-inputs {
         gap: 0.5rem;
         align-items: flex-end;
+      }
+
+      .replacement-inputs {
+        flex: 0 0 365.33333px;
       }
 
       .engaged {

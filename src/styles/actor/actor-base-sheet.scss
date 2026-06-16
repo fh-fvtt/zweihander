@@ -544,6 +544,10 @@ body.game.vtt.system-zweihander .zweihander.sheet.actor {
       label {
         color: var(--zh-clr-fg3);
       }
+      a.unique-advance {
+        color: var(--zh-clr-blue);
+        cursor: help;
+      }
       a.not-purchased {
         color: var(--zh-clr-red);
         &:hover {
@@ -553,7 +557,13 @@ body.game.vtt.system-zweihander .zweihander.sheet.actor {
       }
       a.purchased {
         color: var(--zh-clr-aqua);
-        &:hover {
+        .unique-advance-marker {
+          font-size: 9px;
+          line-height: 0;
+          position: relative;
+          top: 1px;
+        }
+        &:not(.unique-advance):hover {
           color: var(--zh-clr-yellow);
           text-shadow: none;
         }

@@ -29,12 +29,11 @@ export default class ZweihanderSkillModel extends ZweihanderBaseItemModel {
 
     const actor = item.actor;
 
-    if (actor.type === 'character') {
+    if (actor.isCharacter) {
       item.system.rank =
-        actor.items
-          .filter((i) => i.type === 'profession')
-          .flatMap((p) => p.system.skillRanks?.filter?.((sr) => normalizedEquals(sr.name, item.name) && sr.purchased))
-          ?.length ?? 0;
+        actor.itemTypes.profession.flatMap((p) =>
+          p.system.effectiveSkillRanks?.filter?.((sr) => normalizedEquals(sr.name, item.name) && sr.purchased)
+        )?.length ?? 0;
     } else {
       item.system.rank = actor.system.skillRanks?.[item.name] ?? 0;
     }

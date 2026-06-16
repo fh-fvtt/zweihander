@@ -15,7 +15,7 @@ export default class ZweihanderAncestryModel extends ZweihanderBaseItemModel {
         value: new ArrayField(
           new SchemaField({
             key: new StringField({ initial: '[CB]' }),
-            value: new NumberField({ integer: true, initial: 0, min: 0 }),
+            value: new NumberField({ integer: true, initial: 0 }),
           })
         ),
         positive: new ArrayField(new StringField({ persisted: false })),

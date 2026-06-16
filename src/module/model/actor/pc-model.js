@@ -151,8 +151,22 @@ export default class ZweihanderPlayerCharacterModel extends ZweihanderBaseActorM
       const tierMultiplier = ZweihanderUtils.getLocalizedRewardPointMapping();
 
       systemData.stats.rewardPoints.spent = professions
-        .map((profession) => tierMultiplier[profession.system.tier] * profession.system.advancesPurchased)
-        .concat(uniqueAdvances.map((advance) => advance.system.rewardPointCost))
+        .map((profession) => {
+          const replacementUniqueAdvances = uniqueAdvances.filter(
+            (ua) =>
+              ua.system.advanceType === 'skillRank' &&
+              ua.system.isReplacement &&
+              ua.system.associatedProfession === profession.uuid &&
+              ua.system.associatedSkillRank.original &&
+              ua.system.associatedSkillRank.value
+          );
+
+          return (
+            tierMultiplier[profession.system.tier] *
+            (profession.system.advancesPurchased - replacementUniqueAdvances.length)
+          );
+        })
+        .concat(uniqueAdvances.map((ua) => ua.system.rewardPointCost))
         .reduce((a, b) => a + b, 0);
       systemData.stats.rewardPoints.current = systemData.stats.rewardPoints.total - systemData.stats.rewardPoints.spent;
     }

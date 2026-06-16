@@ -819,8 +819,8 @@ export default class ZweihanderBaseActorSheet extends HandlebarsApplicationMixin
 
       const numerablePath = event.currentTarget.dataset.numerablePath;
 
-      const itemElement = $(event.currentTarget).parents('.item');
-      const item = this.actor.items.get($(itemElement).data('itemId'));
+      const itemElement = event.currentTarget.closest('.item');
+      const item = this.actor.items.get(itemElement.dataset.itemId);
 
       const newNumerableValue = lookup(item, numerablePath) + i;
 

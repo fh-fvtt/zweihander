@@ -1,14 +1,70 @@
-<div class="form-group">
-  <label>{{localize "ZWEI.actor.items.type"}}</label>
-  <input name="system.advanceType" type="text" value="{{system.advanceType}}">
-</div>
+<fieldset>
+  <legend>Advance Configuration</legend>
+  <div class="form-group">
+    <label>Advance Type</label>
+    <select name="system.advanceType">
+      {{selectOptions choices.advanceTypes selected="system.advanceType"}}
+    </select>
+  </div>
 
-<div class="form-group">
-  <label>{{localize "ZWEI.actor.items.rewardpc"}}</label>
-  <input  name="system.rewardPointCost" type="number" value="{{system.rewardPointCost}}">
-</div>
+  {{#if isFocus}}
+    <div class="form-group">
+      <label>{{localize "ZWEI.actor.items.associatedfs"}}</label>
+      <select name="system.associatedFocusSkill">
+        {{selectOptions choices.focusSkillSelect valueAttr="value" labelAttr="label" selected=selected blank=''}}
+      </select>
+    </div>
+  {{/if}}
 
-<div class="form-group">
-  <label>{{localize "ZWEI.actor.items.associatedfs"}}</label>
-  <input name="system.associatedFocusSkill" type="text" value="{{system.associatedFocusSkill}}">
-</div>
+  {{#if (and isSkillRank actor)}}
+    <div class="form-group">
+      <label>Replace Original</label>
+      <input type="checkbox" name="system.isReplacement" {{checked system.isReplacement}}>
+      <p class="hint">If checked, this Unique Advance will replace an existing Advance in the target Profession.</p>
+    </div>
+
+    {{#if system.isReplacement}}
+      <div class="form-group">
+        <label>Target Profession</label>
+        <select name="system.associatedProfession">
+          {{selectOptions choices.professionSelect valueAttr="value" labelAttr="label" selected=selected blank=''}}
+        </select>
+      </div>
+
+      {{#if system.associatedProfession}}
+        <div class="form-group">
+          <label class="formula-label"></label>
+          <div class="flexrow replacement-inputs">
+            <div class="form-group label-top">
+              <label>ORIGINAL</label>
+              <select name="system.associatedSkillRank.original">
+                {{selectOptions choices.originalSkillRankSelect valueAttr="value" labelAttr="label" selected=selected blank=''}}
+              </select>
+            </div>
+            <div class="form-group label-top">
+              <label>REPLACEMENT</label>
+              <select name="system.associatedSkillRank.value">
+                {{selectOptions choices.replacementSkillRankSelect valueAttr="value" labelAttr="label" selected=selected blank=''}}
+              </select>
+            </div>
+          </div>
+        </div>
+      {{/if}}
+    {{/if}}
+  {{/if}}
+
+  {{#if isTalent}}
+    <div class='form-group talents'>
+      <label>Talent</label>
+      {{> ($$ 'partials/detail-item-wrapper') talentWrapperData editable=editable}}
+    </div>
+  {{/if}}
+</fieldset>
+
+<fieldset>
+  <legend>Misc.</legend>
+  <div class="form-group">
+    <label>{{localize "ZWEI.actor.items.rewardpc"}}</label>
+    <input  name="system.rewardPointCost" type="number" value="{{system.rewardPointCost}}">
+  </div>
+</fieldset>
