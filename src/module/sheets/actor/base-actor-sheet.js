@@ -206,8 +206,8 @@ export default class ZweihanderBaseActorSheet extends HandlebarsApplicationMixin
     if (this.constructor.unsupportedItemTypes.has(item.type)) {
       return ui.notifications.warn(
         game.i18n.format('ZWEI.actorwarninginvaliditem', {
-          itemType: game.i18n.localize(CONFIG.Item.typeLabels[item.type]),
-          actorType: game.i18n.localize(CONFIG.Actor.typeLabels[this.actor.type]),
+          itemType: _loc(CONFIG.Item.typeLabels[item.type]),
+          actorType: _loc(CONFIG.Actor.typeLabels[this.actor.type]),
         })
       );
     }
@@ -228,7 +228,7 @@ export default class ZweihanderBaseActorSheet extends HandlebarsApplicationMixin
           'fa-solid',
           `fa-${defaultToCompact && this.actor.type !== 'character' ? 'expand' : 'compress'}`,
         ],
-        dataset: { action: 'toggleCompactMode', tooltip: game.i18n.localize('ZWEI.settings.togglecompact') },
+        dataset: { action: 'toggleCompactMode', tooltip: _loc('ZWEI.settings.togglecompact') },
       }),
     ];
 
@@ -258,7 +258,7 @@ export default class ZweihanderBaseActorSheet extends HandlebarsApplicationMixin
   static async #itemDelete(event, target) {
     const container = target.closest('.item');
     const item = this.actor.items.get(container.dataset.itemId);
-    const type = game.i18n.localize(CONFIG.Item.typeLabels[item.type]);
+    const type = _loc(CONFIG.Item.typeLabels[item.type]);
 
     await DialogV2.confirm({
       window: { title: game.i18n.format('ZWEI.othermessages.deleteembedded', { type: type, name: item.name }) },
@@ -285,7 +285,7 @@ export default class ZweihanderBaseActorSheet extends HandlebarsApplicationMixin
   _getItemListContextOptions() {
     return [
       {
-        label: 'Edit Item',
+        label: _loc('ZWEI.actor.items.edit'),
         icon: 'fas fa-pencil-alt',
         onClick: async (event, target) => {
           const container = target.closest('.item');
@@ -294,7 +294,7 @@ export default class ZweihanderBaseActorSheet extends HandlebarsApplicationMixin
         },
       },
       {
-        label: 'Duplicate Item',
+        label: _loc('ZWEI.actor.items.duplicate'),
         icon: 'fas fa-clone',
         onClick: async (event, target) => {
           const actor = this.actor;
@@ -305,7 +305,7 @@ export default class ZweihanderBaseActorSheet extends HandlebarsApplicationMixin
         },
       },
       {
-        label: 'Post Item to Chat',
+        label: _loc('ZWEI.actor.items.postchat'),
         icon: 'fas fa-message',
         onClick: async (event, target) => {
           const container = target.closest('.item');
@@ -333,12 +333,12 @@ export default class ZweihanderBaseActorSheet extends HandlebarsApplicationMixin
         },
       },
       {
-        label: 'Delete Item',
+        label: _loc('ZWEI.actor.items.delete'),
         icon: 'fas fa-trash-alt',
         onClick: async (event, target) => {
           const container = target.closest('.item');
           const item = this.actor.items.get(container.dataset.itemId);
-          const type = game.i18n.localize(CONFIG.Item.typeLabels[item.type]);
+          const type = _loc(CONFIG.Item.typeLabels[item.type]);
 
           // prevent deletion of Professions out of order
           if (item.type === 'profession') {
@@ -374,7 +374,7 @@ export default class ZweihanderBaseActorSheet extends HandlebarsApplicationMixin
   _getEffectListContextOptions() {
     return [
       {
-        label: 'Edit Effect',
+        label: _loc('ZWEI.actor.items.edit'),
         icon: 'fas fa-pencil-alt',
         onClick: async (event, target) => {
           const container = target.closest('.item');
@@ -386,7 +386,7 @@ export default class ZweihanderBaseActorSheet extends HandlebarsApplicationMixin
         },
       },
       {
-        label: 'Clear Expired State',
+        label: _loc('ZWEI.actor.items.clearexpired'),
         icon: 'fas fa-clock-rotate-left',
         visible: (target) => {
           const container = target.closest('.item');
@@ -410,14 +410,14 @@ export default class ZweihanderBaseActorSheet extends HandlebarsApplicationMixin
         },
       },
       {
-        label: 'Delete Effect',
+        label: _loc('ZWEI.actor.items.delete'),
         icon: 'fas fa-trash-alt',
         onClick: async (event, target) => {
           const container = target.closest('.item');
           const { itemId, parentId } = container.dataset;
 
           const effect = this._getEmbeddedEffect(parentId, itemId);
-          const type = game.i18n.localize('TYPES.ActiveEffect.Base');
+          const type = _loc('TYPES.ActiveEffect.Base');
 
           await DialogV2.confirm({
             window: { title: game.i18n.format('ZWEI.othermessages.deletetype', { type: type, label: effect.name }) },
@@ -620,7 +620,7 @@ export default class ZweihanderBaseActorSheet extends HandlebarsApplicationMixin
       el.addEventListener('contextmenu', async (event) => {
         const packIds = event.currentTarget.dataset.openPacks?.split?.(',')?.filter?.((x) => x);
         if (!packIds) {
-          ui.notifications.notify(game.i18n.localize('ZWEI.othermessages.errortype'));
+          ui.notifications.notify(_loc('ZWEI.othermessages.errortype'));
           return;
         }
         const packs = packIds.map((x) => game.packs.get(x.trim()));
@@ -689,7 +689,7 @@ export default class ZweihanderBaseActorSheet extends HandlebarsApplicationMixin
         const checkbox = event.currentTarget;
         const item = this.actor.items.get(checkbox.dataset.itemId);
         if (!checkbox.checked && item.system.tier !== item.actor.system.tier) {
-          ui.notifications.error(game.i18n.localize('ZWEI.othermessages.errorreset'));
+          ui.notifications.error(_loc('ZWEI.othermessages.errorreset'));
           return;
         }
         await DialogV2.confirm({
@@ -699,8 +699,8 @@ export default class ZweihanderBaseActorSheet extends HandlebarsApplicationMixin
               : game.i18n.format('ZWEI.othermessages.completeprogress', { name: item.name }),
           },
           content: !checkbox.checked
-            ? game.i18n.localize('ZWEI.othermessages.reallyresetprogress')
-            : game.i18n.localize('ZWEI.othermessages.purchaseall'),
+            ? _loc('ZWEI.othermessages.reallyresetprogress')
+            : _loc('ZWEI.othermessages.purchaseall'),
           yes: { callback: () => item.system.toggleProfessionPurchases(!checkbox.checked) },
           position: { width: 455 },
           rejectClose: false,
@@ -936,7 +936,7 @@ export default class ZweihanderBaseActorSheet extends HandlebarsApplicationMixin
 
     if (this.isEditable && (game.user.isGM || this.actor.isOwner)) {
       buttons.splice(0, 0, {
-        label: game.i18n.localize('ZWEI.settings.configactor'),
+        label: _loc('ZWEI.settings.configactor'),
         icon: 'fas fa-user-cog',
         visible: true,
         onClick: () => this.#actorConfig.render(true),
